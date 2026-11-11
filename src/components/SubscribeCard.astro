@@ -1,0 +1,51 @@
+---
+import { Image } from "astro:assets";
+import art from "../assets/photos/subscribe-art.png";
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+const action =
+  "https://assets.mailerlite.com/jsonp/2046479/forms/180157154312849349/subscribe";
+---
+
+<div class="overflow-hidden rounded-[20px] border border-teal bg-white text-left shadow-sm">
+  <Image
+    src={art}
+    alt=""
+    widths={[480, 800]}
+    sizes="(max-width: 768px) 100vw, 720px"
+    class="h-auto w-full"
+  />
+  <div class="px-5 py-6 sm:px-8">
+    <h3 class="text-xl font-extrabold text-ink sm:text-[21px]">
+      Trusted by founders at 6M+ revenue · 15+ yrs Fortune 500s
+    </h3>
+    <p class="mt-2 text-sm font-semibold text-pink-deep">
+      From the work that's guided 38,000+ people across 76+ companies
+    </p>
+    <form id={id} class="js-subscribe mt-5" action={action} method="post">
+      <input type="hidden" name="ml-submit" value="1" />
+      <input type="hidden" name="anticsrf" value="true" />
+      <label class="sr-only" for={`${id}-email`}>Email</label>
+      <input
+        id={`${id}-email`}
+        name="fields[email]"
+        type="email"
+        required
+        autocomplete="email"
+        placeholder="Email"
+        class="h-12 w-full rounded-lg border border-ink/15 bg-[#fff8dc] px-4 text-base text-ink placeholder:text-ink/50"
+      />
+      <button
+        type="submit"
+        class="mt-4 flex h-12 w-full items-center justify-center rounded-full bg-pink-deep text-[19px] font-bold text-white transition hover:bg-ink"
+      >
+        Subscribe
+      </button>
+      <p data-status hidden class="mt-4 text-base font-semibold text-ink"></p>
+    </form>
+  </div>
+</div>

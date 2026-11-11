@@ -1,0 +1,133 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const title = "DoGood Founders | A 30-Day Engagement for Life After Exit";
+const description =
+  "You built the company and got out, but it doesn't feel how you expected. Start with a private 30-day engagement for founders navigating life after exit.";
+const canonical = "https://www.dogoodagency.co/";
+const ogTitle = "DoGood Founders";
+const ogDescription =
+  "A private 30-day engagement for founders navigating life after exit. Start with Stage 1 of the Founder Reclamation Partnership. 5 founders a month.";
+const twitterDescription =
+  "A private 30-day Intensive for founders navigating life after exit. Start with Stage 1 of the Founder Reclamation Partnership. 5 founders a month.";
+const ogImage = new URL("/og.jpg", canonical).href;
+
+const organization = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "DoGood Agency LLC",
+  url: canonical,
+  logo: new URL("/logo.svg", canonical).href,
+  description,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "30 N Gould St Ste N",
+    addressLocality: "Sheridan",
+    addressRegion: "WY",
+    postalCode: "82801",
+    addressCountry: "US",
+  },
+  sameAs: [
+    "https://www.linkedin.com/in/sebwichmann/",
+    "http://www.upwork.com/agencies/dogoodagency",
+    "https://www.iodanet.org/iodas-history/",
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--
+      Preview only. At launch, delete this robots meta tag and update
+      public/robots.txt so the site can be indexed.
+    -->
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={ogTitle} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={ogTitle} />
+    <meta name="twitter:description" content={twitterDescription} />
+    <meta name="twitter:image" content={ogImage} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(organization)} />
+  </head>
+  <body>
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-white focus:px-4 focus:py-3 focus:text-ink"
+    >
+      Skip to content
+    </a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <script>
+      const thankYou = "Thank you! You have successfully joined our subscriber list.";
+
+      document.querySelectorAll("form.js-subscribe").forEach((form) => {
+        form.addEventListener("submit", async (event) => {
+          event.preventDefault();
+          const button = form.querySelector("button[type='submit']");
+          const status = form.querySelector("[data-status]");
+          if (!(button instanceof HTMLButtonElement)) return;
+          button.disabled = true;
+          button.textContent = "Loading...";
+          try {
+            const response = await fetch(form.action, {
+              method: "POST",
+              body: new FormData(form),
+            });
+            const result = await response.json();
+            if (result.success) {
+              form.querySelectorAll("input, button").forEach((field) => {
+                if (field instanceof HTMLElement && field !== status) field.hidden = true;
+              });
+              if (status) {
+                status.hidden = false;
+                status.textContent = thankYou;
+              }
+              return;
+            }
+            const message = result?.errors?.fields?.email?.[0];
+            if (status && message) {
+              status.hidden = false;
+              status.textContent = message;
+            }
+            button.disabled = false;
+            button.textContent = "Subscribe";
+          } catch {
+            form.submit();
+          }
+        });
+      });
+
+      const dialog = document.querySelector("#optin");
+      document.querySelectorAll("[data-open-optin]").forEach((button) => {
+        button.addEventListener("click", () => {
+          if (dialog instanceof HTMLDialogElement) dialog.showModal();
+        });
+      });
+      document.querySelectorAll("[data-close-optin]").forEach((button) => {
+        button.addEventListener("click", () => {
+          if (dialog instanceof HTMLDialogElement) dialog.close();
+        });
+      });
+    </script>
+  </body>
+</html>

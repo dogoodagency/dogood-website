@@ -1,0 +1,9 @@
+# Preview build. This site should stay out of search indexes.
+# At launch, delete the Disallow line and replace it with:
+#   Allow: /
+# Also remove the noindex meta tag in src/layouts/Base.astro
+# (search for "noindex").
+User-agent: *
+Disallow: /
+
+Sitemap: https://www.dogoodagency.co/sitemap-index.xml
