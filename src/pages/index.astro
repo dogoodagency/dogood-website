@@ -3,532 +3,396 @@ import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
 import Base from "../layouts/Base.astro";
 import Wave from "../components/Wave.astro";
-import SubscribeCard from "../components/SubscribeCard.astro";
-import { discover, fit, logoAlts, notFit, stats, stories } from "../data/stories";
+import { logos, reviews, stats, urls } from "../data/homepage";
 
-import hero from "../assets/photos/hero.png";
-import press from "../assets/photos/as-seen-on.png";
-import seb from "../assets/photos/seb.jpg";
-import founderJ from "../assets/photos/founder-j.png";
-import founderV from "../assets/photos/founder-v.png";
-import team from "../assets/photos/team.jpg";
+import caseJ from "../assets/cases/j.png";
+import caseV from "../assets/cases/v.png";
+import team from "../assets/photos/wayfinders.png";
 import signature from "../assets/photos/signature.png";
-import mark from "../assets/photos/community-mark.png";
-import star from "../assets/photos/star.png";
-import checkTeal from "../assets/photos/check-teal.png";
-import checkPink from "../assets/photos/check-pink.png";
-import stars from "../assets/photos/stars.png";
-import seal from "../assets/photos/seal.png";
-import wayfinderSeb from "../assets/photos/wayfinder-seb.webp";
-import wayfinderVlora from "../assets/photos/wayfinder-vlora.webp";
-import wayfinderChantill from "../assets/photos/wayfinder-chantill.webp";
-import wayfinderShiva from "../assets/photos/wayfinder-shiva.webp";
-import wayfinderKatrin from "../assets/photos/wayfinder-katrin.webp";
+import press from "../assets/photos/as-seen-on.png";
 
-const logoFiles = import.meta.glob<ImageMetadata>("../assets/logos/*", {
+const logoFiles = import.meta.glob<ImageMetadata>("../assets/logos/pink/*", {
   eager: true,
   import: "default",
 });
-const logos = Object.entries(logoFiles)
-  .sort(([a], [b]) => a.localeCompare(b))
-  .map(([path, src]) => {
-    const file = path.split("/").pop() ?? "";
-    return { src, alt: logoAlts[file] ?? file };
-  });
-
-const people = import.meta.glob<ImageMetadata>("../assets/people/*", {
+const portraits = import.meta.glob<ImageMetadata>("../assets/reviews/*", {
   eager: true,
   import: "default",
 });
 
-function portrait(slug: string) {
-  const match = Object.entries(people).find(([path]) => path.endsWith(`/${slug}.png`));
-  return match?.[1];
+function fromMap(map: Record<string, ImageMetadata>, file: string) {
+  const found = Object.entries(map).find(([path]) => path.endsWith(`/${file}`));
+  if (!found) throw new Error(`Missing image ${file}`);
+  return found[1];
 }
 
-const wayfinders = [
-  { name: "Seb", src: wayfinderSeb },
-  { name: "Vlora", src: wayfinderVlora },
-  { name: "Chantill", src: wayfinderChantill },
-  { name: "Shiva", src: wayfinderShiva },
-  { name: "Katrin", src: wayfinderKatrin },
+const logoSet = logos.map((logo) => ({ ...logo, src: fromMap(logoFiles, logo.file) }));
+const reviewSet = reviews.map((review) => ({
+  ...review,
+  src: fromMap(portraits, review.file),
+}));
+
+const fit = [
+  "You have exited or meaningfully stepped away from the company you built",
+  "You are no longer involved in the day-to-day (you may still have a board or advisory role)",
+  "You have more freedom than before, but it does not feel the way you expected",
+  "You want to fill the space with the next thing, and avoid making that choice on autopilot",
+  "You are ready to look honestly at what this next phase of life could be about",
+  "You can protect 5-6 hours a week for 30 days",
 ];
 
-const apply = "https://www.dogoodagency.co/apply-stage-1";
-const founders = "https://www.dogoodagency.co/founders";
-const diagnostic = "https://www.dogoodagency.co/diagnostics";
-const pinkBtn =
-  "inline-flex min-h-12 items-center justify-center rounded-full bg-pink-deep px-6 text-center text-[19px] font-bold text-white transition hover:bg-ink";
-const inkBtn =
-  "inline-flex min-h-12 items-center justify-center rounded-full bg-ink px-6 text-center text-[19px] font-bold text-white transition hover:bg-pink-deep";
+const notFit = [
+  "You are still trying to solve a business problem or get out of the day-to-day",
+  "You are looking for productivity advice, performance, or a plan for your next venture",
+  "You want a quick answer, rather than a private space to understand what needs attention",
+  "You want someone to tell you what to do, but are not ready to look honestly at this phase",
+];
 ---
 
 <Base>
-  <section class="relative overflow-hidden bg-ink text-white">
-    <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 md:grid-cols-[1.1fr_0.9fr] md:px-6 md:py-20">
-      <div>
-        <p class="font-script text-lg text-white/90">(or want to)</p>
-        <h1 class="mt-1 text-4xl font-extrabold leading-[1.05] tracking-tight md:text-5xl">
-          For founders who have exited
-          <span class="mt-1 block text-pink">the company they built.</span>
-        </h1>
-        <p class="mt-6 max-w-xl text-lg font-semibold text-teal md:text-xl">
-          Start with a private 30-day engagement for founders navigating life after exit.
-        </p>
-        <p class="mt-6 max-w-xl text-lg leading-relaxed">
-          <strong class="font-extrabold">You built the business. You got out.</strong> But it does not feel the way you expected.
-        </p>
-        <p class="mt-4 max-w-xl text-lg leading-relaxed">
-          You have more time, more freedom, and more options. But the structure is gone. Before you fill the space with the next thing, there is the question: "What now?"
-        </p>
-        <p class="mt-4 max-w-xl text-lg leading-relaxed">
-          Stage 1 helps you see what is surfacing, what is shaping your next move, and what genuinely belongs beyond the company.
-        </p>
-        <a class:list={["mt-8", pinkBtn]} href={apply}>Apply for Stage 1 →</a>
-        <p class="mt-3 flex items-center gap-2 text-sm text-cloud">
-          <Image src={star} alt="" width={16} height={19} class="h-4 w-auto" />
-          Limited to 5 new founders/month
-        </p>
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <h1 class="t-display">
+        For founders who’ve exited<br />
+        <span class="accent">the company they built, or are getting ready to.</span>
+      </h1>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="lede">
+            Start with a private 30-day engagement for founders navigating life after exit.
+          </p>
+          <p>You built the business. You got out. But it does not feel the way you expected.</p>
+          <p>
+            You have more time, more freedom, and more options. But the structure is gone. Before you
+            fill the space with the next thing, there is the question: “What now?”
+          </p>
+          <p>
+            Stage 1 helps you see what is surfacing, what is shaping your next move, and what genuinely
+            belongs beyond the company.
+          </p>
+        </div>
+        <div class="hero-draw">
+          <div class="sketch-ph" role="img" aria-label="Sketch-style drawing, placeholder">
+            <span>Sketch-style drawing</span>
+          </div>
+        </div>
       </div>
-      <Image
-        src={hero}
-        alt="Strong woman icon"
-        widths={[420, 720]}
-        sizes="(max-width: 768px) 90vw, 460px"
-        loading="eager"
-        fetchpriority="high"
-        class="mx-auto h-auto w-full max-w-md"
-      />
     </div>
     <Wave fill="#f5f2f9" />
   </section>
 
-  <div class="bg-lilac py-8">
-    <div class="marquee">
-      <div class="marquee-track items-center gap-12 px-6">
+  <section id="clients" aria-label="Client organisations">
+    <div class="logo-viewport">
+      <div class="logo-track">
         {
-          [...logos, ...logos].map((logo, index) => (
-            <Image
-              src={logo.src}
-              alt={index < logos.length ? logo.alt : ""}
-              widths={[120, 180]}
-              sizes="120px"
-              class="h-12 w-auto max-w-[140px] shrink-0 object-contain"
-            />
+          [0, 1].map((copy) => (
+            <div class:list={["logo-set", copy === 1 && "is-clone"]} aria-hidden={copy === 1}>
+              {logoSet.map((logo) => (
+                <Image
+                  src={logo.src}
+                  alt={copy === 1 ? "" : logo.alt}
+                  widths={[160, 320]}
+                  sizes="160px"
+                  loading="eager"
+                />
+              ))}
+            </div>
           ))
         }
       </div>
     </div>
-  </div>
-
-  <section class="bg-lilac px-4 py-8 md:px-6 md:py-14">
-    <div class="relative mx-auto max-w-4xl rounded-[28px] bg-ink px-6 py-12 text-center text-white md:px-16">
-      <Image src={star} alt="" width={18} height={21} class="absolute right-6 top-6 h-4 w-auto" />
-      <h2 class="text-3xl font-extrabold text-teal md:text-4xl">Life after exit is hard for a reason.</h2>
-      <p class="mx-auto mt-6 max-w-3xl text-lg leading-relaxed">
-        You can leave the company and still find the old pace shaping your new life, your decisions, and what you want to reach for next.
-      </p>
-      <p class="mx-auto mt-4 max-w-3xl text-lg leading-relaxed">
-        Exit advisors handle the transaction. Business consultants focus on the business. But very few people <strong class="font-extrabold">help you deal with what happens after.</strong>
-      </p>
-      <p class="mx-auto mt-4 max-w-3xl text-lg leading-relaxed">
-        When the company gave you meaning and structure for years, sometimes decades, stepping away is as much personal as it is practical.
-      </p>
-      <p class="mx-auto mt-4 max-w-3xl text-lg leading-relaxed">
-        <strong class="font-extrabold text-teal">We help you see what is really driving the next chapter</strong>, so you do not fill the freedom you worked so hard for with another version of the life you left behind.
-      </p>
-    </div>
   </section>
 
-  <section class="bg-lilac px-4 pb-16 text-center md:px-6" aria-labelledby="as-seen-on">
-    <h2 id="as-seen-on" class="text-sm font-semibold tracking-[0.2em] text-ink">AS SEEN ON</h2>
-    <Image
-      src={press}
-      alt="The Globe and Mail, The Chronicle Journal, FOX, Starkville Daily News, and Benzinga"
-      widths={[640, 1100]}
-      sizes="(max-width: 768px) 100vw, 900px"
-      class="mx-auto mt-6 h-auto w-full max-w-4xl"
-    />
-  </section>
-
-  <section class="bg-white px-4 py-16 md:px-6 md:py-24">
-    <div class="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2">
-      <div>
-        <h2 class="text-3xl font-extrabold text-pink md:text-4xl">This is the first step.</h2>
-        <p class="mt-6 text-lg leading-relaxed">
-          Stage 1 is a <strong class="font-extrabold">private, confidential 30-day engagement</strong> for founders who have exited or meaningfully stepped away and do not want to make their next move from the same old patterns.
-        </p>
-        <p class="mt-4 text-lg leading-relaxed">
-          Over 30 days, we help you see what is really surfacing, separate distraction from genuine desire, and get clear on what needs attention before the next major decision.
-        </p>
-        <p class="mt-4 text-lg font-extrabold text-pink-deep">If it fits, Stage 2 follows by invitation only.</p>
-        <p class="mt-4 text-lg leading-relaxed">
-          This is a private space to slow down, look honestly at what is here, and shape life after the company from an intentional choice.
-        </p>
-        <a class:list={["mt-8", inkBtn]} href={founders}>See the 2‑Stage Partnership →</a>
-        <p class="mt-3 text-xs text-ink/80">Stage 1 (30 days) · Stage 2 invite-only</p>
-      </div>
-      <Image
-        src={seb}
-        alt="Seb"
-        widths={[480, 800]}
-        sizes="(max-width: 768px) 90vw, 480px"
-        class="mx-auto h-auto w-full max-w-md rounded-3xl object-cover"
-      />
-    </div>
-  </section>
-
-  <section class="bg-lilac px-4 py-16 md:px-6 md:py-24">
-    <div class="mx-auto max-w-6xl">
-      <h2 class="text-center text-3xl font-extrabold uppercase tracking-tight md:text-4xl">Who this is for</h2>
-      <div class="mt-10 grid gap-6 md:grid-cols-2">
-        <div class="rounded-3xl bg-white p-6 shadow-sm md:p-8">
-          <h3 class="text-xl font-extrabold text-teal-deep">This is for you if...</h3>
-          <ul class="mt-5 space-y-4">
-            {
-              fit.map((item) => (
-                <li class="flex gap-3 text-base leading-relaxed">
-                  <Image src={checkTeal} alt="" width={22} height={22} class="mt-0.5 h-[22px] w-[22px] shrink-0" />
-                  <span>{item}</span>
-                </li>
-              ))
-            }
-          </ul>
-        </div>
-        <div class="rounded-3xl bg-white p-6 shadow-sm md:p-8">
-          <h3 class="text-xl font-extrabold text-pink">NOT for you if...</h3>
-          <ul class="mt-5 space-y-4">
-            {
-              notFit.map((item) => (
-                <li class="flex gap-3 text-base leading-relaxed">
-                  <Image src={checkPink} alt="" width={22} height={22} class="mt-0.5 h-[22px] w-[22px] shrink-0" />
-                  <span>{item}</span>
-                </li>
-              ))
-            }
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="bg-lilac px-4 pb-8 md:px-6">
-    <div class="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center sm:flex-row sm:text-left">
-      <Image src={founderJ} alt="" width={180} height={200} class="h-auto w-36" />
-      <div>
-        <p class="text-2xl font-extrabold text-teal-deep">Case Study</p>
-        <h2 class="mt-1 text-xl font-extrabold md:text-2xl">
-          From exit anxiety to aligned legacy —How J created a clear next life chapter
+  <section id="exit">
+    <div class="exit-grid">
+      <article class="card" id="exit-card">
+        <h2 class="t-h2">
+          Life after exit is hard<br />for a reason.
         </h2>
-        <p class="mt-2 font-bold text-pink-deep">J (anonymous), USD 2M founder</p>
-        <a class:list={["mt-4", pinkBtn]} href="https://www.dogoodagency.co/casestudies/j">
-          Read the short case study →
-        </a>
-        <p class="mt-2 text-xs text-ink/80">We protect our founders’ identities</p>
+        <p>
+          You can leave the company and still find the old pace shaping your new life, your decisions,
+          and what you want to reach for next.
+        </p>
+        <p>
+          Exit advisors handle the transaction. Business consultants focus on the business. But very
+          few people help you deal with what happens after.
+        </p>
+        <p>
+          When the company gave you meaning and structure for years, sometimes decades, stepping away
+          is as much personal as it is practical.
+        </p>
+        <p>
+          We help you see what is really driving the next chapter, so you do not fill the freedom you
+          worked so hard for with another version of the life you left behind.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec" id="case-j">
+    <article class="card case-compact">
+      <img class="portrait" src={caseJ.src} width={caseJ.width} height={caseJ.height} alt="" />
+      <div>
+        <p class="t-kicker">Case Study</p>
+        <h3>From exit anxiety to aligned legacy — How J created a clear next life chapter</h3>
+        <p class="caption">J (anonymous), USD 2M founder</p>
+        <a class="btn-outline btn-case" href={urls.caseJ}>Read the short case study</a>
+        <p class="case-protect">We protect our founders’ identities</p>
+      </div>
+    </article>
+  </section>
+
+  <section id="first-step">
+    <div class="first-grid">
+      <div id="first-draw">
+        <div class="sketch-ph" role="img" aria-label="Image placeholder">
+          <span>Sketch-style drawing</span>
+        </div>
+      </div>
+      <article class="card" id="first-card">
+        <h2 class="t-h2">This is the first step.</h2>
+        <p>
+          Stage 1 is a <strong>private, confidential 30-day engagement</strong> for founders who have
+          exited or meaningfully stepped away and do not want to make their next move from the same old
+          patterns.
+        </p>
+        <p>
+          Over 30 days, we help you see what is really surfacing, separate distraction from genuine
+          desire, and get clear on what needs attention before the next major decision.
+        </p>
+        <p class="invite">If it fits, Stage 2 follows by invitation only.</p>
+        <p>
+          This is a private space to slow down, look honestly at what is here, and shape life after the
+          company from an intentional choice.
+        </p>
+        <a class="btn-outline" href={urls.partnership}>See the 2‑Stage Partnership</a>
+        <p class="caption cap-follow">Stage 1 (30 days) · Stage 2 invite-only</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="apply-first">
+    <a class="btn-apply lg" href={urls.apply}>Apply for Stage 1</a>
+    <p class="caption cap-pill">Limited to 5 new founders/month</p>
+  </section>
+
+  <section id="for-you">
+    <div class="foryou-grid">
+      <article class="card ink">
+        <h3 class="t-h3">This is for you if...</h3>
+        <ul>
+          {fit.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+      <article class="card rose">
+        <h3 class="t-h3">NOT for you if...</h3>
+        <ul>
+          {notFit.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="why-grid">
+      <div class="card why-copy">
+        <p class="why-kicker">Why 'DoGood'?</p>
+        <h2 class="t-h2">
+          Because we love<br />entrepreneurship.
+        </h2>
+        <span class="sub">We love what founders build.</span>
+        <p>We love what a great company can create for a family, a team, a community, and the world.</p>
+        <p>
+          And the best founders we know are not only trying to build something successful.{" "}
+          <strong>They want to do good.</strong>
+        </p>
+        <p>Good for themselves. Good for their families. Good for their teams. Good for the world.</p>
+        <p class="closing">That is why we do this work.</p>
+        <p>
+          DoGood believes that success should not come at the expense of the people and parts of life
+          that matter most.
+        </p>
+      </div>
+      <div class="why-sketch">
+        <div class="sketch-ph" role="img" aria-label="Sketch-style drawing, placeholder">
+          <span>Sketch-style drawing</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="relative bg-ink px-4 py-16 text-white md:px-6 md:py-24">
-    <div class="mx-auto max-w-5xl">
-      <h2 class="text-center text-3xl font-extrabold leading-tight md:text-5xl">
-        How are you really doing
-        <span class="block text-pink">after the exit?</span>
-      </h2>
-      <p class="mt-4 text-center text-lg">
-        The <strong class="font-extrabold text-teal">Founder Diagnostic™</strong> helps you see it more clearly.
-      </p>
-
-      <div class="mt-10 rounded-[28px] border border-teal/50 p-5 md:p-10">
-        <p class="text-lg leading-relaxed text-white/90">
-          You have more time, more freedom, and more options than before. But perhaps you do not feel as settled as you expected. Maybe parts of your health, relationships, or day-to-day life have started asking for more attention.
-        </p>
-        <p class="mt-4 text-lg leading-relaxed text-white/90">
-          The <strong class="font-extrabold text-teal">Founder Diagnostic™</strong> gives you an honest view of where things stand. It is not a diagnosis. It is a clear reflection on what may be surfacing now, what it may be costing you, and what deserves attention before your next move.
-        </p>
-        <p class="mt-6 text-center text-lg font-semibold text-teal">
-          Energy capacity · Decision clarity · Health · Relationships · Sense of direction
-        </p>
-
-        <div class="mt-8 grid gap-4 md:grid-cols-3">
-          <article class="rounded-2xl border border-teal/40 bg-ink p-5 text-center">
-            <h3 class="text-base font-extrabold">Pressure Index</h3>
-            <p class="mt-3 text-4xl font-extrabold text-teal">37</p>
-            <p class="text-sm text-cloud">/ 100</p>
-            <p class="mt-3 text-xs text-cloud">0 – 100 severity snapshot of your last 7–14 days pressure signals</p>
-          </article>
-          <article class="rounded-2xl border border-teal/40 bg-ink p-5 text-center">
-            <h3 class="text-base font-extrabold">Diagnostic stage</h3>
-            <p class="mt-3 text-4xl font-extrabold text-teal">2</p>
-            <p class="text-sm text-cloud">Your self-ID out of 5</p>
-            <p class="mt-3 text-xs text-cloud">Your self‑selected stage that felt uncomfortably accurate</p>
-          </article>
-          <article class="rounded-2xl border border-teal/40 bg-ink p-5 text-center">
-            <h3 class="text-base font-extrabold">Urgency Window</h3>
-            <p class="mt-3 text-4xl font-extrabold text-teal">3+ months</p>
-            <p class="text-sm text-cloud">When to act</p>
-            <p class="mt-3 text-xs text-cloud">How soon intervention is needed, based on timing / runway signals you reported</p>
-          </article>
-        </div>
-
-        <h3 class="mt-10 text-lg font-extrabold text-teal">What you'll discover in 5 minutes:</h3>
-        <ol class="mt-4 grid gap-3 md:grid-cols-2">
+  <section id="reviews">
+    <div class="reviews-band">
+      <h2 class="t-h2">Leaders who've been through it</h2>
+      <div
+        class="reviews-viewport"
+        tabindex="0"
+        aria-label="Founder testimonials, rolling. Pauses on hover or focus."
+      >
+        <div class="reviews-track">
           {
-            discover.map((item, index) => (
-              <li class="flex gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 text-sm leading-relaxed text-mist">
-                <span class="text-3xl font-extrabold text-teal">{index + 1}</span>
-                <span>{item}</span>
-              </li>
+            [0, 1].map((copy) => (
+              <div class:list={["reviews-set", copy === 1 && "is-clone"]} aria-hidden={copy === 1}>
+                {reviewSet.map((review) => (
+                  <article class="review">
+                    <div class="review-who">
+                      <Image src={review.src} alt="" width={56} height={56} widths={[56, 112]} sizes="56px" />
+                      <div>
+                        <h3>{review.name}</h3>
+                        <p class="review-role">{review.role}</p>
+                      </div>
+                    </div>
+                    <p class="review-body">{review.quote}</p>
+                  </article>
+                ))}
+              </div>
             ))
           }
-        </ol>
-        <p class="mt-8 text-center text-lg">
-          <strong class="font-extrabold">No pitch. No judgment.</strong> Just an honest view of where you are right now, and somewhere useful to start.
-        </p>
-        <div class="mt-6 text-center">
-          <a class={pinkBtn} href={diagnostic}>Start the Founder Diagnostic™ →</a>
-          <p class="mt-3 text-xs text-cloud">Founder-focused · 5 minutes · Confidential · Immediate results</p>
         </div>
       </div>
     </div>
-    <Wave fill="#ffffff" class="mt-12" />
   </section>
 
-  <section class="bg-white px-4 py-16 md:px-6 md:py-24">
-    <div class="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2">
+  <section class="sec" id="case-v">
+    <article class="card case-compact ink">
+      <img class="portrait" src={caseV.src} width={caseV.width} height={caseV.height} alt="" />
       <div>
-        <p class="text-lg text-ink/70">Why 'DoGood'?</p>
-        <h2 class="mt-2 text-3xl font-extrabold leading-tight md:text-4xl">
-          <span class="text-pink">Because we love entrepreneurship.</span>
-          <span class="mt-1 block">We love what founders build.</span>
-        </h2>
-        <p class="mt-6 text-lg leading-relaxed">
-          We love what a great company can create for a family, a team, a community, and the world.
-        </p>
-        <p class="mt-4 text-lg leading-relaxed">
-          And the best founders we know are not only trying to build something successful. <strong class="font-extrabold">They want to do good.</strong>
-        </p>
-        <p class="mt-4 text-lg leading-relaxed">
-          Good for themselves. Good for their families. Good for their teams. Good for the world.
-        </p>
-        <p class="mt-4 text-lg font-extrabold text-pink-deep">That is why we do this work.</p>
-        <p class="mt-4 text-lg leading-relaxed">
-          DoGood believes that success should not come at the expense of the people and parts of life that matter most.
-        </p>
+        <p class="t-kicker">Case Study</p>
+        <h3>From identity void to decisive leadership — how V reclaimed life after success</h3>
+        <p class="caption">V (anonymous), USD 9M+ founder</p>
+        <a class="btn-outline btn-case" href={urls.caseV}>Read the short case study</a>
+        <p class="case-protect">We protect our founders’ identities</p>
       </div>
+    </article>
+  </section>
+
+  <section id="asseen">
+    <div class="asseen-frame">
+      <p class="t-kicker">As seen on</p>
+      <div class="asseen-row">
+        <Image
+          src={press}
+          alt="The Globe and Mail, The Chronicle Journal, FOX, Starkville Daily News, ncn, and Benzinga"
+          widths={[640, 1140]}
+          sizes="(max-width: 1080px) 100vw, 1040px"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section id="apply-v">
+    <a class="btn-apply lg" href={urls.apply}>Apply for Stage 1</a>
+    <p class="caption cap-pill">Private · Limited to 5 new founders/month</p>
+  </section>
+
+  <section id="message">
+    <article class="card ink" id="message-card">
+      <h2 class="t-h2">A Founder’s Message</h2>
+      <p>
+        “We exist because the support founders need after exit is{" "}
+        <span class="pink-soft">rarely found in the usual places.</span>
+      </p>
+      <p>
+        Executive coaches focus on performance. Therapists help people process what is difficult. Both
+        can have value. But neither is built for the moment when the company is no longer central, and{" "}
+        <strong>you are working out what genuinely belongs next.</strong>
+      </p>
+      <p>You cannot solve that simply by finding another strategy or filling it with more projects.</p>
+      <p>
+        I know what it costs when the company becomes too much of who you are, and when the old
+        patterns follow you long after the company is gone.
+      </p>
+      <p>
+        <span class="pink-soft">DoGood</span> is what I wish had existed then: a private partnership for
+        founders who do not want life after exit to become another version of the life they left behind.”
+      </p>
+      <Image class="sig" src={signature} alt="Seb’s signature" widths={[240, 480]} sizes="240px" />
+      <p class="who">Seb &amp; the entire DoGood team</p>
+    </article>
+  </section>
+
+  <section id="wayfinders">
+    <div class="wf-intro">
+      <h2 class="t-h2">Your Wayfinders</h2>
+      <p class="lead">
+        FRP is delivered by an intentionally small, vetted team of Wayfinders{" "}
+        <span class="years">with 75+ years of combined founder-delivery experience.</span>{" "}
+        They’re the kind of rare people you don’t find in usual channels. All are trained to meet our
+        quality standards to ensure consistency and outcome-driven deliveries. Every time.
+      </p>
+      <p class="match">You don’t pick a Wayfinder · We match for fit first</p>
+    </div>
+    <div class="wf-group">
       <Image
         src={team}
-        alt="The DoGood team"
-        widths={[560, 1000]}
-        sizes="(max-width: 768px) 100vw, 520px"
-        class="h-auto w-full rounded-3xl object-cover"
+        alt="The DoGood Wayfinders: Seb, Vlora, Chantill, Shiva and Katrin"
+        widths={[800, 1280, 1800]}
+        sizes="(max-width: 1080px) 100vw, 1280px"
       />
     </div>
-    <dl class="mx-auto mt-12 grid max-w-6xl grid-cols-2 gap-6 text-center md:grid-cols-5">
-      {
-        stats.map((stat) => (
-          <div>
-            <dt class="text-2xl font-extrabold text-pink md:text-3xl">{stat.value}</dt>
-            <dd class="mt-1 text-sm">{stat.label}</dd>
-          </div>
-        ))
-      }
-    </dl>
-  </section>
-
-  <section class="bg-lilac px-4 py-16 md:px-6 md:py-24">
-    <div class="mx-auto max-w-6xl text-center">
-      <p class="text-lg">Founders Who've Been Through It</p>
-      <h2 class="mt-2 text-3xl font-extrabold uppercase tracking-tight md:text-5xl">
-        Real Founder Stories
-      </h2>
-      <p class="mx-auto mt-4 max-w-2xl text-lg">
-        We’ve spent years listening to founders talk honestly about what success cost, and what came after.
-      </p>
-      <ul class="stories mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 text-left">
-        {
-          stories.map((story) => {
-            const photo = portrait(story.slug);
-            return (
-              <li class="w-[min(100%,340px)] shrink-0 snap-start rounded-3xl bg-white p-6 shadow-sm">
-                <Image src={stars} alt="" width={110} height={22} class="h-5 w-auto" />
-                <div class="mt-4 flex items-center gap-3">
-                  {photo && (
-                    <Image src={photo} alt="" width={64} height={64} class="h-16 w-16 rounded-full object-cover" />
-                  )}
-                  <div>
-                    <h3 class="text-lg font-extrabold">{story.name}</h3>
-                    <p class="text-sm">{story.role}</p>
-                  </div>
-                </div>
-                <p class="mt-4 text-base leading-relaxed">{story.quote}</p>
-              </li>
-            );
-          })
-        }
-      </ul>
-    </div>
-
-    <div class="mx-auto mt-16 flex max-w-3xl flex-col items-center gap-6 text-center sm:flex-row sm:text-left">
-      <div class="grid h-40 w-32 place-items-end">
-        <div class="h-28 w-28 overflow-hidden rounded-full border-8 border-teal bg-teal">
-          <Image src={founderV} alt="" width={112} height={112} class="h-full w-full object-cover" />
+    <div class="track-block">
+      <article class="card track-card">
+        <h3 class="track-title">Our team’s track record</h3>
+        <div class="track-nums">
+          {
+            stats.map((stat) => (
+              <div>
+                <strong>{stat.value}</strong>
+                <span>{stat.label}</span>
+              </div>
+            ))
+          }
         </div>
-      </div>
-      <div>
-        <p class="text-2xl font-extrabold text-teal-deep">Case Study</p>
-        <h2 class="mt-1 text-xl font-extrabold md:text-2xl">
-          From identity void to decisive leadership — how V reclaimed life after success
-        </h2>
-        <p class="mt-2 font-bold text-pink-deep">V (anonymous), USD 9M+ founder</p>
-        <a class:list={["mt-4", pinkBtn]} href="https://www.dogoodagency.co/casestudies/v">
-          Read the short case study →
-        </a>
-        <p class="mt-2 text-xs text-ink/80">We protect our founders’ identities</p>
-      </div>
+      </article>
     </div>
   </section>
 
-  <section class="bg-lilac px-4 pb-16 md:px-6">
-    <div class="mx-auto max-w-5xl">
-      <h2 class="text-center text-3xl font-extrabold uppercase tracking-tight md:text-4xl">A founder's message</h2>
-      <div class="mt-8 grid gap-8 rounded-[28px] bg-ink p-6 text-white md:grid-cols-2 md:p-10">
-        <div class="space-y-4 text-lg leading-relaxed">
-          <p>
-            "We exist because the support founders need after exit is <strong class="font-extrabold text-pink-soft">rarely found in the usual places.</strong>
-          </p>
-          <p>
-            Executive coaches focus on performance. Therapists help people process what is difficult. Both can have value. But neither is built for the moment when the company is no longer central, and <strong class="font-extrabold">you are working out what genuinely belongs next.</strong>
-          </p>
-          <p>You cannot solve that simply by finding another strategy or filling it with more projects.</p>
-        </div>
-        <div class="space-y-4 text-lg leading-relaxed">
-          <p>
-            I know what it costs when the company becomes too much of who you are, and when the old patterns follow you long after the company is gone.
-          </p>
-          <p>
-            <strong class="font-extrabold text-pink-soft">DoGood</strong> is what I wish had existed then: a private partnership for founders who do not want life after exit to become another version of the life they left behind."
-          </p>
-          <Image src={signature} alt="" widths={[180, 280]} sizes="160px" class="h-auto w-36" />
-          <p class="text-sm">Seb & the entire DoGood team</p>
-        </div>
-      </div>
-      <div class="mt-8 text-center">
-        <a class={inkBtn} href={founders}>See the 2‑Stage Partnership →</a>
-        <p class="mt-3 text-xs text-ink/80">Stage 1 (30 days) · Stage 2 invite-only</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="bg-white px-4 py-16 text-center md:px-6 md:py-24">
-    <div class="mx-auto max-w-3xl">
-      <h2 class="text-4xl font-extrabold md:text-5xl">
-        Not sure <span class="text-pink">where you stand?</span>
-      </h2>
-      <p class="mt-4 text-xl">Take the 5-minute Founder Diagnostic™.</p>
-      <p class="mt-4 text-lg leading-relaxed">
-        It can be challenging to tell the difference between a passing stretch of stress and something that needs more attention. This diagnostic gives you a Pressure Score Index (0–100), your Diagnostic Stage (1–5), an urgency window, and personalised next steps.
+  <section id="guarantee">
+    <article class="card guarantee-card">
+      <h2 class="t-h2">Clarity‑First Guarantee (Stage 1)</h2>
+      <p class="say-no">We say no. If it’s not right, we’ll tell you and point you somewhere better.</p>
+      <p>
+        You can’t know whether FRP is right for you from the outside. You only know once you’ve been
+        inside the work.
       </p>
-      <a class:list={["mt-8", pinkBtn]} href={diagnostic}>See my Pressure Score Index →</a>
-      <p class="mt-3 text-xs text-ink/80">Private · 5 minutes · Immediate results</p>
-    </div>
-  </section>
-
-  <section class="bg-lilac px-4 py-16 md:px-6 md:py-24">
-    <div class="mx-auto max-w-6xl text-center">
-      <h2 class="text-3xl font-extrabold uppercase tracking-tight md:text-5xl">
-        Your <span class="text-pink">Wayfinders</span>
-      </h2>
-      <p class="mx-auto mt-4 max-w-3xl text-lg leading-relaxed">
-        FRP is delivered by an intentionally small, vetted team of Wayfinders <strong class="font-extrabold text-pink-deep">with 75+ years of combined founder-delivery experience</strong>. They’re the kind of rare people you don’t find in usual channels. All are trained to meet our quality standards to ensure consistency and outcome-driven deliveries. <strong class="font-extrabold">Every time.</strong>
+      <p>
+        Complete onboarding and attend your first two private 1:1 sessions. If you decide the
+        partnership isn’t right for you, email us within 7 days of Session 1, and we’ll refund the
+        remainder of your Stage 1 investment. No matter the reason (we only retain the portion covering
+        the two sessions delivered).
       </p>
-      <ul class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
-        {
-          wayfinders.map((person) => (
-            <li>
-              <Image
-                src={person.src}
-                alt={person.name}
-                widths={[240, 400]}
-                sizes="(max-width: 768px) 45vw, 180px"
-                class="mx-auto h-56 w-full object-cover object-top sm:h-72"
-              />
-              <p class="mt-2 font-script text-2xl text-pink">{person.name}</p>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </section>
-
-  <section class="bg-white px-4 py-16 text-center md:px-6 md:py-24">
-    <div class="mx-auto max-w-3xl">
-      <h2 class="text-4xl font-extrabold text-pink md:text-5xl">What's next?</h2>
-      <p class="mt-4 text-lg leading-relaxed">
-        <strong class="font-extrabold">Complete the short application for Stage 1 (30 days).</strong> We’ll respond within 24 hours. If there’s a fit, we’ll have an honest conversation.
+      <p>
+        You keep all decisions, plans, and tools from our first sessions. We take real delivery risk on
+        purpose, because we only want to continue if it’s genuinely the right fit.
       </p>
-      <a class:list={["mt-8", pinkBtn]} href={apply}>Apply for Stage 1 →</a>
-      <p class="mt-3 text-xs text-ink/80">Private · Limited to 5 new founders/month</p>
-    </div>
-  </section>
-
-  <section class="bg-ink px-4 py-16 text-white md:px-6 md:py-24">
-    <div class="mx-auto max-w-3xl text-center">
-      <Image src={mark} alt="" widths={[280, 420]} sizes="220px" class="mx-auto h-auto w-52" />
-      <h2 class="mt-4 text-4xl font-extrabold md:text-5xl">Not ready yet?</h2>
-      <p class="mt-4 text-lg">That’s okay. Fuel up with our insights and keep your engines warm for your mission ahead.</p>
-      <p class="mt-4 text-lg leading-relaxed">
-        Join a growing community of founders exploring what comes after the company: more time, more freedom, and the questions that can come with both.
+      <p class="terms-row">
+        <a class="btn-outline" href={urls.guarantee}>Read full terms</a>
       </p>
-      <h3 class="mt-8 text-left text-lg font-extrabold">Community Benefits:</h3>
-      <ul class="mt-3 list-disc space-y-2 pl-5 text-left text-lg">
-        <li>Insights on the parts of life after exit that can catch founders off guard</li>
-        <li>Real stories from founders finding their footing beyond the company</li>
-        <li>First access to tools, frameworks, and occasional founder-only events</li>
-      </ul>
-      <div class="mt-8 text-left">
-        <SubscribeCard id="community-form" />
-      </div>
-      <p class="mt-4 text-xs text-cloud">delivered every 7–14 days · unsubscribe anytime</p>
-    </div>
+    </article>
   </section>
 
-  <section class="bg-lilac px-4 py-16 md:px-6 md:py-24">
-    <div class="mx-auto grid max-w-6xl items-start gap-10 md:grid-cols-[1fr_1.1fr]">
-      <div>
-        <h2 class="text-4xl font-extrabold md:text-5xl">This isn't for most founders</h2>
-        <div class="mt-6 space-y-4 text-lg leading-relaxed">
-          <p>Spots are not guaranteed. Limited to 5 new founders per month.</p>
-          <p><strong class="font-extrabold text-pink-deep">This is private.</strong> No groups. No cohorts.</p>
-          <p>This takes real time. Expect 5–6 hours/ week for 30 days.</p>
-          <p>
-            If you’re a fit, we’ll confirm your start window quickly. Standard Start begins at the next available slot. Expedited Start can begin within 7 days (for an acute crisis only, after approval).
-          </p>
-          <p>We say no. If it’s not right, we’ll tell you and point you somewhere better.</p>
-        </div>
-      </div>
-      <div class="rounded-[28px] bg-white p-6 shadow-sm md:p-8">
-        <div class="flex items-start justify-between gap-4">
-          <h3 class="text-2xl font-extrabold text-teal-deep md:text-3xl">Clarity‑First Guarantee (Stage 1)</h3>
-          <Image src={seal} alt="Premium Quality. 100% Guaranteed." width={88} height={88} class="h-20 w-20 shrink-0" />
-        </div>
-        <p class="mt-4 text-base leading-relaxed">
-          You can’t know whether FRP is right for you from the outside. You only know once you’ve been inside the work.
-        </p>
-        <p class="mt-3 text-base leading-relaxed">
-          Complete onboarding and attend your first two private 1:1 sessions. If you decide the partnership isn’t right for you, email us within 7 days of Session 1, and we’ll refund the remainder of your Stage 1 investment. No matter the reason (we only retain the portion covering the two sessions delivered).
-        </p>
-        <p class="mt-3 text-base leading-relaxed">
-          You keep all decisions, plans, and tools from our first sessions. We take real delivery risk on purpose, because we only want to continue if it’s genuinely the right fit.
-        </p>
-        <a class="mt-6 inline-flex min-h-12 items-center font-bold text-ink underline" href="https://www.dogoodagency.co/clarity-first-guarantee-terms">
-          Read full terms →
-        </a>
-      </div>
-    </div>
-    <div class="mt-10 text-center">
-      <a class={inkBtn} href={founders}>See the 2‑Stage Partnership →</a>
-      <p class="mt-3 text-xs text-ink/80">Stage 1 (30 days) · Stage 2 invite-only</p>
+  <section id="next">
+    <svg class="swell-bg" viewBox="0 0 1440 620" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="swellGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#28DBB0"></stop>
+          <stop offset="0.12" stop-color="#D4F4EB"></stop>
+          <stop offset="1" stop-color="#D4F4EB"></stop>
+        </linearGradient>
+      </defs>
+      <path
+        fill="url(#swellGrad)"
+        d="M690,0 C670,0 658,14 654,36 C640,110 430,155 220,230 C90,280 40,350 22,440 C10,520 4,580 0,620 L1440,620 C1436,580 1430,520 1418,440 C1400,350 1350,280 1220,230 C1010,155 800,110 786,36 C782,14 770,0 750,0 C730,0 710,0 690,0 Z"
+      ></path>
+    </svg>
+    <div class="next-inner">
+      <h2 class="t-h2">What’s next?</h2>
+      <p>
+        Complete the short application for Stage 1 (30 days). We’ll respond within 24 hours. If there’s
+        a fit, we’ll have an honest conversation.
+      </p>
+      <a class="btn-apply lg" href={urls.apply}>Apply for Stage 1</a>
+      <p class="caption cap-pill">Private · Limited to 5 new founders/month</p>
     </div>
   </section>
 </Base>

@@ -1,15 +1,18 @@
 @import "tailwindcss";
 @import "@fontsource/montserrat/latin-400.css";
+@import "@fontsource/montserrat/latin-500.css";
 @import "@fontsource/montserrat/latin-600.css";
 @import "@fontsource/montserrat/latin-700.css";
 @import "@fontsource/montserrat/latin-800.css";
+@import "@fontsource/montserrat/latin-900.css";
 @import "@fontsource/mansalva/latin-400.css";
+@import "./home.css";
 
 @theme {
   --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
   --font-script: "Mansalva", cursive;
   --color-ink: #2a0b4f;
-  --color-pink: #ed1566;
+  --color-pink: #ea1557;
   --color-pink-deep: #a30d4c;
   --color-pink-soft: #ff8ab0;
   --color-teal: #28dbb0;
@@ -25,10 +28,14 @@
   }
 
   body {
-    background: #fff;
+    background: var(--color-lilac);
     color: var(--color-ink);
     font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.6;
+    font-weight: 400;
     text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
   }
 
   :focus-visible {
@@ -43,36 +50,3 @@
   }
 }
 
-.marquee {
-  overflow: hidden;
-  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
-}
-
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee 70s linear infinite;
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: center;
-  }
-}
-
-.stories {
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-pink) transparent;
-}
