@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
 import Base from "../layouts/Base.astro";
 import Wave from "../components/Wave.astro";
-import { logos, reviews, stats, urls } from "../data/homepage";
+import { logos, reviews, urls } from "../data/homepage";
 
 import caseJ from "../assets/cases/j.png";
 import caseV from "../assets/cases/v.png";
@@ -57,7 +57,7 @@ const notFit = [
         <span class="accent">the company they built, or are getting ready to.</span>
       </h1>
       <p class="lede">
-        Start with a private 30-day engagement for founders navigating life after exit.
+        Start with a<br />private 30-day engagement for founders navigating life after exit.
       </p>
       <div class="hero-grid">
         <div class="hero-copy">
@@ -122,7 +122,7 @@ const notFit = [
 
   <section class="sec" id="case-j">
     <article class="card case-compact">
-      <img class="portrait" src={caseJ.src} width="220" height="244" alt="" />
+      <img class="portrait" src={caseJ.src} width="220" height="244" alt="Pixelated portrait of founder J, shown this way to protect their identity" />
       <div>
         <p class="t-kicker">Case Study</p>
         <h3>From exit anxiety to aligned legacy —<br />How J created a clear next life chapter</h3>
@@ -216,6 +216,14 @@ const notFit = [
     </div>
   </section>
 
+  <div class="soft-wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 140" preserveAspectRatio="none">
+      <path
+        fill="#d4f4eb"
+        d="M0 78c160 42 300-46 500-28s280 62 460 24 300-64 480-18v60H0Z"></path>
+    </svg>
+  </div>
+
   <section id="reviews">
     <div class="reviews-band">
       <h2 class="t-h2">Leaders who've been through it</h2>
@@ -231,7 +239,14 @@ const notFit = [
                 {reviewSet.map((review) => (
                   <article class="review">
                     <div class="review-who">
-                      <Image src={review.src} alt="" width={56} height={56} widths={[56, 112]} sizes="56px" />
+                      <Image
+                        src={review.src}
+                        alt={copy === 1 ? "" : `Portrait of ${review.name}`}
+                        width={56}
+                        height={56}
+                        widths={[56, 112]}
+                        sizes="56px"
+                      />
                       <div>
                         <h3>{review.name}</h3>
                         <p class="review-role">{review.role}</p>
@@ -250,7 +265,7 @@ const notFit = [
 
   <section class="sec" id="case-v">
     <article class="card case-compact case-v">
-      <img class="portrait" src={caseV.src} width="234" height="201" alt="" />
+      <img class="portrait" src={caseV.src} width="234" height="201" alt="Pixelated portrait of founder V, shown this way to protect their identity" />
       <div>
         <p class="t-kicker">Case Study</p>
         <h3>From identity void to decisive leadership —<br />how V reclaimed life after success</h3>
@@ -319,7 +334,6 @@ const notFit = [
         They’re the kind of rare people you don’t find in usual channels. All are trained to meet our
         quality standards to ensure consistency and outcome-driven deliveries. Every time.
       </p>
-      <p class="match">You don’t pick a Wayfinder · We match for fit first</p>
     </div>
     <div class="wf-group">
       <Image
@@ -334,9 +348,22 @@ const notFit = [
         <h3 class="track-title">Our team’s track record</h3>
         <div class="track-nums">
           {
-            stats.map((stat) => (
+            [
+              { text: "76", label: "Founders Engaged", count: "76", prefix: "", suffix: "", decimals: "0" },
+              { text: "38,000", label: "Leaders Impacted", count: "38000", prefix: "", suffix: "", decimals: "0" },
+              { text: "$16.5 Million", label: "Learning Initiatives Sold", count: "16.5", prefix: "$", suffix: " Million", decimals: "1" },
+              { text: "11,500", label: "Coaching Hours", count: "11500", prefix: "", suffix: "", decimals: "0" },
+              { text: "100%", label: "Client Satisfaction Score", count: "100", prefix: "", suffix: "%", decimals: "0" },
+            ].map((stat) => (
               <div>
-                <strong>{stat.value}</strong>
+                <strong
+                  data-count={stat.count}
+                  data-prefix={stat.prefix}
+                  data-suffix={stat.suffix}
+                  data-decimals={stat.decimals}
+                >
+                  {stat.text}
+                </strong>
                 <span>{stat.label}</span>
               </div>
             ))
@@ -394,4 +421,42 @@ const notFit = [
       <p class="next-note">Private · Limited to 5 new founders/month</p>
     </div>
   </section>
+  <script>
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduce) {
+      const counters = document.querySelectorAll("[data-count]");
+      const format = (el, value) => {
+        const prefix = el.dataset.prefix ?? "";
+        const suffix = el.dataset.suffix ?? "";
+        const decimals = Number(el.dataset.decimals ?? "0");
+        const shown = decimals
+          ? value.toFixed(decimals)
+          : Math.round(value).toLocaleString("en-US");
+        el.textContent = `${prefix}${shown}${suffix}`;
+      };
+      const start = (el) => {
+        const target = Number(el.dataset.count);
+        const begin = performance.now();
+        const duration = 1200;
+        const tick = (now) => {
+          const progress = Math.min(1, (now - begin) / duration);
+          const eased = 1 - (1 - progress) ** 3;
+          format(el, target * eased);
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      };
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting || !(entry.target instanceof HTMLElement)) continue;
+            observer.unobserve(entry.target);
+            start(entry.target);
+          }
+        },
+        { threshold: 0.5 },
+      );
+      counters.forEach((el) => observer.observe(el));
+    }
+  </script>
 </Base>
