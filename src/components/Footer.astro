@@ -5,10 +5,6 @@ const action =
   "https://assets.mailerlite.com/jsonp/2046479/forms/180157154312849349/subscribe";
 
 const explore = [
-  { href: "#first-step", label: "How it works" },
-  { href: "#reviews", label: "Stories" },
-  { href: "#wayfinders", label: "Wayfinders" },
-  { href: "#", label: "For Advisors" },
   { href: "#", label: "Insights" },
   { href: "#footer", label: "Newsletter" },
   { href: urls.diagnostic, label: "Founder Diagnostic™" },
@@ -31,7 +27,7 @@ const legal = [
 <footer class="footer" id="footer">
   <div class="footer-grid">
     <div>
-      <h2>Not ready yet?</h2>
+      <h2>Not ready to apply? Stay close.</h2>
       <p class="fine">
         That’s okay. Fuel up with our insights and keep your engines warm for your mission ahead.
       </p>
@@ -47,13 +43,12 @@ const legal = [
           autocomplete="email"
           required
         />
-        <button class="btn-soft" type="submit">Subscribe</button>
+        <button class="btn-subscribe" type="submit">Subscribe</button>
         <p data-status hidden></p>
       </form>
-      <p class="fine">unsubscribe anytime</p>
     </div>
     <div>
-      <h2>Explore</h2>
+      <h2 class="col-title">Explore</h2>
       <ul>
         {
           explore.map((link) => (
@@ -65,7 +60,7 @@ const legal = [
       </ul>
     </div>
     <div>
-      <h2>Contact</h2>
+      <h2 class="col-title">Contact</h2>
       <ul>
         {
           contact.map((link) => (
@@ -77,26 +72,18 @@ const legal = [
           ))
         }
       </ul>
-      <div class="footer-col-legal">
-        <h2>Legal</h2>
-        <ul>
-          {
-            legal.map((link) => (
-              <li>
-                <a href={link.href}>{link.label}</a>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
     </div>
     <div>
-      <h2>About DoGood</h2>
+      <h2 class="col-title">About DoGood</h2>
       <p class="fine">
         Proud member of IODA, a global network of OD professionals spanning 50+ countries.
       </p>
       <h2 class="footer-subhead">DoGood Agency LLC</h2>
-      <p class="fine">30 N Gould St Ste N, Sheridan WY 82801, United States</p>
+      <p class="address">
+        30 N Gould St Ste N,<br />
+        Sheridan WY 82801,<br />
+        United States
+      </p>
       <p class="fine">Services are provided by DoGood OÜ, our operating company in the EU.</p>
     </div>
   </div>

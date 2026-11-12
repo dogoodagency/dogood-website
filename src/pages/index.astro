@@ -56,12 +56,14 @@ const notFit = [
         For founders who’ve exited<br />
         <span class="accent">the company they built, or are getting ready to.</span>
       </h1>
+      <p class="lede">
+        Start with a private 30-day engagement for founders navigating life after exit.
+      </p>
       <div class="hero-grid">
         <div class="hero-copy">
-          <p class="lede">
-            Start with a private 30-day engagement for founders navigating life after exit.
+          <p>
+            <strong class="em-black">You built the business. You got out.</strong> But it does not feel the way you expected.
           </p>
-          <p>You built the business. You got out. But it does not feel the way you expected.</p>
           <p>
             You have more time, more freedom, and more options. But the structure is gone. Before you
             fill the space with the next thing, there is the question: “What now?”
@@ -88,13 +90,7 @@ const notFit = [
           [0, 1].map((copy) => (
             <div class:list={["logo-set", copy === 1 && "is-clone"]} aria-hidden={copy === 1}>
               {logoSet.map((logo) => (
-                <Image
-                  src={logo.src}
-                  alt={copy === 1 ? "" : logo.alt}
-                  widths={[160, 320]}
-                  sizes="160px"
-                  loading="eager"
-                />
+                <img src={logo.src.src} alt={copy === 1 ? "" : logo.alt} />
               ))}
             </div>
           ))
@@ -104,40 +100,37 @@ const notFit = [
   </section>
 
   <section id="exit">
-    <div class="exit-grid">
-      <article class="card" id="exit-card">
-        <h2 class="t-h2">
-          Life after exit is hard<br />for a reason.
-        </h2>
-        <p>
-          You can leave the company and still find the old pace shaping your new life, your decisions,
-          and what you want to reach for next.
-        </p>
-        <p>
-          Exit advisors handle the transaction. Business consultants focus on the business. But very
-          few people help you deal with what happens after.
-        </p>
-        <p>
-          When the company gave you meaning and structure for years, sometimes decades, stepping away
-          is as much personal as it is practical.
-        </p>
-        <p>
-          We help you see what is really driving the next chapter, so you do not fill the freedom you
-          worked so hard for with another version of the life you left behind.
-        </p>
-      </article>
-    </div>
+    <article class="card ink" id="exit-card">
+      <h2 class="t-h2">Life after exit is hard for a reason.</h2>
+      <p>
+        You can leave the company and still find the old pace shaping your new life,<br />
+        your decisions, and what you want to reach for next.
+      </p>
+      <p>
+        Exit advisors handle the transaction. Business consultants focus on the business. But very few
+        people <strong class="em-black">help you deal with what happens after.</strong>
+      </p>
+      <p>
+        When the company gave you meaning and structure for years, sometimes decades, stepping away is
+        as much personal as it is practical.
+      </p>
+      <p>
+        <strong class="em-black">We help you see what is really driving the next chapter,</strong> so you do not fill the freedom you worked so hard for with another version of the life you left behind.
+      </p>
+    </article>
   </section>
 
   <section class="sec" id="case-j">
     <article class="card case-compact">
-      <img class="portrait" src={caseJ.src} width={caseJ.width} height={caseJ.height} alt="" />
+      <img class="portrait" src={caseJ.src} width="220" height="244" alt="" />
       <div>
         <p class="t-kicker">Case Study</p>
-        <h3>From exit anxiety to aligned legacy — How J created a clear next life chapter</h3>
-        <p class="caption">J (anonymous), USD 2M founder</p>
-        <a class="btn-outline btn-case" href={urls.caseJ}>Read the short case study</a>
-        <p class="case-protect">We protect our founders’ identities</p>
+        <h3>From exit anxiety to aligned legacy —<br />How J created a clear next life chapter</h3>
+        <p class="caption case-who">J (anonymous), USD 2M founder</p>
+        <div class="btn-stack">
+          <a class="btn-case" href={urls.caseJ}>Read the short case study →</a>
+          <p class="case-protect">We protect our founders’ identities</p>
+        </div>
       </div>
     </article>
   </section>
@@ -152,7 +145,7 @@ const notFit = [
       <article class="card" id="first-card">
         <h2 class="t-h2">This is the first step.</h2>
         <p>
-          Stage 1 is a <strong>private, confidential 30-day engagement</strong> for founders who have
+          Stage 1 is a <strong class="em-black">private, confidential 30-day engagement</strong> for founders who have
           exited or meaningfully stepped away and do not want to make their next move from the same old
           patterns.
         </p>
@@ -165,8 +158,10 @@ const notFit = [
           This is a private space to slow down, look honestly at what is here, and shape life after the
           company from an intentional choice.
         </p>
-        <a class="btn-outline" href={urls.partnership}>See the 2‑Stage Partnership</a>
-        <p class="caption cap-follow">Stage 1 (30 days) · Stage 2 invite-only</p>
+        <div class="btn-stack">
+          <a class="btn-partnership" href={urls.partnership}>See the 2‑Stage Partnership →</a>
+          <p class="stage-note">Stage 1 is Days 1-30, Stage 2 invite only</p>
+        </div>
       </article>
     </div>
   </section>
@@ -201,10 +196,10 @@ const notFit = [
           Because we love<br />entrepreneurship.
         </h2>
         <span class="sub">We love what founders build.</span>
-        <p>We love what a great company can create for a family, a team, a community, and the world.</p>
+        <p>We love what a great company can create for a family, a team, a&nbsp;community, and&nbsp;the&nbsp;world.</p>
         <p>
           And the best founders we know are not only trying to build something successful.{" "}
-          <strong>They want to do good.</strong>
+          <strong class="em-black">They want to do good.</strong>
         </p>
         <p>Good for themselves. Good for their families. Good for their teams. Good for the world.</p>
         <p class="closing">That is why we do this work.</p>
@@ -254,14 +249,16 @@ const notFit = [
   </section>
 
   <section class="sec" id="case-v">
-    <article class="card case-compact ink">
-      <img class="portrait" src={caseV.src} width={caseV.width} height={caseV.height} alt="" />
+    <article class="card case-compact case-v">
+      <img class="portrait" src={caseV.src} width="234" height="201" alt="" />
       <div>
         <p class="t-kicker">Case Study</p>
-        <h3>From identity void to decisive leadership — how V reclaimed life after success</h3>
-        <p class="caption">V (anonymous), USD 9M+ founder</p>
-        <a class="btn-outline btn-case" href={urls.caseV}>Read the short case study</a>
-        <p class="case-protect">We protect our founders’ identities</p>
+        <h3>From identity void to decisive leadership —<br />how V reclaimed life after success</h3>
+        <p class="caption case-who">V (anonymous), USD 9M+ founder</p>
+        <div class="btn-stack">
+          <a class="btn-case" href={urls.caseV}>Read the short case study →</a>
+          <p class="case-protect">We protect our founders’ identities</p>
+        </div>
       </div>
     </article>
   </section>
@@ -282,20 +279,21 @@ const notFit = [
 
   <section id="apply-v">
     <a class="btn-apply lg" href={urls.apply}>Apply for Stage 1</a>
-    <p class="caption cap-pill">Private · Limited to 5 new founders/month</p>
+    <p class="caption cap-small">Private · Limited to 5 new founders/month</p>
   </section>
 
   <section id="message">
     <article class="card ink" id="message-card">
       <h2 class="t-h2">A Founder’s Message</h2>
+      <div class="msg-copy">
       <p>
         “We exist because the support founders need after exit is{" "}
-        <span class="pink-soft">rarely found in the usual places.</span>
+        <strong class="em-black accent-pink">rarely found in the usual places.</strong>
       </p>
       <p>
         Executive coaches focus on performance. Therapists help people process what is difficult. Both
         can have value. But neither is built for the moment when the company is no longer central, and{" "}
-        <strong>you are working out what genuinely belongs next.</strong>
+        <strong class="em-black">you are working out what genuinely belongs next.</strong>
       </p>
       <p>You cannot solve that simply by finding another strategy or filling it with more projects.</p>
       <p>
@@ -303,10 +301,11 @@ const notFit = [
         patterns follow you long after the company is gone.
       </p>
       <p>
-        <span class="pink-soft">DoGood</span> is what I wish had existed then: a private partnership for
+        <strong class="em-black accent-pink">DoGood</strong> is what I wish had existed then: a private partnership for
         founders who do not want life after exit to become another version of the life they left behind.”
       </p>
-      <Image class="sig" src={signature} alt="Seb’s signature" widths={[240, 480]} sizes="240px" />
+      </div>
+      <Image class="sig" src={signature} alt="Seb’s signature" widths={[120, 240]} sizes="120px" />
       <p class="who">Seb &amp; the entire DoGood team</p>
     </article>
   </section>
@@ -365,8 +364,8 @@ const notFit = [
         You keep all decisions, plans, and tools from our first sessions. We take real delivery risk on
         purpose, because we only want to continue if it’s genuinely the right fit.
       </p>
-      <p class="terms-row">
-        <a class="btn-outline" href={urls.guarantee}>Read full terms</a>
+        <p class="terms-row">
+        <a class="btn-terms" href={urls.guarantee}>Read full terms</a>
       </p>
     </article>
   </section>
@@ -392,7 +391,7 @@ const notFit = [
         a fit, we’ll have an honest conversation.
       </p>
       <a class="btn-apply lg" href={urls.apply}>Apply for Stage 1</a>
-      <p class="caption cap-pill">Private · Limited to 5 new founders/month</p>
+      <p class="next-note">Private · Limited to 5 new founders/month</p>
     </div>
   </section>
 </Base>
