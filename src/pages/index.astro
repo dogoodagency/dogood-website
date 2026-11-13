@@ -122,22 +122,43 @@ const notFit = [
 
   <section id="exit">
     <article class="card ink" id="exit-card">
-      <h2 class="t-h2">Life after exit is hard for a reason.</h2>
-      <p>
-        You can leave the company and still find the old pace shaping your new life,<br />
-        your decisions, and what you want to reach for next.
-      </p>
-      <p>
-        Exit advisors handle the transaction. Business consultants focus on the business.<br />
-        But very few people <strong class="em-black">help you deal with what happens after.</strong>
-      </p>
-      <p>
-        When the company gave you meaning and structure for years, sometimes decades,<br />
-        stepping away is as much personal as it is practical.
-      </p>
-      <p>
-        <strong class="em-black">We help you see what is really driving the next chapter,</strong> so you do not fill the freedom you worked so hard for with another version of the life you left behind.
-      </p>
+      <div class="exit-split">
+        <div class="exit-copy">
+          <h2 class="t-h2">Life after exit is hard for a reason.</h2>
+          <p>
+            You can leave the company and still find the old pace shaping your new life,
+            your decisions, and what you want to reach for next.
+          </p>
+          <p>
+            Exit advisors handle the transaction. Business consultants focus on the business.
+            But very few people <strong class="em-black">help you deal with what happens after.</strong>
+          </p>
+          <p>
+            When the company gave you meaning and structure for years, sometimes decades,
+            stepping away is as much personal as it is practical.
+          </p>
+          <p>
+            <strong class="em-black">We help you see what is really driving the next chapter,</strong> so you do not fill the freedom you worked so hard for with another version of the life you left behind.
+          </p>
+        </div>
+        <picture class="exit-machine">
+          <source
+            type="image/webp"
+            srcset="/sketches/life-after-exit-machine@1x.webp 320w, /sketches/life-after-exit-machine@2x.webp 640w"
+            sizes="(max-width: 800px) 180px, 260px"
+          />
+          <img
+            src="/sketches/life-after-exit-machine@1x.png"
+            srcset="/sketches/life-after-exit-machine@1x.png 320w, /sketches/life-after-exit-machine@2x.png 640w"
+            sizes="(max-width: 800px) 180px, 260px"
+            width="320"
+            height="340"
+            alt="Sketch of a company machine still running, with a clock turning and an empty stool where the founder has stepped off."
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+      </div>
     </article>
   </section>
 
@@ -211,13 +232,23 @@ const notFit = [
       <article class="card ink">
         <h3 class="t-h3">This is for you if...</h3>
         <ul>
-          {fit.map((item) => <li>{item}</li>)}
+          {fit.map((item) => (
+            <li>
+              <img src="/sketches/icon-tick-for-you.svg" alt="" aria-hidden="true" width="16" height="16" />
+              <span>{item}</span>
+            </li>
+          ))}
         </ul>
       </article>
       <article class="card rose">
         <h3 class="t-h3">NOT for you if...</h3>
         <ul>
-          {notFit.map((item) => <li>{item}</li>)}
+          {notFit.map((item) => (
+            <li>
+              <img src="/sketches/icon-dash-not-for-you.svg" alt="" aria-hidden="true" width="16" height="16" />
+              <span>{item}</span>
+            </li>
+          ))}
         </ul>
       </article>
     </div>
@@ -363,14 +394,52 @@ const notFit = [
         founders who do not want life after exit to become another version of the life they left behind.”
       </p>
       </div>
-      <Image class="sig" src={signature} alt="Seb’s signature" widths={[120, 240]} sizes="120px" />
+      <div class="sig-row">
+        <Image class="sig" src={signature} alt="Seb’s signature" widths={[120, 240]} sizes="120px" />
+        <picture class="fountain-pen">
+          <source
+            type="image/webp"
+            srcset="/sketches/founders-message-fountain-pen@1x.webp 26w, /sketches/founders-message-fountain-pen@2x.webp 52w"
+            sizes="26px"
+          />
+          <img
+            src="/sketches/founders-message-fountain-pen@1x.png"
+            srcset="/sketches/founders-message-fountain-pen@1x.png 26w, /sketches/founders-message-fountain-pen@2x.png 52w"
+            sizes="26px"
+            width="26"
+            height="72"
+            alt="Sketch of a fountain pen."
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+      </div>
       <p class="who">Seb &amp; the entire DoGood team</p>
     </article>
   </section>
 
   <section id="wayfinders">
     <div class="wf-intro">
-      <h2 class="t-h2">Your Wayfinders</h2>
+      <div class="wf-title">
+        <picture class="wf-compass">
+          <source
+            type="image/webp"
+            srcset="/sketches/wayfinders-compass@1x.webp 39w, /sketches/wayfinders-compass@2x.webp 78w"
+            sizes="32px"
+          />
+          <img
+            src="/sketches/wayfinders-compass@1x.png"
+            srcset="/sketches/wayfinders-compass@1x.png 39w, /sketches/wayfinders-compass@2x.png 78w"
+            sizes="32px"
+            width="39"
+            height="49"
+            alt="Sketch of a small compass."
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+        <h2 class="t-h2">Your Wayfinders</h2>
+      </div>
       <p class="lead">
         FRP is delivered by an intentionally small, vetted team of Wayfinders{" "}
         <span class="years">with 75+ years of combined founder-delivery experience.</span>{" "}
@@ -418,7 +487,26 @@ const notFit = [
 
   <section id="guarantee">
     <article class="card guarantee-card">
-      <h2 class="t-h2">Clarity‑First Guarantee (Stage 1)</h2>
+      <div class="guarantee-head">
+        <picture class="guarantee-scale">
+          <source
+            type="image/webp"
+            srcset="/sketches/guarantee-balance-scale@1x.webp 180w, /sketches/guarantee-balance-scale@2x.webp 360w"
+            sizes="(max-width: 800px) 72px, 80px"
+          />
+          <img
+            src="/sketches/guarantee-balance-scale@1x.png"
+            srcset="/sketches/guarantee-balance-scale@1x.png 180w, /sketches/guarantee-balance-scale@2x.png 360w"
+            sizes="(max-width: 800px) 72px, 80px"
+            width="180"
+            height="154"
+            alt="Sketch of a balance scale gently tipped toward a founder."
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+        <h2 class="t-h2">Clarity‑First Guarantee (Stage 1)</h2>
+      </div>
       <p class="say-no">We say no. If it’s not right, we’ll tell you and point you somewhere better.</p>
       <p>
         You can’t know whether FRP is right for you from the outside. You only know once you’ve been
@@ -455,6 +543,11 @@ const notFit = [
       ></path>
     </svg>
     <div class="next-inner">
+      <div class="next-icons" aria-hidden="true">
+        <img src="/sketches/icon-whats-next-form.svg" alt="" width="28" height="28" />
+        <img src="/sketches/icon-whats-next-reply.svg" alt="" width="28" height="28" />
+        <img src="/sketches/icon-whats-next-conversation.svg" alt="" width="28" height="28" />
+      </div>
       <h2 class="t-h2">What’s next?</h2>
       <p>
         Complete the short application for Stage 1 (30 days). We’ll respond within 24 hours. If there’s
