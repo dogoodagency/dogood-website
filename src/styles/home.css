@@ -2226,7 +2226,7 @@ main li {
 }
 
 .contact-privacy a {
-  color: var(--color-pink);
+  color: #2a0b4f;
 }
 
 .contact-email {
@@ -5662,4 +5662,49 @@ button.btn-subscribe:focus-visible {
 #apply-first .cap-pill,
 #apply-v .cap-small {
   margin-bottom: 12.2px;
+}
+
+/* Inner pages: case-study colours and button captions. See docs/seb-detail-checklist.md. */
+.page-body p.case-label {
+  margin-top: 22px;
+  margin-bottom: 4px;
+  font-weight: 700;
+  color: #28dbb0;
+}
+
+.page-body p.case-headline {
+  color: #2a0b4f;
+  font-weight: 900;
+}
+
+.page-body .btn-with-caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 14px;
+}
+
+.page-body .btn-with-caption > p {
+  margin: 0;
+  text-align: center;
+}
+
+.page-body .btn-with-caption a.btn-apply,
+.page-body .btn-with-caption a.btn-teal,
+.page-body .btn-with-caption a.btn-case,
+.page-body .btn-with-caption button {
+  margin-right: 0;
+  margin-bottom: 0;
+}
+
+.page-body .btn-with-caption .btn-caption {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.6;
+  color: #8e7ba6;
+  text-align: center;
 }

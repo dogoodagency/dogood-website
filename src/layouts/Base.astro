@@ -146,6 +146,63 @@ const organization = {
           if (dialog instanceof HTMLDialogElement) dialog.close();
         });
       });
+
+      const captionText = new Set([
+        "We protect our founders' identities",
+        "Limited to five new founders a month",
+        "5 minutes · Results immediate · Confirms fit before you apply",
+        "Private · 5 minutes · Immediate results",
+        "Instant · 5 minutes · Confidential · Immediate results",
+        "Founder-focused · Not therapy, not medical advice, not psychological services",
+        "Stage 1 (30 days) · Stage 2 invite-only",
+        "Stage 1 (30 days) · Week 3 decision on Stage 2",
+        "You don't pick a Wayfinder · We match for fit first.",
+        "Confidential • 2 spots per month",
+        "We protect our delivery quality: Ask about Expedited Start if urgent (FRP can begin within 7 days)",
+        "We won't send spam. One email every two weeks, and you can unsubscribe at any time.",
+        "For founders + select founder-like executives",
+        "geo-travel map, fit-first matching process",
+      ]);
+      const norm = (value) =>
+        value.replace(/\s+/g, " ").trim().replace(/[’‘]/g, "'");
+      const takeCaptions = (start) => {
+        const nodes = [];
+        let el = start;
+        while (el instanceof HTMLParagraphElement && captionText.has(norm(el.textContent)) && !el.querySelector("a")) {
+          nodes.push(el);
+          el = el.nextElementSibling;
+        }
+        return nodes;
+      };
+      document.querySelectorAll(".page-body").forEach((body) => {
+        body.querySelectorAll("p").forEach((p) => {
+          if (norm(p.textContent) !== "Case Study" || p.querySelector("a")) return;
+          p.classList.add("case-label");
+          const head = p.nextElementSibling;
+          if (head instanceof HTMLParagraphElement && !head.querySelector("a")) {
+            head.classList.add("case-headline");
+          }
+        });
+        body.querySelectorAll("a.btn-apply, a.btn-teal, a.btn-case, button.btn-apply, button.btn-teal, button.btn-case").forEach((btn) => {
+          if (btn.closest(".btn-with-caption")) return;
+          const parent = btn.parentElement;
+          const after = parent instanceof HTMLParagraphElement || parent instanceof HTMLFormElement
+            ? parent.nextElementSibling
+            : btn.nextElementSibling;
+          const captions = takeCaptions(after);
+          if (!captions.length) return;
+          const wrap = document.createElement("div");
+          wrap.className = "btn-with-caption";
+          if (parent instanceof HTMLParagraphElement) {
+            parent.before(wrap);
+            wrap.append(parent, ...captions);
+          } else {
+            btn.before(wrap);
+            wrap.append(btn, ...captions);
+          }
+          captions.forEach((caption) => caption.classList.add("btn-caption"));
+        });
+      });
     </script>
   </body>
 </html>
