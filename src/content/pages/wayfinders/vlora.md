@@ -6,11 +6,7 @@ description: "Meet Vlora, DoGood Wayfinder for Western Europe and South America,
 
 # (+ WesternEU & South America)
 
-1 Why founders come to me
-
-So you know I understand the moment you’re in — and what this work is actually for.
-
-Founders often come to me at life or business turning points — during high growth when greater clarity is needed, or post-exit when old structures fade and the question "what now?" arises. Outwardly strong, they may feel restless or reflective, sensing the need for a more aligned self. I work where identity meets leadership, helping founders recalibrate internally to choose their next steps consciously, not from momentum or expectation. As the nervous system settles and patterns surface, clarity and energy return, decisions sharpen, and the next chapter is embraced with ownership and renewed momentum.
+<div class="profile-intro"><p>1 Why founders come to me</p><p>So you know I understand the moment you’re in — and what this work is actually for.</p><p>Founders often come to me at life or business turning points — during high growth when greater clarity is needed, or post-exit when old structures fade and the question "what now?" arises. Outwardly strong, they may feel restless or reflective, sensing the need for a more aligned self. I work where identity meets leadership, helping founders recalibrate internally to choose their next steps consciously, not from momentum or expectation. As the nervous system settles and patterns surface, clarity and energy return, decisions sharpen, and the next chapter is embraced with ownership and renewed momentum.</p><picture class="profile-scene"><source type="image/webp" srcset="/sketches/wayfinder-vlora-still-pool-sketch@1x.webp 540w, /sketches/wayfinder-vlora-still-pool-sketch@2x.webp 1080w" sizes="(max-width: 1080px) 100vw, 540px" /><img src="/sketches/wayfinder-vlora-still-pool-sketch@1x.png" srcset="/sketches/wayfinder-vlora-still-pool-sketch@1x.png 540w, /sketches/wayfinder-vlora-still-pool-sketch@2x.png 1080w" sizes="(max-width: 1080px) 100vw, 540px" width="540" height="400" alt="A fine-liner sketch of a small irregular still pool of teal water in a stone hollow, with open ripple arcs settling and a tiny pink pebble at the rim." loading="lazy" decoding="async" /></picture></div>
 
 2 What I’m known for
 

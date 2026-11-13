@@ -6,11 +6,7 @@ description: "Meet Chantill, DoGood Wayfinder for North America and Canada: a de
 
 # (+ Canada)
 
-1 Why founders come to me
-
-So you know I understand the moment you’re in — and what this work is actually for.
-
-Founders are drawn to me because I show all my cards. When someone is feeling lost, broken, out of resources and can’t find trusted connections, they know me as a deeply relational, genuine partner. They’re looking for a path back to themselves while realigning their priorities and purpose, restoring their confidence and identity. This is a complex, messy business that I understand intimately. My clients come to me because I know what it means to take risks, to step into new spaces first. To parent, divorce, find love again. To face health challenges that stop you in your tracks. To have identity tangled in what I built instead of who I am, and to keep moving even when I don’t know what’s on the other side.
+<div class="profile-intro"><p>1 Why founders come to me</p><p>So you know I understand the moment you’re in — and what this work is actually for.</p><p>Founders are drawn to me because I show all my cards. When someone is feeling lost, broken, out of resources and can’t find trusted connections, they know me as a deeply relational, genuine partner. They’re looking for a path back to themselves while realigning their priorities and purpose, restoring their confidence and identity. This is a complex, messy business that I understand intimately. My clients come to me because I know what it means to take risks, to step into new spaces first. To parent, divorce, find love again. To face health challenges that stop you in your tracks. To have identity tangled in what I built instead of who I am, and to keep moving even when I don’t know what’s on the other side.</p><picture class="profile-scene"><source type="image/webp" srcset="/sketches/wayfinder-chantill-anchor-sketch@1x.webp 540w, /sketches/wayfinder-chantill-anchor-sketch@2x.webp 1080w" sizes="(max-width: 1080px) 100vw, 540px" /><img src="/sketches/wayfinder-chantill-anchor-sketch@1x.png" srcset="/sketches/wayfinder-chantill-anchor-sketch@1x.png 540w, /sketches/wayfinder-chantill-anchor-sketch@2x.png 1080w" sizes="(max-width: 1080px) 100vw, 540px" width="540" height="400" alt="A fine-liner sketch of a ship’s anchor leaning against a short wooden post on a quiet shore, with a patch of teal water and a tiny pink knot on the rope." loading="lazy" decoding="async" /></picture></div>
 
 2 What I’m known for
 

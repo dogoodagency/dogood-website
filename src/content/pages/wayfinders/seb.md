@@ -6,11 +6,7 @@ description: "Meet Seb, DoGood Wayfinder for Asia-Pacific and the US: a founder 
 
 # (+ United States)
 
-1 Why founders come to me
-
-So you know I understand the moment you’re in — and what this work is actually for.
-
-I believe I’ve been where you are. I built a successful business that nearly broke me — then life came to an unapologetic halt too and forced a reset where I lost everything. I felt lost, beaten up, and genuinely unsure if I could get back up. The work I’m here for started when I did the hardest project: me.
+<div class="profile-intro"><p>1 Why founders come to me</p><p>So you know I understand the moment you’re in — and what this work is actually for.</p><p>I believe I’ve been where you are. I built a successful business that nearly broke me — then life came to an unapologetic halt too and forced a reset where I lost everything. I felt lost, beaten up, and genuinely unsure if I could get back up. The work I’m here for started when I did the hardest project: me.</p><picture class="profile-scene"><source type="image/webp" srcset="/sketches/wayfinder-seb-plank-bridge-sketch@1x.webp 540w, /sketches/wayfinder-seb-plank-bridge-sketch@2x.webp 1080w" sizes="(max-width: 1080px) 100vw, 540px" /><img src="/sketches/wayfinder-seb-plank-bridge-sketch@1x.png" srcset="/sketches/wayfinder-seb-plank-bridge-sketch@1x.png 540w, /sketches/wayfinder-seb-plank-bridge-sketch@2x.png 1080w" sizes="(max-width: 1080px) 100vw, 540px" width="540" height="400" alt="A fine-liner sketch of a small wooden footbridge with one newly fitted teal plank in the walkway, a tiny pink peg, a mallet on the rail, and stones in the gap below." loading="lazy" decoding="async" /></picture></div>
 
 2 What I’m known for
 

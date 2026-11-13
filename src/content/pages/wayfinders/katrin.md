@@ -6,11 +6,7 @@ description: "Meet Katrin, DoGood Wayfinder for Europe, the UK and Central Ameri
 
 # (+ United Kindom & Central America)
 
-1 Why founders come to me
-
-So you know I understand the moment you’re in — and what this work is actually for.
-
-Founders come to me when personal circumstances start affecting how they lead, decide, and carry responsibility. This often happens during sustained high-pressure periods, health challenges, relationship strain, major transitions, or moments when the life they’ve built no longer feels aligned or sustainable. They come because it’s lonely at the top — and they’re looking for someone who can hold the full picture. Someone who understands both the business reality and the emotional weight of leadership, and who can be trusted with what usually stays unspoken.
+<div class="profile-intro"><p>1 Why founders come to me</p><p>So you know I understand the moment you’re in — and what this work is actually for.</p><p>Founders come to me when personal circumstances start affecting how they lead, decide, and carry responsibility. This often happens during sustained high-pressure periods, health challenges, relationship strain, major transitions, or moments when the life they’ve built no longer feels aligned or sustainable. They come because it’s lonely at the top — and they’re looking for someone who can hold the full picture. Someone who understands both the business reality and the emotional weight of leadership, and who can be trusted with what usually stays unspoken.</p><picture class="profile-scene"><source type="image/webp" srcset="/sketches/wayfinder-katrin-alcove-sketch@1x.webp 540w, /sketches/wayfinder-katrin-alcove-sketch@2x.webp 1080w" sizes="(max-width: 1080px) 100vw, 540px" /><img src="/sketches/wayfinder-katrin-alcove-sketch@1x.png" srcset="/sketches/wayfinder-katrin-alcove-sketch@1x.png 540w, /sketches/wayfinder-katrin-alcove-sketch@2x.png 1080w" sizes="(max-width: 1080px) 100vw, 540px" width="540" height="400" alt="A fine-liner sketch of a small open-sided pavilion with one empty chair, a lantern with a tiny pink flame, and a teal curtain slightly billowing, a calm hillside visible through the opening." loading="lazy" decoding="async" /></picture></div>
 
 2 What I’m known for
 

@@ -4377,6 +4377,57 @@ button.btn-subscribe:focus-visible {
   left: -8px;
 }
 
+.profile-intro {
+  display: flow-root;
+}
+
+.profile-scene {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 8px 0 20px;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.page-body .profile-scene img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  object-fit: contain;
+  object-position: center;
+}
+
+@media (min-width: 1081px) {
+  .profile-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 540px;
+    column-gap: 48px;
+    align-items: center;
+  }
+
+  .profile-intro > p {
+    grid-column: 1;
+  }
+
+  .profile-scene {
+    grid-column: 2;
+    grid-row: 1 / -1;
+    width: 540px;
+    max-width: 540px;
+    margin: 0;
+    justify-self: end;
+    align-self: center;
+  }
+}
+
 @media (max-width: 800px) {
   .page-designed {
     padding: 0 16px 48px;

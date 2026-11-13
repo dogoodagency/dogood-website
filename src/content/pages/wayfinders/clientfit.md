@@ -4,7 +4,7 @@ description: "A private 30-day Intensive for founders navigating life after exit
 ---
 # Client-Fit Process
 
-We match you to a Wayfinder for fit first because outcomes depend on the relationship and working style. Once the fit is satisfied, we prioritize proximity/time zone to keep scheduling clean and travel sustainable.
+<div class="profile-intro"><p>We match you to a Wayfinder for fit first because outcomes depend on the relationship and working style. Once the fit is satisfied, we prioritize proximity/time zone to keep scheduling clean and travel sustainable.</p><picture class="profile-scene"><source type="image/webp" srcset="/sketches/wayfinders-clientfit-joining-paths-sketch@1x.webp 540w, /sketches/wayfinders-clientfit-joining-paths-sketch@2x.webp 1080w" sizes="(max-width: 1080px) 100vw, 540px" /><img src="/sketches/wayfinders-clientfit-joining-paths-sketch@1x.png" srcset="/sketches/wayfinders-clientfit-joining-paths-sketch@1x.png 540w, /sketches/wayfinders-clientfit-joining-paths-sketch@2x.png 1080w" sizes="(max-width: 1080px) 100vw, 540px" width="540" height="400" alt="A fine-liner sketch of two walking paths meeting at a simple wooden post with a tiny pink cloth tie: a paler path joins a continuing teal path that leads on." loading="lazy" decoding="async" /></picture></div>
 
 How it works
 

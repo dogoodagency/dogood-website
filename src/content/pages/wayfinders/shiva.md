@@ -6,11 +6,7 @@ description: "Meet Shiva, DoGood Wayfinder for the Gulf, North Africa and East A
 
 # (+ North Africa & East Asia)
 
-1 Why founders come to me
-
-So you know I understand the moment you’re in — and what this work is actually for.
-
-I'll hold you when you're falling apart, but I also won't let you off the hook. Founders come to me when they're between worlds — post-exit, mid-collapse, or before the crash they can see coming. They need someone who's lived through systems falling apart and knows how to sit in the sh*t without flinching. I don't clean up the mess or make it prettier. I help you see what's actually not working, name what you've been avoiding, and figure out what to rebuild. You don't need saving. You need someone who won't look away.
+<div class="profile-intro"><p>1 Why founders come to me</p><p>So you know I understand the moment you’re in — and what this work is actually for.</p><p>I'll hold you when you're falling apart, but I also won't let you off the hook. Founders come to me when they're between worlds — post-exit, mid-collapse, or before the crash they can see coming. They need someone who's lived through systems falling apart and knows how to sit in the sh*t without flinching. I don't clean up the mess or make it prettier. I help you see what's actually not working, name what you've been avoiding, and figure out what to rebuild. You don't need saving. You need someone who won't look away.</p><picture class="profile-scene"><source type="image/webp" srcset="/sketches/wayfinder-shiva-foundation-sketch@1x.webp 540w, /sketches/wayfinder-shiva-foundation-sketch@2x.webp 1080w" sizes="(max-width: 1080px) 100vw, 540px" /><img src="/sketches/wayfinder-shiva-foundation-sketch@1x.png" srcset="/sketches/wayfinder-shiva-foundation-sketch@1x.png 540w, /sketches/wayfinder-shiva-foundation-sketch@2x.png 1080w" sizes="(max-width: 1080px) 100vw, 540px" width="540" height="400" alt="A fine-liner sketch of a short stone wall: cracked unfilled stones on the left, a new course of teal foundation stones on the right with one stone mid-placement, a mason’s trowel and a tiny pink wedge." loading="lazy" decoding="async" /></picture></div>
 
 2 What I’m known for
 
