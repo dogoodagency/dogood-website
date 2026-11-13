@@ -86,7 +86,7 @@
     const build = () => {
       const width = main.clientWidth;
       const phone = width <= 1080;
-      const stroke = phone ? 2.25 : 2.75;
+      const stroke = phone ? 2.6 : 3.35;
       const hero = box(document.querySelector("#hero"));
       const headline = box(document.querySelector(".hero h1"));
       const clients = box(document.querySelector("#clients"));
@@ -112,7 +112,12 @@
       if (!hero || !headline || !clients || !exit || !next || !nextInner) return;
 
       const origin = headline.bottom + (phone ? 18 : 28);
-      const end = main.clientHeight - 6;
+      const footer = document.querySelector("#footer") || document.querySelector("footer");
+      const mainRect = main.getBoundingClientRect();
+      const waveEl = footer?.querySelector(".connect-wave") || footer?.querySelector("svg");
+      const waveRect = (waveEl || footer)?.getBoundingClientRect();
+      const footerEnd = waveRect ? waveRect.top - mainRect.top + waveRect.height * 0.65 : main.clientHeight - 6;
+      const end = Math.max(main.clientHeight - 6, footerEnd);
       const y = (value) => value - origin;
       const lane = (value) => Math.min(width - (phone ? 14 : 24), Math.max(phone ? 12 : 20, value));
       const wave = hero.bottom - (phone ? 28 : 36);
@@ -132,9 +137,10 @@
           { x: side, y: y(end - 4) },
         ];
         companyPts = [
-          { x: side + 14, y: y(clients.bottom - 4) },
-          { x: width * 0.55, y: y(clients.bottom + 10) },
-          { x: width + 12, y: y(exit.y + 12) },
+          { x: side + 16, y: y(origin + 2) },
+          { x: side + 16, y: y(exit.y) },
+          { x: width * 0.62, y: y(exit.y + 18) },
+          { x: width + 18, y: y(exit.y + 46) },
         ];
       } else {
         const left = 36;
@@ -171,13 +177,13 @@
           { x: lane(nextInner.right + frame), y: y(next.bottom - 28) },
           { x: lane(nextInner.right + frame), y: y(end - 2) },
         ];
+        const beside = founderPts
+          .filter((point) => point.y < y(exit.y - 10))
+          .map((point) => ({ x: lane(point.x + 16), y: point.y }));
         companyPts = [
-          { x: left + 18, y: y(wave) },
-          { x: left + 18, y: y(belowLogos + 14) },
-          { x: width * 0.36, y: y(belowLogos + 14) },
-          { x: width * 0.62, y: y(belowLogos + 14) },
-          { x: lane(exit.right + 8), y: y(exit.y - 6) },
-          { x: width + 18, y: y(exit.y + 30) },
+          ...beside,
+          { x: lane(right - 40), y: y(exit.y + 8) },
+          { x: width + 28, y: y(exit.y + 46) },
         ];
       }
 
@@ -202,7 +208,7 @@
       const pageTop = main.getBoundingClientRect().top + window.scrollY;
       const founderStart = pageTop + origin;
       const founderEnd = pageTop + end;
-      const companyEnd = pageTop + exit.y + (phone ? 24 : exit.h * 0.2);
+      const companyEnd = pageTop + exit.bottom;
 
       const paint = (path, length, startY, finishY) => {
         const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);

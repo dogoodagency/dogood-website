@@ -2682,12 +2682,12 @@ main {
   max-width: 100%;
   pointer-events: none;
   z-index: 1;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .through-line svg {
   display: block;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .through-line path {
@@ -3476,3 +3476,11 @@ button.btn-subscribe:focus-visible::before,
     transform: translateY(-50%) scale(0);
   }
 }
+
+
+html { scroll-padding-top: 108px; }
+h1, h2, h3, section { scroll-margin-top: 108px; }
+header.nav { z-index: 50; }
+#first-card h2, .track-nums strong, p.t-kicker { color: #2a0b4f; }
+.track-nums strong { white-space: nowrap; font-size: clamp(22px, 3vw, 40px); }
+.hero h1 { text-wrap: balance; }
