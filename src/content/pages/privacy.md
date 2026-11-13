@@ -5,25 +5,17 @@ description: "Learn our Privacy Promise at DoGood Agency. We have pure commitmen
 
 # Privacy Policy
 
-At DoGood Agency, we respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you visit our website.
+Last updated: [go-live date]
 
-By using [www.dogoodagency.co](/), you agree to the terms outlined in this policy.
+The controller is DoGood OÜ (Estonia, registry code 14695833). Contact: hiya@dogoodagency.co.
+
+At DoGood Agency, we respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you visit our website.
 
 ### 1. INFORMATION WE COLLECT
 
 ### Automatically Collected Information
 
-When you visit our website, we automatically collect certain technical information, including:
-
-- IP address and geographic location
-- Browser type and operating system
-- Pages visited and time spent on our site
-- Referring website (where you came from)
-- Device information
-
-### Visitor identification
-
-We do not use RB2B, LinkedIn visitor identification, Google Analytics, or advertising cookies.
+Our host, Netlify, processes basic technical data (IP address, browser and device type, pages requested, referring page) to deliver the site and keep it secure. We don't use analytics or tracking tools.
 
 ### Cookie Consent Management
 
@@ -33,8 +25,6 @@ We use CookieYes, a cookie consent management platform, to give you control over
 - View details about each cookie category
 - Manage your preferences at any time
 
-Functional cookies, including live chat (shown as Ava), the booking calendar and the podcast player, are placed only if you allow them in the CookieYes banner. You can decline non-essential cookies there, or block cookies in your browser.
-
 ### Information You Provide
 
 We may collect information you voluntarily submit through:
@@ -42,13 +32,17 @@ We may collect information you voluntarily submit through:
 - Contact forms or email inquiries
 - Program applications
 - Newsletter subscriptions
+- Live chat messages (tawk.to)
+- Call bookings (TidyCal)
+- Forms (Jotform)
+- The newsletter sign-up (MailerLite)
 - Client onboarding processes
 
 This may include your name, email address, company name, job title, phone number, and any other information you choose to share.
 
 ### Payment Information
 
-If you purchase services from us, payment is by bank transfer through Wise. We do not store card details on our servers.
+If you purchase services from us, we collect payment information through secure third-party processors (bank transfer or Wise).
 
 ### 2. HOW WE USE YOUR INFORMATION
 
@@ -57,8 +51,6 @@ We use collected information to:
 - Operate and improve our website
 - Respond to your inquiries and provide customer support
 - Send updates about our services (with your consent)
-- Identify and connect with potential clients who visit our site
-- Analyze website performance and user behavior
 - Comply with legal obligations
 - Prevent fraud and maintain security
 
@@ -70,13 +62,21 @@ We will never sell your personal information to third parties.
 
 We may share your information only in the following circumstances:
 
-Service Providers: We work with trusted third-party service providers who help us operate our business: CookieYes for consent management, tawk.to for live chat (shown as Ava, and only after you allow functional cookies), MailerLite for the newsletter, Jotform for application and diagnostic forms, TidyCal for booking calendars, and Netlify for website hosting. These providers are contractually required to protect your data and use it only for the purposes we specify.
+Service Providers: We work with trusted third-party service providers who help us operate our business (hosting (Netlify), consent (CookieYes), live chat (tawk.to), email and newsletter (Google Workspace, MailerLite), bookings and forms (TidyCal, Jotform), CRM and contracts (HubSpot, PandaDoc), podcast player (Buzzsprout)). These providers are contractually required to protect your data and use it only for the purposes we specify.
 
 Legal Requirements: We may disclose information if required by law, court order, or government regulation, or if necessary to protect our rights, prevent fraud, or ensure safety.
 
 Business Transfers: If DoGood Agency is acquired or merged with another company, your information may be transferred as part of that transaction.
 
 Aggregate Data: We may share anonymized, aggregate statistics about our website visitors with third parties for business purposes. This data cannot identify individual users.
+
+### Legal basis
+
+We handle data to answer you and to prepare or perform a contract, because the law requires it (for example accounting), with your consent (newsletter and functional cookies), or for our legitimate interest in running a secure site.
+
+### Transfers
+
+Some providers process data outside the EU/EEA, and where they do we rely on safeguards such as the EU Standard Contractual Clauses.
 
 ### 4. YOUR PRIVACY RIGHTS
 
@@ -87,6 +87,8 @@ You have the right to:
 - Deletion: Request that we delete your personal information (subject to legal retention requirements)
 - Opt-Out: Unsubscribe from marketing communications at any time
 - Cookie Control: Manage or withdraw cookie consent through our cookie banner
+- Restriction, objection and data portability
+- The right to complain to the Estonian Data Protection Inspectorate (Andmekaitse Inspektsioon)
 
 To exercise these rights, contact us at: [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co)
 
@@ -98,12 +100,13 @@ Cookies are small text files stored on your device that help websites remember y
 
 ### Types of Cookies We Use
 
-Necessary Cookies: Essential for website functionality (cannot be disabled)
+Necessary Cookies: CookieYes stores your consent choice.
 
-Functional Cookies: Live chat (shown as Ava), the booking calendar and the podcast player. These are used only if you allow them in the CookieYes banner.
+Functional Cookies: Off until you accept functional cookies or click to load: tawk.to live chat and the Buzzsprout podcast player.
 
-We do not use analytics cookies or advertising cookies, including Google Analytics and RB2B.
+YouTube videos use privacy-enhanced (nocookie) mode. Fonts are hosted on our own site, with no Google Fonts.
 
+###
 
 ### Managing Cookies
 
@@ -111,7 +114,7 @@ You can control cookies through:
 
 - Our cookie consent banner (appears on your first visit)
 - Your browser settings (instructions vary by browser)
-- Cookie preference center (link in footer)
+- [Cookie preference center (link in footer)](/cookies)
 
 Note: Blocking certain cookies may limit website functionality.
 
@@ -158,6 +161,7 @@ You can unsubscribe at any time using the link provided in every email, or by co
 
 ### If you create an account or access password-protected areas of our site:
 
+###
 
 - Never share your login credentials with anyone
 - Log out after each session
@@ -168,15 +172,15 @@ You can unsubscribe at any time using the link provided in every email, or by co
 
 ### We may update this Privacy Policy periodically to reflect changes in our practices or legal requirements. When we make significant changes, we will Update the "Last Updated" date at the top of this page
 
-Your continued use of our website after changes are posted constitutes acceptance of the updated policy.
-
 ### 13. CONTACT US
+
+The controller is DoGood OÜ (Estonia, registry code 14695833). Contact: hiya@dogoodagency.co.
 
 ### If you have questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:
 
 Email: [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co)
 
-Website: [www.dogoodagency.co/privacy](/privacy)
+Website: [www.dogoodagency.co/privacy](http://www.dogoodagency.co/privacy)
 
 Response Time: We aim to respond to all privacy-related inquiries within 5 business days.
 
