@@ -11,11 +11,13 @@ Only Fin's numbered changes are in the new text. Every other sentence is the liv
 - P3. The automatic-collection list is one line about Netlify.
 - P4. Cookie types are Necessary (CookieYes), Functional (tawk.to and Buzzsprout, off until accepted or clicked), YouTube nocookie, and self-hosted fonts. Analytics and Marketing types are deleted. The cookie preference center links to /cookies.
 - P5. Information you provide adds live chat, TidyCal bookings, Jotform and the MailerLite sign-up.
-- P6. Payment processors are "(bank transfer or Wise)". The credit-card sentence is deleted.
-- P7. Service providers are Netlify, CookieYes, tawk.to, Google Workspace, MailerLite, TidyCal, Jotform, HubSpot, PandaDoc and Buzzsprout.
+- P6. Payment processors are "(bank transfer through Wise, or card payment through Stripe)". The live sentence "We do not store your full credit card details on our servers." is kept.
+- P7. Service providers are Netlify, CookieYes, tawk.to, Google Workspace, MailerLite, TidyCal, Jotform, HubSpot, PandaDoc, payments (Wise, Stripe) and Buzzsprout.
 - P8. Legal basis and Transfers are new short sections. Section 4 adds restriction, objection, data portability, and a complaint to the Estonian Data Protection Inspectorate (Andmekaitse Inspektsioon).
 - P9. The "by using this website you agree" sentence and the "continued use constitutes acceptance" sentence are deleted.
-- P10. "Last updated: [go-live date]" is at the top.
+- P10. "Last updated: 13 November 2026" is at the top. The date is fixed in the page. It is not generated.
+- P11. The "Regular security audits and monitoring" bullet is removed from section 6.
+- P12. Section 11, USERNAMES AND PASSWORDS, is removed. CHANGES TO THIS POLICY is now section 11. CONTACT US is now section 12. There were no other cross-references to renumber.
 
 ## Terms
 
@@ -23,7 +25,18 @@ Only Fin's numbered changes are in the new text. Every other sentence is the liv
 - T2. The arbitration sentence is deleted. After the USD 100 sentence: nothing in these terms limits liability that cannot be limited by law, or takes away consumer rights.
 - T3. The anti-spam section, the earnings-disclaimer intro paragraph, and both Compensation Disclosure sections are deleted.
 - T4. "here" links to /privacy, and "Cookies Policy" links to /cookies.
-- T5. The date is [go-live date]. The copyright line is "© 2026 DoGood OÜ. All rights reserved."
+- T5. "Last updated: 13 November 2026" is under the opening line, and the closing sentence uses the same fixed date. The copyright line is "© 2026 DoGood OÜ. All rights reserved."
+- T6. The whole FORWARD-LOOKING STATEMENTS section is removed. The earnings sections and NO EARNINGS PROJECTIONS stay as they are.
+- T7. GOVERNING LAW is added immediately before ENTIRE AGREEMENT: "These terms are governed by the laws of Estonia, and disputes go to the courts of Estonia. If you use our website as a consumer, you keep any protections the laws of your home country give you."
+- T2 stands. The live exclusion paragraph is unchanged. The USD 100 cap stays, with the arbitration sentence still deleted and the carve-out still after it: nothing in these terms limits liability that cannot be limited by law, including for intent or gross negligence, or takes away your rights as a consumer.
+
+## Cookies
+
+The Cookies Policy is a new page on this preview. "Last updated: 13 November 2026" is fixed in the page. It is not generated.
+
+## Last updated
+
+Privacy, Terms and Cookies each carry a fixed "Last updated" date. Any future edit to the wording of a policy must bump that page's Last updated date. Do not generate the date from the build or from the clock.
 
 ## Unified diff
 
@@ -33,7 +46,7 @@ Only Fin's numbered changes are in the new text. Every other sentence is the liv
 @@ -1,45 +1,16 @@
  # Privacy Policy
  
-+Last updated: [go-live date]
++Last updated: 13 November 2026
 +
 +The controller is DoGood OÜ (Estonia, registry code 14695833). Contact: hiya@dogoodagency.co.
 +
@@ -105,7 +118,7 @@ Only Fin's numbered changes are in the new text. Every other sentence is the liv
  ### Payment Information
  
 -If you purchase services from us, we collect payment information through secure third-party processors (Stripe, Wise). We do not store your full credit card details on our servers.
-+If you purchase services from us, we collect payment information through secure third-party processors (bank transfer or Wise).
++If you purchase services from us, we collect payment information through secure third-party processors (bank transfer through Wise, or card payment through Stripe). We do not store your full credit card details on our servers.
  
  ### 2. HOW WE USE YOUR INFORMATION
  
@@ -123,7 +136,7 @@ Only Fin's numbered changes are in the new text. Every other sentence is the liv
  We may share your information only in the following circumstances:
  
 -Service Providers: We work with trusted third-party service providers who help us operate our business (RB2B for visitor identification, CookieYes for consent management, email service providers, payment processors). These providers are contractually required to protect your data and use it only for the purposes we specify.
-+Service Providers: We work with trusted third-party service providers who help us operate our business (hosting (Netlify), consent (CookieYes), live chat (tawk.to), email and newsletter (Google Workspace, MailerLite), bookings and forms (TidyCal, Jotform), CRM and contracts (HubSpot, PandaDoc), podcast player (Buzzsprout)). These providers are contractually required to protect your data and use it only for the purposes we specify.
++Service Providers: We work with trusted third-party service providers who help us operate our business (hosting (Netlify), consent (CookieYes), live chat (tawk.to), email and newsletter (Google Workspace, MailerLite), bookings and forms (TidyCal, Jotform), CRM and contracts (HubSpot, PandaDoc), payments (Wise, Stripe), podcast player (Buzzsprout)). These providers are contractually required to protect your data and use it only for the purposes we specify.
  
  Legal Requirements: We may disclose information if required by law, court order, or government regulation, or if necessary to protect our rights, prevent fraud, or ensure safety.
  
@@ -201,6 +214,8 @@ Only Fin's numbered changes are in the new text. Every other sentence is the liv
  # Terms
 +
 +This website is run by DoGood OÜ (Estonia, registry code 14695833).
++
++Last updated: 13 November 2026.
  
  Thank you for visiting our website! If you wish to use [www.dogoodagency.co](https://www.dogoodagency.co/) you must agree that you will abide by and be legally bound by the terms and conditions listed below. If you don’t agree with any of the terms or conditions below, please do not use our website.
  
@@ -250,8 +265,16 @@ Only Fin's numbered changes are in the new text. Every other sentence is the liv
  These terms and conditions, including the policies incorporated herein by express reference, constitute your entire agreement with us with respect to your use of our website
  
 -Please note that the content of this page can change without prior notice. This Terms and Conditions of Use Policy was last updated on 06-05-2023
-+Please note that the content of this page can change without prior notice. This Terms and Conditions of Use Policy was last updated on [go-live date]
++Please note that the content of this page can change without prior notice. This Terms and Conditions of Use Policy was last updated on 13 November 2026.
  
 -Copyright © 2023 DoGood Agency, and licensed for use by the owner of this website at [www.dogoodagency.co](https://www.dogoodagency.co/) All Rights Reserved. No portion of this document may be copied or used by anyone other than the licensee without the express written permission of the copyright owner.
 +© 2026 DoGood OÜ. All rights reserved.
++
++The FORWARD-LOOKING STATEMENTS section is deleted in full. Immediately before ENTIRE AGREEMENT, this section is added:
++
++### GOVERNING LAW
++
++These terms are governed by the laws of Estonia, and disputes go to the courts of Estonia. If you use our website as a consumer, you keep any protections the laws of your home country give you.
++
++Privacy section 6 no longer has "Regular security audits and monitoring". Privacy section 11 USERNAMES AND PASSWORDS is deleted. CHANGES TO THIS POLICY is section 11. CONTACT US is section 12.
 ```

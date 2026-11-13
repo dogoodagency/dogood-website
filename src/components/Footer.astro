@@ -10,6 +10,7 @@ interface Props {
 }
 
 const { hideOptin = false } = Astro.props;
+const copyrightYear = new Date().getFullYear();
 
 const explore = [
   { href: "/about", label: "About us" },
@@ -145,9 +146,10 @@ const legal = [
         ))
       }
     </div>
-    <p>© 2026 DoGood Agency LLC</p>
+    <p>© <span id="copyright-year">{copyrightYear}</span> DoGood Agency LLC</p>
   </div>
 </footer>
+<script is:inline>document.getElementById("copyright-year").textContent=String(new Date().getFullYear());</script>
 <script>
   const wave = document.querySelector("#connect-wave-path");
   if (wave instanceof SVGPathElement) {

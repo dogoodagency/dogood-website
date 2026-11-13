@@ -1,7 +1,7 @@
 ---
 title: Cookies Policy
 description: How DoGood OÜ uses cookies and similar tools on dogoodagency.co.
-updated: "[date of publication]"
+updated: "13 November 2026"
 ---
 
 <picture class="page-icon">
@@ -11,7 +11,7 @@ updated: "[date of publication]"
 
 # Cookies Policy
 
-Last updated: [date of publication]
+Last updated: 13 November 2026
 
 ## What cookies are
 

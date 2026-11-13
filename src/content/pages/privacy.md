@@ -5,7 +5,7 @@ description: "Learn our Privacy Promise at DoGood Agency. We have pure commitmen
 
 # Privacy Policy
 
-Last updated: [go-live date]
+Last updated: 13 November 2026
 
 The controller is DoGood OÜ (Estonia, registry code 14695833). Contact: hiya@dogoodagency.co.
 
@@ -42,7 +42,7 @@ This may include your name, email address, company name, job title, phone number
 
 ### Payment Information
 
-If you purchase services from us, we collect payment information through secure third-party processors (bank transfer or Wise).
+If you purchase services from us, we collect payment information through secure third-party processors (bank transfer through Wise, or card payment through Stripe). We do not store your full credit card details on our servers.
 
 ### 2. HOW WE USE YOUR INFORMATION
 
@@ -62,7 +62,7 @@ We will never sell your personal information to third parties.
 
 We may share your information only in the following circumstances:
 
-Service Providers: We work with trusted third-party service providers who help us operate our business (hosting (Netlify), consent (CookieYes), live chat (tawk.to), email and newsletter (Google Workspace, MailerLite), bookings and forms (TidyCal, Jotform), CRM and contracts (HubSpot, PandaDoc), podcast player (Buzzsprout)). These providers are contractually required to protect your data and use it only for the purposes we specify.
+Service Providers: We work with trusted third-party service providers who help us operate our business (hosting (Netlify), consent (CookieYes), live chat (tawk.to), email and newsletter (Google Workspace, MailerLite), bookings and forms (TidyCal, Jotform), CRM and contracts (HubSpot, PandaDoc), payments (Wise, Stripe), podcast player (Buzzsprout)). These providers are contractually required to protect your data and use it only for the purposes we specify.
 
 Legal Requirements: We may disclose information if required by law, court order, or government regulation, or if necessary to protect our rights, prevent fraud, or ensure safety.
 
@@ -123,7 +123,6 @@ Note: Blocking certain cookies may limit website functionality.
 We implement industry-standard security measures to protect your information, including:
 
 - Secure SSL/TLS encryption for data transmission
-- Regular security audits and monitoring
 - Limited employee access to personal data
 - Secure third-party service providers
 
@@ -157,22 +156,11 @@ You can unsubscribe at any time using the link provided in every email, or by co
 
 ### Our services are intended for business professionals and are not directed to individuals under 18 years of age. We do not knowingly collect information from minors. If you are under 18, please do not use our website or provide any personal information.
 
-### 11. USERNAMES AND PASSWORDS
-
-### If you create an account or access password-protected areas of our site:
-
-###
-
-- Never share your login credentials with anyone
-- Log out after each session
-- Use a strong, unique password
-- Notify us immediately if you suspect unauthorized access
-
-### 12. CHANGES TO THIS POLICY
+### 11. CHANGES TO THIS POLICY
 
 ### We may update this Privacy Policy periodically to reflect changes in our practices or legal requirements. When we make significant changes, we will Update the "Last Updated" date at the top of this page
 
-### 13. CONTACT US
+### 12. CONTACT US
 
 The controller is DoGood OÜ (Estonia, registry code 14695833). Contact: hiya@dogoodagency.co.
 

@@ -7,6 +7,8 @@ description: "Explore our terms for transparency and clarity at DoGood Agency's.
 
 This website is run by DoGood OÜ (Estonia, registry code 14695833).
 
+Last updated: 13 November 2026.
+
 Thank you for visiting our website! If you wish to use [www.dogoodagency.co](https://www.dogoodagency.co/) you must agree that you will abide by and be legally bound by the terms and conditions listed below. If you don’t agree with any of the terms or conditions below, please do not use our website.
 
 ### MINORS
@@ -34,34 +36,6 @@ It is important to always consider that the amount of risk you assume when condu
 The amount of success you attain as a result of using the information, strategies, and products provided at [www.dogoodagency.co](https://www.dogoodagency.co/) is greatly dependent upon a diverse number of factors, which DoGood Agency is not responsible for. This website, nor its affiliates or representatives can determine exactly what kind of success you will have, as we are not aware of contributing success factors such as your dedication, motivation, desires, work ethic, background, business skills and experience, business factors, or other attributes which may determine success.
 
 Any earnings attained from internet businesses always have unknown risks and are therefore not the right option for everyone. You cannot rely on the information provided through DoGood Agency or otherwise, and if you do so, you must do so by being aware that regardless of what information is provided, there is still a chance you could experience significant losses at any time (including but not limited to financial losses and money spent on purchasing DoGood Agency products/services, any money spent on implementing a plan derived from [www.dogoodagency.co](https://www.dogoodagency.co/), or money spent on the operation, marketing, or future earnings. You must be aware that you may not derive any earnings at all just because you have purchased DoGood Agency products or services or used, relied upon, or made assumptions from information provided through DoGood Agency (including monetary earnings and/or advertising credits, whether convertible to cash or not.)
-
-### FORWARD-LOOKING STATEMENTS
-
-Any Materials Contained On This Website Or Materials Purchased Or Downloaded From dogoodagency.co And/or Its Affiliates May Contain Information That Is Inclusive Or Based Upon Forward-Looking Statements Within The Meaning Of The Securities Litigation Reform Act Of 1995.
-
-Forward-Looking Statements Provide The Expectations We Have Decided To Be Probable In The Future And Can Be Identified By The Fact That They Will Never Use Past, Historical, Current, Or Definite Future Facts, And Will Include Words Such As, But Not Limited To (and Their Required Variations):
-
-- Anticipate
-
-- Estimate
-
-- Expect
-
-- Project
-
-- Intend
-
-- Anticipate
-
-- Plan
-
-- Believe
-
-And Other Words And/or Terms That Have A Similar Definition, Particularly If Used In Connection With Descriptions Of Potential Earnings, Financial Performance, Or Success.
-
-Any And All Forward-Looking Statements Found On DoGoodAgency.co, Or Its Affiliate Or Representatives Are Used To Express Our Opinions Of Possible Earnings And/or Success. There Are Many Factors That Will Determine Your Individual Results And No Guarantees Are Made That You Will Achieve The Same Results Of Others Who Have Visited, Purchased, Or Received Information From, DoGood Agency, Or Its Affiliates Or Representatives.
-
-Absolutely No Guarantees Are Made That You Will Achieve The Same Results That We Have Or That Anyone Else, And No Guarantees Are Made That You Will Achieve Any Results At All From Any Of Our Ideas, Techniques, Or Information Provided On Our Behalf.
 
 ### DUE DILIGENCE
 
@@ -127,10 +101,14 @@ If any court of competent jurisdiction finds any part of these terms and conditi
 
 Any questions or concerns about these terms and conditions of use should be brought to our attention by sending an email to our help desk at: hiya [at] dogoodagency [dot] co.
 
+### GOVERNING LAW
+
+These terms are governed by the laws of Estonia, and disputes go to the courts of Estonia. If you use our website as a consumer, you keep any protections the laws of your home country give you.
+
 ### ENTIRE AGREEMENT
 
 These terms and conditions, including the policies incorporated herein by express reference, constitute your entire agreement with us with respect to your use of our website
 
-Please note that the content of this page can change without prior notice. This Terms and Conditions of Use Policy was last updated on [go-live date]
+Please note that the content of this page can change without prior notice. This Terms and Conditions of Use Policy was last updated on 13 November 2026.
 
 © 2026 DoGood OÜ. All rights reserved.
