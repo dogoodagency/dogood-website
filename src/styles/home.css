@@ -2269,7 +2269,17 @@ header.nav .nav-menu a.btn-apply.nav-cta:hover {
 }
 
 .track-block {
-  margin-top: 24px;
+  position: relative;
+  z-index: 2;
+  /* Scales with the photo. Hides the uneven cut along the bottom
+     without covering the hands or skirt hems above it. */
+  margin-top: -10%;
+}
+
+.track-card {
+  position: relative;
+  z-index: 2;
+  background: #fff;
 }
 
 .track-nums strong {
