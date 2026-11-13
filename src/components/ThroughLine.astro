@@ -83,12 +83,36 @@
       return d.join(" ");
     };
 
-    const poly = (points) => {
-      const usable = points.filter((point) => Number.isFinite(point.x) && Number.isFinite(point.y));
-      if (usable.length < 2) return "";
-      return usable
-        .map((point, index) => `${index ? "L" : "M"} ${point.x.toFixed(1)} ${point.y.toFixed(1)}`)
-        .join(" ");
+    const fillet = (points, radius) => {
+      const pts = points.filter((point) => point && Number.isFinite(point.x) && Number.isFinite(point.y));
+      if (pts.length < 2) return "";
+      const k = 0.5522847498;
+      let d = `M ${pts[0].x.toFixed(1)} ${pts[0].y.toFixed(1)}`;
+      for (let i = 1; i < pts.length - 1; i += 1) {
+        const prev = pts[i - 1];
+        const curr = pts[i];
+        const next = pts[i + 1];
+        const inLen = Math.hypot(curr.x - prev.x, curr.y - prev.y) || 1;
+        const outLen = Math.hypot(next.x - curr.x, next.y - curr.y) || 1;
+        const r = Math.min(radius, inLen / 2, outLen / 2);
+        const inUx = (curr.x - prev.x) / inLen;
+        const inUy = (curr.y - prev.y) / inLen;
+        const outUx = (next.x - curr.x) / outLen;
+        const outUy = (next.y - curr.y) / outLen;
+        if (r < 8) {
+          d += ` L ${curr.x.toFixed(1)} ${curr.y.toFixed(1)}`;
+          continue;
+        }
+        const a = { x: curr.x - inUx * r, y: curr.y - inUy * r };
+        const b = { x: curr.x + outUx * r, y: curr.y + outUy * r };
+        const c1 = { x: a.x + inUx * r * k, y: a.y + inUy * r * k };
+        const c2 = { x: b.x - outUx * r * k, y: b.y - outUy * r * k };
+        d += ` L ${a.x.toFixed(1)} ${a.y.toFixed(1)}`;
+        d += ` C ${c1.x.toFixed(1)} ${c1.y.toFixed(1)}, ${c2.x.toFixed(1)} ${c2.y.toFixed(1)}, ${b.x.toFixed(1)} ${b.y.toFixed(1)}`;
+      }
+      const last = pts[pts.length - 1];
+      d += ` L ${last.x.toFixed(1)} ${last.y.toFixed(1)}`;
+      return d;
     };
 
     const monotonic = (points) => {
@@ -118,10 +142,10 @@
 
     const build = () => {
       const width = main.clientWidth;
-      const phone = width <= 1080;
-      const founderStroke = phone ? 36 : 100;
-      const companyStroke = phone ? 18 : 50;
-      const parallel = phone ? 28 : 80;
+      const phone = width <= 700;
+      const founderStroke = phone ? 8 : 100;
+      const companyStroke = phone ? 0 : 50;
+      const parallel = 80;
       const hero = box(document.querySelector("#hero"));
       const headline = box(document.querySelector(".hero h1"));
       const clients = box(document.querySelector("#clients"));
@@ -146,47 +170,80 @@
       const waveEl = footer?.querySelector(".connect-wave") || footer?.querySelector("svg");
       const waveRect = (waveEl || footer)?.getBoundingClientRect();
       const end = waveRect ? waveRect.bottom - mainRect.top : main.clientHeight - 6;
-      const clampX = (value) => Math.min(width - (phone ? 20 : 56), Math.max(phone ? 22 : 56, value));
-      const youMid =
-        youCards.length === 2 ? (youCards[0].right + youCards[1].left) / 2 : width * 0.5;
-      const throughY = exit.y + Math.min(exit.h * 0.55, phone ? 70 : 180);
+      const clampX = (value) => Math.min(width - 70, Math.max(56, value));
+      const partnership = box(document.querySelector("#first-card .btn-partnership"));
+      const apply2 = box(document.querySelector("#apply-v .btn-apply"));
+      const scale = box(document.querySelector(".guarantee-scale"));
+      const caseCard = box(document.querySelector("#case-j article")) || caseJ;
+      const gap = youCards.length === 2 ? youCards[1].left - youCards[0].right : 0;
+      const forYouX = gap >= 80 ? (youCards[0].right + youCards[1].left) / 2 : 56;
+      const emergeY = Math.max(headline.bottom + 36, Math.min(hero.bottom - 28, hero.y + hero.h * 0.7));
+      const copyLeft = (document.querySelector(".hero-copy") || headline).getBoundingClientRect().left - main.getBoundingClientRect().left;
+
+      const hideOnPhone = phone && copyLeft < 36;
+      root.style.display = hideOnPhone ? "none" : "";
+      if (hideOnPhone) return;
+
+      root.style.display = "";
+      const rightOf = (card) => (card ? Math.min(width - 70, card.right + 78) : width - 80);
+      const enterX = exit.right - 72;
+      const splitY = exit.y + 150;
+      const beside = rightOf(exit);
+
+      const pass = (button, beforeY) => {
+        if (!button) return [];
+        const above = Math.min(button.y - 150, beforeY);
+        return [
+          { x: button.cx, y: above },
+          { x: button.cx, y: button.y - 4 },
+          { x: button.cx, y: button.bottom + 4 },
+          { x: button.cx, y: button.bottom + 150 },
+        ];
+      };
 
       founder.setAttribute("stroke-width", String(founderStroke));
       company.setAttribute("stroke-width", String(companyStroke));
-      companyMask.setAttribute("stroke-width", String(companyStroke + 12));
+      companyMask.setAttribute("stroke-width", String(companyStroke + 16));
       company.setAttribute("stroke-dasharray", "none");
 
-      const founderPts = monotonic([
-        { x: clampX(phone ? 22 : 64), y: phone ? 16 : 28 },
-        { x: clampX(phone ? 22 : 64), y: Math.max(24, exit.y - (phone ? 36 : 80)) },
-        { x: clampX(exit.cx), y: Math.max(24, exit.y - (phone ? 36 : 80)) },
-        { x: clampX(exit.cx), y: throughY },
-        { x: clampX(exit.right - (phone ? 12 : 28)), y: throughY },
-        { x: clampX(width - (phone ? 28 : 70)), y: throughY },
-        { x: clampX(width - (phone ? 28 : 70)), y: firstCard ? firstCard.cy : exit.bottom + 280 },
-        { x: clampX(firstCard ? firstCard.right - 24 : width * 0.72), y: firstCard ? firstCard.cy : exit.bottom + 280 },
-        { x: clampX(firstCard ? firstCard.left + 36 : width * 0.5), y: firstCard ? firstCard.cy : exit.bottom + 280 },
-        { x: clampX(applyBtn ? applyBtn.cx : apply ? apply.cx : width * 0.5), y: (firstCard ? firstCard.bottom : exit.bottom) + 48 },
-        { x: clampX(applyBtn ? applyBtn.cx : apply ? apply.cx : width * 0.5), y: applyBtn ? applyBtn.cy : apply ? apply.cy : exit.bottom + 420 },
-        { x: clampX(youMid), y: (applyBtn ? applyBtn.bottom : apply ? apply.bottom : exit.bottom) + 80 },
-        { x: clampX(youMid), y: forYou ? forYou.bottom - 16 : (apply ? apply.bottom + 220 : exit.bottom + 560) },
-        { x: clampX(whyCard ? whyCard.cx : youMid), y: whyCard ? whyCard.y + 24 : (forYou ? forYou.bottom + 80 : exit.bottom + 640) },
-        { x: clampX(whyCard ? whyCard.left + 48 : youMid), y: whyCard ? whyCard.cy : (forYou ? forYou.bottom + 120 : exit.bottom + 680) },
-        { x: clampX(whyCard ? whyCard.right - 30 : width * 0.75), y: whyCard ? whyCard.cy : (forYou ? forYou.bottom + 120 : exit.bottom + 680) },
-        { x: clampX(reviews ? reviews.cx : youMid), y: reviews ? reviews.cy : (whyCard ? whyCard.bottom + 80 : end - 800) },
-        { x: clampX(message ? message.cx : youMid), y: message ? message.cy : (reviews ? reviews.bottom + 40 : end - 500) },
-        { x: clampX(guaranteeCard ? guaranteeCard.cx : width * 0.62), y: guaranteeCard ? guaranteeCard.cy : end - 280 },
-        { x: clampX(bubble ? bubble.cx : phone ? 40 : 80), y: bubble ? bubble.cy : next.y + 80 },
-        { x: clampX(nextBtn ? nextBtn.cx : next.cx), y: nextBtn ? nextBtn.cy : next.cy },
-        { x: clampX(phone ? 28 : 70), y: end - 8 },
-      ]);
+      const marginX = 28;
+      const founderPts = phone
+        ? monotonic([
+            { x: 20, y: emergeY },
+            { x: 20, y: end - 8 },
+          ])
+        : monotonic([
+            { x: marginX, y: emergeY },
+            { x: marginX, y: Math.max(clients.bottom + 36, emergeY + 180) },
+            { x: enterX, y: Math.max(clients.bottom + 36, emergeY + 180) },
+            { x: enterX, y: splitY },
+            { x: beside, y: splitY },
+            { x: beside, y: caseCard ? Math.max(caseCard.bottom + 80, splitY + 180) : exit.bottom + 220 },
+            ...pass(partnership, caseCard ? caseCard.bottom + 80 : splitY + 220),
+            ...pass(applyBtn, partnership ? partnership.bottom + 180 : exit.bottom + 260),
+            { x: forYouX, y: (applyBtn ? applyBtn.bottom : exit.bottom) + 180 },
+            { x: forYouX, y: forYou ? forYou.bottom + 20 : end * 0.45 },
+            { x: marginX, y: forYou ? forYou.bottom + 80 : end * 0.48 },
+            { x: marginX, y: scale ? scale.y - 160 : end * 0.72 },
+            { x: scale ? scale.cx : 140, y: scale ? scale.y - 160 : end * 0.72 },
+            { x: scale ? scale.cx : 140, y: scale ? scale.bottom + 40 : end * 0.76 },
+            { x: marginX, y: bubble ? bubble.y - 160 : next.y },
+            { x: bubble ? bubble.cx : 100, y: bubble ? bubble.y - 160 : next.y },
+            { x: bubble ? bubble.cx : 100, y: bubble ? bubble.bottom + 36 : next.y + 80 },
+            ...pass(nextBtn, bubble ? bubble.bottom + 50 : next.y),
+            { x: marginX, y: end - 8 },
+          ]);
 
-      const splitAt = founderPts.findIndex((point) => point.y >= throughY - 1 && point.x >= exit.cx);
-      const shared = (splitAt >= 0 ? founderPts.slice(0, splitAt + 2) : founderPts.slice(0, 4)).map(
-        (point) => ({ x: clampX(point.x + parallel), y: point.y }),
-      );
-      const lastShared = shared[shared.length - 1] || { x: width, y: throughY };
-      const companyPts = monotonic([...shared, { x: width + companyStroke, y: lastShared.y }]);
+      const lane = Math.max(clients.bottom + 36, emergeY + 180);
+      const companyPts = phone
+        ? []
+        : monotonic([
+            { x: marginX + 18, y: emergeY },
+            { x: marginX + 18, y: lane },
+            { x: enterX + parallel, y: lane },
+            { x: enterX + parallel, y: splitY },
+            { x: width + 40, y: splitY },
+          ]);
 
       const height = Math.max(200, end);
       root.style.top = "0px";
@@ -195,9 +252,9 @@
       svg.setAttribute("width", String(width));
       svg.setAttribute("height", String(height));
 
-      founder.setAttribute("d", poly(founderPts));
-      company.setAttribute("d", poly(companyPts));
-      companyMask.setAttribute("d", poly(companyPts));
+      founder.setAttribute("d", fillet(founderPts, 120));
+      company.setAttribute("d", fillet(companyPts, 120));
+      companyMask.setAttribute("d", fillet(companyPts, 120));
       alignDoor();
 
       triggers.forEach((trigger) => trigger.kill());

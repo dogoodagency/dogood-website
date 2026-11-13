@@ -60,7 +60,7 @@ This is not the right tool if…
 
 ### X
 
-You’re a CHRO / CPO, L&D lead, or other people leader looking for internal organizational support to Manage talent, boost employee engagement, and drive cultural change. [continue [here]](https://www.dogoodagency.co/culture-teams)
+You’re a CHRO / CPO, L&D lead, or other people leader looking for internal organizational support to Manage talent, boost employee engagement, and drive cultural change. [continue here](/culture-teams)
 
 You’re not a founder but seeking personal support to navigate career challenges, build leadership skills, and balance work-life in a demanding environment.
 

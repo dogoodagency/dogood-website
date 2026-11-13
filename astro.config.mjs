@@ -9,6 +9,14 @@ export default defineConfig({
   trailingSlash: "never",
   redirects: {
     "/founders": "/how-it-works",
+    "/benchmark": "/",
+    "/chat": "/",
+    "/podcast-chat": "/",
+    "/culture-teams": "/",
+    "/culture-build-employee-engagement-consulting": "/",
+    "/skill-boost-employee-training-and-development": "/",
+    "/sop-development": "/",
+    "/strategic-hiring-and-employee-onboarding": "/",
   },
   integrations: [sitemap()],
   vite: {

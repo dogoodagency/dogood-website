@@ -48,6 +48,36 @@
   status = 301
 
 [[redirects]]
+  from = "/benchmark"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/benchmark/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/chat"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/chat/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/podcast-chat"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/podcast-chat/"
+  to = "/"
+  status = 301
+
+[[redirects]]
   from = "/culture-teams"
   to = "/"
   status = 301

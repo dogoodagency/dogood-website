@@ -373,6 +373,9 @@ main ul {
 
 /* Logos — edge to edge, no box, content travels left to right */
 #clients {
+  position: relative;
+  z-index: 2;
+  background: #f5f2f9;
   padding: 18px 0 10px;
 }
 
@@ -3863,6 +3866,43 @@ iframe.tidycal-embed,
   border: 0;
   border-radius: 16px;
   background: #fff;
+}
+
+#apply-first .btn-apply,
+#apply-v .btn-apply,
+#next .btn-apply,
+#first-card .btn-partnership,
+#apply-first .cap-pill,
+#apply-v .cap-small,
+#next .next-note,
+#first-card .stage-note {
+  position: relative;
+  z-index: 3;
+  opacity: 1;
+  background: #f5f2f9;
+}
+
+#reviews,
+#message-card,
+#case-j article,
+#case-v article,
+#why .why-copy {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 700px) {
+  .exit-machine {
+    width: min(60%, 234px);
+  }
+
+  .guarantee-scale img {
+    width: min(60%, 200px);
+  }
+
+  #next .next-icons img {
+    width: min(60%, 100px);
+  }
 }
 
 @media (max-width: 700px) {
