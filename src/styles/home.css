@@ -2124,3 +2124,152 @@ main li {
     overflow-x: auto;
   }
 }
+
+/* Audit fixes — these win over earlier rules. */
+h1.t-display .accent-ready {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.hero p.lede {
+  max-width: none;
+}
+
+a.btn-case {
+  border-radius: 999px;
+}
+
+#case-j p.t-kicker,
+#case-v p.t-kicker {
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0;
+  color: #28dbb0;
+}
+
+header.nav {
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+  padding-top: 0;
+  padding-bottom: 8px;
+}
+
+header.nav a.btn-apply.nav-cta {
+  font-weight: 400;
+}
+
+header.nav a.btn-apply.nav-cta:hover,
+header.nav .nav-menu a.btn-apply.nav-cta:hover {
+  background: #fff;
+  color: #2a0b4f;
+  border: 1px solid #ea1557;
+}
+
+#why p.why-kicker {
+  font-size: 26px;
+  font-weight: 900;
+  color: #ea1557;
+}
+
+@media (min-width: 1081px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1.32fr) minmax(0, 0.78fr);
+  }
+}
+
+#asseen {
+  width: 100%;
+  padding: 96px 0 88px;
+  overflow: hidden;
+}
+
+#asseen .asseen-frame {
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#asseen .t-kicker {
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  color: #ea1557;
+  padding-inline: var(--pad);
+}
+
+#asseen .asseen-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+#asseen .asseen-row img {
+  display: block;
+  /* Source art has transparent side padding. Scale so the opaque logos
+     meet both viewport edges and stand about 126px tall at 1440. */
+  width: calc(100% * 1140 / 896 * 0.99);
+  height: auto;
+  max-width: none;
+  flex: none;
+}
+
+.wf-group {
+  border: 1px solid #ea1557;
+  box-shadow: none;
+  margin-top: 0;
+  line-height: 0;
+}
+
+.wf-group img {
+  display: block;
+}
+
+.track-nums strong {
+  font-size: 18px;
+  font-weight: 400;
+  color: #ea1557;
+  text-align: center;
+}
+
+.footer h2.agency-name {
+  color: #28dbb0;
+  margin-top: 40px;
+}
+
+.review {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+#next .next-note,
+p.stage-note,
+p.case-protect,
+p.cap-small,
+p.cap-pill,
+.caption.cap-pill {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+@media (max-width: 1080px) {
+  header.nav {
+    justify-content: space-between;
+    padding: 8px 20px;
+    gap: 12px;
+  }
+
+  h1.t-display .accent-ready {
+    font-size: clamp(22px, 7.4vw, 32px);
+  }
+}

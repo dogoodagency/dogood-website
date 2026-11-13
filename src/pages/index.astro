@@ -54,10 +54,11 @@ const notFit = [
     <div class="hero-inner">
       <h1 class="t-display">
         For founders who’ve exited<br />
-        <span class="accent">the company they built, or are getting ready to.</span>
+        <span class="accent">the company they built,</span><br />
+        <span class="accent accent-ready">or are getting ready to.</span>
       </h1>
       <p class="lede">
-        Start with a<br />private 30-day engagement for founders navigating life after exit.
+        Start with a private 30-day engagement for founders navigating life after exit.
       </p>
       <div class="hero-grid">
         <div class="hero-copy">
@@ -65,8 +66,8 @@ const notFit = [
             <strong class="em-black">You built the business. You got out.</strong> But it does not feel the way you expected.
           </p>
           <p>
-            You have more time, more freedom, and more options. But the structure is gone. Before you
-            fill the space with the next thing, there is the question: “What now?”
+            You have more time, more freedom, and more options. But the structure is gone.<br />
+            Before you fill the space with the next thing, there is the question: “What now?”
           </p>
           <p>
             Stage 1 helps you see what is surfacing, what is shaping your next move, and what genuinely
@@ -90,7 +91,7 @@ const notFit = [
           [0, 1].map((copy) => (
             <div class:list={["logo-set", copy === 1 && "is-clone"]} aria-hidden={copy === 1}>
               {logoSet.map((logo) => (
-                <img src={logo.src.src} alt={copy === 1 ? "" : logo.alt} />
+                <img src={logo.src.src} alt={logo.alt} />
               ))}
             </div>
           ))
@@ -241,7 +242,7 @@ const notFit = [
                     <div class="review-who">
                       <Image
                         src={review.src}
-                        alt={copy === 1 ? "" : `Portrait of ${review.name}`}
+                        alt={`Portrait of ${review.name}, ${review.role}`}
                         width={56}
                         height={56}
                         widths={[56, 112]}
@@ -268,7 +269,7 @@ const notFit = [
       <img class="portrait" src={caseV.src} width="234" height="201" alt="Pixelated portrait of founder V, shown this way to protect their identity" />
       <div>
         <p class="t-kicker">Case Study</p>
-        <h3>From identity void to decisive leadership —<br />how V reclaimed life after success</h3>
+        <h3>From identity void to decisive leadership —<br />How V reclaimed life after success</h3>
         <p class="caption case-who">V (anonymous), USD 9M+ founder</p>
         <div class="btn-stack">
           <a class="btn-case" href={urls.caseV}>Read the short case study →</a>
