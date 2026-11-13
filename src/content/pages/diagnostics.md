@@ -5,6 +5,12 @@ description: "A private 5-10 minute check for founders who've exited, or are get
 
 # Founder Diagnostic™
 
+<picture class="page-sketch page-sketch-feature">
+  <source type="image/webp" srcset="/sketches/founder-diagnostic-map@1x.webp 540w, /sketches/founder-diagnostic-map@2x.webp 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" />
+  <img src="/sketches/founder-diagnostic-map@1x.png" srcset="/sketches/founder-diagnostic-map@1x.png 540w, /sketches/founder-diagnostic-map@2x.png 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" width="540" height="400" alt="An anonymous founder seated, looking at a simple map on their lap, with one route marked in teal and a small pink point on that route." />
+</picture>
+
+
 ---
 
 # Get clear on where you stand before your next move.

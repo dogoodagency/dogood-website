@@ -2095,6 +2095,20 @@ main li {
   margin-bottom: 56px;
 }
 
+.contact-sketch {
+  display: block;
+  width: min(100%, 540px);
+  margin: 28px auto 0;
+  background: transparent;
+}
+
+.contact-sketch img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: transparent;
+}
+
 .contact-intro h1 {
   font-size: 56px;
   color: var(--color-ink);
@@ -2172,6 +2186,20 @@ main li {
 
 .contact-email {
   margin-top: 16px;
+}
+
+@media (min-width: 1081px) {
+  .contact-intro {
+    max-width: 1180px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 540px);
+    gap: 48px;
+    align-items: center;
+  }
+
+  .contact-sketch {
+    margin: 0;
+  }
 }
 
 @media (max-width: 1080px) {
@@ -3024,6 +3052,32 @@ main {
   object-fit: contain;
 }
 
+.page-art .page-sketch-feature,
+.page-art .page-body .page-sketch-feature img {
+  max-width: 540px;
+}
+
+.page-body .page-icon {
+  display: block;
+  width: 96px;
+  max-width: 96px;
+  margin: 0 auto 16px;
+  background: transparent;
+}
+
+.page-body .page-icon img {
+  width: 96px;
+  max-width: 96px;
+  height: auto;
+  margin: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.page-404 .page-body p:has(a[href="/"]) {
+  clear: both;
+}
+
 @media (min-width: 1081px) {
   .page-art .page-wrap {
     max-width: 1180px;
@@ -3035,9 +3089,15 @@ main {
     margin: 4px 0 16px 48px;
   }
 
+  .page-art .page-sketch-feature {
+    width: min(540px, 44%);
+  }
+
   .page-art .page-body h2,
-  .page-art .page-body .btn-apply,
-  .page-art .page-body .btn-teal {
+  .page-art .page-body p:has(.btn-apply),
+  .page-art .page-body p:has(.btn-teal),
+  .page-art .page-body form:has(.btn-apply),
+  .page-art .page-body form:has(.btn-teal) {
     clear: both;
   }
 }

@@ -2,11 +2,10 @@
 title: "orientation-call-thankyou"
 description: "A short call to get oriented, clarify fit and timing, and choose the right next step (or a clear “not now”). Not a free consult, audit, or strategy build-out."
 ---
-
-- [Founders](/how-it-works)
-- [Wayfinders](/wayfinders)
-
-<a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
+<picture class="page-icon">
+  <source type="image/webp" srcset="/sketches/thank-you-envelope-tick@1x.webp 1x, /sketches/thank-you-envelope-tick@2x.webp 2x" />
+  <img src="/sketches/thank-you-envelope-tick@1x.png" srcset="/sketches/thank-you-envelope-tick@1x.png 1x, /sketches/thank-you-envelope-tick@2x.png 2x" width="96" height="96" alt="An open envelope with a card showing a hand-drawn teal tick, and a small pink seal on the flap." />
+</picture>
 
 # Orientation Call
 

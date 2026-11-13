@@ -5,6 +5,8 @@ description: "Why DoGood exists, what the name means, and the people behind the 
 
 # We exist for life after the company.
 
+<!-- about-art-placeholder: Arta's About sketch is not in this batch. -->
+
 DoGood is a private partnership for founders who have exited, or are getting ready to, and do not want life after the company to become another version of the life they left behind.
 
 You apply for Stage 1, The Reset, a private 30-day engagement. If it fits, Stage 2, The Build, follows by invitation only.

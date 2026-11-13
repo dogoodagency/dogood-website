@@ -2,11 +2,10 @@
 title: "error404"
 description: "A private 30-day Intensive for founders navigating life after exit. Start with Stage 1 of the Founder Reclamation Partnership. 5 founders a month."
 ---
-
-- [Founders](/how-it-works)
-- [Wayfinders](/wayfinders)
-
-<a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
+<picture class="page-sketch page-sketch-feature">
+  <source type="image/webp" srcset="/sketches/404-missing-stone@1x.webp 540w, /sketches/404-missing-stone@2x.webp 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" />
+  <img src="/sketches/404-missing-stone@1x.png" srcset="/sketches/404-missing-stone@1x.png 540w, /sketches/404-missing-stone@2x.png 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" width="540" height="400" alt="A short row of stepping stones on a teal pool, with one stone missing in the middle, a small open door beyond, and a pink stone at the far end." />
+</picture>
 
 # You got 404'd
 

@@ -5,6 +5,12 @@ description: "Notes and essays on life after exit: identity and purpose, family 
 
 # Insights
 
+<picture class="page-sketch page-sketch-feature">
+  <source type="image/webp" srcset="/sketches/insights-open-journals@1x.webp 540w, /sketches/insights-open-journals@2x.webp 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" />
+  <img src="/sketches/insights-open-journals@1x.png" srcset="/sketches/insights-open-journals@1x.png 540w, /sketches/insights-open-journals@2x.png 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" width="540" height="400" alt="A short stack of open blank journals, with a teal ribbon bookmark tipped in pink." />
+</picture>
+
+
 **H1:** Insights
 
 Notes on life after exit: what surfaces when the company is no longer the centre, and how founders and the people who advise them think about what comes next.

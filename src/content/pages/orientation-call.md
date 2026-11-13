@@ -3,12 +3,6 @@ title: "orientation-call"
 description: "A short call to get oriented, clarify fit and timing, and choose the right next step (or a clear “not now”). Not a free consult, audit, or strategy build-out."
 tidycal: "dogoodagency/orientation-call"
 ---
-
-- [Founders](/how-it-works)
-- [Wayfinders](/wayfinders)
-
-<a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
-
 1. For founders who successfully exited, got bought out or otherwise meaningfully stepped back. FRP begins with Stage 1: The Reset (30 days)
 
 <a class="btn-apply" href="/how-it-works">Apply for Stage 1</a>
@@ -30,6 +24,11 @@ J (anonymous), USD 2M founder
 [Read the short case study →](/stories/j)
 
 We protect our founders’ identities
+
+<picture class="page-icon">
+  <source type="image/webp" srcset="/sketches/booking-open-diary@1x.webp 1x, /sketches/booking-open-diary@2x.webp 2x" />
+  <img src="/sketches/booking-open-diary@1x.png" srcset="/sketches/booking-open-diary@1x.png 1x, /sketches/booking-open-diary@2x.png 2x" width="96" height="96" alt="An open desk diary with a blank grid, one day marked in teal, a pen, and a small pink ribbon." />
+</picture>
 
 # Orientation Call
 

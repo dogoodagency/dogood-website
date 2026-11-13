@@ -3,9 +3,13 @@ title: "DoGood Insider | Stories from founders and CEOs"
 description: "Conversations with founders and CEOs about culture, leading, and the personal side of building and letting go. On YouTube, Spotify, and Apple Podcasts."
 ---
 
----
-
 # DoGood Insider
+
+<picture class="page-sketch page-sketch-feature">
+  <source type="image/webp" srcset="/sketches/podcast-two-chairs-microphone@1x.webp 540w, /sketches/podcast-two-chairs-microphone@2x.webp 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" />
+  <img src="/sketches/podcast-two-chairs-microphone@1x.png" srcset="/sketches/podcast-two-chairs-microphone@1x.png 540w, /sketches/podcast-two-chairs-microphone@2x.png 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" width="540" height="400" alt="Two simple chairs at a table with a teal runner and a single microphone on a stand between them, with a small pink accent on the microphone." />
+</picture>
+
 
 Raw stories from culture-first founders and CEOs
 
@@ -145,5 +149,3 @@ Want to be a guest on DoGood Insider? Tell us a little about yourself.
 Not ready to apply? Stay close. You can join the founder community from the sign-up on the site.
 
 **Apply for Stage 1 →** [/apply-stage-1](/apply-stage-1)
-
----

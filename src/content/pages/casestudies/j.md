@@ -2,13 +2,12 @@
 title: "casestudies/j"
 description: "Founder Reclamation Partnership | Stage 1: The Intensive (30 days)"
 ---
-
-- [Founders](/how-it-works)
-- [Wayfinders](/wayfinders)
-
-<a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
-
 We protect our founders’ identities. Most founders we work with lead visible companies and public lives –– we don't ask them to tell the private parts of their story publicly. Anonymity lets founders be candid about their intimate work — without risking reputations, partnerships, or market fallout.
+
+<picture class="page-sketch page-sketch-feature">
+  <source type="image/webp" srcset="/sketches/case-study-j-window-path@1x.webp 540w, /sketches/case-study-j-window-path@2x.webp 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" />
+  <img src="/sketches/case-study-j-window-path@1x.png" srcset="/sketches/case-study-j-window-path@1x.png 540w, /sketches/case-study-j-window-path@2x.png 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" width="540" height="400" alt="A quiet empty desk and chair by an open window, a coat on a hook, a small plant with a pink flower, and a teal garden path visible outside." />
+</picture>
 
 From exit anxiety to aligned legacy —How J created a clear next life chapter
 

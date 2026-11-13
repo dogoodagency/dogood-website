@@ -2,13 +2,13 @@
 title: "clarity-first-guarantee-terms"
 description: "Founder Reclamation Partnership | Stage 1: The Intensive (30 days)"
 ---
-
-- [Founders](/how-it-works)
-- [Wayfinders](/wayfinders)
-
-<a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
-
 # Clarity‑First Guarantee (Stage 1)
+
+<picture class="page-sketch page-sketch-feature">
+  <source type="image/webp" srcset="/sketches/clarity-first-guarantee-folder@1x.webp 540w, /sketches/clarity-first-guarantee-folder@2x.webp 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" />
+  <img src="/sketches/clarity-first-guarantee-folder@1x.png" srcset="/sketches/clarity-first-guarantee-folder@1x.png 540w, /sketches/clarity-first-guarantee-folder@2x.png 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" width="540" height="400" alt="An anonymous founder walking calmly away from a small table and lamp, carrying a slim teal folder of notes." />
+</picture>
+
 
 You can’t know whether FRP is right for you from the outside — you only know once you’ve been inside the work.
 

@@ -2,13 +2,12 @@
 title: "casestudies/v"
 description: "Founder Reclamation Partnership | Stage 1: The Intensive (30 days)"
 ---
-
-- [Founders](/how-it-works)
-- [Wayfinders](/wayfinders)
-
-<a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
-
 We protect our founders’ identities. Most founders we work with lead visible companies and public lives –– we don't ask them to tell the private parts of their story publicly. Anonymity lets founders be candid about their intimate work — without risking reputations, partnerships, or market fallout.
+
+<picture class="page-sketch page-sketch-feature">
+  <source type="image/webp" srcset="/sketches/case-study-v-shore-boat@1x.webp 540w, /sketches/case-study-v-shore-boat@2x.webp 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" />
+  <img src="/sketches/case-study-v-shore-boat@1x.png" srcset="/sketches/case-study-v-shore-boat@1x.png 540w, /sketches/case-study-v-shore-boat@2x.png 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" width="540" height="400" alt="A quiet shoreline: a small empty rowboat at the edge of a teal stretch of water, a folded jacket and a pair of shoes on the shore, hills on the horizon." />
+</picture>
 
 From identity void to decisive leadership — how V reclaimed life after success
 

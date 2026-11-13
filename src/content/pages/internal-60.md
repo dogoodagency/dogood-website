@@ -3,11 +3,10 @@ title: "internal-60"
 description: "Internal DoGood scheduling page"
 tidycal: "dogoodagency/internal-60"
 ---
-
-- [Founders](/how-it-works)
-- [Wayfinders](/wayfinders)
-
-<a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
+<picture class="page-icon">
+  <source type="image/webp" srcset="/sketches/booking-open-diary@1x.webp 1x, /sketches/booking-open-diary@2x.webp 2x" />
+  <img src="/sketches/booking-open-diary@1x.png" srcset="/sketches/booking-open-diary@1x.png 1x, /sketches/booking-open-diary@2x.png 2x" width="96" height="96" alt="An open desk diary with a blank grid, one day marked in teal, a pen, and a small pink ribbon." />
+</picture>
 
 # Internal Sync – 60 min
 
