@@ -5605,14 +5605,6 @@ button.btn-subscribe:focus-visible {
     order: -1;
   }
 
-  #for-you .card.rose {
-    order: 1;
-  }
-
-  #for-you .card.ink {
-    order: 2;
-  }
-
   .why-sketch {
     position: relative;
     z-index: 0;
