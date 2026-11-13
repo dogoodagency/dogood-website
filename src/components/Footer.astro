@@ -28,8 +28,8 @@ const advisors = [
 ];
 
 const connectLinks = [
-  { href: "/contact", label: "Contact" },
-  { href: urls.linkedin, label: "LinkedIn", external: true },
+  { href: "/contact", label: "Contact", icon: "contact" },
+  { href: urls.linkedin, label: "LinkedIn", external: true, icon: "linkedin" },
 ];
 
 const legal = [
@@ -150,7 +150,17 @@ const legal = [
         connectLinks.map((link) => (
           <li>
             <a href={link.href} rel={link.external ? "noopener noreferrer" : undefined}>
-              <span class="connect-slot" aria-hidden="true"></span>
+              <picture class="connect-slot" aria-hidden="true">
+                <source type="image/svg+xml" srcset={`/icons/icon-${link.icon}.svg`} />
+                <img
+                  src={`/icons/icon-${link.icon}@1x.png`}
+                  srcset={`/icons/icon-${link.icon}@1x.png 1x, /icons/icon-${link.icon}@2x.png 2x, /icons/icon-${link.icon}@3x.png 3x`}
+                  width="20"
+                  height="20"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </picture>
               {link.label}
             </a>
           </li>

@@ -5149,7 +5149,7 @@ button.btn-subscribe:focus-visible {
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
-  gap: 28px;
+  gap: 32px;
   margin-top: 16px;
 }
 
@@ -5163,7 +5163,8 @@ button.btn-subscribe:focus-visible {
   gap: 8px;
 }
 
-.footer-lets .connect-slot {
+.footer-lets .connect-slot,
+.footer-lets .connect-slot img {
   display: block;
   width: 20px;
   height: 20px;
