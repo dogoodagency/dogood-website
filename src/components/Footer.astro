@@ -7,23 +7,29 @@ const action =
 
 interface Props {
   hideOptin?: boolean;
+  meetFunnel?: boolean;
 }
 
-const { hideOptin = false } = Astro.props;
+const { hideOptin = false, meetFunnel = false } = Astro.props;
 const copyrightYear = new Date().getFullYear();
 
 const explore = [
   { href: "/about", label: "About us" },
   { href: "/insights", label: "Insights" },
   { href: "/newsletter", label: "Newsletter" },
-  { href: "/diagnostics", label: "Founder Diagnostic™" },
+  { href: urls.podcast, label: "Podcast" },
   { href: "/faqs", label: "FAQ" },
 ];
 
-const contact = [
+const advisors = [
+  { href: "/for-advisors", label: "Partner with us" },
+  { href: "/for-advisors/client-tools", label: "Client tools" },
+  { href: "/for-advisors/insights", label: "Insights for advisors" },
+];
+
+const connectLinks = [
   { href: "/contact", label: "Contact" },
   { href: urls.linkedin, label: "LinkedIn", external: true },
-  { href: urls.podcast, label: "Podcast" },
 ];
 
 const legal = [
@@ -33,7 +39,7 @@ const legal = [
 ];
 ---
 
-<div class="footer-wave" aria-hidden="true">
+<div class:list={["footer-wave", meetFunnel && "is-filled"]} aria-hidden="true">
   <Wave fill="#2A0B4F" />
 </div>
 <footer class="footer" id="footer">
@@ -78,23 +84,6 @@ const legal = [
           </>
         )
       }
-      <a class="connect-mark" href="/contact">
-        <span class="connect-lets">Let’s</span>
-        <span class="connect-word">
-          Connect
-          <svg class="connect-wave" viewBox="0 0 640 48" aria-hidden="true">
-            <path
-              id="connect-wave-path"
-              d="M6 30 C 28 16, 46 38, 78 26 C 112 12, 132 36, 168 24 C 206 10, 228 40, 272 22 C 314 6, 340 38, 386 22 C 430 8, 456 36, 502 20 C 544 6, 572 32, 612 18 C 626 14, 634 20, 634 20"
-              fill="none"
-              stroke="#28DBB0"
-              stroke-width="14"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </span>
-      </a>
     </div>
     <div class="footer-explore">
       <h2 class="col-title">Explore</h2>
@@ -108,15 +97,13 @@ const legal = [
         }
       </ul>
     </div>
-    <div class="footer-connect">
-      <h2 class="col-title">Connect</h2>
+    <div class="footer-advisors">
+      <h2 class="col-title">For Advisors</h2>
       <ul>
         {
-          contact.map((link) => (
+          advisors.map((link) => (
             <li>
-              <a href={link.href} rel={link.external ? "noopener noreferrer" : undefined}>
-                {link.label}
-              </a>
+              <a href={link.href}>{link.label}</a>
             </li>
           ))
         }
@@ -137,6 +124,36 @@ const legal = [
         Services are provided by DoGood OÜ, our EU-based operating company.
       </p>
     </div>
+  </div>
+  <div class="footer-lets">
+    <a class="connect-mark" href="/contact">
+      <span class="connect-lets">Let’s</span>
+      <span class="connect-word">
+        Connect
+        <svg class="connect-wave" viewBox="0 0 640 48" aria-hidden="true">
+          <path
+            id="connect-wave-path"
+            d="M6 30 C 28 16, 46 38, 78 26 C 112 12, 132 36, 168 24 C 206 10, 228 40, 272 22 C 314 6, 340 38, 386 22 C 430 8, 456 36, 502 20 C 544 6, 572 32, 612 18 C 626 14, 634 20, 634 20"
+            fill="none"
+            stroke="#28DBB0"
+            stroke-width="14"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </span>
+    </a>
+    <ul>
+      {
+        connectLinks.map((link) => (
+          <li>
+            <a href={link.href} rel={link.external ? "noopener noreferrer" : undefined}>
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
   </div>
   <div class="legal">
     <div>

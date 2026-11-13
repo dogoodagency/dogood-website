@@ -2067,7 +2067,7 @@ main li {
 
 .footer-form input {
   width: 100%;
-  max-width: 320px;
+  max-width: 100%;
 }
 
 .footer-form .btn-subscribe {
@@ -2557,6 +2557,10 @@ p.say-no,
 
 .footer-wave {
   background: #d4f4eb;
+}
+
+.footer-wave.is-filled {
+  background: #28dbb0;
 }
 
 .footer {
@@ -4087,9 +4091,13 @@ iframe.tidycal-embed,
 
 #apply-first .cap-pill,
 #apply-v .cap-small,
-#next .next-note,
 #first-card .stage-note {
   background: #f5f2f9;
+}
+
+#next .next-note {
+  background: transparent;
+  text-align: center;
 }
 
 #first-card .btn-partnership,
@@ -4409,7 +4417,7 @@ a.btn-partnership:focus-visible {
 
 #apply-first .cap-pill,
 #apply-v .cap-small {
-  margin-top: 36px;
+  margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -4465,11 +4473,15 @@ a.btn-partnership:focus-visible {
   border: 0;
 }
 
-.footer-subscribe .connect-mark {
+.footer-lets .connect-mark {
   display: block;
   margin: 150px 0 0;
   width: min(1080px, calc(100vw - 80px));
   text-align: left;
+}
+
+.footer-lets ul {
+  margin-top: 16px;
 }
 
 .footer .legal {
@@ -4484,23 +4496,35 @@ p.services-note {
 }
 
 .footer-form {
-  align-items: center;
+  align-items: flex-start;
 }
 
 .email-field {
   position: relative;
-  flex: 1 1 auto;
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 100%;
   min-width: 0;
   display: flex;
   align-items: center;
 }
 
+@media (min-width: 1081px) {
+  .footer-subscribe .email-field {
+    width: 420px;
+    max-width: none;
+  }
+}
+
 .email-field .stay-envelope,
 .email-field .stay-envelope img {
   position: absolute;
+  top: 50%;
   left: 9px;
   width: 20px;
   height: 20px;
+  margin: 0;
+  transform: translateY(-50%);
   pointer-events: none;
   background: transparent;
   border: 0;
@@ -4569,7 +4593,7 @@ button.btn-subscribe:focus-visible {
     width: 144px;
   }
 
-  .footer-subscribe .connect-mark {
+  .footer-lets .connect-mark {
     margin-top: 64px;
     width: 100%;
   }
@@ -4821,7 +4845,7 @@ button.btn-subscribe:focus-visible {
 }
 
 @media (max-width: 480px) {
-  .footer-subscribe .connect-mark {
+  .footer-lets .connect-mark {
     margin-top: 150px;
   }
 

@@ -162,6 +162,6 @@ These are organisations our team has worked with. They are not all founders afte
 
 Complete the short application for Stage 1 (30 days). We’ll respond within 24 hours. If there’s a fit, we’ll have an honest conversation.
 
-**Caption:** Private · Limited to 5 new founders/month
+**Caption:** Limited to five new founders a month
 
 <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>

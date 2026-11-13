@@ -249,6 +249,6 @@ Are you interested?
 Complete the short application for Stage 1 (30 days). We’ll respond within 24 hours with next steps.
 
 <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
-Private · Limited to 5 new founders/month
+Limited to five new founders a month
 
 If there's a fit, we'll talk — no pitch, just an honest conversation to see if this is the right path.

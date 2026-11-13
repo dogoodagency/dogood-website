@@ -251,7 +251,7 @@ Next Actions:
 Step 1 – If you're ready to stop the drift and rebuild your baseline before it compounds into higher strain, apply for the Founder Reclamation Partnership (FRP). This is prevention, not crisis intervention — and that's exactly when it works best.
 
 <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
-Limited to 5 new founders/month
+Limited to five new founders a month
 
 Step 2 – To create rapid results in a high-intensity, structured environment, we use the CrisisClarity Map™ as the backbone of our FRP Stage 1: The Intensive (30 days). During this phase, we help you stabilize the crisis, uncover the root cause, and build the map. Discover the insights of our proprietary 4-step method.
 

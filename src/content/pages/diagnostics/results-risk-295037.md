@@ -259,7 +259,7 @@ Expedited Start gets you started with the FRP Stage 1 within 7 days (once approv
 That is what the Founder Reclamation Partnership (FRP) has been designed for. You don't have to carry this alone anymore.
 
 <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
-Limited to 5 new founders/month
+Limited to five new founders a month
 
 Step 2 – To create rapid results in a high-intensity, structured environment, we use the CrisisClarity Map™ as the backbone of our FRP Stage 1: The Intensive (30 days).
 

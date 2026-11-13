@@ -270,7 +270,7 @@ Private work. Real consequences. Real change.
 
 <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
 
-Confidential · Limited to 5 new founders/month
+Limited to five new founders a month
 
 ##### The Wayfinder Team
 

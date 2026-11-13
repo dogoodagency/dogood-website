@@ -267,7 +267,7 @@ You'll work directly with our Wayfinders to stabilize, map root causes, and buil
 This is an intervention, not optimization. And it works best before you move into PSI band 5.
 
 <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
-Limited to 5 new founders/month
+Limited to five new founders a month
 
 Step 2 – To create rapid results in a high-intensity, structured environment, we use the CrisisClarity Map™ as the backbone of our FRP Stage 1: The Intensive (30 days). During this phase, we help you stabilize the crisis, uncover the root cause, and build the map.
 

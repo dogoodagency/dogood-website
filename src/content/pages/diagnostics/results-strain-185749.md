@@ -269,7 +269,7 @@ Next Actions:
 Step 1 – This is intervention, not prevention. The Founder Reclamation Partnership is designed for founders at this exact point: high strain, function slipping, but still capable of correcting course before it becomes a crisis. If you're ready to stop compensating and start repairing, apply now.
 
 <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
-Limited to 5 new founders/month
+Limited to five new founders a month
 
 Step 2 – To create rapid results in a high-intensity, structured environment, we use the CrisisClarity Map™ as the backbone of our FRP Stage 1: The Intensive (30 days). During this phase, we help you stabilize the crisis, uncover the root cause, and build the map. Discover the insights of our proprietary 4-step method.
 

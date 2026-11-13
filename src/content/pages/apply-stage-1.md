@@ -12,7 +12,7 @@ This is Stage 1 of the Founder Reclamation Partnership
 
 <a class="btn-apply" href="https://form.jotform.com/DoGoodAgency/frp-stage-1">Apply for Stage 1</a>
 
-Confidential · Limited to 5 founders/month
+Limited to five new founders a month
 
 Case Study
 

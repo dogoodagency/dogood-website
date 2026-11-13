@@ -36,7 +36,7 @@ Apply → Conversation → Start Stage 1
 
 <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
 
-Private · Limited to 5 new founders/month
+Limited to five new founders a month
 
 We protect our delivery quality: Ask about Expedited Start if urgent (FRP can begin within 7 days)
 
@@ -315,7 +315,7 @@ Private work. Real consequences. Real change.
 
 <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
 
-Confidential · Limited to 5 new founders/month
+Limited to five new founders a month
 
 ##### The Wayfinder Team
 

@@ -16,7 +16,7 @@ Each FRP stage includes 1x In-Person Intensive (for Stage 1 + Stage 2). In‑Per
 
 <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
 
-For founders · Limited to 5 new founders/month
+Limited to five new founders a month
 
 How the Client-Fit process works
 

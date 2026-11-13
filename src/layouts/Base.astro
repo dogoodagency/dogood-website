@@ -8,6 +8,7 @@ interface Props {
   description?: string;
   canonical?: string;
   hideOptin?: boolean;
+  meetFunnel?: boolean;
 }
 
 const title =
@@ -17,6 +18,7 @@ const description =
   "You built the company and got out, but it doesn't feel how you expected. Start with a private 30-day engagement for founders navigating life after exit.";
 const canonical = Astro.props.canonical ?? "https://www.dogoodagency.co/";
 const hideOptin = Astro.props.hideOptin ?? false;
+const meetFunnel = Astro.props.meetFunnel ?? false;
 const ogTitle = "DoGood Founders";
 const ogDescription = Astro.props.description
   ? description
@@ -92,7 +94,7 @@ const organization = {
     <main id="main">
       <slot />
     </main>
-    <Footer hideOptin={hideOptin} />
+    <Footer hideOptin={hideOptin} meetFunnel={meetFunnel} />
     <script>
       const thankYou = "Thank you! You have successfully joined our subscriber list.";
 

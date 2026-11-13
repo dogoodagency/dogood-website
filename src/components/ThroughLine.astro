@@ -293,10 +293,10 @@
         let level = 1;
         if (!reduce.matches) {
           const rect = funnel.getBoundingClientRect();
-          const target = window.innerHeight * 0.5;
-          if (rect.height <= 1 || target <= rect.top) level = 0;
-          else if (target >= rect.bottom) level = 1;
-          else level = (target - rect.top) / rect.height;
+          const viewH = window.innerHeight;
+          if (rect.height <= 1 || rect.top >= viewH) level = 0;
+          else if (rect.bottom <= viewH) level = 1;
+          else level = (viewH - rect.top) / rect.height;
         }
         const offset = level.toFixed(4);
         swellDark.setAttribute("offset", offset);
@@ -378,7 +378,17 @@
       const crossY = aboveCopy > belowArt ? (belowArt + aboveCopy) / 2 : aboveCopy;
       const swell = box(document.querySelector("#next .swell-bg")) || next;
       const mouthX = swell.x + swell.w * (720 / 1440);
-      const mouthY = swell.y + Math.min(32, swell.h * 0.05);
+      const funnelTop = swell.y;
+      const mouthY = funnelTop + Math.min(32, swell.h * 0.05);
+      const guaranteeCard =
+        box(document.querySelector("#guarantee .guarantee-card")) ||
+        box(document.querySelector(".guarantee-card"));
+      const halfStroke = founderStroke / 2;
+      const belowCard = guaranteeCard ? guaranteeCard.bottom + halfStroke + 10 : funnelTop - 80;
+      const bendY = Math.min(funnelTop - 28, Math.max(belowCard, funnelTop - halfStroke - 16));
+      const approachX = Math.max(dropX + 24, mouthX - Math.max(20, Math.min(48, funnelTop - bendY)));
+      const intoMouth = funnelTop + Math.min(72, Math.max(40, swell.h * 0.08));
+      let dropIn = { bendY, mouthX, radius: mouthX - approachX, intoMouth };
       const scale = box(document.querySelector(".guarantee-scale"));
       const founderPts = monotonic([
         { x: -20, y: entryY },
@@ -392,11 +402,11 @@
               { x: dropX, y: Math.max(crossY + 40, scale.y - turnRadius) },
               { x: scale.x + scale.w * 0.33, y: scale.y + scale.h * 0.28 },
               { x: scale.x + scale.w * 0.33, y: scale.y + scale.h * 0.48 },
-              { x: dropX, y: scale.bottom + turnRadius },
+              { x: dropX, y: Math.min(scale.bottom + turnRadius, bendY) },
             ]
           : []),
-        { x: dropX, y: mouthY },
-        { x: mouthX, y: mouthY },
+        { x: dropX, y: bendY },
+        { x: approachX, y: bendY },
       ]);
 
       const companyY = Math.min(exit.y - 30, entryY + 64);
@@ -413,6 +423,7 @@
           ]);
 
       if (phone) {
+        dropIn = null;
         const blocks = [];
         const pushRect = (rect) => {
           if (rect.width < 8 || rect.height < 8) return;
@@ -491,7 +502,17 @@
       svg.setAttribute("width", String(width));
       svg.setAttribute("height", String(height));
 
-      founder.setAttribute("d", fillet(founderPts, turnRadius));
+      let founderD = fillet(founderPts, turnRadius);
+      if (dropIn && dropIn.radius > 8 && intoMouth > bendY) {
+        const radius = dropIn.radius;
+        const handle = radius * 0.5522847498;
+        const arcStart = mouthX - radius;
+        founderD += ` C ${(arcStart + handle).toFixed(1)} ${bendY.toFixed(1)}, ${mouthX.toFixed(1)} ${(bendY + radius - handle).toFixed(1)}, ${mouthX.toFixed(1)} ${(bendY + radius).toFixed(1)}`;
+        if (intoMouth > bendY + radius + 1) {
+          founderD += ` L ${mouthX.toFixed(1)} ${intoMouth.toFixed(1)}`;
+        }
+      }
+      founder.setAttribute("d", founderD);
       company.setAttribute("d", fillet(companyPts, turnRadius));
       companyMask.setAttribute("d", fillet(companyPts, turnRadius));
       alignDoor();
