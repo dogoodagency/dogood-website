@@ -441,6 +441,7 @@
       }
       if (stones) {
         const behindMan = stones.left + stones.w * 0.36 - (phone ? stones.w * 0.2 : 110);
+        if (!phone) add(founderPts, behindMan - 48, stones.y + Math.min(80, stones.h * 0.12));
         add(founderPts, behindMan, stones.y + stones.h * 0.42);
         add(founderPts, behindMan, stones.bottom - 16);
       }
@@ -461,9 +462,15 @@
         add(founderPts, forYou.cx, belowBoth);
       }
       if (flyer) {
-        const through = flyer.left + flyer.w * 0.22;
-        add(founderPts, through, flyer.y + flyer.h * 0.42);
-        add(founderPts, through, flyer.y + flyer.h * 0.78);
+        const through = flyer.left + flyer.w * 0.22 + (phone ? 0 : 140);
+        if (phone) {
+          add(founderPts, through, flyer.y + flyer.h * 0.42);
+          add(founderPts, through, flyer.y + flyer.h * 0.78);
+        } else {
+          add(founderPts, through + 200, flyer.y + flyer.h * 0.455);
+          add(founderPts, through - 15, flyer.y + flyer.h * 0.595);
+          add(founderPts, through, flyer.y + flyer.h * 0.775);
+        }
       }
       if (leaders) add(founderPts, leaders.cx, leaders.y + Math.max(70, leaders.h * 0.55));
       if (pinV) {
