@@ -5137,6 +5137,7 @@ button.btn-subscribe:focus-visible {
     top: -10.8px;
     width: calc(1.2 * (100% + 60px));
     max-width: none;
+    translate: -115px -150px;
   }
 
   .hero-sketch {
