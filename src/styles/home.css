@@ -337,6 +337,11 @@ main ul {
   height: 80px;
 }
 
+.hero-wave {
+  position: relative;
+  z-index: 2;
+}
+
 .sketch-ph {
   display: flex;
   align-items: center;
@@ -375,7 +380,7 @@ main ul {
 #clients {
   position: relative;
   z-index: 2;
-  background: #f5f2f9;
+  background: transparent;
   padding: 18px 0 10px;
 }
 
@@ -566,6 +571,8 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
 
 #first-draw img {
   display: block;
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: auto;
   object-fit: contain;

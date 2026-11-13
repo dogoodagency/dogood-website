@@ -6,6 +6,7 @@
         <rect id="company-cover" x="0" y="0" width="0" height="0" fill="#000" />
       </mask>
     </defs>
+    <path id="founder-join" fill="#28DBB0" stroke="none" />
     <path id="founder-line" stroke="#28DBB0" stroke-linecap="round" stroke-linejoin="round" />
     <path
       id="company-line"
@@ -412,21 +413,34 @@
         };
         if (!prev || dist(prev, point) > 24) list.push(point);
       };
-      add(founderPts, -30, entryY);
-      add(founderPts, rightLane, entryY);
+      const heroImg = document.querySelector(".hero-sketch");
+      const heroWave = document.querySelector(".hero-wave");
+      let tipX = width * 0.5;
+      let tipY = entryY;
+      if (heroImg instanceof Element && heroWave instanceof Element) {
+        const image = heroImg.getBoundingClientRect();
+        const wave = heroWave.getBoundingClientRect();
+        tipX = image.left - mainRect.left + image.width * (111 / 520);
+        tipY = wave.top - mainRect.top + 2;
+      }
+      add(founderPts, tipX, tipY);
+      add(founderPts, tipX, tipY + (phone ? 150 : 240));
+      add(founderPts, rightLane, Math.max(tipY + (phone ? 260 : 420), exit.y + exit.h * 0.15));
       add(founderPts, rightLane, exit.y + exit.h * 0.72);
-      add(founderPts, exit.left + exit.w * 0.18, exit.bottom + turnRadius);
-      if (pinJ) add(founderPts, pinJ.cx, pinJ.cy);
-      if (stones) add(founderPts, Math.max(founderStroke * 0.6, stones.left + stones.w * 0.22), stones.cy);
+      add(founderPts, exit.left + exit.w * 0.2, exit.bottom + turnRadius * 0.65);
+      if (pinJ) add(founderPts, pinJ.cx, Math.max(pinJ.cy, exit.bottom + turnRadius));
+      if (stones) {
+        add(founderPts, stones.left + stones.w * 0.1, stones.y + stones.h * 0.42);
+        add(founderPts, stones.left + stones.w * 0.28, stones.bottom - 6);
+      }
       if (firstCard) {
-        const clear = apply1 ? apply1.left - founderStroke * 0.9 : firstCard.cx;
-        add(founderPts, firstCard.cx, firstCard.bottom + 20);
-        add(founderPts, clear, firstCard.bottom + turnRadius);
+        add(founderPts, firstCard.left + firstCard.w * 0.2, firstCard.bottom + 28);
+        add(founderPts, firstCard.right - 24, firstCard.bottom + 56);
       }
       if (apply1) {
-        const clear = apply1.left - founderStroke * 0.9;
-        add(founderPts, clear, apply1.cy);
-        add(founderPts, clear, apply1.bottom + 80);
+        const lane = Math.min(width - founderStroke * 0.45, apply1.right + founderStroke * 0.42);
+        add(founderPts, lane, apply1.y + 8);
+        add(founderPts, lane, apply1.bottom + 64);
       }
       if (forYou) {
         add(founderPts, forYou.cx, forYou.y - 8);
@@ -465,35 +479,14 @@
       const companyY = entryY - Math.max(36, companyStroke + 16);
       const companyExitY = exit.y + exit.h * 0.66;
       const companyPts = [];
-      const machineEl = document.querySelector(".exit-machine");
-      const machine = machineEl instanceof HTMLElement ? box(machineEl) : null;
       const cover = document.querySelector("#company-cover");
-      if (machine) {
-        const artLeft = machine.left + machine.w * (36 / 390);
-        const artTop = machine.y + machine.h * (54 / 414);
-        const artRight = machine.left + machine.w * (353 / 390);
-        const artBottom = machine.y + machine.h * (359 / 414);
-        const artCx = (artLeft + artRight) / 2;
-        add(companyPts, -30, companyY);
-        add(companyPts, artCx, companyY);
-        add(companyPts, artCx, artTop);
-        add(companyPts, artRight, artBottom);
-        add(companyPts, width + 40, artBottom);
-        if (cover instanceof SVGRectElement) {
-          cover.setAttribute("x", artLeft.toFixed(1));
-          cover.setAttribute("y", artTop.toFixed(1));
-          cover.setAttribute("width", Math.max(0, artRight - artLeft).toFixed(1));
-          cover.setAttribute("height", Math.max(0, artBottom - artTop).toFixed(1));
-        }
-      } else {
-        add(companyPts, -30, companyY);
-        add(companyPts, rightLane + founderStroke * 0.55, companyY);
-        add(companyPts, rightLane + founderStroke * 0.7, exit.y + exit.h * 0.4);
-        add(companyPts, width + 40, companyExitY);
-        if (cover instanceof SVGRectElement) {
-          cover.setAttribute("width", "0");
-          cover.setAttribute("height", "0");
-        }
+      add(companyPts, -30, companyY);
+      add(companyPts, rightLane + founderStroke * 0.55, companyY);
+      add(companyPts, rightLane + founderStroke * 0.7, exit.y + exit.h * 0.4);
+      add(companyPts, width + 40, companyExitY);
+      if (cover instanceof SVGRectElement) {
+        cover.setAttribute("width", "0");
+        cover.setAttribute("height", "0");
       }
 
       const height = Math.max(200, end);
@@ -503,7 +496,7 @@
       svg.setAttribute("width", String(width));
       svg.setAttribute("height", String(height));
 
-      const routeRadius = phone ? Math.max(28, turnRadius * 0.85) : 72;
+      const routeRadius = phone ? Math.max(36, turnRadius * 0.7) : 140;
       let founderD = fillet(founderPts, routeRadius);
       if (dropIn && dropIn.radius > 8 && intoMouth > bendY) {
         const radius = dropIn.radius;
@@ -515,6 +508,44 @@
         }
       }
       founder.setAttribute("d", founderD);
+      const join = document.querySelector("#founder-join");
+      const fullLength = founder.getTotalLength();
+      const taperLen = Math.min(phone ? 80 : 190, Math.max(40, fullLength * 0.045));
+      if (join instanceof SVGPathElement && fullLength > taperLen + 30) {
+        const startW = phone ? 8 : 16;
+        const samples = [];
+        const step = 8;
+        for (let length = 0; length <= taperLen; length += step) {
+          const point = founder.getPointAtLength(length);
+          const next = founder.getPointAtLength(Math.min(fullLength - 1, length + step));
+          const dx = next.x - point.x;
+          const dy = next.y - point.y;
+          const hyp = Math.hypot(dx, dy) || 1;
+          const t = length / taperLen;
+          const ease = t * t * (3 - 2 * t);
+          const half = (startW + (founderStroke - startW) * ease) / 2;
+          samples.push({ x: point.x, y: point.y, nx: -dy / hyp, ny: dx / hyp, half });
+        }
+        const edge = (side) =>
+          samples.map((sample) => {
+            const x = sample.x + sample.nx * sample.half * side;
+            const y = sample.y + sample.ny * sample.half * side;
+            return `${x.toFixed(1)} ${y.toFixed(1)}`;
+          });
+        const left = edge(1);
+        const right = edge(-1).reverse();
+        join.setAttribute("d", `M ${left[0]} L ${left.slice(1).join(" L ")} L ${right.join(" L ")} Z`);
+        const from = Math.max(0, taperLen - founderStroke * 0.45);
+        const trail = [];
+        for (let length = from; length < fullLength; length += 14) trail.push(founder.getPointAtLength(length));
+        trail.push(founder.getPointAtLength(fullLength));
+        founder.setAttribute(
+          "d",
+          trail.map((point, index) => `${index ? "L" : "M"} ${point.x.toFixed(1)} ${point.y.toFixed(1)}`).join(" "),
+        );
+      } else if (join instanceof SVGPathElement) {
+        join.setAttribute("d", "");
+      }
       company.setAttribute("d", fillet(companyPts, routeRadius));
       companyMask.setAttribute("d", fillet(companyPts, routeRadius));
       alignDoor();
@@ -648,7 +679,6 @@
           }
           return edge + (side === "left" ? -founderStroke / 2 : founderStroke / 2);
         };
-        const exitCard = box(document.querySelector("#exit-card"));
         const messageCard = box(document.querySelector("#message-card"));
         const wayTitle = box(document.querySelector("#wayfinders h2"));
         const guaranteeCard = box(document.querySelector(".guarantee-card"));
@@ -663,12 +693,6 @@
           fig.dataset.trigger = String(triggerAt(spot.y + 75 * spec.scale));
           fig.classList.add("is-placed");
         };
-        const companyExit = company.getPointAtLength(companyLength);
-        const dashBottom = companyExit.y + companyStroke / 2;
-        const p1Top = dashBottom + 4 - (-24.9) * scale;
-        let p1Left = width - 16 - (78.9 + 134) * scale;
-        if (exitCard && p1Top < exitCard.bottom - 8) p1Left = Math.max(p1Left, exitCard.right + 12);
-        place("1", p1Left, p1Top);
         if (wayTitle) {
           const p2Top = (messageCard ? messageCard.bottom + 10 : wayTitle.y - 180) - (-22.6) * scale;
           const beside = lineEdge(p2Top, p2Top + 150 * scale, "left") - 16;
@@ -729,6 +753,11 @@
       const draw = () => {
         const drawn = paint(founder, founder.getTotalLength());
         paint(companyMask, companyMask.getTotalLength());
+        const meet = document.querySelector("#founder-join");
+        if (meet instanceof SVGPathElement) {
+          const reached = reduce.matches || svg.getBoundingClientRect().top + tipY <= window.innerHeight * 0.5;
+          meet.style.opacity = reached ? "1" : "0";
+        }
         paintFunnel();
         reveal();
         document.querySelectorAll("[data-line-figure]").forEach((fig) => {
