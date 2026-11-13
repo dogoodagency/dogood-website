@@ -788,6 +788,44 @@
 
       const reveal = revealArt;
 
+      // The route above the first Apply button stays in the waypoint list, but it
+      // is not drawn. The visible line starts under that button, cap tucked behind it.
+      const applyBtn = document.querySelector("#apply-first .btn-apply");
+      if (applyBtn instanceof Element && main) {
+        const btn = applyBtn.getBoundingClientRect();
+        const origin = main.getBoundingClientRect();
+        const note = document.querySelector("#apply-first .cap-pill");
+        const noteBottom = note instanceof Element ? note.getBoundingClientRect().bottom : btn.bottom;
+        const btnLeft = btn.left - origin.left;
+        const btnRight = btn.right - origin.left;
+        const btnTop = btn.top - origin.top;
+        const coverBottom = noteBottom - origin.top;
+        const lenNow = founder.getTotalLength();
+        const capR = founderStroke / 2;
+        let startLen = -1;
+        for (let d = 0; d <= lenNow; d += 4) {
+          const point = founder.getPointAtLength(d);
+          const ahead = founder.getPointAtLength(Math.min(lenNow, d + 12));
+          const goingLeft = ahead.x < point.x - 0.15;
+          const besideButton = point.y >= btnTop && point.y <= coverBottom + capR;
+          const underTheButton = point.x <= btnRight - capR * 0.45 && point.x >= btnLeft;
+          if (goingLeft && besideButton && underTheButton) {
+            startLen = d;
+            break;
+          }
+        }
+        if (startLen > 8) {
+          const kept = [];
+          for (let d = startLen; d < lenNow; d += 8) kept.push(founder.getPointAtLength(d));
+          kept.push(founder.getPointAtLength(lenNow));
+          founder.setAttribute(
+            "d",
+            kept.map((point, index) => `${index ? "L" : "M"} ${point.x.toFixed(1)} ${point.y.toFixed(1)}`).join(" "),
+          );
+          if (join instanceof SVGPathElement) join.setAttribute("d", "");
+        }
+      }
+
       const paint = (path, length) => {
         if (reduce.matches) {
           path.style.strokeDasharray = `${length}`;
