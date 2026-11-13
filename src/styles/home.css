@@ -339,7 +339,7 @@ main ul {
 
 .hero-wave {
   position: relative;
-  z-index: 2;
+  z-index: 0;
 }
 
 .sketch-ph {

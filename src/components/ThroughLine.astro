@@ -403,7 +403,7 @@
       const swell = at("#next .swell-bg") || next;
       const mouthX = swell.x + swell.w * (720 / 1440);
       const intoMouth = swell.y + Math.min(72, Math.max(40, swell.h * 0.08));
-      const rightLane = Math.min(width - founderStroke * 0.35, exit.right + founderStroke * 0.35);
+      const rightLane = Math.min(width - founderStroke * 0.45, exit.right + 68);
       const founderPts = [];
       const add = (list, x, y) => {
         const prev = list[list.length - 1];
@@ -414,64 +414,82 @@
         if (!prev || dist(prev, point) > 24) list.push(point);
       };
       const heroImg = document.querySelector(".hero-sketch");
-      const heroWave = document.querySelector(".hero-wave");
       let tipX = width * 0.5;
       let tipY = entryY;
-      if (heroImg instanceof Element && heroWave instanceof Element) {
+      let jointW = phone ? 5 : 10;
+      if (heroImg instanceof Element) {
         const image = heroImg.getBoundingClientRect();
-        const wave = heroWave.getBoundingClientRect();
-        tipX = image.left - mainRect.left + image.width * (111 / 520);
-        tipY = wave.top - mainRect.top + 2;
+        const scale = image.width / 520;
+        // Measured on the rendered drawing: the path's last solid pixels sit here,
+        // just above where the ribbon pinches to a point.
+        tipX = image.left - mainRect.left + image.width * (132 / 520);
+        tipY = image.top - mainRect.top + image.height * (276.5 / 340);
+        jointW = Math.max(4, scale * 16);
+        add(founderPts, tipX, tipY);
+        add(founderPts, tipX - 6 * scale, tipY + 22 * scale);
+      } else {
+        add(founderPts, tipX, tipY);
       }
-      add(founderPts, tipX, tipY);
-      add(founderPts, tipX, tipY + (phone ? 150 : 240));
-      add(founderPts, rightLane, Math.max(tipY + (phone ? 260 : 420), exit.y + exit.h * 0.15));
-      add(founderPts, rightLane, exit.y + exit.h * 0.72);
-      add(founderPts, exit.left + exit.w * 0.2, exit.bottom + turnRadius * 0.65);
-      if (pinJ) add(founderPts, pinJ.cx, Math.max(pinJ.cy, exit.bottom + turnRadius));
+      add(founderPts, rightLane, Math.max(tipY + (phone ? 220 : 360), exit.y + exit.h * 0.22));
+      add(founderPts, rightLane, exit.bottom + 28);
+      add(founderPts, exit.left + exit.w * 0.22, exit.bottom + turnRadius * 0.85);
+      if (pinJ) {
+        add(founderPts, pinJ.cx, pinJ.y - 8);
+        add(founderPts, pinJ.cx, pinJ.bottom + 8);
+      }
       if (stones) {
-        add(founderPts, stones.left + stones.w * 0.1, stones.y + stones.h * 0.42);
-        add(founderPts, stones.left + stones.w * 0.28, stones.bottom - 6);
+        const besideMan = stones.right - 48;
+        add(founderPts, besideMan, stones.y + stones.h * 0.2);
+        add(founderPts, besideMan, stones.bottom - 12);
       }
       if (firstCard) {
-        add(founderPts, firstCard.left + firstCard.w * 0.2, firstCard.bottom + 28);
-        add(founderPts, firstCard.right - 24, firstCard.bottom + 56);
+        add(founderPts, firstCard.left + 36, firstCard.bottom + 18);
+        add(founderPts, firstCard.right - 20, firstCard.bottom + 24);
       }
       if (apply1) {
-        const lane = Math.min(width - founderStroke * 0.45, apply1.right + founderStroke * 0.42);
-        add(founderPts, lane, apply1.y + 8);
-        add(founderPts, lane, apply1.bottom + 64);
+        const lane = Math.min(width - 18, apply1.right + founderStroke * 0.62);
+        const below = apply1.bottom + 30;
+        add(founderPts, lane, apply1.y - 36);
+        add(founderPts, lane, below);
+        add(founderPts, forYou ? forYou.cx : lane - 280, below + 20);
       }
       if (forYou) {
-        add(founderPts, forYou.cx, forYou.y - 8);
-        add(founderPts, forYou.cx, forYou.y + forYou.h * 0.34);
+        add(founderPts, forYou.cx, forYou.y + forYou.h * 0.28);
+        add(founderPts, forYou.cx, forYou.y + forYou.h * 0.46);
         const between = notYou ? (forYou.right + notYou.left) / 2 : forYou.right + 48;
-        add(founderPts, between, forYou.y + forYou.h * 0.7);
+        add(founderPts, between, forYou.y + forYou.h * 0.74);
       }
       if (flyer) {
-        add(founderPts, flyer.cx, flyer.y + flyer.h * 0.42);
-        add(founderPts, flyer.cx, flyer.y + flyer.h * 0.72);
+        const through = flyer.left + flyer.w * 0.22;
+        add(founderPts, through, flyer.y + flyer.h * 0.42);
+        add(founderPts, through, flyer.y + flyer.h * 0.78);
       }
-      if (leaders) add(founderPts, leaders.cx, leaders.y + 80);
-      if (pinV) add(founderPts, pinV.cx, pinV.cy);
+      if (leaders) add(founderPts, leaders.cx, leaders.y + Math.max(70, leaders.h * 0.55));
+      if (pinV) {
+        add(founderPts, pinV.cx, pinV.y - 16);
+        add(founderPts, pinV.cx, pinV.bottom + 12);
+      }
       if (seen) {
-        add(founderPts, seen.cx, seen.y + seen.h * 0.35);
-        add(founderPts, seen.cx, seen.bottom - 8);
+        add(founderPts, seen.cx, seen.y + seen.h * 0.42);
+        add(founderPts, seen.cx, seen.bottom - 6);
       }
       if (apply2) add(founderPts, apply2.cx, apply2.cy);
       if (message) {
-        add(founderPts, message.cx, message.y + 40);
-        add(founderPts, message.right - 24, message.bottom - 12);
+        add(founderPts, message.cx, message.y + message.h * 0.22);
+        add(founderPts, message.right - 30, message.bottom - 6);
       }
-      const sideX = Math.min(width - founderStroke * 0.45, width - 70);
-      if (finders) add(founderPts, sideX, finders.y + finders.h * 0.35);
+      const sideX = Math.min(width - founderStroke * 0.42, width - 24);
+      if (finders) add(founderPts, sideX, finders.y - 10);
       if (track) {
-        add(founderPts, sideX, track.y + 16);
-        add(founderPts, track.left + track.w * 0.42, track.cy);
+        add(founderPts, sideX, track.y - 220);
+        add(founderPts, track.cx, track.y - 70);
+        add(founderPts, track.cx, track.bottom - 8);
       }
       if (guarantee) {
-        add(founderPts, mouthX, guarantee.y + 28);
-        add(founderPts, mouthX, guarantee.bottom - 4);
+        const along = guarantee.left + 28;
+        add(founderPts, along, guarantee.y + 16);
+        add(founderPts, along, guarantee.y + guarantee.h * 0.62);
+        add(founderPts, mouthX, guarantee.bottom - 6);
       }
       add(founderPts, mouthX, intoMouth);
       const dropIn = null;
@@ -480,9 +498,10 @@
       const companyExitY = exit.y + exit.h * 0.66;
       const companyPts = [];
       const cover = document.querySelector("#company-cover");
+      const companyLane = Math.min(width - founderStroke * 0.35, exit.right + founderStroke * 0.35);
       add(companyPts, -30, companyY);
-      add(companyPts, rightLane + founderStroke * 0.55, companyY);
-      add(companyPts, rightLane + founderStroke * 0.7, exit.y + exit.h * 0.4);
+      add(companyPts, companyLane + founderStroke * 0.55, companyY);
+      add(companyPts, companyLane + founderStroke * 0.7, exit.y + exit.h * 0.4);
       add(companyPts, width + 40, companyExitY);
       if (cover instanceof SVGRectElement) {
         cover.setAttribute("width", "0");
@@ -496,7 +515,7 @@
       svg.setAttribute("width", String(width));
       svg.setAttribute("height", String(height));
 
-      const routeRadius = phone ? Math.max(36, turnRadius * 0.7) : 140;
+      const routeRadius = phone ? Math.max(36, turnRadius * 0.7) : 100;
       let founderD = fillet(founderPts, routeRadius);
       if (dropIn && dropIn.radius > 8 && intoMouth > bendY) {
         const radius = dropIn.radius;
@@ -510,18 +529,20 @@
       founder.setAttribute("d", founderD);
       const join = document.querySelector("#founder-join");
       const fullLength = founder.getTotalLength();
-      const taperLen = Math.min(phone ? 80 : 190, Math.max(40, fullLength * 0.045));
-      if (join instanceof SVGPathElement && fullLength > taperLen + 30) {
-        const startW = phone ? 8 : 16;
+      const taperLen = Math.min(phone ? 90 : 220, Math.max(48, fullLength * 0.05));
+      if (join instanceof SVGPathElement && fullLength > taperLen + founderStroke) {
+        const startW = jointW;
+        const cap = founderStroke / 2;
         const samples = [];
-        const step = 8;
-        for (let length = 0; length <= taperLen; length += step) {
+        const step = 6;
+        const covered = taperLen + cap;
+        for (let length = 0; length <= covered; length += step) {
           const point = founder.getPointAtLength(length);
           const next = founder.getPointAtLength(Math.min(fullLength - 1, length + step));
           const dx = next.x - point.x;
           const dy = next.y - point.y;
           const hyp = Math.hypot(dx, dy) || 1;
-          const t = length / taperLen;
+          const t = Math.min(1, length / taperLen);
           const ease = t * t * (3 - 2 * t);
           const half = (startW + (founderStroke - startW) * ease) / 2;
           samples.push({ x: point.x, y: point.y, nx: -dy / hyp, ny: dx / hyp, half });
@@ -535,7 +556,7 @@
         const left = edge(1);
         const right = edge(-1).reverse();
         join.setAttribute("d", `M ${left[0]} L ${left.slice(1).join(" L ")} L ${right.join(" L ")} Z`);
-        const from = Math.max(0, taperLen - founderStroke * 0.45);
+        const from = covered - 4;
         const trail = [];
         for (let length = from; length < fullLength; length += 14) trail.push(founder.getPointAtLength(length));
         trail.push(founder.getPointAtLength(fullLength));
