@@ -1018,6 +1018,7 @@ main ul {
   font-weight: 900;
   font-size: 32px;
   letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
   color: var(--color-ink);
   white-space: nowrap;
   line-height: 1.15;
