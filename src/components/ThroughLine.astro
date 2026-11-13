@@ -467,9 +467,10 @@
           add(founderPts, through, flyer.y + flyer.h * 0.42);
           add(founderPts, through, flyer.y + flyer.h * 0.78);
         } else {
-          add(founderPts, through + 200, flyer.y + flyer.h * 0.455);
-          add(founderPts, through - 15, flyer.y + flyer.h * 0.595);
-          add(founderPts, through, flyer.y + flyer.h * 0.775);
+          const centre = flyer.left + flyer.w * 0.51;
+          add(founderPts, centre, flyer.y + flyer.h * 0.30);
+          add(founderPts, centre, flyer.y + flyer.h * 0.58);
+          add(founderPts, centre, flyer.y + flyer.h * 0.74);
           add(founderPts, through - 44, flyer.bottom - 30);
           add(founderPts, through - 232, flyer.bottom + 48);
           add(founderPts, through - 245, flyer.bottom + 190);
