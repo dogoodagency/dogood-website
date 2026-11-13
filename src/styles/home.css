@@ -1066,7 +1066,7 @@ main ul {
   margin-top: 8px;
 }
 
-/* What’s next — static pale-teal swell */
+/* What’s next — pale-teal swell, filled from the top as the line arrives */
 #next {
   position: relative;
   margin: 0;

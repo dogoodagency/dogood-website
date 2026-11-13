@@ -212,7 +212,15 @@
           continue;
         }
         const used = Math.min(theta, 2.4);
-        const setback = Math.min(radius * Math.tan(used / 2), inLen / 2, outLen / 2);
+        const previous =
+          i > 1 ? cornerSetback(pts[i - 2], pts[i - 1], curr, radius) : 0;
+        const following =
+          i + 2 < pts.length ? cornerSetback(curr, next, pts[i + 2], radius) : 0;
+        const setback = Math.min(
+          radius * Math.tan(used / 2),
+          Math.max(8, inLen - previous),
+          Math.max(8, outLen - following),
+        );
         const arcRadius = setback / Math.tan(used / 2);
         const handle = (4 / 3) * Math.tan(used / 4) * arcRadius;
         const a = { x: curr.x - inUx * setback, y: curr.y - inUy * setback };
@@ -259,24 +267,12 @@
       const founderStroke = phone ? 8 : 100;
       const companyStroke = phone ? 0 : 50;
       const turnRadius = width >= 1081 ? 120 : Math.max(36, (120 * width) / 1440);
-      const parallel = 80;
       const hero = box(document.querySelector("#hero"));
       const headline = box(document.querySelector(".hero h1"));
       const clients = box(document.querySelector("#clients"));
       const exit = box(document.querySelector("#exit-card"));
-      const caseJ = box(document.querySelector("#case-j"));
-      const firstCard = box(document.querySelector("#first-card"));
-      const applyBtn = box(document.querySelector("#apply-first .btn-apply"));
-      const apply = box(document.querySelector("#apply-first"));
-      const forYou = box(document.querySelector("#for-you"));
-      const youCards = [...document.querySelectorAll("#for-you .card")].map((el) => box(el));
-      const whyCard = box(document.querySelector("#why .why-copy"));
-      const reviews = box(document.querySelector("#reviews"));
-      const message = box(document.querySelector("#message-card"));
-      const guaranteeCard = box(document.querySelector(".guarantee-card"));
+      const caseCard = box(document.querySelector("#case-j article")) || box(document.querySelector("#case-j"));
       const next = box(document.querySelector("#next"));
-      const bubble = box(document.querySelector("#next .next-icons"));
-      const nextBtn = box(document.querySelector("#next .btn-apply"));
       if (!hero || !headline || !clients || !exit || !next) return;
 
       const footer = document.querySelector("#footer") || document.querySelector("footer");
@@ -284,21 +280,48 @@
       const waveEl = footer?.querySelector(".connect-wave") || footer?.querySelector("svg");
       const waveRect = (waveEl || footer)?.getBoundingClientRect();
       const end = waveRect ? waveRect.bottom - mainRect.top : main.clientHeight - 6;
-      const clampX = (value) => Math.min(width - 70, Math.max(56, value));
-      const partnership = box(document.querySelector("#first-card .btn-partnership"));
-      const apply2 = box(document.querySelector("#apply-v .btn-apply"));
-      const scale = box(document.querySelector(".guarantee-scale"));
-      const caseCard = box(document.querySelector("#case-j article")) || caseJ;
-      const gap = youCards.length === 2 ? youCards[1].left - youCards[0].right : 0;
-      const forYouX = gap >= 80 ? (youCards[0].right + youCards[1].left) / 2 : 56;
       const bandTop = clients.bottom + 70;
       const bandBottom = Math.max(bandTop + 40, exit.y - 36);
       const entryY = Math.min(bandBottom, Math.max(bandTop, (clients.bottom + exit.y) / 2));
       const copyLeft = (document.querySelector(".hero-copy") || headline).getBoundingClientRect().left - main.getBoundingClientRect().left;
 
+      const swellDark = document.querySelector("#swell-dark");
+      const swellLight = document.querySelector("#swell-light");
+      const paintFunnel = () => {
+        if (!(swellDark instanceof SVGStopElement) || !(swellLight instanceof SVGStopElement)) return;
+        const funnel = document.querySelector("#next .swell-bg");
+        if (!(funnel instanceof Element)) return;
+        let level = 1;
+        if (!reduce.matches) {
+          const rect = funnel.getBoundingClientRect();
+          const target = window.innerHeight * 0.5;
+          if (rect.height <= 1 || target <= rect.top) level = 0;
+          else if (target >= rect.bottom) level = 1;
+          else level = (target - rect.top) / rect.height;
+        }
+        const offset = level.toFixed(4);
+        swellDark.setAttribute("offset", offset);
+        swellLight.setAttribute("offset", offset);
+      };
+
       const hideOnPhone = phone && copyLeft < 36;
       root.style.display = hideOnPhone ? "none" : "";
-      if (hideOnPhone) return;
+      if (hideOnPhone) {
+        paintFunnel();
+        triggers.forEach((trigger) => trigger.kill());
+        triggers = [];
+        if (!reduce.matches) {
+          triggers.push(
+            ScrollTrigger.create({
+              start: 0,
+              end: "max",
+              scrub: 0.15,
+              onUpdate: paintFunnel,
+            }),
+          );
+        }
+        return;
+      }
 
       root.style.display = "";
       const rightOf = (card) => (card ? Math.min(width - 70, card.right + 78) : width - 80);
@@ -306,15 +329,44 @@
       const splitY = exit.y + 130;
       const beside = rightOf(exit);
 
-      const pass = (button, beforeY) => {
-        if (!button) return [];
-        const above = Math.min(button.y - 150, beforeY);
-        return [
-          { x: button.cx, y: above },
-          { x: button.cx, y: button.y - 4 },
-          { x: button.cx, y: button.bottom + 4 },
-          { x: button.cx, y: button.bottom + 150 },
-        ];
+      const clearLane = () => {
+        const half = founderStroke / 2;
+        const gap = 14;
+        const y0 = box(document.querySelector("#exit"))?.bottom ?? exit.bottom;
+        const y1 = next.y;
+        const reviews = document.querySelector("#reviews");
+        const blockers = [];
+        const walker = document.createTreeWalker(main, NodeFilter.SHOW_TEXT);
+        while (walker.nextNode()) {
+          const node = walker.currentNode;
+          if (!node.textContent || !node.textContent.trim()) continue;
+          if (reviews?.contains(node.parentElement)) continue;
+          const range = document.createRange();
+          range.selectNodeContents(node);
+          for (const rect of range.getClientRects()) {
+            const top = rect.top - mainRect.top;
+            const bot = rect.bottom - mainRect.top;
+            if (bot < y0 || top > y1 || rect.width < 2) continue;
+            if (rect.right < mainRect.left || rect.left > mainRect.right) continue;
+            blockers.push({ l: rect.left - mainRect.left, r: rect.right - mainRect.left });
+          }
+        }
+        document.querySelectorAll("a, button, article, .card, img").forEach((el) => {
+          if (el.closest("#reviews")) return;
+          const pink = /234,\s*21,\s*87/.test(getComputedStyle(el).backgroundColor);
+          if (!pink && el.tagName !== "IMG" && !el.classList.contains("card")) return;
+          const rect = el.getBoundingClientRect();
+          const top = rect.top - mainRect.top;
+          const bot = rect.bottom - mainRect.top;
+          if (bot < y0 || top > y1 || rect.width < 8) return;
+          blockers.push({ l: rect.left - mainRect.left, r: rect.right - mainRect.left });
+        });
+        for (let x = 12; x <= width - half; x += 4) {
+          const left = x - half - gap;
+          const right = x + half + gap;
+          if (!blockers.some((item) => item.r > left && item.l < right)) return x;
+        }
+        return half;
       };
 
       founder.setAttribute("stroke-width", String(founderStroke));
@@ -327,32 +379,26 @@
         );
       }
 
-      const marginX = 28;
-      const founderPts = phone
-        ? monotonic([
-            { x: 20, y: entryY },
-            { x: 20, y: end - 8 },
-          ])
-        : monotonic([
-            { x: -20, y: entryY },
-            { x: enterX, y: entryY },
-            { x: enterX, y: splitY },
-            { x: beside, y: splitY },
-            { x: beside, y: caseCard ? Math.max(caseCard.bottom + 80, splitY + 180) : exit.bottom + 220 },
-            ...pass(partnership, caseCard ? caseCard.bottom + 80 : splitY + 220),
-            ...pass(applyBtn, partnership ? partnership.bottom + 180 : exit.bottom + 260),
-            { x: forYouX, y: (applyBtn ? applyBtn.bottom : exit.bottom) + 180 },
-            { x: forYouX, y: forYou ? forYou.bottom + 20 : end * 0.45 },
-            { x: marginX, y: forYou ? forYou.bottom + 80 : end * 0.48 },
-            { x: marginX, y: scale ? scale.y - 160 : end * 0.72 },
-            { x: scale ? scale.cx : 140, y: scale ? scale.y - 160 : end * 0.72 },
-            { x: scale ? scale.cx : 140, y: scale ? scale.bottom + 40 : end * 0.76 },
-            { x: marginX, y: bubble ? bubble.y - 160 : next.y },
-            { x: bubble ? bubble.cx : 100, y: bubble ? bubble.y - 160 : next.y },
-            { x: bubble ? bubble.cx : 100, y: bubble ? bubble.bottom + 36 : next.y + 80 },
-            ...pass(nextBtn, bubble ? bubble.bottom + 50 : next.y),
-            { x: marginX, y: end - 8 },
-          ]);
+      const dropX = clearLane();
+      const exitSection = box(document.querySelector("#exit"));
+      const machine = box(document.querySelector(".exit-machine"));
+      const caseTop = caseCard ? caseCard.y : (exitSection?.bottom ?? exit.bottom) + 160;
+      const belowArt = Math.max(exit.bottom, machine?.bottom || 0) + founderStroke / 2 + 20;
+      const aboveCopy = caseTop - founderStroke / 2 - 12;
+      const crossY = aboveCopy > belowArt ? (belowArt + aboveCopy) / 2 : aboveCopy;
+      const swell = box(document.querySelector("#next .swell-bg")) || next;
+      const mouthX = swell.x + swell.w * (720 / 1440);
+      const mouthY = swell.y + Math.min(32, swell.h * 0.05);
+      const founderPts = monotonic([
+        { x: -20, y: entryY },
+        { x: enterX, y: entryY },
+        { x: enterX, y: splitY },
+        { x: beside, y: splitY },
+        { x: beside, y: crossY },
+        { x: dropX, y: crossY },
+        { x: dropX, y: mouthY },
+        { x: mouthX, y: mouthY },
+      ]);
 
       const companyY = Math.min(exit.y - 30, entryY + 64);
       const companyBottom = companyY + turnRadius * 2;
@@ -420,6 +466,7 @@
       const draw = () => {
         paint(founder, founder.getTotalLength());
         paint(companyMask, companyMask.getTotalLength());
+        paintFunnel();
         reveal();
       };
 
