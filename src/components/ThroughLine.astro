@@ -1,0 +1,254 @@
+<div class="through-line" id="through-line" aria-hidden="true">
+  <svg fill="none">
+    <defs>
+      <mask id="company-reveal" maskUnits="userSpaceOnUse">
+        <path id="company-mask" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" />
+      </mask>
+    </defs>
+    <path id="founder-line" stroke="#28DBB0" stroke-linecap="round" stroke-linejoin="round" />
+    <path
+      id="company-line"
+      stroke="#2A0B4F"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-dasharray="1 9"
+      mask="url(#company-reveal)"
+    />
+  </svg>
+</div>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const root = document.querySelector("#through-line");
+  const svg = root?.querySelector("svg");
+  const founder = document.querySelector("#founder-line");
+  const company = document.querySelector("#company-line");
+  const companyMask = document.querySelector("#company-mask");
+  const main = document.querySelector("main");
+
+  if (root instanceof HTMLElement && svg && founder && company && companyMask && main) {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let triggers = [];
+
+    const box = (el) => {
+      const r = el.getBoundingClientRect();
+      const m = main.getBoundingClientRect();
+      const x = r.left - m.left;
+      const y = r.top - m.top;
+      return {
+        x,
+        y,
+        left: x,
+        w: r.width,
+        h: r.height,
+        right: x + r.width,
+        bottom: y + r.height,
+        cx: x + r.width / 2,
+        cy: y + r.height / 2,
+      };
+    };
+
+    const smooth = (points) => {
+      const usable = points.filter((point) => Number.isFinite(point.x) && Number.isFinite(point.y));
+      if (usable.length < 2) return "";
+      const d = [`M ${usable[0].x.toFixed(1)} ${usable[0].y.toFixed(1)}`];
+      const shorten = (cx, cy, ax, ay, max) => {
+        const dx = cx - ax;
+        const dy = cy - ay;
+        const len = Math.hypot(dx, dy) || 1;
+        if (len <= max) return [cx, cy];
+        return [ax + (dx / len) * max, ay + (dy / len) * max];
+      };
+      for (let i = 0; i < usable.length - 1; i++) {
+        const p0 = usable[i - 1] || usable[i];
+        const p1 = usable[i];
+        const p2 = usable[i + 1];
+        const p3 = usable[i + 2] || p2;
+        const span = Math.hypot(p2.x - p1.x, p2.y - p1.y) || 1;
+        const max = Math.min(span * 0.28, 90);
+        let c1x = p1.x + (p2.x - p0.x) / 6;
+        let c1y = p1.y + (p2.y - p0.y) / 6;
+        let c2x = p2.x - (p3.x - p1.x) / 6;
+        let c2y = p2.y - (p3.y - p1.y) / 6;
+        [c1x, c1y] = shorten(c1x, c1y, p1.x, p1.y, max);
+        [c2x, c2y] = shorten(c2x, c2y, p2.x, p2.y, max);
+        d.push(
+          `C ${c1x.toFixed(1)} ${c1y.toFixed(1)}, ${c2x.toFixed(1)} ${c2y.toFixed(1)}, ${p2.x.toFixed(1)} ${p2.y.toFixed(1)}`,
+        );
+      }
+      return d.join(" ");
+    };
+
+    const build = () => {
+      const width = main.clientWidth;
+      const phone = width <= 1080;
+      const stroke = phone ? 2.6 : 3.35;
+      const hero = box(document.querySelector("#hero"));
+      const headline = box(document.querySelector(".hero h1"));
+      const clients = box(document.querySelector("#clients"));
+      const exit = box(document.querySelector("#exit-card"));
+      const caseJ = box(document.querySelector("#case-j"));
+      const first = box(document.querySelector("#first-step"));
+      const firstCard = box(document.querySelector("#first-card"));
+      const firstDraw = box(document.querySelector("#first-draw"));
+      const apply = box(document.querySelector("#apply-first"));
+      const forYou = box(document.querySelector("#for-you"));
+      const youCards = [...document.querySelectorAll("#for-you .card")].map((el) => box(el));
+      const why = box(document.querySelector("#why"));
+      const whyCard = box(document.querySelector("#why .why-copy"));
+      const whySketch = box(document.querySelector(".why-sketch"));
+      const reviews = box(document.querySelector("#reviews"));
+      const caseV = box(document.querySelector("#case-v"));
+      const seen = box(document.querySelector("#asseen"));
+      const message = box(document.querySelector("#message"));
+      const guides = box(document.querySelector("#wayfinders"));
+      const guarantee = box(document.querySelector("#guarantee"));
+      const next = box(document.querySelector("#next"));
+      const nextInner = box(document.querySelector("#next .next-inner"));
+      if (!hero || !headline || !clients || !exit || !next || !nextInner) return;
+
+      const origin = headline.bottom + (phone ? 18 : 28);
+      const footer = document.querySelector("#footer") || document.querySelector("footer");
+      const mainRect = main.getBoundingClientRect();
+      const waveEl = footer?.querySelector(".connect-wave") || footer?.querySelector("svg");
+      const waveRect = (waveEl || footer)?.getBoundingClientRect();
+      const footerEnd = waveRect ? waveRect.top - mainRect.top + waveRect.height * 0.65 : main.clientHeight - 6;
+      const end = Math.max(main.clientHeight - 6, footerEnd);
+      const y = (value) => value - origin;
+      const lane = (value) => Math.min(width - (phone ? 14 : 24), Math.max(phone ? 12 : 20, value));
+      const wave = hero.bottom - (phone ? 28 : 36);
+
+      founder.setAttribute("stroke-width", String(stroke));
+      company.setAttribute("stroke-width", String(stroke));
+      companyMask.setAttribute("stroke-width", String(stroke + 8));
+      company.setAttribute("stroke-dasharray", phone ? "7 6" : "10 8");
+
+      let founderPts;
+      let companyPts;
+
+      if (phone) {
+        const side = 8;
+        founderPts = [
+          { x: side, y: y(origin + 2) },
+          { x: side, y: y(end - 4) },
+        ];
+        companyPts = [
+          { x: side + 16, y: y(origin + 2) },
+          { x: side + 16, y: y(exit.y) },
+          { x: width * 0.62, y: y(exit.y + 18) },
+          { x: width + 18, y: y(exit.y + 46) },
+        ];
+      } else {
+        const left = 36;
+        const right = width - 36;
+        const belowLogos = clients.bottom + 36;
+        const between =
+          firstDraw && firstCard ? (firstDraw.right + firstCard.left) / 2 : width * 0.62;
+        const youMid =
+          youCards.length === 2 ? (youCards[0].right + youCards[1].left) / 2 : width * 0.5;
+        const whyLane =
+          whyCard && whySketch ? (whyCard.right + whySketch.left) / 2 : width * 0.58;
+        const frame = 42;
+        founderPts = [
+          { x: left, y: y(origin + 4) },
+          { x: left, y: y(origin + 260) },
+          { x: left, y: y(belowLogos) },
+          { x: width * 0.42, y: y(belowLogos) },
+          { x: width * 0.68, y: y(belowLogos) },
+          { x: right, y: y(exit.y + 28) },
+          { x: right, y: y(exit.bottom + 24) },
+          { x: right, y: y((caseJ ? caseJ.bottom : exit.bottom) + 20) },
+          { x: lane(between), y: y(first ? first.y + first.h * 0.58 : exit.bottom + 240) },
+          { x: right, y: y((forYou ? forYou.y : reviews.y) - 28) },
+          { x: lane(youMid), y: y((forYou ? forYou.y : reviews.y) - 8) },
+          { x: lane(youMid), y: y(forYou ? forYou.y + forYou.h * 0.5 : reviews.y) },
+          { x: left, y: y(why ? why.y + 40 : reviews.bottom) },
+          { x: lane(whyLane), y: y(why ? why.y + why.h * 0.55 : reviews.bottom) },
+          { x: left, y: y(reviews ? reviews.bottom + 16 : caseV.y) },
+          { x: left, y: y(message ? message.y + 48 : next.y) },
+          { x: left, y: y(next.y - 12) },
+          { x: lane(nextInner.x - frame), y: y(next.y + 20) },
+          { x: lane(nextInner.x - frame), y: y(next.bottom - 28) },
+          { x: lane(nextInner.cx), y: y(next.bottom - 16) },
+          { x: lane(nextInner.right + frame), y: y(next.bottom - 28) },
+          { x: lane(nextInner.right + frame), y: y(end - 2) },
+        ];
+        const beside = founderPts
+          .filter((point) => point.y < y(exit.y - 10))
+          .map((point) => ({ x: lane(point.x + 16), y: point.y }));
+        companyPts = [
+          ...beside,
+          { x: lane(right - 40), y: y(exit.y + 8) },
+          { x: width + 28, y: y(exit.y + 46) },
+        ];
+      }
+
+      const height = Math.max(200, end - origin);
+      root.style.top = `${origin}px`;
+      root.style.height = `${height}px`;
+      svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+      svg.setAttribute("width", String(width));
+      svg.setAttribute("height", String(height));
+
+      const founderD = smooth(founderPts);
+      const companyD = smooth(companyPts);
+      founder.setAttribute("d", founderD);
+      company.setAttribute("d", companyD);
+      companyMask.setAttribute("d", companyD);
+
+      triggers.forEach((trigger) => trigger.kill());
+      triggers = [];
+
+      const founderLength = founder.getTotalLength();
+      const maskLength = companyMask.getTotalLength();
+      const pageTop = main.getBoundingClientRect().top + window.scrollY;
+      const founderStart = pageTop + origin;
+      const founderEnd = pageTop + end;
+      const companyEnd = pageTop + exit.bottom;
+
+      const paint = (path, length, startY, finishY) => {
+        const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        const atEnd = window.scrollY >= maxScroll - 2;
+        const focus = atEnd ? finishY + 40 : window.scrollY + window.innerHeight * 0.82;
+        const progress = reduce.matches
+          ? 1
+          : Math.min(1, Math.max(0, (focus - startY) / Math.max(1, finishY - startY)));
+        path.style.strokeDasharray = `${length}`;
+        path.style.strokeDashoffset = String(length * (1 - progress));
+      };
+
+      paint(founder, founderLength, founderStart, founderEnd);
+      paint(companyMask, maskLength, founderStart, companyEnd);
+
+      if (!reduce.matches) {
+        triggers.push(
+          ScrollTrigger.create({
+            start: 0,
+            end: "max",
+            scrub: 0.45,
+            onUpdate: () => {
+              paint(founder, founderLength, founderStart, founderEnd);
+              paint(companyMask, maskLength, founderStart, companyEnd);
+            },
+          }),
+        );
+      }
+    };
+
+    let frame = 0;
+    const schedule = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(build);
+    };
+
+    schedule();
+    window.addEventListener("load", schedule);
+    window.addEventListener("resize", schedule);
+    reduce.addEventListener("change", schedule);
+    document.fonts?.ready.then(schedule);
+  }
+</script>

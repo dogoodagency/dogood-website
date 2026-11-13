@@ -1,0 +1,142 @@
+export const logos = [
+  { file: "Adobe.png", alt: "Adobe" },
+  { file: "Siemens.png", alt: "Siemens" },
+  { file: "Novartis.png", alt: "Novartis" },
+  { file: "Generali.png", alt: "Generali" },
+  { file: "Rolls-Royce.png", alt: "Rolls Royce" },
+  { file: "Vodafone.png", alt: "Vodafone" },
+  { file: "Johnson-and-Johnson.png", alt: "Johnson and Johnson" },
+  { file: "ABN-AMRO.png", alt: "ABN AMRO" },
+  { file: "Iberdrola.png", alt: "Iberdrola" },
+  { file: "Coty.png", alt: "Coty" },
+  { file: "Careem.png", alt: "Careem" },
+  { file: "Arla.png", alt: "Arla" },
+  { file: "Aptar.png", alt: "Aptar" },
+  { file: "BVG.png", alt: "BVG" },
+  { file: "Nationale-Nederlanden.png", alt: "Nationale Nederlanden" },
+  { file: "Upwork.png", alt: "Upwork" },
+  { file: "Berty.png", alt: "Berty" },
+  { file: "GoFleet.png", alt: "GoFleet" },
+  { file: "The-Summit.png", alt: "The Summit" },
+  { file: "Tiny-Home-Tours.png", alt: "Tiny Home Tours" },
+  { file: "Tweepi.png", alt: "Tweepi" },
+  { file: "USM.png", alt: "USM" },
+  { file: "Warrior.png", alt: "Warrior" },
+  { file: "ZenduIT.png", alt: "ZenduIT" },
+] as const;
+
+export const urls = {
+  apply: "https://www.dogoodagency.co/apply-stage-1",
+  partnership: "https://www.dogoodagency.co/founders",
+  caseJ: "https://www.dogoodagency.co/casestudies/j",
+  caseV: "https://www.dogoodagency.co/casestudies/v",
+  guarantee: "https://www.dogoodagency.co/clarity-first-guarantee-terms",
+  diagnostic: "https://www.dogoodagency.co/diagnostics",
+  linkedin: "https://www.linkedin.com/in/sebwichmann/",
+  podcast: "https://www.dogoodagency.co/dogood-insider",
+  contact: "https://www.dogoodagency.co/contact",
+  privacy: "https://www.dogoodagency.co/privacy",
+  terms: "https://www.dogoodagency.co/terms",
+} as const;
+
+export const stats = [
+  { value: "76", label: "Founders Engaged" },
+  { value: "38,000", label: "Leaders Impacted" },
+  { value: "$16.5 Million", label: "Learning Initiatives Sold" },
+  { value: "11,500", label: "Coaching Hours" },
+  { value: "100%", label: "Client Satisfaction Score" },
+] as const;
+
+
+export const reviews = [
+  {
+    file: "anja-n.png",
+    name: "ANJA N",
+    role: "CEO at Australian Physiotherapy Association",
+    quote: "Seb from DGA is a passionate, honest and energetic professional. The commitment to the well-being of others is exemplary as is DGA’s positive attitude and outlook.",
+  },
+  {
+    file: "jennifer-m.png",
+    name: "JENNIFER M",
+    role: "Founder of LunchAssist",
+    quote: "Seb from DGA is a lovely human with a great mind for business. DGA would be a great support to any person in a leadership position. The team has a wealth of organizational leadership knowledge, great intuition, and a strong skillset in coaching and mentoring via the virtual workspace. I absolutely recommend DGA to anyone looking to partner with an emotionally intelligent and business-savvy training agency! Thank you, DGA!",
+  },
+  {
+    file: "michael-r.png",
+    name: "MICHAEL R",
+    role: "Founder of Softwisery",
+    quote: "For a long time, I struggled to efficiently organize my routines, often lacking a coherent system and clear vision. Seb from DGA emerged as the guiding force to help me overcome these challenges. With his expertise, I've achieved focus on my goals, enhanced my schedule, and streamlined my planning processes. Together, we eliminated redundancies, attaining the clarity I had long sought after. Collaborating with the DGA team was an absolute delight.",
+  },
+  {
+    file: "florian-w.png",
+    name: "FLORIAN W",
+    role: "founder of BitFlow",
+    quote: "DoGood, I would like to express my deepest gratitude for the incredible support and guidance your team has provided me with. It has been an absolute pleasure working with you all and witnessing your utmost professionalism throughout our time. I truly appreciate how proactive DGA has been in understanding my requirements and tailoring DGA’s advice to suit my individual needs. DGA’s ability to provide insightful and valuable guidance has had a profound impact on my personal development journey. I am genuinely impressed by their productivity and influence, as they have helped me grow in ways I never thought possible.",
+  },
+  {
+    file: "zach-g.png",
+    name: "ZACH G",
+    role: "founder of Warrior Leader",
+    quote: "Seb from DGA is a consummate professional. His knowledge and business acumen is only surpassed by his positive energy and enthusiasm. His drive and understanding of the learning process is second to none. I look forward to working with him again on many different projects in the future.",
+  },
+  {
+    file: "marcia-w.png",
+    name: "MARCIA W",
+    role: "founder of USM Supply Chain",
+    quote: "Seb from DGA is amazing, he truly cares about progress, and shows great enthusiasm... After working for a short period with DoGood, we got more work than we were able to handle. Excellent results!",
+  },
+  {
+    file: "brook-h.png",
+    name: "BROOK H",
+    role: "founder of Audacia Home",
+    quote: "Seb from DGA was excellent in all respects. The team helped us grow the business from the ground up and immensely helped us on a personal, professional, and performance level. I highly recommend DGA to anyone looking to increase and optimize their business performance.",
+  },
+  {
+    file: "brian-w.png",
+    name: "BRIAN W",
+    role: "Sr Manager SEO at Bamboo HR",
+    quote: "DGA remarkably improved our team's productivity, leadership, and communication. The tailored strategies and collaborative approach fostered efficiency and effective leadership qualities. DGA’s sought-after expertise consistently delivers exceptional results. Don't miss the chance to collaborate with them for transformative guidance that propels projects and teams to success. I wholeheartedly endorse DGA for their invaluable contributions to enhancing productivity, leadership, and communication.",
+  },
+  {
+    file: "christian-v.png",
+    name: "CHRISTIAN V",
+    role: "realtor at exp Realty",
+    quote: "We started working with Seb from DGA because we needed a transformation... We were able to click right from the beginning, he took the time to listen and diagnose our problems from the start… DGA has helped us create goals, and a vision... The business started to turn around quickly because of all of these changes, and we started to make more money, and do more activities. I can’t thank Seb from DGA enough for all of his hard work and time he and the team put into our business.",
+  },
+  {
+    file: "manfred-t.png",
+    name: "MANFRED T",
+    role: "founder of Berty Technologies",
+    quote: "Seb from DoGood was proactive and gave us advice based on my requirements; the sessions were productive and influential. I look forward to working with DGA for the next semester.",
+  },
+  {
+    file: "stan-s.png",
+    name: "STAN S",
+    role: "founder of The Propel Consulting Group",
+    quote: "We were thrilled to connect with Seb from DGA, they are very attentive to client needs and offer a variety of options to meet those needs. The team is an excellent thought partner, easy to work with, communicative, and goes above and beyond to make sure clients are satisfied with the final product. Our project was enhanced through our work together. Highly recommend DGA!",
+  },
+  {
+    file: "zeina-g.png",
+    name: "ZEINA G",
+    role: "founder of Synergy Plus",
+    quote: "The DGA team has many qualities that have made our experience working together phenomenal. The team has been able to help us redefine our business, create clarity around our goals, and help us find a path forward with intent and purpose. They have taught us how to create more value for our clients and how to value our own services and the work that we do. The DGA team has been able to guide us to make difficult decisions towards changes with both a firmness and sensitivity to the situation that we were in. The team has lead us to create completely new and different concepts, helped take us out of the usual “box” that our business was in, devised ways to get our clients on board with an entire reframing of the business always helping us move closer to our business and life goals.",
+  },
+  {
+    file: "amer-k.png",
+    name: "AMER K",
+    role: "founder of Tweepi",
+    quote: "Seb from DGA is a learning & development SUPERSTAR! The team helped us develop an online entrepreneurship learning initiative. When we hired DGA, my notes were a mess. The team guided us step by step. He started by interviewing our current students - using DGA’s unparalleled empathy to zoom in on the learner's persona. A crucial step that guided the rest of our work together. DGA’s guidance was educational and eye-opening. The team understands learners motivations and fears and gave us spot-on feedback at every step.",
+  },
+  {
+    file: "immanual-j.png",
+    name: "IMMANUAL J",
+    role: "founder of Kulture of Kindness",
+    quote: "Seb from DGA was a pleasure to work with. What started off as a discussion on RFP evolved into a full scale rediscovery of a learning effort. Seb and the team provided excellent insights and ideas on the way forward. The team is skilled and helped us see our blind spots and in the process create a new strategy for our e-learning initiative.",
+  },
+  {
+    file: "gajan-r.png",
+    name: "GAJAN R",
+    role: "founder of Spiralyze",
+    quote: "We hired DoGood to help me get my business to the next level. The team exceeded all my expectations and had enormous impact. The DGA team did a thorough diagnostic and identified a few key personal and professional sticking points, helped us incorporate goals, planning, and … set up more rigorous business processes to help us scale up. The team helped us write out thorough planning documentation and flesh out all the key details. While working with DGA we almost doubled in size.",
+  },
+] as const;
