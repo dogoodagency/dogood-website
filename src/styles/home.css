@@ -1147,6 +1147,42 @@ main ul {
   font-size: 14.5px;
 }
 
+a.connect-mark {
+  display: block;
+  max-width: 100%;
+  margin: 0 0 56px;
+  color: #fff;
+  font-size: clamp(64px, 13.6vw, 200px);
+  font-weight: 900;
+  line-height: 0.84;
+  letter-spacing: -0.045em;
+  text-decoration: none;
+}
+
+footer a.connect-mark:hover,
+footer a.connect-mark:focus-visible {
+  color: #fff;
+  text-decoration: none;
+}
+
+.connect-lets,
+.connect-word {
+  display: block;
+}
+
+.connect-word {
+  width: max-content;
+  max-width: 100%;
+}
+
+.connect-wave {
+  display: block;
+  width: 100%;
+  height: 0.18em;
+  margin-top: 0.04em;
+  overflow: visible;
+}
+
 .footer a:hover {
   color: #fff;
   text-decoration: underline;
