@@ -304,10 +304,21 @@
         swellLight.setAttribute("offset", offset);
       };
 
+      const revealArt = () => {
+        const mid = window.innerHeight * 0.5;
+        document.querySelectorAll("[data-line-reveal]").forEach((el) => {
+          if (!(el instanceof HTMLElement)) return;
+          const rect = el.getBoundingClientRect();
+          const reached = reduce.matches || rect.top <= mid + 80;
+          el.classList.toggle("is-drawn", reached);
+        });
+      };
+
       const hideOnPhone = phone && copyLeft < 36;
       root.style.display = hideOnPhone ? "none" : "";
       if (hideOnPhone) {
         paintFunnel();
+        revealArt();
         triggers.forEach((trigger) => trigger.kill());
         triggers = [];
         if (!reduce.matches) {
@@ -316,7 +327,10 @@
               start: 0,
               end: "max",
               scrub: 0.15,
-              onUpdate: paintFunnel,
+              onUpdate: () => {
+                paintFunnel();
+                revealArt();
+              },
             }),
           );
         }
@@ -436,15 +450,7 @@
       triggers.forEach((trigger) => trigger.kill());
       triggers = [];
 
-      const reveal = () => {
-        const mid = window.innerHeight * 0.5;
-        document.querySelectorAll("[data-line-reveal]").forEach((el) => {
-          if (!(el instanceof HTMLElement)) return;
-          const rect = el.getBoundingClientRect();
-          const reached = reduce.matches || rect.top <= mid + 80;
-          el.classList.toggle("is-drawn", reached);
-        });
-      };
+      const reveal = revealArt;
 
       const paint = (path, length) => {
         if (reduce.matches) {

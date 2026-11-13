@@ -2761,8 +2761,8 @@ main {
   margin-right: 0;
 }
 
-.exit-house-static,
-.exit-house-body,
+.exit-machine-still,
+.exit-machine-body,
 .exit-wheel {
   position: absolute;
   inset: 0;
@@ -2775,12 +2775,13 @@ main {
   box-shadow: none;
 }
 
-.exit-house-static {
+.exit-machine-still {
   display: none;
 }
 
 .exit-wheel {
-  transform-origin: 50.98% 57.19%;
+  /* Hub is 196.9px, 241.3px on the 390×414 canvas. Percentages keep that point at 240×255. */
+  transform-origin: 50.49% 58.29%;
   animation: exit-wheel-spin 10s linear infinite;
 }
 
@@ -4496,11 +4497,11 @@ button.btn-subscribe:focus-visible {
     opacity: 1;
   }
 
-  .exit-house-static {
+  .exit-machine-still {
     display: block;
   }
 
-  .exit-house-body,
+  .exit-machine-body,
   .exit-wheel {
     display: none;
   }
