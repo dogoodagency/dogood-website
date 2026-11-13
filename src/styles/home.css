@@ -4090,6 +4090,7 @@ header.nav {
 .track-nums strong,
 p.t-kicker,
 #case-j p.t-kicker,
+#case-v p.t-kicker,
 .page-body a:not(.btn-apply):not(.btn-teal):not(.btn-case) {
   color: #2a0b4f;
 }
@@ -4967,7 +4968,7 @@ button.btn-subscribe:focus-visible {
   }
 
   #case-j {
-    padding-top: 74px;
+    padding-top: 160px;
   }
 
   #for-you {
@@ -4975,7 +4976,7 @@ button.btn-subscribe:focus-visible {
   }
 
   #reviews {
-    padding-top: 0;
+    padding-top: 79px;
   }
 
   .reviews-band {
@@ -4997,12 +4998,14 @@ button.btn-subscribe:focus-visible {
 
   #next {
     padding-top: 160px;
+    padding-bottom: 194px;
   }
 }
 
 @media (max-width: 480px) {
   .footer-lets .connect-mark {
-    margin-top: 150px;
+    /* The address sits in this gap, so 3px of margin puts Let's Connect 150px below the LLC heading. */
+    margin-top: 3px;
   }
 
   .exit-layout,
