@@ -1,4 +1,5 @@
 Preview: https://deploy-preview-5--dogoodagency.netlify.app/privacy
+Last updated: 13 November 2026
 
 # Privacy Policy
 

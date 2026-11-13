@@ -1,4 +1,5 @@
 Preview: https://deploy-preview-5--dogoodagency.netlify.app/cookies
+Last updated: 13 November 2026
 
 # Cookies Policy
 
