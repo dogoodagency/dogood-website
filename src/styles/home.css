@@ -3508,7 +3508,7 @@ button.btn-subscribe,
   max-width: 100%;
   min-height: 52px;
   margin-top: 0;
-  padding: 10px 56px 10px 20px;
+  padding: 10px 52px;
   border: 0;
   border-radius: 16px;
   font-size: 16px;
@@ -3620,7 +3620,7 @@ a.btn-terms:focus-visible,
 button.btn-teal:focus-visible,
 button.btn-subscribe:focus-visible,
 .buzzsprout-gate button:focus-visible {
-  transform: scale(1.05);
+  transform: scale(1.013);
   outline: none;
   border: 0;
 }
@@ -3940,7 +3940,32 @@ iframe.tidycal-embed,
   position: relative;
   z-index: 3;
   opacity: 1;
+}
+
+#apply-first .cap-pill,
+#apply-v .cap-small,
+#next .next-note,
+#first-card .stage-note {
   background: #f5f2f9;
+}
+
+#first-card .btn-partnership,
+#first-card .btn-partnership:hover,
+#first-card .btn-partnership:focus-visible {
+  background: #2a0b4f;
+  color: #fff;
+  font-weight: 400;
+}
+
+#apply-first .btn-apply,
+#apply-first .btn-apply:hover,
+#apply-first .btn-apply:focus-visible,
+#apply-v .btn-apply,
+#apply-v .btn-apply:hover,
+#apply-v .btn-apply:focus-visible {
+  background: #ea1557;
+  color: #fff;
+  font-weight: 400;
 }
 
 #next .btn-apply,
@@ -4182,15 +4207,15 @@ button.btn-subscribe:focus-visible,
   #apply-first a.btn-apply,
   #apply-first a.btn-apply:hover,
   #apply-first a.btn-apply:focus-visible {
-    padding-left: 45px;
-    padding-right: 81px;
+    padding-left: 63px;
+    padding-right: 63px;
   }
 
   #apply-v a.btn-apply,
   #apply-v a.btn-apply:hover,
   #apply-v a.btn-apply:focus-visible {
-    padding-left: 70px;
-    padding-right: 106px;
+    padding-left: 88px;
+    padding-right: 88px;
   }
 
   #next a.btn-apply,
@@ -4611,5 +4636,127 @@ button.btn-subscribe:focus-visible {
 
   header.nav .nav-apply::before {
     transition: none;
+  }
+}
+
+@media (min-width: 1081px) {
+  #exit {
+    padding-top: 250px;
+  }
+
+  #case-j {
+    padding-top: 74px;
+  }
+
+  #for-you {
+    padding-top: 107px;
+  }
+
+  #reviews {
+    padding-top: 0;
+  }
+
+  .reviews-band {
+    padding-top: 1px;
+  }
+
+  #message {
+    margin-top: 0;
+    padding-top: 107px;
+  }
+
+  #wayfinders {
+    padding-top: 160px;
+  }
+
+  #guarantee {
+    padding-top: 160px;
+  }
+
+  #next {
+    padding-top: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .exit-layout {
+    gap: 120px;
+  }
+
+  .exit-machine {
+    margin-top: 0;
+  }
+
+  .first-grid,
+  .why-grid {
+    gap: 120px;
+  }
+
+  #case-j {
+    padding-top: 64px;
+  }
+
+  #first-step {
+    padding-top: 92px;
+  }
+
+  #apply-first {
+    padding-top: 120px;
+    padding-bottom: 0;
+  }
+
+  #for-you {
+    padding-top: 67px;
+    padding-bottom: 24px;
+  }
+
+  #why {
+    padding-top: 96px;
+    padding-bottom: 0;
+  }
+
+  #reviews {
+    margin-top: -63px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .reviews-band {
+    padding-top: 0;
+    padding-bottom: 40px;
+  }
+
+  #case-v {
+    padding-top: 120px;
+    padding-bottom: 0;
+  }
+
+  #asseen {
+    padding-top: 120px;
+    padding-bottom: 40px;
+  }
+
+  #apply-v {
+    padding-top: 80px;
+    padding-bottom: 0;
+  }
+
+  #message {
+    padding-top: 51px;
+    padding-bottom: 0;
+  }
+
+  #wayfinders {
+    padding-top: 120px;
+    padding-bottom: 0;
+  }
+
+  #guarantee {
+    padding-top: 0;
+    margin-top: -75px;
+  }
+
+  #next {
+    margin-top: -56px;
   }
 }
