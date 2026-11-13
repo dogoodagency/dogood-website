@@ -2436,3 +2436,68 @@ p.services-note {
     white-space: normal;
   }
 }
+
+@media (max-width: 479px) {
+  .first-grid,
+  .case-compact,
+  #case-j .case-compact,
+  #case-v .case-compact,
+  #first-card {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .case-compact,
+  #case-j .case-compact,
+  #case-v .case-compact {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .case-compact .portrait,
+  #case-j .portrait,
+  #case-v .portrait {
+    width: min(220px, 72%);
+    height: auto;
+    max-height: none;
+    justify-self: center;
+    margin-inline: auto;
+  }
+
+  .case-compact h3 {
+    width: 100%;
+    text-align: center;
+  }
+
+  .btn-stack,
+  #first-card .btn-stack {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    align-items: stretch;
+  }
+
+  a.btn-case,
+  a.btn-partnership {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    white-space: nowrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 18px;
+    padding-inline: 8px;
+  }
+
+  a.btn-apply,
+  a.btn-apply.lg,
+  a.btn-terms,
+  button.btn-subscribe {
+    white-space: nowrap;
+    text-align: center;
+    font-size: 18px;
+  }
+}
