@@ -2934,3 +2934,547 @@ a.btn-case:focus-visible {
     white-space: normal;
   }
 }
+
+/* Floating nav and rectangle buttons. These rules win over earlier nav and button styles. */
+header.nav {
+  position: sticky;
+  top: 12px;
+  z-index: 40;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 10px;
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  padding: 12px 16px 0;
+  background: transparent;
+  overflow: visible;
+}
+
+header.nav .nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 64px;
+  padding: 8px 12px 8px 16px;
+  background: #2a0b4f;
+  border-radius: 16px;
+  box-shadow: 0 10px 28px rgba(42, 11, 79, 0.16);
+}
+
+header.nav .nav-logo img {
+  height: 42px;
+  width: auto;
+}
+
+header.nav .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+header.nav .nav-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 6px 12px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+header.nav .nav-links a:hover,
+header.nav .nav-links a:focus-visible,
+header.nav .nav-panel a:hover,
+header.nav .nav-panel a:focus-visible {
+  background: #28dbb0;
+  color: #2a0b4f;
+  outline: none;
+}
+
+header.nav .nav-apply {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+  min-height: 64px;
+  padding: 8px 10px 8px 18px;
+  border-radius: 16px;
+  background: #ea1557;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 10px 28px rgba(42, 11, 79, 0.16);
+}
+
+header.nav .nav-apply-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.85);
+}
+
+header.nav .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+header.nav .nav-burger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: #28dbb0;
+  cursor: pointer;
+}
+
+header.nav .nav-burger-icon,
+header.nav .nav-burger-icon::before,
+header.nav .nav-burger-icon::after {
+  display: block;
+  width: 16px;
+  height: 2px;
+  border-radius: 2px;
+  background: #2a0b4f;
+  content: "";
+}
+
+header.nav .nav-burger-icon {
+  position: relative;
+}
+
+header.nav .nav-burger-icon::before,
+header.nav .nav-burger-icon::after {
+  position: absolute;
+  left: 0;
+}
+
+header.nav .nav-burger-icon::before {
+  top: -5px;
+}
+
+header.nav .nav-burger-icon::after {
+  top: 5px;
+}
+
+header.nav .nav-panel {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  top: calc(100% + 8px);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  background: #2a0b4f;
+  border-radius: 16px;
+  box-shadow: 0 16px 36px rgba(42, 11, 79, 0.22);
+}
+
+header.nav .nav-panel[hidden] {
+  display: none;
+}
+
+header.nav .nav-panel a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+@media (max-width: 1080px) {
+  header.nav .nav-links {
+    display: none;
+  }
+
+  header.nav .nav-burger {
+    display: inline-flex;
+    width: 36px;
+    height: 36px;
+  }
+
+  header.nav .nav-logo img {
+    height: 30px;
+  }
+
+  header.nav .nav-bar {
+    min-height: 52px;
+    padding: 6px 8px 6px 10px;
+    gap: 8px;
+  }
+
+  header.nav .nav-apply {
+    min-height: 52px;
+    padding: 6px 8px 6px 12px;
+    gap: 8px;
+  }
+
+  header.nav .nav-apply-icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+a.btn-apply,
+a.btn-apply.lg,
+a.btn-case,
+a.btn-teal,
+a.btn-partnership,
+a.btn-terms,
+button.btn-teal,
+button.btn-subscribe,
+.buzzsprout-gate button {
+  --btn-ease: cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  width: auto;
+  max-width: 100%;
+  min-height: 52px;
+  margin-top: 0;
+  padding: 10px 56px 10px 20px;
+  border: 0;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-align: left;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transform: translateZ(0) scale(1);
+  transition:
+    transform 350ms var(--btn-ease),
+    padding 350ms var(--btn-ease),
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+a.btn-apply,
+a.btn-apply.lg {
+  background: #ea1557;
+  color: #fff;
+}
+
+a.btn-case,
+a.btn-teal,
+a.btn-partnership,
+a.btn-terms,
+button.btn-teal,
+button.btn-subscribe,
+.buzzsprout-gate button {
+  background: #28dbb0;
+  color: #2a0b4f;
+}
+
+a.btn-apply::before,
+a.btn-apply.lg::before,
+a.btn-case::before,
+a.btn-teal::before,
+a.btn-partnership::before,
+a.btn-terms::before,
+button.btn-teal::before,
+button.btn-subscribe::before,
+.buzzsprout-gate button::before,
+a.btn-apply::after,
+a.btn-apply.lg::after,
+a.btn-case::after,
+a.btn-teal::after,
+a.btn-partnership::after,
+a.btn-terms::after,
+button.btn-teal::after,
+button.btn-subscribe::after,
+.buzzsprout-gate button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6 3.5 10.5 8 6 12.5' fill='none' stroke='%232A0B4F' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 14px 14px;
+  transition: transform 350ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+a.btn-apply::after,
+a.btn-apply.lg::after,
+a.btn-case::after,
+a.btn-teal::after,
+a.btn-partnership::after,
+a.btn-terms::after,
+button.btn-teal::after,
+button.btn-subscribe::after,
+.buzzsprout-gate button::after {
+  right: 8px;
+  transform: translateY(-50%) scale(1);
+}
+
+a.btn-apply::before,
+a.btn-apply.lg::before,
+a.btn-case::before,
+a.btn-teal::before,
+a.btn-partnership::before,
+a.btn-terms::before,
+button.btn-teal::before,
+button.btn-subscribe::before,
+.buzzsprout-gate button::before {
+  left: 8px;
+  transform: translateY(-50%) scale(0);
+}
+
+a.btn-apply:hover,
+a.btn-apply.lg:hover,
+a.btn-case:hover,
+a.btn-teal:hover,
+a.btn-partnership:hover,
+a.btn-terms:hover,
+button.btn-teal:hover,
+button.btn-subscribe:hover,
+.buzzsprout-gate button:hover,
+a.btn-apply:focus-visible,
+a.btn-apply.lg:focus-visible,
+a.btn-case:focus-visible,
+a.btn-teal:focus-visible,
+a.btn-partnership:focus-visible,
+a.btn-terms:focus-visible,
+button.btn-teal:focus-visible,
+button.btn-subscribe:focus-visible,
+.buzzsprout-gate button:focus-visible {
+  transform: scale(1.05);
+  padding-left: 52px;
+  padding-right: 18px;
+  outline: none;
+}
+
+a.btn-apply:hover,
+a.btn-apply.lg:hover,
+a.btn-apply:focus-visible,
+a.btn-apply.lg:focus-visible {
+  background: #ea1557;
+  color: #fff;
+}
+
+a.btn-case:hover,
+a.btn-teal:hover,
+a.btn-partnership:hover,
+a.btn-terms:hover,
+button.btn-teal:hover,
+button.btn-subscribe:hover,
+.buzzsprout-gate button:hover,
+a.btn-case:focus-visible,
+a.btn-teal:focus-visible,
+a.btn-partnership:focus-visible,
+a.btn-terms:focus-visible,
+button.btn-teal:focus-visible,
+button.btn-subscribe:focus-visible,
+.buzzsprout-gate button:focus-visible {
+  background: #28dbb0;
+  color: #2a0b4f;
+}
+
+a.btn-apply:hover::after,
+a.btn-apply.lg:hover::after,
+a.btn-case:hover::after,
+a.btn-teal:hover::after,
+a.btn-partnership:hover::after,
+a.btn-terms:hover::after,
+button.btn-teal:hover::after,
+button.btn-subscribe:hover::after,
+.buzzsprout-gate button:hover::after,
+a.btn-apply:focus-visible::after,
+a.btn-apply.lg:focus-visible::after,
+a.btn-case:focus-visible::after,
+a.btn-teal:focus-visible::after,
+a.btn-partnership:focus-visible::after,
+a.btn-terms:focus-visible::after,
+button.btn-teal:focus-visible::after,
+button.btn-subscribe:focus-visible::after,
+.buzzsprout-gate button:focus-visible::after {
+  transform: translateY(-50%) scale(0);
+}
+
+a.btn-apply:hover::before,
+a.btn-apply.lg:hover::before,
+a.btn-case:hover::before,
+a.btn-teal:hover::before,
+a.btn-partnership:hover::before,
+a.btn-terms:hover::before,
+button.btn-teal:hover::before,
+button.btn-subscribe:hover::before,
+.buzzsprout-gate button:hover::before,
+a.btn-apply:focus-visible::before,
+a.btn-apply.lg:focus-visible::before,
+a.btn-case:focus-visible::before,
+a.btn-teal:focus-visible::before,
+a.btn-partnership:focus-visible::before,
+a.btn-terms:focus-visible::before,
+button.btn-teal:focus-visible::before,
+button.btn-subscribe:focus-visible::before,
+.buzzsprout-gate button:focus-visible::before {
+  transform: translateY(-50%) scale(1);
+}
+
+@media (max-width: 640px) {
+  a.btn-case,
+  a.btn-partnership,
+  a.btn-apply.lg {
+    width: 100%;
+    max-width: 100%;
+    font-size: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a.btn-apply,
+  a.btn-apply.lg,
+  a.btn-case,
+  a.btn-teal,
+  a.btn-partnership,
+  a.btn-terms,
+  button.btn-teal,
+  button.btn-subscribe,
+  .buzzsprout-gate button,
+  a.btn-apply::before,
+  a.btn-apply::after,
+  a.btn-case::before,
+  a.btn-case::after,
+  a.btn-teal::before,
+  a.btn-teal::after,
+  a.btn-partnership::before,
+  a.btn-partnership::after,
+  a.btn-terms::before,
+  a.btn-terms::after,
+  button.btn-teal::before,
+  button.btn-teal::after,
+  button.btn-subscribe::before,
+  button.btn-subscribe::after,
+  .buzzsprout-gate button::before,
+  .buzzsprout-gate button::after {
+    transition: background-color 200ms ease, color 200ms ease;
+  }
+
+  a.btn-apply:hover,
+  a.btn-apply.lg:hover,
+  a.btn-case:hover,
+  a.btn-teal:hover,
+  a.btn-partnership:hover,
+  a.btn-terms:hover,
+  button.btn-teal:hover,
+  button.btn-subscribe:hover,
+  .buzzsprout-gate button:hover,
+  a.btn-apply:focus-visible,
+  a.btn-apply.lg:focus-visible,
+  a.btn-case:focus-visible,
+  a.btn-teal:focus-visible,
+  a.btn-partnership:focus-visible,
+  a.btn-terms:focus-visible,
+  button.btn-teal:focus-visible,
+  button.btn-subscribe:focus-visible,
+  .buzzsprout-gate button:focus-visible {
+    transform: none;
+    padding-left: 20px;
+    padding-right: 56px;
+  }
+
+  a.btn-apply:hover,
+  a.btn-apply.lg:hover,
+  a.btn-apply:focus-visible,
+  a.btn-apply.lg:focus-visible {
+    background: #fff;
+    color: #ea1557;
+  }
+
+  a.btn-case:hover,
+  a.btn-teal:hover,
+  a.btn-partnership:hover,
+  a.btn-terms:hover,
+  button.btn-teal:hover,
+  button.btn-subscribe:hover,
+  .buzzsprout-gate button:hover,
+  a.btn-case:focus-visible,
+  a.btn-teal:focus-visible,
+  a.btn-partnership:focus-visible,
+  a.btn-terms:focus-visible,
+  button.btn-teal:focus-visible,
+  button.btn-subscribe:focus-visible,
+  .buzzsprout-gate button:focus-visible {
+    background: #fff;
+    color: #2a0b4f;
+  }
+
+  a.btn-apply:hover::after,
+  a.btn-apply:focus-visible::after,
+  a.btn-case:hover::after,
+  a.btn-case:focus-visible::after,
+  a.btn-teal:hover::after,
+  a.btn-teal:focus-visible::after,
+  a.btn-partnership:hover::after,
+  a.btn-partnership:focus-visible::after,
+  a.btn-terms:hover::after,
+  a.btn-terms:focus-visible::after,
+  button.btn-teal:hover::after,
+  button.btn-teal:focus-visible::after,
+  button.btn-subscribe:hover::after,
+  button.btn-subscribe:focus-visible::after,
+  .buzzsprout-gate button:hover::after,
+  .buzzsprout-gate button:focus-visible::after {
+    transform: translateY(-50%) scale(1);
+  }
+
+  a.btn-apply:hover::before,
+  a.btn-apply:focus-visible::before,
+  a.btn-case:hover::before,
+  a.btn-case:focus-visible::before,
+  a.btn-teal:hover::before,
+  a.btn-teal:focus-visible::before,
+  a.btn-partnership:hover::before,
+  a.btn-partnership:focus-visible::before,
+  a.btn-terms:hover::before,
+  a.btn-terms:focus-visible::before,
+  button.btn-teal:hover::before,
+  button.btn-teal:focus-visible::before,
+  button.btn-subscribe:hover::before,
+  button.btn-subscribe:focus-visible::before,
+  .buzzsprout-gate button:hover::before,
+  .buzzsprout-gate button:focus-visible::before {
+    transform: translateY(-50%) scale(0);
+  }
+}
