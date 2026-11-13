@@ -6,6 +6,7 @@
     <defs>
       <mask id="company-reveal" maskUnits="userSpaceOnUse">
         <path id="company-mask" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" />
+        <rect id="company-cover" x="0" y="0" width="0" height="0" fill="#000" />
       </mask>
     </defs>
     <path id="founder-line" stroke="#28DBB0" stroke-linecap="round" stroke-linejoin="round" />
@@ -250,18 +251,8 @@
     };
 
     const alignDoor = () => {
-      const word = document.querySelector(".hero-build");
       const img = document.querySelector(".hero-sketch");
-      if (!(word instanceof HTMLElement) || !(img instanceof HTMLElement)) return;
-      if (window.innerWidth < 1081) {
-        img.style.transform = "";
-        return;
-      }
-      img.style.transform = "translate(-50px, 100px)";
-      const box = img.getBoundingClientRect();
-      const doorRight = box.left + box.width * (412 / 520);
-      const nudge = word.getBoundingClientRect().right - doorRight;
-      img.style.transform = `translate(${(-50 + nudge).toFixed(1)}px, 100px)`;
+      if (img instanceof HTMLElement) img.style.transform = "";
     };
 
     const build = () => {
@@ -454,10 +445,38 @@
       const companyY = entryY - Math.max(36, companyStroke + 16);
       const companyExitY = exit.y + exit.h * 0.66;
       const companyPts = [];
-      add(companyPts, -30, companyY);
-      add(companyPts, rightLane + founderStroke * 0.55, companyY);
-      add(companyPts, rightLane + founderStroke * 0.7, exit.y + exit.h * 0.4);
-      add(companyPts, width + 40, companyExitY);
+      const machineEl = document.querySelector(".exit-machine");
+      const machine = machineEl instanceof HTMLElement ? box(machineEl) : null;
+      const cover = document.querySelector("#company-cover");
+      let companyAnchor = { x: Math.min(width - 24, rightLane + founderStroke), y: companyExitY };
+      if (machine) {
+        const artLeft = machine.left + machine.w * (36 / 390);
+        const artTop = machine.y + machine.h * (54 / 414);
+        const artRight = machine.left + machine.w * (353 / 390);
+        const artBottom = machine.y + machine.h * (359 / 414);
+        const artCx = (artLeft + artRight) / 2;
+        add(companyPts, -30, companyY);
+        add(companyPts, artCx, companyY);
+        add(companyPts, artCx, artTop);
+        add(companyPts, artRight, artBottom);
+        add(companyPts, width + 40, artBottom);
+        if (cover instanceof SVGRectElement) {
+          cover.setAttribute("x", artLeft.toFixed(1));
+          cover.setAttribute("y", artTop.toFixed(1));
+          cover.setAttribute("width", Math.max(0, artRight - artLeft).toFixed(1));
+          cover.setAttribute("height", Math.max(0, artBottom - artTop).toFixed(1));
+        }
+        companyAnchor = { x: Math.min(width - 24, artRight + 28), y: artBottom };
+      } else {
+        add(companyPts, -30, companyY);
+        add(companyPts, rightLane + founderStroke * 0.55, companyY);
+        add(companyPts, rightLane + founderStroke * 0.7, exit.y + exit.h * 0.4);
+        add(companyPts, width + 40, companyExitY);
+        if (cover instanceof SVGRectElement) {
+          cover.setAttribute("width", "0");
+          cover.setAttribute("height", "0");
+        }
+      }
 
       const placeAnchor = (name, x, y) => {
         const node = root.querySelector(`[data-line-anchor="${name}"]`);
@@ -470,7 +489,7 @@
         node.style.overflow = "hidden";
         node.style.pointerEvents = "none";
       };
-      placeAnchor("1", Math.min(width - 24, rightLane + founderStroke), companyExitY);
+      placeAnchor("1", companyAnchor.x, companyAnchor.y);
       placeAnchor("2", Math.max(24, sideX - founderStroke * 1.4), (finders ? finders.y : entryY) - 12);
       placeAnchor("3", Math.min(width - 24, mouthX + founderStroke * 1.2), swell.y + 8);
 

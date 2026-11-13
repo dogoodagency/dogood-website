@@ -49,6 +49,7 @@ const legal = [
         !hideOptin && (
           <>
       <h2>Not ready to apply? That’s okay.</h2>
+      <div class="optin-fit">
       <p class="fine optin-copy">Get honest notes on what comes after the exit.</p>
       <form class="footer-form js-subscribe" action={action} method="post">
         <input type="hidden" name="ml-submit" value="1" />
@@ -81,6 +82,7 @@ const legal = [
         <button class="btn-subscribe" type="submit">Subscribe</button>
         <p data-status hidden></p>
       </form>
+      </div>
           </>
         )
       }
@@ -143,11 +145,12 @@ const legal = [
         </svg>
       </span>
     </a>
-    <ul>
+    <ul class="connect-row">
       {
         connectLinks.map((link) => (
           <li>
             <a href={link.href} rel={link.external ? "noopener noreferrer" : undefined}>
+              <span class="connect-slot" aria-hidden="true"></span>
               {link.label}
             </a>
           </li>

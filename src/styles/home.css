@@ -3268,7 +3268,7 @@ main {
 
 .footer-form button.btn-subscribe:hover,
 .footer-form button.btn-subscribe:focus-visible {
-  background: #fff;
+  background: #28dbb0;
   color: #2a0b4f;
   border: 1px solid #28dbb0;
 }
@@ -3356,9 +3356,9 @@ header.nav .nav-mega {
   right: 0;
   z-index: 40;
   display: grid;
-  grid-template-columns: minmax(220px, 320px) minmax(0, 1fr);
+  grid-template-columns: 360px minmax(0, 1fr);
   align-items: center;
-  gap: 28px;
+  gap: 40px;
   width: auto;
   min-height: 0;
   padding: 16px;
@@ -3435,18 +3435,21 @@ header.nav .nav-mega-links {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: center;
   gap: 22px;
-  margin: 8px 0 0;
-  padding: 8px 12px 0 4px;
+  margin: 0;
+  padding: 0;
   list-style: none;
   min-height: 0;
+  min-width: 0;
 }
 
 header.nav .nav-mega-links a {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 4px;
-  max-width: 360px;
+  max-width: 100%;
   color: #2a0b4f;
   font-size: 18px;
   font-weight: 400;
@@ -4640,11 +4643,26 @@ p.services-note {
   align-items: center;
 }
 
-@media (min-width: 1081px) {
-  .footer-subscribe .email-field {
-    width: 420px;
-    max-width: none;
-  }
+.footer-subscribe .optin-fit {
+  display: inline-grid;
+  grid-template-columns: minmax(0, max-content);
+  max-width: 100%;
+  justify-items: stretch;
+}
+
+.footer-subscribe .optin-fit .optin-copy {
+  width: max-content;
+  max-width: 100%;
+}
+
+.footer-subscribe .optin-fit .footer-form {
+  width: 0;
+  min-width: 100%;
+}
+
+.footer-subscribe .optin-fit .email-field {
+  width: 100%;
+  max-width: 100%;
 }
 
 .email-field .stay-envelope,
@@ -5078,4 +5096,76 @@ button.btn-subscribe:focus-visible {
     padding-left: 60px;
     padding-right: 96px;
   }
+}
+
+/* Round 8. The sketch is taken out of flow so the hero column keeps its old height.
+   Its top lines up with the teal lede, and it is 20% larger than the previous slot. */
+@media (min-width: 1081px) {
+  .hero-draw {
+    position: relative;
+  }
+
+  .hero-draw::before {
+    content: "";
+    display: block;
+    width: calc(100% + 60px);
+    height: 0;
+    padding-bottom: calc((100% + 60px) * 340 / 520);
+  }
+
+  .hero-sketch-frame {
+    position: absolute;
+    left: 0;
+    top: -10.8px;
+    width: calc(1.2 * (100% + 60px));
+    max-width: none;
+  }
+
+  .hero-sketch {
+    width: 100%;
+    max-width: none;
+    margin-top: 0;
+  }
+
+  .exit-machine {
+    translate: 100px 0;
+  }
+}
+
+@media (min-width: 1400px) {
+  .hero-sketch-frame {
+    top: 49.2px;
+  }
+}
+
+@media (min-width: 1680px) {
+  .hero-sketch-frame {
+    top: 149.2px;
+  }
+}
+
+.footer-lets .connect-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 28px;
+  margin-top: 16px;
+}
+
+.footer-lets .connect-row li {
+  margin: 0;
+}
+
+.footer-lets .connect-row a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-lets .connect-slot {
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
 }
