@@ -4577,8 +4577,9 @@ button.btn-subscribe:focus-visible,
   opacity: 1;
 }
 
-#case-j p.t-kicker {
-  color: #ea1557;
+#case-j p.t-kicker,
+#case-v p.t-kicker {
+  color: #28dbb0;
 }
 
 #case-j a.btn-case,
@@ -4588,8 +4589,9 @@ button.btn-subscribe:focus-visible,
   color: #fff;
 }
 
+#case-j h3,
 #case-v h3 {
-  color: #28dbb0;
+  color: #2a0b4f;
 }
 
 a.btn-partnership,
