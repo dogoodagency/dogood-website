@@ -161,9 +161,23 @@ const notFit = [
   <section id="first-step">
     <div class="first-grid">
       <div id="first-draw">
-        <div class="sketch-ph" role="img" aria-label="Image placeholder">
-          <span>Sketch-style drawing</span>
-        </div>
+        <picture>
+          <source
+            type="image/webp"
+            srcset="/sketches/founder-first-step-stepping-stones-sketch@1x.webp 524w, /sketches/founder-first-step-stepping-stones-sketch@2x.webp 1048w"
+            sizes="(max-width: 1080px) 320px, 540px"
+          />
+          <img
+            src="/sketches/founder-first-step-stepping-stones-sketch@1x.png"
+            srcset="/sketches/founder-first-step-stepping-stones-sketch@1x.png 524w, /sketches/founder-first-step-stepping-stones-sketch@2x.png 1048w"
+            sizes="(max-width: 1080px) 320px, 540px"
+            width="524"
+            height="531"
+            alt="Sketch of a founder stepping onto the first stone of a path across water."
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
       </div>
       <article class="card" id="first-card">
         <h2 class="t-h2">This is the first step.</h2>
