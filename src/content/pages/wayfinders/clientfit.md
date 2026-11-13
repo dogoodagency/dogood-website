@@ -3,8 +3,12 @@ title: "wayfinders/clientfit"
 description: "A private 30-day Intensive for founders navigating life after exit. Start with Stage 1 of the Founder Reclamation Partnership. 5 founders a month."
 ---
 
-- [Founders](/how-it-works)
-- [Wayfinders](/wayfinders)
+<nav class="crumbs" aria-label="Breadcrumb">
+  <a href="/how-it-works">How it works</a>
+  <span aria-hidden="true">/</span>
+  <a href="/wayfinders">Wayfinders</a>
+</nav>
+
 
 <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
 
@@ -32,6 +36,6 @@ From exit anxiety to aligned legacy —How J created a clear next life chapter
 
 J (anonymous), USD 2M founder
 
-[Read the short case study →](/casestudies/j)
+<a class="btn-teal" href="/casestudies/j">Read the short case study</a>
 
 We protect our founders’ identities

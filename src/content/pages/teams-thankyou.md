@@ -19,4 +19,4 @@ Recommended call preparation:
 - Share the biggest constraint blocking execution
 - Note what you’ve already tried (if anything)
 
-[Back To Homepage →](/)
+<a class="btn-teal" href="/">Go to homepage</a>

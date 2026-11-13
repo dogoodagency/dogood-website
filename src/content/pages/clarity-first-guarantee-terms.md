@@ -29,7 +29,7 @@ From identity void to decisive leadership — how V reclaimed life after success
 
 V (anonymous), USD 9M+ founder
 
-[Read the short case study →](/casestudies/v)
+<a class="btn-teal" href="/casestudies/v">Read the short case study</a>
 
 We protect our founders’ identities
 
@@ -89,4 +89,4 @@ FRP is private and confidential (“no groups, no cohorts”), and confidentiali
 
 To invoke the Clarity‑First Guarantee, email: [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co?subject=Clarity%E2%80%91First%20Guarantee%20%E2%80%94%20Exit%20Request) | Subject: Clarity‑First Guarantee — Exit Request | Include: your full name + date of Session 1.
 
-[Back To Homepage →](/)
+<a class="btn-teal" href="/">Go to homepage</a>

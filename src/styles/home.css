@@ -3114,11 +3114,16 @@ main {
 
 .page-advisor .advisor-line {
   position: absolute;
-  left: -28px;
-  top: 18%;
-  width: 36px;
-  height: 46%;
+  left: -18px;
+  top: 0;
+  width: 48px;
+  height: 100%;
   pointer-events: none;
+  z-index: 1;
+}
+
+.page-advisor .advisor-line path {
+  stroke-width: 3.25;
 }
 
 .logo-pills {
@@ -3828,4 +3833,45 @@ p.t-kicker,
   padding: 8px 0 8px 16px;
   border-left: 3px solid #28dbb0;
   color: #2a0b4f;
+}
+
+.page-body a:not(.btn-apply):not(.btn-teal):not(.btn-case) {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin: 0 0 18px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.crumbs a,
+.crumbs span {
+  color: #2a0b4f;
+}
+
+iframe.tidycal-embed,
+.tidycal-embed {
+  display: block;
+  width: 100%;
+  min-height: 720px;
+  margin: 24px 0 8px;
+  border: 0;
+  border-radius: 16px;
+  background: #fff;
+}
+
+@media (max-width: 700px) {
+  .tawk-tooltip,
+  #tawk-tooltip,
+  .tawk-card,
+  div[class*="tawk-message"],
+  iframe[title*="Attention"] {
+    display: none !important;
+  }
 }

@@ -25,6 +25,6 @@ From exit anxiety to aligned legacy —How J created a clear next life chapter
 
 J (anonymous), USD 2M founder
 
-[Read the short case study →](/casestudies/j)
+<a class="btn-teal" href="/casestudies/j">Read the short case study</a>
 
 We protect our founders’ identities

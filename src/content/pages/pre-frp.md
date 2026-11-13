@@ -18,4 +18,4 @@ This short call is an opportunity to look at where you are now and whether a Fou
 
 Please answer the questions during the booking process. This will help us prepare for our call.
 
-[See the 2‑Stage Partnership →](/how-it-works)
+<a class="btn-teal" href="/how-it-works">How it works</a>

@@ -3,8 +3,12 @@ title: "wayfinders/katrin"
 description: "Meet Katrin, DoGood Wayfinder for Europe, the UK and Central America, for founders whose personal life starts to affect how they lead and decide."
 ---
 
-- [Founders](/how-it-works)
-- [Wayfinders](/wayfinders)
+<nav class="crumbs" aria-label="Breadcrumb">
+  <a href="/how-it-works">How it works</a>
+  <span aria-hidden="true">/</span>
+  <a href="/wayfinders">Wayfinders</a>
+</nav>
+
 
 <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
 

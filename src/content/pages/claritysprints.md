@@ -51,7 +51,7 @@ Apply to the Founder Reclamation Partnership.
 
 For 1:1 Clarity Sprints use the booking form below.
 
-[FRP Founder? Start Here →](/how-it-works)
+<a class="btn-teal" href="/how-it-works">How it works</a>
 
 For founders + select founder-like executives
 
@@ -73,6 +73,6 @@ From exit anxiety to aligned legacy —How J created a clear next life chapter
 
 J (anonymous), USD 2M founder
 
-[Read the short case study →](/casestudies/j)
+<a class="btn-teal" href="/casestudies/j">Read the short case study</a>
 
 We protect our founders’ identities

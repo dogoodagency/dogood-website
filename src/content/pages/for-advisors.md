@@ -43,8 +43,6 @@ The work is limited to 5 new founders a month. If Stage 1 is not right, we say s
 
 ## How a referral works
 
-## How a referral works
-
 A short, careful path. We never contact your client without you.
 
 ### 1. An intro conversation with Seb
@@ -68,8 +66,6 @@ If they go ahead, we keep you informed of the broad shape of things. We do not s
 The founder begins a private 30-day engagement. You stay the trusted advisor.
 
 ---
-
-## What you get
 
 ## What you get
 

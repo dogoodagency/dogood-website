@@ -3,8 +3,12 @@ title: "wayfinders/chantill"
 description: "Meet Chantill, DoGood Wayfinder for North America and Canada: a deeply relational partner for founders who feel lost and want a path back to themselves."
 ---
 
-- [Founders](/how-it-works)
-- [Wayfinders](/wayfinders)
+<nav class="crumbs" aria-label="Breadcrumb">
+  <a href="/how-it-works">How it works</a>
+  <span aria-hidden="true">/</span>
+  <a href="/wayfinders">Wayfinders</a>
+</nav>
+
 
 <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
 

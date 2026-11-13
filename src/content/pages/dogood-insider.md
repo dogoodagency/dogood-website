@@ -20,102 +20,104 @@ Founders and other leaders share what they've lived through: culture wearing thi
 
 ## Listen on
 
-- **YouTube:** [https://www.youtube.com/@RawStoriesOfDoGoodCultures/podcasts](https://www.youtube.com/@RawStoriesOfDoGoodCultures/podcasts) (channel: [@RawStoriesOfDoGoodCultures](https://www.youtube.com/@RawStoriesOfDoGoodCultures))
-- **Spotify:** [https://open.spotify.com/show/1vlOQvxBxc6CmDp7BWAR4K?si=178f1d9e0e5543fa](https://open.spotify.com/show/1vlOQvxBxc6CmDp7BWAR4K?si=178f1d9e0e5543fa)
-- **Apple Podcasts:** [https://podcasts.apple.com/us/podcast/dogood-insider-raw-journeys-from-start-up-founders-to-scale-up-ceos-with-seb-wichmann/id1786906519](https://podcasts.apple.com/us/podcast/dogood-insider-raw-journeys-from-start-up-founders-to-scale-up-ceos-with-seb-wichmann/id1786906519)
-- **Amazon Music:** [https://music.amazon.com/podcasts/8a575c58-a94c-4707-9173-e2e42d17bbb5/dogood-insider---raw-journeys-from-start-up-founders-to-scale-up-ceos](https://music.amazon.com/podcasts/8a575c58-a94c-4707-9173-e2e42d17bbb5/dogood-insider---raw-journeys-from-start-up-founders-to-scale-up-ceos)
+<p>
+<a class="btn-teal" href="https://www.youtube.com/@RawStoriesOfDoGoodCultures/podcasts" target="_blank" rel="noopener noreferrer">YouTube</a>
+<a class="btn-teal" href="https://open.spotify.com/show/1vlOQvxBxc6CmDp7BWAR4K" target="_blank" rel="noopener noreferrer">Spotify</a>
+<a class="btn-teal" href="https://podcasts.apple.com/us/podcast/dogood-insider-raw-journeys-from-start-up-founders-to-scale-up-ceos-with-seb-wichmann/id1786906519" target="_blank" rel="noopener noreferrer">Apple Podcasts</a>
+<a class="btn-teal" href="https://music.amazon.com/podcasts/8a575c58-a94c-4707-9173-e2e42d17bbb5" target="_blank" rel="noopener noreferrer">Amazon Music</a>
+</p>
 
 ## Episodes
 
 ### Decision Making in Business
 How CEOs Build a Culture of Accountability  
 43:58  
-<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### Culture Eats Strategy
 Building Tomorrow's SMEs on Today's Values Toward a Human-First Culture  
 44:59  
-<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### Building Tomorrow's Culture
 Daniel Marashlian on Managing SME Culture Amidst Rapid Growth Surge  
 36:08  
-<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### From Silicon Val. to Seafloor
 Reimagining Sustainable Deep-Sea Mining with Oliver Gunasekara  
 32:55  
-<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### The Gen-Z Community Era
 Christian Brown Breaks Social Barriers  
 44:19  
-<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### The Workforce Drought
 Craig Rupp's Journey from Engineer to AgTech Visionary & Legacy of Leadership  
 32:24  
-<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### Holistic Leadership in Action
 How Peggy Rajski Balances Strategy, Intuition, and Discernment to Drive Change  
 1:01:37  
-<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### Beyond Distance
 Transforming Remote Work into Meaningful Connections with Jeanette Winters  
 34:43  
-<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### Scaling Teams & Culture
 Lessons in Hiring with Brian Samson  
 40:17  
-<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### Staying Lean & Growing Big
 How Benjamin Ard Built a Successful 2-Man SaaS Company  
 44:34  
-<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### Sustainable Threads of Change
 Kat Dey Weaves Ethics into Business Innovation  
 33:34  
-<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### Beyond the Balance Sheet
 Borys Pikalov on Customer Loyalty & Staff Wellbeing in Decentralized Finance  
 38:54  
-<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### No Compromise, Just Care
 John Hoey on Hiring with Heart & Leading with Soul  
 38:22  
-<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### Bridging The Cultural Divide
 Redefining Cross-Continental Growth in Gaming's Global Workforce with Chris Hewish  
 39:23  
-<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### Emulating The Star Factor
 Daricus Releford's Story from Google to Meeting The Odd Man on the Stairs  
 48:15  
-<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### The Power of Envelope Money
 Shane Walker on Intentional Spending Habits  
 44:06  
-<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### Breaking Taboos
 Alex Fine on Transforming Sexual Health & Authenticity in Entrepreneurship  
 38:28  
-<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### The Culinary Revolution
 Benji Koltai About Family Values, Founding & Battling Operational Models  
 41:24  
-<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ## About the show
 

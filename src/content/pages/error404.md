@@ -11,4 +11,4 @@ description: "That page is not here. Head home, or send us a note."
 
 The page you asked for is not here. The way forward still is.
 
-<p><a class="btn-teal" href="/">Go to the homepage</a> <a class="btn-teal" href="/contact">Contact us</a></p>
+<p><a class="btn-teal" href="/">Go to homepage</a> <a class="btn-teal" href="/contact">Contact us</a></p>

@@ -3,8 +3,12 @@ title: "wayfinders/seb"
 description: "Meet Seb, DoGood Wayfinder for Asia-Pacific and the US: a founder whose successful business nearly broke him, now guiding founders through their reset."
 ---
 
-- [Founders](/how-it-works)
-- [Wayfinders](/wayfinders)
+<nav class="crumbs" aria-label="Breadcrumb">
+  <a href="/how-it-works">How it works</a>
+  <span aria-hidden="true">/</span>
+  <a href="/wayfinders">Wayfinders</a>
+</nav>
+
 
 <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
 

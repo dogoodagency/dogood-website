@@ -13,4 +13,4 @@ Thank you – You're booked
 
 You will have received a calendar invite in your inbox, and the meeting should already be added – verify that the meeting appears there.
 
-[Back To Homepage →](/)
+<a class="btn-teal" href="/">Go to homepage</a>

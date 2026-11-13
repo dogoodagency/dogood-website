@@ -12,4 +12,4 @@ tidycal: "dogoodagency/catchup"
 
 A private call for family, friends, and personal life catch-ups. :-)
 
-[Back To Homepage →](/)
+<a class="btn-teal" href="/">Go to homepage</a>

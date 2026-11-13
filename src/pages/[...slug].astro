@@ -97,10 +97,10 @@ const pageDescription = genericDescription
   <article class:list={["page", entry.data.advisorLine && "page-advisor", ["how-it-works", "for-advisors", "stories", "wayfinders", "newsletter", "diagnostics", "faqs", "insights", "dogood-insider", "apply-stage-1", "clarity-first-guarantee-terms", "casestudies/j", "casestudies/v", "about"].includes(slug) && "page-art"]}>
     <div class="page-wrap">
       {entry.data.advisorLine && (
-        <svg class="advisor-line" viewBox="0 0 40 640" preserveAspectRatio="none" aria-hidden="true">
+        <svg class="advisor-line" viewBox="0 0 48 1600" preserveAspectRatio="none" aria-hidden="true">
           <path
             id="advisor-line-path"
-            d="M20 8 C 8 80, 32 140, 20 220 C 8 300, 32 380, 20 470 C 10 540, 28 590, 20 632"
+            d="M24 8 C 8 180, 40 320, 24 500 C 8 680, 40 860, 24 1040 C 10 1240, 38 1420, 24 1588"
             fill="none"
             stroke="#28DBB0"
             stroke-width="3"
@@ -114,7 +114,10 @@ const pageDescription = genericDescription
       {slug === "stories" && <LogoPills />}
       {
         entry.data.tidycal && (
-          <div class="tidycal-embed" data-path={entry.data.tidycal}></div>
+          <>
+            <div class="tidycal-embed" data-path={entry.data.tidycal}></div>
+            <script is:inline src="https://asset-tidycal.b-cdn.net/js/embed.js" async></script>
+          </>
         )
       }
       {
@@ -127,12 +130,6 @@ const pageDescription = genericDescription
     </div>
   </article>
 </Base>
-
-{
-  entry.data.tidycal && (
-    <script is:inline src="https://asset-tidycal.b-cdn.net/js/embed.js" async></script>
-  )
-}
 
 <script>
   const wave = document.querySelector("#advisor-line-path");

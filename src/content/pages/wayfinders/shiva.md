@@ -3,8 +3,12 @@ title: "wayfinders/shiva"
 description: "Meet Shiva, DoGood Wayfinder for the Gulf, North Africa and East Asia, for founders between worlds: post-exit, mid-collapse, or before the crash."
 ---
 
-- [Founders](/how-it-works)
-- [Wayfinders](/wayfinders)
+<nav class="crumbs" aria-label="Breadcrumb">
+  <a href="/how-it-works">How it works</a>
+  <span aria-hidden="true">/</span>
+  <a href="/wayfinders">Wayfinders</a>
+</nav>
+
 
 <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
 

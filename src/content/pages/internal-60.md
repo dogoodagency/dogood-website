@@ -28,4 +28,4 @@ Prep (2 minutes)
 
 Expectation: This is an execution sync, not an undirected time fill.
 
-[Back To Homepage →](/)
+<a class="btn-teal" href="/">Go to homepage</a>
