@@ -308,10 +308,10 @@
         let level = 1;
         if (!reduce.matches) {
           const rect = funnel.getBoundingClientRect();
-          const viewH = window.innerHeight;
-          if (rect.height <= 1 || rect.top >= viewH) level = 0;
-          else if (rect.bottom <= viewH) level = 1;
-          else level = (viewH - rect.top) / rect.height;
+          const edge = window.innerHeight * 0.5;
+          if (rect.height <= 1 || rect.top >= edge) level = 0;
+          else if (rect.bottom <= edge) level = 1;
+          else level = (edge - rect.top) / rect.height;
         }
         const offset = level.toFixed(4);
         swellDark.setAttribute("offset", offset);
