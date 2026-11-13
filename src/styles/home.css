@@ -2589,7 +2589,10 @@ p.say-no,
 .footer-wave {
   display: block;
   line-height: 0;
-  background: #f5f2f9;
+}
+
+.section-wave {
+  background: transparent;
 }
 
 .section-wave .hero-wave,
@@ -2604,7 +2607,12 @@ p.say-no,
 }
 
 .footer-wave.is-filled {
-  background: #28dbb0;
+  background: #d4f4eb;
+}
+
+.footer-wave {
+  position: relative;
+  z-index: 2;
 }
 
 .footer {
@@ -5484,7 +5492,7 @@ button.btn-subscribe:focus-visible {
     left: calc(816 * 100vw / 1710);
     top: 0;
     width: calc(857 * 100vw / 1710);
-    z-index: 0;
+    z-index: 2;
     margin: 0;
   }
 
@@ -5609,6 +5617,6 @@ button.btn-subscribe:focus-visible {
 
   .why-sketch {
     position: relative;
-    z-index: 0;
+    z-index: 2;
   }
 }
