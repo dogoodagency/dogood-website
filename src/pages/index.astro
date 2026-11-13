@@ -460,7 +460,7 @@ const notFit = [
     <div class="track-block">
       <article class="card track-card">
         <h3 class="track-title">Our team’s track record</h3>
-        <div class="track-nums">
+        <div class="track-nums" data-count-group>
           {
             [
               { text: "76", label: "Founders Engaged", count: "76", prefix: "", suffix: "", decimals: "0" },
@@ -584,17 +584,22 @@ const notFit = [
         };
         requestAnimationFrame(tick);
       };
-      const observer = new IntersectionObserver(
-        (entries) => {
-          for (const entry of entries) {
-            if (!entry.isIntersecting || !(entry.target instanceof HTMLElement)) continue;
-            observer.unobserve(entry.target);
-            start(entry.target);
-          }
-        },
-        { threshold: 0.5 },
-      );
-      counters.forEach((el) => observer.observe(el));
+      const group = document.querySelector("[data-count-group]");
+      if (group) {
+        let started = false;
+        const observer = new IntersectionObserver(
+          (entries) => {
+            if (started || !entries.some((entry) => entry.isIntersecting)) return;
+            started = true;
+            observer.disconnect();
+            counters.forEach((el) => {
+              if (el instanceof HTMLElement) start(el);
+            });
+          },
+          { threshold: 0.35 },
+        );
+        observer.observe(group);
+      }
     }
   </script>
 </Base>

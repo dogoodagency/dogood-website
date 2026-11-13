@@ -10,6 +10,11 @@ export default defineConfig({
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
+    build: {
+      // Netlify's script-src 'self' blocks inlined module scripts. Keep every
+      // script as its own file so the track-record counter can run.
+      assetsInlineLimit: 0,
+    },
   },
   build: {
     inlineStylesheets: "auto",
