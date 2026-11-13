@@ -5,7 +5,10 @@ description: "Why DoGood exists, what the name means, and the people behind the 
 
 # We exist for life after the company.
 
-<!-- about-art-placeholder: Arta's About sketch is not in this batch. -->
+<picture class="page-sketch page-sketch-feature">
+  <source type="image/webp" srcset="/sketches/about-building-and-bench@1x.webp 540w, /sketches/about-building-and-bench@2x.webp 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" />
+  <img src="/sketches/about-building-and-bench@1x.png" srcset="/sketches/about-building-and-bench@1x.png 540w, /sketches/about-building-and-bench@2x.png 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" width="540" height="400" alt="A quiet unfilled workshop or office building stands to one side, with a garden bench, a folded jacket, a cup and a small plant on a teal patch of ground in front." />
+</picture>
 
 DoGood is a private partnership for founders who have exited, or are getting ready to, and do not want life after the company to become another version of the life they left behind.
 
