@@ -767,30 +767,68 @@
 
       const reveal = revealArt;
 
+      // A real gap through the flying machine. Round caps (the path's linecap)
+      // finish the incoming stroke about 20px above the title and start the
+      // outgoing stroke where the line used to reappear under the fuselage.
+      const machineGap = (() => {
+        const art = document.querySelector(".why-sketch img");
+        if (!(art instanceof HTMLImageElement) || !main) return null;
+        const artRect = art.getBoundingClientRect();
+        const mainRect = main.getBoundingClientRect();
+        if (artRect.height < 40) return null;
+        const artTop = artRect.top - mainRect.top;
+        const titleTop = artTop + artRect.height * (129 / 566);
+        const cap = founderStroke / 2;
+        const len = founder.getTotalLength();
+        const lengthAt = (y) => {
+          let lo = 0;
+          let hi = len;
+          for (let step = 0; step < 24; step += 1) {
+            const mid = (lo + hi) / 2;
+            if (founder.getPointAtLength(mid).y < y) lo = mid;
+            else hi = mid;
+          }
+          return hi;
+        };
+        // A downward round cap reaches one radius past its endpoint.
+        const open = lengthAt(titleTop - 20 - cap);
+        const close = lengthAt(artTop + artRect.height * 0.6 + cap);
+        if (!(close > open + 12)) return null;
+        return { open, close };
+      })();
+
       const paint = (path, length) => {
-        if (reduce.matches) {
-          path.style.strokeDasharray = `${length}`;
-          path.style.strokeDashoffset = "0";
-          return length;
-        }
         const svgTop = svg.getBoundingClientRect().top;
         const target = window.innerHeight * 0.5;
         let lo = 0;
         let hi = length;
-        const startY = svgTop + path.getPointAtLength(0).y;
-        const endY = svgTop + path.getPointAtLength(length).y;
-        if (target <= startY) hi = 0;
-        else if (target >= endY) hi = length;
-        else {
-          for (let step = 0; step < 22; step += 1) {
-            const midLength = (lo + hi) / 2;
-            const y = svgTop + path.getPointAtLength(midLength).y;
-            if (y < target) lo = midLength;
-            else hi = midLength;
+        if (!reduce.matches) {
+          const startY = svgTop + path.getPointAtLength(0).y;
+          const endY = svgTop + path.getPointAtLength(length).y;
+          if (target <= startY) hi = 0;
+          else if (target >= endY) hi = length;
+          else {
+            for (let step = 0; step < 22; step += 1) {
+              const midLength = (lo + hi) / 2;
+              const y = svgTop + path.getPointAtLength(midLength).y;
+              if (y < target) lo = midLength;
+              else hi = midLength;
+            }
           }
         }
+        const gap = path === founder ? machineGap : null;
+        if (gap) {
+          const rest = Math.max(length, 1);
+          if (hi <= gap.open) path.style.strokeDasharray = `${Math.max(hi, 0)} ${rest}`;
+          else if (hi <= gap.close) path.style.strokeDasharray = `${gap.open} ${rest}`;
+          else {
+            path.style.strokeDasharray = `${gap.open} ${gap.close - gap.open} ${Math.max(hi - gap.close, 0)} ${rest}`;
+          }
+          path.style.strokeDashoffset = "0";
+          return hi;
+        }
         path.style.strokeDasharray = `${length}`;
-        path.style.strokeDashoffset = String(length - hi);
+        path.style.strokeDashoffset = reduce.matches ? "0" : String(length - hi);
         return hi;
       };
 

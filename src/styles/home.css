@@ -736,27 +736,7 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
   min-height: 0;
 }
 
-.why-art {
-  position: relative;
-  width: 100%;
-}
-
-/* Hides the route where it passes through the transparent line art,
-   from just above the title to just under the fuselage. */
-.why-line-hide {
-  position: absolute;
-  z-index: 0;
-  left: 0;
-  width: 66%;
-  top: 16%;
-  height: 44%;
-  background: #f5f2f9;
-  pointer-events: none;
-}
-
 .why-sketch picture {
-  position: relative;
-  z-index: 1;
   display: flex;
   flex: 1 1 auto;
   align-items: center;
@@ -787,7 +767,6 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
 }
 
 @media (max-width: 1080px) {
-  .why-art,
   .why-sketch picture,
   .why-sketch img {
     width: min(100%, 320px);
