@@ -5204,6 +5204,12 @@ button.btn-subscribe:focus-visible {
   z-index: 3;
   pointer-events: none;
   overflow: visible;
+  /* Held back for now: the route people and their bubbles stay in the markup. */
+  display: none;
+}
+
+#company-line {
+  display: none;
 }
 
 .route-figure {
