@@ -4679,6 +4679,10 @@ button.btn-subscribe:focus-visible {
 }
 
 @media (max-width: 480px) {
+  .footer-subscribe .connect-mark {
+    margin-top: 150px;
+  }
+
   .exit-layout {
     gap: 120px;
   }
