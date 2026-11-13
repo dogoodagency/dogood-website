@@ -2845,3 +2845,29 @@ main {
     width: 26px;
   }
 }
+
+.footer-form button.btn-subscribe {
+  background: #28dbb0;
+  color: #2a0b4f;
+  border: 1px solid #28dbb0;
+}
+
+.footer-form button.btn-subscribe:hover,
+.footer-form button.btn-subscribe:focus-visible {
+  background: #fff;
+  color: #2a0b4f;
+  border: 1px solid #28dbb0;
+}
+
+@media (max-width: 800px) {
+  #exit-card,
+  .exit-split,
+  .exit-copy,
+  .exit-copy h2,
+  .exit-copy p {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    white-space: normal;
+  }
+}
