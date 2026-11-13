@@ -15,11 +15,11 @@ At DoGood Agency, we respect your privacy and are committed to protecting your p
 
 ### Automatically Collected Information
 
-Our host, Netlify, processes basic technical data (IP address, browser and device type, pages requested, referring page) to deliver the site and keep it secure. We don't use analytics or tracking tools.
+Our website host processes basic technical data (IP address, browser and device type, pages requested, referring page) to deliver the site and keep it secure. We don't use analytics or tracking tools.
 
 ### Cookie Consent Management
 
-We use CookieYes, a cookie consent management platform, to give you control over the cookies placed on your device. When you first visit our site, you'll see a cookie banner where you can:
+We use cookie consent to give you control over the cookies placed on your device. When you first visit our site, you'll see a cookie banner where you can:
 
 - Accept or decline non-essential cookies
 - View details about each cookie category
@@ -32,10 +32,10 @@ We may collect information you voluntarily submit through:
 - Contact forms or email inquiries
 - Program applications
 - Newsletter subscriptions
-- Live chat messages (tawk.to)
-- Call bookings (TidyCal)
-- Forms (Jotform)
-- The newsletter sign-up (MailerLite)
+- Live chat messages (live chat)
+- Call bookings (call booking)
+- Forms (forms)
+- The newsletter sign-up (newsletter)
 - Client onboarding processes
 
 This may include your name, email address, company name, job title, phone number, and any other information you choose to share.
@@ -62,7 +62,7 @@ We will never sell your personal information to third parties.
 
 We may share your information only in the following circumstances:
 
-Service Providers: We work with trusted third-party service providers who help us operate our business (hosting (Netlify), consent (CookieYes), live chat (tawk.to), email and newsletter (Google Workspace, MailerLite), bookings and forms (TidyCal, Jotform), CRM and contracts (HubSpot, PandaDoc), payments (Wise, Stripe), podcast player (Buzzsprout)). These providers are contractually required to protect your data and use it only for the purposes we specify.
+We share data only with service providers who help us run DoGood, under data processing terms: website hosting, cookie consent, live chat, call booking, online forms, email newsletter, customer records, e-signature, email and office tools, and our podcast player. Payments are handled by Wise (bank transfer) and Stripe (card payment). A current list of providers is available on request at hiya@dogoodagency.co.
 
 Legal Requirements: We may disclose information if required by law, court order, or government regulation, or if necessary to protect our rights, prevent fraud, or ensure safety.
 
@@ -76,7 +76,7 @@ We handle data to answer you and to prepare or perform a contract, because the l
 
 ### Transfers
 
-Some providers, including our payment providers (Wise, Stripe), process data outside the EU/EEA, and where they do we rely on safeguards such as the EU Standard Contractual Clauses.
+Some providers, including our payment providers (Wise, Stripe), process data outside the EU/EEA; where they do, we rely on safeguards such as the EU Standard Contractual Clauses.
 
 ### 4. YOUR PRIVACY RIGHTS
 
@@ -92,31 +92,9 @@ You have the right to:
 
 To exercise these rights, contact us at: [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co)
 
-### 5. COOKIE POLICY
+### 5. COOKIES
 
-### What Are Cookies?
-
-Cookies are small text files stored on your device that help websites remember your preferences and track site usage.
-
-### Types of Cookies We Use
-
-Necessary Cookies: CookieYes stores your consent choice.
-
-Functional Cookies: Off until you accept functional cookies or click to load: tawk.to live chat and the Buzzsprout podcast player.
-
-YouTube videos use privacy-enhanced (nocookie) mode. Fonts are hosted on our own site, with no Google Fonts.
-
-###
-
-### Managing Cookies
-
-You can control cookies through:
-
-- Our cookie consent banner (appears on your first visit)
-- Your browser settings (instructions vary by browser)
-- [Cookie preference center (link in footer)](/cookies)
-
-Note: Blocking certain cookies may limit website functionality.
+COOKIES: We use only the cookies needed to run the site and, with your consent, cookies for optional features such as live chat. For details and to change your choices, see our [Cookies Policy](/cookies/).
 
 ### 6. DATA SECURITY
 

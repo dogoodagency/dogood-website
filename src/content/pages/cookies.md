@@ -70,7 +70,6 @@ We may update this policy when we change the tools on our site or when the law c
 
 If you have questions about cookies, email us at [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co).
 
-DoGood OÜ  
-Registry code 14695833, VAT number EE102348673  
-  
+DoGood OÜ, registry code 14695833
+
 Email: [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co)
