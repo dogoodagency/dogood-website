@@ -11,7 +11,7 @@
       stroke="#2A0B4F"
       stroke-linecap="round"
       stroke-linejoin="round"
-      stroke-dasharray="1 9"
+      stroke-dasharray="70 94"
       mask="url(#company-reveal)"
     />
   </svg>
@@ -83,35 +83,148 @@
       return d.join(" ");
     };
 
-    const fillet = (points, radius) => {
-      const pts = points.filter((point) => point && Number.isFinite(point.x) && Number.isFinite(point.y));
-      if (pts.length < 2) return "";
-      const k = 0.5522847498;
-      let d = `M ${pts[0].x.toFixed(1)} ${pts[0].y.toFixed(1)}`;
-      for (let i = 1; i < pts.length - 1; i += 1) {
-        const prev = pts[i - 1];
-        const curr = pts[i];
-        const next = pts[i + 1];
-        const inLen = Math.hypot(curr.x - prev.x, curr.y - prev.y) || 1;
-        const outLen = Math.hypot(next.x - curr.x, next.y - curr.y) || 1;
-        const r = Math.min(radius, inLen / 2, outLen / 2);
+    const dist = (a, b) => Math.hypot(b.x - a.x, b.y - a.y);
+
+    const heading = (a, b) => Math.atan2(b.y - a.y, b.x - a.x);
+
+    const turnBetween = (a, b, c) => {
+      let delta = heading(b, c) - heading(a, b);
+      while (delta > Math.PI) delta -= Math.PI * 2;
+      while (delta < -Math.PI) delta += Math.PI * 2;
+      return delta;
+    };
+
+    const dedupe = (points) => {
+      const out = [];
+      points.forEach((point) => {
+        if (!point || !Number.isFinite(point.x) || !Number.isFinite(point.y)) return;
+        const prev = out[out.length - 1];
+        if (!prev || dist(prev, point) > 0.5) out.push({ x: point.x, y: point.y });
+      });
+      return out;
+    };
+
+    const dropColinear = (points) =>
+      points.filter((point, index, arr) => {
+        if (index === 0 || index === arr.length - 1) return true;
+        return Math.abs(turnBetween(arr[index - 1], point, arr[index + 1])) > 0.09;
+      });
+
+    // Setback each corner needs for a circular arc of `radius`. Near U-turns are capped
+    // so the tangent length stays finite.
+    const cornerSetback = (prev, curr, next, radius) => {
+      const theta = Math.abs(turnBetween(prev, curr, next));
+      if (theta < 0.09) return 0;
+      return radius * Math.tan(Math.min(theta, 2.4) / 2);
+    };
+
+    // Give every remaining corner enough leg for `radius`. Tiny jogs are removed.
+    // Longer corners that still cannot fit are opened by moving only that corner
+    // outward, so the rest of the route stays put and the path keeps travelling down.
+    const makeRoom = (points, radius) => {
+      let pts = dropColinear(dedupe(points));
+      for (let guard = 0; guard < 48 && pts.length > 2; guard += 1) {
+        let packed = -1;
+        let worst = 0;
+        for (let i = 0; i < pts.length - 1; i += 1) {
+          const need =
+            (i > 0 ? cornerSetback(pts[i - 1], pts[i], pts[i + 1], radius) : 0) +
+            (i + 2 < pts.length ? cornerSetback(pts[i], pts[i + 1], pts[i + 2], radius) : 0);
+          const len = dist(pts[i], pts[i + 1]);
+          const deficit = need - len;
+          if (deficit > worst) {
+            worst = deficit;
+            packed = i;
+          }
+        }
+        if (packed < 0 || worst <= 1) break;
+        const len = dist(pts[packed], pts[packed + 1]);
+        if (len < radius) {
+          const left = packed > 0 ? cornerSetback(pts[packed - 1], pts[packed], pts[packed + 1], radius) : 0;
+          const right =
+            packed + 2 < pts.length
+              ? cornerSetback(pts[packed], pts[packed + 1], pts[packed + 2], radius)
+              : 0;
+          const remove = right > left ? packed + 1 : packed;
+          if (remove > 0 && remove < pts.length - 1) {
+            pts.splice(remove, 1);
+            pts = dropColinear(dedupe(pts));
+            continue;
+          }
+        }
+        const left = packed > 0 ? cornerSetback(pts[packed - 1], pts[packed], pts[packed + 1], radius) : 0;
+        const right =
+          packed + 2 < pts.length
+            ? cornerSetback(pts[packed], pts[packed + 1], pts[packed + 2], radius)
+            : 0;
+        const index = right > left && packed + 1 < pts.length - 1 ? packed + 1 : packed;
+        if (index <= 0 || index >= pts.length - 1) break;
+        const prev = pts[index - 1];
+        const curr = pts[index];
+        const next = pts[index + 1];
+        const inLen = dist(prev, curr) || 1;
+        const outLen = dist(curr, next) || 1;
         const inUx = (curr.x - prev.x) / inLen;
         const inUy = (curr.y - prev.y) / inLen;
         const outUx = (next.x - curr.x) / outLen;
         const outUy = (next.y - curr.y) / outLen;
-        if (r < 8) {
-          d += ` L ${curr.x.toFixed(1)} ${curr.y.toFixed(1)}`;
+        let vx = inUx - outUx;
+        let vy = inUy - outUy;
+        const vlen = Math.hypot(vx, vy) || 1;
+        vx /= vlen;
+        vy /= vlen;
+        const step = Math.min(worst + 4, 48);
+        const ny = curr.y + vy * step;
+        pts[index] = {
+          x: curr.x + vx * step,
+          y: ny < curr.y ? curr.y : ny,
+        };
+        let floor = -Infinity;
+        pts = pts.map((point) => {
+          floor = Math.max(floor, point.y);
+          return { x: point.x, y: floor };
+        });
+        pts = dropColinear(dedupe(pts));
+      }
+      return pts;
+    };
+
+    const fillet = (points, radius) => {
+      const pts = makeRoom(points, radius);
+      if (pts.length < 2) return "";
+      const fmt = (value) => value.toFixed(1);
+      let d = `M ${fmt(pts[0].x)} ${fmt(pts[0].y)}`;
+      let cursor = pts[0];
+      for (let i = 1; i < pts.length - 1; i += 1) {
+        const prev = pts[i - 1];
+        const curr = pts[i];
+        const next = pts[i + 1];
+        const inLen = dist(prev, curr) || 1;
+        const outLen = dist(curr, next) || 1;
+        const inUx = (curr.x - prev.x) / inLen;
+        const inUy = (curr.y - prev.y) / inLen;
+        const outUx = (next.x - curr.x) / outLen;
+        const outUy = (next.y - curr.y) / outLen;
+        const theta = Math.abs(turnBetween(prev, curr, next));
+        if (theta < 0.09) {
+          d += ` L ${fmt(curr.x)} ${fmt(curr.y)}`;
+          cursor = curr;
           continue;
         }
-        const a = { x: curr.x - inUx * r, y: curr.y - inUy * r };
-        const b = { x: curr.x + outUx * r, y: curr.y + outUy * r };
-        const c1 = { x: a.x + inUx * r * k, y: a.y + inUy * r * k };
-        const c2 = { x: b.x - outUx * r * k, y: b.y - outUy * r * k };
-        d += ` L ${a.x.toFixed(1)} ${a.y.toFixed(1)}`;
-        d += ` C ${c1.x.toFixed(1)} ${c1.y.toFixed(1)}, ${c2.x.toFixed(1)} ${c2.y.toFixed(1)}, ${b.x.toFixed(1)} ${b.y.toFixed(1)}`;
+        const used = Math.min(theta, 2.4);
+        const setback = Math.min(radius * Math.tan(used / 2), inLen / 2, outLen / 2);
+        const arcRadius = setback / Math.tan(used / 2);
+        const handle = (4 / 3) * Math.tan(used / 4) * arcRadius;
+        const a = { x: curr.x - inUx * setback, y: curr.y - inUy * setback };
+        const b = { x: curr.x + outUx * setback, y: curr.y + outUy * setback };
+        const c1 = { x: a.x + inUx * handle, y: a.y + inUy * handle };
+        const c2 = { x: b.x - outUx * handle, y: b.y - outUy * handle };
+        if (dist(cursor, a) > 0.4) d += ` L ${fmt(a.x)} ${fmt(a.y)}`;
+        d += ` C ${fmt(c1.x)} ${fmt(c1.y)}, ${fmt(c2.x)} ${fmt(c2.y)}, ${fmt(b.x)} ${fmt(b.y)}`;
+        cursor = b;
       }
       const last = pts[pts.length - 1];
-      d += ` L ${last.x.toFixed(1)} ${last.y.toFixed(1)}`;
+      d += ` L ${fmt(last.x)} ${fmt(last.y)}`;
       return d;
     };
 
@@ -145,6 +258,7 @@
       const phone = width <= 700;
       const founderStroke = phone ? 8 : 100;
       const companyStroke = phone ? 0 : 50;
+      const turnRadius = width >= 1081 ? 120 : Math.max(36, (120 * width) / 1440);
       const parallel = 80;
       const hero = box(document.querySelector("#hero"));
       const headline = box(document.querySelector(".hero h1"));
@@ -206,7 +320,12 @@
       founder.setAttribute("stroke-width", String(founderStroke));
       company.setAttribute("stroke-width", String(companyStroke));
       companyMask.setAttribute("stroke-width", String(companyStroke + 16));
-      company.setAttribute("stroke-dasharray", phone ? "none" : "36 28");
+      if (companyStroke > 0) {
+        company.setAttribute(
+          "stroke-dasharray",
+          `${Math.round(companyStroke * 1.4)} ${Math.round(companyStroke * 1.88)}`,
+        );
+      }
 
       const marginX = 28;
       const founderPts = phone
@@ -236,13 +355,15 @@
           ]);
 
       const companyY = Math.min(exit.y - 30, entryY + 64);
+      const companyBottom = companyY + turnRadius * 2;
+      const bendX = Math.min(width - turnRadius * 2 - 24, exit.right + turnRadius);
       const companyPts = phone
         ? []
         : monotonic([
             { x: -20, y: companyY },
-            { x: enterX + 70, y: companyY },
-            { x: enterX + 70, y: splitY },
-            { x: width + 40, y: splitY },
+            { x: bendX, y: companyY },
+            { x: bendX, y: companyBottom },
+            { x: width + 40, y: companyBottom },
           ]);
 
       const height = Math.max(200, end);
@@ -252,9 +373,9 @@
       svg.setAttribute("width", String(width));
       svg.setAttribute("height", String(height));
 
-      founder.setAttribute("d", fillet(founderPts, 120));
-      company.setAttribute("d", fillet(companyPts, 120));
-      companyMask.setAttribute("d", fillet(companyPts, 120));
+      founder.setAttribute("d", fillet(founderPts, turnRadius));
+      company.setAttribute("d", fillet(companyPts, turnRadius));
+      companyMask.setAttribute("d", fillet(companyPts, turnRadius));
       alignDoor();
 
       triggers.forEach((trigger) => trigger.kill());
