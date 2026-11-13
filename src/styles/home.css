@@ -3357,22 +3357,18 @@ header.nav .nav-mega-card img[hidden] {
 
 header.nav .nav-mega-label {
   position: absolute;
-  left: 18px;
-  bottom: 18px;
-  color: #2a0b4f;
-  font-size: 22px;
-  font-weight: 500;
-  line-height: 1.1;
-}
-
-header.nav .nav-mega-card:has(img:not([hidden])) .nav-mega-label {
+  left: 16px;
+  top: 372px;
   color: #fff;
+  font-size: 20px;
+  font-weight: 550;
+  line-height: 1;
 }
 
 header.nav .nav-mega-go {
   position: absolute;
-  right: 16px;
-  bottom: 16px;
+  left: 154px;
+  top: 364px;
   width: 36px;
   height: 36px;
   border-radius: 50%;
