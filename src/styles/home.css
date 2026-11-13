@@ -3984,9 +3984,9 @@ button.btn-subscribe:focus-visible,
     padding-top: 300px;
   }
 
-  .hero-draw {
-    transform: translate(-50px, 100px) scale(1.1);
-    transform-origin: right center;
+  .hero-sketch {
+    width: calc(100% + 60px);
+    max-width: none;
   }
 
   #exit,

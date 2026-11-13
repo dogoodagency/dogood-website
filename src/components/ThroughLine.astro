@@ -109,9 +109,11 @@
         img.style.transform = "";
         return;
       }
-      img.style.transform = "translate(-50px, 100px) scale(1.1)";
-      const nudge = word.getBoundingClientRect().right - img.getBoundingClientRect().right;
-      img.style.transform = `translate(${(-50 + nudge).toFixed(1)}px, 100px) scale(1.1)`;
+      img.style.transform = "translate(-50px, 100px)";
+      const box = img.getBoundingClientRect();
+      const doorRight = box.left + box.width * (412 / 520);
+      const nudge = word.getBoundingClientRect().right - doorRight;
+      img.style.transform = `translate(${(-50 + nudge).toFixed(1)}px, 100px)`;
     };
 
     const build = () => {
