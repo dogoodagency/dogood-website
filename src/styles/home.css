@@ -3383,14 +3383,18 @@ header.nav .nav-mega-links {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 18px;
-  margin: 12px 0 0;
-  padding: 8px 8px 0 4px;
+  gap: 22px;
+  margin: 8px 0 0;
+  padding: 8px 12px 0 4px;
   list-style: none;
-  min-height: 180px;
+  min-height: 280px;
 }
 
 header.nav .nav-mega-links a {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 360px;
   color: #2a0b4f;
   font-size: 18px;
   font-weight: 400;
@@ -3398,12 +3402,22 @@ header.nav .nav-mega-links a {
   text-decoration: none;
 }
 
-header.nav .nav-mega-links a:hover,
-header.nav .nav-mega-links a:focus-visible {
+header.nav .nav-mega-links small {
+  color: #6a587f;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+header.nav .nav-mega-links a:hover .nav-mega-name,
+header.nav .nav-mega-links a:focus-visible .nav-mega-name {
   text-decoration: underline;
   text-decoration-color: #28dbb0;
   text-decoration-thickness: 2px;
   text-underline-offset: 5px;
+}
+
+header.nav .nav-mega-links a:focus-visible {
   outline: none;
 }
 

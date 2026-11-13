@@ -11,8 +11,21 @@ const links = [
 ];
 
 const advisorLinks = [
-  { href: "/for-advisors", label: "Partner with us" },
-  { href: "/for-advisors/client-tools", label: "Client tools" },
+  {
+    href: "/for-advisors",
+    label: "Partner with us",
+    detail: "How we work with exit and wealth advisors, and what your clients get.",
+  },
+  {
+    href: "/for-advisors/client-tools",
+    label: "Client tools",
+    detail: "Free tools to hand your clients before and after the sale.",
+  },
+  {
+    href: "/for-advisors/insights",
+    label: "Insights for advisors",
+    detail: "What founders struggle with, from our conversations with advisors.",
+  },
 ];
 ---
 
@@ -57,28 +70,31 @@ const advisorLinks = [
     </picture>
   </a>
   <div class="nav-mega" id="nav-advisors" aria-hidden="true">
-    <a class="nav-mega-card" href="/for-advisors/client-tools">
+    <a class="nav-mega-card" href="/for-advisors">
       <picture>
         <source
           type="image/webp"
-          srcset="/nav/for-advisors-client-tools@1x.webp 1x, /nav/for-advisors-client-tools@2x.webp 2x, /nav/for-advisors-client-tools@3x.webp 3x"
+          srcset="/nav/for-advisors@1x.webp 1x, /nav/for-advisors@2x.webp 2x, /nav/for-advisors@3x.webp 3x"
         />
         <img
-          src="/nav/for-advisors-client-tools@1x.png"
-          srcset="/nav/for-advisors-client-tools@1x.png 1x, /nav/for-advisors-client-tools@2x.png 2x, /nav/for-advisors-client-tools@3x.png 3x"
+          src="/nav/for-advisors@1x.png"
+          srcset="/nav/for-advisors@1x.png 1x, /nav/for-advisors@2x.png 2x, /nav/for-advisors@3x.png 3x"
           width="360"
           height="420"
-          alt="Client tools for advisors"
+          alt="For Advisors"
         />
       </picture>
-      <span class="nav-mega-label">Client tools</span>
+      <span class="nav-mega-label">For Advisors</span>
       <span class="nav-mega-go" aria-hidden="true"></span>
     </a>
     <ul class="nav-mega-links">
       {
         advisorLinks.map((item) => (
           <li>
-            <a href={item.href}>{item.label}</a>
+            <a href={item.href}>
+              <span class="nav-mega-name">{item.label}</span>
+              <small>{item.detail}</small>
+            </a>
           </li>
         ))
       }
