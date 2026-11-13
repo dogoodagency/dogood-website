@@ -408,13 +408,14 @@
       if (pinJ) add(founderPts, pinJ.cx, pinJ.cy);
       if (stones) add(founderPts, Math.max(founderStroke * 0.6, stones.left + stones.w * 0.22), stones.cy);
       if (firstCard) {
+        const clear = apply1 ? apply1.left - founderStroke * 0.9 : firstCard.cx;
         add(founderPts, firstCard.cx, firstCard.bottom + 20);
-        add(founderPts, firstCard.right - 10, firstCard.bottom + turnRadius);
+        add(founderPts, clear, firstCard.bottom + turnRadius);
       }
       if (apply1) {
-        add(founderPts, Math.min(width - founderStroke, apply1.right + founderStroke * 1.2), apply1.y);
-        add(founderPts, Math.min(width - founderStroke, apply1.right + founderStroke), apply1.bottom + 120);
-        add(founderPts, apply1.cx, apply1.bottom + 140);
+        const clear = apply1.left - founderStroke * 0.9;
+        add(founderPts, clear, apply1.cy);
+        add(founderPts, clear, apply1.bottom + 80);
       }
       if (forYou) {
         add(founderPts, forYou.cx, forYou.y - 8);

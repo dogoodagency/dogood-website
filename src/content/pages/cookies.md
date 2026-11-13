@@ -39,9 +39,7 @@ These add features you choose to use. They load only after you accept functional
 
 | Tool | Purpose | Set by | Cookie names | Duration |
 | --- | --- | --- | --- | --- |
-| tawk.to live chat (shown as "Ava") | Runs the chat window and keeps your conversation going between pages | tawk.to | tawk_uuid_* (6 months); twk_idm_key (session); TawkConnectionTime (session) | 6 months; session; session |
-| TidyCal booking embeds | Shows our booking calendar on our booking pages so you can book a call | TidyCal | __cf_bm | 1 hour |
-| Buzzsprout podcast player | Plays our podcast on episode pages. It loads only after you accept functional cookies, or when you click to load it | Buzzsprout | Not named in Buzzsprout's published privacy policy | Not stated |
+| tawk.to live chat (shown as "Ava") | Runs the chat window and keeps your conversation going between pages. It loads only after you accept functional cookies | tawk.to | tawk_uuid_* (6 months); twk_idm_key (session); TawkConnectionTime (session) | 6 months; session; session |
 
 ## Analytics and advertising cookies
 
@@ -62,7 +60,7 @@ If you withdraw your consent, this does not affect anything that happened before
 
 You can also block or delete cookies in your browser settings. If you block all cookies, some parts of the site, such as chat, booking or the podcast player, may not work.
 
-Cookies set by third parties (tawk.to, TidyCal and Buzzsprout on our site, and any site you visit through our links, such as Jotform, YouTube or Spotify) follow each provider's own cookie and privacy policies.
+Cookies set by tawk.to, and by any site you visit through our links, such as Jotform, YouTube or Spotify, follow that provider's own cookie and privacy policies.
 
 ## Updates to this policy
 

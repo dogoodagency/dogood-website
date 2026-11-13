@@ -4521,11 +4521,36 @@ a.btn-partnership:focus-visible {
   text-align: center;
 }
 
+@media (min-width: 1081px) {
+  #apply-first {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  #apply-first .apply-first-slot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #apply-first .cap-pill {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
 #apply-first .cap-pill,
 #apply-v .cap-small {
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
+}
+
+@media (min-width: 1081px) {
+  #apply-first .cap-pill {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 .foryou-grid .mark {
