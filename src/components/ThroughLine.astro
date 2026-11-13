@@ -403,7 +403,6 @@
       const swell = at("#next .swell-bg") || next;
       const mouthX = swell.x + swell.w * (720 / 1440);
       const intoMouth = swell.y + Math.min(72, Math.max(40, swell.h * 0.08));
-      const rightLane = Math.min(width - founderStroke * 0.45, exit.right + 68);
       const founderPts = [];
       const add = (list, x, y) => {
         const prev = list[list.length - 1];
@@ -430,17 +429,18 @@
       } else {
         add(founderPts, tipX, tipY);
       }
-      add(founderPts, rightLane, Math.max(tipY + (phone ? 220 : 360), exit.y + exit.h * 0.22));
-      add(founderPts, rightLane, exit.bottom + 28);
+      const exitLeft = Math.max(founderStroke * 0.55, exit.left + 8);
+      add(founderPts, exitLeft, Math.max(tipY + (phone ? 180 : 280), exit.y + exit.h * 0.16));
+      add(founderPts, exitLeft, exit.y + exit.h * 0.78);
       add(founderPts, exit.left + exit.w * 0.22, exit.bottom + turnRadius * 0.85);
       if (pinJ) {
         add(founderPts, pinJ.cx, pinJ.y - 8);
         add(founderPts, pinJ.cx, pinJ.bottom + 8);
       }
       if (stones) {
-        const besideMan = stones.right - 48;
-        add(founderPts, besideMan, stones.y + stones.h * 0.2);
-        add(founderPts, besideMan, stones.bottom - 12);
+        const behindMan = stones.left + stones.w * 0.36;
+        add(founderPts, behindMan, stones.y + stones.h * 0.42);
+        add(founderPts, behindMan, stones.bottom - 16);
       }
       if (firstCard) {
         add(founderPts, firstCard.left + 36, firstCard.bottom + 18);
@@ -478,8 +478,17 @@
         add(founderPts, message.cx, message.y + message.h * 0.22);
         add(founderPts, message.right - 30, message.bottom - 6);
       }
-      const sideX = Math.min(width - founderStroke * 0.42, width - 24);
-      if (finders) add(founderPts, sideX, finders.y - 10);
+      const lead = at("#wayfinders .lead");
+      const sideX = phone && lead
+        ? lead.right + founderStroke + 8
+        : Math.min(width - founderStroke * 0.42, width - 24);
+      if (phone && lead) {
+        const above = message ? Math.min(lead.y - 28, message.bottom + 20) : lead.y - 28;
+        add(founderPts, sideX, above);
+        add(founderPts, sideX, lead.bottom + 12);
+      } else if (finders) {
+        add(founderPts, sideX, finders.y - 10);
+      }
       if (track) {
         add(founderPts, sideX, track.y - 220);
         add(founderPts, track.cx, track.y - 70);
@@ -516,6 +525,7 @@
       svg.setAttribute("height", String(height));
 
       const routeRadius = phone ? Math.max(36, turnRadius * 0.7) : 100;
+      const companyRadius = phone ? Math.max(28, turnRadius * 0.85) : 72;
       let founderD = fillet(founderPts, routeRadius);
       if (dropIn && dropIn.radius > 8 && intoMouth > bendY) {
         const radius = dropIn.radius;
@@ -567,8 +577,8 @@
       } else if (join instanceof SVGPathElement) {
         join.setAttribute("d", "");
       }
-      company.setAttribute("d", fillet(companyPts, routeRadius));
-      companyMask.setAttribute("d", fillet(companyPts, routeRadius));
+      company.setAttribute("d", fillet(companyPts, companyRadius));
+      companyMask.setAttribute("d", fillet(companyPts, companyRadius));
       alignDoor();
 
       const figures = document.querySelector("#route-figures");

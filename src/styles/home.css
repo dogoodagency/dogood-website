@@ -2745,6 +2745,14 @@ main {
 .card,
 .why-sketch,
 #first-draw,
+#first-draw img,
+.exit-machine,
+.guarantee-scale,
+.hero-sketch-frame,
+.portrait,
+.next-icons,
+#wayfinders h2,
+#wayfinders .lead,
 .reviews-band,
 .asseen-frame,
 .wf-group,
@@ -5004,8 +5012,7 @@ button.btn-subscribe:focus-visible {
 
 @media (max-width: 480px) {
   .footer-lets .connect-mark {
-    /* The address sits in this gap, so 3px of margin puts Let's Connect 150px below the LLC heading. */
-    margin-top: 3px;
+    margin-top: 97px;
   }
 
   .exit-layout,
@@ -5039,7 +5046,7 @@ button.btn-subscribe:focus-visible {
 
   #why {
     padding-top: 96px;
-    padding-bottom: 0;
+    padding-bottom: 103px;
   }
 
   #reviews {
@@ -5085,6 +5092,7 @@ button.btn-subscribe:focus-visible {
 
   #next {
     margin-top: -56px;
+    padding-bottom: 64px;
   }
 }
 
@@ -5138,7 +5146,7 @@ button.btn-subscribe:focus-visible {
   }
 
   .exit-machine {
-    translate: 100px 0;
+    translate: 200px 0;
   }
 }
 
