@@ -1,161 +1,183 @@
 ---
-title: Privacy Policy
-description: How DoGood OÜ, the controller, handles personal data on dogoodagency.co.
-updated: "[date of publication]"
+title: "Privacy - Customer Privacy Policy - DoGood Agency"
+description: "Learn our Privacy Promise at DoGood Agency. We have pure commitment in safeguarding your data as we prioritize and respect your privacy with integrity."
 ---
-
-<picture class="page-icon">
-  <source type="image/webp" srcset="/sketches/legal-folded-document@1x.webp 1x, /sketches/legal-folded-document@2x.webp 2x" />
-  <img src="/sketches/legal-folded-document@1x.png" srcset="/sketches/legal-folded-document@1x.png 1x, /sketches/legal-folded-document@2x.png 2x" width="96" height="96" alt="A simple folded document with a teal wax seal and a tiny pink mark at the corner." />
-</picture>
 
 # Privacy Policy
 
-Last updated: [date of publication]
+At DoGood Agency, we respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you visit our website.
 
-## Who we are
+By using [www.dogoodagency.co](/), you agree to the terms outlined in this policy.
 
-This website, [www.dogoodagency.co](/), is run by DoGood OÜ, a private limited company registered in Estonia (registry code 14695833, VAT number EE102348673).
+### 1. INFORMATION WE COLLECT
 
-DoGood OÜ is the "controller" of your personal data. That means we decide why and how your data is used, and we are responsible for it.
+### Automatically Collected Information
 
-You can reach us about privacy at any time: [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co).
+When you visit our website, we automatically collect certain technical information, including:
 
-We have not appointed a data protection officer. For any privacy question, contact us at [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co).
+- IP address and geographic location
+- Browser type and operating system
+- Pages visited and time spent on our site
+- Referring website (where you came from)
+- Device information
 
-## What this policy covers
+### Visitor identification
 
-This policy explains what personal data we collect when you visit our website, book a call, fill in a form, join our email list or apply to work with us. It also explains your rights and how to use them.
+We do not use RB2B, LinkedIn visitor identification, Google Analytics, or advertising cookies.
 
-If you become a client, your signed client agreement may include further privacy terms. Those terms apply alongside this policy.
+### Cookie Consent Management
 
-## The data we collect
+We use CookieYes, a cookie consent management platform, to give you control over the cookies placed on your device. When you first visit our site, you'll see a cookie banner where you can:
 
-**Data you give us.** When you fill in a form, book a call, apply to a program or email us, we collect what you share. This is usually your name, email address, company name, job title and, if you choose, your phone number and anything you write in a message or application.
+- Accept or decline non-essential cookies
+- View details about each cookie category
+- Manage your preferences at any time
 
-**Live chat.** If you use the chat on our site (shown as "Ava"), we collect your chat messages, your name and email address if you give them, and your IP address, device and browser data and the pages you visited.
+Functional cookies, including live chat (shown as Ava), the booking calendar and the podcast player, are placed only if you allow them in the CookieYes banner. You can decline non-essential cookies there, or block cookies in your browser.
 
-**Data collected automatically.** When you visit the site, our hosting provider, Netlify, keeps server logs. These include your IP address, browser type, operating system, device type, the pages you request, the time of your visit and the website that sent you here. We don't use analytics or advertising cookies, and we don't use any LinkedIn tracking.
+### Information You Provide
 
-**Cookie data.** Some data is collected through cookies and similar tools. Non-essential cookies are only used if you agree. See "Cookies" below and [our Cookies Policy](/cookies/).
+We may collect information you voluntarily submit through:
 
-**Payment data.** Clients pay by bank transfer against invoices issued by DoGood OÜ. Payments are processed through Wise, which holds the payment and bank details needed for each transfer. If we add card payments, we'll update this policy before we do.
+- Contact forms or email inquiries
+- Program applications
+- Newsletter subscriptions
+- Client onboarding processes
 
-We do not ask for sensitive data (for example health data) through this website. Please do not send it through our forms.
+This may include your name, email address, company name, job title, phone number, and any other information you choose to share.
 
-## Why we use your data and our legal basis
+### Payment Information
 
-Under the EU General Data Protection Regulation (GDPR), we need a legal reason ("legal basis") for each use of your data. These are the reasons we rely on, from Article 6(1) GDPR:
+If you purchase services from us, payment is by bank transfer through Wise. We do not store card details on our servers.
 
-- **To run, secure and improve the website.** Legal basis: our legitimate interest in a working, safe website (Art. 6(1)(f)).
-- **To answer your messages and questions.** Legal basis: steps you ask us to take before a possible contract (Art. 6(1)(b)), or our legitimate interest in replying to you (Art. 6(1)(f)).
-- **To answer your questions in live chat.** Legal basis: steps you ask us to take before a possible contract (Art. 6(1)(b)), or our legitimate interest in answering visitors' questions (Art. 6(1)(f)).
-- **To book and hold calls with you.** Legal basis: steps you ask us to take before a possible contract (Art. 6(1)(b)).
-- **To review your application to a program.** Legal basis: steps you ask us to take before a contract (Art. 6(1)(b)).
-- **To provide our services to clients.** Legal basis: performing our contract with you (Art. 6(1)(b)).
-- **To send our newsletter and updates.** This can include educational content and resources, service updates and announcements, and offers. Legal basis: your consent (Art. 6(1)(a)). You can unsubscribe at any time with the link in every email, or by emailing [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co).
-- **To use functional cookies (live chat, booking calendar and podcast player).** Legal basis: your consent (Art. 6(1)(a)), given through our cookie banner.
-- **To keep a record of your cookie choices.** Legal basis: our legal obligation to be able to show consent (Art. 6(1)(c) and Art. 7(1)).
-- **To keep accounting and tax records.** Legal basis: our legal obligations (Art. 6(1)(c)).
-- **To prevent fraud and misuse of the website.** Legal basis: our legitimate interest in keeping the site and our business safe (Art. 6(1)(f)).
-- **To protect our legal rights and handle disputes.** Legal basis: our legitimate interest (Art. 6(1)(f)).
+### 2. HOW WE USE YOUR INFORMATION
 
-Where we rely on legitimate interest, you can object at any time (see "Your rights").
+We use collected information to:
 
-We do not sell your personal data. We do not make decisions about you based only on automated processing that have legal or similarly significant effects on you.
+- Operate and improve our website
+- Respond to your inquiries and provide customer support
+- Send updates about our services (with your consent)
+- Identify and connect with potential clients who visit our site
+- Analyze website performance and user behavior
+- Comply with legal obligations
+- Prevent fraud and maintain security
 
-## Who we share your data with
+We will never sell your personal information to third parties.
 
-We use trusted service providers ("processors") to run our website and business. They may only use your data on our instructions and must keep it safe. They are:
+### 3. INFORMATION SHARING
 
-- **Email, documents and calendar:** Google Workspace and Gmail (Google).
-- **Email hosting for dogoodagency.co:** Hostinger.
-- **Client relationship management:** HubSpot, which holds our records of enquiries and clients.
-- **E-signature:** PandaDoc, which we use to send and sign agreements.
-- **Bookings:** TidyCal, which runs the booking calendar on our booking pages.
-- **Applications:** Jotform, which handles our application and diagnostic forms. These forms open on Jotform's own site (form.jotform.com), where Jotform's cookie policy applies.
-- **Call notes:** Granola, which helps us take notes during calls. We use it only with the knowledge of the people on the call.
-- **AI assistant tools:** Grok Bot, which helps our team prepare work.
-- **Payments:** Wise, which processes bank transfers and holds the payment and bank details needed for them.
-- **Website hosting:** Netlify, Inc. (United States), which hosts our website and keeps server logs, including your IP address. [TO CONFIRM AT GO-LIVE: Netlify]
-- **Live chat:** tawk.to (tawk.to inc., United States), which runs our chat, shown as "Ava".
-- **Newsletter:** MailerLite, which receives the details you enter in our newsletter sign-up form and sends our newsletter.
-- **Consent management:** CookieYes, which runs our cookie banner and keeps records of your consent choices.
-- **Podcast player:** Buzzsprout, which plays our podcast episodes on episode pages.
+### When We Share Information
 
-We may also share data with our professional advisers (such as accountants and lawyers), and with authorities when the law requires it.
+We may share your information only in the following circumstances:
 
-If our business is reorganized or sold, your data may pass to the new owner, who must keep protecting it under this policy.
+Service Providers: We work with trusted third-party service providers who help us operate our business: CookieYes for consent management, tawk.to for live chat (shown as Ava, and only after you allow functional cookies), MailerLite for the newsletter, Jotform for application and diagnostic forms, TidyCal for booking calendars, and Netlify for website hosting. These providers are contractually required to protect your data and use it only for the purposes we specify.
 
-We may share anonymized, combined statistics about how our site is used. These cannot identify you.
+Legal Requirements: We may disclose information if required by law, court order, or government regulation, or if necessary to protect our rights, prevent fraud, or ensure safety.
 
-## Transfers outside the EU
+Business Transfers: If DoGood Agency is acquired or merged with another company, your information may be transferred as part of that transaction.
 
-Some of our providers are based in, or use servers in, the United States or other countries outside the European Economic Area (EEA).
+Aggregate Data: We may share anonymized, aggregate statistics about our website visitors with third parties for business purposes. This data cannot identify individual users.
 
-When any of the providers listed above processes your data outside the EU/EEA, including in the United States, we make sure it stays protected. We rely on the EU-US Data Privacy Framework where the provider is certified under it. Otherwise, we rely on the EU Standard Contractual Clauses approved by the European Commission, or another lawful safeguard under the GDPR.
+### 4. YOUR PRIVACY RIGHTS
 
-You can ask us for more details about these safeguards at [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co).
+You have the right to:
 
-## How long we keep your data
+- Access: Request a copy of the personal information we hold about you
+- Correction: Request that we update or correct inaccurate information
+- Deletion: Request that we delete your personal information (subject to legal retention requirements)
+- Opt-Out: Unsubscribe from marketing communications at any time
+- Cookie Control: Manage or withdraw cookie consent through our cookie banner
 
-We keep personal data only as long as we need it for the reason we collected it:
+To exercise these rights, contact us at: [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co)
 
-- **Enquiries, call bookings and applications that don't lead to working together:** 24 months after our last contact with you.
-- **Client and contract records, including accounting records:** 7 years after the contract ends.
-- **Live chat conversations:** 24 months after our last contact with you.
-- **Newsletter subscribers:** until you unsubscribe.
-- **Cookies:** as set out in the cookie list in our cookie banner (CookieYes).
+### 5. COOKIE POLICY
 
-When the period ends, we delete or anonymize the data.
+### What Are Cookies?
 
-## Your rights
+Cookies are small text files stored on your device that help websites remember your preferences and track site usage.
 
-Under the GDPR (Articles 15 to 22), you have the right to:
+### Types of Cookies We Use
 
-- **Access** your data and get a copy (Art. 15).
-- **Correct** data that is wrong or incomplete (Art. 16).
-- **Delete** your data, in certain cases (Art. 17).
-- **Restrict** how we use your data, in certain cases (Art. 18).
-- **Receive** your data in a portable format, or have it sent to another company, in certain cases (Art. 20).
-- **Object** to our use of your data based on legitimate interest, and to direct marketing at any time (Art. 21).
-- **Not be subject** to decisions based only on automated processing that significantly affect you (Art. 22).
+Necessary Cookies: Essential for website functionality (cannot be disabled)
 
-**Withdrawing consent.** Where we rely on your consent, you can withdraw it at any time, as easily as you gave it (Art. 7(3)). Use the unsubscribe link in our emails or change your cookie settings. This does not affect anything we did before you withdrew.
+Functional Cookies: Live chat (shown as Ava), the booking calendar and the podcast player. These are used only if you allow them in the CookieYes banner.
 
-To use any of these rights, email [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co). We aim to reply within 5 business days, and we will always reply within one month, as the GDPR requires (Art. 12(3)). We may ask you to confirm your identity first.
+We do not use analytics cookies or advertising cookies, including Google Analytics and RB2B.
 
-## Your right to complain
 
-If you think we have handled your data wrongly, please tell us first so we can try to fix it.
+### Managing Cookies
 
-You also have the right to complain to a data protection authority (Art. 77 GDPR). Our lead authority is the Estonian Data Protection Inspectorate (Andmekaitse Inspektsioon), [www.aki.ee](https://www.aki.ee). You may also complain to the authority in the EU country where you live or work.
+You can control cookies through:
 
-## Cookies
+- Our cookie consent banner (appears on your first visit)
+- Your browser settings (instructions vary by browser)
+- Cookie preference center (link in footer)
 
-We use cookies and similar technologies. Strictly necessary cookies are always on. Functional cookies are only used if you agree in our cookie banner (CookieYes). We don't use analytics or advertising cookies.
+Note: Blocking certain cookies may limit website functionality.
 
-You can change or withdraw your consent at any time with the "Cookie settings" link in the site footer, next to Privacy and Terms. [Our Cookies Policy](/cookies/) explains each cookie group and tool.
+### 6. DATA SECURITY
 
-## Children
+We implement industry-standard security measures to protect your information, including:
 
-Our website and services are meant for business professionals. They are not directed to anyone under 18. We do not knowingly collect data from children. If you believe a child has sent us personal data, please contact us and we will delete it.
+- Secure SSL/TLS encryption for data transmission
+- Regular security audits and monitoring
+- Limited employee access to personal data
+- Secure third-party service providers
 
-## Security
+However, no method of internet transmission is 100% secure. While we strive to protect your data, we cannot guarantee absolute security.
 
-We use reasonable technical and organizational measures to protect your data, such as encrypted connections (HTTPS) and limited access. No system is perfectly secure, but we work to keep risks low and will act quickly if something goes wrong.
+### 7. DATA RETENTION
 
-## Links to other websites
+We retain your information only as long as necessary to:
 
-Our site may link to other websites. We are not responsible for their privacy practices. Please read their policies before sharing data with them.
+- Fulfill the purposes outlined in this policy
+- Comply with legal, accounting, or regulatory requirements
+- Resolve disputes and enforce our agreements
 
-## Changes to this policy
+### 8. THIRD-PARTY LINKS
 
-We may update this policy when our practices or the law change. We will post the new version on this page and update the "Last updated" date. If a change is significant, we will make it clear on the website or tell you directly where appropriate.
+Our website may contain links to third-party websites. We are not responsible for the privacy practices of these external sites. We encourage you to review their privacy policies before providing any personal information.
 
-## Contact us
+### 9. EMAIL COMMUNICATIONS
 
-DoGood OÜ  
-Registry code 14695833, VAT number EE102348673  
-  
+### Auto-Responders and Marketing Emails
+
+If you subscribe to our email list, we may send you:
+
+- Educational content and resources
+- Service updates and announcements
+- Promotional offers (with your consent)
+
+You can unsubscribe at any time using the link provided in every email, or by contacting us at [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co).
+
+### 10. CHILDREN'S PRIVACY
+
+### Our services are intended for business professionals and are not directed to individuals under 18 years of age. We do not knowingly collect information from minors. If you are under 18, please do not use our website or provide any personal information.
+
+### 11. USERNAMES AND PASSWORDS
+
+### If you create an account or access password-protected areas of our site:
+
+
+- Never share your login credentials with anyone
+- Log out after each session
+- Use a strong, unique password
+- Notify us immediately if you suspect unauthorized access
+
+### 12. CHANGES TO THIS POLICY
+
+### We may update this Privacy Policy periodically to reflect changes in our practices or legal requirements. When we make significant changes, we will Update the "Last Updated" date at the top of this page
+
+Your continued use of our website after changes are posted constitutes acceptance of the updated policy.
+
+### 13. CONTACT US
+
+### If you have questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:
+
 Email: [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co)
+
+Website: [www.dogoodagency.co/privacy](/privacy)
+
+Response Time: We aim to respond to all privacy-related inquiries within 5 business days.
+
+Copyright © 2026 DoGood Agency. All Rights Reserved.

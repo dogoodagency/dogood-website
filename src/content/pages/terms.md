@@ -1,147 +1,152 @@
 ---
-title: Terms of Use
-description: Terms of use for the website run by DoGood OÜ.
-updated: "[date of publication]"
+title: "Terms - Legal Terms and Conditions - DoGood Agency"
+description: "Explore our terms for transparency and clarity at DoGood Agency's. Understand our commitment to ethical practices as we collaborate for impactful creative solutions."
 ---
 
-<picture class="page-icon">
-  <source type="image/webp" srcset="/sketches/legal-folded-document@1x.webp 1x, /sketches/legal-folded-document@2x.webp 2x" />
-  <img src="/sketches/legal-folded-document@1x.png" srcset="/sketches/legal-folded-document@1x.png 1x, /sketches/legal-folded-document@2x.png 2x" width="96" height="96" alt="A simple folded document with a teal wax seal and a tiny pink mark at the corner." />
-</picture>
+# Terms
 
-# Terms of Use
+Thank you for visiting our website! If you wish to use [www.dogoodagency.co](/) you must agree that you will abide by and be legally bound by the terms and conditions listed below. If you don’t agree with any of the terms or conditions below, please do not use our website.
 
-Last updated: [date of publication]
+### MINORS
 
-## Who we are
+We do not sell or provide anything to children under any condition. If you’re below 18 years of age, you may only use this website if you have the permission of a parent or legal guardian, and a parent or legal guardian must be supervising you as you use the website. If you’re under the age of 18, please don’t provide any personal information to us or to any other visitors on our website.
 
-This website, [www.dogoodagency.co](/), is run by DoGood OÜ, a private limited company registered in Estonia (registry code 14695833, VAT number EE102348673). In these terms, "we", "us" and "our" mean DoGood OÜ.
+### PRIVACY POLICY IS PART OF THESE TERMS AND CONDITIONS
 
-By using this website, you agree to these Terms of Use. If you do not agree, please do not use the site.
+The privacy policy we have put in place is a part of the terms and conditions we are providing. You may view our privacy policy at anytime right [here](/privacy).
 
-Our [Privacy Policy](/privacy/) explains how we handle your personal data. It forms part of these terms.
+Cookie consent on this website is managed with CookieYes. Live chat (shown as Ava), the booking calendar and the podcast player run only if you allow functional cookies.
 
-## Using the website
+### ANTI-SPAM POLICY IS PART OF THESE TERMS AND CONDITIONS
 
-You may use this website for lawful purposes only. Please do not:
+We have an anti-spam policy in place that is a part of, and subject to, these terms and conditions of use. If you wish to look at our anti-spam policy, you can see it at anytime right here.
 
-- break any law or anyone's rights while using the site;
-- try to get unauthorized access to the site, its systems or its data;
-- upload or send viruses or harmful code;
-- copy or scrape the site's content in bulk, or use automated tools to do so, without our written permission;
-- send us spam, or content that is offensive, misleading or unlawful;
-- pretend to be someone else when contacting us or filling in a form.
+### EARNINGS DISCLAIMER
 
-If you see content on the site that you think is offensive or unlawful, please tell us at [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co).
+When you purchase a product from this website, any of its affiliates, or representatives, you should consider that there are very important risk factors that should be taken into consideration. You may view our earnings disclaimer at anytime right here.
 
-We may limit or block access to the site for anyone who breaks these rules. We may also change, pause or remove the site, or any part of it, at any time.
+### NO EARNINGS PROJECTIONS, PROMISES OR REPRESENTATIONS
 
-## Age
+By using DoGood Agency or any of its affiliates, you are hereby acknowledging that DoGood Agency has not made any promises, warranties, suggestions, projections, representations, or guarantees that at any time, whether now, or in the future, in regard to any income or other opportunities. You are also acknowledging by using this website or purchasing from [www.dogoodagency.co](/) that you are not entitled to an income as a result of your purchase with DoGood Agency. Additionally, any projections, figures (such as earning potential), or promises made by others have not been authorized by us.
 
-This website and our services are for adults in business. If you are under 18, please use the site only with a parent or guardian's permission, and do not send us personal information.
+When utilizing DoGood Agency, any earnings, income, figures, or projected earnings are only used as examples, and are just estimates of what we believe you could possibly earn. In no way, shape, or form do we promise that you will make the same amount of money as any examples provided, nor that you will earn any certain amounts. When considering the figures and examples of income we have provided on this website or with our products, you must also realize that there is a risk that you will not achieve the same results we have provided, nor have we made a promise that you will. This applies to whether the examples of the earnings or income are monetary or whether they are benefits such as advertising credits that money can be earned from, regardless of whether such credits can be converted to cash or other monetary means.
 
-## Our content and intellectual property
+We cannot assure you that any previous success that has been made, such as earnings or income (whether monetary or advertising credits that can be converted to cash value) will be applicable to your future earnings, income, or advertising credits. Additionally, any prior success mentioned cannot be used as a promise that you will have similar future success (nor any specific amount or degree of success), and prior success examples are provided solely as an example to demonstrate various past successes on behalf of DoGood Agency and others. Examples of prior success are also not a promise or indications that you will see the same results gained from the information, content, or strategies that are provided. Any kind of income or earnings (whether monetary or in the form of advertising credits) that are reported on [www.dogoodagency.co](/), its products, or affiliates is not deemed as ‘average earnings’ and should not be considered as ‘average’ or a promise that you will have the same experience or achieve the same results.
 
-The content on this site, including text, graphics, logos, images, videos, podcasts and case studies, belongs to DoGood OÜ or to those who allowed us to use it. It is protected by copyright and other laws.
+### THE ECONOMY
 
-You may view the content and share links to it for personal or internal business use. You may not copy, change, publish or sell it without our written permission, except where the law allows. To ask for permission, email [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co).
+It is important to always consider that the amount of risk you assume when conducting business is greatly dependent upon the current economic conditions, on both a national and worldwide scale. Therefore, the economy in which you conduct business can bring a variety of economic risks and also uncertain results. For example, any economic recession or depression that occurs could greatly affect the results that DoGood Agency produces.
 
-If you believe content on our site infringes your intellectual property rights, email us at [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co) with a description of the content and the rights you hold. We will look into it promptly.
+### YOUR SUCCESS OR LACK OF IT
 
-## General information, not advice
+The amount of success you attain as a result of using the information, strategies, and products provided at [www.dogoodagency.co](/) is greatly dependent upon a diverse number of factors, which DoGood Agency is not responsible for. This website, nor its affiliates or representatives can determine exactly what kind of success you will have, as we are not aware of contributing success factors such as your dedication, motivation, desires, work ethic, background, business skills and experience, business factors, or other attributes which may determine success.
 
-The content on this site is general information. It is not professional, legal, financial, tax, medical or mental health advice, and it does not replace advice for your situation.
+Any earnings attained from internet businesses always have unknown risks and are therefore not the right option for everyone. You cannot rely on the information provided through DoGood Agency or otherwise, and if you do so, you must do so by being aware that regardless of what information is provided, there is still a chance you could experience significant losses at any time (including but not limited to financial losses and money spent on purchasing DoGood Agency products/services, any money spent on implementing a plan derived from [www.dogoodagency.co](/), or money spent on the operation, marketing, or future earnings. You must be aware that you may not derive any earnings at all just because you have purchased DoGood Agency products or services or used, relied upon, or made assumptions from information provided through DoGood Agency (including monetary earnings and/or advertising credits, whether convertible to cash or not.)
 
-Case studies, testimonials and examples describe individual experiences. They are not typical results and not a promise of any result, income or outcome. Your results depend on many factors, including your own situation and decisions.
+### FORWARD-LOOKING STATEMENTS
 
-Before making important business, legal, financial or tax decisions, please get advice from a qualified professional.
+Any Materials Contained On This Website Or Materials Purchased Or Downloaded From dogoodagency.co And/or Its Affiliates May Contain Information That Is Inclusive Or Based Upon Forward-Looking Statements Within The Meaning Of The Securities Litigation Reform Act Of 1995.
 
-## Links to other websites
+Forward-Looking Statements Provide The Expectations We Have Decided To Be Probable In The Future And Can Be Identified By The Fact That They Will Never Use Past, Historical, Current, Or Definite Future Facts, And Will Include Words Such As, But Not Limited To (and Their Required Variations):
 
-Our site may link to websites, tools or services run by others, such as booking or form tools. We do not control them and are not responsible for their content, availability or privacy practices. Their own terms apply.
+- Anticipate
 
-## Our services and fees
+- Estimate
 
-This website describes our services. It is not an offer that becomes a contract when you use the site.
+- Expect
 
-Any work together is governed by a separate client agreement signed by you and DoGood OÜ. Services, prices and payment terms are set out in that agreement. If anything on this website differs from your signed agreement, the signed agreement applies.
+- Project
 
-## Refunds
+- Intend
 
-Refunds are handled under our Refund Policy and your signed client agreement. The Clarity-First Guarantee below explains one specific refund option for Stage 1. The exact guarantee, refund and payment terms are in your signed client agreement. If anything here differs from it, the agreement wins.
+- Anticipate
 
-Nothing in these terms limits any refund or withdrawal right you have by law.
+- Plan
 
-## Clarity-First Guarantee (Stage 1)
+- Believe
 
-You can't know if the Founder Reclamation Partnership (FRP) is right for you from the outside. You only know once you are inside the work. This guarantee lets you find out with less risk.
+And Other Words And/or Terms That Have A Similar Definition, Particularly If Used In Connection With Descriptions Of Potential Earnings, Financial Performance, Or Success.
 
-**What it is.** If you decide early in Stage 1 that the partnership isn't right for you, you can exit. We keep only the part of your Stage 1 payment that covers the two private sessions already delivered, and refund the rest.
+Any And All Forward-Looking Statements Found On DoGoodAgency.co, Or Its Affiliate Or Representatives Are Used To Express Our Opinions Of Possible Earnings And/or Success. There Are Many Factors That Will Determine Your Individual Results And No Guarantees Are Made That You Will Achieve The Same Results Of Others Who Have Visited, Purchased, Or Received Information From, DoGood Agency, Or Its Affiliates Or Representatives.
 
-**Your signed agreement comes first.** The exact guarantee, refund and payment terms are in your signed client agreement. If anything on this page differs from that agreement, the agreement wins.
+Absolutely No Guarantees Are Made That You Will Achieve The Same Results That We Have Or That Anyone Else, And No Guarantees Are Made That You Will Achieve Any Results At All From Any Of Our Ideas, Techniques, Or Information Provided On Our Behalf.
 
-**Key terms.**
+### DUE DILIGENCE
 
-- "Stage 1" means FRP – Stage 1: The Reset (30 days).
-- "Session 1" means your first live, virtual private 1:1 session. It is not the acceptance call, the payment date or the onboarding date.
-- "Onboarding" means the onboarding starter pack and the intake and setup steps that happen before or around the start of Stage 1.
-- "In-person intensive" means the in-person working block that is part of Stage 1, where we travel to your location.
+You are hereby advised to practice due diligence when you make any business decision and you should always exercise caution and seek the advice of relevant, qualified professionals that can assist you in making such decisions. You are not only responsible for but should seek the advice of an accountant, lawyer, or other relevant professional advisors before engaging in any techniques found on [www.dogoodagency.co](/), its products, affiliates, representatives, or
 
-**Who can use it.** The guarantee applies only if you:
+None of the examples provided on any of these should be construed as equal to legal advice. There is not any information on this website, its connected materials, any other content on the website, or information provided by us that is considered legal advice in any way at all, nor is there any legal advice on any downloads or products for sale on [www.dogoodagency.co](/). You are to exercise due diligence by seeking the advice of an attorney with any and all legal inquiries or questions.
 
-- complete all onboarding steps;
-- attend your first two private 1:1 sessions; and
-- ask to exit within the guarantee window.
+We assume no responsibility for any losses or damages resulting from your use of any link, information, or opportunity contained within the website or within any information disclosed by the owner of this site in any form whatsoever.
 
-**The guarantee window.** Email us within the guarantee window after Session 1, as set out in your signed client agreement.
+### PURCHASE PRICE
 
-**No questions asked.** We will not question, debate or ask you to justify your decision. If you meet the conditions above, we process your refund.
+Even though we believe that the prices of our products are fair for the level of value you receive when purchasing our products, you understand, agree, and are acknowledging that the price of DoGood Agency has been decided upon by us. The price we charge is not in relation to your objectivity or others standards of objectivity.
 
-**You keep the work.** If you exit, you keep everything from your first two sessions, including the decisions we clarified, the containment plan we set, and any tools or written notes we shared. We will not ask you to return or delete these materials.
+### TESTIMONIALS, CASE STUDIES & EXAMPLES
 
-**In-person intensive.** The guarantee applies only before an in-person intensive is scheduled or started. Once an in-person intensive has been scheduled, has started, or has led to costs (for example, booked travel), the guarantee no longer applies. Any refund after that point can only be agreed as a separate written exception by DoGood OÜ. This doesn't affect your rights under law.
+Any testimonials, case studies, or examples that you find at [www.dogoodagency.co](/) are merely reflect exceptional results, and they do not always reflect the results that the typical purchaser achieves and are also not reflections of typical results. Additionally, they do not guarantee that you will achieve the same success, results, earnings, or similar ones. If we provide typical results that are based on information that a manufacturer or other third-party source has given us, you should assume that those results are more reliable than the testimonials, case studies, or examples that you find at [www.dogoodagency.co.](/) Of course, you should practice due diligence and never take any results we provide at face value, and we are in no way responsible for any errors, omissions, or other issues that arise as a result of the information provided to us by manufacturers or reputable third parties.
 
-**If the coach match feels wrong.** If, in your first two sessions, you feel your coach match is not right, tell us. We will try to correct it quickly. If we can't correct it without delay or disruption, you may exit under this guarantee, as long as you are still within the window and meet the conditions above.
+When specific income or earnings is provided on this website, (whether it is monetary or advertising credits that can be converted to cash or not), these figures are reflective of a specific individual or business, and that individual or business has earned the income or earnings provided. If you rely on the figures or income provided, you are assuming all the risk of not achieving the same results. The information, experiences, and figures we provide are not typical, and every individual’s financial results are likely to differ from those we provide in case studies, testimonials, and examples. If we have a new product or service, you also understand that it possibly was not for sale long enough to provide accurate figures or information.
 
-**How refunds are paid.** Refunds go back to the original payment method only.
+### COMPENSATION DISCLOSURE POLICY
 
-**Priority Hold.** If you reserved your place with a Priority Hold, the Priority Hold deposit and start-date terms apply separately from this guarantee.
+Any material connections that we may have with a third party who provides goods or services who is mentioned on [www.dogoodagency.co](/) are explained in the Compensation Disclosure Policy, which is incorporated with Earnings Disclaimers, and is not a guarantee or promise of any earnings or income. You are encouraged to read this policy in order to have a full understanding of the meaning of the relationships we have with third-party vendors and how it may influence or affect the content we provide on [www.dogoodagency.co](/).
 
-**Confidentiality.** FRP is private and confidential, with no groups or cohorts. Confidentiality terms are shared during onboarding.
+### COMPENSATION DISCLOSURE POLICY, IF ANY, IS PART OF THESE TERMS AND CONDITIONS
 
-**How to use the guarantee.** Email [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co) with the subject line "Clarity-First Guarantee – Exit Request". Include your full name and the date of Session 1.
+If there is a Compensation Disclosure Policy featured on [www.dogoodagency.co](/), the policy is automatically a part of the terms and conditions of use and is also subject to the same terms and conditions.
 
-## Limitation of liability
+### MODIFICATIONS AND TERMINATIONS
 
-We work hard to keep this website accurate and available, but we cannot promise it will always be error-free, complete, up to date or uninterrupted.
+The terms and conditions found on our website may change from time to time, and if any changes are made, they will be effective immediately. We will notify you by posting a notice on our website’s home page which will inform you of the changes that have taken place. If you disagree with any of the changes we have made, you should not use our website.
 
-To the extent the law allows, we are not liable for any loss that comes from using, or not being able to use, this website or its content.
+We have the right to terminate these terms and conditions of use for any reason and may do so at any time without providing notice to you. If you’re concerned about the terms and conditions of use, you should always review the terms and conditions of use every time you visit the website. If you have any questions or concerns, please notify us immediately and bring them to our attention by emailing us at hiya [at] dogoodagency [dot] co, and please provide any information that pertains to your concern.
 
-Nothing in these terms limits or excludes our liability for death or personal injury caused by our negligence, for intentional acts or gross negligence, or for anything else that cannot be limited or excluded by law. If you are a consumer, nothing in these terms affects your mandatory rights under Estonian or EU consumer law.
+### LICENSEE STATUS
 
-Liability for our services is set out in your signed client agreement.
+You understand and agree that the use of our website is limited and is not exclusive as a non-transferable, revocable licensee. We resume the right to terminate the license you have to use our website or access the website for any reason, at any time, without providing you notice.
 
-## Governing law and courts
+### CONTENT OWNERSHIP
 
-These terms are governed by the laws of Estonia.
+All of the content found on our website is owned by other us or the content suppliers we use. Both, we and any content suppliers lay claim to all property rights for this website, as well as intellectual property rights, for the content on this website, and you are not allowed to make any infringement upon these rights. We have the right to prosecute anyone who tries to steal our property with the maximum penalty allowed by the law and will prosecute anyone that attempts to steal our property, whether it is ours or supplied by a third-party supplier.
 
-Any dispute about these terms or this website will be handled by Harju County Court (Harju Maakohus) in Estonia.
+You also agree that you will not copy any content found on our website unless you have received permission to do so. If you have a request to use our content, then you should send us an email at hiya [at] dogoodagency [dot] co.
 
-If you are a consumer living in the EU, you also keep the protection of the mandatory consumer laws of your country, and you may bring a claim in the courts of the country where you live.
+If you believe that your personal intellectual property rights have been violated in any way by the content on our website, please send us an email at hiya [at] dogoodagency [dot] co. Please provide a detailed description of the alleged infringement or harm, including the facts and the legal rights you believe prove your claim of ownership.
 
-## Changes to these terms
+### DISCLAIMERS AND LIMITATIONS OF LIABILITY
 
-We may update these terms from time to time. The new version will be posted on this page with a new "Last updated" date. If you keep using the site after a change, the updated terms apply.
+Any information on our website is provided on an ‘as is’ and ‘available’ basis. You agree that by using our websites, you are doing so at your own risk. By using our website, you are acknowledging that you have waived our warranties of merchantability, any results not obtained by your purposes or intentions, and that we are not infringing upon you. We do not guarantee that our website will always be available, and don’t guarantee that you will always be able to access the website, or that it will always be error-free or meet your requirements, and we also do not promise that any defects or errors in our website will be corrected.
 
-## Other terms
+The information on our website should not be relied upon, and you should not misconstrue the information on our website as professional advice. We do not guarantee the accuracy or completeness of any content or information on our website, and we are not responsible for any loss that may occur if you rely upon information found on our website.
 
-These terms, together with our [Privacy Policy](/privacy/) and [Cookies Policy](/cookies/), are the whole agreement between you and us about using this website. Our services are covered by your signed client agreement.
+If the jurisdiction that governs you does not allow limitations or warranties, then this limitation may not be applicable to you. Your sole and exclusive remedy that relates to your usage of the website shall be to stop using the website.
 
-If any part of these terms is found invalid, the rest still applies. If we do not enforce a right right away, we do not give it up.
+Under absolutely no circumstances will we be held liable or responsible for any direct, indirect, incidental, consequential, special, exemplary, punitive, or other damages that arise from anything resulting from our website or you using the website, nor will be held liable for any claimed damages that arise from reading our content or using our website’s information, even if you have been told that damages have occurred. This includes but is not limited to being liable for damages of loss businesses, profits, litigation, or similar occurrences.
 
-## Contact us
+Any liability for any claim that arises from using our website or that is related to our website will not exceed ($100) one hundred dollars, and that amount will be placed on all other remedies which may be used against our affiliates. Any claim you make will be subject to confidential, binding arbitration that is described later on in our terms and conditions of use.
 
-DoGood OÜ  
-Registry code 14695833, VAT number EE102348673  
-  
-Email: [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co)
+### OBSCENE AND OFFENSIVE CONTENT
+
+We have no responsibility for any kind of obscene or offensive content that you receive or view from other people while you use our website. However, if you ever receive or view this kind of content, please contact us immediately by emailing hiya [at] dogoodagency [dot] co so that we investigate the content. Even though we have no obligation to do any investigating for this, we still reserve the right to monitor, investigate, or remove any obscene or offensive material that is posted on our website.
+
+### INDEMNIFICATION
+
+You understand and agree that you release us, our representatives, or affiliates from any liability, loss, claim, expenses, or reasonable attorney’s fees that are a result from using our website or that stem from you violating any of these terms or conditions.
+
+### SEVERABILITY OF THESE TERMS AND CONDITIONS
+
+If any court of competent jurisdiction finds any part of these terms and conditions to be invalid or unenforceable, that specific part will either be modified, limited, or completely eliminated to the most optimum level needed so that the rest of these terms and conditions are fully enforceable and legally binding.
+
+### HOW TO CONTACT US
+
+Any questions or concerns about these terms and conditions of use should be brought to our attention by sending an email to our help desk at: hiya [at] dogoodagency [dot] co.
+
+### ENTIRE AGREEMENT
+
+These terms and conditions, including the policies incorporated herein by express reference, constitute your entire agreement with us with respect to your use of our website
+
+Please note that the content of this page can change without prior notice. This Terms and Conditions of Use Policy was last updated on 06-05-2023
+
+Copyright © 2023 DoGood Agency, and licensed for use by the owner of this website at [www.dogoodagency.co](/) All Rights Reserved. No portion of this document may be copied or used by anyone other than the licensee without the express written permission of the copyright owner.
