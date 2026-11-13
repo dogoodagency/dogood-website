@@ -1201,8 +1201,9 @@ main ul {
 
   .hero-grid {
     gap: 48px;
-    margin-top: 48px;
+    margin-top: 22px;
     padding-bottom: 48px;
+    align-items: start;
   }
 
   .foryou-grid {
@@ -2145,9 +2146,15 @@ h1.t-display .accent-ready {
 
 .hero p.lede {
   max-width: none;
+  font-size: 18px;
+  line-height: 28.8px;
 }
 
 a.btn-case {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   border-radius: 999px;
 }
 
@@ -2161,15 +2168,15 @@ a.btn-case {
 }
 
 header.nav {
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 48px;
-  padding-top: 0;
-  padding-bottom: 8px;
+  gap: 32px;
+  padding: 14px var(--pad) 8px;
 }
 
 header.nav a.btn-apply.nav-cta {
   font-weight: 400;
+  font-size: 18px;
 }
 
 header.nav a.btn-apply.nav-cta:hover,
@@ -2182,33 +2189,40 @@ header.nav .nav-menu a.btn-apply.nav-cta:hover {
 #why p.why-kicker {
   font-size: 26px;
   font-weight: 900;
-  color: #ea1557;
+  color: #2a0b4f;
+}
+
+#why h2.t-h2 {
+  font-size: 28px;
+  white-space: nowrap;
 }
 
 @media (min-width: 1081px) {
   .hero-grid {
     grid-template-columns: minmax(480px, 1fr) minmax(0, 720px);
     gap: 48px;
-    margin-top: 48px;
+    margin-top: 22px;
     padding-bottom: 48px;
+    align-items: start;
   }
 }
 
 #asseen {
   width: 100%;
-  padding: 96px 0 88px;
+  padding: 72px var(--pad) 80px;
   overflow: hidden;
 }
 
 #asseen .asseen-frame {
-  background: none;
+  background: #fff;
   border: none;
-  border-radius: 0;
+  border-radius: 24px;
   box-shadow: none;
-  max-width: none;
+  max-width: 1280px;
   width: 100%;
-  margin: 0;
-  padding: 0;
+  margin: 0 auto;
+  padding: 36px 48px 40px;
+  box-sizing: border-box;
 }
 
 #asseen .t-kicker {
@@ -2224,35 +2238,46 @@ header.nav .nav-menu a.btn-apply.nav-cta:hover {
   display: flex;
   justify-content: center;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
 }
 
 #asseen .asseen-row img {
   display: block;
-  /* Source art has transparent side padding. Scale so the opaque logos
-     meet both viewport edges and stand about 126px tall at 1440. */
-  width: calc(100% * 1140 / 896 * 0.99);
+  width: auto;
   height: auto;
-  max-width: none;
+  max-width: 100%;
+  max-height: 112px;
+  object-fit: contain;
   flex: none;
 }
 
 .wf-group {
-  border: 1px solid #ea1557;
+  border: 0;
   box-shadow: none;
   margin-top: 0;
   line-height: 0;
+  background: transparent;
+  overflow: visible;
 }
 
 .wf-group img {
   display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.track-block {
+  margin-top: 24px;
 }
 
 .track-nums strong {
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 44px;
+  font-weight: 900;
   color: #ea1557;
   text-align: center;
+  white-space: normal;
 }
 
 .footer h2.agency-name {
@@ -2261,10 +2286,26 @@ header.nav .nav-menu a.btn-apply.nav-cta:hover {
 }
 
 .review {
-  background: transparent;
+  background: #f5f2f9;
   border: none;
-  border-radius: 0;
+  border-radius: 18px;
   box-shadow: none;
+}
+
+.review-who img {
+  border: 1px solid #2a0b4f;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.review-body {
+  display: block;
+  -webkit-line-clamp: unset;
+  overflow: clip;
+  max-height: calc(28.8px * 9);
+  line-height: 28.8px;
+  font-size: 18px;
+  text-overflow: clip;
 }
 
 #next .next-note,
@@ -2275,13 +2316,106 @@ p.cap-pill,
 .caption.cap-pill {
   font-size: 12px;
   font-weight: 400;
+  margin-top: 6px;
+}
+
+p.stage-note,
+p.case-protect,
+p.cap-small,
+p.cap-pill,
+.caption.cap-pill {
+  color: #8e7ba6;
+}
+
+#case-j p.case-who {
+  font-size: 15px;
+  font-weight: 900;
+  color: #ea1557;
+}
+
+#case-v p.case-who {
+  font-size: 15px;
+  font-weight: 900;
+  color: #28dbb0;
+}
+
+#first-card p.invite,
+#why .sub {
+  font-weight: 900;
+}
+
+#for-you li {
+  font-size: 18px;
+  line-height: 28.8px;
+}
+
+a.btn-terms {
+  color: #2a0b4f;
+}
+
+p.terms-row {
+  margin-top: 28px;
+}
+
+#guarantee strong.em-black {
+  color: #fff;
+  font-weight: 900;
+}
+
+p.say-no,
+.guarantee-card .say-no {
+  font-weight: 400;
+  color: #28dbb0;
+}
+
+.section-wave,
+.footer-wave {
+  display: block;
+  line-height: 0;
+  background: #f5f2f9;
+}
+
+.section-wave .hero-wave,
+.footer-wave .hero-wave {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+.footer-wave {
+  background: #d4f4eb;
+}
+
+.footer {
+  padding-top: 48px;
+}
+
+p.services-note {
+  font-size: 12px;
 }
 
 @media (max-width: 1080px) {
   header.nav {
     justify-content: space-between;
-    padding: 8px 20px;
+    padding: 14px var(--pad);
     gap: 12px;
+  }
+
+  #why,
+  .why-grid,
+  .why-copy,
+  .why-sketch {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  #why h2.t-h2 {
+    font-size: 15px;
+    max-width: 100%;
+  }
+
+  #asseen .asseen-frame {
+    padding: 24px 16px 28px;
   }
 
   h1.t-display .accent-ready {

@@ -9,7 +9,7 @@ import caseJ from "../assets/cases/j.png";
 import caseV from "../assets/cases/v.png";
 import team from "../assets/photos/wayfinders.png";
 import signature from "../assets/photos/signature.png";
-import press from "../assets/photos/as-seen-on.png";
+import press from "../assets/photos/as-seen-on-hires.png";
 
 const logoFiles = import.meta.glob<ImageMetadata>("../assets/logos/pink/*", {
   eager: true,
@@ -31,6 +31,14 @@ const reviewSet = reviews.map((review) => ({
   ...review,
   src: fromMap(portraits, review.file),
 }));
+
+function clipQuote(quote: string) {
+  const clean = quote.replace(/\s+/g, " ").trim();
+  const limit = 320;
+  if (clean.length <= limit) return clean;
+  const cut = clean.slice(0, limit).replace(/\s+\S*$/, "").replace(/[.…,\s]+$/, "");
+  return `${cut}…`;
+}
 
 const fit = [
   "You have exited or meaningfully stepped away from the company you built",
@@ -121,12 +129,12 @@ const notFit = [
         your decisions, and what you want to reach for next.
       </p>
       <p>
-        Exit advisors handle the transaction. Business consultants focus on the business. But very few
-        people <strong class="em-black">help you deal with what happens after.</strong>
+        Exit advisors handle the transaction. Business consultants focus on the business.<br />
+        But very few people <strong class="em-black">help you deal with what happens after.</strong>
       </p>
       <p>
-        When the company gave you meaning and structure for years, sometimes decades, stepping away is
-        as much personal as it is practical.
+        When the company gave you meaning and structure for years, sometimes decades,<br />
+        stepping away is as much personal as it is practical.
       </p>
       <p>
         <strong class="em-black">We help you see what is really driving the next chapter,</strong> so you do not fill the freedom you worked so hard for with another version of the life you left behind.
@@ -206,9 +214,7 @@ const notFit = [
     <div class="why-grid">
       <div class="card why-copy">
         <p class="why-kicker">Why 'DoGood'?</p>
-        <h2 class="t-h2">
-          Because we love<br />entrepreneurship.
-        </h2>
+        <h2 class="t-h2">Because we love entrepreneurship.</h2>
         <span class="sub">We love what founders build.</span>
         <p>We love what a great company can create for a family, a team, a&nbsp;community, and&nbsp;the&nbsp;world.</p>
         <p>
@@ -230,12 +236,8 @@ const notFit = [
     </div>
   </section>
 
-  <div class="soft-wave" aria-hidden="true">
-    <svg viewBox="0 0 1440 140" preserveAspectRatio="none">
-      <path
-        fill="#d4f4eb"
-        d="M0 78c160 42 300-46 500-28s280 62 460 24 300-64 480-18v60H0Z"></path>
-    </svg>
+  <div class="section-wave" aria-hidden="true">
+    <Wave fill="#ffffff" />
   </div>
 
   <section id="reviews">
@@ -266,7 +268,7 @@ const notFit = [
                         <p class="review-role">{review.role}</p>
                       </div>
                     </div>
-                    <p class="review-body">{review.quote}</p>
+                    <p class="review-body">{clipQuote(review.quote)}</p>
                   </article>
                 ))}
               </div>
@@ -296,11 +298,11 @@ const notFit = [
     <div class="asseen-frame">
       <p class="t-kicker">As seen on</p>
       <div class="asseen-row">
-        <Image
-          src={press}
+        <img
+          src={press.src}
+          width={press.width}
+          height={press.height}
           alt="The Globe and Mail, The Chronicle Journal, FOX, Starkville Daily News, ncn, and Benzinga"
-          widths={[640, 1140]}
-          sizes="(max-width: 1080px) 100vw, 1040px"
         />
       </div>
     </div>
@@ -397,13 +399,13 @@ const notFit = [
       </p>
       <p>
         Complete onboarding and attend your first two private 1:1 sessions. If you decide the
-        partnership isn’t right for you, email us within 7 days of Session 1, and we’ll refund the
-        remainder of your Stage 1 investment. No matter the reason (we only retain the portion covering
+        partnership isn’t right for you, email us within 7 days of Session 1, and we’ll <strong class="em-black">refund the
+        remainder of your Stage 1 investment</strong>. No matter the reason (we only retain the portion covering
         the two sessions delivered).
       </p>
       <p>
         You keep all decisions, plans, and tools from our first sessions. We take real delivery risk on
-        purpose, because we only want to continue if it’s genuinely the right fit.
+        purpose, because we only want to continue if it’s <strong class="em-black">genuinely the right fit</strong>.
       </p>
         <p class="terms-row">
         <a class="btn-terms" href={urls.guarantee}>Read full terms</a>
@@ -451,7 +453,7 @@ const notFit = [
       const start = (el) => {
         const target = Number(el.dataset.count);
         const begin = performance.now();
-        const duration = 1200;
+        const duration = 3500;
         const tick = (now) => {
           const progress = Math.min(1, (now - begin) / duration);
           const eased = 1 - (1 - progress) ** 3;

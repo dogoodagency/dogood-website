@@ -1,5 +1,6 @@
 ---
 import { urls } from "../data/homepage";
+import Wave from "./Wave.astro";
 
 const action =
   "https://assets.mailerlite.com/jsonp/2046479/forms/180157154312849349/subscribe";
@@ -24,12 +25,16 @@ const legal = [
 ];
 ---
 
+<div class="footer-wave" aria-hidden="true">
+  <Wave fill="#2A0B4F" />
+</div>
 <footer class="footer" id="footer">
   <div class="footer-grid">
     <div>
       <h2>Not ready to apply? Stay close.</h2>
       <p class="fine">
-        That’s okay. Get honest notes on what comes after the exit, straight to your inbox.
+        That’s okay. Get honest notes on what comes after the exit,<br />
+        straight to your inbox.
       </p>
       <form class="footer-form js-subscribe" action={action} method="post">
         <input type="hidden" name="ml-submit" value="1" />
@@ -84,7 +89,10 @@ const legal = [
         Sheridan WY 82801,<br />
         United States
       </p>
-      <p class="fine">Services are provided by DoGood OÜ, our operating company in the EU.</p>
+      <p class="fine services-note">
+        Services are provided by DoGood OÜ,<br />
+        our operating company in the EU.
+      </p>
     </div>
   </div>
   <div class="legal">
