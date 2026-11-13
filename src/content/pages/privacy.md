@@ -17,14 +17,6 @@ At DoGood Agency, we respect your privacy and are committed to protecting your p
 
 Our website host processes basic technical data (IP address, browser and device type, pages requested, referring page) to deliver the site and keep it secure. We don't use analytics or tracking tools.
 
-### Cookie Consent Management
-
-We use cookie consent to give you control over the cookies placed on your device. When you first visit our site, you'll see a cookie banner where you can:
-
-- Accept or decline non-essential cookies
-- View details about each cookie category
-- Manage your preferences at any time
-
 ### Information You Provide
 
 We may collect information you voluntarily submit through:
@@ -32,10 +24,10 @@ We may collect information you voluntarily submit through:
 - Contact forms or email inquiries
 - Program applications
 - Newsletter subscriptions
-- Live chat messages (live chat)
-- Call bookings (call booking)
-- Forms (forms)
-- The newsletter sign-up (newsletter)
+- Live chat messages
+- Call bookings
+- Forms you fill in
+- The newsletter sign-up
 - Client onboarding processes
 
 This may include your name, email address, company name, job title, phone number, and any other information you choose to share.
