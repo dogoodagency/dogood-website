@@ -3765,8 +3765,12 @@ header.nav {
 }
 
 #first-card h2,
+#first-card h2.t-h2,
 .track-nums strong,
 p.t-kicker,
+#case-j p.t-kicker,
+#case-v p.t-kicker,
+#asseen .t-kicker,
 .page-body a:not(.btn-apply):not(.btn-teal):not(.btn-case) {
   color: #2a0b4f;
 }
