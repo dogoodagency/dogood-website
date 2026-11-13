@@ -4,7 +4,7 @@ import { getEntry, render } from "astro:content";
 import Base from "../layouts/Base.astro";
 
 interface Props {
-  id: "privacy" | "terms";
+  id: "privacy" | "terms" | "cookies";
 }
 
 const { id } = Astro.props;
@@ -28,10 +28,6 @@ const canonical = new URL(id, "https://www.dogoodagency.co/").href;
     <div class="policy-wrap">
       <h1>{entry.data.title}</h1>
       <p class="policy-updated">Last updated {entry.data.updated}</p>
-      <p class="policy-entity">
-        <strong>DoGood OÜ (Estonia)</strong> is the service provider and the data controller.
-        DoGood Agency LLC is the US company named in the footer.
-      </p>
       <nav class="policy-toc" aria-label="On this page">
         <p>On this page</p>
         <ol>

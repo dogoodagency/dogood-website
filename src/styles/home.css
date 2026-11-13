@@ -2871,7 +2871,7 @@ a.btn-case:focus-visible {
 }
 
 .policy-updated {
-  margin: 0 0 20px;
+  margin: 0 0 28px;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.45;
@@ -2954,6 +2954,34 @@ a.btn-case:focus-visible {
 .policy-body ol {
   margin: 0 0 16px;
   padding-left: 1.25em;
+}
+
+.policy-body {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.policy-body table {
+  width: 100%;
+  min-width: 640px;
+  margin: 0 0 20px;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.policy-body th,
+.policy-body td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--color-mist);
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: break-word;
+}
+
+.policy-body th {
+  font-weight: 700;
+  background: #fff;
 }
 
 .policy-body a {
