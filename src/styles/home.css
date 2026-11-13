@@ -378,17 +378,18 @@ main ul {
   background: transparent;
 }
 
-/* v7.2's canvas is the old 520×340 art at (48, 0), plus 48px left and 128px below. */
+/* v8 is registered to v7.2 so the door and walkers stay put. */
 .hero-sketch-frame {
-  width: calc(100% * 568 / 520);
+  width: calc(100% * 0.936586);
   max-width: none;
-  margin-left: calc(100% * -48 / 520);
-  margin-bottom: calc(100% * -128 / 520);
+  margin-left: calc(100% * -0.094387);
+  margin-top: calc(100% * 0.095595);
+  margin-bottom: calc(100% * -0.091566);
 }
 
 .hero-sketch {
   object-fit: contain;
-  aspect-ratio: 568 / 468;
+  aspect-ratio: 1940 / 1346;
 }
 
 /* Logos — edge to edge, no box, content travels left to right */
@@ -5177,11 +5178,12 @@ button.btn-subscribe:focus-visible {
 
   .hero-sketch-frame {
     position: absolute;
-    left: calc(-48 / 520 * 1.2 * (100% + 60px));
+    left: calc(-0.094387 * 1.2 * (100% + 60px));
     top: -10.8px;
-    width: calc(568 / 520 * 1.2 * (100% + 60px));
+    width: calc(0.936586 * 1.2 * (100% + 60px));
     max-width: none;
     margin: 0;
+    margin-top: calc(0.095595 * 1.2 * (100% + 60px));
     translate: -115px -150px;
   }
 
