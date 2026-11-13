@@ -2860,6 +2860,19 @@ main {
   border: 1px solid #28dbb0;
 }
 
+a.btn-case {
+  background: #28dbb0;
+  color: #2a0b4f;
+  border: 1px solid #28dbb0;
+}
+
+a.btn-case:hover,
+a.btn-case:focus-visible {
+  background: #fff;
+  color: #2a0b4f;
+  border: 1px solid #28dbb0;
+}
+
 @media (max-width: 800px) {
   #exit-card,
   .exit-split,
