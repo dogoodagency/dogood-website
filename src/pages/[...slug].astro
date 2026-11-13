@@ -118,18 +118,8 @@ const pageDescription = genericDescription
   <section class="subhero">
     <Wave fill="#f5f2f9" />
   </section>
-  <article class:list={["page", "page-designed", "page-advisor", sketch && "page-art"]}>
+  <article class:list={["page", "page-designed", sketch && "page-art"]}>
     <div class="page-wrap">
-      <svg class="advisor-line" viewBox="0 0 48 1600" preserveAspectRatio="none" aria-hidden="true">
-        <path
-          id="advisor-line-path"
-          d="M24 8 C 8 180, 40 320, 24 500 C 8 680, 40 860, 24 1040 C 10 1240, 38 1420, 24 1588"
-          fill="none"
-          stroke="#28DBB0"
-          stroke-width="3"
-          stroke-linecap="round"
-        />
-      </svg>
       {
         sketch && (
           <picture class="page-sketch page-sketch-feature">
@@ -175,25 +165,6 @@ const pageDescription = genericDescription
 </Base>
 
 <script>
-  const wave = document.querySelector("#advisor-line-path");
-  if (wave instanceof SVGPathElement) {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const paint = (progress) => {
-      const length = wave.getTotalLength();
-      wave.style.strokeDasharray = `${length}`;
-      wave.style.strokeDashoffset = reduce.matches ? "0" : String(length * (1 - progress));
-    };
-    const update = () => {
-      if (reduce.matches) return paint(1);
-      const rect = wave.getBoundingClientRect();
-      const start = window.innerHeight * 0.9;
-      const finish = window.innerHeight * 0.2;
-      paint(Math.min(1, Math.max(0, (start - rect.top) / Math.max(1, start - finish))));
-    };
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-  }
-
   document.querySelectorAll("[data-buzzsprout-src]").forEach((gate) => {
     gate.querySelector("button")?.addEventListener("click", () => {
       if (!(gate instanceof HTMLElement) || gate.querySelector("iframe")) return;

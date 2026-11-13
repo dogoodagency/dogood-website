@@ -3162,20 +3162,6 @@ main {
   margin: 8px 8px 8px 0;
 }
 
-.page-advisor .advisor-line {
-  position: absolute;
-  left: -18px;
-  top: 0;
-  width: 48px;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.page-advisor .advisor-line path {
-  stroke-width: 3.25;
-}
-
 .logo-pills {
   display: flex;
   flex-wrap: wrap;
@@ -4444,10 +4430,6 @@ button.btn-subscribe:focus-visible {
   border: 1px solid #ea1557;
   border-radius: 24px;
   padding: 36px 40px 48px;
-}
-
-.page-designed .advisor-line {
-  left: -8px;
 }
 
 .profile-intro {
