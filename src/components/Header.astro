@@ -1,66 +1,48 @@
 ---
+import { Image } from "astro:assets";
+import logo from "../assets/photos/logo-nav.png";
+import { urls } from "../data/homepage";
+
 const links = [
-  {
-    href: "https://www.dogoodagency.co/founders",
-    label: "Founders",
-    hint: "start here",
-  },
-  {
-    href: "https://www.dogoodagency.co/wayfinders",
-    label: "Wayfinders",
-    hint: "meet the team",
-  },
+  { href: "#first-step", label: "How it works" },
+  { href: "#reviews", label: "Stories" },
+  { href: "#wayfinders", label: "Wayfinders" },
+  { href: "#", label: "For Advisors" },
 ];
 ---
 
-<header class="sticky top-0 z-40 bg-ink text-white">
-  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 md:px-6">
-    <a href="/" class="shrink-0" aria-label="DoGood Agency">
-      <img src="/logo.svg" alt="" width="160" height="61" class="h-12 w-auto md:h-14" />
-    </a>
-
-    <nav class="hidden items-center gap-10 md:flex" aria-label="Primary">
+<header class="nav">
+  <a class="nav-logo" href="/">
+    <Image
+      src={logo}
+      alt="DoGood Agency"
+      widths={[240, 480, 720]}
+      sizes="160px"
+      loading="eager"
+      fetchpriority="high"
+    />
+  </a>
+  <ul class="nav-links" aria-label="Primary">
+    {
+      links.map((link) => (
+        <li>
+          <a href={link.href}>{link.label}</a>
+        </li>
+      ))
+    }
+    <li>
+      <a class="btn-apply nav-cta" href={urls.apply}>Apply for Stage 1</a>
+    </li>
+  </ul>
+  <details class="nav-menu">
+    <summary>Menu</summary>
+    <nav aria-label="Primary">
       {
         links.map((link) => (
-          <a href={link.href} class="group text-center">
-            <span class="block text-base font-semibold">{link.label}</span>
-            <span class="block text-[10px] italic text-cloud">{link.hint}</span>
-          </a>
+          <a href={link.href}>{link.label}</a>
         ))
       }
-      <a
-        href="https://www.dogoodagency.co/apply-stage-1"
-        class="inline-flex min-h-12 items-center rounded-full border border-white/70 px-5 text-[19px] font-bold text-white transition hover:bg-white hover:text-ink"
-      >
-        Apply for Stage 1 →
-      </a>
+      <a class="btn-apply nav-cta" href={urls.apply}>Apply for Stage 1</a>
     </nav>
-
-    <details class="relative md:hidden">
-      <summary
-        class="flex min-h-12 cursor-pointer list-none items-center rounded-full border border-white/70 px-4 text-sm font-bold [&::-webkit-details-marker]:hidden"
-      >
-        Menu
-      </summary>
-      <nav
-        class="absolute right-0 mt-2 w-56 rounded-2xl bg-white p-3 text-ink shadow-xl"
-        aria-label="Primary"
-      >
-        {
-          links.map((link) => (
-            <a href={link.href} class="block rounded-xl px-3 py-3">
-              <span class="block font-semibold">{link.label}</span>
-              <span class="block text-xs italic text-ink/80">{link.hint}</span>
-            </a>
-          ))
-        }
-        <a
-          href="https://www.dogoodagency.co/apply-stage-1"
-          class="mt-1 flex min-h-12 items-center justify-center rounded-full bg-pink-deep px-4 text-[19px] font-bold text-white"
-        >
-          Apply for Stage 1 →
-        </a>
-      </nav>
-    </details>
-  </div>
+  </details>
 </header>
