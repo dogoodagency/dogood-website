@@ -32,9 +32,9 @@ const legal = [
   <div class="footer-grid">
     <div>
       <h2>Not ready to apply? Stay close.</h2>
-      <p class="fine">
-        That’s okay. Get honest notes on what comes after the exit,<br />
-        straight to your inbox.
+      <p class="fine optin-copy">
+        That’s okay.<br />
+        Get honest notes on what comes after the exit.
       </p>
       <form class="footer-form js-subscribe" action={action} method="post">
         <input type="hidden" name="ml-submit" value="1" />
@@ -52,7 +52,7 @@ const legal = [
         <p data-status hidden></p>
       </form>
     </div>
-    <div>
+    <div class="footer-explore">
       <h2 class="col-title">Explore</h2>
       <ul>
         {
@@ -64,8 +64,8 @@ const legal = [
         }
       </ul>
     </div>
-    <div>
-      <h2 class="col-title">Contact</h2>
+    <div class="footer-connect">
+      <h2 class="col-title">Connect</h2>
       <ul>
         {
           contact.map((link) => (
@@ -78,7 +78,7 @@ const legal = [
         }
       </ul>
     </div>
-    <div>
+    <div class="footer-about">
       <h2 class="col-title">About DoGood</h2>
       <p class="fine">
         Proud member of IODA, a global network of OD professionals spanning 50+ countries.
@@ -90,8 +90,7 @@ const legal = [
         United States
       </p>
       <p class="fine services-note">
-        Services are provided by DoGood OÜ,<br />
-        our operating company in the EU.
+        Services are provided by DoGood OÜ, our EU-based operating company.
       </p>
     </div>
   </div>

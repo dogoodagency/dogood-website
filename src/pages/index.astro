@@ -61,9 +61,8 @@ const notFit = [
   <section class="hero" id="hero">
     <div class="hero-inner">
       <h1 class="t-display">
-        For founders who’ve exited<br />
-        <span class="accent">the company they built,</span><br />
-        <span class="accent accent-ready">or are getting ready to.</span>
+        <span class="hero-line">For founders who’ve exited <span class="accent">the company they built,</span></span>
+        <span class="hero-line accent">or are getting ready to.</span>
       </h1>
       <p class="lede">
         Start with a private 30-day engagement for founders navigating life after exit.
@@ -87,13 +86,13 @@ const notFit = [
             <source
               type="image/webp"
               srcset="/sketches/founders-walking-path-to-open-door-sketch@1x.webp 520w, /sketches/founders-walking-path-to-open-door-sketch@2x.webp 1040w"
-              sizes="(max-width: 1080px) calc(100vw - 40px), 720px"
+              sizes="(max-width: 1080px) calc(100vw - 40px), 864px"
             />
             <img
               class="hero-sketch"
               src="/sketches/founders-walking-path-to-open-door-sketch@1x.png"
               srcset="/sketches/founders-walking-path-to-open-door-sketch@1x.png 520w, /sketches/founders-walking-path-to-open-door-sketch@2x.png 1040w"
-              sizes="(max-width: 1080px) calc(100vw - 40px), 720px"
+              sizes="(max-width: 1080px) calc(100vw - 40px), 864px"
               width="520"
               height="340"
               alt="Sketch of two founders walking a teal path toward an open door."
@@ -453,7 +452,7 @@ const notFit = [
       const start = (el) => {
         const target = Number(el.dataset.count);
         const begin = performance.now();
-        const duration = 3500;
+        const duration = 1800;
         const tick = (now) => {
           const progress = Math.min(1, (now - begin) / duration);
           const eased = 1 - (1 - progress) ** 3;

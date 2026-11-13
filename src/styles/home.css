@@ -308,6 +308,10 @@ main ul {
   padding-bottom: 28px;
 }
 
+.hero-copy {
+  min-width: 0;
+}
+
 .hero-copy p {
   margin: 0 0 14px;
   color: rgba(255, 255, 255, 0.92);
@@ -1968,7 +1972,7 @@ main li {
 }
 
 .footer-form .btn-subscribe {
-  margin-top: 4px;
+  margin-top: 16px;
 }
 
 .footer-subhead {
@@ -2156,11 +2160,15 @@ a.btn-case {
 
 #case-j p.t-kicker,
 #case-v p.t-kicker {
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 700;
   text-transform: none;
   letter-spacing: 0;
   color: #28dbb0;
+}
+
+#case-v p.t-kicker {
+  color: #ea1557;
 }
 
 header.nav {
@@ -2172,7 +2180,7 @@ header.nav {
 
 header.nav a.btn-apply.nav-cta {
   font-weight: 400;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 header.nav a.btn-apply.nav-cta:hover,
@@ -2193,13 +2201,44 @@ header.nav .nav-menu a.btn-apply.nav-cta:hover {
   white-space: nowrap;
 }
 
+h1.t-display .hero-line {
+  display: block;
+}
+
 @media (min-width: 1081px) {
+  h1.t-display .hero-line {
+    white-space: nowrap;
+  }
+
+  .hero h1.t-display {
+    max-width: none;
+    /* A hair tighter than the display tracking so the full line stays
+       inside 1280 and 1440 without changing the 52px size. */
+    letter-spacing: -0.05em;
+  }
+
   .hero-grid {
-    grid-template-columns: minmax(480px, 1fr) minmax(0, 720px);
+    grid-template-columns: minmax(360px, 1fr) minmax(0, 864px);
     gap: 48px;
     margin-top: 22px;
     padding-bottom: 48px;
     align-items: start;
+  }
+
+  .hero-draw {
+    margin-top: -40px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .hero-draw {
+    margin-top: -100px;
+  }
+}
+
+@media (min-width: 1680px) {
+  .hero-draw {
+    margin-top: -200px;
   }
 }
 
@@ -2495,5 +2534,40 @@ p.services-note {
     white-space: nowrap;
     text-align: center;
     font-size: 18px;
+  }
+}
+
+@media (min-width: 1081px) {
+  .footer-grid > * {
+    min-width: 0;
+  }
+
+  .footer-explore {
+    transform: translateX(70px);
+  }
+
+  .footer-about {
+    transform: translateX(-70px);
+  }
+
+  p.services-note,
+  p.optin-copy {
+    white-space: nowrap;
+  }
+
+  p.services-note {
+    width: max-content;
+  }
+}
+
+@media (min-width: 1081px) and (max-width: 1240px) {
+  .footer-explore {
+    transform: translateX(46px);
+  }
+}
+
+@media (min-width: 1081px) and (max-width: 1400px) {
+  p.services-note {
+    margin-left: calc((100vw - 1400px) * 0.32);
   }
 }
