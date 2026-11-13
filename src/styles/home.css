@@ -2763,6 +2763,7 @@ main {
 .exit-machine {
   display: block;
   position: relative;
+  z-index: 2;
   justify-self: end;
   width: min(100%, 390px);
   aspect-ratio: 390 / 414;
