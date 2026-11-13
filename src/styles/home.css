@@ -5556,12 +5556,17 @@ button.btn-subscribe:focus-visible {
   }
 
   #apply-v {
-    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    text-align: center;
     padding: calc(242 * 100vw / 1710) 0 0 calc(395 * 100vw / 1710);
   }
 
   #apply-v .caption {
     margin-left: 0;
+    margin-right: 0;
   }
 
   #message {
@@ -5634,4 +5639,27 @@ button.btn-subscribe:focus-visible {
     position: relative;
     z-index: 2;
   }
+}
+
+/* Captions under buttons match the case-study subtitle. */
+#case-j p.case-protect,
+#case-v p.case-protect,
+#first-card p.stage-note,
+#apply-first .cap-pill,
+#apply-v .cap-small,
+#next .next-note {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.6;
+  color: #8e7ba6;
+  text-align: center;
+}
+
+/* The old 20px gap sat in normal flow. Keep that space under the caption
+   so only the gap above it changes. 20 - 6 - (19.2 - 17.4) = 12.2 */
+#apply-first .cap-pill,
+#apply-v .cap-small {
+  margin-bottom: 12.2px;
 }
