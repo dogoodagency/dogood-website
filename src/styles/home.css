@@ -545,7 +545,7 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;
   gap: 48px;
-  align-items: stretch;
+  align-items: center;
 }
 
 #first-draw {
@@ -671,8 +671,8 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
 .why-grid {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
-  gap: 80px;
-  align-items: start;
+  gap: 48px;
+  align-items: center;
 }
 
 .why-copy {
@@ -2927,7 +2927,7 @@ main {
   .exit-machine {
     justify-self: center;
     width: min(100%, 180px);
-    margin-top: 16px;
+    margin-top: 0;
   }
 
   .guarantee-head {
@@ -2937,7 +2937,7 @@ main {
   }
 
   .guarantee-scale {
-    align-self: flex-start;
+    align-self: center;
   }
 
   .guarantee-scale img {
@@ -3132,18 +3132,62 @@ main {
 }
 
 @media (min-width: 1081px) {
+  .page-designed.page-art .page-wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) min(540px, 42%);
+    align-items: center;
+    column-gap: 48px;
+    max-width: 1180px;
+  }
+
+  .page-designed.page-art .page-frame {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+  }
+
+  .page-designed.page-art .page-sketch,
+  .page-designed.page-art .page-sketch-feature {
+    float: none;
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    align-self: center;
+  }
+}
+
+@media (min-width: 1081px) {
   .page-art .page-wrap {
     max-width: 1180px;
   }
 
+  .page-art .page-wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) min(540px, 42%);
+    align-items: center;
+    column-gap: 48px;
+  }
+
+  .page-art .page-frame {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+  }
+
   .page-art .page-sketch {
-    float: right;
-    width: min(560px, 46%);
-    margin: 4px 0 16px 48px;
+    float: none;
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    align-self: center;
   }
 
   .page-art .page-sketch-feature {
-    width: min(540px, 44%);
+    width: 100%;
   }
 
   .page-art .page-body h2,
@@ -3350,7 +3394,7 @@ header.nav .nav-mega-card {
   height: 420px;
   overflow: hidden;
   border-radius: 16px;
-  background: #d6cee0;
+  background: #553b72;
   text-decoration: none;
 }
 
@@ -3429,10 +3473,55 @@ header.nav .nav-mega-links a:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  header.nav .nav-mega {
+  header.nav .nav-mega,
+  header.nav .nav-item.has-menu > a::after,
+  header.nav .nav-advisor-toggle::after {
     transition: none;
+  }
+
+  header.nav .nav-mega {
     transform: none;
   }
+
+  #apply-first a.btn-apply:hover,
+  #apply-first a.btn-apply:focus-visible {
+    padding-left: 40px;
+    padding-right: 86px;
+  }
+
+  #apply-v a.btn-apply:hover,
+  #apply-v a.btn-apply:focus-visible {
+    padding-left: 70px;
+    padding-right: 106px;
+  }
+
+  #next a.btn-apply:hover,
+  #next a.btn-apply:focus-visible {
+    padding-left: 60px;
+    padding-right: 96px;
+  }
+}
+
+header.nav .nav-item.has-menu > a::after,
+header.nav .nav-advisor-toggle::after {
+  content: "";
+  flex: 0 0 auto;
+  width: 7px;
+  height: 7px;
+  margin-left: 8px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 200ms ease;
+}
+
+header.nav .nav-item.has-menu:hover > a::after,
+header.nav .nav-item.has-menu.is-open > a::after,
+header.nav .nav-item.has-menu > a:focus-visible::after,
+header.nav .nav-advisor-toggle:hover::after,
+header.nav .nav-advisor-toggle:focus-visible::after,
+header.nav .nav-advisor-toggle[aria-expanded="true"]::after {
+  transform: translateY(2px) rotate(-135deg);
 }
 
 header.nav .nav-links a {
@@ -3657,7 +3746,7 @@ button.btn-subscribe,
   max-width: 100%;
   min-height: 52px;
   margin-top: 0;
-  padding: 10px 52px;
+  padding: 10px 56px 10px 20px;
   border: 0;
   border-radius: 16px;
   font-size: 16px;
@@ -3770,6 +3859,8 @@ button.btn-teal:focus-visible,
 button.btn-subscribe:focus-visible,
 .buzzsprout-gate button:focus-visible {
   transform: scale(1.013);
+  padding-left: 52px;
+  padding-right: 20px;
   outline: none;
   border: 0;
 }
@@ -3900,6 +3991,8 @@ button.btn-subscribe:focus-visible::before,
   button.btn-subscribe:focus-visible,
   .buzzsprout-gate button:focus-visible {
     transform: none;
+    padding-left: 20px;
+    padding-right: 56px;
     outline: none;
     border: 0;
   }
@@ -4301,13 +4394,13 @@ button.btn-subscribe:focus-visible,
 
   .exit-layout {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
-    gap: 24px;
+    gap: 48px;
   }
 
   .exit-machine {
-    margin-top: 150px;
+    margin-top: 0;
   }
 
   #exit {
@@ -4338,7 +4431,7 @@ button.btn-subscribe:focus-visible,
     display: grid;
     grid-template-columns: 390px minmax(0, 1fr);
     align-items: center;
-    gap: 24px;
+    gap: 48px;
   }
 
   .guarantee-card {
@@ -4355,25 +4448,37 @@ button.btn-subscribe:focus-visible,
     object-fit: contain;
   }
 
-  #apply-first a.btn-apply,
+  #apply-first a.btn-apply {
+    padding-left: 40px;
+    padding-right: 86px;
+  }
+
   #apply-first a.btn-apply:hover,
   #apply-first a.btn-apply:focus-visible {
-    padding-left: 63px;
-    padding-right: 63px;
+    padding-left: 86px;
+    padding-right: 40px;
   }
 
-  #apply-v a.btn-apply,
+  #apply-v a.btn-apply {
+    padding-left: 70px;
+    padding-right: 106px;
+  }
+
   #apply-v a.btn-apply:hover,
   #apply-v a.btn-apply:focus-visible {
-    padding-left: 88px;
-    padding-right: 88px;
+    padding-left: 106px;
+    padding-right: 70px;
   }
 
-  #next a.btn-apply,
-  #next a.btn-apply:hover,
-  #next a.btn-apply:focus-visible {
+  #next a.btn-apply {
     padding-left: 60px;
     padding-right: 96px;
+  }
+
+  #next a.btn-apply:hover,
+  #next a.btn-apply:focus-visible {
+    padding-left: 96px;
+    padding-right: 60px;
   }
 }
 
@@ -4557,8 +4662,8 @@ button.btn-subscribe:focus-visible {
   .guarantee-layout {
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    gap: 24px;
+    align-items: center;
+    gap: 48px;
   }
 
   .exit-machine {
@@ -4566,7 +4671,7 @@ button.btn-subscribe:focus-visible {
   }
 
   .guarantee-scale {
-    align-self: flex-start;
+    align-self: center;
   }
 
   .guarantee-scale img {
@@ -4630,7 +4735,7 @@ button.btn-subscribe:focus-visible {
   display: block;
   float: none;
   width: min(420px, 100%);
-  margin: 0 0 20px;
+  margin: 0 auto 48px;
   background: transparent;
 }
 
@@ -4849,17 +4954,15 @@ button.btn-subscribe:focus-visible {
     margin-top: 150px;
   }
 
-  .exit-layout {
-    gap: 120px;
+  .exit-layout,
+  .guarantee-layout,
+  .first-grid,
+  .why-grid {
+    gap: 48px;
   }
 
   .exit-machine {
     margin-top: 0;
-  }
-
-  .first-grid,
-  .why-grid {
-    gap: 120px;
   }
 
   #case-j {
@@ -4928,5 +5031,25 @@ button.btn-subscribe:focus-visible {
 
   #next {
     margin-top: -56px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #apply-first a.btn-apply:hover,
+  #apply-first a.btn-apply:focus-visible {
+    padding-left: 40px;
+    padding-right: 86px;
+  }
+
+  #apply-v a.btn-apply:hover,
+  #apply-v a.btn-apply:focus-visible {
+    padding-left: 70px;
+    padding-right: 106px;
+  }
+
+  #next a.btn-apply:hover,
+  #next a.btn-apply:focus-visible {
+    padding-left: 60px;
+    padding-right: 96px;
   }
 }
