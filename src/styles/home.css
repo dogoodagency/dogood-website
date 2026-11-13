@@ -2896,6 +2896,161 @@ main {
   }
 }
 
+.btn-teal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 28px;
+  border-radius: 999px;
+  border: 1px solid #28dbb0;
+  background: #28dbb0;
+  color: #2a0b4f;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.btn-teal:hover,
+.btn-teal:focus-visible {
+  background: #fff;
+  color: #2a0b4f;
+  border-color: #28dbb0;
+}
+
+.page {
+  padding: 56px var(--pad) 96px;
+  color: var(--color-ink);
+  overflow-x: clip;
+}
+
+.page-wrap {
+  position: relative;
+  max-width: 760px;
+}
+
+.page-body h1,
+.page-body h2,
+.page-body h3 {
+  color: var(--color-ink);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.page-body h1 {
+  margin: 0 0 18px;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 900;
+}
+
+.page-body h2 {
+  margin: 36px 0 12px;
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 900;
+}
+
+.page-body h3 {
+  margin: 24px 0 8px;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.page-body p,
+.page-body li {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.page-body p {
+  margin: 0 0 14px;
+}
+
+.page-body ul,
+.page-body ol {
+  margin: 0 0 16px;
+  padding-left: 1.2em;
+}
+
+.page-body a {
+  color: var(--color-pink-deep);
+}
+
+.page-body img {
+  display: block;
+  max-width: min(100%, 420px);
+  height: auto;
+  margin: 12px 0 20px;
+  border-radius: 18px;
+}
+
+.page-body a.btn-apply,
+.page-body a.btn-teal {
+  color: inherit;
+}
+
+.page-body a.btn-apply {
+  color: #fff;
+  margin: 8px 8px 8px 0;
+}
+
+.page-advisor .advisor-line {
+  position: absolute;
+  left: -28px;
+  top: 18%;
+  width: 36px;
+  height: 46%;
+  pointer-events: none;
+}
+
+.logo-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.logo-pills li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 148px;
+  height: 72px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid var(--color-mist);
+}
+
+.logo-pills img {
+  max-width: 100%;
+  max-height: 40px;
+  object-fit: contain;
+}
+
+.tidycal-embed {
+  min-height: 640px;
+  margin-top: 28px;
+}
+
+.buzzsprout-gate button {
+  min-height: 52px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 999px;
+  background: #28dbb0;
+  color: #2a0b4f;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.buzzsprout-gate iframe {
+  width: 100%;
+  min-height: 180px;
+  border: 0;
+}
+
 .footer-form button.btn-subscribe {
   background: #28dbb0;
   color: #2a0b4f;

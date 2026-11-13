@@ -5,11 +5,17 @@ import Wave from "./Wave.astro";
 const action =
   "https://assets.mailerlite.com/jsonp/2046479/forms/180157154312849349/subscribe";
 
+interface Props {
+  hideOptin?: boolean;
+}
+
+const { hideOptin = false } = Astro.props;
+
 const explore = [
-  { href: "#", label: "Insights" },
-  { href: "#footer", label: "Newsletter" },
-  { href: urls.diagnostic, label: "Founder Diagnostic™" },
-  { href: "#", label: "FAQ" },
+  { href: "/insights", label: "Insights" },
+  { href: "/newsletter", label: "Newsletter" },
+  { href: "/diagnostics", label: "Founder Diagnostic™" },
+  { href: "/faqs", label: "FAQ" },
 ];
 
 const contact = [
@@ -19,9 +25,9 @@ const contact = [
 ];
 
 const legal = [
-  { href: urls.privacy, label: "Privacy Policy" },
-  { href: urls.terms, label: "Terms" },
-  { href: "#", label: "Cookies" },
+  { href: "/privacy", label: "Privacy Policy" },
+  { href: "/terms", label: "Terms" },
+  { href: "/cookies", label: "Cookie settings" },
 ];
 ---
 
@@ -47,6 +53,8 @@ const legal = [
     </span>
   </a>
   <div class="footer-grid">
+    {
+      !hideOptin && (
     <div>
       <picture class="stay-envelope">
         <source
@@ -86,6 +94,8 @@ const legal = [
         <p data-status hidden></p>
       </form>
     </div>
+      )
+    }
     <div class="footer-explore">
       <h2 class="col-title">Explore</h2>
       <ul>

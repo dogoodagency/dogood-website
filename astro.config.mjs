@@ -7,6 +7,9 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   site: "https://www.dogoodagency.co",
   trailingSlash: "never",
+  redirects: {
+    "/founders": "/how-it-works",
+  },
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],

@@ -26,17 +26,18 @@ export const logos = [
 ] as const;
 
 export const urls = {
-  apply: "https://www.dogoodagency.co/apply-stage-1",
-  partnership: "https://www.dogoodagency.co/founders",
-  caseJ: "https://www.dogoodagency.co/casestudies/j",
-  caseV: "https://www.dogoodagency.co/casestudies/v",
-  guarantee: "https://www.dogoodagency.co/clarity-first-guarantee-terms",
-  diagnostic: "https://www.dogoodagency.co/diagnostics",
+  apply: "https://form.jotform.com/DoGoodAgency/frp-stage-1",
+  partnership: "/how-it-works",
+  caseJ: "/casestudies/j",
+  caseV: "/casestudies/v",
+  guarantee: "/clarity-first-guarantee-terms",
+  diagnostic: "/diagnostics",
+  diagnosticForm: "https://form.jotform.com/260262699147869",
   linkedin: "https://www.linkedin.com/in/sebwichmann/",
-  podcast: "https://www.dogoodagency.co/dogood-insider",
-  contact: "https://www.dogoodagency.co/contact",
-  privacy: "https://www.dogoodagency.co/privacy",
-  terms: "https://www.dogoodagency.co/terms",
+  podcast: "/dogood-insider",
+  contact: "/contact",
+  privacy: "/privacy",
+  terms: "/terms",
 } as const;
 
 export const stats = [

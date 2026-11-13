@@ -1,0 +1,97 @@
+---
+import { getCollection, getEntry, render } from "astro:content";
+import Base from "../layouts/Base.astro";
+import LogoPills from "../components/LogoPills.astro";
+
+export async function getStaticPaths() {
+  const pages = await getCollection("pages");
+  return pages
+    .filter((page) => page.id !== "error404" && page.id !== "contact")
+    .map((page) => ({ params: { slug: page.id } }));
+}
+
+const slug = Astro.params.slug;
+if (!slug) return Astro.redirect("/");
+const entry = await getEntry("pages", slug);
+if (!entry) return new Response(null, { status: 404 });
+const { Content } = await render(entry);
+const canonical = new URL(slug, "https://www.dogoodagency.co/").href;
+---
+
+<Base
+  title={entry.data.title}
+  description={entry.data.description}
+  canonical={canonical}
+  hideOptin={entry.data.hideOptin}
+>
+  <article class:list={["page", entry.data.advisorLine && "page-advisor"]}>
+    <div class="page-wrap">
+      {entry.data.advisorLine && (
+        <svg class="advisor-line" viewBox="0 0 40 640" preserveAspectRatio="none" aria-hidden="true">
+          <path
+            id="advisor-line-path"
+            d="M20 8 C 8 80, 32 140, 20 220 C 8 300, 32 380, 20 470 C 10 540, 28 590, 20 632"
+            fill="none"
+            stroke="#28DBB0"
+            stroke-width="3"
+            stroke-linecap="round"
+          />
+        </svg>
+      )}
+      <div class="page-body">
+        <Content />
+      </div>
+      {slug === "stories" && <LogoPills />}
+      {
+        entry.data.tidycal && (
+          <div class="tidycal-embed" data-path={entry.data.tidycal}></div>
+        )
+      }
+      {
+        slug === "dogood-insider" && (
+          <div class="buzzsprout-gate" data-buzzsprout-src="https://www.buzzsprout.com/2435557">
+            <button type="button">Load the podcast player</button>
+          </div>
+        )
+      }
+    </div>
+  </article>
+</Base>
+
+{
+  entry.data.tidycal && (
+    <script is:inline src="https://asset-tidycal.b-cdn.net/js/embed.js" async></script>
+  )
+}
+
+<script>
+  const wave = document.querySelector("#advisor-line-path");
+  if (wave instanceof SVGPathElement) {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const paint = (progress) => {
+      const length = wave.getTotalLength();
+      wave.style.strokeDasharray = `${length}`;
+      wave.style.strokeDashoffset = reduce.matches ? "0" : String(length * (1 - progress));
+    };
+    const update = () => {
+      if (reduce.matches) return paint(1);
+      const rect = wave.getBoundingClientRect();
+      const start = window.innerHeight * 0.9;
+      const finish = window.innerHeight * 0.2;
+      paint(Math.min(1, Math.max(0, (start - rect.top) / Math.max(1, start - finish))));
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+  }
+
+  document.querySelectorAll("[data-buzzsprout-src]").forEach((gate) => {
+    gate.querySelector("button")?.addEventListener("click", () => {
+      if (!(gate instanceof HTMLElement) || gate.querySelector("iframe")) return;
+      const frame = document.createElement("iframe");
+      frame.src = gate.dataset.buzzsproutSrc || "";
+      frame.title = "DoGood Insider on Buzzsprout";
+      frame.loading = "lazy";
+      gate.replaceChildren(frame);
+    });
+  });
+</script>

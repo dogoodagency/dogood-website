@@ -3,15 +3,25 @@ import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
-const title = "DoGood Founders | A 30-Day Engagement for Life After Exit";
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  hideOptin?: boolean;
+}
+
+const title =
+  Astro.props.title ?? "DoGood Founders | A 30-Day Engagement for Life After Exit";
 const description =
+  Astro.props.description ??
   "You built the company and got out, but it doesn't feel how you expected. Start with a private 30-day engagement for founders navigating life after exit.";
-const canonical = "https://www.dogoodagency.co/";
+const canonical = Astro.props.canonical ?? "https://www.dogoodagency.co/";
+const hideOptin = Astro.props.hideOptin ?? false;
 const ogTitle = "DoGood Founders";
-const ogDescription =
-  "A private 30-day engagement for founders navigating life after exit. Start with Stage 1 of the Founder Reclamation Partnership. 5 founders a month.";
-const twitterDescription =
-  "A private 30-day Intensive for founders navigating life after exit. Start with Stage 1 of the Founder Reclamation Partnership. 5 founders a month.";
+const ogDescription = Astro.props.description
+  ? description
+  : "A private 30-day engagement for founders navigating life after exit. Start with Stage 1 of the Founder Reclamation Partnership. 5 founders a month.";
+const twitterDescription = ogDescription;
 const ogImage = new URL("/og.jpg", canonical).href;
 
 const organization = {
@@ -47,6 +57,12 @@ const organization = {
       public/robots.txt so the site can be indexed.
     -->
     <meta name="robots" content="noindex, nofollow" />
+    <script
+      id="cookieyes"
+      type="text/javascript"
+      src="https://cdn-cookieyes.com/client_data/cd7b3fec7b1066719107b4a2189a47ad/script.js"
+    ></script>
+    <script src="/tawk-loader.js" data-cookieyes="cookieyes-functional" defer></script>
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
@@ -76,7 +92,7 @@ const organization = {
     <main id="main">
       <slot />
     </main>
-    <Footer />
+    <Footer hideOptin={hideOptin} />
     <script>
       const thankYou = "Thank you! You have successfully joined our subscriber list.";
 
