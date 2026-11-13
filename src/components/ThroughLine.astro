@@ -177,7 +177,9 @@
       const caseCard = box(document.querySelector("#case-j article")) || caseJ;
       const gap = youCards.length === 2 ? youCards[1].left - youCards[0].right : 0;
       const forYouX = gap >= 80 ? (youCards[0].right + youCards[1].left) / 2 : 56;
-      const emergeY = Math.max(headline.bottom + 36, Math.min(hero.bottom - 28, hero.y + hero.h * 0.7));
+      const bandTop = clients.bottom + 70;
+      const bandBottom = Math.max(bandTop + 40, exit.y - 36);
+      const entryY = Math.min(bandBottom, Math.max(bandTop, (clients.bottom + exit.y) / 2));
       const copyLeft = (document.querySelector(".hero-copy") || headline).getBoundingClientRect().left - main.getBoundingClientRect().left;
 
       const hideOnPhone = phone && copyLeft < 36;
@@ -186,8 +188,8 @@
 
       root.style.display = "";
       const rightOf = (card) => (card ? Math.min(width - 70, card.right + 78) : width - 80);
-      const enterX = exit.right - 72;
-      const splitY = exit.y + 150;
+      const enterX = Math.min(exit.cx, exit.right - 90);
+      const splitY = exit.y + 130;
       const beside = rightOf(exit);
 
       const pass = (button, beforeY) => {
@@ -204,18 +206,17 @@
       founder.setAttribute("stroke-width", String(founderStroke));
       company.setAttribute("stroke-width", String(companyStroke));
       companyMask.setAttribute("stroke-width", String(companyStroke + 16));
-      company.setAttribute("stroke-dasharray", "none");
+      company.setAttribute("stroke-dasharray", phone ? "none" : "36 28");
 
       const marginX = 28;
       const founderPts = phone
         ? monotonic([
-            { x: 20, y: emergeY },
+            { x: 20, y: entryY },
             { x: 20, y: end - 8 },
           ])
         : monotonic([
-            { x: marginX, y: emergeY },
-            { x: marginX, y: Math.max(clients.bottom + 36, emergeY + 180) },
-            { x: enterX, y: Math.max(clients.bottom + 36, emergeY + 180) },
+            { x: -20, y: entryY },
+            { x: enterX, y: entryY },
             { x: enterX, y: splitY },
             { x: beside, y: splitY },
             { x: beside, y: caseCard ? Math.max(caseCard.bottom + 80, splitY + 180) : exit.bottom + 220 },
@@ -234,14 +235,13 @@
             { x: marginX, y: end - 8 },
           ]);
 
-      const lane = Math.max(clients.bottom + 36, emergeY + 180);
+      const companyY = Math.min(exit.y - 30, entryY + 64);
       const companyPts = phone
         ? []
         : monotonic([
-            { x: marginX + 18, y: emergeY },
-            { x: marginX + 18, y: lane },
-            { x: enterX + parallel, y: lane },
-            { x: enterX + parallel, y: splitY },
+            { x: -20, y: companyY },
+            { x: enterX + 70, y: companyY },
+            { x: enterX + 70, y: splitY },
             { x: width + 40, y: splitY },
           ]);
 

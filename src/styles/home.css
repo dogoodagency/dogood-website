@@ -4025,7 +4025,7 @@ button.btn-subscribe:focus-visible,
 
 @media (min-width: 1081px) {
   .hero-inner {
-    padding-top: 300px;
+    padding-top: 156px;
   }
 
   .hero-sketch {
@@ -4049,6 +4049,10 @@ button.btn-subscribe:focus-visible,
   #next {
     padding-top: 160px;
     padding-bottom: 90px;
+  }
+
+  #exit {
+    padding-top: 220px;
   }
 
   .exit-layout {
