@@ -8,6 +8,16 @@
   NODE_VERSION = "22"
 
 [[redirects]]
+  from = "/for-advisors/resources"
+  to = "/for-advisors/client-tools"
+  status = 301
+
+[[redirects]]
+  from = "/for-advisors/resources/"
+  to = "/for-advisors/client-tools"
+  status = 301
+
+[[redirects]]
   from = "/founders"
   to = "/how-it-works"
   status = 301

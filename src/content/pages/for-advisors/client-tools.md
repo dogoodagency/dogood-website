@@ -1,5 +1,5 @@
 ---
-title: "Resources for Advisors | DoGood"
+title: "Client Tools for Advisors | DoGood"
 description: "Free tools exit and wealth advisors can hand to founders before and after the sale. No sign-up, no email."
 hideOptin: true
 ---
@@ -17,16 +17,6 @@ Your clients get all your help with the deal. These tools help with the part nob
 <article class="resource-card">
 <h2>Founder Readiness Check</h2>
 <p>Your client answers a few questions and gets a personal readiness report. You get a copy.</p>
-<button class="btn-outline" type="button" disabled aria-disabled="true">Coming soon</button>
-</article>
-<article class="resource-card">
-<h2>What Founders Struggle With</h2>
-<p>An anonymous white paper drawn from our conversations with exit and wealth advisors.</p>
-<button class="btn-outline" type="button" disabled aria-disabled="true">Coming soon</button>
-</article>
-<article class="resource-card">
-<h2>Before and After the Sale</h2>
-<p>A short book for founders on the inner side of selling, told through real (anonymised) stories.</p>
 <button class="btn-outline" type="button" disabled aria-disabled="true">Coming soon</button>
 </article>
 <article class="resource-card">

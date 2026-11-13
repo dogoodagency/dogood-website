@@ -10,7 +10,10 @@ const links = [
   { href: "/for-advisors", label: "For Advisors", menu: "nav-advisors" },
 ];
 
-const advisorResources = { href: "/for-advisors/resources", label: "Resources" };
+const advisorLinks = [
+  { href: "/for-advisors", label: "Partner with us" },
+  { href: "/for-advisors/client-tools", label: "Client tools" },
+];
 ---
 
 <header class="nav">
@@ -37,11 +40,6 @@ const advisorResources = { href: "/for-advisors/resources", label: "Resources" }
             >
               {link.label}
             </a>
-            {link.menu && (
-              <div class="nav-drop" id={link.menu}>
-                <a href={advisorResources.href}>{advisorResources.label}</a>
-              </div>
-            )}
           </li>
         ))
       }
@@ -58,18 +56,56 @@ const advisorResources = { href: "/for-advisors/resources", label: "Resources" }
       <img src="/nav/apply-pill-icon-open-door-32.png" srcset="/nav/apply-pill-icon-open-door-32.png 1x, /nav/apply-pill-icon-open-door-64.png 2x" width="32" height="32" alt="" />
     </picture>
   </a>
+  <div class="nav-mega" id="nav-advisors" aria-hidden="true">
+    <a class="nav-mega-card" href="/for-advisors/client-tools">
+      <picture>
+        <source
+          type="image/webp"
+          srcset="/nav/for-advisors-client-tools@1x.webp 1x, /nav/for-advisors-client-tools@2x.webp 2x, /nav/for-advisors-client-tools@3x.webp 3x"
+        />
+        <img
+          src="/nav/for-advisors-client-tools@1x.png"
+          srcset="/nav/for-advisors-client-tools@1x.png 1x, /nav/for-advisors-client-tools@2x.png 2x, /nav/for-advisors-client-tools@3x.png 3x"
+          width="360"
+          height="420"
+          alt="Client tools for advisors"
+        />
+      </picture>
+      <span class="nav-mega-label">Client tools</span>
+      <span class="nav-mega-go" aria-hidden="true"></span>
+    </a>
+    <ul class="nav-mega-links">
+      {
+        advisorLinks.map((item) => (
+          <li>
+            <a href={item.href}>{item.label}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
   <nav id="nav-panel" class="nav-panel" hidden aria-label="Primary">
     {
-      links.map((link) => (
-        <>
+      links.map((link) =>
+        link.menu ? (
+          <>
+            <button type="button" class="nav-advisor-toggle" aria-expanded="false" aria-controls="nav-advisors-phone">
+              {link.label}
+            </button>
+            <div id="nav-advisors-phone" class="nav-advisor-links" hidden>
+              {
+                advisorLinks.map((item) => (
+                  <a class="nav-sub" href={item.href}>
+                    {item.label}
+                  </a>
+                ))
+              }
+            </div>
+          </>
+        ) : (
           <a href={link.href}>{link.label}</a>
-          {link.menu && (
-            <a class="nav-sub" href={advisorResources.href}>
-              {advisorResources.label}
-            </a>
-          )}
-        </>
-      ))
+        ),
+      )
     }
   </nav>
 </header>
@@ -80,7 +116,7 @@ const advisorResources = { href: "/for-advisors/resources", label: "Resources" }
   const panel = header?.querySelector("#nav-panel");
 
   if (header instanceof HTMLElement && burger instanceof HTMLButtonElement && panel instanceof HTMLElement) {
-    const items = () => [...panel.querySelectorAll("a")];
+    const items = () => [...panel.querySelectorAll("a, button")].filter((item) => !item.closest("[hidden]"));
 
     const setOpen = (open) => {
       burger.setAttribute("aria-expanded", open ? "true" : "false");
@@ -95,6 +131,8 @@ const advisorResources = { href: "/for-advisors/resources", label: "Resources" }
 
     document.addEventListener("keydown", (event) => {
       if (event.key !== "Escape" || burger.getAttribute("aria-expanded") !== "true") return;
+      const phoneLinks = panel.querySelector("#nav-advisors-phone");
+      if (phoneLinks instanceof HTMLElement && !phoneLinks.hidden) return;
       setOpen(false);
       burger.focus();
     });
@@ -121,8 +159,9 @@ const advisorResources = { href: "/for-advisors/resources", label: "Resources" }
 
   const advisor = header?.querySelector(".nav-item.has-menu");
   const advisorLink = advisor?.querySelector("a[aria-controls]");
-  const advisorMenu = advisor?.querySelector(".nav-drop");
+  const advisorMenu = header?.querySelector("#nav-advisors");
   if (
+    header instanceof HTMLElement &&
     advisor instanceof HTMLElement &&
     advisorLink instanceof HTMLAnchorElement &&
     advisorMenu instanceof HTMLElement
@@ -131,26 +170,50 @@ const advisorResources = { href: "/for-advisors/resources", label: "Resources" }
     const menuOpen = () => advisorLink.getAttribute("aria-expanded") === "true";
     const setMenu = (open) => {
       advisor.classList.toggle("is-open", open);
+      advisorMenu.classList.toggle("is-open", open);
       advisorLink.setAttribute("aria-expanded", open ? "true" : "false");
+      advisorMenu.setAttribute("aria-hidden", open ? "false" : "true");
     };
     const desktopMenu = () => {
       const list = advisor.closest(".nav-links");
       return list instanceof HTMLElement && getComputedStyle(list).display !== "none";
     };
+    const insideMenu = (node) =>
+      node instanceof Node && (advisor.contains(node) || advisorMenu.contains(node));
 
+    let closeTimer = 0;
+    const cancelClose = () => window.clearTimeout(closeTimer);
+    const scheduleClose = () => {
+      cancelClose();
+      closeTimer = window.setTimeout(() => {
+        if (insideMenu(document.activeElement)) return;
+        setMenu(false);
+      }, 180);
+    };
     advisor.addEventListener("pointerenter", () => {
+      cancelClose();
       if (desktopMenu()) setMenu(true);
     });
-    advisor.addEventListener("pointerleave", () => {
-      if (!advisor.contains(document.activeElement)) setMenu(false);
+    advisorMenu.addEventListener("pointerenter", () => {
+      cancelClose();
+      if (desktopMenu()) setMenu(true);
     });
+    advisor.addEventListener("pointerleave", scheduleClose);
+    advisorMenu.addEventListener("pointerleave", scheduleClose);
     advisor.addEventListener("focusin", () => {
       if (closing || !desktopMenu()) return;
       setMenu(true);
     });
-    advisor.addEventListener("focusout", (event) => {
-      if (!(event.relatedTarget instanceof Node) || !advisor.contains(event.relatedTarget)) setMenu(false);
+    advisorMenu.addEventListener("focusin", () => {
+      if (!desktopMenu()) return;
+      setMenu(true);
     });
+    const blur = (event) => {
+      if (insideMenu(event.relatedTarget)) return;
+      setMenu(false);
+    };
+    advisor.addEventListener("focusout", blur);
+    advisorMenu.addEventListener("focusout", blur);
     advisorLink.addEventListener("click", (event) => {
       if (!desktopMenu() || menuOpen()) return;
       event.preventDefault();
@@ -169,6 +232,35 @@ const advisorResources = { href: "/for-advisors/resources", label: "Resources" }
       setMenu(false);
       advisorLink.focus();
       closing = false;
+    });
+    document.addEventListener("click", (event) => {
+      if (!menuOpen() || insideMenu(event.target)) return;
+      setMenu(false);
+    });
+    const photo = advisorMenu.querySelector("img");
+    if (photo instanceof HTMLImageElement) {
+      const hidePhoto = () => {
+        photo.hidden = true;
+      };
+      if (photo.complete && photo.naturalWidth === 0) hidePhoto();
+      else photo.addEventListener("error", hidePhoto);
+    }
+  }
+
+  const advisorToggle = panel?.querySelector(".nav-advisor-toggle");
+  const advisorPhone = panel?.querySelector("#nav-advisors-phone");
+  if (advisorToggle instanceof HTMLButtonElement && advisorPhone instanceof HTMLElement) {
+    advisorToggle.addEventListener("click", () => {
+      const open = advisorToggle.getAttribute("aria-expanded") !== "true";
+      advisorToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      advisorPhone.hidden = !open;
+      if (open) advisorPhone.querySelector("a")?.focus();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape" || advisorPhone.hidden) return;
+      advisorPhone.hidden = true;
+      advisorToggle.setAttribute("aria-expanded", "false");
+      advisorToggle.focus();
     });
   }
 </script>
