@@ -6,6 +6,11 @@ advisorLine: true
 
 # When the deal closes, the hard part starts.
 
+<picture class="page-sketch">
+  <source type="image/webp" srcset="/sketches/for-advisors-after-the-deal-sketch@1x.webp 560w, /sketches/for-advisors-after-the-deal-sketch@2x.webp 1120w" sizes="(max-width: 1080px) min(100vw, 560px), 560px" />
+  <img src="/sketches/for-advisors-after-the-deal-sketch@1x.png" srcset="/sketches/for-advisors-after-the-deal-sketch@1x.png 560w, /sketches/for-advisors-after-the-deal-sketch@2x.png 1120w" sizes="(max-width: 1080px) min(100vw, 560px), 560px" width="560" height="420" alt="A fine-liner sketch of an advisor beside a finished folder, a founder walking a teal path, and a guide waiting at an open door." />
+</picture>
+
 For exit and succession advisors, wealth advisors and family offices.
 
 You helped your client through the transaction. What comes next is personal: more freedom than they expected, and less certainty about what to do with it.

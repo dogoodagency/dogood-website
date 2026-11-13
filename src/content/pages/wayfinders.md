@@ -3,12 +3,12 @@ title: "wayfinders"
 description: "Meet the small team of Wayfinders who guide founders through the Founder Reclamation Partnership, with over 70 years of combined founder experience."
 ---
 
-- [Founders](/how-it-works)
-- [Wayfinders](/wayfinders)
-
-<a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
-
 # Meet all Wayfinders
+
+<picture class="page-sketch">
+  <source type="image/webp" srcset="/sketches/wayfinders-team-on-path-sketch@1x.webp 560w, /sketches/wayfinders-team-on-path-sketch@2x.webp 1120w" sizes="(max-width: 1080px) min(100vw, 560px), 560px" />
+  <img src="/sketches/wayfinders-team-on-path-sketch@1x.png" srcset="/sketches/wayfinders-team-on-path-sketch@1x.png 560w, /sketches/wayfinders-team-on-path-sketch@2x.png 1120w" sizes="(max-width: 1080px) min(100vw, 560px), 560px" width="560" height="420" alt="A fine-liner sketch of three anonymous guides standing together on a short teal path that leads to an open door, one carrying a small travel bag." />
+</picture>
 
 What Wayfinders Are
 

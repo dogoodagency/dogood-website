@@ -24,7 +24,7 @@ const canonical = new URL(slug, "https://www.dogoodagency.co/").href;
   canonical={canonical}
   hideOptin={entry.data.hideOptin}
 >
-  <article class:list={["page", entry.data.advisorLine && "page-advisor"]}>
+  <article class:list={["page", entry.data.advisorLine && "page-advisor", ["how-it-works", "for-advisors", "stories", "wayfinders"].includes(slug) && "page-art"]}>
     <div class="page-wrap">
       {entry.data.advisorLine && (
         <svg class="advisor-line" viewBox="0 0 40 640" preserveAspectRatio="none" aria-hidden="true">

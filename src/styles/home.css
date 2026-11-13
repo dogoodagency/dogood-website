@@ -2982,6 +2982,44 @@ main {
   border-radius: 18px;
 }
 
+.page-art .page-sketch {
+  display: block;
+  width: min(100%, 560px);
+  max-width: 100%;
+  margin: 8px auto 20px;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.page-art .page-body .page-sketch img {
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 0;
+  background: transparent;
+  object-fit: contain;
+}
+
+@media (min-width: 1081px) {
+  .page-art .page-wrap {
+    max-width: 1180px;
+  }
+
+  .page-art .page-sketch {
+    float: right;
+    width: min(560px, 46%);
+    margin: 4px 0 16px 48px;
+  }
+
+  .page-art .page-body h2,
+  .page-art .page-body .btn-apply,
+  .page-art .page-body .btn-teal {
+    clear: both;
+  }
+}
+
 .page-body a.btn-apply,
 .page-body a.btn-teal {
   color: inherit;

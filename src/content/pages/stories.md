@@ -5,6 +5,11 @@ description: "Anonymised stories from founders we have worked with, plus words f
 
 # Stories
 
+<picture class="page-sketch">
+  <source type="image/webp" srcset="/sketches/stories-journal-path-sketch@1x.webp 560w, /sketches/stories-journal-path-sketch@2x.webp 1120w" sizes="(max-width: 1080px) min(100vw, 560px), 560px" />
+  <img src="/sketches/stories-journal-path-sketch@1x.png" srcset="/sketches/stories-journal-path-sketch@1x.png 560w, /sketches/stories-journal-path-sketch@2x.png 1120w" sizes="(max-width: 1080px) min(100vw, 560px), 560px" width="560" height="420" alt="A fine-liner sketch of an open journal on a table, a teal path drawn across the pages and continuing toward an open door, with a founder walking from the story onto the path." />
+</picture>
+
 Two short, anonymised stories from founders we have worked with. We keep their names private so they can be candid.
 
 The reviews and logos below are from leaders and organisations our team has worked with. They are not all founders after an exit.

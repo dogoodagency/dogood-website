@@ -5,6 +5,11 @@ description: "Start with Stage 1, a private 30-day engagement for founders navig
 
 # A private 30 days, then a next stage only if it fits.
 
+<picture class="page-sketch">
+  <source type="image/webp" srcset="/sketches/how-it-works-two-stage-path-sketch@1x.webp 560w, /sketches/how-it-works-two-stage-path-sketch@2x.webp 1120w" sizes="(max-width: 1080px) min(100vw, 560px), 560px" />
+  <img src="/sketches/how-it-works-two-stage-path-sketch@1x.png" srcset="/sketches/how-it-works-two-stage-path-sketch@1x.png 560w, /sketches/how-it-works-two-stage-path-sketch@2x.png 1120w" sizes="(max-width: 1080px) min(100vw, 560px), 560px" width="560" height="420" alt="A fine-liner sketch of a founder walking a short teal path to a first open arch, then a second teal path leading to an open door with a view beyond, showing a two-stage journey." />
+</picture>
+
 The Founder Reclamation Partnership is a two-stage path for founders who have exited, or are getting ready to, and want to decide what this next chapter is actually for.
 
 You apply for Stage 1 only. Stage 2 is by invitation.
