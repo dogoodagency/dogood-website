@@ -1,0 +1,171 @@
+---
+import Base from "../../layouts/Base.astro";
+
+const stages = [
+  "Nothing looks wrong on paper, but I can feel the cost stacking up",
+  "I'm still performing, but I'm more reactive and less present",
+  "I'm still getting through the days, but I'm avoiding decisions and second-guessing myself",
+  "Something already stopped me. I'm rebuilding, and I don't want to slide back",
+  "I've come to a full stop, and I'm not sure how to get back to steady",
+];
+---
+
+<Base
+  title="Your Clarity Score | DoGood Founders"
+  description="Your Founder Diagnostic results: a Clarity Score and a calm next step, based on what you shared."
+  canonical="https://www.dogoodagency.co/diagnostics/results"
+>
+  <article class="page">
+    <div class="page-wrap page-body">
+      <h1>Your results</h1>
+      <p>
+        This is a private snapshot of the last 7-14 days, based on what you shared. It is not medical advice, not a diagnosis, not therapy, and not a judgment.
+      </p>
+
+      <h2>Your Clarity Score</h2>
+      <p class="clarity-score"><strong data-clarity-score>—</strong> / 100</p>
+      <p>
+        This score looks at energy, decision clarity, health, relationships, and sense of direction. It reflects the days you just came through, not your whole life, and not who you are.
+      </p>
+      <p>
+        <em>If you're feeling severely overwhelmed or can't cope any longer, please reach out to a local emergency service for help.</em>
+      </p>
+
+      <h2>Where this score sits</h2>
+      <p data-band-missing>
+        Your Clarity Score arrives with your result link. You can retake the diagnostic below.
+      </p>
+
+      <section data-band="clear" hidden>
+        <h3>Clear on what's next</h3>
+        <p>
+          Things look fairly settled right now. You may still have questions about what comes after the company, and that is a normal place to be. This is a picture of the last couple of weeks, not a verdict.
+        </p>
+        <p><strong>Next step:</strong> Stay close, and keep a light connection to the work. Join the founder notes, or listen to a conversation on DoGood Insider.</p>
+        <p>
+          <a class="btn-teal" href="/newsletter">Stay close</a>
+          <a class="btn-teal" href="/dogood-insider">Listen to DoGood Insider</a>
+        </p>
+      </section>
+
+      <section data-band="surfacing" hidden>
+        <h3>Some things still surfacing</h3>
+        <p>
+          Some things are becoming clearer, and some are still coming up. You do not have to rush a decision, or fill the space with the next thing. It can help to keep looking at what feels true, a little at a time.
+        </p>
+        <p><strong>Next step:</strong> Stay close, and give yourself a way to keep listening. Join the founder notes, or listen to a conversation on DoGood Insider.</p>
+        <p>
+          <a class="btn-teal" href="/newsletter">Stay close</a>
+          <a class="btn-teal" href="/dogood-insider">Listen to DoGood Insider</a>
+        </p>
+      </section>
+
+      <section data-band="closer" hidden>
+        <h3>Worth a closer look</h3>
+        <p>
+          There's enough here to take a closer look, in a private, unhurried way. You do not have to work out the next chapter alone. If you want company with that, Stage 1 is the first step.
+        </p>
+        <p><strong>Next step:</strong> Apply for Stage 1.</p>
+        <p><a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a></p>
+      </section>
+
+      <section data-stage hidden>
+        <h2>The stage you chose</h2>
+        <p>This is the one that felt most accurate to you. It is your own view, not a diagnosis.</p>
+        <p data-stage-label></p>
+      </section>
+
+      <section data-pattern hidden>
+        <h2>What this seems to be about</h2>
+        <p>A simple name for the pattern in what you shared.</p>
+        <p data-pattern-label></p>
+      </section>
+
+      <section data-timing hidden>
+        <h2>The timing you chose</h2>
+        <p>This is the window you selected. It is not a deadline we have set for you.</p>
+        <p data-timing-label></p>
+      </section>
+
+      <h2>How to read this</h2>
+      <p>We're not guessing your personality, your "why," or your life story. These results reflect what you shared about the last 7-14 days.</p>
+      <p>This is not medical advice, not therapy, and not a substitute for professional care.</p>
+      <p><a class="btn-teal" href="/diagnostics">Retake the Founder Diagnostic</a></p>
+    </div>
+  </article>
+</Base>
+
+<script define:vars={{ stages }}>
+  const params = new URLSearchParams(window.location.search);
+  const raw = params.get("score");
+  const parsed = raw === null || raw.trim() === "" ? null : Number(raw);
+  const score = parsed !== null && Number.isFinite(parsed) && parsed >= 0 && parsed <= 100 ? parsed : null;
+
+  let band = null;
+  if (score !== null) {
+    band = score <= 19 ? "clear" : score <= 39 ? "surfacing" : "closer";
+  } else if (["clear", "surfacing", "closer"].includes(params.get("band") ?? "")) {
+    band = params.get("band");
+  }
+
+  const scoreNode = document.querySelector("[data-clarity-score]");
+  if (scoreNode) scoreNode.textContent = score === null ? "—" : String(score);
+
+  const missing = document.querySelector("[data-band-missing]");
+  if (missing) missing.hidden = band !== null;
+  document.querySelectorAll("[data-band]").forEach((section) => {
+    section.hidden = section.getAttribute("data-band") !== band;
+  });
+
+  const stageNumber = Number(params.get("stage"));
+  const stageSection = document.querySelector("[data-stage]");
+  const stageLabel = document.querySelector("[data-stage-label]");
+  if (stageSection && stageLabel && stageNumber >= 1 && stageNumber <= 5) {
+    stageLabel.textContent = `${stageNumber} of 5. ${stages[stageNumber - 1]}`;
+    stageSection.hidden = false;
+  }
+
+  const patternNames = {
+    burnout: "Energy running low",
+    "energy running low": "Energy running low",
+    capacity: "At the edge of what I can carry",
+    "capacity ceiling": "At the edge of what I can carry",
+    "at the edge of what i can carry": "At the edge of what I can carry",
+    identity: "Who I am after the company",
+    "post-exit identity": "Who I am after the company",
+    "who i am after the company": "Who I am after the company",
+  };
+  const patternKey = (params.get("pattern") ?? "").trim().toLowerCase();
+  const patternSection = document.querySelector("[data-pattern]");
+  const patternLabel = document.querySelector("[data-pattern-label]");
+  if (patternSection && patternLabel && patternNames[patternKey]) {
+    patternLabel.textContent = patternNames[patternKey];
+    patternSection.hidden = false;
+  }
+
+  const timing = (params.get("timing") ?? params.get("urgency_window") ?? "").trim();
+  const timingSection = document.querySelector("[data-timing]");
+  const timingLabel = document.querySelector("[data-timing-label]");
+  if (timing && timingSection && timingLabel) {
+    timingLabel.textContent = timing;
+    timingSection.hidden = false;
+  }
+</script>
+
+<style>
+  .clarity-score {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .page-body [hidden] {
+    display: none !important;
+  }
+
+  .page-body p .btn-teal,
+  .page-body p .btn-apply {
+    margin: 0 8px 8px 0;
+  }
+</style>

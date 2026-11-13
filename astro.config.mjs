@@ -9,6 +9,11 @@ export default defineConfig({
   trailingSlash: "never",
   redirects: {
     "/founders": "/how-it-works",
+    "/diagnostics/results-baseline-185746": "/diagnostics/results?band=clear",
+    "/diagnostics/results-tension-596074": "/diagnostics/results?band=surfacing",
+    "/diagnostics/results-strain-185749": "/diagnostics/results?band=closer",
+    "/diagnostics/results-load-058364": "/diagnostics/results?band=closer",
+    "/diagnostics/results-risk-295037": "/diagnostics/results?band=closer",
   },
   integrations: [sitemap()],
   vite: {
