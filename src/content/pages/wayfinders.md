@@ -1,6 +1,6 @@
 ---
 title: "wayfinders"
-description: "Meet the small team of Wayfinders who guide founders through the Founder Reclamation Partnership, with over 70 years of combined founder experience."
+description: "Meet the small team of Wayfinders who guide founders through the Founder Reclamation Partnership, with 75+ years of combined founder experience."
 ---
 
 # Meet all Wayfinders
@@ -14,7 +14,7 @@ What Wayfinders Are
 
 Wayfinders hold the container and steer the process: creating safety, asking direct questions, tracking the real thing, and keeping the work moving until you have stability and a clear next path (all while having fun).
 
-FRP is carried out by an intentionally small team that collectively has over 70 years of hands-on founder-delivery experience. These professionals possess rare skills, not commonly found in typical work, and undergo rigorous training to uphold the highest industry standards, consistently delivering results-driven outcomes.
+FRP is carried out by an intentionally small team that collectively has 75+ years of hands-on founder-delivery experience. These professionals possess rare skills, not commonly found in typical work, and undergo rigorous training to uphold the highest industry standards, consistently delivering results-driven outcomes.
 
 Where Wayfinders Travel To
 
