@@ -16,11 +16,81 @@ const entry = await getEntry("pages", slug);
 if (!entry) return new Response(null, { status: 404 });
 const { Content } = await render(entry);
 const canonical = new URL(slug, "https://www.dogoodagency.co/").href;
+
+const pageNames: Record<string, string> = {
+  about: "About",
+  "application-thankyou": "Application received",
+  "apply-stage-1": "Apply for Stage 1",
+  benchmark: "Benchmark",
+  "casestudies/j": "How J created a clear next life chapter",
+  "casestudies/v": "How V reclaimed life after success",
+  casestudies: "Stories",
+  catchup: "Catch-up call",
+  "catchup-thankyou": "Catch-up call booked",
+  chat: "Chat",
+  "clarity-first-guarantee-terms": "Clarity-First Guarantee",
+  claritysprints: "Clarity Sprints",
+  "claritysprints-thankyou": "Clarity Sprints booked",
+  cleansudaji: "CleanSudaji",
+  contact: "Contact",
+  cookies: "Cookies Policy",
+  diagnostics: "Founder Diagnostic",
+  "diagnostics/founder-check": "Founder Diagnostic",
+  "diagnostics/results-businesscrisis": "Diagnostic result",
+  "diagnostics/results-hr": "Diagnostic result for people leaders",
+  "diagnostics/results-nonfounder": "Diagnostic result",
+  "dogood-insider": "DoGood Insider",
+  faqs: "FAQs",
+  "for-advisors": "For Advisors",
+  frpfit: "FRP-Fit call",
+  "frpfit-thankyou": "FRP-Fit call booked",
+  "how-it-works": "How it works",
+  insights: "Insights",
+  "insights/after-the-deal": "After the deal closes",
+  "insights/first-months-after-exit": "The first months after exit",
+  "insights/who-are-you-now": "Who are you now",
+  internal: "An introduction for advisors",
+  "internal-60": "An introduction for advisors",
+  "internal-thankyou": "Introduction booked",
+  newsletter: "The first 90 days after exit",
+  "newsletter/thanks": "You're on the list",
+  "orientation-call": "Orientation call",
+  "orientation-call-thankyou": "Orientation call booked",
+  "podcast-chat": "Podcast chat",
+  "pre-frp": "Pre-FRP call",
+  "prefrp-thankyou": "Pre-FRP call booked",
+  privacy: "Privacy Policy",
+  "stage1-tc": "Stage 1",
+  stories: "Stories",
+  teams: "Team readiness",
+  "teams-thankyou": "Team readiness booked",
+  terms: "Terms of Use",
+  "thank-you": "Thank you",
+  wayfinders: "Wayfinders",
+  "wayfinders/chantill": "Chantill",
+  "wayfinders/clientfit": "Client-Fit",
+  "wayfinders/katrin": "Katrin",
+  "wayfinders/seb": "Seb",
+  "wayfinders/shiva": "Shiva",
+  "wayfinders/vlora": "Vlora",
+};
+
+const named = pageNames[slug];
+const stripped = entry.data.title.replace(/\s*\|\s*DoGood (Founders|Agency)\s*$/i, "").trim();
+const pageTitle = named
+  ? `${named} | DoGood Agency`
+  : stripped && !/^[a-z0-9./-]+$/i.test(stripped)
+    ? `${stripped} | DoGood Agency`
+    : `${slug.split("/").pop()?.replace(/-/g, " ") ?? "DoGood"} | DoGood Agency`;
+const genericDescription = entry.data.description.startsWith("Founder Reclamation Partnership");
+const pageDescription = genericDescription
+  ? `${named ?? "This page"} from DoGood Agency, a private partnership for founders after exit.`
+  : entry.data.description;
 ---
 
 <Base
-  title={entry.data.title}
-  description={entry.data.description}
+  title={pageTitle}
+  description={pageDescription}
   canonical={canonical}
   hideOptin={entry.data.hideOptin}
 >

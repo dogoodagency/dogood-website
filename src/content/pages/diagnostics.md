@@ -10,7 +10,6 @@ description: "A private 5-10 minute check for founders who've exited, or are get
   <img src="/sketches/founder-diagnostic-map@1x.png" srcset="/sketches/founder-diagnostic-map@1x.png 540w, /sketches/founder-diagnostic-map@2x.png 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" width="540" height="400" alt="An anonymous founder seated, looking at a simple map on their lap, with one route marked in teal and a small pink point on that route." />
 </picture>
 
-
 ---
 
 # Get clear on where you stand before your next move.
@@ -47,7 +46,7 @@ This is for founders who've exited or meaningfully stepped away, and for founder
 
 ## This is not the right tool if...
 
-- You're a CHRO, CPO, L&D lead, or other people leader looking for internal organizational support to manage talent, boost employee engagement, and drive cultural change. Continue [here](/culture-teams).
+- You're a CHRO, CPO, L&D lead, or other people leader looking for internal organizational support to manage talent, boost employee engagement, and drive cultural change. Continue [here](/contact).
 - You're not a founder, and you're looking for personal support to navigate career challenges, build leadership skills, or balance work and life in a demanding environment.
 - The business is on fire with multiple urgent issues, but you're personally fine, managing to stay calm, focused, and resilient despite the business-only turmoil.
 
@@ -65,4 +64,4 @@ If you'd rather begin with Stage 1, you can also apply. The diagnostic is option
 
 <a class="btn-teal" href="https://form.jotform.com/260262699147869">Start the Founder Diagnostic</a>
 
-<a href="https://form.jotform.com/DoGoodAgency/frp-stage-1">Apply for Stage 1</a> if you already know you want the private engagement.
+<a href="/apply-stage-1">Apply for Stage 1</a> if you already know you want the private engagement.

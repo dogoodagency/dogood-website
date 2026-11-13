@@ -10,7 +10,6 @@ description: "Answers about Stage 1, Stage 2, how to apply, the Clarity-First Gu
   <img src="/sketches/faqs-index-cards@1x.png" srcset="/sketches/faqs-index-cards@1x.png 540w, /sketches/faqs-index-cards@2x.png 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" width="540" height="400" alt="A desk lamp shining on a short fan of blank index cards, the back cards edged in teal, held with a small pink paperclip." />
 </picture>
 
-
 ---
 
 # Questions founders ask before they apply

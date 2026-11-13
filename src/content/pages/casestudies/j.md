@@ -1,6 +1,6 @@
 ---
-title: "casestudies/j"
-description: "Founder Reclamation Partnership | Stage 1: The Intensive (30 days)"
+title: "How J created a clear next life chapter | DoGood Agency"
+description: "An anonymised story from a founder we have worked with. We keep their name private."
 ---
 We protect our founders’ identities. Most founders we work with lead visible companies and public lives –– we don't ask them to tell the private parts of their story publicly. Anonymity lets founders be candid about their intimate work — without risking reputations, partnerships, or market fallout.
 
@@ -9,27 +9,26 @@ We protect our founders’ identities. Most founders we work with lead visible c
   <img src="/sketches/case-study-j-window-path@1x.png" srcset="/sketches/case-study-j-window-path@1x.png 540w, /sketches/case-study-j-window-path@2x.png 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" width="540" height="400" alt="A quiet empty desk and chair by an open window, a coat on a hook, a small plant with a pink flower, and a teal garden path visible outside." />
 </picture>
 
-From exit anxiety to aligned legacy —How J created a clear next life chapter
+# From exit anxiety to aligned legacy —How J created a clear next life chapter
 
 In six months, J regulated significant levels of stress, clarified her purpose, and committed to an exit plan, without derailing the company's growth.
 
-"
 
-“Working with Chantill gave me something I didn’t know I needed: space to stop pushing, and actually listen to myself. She didn’t rush me into answers or strategies. She met me right in the middle of the uncertainty... What felt heavy and confusing became clearer.
+> Working with Chantill gave me something I didn’t know I needed: space to stop pushing, and actually listen to myself. She didn’t rush me into answers or strategies. She met me right in the middle of the uncertainty... What felt heavy and confusing became clearer.
+
 
 We built a five-month path for my exit, and that structure changed everything. It gave me steadiness without pressure. I didn’t rush it, and I didn’t hide from it either. I just kept moving.
 
-Chantill has this way of holding both the emotional weight of change and the practical reality of it at the same time. This work wasn’t really about leaving my business. It was about coming back to myself.”
+> Chantill has this way of holding both the emotional weight of change and the practical reality of it at the same time. This work wasn’t really about leaving my business. It was about coming back to myself.
 
  J (anonymous), USD 2M founder
 
-"
 
 Founder Snapshot
 
 We started working with J at a point common for high-performance founders: the business was healthy, but the decision to stay or exit was rapidly becoming an undeniable roadblock for further personal or professional growth. She was struggling with daily mental fatigue, ever-rising trepidation about an unclear future, and a growing communication gap with her co-founders.
 
-J is the founder + Head of Programming & Education in the Health & Wellness industry. She came to us to clarify what “retirement” would actually mean for her, design an aligned exit plan that protected relationships and well-being, and define a legacy-partner role she could commit to. After a six-month engagement, she shifted her operational load, reducing client delivery and building the infrastructure required for a longer, better divestment.
+J is the founder + Head of Programming & Education in the Health & Wellness industry. She came to us to clarify what "retirement" would actually mean for her, design an aligned exit plan that protected relationships and well-being, and define a legacy-partner role she could commit to. After a six-month engagement, she shifted her operational load, reducing client delivery and building the infrastructure required for a longer, better divestment.
 
 Founder: Still operating the company
 Industry: Health & Wellness
@@ -46,7 +45,7 @@ Founder-focused · Not therapy, not medical advice, not psychological services
 
 The Problem
 
-J came to us caught in a high-stakes wrestle: whether to exit ownership now (or when), and how to do it without destabilizing the company or herself emotionally. The lack of a genuine, aligned exit path was draining her emotional resources, creating anxiety about an undefined future, and stalling critical conversations with co-founders. What she needed was clarity of purpose and a feasible timeline, paired with the capacity to follow through on difficult decisions and eliminate “lesser goals” that kept pulling her off course.
+J came to us caught in a high-stakes wrestle: whether to exit ownership now (or when), and how to do it without destabilizing the company or herself emotionally. The lack of a genuine, aligned exit path was draining her emotional resources, creating anxiety about an undefined future, and stalling critical conversations with co-founders. What she needed was clarity of purpose and a feasible timeline, paired with the capacity to follow through on difficult decisions and eliminate "lesser goals" that kept pulling her off course.
 
 Top symptoms
 
@@ -58,21 +57,21 @@ Daily mental fatigue (personally & professionally), with necessary decisions bec
 
 Reduced stamina during high-demand periods, struggling to maintain internal resources.
 
-Building anxiety about “What comes next?”, “Who will I be?”, showing up as sleeplessness, self-doubt, and inaction.
+Building anxiety about "What comes next?", "Who will I be?", showing up as sleeplessness, self-doubt, and inaction.
 
 Lack of clarity with co-founders, creating bottlenecks, effectively holding growth hostage.
 
 What J wanted
 
-She wanted an honest path toward “retirement,” starting with defining what retirement actually meant to her. She aimed to exit gracefully as a founder while staying meaningfully engaged as a legacy partner, with a clearly defined role. She wanted to protect long-term trust with her co-founders, discover a renewed sense of purpose beyond foundership, and be held accountable to an exit plan anchored in clear dates and action steps.
+She wanted an honest path toward "retirement," starting with defining what retirement actually meant to her. She aimed to exit gracefully as a founder while staying meaningfully engaged as a legacy partner, with a clearly defined role. She wanted to protect long-term trust with her co-founders, discover a renewed sense of purpose beyond foundership, and be held accountable to an exit plan anchored in clear dates and action steps.
 
 What J tried before
 
-She pursued additional education and training, hoping it would reveal the “right” next move, but it kept her stuck; redirecting energy back into optimizing the business so she wouldn’t feel guilty about leaving. She also tried other wellness programs and self-led mini-retreats to reduce tension and find clarity, but none of these approaches created sustained follow-through on the actual decisions and conversations required for a real transition.
+She pursued additional education and training, hoping it would reveal the "right" next move, but it kept her stuck; redirecting energy back into optimizing the business so she wouldn’t feel guilty about leaving. She also tried other wellness programs and self-led mini-retreats to reduce tension and find clarity, but none of these approaches created sustained follow-through on the actual decisions and conversations required for a real transition.
 
 The hardest change for J
 
-The single biggest obstacle was taking genuinely new action, rather than doing a version of what she’d already done. Insight wasn’t the issue; the pattern we saw was her assuming “productive” activity as a substitute for commitment; ruminating and pivoting in ways that preserved indecision. The breakthrough required acting on what she knew in a way that forced real choices, real timelines, and real movement toward an aligned exit.
+The single biggest obstacle was taking genuinely new action, rather than doing a version of what she’d already done. Insight wasn’t the issue; the pattern we saw was her assuming "productive" activity as a substitute for commitment; ruminating and pivoting in ways that preserved indecision. The breakthrough required acting on what she knew in a way that forced real choices, real timelines, and real movement toward an aligned exit.
 
 Our Engagement Approach
 
@@ -82,7 +81,7 @@ What we actually did
 
 - Built daily regulatory awareness practices to create safety.
 - Ran structured reflection on wins, patterns, and constraints, amplifying what worked while identifying hidden avoidance loops.
-- Used neuro-based insight facilitation to surface and interrupt “progress stories” masking rumination and inaction.
+- Used neuro-based insight facilitation to surface and interrupt "progress stories" masking rumination and inaction.
 - Implemented session close-outs with self-assessment, priority insights, and measurable benchmarks to keep momentum between meetings.
 - Co-created a client-derived action plan designed to match real capacity and timelines, then stretched as needed to match stated exit goals.
 
@@ -90,7 +89,7 @@ Client actions –– What J did
 
 ### ✓
 
-She challenged her beliefs (“I can’t leave because I’m so good at what I do,” “I am the business”) and cut the behaviors that drained clarity (sleep hygiene, tough conversations, etc.)
+She challenged her beliefs ("I can’t leave because I’m so good at what I do," "I am the business") and cut the behaviors that drained clarity (sleep hygiene, tough conversations, etc.)
 
 Built a 2-minute, 2x/day nervous system grounding practice using a custom daily worksheet.
 
@@ -155,65 +154,3 @@ If this resonates, start with our diagnostic to see whether FRP is right for you
 [Start the Founder Diagnostic™ →](/diagnostics)
 
 Founder-focused · Not therapy, not medical advice, not psychological services
-
-Proud member of IODA, a global network of OD professionals spanning 50+ countries
-
-Not ready yet?
-
-That's okay. Fuel up, stay ready →
-
-Founder community · Transformation insight
-
-###### About DoGood
-
-###### [RawStories Podcast](/dogood-insider)
-
-###### [Contact](/contact)
-
-DoGood Agency LLC
-
-30 N Gould St Ste N, Sheridan
-
-WY 82801, United States
-
-Services are provided by DoGood OÜ, our operating company in the EU
-
-Ranked as a Premium 1% Performer, and endorsed as Expert-Vetted on Upwork
-
-© 2026 DoGood Agency LLC [Terms](/terms) | [Privacy Policy](/privacy)
-
-## On-page links
-
-- [(no text)](/)
-- [Founders](/how-it-works)
-- [Wayfinders](/wayfinders)
-- <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
-- [Start the Founder Diagnostic™ →](/diagnostics)
-- [(no text)](https://www.iodanet.org/iodas-history/)
-- [RawStories Podcast](/dogood-insider)
-- [Contact](/contact)
-- [(no text)](http://www.upwork.com/agencies/dogoodagency)
-- [(no text)](https://www.linkedin.com/in/sebwichmann/)
-- [Terms](/terms)
-- [Privacy Policy](/privacy)
-
-## Embeds and third-party widgets
-
-```json
-{
-  "tawk": [
-    {
-      "src": "",
-      "inline_excerpt": "\nvar Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();\n(function(){\nvar s1=document.createElement(\"script\"),s0=document.getElementsByTagName(\"script\")[0];\ns1.async=true;\ns1.src='https://embed.tawk.to/6af4235429fb483c3dd68f94/1k74qk0e3';\ns1.charset='UTF-8';\ns1.setAttribute('crossorigin','*');\ns0.parentNode.insertBefore(s1,s0);\n})();\n",
-      "html": "<script type=\"text/javascript\">\nvar Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();\n(function(){\nvar s1=document.createElement(\"script\"),s0=document.getElementsByTagName(\"script\")[0];\ns1.async=true;\ns1.src='https://embed.tawk.to/6af4235429fb483c3dd68f94/1k74qk0e3';\ns1.charset='UTF-8';\ns1.setAttribute('crossorigin','*');\ns0.parentNode.insertBefore(s1,s0);\n})();\n</script>"
-    }
-  ],
-  "cookieyes": [
-    {
-      "src": "https://cdn-cookieyes.com/client_data/cd7b3fec7b1066719107b4a2189a47ad/script.js",
-      "inline_excerpt": "",
-      "html": "<script id=\"cookieyes\" src=\"https://cdn-cookieyes.com/client_data/cd7b3fec7b1066719107b4a2189a47ad/script.js\" type=\"text/javascript\"></script>"
-    }
-  ]
-}
-```

@@ -26,7 +26,7 @@ export const logos = [
 ] as const;
 
 export const urls = {
-  apply: "https://form.jotform.com/DoGoodAgency/frp-stage-1",
+  apply: "/apply-stage-1",
   partnership: "/how-it-works",
   caseJ: "/casestudies/j",
   caseV: "/casestudies/v",

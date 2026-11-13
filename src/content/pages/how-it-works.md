@@ -14,7 +14,7 @@ The Founder Reclamation Partnership is a two-stage path for founders who have ex
 
 You apply for Stage 1 only. Stage 2 is by invitation.
 
-<a class="btn-apply" href="https://form.jotform.com/DoGoodAgency/frp-stage-1">Apply for Stage 1</a>
+<a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
 
 Private · Limited to 5 new founders/month
 
@@ -110,16 +110,14 @@ If there is a fit, we invite you to Stage 2, The Build, over 12 weeks. Stage 2 i
 - You want a quick answer, rather than a private space to understand what needs attention
 - You want someone to tell you what to do, but are not ready to look honestly at this phase
 
-**Optional, under this section:**
-
 Two short, anonymised stories:
 
-- [From exit anxiety to aligned legacy — How J created a clear next life chapter](/stories/j) — J (anonymous), USD 2M founder
-- [From identity void to decisive leadership — How V reclaimed life after success](/stories/v) — V (anonymous), USD 9M+ founder
+- [From exit anxiety to aligned legacy — How J created a clear next life chapter](/casestudies/j) — J (anonymous), USD 2M founder
+- [From identity void to decisive leadership — How V reclaimed life after success](/casestudies/v) — V (anonymous), USD 9M+ founder
 
 We protect our founders' identities.
 
-**Soft line:** You don't pick a Wayfinder. We match for fit first. [Meet the Wayfinders](/wayfinders).
+You don't pick a Wayfinder. We match for fit first. [Meet the Wayfinders](/wayfinders).
 
 ---
 
@@ -139,6 +137,6 @@ You keep all decisions, plans, and tools from our first sessions. We take real d
 
 ## What's next?
 
-**Body:** Complete the short application for Stage 1 (30 days). We'll respond within 24 hours. If there's a fit, we'll have an honest conversation.
+Complete the short application for Stage 1 (30 days). We'll respond within 24 hours. If there's a fit, we'll have an honest conversation.
 
-**Optional, below the button, not styled as a competing offer:** Not ready to apply? You can [stay close through our notes on life after exit](/newsletter).
+Not ready to apply? You can [stay close through our notes on life after exit](/newsletter).

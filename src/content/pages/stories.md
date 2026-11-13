@@ -34,8 +34,6 @@ V (anonymous), USD 9M+ founder
 
 <a class="btn-teal" href="/casestudies/v">Read the short case study</a>
 
-### Privacy note (show once, under the two cases)
-
 We protect our founders’ identities. Most founders we work with lead visible companies and public lives –– we don't ask them to tell the private parts of their story publicly. Anonymity lets founders be candid about their intimate work — without risking reputations, partnerships, or market fallout.
 
 ---
@@ -44,7 +42,7 @@ We protect our founders’ identities. Most founders we work with lead visible c
 
 ## From leaders we have worked with
 
-**Subline:** These are words from leaders our team has worked with. They are not all founders after an exit.
+These are words from leaders our team has worked with. They are not all founders after an exit.
 
 ### ANJA N
 *CEO at Australian Physiotherapy Association*
@@ -127,7 +125,7 @@ We protect our founders’ identities. Most founders we work with lead visible c
 
 ## Leaders from these organisations have worked with our team
 
-**Subline:** These are organisations our team has worked with. They are not all founders after an exit.
+These are organisations our team has worked with. They are not all founders after an exit.
 
 **Logos (same set, and names, as the homepage strip):**
 
@@ -162,8 +160,8 @@ We protect our founders’ identities. Most founders we work with lead visible c
 
 ## What’s next?
 
-**Body:** Complete the short application for Stage 1 (30 days). We’ll respond within 24 hours. If there’s a fit, we’ll have an honest conversation.
+Complete the short application for Stage 1 (30 days). We’ll respond within 24 hours. If there’s a fit, we’ll have an honest conversation.
 
 **Caption:** Private · Limited to 5 new founders/month
 
-<a class="btn-apply" href="https://form.jotform.com/DoGoodAgency/frp-stage-1">Apply for Stage 1</a>
+<a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>

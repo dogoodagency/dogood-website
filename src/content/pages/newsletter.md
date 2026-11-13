@@ -10,18 +10,15 @@ description: "A short guide of seven questions to ask before your next move, and
   <img src="/sketches/newsletter-open-envelope-booklet@1x.png" srcset="/sketches/newsletter-open-envelope-booklet@1x.png 540w, /sketches/newsletter-open-envelope-booklet@2x.png 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" width="540" height="400" alt="An open envelope with a slim teal booklet sliding out, and a small pink seal on the booklet." />
 </picture>
 
-
 A short guide for the stretch when the deal is done, the structure is gone, and it is tempting to fill the space too fast. Yours when you join the notes we send every two weeks.
 
-The guide is **[TO BE WRITTEN]**. Until it is, this sentence can read, once the file exists, as: "You get the guide straight away, and the notes after that." For the preview, use: "Leave your email and we'll send the guide when it is ready, along with our notes on life after exit."
+Leave your email and we'll send the guide when it is ready, along with our notes on life after exit.
 
 ---
 
 ## What you get
 
-## What you get
-
-- **The guide: "The first 90 days after exit: 7 questions to ask before your next move."** [TO BE WRITTEN]. Seven questions to sit with before you commit the next stretch of your life to a new project, role, or plan. Not a programme, and not a pitch.
+- **The guide: "The first 90 days after exit: 7 questions to ask before your next move."** Seven questions to sit with before you commit the next stretch of your life to a new project, role, or plan. Not a programme, and not a pitch.
 - **Researched notes on life after exit, every two weeks.** Honest writing on what comes after the company, not a digest of business tips. The first issues go out on 15 December, 12 January and 26 January.
 
 ---
@@ -40,4 +37,4 @@ We'll use your email for the guide and for these notes. Read our [privacy policy
 
 ---
 
-**Body:** If you already know you want a private place to do this work, you can <a href="https://form.jotform.com/DoGoodAgency/frp-stage-1">apply for Stage 1</a>.
+If you already know you want a private place to do this work, you can <a href="/apply-stage-1">apply for Stage 1</a>.

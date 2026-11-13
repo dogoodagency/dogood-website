@@ -10,7 +10,6 @@ description: "Conversations with founders and CEOs about culture, leading, and t
   <img src="/sketches/podcast-two-chairs-microphone@1x.png" srcset="/sketches/podcast-two-chairs-microphone@1x.png 540w, /sketches/podcast-two-chairs-microphone@2x.png 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" width="540" height="400" alt="Two simple chairs at a table with a teal runner and a single microphone on a stand between them, with a small pink accent on the microphone." />
 </picture>
 
-
 Raw stories from culture-first founders and CEOs
 
 Unfiltered talks for founders and CEOs who are navigating more than just business. They're navigating themselves.
@@ -31,92 +30,92 @@ Founders and other leaders share what they've lived through: culture wearing thi
 ### Decision Making in Business
 How CEOs Build a Culture of Accountability  
 43:58  
-**Listen now →** [/podcast/decision-making-in-business](/podcast/decision-making-in-business)
+<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### Culture Eats Strategy
 Building Tomorrow's SMEs on Today's Values Toward a Human-First Culture  
 44:59  
-**Listen now →** [/podcast/culture-eats-strategy](/podcast/culture-eats-strategy)
+<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### Building Tomorrow's Culture
 Daniel Marashlian on Managing SME Culture Amidst Rapid Growth Surge  
 36:08  
-**Listen now →** [/podcast/building-tomorrow%E2%80%99s-culture](/podcast/building-tomorrow%E2%80%99s-culture)
+<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### From Silicon Val. to Seafloor
 Reimagining Sustainable Deep-Sea Mining with Oliver Gunasekara  
 32:55  
-**Listen now →** [/podcast/from-silicon-val](/podcast/from-silicon-val)
+<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### The Gen-Z Community Era
 Christian Brown Breaks Social Barriers  
 44:19  
-**Listen now →** [/podcast/the-gen-z-community-era](/podcast/the-gen-z-community-era)
+<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### The Workforce Drought
 Craig Rupp's Journey from Engineer to AgTech Visionary & Legacy of Leadership  
 32:24  
-**Listen now →** [/podcast/the-workforce-drought](/podcast/the-workforce-drought)
+<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### Holistic Leadership in Action
 How Peggy Rajski Balances Strategy, Intuition, and Discernment to Drive Change  
 1:01:37  
-**Listen now →** [/podcast/holistic-leadership-in-action](/podcast/holistic-leadership-in-action)
+<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### Beyond Distance
 Transforming Remote Work into Meaningful Connections with Jeanette Winters  
 34:43  
-**Listen now →** [/podcast/beyond-distance](/podcast/beyond-distance)
+<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### Scaling Teams & Culture
 Lessons in Hiring with Brian Samson  
 40:17  
-**Listen now →** [/podcast/scaling-teams-and-building-culture](/podcast/scaling-teams-and-building-culture)
+<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### Staying Lean & Growing Big
 How Benjamin Ard Built a Successful 2-Man SaaS Company  
 44:34  
-**Listen now →** [/podcast/staying-lean-growing-big](/podcast/staying-lean-growing-big)
+<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### Sustainable Threads of Change
 Kat Dey Weaves Ethics into Business Innovation  
 33:34  
-**Listen now →** [/podcast/sustainable-threads-of-change](/podcast/sustainable-threads-of-change)
+<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### Beyond the Balance Sheet
 Borys Pikalov on Customer Loyalty & Staff Wellbeing in Decentralized Finance  
 38:54  
-**Listen now →** [/podcast/beyond-the-balance-sheet](/podcast/beyond-the-balance-sheet)
+<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### No Compromise, Just Care
 John Hoey on Hiring with Heart & Leading with Soul  
 38:22  
-**Listen now →** [/podcast/no-compromise%2C-just-care](/podcast/no-compromise%2C-just-care)
+<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### Bridging The Cultural Divide
 Redefining Cross-Continental Growth in Gaming's Global Workforce with Chris Hewish  
 39:23  
-**Listen now →** [/podcast/bridging-cultures-in-global-business](/podcast/bridging-cultures-in-global-business)
+<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### Emulating The Star Factor
 Daricus Releford's Story from Google to Meeting The Odd Man on the Stairs  
 48:15  
-**Listen now →** [/podcast/emulating-the-star](/podcast/emulating-the-star)
+<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### The Power of Envelope Money
 Shane Walker on Intentional Spending Habits  
 44:06  
-**Listen now →** [/podcast/power-envelope-money](/podcast/power-envelope-money)
+<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### Breaking Taboos
 Alex Fine on Transforming Sexual Health & Authenticity in Entrepreneurship  
 38:28  
-**Listen now →** [/podcast/breaking-taboos](/podcast/breaking-taboos)
+<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ### The Culinary Revolution
 Benji Koltai About Family Values, Founding & Battling Operational Models  
 41:24  
-**Listen now →** [/podcast/the-culinary-revolution](/podcast/the-culinary-revolution)
+<a href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
 
 ## About the show
 

@@ -14,7 +14,7 @@ Whether you're a founder thinking about what's next, or an advisor with a client
 
 ## Ready to start?
 
-**Body:** Stage 1 is the private 30-day engagement.
+Stage 1 is the private 30-day engagement.
 
 ---
 
@@ -22,7 +22,7 @@ Whether you're a founder thinking about what's next, or an advisor with a client
 
 ## Have a client in mind?
 
-**Body:** Advisors can book a short introduction with Seb.
+Advisors can book a short introduction with Seb.
 
 **Button (outline):** Book an intro call
 
@@ -32,7 +32,7 @@ Whether you're a founder thinking about what's next, or an advisor with a client
 
 ## Everything else
 
-**Body:** Press, podcasts, and general questions. If you're a founder ready to start, or an advisor with a client in mind, the buttons above are the quickest path.
+Press, podcasts, and general questions. If you're a founder ready to start, or an advisor with a client in mind, the buttons above are the quickest path.
 
 - Name (required)
 - Email (required)
