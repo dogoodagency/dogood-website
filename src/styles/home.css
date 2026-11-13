@@ -672,7 +672,7 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: 80px;
-  align-items: stretch;
+  align-items: start;
 }
 
 .why-copy {
@@ -702,6 +702,10 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
 #why .why-copy p {
   margin: 0 0 12px;
   color: var(--color-ink);
+}
+
+#why .why-copy > :last-child {
+  margin-bottom: 0;
 }
 
 #why .closing {
@@ -751,7 +755,7 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
 @media (min-width: 1081px) {
   .why-sketch picture,
   .why-sketch img {
-    height: 100%;
+    height: auto;
   }
 }
 
@@ -3264,6 +3268,7 @@ header.nav {
 }
 
 header.nav .nav-bar {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -3299,13 +3304,15 @@ header.nav .nav-mega {
   position: absolute;
   top: calc(100% + 8px);
   left: 0;
+  right: 0;
   z-index: 40;
   display: grid;
-  grid-template-columns: 360px minmax(220px, 1fr);
-  gap: 36px;
-  width: min(860px, calc(100vw - 32px));
-  min-height: 460px;
-  padding: 20px;
+  grid-template-columns: minmax(220px, 320px) minmax(0, 1fr);
+  align-items: center;
+  gap: 28px;
+  width: auto;
+  min-height: 0;
+  padding: 16px;
   background: #f5f2f9;
   border-radius: 16px;
   box-shadow: 0 18px 40px rgba(42, 11, 79, 0.18);
@@ -3383,7 +3390,7 @@ header.nav .nav-mega-links {
   margin: 8px 0 0;
   padding: 8px 12px 0 4px;
   list-style: none;
-  min-height: 280px;
+  min-height: 0;
 }
 
 header.nav .nav-mega-links a {
@@ -3975,8 +3982,6 @@ header.nav {
 .track-nums strong,
 p.t-kicker,
 #case-j p.t-kicker,
-#case-v p.t-kicker,
-#asseen .t-kicker,
 .page-body a:not(.btn-apply):not(.btn-teal):not(.btn-case) {
   color: #2a0b4f;
 }
@@ -4416,7 +4421,6 @@ a.btn-partnership:focus-visible {
   line-height: 1.4;
 }
 
-#asseen .asseen-frame,
 .why-sketch,
 .exit-machine,
 .guarantee-scale,

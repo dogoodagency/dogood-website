@@ -61,6 +61,39 @@ const advisorLinks = [
       <span class="sr-only">Menu</span>
       <span class="nav-burger-icon" aria-hidden="true"></span>
     </button>
+    <div class="nav-mega" id="nav-advisors" aria-hidden="true">
+      <a class="nav-mega-card" href="/for-advisors">
+        <picture>
+          <source
+            type="image/webp"
+            srcset="/nav/advisors-dropdown-card@1x.webp 1x, /nav/advisors-dropdown-card@2x.webp 2x, /nav/advisors-dropdown-card@3x.webp 3x"
+          />
+          <img
+            src="/nav/advisors-dropdown-card@1x.png"
+            srcset="/nav/advisors-dropdown-card@1x.png 1x, /nav/advisors-dropdown-card@2x.png 2x, /nav/advisors-dropdown-card@3x.png 3x"
+            width="360"
+            height="420"
+            alt="A founder and two advisors, drawn as napkin-sketch figures, stand around a large unrolled map; one advisor points along a winding teal path toward a small arched doorway, marked with a single pink pin."
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+        <span class="nav-mega-label">For Advisors</span>
+        <span class="nav-mega-go" aria-hidden="true"></span>
+      </a>
+      <ul class="nav-mega-links">
+        {
+          advisorLinks.map((item) => (
+            <li>
+              <a href={item.href}>
+                <span class="nav-mega-name">{item.label}</span>
+                <small>{item.detail}</small>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
   </div>
   <a class="nav-apply" href={urls.apply}>
     Apply for Stage 1
@@ -69,39 +102,6 @@ const advisorLinks = [
       <img src="/nav/apply-pill-icon-open-door-32.png" srcset="/nav/apply-pill-icon-open-door-32.png 1x, /nav/apply-pill-icon-open-door-64.png 2x" width="32" height="32" alt="" />
     </picture>
   </a>
-  <div class="nav-mega" id="nav-advisors" aria-hidden="true">
-    <a class="nav-mega-card" href="/for-advisors">
-      <picture>
-        <source
-          type="image/webp"
-          srcset="/nav/advisors-dropdown-card@1x.webp 1x, /nav/advisors-dropdown-card@2x.webp 2x, /nav/advisors-dropdown-card@3x.webp 3x"
-        />
-        <img
-          src="/nav/advisors-dropdown-card@1x.png"
-          srcset="/nav/advisors-dropdown-card@1x.png 1x, /nav/advisors-dropdown-card@2x.png 2x, /nav/advisors-dropdown-card@3x.png 3x"
-          width="360"
-          height="420"
-          alt="A founder and two advisors, drawn as napkin-sketch figures, stand around a large unrolled map; one advisor points along a winding teal path toward a small arched doorway, marked with a single pink pin."
-          loading="lazy"
-          decoding="async"
-        />
-      </picture>
-      <span class="nav-mega-label">For Advisors</span>
-      <span class="nav-mega-go" aria-hidden="true"></span>
-    </a>
-    <ul class="nav-mega-links">
-      {
-        advisorLinks.map((item) => (
-          <li>
-            <a href={item.href}>
-              <span class="nav-mega-name">{item.label}</span>
-              <small>{item.detail}</small>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
   <nav id="nav-panel" class="nav-panel" hidden aria-label="Primary">
     {
       links.map((link) =>
