@@ -1,7 +1,4 @@
 <div class="through-line" id="through-line" aria-hidden="true">
-  <span data-line-anchor="1" aria-hidden="true"></span>
-  <span data-line-anchor="2" aria-hidden="true"></span>
-  <span data-line-anchor="3" aria-hidden="true"></span>
   <svg fill="none">
     <defs>
       <mask id="company-reveal" maskUnits="userSpaceOnUse">
@@ -19,6 +16,29 @@
       mask="url(#company-reveal)"
     />
   </svg>
+</div>
+<div class="route-figures" id="route-figures">
+  <div class="route-figure" data-line-figure="1" style="--pw: 80; --ox: 78.9; --oy: -24.9; --bw: 134; --bh: 104; --origin: 6.8% 54%;">
+    <picture class="route-person">
+      <source type="image/webp" srcset="/sketches/route/person-1-man@1x.webp 1x, /sketches/route/person-1-man@2x.webp 2x, /sketches/route/person-1-man@3x.webp 3x" />
+      <img src="/sketches/route/person-1-man@1x.png" srcset="/sketches/route/person-1-man@1x.png 1x, /sketches/route/person-1-man@2x.png 2x, /sketches/route/person-1-man@3x.png 3x" width="80" height="150" alt="A napkin-sketch man, facing right, waving toward the departing company line." />
+    </picture>
+    <img class="route-bubble" src="/sketches/route/bubble-1-goodbye-company.svg" width="134" height="104" alt="Goodbye company" />
+  </div>
+  <div class="route-figure" data-line-figure="2" style="--pw: 62; --ox: -133.2; --oy: -22.6; --bw: 142; --bh: 104; --origin: 92% 55.7%;">
+    <picture class="route-person">
+      <source type="image/webp" srcset="/sketches/route/person-2-woman@1x.webp 1x, /sketches/route/person-2-woman@2x.webp 2x, /sketches/route/person-2-woman@3x.webp 3x" />
+      <img src="/sketches/route/person-2-woman@1x.png" srcset="/sketches/route/person-2-woman@1x.png 1x, /sketches/route/person-2-woman@2x.png 2x, /sketches/route/person-2-woman@3x.png 3x" width="62" height="150" alt="A napkin-sketch woman standing calmly, a pink strap over her shoulder." />
+    </picture>
+    <img class="route-bubble" src="/sketches/route/bubble-2-i-feel-supported.svg" width="142" height="104" alt="I feel supported" />
+  </div>
+  <div class="route-figure" data-line-figure="3" style="--pw: 62; --ox: 53; --oy: -23.5; --bw: 146; --bh: 104; --origin: 7.5% 54.6%;">
+    <picture class="route-person">
+      <source type="image/webp" srcset="/sketches/route/person-3-man@1x.webp 1x, /sketches/route/person-3-man@2x.webp 2x, /sketches/route/person-3-man@3x.webp 3x" />
+      <img src="/sketches/route/person-3-man@1x.png" srcset="/sketches/route/person-3-man@1x.png 1x, /sketches/route/person-3-man@2x.png 2x, /sketches/route/person-3-man@3x.png 3x" width="62" height="150" alt="A napkin-sketch man standing with quiet clarity, looking slightly down and ahead." />
+    </picture>
+    <img class="route-bubble" src="/sketches/route/bubble-3-i-know-now-what-to-do.svg" width="146" height="104" alt="I know now what to do" />
+  </div>
 </div>
 
 <script>
@@ -448,7 +468,6 @@
       const machineEl = document.querySelector(".exit-machine");
       const machine = machineEl instanceof HTMLElement ? box(machineEl) : null;
       const cover = document.querySelector("#company-cover");
-      let companyAnchor = { x: Math.min(width - 24, rightLane + founderStroke), y: companyExitY };
       if (machine) {
         const artLeft = machine.left + machine.w * (36 / 390);
         const artTop = machine.y + machine.h * (54 / 414);
@@ -466,7 +485,6 @@
           cover.setAttribute("width", Math.max(0, artRight - artLeft).toFixed(1));
           cover.setAttribute("height", Math.max(0, artBottom - artTop).toFixed(1));
         }
-        companyAnchor = { x: Math.min(width - 24, artRight + 28), y: artBottom };
       } else {
         add(companyPts, -30, companyY);
         add(companyPts, rightLane + founderStroke * 0.55, companyY);
@@ -477,21 +495,6 @@
           cover.setAttribute("height", "0");
         }
       }
-
-      const placeAnchor = (name, x, y) => {
-        const node = root.querySelector(`[data-line-anchor="${name}"]`);
-        if (!(node instanceof HTMLElement)) return;
-        node.style.position = "absolute";
-        node.style.left = `${x}px`;
-        node.style.top = `${y}px`;
-        node.style.width = "0px";
-        node.style.height = "0px";
-        node.style.overflow = "hidden";
-        node.style.pointerEvents = "none";
-      };
-      placeAnchor("1", companyAnchor.x, companyAnchor.y);
-      placeAnchor("2", Math.max(24, sideX - founderStroke * 1.4), (finders ? finders.y : entryY) - 12);
-      placeAnchor("3", Math.min(width - 24, mouthX + founderStroke * 1.2), swell.y + 8);
 
       const height = Math.max(200, end);
       root.style.top = "0px";
@@ -516,6 +519,181 @@
       companyMask.setAttribute("d", fillet(companyPts, routeRadius));
       alignDoor();
 
+      const figures = document.querySelector("#route-figures");
+      const scale = phone ? 110 / 134 : 1;
+      if (figures instanceof HTMLElement) {
+        figures.style.setProperty("--route-scale", String(scale));
+        const mainRectNow = main.getBoundingClientRect();
+        const blockers = [];
+        const addRect = (rect) => {
+          if (rect.width < 2 || rect.height < 2) return;
+          blockers.push({
+            l: rect.left - mainRectNow.left,
+            r: rect.right - mainRectNow.left,
+            t: rect.top - mainRectNow.top,
+            b: rect.bottom - mainRectNow.top,
+          });
+        };
+        main.querySelectorAll("h1, h2, h3, p, li, a, button, img").forEach((el) => {
+          if (!(el instanceof Element)) return;
+          if (el.closest(".route-figures, .through-line, .exit-machine")) return;
+          if (el.classList.contains("portrait")) {
+            const rect = el.getBoundingClientRect();
+            addRect({
+              left: rect.left,
+              right: rect.right,
+              top: rect.top + rect.height * 0.08,
+              bottom: rect.bottom,
+              width: rect.width,
+              height: rect.height * 0.92,
+            });
+            return;
+          }
+          for (const rect of el.getClientRects()) addRect(rect);
+        });
+        const machineBlock = document.querySelector(".exit-machine");
+        if (machineBlock) addRect(machineBlock.getBoundingClientRect());
+        const dashes = [];
+        const companyLength = company.getTotalLength();
+        for (let length = 0; length <= companyLength; length += 18) {
+          const point = company.getPointAtLength(length);
+          const pad = companyStroke / 2 + 2;
+          dashes.push({
+            l: point.x - pad,
+            r: point.x + pad,
+            t: point.y - pad,
+            b: point.y + pad,
+          });
+        }
+        const ink = [];
+        const founderLengthForInk = founder.getTotalLength();
+        for (let length = 0; length <= founderLengthForInk; length += 24) {
+          const point = founder.getPointAtLength(length);
+          const pad = founderStroke / 2 + 8;
+          ink.push({ l: point.x - pad, r: point.x + pad, t: point.y - pad, b: point.y + pad });
+        }
+        const hits = (rect, items) =>
+          items.some((item) => item.r > rect.l && item.l < rect.r && item.b > rect.t && item.t < rect.b);
+        const specOf = (fig) => {
+          const bw = Number(fig.style.getPropertyValue("--bw"));
+          const figScale = phone && fig.dataset.lineFigure === "3" ? 110 / 146 : scale;
+          return {
+            ox: Number(fig.style.getPropertyValue("--ox")),
+            oy: Number(fig.style.getPropertyValue("--oy")),
+            bw,
+            bh: Number(fig.style.getPropertyValue("--bh")),
+            pw: fig.dataset.lineFigure === "1" ? 80 : 62,
+            scale: figScale,
+          };
+        };
+        const bubbleBox = (x, y, spec) => ({
+          l: x + spec.ox * spec.scale,
+          r: x + (spec.ox + spec.bw) * spec.scale,
+          t: y + spec.oy * spec.scale,
+          b: y + (spec.oy + spec.bh) * spec.scale,
+        });
+        const groupBox = (x, y, spec) => {
+          const bubble = bubbleBox(x, y, spec);
+          const right = x + spec.pw * spec.scale;
+          const bottom = y + 150 * spec.scale;
+          return {
+            l: Math.min(x, bubble.l),
+            r: Math.max(right, bubble.r),
+            t: Math.min(y, bubble.t),
+            b: Math.max(bottom, bubble.b),
+          };
+        };
+        const clear = (x, y, spec) => {
+          const group = groupBox(x, y, spec);
+          if (group.l < 4 || group.r > width - 4 || group.t < 0) return false;
+          if (hits(group, blockers) || hits(group, ink)) return false;
+          if (hits(bubbleBox(x, y, spec), dashes)) return false;
+          return true;
+        };
+        const settle = (x, y, spec) => {
+          if (clear(x, y, spec)) return { x, y };
+          for (let step = 8; step <= 280; step += 8) {
+            for (const dx of [0, -20, 20, -40, 40, -70, 70, -110, 110]) {
+              if (clear(x + dx, y + step, spec)) return { x: x + dx, y: y + step };
+              if (clear(x + dx, y - step, spec)) return { x: x + dx, y: y - step };
+            }
+          }
+          return { x, y };
+        };
+        const founderLength = founder.getTotalLength();
+        const triggerAt = (y) => {
+          const start = founder.getPointAtLength(0).y;
+          const finish = founder.getPointAtLength(founderLength).y;
+          if (y <= start) return 0;
+          if (y >= finish) return founderLength;
+          let lo = 0;
+          let hi = founderLength;
+          for (let step = 0; step < 24; step += 1) {
+            const mid = (lo + hi) / 2;
+            if (founder.getPointAtLength(mid).y < y) lo = mid;
+            else hi = mid;
+          }
+          return hi;
+        };
+        const lineX = (y) => {
+          const length = triggerAt(y);
+          return founder.getPointAtLength(Math.min(founderLength, Math.max(0, length))).x;
+        };
+        const lineEdge = (y0, y1, side) => {
+          let edge = side === "left" ? Infinity : -Infinity;
+          const step = Math.max(12, (y1 - y0) / 8);
+          for (let y = y0; y <= y1; y += step) {
+            const x = lineX(y);
+            edge = side === "left" ? Math.min(edge, x) : Math.max(edge, x);
+          }
+          return edge + (side === "left" ? -founderStroke / 2 : founderStroke / 2);
+        };
+        const exitCard = box(document.querySelector("#exit-card"));
+        const messageCard = box(document.querySelector("#message-card"));
+        const wayTitle = box(document.querySelector("#wayfinders h2"));
+        const guaranteeCard = box(document.querySelector(".guarantee-card"));
+        const place = (name, x, y) => {
+          const fig = figures.querySelector(`[data-line-figure="${name}"]`);
+          if (!(fig instanceof HTMLElement)) return;
+          const spec = specOf(fig);
+          const spot = settle(x, y, spec);
+          fig.style.setProperty("--route-scale", String(spec.scale));
+          fig.style.left = `${spot.x}px`;
+          fig.style.top = `${spot.y}px`;
+          fig.dataset.trigger = String(triggerAt(spot.y + 75 * spec.scale));
+          fig.classList.add("is-placed");
+        };
+        const companyExit = company.getPointAtLength(companyLength);
+        const dashBottom = companyExit.y + companyStroke / 2;
+        const p1Top = dashBottom + 4 - (-24.9) * scale;
+        let p1Left = width - 16 - (78.9 + 134) * scale;
+        if (exitCard && p1Top < exitCard.bottom - 8) p1Left = Math.max(p1Left, exitCard.right + 12);
+        place("1", p1Left, p1Top);
+        if (wayTitle) {
+          const p2Top = (messageCard ? messageCard.bottom + 10 : wayTitle.y - 180) - (-22.6) * scale;
+          const beside = lineEdge(p2Top, p2Top + 150 * scale, "left") - 16;
+          const p2Left = beside - 62 * scale;
+          place("2", p2Left, p2Top);
+        }
+        if (phone) {
+          const note = box(document.querySelector("#next .next-note"));
+          const footer = box(document.querySelector("footer"));
+          const fig = figures.querySelector('[data-line-figure="3"]');
+          const spec = fig instanceof HTMLElement ? specOf(fig) : null;
+          if (spec && footer) {
+            const lowest = footer.y - 4 - 150 * spec.scale;
+            const underNote = (note ? note.bottom + 6 : lowest) - spec.oy * spec.scale;
+            const p3Top = Math.min(underNote, lowest);
+            const p3Left = width - 12 - (spec.ox + spec.bw) * spec.scale;
+            place("3", p3Left, p3Top);
+          }
+        } else if (guaranteeCard) {
+          const p3Top = guaranteeCard.bottom + 12 - (-23.5) * scale;
+          const beside = lineEdge(p3Top, p3Top + 150 * scale, "right") + 18;
+          place("3", beside, p3Top);
+        }
+      }
+
       triggers.forEach((trigger) => trigger.kill());
       triggers = [];
 
@@ -525,7 +703,7 @@
         if (reduce.matches) {
           path.style.strokeDasharray = `${length}`;
           path.style.strokeDashoffset = "0";
-          return;
+          return length;
         }
         const svgTop = svg.getBoundingClientRect().top;
         const target = window.innerHeight * 0.5;
@@ -545,13 +723,19 @@
         }
         path.style.strokeDasharray = `${length}`;
         path.style.strokeDashoffset = String(length - hi);
+        return hi;
       };
 
       const draw = () => {
-        paint(founder, founder.getTotalLength());
+        const drawn = paint(founder, founder.getTotalLength());
         paint(companyMask, companyMask.getTotalLength());
         paintFunnel();
         reveal();
+        document.querySelectorAll("[data-line-figure]").forEach((fig) => {
+          if (!(fig instanceof HTMLElement) || fig.classList.contains("is-shown")) return;
+          const trigger = Number(fig.dataset.trigger);
+          if (reduce.matches || (Number.isFinite(trigger) && drawn >= trigger)) fig.classList.add("is-shown");
+        });
       };
 
       draw();
