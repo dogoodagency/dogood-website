@@ -41,7 +41,7 @@ Any earnings attained from internet businesses always have unknown risks and are
 
 ### DUE DILIGENCE
 
-You are hereby advised to practice due diligence when you make any business decision and you should always exercise caution and seek the advice of relevant, qualified professionals that can assist you in making such decisions. You are not only responsible for but should seek the advice of an accountant, lawyer, or other relevant professional advisors before engaging in any techniques found on [www.dogoodagency.co](https://www.dogoodagency.co/), its products, affiliates, representatives, or
+You are hereby advised to practice due diligence when you make any business decision and you should always exercise caution and seek the advice of relevant, qualified professionals that can assist you in making such decisions. You are not only responsible for but should seek the advice of an accountant, lawyer, or other relevant professional advisors before engaging in any techniques found on [www.dogoodagency.co](https://www.dogoodagency.co/), its products, affiliates, representatives, or agents.
 
 None of the examples provided on any of these should be construed as equal to legal advice. There is not any information on this website, its connected materials, any other content on the website, or information provided by us that is considered legal advice in any way at all, nor is there any legal advice on any downloads or products for sale on [www.dogoodagency.co](https://www.dogoodagency.co/). You are to exercise due diligence by seeking the advice of an attorney with any and all legal inquiries or questions.
 

@@ -30,8 +30,8 @@ Duration
 CookieYes consent banner
 Shows the cookie banner, stores your consent choice so we can respect it, and keeps a record (log) of your consent
 CookieYes (on our behalf)
-[FROM COOKIEYES SCAN]
-[FROM COOKIEYES SCAN]
+cookieyes-consent
+1 year
 
 ## Functional cookies
 
@@ -46,20 +46,20 @@ Duration
 tawk.to live chat (shown as “Ava”)
 Runs the chat window and keeps your conversation going between pages
 tawk.to
-[FROM COOKIEYES SCAN]
-[FROM COOKIEYES SCAN]
+tawk_uuid_* (6 months); twk_idm_key (session); TawkConnectionTime (session)
+6 months; session; session
 
 TidyCal booking embeds
 Shows our booking calendar on our booking pages so you can book a call
 TidyCal
-[FROM COOKIEYES SCAN]
-[FROM COOKIEYES SCAN]
+__cf_bm
+1 hour
 
 Buzzsprout podcast player
 Plays our podcast on episode pages. It loads only after you accept functional cookies, or when you click to load it
 Buzzsprout
-[FROM COOKIEYES SCAN]
-[FROM COOKIEYES SCAN]
+Not named in Buzzsprout's published privacy policy
+Not stated
 
 ## Analytics and advertising cookies
 

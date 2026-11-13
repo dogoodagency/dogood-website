@@ -31,7 +31,7 @@ These make the site work and remember your choices. They are always on.
 
 | Tool | Purpose | Set by | Cookie names | Duration |
 | --- | --- | --- | --- | --- |
-| CookieYes consent banner | Shows the cookie banner, stores your consent choice so we can respect it, and keeps a record (log) of your consent | CookieYes (on our behalf) | [FROM COOKIEYES SCAN] | [FROM COOKIEYES SCAN] |
+| CookieYes consent banner | Shows the cookie banner, stores your consent choice so we can respect it, and keeps a record (log) of your consent | CookieYes (on our behalf) | cookieyes-consent | 1 year |
 
 ## Functional cookies
 
@@ -39,9 +39,9 @@ These add features you choose to use. They load only after you accept functional
 
 | Tool | Purpose | Set by | Cookie names | Duration |
 | --- | --- | --- | --- | --- |
-| tawk.to live chat (shown as "Ava") | Runs the chat window and keeps your conversation going between pages | tawk.to | [FROM COOKIEYES SCAN] | [FROM COOKIEYES SCAN] |
-| TidyCal booking embeds | Shows our booking calendar on our booking pages so you can book a call | TidyCal | [FROM COOKIEYES SCAN] | [FROM COOKIEYES SCAN] |
-| Buzzsprout podcast player | Plays our podcast on episode pages. It loads only after you accept functional cookies, or when you click to load it | Buzzsprout | [FROM COOKIEYES SCAN] | [FROM COOKIEYES SCAN] |
+| tawk.to live chat (shown as "Ava") | Runs the chat window and keeps your conversation going between pages | tawk.to | tawk_uuid_* (6 months); twk_idm_key (session); TawkConnectionTime (session) | 6 months; session; session |
+| TidyCal booking embeds | Shows our booking calendar on our booking pages so you can book a call | TidyCal | __cf_bm | 1 hour |
+| Buzzsprout podcast player | Plays our podcast on episode pages. It loads only after you accept functional cookies, or when you click to load it | Buzzsprout | Not named in Buzzsprout's published privacy policy | Not stated |
 
 ## Analytics and advertising cookies
 

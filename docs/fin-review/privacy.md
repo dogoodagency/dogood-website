@@ -193,7 +193,7 @@ The controller is DoGood OÜ (Estonia, registry code 14695833). Contact: hiya@do
 
 Email: hiya@dogoodagency.co (mailto:hiya@dogoodagency.co)
 
-Website: www.dogoodagency.co/privacy (http://www.dogoodagency.co/privacy)
+Website: www.dogoodagency.co/privacy (https://www.dogoodagency.co/privacy)
 
 Response Time: We aim to respond to all privacy-related inquiries within 5 business days.
 
