@@ -429,16 +429,18 @@
       } else {
         add(founderPts, tipX, tipY);
       }
-      const exitLeft = Math.max(founderStroke * 0.55, exit.left + 8);
-      add(founderPts, exitLeft, Math.max(tipY + (phone ? 180 : 280), exit.y + exit.h * 0.16));
-      add(founderPts, exitLeft, exit.y + exit.h * 0.78);
-      add(founderPts, exit.left + exit.w * 0.22, exit.bottom + turnRadius * 0.85);
+      const alongTop = Math.max(tipY + 36, exit.y - founderStroke * 0.65);
+      const pastRight = exit.right + founderStroke * 0.72;
+      add(founderPts, exit.left + exit.w * 0.08, alongTop);
+      add(founderPts, pastRight, alongTop + 8);
+      add(founderPts, pastRight, exit.bottom - 48);
+      add(founderPts, exit.cx, exit.bottom + 40);
       if (pinJ) {
         add(founderPts, pinJ.cx, pinJ.y - 8);
         add(founderPts, pinJ.cx, pinJ.bottom + 8);
       }
       if (stones) {
-        const behindMan = stones.left + stones.w * 0.36;
+        const behindMan = stones.left + stones.w * 0.36 - (phone ? stones.w * 0.2 : 110);
         add(founderPts, behindMan, stones.y + stones.h * 0.42);
         add(founderPts, behindMan, stones.bottom - 16);
       }
@@ -454,10 +456,9 @@
         add(founderPts, forYou ? forYou.cx : lane - 280, below + 20);
       }
       if (forYou) {
-        add(founderPts, forYou.cx, forYou.y + forYou.h * 0.28);
-        add(founderPts, forYou.cx, forYou.y + forYou.h * 0.46);
-        const between = notYou ? (forYou.right + notYou.left) / 2 : forYou.right + 48;
-        add(founderPts, between, forYou.y + forYou.h * 0.74);
+        const belowBoth = Math.max(forYou.bottom, notYou ? notYou.bottom : forYou.bottom) + 56;
+        add(founderPts, forYou.cx, forYou.y + forYou.h * 0.3);
+        add(founderPts, forYou.cx, belowBoth);
       }
       if (flyer) {
         const through = flyer.left + flyer.w * 0.22;
@@ -481,7 +482,7 @@
       const lead = at("#wayfinders .lead");
       const sideX = phone && lead
         ? lead.right + founderStroke + 8
-        : Math.min(width - founderStroke * 0.42, width - 24);
+        : Math.min(width - founderStroke * 0.42, width - 24) - 150;
       if (phone && lead) {
         const above = message ? Math.min(lead.y - 28, message.bottom + 20) : lead.y - 28;
         add(founderPts, sideX, above);

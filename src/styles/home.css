@@ -5150,6 +5150,12 @@ button.btn-subscribe:focus-visible {
   }
 }
 
+@media (min-width: 1081px) and (max-width: 1460px) {
+  .exit-machine {
+    translate: 118px 0;
+  }
+}
+
 @media (min-width: 1400px) {
   .hero-sketch-frame {
     top: 49.2px;
