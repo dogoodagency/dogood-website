@@ -12,37 +12,86 @@ const links = [
 ---
 
 <header class="nav">
-  <a class="nav-logo" href="/">
-    <Image
-      src={logo}
-      alt="DoGood Agency"
-      widths={[240, 480, 720]}
-      sizes="160px"
-      loading="eager"
-      fetchpriority="high"
-    />
-  </a>
-  <ul class="nav-links" aria-label="Primary">
-    {
-      links.map((link) => (
-        <li>
-          <a href={link.href}>{link.label}</a>
-        </li>
-      ))
-    }
-    <li>
-      <a class="btn-apply nav-cta" href={urls.apply}>Apply for Stage 1</a>
-    </li>
-  </ul>
-  <details class="nav-menu">
-    <summary>Menu</summary>
-    <nav aria-label="Primary">
+  <div class="nav-bar">
+    <a class="nav-logo" href="/">
+      <Image
+        src={logo}
+        alt="DoGood Agency"
+        widths={[240, 480, 720]}
+        sizes="148px"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </a>
+    <ul class="nav-links" aria-label="Primary">
       {
         links.map((link) => (
-          <a href={link.href}>{link.label}</a>
+          <li>
+            <a href={link.href}>{link.label}</a>
+          </li>
         ))
       }
-      <a class="btn-apply nav-cta" href={urls.apply}>Apply for Stage 1</a>
-    </nav>
-  </details>
+    </ul>
+    <button class="nav-burger" type="button" aria-expanded="false" aria-controls="nav-panel">
+      <span class="sr-only">Menu</span>
+      <span class="nav-burger-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+  <a class="nav-apply" href={urls.apply}>
+    Apply for Stage 1
+    <span class="nav-apply-icon" aria-hidden="true"></span>
+  </a>
+  <nav id="nav-panel" class="nav-panel" hidden aria-label="Primary">
+    {
+      links.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))
+    }
+  </nav>
 </header>
+
+<script>
+  const header = document.querySelector("header.nav");
+  const burger = header?.querySelector(".nav-burger");
+  const panel = header?.querySelector("#nav-panel");
+
+  if (header instanceof HTMLElement && burger instanceof HTMLButtonElement && panel instanceof HTMLElement) {
+    const items = () => [...panel.querySelectorAll("a")];
+
+    const setOpen = (open) => {
+      burger.setAttribute("aria-expanded", open ? "true" : "false");
+      panel.hidden = !open;
+    };
+
+    burger.addEventListener("click", () => {
+      const open = burger.getAttribute("aria-expanded") !== "true";
+      setOpen(open);
+      if (open) items()[0]?.focus();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape" || burger.getAttribute("aria-expanded") !== "true") return;
+      setOpen(false);
+      burger.focus();
+    });
+
+    panel.addEventListener("keydown", (event) => {
+      if (event.key !== "Tab" || panel.hidden) return;
+      const list = items();
+      const first = list[0];
+      const last = list[list.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        burger.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        burger.focus();
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!(event.target instanceof Node) || header.contains(event.target)) return;
+      if (burger.getAttribute("aria-expanded") === "true") setOpen(false);
+    });
+  }
+</script>
