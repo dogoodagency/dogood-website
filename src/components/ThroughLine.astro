@@ -421,21 +421,9 @@
         };
         if (!prev || dist(prev, point) > 10) founderPts.push(point);
       };
-      const heroImg = document.querySelector(".hero-sketch");
-      const heroWave = document.querySelector("#hero > .hero-wave");
       let tipX = width * 0.5;
       let tipY = entryY;
       const jointW = founderStroke;
-      if (heroImg instanceof Element && heroWave instanceof Element) {
-        const image = heroImg.getBoundingClientRect();
-        const waveBox = heroWave.getBoundingClientRect();
-        tipX = image.left - mainRect.left + image.width * (205 / 1940);
-        tipY = waveBox.top - mainRect.top + waveBox.height * 0.55;
-        put(tipX, tipY);
-        put(tipX - founderStroke * 0.15, clients.bottom - 8);
-      } else {
-        put(tipX, tipY);
-      }
       const machine = box(document.querySelector(".exit-machine"));
       const whyCard = box(document.querySelector("#why .why-copy"));
       if (phone) {
@@ -444,7 +432,7 @@
           put(el.cx, el.y + el.h * from);
           put(el.cx, el.y + el.h * to);
         };
-        down(machine, 0.4, 1);
+        down(machine, 0.45, 1);
         down(pinJ, 0.2, 1);
         down(stones, 0.45, 1);
         down(firstCard, 0.2, 0.85);
@@ -465,9 +453,13 @@
         }
         down(guarantee, 0.2, 0.92);
       } else if (machine) {
-        put(machine.left + machine.w * 0.83, machine.y + machine.h * 0.32);
-        put(machine.right - machine.w * 0.08, machine.y + machine.h * 0.55);
-        put(machine.right + founderStroke * 0.05, machine.bottom - 8);
+        // The round cap starts inside the machine. The stroke first shows just right of the lever.
+        put(machine.left + machine.w * 0.58, machine.y + machine.h * 0.36);
+        put(machine.left + machine.w * 0.85, machine.y + machine.h * 0.44);
+        put(machine.right - founderStroke * 0.15, machine.y + machine.h * 0.62);
+        put(machine.left + machine.w * 0.97, machine.bottom - 16);
+        tipX = machine.left + machine.w * 0.58;
+        tipY = machine.y + machine.h * 0.36;
       }
       if (!phone) {
       if (pinJ) {
