@@ -436,11 +436,39 @@
         put(tipX, tipY);
       }
       const machine = box(document.querySelector(".exit-machine"));
-      if (machine) {
+      const whyCard = box(document.querySelector("#why .why-copy"));
+      if (phone) {
+        const down = (el, from = 0.2, to = 0.8) => {
+          if (!el) return;
+          put(el.cx, el.y + el.h * from);
+          put(el.cx, el.y + el.h * to);
+        };
+        down(machine, 0.4, 1);
+        down(pinJ, 0.2, 1);
+        down(stones, 0.45, 1);
+        down(firstCard, 0.2, 0.85);
+        if (apply1) put(apply1.cx, apply1.cy);
+        down(notYou, 0.15, 0.85);
+        down(forYou, 0.15, 0.9);
+        down(whyCard, 0.2, 0.85);
+        down(flyer, 0.3, 0.75);
+        down(leaders, 0.25, 0.8);
+        down(pinV, 0.2, 0.9);
+        down(seen, 0.3, 0.75);
+        if (apply2) put(apply2.cx, apply2.cy);
+        down(message, 0.15, 0.9);
+        down(finders, 0.15, 0.55);
+        if (track) {
+          put(track.cx, track.bottom + 6);
+          put(track.cx, track.bottom + 28);
+        }
+        down(guarantee, 0.2, 0.92);
+      } else if (machine) {
         put(machine.left + machine.w * 0.83, machine.y + machine.h * 0.32);
         put(machine.right - machine.w * 0.08, machine.y + machine.h * 0.55);
         put(machine.right + founderStroke * 0.05, machine.bottom - 8);
       }
+      if (!phone) {
       if (pinJ) {
         put(pinJ.cx, pinJ.y + pinJ.h * 0.35);
         put(pinJ.cx + pinJ.w * 0.06, pinJ.bottom + 24);
@@ -488,6 +516,7 @@
       if (guarantee) {
         put(guarantee.cx, guarantee.y + guarantee.h * 0.45);
         put(guarantee.cx, guarantee.bottom - 6);
+      }
       }
       put(mouthX, intoMouth);
       const dropIn = null;
