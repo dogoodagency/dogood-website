@@ -274,7 +274,19 @@ const notFit = [
         <ul>
           {fit.map((item) => (
             <li>
-              <span class="mark" aria-hidden="true">✓</span>
+              <picture class="fit-icon" aria-hidden="true">
+                <source
+                  type="image/webp"
+                  srcset="/sketches/icon-tick-for-you@1x.webp 1x, /sketches/icon-tick-for-you@2x.webp 2x"
+                />
+                <img
+                  src="/sketches/icon-tick-for-you@1x.png"
+                  srcset="/sketches/icon-tick-for-you@1x.png 1x, /sketches/icon-tick-for-you@2x.png 2x"
+                  width="28"
+                  height="28"
+                  alt=""
+                />
+              </picture>
               <span>{item}</span>
             </li>
           ))}
@@ -285,7 +297,19 @@ const notFit = [
         <ul>
           {notFit.map((item) => (
             <li>
-              <span class="mark" aria-hidden="true">✕</span>
+              <picture class="fit-icon" aria-hidden="true">
+                <source
+                  type="image/webp"
+                  srcset="/sketches/icon-cross-not-for-you@1x.webp 1x, /sketches/icon-cross-not-for-you@2x.webp 2x"
+                />
+                <img
+                  src="/sketches/icon-cross-not-for-you@1x.png"
+                  srcset="/sketches/icon-cross-not-for-you@1x.png 1x, /sketches/icon-cross-not-for-you@2x.png 2x"
+                  width="28"
+                  height="28"
+                  alt=""
+                />
+              </picture>
               <span>{item}</span>
             </li>
           ))}
@@ -316,16 +340,16 @@ const notFit = [
         <picture>
           <source
             type="image/webp"
-            srcset="/sketches/founder-long-table-family-team-sketch@1x.webp 540w, /sketches/founder-long-table-family-team-sketch@2x.webp 1080w"
+            srcset="/sketches/why-dogood-workbench-model@1x.webp 540w, /sketches/why-dogood-workbench-model@2x.webp 1080w"
             sizes="(max-width: 1080px) 320px, 540px"
           />
           <img
-            src="/sketches/founder-long-table-family-team-sketch@1x.png"
-            srcset="/sketches/founder-long-table-family-team-sketch@1x.png 540w, /sketches/founder-long-table-family-team-sketch@2x.png 1080w"
+            src="/sketches/why-dogood-workbench-model@1x.png"
+            srcset="/sketches/why-dogood-workbench-model@1x.png 540w, /sketches/why-dogood-workbench-model@2x.png 1080w"
             sizes="(max-width: 1080px) 320px, 540px"
             width="540"
             height="566"
-            alt="Line sketch of a founder laughing at a long table with family and teammates."
+            alt="Two colleagues at a workbench, building a small teal model of a house-like product together."
             loading="lazy"
             decoding="async"
           />
@@ -496,15 +520,15 @@ const notFit = [
     <picture class="guarantee-scale">
       <source
         type="image/webp"
-        srcset="/sketches/guarantee-balance-scale@1x.webp 180w, /sketches/guarantee-balance-scale@2x.webp 360w"
-        sizes="(max-width: 800px) 160px, 400px"
+        srcset="/sketches/clarity-first-guarantee-scale@1x.webp 390w, /sketches/clarity-first-guarantee-scale@2x.webp 780w"
+        sizes="(max-width: 1080px) 200px, 390px"
       />
       <img
-        src="/sketches/guarantee-balance-scale@1x.png"
-        srcset="/sketches/guarantee-balance-scale@1x.png 180w, /sketches/guarantee-balance-scale@2x.png 360w"
-        sizes="(max-width: 800px) 160px, 400px"
-        width="180"
-        height="154"
+        src="/sketches/clarity-first-guarantee-scale@1x.png"
+        srcset="/sketches/clarity-first-guarantee-scale@1x.png 390w, /sketches/clarity-first-guarantee-scale@2x.png 780w"
+        sizes="(max-width: 1080px) 200px, 390px"
+        width="390"
+        height="334"
         alt="Sketch of a balance scale gently tipped toward a founder."
         loading="lazy"
         decoding="async"
@@ -551,8 +575,13 @@ const notFit = [
         d="M690,0 C670,0 658,14 654,36 C640,110 430,155 220,230 C90,280 40,350 22,440 C10,520 4,580 0,620 L1440,620 C1436,580 1430,520 1418,440 C1400,350 1350,280 1220,230 C1010,155 800,110 786,36 C782,14 770,0 750,0 C730,0 710,0 690,0 Z"
       ></path>
     </svg>
-    <div class="next-icons" aria-hidden="true">
-      <img src="/sketches/icon-whats-next-conversation.svg" alt="" width="168" height="168" />
+    <div class="next-icons">
+      <img
+        src="/sketches/whats-next-speech-bubble.svg"
+        width="240"
+        height="240"
+        alt="Sketch of a speech bubble."
+      />
     </div>
     <div class="next-inner">
       <h2 class="t-h2">What’s next?</h2>

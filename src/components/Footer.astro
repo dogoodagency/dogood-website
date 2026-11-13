@@ -48,13 +48,26 @@ const legal = [
         <input type="hidden" name="anticsrf" value="true" />
         <label class="visually-hidden" for="news-email">Email</label>
         <span class="email-field">
-          <img src="/sketches/footer-stay-close-envelope@1x.png" alt="" width="22" height="16" />
+          <picture class="stay-envelope" aria-hidden="true">
+            <source
+              type="image/webp"
+              srcset="/sketches/subscribe-email-envelope-20.webp 1x, /sketches/subscribe-email-envelope-20@2x.webp 2x"
+            />
+            <img
+              src="/sketches/subscribe-email-envelope-20.png"
+              srcset="/sketches/subscribe-email-envelope-20.png 1x, /sketches/subscribe-email-envelope-20@2x.png 2x"
+              width="20"
+              height="20"
+              alt=""
+            />
+          </picture>
           <input
             id="news-email"
             type="email"
             name="fields[email]"
             placeholder=""
             autocomplete="email"
+            aria-label="Email"
             required
           />
         </span>

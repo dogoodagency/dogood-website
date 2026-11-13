@@ -2816,13 +2816,16 @@ main {
   content: none;
 }
 
-.foryou-grid li img {
-  width: 16px;
-  height: 16px;
-  flex: 0 0 16px;
-  margin-top: 6px;
+.foryou-grid .fit-icon,
+.foryou-grid .fit-icon img {
+  display: block;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  margin-top: 0;
   background: transparent;
   border: 0;
+  box-shadow: none;
 }
 
 .sig-row {
@@ -2930,8 +2933,21 @@ main {
     gap: 12px;
   }
 
+  .guarantee-scale {
+    align-self: flex-start;
+  }
+
   .guarantee-scale img {
-    width: 72px;
+    width: 200px;
+    height: 171px;
+    object-fit: contain;
+  }
+
+  .foryou-grid .fit-icon,
+  .foryou-grid .fit-icon img {
+    width: 24px;
+    height: 24px;
+    flex-basis: 24px;
   }
 }
 
@@ -3913,6 +3929,13 @@ iframe.tidycal-embed,
   background: #f5f2f9;
 }
 
+#next .btn-apply,
+#next .btn-apply:hover,
+#next .btn-apply:focus-visible {
+  background: #ea1557;
+  color: #fff;
+}
+
 #reviews,
 #message-card,
 #case-j article,
@@ -4118,18 +4141,18 @@ button.btn-subscribe:focus-visible,
   }
 
   .why-sketch {
-    order: -1;
+    order: 0;
   }
 
   .guarantee-layout {
     display: grid;
-    grid-template-columns: minmax(220px, 400px) minmax(0, 1fr);
+    grid-template-columns: 390px minmax(0, 1fr);
     align-items: center;
-    gap: 8px;
+    gap: 24px;
   }
 
   .guarantee-card {
-    margin-left: 150px;
+    margin-left: 0;
   }
 
   .guarantee-card h2 {
@@ -4137,8 +4160,9 @@ button.btn-subscribe:focus-visible,
   }
 
   .guarantee-scale img {
-    width: min(400px, 28vw);
-    height: auto;
+    width: 390px;
+    height: 334px;
+    object-fit: contain;
   }
 
   #apply-first a.btn-apply,
@@ -4243,16 +4267,21 @@ a.btn-partnership:focus-visible {
 
 #next .next-icons {
   position: absolute;
-  left: max(16px, calc(var(--pad) - 20px));
-  top: 42%;
+  left: 0;
+  top: -40px;
   z-index: 2;
+  width: 200px;
   margin: 0;
   pointer-events: none;
+  background: transparent;
 }
 
 #next .next-icons img {
-  width: 168px;
+  display: block;
+  width: 200px;
   height: auto;
+  background: transparent;
+  border: 0;
 }
 
 .footer-subscribe .connect-mark {
@@ -4285,12 +4314,15 @@ p.services-note {
   align-items: center;
 }
 
-.email-field img {
+.email-field .stay-envelope,
+.email-field .stay-envelope img {
   position: absolute;
-  left: 14px;
-  width: 22px;
-  height: auto;
+  left: 9px;
+  width: 20px;
+  height: 20px;
   pointer-events: none;
+  background: transparent;
+  border: 0;
 }
 
 .email-field input,
@@ -4324,9 +4356,18 @@ button.btn-subscribe:focus-visible {
     gap: 24px;
   }
 
-  .exit-machine,
-  .guarantee-scale img {
+  .exit-machine {
     width: min(100%, 240px);
+  }
+
+  .guarantee-scale {
+    align-self: flex-start;
+  }
+
+  .guarantee-scale img {
+    width: 200px;
+    height: 171px;
+    object-fit: contain;
   }
 
   .guarantee-card {
@@ -4339,11 +4380,12 @@ button.btn-subscribe:focus-visible {
 
   #next .next-icons {
     position: static;
+    width: 144px;
     margin: 0 0 12px;
   }
 
   #next .next-icons img {
-    width: 72px;
+    width: 144px;
   }
 
   .footer-subscribe .connect-mark {

@@ -352,7 +352,7 @@
           }
         }
         document.querySelectorAll("a, button, article, .card, img").forEach((el) => {
-          if (el.closest("#reviews")) return;
+          if (el.closest("#reviews, .guarantee-scale, .next-icons, .exit-machine")) return;
           const pink = /234,\s*21,\s*87/.test(getComputedStyle(el).backgroundColor);
           if (!pink && el.tagName !== "IMG" && !el.classList.contains("card")) return;
           const rect = el.getBoundingClientRect();
@@ -389,6 +389,7 @@
       const swell = box(document.querySelector("#next .swell-bg")) || next;
       const mouthX = swell.x + swell.w * (720 / 1440);
       const mouthY = swell.y + Math.min(32, swell.h * 0.05);
+      const scale = box(document.querySelector(".guarantee-scale"));
       const founderPts = monotonic([
         { x: -20, y: entryY },
         { x: enterX, y: entryY },
@@ -396,6 +397,14 @@
         { x: beside, y: splitY },
         { x: beside, y: crossY },
         { x: dropX, y: crossY },
+        ...(scale && scale.w > 80
+          ? [
+              { x: dropX, y: Math.max(crossY + 40, scale.y - turnRadius) },
+              { x: scale.x + scale.w * 0.33, y: scale.y + scale.h * 0.28 },
+              { x: scale.x + scale.w * 0.33, y: scale.y + scale.h * 0.48 },
+              { x: dropX, y: scale.bottom + turnRadius },
+            ]
+          : []),
         { x: dropX, y: mouthY },
         { x: mouthX, y: mouthY },
       ]);
