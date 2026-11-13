@@ -2752,7 +2752,7 @@ main {
 /* Visual lift objects. No frame, shadow, or motion. */
 .exit-split {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(220px, 280px);
+  grid-template-columns: minmax(0, 1fr);
   gap: 24px;
   align-items: center;
   text-align: left;
