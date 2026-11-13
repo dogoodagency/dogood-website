@@ -5,6 +5,7 @@
   --sketch: #e8e2ef;
   --swell: #d4f4eb;
   --pad: clamp(20px, 5.56vw, 80px);
+  --nav-inset: 16px;
 }
 
 main p,
@@ -4356,9 +4357,13 @@ header.nav .nav-apply:focus-visible::before {
 }
 
 @media (min-width: 1200px) {
+  :root {
+    --nav-inset: 150px;
+  }
+
   header.nav {
-    padding-left: 150px;
-    padding-right: 150px;
+    padding-left: var(--nav-inset);
+    padding-right: var(--nav-inset);
   }
 
   header.nav .nav-links {
@@ -4434,6 +4439,7 @@ button.btn-subscribe:focus-visible,
   }
 
   .exit-layout {
+    position: relative;
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
@@ -4442,21 +4448,24 @@ button.btn-subscribe:focus-visible,
   }
 
   .exit-machine {
-    margin-top: -10px;
-    margin-bottom: -10px;
-    flex: 0 0 468px;
+    position: absolute;
+    left: calc(var(--nav-inset) - var(--exit-pad-left));
+    top: 50%;
+    margin: 0;
+    flex: none;
     width: 468px;
-    translate: none;
+    translate: 0 -50%;
   }
 
   #exit {
     padding-left: 24px;
+    --exit-pad-left: 24px;
   }
 
   #exit-card {
     flex: 0 1 840px;
     width: 840px;
-    max-width: 840px;
+    max-width: min(840px, calc(100% - (var(--nav-inset) - var(--exit-pad-left) + 468px + 32px)));
     margin: 0;
   }
 
@@ -5168,13 +5177,13 @@ button.btn-subscribe:focus-visible {
   }
 
   .exit-machine {
-    translate: none;
+    translate: 0 -50%;
   }
 }
 
 @media (min-width: 1081px) and (max-width: 1460px) {
   .exit-machine {
-    translate: none;
+    translate: 0 -50%;
   }
 }
 
