@@ -434,11 +434,10 @@
       let jointW = phone ? 5 : 10;
       if (heroImg instanceof Element) {
         const image = heroImg.getBoundingClientRect();
-        const scale = image.width / 520;
-        // Measured on the rendered drawing: the path's last solid pixels sit here,
-        // just above where the ribbon pinches to a point.
-        tipX = image.left - mainRect.left + image.width * (132 / 520);
-        tipY = image.top - mainRect.top + image.height * (276.5 / 340);
+        const scale = image.width / 568;
+        // Same point on the drawing as before. v7.2 places the old 520×340 art at (48, 0).
+        tipX = image.left - mainRect.left + image.width * (180 / 568);
+        tipY = image.top - mainRect.top + image.height * (276.5 / 468);
         // The hero drawing is shifted on desktop. The line stays where it was.
         if (window.innerWidth >= 1081) {
           tipX += 115;

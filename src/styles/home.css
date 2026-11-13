@@ -285,6 +285,7 @@ main ul {
   background: var(--color-ink);
   color: #fff;
   position: relative;
+  overflow: hidden;
 }
 
 .hero-inner {
@@ -344,6 +345,10 @@ main ul {
   z-index: 0;
 }
 
+.hero > .hero-wave {
+  z-index: 3;
+}
+
 .sketch-ph {
   display: flex;
   align-items: center;
@@ -373,9 +378,17 @@ main ul {
   background: transparent;
 }
 
+/* v7.2's canvas is the old 520×340 art at (48, 0), plus 48px left and 128px below. */
+.hero-sketch-frame {
+  width: calc(100% * 568 / 520);
+  max-width: none;
+  margin-left: calc(100% * -48 / 520);
+  margin-bottom: calc(100% * -128 / 520);
+}
+
 .hero-sketch {
   object-fit: contain;
-  aspect-ratio: 520 / 340;
+  aspect-ratio: 568 / 468;
 }
 
 /* Logos — edge to edge, no box, content travels left to right */
@@ -1343,7 +1356,6 @@ footer a.connect-mark:focus-visible {
     gap: 20px;
   }
 
-  .hero-sketch-frame,
   .hero-sketch {
     max-width: 100%;
   }
@@ -2771,7 +2783,6 @@ main {
 #first-draw img,
 .exit-machine,
 .guarantee-scale,
-.hero-sketch-frame,
 .portrait,
 .next-icons,
 #wayfinders h2,
@@ -5166,10 +5177,11 @@ button.btn-subscribe:focus-visible {
 
   .hero-sketch-frame {
     position: absolute;
-    left: 0;
+    left: calc(-48 / 520 * 1.2 * (100% + 60px));
     top: -10.8px;
-    width: calc(1.2 * (100% + 60px));
+    width: calc(568 / 520 * 1.2 * (100% + 60px));
     max-width: none;
+    margin: 0;
     translate: -115px -150px;
   }
 
