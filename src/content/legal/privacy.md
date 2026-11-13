@@ -28,7 +28,7 @@ If you become a client, your signed client agreement may include further privacy
 
 **Data collected automatically.** When you visit the site, our hosting provider, Netlify, keeps server logs. These include your IP address, browser type, operating system, device type, the pages you request, the time of your visit and the website that sent you here. We don't use analytics or advertising cookies, and we don't use any LinkedIn tracking.
 
-**Cookie data.** Some data is collected through cookies and similar tools. Non-essential cookies are only used if you agree. See "Cookies" below and our [Cookies Policy](/cookies) (Part 3).
+**Cookie data.** Some data is collected through cookies and similar tools. Non-essential cookies are only used if you agree. See "Cookies" below and [our Cookies Policy](/cookies/).
 
 **Payment data.** Clients pay by bank transfer against invoices issued by DoGood OÜ. Payments are processed through Wise, which holds the payment and bank details needed for each transfer. If we add card payments, we'll update this policy before we do.
 
@@ -84,7 +84,7 @@ We may share anonymized, combined statistics about how our site is used. These c
 
 Some of our providers are based in, or use servers in, the United States or other countries outside the European Economic Area (EEA).
 
-When any of the providers listed above processes your data outside the EU/EEA, including in the United States, we make sure it stays protected. We rely on the EU-US Data Privacy Framework where the provider is certified under it. Otherwise, we rely on the EU Standard Contractual Clauses approved by the European Commission, or another lawful safeguard under the GDPR. [ADVISER: confirm per provider]
+When any of the providers listed above processes your data outside the EU/EEA, including in the United States, we make sure it stays protected. We rely on the EU-US Data Privacy Framework where the provider is certified under it. Otherwise, we rely on the EU Standard Contractual Clauses approved by the European Commission, or another lawful safeguard under the GDPR.
 
 You can ask us for more details about these safeguards at [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co).
 
@@ -93,7 +93,7 @@ You can ask us for more details about these safeguards at [hiya@dogoodagency.co]
 We keep personal data only as long as we need it for the reason we collected it:
 
 - **Enquiries, call bookings and applications that don't lead to working together:** 24 months after our last contact with you.
-- **Client and contract records, including accounting records:** 7 years after the contract ends. [ADVISER: confirm against the Estonian Accounting Act]
+- **Client and contract records, including accounting records:** 7 years after the contract ends.
 - **Live chat conversations:** 24 months after our last contact with you.
 - **Newsletter subscribers:** until you unsubscribe.
 - **Cookies:** as set out in the cookie list in our cookie banner (CookieYes).
@@ -126,7 +126,7 @@ You also have the right to complain to a data protection authority (Art. 77 GDPR
 
 We use cookies and similar technologies. Strictly necessary cookies are always on. Functional cookies are only used if you agree in our cookie banner (CookieYes). We don't use analytics or advertising cookies.
 
-You can change or withdraw your consent at any time with the "Cookie settings" link in the site footer, next to Privacy and Terms. Our [Cookies Policy](/cookies) (Part 3) explains each cookie group and tool.
+You can change or withdraw your consent at any time with the "Cookie settings" link in the site footer, next to Privacy and Terms. [Our Cookies Policy](/cookies/) explains each cookie group and tool.
 
 ## Children
 

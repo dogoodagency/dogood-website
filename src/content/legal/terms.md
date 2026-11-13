@@ -10,7 +10,7 @@ This website, [www.dogoodagency.co](https://www.dogoodagency.co), is run by DoGo
 
 By using this website, you agree to these Terms of Use. If you do not agree, please do not use the site.
 
-Our [Privacy Policy](/privacy) explains how we handle your personal data. It forms part of these terms.
+Our [Privacy Policy](/privacy/) explains how we handle your personal data. It forms part of these terms.
 
 ## Using the website
 
@@ -92,8 +92,6 @@ You can't know if the Founder Reclamation Partnership (FRP) is right for you fro
 
 **In-person intensive.** The guarantee applies only before an in-person intensive is scheduled or started. Once an in-person intensive has been scheduled, has started, or has led to costs (for example, booked travel), the guarantee no longer applies. Any refund after that point can only be agreed as a separate written exception by DoGood OÜ. This doesn't affect your rights under law.
 
-[ADVISER: check EU consumer withdrawal and guarantee rules for the in-person intensive exclusion]
-
 **If the coach match feels wrong.** If, in your first two sessions, you feel your coach match is not right, tell us. We will try to correct it quickly. If we can't correct it without delay or disruption, you may exit under this guarantee, as long as you are still within the window and meet the conditions above.
 
 **How refunds are paid.** Refunds go back to the original payment method only.
@@ -128,7 +126,7 @@ We may update these terms from time to time. The new version will be posted on t
 
 ## Other terms
 
-These terms, together with our Privacy Policy and Cookies Policy, are the whole agreement between you and us about using this website. Our services are covered by your signed client agreement.
+These terms, together with our [Privacy Policy](/privacy/) and [Cookies Policy](/cookies/), are the whole agreement between you and us about using this website. Our services are covered by your signed client agreement.
 
 If any part of these terms is found invalid, the rest still applies. If we do not enforce a right right away, we do not give it up.
 
