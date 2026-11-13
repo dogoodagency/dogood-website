@@ -22,50 +22,38 @@ These make the site work and remember your choices. They are always on.
 
 | Tool | Purpose | Set by | Cookie names | Duration |
 | --- | --- | --- | --- | --- |
-| CookieYes consent banner | Stores your cookie consent choice so we can respect it | CookieYes (on our behalf) | [FROM COOKIEYES SCAN] | [FROM COOKIEYES SCAN] |
-| Jotform forms (when you use a form) | Lets a form you start work and be sent securely | Jotform | [FROM COOKIEYES SCAN] | [FROM COOKIEYES SCAN] |
+| CookieYes consent banner | Shows the cookie banner, stores your consent choice so we can respect it, and keeps a record (log) of your consent | CookieYes (on our behalf) | [FROM COOKIEYES SCAN] | [FROM COOKIEYES SCAN] |
 
 ## Functional cookies
 
-These add features you choose to use, such as chat, booking and forms. They are only set if you agree.
+These add features you choose to use. They load only after you accept functional cookies in our cookie banner.
 
 | Tool | Purpose | Set by | Cookie names | Duration |
 | --- | --- | --- | --- | --- |
-| tawk.to live chat | Runs the chat window and keeps your conversation going between pages | tawk.to | [FROM COOKIEYES SCAN] | [FROM COOKIEYES SCAN] |
-| MailerLite opt-in forms | Shows and sends our newsletter sign-up forms | MailerLite | [FROM COOKIEYES SCAN] | [FROM COOKIEYES SCAN] |
-| TidyCal booking embeds | Shows our booking calendar so you can book a call | TidyCal | [FROM COOKIEYES SCAN] | [FROM COOKIEYES SCAN] |
-| Jotform forms | Loads our application and diagnostic forms | Jotform | [FROM COOKIEYES SCAN] | [FROM COOKIEYES SCAN] |
-| Podcast players or links | Plays our podcast episodes on the site [TO CONFIRM: podcast player provider, if any] | [TO CONFIRM: provider] | [FROM COOKIEYES SCAN] | [FROM COOKIEYES SCAN] |
-| Web fonts (e.g. Google Fonts) | Shows the site in our chosen fonts. Loading fonts from the provider may share your IP address with it | Google [TO CONFIRM whether self-hosted] | [FROM COOKIEYES SCAN] | [FROM COOKIEYES SCAN] |
+| tawk.to live chat (shown as "Ava") | Runs the chat window and keeps your conversation going between pages | tawk.to | [FROM COOKIEYES SCAN] | [FROM COOKIEYES SCAN] |
+| TidyCal booking embeds | Shows our booking calendar on our booking pages so you can book a call | TidyCal | [FROM COOKIEYES SCAN] | [FROM COOKIEYES SCAN] |
+| Buzzsprout podcast player | Plays our podcast on episode pages. It loads only after you accept functional cookies, or when you click to load it | Buzzsprout | [FROM COOKIEYES SCAN] | [FROM COOKIEYES SCAN] |
 
-## Analytics cookies
+## Analytics and advertising cookies
 
-These help us understand how visitors use the site, so we can improve it. They are only set if you agree, and kept for at most 13 months.
+We don't use analytics or advertising cookies. We don't use any LinkedIn tracking (such as the LinkedIn Insight Tag).
 
-[TO CONFIRM: whether any analytics tool, such as Google Analytics, will run on the new site. If none, replace this section with: "We do not currently use analytics cookies."]
+## Things that set no cookies on our site
 
-| Tool | Purpose | Set by | Cookie names | Duration |
-| --- | --- | --- | --- | --- |
-| [TO CONFIRM: analytics tool] | Measures visits and how pages are used | [TO CONFIRM: provider] | [FROM COOKIEYES SCAN] | [FROM COOKIEYES SCAN] |
-
-## Marketing cookies
-
-These are set by third parties whose content we embed. They may track your activity across websites. They are only set if you agree.
-
-| Tool | Purpose | Set by | Cookie names | Duration |
-| --- | --- | --- | --- | --- |
-| YouTube video embeds | Plays our videos on the site. YouTube may use cookies to measure views and show you ads elsewhere [TO CONFIRM: whether privacy-enhanced mode (youtube-nocookie.com) is used] | YouTube (Google) | [FROM COOKIEYES SCAN] | [FROM COOKIEYES SCAN] |
-| MailerLite (only if its forms track visitors) | Measures how our sign-up forms perform [TO CONFIRM: whether MailerLite sets tracking cookies on the new site] | MailerLite | [FROM COOKIEYES SCAN] | [FROM COOKIEYES SCAN] |
+- **Fonts.** Our fonts (Montserrat and Mansalva) are served from our own site. They set no cookies and send no data to a font provider.
+- **Newsletter sign-up.** Our footer sign-up form sends your details straight to MailerLite. It uses no MailerLite script and sets no cookies on our site.
+- **Application forms.** Our application and diagnostic forms are links to Jotform's site (form.jotform.com). When you open one, you are on Jotform's site and its own cookie policy applies.
+- **Links to YouTube, Spotify, Apple Podcasts, Amazon Music and LinkedIn.** These are plain links. They set no cookies until you leave our site. Any YouTube video we embed uses YouTube's privacy-enhanced mode (youtube-nocookie.com) or loads only when you click it.
 
 ## How to change or withdraw your consent
 
-You can reopen the cookie banner at any time with the "Cookie settings" link in the site footer. There you can accept, decline or change your choices for each group.
+You can reopen the cookie banner at any time with the "Cookie settings" link in the site footer, next to Privacy and Terms. There you can accept, decline or change your choices for each group.
 
 If you withdraw your consent, this does not affect anything that happened before you withdrew.
 
-You can also block or delete cookies in your browser settings. If you block all cookies, some parts of the site, such as chat, booking or forms, may not work.
+You can also block or delete cookies in your browser settings. If you block all cookies, some parts of the site, such as chat, booking or the podcast player, may not work.
 
-Cookies set by third parties (such as tawk.to, MailerLite, TidyCal, Jotform, YouTube and Google) follow each provider's own cookie and privacy policies.
+Cookies set by third parties (tawk.to, TidyCal and Buzzsprout on our site, and any site you visit through our links, such as Jotform, YouTube or Spotify) follow each provider's own cookie and privacy policies.
 
 ## Updates to this policy
 
