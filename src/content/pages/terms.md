@@ -4,6 +4,10 @@ description: Terms of use for the website run by DoGood OÜ.
 updated: "[date of publication]"
 ---
 
+# Terms of Use
+
+Last updated: [date of publication]
+
 ## Who we are
 
 This website, [www.dogoodagency.co](https://www.dogoodagency.co), is run by DoGood OÜ, a private limited company registered in Estonia (registry code 14695833, VAT number EE102348673), with its address at Männimäe 1, Kuusalu 74626, Estonia. [TO CONFIRM: Business Register still shows Uusmaa tee 10-16, Peetri; Mari to confirm] In these terms, "we", "us" and "our" mean DoGood OÜ.
@@ -80,9 +84,9 @@ You can't know if the Founder Reclamation Partnership (FRP) is right for you fro
 
 **Who can use it.** The guarantee applies only if you:
 
-1. complete all onboarding steps;
-2. attend your first two private 1:1 sessions; and
-3. ask to exit within the guarantee window.
+- complete all onboarding steps;
+- attend your first two private 1:1 sessions; and
+- ask to exit within the guarantee window.
 
 **The guarantee window.** Email us within the guarantee window after Session 1, as set out in your signed client agreement.
 
@@ -128,7 +132,7 @@ We may update these terms from time to time. The new version will be posted on t
 
 ## Other terms
 
-These terms, together with our [Privacy Policy](/privacy) and [Cookies Policy](/cookies), are the whole agreement between you and us about using this website. Our services are covered by your signed client agreement.
+These terms, together with our Privacy Policy and Cookies Policy, are the whole agreement between you and us about using this website. Our services are covered by your signed client agreement.
 
 If any part of these terms is found invalid, the rest still applies. If we do not enforce a right right away, we do not give it up.
 

@@ -2970,6 +2970,28 @@ main {
   padding-left: 1.2em;
 }
 
+.page-body {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.page-body table {
+  width: 100%;
+  min-width: 640px;
+  margin: 0 0 20px;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.page-body th,
+.page-body td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--color-mist);
+  text-align: left;
+  vertical-align: top;
+}
+
 .page-body a {
   color: var(--color-pink-deep);
 }
