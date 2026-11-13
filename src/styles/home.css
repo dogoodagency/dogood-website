@@ -2571,3 +2571,38 @@ p.services-note {
     margin-left: calc((100vw - 1400px) * 0.32);
   }
 }
+
+main {
+  position: relative;
+}
+
+.through-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.through-line svg {
+  display: block;
+  overflow: hidden;
+}
+
+.card,
+.why-sketch,
+#first-draw,
+.reviews-band,
+.asseen-frame,
+.wf-group,
+.track-block,
+.next-inner,
+#apply-first,
+#apply-v,
+.logo-viewport,
+.section-wave {
+  position: relative;
+  z-index: 2;
+}

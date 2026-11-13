@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
 import Base from "../layouts/Base.astro";
+import ThroughLine from "../components/ThroughLine.astro";
 import Wave from "../components/Wave.astro";
 import { logos, reviews, urls } from "../data/homepage";
 
@@ -58,6 +59,7 @@ const notFit = [
 ---
 
 <Base>
+  <ThroughLine />
   <section class="hero" id="hero">
     <div class="hero-inner">
       <h1 class="t-display">
