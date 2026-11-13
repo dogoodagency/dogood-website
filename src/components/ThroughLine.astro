@@ -286,6 +286,15 @@
       const headline = box(document.querySelector(".hero h1"));
       const clients = box(document.querySelector("#clients"));
       const exit = box(document.querySelector("#exit-card"));
+      const exitMachine = box(document.querySelector(".exit-machine"));
+      // The card now sits on the right. The frozen line still traces where the card used to sit.
+      if (exit && exitMachine && exit.x > exitMachine.x + 8) {
+        const left = exitMachine.x;
+        exit.x = left;
+        exit.left = left;
+        exit.right = left + exit.w;
+        exit.cx = left + exit.w / 2;
+      }
       const caseCard = box(document.querySelector("#case-j article")) || box(document.querySelector("#case-j"));
       const next = box(document.querySelector("#next"));
       if (!hero || !headline || !clients || !exit || !next) return;

@@ -4435,13 +4435,18 @@ button.btn-subscribe:focus-visible,
 
   .exit-layout {
     display: flex;
+    flex-direction: row-reverse;
     align-items: center;
     justify-content: flex-start;
-    gap: 48px;
+    gap: 28px;
   }
 
   .exit-machine {
-    margin-top: 0;
+    margin-top: -10px;
+    margin-bottom: -10px;
+    flex: 0 0 468px;
+    width: 468px;
+    translate: none;
   }
 
   #exit {
@@ -4450,14 +4455,9 @@ button.btn-subscribe:focus-visible,
 
   #exit-card {
     flex: 0 1 840px;
-    width: min(840px, 58%);
+    width: 840px;
     max-width: 840px;
     margin: 0;
-  }
-
-  .exit-machine {
-    flex: 0 0 390px;
-    width: 390px;
   }
 
   .why-grid {
@@ -5168,13 +5168,13 @@ button.btn-subscribe:focus-visible {
   }
 
   .exit-machine {
-    translate: 200px 0;
+    translate: none;
   }
 }
 
 @media (min-width: 1081px) and (max-width: 1460px) {
   .exit-machine {
-    translate: 118px 0;
+    translate: none;
   }
 }
 
