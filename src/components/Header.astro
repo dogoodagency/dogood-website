@@ -1,66 +1,100 @@
 ---
+import { Image } from "astro:assets";
+import logo from "../assets/photos/logo-nav.png";
+import { urls } from "../data/homepage";
+
 const links = [
-  {
-    href: "https://www.dogoodagency.co/founders",
-    label: "Founders",
-    hint: "start here",
-  },
-  {
-    href: "https://www.dogoodagency.co/wayfinders",
-    label: "Wayfinders",
-    hint: "meet the team",
-  },
+  { href: "/how-it-works", label: "How it works" },
+  { href: "/stories", label: "Stories" },
+  { href: "/wayfinders", label: "Wayfinders" },
+  { href: "/for-advisors", label: "For Advisors" },
 ];
 ---
 
-<header class="sticky top-0 z-40 bg-ink text-white">
-  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 md:px-6">
-    <a href="/" class="shrink-0" aria-label="DoGood Agency">
-      <img src="/logo.svg" alt="" width="160" height="61" class="h-12 w-auto md:h-14" />
+<header class="nav">
+  <div class="nav-bar">
+    <a class="nav-logo" href="/">
+      <Image
+        src={logo}
+        alt="DoGood Agency"
+        widths={[240, 480, 720]}
+        sizes="148px"
+        loading="eager"
+        fetchpriority="high"
+      />
     </a>
-
-    <nav class="hidden items-center gap-10 md:flex" aria-label="Primary">
+    <ul class="nav-links" aria-label="Primary">
       {
         links.map((link) => (
-          <a href={link.href} class="group text-center">
-            <span class="block text-base font-semibold">{link.label}</span>
-            <span class="block text-[10px] italic text-cloud">{link.hint}</span>
-          </a>
+          <li>
+            <a href={link.href}>{link.label}</a>
+          </li>
         ))
       }
-      <a
-        href="https://www.dogoodagency.co/apply-stage-1"
-        class="inline-flex min-h-12 items-center rounded-full border border-white/70 px-5 text-[19px] font-bold text-white transition hover:bg-white hover:text-ink"
-      >
-        Apply for Stage 1 →
-      </a>
-    </nav>
-
-    <details class="relative md:hidden">
-      <summary
-        class="flex min-h-12 cursor-pointer list-none items-center rounded-full border border-white/70 px-4 text-sm font-bold [&::-webkit-details-marker]:hidden"
-      >
-        Menu
-      </summary>
-      <nav
-        class="absolute right-0 mt-2 w-56 rounded-2xl bg-white p-3 text-ink shadow-xl"
-        aria-label="Primary"
-      >
-        {
-          links.map((link) => (
-            <a href={link.href} class="block rounded-xl px-3 py-3">
-              <span class="block font-semibold">{link.label}</span>
-              <span class="block text-xs italic text-ink/80">{link.hint}</span>
-            </a>
-          ))
-        }
-        <a
-          href="https://www.dogoodagency.co/apply-stage-1"
-          class="mt-1 flex min-h-12 items-center justify-center rounded-full bg-pink-deep px-4 text-[19px] font-bold text-white"
-        >
-          Apply for Stage 1 →
-        </a>
-      </nav>
-    </details>
+    </ul>
+    <button class="nav-burger" type="button" aria-expanded="false" aria-controls="nav-panel">
+      <span class="sr-only">Menu</span>
+      <span class="nav-burger-icon" aria-hidden="true"></span>
+    </button>
   </div>
+  <a class="nav-apply" href={urls.apply}>
+    Apply for Stage 1
+    <picture class="nav-apply-icon">
+      <source type="image/webp" srcset="/nav/apply-pill-icon-open-door-32.webp 1x, /nav/apply-pill-icon-open-door-64.webp 2x" />
+      <img src="/nav/apply-pill-icon-open-door-32.png" srcset="/nav/apply-pill-icon-open-door-32.png 1x, /nav/apply-pill-icon-open-door-64.png 2x" width="32" height="32" alt="" />
+    </picture>
+  </a>
+  <nav id="nav-panel" class="nav-panel" hidden aria-label="Primary">
+    {
+      links.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))
+    }
+  </nav>
 </header>
+
+<script>
+  const header = document.querySelector("header.nav");
+  const burger = header?.querySelector(".nav-burger");
+  const panel = header?.querySelector("#nav-panel");
+
+  if (header instanceof HTMLElement && burger instanceof HTMLButtonElement && panel instanceof HTMLElement) {
+    const items = () => [...panel.querySelectorAll("a")];
+
+    const setOpen = (open) => {
+      burger.setAttribute("aria-expanded", open ? "true" : "false");
+      panel.hidden = !open;
+    };
+
+    burger.addEventListener("click", () => {
+      const open = burger.getAttribute("aria-expanded") !== "true";
+      setOpen(open);
+      if (open) items()[0]?.focus();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape" || burger.getAttribute("aria-expanded") !== "true") return;
+      setOpen(false);
+      burger.focus();
+    });
+
+    panel.addEventListener("keydown", (event) => {
+      if (event.key !== "Tab" || panel.hidden) return;
+      const list = items();
+      const first = list[0];
+      const last = list[list.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        burger.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        burger.focus();
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!(event.target instanceof Node) || header.contains(event.target)) return;
+      if (burger.getAttribute("aria-expanded") === "true") setOpen(false);
+    });
+  }
+</script>
