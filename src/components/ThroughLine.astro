@@ -53,16 +53,29 @@
     };
 
     const smooth = (points) => {
-      const d = [`M ${points[0].x.toFixed(1)} ${points[0].y.toFixed(1)}`];
-      for (let i = 0; i < points.length - 1; i++) {
-        const p0 = points[i - 1] || points[i];
-        const p1 = points[i];
-        const p2 = points[i + 1];
-        const p3 = points[i + 2] || p2;
-        const c1x = p1.x + (p2.x - p0.x) / 6;
-        const c1y = p1.y + (p2.y - p0.y) / 6;
-        const c2x = p2.x - (p3.x - p1.x) / 6;
-        const c2y = p2.y - (p3.y - p1.y) / 6;
+      const usable = points.filter((point) => Number.isFinite(point.x) && Number.isFinite(point.y));
+      if (usable.length < 2) return "";
+      const d = [`M ${usable[0].x.toFixed(1)} ${usable[0].y.toFixed(1)}`];
+      const shorten = (cx, cy, ax, ay, max) => {
+        const dx = cx - ax;
+        const dy = cy - ay;
+        const len = Math.hypot(dx, dy) || 1;
+        if (len <= max) return [cx, cy];
+        return [ax + (dx / len) * max, ay + (dy / len) * max];
+      };
+      for (let i = 0; i < usable.length - 1; i++) {
+        const p0 = usable[i - 1] || usable[i];
+        const p1 = usable[i];
+        const p2 = usable[i + 1];
+        const p3 = usable[i + 2] || p2;
+        const span = Math.hypot(p2.x - p1.x, p2.y - p1.y) || 1;
+        const max = Math.min(span * 0.28, 90);
+        let c1x = p1.x + (p2.x - p0.x) / 6;
+        let c1y = p1.y + (p2.y - p0.y) / 6;
+        let c2x = p2.x - (p3.x - p1.x) / 6;
+        let c2y = p2.y - (p3.y - p1.y) / 6;
+        [c1x, c1y] = shorten(c1x, c1y, p1.x, p1.y, max);
+        [c2x, c2y] = shorten(c2x, c2y, p2.x, p2.y, max);
         d.push(
           `C ${c1x.toFixed(1)} ${c1y.toFixed(1)}, ${c2x.toFixed(1)} ${c2y.toFixed(1)}, ${p2.x.toFixed(1)} ${p2.y.toFixed(1)}`,
         );
@@ -73,7 +86,9 @@
     const build = () => {
       const width = main.clientWidth;
       const phone = width <= 1080;
-      const stroke = phone ? 3 : 4;
+      const stroke = phone ? 2.25 : 2.75;
+      const hero = box(document.querySelector("#hero"));
+      const headline = box(document.querySelector(".hero h1"));
       const clients = box(document.querySelector("#clients"));
       const exit = box(document.querySelector("#exit-card"));
       const caseJ = box(document.querySelector("#case-j"));
@@ -94,92 +109,75 @@
       const guarantee = box(document.querySelector("#guarantee"));
       const next = box(document.querySelector("#next"));
       const nextInner = box(document.querySelector("#next .next-inner"));
-      if (!clients || !exit || !next || !nextInner) return;
+      if (!hero || !headline || !clients || !exit || !next || !nextInner) return;
 
-      const origin = clients.bottom + (phone ? 8 : 6);
-      const end = next.bottom - 8;
+      const origin = headline.bottom + (phone ? 18 : 28);
+      const end = main.clientHeight - 6;
       const y = (value) => value - origin;
-      const lane = (value) => Math.min(width - (phone ? 12 : 20), Math.max(phone ? 12 : 16, value));
-      const run = clients.bottom + Math.min(36, Math.max(16, (exit.y - clients.bottom) * 0.28));
+      const lane = (value) => Math.min(width - (phone ? 14 : 24), Math.max(phone ? 12 : 20, value));
+      const wave = hero.bottom - (phone ? 28 : 36);
 
       founder.setAttribute("stroke-width", String(stroke));
       company.setAttribute("stroke-width", String(stroke));
-      companyMask.setAttribute("stroke-width", String(stroke + 10));
-      company.setAttribute("stroke-dasharray", phone ? "8 7" : "11 9");
+      companyMask.setAttribute("stroke-width", String(stroke + 8));
+      company.setAttribute("stroke-dasharray", phone ? "7 6" : "10 8");
 
       let founderPts;
       let companyPts;
 
       if (phone) {
-        const side = 14;
+        const side = 8;
         founderPts = [
-          { x: 0, y: y(run + 18) },
-          { x: width * 0.28, y: y(run) },
-          { x: side, y: y(run + 28) },
-          { x: side, y: y(exit.bottom) },
-          { x: side, y: y((forYou || apply).bottom) },
-          { x: side, y: y((why || reviews).y) },
-          { x: side, y: y(reviews.y) },
-          { x: side, y: y(caseV.y) },
-          { x: side, y: y(message.y) },
-          { x: side, y: y(guarantee.y) },
-          { x: side, y: y(nextInner.y) },
-          { x: side, y: y(nextInner.bottom + 20) },
-          { x: width / 2, y: y(nextInner.bottom + 20) },
-          { x: width - 16, y: y(nextInner.bottom + 20) },
-          { x: width - 16, y: y(nextInner.y + 16) },
+          { x: side, y: y(origin + 2) },
+          { x: side, y: y(end - 4) },
         ];
         companyPts = [
-          { x: 0, y: y(run + 34) },
-          { x: width * 0.42, y: y(run + 16) },
-          { x: width + 4, y: y(run + 22) },
+          { x: side + 14, y: y(clients.bottom - 4) },
+          { x: width * 0.55, y: y(clients.bottom + 10) },
+          { x: width + 12, y: y(exit.y + 12) },
         ];
       } else {
-        const gutter = lane(width - 36);
+        const left = 36;
+        const right = width - 36;
+        const belowLogos = clients.bottom + 36;
         const between =
-          firstDraw && firstCard ? (firstDraw.right + firstCard.left) / 2 : firstCard ? firstCard.x - 36 : width * 0.62;
+          firstDraw && firstCard ? (firstDraw.right + firstCard.left) / 2 : width * 0.62;
         const youMid =
-          youCards.length === 2 ? (youCards[0].right + youCards[1].left) / 2 : forYou ? forYou.cx : width / 2;
+          youCards.length === 2 ? (youCards[0].right + youCards[1].left) / 2 : width * 0.5;
         const whyLane =
-          whyCard && whySketch ? (whyCard.right + whySketch.left) / 2 : whyCard ? whyCard.right + 28 : width * 0.58;
-        const frame = 56;
+          whyCard && whySketch ? (whyCard.right + whySketch.left) / 2 : width * 0.58;
+        const frame = 42;
         founderPts = [
-          { x: -4, y: y(run + 34) },
-          { x: width * 0.16, y: y(run - 6) },
-          { x: width * 0.48, y: y(run + 4) },
-          { x: lane(Math.min(exit.right - 80, width * 0.72)), y: y(run + 8) },
-          { x: gutter, y: y(exit.y + 24) },
-          { x: gutter, y: y(exit.y + exit.h * 0.72) },
-          { x: lane(exit.cx + 20), y: y(exit.bottom + 36) },
-          { x: lane(caseJ.cx), y: y(caseJ.bottom + 36) },
-          { x: lane(between), y: y(first.y + first.h * 0.55) },
-          { x: lane(between), y: y(first.bottom + 8) },
-          { x: lane(apply.cx + 70), y: y(apply.cy || apply.y + 40) },
-          { x: lane(apply.cx - 40), y: y(apply.bottom + 24) },
-          { x: lane(youMid), y: y(forYou.y + 8) },
-          { x: lane(youMid - 110), y: y(forYou.y + forYou.h * 0.38) },
-          { x: lane(youMid + 110), y: y(forYou.y + forYou.h * 0.72) },
-          { x: lane(youMid), y: y(forYou.bottom + 12) },
-          { x: lane(whyLane), y: y(why.y + 70) },
-          { x: lane(whyLane), y: y(why.bottom - 30) },
-          { x: width / 2, y: y(reviews.y - 16) },
-          { x: width / 2, y: y(caseV.y - 8) },
-          { x: width / 2, y: y((caseV.bottom + seen.y) / 2) },
-          { x: width / 2, y: y(message.y - 12) },
-          { x: width / 2, y: y(guides.y + 24) },
-          { x: width / 2, y: y(guarantee.y - 10) },
-          { x: width / 2, y: y(next.y + 30) },
-          { x: lane(nextInner.x - frame), y: y(nextInner.y - 4) },
-          { x: lane(nextInner.x - frame), y: y(nextInner.bottom + 22) },
-          { x: lane(nextInner.right + frame), y: y(nextInner.bottom + 22) },
-          { x: lane(nextInner.right + frame), y: y(nextInner.y + 28) },
+          { x: left, y: y(origin + 4) },
+          { x: left, y: y(origin + 260) },
+          { x: left, y: y(belowLogos) },
+          { x: width * 0.42, y: y(belowLogos) },
+          { x: width * 0.68, y: y(belowLogos) },
+          { x: right, y: y(exit.y + 28) },
+          { x: right, y: y(exit.bottom + 24) },
+          { x: right, y: y((caseJ ? caseJ.bottom : exit.bottom) + 20) },
+          { x: lane(between), y: y(first ? first.y + first.h * 0.58 : exit.bottom + 240) },
+          { x: right, y: y((forYou ? forYou.y : reviews.y) - 28) },
+          { x: lane(youMid), y: y((forYou ? forYou.y : reviews.y) - 8) },
+          { x: lane(youMid), y: y(forYou ? forYou.y + forYou.h * 0.5 : reviews.y) },
+          { x: left, y: y(why ? why.y + 40 : reviews.bottom) },
+          { x: lane(whyLane), y: y(why ? why.y + why.h * 0.55 : reviews.bottom) },
+          { x: left, y: y(reviews ? reviews.bottom + 16 : caseV.y) },
+          { x: left, y: y(message ? message.y + 48 : next.y) },
+          { x: left, y: y(next.y - 12) },
+          { x: lane(nextInner.x - frame), y: y(next.y + 20) },
+          { x: lane(nextInner.x - frame), y: y(next.bottom - 28) },
+          { x: lane(nextInner.cx), y: y(next.bottom - 16) },
+          { x: lane(nextInner.right + frame), y: y(next.bottom - 28) },
+          { x: lane(nextInner.right + frame), y: y(end - 2) },
         ];
         companyPts = [
-          { x: -4, y: y(run + 52) },
-          { x: width * 0.2, y: y(run + 16) },
-          { x: width * 0.5, y: y(run + 22) },
-          { x: lane(exit.right - 80), y: y(exit.y - 8) },
-          { x: width + 6, y: y(exit.y + Math.min(120, exit.h * 0.28)) },
+          { x: left + 18, y: y(wave) },
+          { x: left + 18, y: y(belowLogos + 14) },
+          { x: width * 0.36, y: y(belowLogos + 14) },
+          { x: width * 0.62, y: y(belowLogos + 14) },
+          { x: lane(exit.right + 8), y: y(exit.y - 6) },
+          { x: width + 18, y: y(exit.y + 30) },
         ];
       }
 
@@ -199,33 +197,40 @@
       triggers.forEach((trigger) => trigger.kill());
       triggers = [];
 
-      const reveal = (path, startY, finishY) => {
-        const length = path.getTotalLength();
-        if (reduce.matches) {
-          path.style.strokeDasharray = `${length}`;
-          path.style.strokeDashoffset = "0";
-          return;
-        }
+      const founderLength = founder.getTotalLength();
+      const maskLength = companyMask.getTotalLength();
+      const pageTop = main.getBoundingClientRect().top + window.scrollY;
+      const founderStart = pageTop + origin;
+      const founderEnd = pageTop + end;
+      const companyEnd = pageTop + exit.y + (phone ? 24 : exit.h * 0.2);
+
+      const paint = (path, length, startY, finishY) => {
+        const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        const atEnd = window.scrollY >= maxScroll - 2;
+        const focus = atEnd ? finishY + 40 : window.scrollY + window.innerHeight * 0.82;
+        const progress = reduce.matches
+          ? 1
+          : Math.min(1, Math.max(0, (focus - startY) / Math.max(1, finishY - startY)));
         path.style.strokeDasharray = `${length}`;
-        path.style.strokeDashoffset = `${length}`;
+        path.style.strokeDashoffset = String(length * (1 - progress));
+      };
+
+      paint(founder, founderLength, founderStart, founderEnd);
+      paint(companyMask, maskLength, founderStart, companyEnd);
+
+      if (!reduce.matches) {
         triggers.push(
           ScrollTrigger.create({
             start: 0,
             end: "max",
-            scrub: 0.35,
+            scrub: 0.45,
             onUpdate: () => {
-              const focus = window.scrollY + window.innerHeight * 0.62;
-              const progress = Math.min(1, Math.max(0, (focus - startY) / Math.max(1, finishY - startY)));
-              path.style.strokeDashoffset = String(length * (1 - progress));
+              paint(founder, founderLength, founderStart, founderEnd);
+              paint(companyMask, maskLength, founderStart, companyEnd);
             },
           }),
         );
-      };
-
-      const pageTop = main.getBoundingClientRect().top + window.scrollY;
-      reveal(founder, pageTop + origin + 20, pageTop + end - 40);
-      reveal(companyMask, pageTop + origin + 20, pageTop + (phone ? exit.y : exit.y + exit.h * 0.35));
-      ScrollTrigger.refresh();
+      }
     };
 
     let frame = 0;

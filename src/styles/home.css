@@ -2653,6 +2653,18 @@ main {
   overflow: hidden;
 }
 
+.through-line path {
+  will-change: stroke-dashoffset;
+}
+
+.hero-inner,
+#clients,
+#apply-first,
+#apply-v {
+  position: relative;
+  z-index: 2;
+}
+
 .card,
 .why-sketch,
 #first-draw,
