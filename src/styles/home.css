@@ -6,6 +6,7 @@
   --swell: #d4f4eb;
   --pad: clamp(20px, 5.56vw, 80px);
   --nav-inset: 16px;
+  --accent-bar: 16px;
 }
 
 main p,
@@ -4359,6 +4360,8 @@ header.nav .nav-apply:focus-visible::before {
 @media (min-width: 1200px) {
   :root {
     --nav-inset: 150px;
+    /* Thin teal accent, measured just left of the nav pill in Seb's exit reference. */
+    --accent-bar: 138px;
   }
 
   header.nav {
@@ -4449,11 +4452,11 @@ button.btn-subscribe:focus-visible,
 
   .exit-machine {
     position: absolute;
-    left: calc(var(--nav-inset) - var(--exit-pad-left));
+    left: calc(var(--accent-bar) - var(--exit-pad-left));
     top: 50%;
     margin: 0;
     flex: none;
-    width: 468px;
+    width: 515px;
     translate: 0 -50%;
   }
 
@@ -4465,7 +4468,7 @@ button.btn-subscribe:focus-visible,
   #exit-card {
     flex: 0 1 840px;
     width: 840px;
-    max-width: min(840px, calc(100% - (var(--nav-inset) - var(--exit-pad-left) + 468px + 32px)));
+    max-width: min(840px, calc(100% - (var(--accent-bar) - var(--exit-pad-left) + 515px + 32px)));
     margin: 0;
   }
 
