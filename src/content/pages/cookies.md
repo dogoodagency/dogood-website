@@ -17,11 +17,11 @@ Last updated: [date of publication]
 
 Cookies are small text files that a website stores on your device. Similar technologies, such as local storage, pixels and scripts from embedded content, work in a similar way. In this policy, "cookies" covers all of them.
 
-DoGood OÜ uses cookies on [www.dogoodagency.co](https://www.dogoodagency.co). This policy explains which ones, why, and how you can control them. Our [Privacy Policy](/privacy) (Part 1) explains how we handle personal data more generally.
+DoGood OÜ uses cookies on [www.dogoodagency.co](https://www.dogoodagency.co). This policy explains which ones, why, and how you can control them. [Our Privacy Policy](/privacy/) explains how we handle personal data more generally.
 
 ## Our legal basis
 
-We only use cookies that are not strictly necessary if you agree. This follows the EU ePrivacy rules as applied in Estonia, and the GDPR. Where cookies involve personal data, our legal basis is your consent (Art. 6(1)(a) GDPR). [ADVISER: confirm the Estonian provision that implements Art. 5(3) of the ePrivacy Directive 2002/58/EC]
+We only use cookies that are not strictly necessary if you agree. This follows the EU ePrivacy rules as applied in Estonia, and the GDPR. Where cookies involve personal data, our legal basis is your consent (Art. 6(1)(a) GDPR).
 
 Strictly necessary cookies do not need your consent. Without them, the site or a service you asked for would not work.
 
