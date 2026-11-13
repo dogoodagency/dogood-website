@@ -7,8 +7,10 @@ const links = [
   { href: "/how-it-works", label: "How it works" },
   { href: "/stories", label: "Stories" },
   { href: "/wayfinders", label: "Wayfinders" },
-  { href: "/for-advisors", label: "For Advisors" },
+  { href: "/for-advisors", label: "For Advisors", menu: "nav-advisors" },
 ];
+
+const advisorResources = { href: "/for-advisors/resources", label: "Resources" };
 ---
 
 <header class="nav">
@@ -26,8 +28,20 @@ const links = [
     <ul class="nav-links" aria-label="Primary">
       {
         links.map((link) => (
-          <li>
-            <a href={link.href}>{link.label}</a>
+          <li class:list={["nav-item", link.menu && "has-menu"]}>
+            <a
+              href={link.href}
+              aria-expanded={link.menu ? "false" : undefined}
+              aria-haspopup={link.menu ? "true" : undefined}
+              aria-controls={link.menu}
+            >
+              {link.label}
+            </a>
+            {link.menu && (
+              <div class="nav-drop" id={link.menu}>
+                <a href={advisorResources.href}>{advisorResources.label}</a>
+              </div>
+            )}
           </li>
         ))
       }
@@ -47,7 +61,14 @@ const links = [
   <nav id="nav-panel" class="nav-panel" hidden aria-label="Primary">
     {
       links.map((link) => (
-        <a href={link.href}>{link.label}</a>
+        <>
+          <a href={link.href}>{link.label}</a>
+          {link.menu && (
+            <a class="nav-sub" href={advisorResources.href}>
+              {advisorResources.label}
+            </a>
+          )}
+        </>
       ))
     }
   </nav>
@@ -95,6 +116,59 @@ const links = [
     document.addEventListener("click", (event) => {
       if (!(event.target instanceof Node) || header.contains(event.target)) return;
       if (burger.getAttribute("aria-expanded") === "true") setOpen(false);
+    });
+  }
+
+  const advisor = header?.querySelector(".nav-item.has-menu");
+  const advisorLink = advisor?.querySelector("a[aria-controls]");
+  const advisorMenu = advisor?.querySelector(".nav-drop");
+  if (
+    advisor instanceof HTMLElement &&
+    advisorLink instanceof HTMLAnchorElement &&
+    advisorMenu instanceof HTMLElement
+  ) {
+    let closing = false;
+    const menuOpen = () => advisorLink.getAttribute("aria-expanded") === "true";
+    const setMenu = (open) => {
+      advisor.classList.toggle("is-open", open);
+      advisorLink.setAttribute("aria-expanded", open ? "true" : "false");
+    };
+    const desktopMenu = () => {
+      const list = advisor.closest(".nav-links");
+      return list instanceof HTMLElement && getComputedStyle(list).display !== "none";
+    };
+
+    advisor.addEventListener("pointerenter", () => {
+      if (desktopMenu()) setMenu(true);
+    });
+    advisor.addEventListener("pointerleave", () => {
+      if (!advisor.contains(document.activeElement)) setMenu(false);
+    });
+    advisor.addEventListener("focusin", () => {
+      if (closing || !desktopMenu()) return;
+      setMenu(true);
+    });
+    advisor.addEventListener("focusout", (event) => {
+      if (!(event.relatedTarget instanceof Node) || !advisor.contains(event.relatedTarget)) setMenu(false);
+    });
+    advisorLink.addEventListener("click", (event) => {
+      if (!desktopMenu() || menuOpen()) return;
+      event.preventDefault();
+      setMenu(true);
+      advisorMenu.querySelector("a")?.focus();
+    });
+    advisorLink.addEventListener("keydown", (event) => {
+      if (event.key !== "ArrowDown" || !desktopMenu()) return;
+      event.preventDefault();
+      setMenu(true);
+      advisorMenu.querySelector("a")?.focus();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape" || !menuOpen() || !desktopMenu()) return;
+      closing = true;
+      setMenu(false);
+      advisorLink.focus();
+      closing = false;
     });
   }
 </script>

@@ -113,6 +113,8 @@ Yes, with the founder's consent. We keep you informed of the broad shape of thin
 
 No. We do not give financial or legal advice, and we do not poach. You stay the trusted advisor. We work only on the personal side of life after exit.
 
+<a class="btn-outline" href="/for-advisors/resources">Free tools for your clients</a>
+
 ---
 
 ## Closing CTA
