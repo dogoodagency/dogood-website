@@ -2985,7 +2985,9 @@ a.btn-case:focus-visible {
 }
 
 .policy-body a {
-  color: var(--color-pink-deep);
+  color: #2a0b4f;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .policy-body blockquote {
