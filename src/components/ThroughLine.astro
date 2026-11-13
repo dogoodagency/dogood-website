@@ -262,6 +262,36 @@
       return d;
     };
 
+    const toSmoothPath = (points, minRadius) => {
+      const pts = dedupe(points);
+      if (pts.length < 2) return "";
+      const fmt = (value) => value.toFixed(1);
+      if (pts.length === 2) {
+        return `M ${fmt(pts[0].x)} ${fmt(pts[0].y)} L ${fmt(pts[1].x)} ${fmt(pts[1].y)}`;
+      }
+      let d = `M ${fmt(pts[0].x)} ${fmt(pts[0].y)}`;
+      for (let i = 0; i < pts.length - 1; i += 1) {
+        const p0 = pts[Math.max(0, i - 1)];
+        const p1 = pts[i];
+        const p2 = pts[i + 1];
+        const p3 = pts[Math.min(pts.length - 1, i + 2)];
+        const span = dist(p1, p2) || 1;
+        const turn = i > 0 ? Math.abs(turnBetween(p0, p1, p2)) : 0;
+        const maxHandle = Math.min(span * 0.42, Math.max(span * 0.2, minRadius * (turn > 0.6 ? 0.9 : 0.45)));
+        const clamp = (ax, ay, bx, by) => {
+          const dx = bx - ax;
+          const dy = by - ay;
+          const len = Math.hypot(dx, dy) || 1;
+          if (len <= maxHandle) return [bx, by];
+          return [ax + (dx / len) * maxHandle, ay + (dy / len) * maxHandle];
+        };
+        let [c1x, c1y] = clamp(p1.x, p1.y, p1.x + (p2.x - p0.x) / 6, p1.y + (p2.y - p0.y) / 6);
+        let [c2x, c2y] = clamp(p2.x, p2.y, p2.x - (p3.x - p1.x) / 6, p2.y - (p3.y - p1.y) / 6);
+        d += ` C ${fmt(c1x)} ${fmt(c1y)}, ${fmt(c2x)} ${fmt(c2y)}, ${fmt(p2.x)} ${fmt(p2.y)}`;
+      }
+      return d;
+    };
+
     const monotonic = (points) => {
       let y = -Infinity;
       return points
@@ -309,14 +339,16 @@
         let level = 1;
         if (!reduce.matches) {
           const rect = funnel.getBoundingClientRect();
-          const edge = window.innerHeight * 0.5;
-          if (rect.height <= 1 || rect.top >= edge) level = 0;
-          else if (rect.bottom <= edge) level = 1;
-          else level = (edge - rect.top) / rect.height;
+        const edge = window.innerHeight * 0.5;
+        if (rect.height <= 1 || rect.top >= edge) level = 0;
+        else if (rect.bottom <= edge) level = 1;
+        else level = (edge - rect.top) / rect.height;
         }
-        const offset = level.toFixed(4);
-        swellDark.setAttribute("offset", offset);
-        swellLight.setAttribute("offset", offset);
+        const blend = 0.07;
+        const darkAt = level <= 0 ? 0 : Math.max(0, level - blend);
+        const lightAt = level <= 0 ? 0 : Math.min(1, level);
+        swellDark.setAttribute("offset", darkAt.toFixed(4));
+        swellLight.setAttribute("offset", lightAt.toFixed(4));
         const strip = document.querySelector(".footer-wave");
         if (strip instanceof HTMLElement) {
           if (reduce.matches) {
@@ -558,7 +590,7 @@
 
       const routeRadius = Math.max(founderStroke, phone ? Math.max(36, turnRadius * 0.7) : founderStroke);
       const companyRadius = phone ? Math.max(28, turnRadius * 0.85) : 72;
-      let founderD = fillet(founderPts, routeRadius);
+      let founderD = toSmoothPath(founderPts, founderStroke);
       if (dropIn && dropIn.radius > 8 && intoMouth > bendY) {
         const radius = dropIn.radius;
         const handle = radius * 0.5522847498;

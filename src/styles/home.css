@@ -2615,6 +2615,14 @@ p.say-no,
   z-index: 2;
 }
 
+#wayfinders .wf-intro,
+#wayfinders h2,
+#wayfinders .lead {
+  position: relative;
+  z-index: 3;
+  background: #f5f2f9;
+}
+
 .footer {
   padding-top: 48px;
 }
