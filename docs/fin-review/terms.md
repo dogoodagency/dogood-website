@@ -3,7 +3,7 @@ Last updated: 13 November 2026
 
 # Terms
 
-This website is run by DoGood OÜ (Estonia, registry code 14695833, VAT number EE102348673).
+This website is run by DoGood OÜ (Estonia, registry code 14695833).
 
 Last updated: 13 November 2026.
 
