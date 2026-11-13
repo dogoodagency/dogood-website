@@ -278,30 +278,14 @@
 
     const build = () => {
       const width = main.clientWidth;
-      const phone = width <= 700;
-      const founderStroke = phone ? 24 : 100;
+      const phone = width <= 768;
+      const founderStroke = phone ? 24 : Math.max(24, Math.round((140 * width) / 1710));
       const companyStroke = phone ? 12 : 50;
       const turnRadius = width >= 1081 ? 120 : Math.max(36, (120 * width) / 1440);
       const hero = box(document.querySelector("#hero"));
       const headline = box(document.querySelector(".hero h1"));
       const clients = box(document.querySelector("#clients"));
       const exit = box(document.querySelector("#exit-card"));
-      const exitSection = document.querySelector("#exit");
-      // The card sits on the right. The frozen line still traces the slot it had before that move.
-      if (exit && exitSection instanceof HTMLElement && window.innerWidth >= 1081) {
-        const padL = parseFloat(getComputedStyle(exitSection).paddingLeft) || 0;
-        const padR = parseFloat(getComputedStyle(exitSection).paddingRight) || 0;
-        const sec = box(exitSection);
-        const contentLeft = sec.x + padL;
-        const contentRight = sec.right - padR;
-        const cardW = Math.min(840, Math.max(0, contentRight - contentLeft - 468 - 28));
-        const left = contentRight - cardW - 28 - 468;
-        exit.x = left;
-        exit.left = left;
-        exit.w = cardW;
-        exit.right = left + cardW;
-        exit.cx = left + cardW / 2;
-      }
       const caseCard = box(document.querySelector("#case-j article")) || box(document.querySelector("#case-j"));
       const next = box(document.querySelector("#next"));
       if (!hero || !headline || !clients || !exit || !next) return;
@@ -428,112 +412,84 @@
         };
         if (!prev || dist(prev, point) > 24) list.push(point);
       };
+      const put = (x, y) => {
+        const prev = founderPts[founderPts.length - 1];
+        const point = {
+          x: Math.max(-80, Math.min(width + 80, x)),
+          y: prev ? Math.max(prev.y + 8, y) : y,
+        };
+        if (!prev || dist(prev, point) > 10) founderPts.push(point);
+      };
       const heroImg = document.querySelector(".hero-sketch");
+      const heroWave = document.querySelector("#hero > .hero-wave");
       let tipX = width * 0.5;
       let tipY = entryY;
-      let jointW = phone ? 5 : 10;
-      if (heroImg instanceof Element) {
+      const jointW = founderStroke;
+      if (heroImg instanceof Element && heroWave instanceof Element) {
         const image = heroImg.getBoundingClientRect();
-        const scale = image.width / 568;
-        // Same point on the drawing as before. v7.2 places the old 520×340 art at (48, 0).
-        tipX = image.left - mainRect.left + image.width * (180 / 568);
-        tipY = image.top - mainRect.top + image.height * (276.5 / 468);
-        // The hero drawing is shifted on desktop. The line stays where it was.
-        if (window.innerWidth >= 1081) {
-          tipX += 115;
-          tipY += 150;
-        }
-        jointW = Math.max(4, scale * 16);
-        add(founderPts, tipX, tipY);
-        add(founderPts, tipX - 6 * scale, tipY + 22 * scale);
+        const waveBox = heroWave.getBoundingClientRect();
+        tipX = image.left - mainRect.left + image.width * (29 / 568);
+        tipY = waveBox.top - mainRect.top + waveBox.height * 0.55;
+        put(tipX, tipY);
+        put(tipX - founderStroke * 0.15, clients.bottom - 8);
       } else {
-        add(founderPts, tipX, tipY);
+        put(tipX, tipY);
       }
-      const alongTop = Math.max(tipY + 36, exit.y - founderStroke * 0.65);
-      const pastRight = exit.right + founderStroke * 0.72;
-      add(founderPts, exit.left + exit.w * 0.08, alongTop);
-      add(founderPts, pastRight, alongTop + 8);
-      add(founderPts, pastRight, exit.bottom - 48);
-      add(founderPts, exit.cx, exit.bottom + 40);
+      const machine = box(document.querySelector(".exit-machine"));
+      if (machine) {
+        put(machine.left + machine.w * 0.83, machine.y + machine.h * 0.32);
+        put(machine.right - machine.w * 0.08, machine.y + machine.h * 0.55);
+        put(machine.right + founderStroke * 0.05, machine.bottom - 8);
+      }
       if (pinJ) {
-        add(founderPts, pinJ.cx, pinJ.y - 8);
-        add(founderPts, pinJ.cx, pinJ.bottom + 8);
+        put(pinJ.cx, pinJ.y + pinJ.h * 0.35);
+        put(pinJ.cx + pinJ.w * 0.06, pinJ.bottom + 24);
       }
       if (stones) {
-        const behindMan = stones.left + stones.w * 0.36 - (phone ? stones.w * 0.2 : 110);
-        if (!phone) add(founderPts, behindMan - 48, stones.y + Math.min(80, stones.h * 0.12));
-        add(founderPts, behindMan, stones.y + stones.h * 0.42);
-        add(founderPts, behindMan, stones.bottom - 16);
+        put(stones.left + stones.w * 0.09, stones.y + stones.h * 0.4);
+        put(stones.left + stones.w * 0.16, stones.y + stones.h * 0.55);
+        put(stones.right - stones.w * 0.04, stones.y + stones.h * 0.86);
+        put(stones.right - 18, stones.bottom + 12);
       }
-      if (firstCard) {
-        add(founderPts, firstCard.left + 36, firstCard.bottom + 18);
-        add(founderPts, firstCard.right - 20, firstCard.bottom + 24);
-      }
-      if (apply1) {
-        const lane = Math.min(width - 18, apply1.right + founderStroke * 0.62);
-        const below = apply1.bottom + 30;
-        add(founderPts, lane, apply1.y - 36);
-        add(founderPts, lane, below);
-        add(founderPts, forYou ? forYou.cx : lane - 280, below + 20);
-      }
+      const lane = apply1 ? apply1.cx : stones ? stones.right - 18 : width * 0.72;
+      if (apply1) put(lane, apply1.cy);
       if (forYou) {
-        const belowBoth = Math.max(forYou.bottom, notYou ? notYou.bottom : forYou.bottom) + 56;
-        add(founderPts, forYou.cx, forYou.y + forYou.h * 0.3);
-        add(founderPts, forYou.cx, belowBoth);
+        put(lane, forYou.y + 20);
+        put(lane, forYou.bottom + 36);
       }
       if (flyer) {
-        const through = flyer.left + flyer.w * 0.22 + (phone ? 0 : 140);
-        if (phone) {
-          add(founderPts, through, flyer.y + flyer.h * 0.42);
-          add(founderPts, through, flyer.y + flyer.h * 0.78);
-        } else {
-          const centre = flyer.left + flyer.w * 0.51;
-          add(founderPts, centre, flyer.y + flyer.h * 0.30);
-          add(founderPts, centre, flyer.y + flyer.h * 0.58);
-          add(founderPts, centre, flyer.y + flyer.h * 0.74);
-          add(founderPts, through - 44, flyer.bottom - 30);
-          add(founderPts, through - 232, flyer.bottom + 48);
-          add(founderPts, through - 245, flyer.bottom + 190);
-          add(founderPts, through - 255, flyer.bottom + 370);
-        }
+        const centre = flyer.left + flyer.w * 0.518;
+        put(centre, flyer.y + flyer.h * 0.18);
+        put(centre, flyer.y + flyer.h * 0.78);
+        put(centre - flyer.w * 0.07, flyer.bottom - flyer.h * 0.04);
+        put(centre - flyer.w * 0.18, flyer.bottom + flyer.h * 0.06);
+        put(centre - flyer.w * 0.32, flyer.bottom + flyer.h * 0.16);
+        put(centre - flyer.w * 0.46, flyer.bottom + flyer.h * 0.24);
       }
-      if (leaders) add(founderPts, leaders.cx, leaders.y + Math.max(70, leaders.h * 0.55));
       if (pinV) {
-        add(founderPts, pinV.cx, pinV.y - 16);
-        add(founderPts, pinV.cx, pinV.bottom + 12);
+        put(pinV.cx, pinV.y - 30);
+        put(pinV.cx, pinV.cy);
+        put(pinV.cx, pinV.bottom + 16);
       }
-      if (seen) {
-        add(founderPts, seen.cx, seen.y + seen.h * 0.42);
-        add(founderPts, seen.cx, seen.bottom - 6);
-      }
-      if (apply2) add(founderPts, apply2.cx, apply2.cy);
+      const lane2 = apply2 ? apply2.cx - 10 : pinV ? pinV.cx : width * 0.32;
+      if (seen) put(lane2, seen.bottom + 28);
+      if (apply2) put(lane2, apply2.cy);
       if (message) {
-        add(founderPts, message.cx, message.y + message.h * 0.22);
-        add(founderPts, message.right - 30, message.bottom - 6);
-      }
-      const lead = at("#wayfinders .lead");
-      const sideX = phone && lead
-        ? lead.right + founderStroke + 8
-        : Math.min(width - founderStroke * 0.42, width - 24) - 150;
-      if (phone && lead) {
-        const above = message ? Math.min(lead.y - 28, message.bottom + 20) : lead.y - 28;
-        add(founderPts, sideX, above);
-        add(founderPts, sideX, lead.bottom + 12);
-      } else if (finders) {
-        add(founderPts, sideX, finders.y - 10);
+        put(lane2, message.y - 12);
+        put(message.left + message.w * 0.31, message.bottom + 6);
+        put(message.left + message.w * 0.4, message.bottom + 70);
+        put(message.left + message.w * 0.52, message.bottom + 150);
+        put(message.left + message.w * 0.6, message.bottom + 230);
       }
       if (track) {
-        add(founderPts, sideX, track.y - 220);
-        add(founderPts, track.cx, track.y - 70);
-        add(founderPts, track.cx, track.bottom - 8);
+        put(track.cx, track.bottom + 12);
+        put(track.cx, track.bottom + Math.max(40, founderStroke));
       }
       if (guarantee) {
-        const along = guarantee.left + 28;
-        add(founderPts, along, guarantee.y + 16);
-        add(founderPts, along, guarantee.y + guarantee.h * 0.62);
-        add(founderPts, mouthX, guarantee.bottom - 6);
+        put(guarantee.cx, guarantee.y + guarantee.h * 0.45);
+        put(guarantee.cx, guarantee.bottom - 6);
       }
-      add(founderPts, mouthX, intoMouth);
+      put(mouthX, intoMouth);
       const dropIn = null;
 
       const companyY = entryY - Math.max(36, companyStroke + 16);
@@ -557,7 +513,7 @@
       svg.setAttribute("width", String(width));
       svg.setAttribute("height", String(height));
 
-      const routeRadius = phone ? Math.max(36, turnRadius * 0.7) : 100;
+      const routeRadius = phone ? Math.max(36, turnRadius * 0.7) : 72;
       const companyRadius = phone ? Math.max(28, turnRadius * 0.85) : 72;
       let founderD = fillet(founderPts, routeRadius);
       if (dropIn && dropIn.radius > 8 && intoMouth > bendY) {
@@ -573,7 +529,9 @@
       const join = document.querySelector("#founder-join");
       const fullLength = founder.getTotalLength();
       const taperLen = Math.min(phone ? 90 : 220, Math.max(48, fullLength * 0.05));
-      if (join instanceof SVGPathElement && fullLength > taperLen + founderStroke) {
+      // The stroke itself starts at the hero wave, so it can draw through the
+      // hidden stretch. No separate taper.
+      if (false && join instanceof SVGPathElement && fullLength > taperLen + founderStroke) {
         const startW = jointW;
         const cap = founderStroke / 2;
         const samples = [];
@@ -786,44 +744,6 @@
       triggers = [];
 
       const reveal = revealArt;
-
-      // The route above the first Apply button stays in the waypoint list, but it
-      // is not drawn. The visible line starts under that button, cap tucked behind it.
-      const applyBtn = document.querySelector("#apply-first .btn-apply");
-      if (applyBtn instanceof Element && main) {
-        const btn = applyBtn.getBoundingClientRect();
-        const origin = main.getBoundingClientRect();
-        const note = document.querySelector("#apply-first .cap-pill");
-        const noteBottom = note instanceof Element ? note.getBoundingClientRect().bottom : btn.bottom;
-        const btnLeft = btn.left - origin.left;
-        const btnRight = btn.right - origin.left;
-        const btnTop = btn.top - origin.top;
-        const coverBottom = noteBottom - origin.top;
-        const lenNow = founder.getTotalLength();
-        const capR = founderStroke / 2;
-        let startLen = -1;
-        for (let d = 0; d <= lenNow; d += 4) {
-          const point = founder.getPointAtLength(d);
-          const ahead = founder.getPointAtLength(Math.min(lenNow, d + 12));
-          const goingLeft = ahead.x < point.x - 0.15;
-          const besideButton = point.y >= btnTop && point.y <= coverBottom + capR;
-          const underTheButton = point.x <= btnRight - capR * 0.45 && point.x >= btnLeft;
-          if (goingLeft && besideButton && underTheButton) {
-            startLen = d;
-            break;
-          }
-        }
-        if (startLen > 8) {
-          const kept = [];
-          for (let d = startLen; d < lenNow; d += 8) kept.push(founder.getPointAtLength(d));
-          kept.push(founder.getPointAtLength(lenNow));
-          founder.setAttribute(
-            "d",
-            kept.map((point, index) => `${index ? "L" : "M"} ${point.x.toFixed(1)} ${point.y.toFixed(1)}`).join(" "),
-          );
-          if (join instanceof SVGPathElement) join.setAttribute("d", "");
-        }
-      }
 
       const paint = (path, length) => {
         if (reduce.matches) {

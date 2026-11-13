@@ -759,6 +759,7 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
 /* Hides the route where it passes through the transparent line art,
    from just above the title to just under the fuselage. */
 .why-line-hide {
+  display: none;
   position: absolute;
   z-index: 0;
   left: 0;
@@ -2778,7 +2779,6 @@ main {
 }
 
 .card,
-.why-sketch,
 #first-draw,
 #first-draw img,
 .exit-machine,
@@ -5317,5 +5317,273 @@ button.btn-subscribe:focus-visible {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+}
+
+/* Seb layout v1. Desktop boxes are the 1710 measurements, scaled by viewport/1710.
+   Type sizes are untouched. Phones keep the stacked layout. */
+.guarantee-scale {
+  display: none;
+}
+
+@media (min-width: 1081px) {
+  #exit {
+    padding: 42px var(--pad) 48px 0;
+  }
+
+  .exit-layout {
+    display: block;
+    position: relative;
+    box-sizing: border-box;
+    padding-top: calc(88 * 100vw / 1710);
+    min-height: calc(667 * 100vw / 1710);
+  }
+
+  .exit-machine {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: calc(628 * 100vw / 1710);
+    height: auto;
+    aspect-ratio: 390 / 414;
+    margin: 0;
+    translate: none;
+  }
+
+  #exit-card {
+    width: 840px;
+    max-width: min(840px, calc(100% - 628 * 100vw / 1710 - 32px));
+    margin: 0 0 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  #case-j,
+  #case-v {
+    padding: 0 var(--pad) 0 0;
+  }
+
+  #case-j .case-compact,
+  #case-v .case-compact {
+    display: grid;
+    align-items: start;
+    width: max-content;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+  }
+
+  #case-j .case-compact {
+    grid-template-columns: calc(257 * 100vw / 1710) auto;
+    column-gap: calc(35 * 100vw / 1710);
+    margin-left: calc(501 * 100vw / 1710);
+  }
+
+  #case-j .portrait {
+    width: calc(257 * 100vw / 1710);
+    height: auto;
+  }
+
+  #case-j .case-compact > div {
+    padding-top: 28px;
+  }
+
+  #first-step {
+    position: relative;
+    padding: calc(57 * 100vw / 1710) 0 0;
+  }
+
+  .first-grid {
+    display: block;
+    position: relative;
+    box-sizing: border-box;
+    padding-top: calc((686 + 35) * 100vw / 1710);
+  }
+
+  #first-draw {
+    position: absolute;
+    left: calc(576 * 100vw / 1710);
+    top: 0;
+    width: calc(676 * 100vw / 1710);
+    z-index: 2;
+  }
+
+  #first-draw picture,
+  #first-draw img {
+    width: 100%;
+    max-width: none;
+    height: auto;
+  }
+
+  #first-card {
+    width: 864px;
+    max-width: calc(100% - var(--pad) - 89 * 100vw / 1710);
+    margin: 0 0 0 calc(var(--pad) + 9 * 100vw / 1710);
+  }
+
+  #apply-first {
+    position: relative;
+    z-index: 3;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    overflow: visible;
+  }
+
+  #apply-first .apply-first-slot {
+    position: absolute;
+    left: calc(1125 * 100vw / 1710);
+    top: calc(-199 * 100vw / 1710);
+    width: max-content;
+    margin: 0;
+  }
+
+  #for-you {
+    padding: calc(226 * 100vw / 1710) var(--pad) 0 calc(var(--pad) + 9 * 100vw / 1710);
+  }
+
+  .foryou-grid {
+    display: grid;
+    grid-template-columns: 675px 675px;
+    column-gap: calc(147 * 100vw / 1710);
+    justify-content: start;
+    align-items: start;
+  }
+
+  #for-you .card.ink {
+    order: 2;
+    margin-top: 0;
+    min-height: 560px;
+  }
+
+  #for-you .card.rose {
+    order: 1;
+    margin-top: calc(108 * 100vw / 1710);
+    min-height: 560px;
+  }
+
+  #why {
+    position: relative;
+    padding: calc(56 * 100vw / 1710) 0 calc(40 * 100vw / 1710);
+  }
+
+  .why-grid {
+    display: block;
+    position: relative;
+    box-sizing: border-box;
+    padding-top: calc(328 * 100vw / 1710);
+    min-height: calc(898 * 100vw / 1710);
+  }
+
+  .why-sketch {
+    position: absolute;
+    left: calc(816 * 100vw / 1710);
+    top: 0;
+    width: calc(857 * 100vw / 1710);
+    z-index: 0;
+    margin: 0;
+  }
+
+  .why-sketch img,
+  .why-art,
+  .why-art picture {
+    width: 100%;
+    height: auto;
+  }
+
+  .why-copy {
+    position: relative;
+    z-index: 2;
+    width: 643px;
+    max-width: calc(100% - 120px);
+    margin: 0 0 0 calc(var(--pad) + 19 * 100vw / 1710);
+  }
+
+  #reviews {
+    padding-top: calc(242 * 100vw / 1710);
+    padding-bottom: 40px;
+  }
+
+  #case-v {
+    padding-top: calc(232 * 100vw / 1710);
+  }
+
+  #case-v .case-compact {
+    grid-template-columns: calc(251 * 100vw / 1710) auto;
+    column-gap: calc(25 * 100vw / 1710);
+    margin-left: calc(395 * 100vw / 1710);
+  }
+
+  #case-v .portrait {
+    width: calc(251 * 100vw / 1710);
+    height: auto;
+  }
+
+  #case-v .case-compact > div {
+    padding-top: 25px;
+  }
+
+  #asseen {
+    padding-top: calc(193 * 100vw / 1710);
+    padding-bottom: 0;
+  }
+
+  #apply-v {
+    text-align: left;
+    padding: calc(242 * 100vw / 1710) 0 0 calc(395 * 100vw / 1710);
+  }
+
+  #apply-v .caption {
+    margin-left: 0;
+  }
+
+  #message {
+    padding: calc(213 * 100vw / 1710) 0 0;
+  }
+
+  #message-card {
+    width: 700px;
+    max-width: calc(100% - 2 * var(--pad));
+    margin: 0 0 0 calc(385 * 100vw / 1710);
+  }
+
+  #wayfinders {
+    padding-top: calc(256 * 100vw / 1710);
+  }
+
+  #wayfinders .wf-intro {
+    transform: translateX(calc(-20 * 100vw / 1710));
+  }
+
+  #wayfinders .wf-group {
+    width: 1280px;
+    max-width: calc(100% - 40px);
+    margin-left: calc(195 * 100vw / 1710 - var(--pad));
+    margin-right: auto;
+  }
+
+  .track-block {
+    transform: translate(calc(-20 * 100vw / 1710), calc(-19 * 100vw / 1710));
+  }
+
+  #next .next-inner {
+    padding-top: 264px;
+  }
+
+  #guarantee {
+    padding: calc(115 * 100vw / 1710) 0 0;
+  }
+
+  .guarantee-layout {
+    display: block;
+  }
+
+  .guarantee-card {
+    width: 860px;
+    max-width: calc(100% - 2 * var(--pad));
+    margin: 0 0 0 calc(410 * 100vw / 1710);
+    text-align: center;
   }
 }
