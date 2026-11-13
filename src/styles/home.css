@@ -5568,6 +5568,18 @@ button.btn-subscribe:focus-visible {
     transform: translate(calc(-20 * 100vw / 1710), calc(-19 * 100vw / 1710));
   }
 
+  .track-card {
+    box-sizing: border-box;
+    width: calc(1487 * 100vw / 1710);
+    max-width: none;
+    margin-left: calc(110 * 100vw / 1710 - var(--pad));
+    margin-right: 0;
+  }
+
+  .track-nums {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
   #next .next-inner {
     padding-top: 264px;
   }
