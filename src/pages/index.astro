@@ -63,7 +63,7 @@ const notFit = [
   <section class="hero" id="hero">
     <div class="hero-inner">
       <h1 class="t-display">
-        <span class="hero-line">For founders who’ve exited <span class="accent">the company they built,</span></span>
+        <span class="hero-line">For founders who’ve exited <span class="accent">the company they <span class="hero-build">built</span>,</span></span>
         <span class="hero-line accent">or are getting ready to.</span>
       </h1>
       <p class="lede">
@@ -123,6 +123,7 @@ const notFit = [
   </section>
 
   <section id="exit">
+    <div class="exit-layout">
     <article class="card ink" id="exit-card">
       <div class="exit-split">
         <div class="exit-copy">
@@ -143,25 +144,26 @@ const notFit = [
             <strong class="em-black">We help you see what is really driving the next chapter,</strong> so you do not fill the freedom you worked so hard for with another version of the life you left behind.
           </p>
         </div>
-        <picture class="exit-machine">
-          <source
-            type="image/webp"
-            srcset="/sketches/life-after-exit-machine@1x.webp 320w, /sketches/life-after-exit-machine@2x.webp 640w"
-            sizes="(max-width: 800px) 180px, 260px"
-          />
-          <img
-            src="/sketches/life-after-exit-machine@1x.png"
-            srcset="/sketches/life-after-exit-machine@1x.png 320w, /sketches/life-after-exit-machine@2x.png 640w"
-            sizes="(max-width: 800px) 180px, 260px"
-            width="320"
-            height="340"
-            alt="Sketch of a company machine still running, with a clock turning and an empty stool where the founder has stepped off."
-            loading="lazy"
-            decoding="async"
-          />
-        </picture>
       </div>
     </article>
+    <picture class="exit-machine" data-line-reveal>
+      <source
+        type="image/webp"
+        srcset="/sketches/life-after-exit-machine@1x.webp 320w, /sketches/life-after-exit-machine@2x.webp 640w"
+        sizes="(max-width: 800px) 220px, 390px"
+      />
+      <img
+        src="/sketches/life-after-exit-machine@1x.png"
+        srcset="/sketches/life-after-exit-machine@1x.png 320w, /sketches/life-after-exit-machine@2x.png 640w"
+        sizes="(max-width: 800px) 220px, 390px"
+        width="320"
+        height="340"
+        alt="Sketch of a company machine still running, with a clock and an empty stool where the founder has stepped off."
+        loading="lazy"
+        decoding="async"
+      />
+    </picture>
+    </div>
   </section>
 
   <section class="sec" id="case-j">
@@ -236,7 +238,7 @@ const notFit = [
         <ul>
           {fit.map((item) => (
             <li>
-              <img src="/sketches/icon-tick-for-you.svg" alt="" aria-hidden="true" width="16" height="16" />
+              <span class="mark" aria-hidden="true">✓</span>
               <span>{item}</span>
             </li>
           ))}
@@ -247,7 +249,7 @@ const notFit = [
         <ul>
           {notFit.map((item) => (
             <li>
-              <img src="/sketches/icon-dash-not-for-you.svg" alt="" aria-hidden="true" width="16" height="16" />
+              <span class="mark" aria-hidden="true">✕</span>
               <span>{item}</span>
             </li>
           ))}
@@ -398,23 +400,6 @@ const notFit = [
       </div>
       <div class="sig-row">
         <Image class="sig" src={signature} alt="Seb’s signature" widths={[120, 240]} sizes="120px" />
-        <picture class="fountain-pen">
-          <source
-            type="image/webp"
-            srcset="/sketches/founders-message-fountain-pen@1x.webp 26w, /sketches/founders-message-fountain-pen@2x.webp 52w"
-            sizes="26px"
-          />
-          <img
-            src="/sketches/founders-message-fountain-pen@1x.png"
-            srcset="/sketches/founders-message-fountain-pen@1x.png 26w, /sketches/founders-message-fountain-pen@2x.png 52w"
-            sizes="26px"
-            width="26"
-            height="72"
-            alt="Sketch of a fountain pen."
-            loading="lazy"
-            decoding="async"
-          />
-        </picture>
       </div>
       <p class="who">Seb &amp; the entire DoGood team</p>
     </article>
@@ -423,23 +408,6 @@ const notFit = [
   <section id="wayfinders">
     <div class="wf-intro">
       <div class="wf-title">
-        <picture class="wf-compass">
-          <source
-            type="image/webp"
-            srcset="/sketches/wayfinders-compass@1x.webp 39w, /sketches/wayfinders-compass@2x.webp 78w"
-            sizes="32px"
-          />
-          <img
-            src="/sketches/wayfinders-compass@1x.png"
-            srcset="/sketches/wayfinders-compass@1x.png 39w, /sketches/wayfinders-compass@2x.png 78w"
-            sizes="32px"
-            width="39"
-            height="49"
-            alt="Sketch of a small compass."
-            loading="lazy"
-            decoding="async"
-          />
-        </picture>
         <h2 class="t-h2">Your Wayfinders</h2>
       </div>
       <p class="lead">
@@ -488,25 +456,26 @@ const notFit = [
   </section>
 
   <section id="guarantee">
+    <div class="guarantee-layout">
+    <picture class="guarantee-scale">
+      <source
+        type="image/webp"
+        srcset="/sketches/guarantee-balance-scale@1x.webp 180w, /sketches/guarantee-balance-scale@2x.webp 360w"
+        sizes="(max-width: 800px) 160px, 400px"
+      />
+      <img
+        src="/sketches/guarantee-balance-scale@1x.png"
+        srcset="/sketches/guarantee-balance-scale@1x.png 180w, /sketches/guarantee-balance-scale@2x.png 360w"
+        sizes="(max-width: 800px) 160px, 400px"
+        width="180"
+        height="154"
+        alt="Sketch of a balance scale gently tipped toward a founder."
+        loading="lazy"
+        decoding="async"
+      />
+    </picture>
     <article class="card guarantee-card">
       <div class="guarantee-head">
-        <picture class="guarantee-scale">
-          <source
-            type="image/webp"
-            srcset="/sketches/guarantee-balance-scale@1x.webp 180w, /sketches/guarantee-balance-scale@2x.webp 360w"
-            sizes="(max-width: 800px) 72px, 80px"
-          />
-          <img
-            src="/sketches/guarantee-balance-scale@1x.png"
-            srcset="/sketches/guarantee-balance-scale@1x.png 180w, /sketches/guarantee-balance-scale@2x.png 360w"
-            sizes="(max-width: 800px) 72px, 80px"
-            width="180"
-            height="154"
-            alt="Sketch of a balance scale gently tipped toward a founder."
-            loading="lazy"
-            decoding="async"
-          />
-        </picture>
         <h2 class="t-h2">Clarity‑First Guarantee (Stage 1)</h2>
       </div>
       <p class="say-no">We say no. If it’s not right, we’ll tell you and point you somewhere better.</p>
@@ -528,6 +497,7 @@ const notFit = [
         <a class="btn-terms" href={urls.guarantee}>Read full terms</a>
       </p>
     </article>
+    </div>
   </section>
 
   <section id="next">
@@ -544,12 +514,10 @@ const notFit = [
         d="M690,0 C670,0 658,14 654,36 C640,110 430,155 220,230 C90,280 40,350 22,440 C10,520 4,580 0,620 L1440,620 C1436,580 1430,520 1418,440 C1400,350 1350,280 1220,230 C1010,155 800,110 786,36 C782,14 770,0 750,0 C730,0 710,0 690,0 Z"
       ></path>
     </svg>
+    <div class="next-icons" aria-hidden="true">
+      <img src="/sketches/icon-whats-next-conversation.svg" alt="" width="168" height="168" />
+    </div>
     <div class="next-inner">
-      <div class="next-icons" aria-hidden="true">
-        <img src="/sketches/icon-whats-next-form.svg" alt="" width="28" height="28" />
-        <img src="/sketches/icon-whats-next-reply.svg" alt="" width="28" height="28" />
-        <img src="/sketches/icon-whats-next-conversation.svg" alt="" width="28" height="28" />
-      </div>
       <h2 class="t-h2">What’s next?</h2>
       <p>
         Complete the short application for Stage 1 (30 days). We’ll respond within 24 hours. If there’s

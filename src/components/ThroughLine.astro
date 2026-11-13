@@ -83,157 +83,175 @@
       return d.join(" ");
     };
 
+    const poly = (points) => {
+      const usable = points.filter((point) => Number.isFinite(point.x) && Number.isFinite(point.y));
+      if (usable.length < 2) return "";
+      return usable
+        .map((point, index) => `${index ? "L" : "M"} ${point.x.toFixed(1)} ${point.y.toFixed(1)}`)
+        .join(" ");
+    };
+
+    const monotonic = (points) => {
+      let y = -Infinity;
+      return points
+        .filter((point) => point && Number.isFinite(point.x) && Number.isFinite(point.y))
+        .map((point) => {
+          y = Math.max(y, point.y);
+          return { x: point.x, y };
+        });
+    };
+
+    const alignDoor = () => {
+      const word = document.querySelector(".hero-build");
+      const img = document.querySelector(".hero-sketch");
+      if (!(word instanceof HTMLElement) || !(img instanceof HTMLElement)) return;
+      if (window.innerWidth < 1081) {
+        img.style.transform = "";
+        return;
+      }
+      img.style.transform = "translate(-50px, 100px) scale(1.1)";
+      const nudge = word.getBoundingClientRect().right - img.getBoundingClientRect().right;
+      img.style.transform = `translate(${(-50 + nudge).toFixed(1)}px, 100px) scale(1.1)`;
+    };
+
     const build = () => {
       const width = main.clientWidth;
       const phone = width <= 1080;
-      const stroke = phone ? 2.6 : 3.35;
+      const founderStroke = phone ? 36 : 100;
+      const companyStroke = phone ? 18 : 50;
+      const parallel = phone ? 28 : 80;
       const hero = box(document.querySelector("#hero"));
       const headline = box(document.querySelector(".hero h1"));
       const clients = box(document.querySelector("#clients"));
       const exit = box(document.querySelector("#exit-card"));
       const caseJ = box(document.querySelector("#case-j"));
-      const first = box(document.querySelector("#first-step"));
       const firstCard = box(document.querySelector("#first-card"));
-      const firstDraw = box(document.querySelector("#first-draw"));
+      const applyBtn = box(document.querySelector("#apply-first .btn-apply"));
       const apply = box(document.querySelector("#apply-first"));
       const forYou = box(document.querySelector("#for-you"));
       const youCards = [...document.querySelectorAll("#for-you .card")].map((el) => box(el));
-      const why = box(document.querySelector("#why"));
       const whyCard = box(document.querySelector("#why .why-copy"));
-      const whySketch = box(document.querySelector(".why-sketch"));
       const reviews = box(document.querySelector("#reviews"));
-      const caseV = box(document.querySelector("#case-v"));
-      const seen = box(document.querySelector("#asseen"));
-      const message = box(document.querySelector("#message"));
-      const guides = box(document.querySelector("#wayfinders"));
-      const guarantee = box(document.querySelector("#guarantee"));
+      const message = box(document.querySelector("#message-card"));
+      const guaranteeCard = box(document.querySelector(".guarantee-card"));
       const next = box(document.querySelector("#next"));
-      const nextInner = box(document.querySelector("#next .next-inner"));
-      if (!hero || !headline || !clients || !exit || !next || !nextInner) return;
+      const bubble = box(document.querySelector("#next .next-icons"));
+      const nextBtn = box(document.querySelector("#next .btn-apply"));
+      if (!hero || !headline || !clients || !exit || !next) return;
 
-      const origin = headline.bottom + (phone ? 18 : 28);
       const footer = document.querySelector("#footer") || document.querySelector("footer");
       const mainRect = main.getBoundingClientRect();
       const waveEl = footer?.querySelector(".connect-wave") || footer?.querySelector("svg");
       const waveRect = (waveEl || footer)?.getBoundingClientRect();
-      const footerEnd = waveRect ? waveRect.top - mainRect.top + waveRect.height * 0.65 : main.clientHeight - 6;
-      const end = Math.max(main.clientHeight - 6, footerEnd);
-      const y = (value) => value - origin;
-      const lane = (value) => Math.min(width - (phone ? 14 : 24), Math.max(phone ? 12 : 20, value));
-      const wave = hero.bottom - (phone ? 28 : 36);
+      const end = waveRect ? waveRect.bottom - mainRect.top : main.clientHeight - 6;
+      const clampX = (value) => Math.min(width - (phone ? 20 : 56), Math.max(phone ? 22 : 56, value));
+      const youMid =
+        youCards.length === 2 ? (youCards[0].right + youCards[1].left) / 2 : width * 0.5;
+      const throughY = exit.y + Math.min(exit.h * 0.55, phone ? 70 : 180);
 
-      founder.setAttribute("stroke-width", String(stroke));
-      company.setAttribute("stroke-width", String(stroke));
-      companyMask.setAttribute("stroke-width", String(stroke + 8));
-      company.setAttribute("stroke-dasharray", phone ? "7 6" : "10 8");
+      founder.setAttribute("stroke-width", String(founderStroke));
+      company.setAttribute("stroke-width", String(companyStroke));
+      companyMask.setAttribute("stroke-width", String(companyStroke + 12));
+      company.setAttribute("stroke-dasharray", "none");
 
-      let founderPts;
-      let companyPts;
+      const founderPts = monotonic([
+        { x: clampX(phone ? 22 : 64), y: phone ? 16 : 28 },
+        { x: clampX(phone ? 22 : 64), y: Math.max(24, exit.y - (phone ? 36 : 80)) },
+        { x: clampX(exit.cx), y: Math.max(24, exit.y - (phone ? 36 : 80)) },
+        { x: clampX(exit.cx), y: throughY },
+        { x: clampX(exit.right - (phone ? 12 : 28)), y: throughY },
+        { x: clampX(width - (phone ? 28 : 70)), y: throughY },
+        { x: clampX(width - (phone ? 28 : 70)), y: firstCard ? firstCard.cy : exit.bottom + 280 },
+        { x: clampX(firstCard ? firstCard.right - 24 : width * 0.72), y: firstCard ? firstCard.cy : exit.bottom + 280 },
+        { x: clampX(firstCard ? firstCard.left + 36 : width * 0.5), y: firstCard ? firstCard.cy : exit.bottom + 280 },
+        { x: clampX(applyBtn ? applyBtn.cx : apply ? apply.cx : width * 0.5), y: (firstCard ? firstCard.bottom : exit.bottom) + 48 },
+        { x: clampX(applyBtn ? applyBtn.cx : apply ? apply.cx : width * 0.5), y: applyBtn ? applyBtn.cy : apply ? apply.cy : exit.bottom + 420 },
+        { x: clampX(youMid), y: (applyBtn ? applyBtn.bottom : apply ? apply.bottom : exit.bottom) + 80 },
+        { x: clampX(youMid), y: forYou ? forYou.bottom - 16 : (apply ? apply.bottom + 220 : exit.bottom + 560) },
+        { x: clampX(whyCard ? whyCard.cx : youMid), y: whyCard ? whyCard.y + 24 : (forYou ? forYou.bottom + 80 : exit.bottom + 640) },
+        { x: clampX(whyCard ? whyCard.left + 48 : youMid), y: whyCard ? whyCard.cy : (forYou ? forYou.bottom + 120 : exit.bottom + 680) },
+        { x: clampX(whyCard ? whyCard.right - 30 : width * 0.75), y: whyCard ? whyCard.cy : (forYou ? forYou.bottom + 120 : exit.bottom + 680) },
+        { x: clampX(reviews ? reviews.cx : youMid), y: reviews ? reviews.cy : (whyCard ? whyCard.bottom + 80 : end - 800) },
+        { x: clampX(message ? message.cx : youMid), y: message ? message.cy : (reviews ? reviews.bottom + 40 : end - 500) },
+        { x: clampX(guaranteeCard ? guaranteeCard.cx : width * 0.62), y: guaranteeCard ? guaranteeCard.cy : end - 280 },
+        { x: clampX(bubble ? bubble.cx : phone ? 40 : 80), y: bubble ? bubble.cy : next.y + 80 },
+        { x: clampX(nextBtn ? nextBtn.cx : next.cx), y: nextBtn ? nextBtn.cy : next.cy },
+        { x: clampX(phone ? 28 : 70), y: end - 8 },
+      ]);
 
-      if (phone) {
-        const side = 8;
-        founderPts = [
-          { x: side, y: y(origin + 2) },
-          { x: side, y: y(end - 4) },
-        ];
-        companyPts = [
-          { x: side + 16, y: y(origin + 2) },
-          { x: side + 16, y: y(exit.y) },
-          { x: width * 0.62, y: y(exit.y + 18) },
-          { x: width + 18, y: y(exit.y + 46) },
-        ];
-      } else {
-        const left = 36;
-        const right = width - 36;
-        const belowLogos = clients.bottom + 36;
-        const between =
-          firstDraw && firstCard ? (firstDraw.right + firstCard.left) / 2 : width * 0.62;
-        const youMid =
-          youCards.length === 2 ? (youCards[0].right + youCards[1].left) / 2 : width * 0.5;
-        const whyLane =
-          whyCard && whySketch ? (whyCard.right + whySketch.left) / 2 : width * 0.58;
-        const frame = 42;
-        founderPts = [
-          { x: left, y: y(origin + 4) },
-          { x: left, y: y(origin + 260) },
-          { x: left, y: y(belowLogos) },
-          { x: width * 0.42, y: y(belowLogos) },
-          { x: width * 0.68, y: y(belowLogos) },
-          { x: right, y: y(exit.y + 28) },
-          { x: right, y: y(exit.bottom + 24) },
-          { x: right, y: y((caseJ ? caseJ.bottom : exit.bottom) + 20) },
-          { x: lane(between), y: y(first ? first.y + first.h * 0.58 : exit.bottom + 240) },
-          { x: right, y: y((forYou ? forYou.y : reviews.y) - 28) },
-          { x: lane(youMid), y: y((forYou ? forYou.y : reviews.y) - 8) },
-          { x: lane(youMid), y: y(forYou ? forYou.y + forYou.h * 0.5 : reviews.y) },
-          { x: left, y: y(why ? why.y + 40 : reviews.bottom) },
-          { x: lane(whyLane), y: y(why ? why.y + why.h * 0.55 : reviews.bottom) },
-          { x: left, y: y(reviews ? reviews.bottom + 16 : caseV.y) },
-          { x: left, y: y(message ? message.y + 48 : next.y) },
-          { x: left, y: y(next.y - 12) },
-          { x: lane(nextInner.x - frame), y: y(next.y + 20) },
-          { x: lane(nextInner.x - frame), y: y(next.bottom - 28) },
-          { x: lane(nextInner.cx), y: y(next.bottom - 16) },
-          { x: lane(nextInner.right + frame), y: y(next.bottom - 28) },
-          { x: lane(nextInner.right + frame), y: y(end - 2) },
-        ];
-        const beside = founderPts
-          .filter((point) => point.y < y(exit.y - 10))
-          .map((point) => ({ x: lane(point.x + 16), y: point.y }));
-        companyPts = [
-          ...beside,
-          { x: lane(right - 40), y: y(exit.y + 8) },
-          { x: width + 28, y: y(exit.y + 46) },
-        ];
-      }
+      const splitAt = founderPts.findIndex((point) => point.y >= throughY - 1 && point.x >= exit.cx);
+      const shared = (splitAt >= 0 ? founderPts.slice(0, splitAt + 2) : founderPts.slice(0, 4)).map(
+        (point) => ({ x: clampX(point.x + parallel), y: point.y }),
+      );
+      const lastShared = shared[shared.length - 1] || { x: width, y: throughY };
+      const companyPts = monotonic([...shared, { x: width + companyStroke, y: lastShared.y }]);
 
-      const height = Math.max(200, end - origin);
-      root.style.top = `${origin}px`;
+      const height = Math.max(200, end);
+      root.style.top = "0px";
       root.style.height = `${height}px`;
       svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
       svg.setAttribute("width", String(width));
       svg.setAttribute("height", String(height));
 
-      const founderD = smooth(founderPts);
-      const companyD = smooth(companyPts);
-      founder.setAttribute("d", founderD);
-      company.setAttribute("d", companyD);
-      companyMask.setAttribute("d", companyD);
+      founder.setAttribute("d", poly(founderPts));
+      company.setAttribute("d", poly(companyPts));
+      companyMask.setAttribute("d", poly(companyPts));
+      alignDoor();
 
       triggers.forEach((trigger) => trigger.kill());
       triggers = [];
 
-      const founderLength = founder.getTotalLength();
-      const maskLength = companyMask.getTotalLength();
-      const pageTop = main.getBoundingClientRect().top + window.scrollY;
-      const founderStart = pageTop + origin;
-      const founderEnd = pageTop + end;
-      const companyEnd = pageTop + exit.bottom;
-
-      const paint = (path, length, startY, finishY) => {
-        const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-        const atEnd = window.scrollY >= maxScroll - 2;
-        const focus = atEnd ? finishY + 40 : window.scrollY + window.innerHeight * 0.82;
-        const progress = reduce.matches
-          ? 1
-          : Math.min(1, Math.max(0, (focus - startY) / Math.max(1, finishY - startY)));
-        path.style.strokeDasharray = `${length}`;
-        path.style.strokeDashoffset = String(length * (1 - progress));
+      const reveal = () => {
+        const mid = window.innerHeight * 0.5;
+        document.querySelectorAll("[data-line-reveal]").forEach((el) => {
+          if (!(el instanceof HTMLElement)) return;
+          const rect = el.getBoundingClientRect();
+          const reached = reduce.matches || rect.top <= mid + 80;
+          el.classList.toggle("is-drawn", reached);
+        });
       };
 
-      paint(founder, founderLength, founderStart, founderEnd);
-      paint(companyMask, maskLength, founderStart, companyEnd);
+      const paint = (path, length) => {
+        if (reduce.matches) {
+          path.style.strokeDasharray = `${length}`;
+          path.style.strokeDashoffset = "0";
+          return;
+        }
+        const svgTop = svg.getBoundingClientRect().top;
+        const target = window.innerHeight * 0.5;
+        let lo = 0;
+        let hi = length;
+        const startY = svgTop + path.getPointAtLength(0).y;
+        const endY = svgTop + path.getPointAtLength(length).y;
+        if (target <= startY) hi = 0;
+        else if (target >= endY) hi = length;
+        else {
+          for (let step = 0; step < 22; step += 1) {
+            const midLength = (lo + hi) / 2;
+            const y = svgTop + path.getPointAtLength(midLength).y;
+            if (y < target) lo = midLength;
+            else hi = midLength;
+          }
+        }
+        path.style.strokeDasharray = `${length}`;
+        path.style.strokeDashoffset = String(length - hi);
+      };
+
+      const draw = () => {
+        paint(founder, founder.getTotalLength());
+        paint(companyMask, companyMask.getTotalLength());
+        reveal();
+      };
+
+      draw();
 
       if (!reduce.matches) {
         triggers.push(
           ScrollTrigger.create({
             start: 0,
             end: "max",
-            scrub: 0.45,
-            onUpdate: () => {
-              paint(founder, founderLength, founderStart, founderEnd);
-              paint(companyMask, maskLength, founderStart, companyEnd);
-            },
+            scrub: 0.15,
+            onUpdate: draw,
           }),
         );
       }

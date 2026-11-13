@@ -3557,9 +3557,8 @@ button.btn-teal:focus-visible,
 button.btn-subscribe:focus-visible,
 .buzzsprout-gate button:focus-visible {
   transform: scale(1.05);
-  padding-left: 52px;
-  padding-right: 18px;
   outline: none;
+  border: 0;
 }
 
 a.btn-apply:hover,
@@ -3688,8 +3687,8 @@ button.btn-subscribe:focus-visible::before,
   button.btn-subscribe:focus-visible,
   .buzzsprout-gate button:focus-visible {
     transform: none;
-    padding-left: 20px;
-    padding-right: 56px;
+    outline: none;
+    border: 0;
   }
 
   a.btn-apply:hover,
@@ -3873,5 +3872,418 @@ iframe.tidycal-embed,
   div[class*="tawk-message"],
   iframe[title*="Attention"] {
     display: none !important;
+  }
+}
+
+/* Round 6. These rules win. */
+html,
+body {
+  overflow-x: clip;
+}
+
+header.nav {
+  top: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 16px;
+  background: #2a0b4f;
+}
+
+header.nav .nav-bar,
+header.nav .nav-panel {
+  background: #553b72;
+}
+
+header.nav .nav-links {
+  gap: 8px;
+}
+
+header.nav .nav-links a,
+header.nav .nav-panel a,
+header.nav .nav-apply {
+  font-weight: 400;
+}
+
+header.nav .nav-links a,
+header.nav .nav-panel a {
+  color: #f4f1f8;
+}
+
+header.nav .nav-apply {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: #ea1557;
+  transition: color 200ms ease;
+}
+
+header.nav .nav-apply::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #ff7a9e;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 350ms ease;
+  z-index: -1;
+}
+
+header.nav .nav-apply:hover::before,
+header.nav .nav-apply:focus-visible::before {
+  transform: scaleY(1);
+}
+
+@media (min-width: 1200px) {
+  header.nav {
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+
+  header.nav .nav-links {
+    gap: 24px;
+  }
+}
+
+a.btn-apply,
+a.btn-apply.lg,
+a.btn-case,
+a.btn-teal,
+a.btn-partnership,
+a.btn-terms,
+button.btn-teal,
+button.btn-subscribe,
+.buzzsprout-gate button,
+header.nav .nav-apply {
+  font-weight: 400;
+}
+
+a.btn-apply:hover,
+a.btn-apply.lg:hover,
+a.btn-case:hover,
+a.btn-teal:hover,
+a.btn-partnership:hover,
+a.btn-terms:hover,
+button.btn-teal:hover,
+button.btn-subscribe:hover,
+.buzzsprout-gate button:hover,
+a.btn-apply:focus-visible,
+a.btn-apply.lg:focus-visible,
+a.btn-case:focus-visible,
+a.btn-teal:focus-visible,
+a.btn-partnership:focus-visible,
+a.btn-terms:focus-visible,
+button.btn-teal:focus-visible,
+button.btn-subscribe:focus-visible,
+.buzzsprout-gate button:focus-visible {
+  outline: none;
+  border: 0;
+}
+
+@media (min-width: 1081px) {
+  .hero-inner {
+    padding-top: 300px;
+  }
+
+  .hero-draw {
+    transform: translate(-50px, 100px) scale(1.1);
+    transform-origin: right center;
+  }
+
+  #exit,
+  #case-j,
+  #first-step,
+  #apply-first,
+  #for-you,
+  #why,
+  #reviews,
+  #case-v,
+  #asseen,
+  #apply-v,
+  #message,
+  #wayfinders,
+  #guarantee,
+  #next {
+    padding-top: 160px;
+    padding-bottom: 90px;
+  }
+
+  .exit-layout {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 36px;
+  }
+
+  .exit-machine {
+    margin-top: 150px;
+  }
+
+  #exit {
+    padding-left: 24px;
+  }
+
+  #exit-card {
+    flex: 0 1 840px;
+    width: min(840px, 58%);
+    max-width: 840px;
+    margin: 0;
+  }
+
+  .exit-machine {
+    flex: 0 0 390px;
+    width: 390px;
+  }
+
+  .why-grid {
+    grid-template-columns: 0.85fr 1.15fr;
+  }
+
+  .why-sketch {
+    order: -1;
+  }
+
+  .guarantee-layout {
+    display: grid;
+    grid-template-columns: minmax(220px, 400px) minmax(0, 1fr);
+    align-items: center;
+    gap: 8px;
+  }
+
+  .guarantee-card {
+    margin-left: 150px;
+  }
+
+  .guarantee-card h2 {
+    white-space: nowrap;
+  }
+
+  .guarantee-scale img {
+    width: min(400px, 28vw);
+    height: auto;
+  }
+
+  #apply-first a.btn-apply,
+  #apply-first a.btn-apply:hover,
+  #apply-first a.btn-apply:focus-visible {
+    padding-left: 45px;
+    padding-right: 81px;
+  }
+
+  #apply-v a.btn-apply,
+  #apply-v a.btn-apply:hover,
+  #apply-v a.btn-apply:focus-visible {
+    padding-left: 70px;
+    padding-right: 106px;
+  }
+
+  #next a.btn-apply,
+  #next a.btn-apply:hover,
+  #next a.btn-apply:focus-visible {
+    padding-left: 60px;
+    padding-right: 96px;
+  }
+}
+
+.exit-machine {
+  opacity: 0;
+  transition: opacity 700ms ease;
+}
+
+.exit-machine.is-drawn {
+  opacity: 1;
+}
+
+#case-j p.t-kicker {
+  color: #ea1557;
+}
+
+#case-j a.btn-case,
+#case-j a.btn-case:hover,
+#case-j a.btn-case:focus-visible {
+  background: #ea1557;
+  color: #fff;
+}
+
+#case-v h3 {
+  color: #28dbb0;
+}
+
+a.btn-partnership,
+a.btn-partnership:hover,
+a.btn-partnership:focus-visible {
+  background: #2a0b4f;
+  color: #fff;
+}
+
+#apply-first,
+#apply-first .cap-pill,
+#apply-v,
+#apply-v .cap-small {
+  text-align: center;
+}
+
+#apply-first .cap-pill,
+#apply-v .cap-small {
+  margin-top: 36px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.foryou-grid .mark {
+  flex: 0 0 auto;
+  width: 1.1em;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+#asseen .asseen-frame,
+.why-sketch,
+.exit-machine,
+.guarantee-scale,
+.hero-sketch-frame {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.track-nums strong {
+  color: #ea1557;
+}
+
+#message {
+  margin-top: 30px;
+}
+
+.wf-group {
+  margin-top: 30px;
+}
+
+#next {
+  position: relative;
+}
+
+#next .next-icons {
+  position: absolute;
+  left: max(16px, calc(var(--pad) - 20px));
+  top: 42%;
+  z-index: 2;
+  margin: 0;
+  pointer-events: none;
+}
+
+#next .next-icons img {
+  width: 168px;
+  height: auto;
+}
+
+.footer-subscribe .connect-mark {
+  display: block;
+  margin: 150px 0 0;
+  width: min(1080px, calc(100vw - 80px));
+  text-align: left;
+}
+
+.footer .legal {
+  margin-top: 150px;
+}
+
+.footer-about,
+p.services-note {
+  align-self: flex-start;
+  text-align: left;
+  margin-left: 0;
+}
+
+.footer-form {
+  align-items: center;
+}
+
+.email-field {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+
+.email-field img {
+  position: absolute;
+  left: 14px;
+  width: 22px;
+  height: auto;
+  pointer-events: none;
+}
+
+.email-field input,
+.footer-form .email-field input {
+  width: 100%;
+  padding-left: 46px;
+}
+
+button.btn-subscribe,
+button.btn-subscribe:hover,
+button.btn-subscribe:focus-visible {
+  background: #28dbb0;
+  color: #2a0b4f;
+  font-weight: 400;
+}
+
+@media (max-width: 1080px) {
+  .hero-inner {
+    padding-top: 72px;
+  }
+
+  .exit-layout,
+  .guarantee-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  .exit-machine,
+  .guarantee-scale img {
+    width: min(100%, 240px);
+  }
+
+  .guarantee-card {
+    margin-left: 0;
+  }
+
+  .guarantee-card h2 {
+    white-space: normal;
+  }
+
+  #next .next-icons {
+    position: static;
+    margin: 0 0 12px;
+  }
+
+  #next .next-icons img {
+    width: 72px;
+  }
+
+  .footer-subscribe .connect-mark {
+    margin-top: 64px;
+    width: 100%;
+  }
+
+  .footer .legal {
+    margin-top: 64px;
+  }
+
+  #message,
+  .wf-group {
+    margin-top: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .exit-machine {
+    opacity: 1;
+  }
+
+  header.nav .nav-apply::before {
+    transition: none;
   }
 }

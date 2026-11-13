@@ -35,67 +35,52 @@ const legal = [
   <Wave fill="#2A0B4F" />
 </div>
 <footer class="footer" id="footer">
-  <a class="connect-mark" href="/contact">
-    <span class="connect-lets">Let’s</span>
-    <span class="connect-word">
-      Connect
-      <svg class="connect-wave" viewBox="0 0 640 48" aria-hidden="true">
-        <path
-          id="connect-wave-path"
-          d="M6 30 C 28 16, 46 38, 78 26 C 112 12, 132 36, 168 24 C 206 10, 228 40, 272 22 C 314 6, 340 38, 386 22 C 430 8, 456 36, 502 20 C 544 6, 572 32, 612 18 C 626 14, 634 20, 634 20"
-          fill="none"
-          stroke="#28DBB0"
-          stroke-width="14"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
-    </span>
-  </a>
   <div class="footer-grid">
-    {
-      !hideOptin && (
-    <div>
-      <picture class="stay-envelope">
-        <source
-          type="image/webp"
-          srcset="/sketches/footer-stay-close-envelope@1x.webp 36w, /sketches/footer-stay-close-envelope@2x.webp 72w"
-          sizes="28px"
-        />
-        <img
-          src="/sketches/footer-stay-close-envelope@1x.png"
-          srcset="/sketches/footer-stay-close-envelope@1x.png 36w, /sketches/footer-stay-close-envelope@2x.png 72w"
-          sizes="28px"
-          width="36"
-          height="27"
-          alt="Sketch of an envelope."
-          loading="lazy"
-          decoding="async"
-        />
-      </picture>
-      <h2>Not ready to apply? Stay close.</h2>
-      <p class="fine optin-copy">
-        That’s okay.<br />
-        Get honest notes on what comes after the exit.
-      </p>
+    <div class="footer-subscribe">
+      {
+        !hideOptin && (
+          <>
+      <h2>Not ready to apply? That’s okay.</h2>
+      <p class="fine optin-copy">Get honest notes on what comes after the exit.</p>
       <form class="footer-form js-subscribe" action={action} method="post">
         <input type="hidden" name="ml-submit" value="1" />
         <input type="hidden" name="anticsrf" value="true" />
         <label class="visually-hidden" for="news-email">Email</label>
-        <input
-          id="news-email"
-          type="email"
-          name="fields[email]"
-          placeholder="Email"
-          autocomplete="email"
-          required
-        />
+        <span class="email-field">
+          <img src="/sketches/footer-stay-close-envelope@1x.png" alt="" width="22" height="16" />
+          <input
+            id="news-email"
+            type="email"
+            name="fields[email]"
+            placeholder=""
+            autocomplete="email"
+            required
+          />
+        </span>
         <button class="btn-subscribe" type="submit">Subscribe</button>
         <p data-status hidden></p>
       </form>
+          </>
+        )
+      }
+      <a class="connect-mark" href="/contact">
+        <span class="connect-lets">Let’s</span>
+        <span class="connect-word">
+          Connect
+          <svg class="connect-wave" viewBox="0 0 640 48" aria-hidden="true">
+            <path
+              id="connect-wave-path"
+              d="M6 30 C 28 16, 46 38, 78 26 C 112 12, 132 36, 168 24 C 206 10, 228 40, 272 22 C 314 6, 340 38, 386 22 C 430 8, 456 36, 502 20 C 544 6, 572 32, 612 18 C 626 14, 634 20, 634 20"
+              fill="none"
+              stroke="#28DBB0"
+              stroke-width="14"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+      </a>
     </div>
-      )
-    }
     <div class="footer-explore">
       <h2 class="col-title">Explore</h2>
       <ul>
