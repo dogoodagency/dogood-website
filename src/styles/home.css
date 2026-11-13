@@ -698,13 +698,34 @@ main ul {
   min-height: 100%;
 }
 
-.why-sketch .sketch-ph {
+.why-sketch picture {
+  display: flex;
   flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   min-height: 100%;
-  background: var(--sketch);
-  border: 2px solid var(--color-ink);
-  border-radius: 24px;
+  background: transparent;
+  border: 0;
+}
+
+.why-sketch img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+@media (min-width: 1081px) {
+  .why-sketch picture,
+  .why-sketch img {
+    height: 100%;
+  }
 }
 
 /* Reviews — 4 across, equal height, roll left to right */

@@ -230,9 +230,23 @@ const notFit = [
         </p>
       </div>
       <div class="why-sketch">
-        <div class="sketch-ph" role="img" aria-label="Sketch-style drawing, placeholder">
-          <span>Sketch-style drawing</span>
-        </div>
+        <picture>
+          <source
+            type="image/webp"
+            srcset="/sketches/founder-home-family-team-sketch@1x.webp 540w, /sketches/founder-home-family-team-sketch@2x.webp 1080w"
+            sizes="(max-width: 1080px) calc(100vw - 44px), 540px"
+          />
+          <img
+            src="/sketches/founder-home-family-team-sketch@1x.png"
+            srcset="/sketches/founder-home-family-team-sketch@1x.png 540w, /sketches/founder-home-family-team-sketch@2x.png 1080w"
+            sizes="(max-width: 1080px) calc(100vw - 44px), 540px"
+            width="540"
+            height="566"
+            alt="Sketch of a founder outside a modest home with family and a small team nearby"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
       </div>
     </div>
   </section>
