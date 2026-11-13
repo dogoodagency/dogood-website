@@ -76,7 +76,7 @@ We handle data to answer you and to prepare or perform a contract, because the l
 
 ### Transfers
 
-Some providers process data outside the EU/EEA, and where they do we rely on safeguards such as the EU Standard Contractual Clauses.
+Some providers, including our payment providers (Wise, Stripe), process data outside the EU/EEA, and where they do we rely on safeguards such as the EU Standard Contractual Clauses.
 
 ### 4. YOUR PRIVACY RIGHTS
 

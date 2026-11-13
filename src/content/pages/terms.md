@@ -27,6 +27,8 @@ When utilizing DoGood Agency, any earnings, income, figures, or projected earnin
 
 We cannot assure you that any previous success that has been made, such as earnings or income (whether monetary or advertising credits that can be converted to cash value) will be applicable to your future earnings, income, or advertising credits. Additionally, any prior success mentioned cannot be used as a promise that you will have similar future success (nor any specific amount or degree of success), and prior success examples are provided solely as an example to demonstrate various past successes on behalf of DoGood Agency and others. Examples of prior success are also not a promise or indications that you will see the same results gained from the information, content, or strategies that are provided. Any kind of income or earnings (whether monetary or in the form of advertising credits) that are reported on [www.dogoodagency.co](https://www.dogoodagency.co/), its products, or affiliates is not deemed as ‘average earnings’ and should not be considered as ‘average’ or a promise that you will have the same experience or achieve the same results.
 
+This is no guarantee of results or income. Any guarantee for paid services is set out only in the signed client agreement.
+
 ### THE ECONOMY
 
 It is important to always consider that the amount of risk you assume when conducting business is greatly dependent upon the current economic conditions, on both a national and worldwide scale. Therefore, the economy in which you conduct business can bring a variety of economic risks and also uncertain results. For example, any economic recession or depression that occurs could greatly affect the results that DoGood Agency produces.
@@ -83,7 +85,7 @@ If the jurisdiction that governs you does not allow limitations or warranties, t
 
 Under absolutely no circumstances will we be held liable or responsible for any direct, indirect, incidental, consequential, special, exemplary, punitive, or other damages that arise from anything resulting from our website or you using the website, nor will be held liable for any claimed damages that arise from reading our content or using our website’s information, even if you have been told that damages have occurred. This includes but is not limited to being liable for damages of loss businesses, profits, litigation, or similar occurrences.
 
-Any liability for any claim that arises from using our website or that is related to our website will not exceed ($100) one hundred dollars, and that amount will be placed on all other remedies which may be used against our affiliates. Nothing in these terms limits liability that cannot be limited by law, including for intent or gross negligence, or takes away your rights as a consumer.
+Any liability for any claim that arises from using our website or that is related to our website will not exceed ($100) one hundred dollars, and that amount will be placed on all other remedies which may be used against our affiliates. Nothing in these terms limits liability that cannot be limited by law, including for intent or gross negligence, or takes away your rights as a consumer. For paid services, the signed client agreement sets liability and takes priority over these terms.
 
 ### OBSCENE AND OFFENSIVE CONTENT
 
@@ -103,7 +105,7 @@ Any questions or concerns about these terms and conditions of use should be brou
 
 ### GOVERNING LAW
 
-These terms are governed by the laws of Estonia, and disputes go to the courts of Estonia. If you use our website as a consumer, you keep any protections the laws of your home country give you.
+Estonian law applies and disputes go to the courts of Estonia. If you're a consumer, you keep the protections of the law where you live and may bring a claim in your local courts.
 
 ### ENTIRE AGREEMENT
 

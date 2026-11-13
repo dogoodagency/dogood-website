@@ -13,7 +13,7 @@ Only Fin's numbered changes are in the new text. Every other sentence is the liv
 - P5. Information you provide adds live chat, TidyCal bookings, Jotform and the MailerLite sign-up.
 - P6. Payment processors are "(bank transfer through Wise, or card payment through Stripe)". The live sentence "We do not store your full credit card details on our servers." is kept.
 - P7. Service providers are Netlify, CookieYes, tawk.to, Google Workspace, MailerLite, TidyCal, Jotform, HubSpot, PandaDoc, payments (Wise, Stripe) and Buzzsprout.
-- P8. Legal basis and Transfers are new short sections. Section 4 adds restriction, objection, data portability, and a complaint to the Estonian Data Protection Inspectorate (Andmekaitse Inspektsioon).
+- P8. Legal basis and Transfers are new short sections. The Transfers line covers the payment providers (Wise, Stripe) as well as the other providers. Section 4 adds restriction, objection, data portability, and a complaint to the Estonian Data Protection Inspectorate (Andmekaitse Inspektsioon).
 - P9. The "by using this website you agree" sentence and the "continued use constitutes acceptance" sentence are deleted.
 - P10. "Last updated: 13 November 2026" is at the top. The date is fixed in the page. It is not generated.
 - P11. The "Regular security audits and monitoring" bullet is removed from section 6.
@@ -22,13 +22,13 @@ Only Fin's numbered changes are in the new text. Every other sentence is the liv
 ## Terms
 
 - T1. Under the heading: this website is run by DoGood OÜ (Estonia, registry code 14695833).
-- T2. The arbitration sentence is deleted. After the USD 100 sentence: nothing in these terms limits liability that cannot be limited by law, or takes away consumer rights.
+- T2. The arbitration sentence is deleted. After the USD 100 sentence: nothing in these terms limits liability that cannot be limited by law, or takes away consumer rights. Immediately after that: for paid services, the signed client agreement sets liability and takes priority over these terms. There is no arbitration clause and no jury-trial waiver.
 - T3. The anti-spam section, the earnings-disclaimer intro paragraph, and both Compensation Disclosure sections are deleted.
 - T4. "here" links to /privacy, and "Cookies Policy" links to /cookies.
 - T5. "Last updated: 13 November 2026" is under the opening line, and the closing sentence uses the same fixed date. The copyright line is "© 2026 DoGood OÜ. All rights reserved."
-- T6. The whole FORWARD-LOOKING STATEMENTS section is removed. The earnings sections and NO EARNINGS PROJECTIONS stay as they are.
-- T7. GOVERNING LAW is added immediately before ENTIRE AGREEMENT: "These terms are governed by the laws of Estonia, and disputes go to the courts of Estonia. If you use our website as a consumer, you keep any protections the laws of your home country give you."
-- T2 stands. The live exclusion paragraph is unchanged. The USD 100 cap stays, with the arbitration sentence still deleted and the carve-out still after it: nothing in these terms limits liability that cannot be limited by law, including for intent or gross negligence, or takes away your rights as a consumer.
+- T6. The whole FORWARD-LOOKING STATEMENTS section is removed. The earnings sections stay. At the end of NO EARNINGS PROJECTIONS, PROMISES OR REPRESENTATIONS: "This is no guarantee of results or income. Any guarantee for paid services is set out only in the signed client agreement."
+- T7. GOVERNING LAW is immediately before ENTIRE AGREEMENT: "Estonian law applies and disputes go to the courts of Estonia. If you're a consumer, you keep the protections of the law where you live and may bring a claim in your local courts."
+- T2 stands. The live exclusion paragraph is unchanged. The USD 100 cap stays, with the arbitration sentence still deleted and the carve-out still after it, followed by the paid-services sentence in T2. There is no arbitration clause and no jury-trial waiver.
 
 ## Cookies
 
@@ -150,7 +150,7 @@ Privacy, Terms and Cookies each carry a fixed "Last updated" date. Any future ed
 +
 +### Transfers
 +
-+Some providers process data outside the EU/EEA, and where they do we rely on safeguards such as the EU Standard Contractual Clauses.
++Some providers, including our payment providers (Wise, Stripe), process data outside the EU/EEA, and where they do we rely on safeguards such as the EU Standard Contractual Clauses.
  
  ### 4. YOUR PRIVACY RIGHTS
  
@@ -256,7 +256,7 @@ Privacy, Terms and Cookies each carry a fixed "Last updated" date. Any future ed
  Under absolutely no circumstances will we be held liable or responsible for any direct, indirect, incidental, consequential, special, exemplary, punitive, or other damages that arise from anything resulting from our website or you using the website, nor will be held liable for any claimed damages that arise from reading our content or using our website’s information, even if you have been told that damages have occurred. This includes but is not limited to being liable for damages of loss businesses, profits, litigation, or similar occurrences.
  
 -Any liability for any claim that arises from using our website or that is related to our website will not exceed ($100) one hundred dollars, and that amount will be placed on all other remedies which may be used against our affiliates. Any claim you make will be subject to confidential, binding arbitration that is described later on in our terms and conditions of use.
-+Any liability for any claim that arises from using our website or that is related to our website will not exceed ($100) one hundred dollars, and that amount will be placed on all other remedies which may be used against our affiliates. Nothing in these terms limits liability that cannot be limited by law, including for intent or gross negligence, or takes away your rights as a consumer.
++Any liability for any claim that arises from using our website or that is related to our website will not exceed ($100) one hundred dollars, and that amount will be placed on all other remedies which may be used against our affiliates. Nothing in these terms limits liability that cannot be limited by law, including for intent or gross negligence, or takes away your rights as a consumer. For paid services, the signed client agreement sets liability and takes priority over these terms.
  
  ### OBSCENE AND OFFENSIVE CONTENT
  
@@ -274,7 +274,7 @@ Privacy, Terms and Cookies each carry a fixed "Last updated" date. Any future ed
 +
 +### GOVERNING LAW
 +
-+These terms are governed by the laws of Estonia, and disputes go to the courts of Estonia. If you use our website as a consumer, you keep any protections the laws of your home country give you.
++Estonian law applies and disputes go to the courts of Estonia. If you're a consumer, you keep the protections of the law where you live and may bring a claim in your local courts.
 +
 +Privacy section 6 no longer has "Regular security audits and monitoring". Privacy section 11 USERNAMES AND PASSWORDS is deleted. CHANGES TO THIS POLICY is section 11. CONTACT US is section 12.
 ```
