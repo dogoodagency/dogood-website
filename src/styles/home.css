@@ -2959,7 +2959,7 @@ header.nav .nav-panel a:focus-visible {
 header.nav .nav-apply {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   flex: 0 0 auto;
   min-height: 64px;
   padding: 8px 10px 8px 18px;
@@ -2974,12 +2974,15 @@ header.nav .nav-apply {
   box-shadow: 0 10px 28px rgba(42, 11, 79, 0.16);
 }
 
-header.nav .nav-apply-icon {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.22);
-  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.85);
+header.nav .nav-apply-icon,
+header.nav .nav-apply-icon img {
+  display: block;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 header.nav .sr-only {
@@ -3092,11 +3095,6 @@ header.nav .nav-panel a {
     min-height: 52px;
     padding: 6px 8px 6px 12px;
     gap: 8px;
-  }
-
-  header.nav .nav-apply-icon {
-    width: 28px;
-    height: 28px;
   }
 }
 
