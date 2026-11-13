@@ -1,0 +1,52 @@
+---
+// Copy for these pages lives in src/content/legal. Replace the placeholders there.
+import { getEntry, render } from "astro:content";
+import Base from "../layouts/Base.astro";
+
+interface Props {
+  id: "privacy" | "terms";
+}
+
+const { id } = Astro.props;
+const entry = await getEntry("legal", id);
+
+if (!entry) {
+  throw new Error(`Missing legal page: ${id}`);
+}
+
+const { Content, headings } = await render(entry);
+const toc = headings.filter((heading) => heading.depth === 2);
+const canonical = new URL(id, "https://www.dogoodagency.co/").href;
+---
+
+<Base
+  title={`${entry.data.title} | DoGood Founders`}
+  description={entry.data.description}
+  canonical={canonical}
+>
+  <article class="policy">
+    <div class="policy-wrap">
+      <h1>{entry.data.title}</h1>
+      <p class="policy-updated">Last updated {entry.data.updated}</p>
+      <p class="policy-entity">
+        <strong>DoGood OÜ (Estonia)</strong> is the service provider and the data controller.
+        DoGood Agency LLC is the US company named in the footer.
+      </p>
+      <nav class="policy-toc" aria-label="On this page">
+        <p>On this page</p>
+        <ol>
+          {
+            toc.map((heading) => (
+              <li>
+                <a href={`#${heading.slug}`}>{heading.text}</a>
+              </li>
+            ))
+          }
+        </ol>
+      </nav>
+      <div class="policy-body">
+        <Content />
+      </div>
+    </div>
+  </article>
+</Base>
