@@ -1,20 +1,8 @@
 ---
-title: "wayfinders/vlora"
+title: "Vlora, Wayfinder for the Atlantic Hub | DoGood Founders"
 description: "Meet Vlora, DoGood Wayfinder for Western Europe and South America, for founders at turning points, from high growth to life after exit."
 ---
-
-<nav class="crumbs" aria-label="Breadcrumb">
-  <a href="/how-it-works">How it works</a>
-  <span aria-hidden="true">/</span>
-  <a href="/wayfinders">Wayfinders</a>
-</nav>
-
-
-<a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
-
 # Vlora | Atlantic Hub
-
-![wayfinders vlora vlora v2 edited edited edited png](/media/wayfinders-vlora-vlora-v2-edited-edited-edited-png.jpg)
 
 # (+ WesternEU & South America)
 
@@ -82,7 +70,7 @@ Vlora
 
 A 5-minute Founder Diagnostic™
 
-[See my Pressure Score Index →](/diagnostics)
+<a class="btn-teal" href="/diagnostics">See my Pressure Score Index</a>
 
 Private · 5 minutes · Immediate results
 

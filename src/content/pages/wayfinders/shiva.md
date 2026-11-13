@@ -1,20 +1,8 @@
 ---
-title: "wayfinders/shiva"
+title: "Shiva, Wayfinder for the Gulf | DoGood Founders"
 description: "Meet Shiva, DoGood Wayfinder for the Gulf, North Africa and East Asia, for founders between worlds: post-exit, mid-collapse, or before the crash."
 ---
-
-<nav class="crumbs" aria-label="Breadcrumb">
-  <a href="/how-it-works">How it works</a>
-  <span aria-hidden="true">/</span>
-  <a href="/wayfinders">Wayfinders</a>
-</nav>
-
-
-<a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
-
 # Shiva | Gulf Hub
-
-![wayfinders shiva shiva v3 edited png](/media/wayfinders-shiva-shiva-v3-edited-png.jpg)
 
 # (+ North Africa & East Asia)
 
@@ -78,7 +66,7 @@ Shiva
 
 A 5-minute Founder Diagnostic™
 
-[See my Pressure Score Index →](/diagnostics)
+<a class="btn-teal" href="/diagnostics">See my Pressure Score Index</a>
 
 Private · 5 minutes · Immediate results
 

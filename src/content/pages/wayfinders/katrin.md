@@ -1,22 +1,10 @@
 ---
-title: "wayfinders/katrin"
+title: "Katrin, Wayfinder for Europe | DoGood Founders"
 description: "Meet Katrin, DoGood Wayfinder for Europe, the UK and Central America, for founders whose personal life starts to affect how they lead and decide."
 ---
-
-<nav class="crumbs" aria-label="Breadcrumb">
-  <a href="/how-it-works">How it works</a>
-  <span aria-hidden="true">/</span>
-  <a href="/wayfinders">Wayfinders</a>
-</nav>
-
-
-<a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
-
 # Katrin | Europe Hub
 
-![wayfinders katrin katrin v5 edited edited png](/media/wayfinders-katrin-katrin-v5-edited-edited-png.jpg)
-
-# (+ United Kingdom & Central America)
+# (+ United Kindom & Central America)
 
 1 Why founders come to me
 
@@ -81,7 +69,7 @@ Katrin
 
 A 5-minute Founder Diagnostic™
 
-[See my Pressure Score Index →](/diagnostics)
+<a class="btn-teal" href="/diagnostics">See my Pressure Score Index</a>
 
 Private · 5 minutes · Immediate results
 

@@ -1,20 +1,14 @@
 ---
-title: "casestudies"
+title: "Clients - Reviews and Testimonial - DoGood Agency"
 description: "Explore our success stories at DoGood Agency. Dive into our testimonials and case studies showcasing creative solutions that drive positive results to our clients."
 ---
-
-- [Founders](/how-it-works)
-- [Wayfinders](/wayfinders)
-
-<a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
-
 # Clients
 
 ## Synergy Plus
 
 ## Empowering Synergy Plus to Articulate Their Value & Engage the Right Customers
 
-[Read the stories](/stories)
+<a class="btn-teal" href="/case/empowering-synergy-plus-to-articulate-their-value-%26-engage-the-right-customers">READ MORE</a>
 
 Statistics indicate that staff leave workplaces to:
 

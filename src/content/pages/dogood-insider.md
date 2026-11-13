@@ -1,152 +1,221 @@
 ---
-title: "DoGood Insider | Stories from founders and CEOs"
-description: "Conversations with founders and CEOs about culture, leading, and the personal side of building and letting go. On YouTube, Spotify, and Apple Podcasts."
+title: "Best Podcasts: Company Culture With The DoGood Insider"
+description: "Listen to The DoGood Insider, a company culture podcast on operations management &  team development insights. One of the top podcasts for entrepreneurs."
 ---
-
 # DoGood Insider
 
-<picture class="page-sketch page-sketch-feature">
-  <source type="image/webp" srcset="/sketches/podcast-two-chairs-microphone@1x.webp 540w, /sketches/podcast-two-chairs-microphone@2x.webp 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" />
-  <img src="/sketches/podcast-two-chairs-microphone@1x.png" srcset="/sketches/podcast-two-chairs-microphone@1x.png 540w, /sketches/podcast-two-chairs-microphone@2x.png 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" width="540" height="400" alt="Two simple chairs at a table with a teal runner and a single microphone on a stand between them, with a small pink accent on the microphone." />
-</picture>
+Raw Stories from Culture-First Founders & CEOs
 
-Raw stories from culture-first founders and CEOs
+Step into unfiltered, raw talks for founders and CEOs who are navigating more than just business — they're navigating themselves.
 
-Unfiltered talks for founders and CEOs who are navigating more than just business. They're navigating themselves.
+This podcast reveals the hidden realities behind culture, growth, success, and what happens when it starts to crack.
 
-This podcast looks at the hidden realities behind culture, growth, success, and what happens when it starts to crack. No polished corporate facades. Just the real human challenges, the hard decisions, and the moments that don't make it into the press release.
+No polished corporate facades. Just the real human challenges, pivotal decisions, and breakthrough moments that don't make it into the press release.
 
-Founders and other leaders share what they've lived through: culture wearing thin, identity loss, starting again, and what it takes to rebuild from the inside out.
+Join us as founders and other leaders share their authentic journeys — through culture erosion, burnout, identity loss, reinvention, and what it actually takes to rebuild from the inside out.
 
-## Listen on
+Available on
 
-<p>
-<a class="btn-teal" href="https://www.youtube.com/@RawStoriesOfDoGoodCultures/podcasts" target="_blank" rel="noopener noreferrer">YouTube</a>
-<a class="btn-teal" href="https://open.spotify.com/show/1vlOQvxBxc6CmDp7BWAR4K" target="_blank" rel="noopener noreferrer">Spotify</a>
-<a class="btn-teal" href="https://podcasts.apple.com/us/podcast/dogood-insider-raw-journeys-from-start-up-founders-to-scale-up-ceos-with-seb-wichmann/id1786906519" target="_blank" rel="noopener noreferrer">Apple Podcasts</a>
-<a class="btn-teal" href="https://music.amazon.com/podcasts/8a575c58-a94c-4707-9173-e2e42d17bbb5" target="_blank" rel="noopener noreferrer">Amazon Music</a>
-</p>
+## Decision Making in Business
 
-## Episodes
+<a class="btn-teal" href="/podcast/decision-making-in-business">Explore</a>
 
-### Decision Making in Business
-How CEOs Build a Culture of Accountability  
-43:58  
-<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+How CEOs Build a Culture of Accountability
 
-### Culture Eats Strategy
-Building Tomorrow's SMEs on Today's Values Toward a Human-First Culture  
-44:59  
-<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+<a class="btn-teal" href="/podcast/decision-making-in-business">Listen Now</a>
 
-### Building Tomorrow's Culture
-Daniel Marashlian on Managing SME Culture Amidst Rapid Growth Surge  
-36:08  
-<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+43:58
 
-### From Silicon Val. to Seafloor
-Reimagining Sustainable Deep-Sea Mining with Oliver Gunasekara  
-32:55  
-<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+## Culture Eats Strategy
 
-### The Gen-Z Community Era
-Christian Brown Breaks Social Barriers  
-44:19  
-<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+<a class="btn-teal" href="/podcast/culture-eats-strategy">Explore</a>
 
-### The Workforce Drought
-Craig Rupp's Journey from Engineer to AgTech Visionary & Legacy of Leadership  
-32:24  
-<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+Building Tomorrow's SMEs on Today's Values Toward a Human-First Culture
 
-### Holistic Leadership in Action
-How Peggy Rajski Balances Strategy, Intuition, and Discernment to Drive Change  
-1:01:37  
-<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+<a class="btn-teal" href="/podcast/culture-eats-strategy">Listen Now</a>
 
-### Beyond Distance
-Transforming Remote Work into Meaningful Connections with Jeanette Winters  
-34:43  
-<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+44:59
 
-### Scaling Teams & Culture
-Lessons in Hiring with Brian Samson  
-40:17  
-<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+## Building Tomorrow’s Culture
 
-### Staying Lean & Growing Big
-How Benjamin Ard Built a Successful 2-Man SaaS Company  
-44:34  
-<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+<a class="btn-teal" href="/podcast/building-tomorrow%E2%80%99s-culture">Explore</a>
 
-### Sustainable Threads of Change
-Kat Dey Weaves Ethics into Business Innovation  
-33:34  
-<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+Daniel Marashlian on Managing SME Culture Amidst Rapid Growth Surge
 
-### Beyond the Balance Sheet
-Borys Pikalov on Customer Loyalty & Staff Wellbeing in Decentralized Finance  
-38:54  
-<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+<a class="btn-teal" href="/podcast/building-tomorrow%E2%80%99s-culture">Listen Now</a>
 
-### No Compromise, Just Care
-John Hoey on Hiring with Heart & Leading with Soul  
-38:22  
-<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+36:08
 
-### Bridging The Cultural Divide
-Redefining Cross-Continental Growth in Gaming's Global Workforce with Chris Hewish  
-39:23  
-<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+## From Silicon Val. to Seafloor
 
-### Emulating The Star Factor
-Daricus Releford's Story from Google to Meeting The Odd Man on the Stairs  
-48:15  
-<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+<a class="btn-teal" href="/podcast/from-silicon-val">Explore</a>
 
-### The Power of Envelope Money
-Shane Walker on Intentional Spending Habits  
-44:06  
-<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+Reimagining Sustainable Deep-Sea Mining with Oliver Gunasekara
 
-### Breaking Taboos
-Alex Fine on Transforming Sexual Health & Authenticity in Entrepreneurship  
-38:28  
-<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+<a class="btn-teal" href="/podcast/from-silicon-val">Listen Now</a>
 
-### The Culinary Revolution
-Benji Koltai About Family Values, Founding & Battling Operational Models  
-41:24  
-<a class="btn-teal" href="https://www.buzzsprout.com/2435557" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+32:55
 
-## About the show
+## The Gen-Z Community Era
 
-DoGood Agency hosts this podcast for founders navigating more than just scale. It's for those facing the personal side of building, leading, and letting go.
+<a class="btn-teal" href="/podcast/the-gen-z-community-era">Explore</a>
 
-Most founder content is about winning: the exits, the highlights reel. This podcast is about what happens in between.
+Christian Brown Breaks Social Barriers
 
-The guests on DoGood Insider aren't here to impress you. They're here because they've lived through something real, and they're willing to talk about it honestly. The doubts. The pivots. The moments that reshaped how they lead and live.
+<a class="btn-teal" href="/podcast/the-gen-z-community-era">Listen Now</a>
 
-You won't find scripts. Just founders, CEOs, and other leaders saying the things most people only admit in private.
+44:19
 
-If you've ever wondered whether anyone else feels the way you do, they do. And they're on this show.
+## The Workforce Drought
 
-## The host
+<a class="btn-teal" href="/podcast/the-workforce-drought">Explore</a>
+
+Craig Rupp’s Journey from Engineer to AgTech Visionary & Legacy of Leadership
+
+<a class="btn-teal" href="/podcast/the-workforce-drought">Listen Now</a>
+
+32:24
+
+## Holistic Leadership in Action
+
+<a class="btn-teal" href="/podcast/holistic-leadership-in-action">Explore</a>
+
+How Peggy Rajski Balances Strategy, Intuition, and Discernment to Drive Change
+
+<a class="btn-teal" href="/podcast/holistic-leadership-in-action">Listen Now</a>
+
+1:01:37
+
+## Beyond Distance
+
+<a class="btn-teal" href="/podcast/beyond-distance">Explore</a>
+
+Transforming Remote Work into Meaningful Connections with Jeanette Winters
+
+<a class="btn-teal" href="/podcast/beyond-distance">Listen Now</a>
+
+34:43
+
+## Scaling Teams & Culture
+
+<a class="btn-teal" href="/podcast/scaling-teams-and-building-culture">Explore</a>
+
+Lessons in Hiring with Brian Samson
+
+<a class="btn-teal" href="/podcast/scaling-teams-and-building-culture">Listen Now</a>
+
+40:17
+
+## Staying Lean & Growing Big
+
+<a class="btn-teal" href="/podcast/staying-lean-growing-big">Explore</a>
+
+How Benjamin Ard Built a Successful 2-Man SaaS Company
+
+<a class="btn-teal" href="/podcast/staying-lean-growing-big">Listen Now</a>
+
+44:34
+
+## Sustainable Threads of Change
+
+<a class="btn-teal" href="/podcast/sustainable-threads-of-change">Explore</a>
+
+Kat Dey Weaves Ethics into Business Innovation
+
+<a class="btn-teal" href="/podcast/sustainable-threads-of-change">Listen Now</a>
+
+33:34
+
+## Beyond the Balance Sheet
+
+<a class="btn-teal" href="/podcast/beyond-the-balance-sheet">Explore</a>
+
+Borys Pikalov on Customer Loyalty & Staff Wellbeing in Decentralized Finance
+
+<a class="btn-teal" href="/podcast/beyond-the-balance-sheet">Listen Now</a>
+
+38:54
+
+## No Compromise, Just Care
+
+<a class="btn-teal" href="/podcast/no-compromise%2C-just-care">Explore</a>
+
+John Hoey on Hiring with Heart & Leading with Soul
+
+<a class="btn-teal" href="/podcast/no-compromise%2C-just-care">Listen Now</a>
+
+38:22
+
+## Bridging The Cultural Divide
+
+<a class="btn-teal" href="/podcast/bridging-cultures-in-global-business">Explore</a>
+
+Redefining Cross-Continental Growth in Gaming’s Global Workforce with Chris Hewish
+
+<a class="btn-teal" href="/podcast/bridging-cultures-in-global-business">Listen Now</a>
+
+39:23
+
+## Emulating The Star Factor
+
+<a class="btn-teal" href="/podcast/emulating-the-star">Explore</a>
+
+Daricus Releford’s Story from Google to Meeting The Odd Man on the Stairs
+
+<a class="btn-teal" href="/podcast/emulating-the-star">Listen Now</a>
+
+48:15
+
+## The Power of Envelope Money
+
+<a class="btn-teal" href="/podcast/power-envelope-money">Explore</a>
+
+Shane Walker on Intentional Spending Habits
+
+<a class="btn-teal" href="/podcast/power-envelope-money">Listen Now</a>
+
+44:06
+
+## Breaking Taboos
+
+<a class="btn-teal" href="/podcast/breaking-taboos">Explore</a>
+
+Alex Fine on Transforming Sexual Health & Authenticity in Entrepreneurship
+
+<a class="btn-teal" href="/podcast/breaking-taboos">Listen Now</a>
+
+38:28
+
+## The Culinary Revolution
+
+<a class="btn-teal" href="/podcast/the-culinary-revolution">Explore</a>
+
+Benji Koltai About Family Values, Founding & Battling Operational Models
+
+<a class="btn-teal" href="/podcast/the-culinary-revolution">Listen Now</a>
+
+41:24
+
+Hosted by DoGood Agency — a partner in founder transformation, operational excellence, and culture change — this podcast is for founders navigating more than just scale.
+
+It's for those facing the personal side of building, leading, and letting go.
 
 Seb Wichmann
 
-I've spent 14 years working with cultures across 35+ countries, advising Fortune 500 companies, leading leadership programs, and earning recognition as an Upwork Expert-Vetted professional and 'SuperCoach' award recipient.
+I've spent 14 years transforming cultures across 35+ countries — advising Fortune 500 companies, leading leadership programs, and earning recognition as an Upwork Expert-Vetted professional and 'SuperCoach' award recipient.
 
-The most important change was my own. I built a successful business that nearly broke me. I know what it's like to perform at the top while quietly falling apart.
+But my most important transformation was my own.
 
-That's why I now work with founders facing the same crossroads, whether they're still in the thick of it or figuring out what comes next.
+I built a successful business that nearly broke me. I know what it's like to perform at the top while quietly falling apart.
 
-## Be a guest
+That journey is why I now work exclusively with founders facing the same crossroads. Whether you're still in the thick of it or figuring out what comes next, I've been where you are.
 
-Want to be a guest on DoGood Insider? Tell us a little about yourself.
+Most founder content is about winning — the tactics, the exits, the highlights reel.
 
-**Get in touch →** [/contact](/contact)
+This podcast is about what happens in between.
 
-Not ready to apply? Stay close. You can join the founder community from the sign-up on the site.
+The guests on DoGood Insider aren't here to impress you. They're here because they've lived through something real — and they're willing to talk about it honestly. The doubts. The pivots. The moments that reshaped how they lead and live.
 
-**Apply for Stage 1 →** [/apply-stage-1](/apply-stage-1)
+You won't find scripts. Just founders, CEOs, and other leaders saying the things most people only admit in private.
+
+If you've ever wondered whether anyone else feels the way you do — they do. And they're on this show.

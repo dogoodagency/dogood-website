@@ -1,20 +1,8 @@
 ---
-title: "wayfinders/chantill"
+title: "Chantill, Wayfinder for North America | DoGood Founders"
 description: "Meet Chantill, DoGood Wayfinder for North America and Canada: a deeply relational partner for founders who feel lost and want a path back to themselves."
 ---
-
-<nav class="crumbs" aria-label="Breadcrumb">
-  <a href="/how-it-works">How it works</a>
-  <span aria-hidden="true">/</span>
-  <a href="/wayfinders">Wayfinders</a>
-</nav>
-
-
-<a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
-
 # Chantill | North America Hub
-
-![wayfinders chantill chantill v5 edited edited png](/media/wayfinders-chantill-chantill-v5-edited-edited-png.jpg)
 
 # (+ Canada)
 
@@ -79,7 +67,7 @@ Chantill
 
 A 5-minute Founder Diagnostic™
 
-[See my Pressure Score Index →](/diagnostics)
+<a class="btn-teal" href="/diagnostics">See my Pressure Score Index</a>
 
 Private · 5 minutes · Immediate results
 

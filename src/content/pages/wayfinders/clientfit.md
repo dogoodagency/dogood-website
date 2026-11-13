@@ -1,17 +1,7 @@
 ---
-title: "wayfinders/clientfit"
+title: "Client-Fit Process | DoGood Founders"
 description: "A private 30-day Intensive for founders navigating life after exit. Start with Stage 1 of the Founder Reclamation Partnership. 5 founders a month."
 ---
-
-<nav class="crumbs" aria-label="Breadcrumb">
-  <a href="/how-it-works">How it works</a>
-  <span aria-hidden="true">/</span>
-  <a href="/wayfinders">Wayfinders</a>
-</nav>
-
-
-<a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
-
 # Client-Fit Process
 
 We match you to a Wayfinder for fit first because outcomes depend on the relationship and working style. Once the fit is satisfied, we prioritize proximity/time zone to keep scheduling clean and travel sustainable.

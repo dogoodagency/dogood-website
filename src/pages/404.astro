@@ -8,9 +8,18 @@ const { Content } = await render(entry);
 ---
 
 <Base title="Page not found | DoGood Agency" description="That page is not here. Head home, or send us a note.">
-  <article class="page page-art page-404">
-    <div class="page-wrap page-body">
-      <Content />
+  <section class="subhero">
+  </section>
+  <article class="page page-designed page-art page-404">
+    <div class="page-wrap">
+      <picture class="page-sketch page-sketch-feature">
+        <img src="/sketches/404-missing-stone@1x.png" width="540" height="400" alt="" />
+      </picture>
+      <div class="page-frame">
+        <div class="page-body">
+          <Content />
+        </div>
+      </div>
     </div>
   </article>
 </Base>

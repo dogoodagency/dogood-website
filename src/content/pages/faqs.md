@@ -1,182 +1,401 @@
 ---
-title: "FAQs | DoGood Founders"
-description: "Answers about Stage 1, Stage 2, how to apply, the Clarity-First Guarantee, and the Founder Diagnostic, in plain words."
+title: "FAQs | DoGood Agency"
+description: "Questions from the live homepage and How it works page, in their original words."
 ---
 
-# FAQs
+The questions below are the question sections from the live homepage and the live How it works page, in their original words.
 
-<picture class="page-sketch page-sketch-feature">
-  <source type="image/webp" srcset="/sketches/faqs-index-cards@1x.webp 540w, /sketches/faqs-index-cards@2x.webp 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" />
-  <img src="/sketches/faqs-index-cards@1x.png" srcset="/sketches/faqs-index-cards@1x.png 540w, /sketches/faqs-index-cards@2x.png 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" width="540" height="400" alt="A desk lamp shining on a short fan of blank index cards, the back cards edged in teal, held with a small pink paperclip." />
-</picture>
+# What is FRP?
 
----
+It is a structured two-stage partnership designed for one outcome:
 
-# Questions founders ask before they apply
+Helping you make life after exit a deliberate choice, not another version of the life you left behind.
 
-Short answers first, then the detail. Every fact here is already on the live site.
+The work happens in stages because you do not need to rebuild everything at once.
 
-## The partnership
+First, we reset what has become misaligned: the patterns, values, and daily structure that no longer support the life you want to live. Then, once the essential parts are working again, we build the larger life around what genuinely comes next for you. Think of it like a house.
 
-### What is the Founder Reclamation Partnership?
+Before Stage 1
 
-The FRP is a private, two-stage partnership for founders after exit who want to decide what this next chapter is really for.
+The house is a mess
 
-It is designed for one outcome: helping you make life after exit a deliberate choice, not another version of the life you left behind. You apply for Stage 1 only. Stage 2 is invite-only.
+Stage 1 The Reset (30 days)
 
-The work happens in stages because you do not need to rebuild everything at once. First we reset what has become misaligned: the patterns, values, and daily structure that no longer support the life you want to live. Then, once the essential parts are working again, we build the larger life around what genuinely comes next for you.
+Get Clear · Set New Values · Shift Patterns
 
-### Who is this for?
+via ClarityValue Shift™
 
-Founders who have exited or meaningfully stepped away from the company they built, and are no longer in the day-to-day. A board or advisory role is fine.
+How it works: See → Interrupt → Choose → Reset
 
-This is for you if you have more freedom than before, but it does not feel the way you expected; if you want to look honestly at what this next phase of life could be about; and if you can protect 5-6 hours a week for 30 days.
+<a class="btn-teal" href="https://drive.google.com/file/d/1g6WwAU8fWcpbNIBKPgNZ382CbirxX4o4/view?usp=drive_link">ClarityValue Shift™ (1‑page)</a>
 
-It is not for founders who are still trying to solve a business problem or get out of the day-to-day, who want productivity advice, performance help, or a plan for the next venture, who want a quick answer or someone to tell them what to do, or who are not ready to look honestly at this phase.
+Stage 1 is a focused reset around self, patterns, values, and immediate structure.
 
-### Is this coaching or therapy?
+We make space for what often surfaces after exit: restlessness, loss of structure, neglected health or relationships, and the growing sense that the old way of operating no longer fits this chapter.
 
-No. This is not executive coaching. Not therapy. Not a mastermind, a retreat, or a course. There are no frameworks to memorize, and no random accountability pods.
+We interrupt the patterns shaping this chapter, clarify what is aligned for you now, and help you see what is driving your decisions, energy, and behaviour so you can begin moving toward the version of yourself that actually belongs next.
 
-FRP is private, direct, focused work on life after the company. It requires protected time, and honesty.
+By day 30, you are not just clearer. You have started to reset how you live: what you pay attention to, what no longer runs your life, and what needs to change.
 
-### Why 'DoGood'?
+Important: Stage 1 is focused work. We usually address 1-2 major areas, rather than trying to change everything at once.
 
-Because we love entrepreneurship. We love what founders build. We love what a great company can create for a family, a team, a community, and the world.
+By week 3, we will know one of two things:
+(1) Stage 1 gave you what you needed,
 
-The best founders we know are not only trying to build something successful. They want to do good. Good for themselves. Good for their families. Good for their teams. Good for the world. That is why we do this work. DoGood believes that success should not come at the expense of the people and parts of life that matter most.
-
-## Stage 1 and Stage 2
-
-### What is Stage 1?
-
-Stage 1 is The Reset, a private, confidential 30-day engagement. You apply for Stage 1 only.
-
-It is a focused reset around self, patterns, values, and immediate structure, via ClarityValue Shift™. How it works: See, Interrupt, Choose, Reset.
-
-Over 30 days, we help you see what is really surfacing, separate distraction from genuine desire, and get clear on what needs attention before the next major decision. Stage 1 is focused work. We usually address 1-2 major areas, rather than trying to change everything at once.
-
-By week 3, we will know one of two things: (1) Stage 1 gave you what you needed, or (2) there is a fit for Stage 2, and we continue.
-
-### What do I leave Stage 1 with?
+(2) There is a fit for Stage 2, and we continue.
 
 You will leave Stage 1 with:
 
-- 8x virtual 1:1 sessions (2x weekly, 75 min | Diagnose what's going on, make key distinctions, and set clear next steps)
+- 8x virtual 1:1 sessions (2x weekly, 75 min | Diagnose what’s going on, make key distinctions, and set clear next steps)
+
 - 1.5-Day In-Person Intensive (We travel to you | Private block to accelerate one major breakthrough fast)
-- Foundational Founder OS (Your playbook of tools and exercises, so you can repeat the work)
+
+- Foundational Founder OS (Your playbook of tools and exercises — so you can repeat the work)
+
 - Onboarding Starter Pack (Schedule, expectations, support rules, and what we need before Day 0)
+
 - Founder Completion Checkpoints (Tracked identity shifts + integrated, outcome-based proof points at key intervals)
-- 72-Hour Clarity Snapshot (Install a tangible habit win: rapid, meaningful, and effective)
+
+- 72‑Hour Clarity Snapshot (Install a tangible habit win — rapid, meaningful, and effective)
+
 - 10-Day Containment Protocol (Stop the spiral fast with triage, safety, control, and a scorecard)
-- Recovery & Stress Diagnostics (A [WHOOP](https://www.whoop.com/au/en/life/) baseline for sleep/recovery/stress, so stabilization is measurable)
-- 16-Week Reclamation Plan (Your itinerary, so you always know what to tackle first, next, and last)
 
-These supports remain consistent throughout both FRP stages:
+- Recovery & Stress Diagnostics (A [WHOOP](https://www.whoop.com/au/en/life/) baseline for sleep/recovery/stress — so stabilization is measurable)
 
-- Between-Session Voice/Chat Support (A private channel for ad-hoc moments, stay grounded and decide cleanly between sessions)
-- Accountability Support (In-session truth + recalibration | We reality-check what happened, then adjust the plan)
-- Integration Review (We review your reflection work so insights stick and next sessions stay aligned)
+- 16-Week Reclamation Plan (Your itinerary — so you always know what to tackle first, next, and last)
 
-### What is Stage 2?
+After Stage 1 (completed)
 
-Stage 2 is The Build, 12 weeks, via NextLife Passage™. It is invite-only. How it works: Rework, Navigate, Realign, Integrate.
+The house feels like a home again
 
-Stage 1 resets what is misaligned. Stage 2 then builds on what truly belongs next. This is a wider build around real life, deeper decisions, and long-term alignment. We take the shift from Stage 1 and reorganise life around it, so the work becomes part of how you live practically.
+Nothing feels in its place
+
+Lights have gone out
+
+Weeds are everywhere
+
+You struggle
+
+sleeping
+
+Essential rooms work well
+
+Rooms are light + clear
+
+Happiness you've not felt in a long time
+
+Some rooms still need attention
+
+You may feel uncomfortable about inviting friends
+
+Anchor 3
+
+Life at a whole new level
+
+Included in
+
+Stage 1 + Stage 2
 
 You will leave Stage 2 with:
 
 - 12x virtual 1:1 sessions (1x weekly, 90 min | Diagnose what's shifting, make key distinctions, and set clear next steps)
+
 - 1.5-Day In-Person Intensive (We travel to you | Private block to accelerate one major breakthrough fast)
+
 - Founder OS 2.0 (Deeper mechanisms + tighter integration for systematic, long-term change)
+
 - NextLife Roadmap (Your personalized 12-week blueprint + anchor progression, showing where you are headed)
-- Progress Pulse (Tracks commitments, routines, and patterns so we course-correct immediately)
+
+- Progress Pulse (Tracks commitments → routines → patterns so we course-correct immediately)
+
 - Custom State-Shift Audio (Bespoke tracks designed for focus, decompression, and high-stakes days)
+
 - Relationship + Health Restore Kit (Practical guide for conversations, boundaries, and reconnection with self + others)
-- Partnership Reviews (Week 5 + Week 12. Refine our process and adjust priorities as you progress)
 
-### What happens after 30 days?
+- Partnership Reviews (Week 5 + Week 12 — Refine our process and adjust priorities as you progress)
 
-Most founders want to keep going. Some don't need to.
+After Stage 2 (FRP completed)
 
-Option A: You're done. You leave with clarity, a map, and the tools to move forward. No pressure. Some founders get what they need in 30 days.
+You've designed your new home
 
-Option B: We continue. Stage 2 is where the redefinition of life happens over 12 weeks. That's why most founders continue for months 2-4.
+Stage 2 The Build (12 weeks)
 
-## How to start
+Rework Life · Go Deeper · Realign What Matters
 
-### How do I apply?
+via NextLife Passage™
 
-Complete the short application for Stage 1 (30 days). We'll respond within 24 hours. If there's a fit, we'll have an honest conversation.
+How it works: Rework → Navigate → Realign → Integrate
 
-How it works:
+<a class="btn-teal" href="https://drive.google.com/file/d/12qR6tjfv196rJ0Q32ltmUiHbGLVctyhh/view?usp=sharing">NextLife Passage™ (1‑page)</a>
 
-1. Apply. Takes 5-10 minutes.
-2. Conversation. 45 minutes (no pitch: just fit and clarity).
-3. Commit / Onboard. Pay, and we'll confirm your start window. If your start date is later, you'll receive the Pre-Start Stabilization Kit upon acceptance.
-4. Start Stage 1 (30 days). Day 1 starts on your first private 1:1 session, not on onboarding.
-5. Review in week 3. Invite to Stage 2, or complete Stage 1.
+Stage 1 resets what is misaligned. Stage 2 then naturally builds on what truly belongs next.
 
-**Apply for Stage 1 →** [/apply-stage-1](/apply-stage-1)
+This is a wider build around real life, deeper decisions, and long-term alignment. We take the shift from Stage 1 and reorganise life around it, so the work becomes part of how you live practically.
 
-If it's not a fit, we'll tell you directly and point you somewhere better.
+That means looking more closely at the foundations of your life and rebuilding them in a way that fits who you are now.
 
-### How much time does it take?
+We work through the deeper aspects to make practical changes to the areas that are the heaviest:
 
-Plan for 5-6 hours a week for 30 days. The work is private. No groups. No cohorts.
+how your time is structured, how your health is being supported, how you show up in key relationships, what your next chapter is really for, and what no longer belongs in your way of living.
 
-Sessions in Stage 1 are virtual 1:1, twice a week for 75 minutes, plus a 1.5-day in-person intensive where we travel to you.
+This is where new decisions start integrating visibly in your daily life, long-term. What mattered in the company stops dictating what matters now.
 
-### How soon can I start?
+Stage 2 is where identity, relationships, health, and direction start moving in sync. The founder’s new version is not just fully understood, but properly integrated into how you live your life.
 
-If you're a fit, we'll confirm your start window quickly. Standard Start begins at the next available slot. Expedited Start can begin within 7 days (for an acute crisis only, after approval).
+You love having people over
 
-Spots are not guaranteed. Limited to 5 new founders per month.
+The whole house works together
 
-### Who would I work with?
+Rooms connect + opened up
 
-FRP is delivered by an intentionally small, vetted team of Wayfinders, with 75+ years of combined founder-delivery experience. You don't pick a Wayfinder. We match for fit first. If, within the first two sessions, you feel the Wayfinder isn't the best fit, we'll adjust the match.
+Every space feels intentional
 
-**Meet the Wayfinders →** [/wayfinders](/wayfinders)
+These supports remain consistent throughout both FRP stages:
 
-### I'm not ready to apply. What can I do?
+- Between-Session Voice/Chat Support (A private channel for ad-hoc moments — stay grounded and decide cleanly between sessions)
 
-Not ready to apply? Stay close.
+- Accountability Support (In-session truth + recalibration | We reality-check what happened, then adjust the plan)
 
-Join the founder community from the sign-up on the site. You'll get insights on the parts of life after exit that can catch founders off guard, real stories from founders finding their footing beyond the company, and first access to tools, frameworks, and occasional founder-only events. Delivered every 7-14 days. Unsubscribe anytime.
+- Integration Review (We review your reflection work so insights stick and next sessions stay aligned)
 
-You can also start with the Founder Diagnostic™.
+FRP Signature Retreat
 
-## The Clarity-First Guarantee
+This is not a service inclusion, and it'snot guaranteed
 
-### Is there a guarantee?
+Our annual. in-person retreat with a small group of founders, built for connection, perspective, and real conversations. For clients who’ve been with us 6+ months and are in excellent standing.
 
-Yes. The Clarity-First Guarantee (Stage 1).
+Each year, we invite up to 10 founders who’ve made the most meaningful progress and applied themselves fully. If invited, hotel, meals, and activities are included (flights are not).
 
-You can't know whether FRP is right for you from the outside. You only know once you've been inside the work.
+Who This Is For
 
-Complete onboarding and attend your first two private 1:1 sessions. If you decide the partnership isn't right for you, email us within 7 days of Session 1, and we'll refund the remainder of your Stage 1 investment. No matter the reason (we only retain the portion covering the two sessions delivered).
+Founders: Post-Exit
 
-You keep all decisions, plans, and tools from our first sessions. We take real delivery risk on purpose, because we only want to continue if it's genuinely the right fit.
+This is for founders who have exited or meaningfully stepped away from the company and are no longer responsible for the day-to-day.
 
-**Read full terms →** [/clarity-first-guarantee-terms](/clarity-first-guarantee-terms)
+You may still have a board or advisory role, but you now have more time, more freedom, and more space than you have had in years.
 
-## The Founder Diagnostic
+What you did not expect was how uncomfortable that space might feel. But you do not simply want to fill it with another company or project.
 
-### What is the Founder Diagnostic™?
+You want to understand what is driving the next move and deliberately choose how you want to live beyond the business.
 
-A private, 5-10 minute diagnostic to help you separate story from reality and see where you stand before your next move. Built for founders who have exited, founders getting ready to, and founders still operating.
+Case Study
 
-You'll get your final result and clear action steps immediately after you complete it, including a score from 0 to 100, your diagnostic stage (1-5), your urgency window, and personalised next steps. After the diagnostic, we continue to support you by email, based on your situation, all free of charge. No pitch. No judgment.
+From identity void to decisive leadership — how V reclaimed life after success
 
-**Start the Founder Diagnostic™ →** [https://form.jotform.com/260262699147869](https://form.jotform.com/260262699147869)
+V (anonymous), USD 9M+ founder
 
-### Is the diagnostic confidential?
+<a class="btn-teal" href="/casestudies/v">Read the short case study</a>
 
-Yes. This is private. No one will know you're here. We ask for your name and email so we can send your results and the action plan, and route your follow-up appropriately.
+We protect our founders’ identities
 
-It is not medical advice or a diagnosis. Not therapy. Not a psychological service.
+### Key signals you’re a fit:
 
-**Apply for Stage 1 →** [/apply-stage-1](/apply-stage-1)
+You have exited or stepped away, but the freedom feels less good than you expected.
 
----
+You have more time, but are not sure what you want to do with it.
+
+The company no longer gives your days the structure it once did.
+
+You consider another project, investment, or role, but do not fully trust what is driving it.
+
+Your health, relationships, or family life need more of your attention now.
+
+You want this next part of life to mean something, not just keep you busy.
+
+### ✓
+
+### This is NOT for founders who:
+
+Are still primarily trying to solve a business or operational problem.
+
+Want productivity tactics, routines, or performance coaching.
+
+Are looking for a quick answer or someone to tell them what to do next.
+
+Want to rush into another venture without looking honestly at what is driving the choice.
+
+Are not ready to give real attention to their health, relationships, and life beyond work.
+
+### X
+
+# How are you really doing after the exit?
+
+The Founder Diagnostic™ shows you in 5 minutes.
+
+<a class="btn-teal" href="/diagnostics">See my Pressure Score Index</a>
+
+5 minutes · Results immediate · Confirms fit before you apply
+
+You just read those signals. Some felt true. Maybe all of them. But here's the real question: Is this pressure level enough for FRP? Because if you're just stressed, you don't need a fancy partnership. You need rest, boundaries, and maybe a coach.
+
+But if the pressure runs deeper — health deteriorating, relationships breaking, identity fused to the company — then waiting costs more than you think.
+
+The diagnostic gives you a Pressure Score Index (0-100), your diagnostic stage, and your urgency window — so you know where you actually stand before you apply.
+
+No pressure. Just objective data on whether FRP is right for where you are.
+
+## What This Partnership Is Not
+
+This is not executive coaching. Not therapy. Not a mastermind, a retreat, or a course.
+
+There are no frameworks to memorize, and no random accountability pods.
+
+FRP is private, direct, intensive work. It requires protected time and brutal honesty.
+
+In exchange, we remove the confusion, compress the timeline to clarity, and reduce the effort of 'figuring it out alone' — designed for founders who've outgrown surface-level interventions.
+
+Private work. Real consequences. Real change.
+
+Case Study
+
+From exit anxiety to aligned legacy —How J created a clear next life chapter
+
+J (anonymous), USD 2M founder
+
+<a class="btn-teal" href="/casestudies/j">Read the short case study</a>
+
+We protect our founders’ identities
+
+### Clarity‑First Guarantee (Stage 1)
+
+You can’t know whether FRP is right for you from the outside — you only know once you’ve been inside the work.
+
+Complete onboarding and attend your first two private 1:1 sessions. If you decide the partnership isn’t right for you, email us within 7 days of Session 1, and we’ll refund the remainder of your Stage 1 investment –– no matter the reason (we only retain the portion covering the two sessions delivered).
+
+You keep all decisions, plans, and tools from our first sessions. We take real delivery risk on purpose, because we only want to continue if it’s genuinely the right fit.
+
+<a class="btn-teal" href="/clarity-first-guarantee-terms">Read full terms</a>
+
+Private work. Real consequences. Real change.
+
+<a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
+
+Confidential · Limited to 5 new founders/month
+
+##### The Wayfinder Team
+
+<a class="btn-teal" href="/wayfinders">Wayfinder Hub</a>
+
+geo-travel map, fit-first matching process
+
+to meet our Wayfinders up close,
+
+Access our
+
+##### North America Hub
+
+##### (+ Canada)
+
+Chantill
+
+##### Human Side: Parent. Partner. Adventure motorcyclist. I want to see how good life can be. Transforming shame into strength, fostering healing through nervous system awareness and compassion.
+
+##### Europe Hub
+
+##### (+ United Kindom & Central America)
+
+Katrin
+
+##### Human Side: Embracing resilience and calm, they inspire transformation through presence, cross-cultural understanding, nature, movement, and compassionate leadership.
+
+##### Gulf Hub
+
+##### (+ North Africa & East Asia)
+
+Shiva
+
+##### Human Side: Iranian refugee. I lived in 3 continents, 7 cities, 6 countries, raised in 2 religions. Fantasy fiction and ancestral wisdoms lover. That includes Star Wars.
+
+##### (+ United States)
+
+##### Asia-Pacific Hub
+
+Seb
+
+##### Human Side: The endless power of human potential inspires a world where truth, love, and visionary entrepreneurship uplift collective awareness and human flourishing.
+
+##### Atlantic Hub
+
+##### (+ Western EU & South America)
+
+Vlora
+
+##### Human Side: Authentic leadership comes from inner clarity, balanced nervous systems, and aligning identity with sustainable high-pressure decision-making.
+
+<a class="btn-teal" href="/wayfinders">Meet the Wayfinder Team</a>
+
+You don’t pick a Wayfinder · We match for fit first.
+
+Find answers to common questions about the partnership
+
+Apply anyway
+
+If it’s not a fit, we’ll tell you directly and point you somewhere better. The application takes 5–10 minutes. If there's alignment, we'll schedule a call to explore whether the FRP is right for you.
+
+Anchor 1
+
+## How It Works
+
+Step 1 Apply
+
+Takes 5 - 10 minutes
+
+Step 2 Conversation
+
+45 minutes (no pitch: simply fit and clarity)
+
+Step 3 Commit / Onboard
+
+Pay + we'll confirm start window. If your start date is later, you'll receive the Pre‑Start Stabilization Kit upon acceptance
+
+Step 4 Start Stage 1 (30 days)
+
+Day 1 starts on your first private 1:1 session (not onboarding)
+
+Step 5 Review in week 3
+
+Invite to Stage 2 or complete Stage 1
+
+<a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
+
+Stage 1 (30 days) · Week 3 decision on Stage 2
+
+## What Happens After 30 Days
+
+Most founders want to keep going. Some don’t need to.
+
+Option A You’re done.
+
+You leave with clarity, a map, and the tools to move forward. No pressure.
+
+Some founders get what they need in 30 days.
+
+Option B We continue.
+
+Stage 2 is where the redefinition of life happens over 12 weeks. That’s why most founders continue for months 2–4.
+
+# Not sure where you stand?
+
+Take the 5-minute Founder Diagnostic™.
+
+<a class="btn-teal" href="/diagnostics">See my Pressure Score Index</a>
+
+Private · 5 minutes · Immediate results
+
+It can be challenging to tell the difference between a passing stretch of stress and something that needs more attention. This diagnostic gives you a Pressure Score Index (0–100), your Diagnostic Stage (1–5), an urgency window, and personalised next steps.
+
+YOUR WAYFINDERS
+
+FRP is delivered by an intentionally small, vetted team of Wayfinders with 75+ years of combined founder-delivery experience. They’re the kind of rare people you don’t find in usual channels. All are trained to meet our quality standards to ensure consistency and outcome-driven deliveries. Every time.
+
+Seb
+
+Katrin
+
+Chantill
+
+Shiva
+
+Vlora
+
+# What's next?

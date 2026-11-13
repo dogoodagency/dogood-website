@@ -1,13 +1,7 @@
 ---
-title: "diagnostics/founder-check"
+title: "FRP-Fit Application | DoGood Founders"
 description: "Founder Reclamation Partnership | Stage 1: The Intensive (30 days)"
 ---
-
-- [Founders](/how-it-works)
-- [Wayfinders](/wayfinders)
-
-<a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
-
 # Your Personalized
 
 # Founder Pressure Diagnostic™
@@ -78,7 +72,7 @@ What to do next – A custom action step based on your PSI, from low pressure to
 
 No pitch. No judgment. Just clarity on what's actually happening — so you can decide what to do next.
 
-[Start the Founder Pressure Diagnostic™ →](https://form.jotform.com/260262699147869?lead_source=LinkedIn&utm_source=linkedin&utm_medium=social&utm_campaign=diagnostic_launch)
+<a class="btn-teal" href="https://form.jotform.com/260262699147869?lead_source=LinkedIn&utm_source=linkedin&utm_medium=social&utm_campaign=diagnostic_launch">Start the Founder Pressure Diagnostic™</a>
 
 Instant · 5 minutes · Confidential · Immediate results
 

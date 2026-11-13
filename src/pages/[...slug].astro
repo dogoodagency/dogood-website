@@ -2,6 +2,7 @@
 import { getCollection, getEntry, render } from "astro:content";
 import Base from "../layouts/Base.astro";
 import LogoPills from "../components/LogoPills.astro";
+import Wave from "../components/Wave.astro";
 
 export async function getStaticPaths() {
   const pages = await getCollection("pages");
@@ -82,6 +83,35 @@ const pageTitle = named
   : stripped && !/^[a-z0-9./-]+$/i.test(stripped)
     ? `${stripped} | DoGood Agency`
     : `${slug.split("/").pop()?.replace(/-/g, " ") ?? "DoGood"} | DoGood Agency`;
+const art: Record<string, string> = {
+  "how-it-works": "how-it-works-two-stage-path-sketch",
+  wayfinders: "wayfinders-team-on-path-sketch",
+  "wayfinders/chantill": "wayfinders-team-on-path-sketch",
+  "wayfinders/vlora": "wayfinders-team-on-path-sketch",
+  "wayfinders/seb": "wayfinders-team-on-path-sketch",
+  "wayfinders/shiva": "wayfinders-team-on-path-sketch",
+  "wayfinders/katrin": "wayfinders-team-on-path-sketch",
+  "wayfinders/clientfit": "wayfinders-team-on-path-sketch",
+  "apply-stage-1": "apply-stage-1-garden-gate",
+  casestudies: "stories-journal-path-sketch",
+  "casestudies/j": "case-study-j-window-path",
+  "casestudies/v": "case-study-v-shore-boat",
+  "clarity-first-guarantee-terms": "clarity-first-guarantee-folder",
+  diagnostics: "founder-diagnostic-map",
+  "diagnostics/founder-check": "founder-diagnostic-map",
+  "dogood-insider": "podcast-two-chairs-microphone",
+  faqs: "faqs-index-cards",
+  "for-advisors": "for-advisors-after-the-deal-sketch",
+  stories: "stories-journal-path-sketch",
+  insights: "insights-open-journals",
+  newsletter: "newsletter-open-envelope-booklet",
+  about: "about-building-and-bench",
+  privacy: "legal-folded-document",
+  terms: "legal-folded-document",
+  cookies: "legal-folded-document",
+};
+const sketch = art[slug] ?? (entry.data.tidycal ? "booking-open-diary" : slug.includes("thank") ? "thank-you-envelope-tick" : "");
+
 const genericDescription = entry.data.description.startsWith("Founder Reclamation Partnership");
 const pageDescription = genericDescription
   ? `${named ?? "This page"} from DoGood Agency, a private partnership for founders after exit.`
@@ -94,20 +124,41 @@ const pageDescription = genericDescription
   canonical={canonical}
   hideOptin={entry.data.hideOptin}
 >
-  <article class:list={["page", entry.data.advisorLine && "page-advisor", ["how-it-works", "for-advisors", "stories", "wayfinders", "newsletter", "diagnostics", "faqs", "insights", "dogood-insider", "apply-stage-1", "clarity-first-guarantee-terms", "casestudies/j", "casestudies/v", "about"].includes(slug) && "page-art"]}>
+  <section class="subhero">
+    <Wave fill="#f5f2f9" />
+  </section>
+  <article class:list={["page", "page-designed", "page-advisor", sketch && "page-art"]}>
     <div class="page-wrap">
-      {entry.data.advisorLine && (
-        <svg class="advisor-line" viewBox="0 0 48 1600" preserveAspectRatio="none" aria-hidden="true">
-          <path
-            id="advisor-line-path"
-            d="M24 8 C 8 180, 40 320, 24 500 C 8 680, 40 860, 24 1040 C 10 1240, 38 1420, 24 1588"
-            fill="none"
-            stroke="#28DBB0"
-            stroke-width="3"
-            stroke-linecap="round"
-          />
-        </svg>
-      )}
+      <svg class="advisor-line" viewBox="0 0 48 1600" preserveAspectRatio="none" aria-hidden="true">
+        <path
+          id="advisor-line-path"
+          d="M24 8 C 8 180, 40 320, 24 500 C 8 680, 40 860, 24 1040 C 10 1240, 38 1420, 24 1588"
+          fill="none"
+          stroke="#28DBB0"
+          stroke-width="3"
+          stroke-linecap="round"
+        />
+      </svg>
+      {
+        sketch && (
+          <picture class="page-sketch page-sketch-feature">
+            <source
+              type="image/webp"
+              srcset={`/sketches/${sketch}@1x.webp 540w, /sketches/${sketch}@2x.webp 1080w`}
+              sizes="(max-width: 800px) min(100vw, 320px), 420px"
+            />
+            <img
+              src={`/sketches/${sketch}@1x.png`}
+              srcset={`/sketches/${sketch}@1x.png 540w, /sketches/${sketch}@2x.png 1080w`}
+              sizes="(max-width: 800px) min(100vw, 320px), 420px"
+              width="540"
+              height="400"
+              alt=""
+            />
+          </picture>
+        )
+      }
+      <div class="page-frame">
       <div class="page-body">
         <Content />
       </div>
@@ -127,6 +178,7 @@ const pageDescription = genericDescription
           </div>
         )
       }
+      </div>
     </div>
   </article>
 </Base>

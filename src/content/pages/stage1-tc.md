@@ -1,13 +1,7 @@
 ---
-title: "stage1-tc"
+title: "Apply for Stage 1: The Intensive (30 days) | DoGood Founders"
 description: "Apply for Stage 1: The Intensive (30 days)—the entry point to the Founder Reclamation Partnership. For USD 6M+ founders or post-exit. Takes 5–10 min; reply in 24 hrs. Expect 5–6 hrs/week. Private, no cohorts."
 ---
-
-- [Founders](/how-it-works)
-- [Wayfinders](/wayfinders)
-
-<a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
-
 # Important Acknowledment
 
 # Read before you Submit
@@ -30,4 +24,4 @@ FRP is intentionally narrow. It’s designed for founders who match all three:
 
 If you don’t match this profile, you’ll likely get a better (faster, cleaner) outcome from a Clarity Sprint instead.
 
-[Weekly 1:1 Clarity Sprints →](/claritysprints)
+<a class="btn-teal" href="/claritysprints">Weekly 1:1 Clarity Sprints</a>

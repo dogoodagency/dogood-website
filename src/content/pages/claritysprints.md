@@ -1,13 +1,8 @@
 ---
-title: "claritysprints"
+title: "Weekly 1:1 Clarity Sprints | DoGood Agency"
 description: "A focused Clarity Sprints for founders under pressure. Get an honest read on what’s happening, what to do next, and whether we’re a fit."
 tidycal: "dogoodagency/claritysprints"
 ---
-<picture class="page-icon">
-  <source type="image/webp" srcset="/sketches/booking-open-diary@1x.webp 1x, /sketches/booking-open-diary@2x.webp 2x" />
-  <img src="/sketches/booking-open-diary@1x.png" srcset="/sketches/booking-open-diary@1x.png 1x, /sketches/booking-open-diary@2x.png 2x" width="96" height="96" alt="An open desk diary with a blank grid, one day marked in teal, a pen, and a small pink ribbon." />
-</picture>
-
 # 1:1 Clarity Sprints (3 months)
 
 Founders rarely need more information. They need clarity. Fast. 1:1 ClaritySprints help you make decisions and move forward in business
@@ -51,7 +46,7 @@ Apply to the Founder Reclamation Partnership.
 
 For 1:1 Clarity Sprints use the booking form below.
 
-<a class="btn-teal" href="/how-it-works">How it works</a>
+<a class="btn-teal" href="/how-it-works">FRP Founder? Start Here</a>
 
 For founders + select founder-like executives
 

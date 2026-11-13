@@ -4278,6 +4278,67 @@ button.btn-subscribe:focus-visible {
   }
 }
 
+.subhero {
+  background: #2a0b4f;
+  min-height: 140px;
+}
+
+.page-designed {
+  position: relative;
+  background: #f5f2f9;
+  padding: 0 24px 80px;
+}
+
+.page-designed .page-wrap {
+  position: relative;
+  max-width: 1080px;
+  margin: -60px auto 0;
+}
+
+.page-designed .page-sketch,
+.page-designed .page-sketch-feature {
+  display: block;
+  float: none;
+  width: min(420px, 100%);
+  margin: 0 0 20px;
+  background: transparent;
+}
+
+.page-designed .page-sketch img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+.page-designed .page-frame {
+  background: #fff;
+  color: #2a0b4f;
+  border: 1px solid #ea1557;
+  border-radius: 24px;
+  padding: 36px 40px 48px;
+}
+
+.page-designed .advisor-line {
+  left: -8px;
+}
+
+@media (max-width: 800px) {
+  .page-designed {
+    padding: 0 16px 48px;
+  }
+
+  .page-designed .page-frame {
+    padding: 24px 18px 32px;
+  }
+
+  .subhero {
+    min-height: 96px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .exit-machine {
     opacity: 1;

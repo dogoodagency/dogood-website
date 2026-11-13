@@ -1,20 +1,8 @@
 ---
-title: "wayfinders/seb"
+title: "Seb, Wayfinder for Asia-Pacific | DoGood Founders"
 description: "Meet Seb, DoGood Wayfinder for Asia-Pacific and the US: a founder whose successful business nearly broke him, now guiding founders through their reset."
 ---
-
-<nav class="crumbs" aria-label="Breadcrumb">
-  <a href="/how-it-works">How it works</a>
-  <span aria-hidden="true">/</span>
-  <a href="/wayfinders">Wayfinders</a>
-</nav>
-
-
-<a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
-
 # Seb | Asia-Pacific Hub
-
-![Seb Wichmann](/media/wayfinders-seb-portrait.png)
 
 # (+ United States)
 
@@ -78,7 +66,7 @@ Seb
 
 A 5-minute Founder Diagnostic™
 
-[See my Pressure Score Index →](/diagnostics)
+<a class="btn-teal" href="/diagnostics">See my Pressure Score Index</a>
 
 Private · 5 minutes · Immediate results
 

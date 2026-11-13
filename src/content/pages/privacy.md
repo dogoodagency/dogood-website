@@ -15,7 +15,7 @@ Last updated: [date of publication]
 
 ## Who we are
 
-This website, [www.dogoodagency.co](/), is run by DoGood OÜ, a private limited company registered in Estonia (registry code 14695833, VAT number EE102348673). Our address is Männimäe 1, Kuusalu 74626, Estonia. [TO CONFIRM: Business Register still shows Uusmaa tee 10-16, Peetri; Mari to confirm]
+This website, [www.dogoodagency.co](/), is run by DoGood OÜ, a private limited company registered in Estonia (registry code 14695833, VAT number EE102348673).
 
 DoGood OÜ is the "controller" of your personal data. That means we decide why and how your data is used, and we are responsible for it.
 
@@ -157,5 +157,5 @@ We may update this policy when our practices or the law change. We will post the
 
 DoGood OÜ  
 Registry code 14695833, VAT number EE102348673  
-Männimäe 1, Kuusalu 74626, Estonia [TO CONFIRM: Business Register still shows Uusmaa tee 10-16, Peetri; Mari to confirm]  
+  
 Email: [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co)

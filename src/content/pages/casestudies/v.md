@@ -1,13 +1,17 @@
 ---
-title: "How V reclaimed life after success | DoGood Agency"
-description: "An anonymised story from a founder we have worked with. We keep their name private."
+title: "FRP-Fit Application | DoGood Founders"
+description: "Founder Reclamation Partnership | Stage 1: The Intensive (30 days)"
 ---
-We protect our founders’ identities. Most founders we work with lead visible companies and public lives –– we don't ask them to tell the private parts of their story publicly. Anonymity lets founders be candid about their intimate work — without risking reputations, partnerships, or market fallout.
+- [Founders](/how-it-works)
+- [Wayfinders](/wayfinders)
 
-<picture class="page-sketch page-sketch-feature">
-  <source type="image/webp" srcset="/sketches/case-study-v-shore-boat@1x.webp 540w, /sketches/case-study-v-shore-boat@2x.webp 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" />
-  <img src="/sketches/case-study-v-shore-boat@1x.png" srcset="/sketches/case-study-v-shore-boat@1x.png 540w, /sketches/case-study-v-shore-boat@2x.png 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" width="540" height="400" alt="A quiet shoreline: a small empty rowboat at the edge of a teal stretch of water, a folded jacket and a pair of shoes on the shore, hills on the horizon." />
-</picture>
+start here
+
+meet the team
+
+<a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
+
+We protect our founders’ identities. Most founders we work with lead visible companies and public lives –– we don't ask them to tell the private parts of their story publicly. Anonymity lets founders be candid about their intimate work — without risking reputations, partnerships, or market fallout.
 
 From identity void to decisive leadership — how V reclaimed life after success
 
@@ -26,13 +30,15 @@ Location: United States
 Revenue: USD 9M+ (in 2025)
 Engagement: 4 months –– weekly 60–90 min sessions
 
+"
 
 Seb from DoGood really opened my mind to many things holding me back. He has a good structure and approach to narrowing the focus and gets to the heart of things that matter. I have grown immensely through his and the team’s guidance, both personally and professionally. V (anonymous), USD 9M+ founder
 
+"
 
 Start with a short diagnostic — see where you sit
 
-[Start the Founder Pressure Diagnostic™ →](/diagnostics)
+<a class="btn-teal" href="/diagnostics">Start the Founder Pressure Diagnostic™</a>
 
 Founder-focused · Not therapy, not medical advice, not psychological services
 
@@ -43,8 +49,6 @@ V, arrived after years of high performance with a consistent internal truth: he 
 Top symptoms
 
 ### X
-
-![casestudies v routine jpg](/media/casestudies-v-routine-jpg.jpg)
 
 Persistent lack of clarity about personal goals and relationships.
 
@@ -150,6 +154,6 @@ Ultimately, these behavioural improvements contributed to a more fulfilled priva
 
 If this resonates, start with our quick diagnostic to see whether FRP is right for you.
 
-[Start the Founder Pressure Diagnostic™ →](/diagnostics)
+<a class="btn-teal" href="/diagnostics">Start the Founder Pressure Diagnostic™</a>
 
 Founder-focused · Not therapy, not medical advice, not psychological services

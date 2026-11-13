@@ -1,14 +1,7 @@
 ---
-title: "claritysprints-thankyou"
+title: "Clarity Sprints | DoGood Agency"
 description: "A focused Clarity Sprints for founders under pressure. Get an honest read on what’s happening, what to do next, and whether we’re a fit."
 ---
-You will have received a calendar invite in your inbox, and the meeting should already be added to your calendar. Verify that the meeting appears there.
-
-<picture class="page-icon">
-  <source type="image/webp" srcset="/sketches/thank-you-envelope-tick@1x.webp 1x, /sketches/thank-you-envelope-tick@2x.webp 2x" />
-  <img src="/sketches/thank-you-envelope-tick@1x.png" srcset="/sketches/thank-you-envelope-tick@1x.png 1x, /sketches/thank-you-envelope-tick@2x.png 2x" width="96" height="96" alt="An open envelope with a card showing a hand-drawn teal tick, and a small pink seal on the flap." />
-</picture>
-
 # 1:1 Clarity Sprints (3 months)
 
 For founders + select founder-like executives

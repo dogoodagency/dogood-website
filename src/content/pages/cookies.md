@@ -74,5 +74,5 @@ If you have questions about cookies, email us at [hiya@dogoodagency.co](mailto:h
 
 DoGood OÜ  
 Registry code 14695833, VAT number EE102348673  
-Männimäe 1, Kuusalu 74626, Estonia [TO CONFIRM: Business Register still shows Uusmaa tee 10-16, Peetri; Mari to confirm]  
+  
 Email: [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co)

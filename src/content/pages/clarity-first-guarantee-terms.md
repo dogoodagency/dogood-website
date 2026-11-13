@@ -1,13 +1,8 @@
 ---
-title: "clarity-first-guarantee-terms"
+title: "Clarity-First Guarantee"
 description: "Founder Reclamation Partnership | Stage 1: The Intensive (30 days)"
 ---
 # Clarity‑First Guarantee (Stage 1)
-
-<picture class="page-sketch page-sketch-feature">
-  <source type="image/webp" srcset="/sketches/clarity-first-guarantee-folder@1x.webp 540w, /sketches/clarity-first-guarantee-folder@2x.webp 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" />
-  <img src="/sketches/clarity-first-guarantee-folder@1x.png" srcset="/sketches/clarity-first-guarantee-folder@1x.png 540w, /sketches/clarity-first-guarantee-folder@2x.png 1080w" sizes="(max-width: 1080px) min(100vw, 540px), 540px" width="540" height="400" alt="An anonymous founder walking calmly away from a small table and lamp, carrying a slim teal folder of notes." />
-</picture>
 
 You can’t know whether FRP is right for you from the outside — you only know once you’ve been inside the work.
 
@@ -89,4 +84,4 @@ FRP is private and confidential (“no groups, no cohorts”), and confidentiali
 
 To invoke the Clarity‑First Guarantee, email: [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co?subject=Clarity%E2%80%91First%20Guarantee%20%E2%80%94%20Exit%20Request) | Subject: Clarity‑First Guarantee — Exit Request | Include: your full name + date of Session 1.
 
-<a class="btn-teal" href="/">Go to homepage</a>
+<a class="btn-teal" href="/">Back To Homepage</a>
