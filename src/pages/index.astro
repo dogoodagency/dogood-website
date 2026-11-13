@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image, Picture } from "astro:assets";
 import type { ImageMetadata } from "astro";
 import Base from "../layouts/Base.astro";
 import Wave from "../components/Wave.astro";
@@ -10,6 +10,7 @@ import caseV from "../assets/cases/v.png";
 import team from "../assets/photos/wayfinders.png";
 import signature from "../assets/photos/signature.png";
 import press from "../assets/photos/as-seen-on.png";
+import heroSketch from "../assets/sketches/hero-v3.1@2x.png";
 
 const logoFiles = import.meta.glob<ImageMetadata>("../assets/logos/pink/*", {
   eager: true,
@@ -75,9 +76,16 @@ const notFit = [
           </p>
         </div>
         <div class="hero-draw">
-          <div class="sketch-ph" role="img" aria-label="Sketch-style drawing, placeholder">
-            <span>Sketch-style drawing</span>
-          </div>
+          <Picture
+            src={heroSketch}
+            alt="Sketch of two founders walking a teal path toward an open door, with their old company faint behind them."
+            width={520}
+            height={340}
+            densities={[1, 2]}
+            formats={["webp"]}
+            class="hero-sketch"
+            pictureAttributes={{ class: "hero-sketch-frame" }}
+          />
         </div>
       </div>
     </div>

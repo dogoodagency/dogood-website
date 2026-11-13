@@ -323,6 +323,8 @@ main ul {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .hero-wave {
@@ -346,19 +348,23 @@ main ul {
   color: var(--color-ink);
 }
 
-.hero-draw .sketch-ph {
+.hero-sketch-frame,
+.hero-sketch {
+  display: block;
   width: 100%;
   max-width: 520px;
-  height: 340px;
-  border: 2px solid var(--color-pink);
-  background: rgba(42, 11, 79, 0.35);
-  padding: 24px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
 }
 
-.hero-draw .sketch-ph span {
-  color: var(--color-pink);
-  font-size: 22px;
-  letter-spacing: 0.04em;
+.hero-sketch {
+  object-fit: contain;
+  aspect-ratio: 520 / 340;
 }
 
 /* Logos — edge to edge, no box, content travels left to right */
@@ -1197,9 +1203,9 @@ main ul {
     gap: 20px;
   }
 
-  .hero-draw .sketch-ph {
-    height: 220px;
-    max-width: none;
+  .hero-sketch-frame,
+  .hero-sketch {
+    max-width: 100%;
   }
 
   #first-draw .sketch-ph,
