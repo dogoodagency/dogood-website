@@ -6429,7 +6429,7 @@ body:has(.page-clarity) .footer-wave {
   box-sizing: border-box;
   width: 100%;
   max-width: 1040px;
-  margin: 0 auto;
+  margin: 75px auto 0;
   padding: 56px;
   overflow: hidden;
   background: #2a0b4f;
