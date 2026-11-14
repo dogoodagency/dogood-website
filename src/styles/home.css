@@ -6955,9 +6955,7 @@ body:has(.page-home) {
   border: 1px solid #8b7dae;
 }
 
-.page-home .card.guarantee-card,
-.page-home #first-card,
-.page-home #why .why-copy {
+.page-home .card.guarantee-card {
   border: 0;
 }
 
