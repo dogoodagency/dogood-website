@@ -119,6 +119,39 @@ const pageDescription = genericDescription
   canonical={canonical}
   hideOptin={entry.data.hideOptin}
 >
+  {slug === "privacy" ? (
+    <article class="page-privacy">
+      <header class="privacy-hero">
+        <div class="privacy-hero-inner">
+          <h1>Privacy Policy</h1>
+          {
+            sketch && (
+              <picture class="privacy-sketch">
+                <source
+                  type="image/webp"
+                  srcset={`/sketches/${sketch}@1x.webp 540w, /sketches/${sketch}@2x.webp 1080w`}
+                  sizes="(max-width: 600px) min(100vw, 280px), 360px"
+                />
+                <img
+                  src={`/sketches/${sketch}@1x.png`}
+                  srcset={`/sketches/${sketch}@1x.png 540w, /sketches/${sketch}@2x.png 1080w`}
+                  sizes="(max-width: 600px) min(100vw, 280px), 360px"
+                  width="540"
+                  height="400"
+                  alt=""
+                />
+              </picture>
+            )
+          }
+        </div>
+        <Wave fill="#F5F2FF" />
+      </header>
+      <div class="privacy-source">
+        <Content />
+      </div>
+    </article>
+  ) : (
+    <>
   <section class="subhero">
     <Wave fill="#f5f2f9" />
   </section>
@@ -166,9 +199,41 @@ const pageDescription = genericDescription
       </div>
     </div>
   </article>
+    </>
+  )}
 </Base>
 
-<script>
+<script is:inline>
+  const privacy = document.querySelector(".page-privacy .privacy-source");
+  if (privacy) {
+    const nodes = [...privacy.childNodes].filter(
+      (node) => node.nodeType !== Node.TEXT_NODE || node.textContent.trim(),
+    );
+    const bands = [];
+    let bucket = [];
+    const flush = () => {
+      if (bucket.length) bands.push(bucket);
+      bucket = [];
+    };
+    nodes.forEach((node) => {
+      if (node instanceof HTMLElement && node.tagName === "H2" && /^(4|7|10)\./.test(node.textContent.trim())) {
+        flush();
+      }
+      bucket.push(node);
+    });
+    flush();
+    const kinds = ["lavender", "white", "grass", "white"];
+    bands.forEach((group, index) => {
+      const band = document.createElement("section");
+      band.className = `privacy-band privacy-band-${kinds[index] || "white"}`;
+      const well = document.createElement("div");
+      well.className = "privacy-well";
+      group.forEach((node) => well.append(node));
+      band.append(well);
+      privacy.append(band);
+    });
+  }
+
   document.querySelectorAll("[data-buzzsprout-src]").forEach((gate) => {
     gate.querySelector("button")?.addEventListener("click", () => {
       if (!(gate instanceof HTMLElement) || gate.querySelector("iframe")) return;

@@ -5757,3 +5757,255 @@ button.btn-subscribe:focus-visible {
   position: relative;
   z-index: 3;
 }
+
+/* Rulebook v7: nav, footer wave strip, privacy page. */
+header.nav {
+  box-sizing: border-box;
+  height: 94px;
+  min-height: 94px;
+  padding: 12px 16px;
+  gap: 10px;
+  top: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+header.nav .nav-bar {
+  box-sizing: border-box;
+  height: 70px;
+  min-height: 70px;
+  background: #15012e;
+  border: 1px solid #533f79;
+  border-radius: 16px;
+  box-shadow: none;
+}
+
+header.nav .nav-links a,
+header.nav .nav-panel a,
+header.nav .nav-advisor-toggle {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+header.nav .nav-links a:hover,
+header.nav .nav-links a:focus-visible,
+header.nav .nav-panel a:hover,
+header.nav .nav-panel a:focus-visible,
+header.nav .nav-advisor-toggle:hover,
+header.nav .nav-advisor-toggle:focus-visible,
+header.nav .nav-panel a.nav-sub:hover,
+header.nav .nav-panel a.nav-sub:focus-visible {
+  background: #28dbb0;
+  color: #2a0b4f;
+}
+
+header.nav .nav-apply {
+  box-sizing: border-box;
+  height: 70px;
+  min-height: 70px;
+  background: #b0013e;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  border: 0;
+  box-shadow: none;
+}
+
+header.nav .nav-apply::before {
+  content: none;
+}
+
+header.nav .nav-mega,
+header.nav .nav-panel {
+  box-shadow: none;
+}
+
+header.nav .nav-panel {
+  background: #15012e;
+}
+
+@media (max-width: 600px) {
+  header.nav {
+    height: 81px;
+    min-height: 81px;
+  }
+
+  header.nav .nav-bar,
+  header.nav .nav-apply {
+    height: 57px;
+    min-height: 57px;
+  }
+
+  .hero {
+    margin-top: -81px;
+  }
+}
+
+@media (min-width: 601px) {
+  .hero {
+    margin-top: -94px;
+  }
+}
+
+body:has(.page-privacy) .footer-wave {
+  background: #fff;
+}
+
+.page-privacy {
+  background: #fff;
+  color: #2a0b4f;
+}
+
+.privacy-hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  height: 490px;
+  margin-top: -94px;
+  padding: 94px 0 0;
+  background: #2a0b4f;
+  color: #fff;
+}
+
+.privacy-hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) min(360px, 34%);
+  align-items: center;
+  gap: 48px;
+  width: min(1080px, calc(100% - 2 * clamp(20px, 5.56vw, 80px)));
+  margin: 0 auto;
+  padding: 24px 0 32px;
+  flex: 1;
+}
+
+.privacy-hero h1 {
+  margin: 0;
+  color: #fff;
+  font-size: 46px;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.privacy-sketch,
+.privacy-sketch img {
+  display: block;
+  width: 180px;
+  max-width: 100%;
+  height: auto;
+  margin: 0 0 0 auto;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.privacy-hero .hero-wave {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+.privacy-band-lavender {
+  background: #f5f2ff;
+}
+
+.privacy-band-white {
+  background: #fff;
+}
+
+.privacy-band-grass {
+  background: #f3fffb;
+  border-top: 1px solid #e6defc;
+  border-bottom: 1px solid #e6defc;
+}
+
+.privacy-well {
+  box-sizing: border-box;
+  width: min(1080px, calc(100% - 2 * clamp(20px, 5.56vw, 80px)));
+  margin: 0 auto;
+  padding: 80px 0;
+}
+
+.page-privacy h2 {
+  margin: 40px 0 12px;
+  color: #2a0b4f;
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.page-privacy h3 {
+  margin: 28px 0 8px;
+  color: #2a0b4f;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.page-privacy p,
+.page-privacy li {
+  color: #2a0b4f;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28.8px;
+}
+
+.page-privacy p {
+  margin: 0 0 16px;
+}
+
+.page-privacy ul {
+  margin: 0 0 16px;
+  padding-left: 1.2em;
+}
+
+.page-privacy a {
+  color: #2a0b4f;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.page-privacy a:hover,
+.page-privacy a:focus-visible {
+  text-decoration-thickness: 2px;
+  text-decoration-color: #28dbb0;
+}
+
+@media (max-width: 600px) {
+  .privacy-hero {
+    height: 420px;
+    margin-top: -81px;
+    padding-top: 81px;
+  }
+
+  .privacy-hero-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .privacy-hero h1 {
+    font-size: 36px;
+  }
+
+  .privacy-sketch,
+  .privacy-sketch img {
+    width: min(180px, 100%);
+    margin: 0;
+  }
+
+  .privacy-well {
+    padding: 48px 0;
+  }
+
+  .page-privacy h2 {
+    font-size: 26px;
+  }
+}
