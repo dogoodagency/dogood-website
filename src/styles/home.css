@@ -757,18 +757,6 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
   width: 100%;
 }
 
-/* Hides the line in the transparent gap under the wings, between the two people. */
-.why-gap-mask {
-  position: absolute;
-  z-index: 0;
-  left: 18%;
-  width: 64%;
-  top: 28%;
-  bottom: 2%;
-  background: #f5f2f9;
-  pointer-events: none;
-}
-
 .why-sketch picture {
   position: relative;
   z-index: 1;
