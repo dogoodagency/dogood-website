@@ -41,7 +41,7 @@ export const urls = {
 } as const;
 
 export const stats = [
-  { value: "165+", label: "Founders Engaged" },
+  { value: "185+", label: "Founders Engaged" },
   { value: "55,000+", label: "Leaders Impacted" },
   { value: "$19.5 Million", label: "Learning Initiatives Sold" },
   { value: "18,000+", label: "Coaching Hours" },
