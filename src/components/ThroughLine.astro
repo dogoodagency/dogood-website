@@ -513,7 +513,7 @@
         const startX = bendX - founderStroke * 0.85;
         founderPts.push({ x: startX, y: leverY });
         founderPts.push({ x: bendX, y: leverY });
-        const steps = 7;
+        const steps = 12;
         for (let i = 1; i <= steps; i += 1) {
           const t = (-Math.PI / 2) * (1 - i / steps);
           founderPts.push({
@@ -536,27 +536,35 @@
         const iy = (py) => stones.y + stones.h * (py / 1062);
         const ankleX = ix(360);
         const ankleY = iy(730);
-        const turn = Math.min(100, Math.max(72, ankleX - pinJ.cx), ankleY - (pinJ.bottom + 48));
+        const span = ankleX - pinJ.cx;
+        const room = ankleY - (pinJ.bottom + 40);
+        const turn = Math.min(span, room);
+        // Centre sits down-right of the vertical run, so the arc arrives
+        // from above on a vertical tangent and leaves toward the ankle.
+        const arcX = pinJ.cx + turn;
+        const arcY = ankleY - turn;
         founderPts.push({ x: pinJ.cx, y: pinJ.y + pinJ.h * 0.45 });
         founderPts.push({ x: pinJ.cx, y: pinJ.bottom - 8 });
-        founderPts.push({ x: pinJ.cx, y: ankleY - turn });
-        for (let i = 1; i <= 6; i += 1) {
-          const t = (-Math.PI / 2) * (1 - i / 6);
+        founderPts.push({ x: pinJ.cx, y: arcY });
+        const pinSteps = 12;
+        for (let i = 1; i <= pinSteps; i += 1) {
+          const theta = Math.PI - (i / pinSteps) * (Math.PI / 2);
           founderPts.push({
-            x: pinJ.cx + turn * Math.cos(t),
-            y: ankleY + turn * Math.sin(t),
+            x: arcX + turn * Math.cos(theta),
+            y: arcY + turn * Math.sin(theta),
           });
         }
-        if (ankleX > pinJ.cx + turn + 12) founderPts.push({ x: ankleX, y: ankleY });
+        if (ankleX > arcX + 12) founderPts.push({ x: ankleX, y: ankleY });
         const stoneY = iy(830);
         const exitLane = Math.min(lane, ix(958) + founderStroke * 0.32);
-        founderPts.push({ x: ix(520), y: iy(800) });
         const bendR = 92;
         const bendX = exitLane - bendR;
-        founderPts.push({ x: Math.min(ix(900), bendX), y: stoneY });
-        if (bendX > ix(900) + 8) founderPts.push({ x: bendX, y: stoneY });
-        for (let i = 1; i <= 6; i += 1) {
-          const t = (-Math.PI / 2) * (1 - i / 6);
+        const approachX = Math.min(ix(900), bendX);
+        founderPts.push({ x: approachX, y: stoneY });
+        if (bendX > approachX + 8) founderPts.push({ x: bendX, y: stoneY });
+        const stoneSteps = 12;
+        for (let i = 1; i <= stoneSteps; i += 1) {
+          const t = (-Math.PI / 2) * (1 - i / stoneSteps);
           founderPts.push({
             x: bendX + bendR * Math.cos(t),
             y: stoneY + bendR * (1 + Math.sin(t)),
