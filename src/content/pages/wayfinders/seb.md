@@ -30,7 +30,7 @@ Over the years, I’ve worked a lot with founders who’ve built USD 5M+ compani
 
 Credibility, fast — so you don’t have to “take a leap of faith.”
 
-I’ve spent 14+ years helping founders and executive teams create major shifts — in companies and in life. I’ve delivered 150+ learning initiatives in 35+ countries, totaling USD 16.5M in enterprise value. I’ve delivered workshops and worked 1:1 with 100+ founders and senior executives — from startups to iconic brands like Adobe, Vodafone, Siemens, Johnson & Johnson, Rolls‑Royce, and Upwork — on business strategy and identity shifts.
+I’ve spent 14+ years helping founders and executive teams create major shifts — in companies and in life. I’ve delivered 150+ learning initiatives in 35+ countries, totaling USD 19.5M in enterprise value. I’ve delivered workshops and worked 1:1 with 100+ founders and senior executives — from startups to iconic brands like Adobe, Vodafone, Siemens, Johnson & Johnson, Rolls‑Royce, and Upwork — on business strategy and identity shifts.
 
 6 What I have been trained in
 
