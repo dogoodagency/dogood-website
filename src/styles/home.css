@@ -3444,10 +3444,10 @@ header.nav .nav-mega {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   align-items: stretch;
-  gap: 46px;
+  gap: 32px;
   width: auto;
   min-height: 0;
-  padding: 46px;
+  padding: 32px;
   background: #f5f2f9;
   border-radius: 16px;
   box-shadow: 0 18px 40px rgba(42, 11, 79, 0.18);
