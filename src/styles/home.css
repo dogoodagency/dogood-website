@@ -100,7 +100,7 @@ main ul {
 }
 
 .btn-apply {
-  background: var(--color-pink);
+  background: #c10e46;
   color: #fff;
   font-size: 19px;
   font-weight: 700;
@@ -153,7 +153,7 @@ main ul {
 }
 
 .btn-case:hover {
-  background: var(--color-pink);
+  background: #c10e46;
   color: #fff;
 }
 
@@ -1563,7 +1563,7 @@ main li {
 }
 
 .btn-case {
-  background: var(--color-pink);
+  background: #c10e46;
   color: #fff;
   border: 1.5px solid var(--color-pink);
   margin-top: 0;
@@ -1799,7 +1799,7 @@ main li {
   padding: 0 22px;
   border: 0;
   border-radius: 999px;
-  background: var(--color-pink);
+  background: #c10e46;
   color: #fff;
   font-family: inherit;
   font-size: 16px;
@@ -3667,7 +3667,7 @@ header.nav .nav-apply {
   min-height: 64px;
   padding: 8px 24px 8px 18px;
   border-radius: 16px;
-  background: #ea1557;
+  background: #c10e46;
   color: #fff;
   font-size: 15px;
   font-weight: 600;
@@ -3897,7 +3897,7 @@ button.btn-subscribe,
 
 a.btn-apply,
 a.btn-apply.lg {
-  background: #ea1557;
+  background: #c10e46;
   color: #fff;
 }
 
@@ -3999,7 +3999,7 @@ a.btn-apply:hover,
 a.btn-apply.lg:hover,
 a.btn-apply:focus-visible,
 a.btn-apply.lg:focus-visible {
-  background: #ea1557;
+  background: #c10e46;
   color: #fff;
 }
 
@@ -4337,7 +4337,7 @@ iframe.tidycal-embed,
 #apply-v .btn-apply,
 #apply-v .btn-apply:hover,
 #apply-v .btn-apply:focus-visible {
-  background: #ea1557;
+  background: #c10e46;
   color: #fff;
   font-weight: 400;
 }
@@ -4345,7 +4345,7 @@ iframe.tidycal-embed,
 #next .btn-apply,
 #next .btn-apply:hover,
 #next .btn-apply:focus-visible {
-  background: #ea1557;
+  background: #c10e46;
   color: #fff;
 }
 
@@ -4424,7 +4424,7 @@ header.nav .nav-apply {
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  background: #ea1557;
+  background: #c10e46;
   transition: color 200ms ease;
 }
 
@@ -4642,7 +4642,7 @@ button.btn-subscribe:focus-visible,
 #case-j a.btn-case,
 #case-j a.btn-case:hover,
 #case-j a.btn-case:focus-visible {
-  background: #ea1557;
+  background: #c10e46;
   color: #fff;
 }
 
@@ -6057,10 +6057,13 @@ body:has(.page-clarity) .footer-wave {
   box-shadow: none;
 }
 
-@media (max-width: 640px) {
-  .privacy-hero .hero-wave,
-  .privacy-divider-wave {
-    height: 40px;
+@media (max-width: 767px) {
+  .hero-wave,
+  .privacy-divider-wave,
+  .section-wave .hero-wave,
+  .footer-wave .hero-wave,
+  .privacy-hero .hero-wave {
+    height: 80px;
   }
 }
 
