@@ -7257,6 +7257,40 @@ body:has(.page-home) {
   }
 }
 
+/* BAND-purple text links: white words, GRASS 500 underline. Not the Let's Connect lockup or buttons. */
+.footer a:not(.connect-mark) {
+  color: #fff;
+  text-decoration-line: underline;
+  text-decoration-color: #28dbb0;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.footer-lets .connect-row a {
+  text-decoration: none;
+}
+
+.footer-lets .connect-row a span {
+  text-decoration-line: underline;
+  text-decoration-color: #28dbb0;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.footer a:not(.connect-mark):hover,
+.footer a:not(.connect-mark):focus-visible,
+.footer-lets .connect-row a:hover span,
+.footer-lets .connect-row a:focus-visible span {
+  color: #fff;
+  text-decoration-color: #28dbb0;
+  text-decoration-thickness: 2px;
+}
+
+.footer a:not(.connect-mark):focus-visible {
+  outline: 2px solid #28dbb0;
+  outline-offset: 3px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .page-home #apply-first a.btn-apply:hover,
   .page-home #apply-v a.btn-apply:hover,
