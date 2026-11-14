@@ -586,11 +586,14 @@
           });
         }
         if (apply1) {
+          // exitLane only while approaching the button. Back on the original
+          // lane before the centre, still covered by the button.
           founderPts.push({ x: exitLane, y: apply1.y - 16 });
-          founderPts.push({ x: exitLane, y: apply1.cy });
-          founderPts.push({ x: exitLane, y: apply1.bottom + founderStroke });
+          founderPts.push({ x: exitLane, y: apply1.y + 8 });
+          founderPts.push({ x: lane, y: apply1.y + 16 });
+          founderPts.push({ x: lane, y: apply1.cy });
+          founderPts.push({ x: lane, y: apply1.bottom + founderStroke });
         }
-        if (forYou) founderPts.push({ x: exitLane, y: forYou.y + 48 });
       } else if (apply1) {
         founderPts.push({ x: lane, y: apply1.y - 16 });
         founderPts.push({ x: lane, y: apply1.cy });
