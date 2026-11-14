@@ -308,6 +308,18 @@
     };
 
     const build = () => {
+      const driftCards = [...document.querySelectorAll(".drift-card")];
+      const driftSaved = driftCards.map((el) => [el.style.transform, el.style.animation]);
+      driftCards.forEach((el) => {
+        el.style.animation = "none";
+        el.style.transform = "none";
+      });
+      const releaseDrift = () => {
+        driftCards.forEach((el, i) => {
+          el.style.transform = driftSaved[i][0];
+          el.style.animation = driftSaved[i][1];
+        });
+      };
       const width = main.clientWidth;
       const phone = width <= 768;
       const founderStroke = phone ? 24 : Math.max(24, Math.round((140 * width) / 1710));
@@ -319,7 +331,10 @@
       const exit = box(document.querySelector("#exit-card"));
       const caseCard = box(document.querySelector("#case-j article")) || box(document.querySelector("#case-j"));
       const next = box(document.querySelector("#next"));
-      if (!hero || !headline || !clients || !exit || !next) return;
+      if (!hero || !headline || !clients || !exit || !next) {
+        releaseDrift();
+        return;
+      }
 
       const footer = document.querySelector("#footer") || document.querySelector("footer");
       const mainRect = main.getBoundingClientRect();
@@ -946,6 +961,7 @@
         });
       };
 
+      releaseDrift();
       draw();
 
       if (!reduce.matches) {

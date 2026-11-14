@@ -438,6 +438,43 @@ main ul {
 }
 
 /* Cards */
+/* Scroll drift for four homepage cards. The layout box stays put. */
+@keyframes drift-card {
+  from { transform: translate3d(0, 25px, 0); }
+  to { transform: translate3d(0, -25px, 0); }
+}
+
+@keyframes drift-card-small {
+  from { transform: translate3d(0, 12.5px, 0); }
+  to { transform: translate3d(0, -12.5px, 0); }
+}
+
+.drift-card {
+  animation: drift-card linear both;
+  animation-timeline: view();
+  animation-range: cover 0% cover 100%;
+}
+
+@media (max-width: 480px) {
+  .drift-card {
+    animation-name: drift-card-small;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .drift-card {
+    will-change: transform;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drift-card {
+    animation: none;
+    transform: none;
+    will-change: auto;
+  }
+}
+
 .card {
   background: #fff;
   color: var(--color-ink);
