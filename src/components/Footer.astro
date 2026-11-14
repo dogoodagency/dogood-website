@@ -184,7 +184,7 @@ const legal = [
       const seen = new IntersectionObserver(([entry]) => {
         if (!entry?.isIntersecting) return;
         seen.disconnect();
-        word.classList.add("is-met");
+        window.setTimeout(() => word.classList.add("is-met"), 1000);
       }, { threshold: 0.6 });
       seen.observe(word);
     };

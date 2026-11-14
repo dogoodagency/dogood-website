@@ -1230,13 +1230,13 @@ footer a.connect-mark:focus-visible {
 .connect-word .cn-n,
 .connect-word .cn-ect {
   flex: 0 0 auto;
-  transition: transform 1.05s cubic-bezier(0.37, 0, 0.63, 1);
+  transition: transform 2.5s cubic-bezier(0.37, 0, 0.63, 1);
 }
 
 .connect-word .cn-n {
   position: relative;
   z-index: 0;
-  color: #fefef3;
+  color: #fcf9d2;
   mix-blend-mode: normal;
 }
 
