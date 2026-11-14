@@ -6485,6 +6485,20 @@ body:has(.page-clarity) .footer-wave {
   margin-top: 56px;
 }
 
+@media (min-width: 900px) {
+  .page-clarity .promise-letter {
+    padding-bottom: 113px;
+  }
+
+  .page-clarity .promise-byline {
+    transform: translateY(-150px);
+  }
+
+  .page-clarity .seal-slot {
+    transform: translateY(-50px);
+  }
+}
+
 .page-clarity .promise-byline {
   display: flex;
   flex: 0 1 auto;
