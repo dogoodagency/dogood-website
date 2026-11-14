@@ -6887,7 +6887,7 @@ body:has(.page-home) {
 .page-home .review-who h3 {
   color: #2a0b4f;
   font-size: 20px;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.15;
   letter-spacing: 0;
 }
@@ -6918,11 +6918,17 @@ body:has(.page-home) {
 
 @media (min-width: 1081px) {
   .page-home #reviews {
-    padding-top: 41px;
+    padding-top: 52.5px;
   }
 
   .page-home #reviews .reviews-band {
     padding-top: 52px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-home #reviews {
+    margin-top: calc(-63px - 138.5 * 100vw / 1710);
   }
 }
 
