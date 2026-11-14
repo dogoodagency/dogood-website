@@ -6840,13 +6840,8 @@ body:has(.page-home) {
 }
 
 .page-home .review-role,
-.page-home .track-nums span,
-.page-home #case-v p.case-who {
+.page-home .track-nums span {
   color: #58447f;
-}
-
-.page-home #case-v p.t-kicker {
-  color: #2a0b4f;
 }
 
 .page-home .foryou-grid .fit-icon,
