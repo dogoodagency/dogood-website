@@ -140,6 +140,7 @@ const edgeLine = (above: string, below: string) => {
   };
   const pair = new Set([norm(above), norm(below)]);
   if (pair.has("#f3fffb") && pair.has("#2a0b4f")) return "#A3F2D7";
+  if (pair.has("#fefef3") && pair.has("#2a0b4f")) return "#C4B76A";
   return "#8B7DAE";
 };
 const heroEdge = edgeLine("#2A0B4F", bandTint);
