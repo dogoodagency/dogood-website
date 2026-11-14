@@ -6809,15 +6809,26 @@ body:has(.page-home) {
 .page-home #apply-first .cap-pill,
 .page-home #apply-v .cap-small,
 .page-home #next .next-note {
-  background: transparent;
   box-shadow: none;
   border-radius: 0;
   padding: 0;
-  color: #58447f;
+  color: #8b7dae;
   font-size: 14px;
   font-weight: 400;
   font-style: italic;
   line-height: 1.45;
+}
+
+.page-home #case-j p.case-protect,
+.page-home #case-v p.case-protect,
+.page-home #first-card p.stage-note,
+.page-home #next .next-note {
+  background: transparent;
+}
+
+.page-home #apply-first .cap-pill,
+.page-home #apply-v .cap-small {
+  background: #f5f2ff;
 }
 
 .page-home p.t-kicker,
@@ -6847,7 +6858,7 @@ body:has(.page-home) {
 
 .page-home #case-j h3,
 .page-home #case-v h3 {
-  font-size: clamp(30px, 2.78vw, 40px);
+  font-size: 40px;
   font-weight: 900;
   line-height: 1.18;
   letter-spacing: -0.025em;
@@ -6856,41 +6867,53 @@ body:has(.page-home) {
 .page-home #first-card,
 .page-home #why .why-copy,
 .page-home .track-card {
-  padding: 56px;
+  padding: 36px 40px 48px;
 }
 
-.page-home #first-card p.invite {
+.page-home #first-card p.invite,
+.page-home .years,
+.page-home #asseen .t-kicker {
   color: #2a0b4f;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .page-home #for-you .card.rose {
-  background: #f5f2ff;
+  background: #fff;
   border: 0;
 }
 
-.page-home .foryou-grid h3,
-.page-home .review-who h3,
-.page-home .track-title {
+.page-home .foryou-grid h3 {
   font-size: 22px;
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.03em;
-  text-transform: none;
 }
 
-.page-home .track-title,
 .page-home .review-who h3 {
   color: #2a0b4f;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: 0;
+}
+
+.page-home .track-title {
+  color: #2a0b4f;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .page-home #why p.why-kicker {
   color: #2a0b4f;
-  font-size: 26px;
+  font-size: 22px;
+  font-weight: 800;
 }
 
 .page-home #why h2.t-h2 {
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 800;
 }
 
@@ -6913,30 +6936,30 @@ body:has(.page-home) {
   border: 0;
 }
 
-.page-home #asseen .t-kicker {
-  color: #2a0b4f;
-}
-
 .page-home #message-card .accent-pink {
   color: #fff;
   font-weight: 700;
   font-style: italic;
 }
 
-.page-home .years {
-  color: #2a0b4f;
-  font-weight: 700;
-}
-
 @media (max-width: 767px) {
+  .page-home #case-j h3,
+  .page-home #case-v h3 {
+    font-size: 30px;
+  }
+
   .page-home #first-card,
   .page-home #why .why-copy,
   .page-home .track-card {
-    padding: 28px;
+    padding: 28px 22px 36px;
+  }
+
+  .page-home #why p.why-kicker {
+    font-size: 22px;
   }
 
   .page-home #why h2.t-h2 {
-    font-size: 28px;
+    font-size: 20px;
   }
 }
 

@@ -534,8 +534,8 @@
         };
         const paintStops = (amount) => {
           if (amount <= 0) {
-            swellDark.setAttribute("stop-color", "#E7FFF6");
-            swellLight.setAttribute("stop-color", "#E7FFF6");
+            swellDark.setAttribute("stop-color", "#CCFDEC");
+            swellLight.setAttribute("stop-color", "#CCFDEC");
             swellDark.setAttribute("offset", "0");
             swellLight.setAttribute("offset", "1");
             return;
@@ -549,7 +549,7 @@
           }
           const cut = amount.toFixed(4);
           swellDark.setAttribute("stop-color", "#28DBB0");
-          swellLight.setAttribute("stop-color", "#E7FFF6");
+          swellLight.setAttribute("stop-color", "#CCFDEC");
           swellDark.setAttribute("offset", cut);
           swellLight.setAttribute("offset", cut);
         };
@@ -557,10 +557,10 @@
         if (strip instanceof HTMLElement) {
           const amount = fractionIn(stripRect);
           if (amount >= 1) strip.style.background = "#28DBB0";
-          else if (amount <= 0) strip.style.background = "#E7FFF6";
+          else if (amount <= 0) strip.style.background = "#CCFDEC";
           else {
             const pct = (amount * 100).toFixed(2);
-            strip.style.background = `linear-gradient(to bottom, #28DBB0 ${pct}%, #E7FFF6 ${pct}%)`;
+            strip.style.background = `linear-gradient(to bottom, #28DBB0 ${pct}%, #CCFDEC ${pct}%)`;
           }
         }
       };
