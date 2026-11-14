@@ -292,6 +292,105 @@
       return d;
     };
 
+    // Replace only the open stretch under the founder message with one
+    // tangent-matched curve. Commands before that cubic, and every command
+    // after the Wayfinders photo anchor, stay byte-identical.
+    const smoothMessageGap = (d, message, photo, stroke) => {
+      if (!message || !photo) return d;
+      const parts = d.match(/[MC](?: (?! [MC])[^MC]+)*/g)?.map((part) => part.trim());
+      if (!parts || parts.length < 4) return d;
+      const num = (source) => source.trim().split(/[\s,]+/).map(Number);
+      const cubics = [];
+      let cursor = null;
+      parts.forEach((part, index) => {
+        const n = num(part.slice(1));
+        if (part[0] === "M") {
+          cursor = { x: n[0], y: n[1] };
+          return;
+        }
+        cubics.push({
+          index,
+          p0: cursor,
+          c1: { x: n[0], y: n[1] },
+          c2: { x: n[2], y: n[3] },
+          p1: { x: n[4], y: n[5] },
+        });
+        cursor = { x: n[4], y: n[5] };
+      });
+      const anchor = { x: photo.cx, y: photo.y + photo.h * 0.25 };
+      const endIdx = cubics.findIndex(
+        (cubic) => Math.hypot(cubic.p1.x - anchor.x, cubic.p1.y - anchor.y) < 1.5,
+      );
+      if (endIdx < 1 || !cubics[endIdx + 1]) return d;
+      const coverY = message.bottom - stroke;
+      const cardIdx = cubics.findIndex(
+        (cubic, index) => index < endIdx && cubic.p0.y <= coverY && cubic.p1.y >= coverY,
+      );
+      if (cardIdx < 0) return d;
+      const bez = (t, a, b, c, e) => {
+        const u = 1 - t;
+        return {
+          x: u * u * u * a.x + 3 * u * u * t * b.x + 3 * u * t * t * c.x + t * t * t * e.x,
+          y: u * u * u * a.y + 3 * u * u * t * b.y + 3 * u * t * t * c.y + t * t * t * e.y,
+        };
+      };
+      const card = cubics[cardIdx];
+      let lo = 0;
+      let hi = 1;
+      for (let i = 0; i < 40; i += 1) {
+        const mid = (lo + hi) / 2;
+        if (bez(mid, card.p0, card.c1, card.c2, card.p1).y < coverY) lo = mid;
+        else hi = mid;
+      }
+      const t = lo;
+      const lerp = (a, b, amount) => ({
+        x: a.x + (b.x - a.x) * amount,
+        y: a.y + (b.y - a.y) * amount,
+      });
+      const splitAt = (cubic, amount) => {
+        const a = lerp(cubic.p0, cubic.c1, amount);
+        const b = lerp(cubic.c1, cubic.c2, amount);
+        const c = lerp(cubic.c2, cubic.p1, amount);
+        const d1 = lerp(a, b, amount);
+        const e = lerp(b, c, amount);
+        const f = lerp(d1, e, amount);
+        return [cubic.p0, a, d1, f];
+      };
+      const left = splitAt(card, t);
+      const start = left[3];
+      const u = 1 - t;
+      const deriv = {
+        x:
+          3 * u * u * (card.c1.x - card.p0.x) +
+          6 * u * t * (card.c2.x - card.c1.x) +
+          3 * t * t * (card.p1.x - card.c2.x),
+        y:
+          3 * u * u * (card.c1.y - card.p0.y) +
+          6 * u * t * (card.c2.y - card.c1.y) +
+          3 * t * t * (card.p1.y - card.c2.y),
+      };
+      const next = cubics[endIdx + 1];
+      const out = { x: next.c1.x - next.p0.x, y: next.c1.y - next.p0.y };
+      if (deriv.y <= 0 || out.y <= 0) return d;
+      const end = cubics[endIdx].p1;
+      const chord = Math.hypot(end.x - start.x, end.y - start.y) || 1;
+      const unit = (v) => {
+        const len = Math.hypot(v.x, v.y) || 1;
+        return { x: v.x / len, y: v.y / len };
+      };
+      const tin = unit(deriv);
+      const tout = unit(out);
+      const scale = chord * 0.42;
+      const c1 = { x: start.x + tin.x * scale, y: start.y + tin.y * scale };
+      const c2 = { x: end.x - tout.x * scale, y: end.y - tout.y * scale };
+      const fmt = (value) => value.toFixed(1);
+      const cmd = (a, b, c) => `C ${fmt(a.x)} ${fmt(a.y)}, ${fmt(b.x)} ${fmt(b.y)}, ${fmt(c.x)} ${fmt(c.y)}`;
+      const rebuilt = parts.slice();
+      rebuilt[card.index] = cmd(left[1], left[2], left[3]);
+      rebuilt.splice(card.index + 1, endIdx - cardIdx, cmd(c1, c2, end));
+      return rebuilt.join(" ");
+    };
+
     const monotonic = (points) => {
       let y = -Infinity;
       return points
@@ -559,18 +658,16 @@
       if (!phone) {
       const lane = apply1 ? apply1.cx : stones ? stones.cx + stones.w * 0.22 : width * 0.72;
       if (pinJ && stones) {
-        // Image pixel positions in spot1-v3@2x (1048×1062). The line drops
-        // from the pin, turns at ankle height, and stays under the fill
-        // until it leaves the right side of the last stone.
+        // Pixel positions in the filled stepping-stones drawing (1048×1062).
+        // The line turns into the opaque back shin, stays under the fill,
+        // and leaves through the last (smallest) stone on the button's lane.
         const ix = (px) => stones.left + stones.w * (px / 1048);
         const iy = (py) => stones.y + stones.h * (py / 1062);
-        const ankleX = ix(360);
-        const ankleY = iy(730);
-        const span = ankleX - pinJ.cx;
-        const room = ankleY - (pinJ.bottom + 40);
+        const ankleX = ix(430);
+        const ankleY = iy(695);
+        const span = Math.max(48, ankleX - pinJ.cx);
+        const room = Math.max(48, ankleY - (pinJ.bottom + 40));
         const turn = Math.min(span, room);
-        // Centre sits down-right of the vertical run, so the arc arrives
-        // from above on a vertical tangent and leaves toward the ankle.
         const arcX = pinJ.cx + turn;
         const arcY = ankleY - turn;
         founderPts.push({ x: pinJ.cx, y: pinJ.y + pinJ.h * 0.45 });
@@ -585,13 +682,14 @@
           });
         }
         if (ankleX > arcX + 12) founderPts.push({ x: ankleX, y: ankleY });
-        const stoneY = iy(830);
-        const exitLane = Math.min(lane, ix(958) + founderStroke * 0.32);
-        const bendR = 92;
-        const bendX = exitLane - bendR;
-        const approachX = Math.min(ix(900), bendX);
-        founderPts.push({ x: approachX, y: stoneY });
-        if (bendX > approachX + 8) founderPts.push({ x: bendX, y: stoneY });
+        // Inside the body fill, then the centre of the last stone.
+        founderPts.push({ x: ix(760), y: iy(830) });
+        const stoneX = ix(909);
+        const stoneY = iy(878);
+        founderPts.push({ x: stoneX, y: stoneY });
+        const bendR = Math.max(88, Math.min(140, lane - stoneX));
+        const bendX = lane - bendR;
+        if (bendX > stoneX + 8) founderPts.push({ x: bendX, y: stoneY });
         const stoneSteps = 12;
         for (let i = 1; i <= stoneSteps; i += 1) {
           const t = (-Math.PI / 2) * (1 - i / stoneSteps);
@@ -601,10 +699,8 @@
           });
         }
         if (apply1) {
-          // exitLane only while approaching the button. Back on the original
-          // lane before the centre, still covered by the button.
-          founderPts.push({ x: exitLane, y: apply1.y - 16 });
-          founderPts.push({ x: exitLane, y: apply1.y + 8 });
+          // On the button lane before the button, so the run into it is straight.
+          // The points from the button centre down match the previous geometry.
           founderPts.push({ x: lane, y: apply1.y + 16 });
           founderPts.push({ x: lane, y: apply1.cy });
           founderPts.push({ x: lane, y: apply1.bottom + founderStroke });
@@ -684,6 +780,10 @@
       const routeRadius = Math.max(founderStroke, phone ? Math.max(36, turnRadius * 0.7) : founderStroke);
       const companyRadius = phone ? Math.max(28, turnRadius * 0.85) : 72;
       let founderD = toSmoothPath(founderPts, founderStroke);
+      if (!phone) {
+        const photo = box(document.querySelector("#wayfinders .wf-group"));
+        founderD = smoothMessageGap(founderD, message, photo, founderStroke);
+      }
       if (dropIn && dropIn.radius > 8 && intoMouth > bendY) {
         const radius = dropIn.radius;
         const handle = radius * 0.5522847498;

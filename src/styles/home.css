@@ -598,6 +598,10 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
 }
 
 @media (max-width: 1080px) {
+  #first-draw {
+    margin-top: calc(-30 * 100vw / 1710);
+  }
+
   #first-draw picture,
   #first-draw img {
     width: min(100%, 320px);
@@ -5418,7 +5422,7 @@ button.btn-subscribe:focus-visible {
   #first-draw {
     position: absolute;
     left: calc(576 * 100vw / 1710);
-    top: 0;
+    top: calc(-30 * 100vw / 1710);
     width: calc(676 * 100vw / 1710);
     z-index: 2;
   }
