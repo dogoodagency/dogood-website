@@ -5007,12 +5007,12 @@ button.btn-subscribe:focus-visible {
   }
 
   .exit-machine-still {
-    display: block;
+    display: none;
   }
 
   .exit-machine-body,
   .exit-wheel {
-    display: none;
+    display: block;
   }
 
   .exit-wheel {

@@ -520,14 +520,31 @@
         put(pinJ.cx, pinJ.y + pinJ.h * 0.35);
         put(pinJ.cx + pinJ.w * 0.06, pinJ.bottom + 24);
       }
+      const lane = apply1 ? apply1.cx : stones ? stones.cx + stones.w * 0.22 : width * 0.72;
       if (stones) {
         put(stones.cx, stones.y + stones.h * 0.42);
-        put(stones.left + stones.w * 0.62, stones.y + stones.h * 0.8);
+        // Quarter-turn onto the apply lane. Radius stays larger than the
+        // stroke so the inner edge is a curve, not a V, and the run is
+        // vertical well before the button so the width cannot change.
+        const radius = Math.max(founderStroke * 1.55, 200);
+        const endY = apply1
+          ? Math.min(stones.bottom + radius * 0.55, apply1.y - founderStroke)
+          : stones.bottom + radius * 0.55;
+        const centerX = lane - radius;
+        const sweep = (58 * Math.PI) / 180;
+        const startA = -sweep;
+        const lead = {
+          x: centerX + radius * Math.cos(startA) - radius * Math.sin(sweep) * 0.85,
+          y: endY + radius * Math.sin(startA) - radius * Math.cos(sweep) * 0.85,
+        };
+        put(lead.x, lead.y);
+        for (let i = 8; i >= 0; i -= 1) {
+          const angle = startA * (i / 8);
+          put(centerX + radius * Math.cos(angle), endY + radius * Math.sin(angle));
+        }
       }
-      const lane = apply1 ? apply1.cx : stones ? stones.cx + stones.w * 0.22 : width * 0.72;
-      if (stones) put(lane, stones.bottom + founderStroke * 0.35);
       if (apply1) {
-        put(lane, apply1.y - founderStroke * 1.6);
+        put(lane, apply1.y - founderStroke * 0.85);
         put(lane, apply1.cy);
         put(lane, apply1.bottom + founderStroke);
       }
