@@ -698,10 +698,13 @@
         down(message, 0.15, 0.9);
         down(finders, 0.15, 0.55);
         if (track) {
-          put(track.cx, track.bottom + 6);
-          put(track.cx, track.bottom + 28);
+          put(mouthX, track.bottom + 6);
+          put(mouthX, track.bottom + 28);
         }
-        down(guarantee, 0.2, 0.92);
+        if (guarantee) {
+          put(mouthX, guarantee.y + guarantee.h * 0.2);
+          put(mouthX, guarantee.y + guarantee.h * 0.92);
+        }
       } else if (machine) {
         // Hidden cap inside the body. The stroke slides out of the right
         // wall at the lever base, bends down, and drops straight onto the pin.
@@ -815,12 +818,13 @@
         put(photo.cx, photo.bottom - 8);
       }
       if (track) {
-        put(track.cx, track.bottom + 12);
-        put(track.cx, track.bottom + Math.max(40, founderStroke));
+        put(mouthX, track.y + track.h * 0.62);
+        put(mouthX, track.bottom + 16);
       }
       if (guarantee) {
-        put(guarantee.cx, guarantee.y + guarantee.h * 0.45);
-        put(guarantee.cx, guarantee.bottom - 6);
+        put(mouthX, guarantee.y + 12);
+        put(mouthX, guarantee.y + guarantee.h * 0.45);
+        put(mouthX, guarantee.bottom + 24);
       }
       }
       put(mouthX, intoMouth);

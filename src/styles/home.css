@@ -6813,7 +6813,7 @@ body:has(.page-home) {
   border-radius: 0;
   padding: 0;
   color: #8b7dae;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 400;
   font-style: italic;
   line-height: 1.45;
@@ -6873,7 +6873,7 @@ body:has(.page-home) {
 }
 
 .page-home #for-you .card.rose {
-  background: #fff;
+  background: #feb5bc;
   border: 0;
 }
 
@@ -6946,10 +6946,31 @@ body:has(.page-home) {
   }
 }
 
+.page-home #case-j p.case-who,
+.page-home #case-v p.case-who {
+  color: #8b7dae;
+}
+
+.page-home #asseen .asseen-frame {
+  border: 1px solid #8b7dae;
+}
+
+.page-home .card.guarantee-card,
+.page-home #first-card,
+.page-home #why .why-copy {
+  border: 0;
+}
+
+.page-home #next .next-inner > p:not(.next-note) {
+  color: #05745b;
+}
+
 @media (min-width: 1081px) {
   .page-home .guarantee-card {
     width: 1010px;
     max-width: min(1010px, calc(100% - 2 * var(--pad)));
+    margin-right: auto;
+    margin-left: auto;
     padding-top: 48px;
   }
 }
