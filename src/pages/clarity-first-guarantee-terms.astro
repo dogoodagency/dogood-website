@@ -1,9 +1,11 @@
 ---
+import { Image } from "astro:assets";
 import Base from "../layouts/Base.astro";
 import Wave from "../components/Wave.astro";
 import { urls } from "../data/homepage";
 import { edgeAbove } from "../data/edge-line";
 import caseV from "../assets/cases/case-study-v-founder-life-after-exit.png";
+import signature from "../assets/photos/signature.png";
 
 const grass = "#E7FFF6";
 const heroEdge = edgeAbove("#2A0B4F");
@@ -36,7 +38,10 @@ const joinEdge = edgeAbove("#ffffff");
           <p>Even if you exit, <span class="promise-key">you keep everything we’ve already done together</span> in those first sessions: the decisions we clarified, the containment plan we set, and any tools or written notes we shared along the way.</p>
           <p><span class="promise-key">We take real delivery risk here on purpose</span>, because we only want to continue if it’s genuinely the right fit.</p>
           <div class="promise-sign">
-            <p><span class="promise-name">Seb Wichmann</span> | Founder, DoGood Agency</p>
+            <div class="promise-byline">
+              <Image class="promise-signature" src={signature} alt="Seb’s signature" widths={[180, 360]} sizes="180px" />
+              <p><span class="promise-name">Seb Wichmann</span> | Founder, DoGood Agency</p>
+            </div>
             <picture class="seal-slot">
               <source
                 type="image/webp"
