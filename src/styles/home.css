@@ -3452,7 +3452,7 @@ header.nav .nav-mega-card {
   height: 420px;
   overflow: hidden;
   border-radius: 16px;
-  background: #553b72;
+  background: #3e2c5a;
   text-decoration: none;
 }
 
@@ -3614,7 +3614,7 @@ header.nav .nav-apply {
   gap: 8px;
   flex: 0 0 auto;
   min-height: 64px;
-  padding: 8px 10px 8px 18px;
+  padding: 8px 24px 8px 18px;
   border-radius: 16px;
   background: #ea1557;
   color: #fff;
@@ -4334,7 +4334,7 @@ header.nav {
 
 header.nav .nav-bar,
 header.nav .nav-panel {
-  background: #553b72;
+  background: #3e2c5a;
 }
 
 header.nav .nav-links {
@@ -4385,7 +4385,7 @@ header.nav .nav-apply:focus-visible::before {
 
   header.nav {
     padding-left: var(--nav-inset);
-    padding-right: var(--nav-inset);
+    padding-right: calc(var(--nav-inset) - 14px);
   }
 
   header.nav .nav-links {
