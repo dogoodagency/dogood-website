@@ -5849,7 +5849,7 @@ header.nav .nav-panel {
 }
 
 body:has(.page-privacy) .footer-wave {
-  background: #fff;
+  background: #faf9ff;
 }
 
 .page-privacy {
@@ -5920,6 +5920,17 @@ body:has(.page-privacy) .footer-wave {
   background: #f3fffb;
   border-top: 1px solid #e6defc;
   border-bottom: 1px solid #e6defc;
+}
+
+.privacy-band-play {
+  background: #fefef3;
+  border-top: 1px solid #e6defc;
+  border-bottom: 1px solid #e6defc;
+}
+
+.privacy-band-dream10 {
+  background: #faf9ff;
+  border-top: 1px solid #e6defc;
 }
 
 .privacy-well {

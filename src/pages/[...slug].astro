@@ -111,6 +111,24 @@ const genericDescription = entry.data.description.startsWith("Founder Reclamatio
 const pageDescription = genericDescription
   ? `${named ?? "This page"} from DoGood Agency, a private partnership for founders after exit.`
   : entry.data.description;
+
+const privacyBandKinds = ["lavender", "white", "grass", "white", "play", "white", "dream10"];
+const privacyBandBreaks = new Set(["3", "5", "7", "9", "11", "12"]);
+const privacyGroups =
+  slug === "privacy" && entry.rendered?.html
+    ? entry.rendered.html.split(/(?=<h2\b)/i).reduce<string[]>((groups, piece) => {
+        const num = piece.match(/^<h2\b[^>]*>\s*(\d+)\./)?.[1];
+        if (!groups.length || (num && privacyBandBreaks.has(num))) groups.push("");
+        groups[groups.length - 1] += piece;
+        return groups;
+      }, [])
+    : [];
+const privacyHtml = privacyGroups
+  .map(
+    (inner, index) =>
+      `<section class="privacy-band privacy-band-${privacyBandKinds[index] ?? "white"}"><div class="privacy-well">${inner}</div></section>`,
+  )
+  .join("");
 ---
 
 <Base
@@ -146,9 +164,7 @@ const pageDescription = genericDescription
         </div>
         <Wave fill="#F5F2FF" />
       </header>
-      <div class="privacy-source">
-        <Content />
-      </div>
+      <div class="privacy-source" set:html={privacyHtml} />
     </article>
   ) : (
     <>
@@ -203,37 +219,7 @@ const pageDescription = genericDescription
   )}
 </Base>
 
-<script is:inline>
-  const privacy = document.querySelector(".page-privacy .privacy-source");
-  if (privacy) {
-    const nodes = [...privacy.childNodes].filter(
-      (node) => node.nodeType !== Node.TEXT_NODE || node.textContent.trim(),
-    );
-    const bands = [];
-    let bucket = [];
-    const flush = () => {
-      if (bucket.length) bands.push(bucket);
-      bucket = [];
-    };
-    nodes.forEach((node) => {
-      if (node instanceof HTMLElement && node.tagName === "H2" && /^(4|7|10)\./.test(node.textContent.trim())) {
-        flush();
-      }
-      bucket.push(node);
-    });
-    flush();
-    const kinds = ["lavender", "white", "grass", "white"];
-    bands.forEach((group, index) => {
-      const band = document.createElement("section");
-      band.className = `privacy-band privacy-band-${kinds[index] || "white"}`;
-      const well = document.createElement("div");
-      well.className = "privacy-well";
-      group.forEach((node) => well.append(node));
-      band.append(well);
-      privacy.append(band);
-    });
-  }
-
+<script>
   document.querySelectorAll("[data-buzzsprout-src]").forEach((gate) => {
     gate.querySelector("button")?.addEventListener("click", () => {
       if (!(gate instanceof HTMLElement) || gate.querySelector("iframe")) return;
