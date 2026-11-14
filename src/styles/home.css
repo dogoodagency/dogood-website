@@ -6050,8 +6050,12 @@ body:has(.page-apply) .footer-wave {
   align-items: center;
 }
 
+.page-contact .privacy-well {
+  overflow: visible;
+}
+
 .page-contact .contact-form button {
-  margin-top: 50px;
+  margin-top: 40px;
   padding-right: 106px;
 }
 
@@ -6074,6 +6078,16 @@ body:has(.page-apply) .footer-wave {
   background: transparent;
 }
 
+.page-contact .contact-newsletter {
+  margin: 16px 0 0;
+}
+
+.page-contact .contact-privacy,
+.page-contact .contact-privacy a {
+  font-size: 12px;
+  color: #c2b7dd;
+}
+
 .page-contact .contact-map {
   display: block;
   width: 100%;
@@ -6085,6 +6099,18 @@ body:has(.page-apply) .footer-wave {
 
 .page-contact .contact-address {
   margin: 0;
+}
+
+.page-contact .contact-ioda {
+  box-sizing: border-box;
+  width: fit-content;
+  max-width: 100%;
+  margin: 24px 0 0;
+  padding: 20px 24px;
+  background: #fff;
+  border: 1px solid #c2b7dd;
+  border-radius: 18px;
+  box-shadow: none;
 }
 
 @media (max-width: 800px) {
