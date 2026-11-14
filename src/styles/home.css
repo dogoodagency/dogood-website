@@ -6917,7 +6917,7 @@ body:has(.page-home) {
 
 .page-home #for-you .card.rose {
   background: #fff3f4;
-  border: 0;
+  border: 1px solid #fd6b82;
 }
 
 .page-home .foryou-grid h3 {
