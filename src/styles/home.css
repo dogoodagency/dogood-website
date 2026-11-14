@@ -6569,7 +6569,8 @@ body:has(.page-clarity) .footer-wave {
   }
 }
 
-.door-glow {
+.door-glow,
+.door-glow-boost {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -6583,7 +6584,12 @@ body:has(.page-clarity) .footer-wave {
   animation: door-breathe 4s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate;
 }
 
-.door-glow img {
+.door-glow-boost {
+  animation-name: door-breathe-boost;
+}
+
+.door-glow img,
+.door-glow-boost img {
   display: block;
   width: 100%;
   max-width: none;
@@ -6596,11 +6602,22 @@ body:has(.page-clarity) .footer-wave {
 
 @keyframes door-breathe {
   from {
-    opacity: 0.6;
+    opacity: 0.72;
     transform: scale(0.985);
   }
   to {
     opacity: 1;
+    transform: scale(1.015);
+  }
+}
+
+@keyframes door-breathe-boost {
+  from {
+    opacity: 0.144;
+    transform: scale(0.985);
+  }
+  to {
+    opacity: 0.2;
     transform: scale(1.015);
   }
 }
@@ -6665,7 +6682,13 @@ body:has(.page-clarity) .footer-wave {
 @media (prefers-reduced-motion: reduce), (max-width: 599px) {
   .door-glow {
     animation: none;
-    opacity: 0.7;
+    opacity: 0.84;
+    transform: none;
+  }
+
+  .door-glow-boost {
+    animation: none;
+    opacity: 0;
     transform: none;
   }
 
