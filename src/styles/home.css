@@ -6682,15 +6682,20 @@ body:has(.page-clarity) .footer-wave {
 
 @media (min-width: 1081px) {
   header.nav {
-    display: block;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    column-gap: 0;
     padding-right: 0;
     padding-left: 0;
+    container-type: inline-size;
   }
 
   header.nav .nav-bar {
-    width: min(1040px, calc(100% - 2 * clamp(20px, 5.56vw, 80px)));
-    margin-right: auto;
-    margin-left: auto;
+    grid-column: 2;
+    width: min(1040px, calc(100cqw - 2 * clamp(20px, 5.56vw, 80px)));
+    margin: 0;
+    justify-self: center;
     padding-right: 16px;
     padding-left: 16px;
   }
@@ -6700,10 +6705,13 @@ body:has(.page-clarity) .footer-wave {
   }
 
   header.nav .nav-apply {
-    position: absolute;
-    top: 12px;
+    grid-column: 3;
+    position: relative;
+    top: auto;
     right: auto;
-    left: calc(50% + min(520px, (100% - 2 * clamp(20px, 5.56vw, 80px)) / 2) + 18px);
+    left: auto;
+    justify-self: start;
+    margin-left: 18px;
   }
 }
 
