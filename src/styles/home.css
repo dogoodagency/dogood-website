@@ -6473,10 +6473,10 @@ body:has(.page-clarity) .footer-wave {
   display: flex;
   flex: 0 1 auto;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   gap: 4px;
   min-width: 0;
-  margin-left: auto;
+  margin-right: auto;
 }
 
 .page-clarity .promise-signature {
@@ -6494,7 +6494,7 @@ body:has(.page-clarity) .footer-wave {
   color: #fff;
   font-size: 16px;
   line-height: 1.35;
-  text-align: right;
+  text-align: left;
 }
 
 .page-clarity .promise-name {
@@ -6509,7 +6509,7 @@ body:has(.page-clarity) .footer-wave {
   width: 378px;
   min-width: min(250px, 100%);
   max-width: 100%;
-  margin: 0;
+  margin: 0 0 0 auto;
 }
 
 .page-clarity .seal-slot img {
@@ -6606,7 +6606,7 @@ body:has(.page-clarity) .footer-wave {
     flex: none;
     width: min(100%, max(250px, 70%));
     max-width: 378px;
-    margin: 0 0 24px;
+    margin: 24px 0 0;
   }
 }
 
