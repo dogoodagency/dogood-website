@@ -6932,6 +6932,34 @@ body:has(.page-home) {
   }
 }
 
+.page-home .guarantee-card .guarantee-seal {
+  width: 123.2px;
+  min-width: 0;
+  max-width: 123.2px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 640px) {
+  .page-home .guarantee-card .guarantee-seal {
+    width: 103.6px;
+    max-width: 103.6px;
+  }
+}
+
+@media (min-width: 1081px) {
+  .page-home .guarantee-card {
+    width: 1010px;
+    max-width: min(1010px, calc(100% - 2 * var(--pad)));
+    padding-top: 48px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .page-home .guarantee-card {
+    padding-top: 24px;
+  }
+}
+
 .page-home .review {
   background: #f5f2ff;
   border: 0;
