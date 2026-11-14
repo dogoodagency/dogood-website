@@ -8,7 +8,7 @@ import { edgeAbove } from "../data/edge-line";
 export async function getStaticPaths() {
   const pages = await getCollection("pages");
   return pages
-    .filter((page) => page.id !== "error404" && page.id !== "contact")
+    .filter((page) => page.id !== "error404" && page.id !== "contact" && page.id !== "apply-stage-1")
     .map((page) => ({ params: { slug: page.id } }));
 }
 

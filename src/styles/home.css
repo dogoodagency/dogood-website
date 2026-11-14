@@ -5905,7 +5905,8 @@ header.nav .nav-panel {
   }
 }
 
-body:has(.page-privacy) .footer-wave {
+body:has(.page-privacy) .footer-wave,
+body:has(.page-apply) .footer-wave {
   background: var(--footer-strip, #f5f2ff);
 }
 
@@ -6182,5 +6183,109 @@ body:has(.page-privacy) .footer-wave {
 
   .page-privacy h2 {
     font-size: 26px;
+  }
+}
+
+.page-apply {
+  background: #fff9fa;
+  color: #2a0b4f;
+}
+
+.page-apply .privacy-hero-inner {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.page-apply .privacy-hero .hero-wave {
+  flex-shrink: 0;
+}
+
+.page-apply .apply-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(240px, 0.85fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.page-apply .apply-copy h2 {
+  margin: 0 0 12px;
+  color: #2a0b4f;
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.page-apply .apply-copy p {
+  margin: 0 0 16px;
+  color: #2a0b4f;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.page-apply .apply-limit {
+  margin-top: 12px;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.page-apply a.btn-apply,
+.page-apply a.btn-apply:hover,
+.page-apply a.btn-apply:focus-visible {
+  background: #c10e46;
+  color: #fff;
+}
+
+.page-apply .apply-sketch {
+  display: block;
+  width: 100%;
+  margin: 0;
+  background: transparent;
+}
+
+.page-apply .apply-sketch img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: transparent;
+}
+
+.page-apply .apply-case {
+  margin-top: 64px;
+}
+
+.page-apply .apply-case .t-kicker {
+  color: #ea1557;
+}
+
+.page-apply .apply-case .case-who {
+  color: #ea1557;
+}
+
+.page-apply .apply-case a.btn-case,
+.page-apply .apply-case a.btn-case:hover,
+.page-apply .apply-case a.btn-case:focus-visible {
+  background: #ea1557;
+  color: #fff;
+}
+
+@media (max-width: 800px) {
+  .page-apply .apply-top {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .page-apply .apply-copy h2 {
+    font-size: 26px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-apply a.btn-apply:hover,
+  .page-apply a.btn-apply:focus-visible {
+    background: #fff;
+    color: #c10e46;
+    transform: none;
+    padding-left: 20px;
+    padding-right: 56px;
   }
 }

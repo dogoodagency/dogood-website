@@ -1,0 +1,73 @@
+---
+import Base from "../layouts/Base.astro";
+import Wave from "../components/Wave.astro";
+import { urls } from "../data/homepage";
+import { edgeAbove } from "../data/edge-line";
+import caseJ from "../assets/cases/case-study-j-founder-life-after-exit.png";
+
+const heart = "#FFF9FA";
+const heroEdge = edgeAbove("#2A0B4F");
+const footerEdge = edgeAbove(heart);
+const apply = "https://form.jotform.com/DoGoodAgency/frp-stage-1";
+---
+
+<Base
+  title="Apply for Stage 1 | DoGood Agency"
+  description="Apply for Stage 1: The Reset, a private 30-day Intensive for founders after exit. Takes 5–10 minutes and is reviewed within 24 hours."
+  canonical="https://www.dogoodagency.co/apply-stage-1"
+  footerStrip={heart}
+  footerEdge={footerEdge}
+>
+  <article class="page-apply" style={`--band-tint:${heart}`}>
+    <header class="privacy-hero">
+      <div class="privacy-hero-inner">
+        <h1>Stage 1: The Reset (30 days)</h1>
+      </div>
+      <Wave fill={heart} edge={heroEdge} />
+    </header>
+
+    <section class="privacy-band privacy-band-tint">
+      <div class="privacy-well">
+        <div class="apply-top">
+          <div class="apply-copy">
+            <h2>Application</h2>
+            <p>Takes 5–10 minutes · Private · Review within 24 hours</p>
+            <p>This is Stage 1 of the Founder Reclamation Partnership</p>
+            <a class="btn-apply" href={apply}>Apply for Stage 1</a>
+            <p class="apply-limit">Limited to five new founders a month</p>
+          </div>
+          <picture class="apply-sketch">
+            <source
+              type="image/webp"
+              srcset="/sketches/apply-stage-1-garden-gate@1x.webp 540w, /sketches/apply-stage-1-garden-gate@2x.webp 1080w"
+              sizes="(max-width: 800px) min(100vw, 420px), 420px"
+            />
+            <img
+              src="/sketches/apply-stage-1-garden-gate@1x.png"
+              srcset="/sketches/apply-stage-1-garden-gate@1x.png 540w, /sketches/apply-stage-1-garden-gate@2x.png 1080w"
+              sizes="(max-width: 800px) min(100vw, 420px), 420px"
+              width="540"
+              height="400"
+              alt=""
+            />
+          </picture>
+        </div>
+
+        <section class="apply-case" aria-label="Case study">
+          <article class="card case-compact">
+            <img class="portrait" src={caseJ.src} width="220" height="244" alt="Pixelated portrait of founder J, shown this way to protect their identity" />
+            <div>
+              <p class="t-kicker">Case Study</p>
+              <h3>From exit anxiety to aligned legacy —<br />How J created a clear next life chapter</h3>
+              <p class="caption case-who">J (anonymous), USD 2M founder</p>
+              <div class="btn-stack">
+                <a class="btn-case" href={urls.caseJ}>Read the short case study</a>
+                <p class="case-protect">We protect our founders’ identities</p>
+              </div>
+            </div>
+          </article>
+        </section>
+      </div>
+    </section>
+  </article>
+</Base>
