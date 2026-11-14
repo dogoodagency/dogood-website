@@ -6026,6 +6026,59 @@ body:has(.page-privacy) .footer-wave {
   color: #2a0b4f;
 }
 
+.page-contact .privacy-hero p {
+  margin: 18px 0 0;
+  max-width: 34em;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.page-contact .privacy-hero .hero-wave {
+  flex-shrink: 0;
+}
+
+.page-contact .contact-sketch {
+  width: min(100%, 320px);
+  margin: 0;
+}
+
+.page-contact .contact-sketch img {
+  width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.page-contact .contact-card {
+  box-shadow: none;
+}
+
+.page-contact .privacy-band-white .contact-card {
+  border: 1px solid #c2b7dd;
+}
+
+.page-contact .contact-map {
+  display: block;
+  width: 100%;
+  height: 320px;
+  margin: 0 0 16px;
+  border: 0;
+  border-radius: 16px;
+}
+
+@media (max-width: 600px) {
+  .page-contact .privacy-hero-inner {
+    gap: 12px;
+    padding: 8px 0 12px;
+  }
+
+  .page-contact .contact-sketch img {
+    max-height: 96px;
+  }
+}
+
 .page-privacy h2 {
   margin: 40px 0 12px;
   color: #2a0b4f;
