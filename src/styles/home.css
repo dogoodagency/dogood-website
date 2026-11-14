@@ -7,6 +7,7 @@
   --pad: clamp(20px, 5.56vw, 80px);
   --nav-inset: 16px;
   --accent-bar: 16px;
+  --pink-text: #ea1557;
 }
 
 main p,
@@ -59,7 +60,7 @@ main ul {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-pink);
+  color: var(--pink-text);
 }
 
 .lede {
@@ -82,7 +83,7 @@ main ul {
 }
 
 .pink-soft {
-  color: var(--color-pink-soft);
+  color: var(--pink-text);
 }
 
 .btn-apply,
@@ -142,7 +143,7 @@ main ul {
 
 .btn-case {
   background: transparent;
-  color: var(--color-pink);
+  color: var(--pink-text);
   border: 1.5px solid var(--color-pink);
   font-size: 16px;
   font-weight: 700;
@@ -221,7 +222,7 @@ main ul {
 .nav-links a:hover,
 .nav-links a[aria-current="page"],
 .nav-menu a:hover {
-  color: var(--color-pink);
+  color: var(--pink-text);
 }
 
 .nav-links a.btn-apply {
@@ -299,7 +300,7 @@ main ul {
 }
 
 .hero h1 .accent {
-  color: var(--color-pink);
+  color: var(--pink-text);
 }
 
 .hero-grid {
@@ -559,7 +560,7 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
 }
 
 #case-v .t-kicker {
-  color: var(--color-pink-soft);
+  color: var(--pink-text);
 }
 
 #case-v .caption {
@@ -619,12 +620,12 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
 }
 
 #first-card h2 {
-  color: var(--color-pink);
+  color: var(--pink-text);
 }
 
 #first-card .invite {
   font-weight: 700;
-  color: var(--color-pink-deep);
+  color: var(--pink-text);
   margin-top: 16px;
 }
 
@@ -722,7 +723,7 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
 }
 
 #why h2 {
-  color: var(--color-pink);
+  color: var(--pink-text);
   margin-bottom: 6px;
 }
 
@@ -745,7 +746,7 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
 
 #why .closing {
   font-weight: 700;
-  color: var(--color-pink-deep);
+  color: var(--pink-text);
 }
 
 #why strong {
@@ -1005,7 +1006,7 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
 
 .years {
   font-weight: 700;
-  color: var(--color-pink);
+  color: var(--pink-text);
 }
 
 .wf-intro .match {
@@ -1095,7 +1096,7 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
 .say-no {
   font-size: 20px;
   font-weight: 800;
-  color: var(--color-pink);
+  color: var(--pink-text);
   margin: 6px 0 22px;
 }
 
@@ -1476,7 +1477,7 @@ main li {
 }
 
 .accent-pink {
-  color: var(--color-pink);
+  color: var(--pink-text);
 }
 
 .hero .lede {
@@ -1542,7 +1543,7 @@ main li {
 }
 
 #case-j .case-who {
-  color: var(--color-pink);
+  color: var(--pink-text);
 }
 
 #case-v .case-who {
@@ -1570,7 +1571,7 @@ main li {
 
 .btn-case:hover {
   background: #fff;
-  color: var(--color-pink);
+  color: var(--pink-text);
 }
 
 .btn-partnership {
@@ -1617,7 +1618,7 @@ main li {
 }
 
 #first-card .invite {
-  color: var(--color-pink);
+  color: var(--pink-text);
 }
 
 .stage-note {
@@ -1648,7 +1649,7 @@ main li {
 }
 
 #why .closing {
-  color: var(--color-pink);
+  color: var(--pink-text);
   font-weight: 900;
 }
 
@@ -1733,7 +1734,7 @@ main li {
 }
 
 .track-nums strong {
-  color: var(--color-pink);
+  color: var(--pink-text);
   font-size: 44px;
 }
 
@@ -1808,7 +1809,7 @@ main li {
 
 .btn-subscribe:hover {
   background: #fff;
-  color: var(--color-pink);
+  color: var(--pink-text);
 }
 
 .address {
@@ -2331,7 +2332,7 @@ a.btn-case {
 }
 
 #case-v p.t-kicker {
-  color: #ea1557;
+  color: var(--pink-text);
 }
 
 header.nav {
@@ -2429,7 +2430,7 @@ h1.t-display .hero-line {
   font-weight: 700;
   text-transform: none;
   letter-spacing: 0.02em;
-  color: #ea1557;
+  color: var(--pink-text);
   padding-inline: var(--pad);
 }
 
@@ -2484,7 +2485,7 @@ h1.t-display .hero-line {
 .track-nums strong {
   font-size: 44px;
   font-weight: 900;
-  color: #ea1557;
+  color: var(--pink-text);
   text-align: center;
   white-space: normal;
 }
@@ -2539,7 +2540,7 @@ p.cap-pill,
 #case-j p.case-who {
   font-size: 15px;
   font-weight: 900;
-  color: #ea1557;
+  color: var(--pink-text);
 }
 
 #case-v p.case-who {
@@ -3160,7 +3161,7 @@ main {
 }
 
 .page-body a {
-  color: var(--color-pink-deep);
+  color: var(--pink-text);
 }
 
 .page-body img {
@@ -4091,7 +4092,7 @@ button.btn-subscribe:focus-visible::before,
   a.btn-apply:focus-visible,
   a.btn-apply.lg:focus-visible {
     background: #fff;
-    color: #ea1557;
+    color: var(--pink-text);
   }
 
   a.btn-case:hover,
@@ -4591,7 +4592,7 @@ button.btn-subscribe:focus-visible,
 }
 
 #case-j p.t-kicker {
-  color: #ea1557;
+  color: var(--pink-text);
 }
 
 #case-v p.t-kicker {
@@ -4673,7 +4674,7 @@ a.btn-partnership:focus-visible {
 }
 
 .track-nums strong {
-  color: #ea1557;
+  color: var(--pink-text);
 }
 
 #message {
@@ -6301,7 +6302,7 @@ body:has(.page-clarity) .footer-wave {
 .page-apply .apply-frame .apply-dot {
   display: inline-block;
   margin: 0 0.35em;
-  color: #c10e46;
+  color: var(--pink-text);
   font-family: Montserrat, sans-serif;
   font-size: 1.3em;
   font-weight: 900;
@@ -6466,7 +6467,7 @@ body:has(.page-clarity) .footer-wave {
 }
 
 .page-clarity .promise-key {
-  color: #ea1557;
+  color: var(--pink-text);
   font-weight: 700;
 }
 

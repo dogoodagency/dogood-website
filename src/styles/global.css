@@ -23,6 +23,10 @@
 }
 
 @layer base {
+  :root {
+    --pink-text: #ea1557;
+  }
+
   html {
     scroll-behavior: smooth;
   }
