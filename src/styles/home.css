@@ -3776,7 +3776,25 @@ header.nav .nav-advisor-toggle {
 }
 
 header.nav .nav-panel a.nav-sub {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: auto;
   padding-left: 28px;
+}
+
+header.nav .nav-panel a.nav-sub .nav-sub-note {
+  display: block;
+  margin-top: 2px;
+  color: #c2b7dd;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+header.nav .nav-panel a.nav-sub:hover .nav-sub-note,
+header.nav .nav-panel a.nav-sub:focus-visible .nav-sub-note {
+  color: #2a0b4f;
 }
 
 header.nav .nav-advisor-toggle:hover,

@@ -14,17 +14,20 @@ const advisorLinks = [
   {
     href: "/for-advisors",
     label: "Partner with us",
-    detail: "How we work with exit and wealth advisors, and what your clients get. A simple referral process, and a private path for founders after their exit.",
+    detail: "How we work with exit and wealth advisors, and what your clients get.",
+    more: "A simple referral process, and a private path for founders after their exit.",
   },
   {
     href: "/for-advisors/client-tools",
     label: "Client tools",
-    detail: "Free tools to hand your clients before and after the sale. Practical guides that help your clients settle into life after the sale.",
+    detail: "Free tools to hand your clients before and after the sale.",
+    more: "Practical guides that help your clients settle into life after the sale.",
   },
   {
     href: "/for-advisors/insights",
     label: "Insights for advisors",
-    detail: "What founders struggle with, from our conversations with advisors. Short, anonymised notes on the personal side of selling a company.",
+    detail: "What founders struggle with, from our conversations with advisors.",
+    more: "Short, anonymised notes on the personal side of selling a company.",
   },
 ];
 ---
@@ -87,7 +90,7 @@ const advisorLinks = [
             <li>
               <a href={item.href}>
                 <span class="nav-mega-name">{item.label}</span>
-                <small>{item.detail}</small>
+                <small>{item.detail} {item.more}</small>
               </a>
             </li>
           ))
@@ -114,7 +117,8 @@ const advisorLinks = [
               {
                 advisorLinks.map((item) => (
                   <a class="nav-sub" href={item.href}>
-                    {item.label}
+                    <span class="nav-sub-title">{item.label}</span>
+                    <span class="nav-sub-note">{item.more}</span>
                   </a>
                 ))
               }
