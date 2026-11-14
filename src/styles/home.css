@@ -6552,6 +6552,11 @@ body:has(.page-clarity) .footer-wave {
   width: 180px;
   height: auto;
   background: transparent;
+  transform: translateY(-40px);
+}
+
+.page-home #message-card .sig {
+  transform: translateY(-10px);
 }
 
 .page-clarity .promise-sign p {
@@ -6785,10 +6790,16 @@ body:has(.page-home) {
 
 .page-home #case-j a.btn-case,
 .page-home #case-v a.btn-case,
+.page-apply #case-j a.btn-case,
+.page-clarity #case-v a.btn-case,
 .page-home #case-j a.btn-case:hover,
 .page-home #case-v a.btn-case:hover,
+.page-apply #case-j a.btn-case:hover,
+.page-clarity #case-v a.btn-case:hover,
 .page-home #case-j a.btn-case:focus-visible,
-.page-home #case-v a.btn-case:focus-visible {
+.page-home #case-v a.btn-case:focus-visible,
+.page-apply #case-j a.btn-case:focus-visible,
+.page-clarity #case-v a.btn-case:focus-visible {
   background: #c2b7dd;
   color: #2a0b4f;
   border: 0;
@@ -6798,13 +6809,19 @@ body:has(.page-home) {
 .page-home #case-j a.btn-case::before,
 .page-home #case-j a.btn-case::after,
 .page-home #case-v a.btn-case::before,
-.page-home #case-v a.btn-case::after {
+.page-home #case-v a.btn-case::after,
+.page-apply #case-j a.btn-case::before,
+.page-apply #case-j a.btn-case::after,
+.page-clarity #case-v a.btn-case::before,
+.page-clarity #case-v a.btn-case::after {
   background-color: #2a0b4f;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6 3.5 10.5 8 6 12.5' fill='none' stroke='%23FFFFFF' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
 .page-home #case-j p.case-protect,
 .page-home #case-v p.case-protect,
+.page-apply #case-j p.case-protect,
+.page-clarity #case-v p.case-protect,
 .page-home #first-card p.stage-note,
 .page-home #apply-first .cap-pill,
 .page-home #apply-v .cap-small,
@@ -6852,7 +6869,9 @@ body:has(.page-home) {
 }
 
 .page-home #case-j h3,
-.page-home #case-v h3 {
+.page-home #case-v h3,
+.page-apply #case-j h3,
+.page-clarity #case-v h3 {
   font-size: 40px;
   font-weight: 900;
   line-height: 1.18;
@@ -6947,7 +6966,9 @@ body:has(.page-home) {
 }
 
 .page-home #case-j p.case-who,
-.page-home #case-v p.case-who {
+.page-home #case-v p.case-who,
+.page-apply #case-j p.case-who,
+.page-clarity #case-v p.case-who {
   color: #8b7dae;
 }
 
@@ -6992,7 +7013,9 @@ body:has(.page-home) {
 
 @media (max-width: 767px) {
   .page-home #case-j h3,
-  .page-home #case-v h3 {
+  .page-home #case-v h3,
+  .page-apply #case-j h3,
+  .page-clarity #case-v h3 {
     font-size: 30px;
   }
 
