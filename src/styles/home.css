@@ -2951,6 +2951,24 @@ main {
   text-align: left;
 }
 
+.guarantee-card .guarantee-seal {
+  display: block;
+  width: 176px;
+  min-width: 140px;
+  max-width: 176px;
+  height: auto;
+  margin: 0 auto 28px;
+  background: transparent;
+  border: 0;
+}
+
+@media (max-width: 640px) {
+  .guarantee-card .guarantee-seal {
+    width: 148px;
+    max-width: 148px;
+  }
+}
+
 .guarantee-scale img {
   display: block;
   width: 80px;
