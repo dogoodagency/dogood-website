@@ -815,11 +815,14 @@
       const photo = box(document.querySelector("#wayfinders .wf-group"));
       if (photo) {
         put(photo.cx, photo.y + photo.h * 0.25);
-        put(photo.cx, photo.bottom - 8);
+        // Finish any sideways move inside the track card, clear of the stroke.
+        const inside = track ? track.bottom - founderStroke * 1.35 : photo.bottom - 8;
+        put(photo.cx, Math.min(photo.bottom - founderStroke, inside));
       }
       if (track) {
-        put(mouthX, track.y + track.h * 0.62);
-        put(mouthX, track.bottom + 16);
+        const landed = track.bottom - founderStroke * 0.85;
+        put(mouthX, landed);
+        put(mouthX, track.bottom + 24);
       }
       if (guarantee) {
         put(mouthX, guarantee.y + 12);
