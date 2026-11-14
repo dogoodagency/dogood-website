@@ -102,7 +102,6 @@ const art: Record<string, string> = {
   newsletter: "newsletter-open-envelope-booklet",
   about: "about-building-and-bench",
   privacy: "legal-folded-document",
-  terms: "legal-folded-document",
   cookies: "legal-folded-document",
 };
 const sketch = art[slug] ?? (entry.data.tidycal ? "booking-open-diary" : slug.includes("thank") ? "thank-you-envelope-tick" : "");
@@ -113,29 +112,37 @@ const pageDescription = genericDescription
   : entry.data.description;
 
 const bandTint = entry.data.bandTint ?? "#F5F2FF";
-const bandGroups = entry.data.bandGroups ?? ["1-4", "5-8", "9-12"];
-const privacyBandBreaks = new Set(
-  bandGroups.slice(1).map((group) => group.match(/^(\d+)/)?.[1]).filter((num): num is string => Boolean(num)),
+const bandGroups = entry.data.bandGroups ?? [];
+const bandBreaks = new Set(
+  bandGroups
+    .slice(1)
+    .map((group) => Number(group.match(/^(\d+)/)?.[1]))
+    .filter((num) => Number.isFinite(num)),
 );
-const privacyGroups =
-  slug === "privacy" && entry.rendered?.html
+let bandSection = 0;
+const bandGroupsHtml =
+  bandGroups.length > 0 && entry.rendered?.html
     ? entry.rendered.html.split(/(?=<h2\b)/i).reduce<string[]>((groups, piece) => {
-        const num = piece.match(/^<h2\b[^>]*>\s*(\d+)\./)?.[1];
-        if (!groups.length || (num && privacyBandBreaks.has(num))) groups.push("");
+        const numbered = piece.match(/^<h2\b[^>]*>\s*(\d+)\./);
+        const isHeading = /^<h2\b/i.test(piece);
+        if (isHeading) bandSection = numbered ? Number(numbered[1]) : bandSection + 1;
+        if (!groups.length || (isHeading && bandBreaks.has(bandSection))) groups.push("");
         groups[groups.length - 1] += piece;
         return groups;
       }, [])
     : [];
-const privacyWave =
+const bandHero = slug === "terms" ? "Terms" : slug === "privacy" ? "Privacy Policy" : "";
+const banded = bandGroupsHtml.length > 0 && Boolean(bandHero);
+const bandWave =
   '<div class="privacy-divider" aria-hidden="true"><svg class="privacy-divider-wave" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="#ffffff" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path></svg></div>';
-const privacyHtml = privacyGroups
+const bandHtml = bandGroupsHtml
   .map((inner, index) => {
     const kind = index % 2 === 0 ? "tint" : "white";
-    const wave = index === 0 ? privacyWave : "";
+    const wave = index === 0 ? bandWave : "";
     return `<section class="privacy-band privacy-band-${kind}"><div class="privacy-well">${inner}</div></section>${wave}`;
   })
   .join("");
-const privacyStrip = privacyGroups.length % 2 === 1 ? bandTint : "#ffffff";
+const bandStrip = bandGroupsHtml.length % 2 === 1 ? bandTint : "#ffffff";
 ---
 
 <Base
@@ -143,17 +150,17 @@ const privacyStrip = privacyGroups.length % 2 === 1 ? bandTint : "#ffffff";
   description={pageDescription}
   canonical={canonical}
   hideOptin={entry.data.hideOptin}
-  footerStrip={slug === "privacy" ? privacyStrip : undefined}
+  footerStrip={banded ? bandStrip : undefined}
 >
-  {slug === "privacy" ? (
+  {banded ? (
     <article class="page-privacy" style={`--band-tint:${bandTint}`}>
       <header class="privacy-hero">
         <div class="privacy-hero-inner">
-          <h1>Privacy Policy</h1>
+          <h1>{bandHero}</h1>
         </div>
         <Wave fill={bandTint} />
       </header>
-      <div class="privacy-source" set:html={privacyHtml} />
+      <div class="privacy-source" set:html={bandHtml} />
     </article>
   ) : (
     <>
