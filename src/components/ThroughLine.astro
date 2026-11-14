@@ -437,7 +437,7 @@
 
       const footer = document.querySelector("#footer") || document.querySelector("footer");
       const mainRect = main.getBoundingClientRect();
-      const waveEl = footer?.querySelector(".connect-wave") || footer?.querySelector("svg");
+      const waveEl = footer?.querySelector(".connect-word") || footer;
       const waveRect = (waveEl || footer)?.getBoundingClientRect();
       const end = waveRect ? waveRect.bottom - mainRect.top : main.clientHeight - 6;
       const bandTop = clients.bottom + 70;

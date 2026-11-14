@@ -1209,14 +1209,8 @@ footer a.connect-mark:focus-visible {
 .connect-word {
   width: max-content;
   max-width: 100%;
-}
-
-.connect-wave {
-  display: block;
-  width: 100%;
-  height: 0.18em;
-  margin-top: 0.04em;
-  overflow: visible;
+  /* Holds the space the teal squiggle used to occupy, so the links stay put. */
+  padding-bottom: 0.22em;
 }
 
 .footer a:hover {

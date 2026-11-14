@@ -130,20 +130,7 @@ const legal = [
   <div class="footer-lets">
     <a class="connect-mark" href="/contact">
       <span class="connect-lets">Let’s</span>
-      <span class="connect-word">
-        Connect
-        <svg class="connect-wave" viewBox="0 0 640 48" aria-hidden="true">
-          <path
-            id="connect-wave-path"
-            d="M6 30 C 28 16, 46 38, 78 26 C 112 12, 132 36, 168 24 C 206 10, 228 40, 272 22 C 314 6, 340 38, 386 22 C 430 8, 456 36, 502 20 C 544 6, 572 32, 612 18 C 626 14, 634 20, 634 20"
-            fill="none"
-            stroke="#28DBB0"
-            stroke-width="14"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-      </span>
+      <span class="connect-word">Connect</span>
     </a>
     <ul class="connect-row">
       {
@@ -180,29 +167,3 @@ const legal = [
   </div>
 </footer>
 <script is:inline>document.getElementById("copyright-year").textContent=String(new Date().getFullYear());</script>
-<script>
-  const wave = document.querySelector("#connect-wave-path");
-  if (wave instanceof SVGPathElement) {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const paint = (progress) => {
-      const length = wave.getTotalLength();
-      wave.style.strokeDasharray = `${length}`;
-      wave.style.strokeDashoffset = String(length * (1 - progress));
-    };
-    const update = () => {
-      if (reduce.matches) {
-        paint(1);
-        return;
-      }
-      const rect = wave.getBoundingClientRect();
-      const start = window.innerHeight * 0.95;
-      const finish = window.innerHeight * 0.55;
-      const progress = Math.min(1, Math.max(0, (start - rect.top) / Math.max(1, start - finish)));
-      paint(progress);
-    };
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-    reduce.addEventListener("change", update);
-  }
-</script>
