@@ -4426,8 +4426,6 @@ iframe.tidycal-embed,
 @media (max-width: 700px) {
   .tawk-tooltip,
   #tawk-tooltip,
-  .tawk-card,
-  div[class*="tawk-message"],
   iframe[title*="Attention"] {
     display: none !important;
   }
