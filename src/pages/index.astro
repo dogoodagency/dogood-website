@@ -88,17 +88,39 @@ const notFit = [
           </p>
         </div>
         <div class="hero-draw">
-          <picture class="hero-sketch-frame">
-            <img
-              class="hero-sketch"
-              src="/sketches/hero-v8@1x.png"
-              srcset="/sketches/hero-v8@1x.png 970w, /sketches/hero-v8@2x.png 1940w"
-              sizes="(max-width: 1080px) calc(100vw - 40px), 864px"
-              width="970"
-              height="673"
-              alt="A man and a woman, drawn as napkin sketches, walk side by side along a winding teal path toward a big open door with a bright, green view of mountains and birds beyond. The path carries on from behind the man's heels, widening as it comes toward the viewer."
-            />
-          </picture>
+          <div class="hero-sketch-frame door-anim">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="/sketches/hero-without-door-leaf@1x.webp 970w, /sketches/hero-without-door-leaf@2x.webp 1940w"
+                sizes="(max-width: 1080px) calc(100vw - 40px), 864px"
+              />
+              <img
+                class="hero-sketch"
+                src="/sketches/hero-without-door-leaf@1x.png"
+                srcset="/sketches/hero-without-door-leaf@1x.png 970w, /sketches/hero-without-door-leaf@2x.png 1940w"
+                sizes="(max-width: 1080px) calc(100vw - 40px), 864px"
+                width="970"
+                height="673"
+                alt="A man and a woman, drawn as napkin sketches, walk side by side along a winding teal path toward a big open door with a bright, green view of mountains and birds beyond. The path carries on from behind the man's heels, widening as it comes toward the viewer."
+              />
+            </picture>
+            <picture class="door-leaf">
+              <source
+                type="image/webp"
+                srcset="/sketches/hero-door-leaf@1x.webp 970w, /sketches/hero-door-leaf@2x.webp 1940w"
+                sizes="(max-width: 1080px) calc(100vw - 40px), 864px"
+              />
+              <img
+                src="/sketches/hero-door-leaf@1x.png"
+                srcset="/sketches/hero-door-leaf@1x.png 970w, /sketches/hero-door-leaf@2x.png 1940w"
+                sizes="(max-width: 1080px) calc(100vw - 40px), 864px"
+                width="970"
+                height="673"
+                alt=""
+              />
+            </picture>
+          </div>
         </div>
       </div>
     </div>
@@ -729,6 +751,7 @@ const notFit = [
     import gsap from "gsap";
 
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const narrow = window.matchMedia("(max-width: 600px)");
 
     const watch = (el, play, pause) => {
       const io = new IntersectionObserver(([entry]) => {
@@ -747,6 +770,37 @@ const notFit = [
         { rotation: 3.3, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: -1, paused: true },
       );
       watch(wing.closest(".fm-anim"), () => flap.play(), () => flap.pause());
+    }
+
+    const leaf = document.querySelector(".door-leaf img");
+    if (leaf instanceof HTMLElement) {
+      gsap.set(leaf, { transformOrigin: "87.63% 28.8%", scaleX: 1 });
+      let gust = null;
+      const stop = () => {
+        gust?.kill();
+        gust = null;
+        gsap.set(leaf, { scaleX: 1 });
+      };
+      const play = () => {
+        if (gust || reduce.matches || narrow.matches) return;
+        const r = gsap.utils.random;
+        gust = gsap
+          .timeline({
+            onComplete: () => {
+              gust = null;
+              play();
+            },
+          })
+          .to(leaf, { scaleX: r(0.86, 0.93), duration: r(1.25, 1.75), ease: "sine.inOut" })
+          .to(leaf, { scaleX: r(1.07, 1.14), duration: r(1.25, 1.75), ease: "sine.inOut" })
+          .to(leaf, { scaleX: 1, duration: r(1.2, 1.6), ease: "sine.inOut" })
+          .to({}, { duration: Math.random() < 0.35 ? r(1.5, 3) : r(0, 0.4) });
+      };
+      watch(leaf.closest(".door-anim"), play, stop);
+      narrow.addEventListener("change", () => {
+        stop();
+        if (!narrow.matches) play();
+      });
     }
   </script>
 </div>
