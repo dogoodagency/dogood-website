@@ -6885,11 +6885,15 @@ body:has(.page-home) {
   color: #58447f;
 }
 
+.page-home .foryou-grid li {
+  align-items: center;
+}
+
 .page-home .foryou-grid .fit-icon,
 .page-home .foryou-grid .fit-icon img {
-  width: 24px;
-  height: 24px;
-  flex-basis: 24px;
+  width: 31.2px;
+  height: 31.2px;
+  flex: 0 0 31.2px;
 }
 
 .page-home #case-j h3,
