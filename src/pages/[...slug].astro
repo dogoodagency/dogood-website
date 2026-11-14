@@ -113,7 +113,10 @@ const pageDescription = genericDescription
   : entry.data.description;
 
 const bandTint = entry.data.bandTint ?? "#F5F2FF";
-const privacyBandBreaks = new Set(["3", "5", "7", "9", "11", "12"]);
+const bandGroups = entry.data.bandGroups ?? ["1-4", "5-8", "9-12"];
+const privacyBandBreaks = new Set(
+  bandGroups.slice(1).map((group) => group.match(/^(\d+)/)?.[1]).filter((num): num is string => Boolean(num)),
+);
 const privacyGroups =
   slug === "privacy" && entry.rendered?.html
     ? entry.rendered.html.split(/(?=<h2\b)/i).reduce<string[]>((groups, piece) => {

@@ -11,6 +11,7 @@ const pages = defineCollection({
     tidycal: z.string().optional(),
     advisorLine: z.boolean().optional(),
     bandTint: z.string().optional(),
+    bandGroups: z.array(z.string()).optional(),
   }),
 });
 
