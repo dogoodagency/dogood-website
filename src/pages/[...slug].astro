@@ -147,25 +147,6 @@ const privacyStrip = privacyGroups.length % 2 === 1 ? bandTint : "#ffffff";
       <header class="privacy-hero">
         <div class="privacy-hero-inner">
           <h1>Privacy Policy</h1>
-          {
-            sketch && (
-              <picture class="privacy-sketch">
-                <source
-                  type="image/webp"
-                  srcset={`/sketches/${sketch}@1x.webp 540w, /sketches/${sketch}@2x.webp 1080w`}
-                  sizes="(max-width: 600px) min(100vw, 280px), 360px"
-                />
-                <img
-                  src={`/sketches/${sketch}@1x.png`}
-                  srcset={`/sketches/${sketch}@1x.png 540w, /sketches/${sketch}@2x.png 1080w`}
-                  sizes="(max-width: 600px) min(100vw, 280px), 360px"
-                  width="540"
-                  height="400"
-                  alt=""
-                />
-              </picture>
-            )
-          }
         </div>
         <Wave fill={bandTint} />
       </header>
