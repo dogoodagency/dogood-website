@@ -6552,7 +6552,7 @@ body:has(.page-clarity) .footer-wave {
   width: 180px;
   height: auto;
   background: transparent;
-  transform: translateY(-40px);
+  transform: translateY(calc(-40px + 26 * 100vw / 1710));
 }
 
 .page-home #message-card .sig {
