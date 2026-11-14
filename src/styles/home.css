@@ -5975,7 +5975,7 @@ body:has(.page-privacy) .footer-wave {
 
 .privacy-band-white + .privacy-band-tint,
 .privacy-band-tint + .privacy-band-white {
-  border-top: 1px solid #8b7dae;
+  border-top: 1px solid var(--join-edge, #8b7dae);
 }
 
 .privacy-divider {

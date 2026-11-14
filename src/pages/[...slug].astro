@@ -3,6 +3,7 @@ import { getCollection, getEntry, render } from "astro:content";
 import Base from "../layouts/Base.astro";
 import LogoPills from "../components/LogoPills.astro";
 import Wave from "../components/Wave.astro";
+import { edgeAbove } from "../data/edge-line";
 
 export async function getStaticPaths() {
   const pages = await getCollection("pages");
@@ -133,18 +134,9 @@ const bandGroupsHtml =
 const bandHero =
   slug === "terms" ? "Terms" : slug === "privacy" ? "Privacy Policy" : slug === "cookies" ? "Cookies Policy" : "";
 const banded = bandGroupsHtml.length > 0 && Boolean(bandHero);
-const edgeLine = (above: string, below: string) => {
-  const norm = (color: string) => {
-    const hex = color.trim().toLowerCase();
-    return hex === "#fff" || hex === "#ffffff" ? "#faf9ff" : hex;
-  };
-  const pair = new Set([norm(above), norm(below)]);
-  if (pair.has("#f3fffb") && pair.has("#2a0b4f")) return "#A3F2D7";
-  if (pair.has("#fefef3") && pair.has("#2a0b4f")) return "#C4B76A";
-  return "#8B7DAE";
-};
-const heroEdge = edgeLine("#2A0B4F", bandTint);
-const dividerEdge = edgeLine(bandTint, "#ffffff");
+const heroEdge = edgeAbove("#2A0B4F");
+const dividerEdge = edgeAbove(bandTint);
+const joinEdge = edgeAbove("#ffffff");
 const bandWave = `<div class="privacy-divider" aria-hidden="true"><svg class="privacy-divider-wave" style="--wave-edge:${dividerEdge}" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="#ffffff" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path><path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path></svg></div>`;
 const bandHtml = bandGroupsHtml
   .map((inner, index) => {
@@ -154,7 +146,7 @@ const bandHtml = bandGroupsHtml
   })
   .join("");
 const bandStrip = bandGroupsHtml.length % 2 === 1 ? bandTint : "#ffffff";
-const footerEdge = edgeLine(bandStrip, "#2A0B4F");
+const footerEdge = edgeAbove(bandStrip);
 ---
 
 <Base
@@ -166,7 +158,7 @@ const footerEdge = edgeLine(bandStrip, "#2A0B4F");
   footerEdge={banded ? footerEdge : undefined}
 >
   {banded ? (
-    <article class="page-privacy" style={`--band-tint:${bandTint}`}>
+    <article class="page-privacy" style={`--band-tint:${bandTint};--join-edge:${joinEdge}`}>
       <header class="privacy-hero">
         <div class="privacy-hero-inner">
           <h1>{bandHero}</h1>

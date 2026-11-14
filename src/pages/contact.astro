@@ -2,11 +2,13 @@
 import Base from "../layouts/Base.astro";
 import Wave from "../components/Wave.astro";
 import { urls } from "../data/homepage";
+import { edgeAbove } from "../data/edge-line";
 
 const thanks = Astro.url.searchParams.has("thanks");
 const sky = "#F2F7FF";
-const skyEdge = "#7BA4FF";
-const dreamEdge = "#8B7DAE";
+const heroEdge = edgeAbove("#2A0B4F");
+const bandEdge = edgeAbove(sky);
+const joinEdge = edgeAbove("#ffffff");
 ---
 
 <Base
@@ -15,9 +17,9 @@ const dreamEdge = "#8B7DAE";
   canonical="https://www.dogoodagency.co/contact"
   hideOptin={true}
   footerStrip={sky}
-  footerEdge={skyEdge}
+  footerEdge={bandEdge}
 >
-  <article class="page-privacy page-contact" style={`--band-tint:${sky}`}>
+  <article class="page-privacy page-contact" style={`--band-tint:${sky};--join-edge:${joinEdge}`}>
     <header class="privacy-hero">
       <div class="privacy-hero-inner">
         <div>
@@ -31,7 +33,7 @@ const dreamEdge = "#8B7DAE";
           <img src="/sketches/contact-letterbox@1x.png" srcset="/sketches/contact-letterbox@1x.png 540w, /sketches/contact-letterbox@2x.png 1080w" sizes="(max-width: 600px) min(100vw, 280px), 320px" width="540" height="400" alt="A wall letterbox with its flag raised and a teal envelope halfway in the slot, with a small pink stamp." />
         </picture>
       </div>
-      <Wave fill={sky} edge={skyEdge} />
+      <Wave fill={sky} edge={heroEdge} />
     </header>
 
     <section class="privacy-band privacy-band-tint">
@@ -45,7 +47,7 @@ const dreamEdge = "#8B7DAE";
     </section>
 
     <div class="privacy-divider" aria-hidden="true">
-      <svg class="privacy-divider-wave" style={`--wave-edge:${dreamEdge}`} viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <svg class="privacy-divider-wave" style={`--wave-edge:${bandEdge}`} viewBox="0 0 1440 80" preserveAspectRatio="none">
         <path fill="#ffffff" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path>
         <path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path>
       </svg>
