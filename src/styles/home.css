@@ -5774,8 +5774,8 @@ header.nav .nav-bar {
   box-sizing: border-box;
   height: 70px;
   min-height: 70px;
-  background: #15012e;
-  border: 1px solid #533f79;
+  background: #1d033c;
+  border: 1px solid #58447f;
   border-radius: 16px;
   box-shadow: none;
 }
@@ -5804,7 +5804,7 @@ header.nav .nav-apply {
   box-sizing: border-box;
   height: 70px;
   min-height: 70px;
-  background: #b0013e;
+  background: #c10e46;
   color: #fff;
   font-size: 15px;
   font-weight: 400;
@@ -5822,7 +5822,7 @@ header.nav .nav-panel {
 }
 
 header.nav .nav-panel {
-  background: #15012e;
+  background: #1d033c;
 }
 
 @media (max-width: 600px) {
