@@ -5763,7 +5763,8 @@ header.nav {
   box-sizing: border-box;
   height: 94px;
   min-height: 94px;
-  padding: 12px 16px;
+  padding-top: 12px;
+  padding-bottom: 12px;
   gap: 10px;
   top: 0;
   background: transparent;
@@ -5810,10 +5811,23 @@ header.nav .nav-apply {
   font-weight: 400;
   border: 0;
   box-shadow: none;
+  transition: background-color 200ms ease;
+}
+
+header.nav .nav-apply:hover,
+header.nav .nav-apply:focus-visible {
+  background: #ea1557;
+  color: #fff;
 }
 
 header.nav .nav-apply::before {
   content: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  header.nav .nav-apply {
+    transition: none;
+  }
 }
 
 header.nav .nav-mega,
