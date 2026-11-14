@@ -6272,23 +6272,23 @@ body:has(.page-clarity) .footer-wave {
 }
 
 @font-face {
-  font-family: "Montserrat Black";
+  font-family: Montserrat;
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: url("/fonts/montserrat-900-middot.woff2") format("woff2");
-  unicode-range: U+00B7;
+  src: url("/fonts/montserrat-900-bullet.woff2") format("woff2");
+  unicode-range: U+2022;
 }
 
 .page-apply .apply-frame .apply-dot {
   display: inline-block;
-  margin: 0 0.15em;
+  margin: 0 0.35em;
   color: #c10e46;
-  font-family: "Montserrat Black", Montserrat, sans-serif;
-  font-size: 26px;
+  font-family: Montserrat, sans-serif;
+  font-size: 1.3em;
   font-weight: 900;
   font-synthesis: none;
-  line-height: 0;
+  line-height: 1;
   vertical-align: middle;
 }
 
