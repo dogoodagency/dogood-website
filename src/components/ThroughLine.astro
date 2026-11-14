@@ -391,6 +391,76 @@
       return rebuilt.join(" ");
     };
 
+    // The sweep into Case V stays. Its last stretch is eased onto a vertical
+    // run down the pin centre, so the ribbon does not lean as it enters.
+    const straightenCaseV = (d, pin, stroke) => {
+      if (!pin) return d;
+      const parts = d.match(/[MC](?: (?! [MC])[^MC]+)*/g)?.map((part) => part.trim());
+      if (!parts || parts.length < 4) return d;
+      const num = (source) => source.trim().split(/[\s,]+/).map(Number);
+      const cubics = [];
+      let cursor = null;
+      parts.forEach((part, index) => {
+        const n = num(part.slice(1));
+        if (part[0] === "M") {
+          cursor = { x: n[0], y: n[1] };
+          return;
+        }
+        cubics.push({
+          index,
+          p0: cursor,
+          c1: { x: n[0], y: n[1] },
+          c2: { x: n[2], y: n[3] },
+          p1: { x: n[4], y: n[5] },
+        });
+        cursor = { x: n[4], y: n[5] };
+      });
+      const near = (point, x, y) => Math.hypot(point.x - x, point.y - y) < 2;
+      const approach = { x: pin.cx, y: pin.y - stroke * 0.8 };
+      const curveIdx = cubics.findIndex((cubic) => near(cubic.p1, approach.x, approach.y));
+      const lean = cubics[curveIdx + 1];
+      if (curveIdx < 0 || !lean || !near(lean.p1, pin.cx, pin.cy)) return d;
+      const curve = cubics[curveIdx];
+      const splitT = 0.84;
+      const lerp = (a, b, amount) => ({
+        x: a.x + (b.x - a.x) * amount,
+        y: a.y + (b.y - a.y) * amount,
+      });
+      const a = lerp(curve.p0, curve.c1, splitT);
+      const b = lerp(curve.c1, curve.c2, splitT);
+      const c = lerp(curve.c2, curve.p1, splitT);
+      const d1 = lerp(a, b, splitT);
+      const e = lerp(b, c, splitT);
+      const start = lerp(d1, e, splitT);
+      const u = 1 - splitT;
+      const deriv = {
+        x:
+          3 * u * u * (curve.c1.x - curve.p0.x) +
+          6 * u * splitT * (curve.c2.x - curve.c1.x) +
+          3 * splitT * splitT * (curve.p1.x - curve.c2.x),
+        y:
+          3 * u * u * (curve.c1.y - curve.p0.y) +
+          6 * u * splitT * (curve.c2.y - curve.c1.y) +
+          3 * splitT * splitT * (curve.p1.y - curve.c2.y),
+      };
+      const derivLen = Math.hypot(deriv.x, deriv.y) || 1;
+      const landY = pin.y - stroke * 0.45;
+      if (deriv.y <= 0 || landY < start.y + 24) return d;
+      const chord = Math.hypot(pin.cx - start.x, landY - start.y) || 1;
+      const fmt = (value) => value.toFixed(1);
+      const cmd = (p, q, r) => `C ${fmt(p.x)} ${fmt(p.y)}, ${fmt(q.x)} ${fmt(q.y)}, ${fmt(r.x)} ${fmt(r.y)}`;
+      const turnC1 = {
+        x: start.x + (deriv.x / derivLen) * chord * 0.236,
+        y: start.y + (deriv.y / derivLen) * chord * 0.236,
+      };
+      const turnC2 = { x: pin.cx, y: landY - chord * 0.466 };
+      const land = { x: pin.cx, y: landY };
+      const rebuilt = parts.slice();
+      rebuilt[curve.index] = cmd(a, d1, start);
+      rebuilt.splice(curve.index + 1, lean.index - curve.index, cmd(turnC1, turnC2, land), `L ${fmt(pin.cx)} ${fmt(lean.p1.y)}`);
+      return rebuilt.join(" ");
+    };
+
     const monotonic = (points) => {
       let y = -Infinity;
       return points
@@ -783,6 +853,8 @@
       if (!phone) {
         const photo = box(document.querySelector("#wayfinders .wf-group"));
         founderD = smoothMessageGap(founderD, message, photo, founderStroke);
+        const pinForLine = box(document.querySelector("#case-v .portrait"));
+        founderD = straightenCaseV(founderD, pinForLine, founderStroke);
       }
       if (dropIn && dropIn.radius > 8 && intoMouth > bendY) {
         const radius = dropIn.radius;
