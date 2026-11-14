@@ -4242,9 +4242,7 @@ iframe.tidycal-embed,
   opacity: 1;
 }
 
-#apply-first .cap-pill,
-#apply-v .cap-small,
-#first-card .stage-note {
+#apply-v .cap-small {
   background: #f5f2f9;
 }
 
