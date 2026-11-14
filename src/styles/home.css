@@ -5698,11 +5698,22 @@ button.btn-subscribe:focus-visible {
 /* The line sits under illustrations, cards and waves. The reviews
    background must not slice it with a straight edge; the cards stay above. */
 .through-line {
-  z-index: 0;
+  z-index: -1;
 }
 
 .exit-machine {
   z-index: 4;
+  isolation: isolate;
+}
+
+.exit-machine-body,
+.exit-wheel {
+  z-index: 1;
+  transform: translateZ(0);
+}
+
+.exit-wheel {
+  z-index: 2;
 }
 
 #reviews,

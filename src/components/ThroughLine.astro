@@ -506,15 +506,14 @@
       } else if (machine) {
         // Round cap stays inside the opaque body. The stroke leaves the
         // lower-right edge just past the lever, then runs straight to Case J.
-        const half = founderStroke / 2;
         const lane = pinJ ? pinJ.cx : machine.right - 8;
         // Start inside the opaque body so the round cap is covered.
         // The stroke crosses the lower-right outline below the lever.
-        put(machine.left + machine.w * 0.58, machine.y + machine.h * 0.66);
-        put(machine.left + machine.w * 0.84, machine.y + machine.h * 0.76);
-        put(lane, machine.bottom + 8);
-        tipX = machine.left + machine.w * 0.58;
-        tipY = machine.y + machine.h * 0.66;
+        put(machine.left + machine.w * 0.7, machine.y + machine.h * 0.62);
+        put(lane, machine.y + machine.h * 0.9);
+        put(lane, machine.bottom + 16);
+        tipX = machine.left + machine.w * 0.7;
+        tipY = machine.y + machine.h * 0.62;
       }
       if (!phone) {
       if (pinJ) {
@@ -526,11 +525,11 @@
         put(stones.left + stones.w * 0.62, stones.y + stones.h * 0.8);
       }
       const lane = apply1 ? apply1.cx : stones ? stones.cx + stones.w * 0.22 : width * 0.72;
-      if (stones) put(lane, stones.bottom + founderStroke * 0.85);
+      if (stones) put(lane, stones.bottom + founderStroke * 0.35);
       if (apply1) {
-        put(lane, apply1.y - founderStroke * 0.35);
+        put(lane, apply1.y - founderStroke * 1.6);
         put(lane, apply1.cy);
-        put(lane, apply1.bottom + founderStroke * 0.8);
+        put(lane, apply1.bottom + founderStroke);
       }
       if (forYou) {
         put(lane, forYou.y + founderStroke);
