@@ -555,13 +555,9 @@
         };
         paintStops(fractionIn(funnelRect));
         if (strip instanceof HTMLElement) {
-          const amount = fractionIn(stripRect);
-          if (amount >= 1) strip.style.background = "#28DBB0";
-          else if (amount <= 0) strip.style.background = "#CCFDEC";
-          else {
-            const pct = (amount * 100).toFixed(2);
-            strip.style.background = `linear-gradient(to bottom, #28DBB0 ${pct}%, #CCFDEC ${pct}%)`;
-          }
+          // One colour for the whole strip, matching the bottom of the funnel.
+          // A hard cut inside the strip draws a pale line across the teal, just above the dark wave.
+          strip.style.background = fillY >= funnelRect.bottom - 1 ? "#28DBB0" : "#CCFDEC";
         }
       };
 

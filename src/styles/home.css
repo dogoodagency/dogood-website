@@ -2646,7 +2646,8 @@ p.say-no,
 }
 
 .footer-wave {
-  background: #d4f4eb;
+  margin-top: -2px;
+  background: #ccfdec;
 }
 
 .footer-wave .wave-edge {
@@ -2654,7 +2655,7 @@ p.say-no,
 }
 
 .footer-wave.is-filled {
-  background: #d4f4eb;
+  background: #ccfdec;
 }
 
 .footer-wave {
