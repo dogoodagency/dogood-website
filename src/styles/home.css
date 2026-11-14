@@ -5631,9 +5631,9 @@ button.btn-subscribe:focus-visible {
   }
 
   #message-card {
-    width: 700px;
-    max-width: calc(100% - 2 * var(--pad));
-    margin: 0 0 0 calc(385 * 100vw / 1710);
+    width: 850px;
+    max-width: min(850px, calc(100% - 2 * var(--pad)));
+    margin: 0 0 0 calc(385 * 100vw / 1710 - 75px);
   }
 
   #wayfinders {
