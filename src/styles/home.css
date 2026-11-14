@@ -6472,7 +6472,7 @@ body:has(.page-clarity) .footer-wave {
 }
 
 .page-clarity .promise-letter p {
-  max-width: 62ch;
+  max-width: none;
   margin: 0 0 1.2em;
   color: #f5f2ff;
   font-size: 20px;
@@ -6504,12 +6504,16 @@ body:has(.page-clarity) .footer-wave {
 }
 
 @media (min-width: 900px) {
+  .page-clarity .promise-letter {
+    padding-bottom: 12px;
+  }
+
   .page-clarity .promise-byline {
-    transform: translateY(-150px);
+    transform: translateY(-89px);
   }
 
   .page-clarity .seal-slot {
-    transform: translateY(-50px);
+    transform: translate(59px, -50px);
   }
 }
 
