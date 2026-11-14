@@ -6552,7 +6552,7 @@ body:has(.page-clarity) .footer-wave {
   width: 180px;
   height: auto;
   background: transparent;
-  transform: translateY(calc(-40px + 26 * 100vw / 1710));
+  transform: translateY(-14px);
 }
 
 .page-home #message-card .sig {
@@ -6605,10 +6605,29 @@ body:has(.page-clarity) .footer-wave {
   }
 }
 
+.door-matte {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  pointer-events: none;
+  background: #2a0b4f;
+  -webkit-mask-image: url("/sketches/hero-door-leaf@2x.png");
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-image: url("/sketches/hero-door-leaf@2x.png");
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
 .sparks {
   position: absolute;
   inset: 0;
-  z-index: 3;
+  z-index: 4;
   overflow: visible;
   pointer-events: none;
 }
@@ -6658,7 +6677,7 @@ body:has(.page-clarity) .footer-wave {
 .door-leaf {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 3;
   width: auto;
   max-width: none;
   margin: 0;
