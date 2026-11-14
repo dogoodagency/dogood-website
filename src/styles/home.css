@@ -6735,3 +6735,223 @@ body:has(.page-clarity) .footer-wave {
     text-align: left;
   }
 }
+
+/* Homepage rulebook restyle. Scoped to the homepage. Nav and footer stay as they are. */
+body:has(.page-home) {
+  background: #f5f2ff;
+}
+
+.page-home #wayfinders .wf-intro,
+.page-home #wayfinders h2,
+.page-home #wayfinders .lead,
+.page-home .wf-group {
+  background: #f5f2ff;
+}
+
+.page-home .hero-copy p,
+.page-home .hero-copy strong,
+.page-home .card.ink p,
+.page-home .card.ink li,
+.page-home .card.ink strong {
+  color: #fff;
+}
+
+.page-home #apply-first a.btn-apply,
+.page-home #apply-v a.btn-apply,
+.page-home #next a.btn-apply,
+.page-home #apply-first a.btn-apply:hover,
+.page-home #apply-v a.btn-apply:hover,
+.page-home #next a.btn-apply:hover,
+.page-home #apply-first a.btn-apply:focus-visible,
+.page-home #apply-v a.btn-apply:focus-visible,
+.page-home #next a.btn-apply:focus-visible {
+  box-sizing: border-box;
+  width: max-content;
+  max-width: 100%;
+  min-height: 52px;
+  padding: 10px 56px 10px 20px;
+  font-size: 16px;
+}
+
+.page-home #apply-first a.btn-apply:hover,
+.page-home #apply-v a.btn-apply:hover,
+.page-home #next a.btn-apply:hover,
+.page-home #apply-first a.btn-apply:focus-visible,
+.page-home #apply-v a.btn-apply:focus-visible,
+.page-home #next a.btn-apply:focus-visible {
+  padding-left: 52px;
+  padding-right: 20px;
+}
+
+.page-home #case-j a.btn-case,
+.page-home #case-v a.btn-case,
+.page-home #case-j a.btn-case:hover,
+.page-home #case-v a.btn-case:hover,
+.page-home #case-j a.btn-case:focus-visible,
+.page-home #case-v a.btn-case:focus-visible {
+  background: #c2b7dd;
+  color: #2a0b4f;
+  border: 0;
+  font-size: 16px;
+}
+
+.page-home #case-j a.btn-case::before,
+.page-home #case-j a.btn-case::after,
+.page-home #case-v a.btn-case::before,
+.page-home #case-v a.btn-case::after {
+  background-color: #2a0b4f;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6 3.5 10.5 8 6 12.5' fill='none' stroke='%23FFFFFF' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.page-home #case-j p.case-protect,
+.page-home #case-v p.case-protect,
+.page-home #first-card p.stage-note,
+.page-home #apply-first .cap-pill,
+.page-home #apply-v .cap-small,
+.page-home #next .next-note {
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  color: #58447f;
+  font-size: 14px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.45;
+}
+
+.page-home p.t-kicker,
+.page-home #why p.why-kicker,
+.page-home #asseen .t-kicker,
+.page-home #case-j p.t-kicker,
+.page-home #case-v p.t-kicker {
+  font-weight: 700;
+}
+
+.page-home .review-role,
+.page-home .track-nums span,
+.page-home #case-v p.case-who {
+  color: #58447f;
+}
+
+.page-home #case-v p.t-kicker {
+  color: #2a0b4f;
+}
+
+.page-home .foryou-grid .fit-icon,
+.page-home .foryou-grid .fit-icon img {
+  width: 24px;
+  height: 24px;
+  flex-basis: 24px;
+}
+
+.page-home #case-j h3,
+.page-home #case-v h3 {
+  font-size: clamp(30px, 2.78vw, 40px);
+  font-weight: 900;
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+}
+
+.page-home #first-card,
+.page-home #why .why-copy,
+.page-home .track-card {
+  padding: 56px;
+}
+
+.page-home #first-card p.invite {
+  color: #2a0b4f;
+  font-weight: 700;
+}
+
+.page-home #for-you .card.rose {
+  background: #f5f2ff;
+  border: 0;
+}
+
+.page-home .foryou-grid h3,
+.page-home .review-who h3,
+.page-home .track-title {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  text-transform: none;
+}
+
+.page-home .track-title,
+.page-home .review-who h3 {
+  color: #2a0b4f;
+}
+
+.page-home #why p.why-kicker {
+  color: #2a0b4f;
+  font-size: 26px;
+}
+
+.page-home #why h2.t-h2 {
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.page-home #reviews {
+  border-bottom: 1px solid #c2b7dd;
+}
+
+@media (min-width: 1081px) {
+  .page-home #reviews {
+    padding-top: 41px;
+  }
+
+  .page-home #reviews .reviews-band {
+    padding-top: 52px;
+  }
+}
+
+.page-home .review {
+  background: #f5f2ff;
+  border: 0;
+}
+
+.page-home #asseen .t-kicker {
+  color: #2a0b4f;
+}
+
+.page-home #message-card .accent-pink {
+  color: #fff;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.page-home .years {
+  color: #2a0b4f;
+  font-weight: 700;
+}
+
+@media (max-width: 767px) {
+  .page-home #first-card,
+  .page-home #why .why-copy,
+  .page-home .track-card {
+    padding: 28px;
+  }
+
+  .page-home #why h2.t-h2 {
+    font-size: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-home #apply-first a.btn-apply:hover,
+  .page-home #apply-v a.btn-apply:hover,
+  .page-home #next a.btn-apply:hover,
+  .page-home #apply-first a.btn-apply:focus-visible,
+  .page-home #apply-v a.btn-apply:focus-visible,
+  .page-home #next a.btn-apply:focus-visible,
+  .page-home #case-j a.btn-case:hover,
+  .page-home #case-v a.btn-case:hover,
+  .page-home #case-j a.btn-case:focus-visible,
+  .page-home #case-v a.btn-case:focus-visible {
+    padding: 10px 56px 10px 20px;
+    transform: none;
+  }
+}
