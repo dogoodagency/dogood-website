@@ -6552,6 +6552,10 @@ body:has(.page-clarity) .footer-wave {
   color: #2a0b4f;
 }
 
+.page-clarity .clarity-terms h3 ~ h3 {
+  padding-top: 24px;
+}
+
 .page-clarity .clarity-terms .clarity-term-meta {
   margin: 0 0 28px;
   color: #2a0b4f;
