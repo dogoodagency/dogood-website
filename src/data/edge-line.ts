@@ -5,6 +5,7 @@ const edgeBySection: Record<string, string> = {
   "#faf9ff": "#C2B7DD",
   "#f5f2ff": "#C2B7DD",
   "#f3fffb": "#A3F2D7",
+  "#e7fff6": "#A3F2D7",
   "#fefef3": "#E0D894",
   "#f2f7ff": "#AEC8FE",
   "#fff9fa": "#FEB5BC",
