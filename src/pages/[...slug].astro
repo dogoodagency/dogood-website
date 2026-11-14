@@ -112,7 +112,7 @@ const pageDescription = genericDescription
   ? `${named ?? "This page"} from DoGood Agency, a private partnership for founders after exit.`
   : entry.data.description;
 
-const privacyBandKinds = ["lavender", "white", "grass", "white", "play", "white", "dream10"];
+const bandTint = entry.data.bandTint ?? "#F5F2FF";
 const privacyBandBreaks = new Set(["3", "5", "7", "9", "11", "12"]);
 const privacyGroups =
   slug === "privacy" && entry.rendered?.html
@@ -124,11 +124,12 @@ const privacyGroups =
       }, [])
     : [];
 const privacyHtml = privacyGroups
-  .map(
-    (inner, index) =>
-      `<section class="privacy-band privacy-band-${privacyBandKinds[index] ?? "white"}"><div class="privacy-well">${inner}</div></section>`,
-  )
+  .map((inner, index) => {
+    const kind = index % 2 === 0 ? "tint" : "white";
+    return `<section class="privacy-band privacy-band-${kind}"><div class="privacy-well">${inner}</div></section>`;
+  })
   .join("");
+const privacyStrip = privacyGroups.length % 2 === 1 ? bandTint : "#ffffff";
 ---
 
 <Base
@@ -136,9 +137,10 @@ const privacyHtml = privacyGroups
   description={pageDescription}
   canonical={canonical}
   hideOptin={entry.data.hideOptin}
+  footerStrip={slug === "privacy" ? privacyStrip : undefined}
 >
   {slug === "privacy" ? (
-    <article class="page-privacy">
+    <article class="page-privacy" style={`--band-tint:${bandTint}`}>
       <header class="privacy-hero">
         <div class="privacy-hero-inner">
           <h1>Privacy Policy</h1>
@@ -162,7 +164,7 @@ const privacyHtml = privacyGroups
             )
           }
         </div>
-        <Wave fill="#F5F2FF" />
+        <Wave fill={bandTint} />
       </header>
       <div class="privacy-source" set:html={privacyHtml} />
     </article>

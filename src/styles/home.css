@@ -5849,7 +5849,7 @@ header.nav .nav-panel {
 }
 
 body:has(.page-privacy) .footer-wave {
-  background: #faf9ff;
+  background: var(--footer-strip, #f5f2ff);
 }
 
 .page-privacy {
@@ -5908,28 +5908,16 @@ body:has(.page-privacy) .footer-wave {
   height: 80px;
 }
 
-.privacy-band-lavender {
-  background: #f5f2ff;
+.privacy-band-tint {
+  background: var(--band-tint, #f5f2ff);
 }
 
 .privacy-band-white {
   background: #fff;
 }
 
-.privacy-band-grass {
-  background: #f3fffb;
-  border-top: 1px solid #e6defc;
-  border-bottom: 1px solid #e6defc;
-}
-
-.privacy-band-play {
-  background: #fefef3;
-  border-top: 1px solid #e6defc;
-  border-bottom: 1px solid #e6defc;
-}
-
-.privacy-band-dream10 {
-  background: #faf9ff;
+.privacy-band-white + .privacy-band-tint,
+.privacy-band-tint + .privacy-band-white {
   border-top: 1px solid #e6defc;
 }
 

@@ -9,6 +9,7 @@ interface Props {
   canonical?: string;
   hideOptin?: boolean;
   meetFunnel?: boolean;
+  footerStrip?: string;
 }
 
 const title =
@@ -19,6 +20,7 @@ const description =
 const canonical = Astro.props.canonical ?? "https://www.dogoodagency.co/";
 const hideOptin = Astro.props.hideOptin ?? false;
 const meetFunnel = Astro.props.meetFunnel ?? false;
+const footerStrip = Astro.props.footerStrip;
 const ogTitle = "DoGood Founders";
 const ogDescription = Astro.props.description
   ? description
@@ -83,7 +85,7 @@ const organization = {
     <meta name="twitter:image" content={ogImage} />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(organization)} />
   </head>
-  <body>
+  <body style={footerStrip ? `--footer-strip:${footerStrip}` : undefined}>
     <a
       href="#main"
       class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-white focus:px-4 focus:py-3 focus:text-ink"

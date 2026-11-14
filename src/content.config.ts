@@ -10,6 +10,7 @@ const pages = defineCollection({
     hideOptin: z.boolean().optional(),
     tidycal: z.string().optional(),
     advisorLine: z.boolean().optional(),
+    bandTint: z.string().optional(),
   }),
 });
 
