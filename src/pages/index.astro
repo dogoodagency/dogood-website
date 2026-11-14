@@ -636,7 +636,7 @@ const notFit = [
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const wide = window.matchMedia("(min-width: 601px)");
     const active = new Set();
-    const half = () => (wide.matches ? 25 : 12.5);
+    const half = () => (wide.matches ? 105 : 52);
     const layoutTop = (el) => {
       const previous = el.style.transform;
       el.style.transform = "none";

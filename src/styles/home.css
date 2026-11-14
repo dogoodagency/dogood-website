@@ -5715,6 +5715,39 @@ button.btn-subscribe:focus-visible {
   z-index: 2;
 }
 
+/* Room for the longer card drift where the sections are stacked. */
+@media (max-width: 1080px) and (min-width: 601px) {
+  .exit-layout,
+  .first-grid,
+  .foryou-grid,
+  .why-grid {
+    gap: 105px;
+  }
+
+  #exit {
+    padding-bottom: 105px;
+  }
+
+  #first-step {
+    padding-bottom: 33px;
+  }
+}
+
+@media (max-width: 600px) {
+  .exit-layout,
+  .first-grid,
+  .foryou-grid,
+  .why-grid {
+    gap: 52px;
+  }
+}
+
+@media (min-width: 1081px) {
+  .first-grid {
+    padding-top: calc(655 * 100vw / 1710 + 105px);
+  }
+}
+
 #reviews,
 .reviews-band {
   z-index: auto;
