@@ -6528,44 +6528,6 @@ body:has(.page-clarity) .footer-wave {
   background: transparent;
 }
 
-.page-clarity .promise-row {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-  width: 100%;
-  max-width: 1040px;
-  margin: 28px auto 0;
-}
-
-.page-clarity .promise-chip {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  margin: 0;
-  padding: 20px 18px;
-  background: #fff;
-  border: 1px solid #c2b7dd;
-  border-radius: 18px;
-  box-shadow: none;
-}
-
-.page-clarity .promise-dot {
-  flex: 0 0 10px;
-  width: 10px;
-  height: 10px;
-  margin-top: 0.45em;
-  border-radius: 50%;
-  background: #c10e46;
-}
-
-.page-clarity .promise-chip p {
-  margin: 0;
-  color: #2a0b4f;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.45;
-}
-
 .page-clarity .clarity-terms p,
 .page-clarity .clarity-terms li {
   margin: 0 0 12px;
@@ -6665,10 +6627,6 @@ body:has(.page-clarity) .footer-wave {
     min-width: 0;
     max-width: 540px;
     margin: 0 0 24px;
-  }
-
-  .page-clarity .promise-row {
-    grid-template-columns: 1fr;
   }
 }
 
