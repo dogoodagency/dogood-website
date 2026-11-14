@@ -6559,6 +6559,59 @@ body:has(.page-clarity) .footer-wave {
   transform: translateY(-10px);
 }
 
+.door-anim {
+  position: relative;
+}
+
+@media (min-width: 1081px) {
+  .hero-sketch-frame.door-anim {
+    position: absolute;
+  }
+}
+
+.door-leaf {
+  position: absolute;
+  inset: 0;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  pointer-events: none;
+}
+
+.door-leaf img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  margin: 0;
+  transform-origin: 93.92% 28.8%;
+  will-change: transform;
+}
+
+.fm-anim {
+  position: relative;
+  width: 100%;
+}
+
+.page-home .fm-wing {
+  position: absolute;
+  inset: 0;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  pointer-events: none;
+}
+
+.page-home .fm-wing img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  margin: 0;
+  transform-origin: 49.07% 41.52%;
+  will-change: transform;
+}
+
 .page-clarity .promise-sign p {
   flex: 1 1 auto;
   min-width: 0;
