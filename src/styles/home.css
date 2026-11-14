@@ -6305,18 +6305,15 @@ body:has(.page-clarity) .footer-wave {
 .page-apply a.btn-apply,
 .page-apply a.btn-apply:hover,
 .page-apply a.btn-apply:focus-visible {
-  background: #c10e46;
-  color: #fff;
+  background: #c2b7dd;
+  color: #2a0b4f;
+  border: 0;
 }
 
 .page-apply a.btn-apply::before,
 .page-apply a.btn-apply::after {
-  background-color: #fff;
-}
-
-.page-apply a.btn-apply:focus-visible {
-  outline: 3px solid #28dbb0;
-  outline-offset: 3px;
+  background-color: #2a0b4f;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6 3.5 10.5 8 6 12.5' fill='none' stroke='%23FFFFFF' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
 .page-apply .apply-sketch {
@@ -6371,8 +6368,8 @@ body:has(.page-clarity) .footer-wave {
 @media (prefers-reduced-motion: reduce) {
   .page-apply a.btn-apply:hover,
   .page-apply a.btn-apply:focus-visible {
-    background: #c10e46;
-    color: #fff;
+    background: #c2b7dd;
+    color: #2a0b4f;
     transform: none;
     padding-left: 20px;
     padding-right: 56px;
