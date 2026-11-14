@@ -1216,10 +1216,60 @@ footer a.connect-mark:focus-visible {
 }
 
 .connect-word {
+  --cn-shift: 0px;
+  display: flex;
+  flex-wrap: nowrap;
   width: max-content;
   max-width: 100%;
   /* Holds the space the teal squiggle used to occupy, so the links stay put. */
   padding-bottom: 0.22em;
+  white-space: nowrap;
+}
+
+.connect-word .cn-co,
+.connect-word .cn-n,
+.connect-word .cn-ect {
+  flex: 0 0 auto;
+  transition: transform 1.05s cubic-bezier(0.37, 0, 0.63, 1);
+}
+
+.connect-word .cn-n {
+  position: relative;
+  z-index: 0;
+  color: #fefef3;
+  mix-blend-mode: normal;
+}
+
+.connect-word .cn-n2 {
+  z-index: 1;
+}
+
+.connect-word.is-met .cn-co,
+.connect-word.is-met .cn-n1 {
+  transform: translateX(var(--cn-shift));
+}
+
+.connect-word.is-met .cn-n2,
+.connect-word.is-met .cn-ect {
+  transform: translateX(calc(var(--cn-shift) * -1));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connect-word .cn-co,
+  .connect-word .cn-n,
+  .connect-word .cn-ect {
+    transition: none;
+  }
+
+  .connect-word .cn-co,
+  .connect-word .cn-n1 {
+    transform: translateX(var(--cn-shift));
+  }
+
+  .connect-word .cn-n2,
+  .connect-word .cn-ect {
+    transform: translateX(calc(var(--cn-shift) * -1));
+  }
 }
 
 .footer a:hover {

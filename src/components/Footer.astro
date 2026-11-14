@@ -129,9 +129,9 @@ const legal = [
     </div>
   </div>
   <div class="footer-lets">
-    <a class="connect-mark" href="/contact">
-      <span class="connect-lets">Let’s</span>
-      <span class="connect-word">Connect</span>
+    <a class="connect-mark" href="/contact" aria-label="Let's Connect">
+      <span class="connect-lets" aria-hidden="true">Let’s</span>
+      <span class="connect-word" aria-hidden="true"><span class="cn-co">Co</span><span class="cn-n cn-n1">n</span><span class="cn-n cn-n2">n</span><span class="cn-ect">ect</span></span>
     </a>
     <ul class="connect-row">
       {
@@ -168,3 +168,27 @@ const legal = [
   </div>
 </footer>
 <script is:inline>document.getElementById("copyright-year").textContent=String(new Date().getFullYear());</script>
+<script>
+  const word = document.querySelector(".connect-word");
+  const n1 = word?.querySelector(".cn-n1");
+  if (word instanceof HTMLElement && n1 instanceof HTMLElement) {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const setShift = () => {
+      const size = parseFloat(getComputedStyle(n1).fontSize) || 1;
+      const em = (n1.getBoundingClientRect().width * 0.15) / size;
+      word.style.setProperty("--cn-shift", `${em}em`);
+    };
+    const arm = () => {
+      setShift();
+      if (reduce) return;
+      const seen = new IntersectionObserver(([entry]) => {
+        if (!entry?.isIntersecting) return;
+        seen.disconnect();
+        word.classList.add("is-met");
+      }, { threshold: 0.6 });
+      seen.observe(word);
+    };
+    if (document.fonts?.ready) document.fonts.ready.then(arm);
+    else arm();
+  }
+</script>
