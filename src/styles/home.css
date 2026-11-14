@@ -6026,56 +6026,67 @@ body:has(.page-privacy) .footer-wave {
   color: #2a0b4f;
 }
 
-.page-contact .privacy-hero p {
-  margin: 18px 0 0;
-  max-width: 34em;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.6;
+.page-contact .privacy-hero-inner {
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .page-contact .privacy-hero .hero-wave {
   flex-shrink: 0;
 }
 
+.page-contact .contact-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(240px, 0.85fr);
+  gap: 48px;
+  align-items: start;
+}
+
 .page-contact .contact-sketch {
-  width: min(100%, 320px);
+  width: 100%;
   margin: 0;
+  background: transparent;
 }
 
 .page-contact .contact-sketch img {
+  display: block;
   width: 100%;
-  max-height: 220px;
-  object-fit: contain;
-  object-position: left center;
+  height: auto;
+  background: transparent;
 }
 
-.page-contact .contact-card {
+.page-contact .contact-apply {
+  margin-top: 24px;
+  padding: 20px 22px;
+  background: #fff;
+  border-radius: 16px;
   box-shadow: none;
 }
 
-.page-contact .privacy-band-white .contact-card {
-  border: 1px solid #c2b7dd;
+.page-contact .contact-apply p {
+  margin: 16px 0 0;
 }
 
 .page-contact .contact-map {
   display: block;
   width: 100%;
-  height: 320px;
-  margin: 0 0 16px;
+  height: 420px;
+  margin: 64px 0 16px;
   border: 0;
   border-radius: 16px;
 }
 
-@media (max-width: 600px) {
-  .page-contact .privacy-hero-inner {
-    gap: 12px;
-    padding: 8px 0 12px;
+.page-contact .contact-address {
+  margin: 0;
+}
+
+@media (max-width: 800px) {
+  .page-contact .contact-top {
+    grid-template-columns: 1fr;
   }
 
-  .page-contact .contact-sketch img {
-    max-height: 96px;
+  .page-contact .contact-map {
+    height: 280px;
+    margin-top: 48px;
   }
 }
 

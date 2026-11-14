@@ -1,108 +1,83 @@
 ---
 import Base from "../layouts/Base.astro";
 import Wave from "../components/Wave.astro";
-import { urls } from "../data/homepage";
 import { edgeAbove } from "../data/edge-line";
 
 const thanks = Astro.url.searchParams.has("thanks");
 const sky = "#F2F7FF";
 const heroEdge = edgeAbove("#2A0B4F");
-const bandEdge = edgeAbove(sky);
-const joinEdge = edgeAbove("#ffffff");
+const footerEdge = edgeAbove(sky);
+const apply = "https://form.jotform.com/DoGoodAgency/frp-stage-1";
 ---
 
 <Base
   title="Contact | DoGood Agency"
-  description="Let's talk. Founders can apply for Stage 1. Press, podcasts and general questions can send a short message."
+  description="Let's talk. Founders can apply for Stage 1, and everyone else can send a short message."
   canonical="https://www.dogoodagency.co/contact"
   hideOptin={true}
   footerStrip={sky}
-  footerEdge={bandEdge}
+  footerEdge={footerEdge}
 >
-  <article class="page-privacy page-contact" style={`--band-tint:${sky};--join-edge:${joinEdge}`}>
+  <article class="page-privacy page-contact" style={`--band-tint:${sky}`}>
     <header class="privacy-hero">
       <div class="privacy-hero-inner">
-        <div>
-          <h1>Let's talk.</h1>
-          <p>
-            Whether you've recently sold your company or you advise founders who have, this is the quickest way to reach us.
-          </p>
-        </div>
-        <picture class="contact-sketch">
-          <source type="image/webp" srcset="/sketches/contact-letterbox@1x.webp 540w, /sketches/contact-letterbox@2x.webp 1080w" sizes="(max-width: 600px) min(100vw, 280px), 320px" />
-          <img src="/sketches/contact-letterbox@1x.png" srcset="/sketches/contact-letterbox@1x.png 540w, /sketches/contact-letterbox@2x.png 1080w" sizes="(max-width: 600px) min(100vw, 280px), 320px" width="540" height="400" alt="A wall letterbox with its flag raised and a teal envelope halfway in the slot, with a small pink stamp." />
-        </picture>
+        <h1>Let's talk.</h1>
       </div>
       <Wave fill={sky} edge={heroEdge} />
     </header>
 
     <section class="privacy-band privacy-band-tint">
       <div class="privacy-well">
-        <article class="card contact-card">
-          <h2>Ready to start?</h2>
-          <p>Stage 1, The Reset, is a private engagement for founders after their exit. It starts with a short application.</p>
-          <a class="btn-apply" href={urls.apply}>Apply for Stage 1</a>
-        </article>
-      </div>
-    </section>
-
-    <div class="privacy-divider" aria-hidden="true">
-      <svg class="privacy-divider-wave" style={`--wave-edge:${bandEdge}`} viewBox="0 0 1440 80" preserveAspectRatio="none">
-        <path fill="#ffffff" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path>
-        <path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path>
-      </svg>
-    </div>
-
-    <section class="privacy-band privacy-band-white">
-      <div class="privacy-well">
-        <article class="card contact-card">
-          <h2>Everything else</h2>
-          <p>Press, podcasts and general questions.</p>
-          {
-            thanks ? (
-              <p class="contact-thanks">Thank you. Your message is with us.</p>
-            ) : (
-              <form class="contact-form" name="contact" method="POST" action="/contact?thanks" data-netlify="true" data-netlify-honeypot="bot-field">
-                <input type="hidden" name="form-name" value="contact" />
-                <p class="hp" hidden>
-                  <label>Don't fill this out <input name="bot-field" /></label>
-                </p>
-                <label for="contact-name">Name</label>
-                <input id="contact-name" name="name" type="text" autocomplete="name" required />
-                <label for="contact-email">Email</label>
-                <input id="contact-email" name="email" type="email" autocomplete="email" required />
-                <label for="contact-role">I am a…</label>
-                <select id="contact-role" name="role" required>
-                  <option value="">Choose one</option>
-                  <option>Founder</option>
-                  <option>Advisor</option>
-                  <option>Press or podcast</option>
-                  <option>Other</option>
-                </select>
-                <label for="contact-message">Message</label>
-                <textarea id="contact-message" name="message" rows="5" required />
-                <button class="btn-teal" type="submit">Send</button>
-              </form>
-            )
-          }
-          <p>If you apply for Stage 1, we'll respond within 24 hours. If there's a fit, we'll have an honest conversation.</p>
-          <p class="contact-privacy">We use this only to reply to you. <a href="/privacy">Privacy policy</a></p>
-        </article>
-      </div>
-    </section>
-
-    <section class="privacy-band privacy-band-tint">
-      <div class="privacy-well">
+        <div class="contact-top">
+          <div class="contact-main">
+            {
+              thanks ? (
+                <p class="contact-thanks">Thank you. Your message is with us.</p>
+              ) : (
+                <form class="contact-form" name="contact" method="POST" action="/contact?thanks" data-netlify="true" data-netlify-honeypot="bot-field">
+                  <input type="hidden" name="form-name" value="contact" />
+                  <p class="hp" hidden>
+                    <label>Don't fill this out <input name="bot-field" /></label>
+                  </p>
+                  <label for="contact-name">Name</label>
+                  <input id="contact-name" name="name" type="text" autocomplete="name" required />
+                  <label for="contact-email">Email</label>
+                  <input id="contact-email" name="email" type="email" autocomplete="email" required />
+                  <label for="contact-role">I am a…</label>
+                  <select id="contact-role" name="role" required>
+                    <option value="">Choose one</option>
+                    <option>Founder</option>
+                    <option>Advisor</option>
+                    <option>Press or podcast</option>
+                    <option>Other</option>
+                  </select>
+                  <label for="contact-message">Message</label>
+                  <textarea id="contact-message" name="message" rows="5" required />
+                  <button class="btn-teal" type="submit">Send</button>
+                </form>
+              )
+            }
+            <p class="contact-privacy">We use this only to reply to you. <a href="/privacy">Privacy policy</a></p>
+          </div>
+          <aside class="contact-side">
+            <picture class="contact-sketch">
+              <source type="image/webp" srcset="/sketches/contact-letterbox@1x.webp 540w, /sketches/contact-letterbox@2x.webp 1080w" sizes="(max-width: 800px) min(100vw, 420px), 360px" />
+              <img src="/sketches/contact-letterbox@1x.png" srcset="/sketches/contact-letterbox@1x.png 540w, /sketches/contact-letterbox@2x.png 1080w" sizes="(max-width: 800px) min(100vw, 420px), 360px" width="540" height="400" alt="A wall letterbox with its flag raised and a teal envelope halfway in the slot, with a small pink stamp." />
+            </picture>
+            <div class="contact-apply">
+              <a class="btn-apply" href={apply}>Apply for Stage 1</a>
+              <p>If you apply for Stage 1, we'll respond within 24 hours. If there's a fit, we'll have an honest conversation.</p>
+            </div>
+          </aside>
+        </div>
         <iframe
           class="contact-map"
           title="Map showing DoGood Agency LLC at 30 N Gould St Ste N, Sheridan, Wyoming"
-          src="https://www.google.com/maps?q=44.7977708,-106.9549504&z=16&output=embed"
+          src="https://www.google.com/maps?q=44.7977708,-106.9549504&z=6&t=m&output=embed"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
         ></iframe>
-        <p>DoGood Agency LLC, 30 N Gould St Ste N, Sheridan WY 82801, United States</p>
-        <p>Proud member of IODA, a global network of OD professionals spanning 50+ countries</p>
-        <p><a href="/newsletter">Not ready yet? That's okay. Fuel up, stay ready →</a></p>
+        <p class="contact-address">DoGood Agency LLC, 30 N Gould St Ste N, Sheridan WY 82801, United States</p>
       </div>
     </section>
   </article>
