@@ -626,45 +626,63 @@ const notFit = [
   <script>
     const driftCards = [...document.querySelectorAll(".drift-card")];
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const wide = window.matchMedia("(min-width: 481px)");
-    const nativeDrift = CSS.supports("animation-timeline: view()");
-    const docTop = (el) => {
-      let y = 0;
-      let node = el;
-      while (node) {
-        y += node.offsetTop;
-        node = node.offsetParent;
-      }
-      return y;
+    const wide = window.matchMedia("(min-width: 601px)");
+    const active = new Set();
+    const half = () => (wide.matches ? 25 : 12.5);
+    const layoutTop = (el) => {
+      const previous = el.style.transform;
+      el.style.transform = "none";
+      const top = el.getBoundingClientRect().top + window.scrollY;
+      el.style.transform = previous;
+      return top;
     };
-    const placeDrift = () => {
-      if (nativeDrift || reduceMotion.matches) {
+    const shiftFor = (el) => {
+      const travel = half();
+      const progress = (window.scrollY + window.innerHeight - layoutTop(el)) / (window.innerHeight + el.offsetHeight);
+      const t = Math.min(1, Math.max(0, progress));
+      return travel - t * travel * 2;
+    };
+    let frame = 0;
+    const paint = () => {
+      frame = 0;
+      if (reduceMotion.matches) {
         driftCards.forEach((el) => {
           el.style.transform = "";
+          el.style.willChange = "";
         });
         return;
       }
-      const half = wide.matches ? 25 : 12.5;
-      const vh = window.innerHeight;
-      const scroll = window.scrollY;
-      driftCards.forEach((el) => {
-        const top = docTop(el);
-        const progress = (scroll + vh - top) / (vh + el.offsetHeight);
-        const t = Math.min(1, Math.max(0, progress));
-        el.style.transform = `translate3d(0, ${(half - t * half * 2).toFixed(2)}px, 0)`;
+      active.forEach((el) => {
+        el.style.transform = `translate3d(0, ${shiftFor(el).toFixed(2)}px, 0)`;
       });
     };
-    if (!nativeDrift) {
-      let frame = 0;
-      const queue = () => {
-        cancelAnimationFrame(frame);
-        frame = requestAnimationFrame(placeDrift);
-      };
-      placeDrift();
-      window.addEventListener("scroll", queue, { passive: true });
-      window.addEventListener("resize", queue);
-      reduceMotion.addEventListener("change", placeDrift);
-      wide.addEventListener("change", placeDrift);
-    }
+    const queue = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(paint);
+    };
+    const watcher = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const el = entry.target;
+        if (!(el instanceof HTMLElement)) return;
+        if (entry.isIntersecting) {
+          el.style.willChange = "transform";
+          active.add(el);
+        } else {
+          active.delete(el);
+          el.style.willChange = "";
+          if (!reduceMotion.matches) {
+            const above = el.getBoundingClientRect().top < 0;
+            el.style.transform = `translate3d(0, ${above ? -half() : half()}px, 0)`;
+          }
+        }
+      });
+      queue();
+    }, { rootMargin: "100px 0px" });
+    driftCards.forEach((el) => watcher.observe(el));
+    window.addEventListener("scroll", queue, { passive: true });
+    window.addEventListener("resize", queue);
+    reduceMotion.addEventListener("change", queue);
+    wide.addEventListener("change", queue);
+    queue();
   </script>
 </Base>
