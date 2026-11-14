@@ -6867,6 +6867,10 @@ body:has(.page-home) {
   background: transparent;
 }
 
+.page-home #next .next-note {
+  color: #05745b;
+}
+
 .page-home #apply-first .cap-pill,
 .page-home #apply-v .cap-small {
   background: #f5f2ff;
