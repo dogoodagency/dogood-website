@@ -814,20 +814,8 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
 
 /* Reviews — 4 across, equal height, roll left to right */
 #reviews {
-  position: relative;
   background: #fff;
   padding: 0;
-}
-
-#reviews::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 1px;
-  background: #8b7dae;
-  pointer-events: none;
 }
 
 .reviews-band {

@@ -18,5 +18,9 @@ const { fill = "#2A0B4F", edge, class: className = "" } = Astro.props;
   <path
     fill={fill}
     d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path>
-  <path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path>
+  {
+    edge && (
+      <path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16" />
+    )
+  }
 </svg>

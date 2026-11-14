@@ -8,9 +8,10 @@ const action =
 interface Props {
   hideOptin?: boolean;
   meetFunnel?: boolean;
+  edge?: string;
 }
 
-const { hideOptin = false, meetFunnel = false } = Astro.props;
+const { hideOptin = false, meetFunnel = false, edge } = Astro.props;
 const copyrightYear = new Date().getFullYear();
 
 const explore = [
@@ -40,7 +41,7 @@ const legal = [
 ---
 
 <div class:list={["footer-wave", meetFunnel && "is-filled"]} aria-hidden="true">
-  <Wave fill="#2A0B4F" />
+  <Wave fill="#2A0B4F" edge={edge} />
 </div>
 <footer class="footer" id="footer">
   <div class="footer-grid">
