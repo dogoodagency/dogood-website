@@ -508,12 +508,13 @@
         // lower-right edge just past the lever, then runs straight to Case J.
         const half = founderStroke / 2;
         const lane = pinJ ? pinJ.cx : machine.right - 8;
-        put(machine.left + machine.w * 0.5, machine.y + machine.h * 0.48);
-        put(lane + half * 0.15, machine.y + machine.h * 0.58);
-        put(lane, machine.y + machine.h * 0.72);
+        // Cap sits inside the opaque lower-right corner. The stroke only
+        // becomes visible once it has cleared the lever.
+        put(machine.right + 8, machine.y + machine.h * 0.62);
+        put(lane, machine.y + machine.h * 0.76);
         put(lane, machine.bottom + 16);
-        tipX = machine.left + machine.w * 0.5;
-        tipY = machine.y + machine.h * 0.48;
+        tipX = machine.right + 8;
+        tipY = machine.y + machine.h * 0.62;
       }
       if (!phone) {
       if (pinJ) {
@@ -521,35 +522,39 @@
         put(pinJ.cx + pinJ.w * 0.06, pinJ.bottom + 24);
       }
       if (stones) {
-        put(stones.cx, stones.y + stones.h * 0.42);
-        put(stones.cx, stones.y + stones.h * 0.78);
+        put(stones.cx, stones.y + stones.h * 0.5);
+        put(stones.cx, stones.bottom - founderStroke * 0.2);
       }
       const lane = apply1 ? apply1.cx : stones ? stones.cx + stones.w * 0.22 : width * 0.72;
-      if (stones) {
-        put(stones.cx + stones.w * 0.16, stones.bottom + founderStroke * 0.35);
-        put(lane, (stones.bottom + (apply1 ? apply1.cy : stones.bottom + 160)) / 2);
+      const bendY = apply1 ? apply1.y - founderStroke * 1.15 : stones ? stones.bottom + founderStroke : 0;
+      if (stones || apply1) put(lane, bendY);
+      if (apply1) {
+        put(lane, apply1.cy);
+        put(lane, apply1.bottom + founderStroke * 0.8);
       }
-      if (apply1) put(lane, apply1.cy);
       if (forYou) {
-        put(lane, forYou.y + 20);
+        put(lane, forYou.y + founderStroke);
         put(lane, forYou.bottom + 36);
       }
       if (flyer) {
-        const centre = flyer.left + flyer.w * 0.518;
+        const centre = flyer.left + flyer.w * 0.5;
         const wave = box(document.querySelector(".section-wave"));
-        const under = wave ? wave.y + wave.h * 0.55 : flyer.bottom + 70;
-        put(centre, flyer.bottom - flyer.h * 0.12);
-        put(centre - flyer.w * 0.03, flyer.bottom + 8);
-        put(centre - flyer.w * 0.1, under);
-        put(centre - flyer.w * 0.24, (wave ? wave.bottom : flyer.bottom) + flyer.h * 0.18);
+        const intoWave = wave ? wave.y + wave.h * 0.72 : flyer.bottom + founderStroke;
+        put(centre, flyer.bottom - flyer.h * 0.08);
+        put(centre, flyer.bottom + founderStroke * 0.35);
+        put(centre, intoWave);
+        put(centre - flyer.w * 0.04, (wave ? wave.bottom : flyer.bottom) + founderStroke * 0.45);
       }
       if (pinV) {
-        put(pinV.cx, pinV.y - 30);
+        put(pinV.cx, pinV.y - founderStroke * 0.8);
         put(pinV.cx, pinV.cy);
         put(pinV.cx, pinV.bottom + 16);
       }
-      const lane2 = apply2 ? apply2.cx - 10 : pinV ? pinV.cx : width * 0.32;
-      if (seen) put(lane2, seen.bottom + 28);
+      const lane2 = pinV ? pinV.cx : apply2 ? apply2.cx : width * 0.32;
+      if (seen) {
+        put(lane2, seen.y + seen.h * 0.45);
+        put(lane2, seen.bottom + 24);
+      }
       if (apply2) put(lane2, apply2.cy);
       if (message) {
         put(lane2, message.y - 12);
