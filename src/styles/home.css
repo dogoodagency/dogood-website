@@ -6270,6 +6270,16 @@ body:has(.page-apply) .footer-wave {
   line-height: 1.6;
 }
 
+.page-apply .apply-frame .apply-dot {
+  display: inline-block;
+  margin: 0 0.15em;
+  color: #c10e46;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+  vertical-align: middle;
+}
+
 .page-apply .apply-frame .apply-limit {
   margin: 6px 0 0;
   color: #58447f;
