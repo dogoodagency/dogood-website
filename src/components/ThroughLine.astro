@@ -527,37 +527,51 @@
         tipY = leverY;
       }
       if (!phone) {
-      if (pinJ) {
-        put(pinJ.cx, pinJ.y + pinJ.h * 0.35);
-        put(pinJ.cx + pinJ.w * 0.06, pinJ.bottom + 24);
-      }
       const lane = apply1 ? apply1.cx : stones ? stones.cx + stones.w * 0.22 : width * 0.72;
-      if (stones) {
-        put(stones.cx, stones.y + stones.h * 0.42);
-        // Quarter-turn onto the apply lane. Radius stays larger than the
-        // stroke so the inner edge is a curve, not a V, and the run is
-        // vertical well before the button so the width cannot change.
-        const radius = Math.max(founderStroke * 1.55, 200);
-        const endY = apply1
-          ? Math.min(stones.bottom + radius * 0.55, apply1.y - founderStroke)
-          : stones.bottom + radius * 0.55;
-        const centerX = lane - radius;
-        const sweep = (58 * Math.PI) / 180;
-        const startA = -sweep;
-        const lead = {
-          x: centerX + radius * Math.cos(startA) - radius * Math.sin(sweep) * 0.85,
-          y: endY + radius * Math.sin(startA) - radius * Math.cos(sweep) * 0.85,
-        };
-        put(lead.x, lead.y);
-        for (let i = 8; i >= 0; i -= 1) {
-          const angle = startA * (i / 8);
-          put(centerX + radius * Math.cos(angle), endY + radius * Math.sin(angle));
+      if (pinJ && stones) {
+        // Image pixel positions in spot1-v3@2x (1048×1062). The line drops
+        // from the pin, turns at ankle height, and stays under the fill
+        // until it leaves the right side of the last stone.
+        const ix = (px) => stones.left + stones.w * (px / 1048);
+        const iy = (py) => stones.y + stones.h * (py / 1062);
+        const ankleX = ix(360);
+        const ankleY = iy(730);
+        const turn = Math.min(100, Math.max(72, ankleX - pinJ.cx), ankleY - (pinJ.bottom + 48));
+        founderPts.push({ x: pinJ.cx, y: pinJ.y + pinJ.h * 0.45 });
+        founderPts.push({ x: pinJ.cx, y: pinJ.bottom - 8 });
+        founderPts.push({ x: pinJ.cx, y: ankleY - turn });
+        for (let i = 1; i <= 6; i += 1) {
+          const t = (-Math.PI / 2) * (1 - i / 6);
+          founderPts.push({
+            x: pinJ.cx + turn * Math.cos(t),
+            y: ankleY + turn * Math.sin(t),
+          });
         }
-      }
-      if (apply1) {
-        put(lane, apply1.y - founderStroke * 0.85);
-        put(lane, apply1.cy);
-        put(lane, apply1.bottom + founderStroke);
+        if (ankleX > pinJ.cx + turn + 12) founderPts.push({ x: ankleX, y: ankleY });
+        const stoneY = iy(830);
+        const exitLane = Math.min(lane, ix(958) + founderStroke * 0.32);
+        founderPts.push({ x: ix(520), y: iy(800) });
+        const bendR = 92;
+        const bendX = exitLane - bendR;
+        founderPts.push({ x: Math.min(ix(900), bendX), y: stoneY });
+        if (bendX > ix(900) + 8) founderPts.push({ x: bendX, y: stoneY });
+        for (let i = 1; i <= 6; i += 1) {
+          const t = (-Math.PI / 2) * (1 - i / 6);
+          founderPts.push({
+            x: bendX + bendR * Math.cos(t),
+            y: stoneY + bendR * (1 + Math.sin(t)),
+          });
+        }
+        if (apply1) {
+          founderPts.push({ x: exitLane, y: apply1.y - 16 });
+          founderPts.push({ x: exitLane, y: apply1.cy });
+          founderPts.push({ x: exitLane, y: apply1.bottom + founderStroke });
+        }
+        if (forYou) founderPts.push({ x: exitLane, y: forYou.y + 48 });
+      } else if (apply1) {
+        founderPts.push({ x: lane, y: apply1.y - 16 });
+        founderPts.push({ x: lane, y: apply1.cy });
+        founderPts.push({ x: lane, y: apply1.bottom + founderStroke });
       }
       if (forYou) {
         put(lane, forYou.y + founderStroke);
