@@ -4600,7 +4600,10 @@ button.btn-subscribe:focus-visible,
   opacity: 1;
 }
 
-#case-j p.t-kicker,
+#case-j p.t-kicker {
+  color: #ea1557;
+}
+
 #case-v p.t-kicker {
   color: #28dbb0;
 }
@@ -5743,8 +5746,7 @@ button.btn-subscribe:focus-visible {
   isolation: isolate;
 }
 
-.exit-machine-body,
-.exit-wheel {
+.exit-machine-body {
   z-index: 1;
   transform: translateZ(0);
 }
