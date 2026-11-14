@@ -1,14 +1,16 @@
 ---
 interface Props {
   fill?: string;
+  edge?: string;
   class?: string;
 }
 
-const { fill = "#2A0B4F", class: className = "" } = Astro.props;
+const { fill = "#2A0B4F", edge, class: className = "" } = Astro.props;
 ---
 
 <svg
-  class:list={["block h-12 w-full md:h-16", className]}
+  class:list={["hero-wave", className]}
+  style={edge ? `--wave-edge:${edge}` : undefined}
   viewBox="0 0 1440 80"
   preserveAspectRatio="none"
   aria-hidden="true"
@@ -16,4 +18,9 @@ const { fill = "#2A0B4F", class: className = "" } = Astro.props;
   <path
     fill={fill}
     d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path>
+  {
+    edge && (
+      <path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16" />
+    )
+  }
 </svg>

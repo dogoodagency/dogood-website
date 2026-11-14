@@ -1,0 +1,234 @@
+---
+import { getCollection, getEntry, render } from "astro:content";
+import Base from "../layouts/Base.astro";
+import LogoPills from "../components/LogoPills.astro";
+import Wave from "../components/Wave.astro";
+import { edgeAbove } from "../data/edge-line";
+
+export async function getStaticPaths() {
+  const pages = await getCollection("pages");
+  return pages
+    .filter((page) => page.id !== "error404" && page.id !== "contact" && page.id !== "apply-stage-1" && page.id !== "clarity-first-guarantee-terms")
+    .map((page) => ({ params: { slug: page.id } }));
+}
+
+const slug = Astro.params.slug;
+if (!slug) return Astro.redirect("/");
+const entry = await getEntry("pages", slug);
+if (!entry) return new Response(null, { status: 404 });
+const { Content } = await render(entry);
+const canonical = new URL(slug, "https://www.dogoodagency.co/").href;
+
+const pageNames: Record<string, string> = {
+  about: "About",
+  "application-thankyou": "Application received",
+  "apply-stage-1": "Apply for Stage 1",
+  benchmark: "Benchmark",
+  "casestudies/j": "How J created a clear next life chapter",
+  "casestudies/v": "How V reclaimed life after success",
+  casestudies: "Stories",
+  catchup: "Catch-up call",
+  "catchup-thankyou": "Catch-up call booked",
+  chat: "Chat",
+  "clarity-first-guarantee-terms": "Clarity-First Guarantee",
+  claritysprints: "Clarity Sprints",
+  "claritysprints-thankyou": "Clarity Sprints booked",
+  cleansudaji: "CleanSudaji",
+  contact: "Contact",
+  cookies: "Cookies Policy",
+  diagnostics: "Founder Diagnostic",
+  "diagnostics/founder-check": "Founder Diagnostic",
+  "dogood-insider": "DoGood Insider",
+  faqs: "FAQs",
+  "for-advisors": "For Advisors",
+  frpfit: "FRP-Fit call",
+  "frpfit-thankyou": "FRP-Fit call booked",
+  "how-it-works": "How it works",
+  insights: "Insights",
+  "insights/after-the-deal": "After the deal closes",
+  "insights/first-months-after-exit": "The first months after exit",
+  "insights/who-are-you-now": "Who are you now",
+  internal: "An introduction for advisors",
+  "internal-60": "An introduction for advisors",
+  "internal-thankyou": "Introduction booked",
+  newsletter: "The first 90 days after exit",
+  "newsletter/thanks": "You're on the list",
+  "orientation-call": "Orientation call",
+  "orientation-call-thankyou": "Orientation call booked",
+  "podcast-chat": "Podcast chat",
+  "pre-frp": "Pre-FRP call",
+  "prefrp-thankyou": "Pre-FRP call booked",
+  privacy: "Privacy Policy",
+  "stage1-tc": "Stage 1",
+  stories: "Stories",
+  teams: "Team readiness",
+  "teams-thankyou": "Team readiness booked",
+  terms: "Terms of Use",
+  "thank-you": "Thank you",
+  wayfinders: "Wayfinders",
+  "wayfinders/chantill": "Chantill",
+  "wayfinders/clientfit": "Client-Fit",
+  "wayfinders/katrin": "Katrin",
+  "wayfinders/seb": "Seb",
+  "wayfinders/shiva": "Shiva",
+  "wayfinders/vlora": "Vlora",
+};
+
+const named = pageNames[slug];
+const stripped = entry.data.title.replace(/\s*\|\s*DoGood (Founders|Agency)\s*$/i, "").trim();
+const pageTitle =
+  entry.data.title === "Client Tools for Advisors | DoGood" ||
+  entry.data.title === "Insights for Advisors | DoGood"
+    ? entry.data.title
+    : named
+      ? `${named} | DoGood Agency`
+      : stripped && !/^[a-z0-9./-]+$/i.test(stripped)
+        ? `${stripped} | DoGood Agency`
+        : `${slug.split("/").pop()?.replace(/-/g, " ") ?? "DoGood"} | DoGood Agency`;
+const art: Record<string, string> = {
+  "how-it-works": "how-it-works-two-stage-path-sketch",
+  wayfinders: "wayfinders-team-on-path-sketch",
+  "apply-stage-1": "apply-stage-1-garden-gate",
+  casestudies: "stories-journal-path-sketch",
+  "casestudies/j": "case-study-j-window-path",
+  "casestudies/v": "case-study-v-shore-boat",
+  "clarity-first-guarantee-terms": "clarity-first-guarantee-folder",
+  diagnostics: "founder-diagnostic-map",
+  "diagnostics/founder-check": "founder-diagnostic-map",
+  "dogood-insider": "podcast-two-chairs-microphone",
+  faqs: "faqs-index-cards",
+  "for-advisors": "for-advisors-after-the-deal-sketch",
+  stories: "stories-journal-path-sketch",
+  insights: "insights-open-journals",
+  newsletter: "newsletter-open-envelope-booklet",
+  about: "about-building-and-bench",
+  privacy: "legal-folded-document",
+};
+const sketch = art[slug] ?? (entry.data.tidycal ? "booking-open-diary" : slug.includes("thank") ? "thank-you-envelope-tick" : "");
+
+const genericDescription = entry.data.description.startsWith("Founder Reclamation Partnership");
+const pageDescription = genericDescription
+  ? `${named ?? "This page"} from DoGood Agency, a private partnership for founders after exit.`
+  : entry.data.description;
+
+const bandTint = entry.data.bandTint ?? "#F5F2FF";
+const bandGroups = entry.data.bandGroups ?? [];
+const bandBreaks = new Set(
+  bandGroups
+    .slice(1)
+    .map((group) => Number(group.match(/^(\d+)/)?.[1]))
+    .filter((num) => Number.isFinite(num)),
+);
+let bandSection = 0;
+const bandGroupsHtml =
+  bandGroups.length > 0 && entry.rendered?.html
+    ? entry.rendered.html.split(/(?=<h2\b)/i).reduce<string[]>((groups, piece) => {
+        const numbered = piece.match(/^<h2\b[^>]*>\s*(\d+)\./);
+        const isHeading = /^<h2\b/i.test(piece);
+        if (isHeading) bandSection = numbered ? Number(numbered[1]) : bandSection + 1;
+        if (!groups.length || (isHeading && bandBreaks.has(bandSection))) groups.push("");
+        groups[groups.length - 1] += piece;
+        return groups;
+      }, [])
+    : [];
+const bandHero =
+  slug === "terms" ? "Terms" : slug === "privacy" ? "Privacy Policy" : slug === "cookies" ? "Cookies Policy" : "";
+const banded = bandGroupsHtml.length > 0 && Boolean(bandHero);
+const heroEdge = edgeAbove("#2A0B4F");
+const dividerEdge = edgeAbove(bandTint);
+const joinEdge = edgeAbove("#ffffff");
+const bandWave = `<div class="privacy-divider" aria-hidden="true"><svg class="privacy-divider-wave" style="--wave-edge:${dividerEdge}" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="#ffffff" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path><path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path></svg></div>`;
+const bandHtml = bandGroupsHtml
+  .map((inner, index) => {
+    const kind = index % 2 === 0 ? "tint" : "white";
+    const wave = index === 0 ? bandWave : "";
+    return `<section class="privacy-band privacy-band-${kind}"><div class="privacy-well">${inner}</div></section>${wave}`;
+  })
+  .join("");
+const bandStrip = bandGroupsHtml.length % 2 === 1 ? bandTint : "#ffffff";
+const footerEdge = edgeAbove(bandStrip);
+---
+
+<Base
+  title={pageTitle}
+  description={pageDescription}
+  canonical={canonical}
+  hideOptin={entry.data.hideOptin}
+  footerStrip={banded ? bandStrip : undefined}
+  footerEdge={banded ? footerEdge : undefined}
+>
+  {banded ? (
+    <article class="page-privacy" style={`--band-tint:${bandTint};--join-edge:${joinEdge}`}>
+      <header class="privacy-hero">
+        <div class="privacy-hero-inner">
+          <h1>{bandHero}</h1>
+        </div>
+        <Wave fill={bandTint} edge={heroEdge} />
+      </header>
+      <div class="privacy-source" set:html={bandHtml} />
+    </article>
+  ) : (
+    <>
+  <section class="subhero">
+    <Wave fill="#f5f2f9" />
+  </section>
+  <article class:list={["page", "page-designed", sketch && "page-art"]}>
+    <div class="page-wrap">
+      {
+        sketch && (
+          <picture class="page-sketch page-sketch-feature">
+            <source
+              type="image/webp"
+              srcset={`/sketches/${sketch}@1x.webp 540w, /sketches/${sketch}@2x.webp 1080w`}
+              sizes="(max-width: 800px) min(100vw, 320px), 420px"
+            />
+            <img
+              src={`/sketches/${sketch}@1x.png`}
+              srcset={`/sketches/${sketch}@1x.png 540w, /sketches/${sketch}@2x.png 1080w`}
+              sizes="(max-width: 800px) min(100vw, 320px), 420px"
+              width="540"
+              height="400"
+              alt=""
+            />
+          </picture>
+        )
+      }
+      <div class="page-frame">
+      <div class="page-body">
+        <Content />
+      </div>
+      {slug === "stories" && <LogoPills />}
+      {
+        entry.data.tidycal && (
+          <>
+            <div class="tidycal-embed" data-path={entry.data.tidycal}></div>
+            <script is:inline src="https://asset-tidycal.b-cdn.net/js/embed.js" async></script>
+          </>
+        )
+      }
+      {
+        slug === "dogood-insider" && (
+          <div class="buzzsprout-gate" data-buzzsprout-src="https://www.buzzsprout.com/2435557">
+            <button type="button">Load the podcast player</button>
+          </div>
+        )
+      }
+      </div>
+    </div>
+  </article>
+    </>
+  )}
+</Base>
+
+<script>
+  document.querySelectorAll("[data-buzzsprout-src]").forEach((gate) => {
+    gate.querySelector("button")?.addEventListener("click", () => {
+      if (!(gate instanceof HTMLElement) || gate.querySelector("iframe")) return;
+      const frame = document.createElement("iframe");
+      frame.src = gate.dataset.buzzsproutSrc || "";
+      frame.title = "DoGood Insider on Buzzsprout";
+      frame.loading = "lazy";
+      gate.replaceChildren(frame);
+    });
+  });
+</script>
