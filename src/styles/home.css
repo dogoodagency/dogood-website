@@ -6542,12 +6542,14 @@ body:has(.page-clarity) .footer-wave {
   padding-left: 1.2em;
 }
 
-.page-clarity .clarity-terms .clarity-term-title {
-  margin: 0 0 8px;
-  color: #58447f;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.4;
+.page-clarity .clarity-terms h2 {
+  margin: 0 0 12px;
+  color: #2a0b4f;
+}
+
+.page-clarity .clarity-terms h3 {
+  margin: 28px 0 8px;
+  color: #2a0b4f;
 }
 
 .page-clarity .clarity-terms .clarity-term-meta {
@@ -6562,10 +6564,6 @@ body:has(.page-clarity) .footer-wave {
   font-size: 16px;
   font-weight: 700;
   line-height: 1.4;
-}
-
-.page-clarity .clarity-terms p.clarity-term-head {
-  margin: 22px 0 8px;
 }
 
 .page-clarity .clarity-terms a {
