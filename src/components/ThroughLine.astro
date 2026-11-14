@@ -336,32 +336,47 @@
         if (!(swellDark instanceof SVGStopElement) || !(swellLight instanceof SVGStopElement)) return;
         const funnel = document.querySelector("#next .swell-bg");
         if (!(funnel instanceof Element)) return;
-        let level = 1;
-        if (!reduce.matches) {
-          const rect = funnel.getBoundingClientRect();
-        const edge = window.innerHeight * 0.5;
-        if (rect.height <= 1 || rect.top >= edge) level = 0;
-        else if (rect.bottom <= edge) level = 1;
-        else level = (edge - rect.top) / rect.height;
-        }
-        const blend = 0.07;
-        const darkAt = level <= 0 ? 0 : Math.max(0, level - blend);
-        const lightAt = level <= 0 ? 0 : Math.min(1, level);
-        swellDark.setAttribute("offset", darkAt.toFixed(4));
-        swellLight.setAttribute("offset", lightAt.toFixed(4));
         const strip = document.querySelector(".footer-wave");
+        const funnelRect = funnel.getBoundingClientRect();
+        const stripRect = strip instanceof HTMLElement ? strip.getBoundingClientRect() : funnelRect;
+        const edge = window.innerHeight * 0.5;
+        const atEnd =
+          window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+        const fillY = reduce.matches || atEnd ? stripRect.bottom + 2 : edge;
+        const fractionIn = (rect) => {
+          if (rect.height <= 1 || fillY <= rect.top) return 0;
+          if (fillY >= rect.bottom) return 1;
+          return (fillY - rect.top) / rect.height;
+        };
+        const paintStops = (amount) => {
+          if (amount <= 0) {
+            swellDark.setAttribute("stop-color", "#D4F4EB");
+            swellLight.setAttribute("stop-color", "#D4F4EB");
+            swellDark.setAttribute("offset", "0");
+            swellLight.setAttribute("offset", "1");
+            return;
+          }
+          if (amount >= 1) {
+            swellDark.setAttribute("stop-color", "#28DBB0");
+            swellLight.setAttribute("stop-color", "#28DBB0");
+            swellDark.setAttribute("offset", "0");
+            swellLight.setAttribute("offset", "1");
+            return;
+          }
+          const cut = amount.toFixed(4);
+          swellDark.setAttribute("stop-color", "#28DBB0");
+          swellLight.setAttribute("stop-color", "#D4F4EB");
+          swellDark.setAttribute("offset", cut);
+          swellLight.setAttribute("offset", cut);
+        };
+        paintStops(fractionIn(funnelRect));
         if (strip instanceof HTMLElement) {
-          if (reduce.matches) {
-            strip.style.background = "#28DBB0";
-          } else {
-            const band = strip.getBoundingClientRect();
-            const edge = window.innerHeight * 0.5;
-            if (band.height <= 1 || band.top >= edge) strip.style.background = "#D4F4EB";
-            else if (band.bottom <= edge) strip.style.background = "#28DBB0";
-            else {
-              const filled = ((edge - band.top) / band.height) * 100;
-              strip.style.background = `linear-gradient(to bottom, #28DBB0 ${filled.toFixed(2)}%, #D4F4EB ${filled.toFixed(2)}%)`;
-            }
+          const amount = fractionIn(stripRect);
+          if (amount >= 1) strip.style.background = "#28DBB0";
+          else if (amount <= 0) strip.style.background = "#D4F4EB";
+          else {
+            const pct = (amount * 100).toFixed(2);
+            strip.style.background = `linear-gradient(to bottom, #28DBB0 ${pct}%, #D4F4EB ${pct}%)`;
           }
         }
       };
