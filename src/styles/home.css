@@ -5935,6 +5935,13 @@ body:has(.page-privacy) .footer-wave {
   box-shadow: none;
 }
 
+@media (max-width: 640px) {
+  .privacy-hero .hero-wave,
+  .privacy-divider-wave {
+    height: 40px;
+  }
+}
+
 .privacy-well {
   box-sizing: border-box;
   width: min(1080px, calc(100% - 2 * clamp(20px, 5.56vw, 80px)));
