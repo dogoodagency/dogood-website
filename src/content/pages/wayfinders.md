@@ -134,7 +134,7 @@ Seb
 
 ##### Best Fit: For founders with USD 10M+ companies and a life that isn’t much fun right now.
 
-##### Real Stakes: 150+ initiatives in 35+ countries, totaling USD 19.5M in enterprise value.
+##### Real Stakes: 150+ initiatives in 35+ countries, totaling USD 19.4M in enterprise value.
 
 ##### Training & Methods: Master NLP Practitioner and Master Trainer, with organizational development studies via Stanford and Harvard.
 
