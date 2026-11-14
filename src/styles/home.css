@@ -6446,7 +6446,7 @@ body:has(.page-clarity) .footer-wave {
   width: 100%;
   max-width: 1040px;
   margin: 75px auto 0;
-  padding: 56px 163px;
+  padding: 56px;
   overflow: hidden;
   background: #2a0b4f;
   border-radius: 24px;
@@ -6486,10 +6486,6 @@ body:has(.page-clarity) .footer-wave {
 }
 
 @media (min-width: 900px) {
-  .page-clarity .promise-letter {
-    padding-bottom: 113px;
-  }
-
   .page-clarity .promise-byline {
     transform: translateY(-150px);
   }
