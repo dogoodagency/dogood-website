@@ -126,10 +126,13 @@ const privacyGroups =
         return groups;
       }, [])
     : [];
+const privacyWave =
+  '<div class="privacy-divider" aria-hidden="true"><svg class="privacy-divider-wave" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="#ffffff" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path></svg></div>';
 const privacyHtml = privacyGroups
   .map((inner, index) => {
     const kind = index % 2 === 0 ? "tint" : "white";
-    return `<section class="privacy-band privacy-band-${kind}"><div class="privacy-well">${inner}</div></section>`;
+    const wave = index === 0 ? privacyWave : "";
+    return `<section class="privacy-band privacy-band-${kind}"><div class="privacy-well">${inner}</div></section>${wave}`;
   })
   .join("");
 const privacyStrip = privacyGroups.length % 2 === 1 ? bandTint : "#ffffff";

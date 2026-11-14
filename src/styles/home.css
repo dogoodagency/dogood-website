@@ -5921,6 +5921,20 @@ body:has(.page-privacy) .footer-wave {
   border-top: 1px solid #e6defc;
 }
 
+.privacy-divider {
+  display: block;
+  line-height: 0;
+  background: var(--band-tint, #f5f2ff);
+  box-shadow: none;
+}
+
+.privacy-divider-wave {
+  display: block;
+  width: 100%;
+  height: 48px;
+  box-shadow: none;
+}
+
 .privacy-well {
   box-sizing: border-box;
   width: min(1080px, calc(100% - 2 * clamp(20px, 5.56vw, 80px)));
