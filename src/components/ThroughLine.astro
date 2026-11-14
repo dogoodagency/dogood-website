@@ -504,15 +504,16 @@
         }
         down(guarantee, 0.2, 0.92);
       } else if (machine) {
-        // Round cap stays inside the opaque body. The stroke meets the
-        // right edge just past the lever, then bends down and to the right.
+        // Round cap stays inside the opaque body. The stroke leaves the
+        // lower-right edge just past the lever, then runs straight to Case J.
         const half = founderStroke / 2;
-        put(machine.left + machine.w * 0.62, machine.y + machine.h * 0.56);
-        put(machine.right + half * 1.35, machine.y + machine.h * 0.62);
-        put(machine.right + half * 1.05, machine.y + machine.h * 0.8);
-        put(machine.left + machine.w * 0.96, machine.bottom + 8);
-        tipX = machine.left + machine.w * 0.62;
-        tipY = machine.y + machine.h * 0.56;
+        const lane = pinJ ? pinJ.cx : machine.right - 8;
+        put(machine.left + machine.w * 0.5, machine.y + machine.h * 0.48);
+        put(lane + half * 0.15, machine.y + machine.h * 0.58);
+        put(lane, machine.y + machine.h * 0.72);
+        put(lane, machine.bottom + 16);
+        tipX = machine.left + machine.w * 0.5;
+        tipY = machine.y + machine.h * 0.48;
       }
       if (!phone) {
       if (pinJ) {
