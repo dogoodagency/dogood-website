@@ -349,6 +349,14 @@ main ul {
   z-index: 3;
 }
 
+.wave-edge {
+  fill: none;
+  stroke: var(--wave-edge, transparent);
+  stroke-width: 1px;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
 .sketch-ph {
   display: flex;
   align-items: center;
@@ -806,8 +814,20 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
 
 /* Reviews — 4 across, equal height, roll left to right */
 #reviews {
+  position: relative;
   background: #fff;
   padding: 0;
+}
+
+#reviews::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: #8b7dae;
+  pointer-events: none;
 }
 
 .reviews-band {
@@ -2588,6 +2608,10 @@ p.say-no,
 
 .footer-wave {
   background: #d4f4eb;
+}
+
+.footer-wave .wave-edge {
+  stroke: var(--footer-edge, transparent);
 }
 
 .footer-wave.is-filled {
@@ -5963,7 +5987,7 @@ body:has(.page-privacy) .footer-wave {
 
 .privacy-band-white + .privacy-band-tint,
 .privacy-band-tint + .privacy-band-white {
-  border-top: 1px solid #e6defc;
+  border-top: 1px solid #8b7dae;
 }
 
 .privacy-divider {

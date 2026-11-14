@@ -58,7 +58,7 @@ const notFit = [
 ];
 ---
 
-<Base title="Home | DoGood Agency" description="A private 30-day engagement for founders navigating life after exit." meetFunnel>
+<Base title="Home | DoGood Agency" description="A private 30-day engagement for founders navigating life after exit." meetFunnel footerEdge="#A3F2D7">
   <ThroughLine />
   <section class="hero" id="hero">
     <div class="hero-inner">
@@ -101,7 +101,7 @@ const notFit = [
         </div>
       </div>
     </div>
-    <Wave fill="#f5f2f9" />
+    <Wave fill="#f5f2f9" edge="#8B7DAE" />
   </section>
 
   <section id="clients" aria-label="Client organisations">
@@ -364,7 +364,7 @@ const notFit = [
   </section>
 
   <div class="section-wave" aria-hidden="true">
-    <Wave fill="#ffffff" />
+    <Wave fill="#ffffff" edge="#8B7DAE" />
   </div>
 
   <section id="reviews">
@@ -566,7 +566,7 @@ const notFit = [
   </section>
 
   <section id="next">
-    <svg class="swell-bg" viewBox="0 0 1710 1000" preserveAspectRatio="none" aria-hidden="true">
+    <svg class="swell-bg" style="--wave-edge:#8B7DAE" viewBox="0 0 1710 1000" preserveAspectRatio="none" aria-hidden="true">
       <defs>
         <linearGradient id="swellGrad" x1="0" y1="0" x2="0" y2="1">
           <stop id="swell-dark" offset="0" stop-color="#D4F4EB"></stop>
@@ -577,6 +577,7 @@ const notFit = [
         fill="url(#swellGrad)"
         d="M760,0 C760,240 90,520 0,760 L0,1000 L1710,1000 L1710,760 C1620,520 950,240 950,0 Z"
       ></path>
+      <path class="wave-edge" d="M760,0 C760,240 90,520 0,760 M1710,760 C1620,520 950,240 950,0"></path>
     </svg>
     <div class="next-inner">
       <h2 class="t-h2">What’s next?</h2>
