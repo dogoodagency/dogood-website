@@ -6309,6 +6309,16 @@ body:has(.page-clarity) .footer-wave {
   color: #fff;
 }
 
+.page-apply a.btn-apply::before,
+.page-apply a.btn-apply::after {
+  background-color: #fff;
+}
+
+.page-apply a.btn-apply:focus-visible {
+  outline: 3px solid #28dbb0;
+  outline-offset: 3px;
+}
+
 .page-apply .apply-sketch {
   display: block;
   width: min(480px, 100%);
@@ -6361,8 +6371,8 @@ body:has(.page-clarity) .footer-wave {
 @media (prefers-reduced-motion: reduce) {
   .page-apply a.btn-apply:hover,
   .page-apply a.btn-apply:focus-visible {
-    background: #fff;
-    color: #c10e46;
+    background: #c10e46;
+    color: #fff;
     transform: none;
     padding-left: 20px;
     padding-right: 56px;
