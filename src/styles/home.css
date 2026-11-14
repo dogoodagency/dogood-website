@@ -6632,6 +6632,19 @@ body:has(.page-clarity) .footer-wave {
   mix-blend-mode: normal;
   transform-origin: 83.92% 24.52%;
   animation: door-breathe 4s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate;
+  /* Soft cut: full light in the opening and on the path, gone by the right jamb and above the arch. */
+  -webkit-mask-image:
+    linear-gradient(to right, #fff 84.3%, transparent 87.4%),
+    linear-gradient(to bottom, transparent 5.2%, #fff 11.9%);
+  mask-image:
+    linear-gradient(to right, #fff 84.3%, transparent 87.4%),
+    linear-gradient(to bottom, transparent 5.2%, #fff 11.9%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
 }
 
 .door-glow-boost {
