@@ -102,7 +102,6 @@ const art: Record<string, string> = {
   newsletter: "newsletter-open-envelope-booklet",
   about: "about-building-and-bench",
   privacy: "legal-folded-document",
-  cookies: "legal-folded-document",
 };
 const sketch = art[slug] ?? (entry.data.tidycal ? "booking-open-diary" : slug.includes("thank") ? "thank-you-envelope-tick" : "");
 
@@ -131,7 +130,8 @@ const bandGroupsHtml =
         return groups;
       }, [])
     : [];
-const bandHero = slug === "terms" ? "Terms" : slug === "privacy" ? "Privacy Policy" : "";
+const bandHero =
+  slug === "terms" ? "Terms" : slug === "privacy" ? "Privacy Policy" : slug === "cookies" ? "Cookies Policy" : "";
 const banded = bandGroupsHtml.length > 0 && Boolean(bandHero);
 const bandWave =
   '<div class="privacy-divider" aria-hidden="true"><svg class="privacy-divider-wave" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="#ffffff" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path></svg></div>';

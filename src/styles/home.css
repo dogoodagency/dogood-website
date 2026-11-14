@@ -5961,6 +5961,26 @@ body:has(.page-privacy) .footer-wave {
   width: min(1080px, calc(100% - 2 * clamp(20px, 5.56vw, 80px)));
   margin: 0 auto;
   padding: 80px 0;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.page-privacy table {
+  width: 100%;
+  min-width: 640px;
+  margin: 0 0 20px;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.page-privacy th,
+.page-privacy td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--color-mist);
+  text-align: left;
+  vertical-align: top;
+  color: #2a0b4f;
 }
 
 .page-privacy h2 {

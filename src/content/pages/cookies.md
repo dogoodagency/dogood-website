@@ -2,14 +2,12 @@
 title: Cookies Policy
 description: How DoGood OÜ uses cookies and similar tools on dogoodagency.co.
 updated: "13 November 2026"
+bandTint: "#FEFEF3"
+bandGroups:
+  - "1-3"
+  - "4-6"
+  - "7-9"
 ---
-
-<picture class="page-icon">
-  <source type="image/webp" srcset="/sketches/legal-folded-document@1x.webp 1x, /sketches/legal-folded-document@2x.webp 2x" />
-  <img src="/sketches/legal-folded-document@1x.png" srcset="/sketches/legal-folded-document@1x.png 1x, /sketches/legal-folded-document@2x.png 2x" width="96" height="96" alt="A simple folded document with a teal wax seal and a tiny pink mark at the corner." />
-</picture>
-
-# Cookies Policy
 
 Last updated: 13 November 2026
 
