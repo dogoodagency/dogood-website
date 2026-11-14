@@ -6481,11 +6481,12 @@ body:has(.page-clarity) .footer-wave {
 
 .page-clarity .promise-byline {
   display: flex;
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-end;
   gap: 4px;
   min-width: 0;
+  margin-left: auto;
 }
 
 .page-clarity .promise-signature {
@@ -6503,7 +6504,7 @@ body:has(.page-clarity) .footer-wave {
   color: #fff;
   font-size: 16px;
   line-height: 1.35;
-  text-align: left;
+  text-align: right;
 }
 
 .page-clarity .promise-name {
@@ -6514,10 +6515,10 @@ body:has(.page-clarity) .footer-wave {
 
 .page-clarity .seal-slot {
   display: block;
-  flex: 0 0 540px;
-  width: 540px;
-  min-width: 360px;
-  max-width: 540px;
+  flex: 0 0 378px;
+  width: 378px;
+  min-width: min(250px, 100%);
+  max-width: 100%;
   margin: 0;
 }
 
@@ -6576,22 +6577,6 @@ body:has(.page-clarity) .footer-wave {
   text-underline-offset: 3px;
 }
 
-@media (max-width: 999px) {
-  .page-clarity .promise-sign {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .page-clarity .seal-slot {
-    order: -1;
-    flex: none;
-    width: 100%;
-    min-width: min(360px, 100%);
-    max-width: 540px;
-    margin: 0 0 24px;
-  }
-}
-
 @media (max-width: 800px) {
   .page-clarity .promise-letter {
     padding: 32px 28px 28px;
@@ -6623,21 +6608,15 @@ body:has(.page-clarity) .footer-wave {
     align-items: stretch;
   }
 
-  .page-clarity .seal-slot {
-    order: -1;
+  .page-clarity .promise-byline {
     width: 100%;
-    min-width: 0;
-    max-width: 540px;
-    margin: 0 0 24px;
   }
-}
 
-@media (max-width: 480px) {
   .page-clarity .seal-slot {
-    width: calc(100% + 56px);
-    max-width: none;
-    margin-right: -28px;
-    margin-left: -28px;
+    flex: none;
+    width: min(100%, max(250px, 70%));
+    max-width: 378px;
+    margin: 0 0 24px;
   }
 }
 

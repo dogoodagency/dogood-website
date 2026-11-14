@@ -38,20 +38,16 @@ const joinEdge = edgeAbove("#ffffff");
           <p>Even if you exit, you keep everything we’ve already done together in those first sessions: <span class="promise-key">the decisions we clarified, the containment plan we set, and any tools or written notes we shared along the way</span>.</p>
           <p>We take real delivery risk here on purpose, because we only want to continue if it’s genuinely the right fit.</p>
           <div class="promise-sign">
-            <div class="promise-byline">
-              <Image class="promise-signature" src={signature} alt="Seb’s signature" widths={[180, 360]} sizes="180px" />
-              <p><span class="promise-name">Seb Wichmann</span> | Founder, DoGood Agency</p>
-            </div>
             <picture class="seal-slot">
               <source
                 type="image/webp"
                 srcset="/sketches/clarity-seal@1x.webp 540w, /sketches/clarity-seal@2x.webp 1080w"
-                sizes="(max-width: 860px) 100vw, 540px"
+                sizes="(max-width: 800px) min(100vw, 378px), 378px"
               />
               <img
                 src="/sketches/clarity-seal@1x.png"
                 srcset="/sketches/clarity-seal@1x.png 540w, /sketches/clarity-seal@2x.png 1080w"
-                sizes="(max-width: 860px) 100vw, 540px"
+                sizes="(max-width: 800px) min(100vw, 378px), 378px"
                 width="540"
                 height="400"
                 alt="A handwritten letter, signed, with a pen beside the signature and a pink wax seal stamped Clarity-First on the corner."
@@ -59,6 +55,10 @@ const joinEdge = edgeAbove("#ffffff");
                 decoding="async"
               />
             </picture>
+            <div class="promise-byline">
+              <Image class="promise-signature" src={signature} alt="Seb’s signature" widths={[180, 360]} sizes="180px" />
+              <p><span class="promise-name">Seb Wichmann</span> | Founder, DoGood Agency</p>
+            </div>
           </div>
         </article>
       </div>
