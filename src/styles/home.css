@@ -7031,6 +7031,23 @@ body:has(.page-home) {
 
 .page-home .card.guarantee-card {
   border: 0;
+  text-align: left;
+}
+
+.page-home .guarantee-card h2,
+.page-home .guarantee-card .guarantee-head,
+.page-home .guarantee-card .say-no,
+.page-home .guarantee-card p:not(.terms-row) {
+  text-align: left;
+}
+
+.page-home .guarantee-card .guarantee-head {
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.page-home .guarantee-card .terms-row {
+  text-align: center;
 }
 
 .page-home #next .next-inner > p:not(.next-note) {
