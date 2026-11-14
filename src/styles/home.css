@@ -6569,9 +6569,96 @@ body:has(.page-clarity) .footer-wave {
   }
 }
 
+.door-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  pointer-events: none;
+  background: transparent;
+  mix-blend-mode: normal;
+  transform-origin: 83.92% 24.52%;
+  animation: door-breathe 4s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate;
+}
+
+.door-glow img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  margin: 0;
+  object-fit: fill;
+  background: transparent;
+  border: 0;
+}
+
+@keyframes door-breathe {
+  from {
+    opacity: 0.6;
+    transform: scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.015);
+  }
+}
+
+.sparks {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.door-anim .spark {
+  position: absolute;
+  width: var(--s);
+  height: var(--s);
+  margin: calc(var(--s) / -2) 0 0 calc(var(--s) / -2);
+  opacity: 0;
+  pointer-events: none;
+  animation: door-drift var(--d) cubic-bezier(0.37, 0, 0.63, 1) var(--delay) infinite;
+}
+
+@keyframes door-drift {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.6);
+  }
+  20% {
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate(calc(var(--dx) * 0.3), calc(var(--dy) * 0.55)) scale(1);
+  }
+  70% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy)) scale(0.7);
+  }
+}
+
+@media (prefers-reduced-motion: reduce), (max-width: 599px) {
+  .door-glow {
+    animation: none;
+    opacity: 0.7;
+    transform: none;
+  }
+
+  .sparks {
+    display: none;
+  }
+}
+
 .door-leaf {
   position: absolute;
   inset: 0;
+  z-index: 2;
   width: auto;
   max-width: none;
   margin: 0;
