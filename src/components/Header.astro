@@ -195,6 +195,7 @@ const advisorLinks = [
       advisorMenu.classList.toggle("is-open", open);
       advisorLink.setAttribute("aria-expanded", open ? "true" : "false");
       advisorMenu.setAttribute("aria-hidden", open ? "false" : "true");
+      if (open) requestAnimationFrame(fitAdvisorCard);
     };
     const desktopMenu = () => {
       const list = advisor.closest(".nav-links");
@@ -259,6 +260,27 @@ const advisorLinks = [
       if (!menuOpen() || insideMenu(event.target)) return;
       setMenu(false);
     });
+    const fitAdvisorCard = () => {
+      const links = advisorMenu.querySelector(".nav-mega-links");
+      const card = advisorMenu.querySelector(".nav-mega-card");
+      if (!(links instanceof HTMLElement) || !(card instanceof HTMLElement)) return;
+      const measure = () => {
+        const items = [...links.querySelectorAll(":scope > li > a")];
+        const gap = Number.parseFloat(getComputedStyle(links).rowGap) || 0;
+        return items.reduce((sum, item) => sum + item.getBoundingClientRect().height, 0) + gap * Math.max(items.length - 1, 0);
+      };
+      for (let pass = 0; pass < 3; pass += 1) {
+        const height = Math.max(Math.round(measure()), 315);
+        const width = Math.round((height * 360) / 420);
+        if (card.style.height === `${height}px` && card.style.width === `${width}px`) break;
+        card.style.height = `${height}px`;
+        card.style.width = `${width}px`;
+      }
+    };
+    window.addEventListener("resize", () => {
+      if (desktopMenu()) fitAdvisorCard();
+    });
+    if (desktopMenu()) fitAdvisorCard();
     const photo = advisorMenu.querySelector("img");
     if (photo instanceof HTMLImageElement) {
       const hidePhoto = () => {
