@@ -6038,8 +6038,7 @@ body:has(.page-privacy) .footer-wave {
   margin: 0 0 40px;
 }
 
-.page-contact .contact-main h2,
-.page-contact .contact-apply h2 {
+.page-contact .contact-main h2 {
   margin-top: 0;
 }
 
@@ -6047,12 +6046,23 @@ body:has(.page-privacy) .footer-wave {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(240px, 0.85fr);
   gap: 48px;
-  align-items: start;
+  align-items: center;
+}
+
+.page-contact .contact-form button {
+  margin-top: 50px;
+  padding-right: 106px;
+}
+
+.page-contact .contact-form button:hover,
+.page-contact .contact-form button:focus-visible {
+  padding-right: 70px;
 }
 
 .page-contact .contact-sketch {
-  width: 100%;
-  margin: 0;
+  width: 130%;
+  max-width: none;
+  margin: 0 0 0 -15%;
   background: transparent;
 }
 
@@ -6061,18 +6071,6 @@ body:has(.page-privacy) .footer-wave {
   width: 100%;
   height: auto;
   background: transparent;
-}
-
-.page-contact .contact-apply {
-  margin-top: 24px;
-  padding: 20px 22px;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: none;
-}
-
-.page-contact .contact-apply p {
-  margin: 16px 0 0;
 }
 
 .page-contact .contact-map {
@@ -6091,6 +6089,13 @@ body:has(.page-privacy) .footer-wave {
 @media (max-width: 800px) {
   .page-contact .contact-top {
     grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .page-contact .contact-sketch {
+    width: min(130%, 100%);
+    max-width: 100%;
+    margin-left: 0;
   }
 
   .page-contact .contact-map {

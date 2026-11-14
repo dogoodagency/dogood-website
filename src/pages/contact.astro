@@ -1,7 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
 import Wave from "../components/Wave.astro";
-import { urls } from "../data/homepage";
 import { edgeAbove } from "../data/edge-line";
 
 const thanks = Astro.url.searchParams.has("thanks");
@@ -21,7 +20,7 @@ const footerEdge = edgeAbove(sky);
   <article class="page-privacy page-contact" style={`--band-tint:${sky}`}>
     <header class="privacy-hero">
       <div class="privacy-hero-inner">
-        <h1>Let's talk.</h1>
+        <h1>Let's talk</h1>
       </div>
       <Wave fill={sky} edge={heroEdge} />
     </header>
@@ -69,12 +68,6 @@ const footerEdge = edgeAbove(sky);
               <source type="image/webp" srcset="/sketches/contact-letterbox@1x.webp 540w, /sketches/contact-letterbox@2x.webp 1080w" sizes="(max-width: 800px) min(100vw, 420px), 360px" />
               <img src="/sketches/contact-letterbox@1x.png" srcset="/sketches/contact-letterbox@1x.png 540w, /sketches/contact-letterbox@2x.png 1080w" sizes="(max-width: 800px) min(100vw, 420px), 360px" width="540" height="400" alt="A wall letterbox with its flag raised and a teal envelope halfway in the slot, with a small pink stamp." />
             </picture>
-            <div class="contact-apply">
-              <h2>Ready to start?</h2>
-              <p>Stage 1, The Reset, is a private engagement for founders after their exit. It starts with a short application.</p>
-              <a class="btn-apply" href={urls.apply}>Apply for Stage 1</a>
-              <p>If you apply for Stage 1, we'll respond within 24 hours. If there's a fit, we'll have an honest conversation.</p>
-            </div>
           </aside>
         </div>
         <iframe
@@ -84,7 +77,7 @@ const footerEdge = edgeAbove(sky);
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
         ></iframe>
-        <p class="contact-address">DoGood Agency LLC, 30 N Gould St Ste N, Sheridan WY 82801, United States</p>
+        <p class="contact-address"><strong>DoGood Agency LLC</strong>, 30 N Gould St Ste N, Sheridan WY 82801, United States</p>
         <p>Proud member of IODA, a global network of OD professionals spanning 50+ countries</p>
         <p><a href="/newsletter">Not ready yet? That's okay. Fuel up, stay ready →</a></p>
       </div>
