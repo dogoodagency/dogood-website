@@ -28,32 +28,30 @@ const apply = "https://form.jotform.com/DoGoodAgency/frp-stage-1";
 
     <section class="privacy-band privacy-band-tint">
       <div class="privacy-well">
-        <div class="apply-top">
-          <div class="apply-copy">
-            <h2>Application</h2>
-            <p>Takes 5–10 minutes · Private · Review within 24 hours</p>
-            <p>This is Stage 1 of the Founder Reclamation Partnership</p>
-            <a class="btn-apply" href={apply}>Apply for Stage 1</a>
-            <p class="apply-limit">Limited to five new founders a month</p>
-          </div>
+        <div class="apply-stack">
           <picture class="apply-sketch">
             <source
               type="image/webp"
               srcset="/sketches/apply-stage-1-garden-gate@1x.webp 540w, /sketches/apply-stage-1-garden-gate@2x.webp 1080w"
-              sizes="(max-width: 800px) min(100vw, 420px), 420px"
+              sizes="(max-width: 800px) 100vw, 540px"
             />
             <img
               src="/sketches/apply-stage-1-garden-gate@1x.png"
               srcset="/sketches/apply-stage-1-garden-gate@1x.png 540w, /sketches/apply-stage-1-garden-gate@2x.png 1080w"
-              sizes="(max-width: 800px) min(100vw, 420px), 420px"
+              sizes="(max-width: 800px) 100vw, 540px"
               width="540"
               height="400"
               alt=""
             />
           </picture>
-        </div>
-
-        <section class="apply-case" aria-label="Case study">
+          <article class="apply-frame">
+            <h2>Application</h2>
+            <p>Takes 5–10 minutes · Private · Review within 24 hours</p>
+            <p>This is Stage 1 of the Founder Reclamation Partnership</p>
+            <a class="btn-apply" href={apply}>Apply for Stage 1</a>
+            <p class="apply-limit">Limited to five new founders a month</p>
+          </article>
+          <section id="case-j" aria-label="Case study">
           <article class="card case-compact">
             <img class="portrait" src={caseJ.src} width="220" height="244" alt="Pixelated portrait of founder J, shown this way to protect their identity" />
             <div>
@@ -66,7 +64,8 @@ const apply = "https://form.jotform.com/DoGoodAgency/frp-stage-1";
               </div>
             </div>
           </article>
-        </section>
+          </section>
+        </div>
       </div>
     </section>
   </article>

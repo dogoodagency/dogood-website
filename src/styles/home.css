@@ -6199,14 +6199,29 @@ body:has(.page-apply) .footer-wave {
   flex-shrink: 0;
 }
 
-.page-apply .apply-top {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(240px, 0.85fr);
-  gap: 48px;
-  align-items: center;
+.page-apply .privacy-well {
+  padding-bottom: 300px;
 }
 
-.page-apply .apply-copy h2 {
+.page-apply .apply-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+}
+
+.page-apply .apply-frame {
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 48px;
+  padding: 40px 44px;
+  background: #fff;
+  border: 1px solid #c2b7dd;
+  border-radius: 24px;
+  box-shadow: none;
+}
+
+.page-apply .apply-frame h2 {
   margin: 0 0 12px;
   color: #2a0b4f;
   font-size: 36px;
@@ -6215,17 +6230,21 @@ body:has(.page-apply) .footer-wave {
   letter-spacing: -0.03em;
 }
 
-.page-apply .apply-copy p {
+.page-apply .apply-frame p {
   margin: 0 0 16px;
   color: #2a0b4f;
   font-size: 18px;
   line-height: 1.6;
 }
 
-.page-apply .apply-limit {
-  margin-top: 12px;
-  font-size: 13px;
+.page-apply .apply-frame .apply-limit {
+  margin: 6px 0 0;
+  color: #fd6b82;
+  font-size: 10px;
+  font-weight: 400;
   font-style: italic;
+  line-height: 1.6;
+  letter-spacing: 0;
 }
 
 .page-apply a.btn-apply,
@@ -6249,33 +6268,38 @@ body:has(.page-apply) .footer-wave {
   background: transparent;
 }
 
-.page-apply .apply-case {
-  margin-top: 64px;
+.page-apply #case-j {
+  width: 100%;
+  margin: 48px 0 0;
+  padding: 0;
 }
 
-.page-apply .apply-case .t-kicker {
-  color: #ea1557;
-}
-
-.page-apply .apply-case .case-who {
-  color: #ea1557;
-}
-
-.page-apply .apply-case a.btn-case,
-.page-apply .apply-case a.btn-case:hover,
-.page-apply .apply-case a.btn-case:focus-visible {
-  background: #ea1557;
-  color: #fff;
+.page-apply #case-j .case-compact {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 @media (max-width: 800px) {
-  .page-apply .apply-top {
-    grid-template-columns: 1fr;
-    align-items: start;
+  .page-apply .apply-frame {
+    padding: 28px 22px;
   }
 
-  .page-apply .apply-copy h2 {
+  .page-apply .apply-frame h2 {
     font-size: 26px;
+  }
+
+  .page-apply #case-j .case-compact {
+    justify-items: start;
+    text-align: left;
+  }
+
+  .page-apply #case-j .portrait,
+  .page-apply #case-j h3 {
+    justify-self: start;
+    margin-inline: 0;
+    text-align: left;
   }
 }
 
