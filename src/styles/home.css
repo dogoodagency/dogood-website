@@ -3551,31 +3551,51 @@ header.nav .nav-mega-card img[hidden] {
 
 header.nav .nav-mega-label {
   position: absolute;
-  left: 4.44%;
-  top: 88.57%;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: calc(100% - 28px);
   color: #fff;
-  font-size: 5.56cqw;
+  font-size: 14px;
   font-weight: 550;
-  line-height: 1;
+  line-height: 1.15;
+  white-space: nowrap;
 }
 
 header.nav .nav-mega-go {
-  position: absolute;
-  left: 42.96%;
-  top: 86.67%;
-  width: 10%;
-  height: 8.57%;
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6 3.5 10.5 8 6 12.5' fill='none' stroke='%232A0B4F' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 52% 52% no-repeat;
+}
+
+header.nav .nav-mega-group {
+  margin: 8px 2px 0;
+  padding: 0;
+  color: var(--pink-text);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+header.nav .nav-panel .nav-mega-group {
+  margin: 12px 12px 0;
+  color: #c2b7dd;
 }
 
 header.nav .nav-mega-links {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  justify-content: space-between;
-  height: 100%;
-  gap: 12px;
+  justify-content: flex-start;
+  height: auto;
+  gap: 8px;
   margin: 0;
   padding: 0;
   list-style: none;

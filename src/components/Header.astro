@@ -10,24 +10,34 @@ const links = [
   { href: "/for-advisors", label: "Advisor Center", menu: "nav-advisors" },
 ];
 
-const advisorLinks = [
+const advisorGroups = [
   {
-    href: "/for-advisors",
-    label: "Partner with us",
-    detail: "How we work with exit and wealth advisors, and what your clients get.",
-    more: "A simple referral process, and a private path for founders after their exit.",
+    label: "Work with us",
+    items: [
+      {
+        href: "/for-advisors",
+        label: "Partner with us",
+        detail:
+          "How referrals work, what your client gets, and how we keep you in the loop. For exit, succession and wealth advisors.",
+      },
+    ],
   },
   {
-    href: "/for-advisors/client-tools",
-    label: "Free toolkit",
-    detail: "",
-    more: "Free tools for you and your clients, before and after the sale.",
-  },
-  {
-    href: "/for-advisors/insights",
-    label: "Insights for advisors",
-    detail: "What founders struggle with, from our conversations with advisors.",
-    more: "Short, anonymised notes on the personal side of selling a company.",
+    label: "Free resources",
+    items: [
+      {
+        href: "/for-advisors/client-tools",
+        label: "Free toolkit",
+        detail:
+          "The founder readiness check, a signals guide and a planner. Use them with clients before and after the sale.",
+      },
+      {
+        href: "/for-advisors/insights",
+        label: "Insights for advisors",
+        detail:
+          "Short, anonymized notes from our talks with advisors on the personal side of selling a company.",
+      },
+    ],
   },
 ];
 ---
@@ -81,18 +91,22 @@ const advisorLinks = [
             decoding="async"
           />
         </picture>
-        <span class="nav-mega-label">Advisor Center</span>
-        <span class="nav-mega-go" aria-hidden="true"></span>
+        <span class="nav-mega-label">Advisor Center<span class="nav-mega-go" aria-hidden="true"></span></span>
       </a>
       <ul class="nav-mega-links">
         {
-          advisorLinks.map((item) => (
-            <li>
-              <a href={item.href}>
-                <span class="nav-mega-name">{item.label}</span>
-                <small>{item.detail} {item.more}</small>
-              </a>
-            </li>
+          advisorGroups.map((group) => (
+            <>
+              <li class="nav-mega-group">{group.label}</li>
+              {group.items.map((item) => (
+                <li>
+                  <a href={item.href}>
+                    <span class="nav-mega-name">{item.label}</span>
+                    <small>{item.detail}</small>
+                  </a>
+                </li>
+              ))}
+            </>
           ))
         }
       </ul>
@@ -115,11 +129,16 @@ const advisorLinks = [
             </button>
             <div id="nav-advisors-phone" class="nav-advisor-links" hidden>
               {
-                advisorLinks.map((item) => (
-                  <a class="nav-sub" href={item.href}>
-                    <span class="nav-sub-title">{item.label}</span>
-                    <span class="nav-sub-note">{item.more}</span>
-                  </a>
+                advisorGroups.map((group) => (
+                  <>
+                    <p class="nav-mega-group">{group.label}</p>
+                    {group.items.map((item) => (
+                      <a class="nav-sub" href={item.href}>
+                        <span class="nav-sub-title">{item.label}</span>
+                        <span class="nav-sub-note">{item.detail}</span>
+                      </a>
+                    ))}
+                  </>
                 ))
               }
             </div>
@@ -264,11 +283,7 @@ const advisorLinks = [
       const links = advisorMenu.querySelector(".nav-mega-links");
       const card = advisorMenu.querySelector(".nav-mega-card");
       if (!(links instanceof HTMLElement) || !(card instanceof HTMLElement)) return;
-      const measure = () => {
-        const items = [...links.querySelectorAll(":scope > li > a")];
-        const gap = Number.parseFloat(getComputedStyle(links).rowGap) || 0;
-        return items.reduce((sum, item) => sum + item.getBoundingClientRect().height, 0) + gap * Math.max(items.length - 1, 0);
-      };
+      const measure = () => links.getBoundingClientRect().height;
       for (let pass = 0; pass < 3; pass += 1) {
         const height = Math.max(Math.round(measure()), 315);
         const width = Math.round((height * 360) / 420);
