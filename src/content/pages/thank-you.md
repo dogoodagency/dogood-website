@@ -6,8 +6,6 @@ description: "Connect with DoGood Agency. Reach out to us for collaboration, inq
 
 Welcome to FOUNDERland.
 
-We look forward to chatting with you very soon
+We look forward to chatting with you very soon.
 
 Check your inbox for your confirmation email from Reclaim (see the example below)
-
-Anchor 1
