@@ -6,7 +6,7 @@ description: "Book a short Team Readiness & Timing Call to confirm sequence, tim
 
 # Thank you – You're booked
 
-Welcome to <strong>FOUNDER</strong>land.
+Welcome to <span class="pink-soft"><strong>FOUNDER</strong>land</span>.
 
 You'll receive the calendar invite and call details by email.
 

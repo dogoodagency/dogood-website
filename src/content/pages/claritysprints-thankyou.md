@@ -8,7 +8,7 @@ For founders + select founder-like executives
 
 Thank you – You're booked
 
-Welcome to <strong>FOUNDER</strong>land.
+Welcome to <span class="pink-soft"><strong>FOUNDER</strong>land</span>.
 
 What we’ll do in your sprints:
 

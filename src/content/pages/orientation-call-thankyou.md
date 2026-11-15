@@ -6,7 +6,7 @@ description: "A short call to get oriented, clarify fit and timing, and choose t
 
 Thank you – You're booked
 
-Welcome to <strong>FOUNDER</strong>land.
+Welcome to <span class="pink-soft"><strong>FOUNDER</strong>land</span>.
 
 You will have received a calendar invite in your inbox, and the meeting should already be added to your calendar.
 
