@@ -7406,7 +7406,10 @@ body:has(.page-home) {
 
 /* Footer measured at 1024px, then scaled. Columns: 290 / 165 / 194 / 263. */
 .footer {
-  padding: clamp(32px, 9.277vw, 134px) clamp(20px, 5.469vw, 79px) 28px;
+  padding-top: clamp(32px, 9.277vw, 134px);
+  padding-bottom: 28px;
+  padding-left: max(48px, var(--pad));
+  padding-right: max(96px, var(--pad));
 }
 
 .footer-layout {
@@ -7564,6 +7567,11 @@ body:has(.page-home) {
 }
 
 @media (max-width: 767px) {
+  .footer {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
   .footer .legal {
     margin-top: 36px;
     flex-direction: column;
