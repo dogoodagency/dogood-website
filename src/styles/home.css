@@ -7417,10 +7417,6 @@ body:has(.page-home) {
   align-items: start;
 }
 
-.footer .col-title {
-  margin-bottom: 6px;
-}
-
 .footer-lets {
   grid-column: 1 / 4;
   grid-row: 2;
@@ -7445,9 +7441,9 @@ body:has(.page-home) {
 .footer .footer-subscribe h2 {
   margin: 0 0 14px;
   color: #fff;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 800;
-  line-height: 1.3;
+  line-height: 1.6;
 }
 
 .footer .footer-form button.btn-subscribe,
@@ -7482,25 +7478,26 @@ body:has(.page-home) {
   transform: translateY(-50%) scale(0);
 }
 
-.footer-explore li,
-.footer-advisors li {
-  margin: 0;
-  font-size: 13px;
-  line-height: 22px;
-}
-
-.footer-explore a,
-.footer-advisors a {
-  display: inline-block;
-  font-size: 13px;
-  line-height: 22px;
+.footer h2,
+.footer h2.col-title,
+.footer h2.agency-name,
+.footer a:not(.connect-mark),
+.footer p,
+.footer .address,
+.footer .legal,
+.footer .legal a,
+.footer .footer-form input,
+.footer .footer-form button.btn-subscribe,
+.footer .footer-form button.btn-subscribe:hover,
+.footer .footer-form button.btn-subscribe:focus-visible {
+  font-size: 14px;
 }
 
 .footer-brand .fine {
-  margin: 0 0 10px;
-  font-size: 12px;
+  margin: 0 0 8px;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 1.35;
+  line-height: 1.55;
   white-space: nowrap;
 }
 
@@ -7510,7 +7507,7 @@ body:has(.page-home) {
 }
 
 .footer a.connect-mark {
-  margin: 0 0 28px;
+  margin: 0 0 56px;
   font-size: clamp(48px, 11.133vw, 160px);
   font-weight: 900;
   font-synthesis: none;
@@ -7518,13 +7515,9 @@ body:has(.page-home) {
   letter-spacing: -0.045em;
 }
 
-.footer-about .col-title {
-  margin-bottom: 8px;
-}
-
 .footer-about .fine {
-  font-size: 13px;
-  line-height: 1.45;
+  font-size: 14px;
+  line-height: 1.55;
   white-space: normal;
 }
 
@@ -7532,19 +7525,11 @@ body:has(.page-home) {
   width: auto;
   max-width: 100%;
   align-self: stretch;
+  font-size: 12px;
+  line-height: 1.55;
   white-space: normal;
   overflow: visible;
   text-overflow: clip;
-}
-
-.footer-about .footer-subhead {
-  margin-top: clamp(20px, 2.7vw, 40px);
-}
-
-.footer .address {
-  margin: 0 0 8px;
-  font-size: 13px;
-  line-height: 1.45;
 }
 
 .footer .legal {
