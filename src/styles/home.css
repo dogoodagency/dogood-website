@@ -7572,6 +7572,15 @@ body:has(.page-home) {
   white-space: normal;
 }
 
+.footer-about p.services-note {
+  width: auto;
+  max-width: 100%;
+  align-self: stretch;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+
 .footer-about .footer-subhead {
   margin-top: clamp(20px, 2.7vw, 40px);
 }
