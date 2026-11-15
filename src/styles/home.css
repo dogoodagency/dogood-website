@@ -1538,6 +1538,13 @@ main li {
   color: #28dbb0;
 }
 
+.hero .lede .founder-word {
+  font-family: Montserrat, sans-serif;
+  font-weight: 900;
+  font-synthesis: none;
+  color: inherit;
+}
+
 #clients {
   padding-top: 28px;
   padding-bottom: 20px;
