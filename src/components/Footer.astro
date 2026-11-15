@@ -46,13 +46,7 @@ const legal = [
   <Wave fill="#2A0B4F" edge={edge} />
 </div>
 <footer class="footer" id="footer">
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <a class="footer-logo" href="/">
-        <Image src={logo} alt="DoGood Agency" widths={[240, 480]} sizes="148px" loading="lazy" />
-      </a>
-      <p class="fine">Supporting life in <span class="pink-soft"><strong>FOUNDER</strong>land</span>, before and after the exit.</p>
-    </div>
+  <div class="footer-top">
     <div class="footer-subscribe">
       {
         !hideOptin && (
@@ -120,23 +114,15 @@ const legal = [
         }
       </ul>
     </div>
-    <div class="footer-about">
-      <h2 class="col-title">About DoGood</h2>
-      <p class="fine">
-        Proud member of IODA, a global network of OD professionals spanning 50+ countries.
-      </p>
-      <h2 class="footer-subhead agency-name">DoGood Agency LLC</h2>
-      <p class="address">
-        30 N Gould St Ste N,<br />
-        Sheridan WY 82801,<br />
-        United States
-      </p>
-      <p class="fine services-note">
-        Services are provided by DoGood OÜ, our EU-based operating company.
-      </p>
+    <div class="footer-brand">
+      <p class="fine">Supporting life in FOUNDERland, before and after the exit.</p>
+      <a class="footer-logo" href="/">
+        <Image src={logo} alt="DoGood Agency" widths={[176, 352]} sizes="88px" loading="lazy" />
+      </a>
     </div>
   </div>
-  <div class="footer-lets">
+  <div class="footer-mid">
+    <div class="footer-lets">
     <a class="connect-mark" href="/contact" aria-label="Let's Connect">
       <span class="connect-lets" aria-hidden="true">Let’s</span>
       <span class="connect-word" aria-hidden="true"><span class="cn-co">Co</span><span class="cn-n cn-n1">n</span><span class="cn-n cn-n2">n</span><span class="cn-ect">ect</span></span>
@@ -162,7 +148,23 @@ const legal = [
           </li>
         ))
       }
-    </ul>
+      </ul>
+    </div>
+    <div class="footer-about">
+      <h2 class="col-title">About DoGood</h2>
+      <p class="fine">
+        Proud member of IODA, a global network of OD professionals spanning 50+ countries.
+      </p>
+      <h2 class="footer-subhead agency-name">DoGood Agency LLC</h2>
+      <p class="address">
+        30 N Gould St Ste N,<br />
+        Sheridan WY 82801,<br />
+        United States
+      </p>
+      <p class="fine services-note">
+        Services are provided by DoGood OÜ, our EU-based operating company.
+      </p>
+    </div>
   </div>
   <div class="legal">
     <div>
