@@ -7449,41 +7449,11 @@ body:has(.page-home) {
 }
 
 .footer .footer-subscribe h2 {
-  margin: 0 0 14px;
+  margin: 0 0 8px;
   color: #fff;
   font-size: 14px;
   font-weight: 800;
-  line-height: 1.6;
-}
-
-.footer .footer-form button.btn-subscribe,
-.footer .footer-form button.btn-subscribe:hover,
-.footer .footer-form button.btn-subscribe:focus-visible {
-  width: max-content;
-  max-width: 100%;
-  height: auto;
-  min-height: 44px;
-  padding: 0 52px 0 22px;
-  border: 1px solid #28dbb0;
-  border-radius: 999px;
-  background: #28dbb0;
-  color: #2a0b4f;
   line-height: 1.2;
-  white-space: nowrap;
-  transform: none;
-}
-
-.footer .footer-form button.btn-subscribe::after,
-.footer .footer-form button.btn-subscribe:hover::after,
-.footer .footer-form button.btn-subscribe:focus-visible::after {
-  right: 8px;
-  transform: translateY(-50%) scale(1);
-}
-
-.footer .footer-form button.btn-subscribe::before,
-.footer .footer-form button.btn-subscribe:hover::before,
-.footer .footer-form button.btn-subscribe:focus-visible::before {
-  transform: translateY(-50%) scale(0);
 }
 
 .footer h2,
@@ -7606,27 +7576,39 @@ body:has(.page-home) {
   }
 }
 
-/* Last word on the footer Subscribe control. Beats the shared button's
-   border-radius: 16px and font-weight: 400. */
+/* Footer Subscribe, as it resolved before a5b64836: the shared control's
+   16px radius and regular weight, not the later pill override. */
 .footer .footer-form button.btn-subscribe,
 .footer .footer-form button.btn-subscribe:hover,
 .footer .footer-form button.btn-subscribe:focus-visible {
+  width: max-content;
+  max-width: 100%;
+  height: auto;
+  min-height: 52px;
+  padding: 10px 56px 10px 20px;
+  border: 1px solid #28dbb0;
+  border-radius: 16px;
+  background: #28dbb0;
+  color: #2a0b4f;
   font-family: Montserrat, sans-serif;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 400;
   font-synthesis: none;
-  color: #2a0b4f;
-  background: #28dbb0;
-  border: 1px solid #28dbb0;
-  border-radius: 999px;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .footer .footer-form button.btn-subscribe::after,
 .footer .footer-form button.btn-subscribe:hover::after,
 .footer .footer-form button.btn-subscribe:focus-visible::after {
+  right: 8px;
   width: 36px;
   height: 36px;
-  right: 4px;
-  background-size: 14px 14px;
   transform: translateY(-50%) scale(1);
+}
+
+.footer .footer-form button.btn-subscribe::before,
+.footer .footer-form button.btn-subscribe:hover::before,
+.footer .footer-form button.btn-subscribe:focus-visible::before {
+  transform: translateY(-50%) scale(0);
 }
