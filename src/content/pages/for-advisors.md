@@ -4,7 +4,7 @@ description: "The Advisor Center: how DoGood works with exit and succession advi
 advisorLine: true
 ---
 
-<p class="caption">Advisor Center</p>
+<p class="caption">Advisor Center · Refer a founder</p>
 
 # When the deal closes, the hard part starts.
 

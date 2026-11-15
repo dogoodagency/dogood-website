@@ -4,7 +4,7 @@ description: "Free tools for exit and succession advisors: a readiness check for
 hideOptin: true
 ---
 
-<p class="caption">Advisor Center · Free toolkit</p>
+<p class="caption">Advisor Center · Free tools for your clients</p>
 
 # Free tools for you and your clients
 

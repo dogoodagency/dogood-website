@@ -4,7 +4,7 @@ description: "What founders struggle with before and after the sale, drawn anony
 hideOptin: true
 ---
 
-<p class="caption">Advisor Center · Insights</p>
+<p class="caption">Advisor Center · Advisor insights</p>
 
 # What we hear from advisors
 
