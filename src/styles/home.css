@@ -1545,6 +1545,13 @@ main li {
   color: inherit;
 }
 
+#first-card .founder-word {
+  color: #c10e46;
+  font-family: Montserrat, sans-serif;
+  font-weight: 900;
+  font-synthesis: none;
+}
+
 #clients {
   padding-top: 28px;
   padding-bottom: 20px;
