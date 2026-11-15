@@ -7424,6 +7424,7 @@ body:has(.page-home) {
   grid-column: 1 / 4;
   grid-row: 2;
   min-width: 0;
+  container-type: inline-size;
 }
 
 .footer-brand {
@@ -7511,11 +7512,13 @@ body:has(.page-home) {
 
 .footer a.connect-mark {
   margin: 0 0 56px;
-  font-size: clamp(48px, 11.133vw, 160px);
+  /* Connect is about 4.3em wide. Leave at least 32px before the About column. */
+  font-size: clamp(40px, calc((100cqi - 32px) / 4.3), 160px);
   font-weight: 900;
   font-synthesis: none;
   line-height: 0.84;
   letter-spacing: -0.045em;
+  max-width: 100%;
 }
 
 .footer-about .fine {
