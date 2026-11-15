@@ -4,6 +4,6 @@ description: "A private 30-day Intensive for founders navigating life after exit
 ---
 # Page not found
 
-Looks like you've wandered off the map in FOUNDERland.
+Looks like you've wandered off the map in <strong>FOUNDER</strong>land.
 
 <a class="btn-teal" href="/">Back to the homepage</a>

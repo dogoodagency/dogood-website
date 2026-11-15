@@ -8,7 +8,7 @@ hideOptin: true
 
 # What we hear from advisors
 
-Advisors rarely hear from each other. We talk with many of them. Here we share the patterns, anonymously, so you can help your founders with life in FOUNDERland.
+Advisors rarely hear from each other. We talk with many of them. Here we share the patterns, anonymously, so you can help your founders with life in <strong>FOUNDER</strong>land.
 
 <div class="resource-grid">
 <article class="resource-card">

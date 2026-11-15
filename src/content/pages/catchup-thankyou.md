@@ -6,7 +6,7 @@ description: "scheduling page for a personal catch-up with family and friends"
 
 Thank you – You're booked
 
-Welcome to FOUNDERland.
+Welcome to <strong>FOUNDER</strong>land.
 
 You will have received a calendar invite in your inbox, and the meeting should already be added – verify that the meeting appears there.
 

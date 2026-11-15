@@ -4,7 +4,7 @@ description: "Connect with DoGood Agency. Reach out to us for collaboration, inq
 ---
 # You're Scheduled!
 
-Welcome to FOUNDERland.
+Welcome to <strong>FOUNDER</strong>land.
 
 We look forward to chatting with you very soon.
 
