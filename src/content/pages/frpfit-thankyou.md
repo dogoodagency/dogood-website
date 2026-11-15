@@ -6,6 +6,8 @@ description: "Book a private Fit Call to confirm alignment for the Founder Recla
 
 Thank you – You're booked
 
+Welcome to FOUNDERland.
+
 You will have received a calendar invite in your inbox, and the meeting should already be added to your calendar. Verify that the meeting appears there.
 
 The FRP-Fit Call is for founders who’ve already applied for Stage 1: The Reset (30 days). We’ll clarify what’s happening, what it’s costing you, and whether we move forward.

@@ -11,6 +11,8 @@ hideOptin: true
 
 # You're on the list.
 
+Welcome to FOUNDERland.
+
 Thank you. We'll send "The first 90 days after exit: 7 questions to ask before your next move" when the guide is ready. It is not written yet.
 
 You're also on the list for the notes on life after exit. The first issues go out on 15 December, 12 January and 26 January.

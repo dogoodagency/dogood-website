@@ -6,6 +6,8 @@ description: "Book a private Fit Call to confirm alignment for the Founder Recla
 
 You're booked
 
+Welcome to FOUNDERland.
+
 You will have received a calendar invite in your inbox, and the meeting should already be added. Verify that it appears there.
 
 We recommend you take the call somewhere private, with enough space to speak openly. We will use the time to understand what life after exit looks like for you (now or in the near future), what needs attention, and whether working together makes sense.

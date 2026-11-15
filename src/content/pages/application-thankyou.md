@@ -4,6 +4,8 @@ description: "Founder Reclamation Partnership | Stage 1: The Intensive (30 days)
 ---
 # Application Received
 
+Welcome to FOUNDERland. We'll be in touch within one working day.
+
 Your application is complete. We'll review it carefully and respond within 24 hours.
 
 Seb & the DoGood Team

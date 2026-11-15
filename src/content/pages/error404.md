@@ -2,10 +2,8 @@
 title: "404 Error Page | DoGood Founders"
 description: "A private 30-day Intensive for founders navigating life after exit. Start with Stage 1 of the Founder Reclamation Partnership. 5 founders a month."
 ---
-# You got 404'd
+# Page not found
 
-You’ve found our junior developer’s homepage
+Looks like you've wandered off the map in FOUNDERland.
 
-let’s find a better place for you to go.
-
-<a class="btn-teal" href="/">Go To Homepage</a>
+<a class="btn-teal" href="/">Back to the homepage</a>

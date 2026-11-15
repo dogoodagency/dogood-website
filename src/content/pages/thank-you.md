@@ -4,6 +4,8 @@ description: "Connect with DoGood Agency. Reach out to us for collaboration, inq
 ---
 # You're Scheduled!
 
+Welcome to FOUNDERland.
+
 We look forward to chatting with you very soon
 
 Check your inbox for your confirmation email from Reclaim (see the example below)

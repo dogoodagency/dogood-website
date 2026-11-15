@@ -8,6 +8,8 @@ For founders + select founder-like executives
 
 Thank you – You're booked
 
+Welcome to FOUNDERland.
+
 What we’ll do in your sprints:
 
 Each sprint is 60 minutes and stays fluid based on what’s most relevant in the moment. The flow follows a consistent arc:

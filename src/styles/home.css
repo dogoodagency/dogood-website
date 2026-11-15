@@ -2680,6 +2680,29 @@ p.say-no,
   margin-bottom: -75px;
 }
 
+.footer-brand {
+  grid-column: 1 / -1;
+}
+
+.footer-logo {
+  display: inline-block;
+  line-height: 0;
+}
+
+.footer-logo img {
+  height: 42px;
+  width: auto;
+}
+
+.footer a.footer-logo:hover,
+.footer a.footer-logo:focus-visible {
+  text-decoration: none;
+}
+
+.footer-brand .fine {
+  margin-top: 10px;
+}
+
 p.services-note {
   font-size: 12px;
 }

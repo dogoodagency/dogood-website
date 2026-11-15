@@ -6,6 +6,8 @@ description: "Book a short Team Readiness & Timing Call to confirm sequence, tim
 
 # Thank you – You're booked
 
+Welcome to FOUNDERland.
+
 You'll receive the calendar invite and call details by email.
 
 Recommended call preparation:
