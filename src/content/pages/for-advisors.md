@@ -1,8 +1,10 @@
 ---
-title: "For Advisors | DoGood Founders"
-description: "When your client's deal closes, the hard part starts. Refer them to a private 30-day engagement for life after exit. You stay the trusted advisor."
+title: "Advisor Center | DoGood Agency"
+description: "The Advisor Center: how DoGood works with exit and succession advisors, and free tools to help your clients with life after the sale."
 advisorLine: true
 ---
+
+<p class="caption">Advisor Center</p>
 
 # When the deal closes, the hard part starts.
 
@@ -13,7 +15,7 @@ We support life in FOUNDERland. You prepare the business for the sale. We prepar
   <img src="/sketches/for-advisors-after-the-deal-sketch@1x.png" srcset="/sketches/for-advisors-after-the-deal-sketch@1x.png 560w, /sketches/for-advisors-after-the-deal-sketch@2x.png 1120w" sizes="(max-width: 1080px) min(100vw, 560px), 560px" width="560" height="420" alt="A fine-liner sketch of an advisor beside a finished folder, a founder walking a teal path, and a guide waiting at an open door." />
 </picture>
 
-For exit and succession advisors, wealth advisors and family offices.
+For exit planners and succession advisors, wealth advisors and family offices.
 
 You helped your client through the transaction. What comes next is personal: more freedom than they expected, and less certainty about what to do with it.
 
@@ -35,11 +37,23 @@ A trusted introduction means they do not have to look for that help alone, and y
 
 ## A private 30 days, for the personal side
 
-Stage 1 is a private, confidential 30-day engagement for founders who have exited, or are getting ready to, and do not want to make their next move from the same old patterns.
+Stage 1 is a private, confidential 30-day engagement for founders who have exited and do not want to make their next move from the same old patterns.
 
 Over 30 days, we help them see what is really surfacing, separate distraction from genuine desire, and get clear on what needs attention before the next major decision. If it fits, Stage 2 follows by invitation only.
 
 The work is limited to 5 new founders a month. If Stage 1 is not right, we say so, and we point them somewhere better. Stage 1 is covered by our Clarity-First Guarantee.
+
+---
+
+## Free toolkit
+
+## Something useful to hand your client, at no cost
+
+Advisors told us the same thing again and again: their clients have no plan for life after the sale, and there is nothing to hand them that opens the personal conversation. So we are building free tools for exactly that. No sign-up for you, and no strings.
+
+First comes the Founder Readiness Check. You send it with your own link. Your client gets a private report and a free debrief call. If they say yes, you get a copy.
+
+<a href="/for-advisors/client-tools">See the free toolkit →</a>
 
 ---
 
@@ -67,12 +81,15 @@ If they go ahead, we keep you informed of the broad shape of things. We do not s
 
 The founder begins a private 30-day engagement. You stay the trusted advisor.
 
+Want to see it from the inside? A short walk-through, with a video from Seb, shows what happens after you refer someone. Coming soon.
+
 ---
 
 ## What you get
 
 - **A deeper client relationship.** You have a careful answer when the deal is done and your client is still asking, "What now?"
 - **A trusted place for the personal side.** You continue to look after the advice they already come to you for. We do not give financial or legal advice, and we do not poach.
+- **Free tools with your name on the link.** Every tool in the toolkit is free to share, and the readiness check comes with your own personal link.
 - **A referral fee, under a written agreement.** There is a referral fee, paid under a written Referral Partner Agreement. The details are in our partner agreement, and we share them on the intro call.
 
 ---
@@ -97,11 +114,19 @@ No. We never contact a founder without your introduction, and we only ask you to
 
 ### Who is a good fit to introduce?
 
-Founders who have exited or are getting ready to, and are no longer in the day-to-day (a board or advisory role is fine). This is often a fit when they have more freedom than before, and it does not feel the way they expected. If you are unsure, we can talk it through on the intro call.
+Founders who have exited and are no longer in the day-to-day (a board or advisory role is fine). This is often a fit when they have more freedom than before, and it does not feel the way they expected. If you are unsure, we can talk it through on the intro call.
+
+### What about a client who has not sold yet?
+
+We have a shorter Exit-Prep for founders who have firmly decided to exit and are preparing for it: six weekly sessions, held remotely, with the same guarantee as Stage 1. If they later want to go deeper after the sale, they can move on to Stage 1. Ask us about it on the intro call.
 
 ### What should I tell them?
 
 That DoGood is a private 30-day engagement for founders navigating life after exit, and that you would like to introduce them, if they are willing. We can give you a short way to say this on the intro call.
+
+### Do the free tools cost anything, or need a sign-up?
+
+No. They are free to use and to share, with no sign-up for you. The only email we ask for is your client's, so we can send them their own readiness report. You see a copy only if they say yes.
 
 ### How does the referral fee work?
 
@@ -114,8 +139,6 @@ Yes, with the founder's consent. We keep you informed of the broad shape of thin
 ### Do you give financial or legal advice?
 
 No. We do not give financial or legal advice, and we do not poach. You stay the trusted advisor. We work only on the personal side of life after exit.
-
-<a class="btn-outline" href="/for-advisors/client-tools">Free tools for your clients</a>
 
 ---
 
