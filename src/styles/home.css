@@ -7443,46 +7443,11 @@ body:has(.page-home) {
 }
 
 .footer .footer-subscribe h2 {
-  margin: 0 0 8px;
+  margin: 0 0 14px;
   color: #fff;
   font-size: 16px;
   font-weight: 800;
   line-height: 1.3;
-}
-
-.footer-subscribe .optin-copy {
-  margin: 0 0 10px;
-  font-size: 12px;
-  line-height: 1.35;
-  white-space: normal;
-}
-
-.footer .footer-form {
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-  margin: 0;
-}
-
-.footer .footer-subscribe .email-field,
-.footer .footer-subscribe .email-field input,
-.footer .footer-form .email-field input {
-  width: clamp(160px, 19.043vw, 274px);
-  max-width: 100%;
-  height: 26px;
-  min-height: 26px;
-}
-
-.footer .email-field input {
-  padding-left: 32px;
-  font-size: 13px;
-}
-
-.footer .email-field .stay-envelope,
-.footer .email-field .stay-envelope img {
-  left: 8px;
-  width: 14px;
-  height: 14px;
 }
 
 .footer .footer-form button.btn-subscribe,
@@ -7490,33 +7455,24 @@ body:has(.page-home) {
 .footer .footer-form button.btn-subscribe:focus-visible {
   width: max-content;
   max-width: 100%;
-  height: 30px;
-  min-height: 30px;
-  margin: 0;
-  padding: 0 32px 0 14px;
+  height: auto;
+  min-height: 44px;
+  padding: 0 52px 0 22px;
+  border: 1px solid #28dbb0;
   border-radius: 999px;
-  font-size: 12px;
+  background: #28dbb0;
+  color: #2a0b4f;
+  font-size: 16px;
   font-weight: 700;
-  line-height: 1;
+  line-height: 1.2;
   white-space: nowrap;
   transform: none;
 }
 
-.footer .footer-form button.btn-subscribe::before,
-.footer .footer-form button.btn-subscribe::after,
-.footer .footer-form button.btn-subscribe:hover::before,
-.footer .footer-form button.btn-subscribe:hover::after,
-.footer .footer-form button.btn-subscribe:focus-visible::before,
-.footer .footer-form button.btn-subscribe:focus-visible::after {
-  width: 18px;
-  height: 18px;
-  background-size: 8px 8px;
-}
-
 .footer .footer-form button.btn-subscribe::after,
 .footer .footer-form button.btn-subscribe:hover::after,
 .footer .footer-form button.btn-subscribe:focus-visible::after {
-  right: 6px;
+  right: 8px;
   transform: translateY(-50%) scale(1);
 }
 
