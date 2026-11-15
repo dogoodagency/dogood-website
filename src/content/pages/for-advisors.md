@@ -6,7 +6,7 @@ advisorLine: true
 
 # When the deal closes, the hard part starts.
 
-We support life in Founderland. Your clients get a partner for the founder side of the exit.
+We support life in Founderland. You prepare the business for the sale. We prepare the founder for life after it.
 
 <picture class="page-sketch">
   <source type="image/webp" srcset="/sketches/for-advisors-after-the-deal-sketch@1x.webp 560w, /sketches/for-advisors-after-the-deal-sketch@2x.webp 1120w" sizes="(max-width: 1080px) min(100vw, 560px), 560px" />
