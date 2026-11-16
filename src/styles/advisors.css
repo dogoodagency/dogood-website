@@ -85,6 +85,19 @@ body:has(.adv-page) .footer-wave {
   color: #f5f2ff;
 }
 
+.adv-page .adv-hero p,
+.adv-page .adv-hero .adv-lede {
+  color: #f5f2ff;
+}
+
+.adv-page .adv-hero .adv-eyebrow {
+  color: var(--adv-teal);
+}
+
+.adv-page .adv-hero .adv-hero-audience {
+  color: #cfc4e6;
+}
+
 /* ---------- Bands ---------- */
 
 .adv-band {
