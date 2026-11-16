@@ -6,6 +6,10 @@ body:has(.nl-page) .footer-wave {
   background: var(--footer-strip, #f5f2ff);
 }
 
+html:has(.nl-page) {
+  scroll-behavior: smooth;
+}
+
 .nl-page {
   --nl-tint: #f5f2ff;
   --nl-line: #c2b7dd;
@@ -23,7 +27,22 @@ body:has(.nl-page) .footer-wave {
   box-sizing: border-box;
 }
 
-/* ---------- Hero + signup ---------- */
+/* Hidden things stay hidden at every width, whatever display a button class sets. */
+.nl-page [hidden] {
+  display: none !important;
+}
+
+/* Anchors: keep the sticky header off the headings. */
+#note,
+#questions,
+#book,
+#prologue,
+#signup,
+#chapters {
+  scroll-margin-top: 110px;
+}
+
+/* ---------- Hero ---------- */
 
 .nl-hero {
   margin-top: -94px;
@@ -34,12 +53,12 @@ body:has(.nl-page) .footer-wave {
 
 .nl-hero-inner {
   display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-  gap: 72px;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 64px;
   align-items: center;
   width: min(1120px, calc(100% - 2 * var(--pad)));
   margin: 0 auto;
-  padding: 56px 0 48px;
+  padding: 56px 0 56px;
 }
 
 .nl-hero .hero-wave {
@@ -65,350 +84,77 @@ body:has(.nl-page) .footer-wave {
 .nl-page h1 {
   margin: 0 0 18px;
   color: #fff;
-  font-size: clamp(30px, 3.4vw, 44px);
+  font-size: clamp(32px, 3.8vw, 48px);
   font-weight: 900;
-  line-height: 1.15;
+  line-height: 1.12;
   letter-spacing: -0.03em;
   overflow-wrap: break-word;
 }
 
 .nl-lede {
-  margin: 0 0 18px;
+  max-width: 600px;
+  margin: 0 0 30px;
   color: #f5f2ff;
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 500;
   line-height: 1.55;
 }
 
-.nl-cadence {
+.nl-hero-actions {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  margin: 0 0 28px;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.nl-hero-actions .btn-teal {
+  white-space: normal;
+}
+
+/* Secondary button that reads on the dark hero. */
+.nl-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 10px 28px;
+  background: transparent;
+  border: 1.5px solid #fff;
+  border-radius: 16px;
   color: #fff;
   font-size: 16px;
   font-weight: 700;
-  line-height: 1.5;
-}
-
-.nl-cadence svg {
-  flex: none;
-  width: 24px;
-  height: 24px;
-  margin-top: 1px;
-  color: var(--nl-teal);
-}
-
-/* The white sign-up card inside the dark hero. */
-.nl-card-signup {
-  padding: 28px 30px 26px;
-  background: #fff;
-  border-radius: 24px;
-  box-shadow: 0 18px 48px rgba(17, 0, 39, 0.35);
-  color: var(--nl-ink);
-}
-
-.nl-leadin {
-  margin: 0 0 16px;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.5;
-}
-
-.nl-social {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Social sign-up buttons. PLACEHOLDERS: MailerLite has no Google or
-   Facebook sign-in and the site is static, so these only guide people to the
-   email field (see the script in newsletter.astro). */
-.nl-social-btn {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-height: 52px;
-  padding: 0 52px;
-  background: #fff;
-  border: 1.5px solid var(--nl-ink);
-  border-radius: 999px;
-  color: var(--nl-ink);
-  font-family: inherit;
-  font-size: 16px;
-  font-weight: 700;
   line-height: 1.2;
-  cursor: pointer;
-  transition: background-color 0.15s ease;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.nl-social-btn:hover {
-  background: var(--nl-tint);
-}
-
-.nl-social-btn svg {
-  position: absolute;
-  left: 20px;
-  top: 50%;
-  width: 22px;
-  height: 22px;
-  transform: translateY(-50%);
-}
-
-.nl-social-note {
-  margin: 0;
-  color: #5a3f78;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.5;
-}
-
-.nl-social-note:not(:empty) {
-  margin-top: 12px;
-}
-
-.nl-or {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin: 18px 0;
-  color: #8e7ba6;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.nl-or::before,
-.nl-or::after {
-  content: "";
-  flex: 1 1 auto;
-  height: 1px;
-  background: #e3dcf2;
-}
-
-.nl-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.nl-form label {
-  color: var(--nl-ink);
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.3;
-}
-
-.nl-form input[type="email"] {
-  width: 100%;
-  min-height: 52px;
-  padding: 0 22px;
+.nl-btn-ghost:hover,
+.nl-btn-ghost:focus-visible {
   background: #fff;
-  border: 1.5px solid var(--nl-line);
-  border-radius: 999px;
   color: var(--nl-ink);
-  font-family: inherit;
-  font-size: 16px;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
-
-.nl-form input[type="email"]::placeholder {
-  color: #8e7ba6;
-}
-
-.nl-form input[type="email"]:focus {
-  border-color: var(--nl-ink);
-}
-
-/* Gentle highlight after a social button is clicked. */
-.nl-form input[type="email"].nl-email-hl {
-  border-color: var(--nl-teal);
-  box-shadow: 0 0 0 5px rgba(40, 219, 176, 0.35);
-}
-
-.nl-form .btn-teal {
-  width: 100%;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 16px;
-}
-
-.nl-form .btn-teal:disabled {
-  cursor: progress;
-  opacity: 0.75;
-}
-
-.nl-form [data-status] {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.5;
-}
-
-/* After a successful sign-up Base hides the field and button; the page script
-   adds .is-done so the leftover social buttons and divider go too. */
-.nl-card-signup.is-done .nl-social,
-.nl-card-signup.is-done .nl-social-note,
-.nl-card-signup.is-done .nl-or,
-.nl-card-signup.is-done .nl-leadin,
-.nl-card-signup.is-done .nl-form label {
-  display: none;
-}
-
-.nl-card-signup.is-done .nl-form [data-status] {
-  padding: 4px 0;
-  font-size: 18px;
-}
-
-.nl-print {
-  margin: 14px 0 0;
-  color: #5a3f78;
-  font-size: 13px;
-  line-height: 1.6;
-}
-
-.nl-print + .nl-print {
-  margin-top: 8px;
-}
-
-.nl-print a {
-  color: var(--nl-ink);
-  font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.nl-print a:hover {
-  color: var(--nl-pink);
-}
-
-.nl-page .nl-card-signup :focus-visible {
-  outline: 3px solid var(--nl-ink);
-  outline-offset: 2px;
-}
-
-/* ---------- Phone mockup ---------- */
 
 .nl-visual {
-  position: relative;
   display: flex;
   justify-content: center;
   min-width: 0;
 }
 
-.nl-visual::before {
-  content: "";
-  position: absolute;
-  inset: 8% 4%;
-  background: radial-gradient(closest-side, rgba(40, 219, 176, 0.22), rgba(40, 219, 176, 0));
-  pointer-events: none;
+.nl-visual-card {
+  width: 100%;
+  max-width: 440px;
+  padding: 28px 28px 20px;
+  background: var(--nl-tint);
+  border-radius: 24px;
+  box-shadow: 0 18px 48px rgba(17, 0, 39, 0.35);
 }
 
-.nl-phone {
-  position: relative;
-  width: 300px;
-  max-width: 100%;
-  margin: 0;
-  padding: 11px;
-  background: #0c0118;
-  border-radius: 46px;
-  box-shadow:
-    inset 0 0 0 2px #3d2a5c,
-    0 30px 60px rgba(8, 0, 20, 0.5);
-}
-
-.nl-phone::before {
-  content: "";
-  position: absolute;
-  top: 11px;
-  left: 50%;
-  z-index: 2;
-  width: 96px;
-  height: 24px;
-  background: #0c0118;
-  border-radius: 0 0 16px 16px;
-  transform: translateX(-50%);
-}
-
-.nl-screen {
-  position: relative;
-  height: 540px;
-  overflow: hidden;
-  background: #fff;
-  border-radius: 36px;
-  color: var(--nl-ink);
-}
-
-.nl-screen::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 80px;
-  background: linear-gradient(rgba(255, 255, 255, 0), #fff);
-}
-
-.nl-mail-head {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-  padding: 46px 20px 16px;
-  background: #2a0b4f;
-}
-
-.nl-mail-head img {
-  display: block;
-  width: 84px;
-  height: auto;
-}
-
-.nl-mail-head span {
-  color: #cfc4e6;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  line-height: 1.3;
-  text-transform: uppercase;
-}
-
-.nl-mail-body {
-  padding: 16px 20px 0;
-}
-
-.nl-mail-kicker {
-  margin: 0 0 8px;
-  color: var(--nl-pink);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  line-height: 1.35;
-  text-transform: uppercase;
-}
-
-.nl-mail-title {
-  margin: 0 0 12px;
-  font-size: 18px;
-  font-weight: 900;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-}
-
-.nl-mail-body picture,
-.nl-mail-body img {
+.nl-visual-card picture,
+.nl-visual-card img {
   display: block;
   width: 100%;
   height: auto;
-}
-
-.nl-mail-text {
-  margin: 12px 0 0;
-  font-size: 13px;
-  line-height: 1.55;
 }
 
 /* ---------- Bands ---------- */
@@ -483,35 +229,99 @@ body:has(.nl-page) .footer-wave {
   max-width: 760px;
 }
 
-/* ---------- What you get ---------- */
+/* ---------- Note from Seb ---------- */
 
-.nl-grid-2 {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 28px;
+.nl-note {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 44px 52px 40px;
+  background: #fff;
+  border-left: 8px solid var(--nl-teal);
+  border-radius: 24px;
+  box-shadow: 0 10px 36px rgba(42, 11, 79, 0.07);
+}
+
+.nl-note-label {
+  margin: 0 0 16px;
+  color: var(--nl-pink);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.nl-note blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+.nl-page .nl-well .nl-note blockquote p {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.65;
+}
+
+.nl-page .nl-well .nl-note-sign {
+  margin: 22px 0 0;
+  color: var(--nl-ink);
+  font-size: 20px;
+  font-weight: 800;
+}
+
+/* ---------- The 7 questions ---------- */
+
+.nl-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
   margin: 36px 0 0;
   padding: 0;
   list-style: none;
 }
 
-.nl-card {
-  min-width: 0;
-  padding: 36px 40px;
-  background: #fff;
+.nl-question {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+  padding: 28px 32px;
+  background: var(--nl-tint);
   border-radius: 24px;
-  box-shadow: 0 10px 36px rgba(42, 11, 79, 0.07);
 }
 
-.nl-card h3:last-child,
-.nl-card p:last-child {
-  margin-bottom: 0;
+.nl-qnum {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background: var(--nl-teal);
+  border-radius: 50%;
+  color: var(--nl-ink);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1;
 }
 
-.nl-grid-2 .nl-card h3 {
-  margin-bottom: 14px;
+.nl-question h3 {
+  margin: 4px 0 8px;
 }
 
-/* ---------- Book card ---------- */
+.nl-page .nl-well .nl-question p {
+  max-width: 720px;
+  margin: 0;
+}
+
+/* ---------- Downloads (hidden until the PDFs are uploaded) ---------- */
+
+.nl-download {
+  margin-top: 36px;
+}
+
+/* ---------- Book + prologue ---------- */
 
 .nl-book {
   display: flex;
@@ -521,10 +331,9 @@ body:has(.nl-page) .footer-wave {
   max-width: 860px;
   margin: 0 auto;
   padding: 44px 48px;
-  background: var(--nl-tint);
-  border: 1px solid #e3dcf2;
-  border-left: 8px solid var(--nl-teal);
+  background: #2a0b4f;
   border-radius: 24px;
+  box-shadow: 0 10px 36px rgba(42, 11, 79, 0.18);
 }
 
 .nl-badge {
@@ -541,25 +350,156 @@ body:has(.nl-page) .footer-wave {
   line-height: 1.2;
 }
 
-.nl-book h2 {
+.nl-page .nl-book h2 {
   margin: 0;
+  color: #fff;
 }
 
 .nl-page .nl-well .nl-book p {
   max-width: 680px;
   margin: 0;
+  color: #f5f2ff;
 }
 
-.nl-link {
-  color: var(--nl-pink);
-  font-size: 18px;
+/* FOUNDERland: whole word Montserrat 500, FOUNDER bold, soft pink on the dark card. */
+.nl-page .nl-founder {
+  color: var(--color-pink-soft, #ff8ab0);
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  font-synthesis: none;
+}
+
+.nl-page .nl-founder strong {
+  font-weight: 900;
+}
+
+.nl-prologue {
+  max-width: 860px;
+  margin: 40px auto 0;
+  padding: 48px 52px;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 10px 36px rgba(42, 11, 79, 0.07);
+}
+
+.nl-page .nl-prologue-title {
+  max-width: 680px;
+  margin: 0 0 24px;
+  font-size: clamp(24px, 2.6vw, 30px);
+  font-weight: 900;
+}
+
+.nl-prose {
+  max-width: 680px;
+}
+
+.nl-page .nl-well .nl-prose p {
+  margin: 0 0 1.35em;
+  font-size: 19px;
+  line-height: 1.8;
+}
+
+.nl-page .nl-well .nl-prose p.nl-emph {
+  font-weight: 800;
+}
+
+.nl-page .nl-well .nl-prose p.nl-source {
+  margin: 2em 0 0;
+  color: #5a3f78;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.nl-prologue .nl-download {
+  margin-top: 32px;
+}
+
+/* ---------- Sign-up ---------- */
+
+.nl-signup {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 44px 48px 40px;
+  background: var(--nl-tint);
+  border: 1px solid #e3dcf2;
+  border-radius: 24px;
+}
+
+.nl-page .nl-well .nl-signup .nl-intro {
+  margin-bottom: 24px;
+}
+
+.nl-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 520px;
+}
+
+.nl-form label {
+  color: var(--nl-ink);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.nl-form input[type="email"] {
+  width: 100%;
+  min-height: 52px;
+  padding: 0 22px;
+  background: #fff;
+  border: 1.5px solid var(--nl-line);
+  border-radius: 999px;
+  color: var(--nl-ink);
+  font-family: inherit;
+  font-size: 16px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nl-form input[type="email"]::placeholder {
+  color: #8e7ba6;
+}
+
+.nl-form input[type="email"]:focus {
+  border-color: var(--nl-ink);
+}
+
+.nl-form .btn-teal {
+  align-self: flex-start;
+  max-width: 100%;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.nl-form .btn-teal:disabled {
+  cursor: progress;
+  opacity: 0.75;
+}
+
+.nl-form [data-status] {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.nl-page .nl-well .nl-print {
+  margin: 18px 0 0;
+  color: #5a3f78;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.nl-print a {
+  color: var(--nl-ink);
   font-weight: 700;
   text-decoration: underline;
-  text-underline-offset: 3px;
+  text-underline-offset: 2px;
 }
 
-.nl-link:hover {
-  color: var(--nl-ink);
+.nl-print a:hover {
+  color: var(--nl-pink);
 }
 
 /* ---------- Chapters ---------- */
@@ -575,27 +515,24 @@ body:has(.nl-page) .footer-wave {
 
 .nl-chapter {
   display: grid;
-  grid-template-columns: 44px minmax(0, 1fr) auto;
-  gap: 16px;
-  align-items: center;
+  grid-template-columns: 32px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: baseline;
   padding: 20px 28px;
   background: #fff;
   border-radius: 18px;
   box-shadow: 0 10px 36px rgba(42, 11, 79, 0.07);
 }
 
+.nl-chapter-soon {
+  grid-template-columns: 32px minmax(0, 1fr);
+}
+
 .nl-chapter-num {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  background: var(--nl-teal);
-  border-radius: 50%;
   color: var(--nl-ink);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 800;
-  line-height: 1;
+  line-height: 1.35;
 }
 
 .nl-chapter-title {
@@ -630,11 +567,6 @@ body:has(.nl-page) .footer-wave {
   box-shadow: none;
 }
 
-.nl-chapter-soon .nl-chapter-num {
-  background: transparent;
-  border: 1.5px solid var(--nl-teal);
-}
-
 /* ---------- Closing ---------- */
 
 .nl-closing {
@@ -666,32 +598,41 @@ body:has(.nl-page) .footer-wave {
   color: #fff;
 }
 
+/* ---------- Focus ---------- */
+
+.nl-page a:focus-visible,
+.nl-page button:focus-visible,
+.nl-page input:focus-visible {
+  outline: 3px solid var(--nl-teal);
+  outline-offset: 3px;
+}
+
+.nl-well :is(a, button, input):focus-visible {
+  outline-color: var(--nl-ink);
+}
+
+.nl-band .btn-teal:focus-visible,
+.nl-band .nl-closing a:focus-visible {
+  outline-color: var(--nl-ink);
+}
+
+.nl-closing a:focus-visible {
+  outline-color: var(--nl-teal);
+}
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 1023px) {
   .nl-hero-inner {
     gap: 40px;
   }
-
-  .nl-phone {
-    width: 272px;
-  }
-
-  .nl-screen {
-    height: 500px;
-  }
 }
 
 @media (max-width: 900px) {
   .nl-hero-inner {
     grid-template-columns: minmax(0, 1fr);
-    gap: 44px;
-    padding: 44px 0 36px;
-  }
-
-  /* Sign-up first on small screens, the phone preview follows. */
-  .nl-visual {
-    order: 2;
+    gap: 40px;
+    padding: 44px 0 40px;
   }
 
   .nl-copy {
@@ -700,22 +641,42 @@ body:has(.nl-page) .footer-wave {
     width: 100%;
   }
 
-  .nl-grid-2 {
-    grid-template-columns: minmax(0, 1fr);
+  .nl-visual-card {
+    max-width: 360px;
   }
 }
 
 @media (max-width: 767px) {
-  .nl-card {
-    padding: 28px 24px;
+  .nl-note {
+    padding: 32px 26px 30px;
   }
 
   .nl-book {
     padding: 32px 26px;
   }
 
-  .nl-chapter {
+  .nl-prologue {
+    padding: 32px 24px;
+  }
+
+  .nl-signup {
+    padding: 32px 24px 28px;
+  }
+
+  .nl-question {
     grid-template-columns: 44px minmax(0, 1fr);
+    gap: 16px;
+    padding: 22px 20px;
+  }
+
+  .nl-qnum {
+    width: 44px;
+    height: 44px;
+    font-size: 19px;
+  }
+
+  .nl-chapter {
+    grid-template-columns: 32px minmax(0, 1fr);
   }
 
   .nl-chapter-date {
@@ -731,28 +692,38 @@ body:has(.nl-page) .footer-wave {
   }
 
   .nl-hero-inner {
-    padding: 36px 0 28px;
+    padding: 36px 0 32px;
   }
 
   .nl-lede {
     font-size: 17px;
   }
 
-  .nl-card-signup {
-    padding: 22px 18px 20px;
+  .nl-hero-actions {
+    flex-direction: column;
+    align-items: stretch;
   }
 
-  .nl-social-btn {
-    padding: 0 44px;
-    font-size: 15px;
-  }
-
-  .nl-social-btn svg {
-    left: 16px;
+  .nl-hero-actions .nl-btn-ghost,
+  .nl-hero-actions .btn-teal {
+    width: 100%;
   }
 
   .nl-well {
     padding: 48px 0;
+  }
+
+  .nl-page .nl-well .nl-note blockquote p {
+    font-size: 18px;
+  }
+
+  .nl-page .nl-well .nl-prose p {
+    font-size: 18px;
+    line-height: 1.75;
+  }
+
+  .nl-form .btn-teal {
+    align-self: stretch;
   }
 
   .nl-closing {
@@ -764,19 +735,22 @@ body:has(.nl-page) .footer-wave {
     font-size: 19px;
   }
 
-  .nl-phone {
-    width: 250px;
-    border-radius: 40px;
-  }
-
-  .nl-screen {
-    height: 460px;
-    border-radius: 31px;
+  #note,
+  #questions,
+  #book,
+  #prologue,
+  #signup,
+  #chapters {
+    scroll-margin-top: 96px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .nl-social-btn,
+  html:has(.nl-page) {
+    scroll-behavior: auto;
+  }
+
+  .nl-btn-ghost,
   .nl-form input[type="email"] {
     transition: none;
   }
