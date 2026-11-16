@@ -40,9 +40,6 @@ const schemaJson = JSON.stringify(schema).replace(/</g, "\\u003c");
   footerEdge={footerEdge}
 >
   <article class="faq-page">
-    <script is:inline>
-      document.documentElement.classList.add("faq-js");
-    </script>
     <script is:inline type="application/ld+json" set:html={schemaJson} />
 
     <header class="faq-hero">
@@ -235,6 +232,8 @@ const schemaJson = JSON.stringify(schema).replace(/</g, "\\u003c");
 </Base>
 
 <script>
+  // Bundled (not inline) so it passes the site's Content-Security-Policy.
+  document.documentElement.classList.add("faq-js");
   const root = document.querySelector<HTMLElement>(".faq-page");
 
   if (root) {
