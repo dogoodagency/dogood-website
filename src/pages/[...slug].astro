@@ -8,7 +8,7 @@ import { edgeAbove } from "../data/edge-line";
 export async function getStaticPaths() {
   const pages = await getCollection("pages");
   return pages
-    .filter((page) => page.id !== "error404" && page.id !== "contact" && page.id !== "apply-stage-1" && page.id !== "clarity-first-guarantee-terms" && page.id !== "casestudies/v" && page.id !== "casestudies/j" && page.id !== "faqs" && page.id !== "newsletter" && page.id !== "about" && page.id !== "for-advisors" && page.id !== "for-advisors/client-tools" && page.id !== "for-advisors/insights")
+    .filter((page) => page.id !== "error404" && page.id !== "contact" && page.id !== "apply-stage-1" && page.id !== "clarity-first-guarantee-terms" && page.id !== "casestudies/v" && page.id !== "casestudies/j" && page.id !== "faqs" && page.id !== "newsletter" && page.id !== "about" && page.id !== "how-it-works" && page.id !== "for-advisors" && page.id !== "for-advisors/client-tools" && page.id !== "for-advisors/insights")
     .map((page) => ({ params: { slug: page.id } }));
 }
 
