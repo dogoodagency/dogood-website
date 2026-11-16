@@ -1,0 +1,88 @@
+---
+import "../../styles/advisors.css";
+import "../../styles/advisors-resources.css";
+import Base from "../../layouts/Base.astro";
+import Wave from "../../components/Wave.astro";
+import AdvisorNav from "../../components/AdvisorNav.astro";
+import { edgeAbove } from "../../data/edge-line";
+
+const tint = "#F5F2FF";
+const heroEdge = edgeAbove("#2A0B4F");
+const bandEdge = edgeAbove(tint);
+const footerEdge = edgeAbove("#ffffff");
+---
+
+<Base
+  title="Free Toolkit for Advisors | DoGood"
+  description="Free tools for exit and succession advisors: a readiness check for your clients, a guide to spotting when a founder needs help, and a life-after-the-sale planner."
+  canonical="https://www.dogoodagency.co/for-advisors/client-tools"
+  ogTitle="Free Toolkit for Advisors | DoGood"
+  hideOptin
+  footerStrip="#ffffff"
+  footerEdge={footerEdge}
+>
+  <article class="adv-page advr-page">
+    <header class="advr-hero">
+      <div class="advr-hero-inner">
+        <p class="advr-eyebrow">Advisor Center · Free tools for your clients</p>
+        <h1>Free tools for you and your clients</h1>
+        <p class="advr-lede">
+          Your clients get all your help with the deal. These tools help with the part nobody plans for: life in <span class="pink-soft advr-founder"><strong>FOUNDER</strong>land</span>, the founder themselves, before and after the sale. Free to use and share. No sign-up for you.
+        </p>
+      </div>
+      <Wave fill={tint} edge={heroEdge} />
+    </header>
+
+    <section class="advr-band advr-band-tint" aria-label="Free tools">
+      <div class="advr-well">
+        <div class="advr-nav">
+          <AdvisorNav current="tools" />
+        </div>
+
+        <div class="advr-grid">
+          <article class="advr-card" aria-labelledby="advr-tool-readiness">
+            <h2 id="advr-tool-readiness">Founder Readiness Check</h2>
+            <p>Send it to your client with your own personal link. They answer a few calm questions and get a private PDF report, with a free debrief call if they want one. If they say yes, you get a copy too. It is not a medical or psychological test.</p>
+            <div class="advr-actions">
+              <button class="advr-status" type="button" disabled aria-disabled="true">Coming soon</button>
+            </div>
+          </article>
+
+          <article class="advr-card" aria-labelledby="advr-tool-signals">
+            <p class="advr-badge">For you</p>
+            <h2 id="advr-tool-signals">Signals Guide</h2>
+            <p>A short guide to spotting when a founder is struggling with the personal side of the sale, what to say, and when not to suggest help. It is not medical advice.</p>
+            <div class="advr-actions">
+              <button class="advr-status" type="button" disabled aria-disabled="true">Coming soon</button>
+            </div>
+          </article>
+
+          <article class="advr-card" aria-labelledby="advr-tool-planner">
+            <h2 id="advr-tool-planner">Life After the Sale Planner</h2>
+            <p>A hands-on planner for money, time and purpose, to fill in together with your client. It is life planning, not financial advice.</p>
+            <div class="advr-actions">
+              <button class="advr-status" type="button" disabled aria-disabled="true">Coming soon</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="advr-divider" aria-hidden="true">
+      <svg style={`--wave-edge:${bandEdge}`} viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path fill="#ffffff" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path>
+        <path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path>
+      </svg>
+    </div>
+
+    <section class="advr-band advr-band-white" aria-label="More tools">
+      <div class="advr-well">
+        <div class="advr-cta">
+          <p>More tools are on the way. Want to hear when each one is ready?</p>
+          <a class="btn-teal" href="/contact">Get in touch</a>
+        </div>
+        <p class="advr-back"><a href="/for-advisors">Have a client in mind already? Visit the Advisor Center →</a></p>
+      </div>
+    </section>
+  </article>
+</Base>

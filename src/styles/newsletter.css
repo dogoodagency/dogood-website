@@ -121,7 +121,7 @@ body:has(.nl-page) .footer-wave {
   gap: 10px;
 }
 
-/* Social sign-up buttons. PLACEHOLDERS: MailerLite has no Google, Apple or
+/* Social sign-up buttons. PLACEHOLDERS: MailerLite has no Google or
    Facebook sign-in and the site is static, so these only guide people to the
    email field (see the script in newsletter.astro). */
 .nl-social-btn {

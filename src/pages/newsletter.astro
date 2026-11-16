@@ -60,10 +60,10 @@ const guideTitle = "The first 90 days after exit: 7 questions to ask before your
             <p class="nl-leadin">Leave your email and we'll send the guide when it is ready, along with our notes on life after exit.</p>
 
             <!--
-              PLACEHOLDER social sign-up. MailerLite has no Google/Apple/Facebook sign-in and
+              PLACEHOLDER social sign-up. MailerLite has no Google/Facebook sign-in and
               this is a static site, so these buttons do not sign anyone up. The script below
-              focuses the email field and shows a "coming soon" line. To wire them later,
-              read button.dataset.provider ("google" | "apple" | "facebook") in that handler.
+              focuses the email field and shows a "coming soon" line. Google and Facebook will
+              be connected later: read button.dataset.provider ("google" | "facebook") in that handler.
             -->
             <div class="nl-social">
               <button class="nl-social-btn" type="button" data-provider="google">
@@ -74,12 +74,6 @@ const guideTitle = "The first 90 days after exit: 7 questions to ask before your
                   <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
                 </svg>
                 Sign up with Google
-              </button>
-              <button class="nl-social-btn" type="button" data-provider="apple">
-                <svg viewBox="0 0 24 24" fill="#000" aria-hidden="true" focusable="false">
-                  <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"></path>
-                </svg>
-                Sign up with Apple
               </button>
               <button class="nl-social-btn" type="button" data-provider="facebook">
                 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -216,7 +210,7 @@ const guideTitle = "The first 90 days after exit: 7 questions to ask before your
     const form = box.querySelector<HTMLFormElement>("form.js-subscribe");
     const email = box.querySelector<HTMLInputElement>("input[type='email']");
     const note = box.querySelector<HTMLElement>("[data-social-note]");
-    const names: Record<string, string> = { google: "Google", apple: "Apple", facebook: "Facebook" };
+    const names: Record<string, string> = { google: "Google", facebook: "Facebook" };
     let timer: number | undefined;
 
     // Placeholder social buttons: point people to the email field. Not a real sign-in.

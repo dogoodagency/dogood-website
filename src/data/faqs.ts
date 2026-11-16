@@ -389,14 +389,6 @@ export const faqCategories: FaqCategory[] = [
           "Stage 1: The Reset is a 30-day engagement for founders who have exited or stepped away, with eight virtual 1:1 sessions and a 1.5-day in-person intensive. The Exit-Prep is built for founders who still run the company: six weekly private sessions of 75–90 minutes over six weeks, held remotely. Both are one to one, private and confidential, with the same conditions. If you later want to go deeper after the sale, you can move on to Stage 1.",
         ],
       },
-      // [ADDED – source: exit-prep-one-pager.md ("Investment")]
-      {
-        id: "exit-prep-cost",
-        q: "What does The Exit-Prep cost?",
-        a: [
-          "The investment for The Exit-Prep is USD 18,000, for six weeks of one-to-one work with a Wayfinder. To talk it through, [get in touch](/contact).",
-        ],
-      },
     ],
   },
   {

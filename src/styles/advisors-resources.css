@@ -1,0 +1,356 @@
+/* Advisor Center resource pages (/for-advisors/client-tools and
+   /for-advisors/insights). Every rule is prefixed .advr- so nothing here can
+   touch another page. Follows the case study house style (casestudy.css):
+   dark purple hero with wave, lilac and white bands, 24px cards, btn-teal. */
+
+body:has(.advr-page) .footer-wave {
+  background: var(--footer-strip, #fff);
+}
+
+.advr-page {
+  --advr-tint: #f5f2ff;
+  --advr-line: #c2b7dd;
+  --advr-ink: #2a0b4f;
+  --advr-teal: #28dbb0;
+  background: #fff;
+  color: var(--advr-ink);
+  overflow-x: clip;
+}
+
+.advr-page *,
+.advr-page *::before,
+.advr-page *::after {
+  box-sizing: border-box;
+}
+
+/* ---------- Hero ---------- */
+
+.advr-hero {
+  margin-top: -94px;
+  padding-top: 94px;
+  background: #2a0b4f;
+  color: #fff;
+}
+
+.advr-hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  width: min(900px, calc(100% - 2 * var(--pad)));
+  margin: 0 auto;
+  padding: 56px 0 36px;
+  text-align: center;
+}
+
+.advr-eyebrow {
+  margin: 0;
+  color: var(--advr-teal);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.advr-hero h1 {
+  width: 100%;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(30px, 3.6vw, 46px);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  overflow-wrap: break-word;
+}
+
+.advr-hero .advr-lede {
+  max-width: 720px;
+  margin: 0;
+  color: #f5f2ff;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* FOUNDERland: same pattern as the rest of the site, in the soft pink that
+   reads on the dark hero. FOUNDER bold, whole word in Montserrat. */
+.advr-hero .advr-founder {
+  color: var(--color-pink-soft, #ff8ab0);
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  font-synthesis: none;
+}
+
+.advr-hero .advr-founder strong {
+  font-weight: 900;
+}
+
+.advr-hero .hero-wave {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+/* ---------- Bands ---------- */
+
+.advr-band {
+  background: #fff;
+}
+
+.advr-band-tint {
+  background: var(--advr-tint);
+}
+
+.advr-well {
+  width: min(1080px, calc(100% - 2 * var(--pad)));
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 24px 0 72px;
+}
+
+.advr-band-white .advr-well {
+  padding: 40px 0 72px;
+}
+
+.advr-divider {
+  display: block;
+  line-height: 0;
+  background: var(--advr-tint);
+}
+
+.advr-divider svg {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+.advr-nav {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 40px;
+}
+
+/* ---------- Resource grid and cards ---------- */
+
+.advr-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  align-items: stretch;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.advr-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  padding: 36px 32px;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 10px 36px rgba(42, 11, 79, 0.07);
+}
+
+.advr-card h2 {
+  margin: 0 0 14px;
+  color: var(--advr-ink);
+  font-size: clamp(22px, 2vw, 26px);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  overflow-wrap: break-word;
+}
+
+.advr-card p {
+  margin: 0;
+  color: var(--advr-ink);
+  font-size: 17px;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+.advr-badge {
+  display: inline-block;
+  margin: 0 0 16px;
+  padding: 4px 12px;
+  background: #e7fff6;
+  border: 1px solid #a3f2d7;
+  border-radius: 999px;
+  color: #0a6b56;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.advr-card .advr-badge {
+  margin: 0 0 16px;
+  color: #0a6b56;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.advr-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+/* Disabled "Coming soon" button, shown as a quiet status pill. */
+.advr-status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 18px;
+  background: var(--advr-tint);
+  border: 1.5px dashed var(--advr-line);
+  border-radius: 999px;
+  color: var(--advr-ink);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: left;
+  cursor: default;
+}
+
+.advr-status::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  margin-right: 10px;
+  background: var(--advr-teal);
+  border-radius: 50%;
+}
+
+.advr-card a.advr-link {
+  color: var(--advr-ink);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-decoration: underline;
+  text-decoration-color: var(--advr-teal);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.advr-card a.advr-link:hover,
+.advr-card a.advr-link:focus-visible {
+  text-decoration-color: var(--advr-ink);
+}
+
+/* ---------- Closing CTA and back link ---------- */
+
+.advr-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px 40px;
+  padding: 32px 40px;
+  background: var(--advr-tint);
+  border: 1px solid #e3dcf2;
+  border-radius: 24px;
+}
+
+.advr-cta p {
+  max-width: 640px;
+  margin: 0;
+  color: var(--advr-ink);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.advr-cta a.btn-teal {
+  flex: 0 0 auto;
+  white-space: normal;
+  text-align: center;
+}
+
+.advr-back {
+  margin: 36px 0 0;
+  text-align: center;
+}
+
+.advr-back a {
+  color: var(--advr-ink);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-color: var(--advr-teal);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.advr-back a:hover,
+.advr-back a:focus-visible {
+  text-decoration-color: var(--advr-ink);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1023px) {
+  .advr-grid {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .advr-card {
+    padding: 32px 28px;
+  }
+}
+
+@media (max-width: 767px) {
+  .advr-cta {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 28px 24px;
+  }
+
+  .advr-cta a.btn-teal {
+    align-self: stretch;
+  }
+}
+
+@media (max-width: 600px) {
+  .advr-hero {
+    margin-top: -81px;
+    padding-top: 81px;
+  }
+
+  .advr-hero-inner {
+    gap: 18px;
+    padding: 40px 0 28px;
+  }
+
+  .advr-hero .advr-lede {
+    font-size: 18px;
+  }
+
+  .advr-well {
+    padding: 16px 0 56px;
+  }
+
+  .advr-band-white .advr-well {
+    padding: 32px 0 56px;
+  }
+
+  .advr-nav {
+    margin-bottom: 28px;
+  }
+
+  .advr-card {
+    padding: 28px 24px;
+  }
+}
