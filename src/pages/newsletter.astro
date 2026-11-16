@@ -1,0 +1,258 @@
+---
+import "../styles/newsletter.css";
+import Base from "../layouts/Base.astro";
+import Wave from "../components/Wave.astro";
+import { edgeAbove } from "../data/edge-line";
+
+const tint = "#F5F2FF";
+const heroEdge = edgeAbove("#2A0B4F");
+const bandEdge = edgeAbove(tint);
+const footerEdge = edgeAbove(tint);
+
+// MailerLite form already used by the footer and the old newsletter.md page.
+// Base.astro's global script handles every form.js-subscribe. Do not create new forms.
+const action =
+  "https://assets.mailerlite.com/jsonp/2046479/forms/180157154312849349/subscribe";
+
+/**
+ * Chapters of "Before and After the Sale".
+ * To add a chapter, push an object onto this array when it goes out, newest last, e.g.
+ *   { number: 1, title: "<chapter title>", date: "15 December", href: "/newsletter/<slug>" }
+ * `href` is optional. While the array is empty the page shows one "arrives" row.
+ */
+interface Chapter {
+  number: number;
+  title: string;
+  date: string;
+  href?: string;
+}
+const chapters: Chapter[] = [];
+
+const guideTitle = "The first 90 days after exit: 7 questions to ask before your next move.";
+---
+
+<Base
+  title="The first 90 days after exit | DoGood Founders"
+  description="A short guide of seven questions to ask before your next move, and researched notes on life after exit, every two weeks."
+  canonical="https://www.dogoodagency.co/newsletter"
+  footerStrip={tint}
+  footerEdge={footerEdge}
+>
+  <article class="nl-page">
+    <header class="nl-hero">
+      <div class="nl-hero-inner">
+        <div class="nl-copy">
+          <p class="nl-eyebrow">The DoGood newsletter</p>
+          <h1>{guideTitle}</h1>
+          <p class="nl-lede">
+            A short guide for the stretch when the deal is done, the structure is gone, and it is tempting to fill the space too fast. Yours when you join the notes we send every two weeks.
+          </p>
+          <p class="nl-cadence">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9.5"></circle>
+              <path d="M12 6.5V12l3.5 2"></path>
+            </svg>
+            <span>Every two weeks. First issues 15 December, 12 January and 26 January.</span>
+          </p>
+
+          <div class="nl-card-signup" data-nl-signup role="group" aria-labelledby="nl-signup-title">
+            <h2 class="visually-hidden" id="nl-signup-title">Sign up</h2>
+            <p class="nl-leadin">Leave your email and we'll send the guide when it is ready, along with our notes on life after exit.</p>
+
+            <!--
+              PLACEHOLDER social sign-up. MailerLite has no Google/Apple/Facebook sign-in and
+              this is a static site, so these buttons do not sign anyone up. The script below
+              focuses the email field and shows a "coming soon" line. To wire them later,
+              read button.dataset.provider ("google" | "apple" | "facebook") in that handler.
+            -->
+            <div class="nl-social">
+              <button class="nl-social-btn" type="button" data-provider="google">
+                <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+                  <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
+                  <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
+                  <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
+                  <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
+                </svg>
+                Sign up with Google
+              </button>
+              <button class="nl-social-btn" type="button" data-provider="apple">
+                <svg viewBox="0 0 24 24" fill="#000" aria-hidden="true" focusable="false">
+                  <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"></path>
+                </svg>
+                Sign up with Apple
+              </button>
+              <button class="nl-social-btn" type="button" data-provider="facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <circle cx="12" cy="12" r="12" fill="#1877F2"></circle>
+                  <path fill="#fff" d="M16.67 15.47l.53-3.47h-3.33V9.75c0-.95.47-1.88 1.96-1.88h1.51V4.92s-1.37-.23-2.68-.23c-2.74 0-4.53 1.66-4.53 4.67V12H7v3.47h3.13V24h3.74v-8.53z"></path>
+                </svg>
+                Sign up with Facebook
+              </button>
+            </div>
+            <p class="nl-social-note" data-social-note aria-live="polite"></p>
+
+            <div class="nl-or" aria-hidden="true">or</div>
+
+            <form class="nl-form js-subscribe" action={action} method="post">
+              <input type="hidden" name="ml-submit" value="1" />
+              <input type="hidden" name="anticsrf" value="true" />
+              <label for="nl-email">Email</label>
+              <input id="nl-email" type="email" name="fields[email]" placeholder="Email" autocomplete="email" required />
+              <button class="btn-teal" type="submit">Send me the guide</button>
+              <p data-status hidden></p>
+            </form>
+
+            <p class="nl-print">We won't send spam. One email every two weeks, and you can unsubscribe at any time.</p>
+            <p class="nl-print">We'll use your email for the guide and for these notes. Read our <a href="/privacy">privacy policy</a>.</p>
+          </div>
+        </div>
+
+        <div class="nl-visual">
+          <div class="nl-phone" role="img" aria-label="Preview of the DoGood newsletter email on a phone: the guide 'The first 90 days after exit' with an open envelope and booklet illustration.">
+            <div class="nl-screen" aria-hidden="true">
+              <div class="nl-mail-head">
+                <img src="/logo.svg" width="255" height="97" alt="" />
+                <span>The DoGood newsletter</span>
+              </div>
+              <div class="nl-mail-body">
+                <p class="nl-mail-kicker">Researched notes on life after exit</p>
+                <p class="nl-mail-title">{guideTitle}</p>
+                <picture>
+                  <source
+                    type="image/webp"
+                    srcset="/sketches/newsletter-open-envelope-booklet@1x.webp 540w, /sketches/newsletter-open-envelope-booklet@2x.webp 1080w"
+                    sizes="260px"
+                  />
+                  <img
+                    src="/sketches/newsletter-open-envelope-booklet@1x.png"
+                    srcset="/sketches/newsletter-open-envelope-booklet@1x.png 540w, /sketches/newsletter-open-envelope-booklet@2x.png 1080w"
+                    sizes="260px"
+                    width="540"
+                    height="400"
+                    alt=""
+                    loading="eager"
+                    decoding="async"
+                  />
+                </picture>
+                <p class="nl-mail-text">Seven questions to sit with before you commit the next stretch of your life to a new project, role, or plan.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Wave fill={tint} edge={heroEdge} />
+    </header>
+
+    <section class="nl-band nl-band-tint" aria-labelledby="nl-get">
+      <div class="nl-well">
+        <h2 id="nl-get">What you get</h2>
+        <ul class="nl-grid-2">
+          <li class="nl-card">
+            <h3>The guide: "The first 90 days after exit: 7 questions to ask before your next move."</h3>
+            <p>Seven questions to sit with before you commit the next stretch of your life to a new project, role, or plan. Not a programme, and not a pitch.</p>
+          </li>
+          <li class="nl-card">
+            <h3>Researched notes on life after exit, every two weeks.</h3>
+            <p>Honest writing on what comes after the company, not a digest of business tips. The first issues go out on 15 December, 12 January and 26 January.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="nl-divider" aria-hidden="true">
+      <svg style={`--wave-edge:${bandEdge}`} viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path fill="#ffffff" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path>
+        <path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path>
+      </svg>
+    </div>
+
+    <section class="nl-band" aria-labelledby="nl-book">
+      <div class="nl-well">
+        <article class="nl-book">
+          <span class="nl-badge">First chapter 15 December</span>
+          <h2 id="nl-book">Before and After the Sale</h2>
+          <p>A book for founders on the inner side of selling, told through real, anonymised stories. We are writing it in the open: from 15 December, a new chapter arrives in our newsletter.</p>
+          <a class="nl-link" href="/newsletter#chapters">Read the chapters in the newsletter →</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="nl-band nl-band-tint" id="chapters" aria-labelledby="nl-chapters-title">
+      <div class="nl-well">
+        <h2 id="nl-chapters-title">The chapters</h2>
+        <p class="nl-intro">New chapters of Before and After the Sale will be listed here as they arrive.</p>
+        <ol class="nl-chapters">
+          {
+            chapters.length > 0 ? (
+              chapters.map((chapter) => (
+                <li class="nl-chapter">
+                  <span class="nl-chapter-num">{chapter.number}</span>
+                  <span class="nl-chapter-title">
+                    {chapter.href ? <a href={chapter.href}>{chapter.title}</a> : chapter.title}
+                  </span>
+                  <span class="nl-chapter-date">{chapter.date}</span>
+                </li>
+              ))
+            ) : (
+              <li class="nl-chapter nl-chapter-soon">
+                <span class="nl-chapter-num" aria-hidden="true">1</span>
+                <span class="nl-chapter-title">Chapter 1 · arrives 15 December</span>
+              </li>
+            )
+          }
+        </ol>
+
+        <div class="nl-closing">
+          <p>If you already know you want a private place to do this work, you can <a href="/apply-stage-1">apply for Stage 1</a>.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+</Base>
+
+<script>
+  const box = document.querySelector<HTMLElement>("[data-nl-signup]");
+  if (box) {
+    const form = box.querySelector<HTMLFormElement>("form.js-subscribe");
+    const email = box.querySelector<HTMLInputElement>("input[type='email']");
+    const note = box.querySelector<HTMLElement>("[data-social-note]");
+    const names: Record<string, string> = { google: "Google", apple: "Apple", facebook: "Facebook" };
+    let timer: number | undefined;
+
+    // Placeholder social buttons: point people to the email field. Not a real sign-in.
+    box.querySelectorAll<HTMLButtonElement>("button[data-provider]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const name = names[btn.dataset.provider ?? ""] ?? "this option";
+        if (note) {
+          note.textContent = `Quick sign-up with ${name} is coming soon. For now, add your email below.`;
+        }
+        if (!email) return;
+        email.focus();
+        email.classList.add("nl-email-hl");
+        window.clearTimeout(timer);
+        timer = window.setTimeout(() => email.classList.remove("nl-email-hl"), 2600);
+      });
+    });
+
+    if (form && email) {
+      const status = form.querySelector<HTMLElement>("[data-status]");
+      const submit = form.querySelector<HTMLButtonElement>("button[type='submit']");
+
+      // Base.astro hides the field and button on success and shows [data-status].
+      // Hide the leftover social buttons and divider too.
+      if (status) {
+        new MutationObserver(() => {
+          if (!status.hidden && email.hidden) box.classList.add("is-done");
+        }).observe(status, { attributes: true, attributeFilter: ["hidden"] });
+      }
+
+      // Base.astro resets the button to "Subscribe" after an error. Keep our label.
+      if (submit) {
+        const label = submit.textContent ?? "Send me the guide";
+        new MutationObserver(() => {
+          if ((submit.textContent ?? "").trim() === "Subscribe") submit.textContent = label;
+        }).observe(submit, { childList: true, characterData: true, subtree: true });
+      }
+    }
+  }
+</script>

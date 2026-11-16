@@ -1,0 +1,189 @@
+---
+import "../styles/about.css";
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import Wave from "../components/Wave.astro";
+import { edgeAbove } from "../data/edge-line";
+import team from "../assets/photos/wayfinders.png";
+import ioda from "../assets/photos/ioda.jpg";
+
+const tint = "#F5F2FF";
+const heroEdge = edgeAbove("#2A0B4F");
+const bandEdge = edgeAbove(tint);
+const footerEdge = edgeAbove(tint);
+
+// NEW DRAFT COPY: for Seb's review (Premise cards)
+const premises = [
+  {
+    title: "Freedom does not settle itself.",
+    text: "You have more time and more options, but the structure is gone, and that can leave you unsettled.",
+  },
+  {
+    title: "You are more than the company.",
+    text: "When the company becomes too much of who you are, filling the space with more projects will not answer what belongs next.",
+  },
+  {
+    title: "Success should not cost what matters most.",
+    text: "Your sleep, your health and your family were easier to put off while the company needed you, and they deserve your attention now.",
+  },
+];
+---
+
+<Base
+  title="About DoGood | For founders after the company"
+  description="Why DoGood exists, what the name means, and the people behind the work: Seb Wichmann and a small team of Wayfinders."
+  canonical="https://www.dogoodagency.co/about"
+  footerStrip={tint}
+  footerEdge={footerEdge}
+>
+  <article class="ab-page">
+    <header class="ab-hero">
+      <div class="ab-hero-inner">
+        <div class="ab-hero-copy">
+          <h1>We exist for <span class="ab-accent">life after the company.</span></h1>
+          <p>DoGood is a private partnership for founders who have exited, or are getting ready to, and do not want life after the company to become another version of the life they left behind.</p>
+          <p>You apply for Stage 1, The Reset, a private 30-day engagement. If it fits, Stage 2, The Build, follows by invitation only.</p>
+        </div>
+        <figure class="ab-sketch-card">
+          <picture>
+            <source type="image/webp" srcset="/sketches/about-building-and-bench@1x.webp 540w, /sketches/about-building-and-bench@2x.webp 1080w" sizes="(max-width: 899px) min(100vw, 380px), 420px" />
+            <img src="/sketches/about-building-and-bench@1x.png" srcset="/sketches/about-building-and-bench@1x.png 540w, /sketches/about-building-and-bench@2x.png 1080w" sizes="(max-width: 899px) min(100vw, 380px), 420px" width="540" height="400" alt="A quiet unfilled workshop or office building stands to one side, with a garden bench, a folded jacket, a cup and a small plant on a teal patch of ground in front." loading="eager" decoding="async" />
+          </picture>
+        </figure>
+      </div>
+      <Wave fill={tint} edge={heroEdge} />
+    </header>
+
+    <!-- NEW DRAFT COPY: for Seb's review (Our Purpose + Our Mission) -->
+    <div class="ab-band ab-band-tint">
+      <div class="ab-well">
+        <div class="ab-duo">
+          <section class="ab-statement" aria-labelledby="ab-purpose">
+            <h2 id="ab-purpose">Our Purpose</h2>
+            <p>We exist so founders can make life after the company a deliberate choice. Not another version of the life they left behind.</p>
+          </section>
+          <section class="ab-statement" aria-labelledby="ab-mission">
+            <h2 id="ab-mission">Our Mission</h2>
+            <p>We give founders who have exited a private space to slow down, look honestly at what is here, and work out what genuinely belongs next. One to one, in two stages.</p>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div class="ab-divider" aria-hidden="true">
+      <svg style={`--wave-edge:${bandEdge}`} viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path fill="#ffffff" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path>
+        <path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path>
+      </svg>
+    </div>
+
+    <!-- NEW DRAFT COPY: for Seb's review (Our Premise) -->
+    <section class="ab-band" aria-labelledby="ab-premise">
+      <div class="ab-well">
+        <h2 id="ab-premise">Our Premise</h2>
+        <ul class="ab-cards">
+          {
+            premises.map((item) => (
+              <li class="ab-card">
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section class="ab-band ab-band-tint" aria-labelledby="ab-why-exist">
+      <div class="ab-well">
+        <h2 id="ab-why-exist">Why we exist</h2>
+        <p class="ab-lead">A founder's message, from Seb:</p>
+        <figure class="ab-quote">
+          <blockquote>
+            <p>We exist because the support founders need after exit is rarely found in the usual places.</p>
+            <p>Executive coaches focus on performance. Therapists help people process what is difficult. Both can have value. But neither is built for the moment when the company is no longer central, and you are working out what genuinely belongs next.</p>
+            <p>You cannot solve that simply by finding another strategy or filling it with more projects.</p>
+            <p>I know what it costs when the company becomes too much of who you are, and when the old patterns follow you long after the company is gone.</p>
+            <p>DoGood is what I wish had existed then: a private partnership for founders who do not want life after exit to become another version of the life they left behind.</p>
+          </blockquote>
+          <figcaption><strong>Seb &amp; the entire DoGood team</strong></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="ab-band" aria-labelledby="ab-why-dogood">
+      <div class="ab-well">
+        <h2 id="ab-why-dogood">Why 'DoGood'?</h2>
+        <p class="ab-lead">Because we love entrepreneurship.</p>
+        <div class="ab-why-grid">
+          <div>
+            <p>We love what founders build. We love what a great company can create for a family, a team, a community, and the world.</p>
+            <p>And the best founders we know are not only trying to build something successful. They want to do good.</p>
+          </div>
+          <ul class="ab-good">
+            <li>Good for themselves.</li>
+            <li>Good for their families.</li>
+            <li>Good for their teams.</li>
+            <li>Good for the world.</li>
+          </ul>
+        </div>
+        <div class="ab-why-close">
+          <p class="ab-closing">That is why we do this work.</p>
+          <p>DoGood believes that success should not come at the expense of the people and parts of life that matter most.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ab-band ab-band-tint" aria-labelledby="ab-wayfinders">
+      <div class="ab-well">
+        <div class="ab-wf-copy">
+          <h2 id="ab-wayfinders">Seb and the Wayfinders</h2>
+          <p>Seb Wichmann founded DoGood Agency. He has spent 14 years working with cultures across 35+ countries, advising Fortune 500 companies and leading leadership programs. He is recognised as an Upwork Expert-Vetted professional and a Premium 1% Performer, and as a 'SuperCoach' award recipient.</p>
+          <p>He built a successful business that nearly broke him, and knows what it costs when the company becomes too much of who you are.</p>
+          <p>FRP is delivered by an intentionally small, vetted team of Wayfinders, with 75+ years of combined founder-delivery experience: Seb, Katrin, Chantill, Shiva, and Vlora. You don't pick a Wayfinder. We match for fit first.</p>
+          <a class="btn-teal" href="/wayfinders">Meet the Wayfinders</a>
+        </div>
+        <figure class="ab-team">
+          <Image
+            src={team}
+            alt="The DoGood Wayfinders: Seb, Vlora, Chantill, Shiva and Katrin"
+            widths={[800, 1080, 1620]}
+            sizes="(max-width: 1080px) 100vw, 1080px"
+          />
+        </figure>
+      </div>
+    </section>
+
+    <section class="ab-band" aria-labelledby="ab-ioda">
+      <div class="ab-well">
+        <div class="ab-ioda">
+          <figure class="ab-ioda-logo">
+            <Image
+              src={ioda}
+              alt="IODA, the International Organization Development Association"
+              widths={[240, 480]}
+              sizes="240px"
+            />
+          </figure>
+          <div>
+            <h2 id="ab-ioda">IODA</h2>
+            <p>We are a proud member of IODA, a global network of OD professionals spanning 50+ countries.</p>
+            <p><a class="ab-text-link" href="https://www.iodanet.org/iodas-history/">IODA</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ab-band ab-band-tint" aria-labelledby="ab-next">
+      <div class="ab-well">
+        <div class="ab-cta">
+          <h2 id="ab-next">What's next?</h2>
+          <p class="ab-cta-lead">Complete the short application for Stage 1 (30 days). We'll respond within 24 hours. If there's a fit, we'll have an honest conversation.</p>
+          <p class="ab-cta-note">Private. Limited to 5 new founders a month.</p>
+          <a class="btn-teal" href="/apply-stage-1">Apply for Stage 1</a>
+          <a class="ab-cta-link" href="/how-it-works">See the two-stage partnership →</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</Base>

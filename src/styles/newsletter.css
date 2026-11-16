@@ -1,0 +1,783 @@
+/* Newsletter page (/newsletter). Every rule is prefixed .nl- so nothing here
+   can touch another page. Follows the case study house style (casestudy.css):
+   dark purple hero with wave, tint / white bands, 24px cards, btn-teal. */
+
+body:has(.nl-page) .footer-wave {
+  background: var(--footer-strip, #f5f2ff);
+}
+
+.nl-page {
+  --nl-tint: #f5f2ff;
+  --nl-line: #c2b7dd;
+  --nl-ink: #2a0b4f;
+  --nl-teal: #28dbb0;
+  --nl-pink: #c10e46;
+  background: #fff;
+  color: var(--nl-ink);
+  overflow-x: clip;
+}
+
+.nl-page *,
+.nl-page *::before,
+.nl-page *::after {
+  box-sizing: border-box;
+}
+
+/* ---------- Hero + signup ---------- */
+
+.nl-hero {
+  margin-top: -94px;
+  padding-top: 94px;
+  background: #2a0b4f;
+  color: #fff;
+}
+
+.nl-hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 72px;
+  align-items: center;
+  width: min(1120px, calc(100% - 2 * var(--pad)));
+  margin: 0 auto;
+  padding: 56px 0 48px;
+}
+
+.nl-hero .hero-wave {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+.nl-copy {
+  min-width: 0;
+}
+
+.nl-eyebrow {
+  margin: 0 0 14px;
+  color: var(--nl-teal);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.nl-page h1 {
+  margin: 0 0 18px;
+  color: #fff;
+  font-size: clamp(30px, 3.4vw, 44px);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  overflow-wrap: break-word;
+}
+
+.nl-lede {
+  margin: 0 0 18px;
+  color: #f5f2ff;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.nl-cadence {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0 0 28px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.nl-cadence svg {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  margin-top: 1px;
+  color: var(--nl-teal);
+}
+
+/* The white sign-up card inside the dark hero. */
+.nl-card-signup {
+  padding: 28px 30px 26px;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 18px 48px rgba(17, 0, 39, 0.35);
+  color: var(--nl-ink);
+}
+
+.nl-leadin {
+  margin: 0 0 16px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.nl-social {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Social sign-up buttons. PLACEHOLDERS: MailerLite has no Google, Apple or
+   Facebook sign-in and the site is static, so these only guide people to the
+   email field (see the script in newsletter.astro). */
+.nl-social-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 52px;
+  padding: 0 52px;
+  background: #fff;
+  border: 1.5px solid var(--nl-ink);
+  border-radius: 999px;
+  color: var(--nl-ink);
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.nl-social-btn:hover {
+  background: var(--nl-tint);
+}
+
+.nl-social-btn svg {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  transform: translateY(-50%);
+}
+
+.nl-social-note {
+  margin: 0;
+  color: #5a3f78;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.nl-social-note:not(:empty) {
+  margin-top: 12px;
+}
+
+.nl-or {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 18px 0;
+  color: #8e7ba6;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.nl-or::before,
+.nl-or::after {
+  content: "";
+  flex: 1 1 auto;
+  height: 1px;
+  background: #e3dcf2;
+}
+
+.nl-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nl-form label {
+  color: var(--nl-ink);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.nl-form input[type="email"] {
+  width: 100%;
+  min-height: 52px;
+  padding: 0 22px;
+  background: #fff;
+  border: 1.5px solid var(--nl-line);
+  border-radius: 999px;
+  color: var(--nl-ink);
+  font-family: inherit;
+  font-size: 16px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nl-form input[type="email"]::placeholder {
+  color: #8e7ba6;
+}
+
+.nl-form input[type="email"]:focus {
+  border-color: var(--nl-ink);
+}
+
+/* Gentle highlight after a social button is clicked. */
+.nl-form input[type="email"].nl-email-hl {
+  border-color: var(--nl-teal);
+  box-shadow: 0 0 0 5px rgba(40, 219, 176, 0.35);
+}
+
+.nl-form .btn-teal {
+  width: 100%;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.nl-form .btn-teal:disabled {
+  cursor: progress;
+  opacity: 0.75;
+}
+
+.nl-form [data-status] {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+/* After a successful sign-up Base hides the field and button; the page script
+   adds .is-done so the leftover social buttons and divider go too. */
+.nl-card-signup.is-done .nl-social,
+.nl-card-signup.is-done .nl-social-note,
+.nl-card-signup.is-done .nl-or,
+.nl-card-signup.is-done .nl-leadin,
+.nl-card-signup.is-done .nl-form label {
+  display: none;
+}
+
+.nl-card-signup.is-done .nl-form [data-status] {
+  padding: 4px 0;
+  font-size: 18px;
+}
+
+.nl-print {
+  margin: 14px 0 0;
+  color: #5a3f78;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.nl-print + .nl-print {
+  margin-top: 8px;
+}
+
+.nl-print a {
+  color: var(--nl-ink);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.nl-print a:hover {
+  color: var(--nl-pink);
+}
+
+.nl-page .nl-card-signup :focus-visible {
+  outline: 3px solid var(--nl-ink);
+  outline-offset: 2px;
+}
+
+/* ---------- Phone mockup ---------- */
+
+.nl-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+}
+
+.nl-visual::before {
+  content: "";
+  position: absolute;
+  inset: 8% 4%;
+  background: radial-gradient(closest-side, rgba(40, 219, 176, 0.22), rgba(40, 219, 176, 0));
+  pointer-events: none;
+}
+
+.nl-phone {
+  position: relative;
+  width: 300px;
+  max-width: 100%;
+  margin: 0;
+  padding: 11px;
+  background: #0c0118;
+  border-radius: 46px;
+  box-shadow:
+    inset 0 0 0 2px #3d2a5c,
+    0 30px 60px rgba(8, 0, 20, 0.5);
+}
+
+.nl-phone::before {
+  content: "";
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  z-index: 2;
+  width: 96px;
+  height: 24px;
+  background: #0c0118;
+  border-radius: 0 0 16px 16px;
+  transform: translateX(-50%);
+}
+
+.nl-screen {
+  position: relative;
+  height: 540px;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 36px;
+  color: var(--nl-ink);
+}
+
+.nl-screen::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 80px;
+  background: linear-gradient(rgba(255, 255, 255, 0), #fff);
+}
+
+.nl-mail-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 46px 20px 16px;
+  background: #2a0b4f;
+}
+
+.nl-mail-head img {
+  display: block;
+  width: 84px;
+  height: auto;
+}
+
+.nl-mail-head span {
+  color: #cfc4e6;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.nl-mail-body {
+  padding: 16px 20px 0;
+}
+
+.nl-mail-kicker {
+  margin: 0 0 8px;
+  color: var(--nl-pink);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.nl-mail-title {
+  margin: 0 0 12px;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.nl-mail-body picture,
+.nl-mail-body img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.nl-mail-text {
+  margin: 12px 0 0;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* ---------- Bands ---------- */
+
+.nl-band {
+  background: #fff;
+}
+
+.nl-band-tint {
+  background: var(--nl-tint);
+}
+
+.nl-band-tint + .nl-band:not(.nl-band-tint),
+.nl-band:not(.nl-band-tint) + .nl-band-tint {
+  border-top: 1px solid var(--nl-line);
+}
+
+.nl-well {
+  width: min(1080px, calc(100% - 2 * var(--pad)));
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 72px 0;
+}
+
+.nl-divider {
+  display: block;
+  line-height: 0;
+  background: var(--nl-tint);
+}
+
+.nl-divider svg {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+/* ---------- Type ---------- */
+
+.nl-page h2 {
+  margin: 0 0 16px;
+  color: var(--nl-ink);
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  overflow-wrap: break-word;
+}
+
+.nl-page h3 {
+  margin: 0 0 10px;
+  color: var(--nl-ink);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  overflow-wrap: break-word;
+}
+
+.nl-page .nl-well p {
+  margin: 0 0 14px;
+  color: var(--nl-ink);
+  font-size: 18px;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+.nl-page .nl-well p:last-child {
+  margin-bottom: 0;
+}
+
+.nl-page .nl-well .nl-intro {
+  max-width: 760px;
+}
+
+/* ---------- What you get ---------- */
+
+.nl-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  margin: 36px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nl-card {
+  min-width: 0;
+  padding: 36px 40px;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 10px 36px rgba(42, 11, 79, 0.07);
+}
+
+.nl-card h3:last-child,
+.nl-card p:last-child {
+  margin-bottom: 0;
+}
+
+.nl-grid-2 .nl-card h3 {
+  margin-bottom: 14px;
+}
+
+/* ---------- Book card ---------- */
+
+.nl-book {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 44px 48px;
+  background: var(--nl-tint);
+  border: 1px solid #e3dcf2;
+  border-left: 8px solid var(--nl-teal);
+  border-radius: 24px;
+}
+
+.nl-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 16px;
+  background: var(--nl-teal);
+  border-radius: 999px;
+  color: var(--nl-ink);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.nl-book h2 {
+  margin: 0;
+}
+
+.nl-page .nl-well .nl-book p {
+  max-width: 680px;
+  margin: 0;
+}
+
+.nl-link {
+  color: var(--nl-pink);
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.nl-link:hover {
+  color: var(--nl-ink);
+}
+
+/* ---------- Chapters ---------- */
+
+.nl-chapters {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 32px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nl-chapter {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+  padding: 20px 28px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 10px 36px rgba(42, 11, 79, 0.07);
+}
+
+.nl-chapter-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--nl-teal);
+  border-radius: 50%;
+  color: var(--nl-ink);
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.nl-chapter-title {
+  min-width: 0;
+  color: var(--nl-ink);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.35;
+  overflow-wrap: break-word;
+}
+
+.nl-chapter-title a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.nl-chapter-title a:hover {
+  color: var(--nl-pink);
+}
+
+.nl-chapter-date {
+  color: #5a3f78;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: right;
+}
+
+.nl-chapter-soon {
+  border: 1.5px dashed var(--nl-line);
+  box-shadow: none;
+}
+
+.nl-chapter-soon .nl-chapter-num {
+  background: transparent;
+  border: 1.5px solid var(--nl-teal);
+}
+
+/* ---------- Closing ---------- */
+
+.nl-closing {
+  margin-top: 56px;
+  padding: 44px 40px;
+  background: #2a0b4f;
+  border-radius: 24px;
+  box-shadow: 0 10px 36px rgba(42, 11, 79, 0.18);
+  text-align: center;
+}
+
+.nl-page .nl-well .nl-closing p {
+  max-width: 680px;
+  margin: 0 auto;
+  color: #f5f2ff;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+
+.nl-closing a {
+  color: var(--nl-teal);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.nl-closing a:hover {
+  color: #fff;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1023px) {
+  .nl-hero-inner {
+    gap: 40px;
+  }
+
+  .nl-phone {
+    width: 272px;
+  }
+
+  .nl-screen {
+    height: 500px;
+  }
+}
+
+@media (max-width: 900px) {
+  .nl-hero-inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 44px;
+    padding: 44px 0 36px;
+  }
+
+  /* Sign-up first on small screens, the phone preview follows. */
+  .nl-visual {
+    order: 2;
+  }
+
+  .nl-copy {
+    max-width: 620px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .nl-grid-2 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .nl-card {
+    padding: 28px 24px;
+  }
+
+  .nl-book {
+    padding: 32px 26px;
+  }
+
+  .nl-chapter {
+    grid-template-columns: 44px minmax(0, 1fr);
+  }
+
+  .nl-chapter-date {
+    grid-column: 2;
+    text-align: left;
+  }
+}
+
+@media (max-width: 600px) {
+  .nl-hero {
+    margin-top: -81px;
+    padding-top: 81px;
+  }
+
+  .nl-hero-inner {
+    padding: 36px 0 28px;
+  }
+
+  .nl-lede {
+    font-size: 17px;
+  }
+
+  .nl-card-signup {
+    padding: 22px 18px 20px;
+  }
+
+  .nl-social-btn {
+    padding: 0 44px;
+    font-size: 15px;
+  }
+
+  .nl-social-btn svg {
+    left: 16px;
+  }
+
+  .nl-well {
+    padding: 48px 0;
+  }
+
+  .nl-closing {
+    margin-top: 40px;
+    padding: 32px 22px;
+  }
+
+  .nl-page .nl-well .nl-closing p {
+    font-size: 19px;
+  }
+
+  .nl-phone {
+    width: 250px;
+    border-radius: 40px;
+  }
+
+  .nl-screen {
+    height: 460px;
+    border-radius: 31px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nl-social-btn,
+  .nl-form input[type="email"] {
+    transition: none;
+  }
+}
