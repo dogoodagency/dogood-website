@@ -1,0 +1,179 @@
+---
+import "../styles/podcast.css";
+import Base from "../layouts/Base.astro";
+import Wave from "../components/Wave.astro";
+import PodcastEpisodeCard from "../components/PodcastEpisodeCard.astro";
+import PodcastPills from "../components/PodcastPills.astro";
+import { edgeAbove } from "../data/edge-line";
+import { episodes, SHOW_LINKS } from "../data/podcast";
+
+const tint = "#f5f2ff";
+const white = "#ffffff";
+const pink = "#ea1557";
+const heroEdge = edgeAbove("#2A0B4F");
+const tintEdge = edgeAbove(tint);
+const pinkEdge = "#b80f45";
+
+const title = "Best Podcasts: Company Culture With The DoGood Insider";
+const description =
+  "Listen to The DoGood Insider, a company culture podcast on operations management & team development insights. One of the top podcasts for entrepreneurs.";
+const canonical = "https://www.dogoodagency.co/dogood-insider";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "PodcastSeries",
+  name: "DoGood Insider",
+  description,
+  url: canonical,
+  sameAs: Object.values(SHOW_LINKS),
+};
+---
+
+<Base title={title} description={description} canonical={canonical} footerStrip={white} footerEdge={edgeAbove(white)}>
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <article class="pod-page">
+    <header class="pod-hero">
+      <div class="pod-well pod-hero-inner">
+        <div class="pod-hero-copy">
+          <h1>DoGood <span class="pod-pink">Insider</span></h1>
+          <p class="pod-sub">Raw Stories from Culture-First Founders &amp; CEOs</p>
+          <p>
+            Step into unfiltered, <strong>raw talks for founders and CEOs</strong> who are navigating more than just business — they're navigating themselves.
+          </p>
+          <p>
+            This podcast reveals the hidden realities behind culture, growth, success, and <strong class="pod-pink">what happens when it starts to crack.</strong><br />
+            No polished corporate facades. Just the real human challenges, pivotal decisions, and breakthrough moments that don't make it into the press release.
+          </p>
+          <p>
+            Join us as founders and other leaders share their authentic journeys — through culture erosion, burnout, identity loss, reinvention, and what it actually takes to <strong>rebuild from the inside out</strong>.
+          </p>
+          <div class="pod-avail">
+            <p class="pod-avail-label">Available on</p>
+            <PodcastPills links={SHOW_LINKS} />
+          </div>
+        </div>
+        <div class="pod-hero-art">
+          <img
+            src="/media/podcast/host-main@1x.webp"
+            srcset="/media/podcast/host-main@1x.webp 560w, /media/podcast/host-main@2x.webp 1120w"
+            sizes="(max-width: 800px) 280px, 380px"
+            width="560"
+            height="778"
+            alt="Illustration of a man speaking into a podcast microphone"
+          />
+        </div>
+      </div>
+      <Wave fill={white} edge={heroEdge} />
+    </header>
+
+    <section class="pod-band" aria-labelledby="pod-episodes">
+      <div class="pod-well pod-section">
+        <h2 class="pod-sr" id="pod-episodes">All episodes</h2>
+        <ul class="pod-grid">
+          {
+            episodes.map((episode, i) => (
+              <li>
+                <PodcastEpisodeCard episode={episode} eager={i < 3} />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <div class="pod-divider" style={`background:${white}`} aria-hidden="true">
+      <Wave fill={tint} edge={tintEdge} />
+    </div>
+
+    <section class="pod-band pod-band-tint">
+      <div class="pod-well pod-split pod-split-reverse">
+        <div class="pod-split-art">
+          <img
+            src="/media/podcast/host-second@1x.webp"
+            srcset="/media/podcast/host-second@1x.webp 560w, /media/podcast/host-second@2x.webp 1120w"
+            sizes="(max-width: 800px) 420px, 520px"
+            width="560"
+            height="400"
+            alt="Illustration of two people in conversation with speech bubbles"
+            loading="lazy"
+          />
+        </div>
+        <div class="pod-split-copy">
+          <p>
+            Hosted by <strong>DoGood Agency</strong> — a partner in founder transformation, operational excellence, and culture change — this podcast is for founders navigating more than just scale.
+          </p>
+          <p>It's for those facing the personal side of building, leading, and letting go.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="pod-divider" style={`background:${tint}`} aria-hidden="true">
+      <Wave fill={pink} edge={tintEdge} />
+    </div>
+
+    <section class="pod-band pod-band-pink" aria-labelledby="pod-seb-name">
+      <div class="pod-well pod-seb-wrap">
+        <div class="pod-seb">
+          <div class="pod-seb-photo">
+            <img
+              src="/media/podcast/seb-host@1x.webp"
+              srcset="/media/podcast/seb-host@1x.webp 560w, /media/podcast/seb-host@2x.webp 1120w"
+              sizes="(max-width: 800px) 100vw, 360px"
+              width="560"
+              height="834"
+              alt="Portrait of Seb Wichmann"
+              loading="lazy"
+            />
+          </div>
+          <div class="pod-seb-copy">
+            <h2 id="pod-seb-name">Seb Wichmann</h2>
+            <p>
+              I've spent 14 years transforming cultures across 35+ countries — advising Fortune 500 companies, leading leadership programs, and earning recognition as an Upwork Expert-Vetted professional and 'SuperCoach' award recipient.
+            </p>
+            <p><strong>But my most important transformation was my own.</strong></p>
+            <p>
+              I built a successful business that nearly broke me. I know what it's like to perform at the top while quietly falling apart.
+            </p>
+            <p>
+              That journey is why <strong class="pod-pink">I now work exclusively with founders</strong> facing the same crossroads. Whether you're still in the thick of it or figuring out what comes next, I've been where you are.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="pod-divider" style={`background:${pink}`} aria-hidden="true">
+      <Wave fill={white} edge={pinkEdge} />
+    </div>
+
+    <section class="pod-band">
+      <div class="pod-well pod-split pod-split-last">
+        <div class="pod-split-copy">
+          <p>Most founder content is about winning — the tactics, the exits, the highlights reel.</p>
+          <p><strong>This podcast is about what happens in between.</strong></p>
+          <p>
+            The guests on <strong>DoGood <span class="pod-pink">Insider</span></strong> aren't here to impress you. They're here because they've lived through something real — and they're willing to talk about it honestly. The doubts. The pivots. The moments that reshaped how they lead and live.
+          </p>
+          <p>
+            You won't find scripts. Just founders, CEOs, and other leaders saying the things most people only admit in private.
+          </p>
+          <p>
+            If you've ever wondered whether anyone else feels the way you do — they do. <strong>And they're on this show.</strong>
+          </p>
+        </div>
+        <div class="pod-split-art">
+          <img
+            src="/media/podcast/routines-asset@1x.webp"
+            srcset="/media/podcast/routines-asset@1x.webp 560w, /media/podcast/routines-asset@2x.webp 900w"
+            sizes="(max-width: 800px) 420px, 520px"
+            width="560"
+            height="373"
+            alt="Illustration of a man with a clock"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+  </article>
+</Base>

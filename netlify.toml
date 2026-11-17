@@ -329,6 +329,32 @@
   to = "/insights/raising-the-personal-side-of-exit-with-a-client"
   status = 301
 
+# Podcast: live episode URLs with encoded characters -> clean slugs
+[[redirects]]
+  from = "/podcast/building-tomorrow%E2%80%99s-culture"
+  to = "/podcast/building-tomorrows-culture"
+  status = 301
+
+[[redirects]]
+  from = "/podcast/building-tomorrow’s-culture"
+  to = "/podcast/building-tomorrows-culture"
+  status = 301
+
+[[redirects]]
+  from = "/podcast/no-compromise%2C-just-care"
+  to = "/podcast/no-compromise-just-care"
+  status = 301
+
+[[redirects]]
+  from = "/podcast/no-compromise,-just-care"
+  to = "/podcast/no-compromise-just-care"
+  status = 301
+
+[[redirects]]
+  from = "/podcast"
+  to = "/dogood-insider"
+  status = 301
+
 [[headers]]
   for = "/*"
   [headers.values]
