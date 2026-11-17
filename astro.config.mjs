@@ -18,7 +18,10 @@ export default defineConfig({
     "/sop-development": "/",
     "/strategic-hiring-and-employee-onboarding": "/",
   },
-  integrations: [sitemap()],
+  integrations: [sitemap({
+    // Sample blog articles are noindex for now; remove this filter at launch when real articles replace them.
+    filter: (page) => !/\/blog\/(?!category\/)[^/]+\/?$/.test(page),
+  })],
   vite: {
     plugins: [tailwindcss()],
     build: {

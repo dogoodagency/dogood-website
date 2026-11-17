@@ -1,0 +1,311 @@
+---
+import { getCollection, render } from "astro:content";
+import "../../styles/blog.css";
+import Base from "../../layouts/Base.astro";
+import BlogImage from "../../components/BlogImage.astro";
+import BlogCard from "../../components/BlogCard.astro";
+import BlogNewsletter from "../../components/BlogNewsletter.astro";
+import Wave from "../../components/Wave.astro";
+import { edgeAbove } from "../../data/edge-line";
+import {
+  SITE,
+  audiences,
+  formatDate,
+  getCategory,
+  initials,
+  isoDate,
+  relatedPosts,
+  sketchSrc,
+} from "../../data/blog";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post, all: posts },
+  }));
+}
+
+const { post, all } = Astro.props;
+const d = post.data;
+const { Content, headings } = await render(post);
+const toc = headings.filter((h) => h.depth === 2);
+
+const category = getCategory(d.category);
+const aud = audiences[d.audience];
+const url = `${SITE}/blog/${post.id}`;
+const related = relatedPosts(post, all, 3);
+const heroPng2 = sketchSrc(d.heroImage).png2;
+
+const tint = "#F5F2FF";
+const white = "#ffffff";
+const footerEdge = edgeAbove(tint);
+const bandEdge = edgeAbove(white);
+const heroEdge = edgeAbove("#2A0B4F");
+
+// Audience call to action.
+let cta = {
+  title: "See The Reset",
+  text: "For founders who have already sold. Start with 30 days to reset, then build what comes next when you are ready.",
+  href: "/the-reset",
+  label: "See The Reset",
+};
+if (d.audience === "advisor") {
+  cta = {
+    title: "Advisor Center",
+    text: "How a referral works, what your client gets, and how we keep you in the loop. We work next to you, never instead of you.",
+    href: "/for-advisors",
+    label: "Advisor Center",
+  };
+} else if (d.category === "preparing-for-exit") {
+  cta = {
+    title: "See Exit-Prep",
+    text: "For founders who haven't sold yet. Private weekly sessions to prepare yourself, not just the company.",
+    href: "/exit-prep",
+    label: "See Exit-Prep",
+  };
+}
+
+const json = (value: unknown) => JSON.stringify(value).replace(/</g, "\\u003c");
+
+const blogPosting = json({
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: d.title,
+  description: d.description,
+  image: `${SITE}${heroPng2}`,
+  datePublished: d.date.toISOString(),
+  dateModified: (d.updated ?? d.date).toISOString(),
+  author: {
+    "@type": "Person",
+    name: d.author,
+    jobTitle: d.authorRole,
+    url: `${SITE}/about`,
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "DoGood Agency LLC",
+    logo: { "@type": "ImageObject", url: `${SITE}/logo.svg` },
+  },
+  mainEntityOfPage: { "@type": "WebPage", "@id": url },
+  articleSection: category?.name,
+  keywords: d.tags.join(", "),
+  about: { "@type": "Audience", audienceType: aud.label },
+});
+
+const breadcrumbs = [
+  { name: "Home", href: "/" },
+  { name: "Blog", href: "/blog" },
+  ...(category ? [{ name: category.name, href: `/blog/category/${category.slug}` }] : []),
+  { name: d.title, href: `/blog/${post.id}` },
+];
+const breadcrumbJson = json({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: breadcrumbs.map((b, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: b.name,
+    item: `${SITE}${b.href}`,
+  })),
+});
+
+const faqJson = d.faq.length
+  ? json({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: d.faq.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    })
+  : "";
+---
+
+<Base
+  title={`${d.title} | DoGood Blog`}
+  description={d.description}
+  canonical={url}
+  ogTitle={d.title}
+  ogImage={heroPng2}
+  ogType="article"
+  robots={d.noindex ? "noindex, follow" : undefined}
+  hideOptin={true}
+  footerStrip={tint}
+  footerEdge={footerEdge}
+>
+  <Fragment slot="head">
+    <link rel="alternate" type="application/rss+xml" title="DoGood Blog" href="/blog/rss.xml" />
+    <script is:inline type="application/ld+json" set:html={blogPosting} />
+    <script is:inline type="application/ld+json" set:html={breadcrumbJson} />
+    {faqJson && <script is:inline type="application/ld+json" set:html={faqJson} />}
+  </Fragment>
+
+  <div class="bl-page bl-article">
+    <div class="bl-topband">
+      <div class="bl-col">
+        <nav class="bl-crumbs bl-crumbs--dark" aria-label="Breadcrumb">
+          <ol>
+            {
+              breadcrumbs.map((b, i) => (
+                <li>
+                  {i === breadcrumbs.length - 1 ? (
+                    <span aria-current="page">{b.name}</span>
+                  ) : (
+                    <a href={b.href}>{b.name}</a>
+                  )}
+                </li>
+              ))
+            }
+          </ol>
+        </nav>
+      </div>
+      <Wave fill={white} edge={heroEdge} />
+    </div>
+
+    <div class="bl-col">
+      {
+        d.sample && (
+          <p class="bl-sample" role="note">
+            Sample article: placeholder text to show the layout.
+          </p>
+        )
+      }
+
+      <header class="bl-head">
+        <div class="bl-card-tags">
+          <span class:list={["bl-badge", `bl-badge--${d.audience}`]}>{aud.label}</span>
+          {
+            category && (
+              <a class="bl-pill" href={`/blog/category/${category.slug}`}>
+                {category.name}
+              </a>
+            )
+          }
+        </div>
+        <h1>{d.title}</h1>
+        <p class="bl-dek">{d.description}</p>
+
+        <div class="bl-byline">
+          <div class="bl-author">
+            <span class="bl-avatar" aria-hidden="true">{initials(d.author)}</span>
+            <span class="bl-author-text">
+              <span class="bl-author-name">{d.author}</span>
+              <span class="bl-author-role">{d.authorRole}</span>
+            </span>
+          </div>
+          <p class="bl-meta">
+            <span>Published <time datetime={isoDate(d.date)}>{formatDate(d.date)}</time></span>
+            {
+              d.updated && (
+                <>
+                  <span aria-hidden="true"> · </span>
+                  <span>Updated <time datetime={isoDate(d.updated)}>{formatDate(d.updated)}</time></span>
+                </>
+              )
+            }
+            <span aria-hidden="true"> · </span>
+            <span>{d.readTime} min read</span>
+          </p>
+        </div>
+      </header>
+    </div>
+
+    <div class="bl-col bl-col--wide">
+      <BlogImage class="bl-hero-img" src={d.heroImage} alt={d.heroAlt} bg={d.heroBg} eager={true} />
+    </div>
+
+    <div class="bl-col">
+      <p class="bl-isyou"><strong>Is this you?</strong> {d.isThisYou}</p>
+
+      <section class="bl-short" aria-label="The short answer">
+        <p class="bl-box-label">The short answer</p>
+        <p class="bl-short-text">{d.shortAnswer}</p>
+      </section>
+
+      {
+        d.questions.length > 0 && (
+          <section class="bl-questions" aria-labelledby="bl-questions-title">
+            <h2 class="bl-box-title" id="bl-questions-title">Questions this answers</h2>
+            <ul>
+              {d.questions.map((q) => <li>{q}</li>)}
+            </ul>
+          </section>
+        )
+      }
+
+      {
+        toc.length > 0 && (
+          <nav class="bl-toc" aria-labelledby="bl-toc-title">
+            <p class="bl-box-label" id="bl-toc-title">In this article</p>
+            <ol>
+              {
+                toc.map((h) => (
+                  <li>
+                    <a href={`#${h.slug}`}>{h.text}</a>
+                  </li>
+                ))
+              }
+            </ol>
+          </nav>
+        )
+      }
+
+      <div class="bl-prose">
+        <Content />
+      </div>
+
+      <section class="bl-takeaways" aria-labelledby="bl-takeaways-title">
+        <h2 id="bl-takeaways-title">Key takeaways</h2>
+        <ul>
+          {d.takeaways.map((t) => <li>{t}</li>)}
+        </ul>
+      </section>
+
+      {
+        d.faq.length > 0 && (
+          <section class="bl-faq" aria-labelledby="bl-faq-title">
+            <h2 id="bl-faq-title">Common questions</h2>
+            {
+              d.faq.map((f, i) => (
+                <details class="bl-faq-item" open={i === 0}>
+                  <summary>
+                    <span class="bl-faq-q">{f.q}</span>
+                    <span class="bl-faq-icon" aria-hidden="true"></span>
+                  </summary>
+                  <p class="bl-faq-a">{f.a}</p>
+                </details>
+              ))
+            }
+          </section>
+        )
+      }
+
+      <aside class="bl-cta" aria-labelledby="bl-cta-title">
+        <p class="bl-box-label bl-box-label--light">{aud.label}</p>
+        <h2 id="bl-cta-title">{cta.title}</h2>
+        <p>{cta.text}</p>
+        <a class="btn-teal" href={cta.href}>{cta.label}</a>
+        <p class="bl-cta-quiet">Not sure which? <a href="/how-it-works">See how it works</a></p>
+      </aside>
+    </div>
+
+    <div class="bl-col bl-col--wide">
+      <BlogNewsletter idSuffix="article" />
+    </div>
+
+    <div class="bl-more">
+      <Wave fill={tint} edge={bandEdge} />
+      <section class="bl-more-band" aria-labelledby="bl-more-title">
+        <div class="bl-wrap">
+          <h2 id="bl-more-title">Keep reading</h2>
+          <div class="bl-grid">
+            {related.map((p) => <BlogCard post={p} variant="grid" />)}
+          </div>
+          <p class="bl-back"><a href="/blog">← Back to the blog</a></p>
+        </div>
+      </section>
+    </div>
+  </div>
+</Base>

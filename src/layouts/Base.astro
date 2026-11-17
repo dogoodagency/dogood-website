@@ -12,6 +12,9 @@ interface Props {
   footerStrip?: string;
   footerEdge?: string;
   ogTitle?: string;
+  ogImage?: string;
+  ogType?: string;
+  robots?: string;
 }
 
 const title =
@@ -35,7 +38,9 @@ const ogDescription = Astro.props.description
   ? description
   : "A private 30-day engagement for founders navigating life after exit. Start with Stage 1 of the Founder Reclamation Partnership. 5 founders a month.";
 const twitterDescription = ogDescription;
-const ogImage = new URL("/og.jpg", canonical).href;
+const ogImage = new URL(Astro.props.ogImage ?? "/og.jpg", canonical).href;
+const ogType = Astro.props.ogType ?? "website";
+const robots = Astro.props.robots ?? "noindex, nofollow";
 
 const organization = {
   "@context": "https://schema.org",
@@ -69,7 +74,7 @@ const organization = {
       Preview only. At launch, delete this robots meta tag and update
       public/robots.txt so the site can be indexed.
     -->
-    <meta name="robots" content="noindex, nofollow" />
+    <meta name="robots" content={robots} />
     <script
       id="cookieyes"
       type="text/javascript"
@@ -82,7 +87,7 @@ const organization = {
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <meta property="og:title" content={ogTitle} />
     <meta property="og:description" content={ogDescription} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content={ogTitle} />
     <meta property="og:image" content={ogImage} />
@@ -93,6 +98,7 @@ const organization = {
     <meta name="twitter:description" content={twitterDescription} />
     <meta name="twitter:image" content={ogImage} />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(organization)} />
+    <slot name="head" />
   </head>
   <body style={bodyStyle || undefined}>
     <a

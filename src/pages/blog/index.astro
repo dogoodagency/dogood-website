@@ -1,0 +1,552 @@
+---
+import { getCollection } from "astro:content";
+import "../../styles/blog.css";
+import "../../styles/blog-index.css";
+import Base from "../../layouts/Base.astro";
+import BlogAudIcon from "../../components/BlogAudIcon.astro";
+import BlogCard from "../../components/BlogCard.astro";
+import BlogNewsletter from "../../components/BlogNewsletter.astro";
+import Wave from "../../components/Wave.astro";
+import { edgeAbove } from "../../data/edge-line";
+import { SITE, audiences, categories, getCategory, sortedPosts } from "../../data/blog";
+
+const posts = sortedPosts(await getCollection("blog"));
+const total = posts.length;
+
+const white = "#ffffff";
+const tint = "#F5F2FF";
+const heroEdge = edgeAbove("#2A0B4F");
+const whiteEdge = edgeAbove(white);
+const tintEdge = edgeAbove(tint);
+
+const topics = [
+  "first 90 days",
+  "identity",
+  "before the sale",
+  "family",
+  "energy",
+  "what's next",
+  "advisors",
+  "earnout",
+];
+
+// Featured post, then the three editor's picks (sorted by pick, newest first on a tie).
+const featured = posts.find((p) => p.data.featured) ?? posts[0];
+const picked = posts
+  .filter((p) => p.id !== featured?.id && p.data.pick !== undefined)
+  .sort((a, b) => a.data.pick! - b.data.pick! || b.data.date.getTime() - a.data.date.getTime());
+const picks = [...picked, ...posts.filter((p) => p.id !== featured?.id && !picked.includes(p))].slice(0, 3);
+
+const founderPosts = posts.filter((p) => p.data.audience === "founder");
+const advisorPosts = posts.filter((p) => p.data.audience === "advisor");
+const founderCats = categories.filter((c) => c.audience === "founder");
+const advisorCats = categories.filter((c) => c.audience === "advisor");
+
+const searchText = (p: (typeof posts)[number]) => {
+  const d = p.data;
+  return [d.title, d.description, d.tags.join(" "), getCategory(d.category)?.name ?? "", audiences[d.audience].label].join(" ");
+};
+const countIn = (slug: string) => posts.filter((p) => p.data.category === slug).length;
+const plural = (n: number) => `${n} ${n === 1 ? "article" : "articles"}`;
+
+const resources = {
+  founder: [
+    { href: "/exit-prep", title: "Exit-Prep: before the sale", line: "Look at the personal side of the sale while there is still room to shape it." },
+    { href: "/the-reset", title: "The Reset + The Build: after the sale", line: "Two steps for founders who have sold: pause first, then build what is next." },
+    { href: "/how-it-works", title: "How it works: choose your door", line: "See the two paths and pick the one that fits where you are." },
+    { href: "/faqs", title: "Questions, answered", line: "Plain answers on timing, format and privacy." },
+  ],
+  advisor: [
+    { href: "/for-advisors", title: "Advisor Center", line: "Everything for advisors whose clients are selling, in one place." },
+    { href: "/for-advisors/client-tools", title: "Free tools for your clients", line: "Simple tools to hand to a founder who is preparing to sell." },
+    { href: "/for-advisors/insights", title: "Advisor insights", line: "Short reads on the personal side of exit, written for advisors." },
+    { href: "/for-advisors", title: "Refer a founder", line: "Know a founder who is selling or has just sold? Introduce them here." },
+  ],
+};
+
+const json = (value: unknown) => JSON.stringify(value).replace(/</g, "\\u003c");
+
+const breadcrumbJson = json({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
+    { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE}/blog` },
+  ],
+});
+
+const blogJson = json({
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  name: "Notes from FOUNDERland | The DoGood blog",
+  url: `${SITE}/blog`,
+  description:
+    "Honest notes for founders before and after the sale, and for the advisors who walk with them.",
+  publisher: {
+    "@type": "Organization",
+    name: "DoGood Agency LLC",
+    url: SITE,
+    logo: `${SITE}/logo.svg`,
+  },
+  blogPost: posts.map((p) => ({
+    "@type": "BlogPosting",
+    headline: p.data.title,
+    url: `${SITE}/blog/${p.id}`,
+    datePublished: p.data.date.toISOString().slice(0, 10),
+    author: { "@type": "Person", name: p.data.author },
+  })),
+});
+
+const tabs = [
+  { key: "all", label: "All articles", icon: "both" as const },
+  { key: "founders", label: "For founders", icon: "founder" as const },
+  { key: "advisors", label: "For advisors", icon: "advisor" as const },
+];
+---
+
+<Base
+  title="Blog: notes for founders before and after the sale | DoGood"
+  description="Honest notes for founders before and after the sale, and for the advisors who walk with them. Articles on exit, identity and what comes next."
+  canonical={`${SITE}/blog`}
+  ogTitle="Notes from FOUNDERland | DoGood Blog"
+  hideOptin={true}
+  footerStrip={tint}
+  footerEdge={tintEdge}
+>
+  <Fragment slot="head">
+    <link rel="alternate" type="application/rss+xml" title="DoGood Blog" href="/blog/rss.xml" />
+    <script is:inline type="application/ld+json" set:html={blogJson} />
+    <script is:inline type="application/ld+json" set:html={breadcrumbJson} />
+  </Fragment>
+
+  <div class="bl-page bl-index" id="bli-root">
+    <!-- 1. Hero + search -->
+    <header class="bl-hero bli-hero">
+      <div class="bl-hero-inner">
+        <p class="bl-box-label bl-box-label--light">The DoGood blog</p>
+        <h1>Notes from <span class="bl-founderland"><strong>FOUNDER</strong><span class="bl-land">land</span></span></h1>
+        <p class="bl-hero-lede">Honest notes for founders before and after the sale, and for the advisors who walk with them.</p>
+
+        <div class="bl-search-wrap">
+          <form class="bl-search" role="search" action="/blog" method="get" novalidate>
+            <label class="bl-sr" for="bli-search">Search the articles</label>
+            <svg class="bl-search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="2"></circle>
+              <path d="m15.5 15.5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            </svg>
+            <input
+              id="bli-search"
+              name="q"
+              type="search"
+              placeholder="Search the articles…"
+              autocomplete="off"
+              enterkeyhint="search"
+              spellcheck="false"
+            />
+            <button class="bl-clear" type="button" aria-label="Clear search">
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="m4 4 8 8M12 4l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+              </svg>
+            </button>
+          </form>
+
+          <div class="bl-common" role="group" aria-labelledby="bli-common-label">
+            <p class="bl-common-label" id="bli-common-label">Suggested topics:</p>
+            {
+              topics.map((term) => (
+                <button class="bl-chip" type="button" aria-pressed="false" data-bl-term={term}>
+                  {term}
+                </button>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+      <Wave fill={tint} edge={heroEdge} />
+    </header>
+
+    <!-- 2 to 4. Audience switch, featured, latest articles -->
+    <section class="bl-band bli-band bl-band--tint bli-main" aria-label="Articles">
+      <div class="bl-wrap">
+        <p class="bl-sr" id="bli-status" role="status" aria-live="polite"></p>
+
+        <div class="bli-switch" role="group" aria-label="Show articles for">
+          {
+            tabs.map((tab) => (
+              <button class="bli-tab" type="button" aria-pressed={tab.key === "all" ? "true" : "false"} data-bl-aud={tab.key}>
+                <span class={`bli-ico bli-ico--${tab.icon}`}>
+                  <BlogAudIcon audience={tab.icon} size={16} />
+                </span>
+                <span>{tab.label}</span>
+              </button>
+            ))
+          }
+        </div>
+
+        {
+          featured && (
+            <div class="bli-feature">
+              <div class="bli-feature-main">
+                <BlogCard post={featured} variant="feature" eager={true} />
+              </div>
+              <aside class="bli-trend-col" aria-labelledby="bli-trend-title">
+                <div class="bli-trend">
+                  <img class="bli-spark bli-spark--a" src="/sketches/sparkle-glint-4pt.svg" alt="" width="16" height="16" aria-hidden="true" />
+                  <img class="bli-spark bli-spark--b" src="/sketches/sparkle-glint-mint.svg" alt="" width="12" height="12" aria-hidden="true" />
+                  <img class="bli-spark bli-spark--c" src="/sketches/sparkle-dot-soft.svg" alt="" width="12" height="12" aria-hidden="true" />
+                  <span class="bli-shape bli-shape--a" aria-hidden="true"></span>
+                  <span class="bli-shape bli-shape--b" aria-hidden="true"></span>
+                  <h2 id="bli-trend-title">
+                    Most read in <span class="bl-founderland"><strong>FOUNDER</strong><span class="bl-land">land</span></span>
+                  </h2>
+                  <p class="bli-trend-sub">Editor’s picks this month</p>
+                </div>
+                <ul class="bli-picks">
+                  {picks.map((p) => <li><BlogCard post={p} variant="row" /></li>)}
+                </ul>
+              </aside>
+            </div>
+          )
+        }
+
+        <section class="bli-latest" id="bl-latest" aria-labelledby="bli-latest-title">
+          <h2 class="bli-h2" id="bli-latest-title">Latest articles</h2>
+          <ul class="bl-grid bli-grid">
+            {
+              posts.map((p) => (
+                <li class="bli-item" data-audience={p.data.audience} data-search={searchText(p)}>
+                  <BlogCard post={p} variant="grid" />
+                </li>
+              ))
+            }
+          </ul>
+          <p class="bl-empty bli-empty" id="bli-empty" hidden>
+            Nothing yet for <span id="bli-empty-term"></span>. Try another topic or see the <a href="/faqs">FAQs</a>.
+          </p>
+          <p class="bli-count" id="bli-count" data-total={total}>{plural(total)}</p>
+        </section>
+      </div>
+      <Wave class="bli-wave-main" fill={white} edge={tintEdge} />
+    </section>
+
+    <!-- 5. Two audiences -->
+    <section class="bl-band bli-band bli-aud-band" aria-label="Articles by audience">
+      <div class="bl-wrap">
+        <section class="bli-aud bli-aud--founder" aria-labelledby="bli-founders-title">
+          <div class="bli-aud-head">
+            <span class="bl-badge bl-badge--founder"><BlogAudIcon audience="founder" /> For founders</span>
+            <h2 class="bli-h2" id="bli-founders-title">For founders</h2>
+            <p class="bli-aud-line">Before the sale or after it, the personal side of the exit.</p>
+          </div>
+          <ul class="bl-grid bli-grid">
+            {founderPosts.slice(0, 3).map((p) => <li class="bli-item"><BlogCard post={p} variant="grid" /></li>)}
+          </ul>
+          <div class="bli-aud-foot">
+            <a class="btn-teal" href="/blog?for=founders#bl-latest" data-bl-set-aud="founders">All founder articles</a>
+            <ul class="bli-pills" aria-label="Founder topics">
+              {
+                founderCats.map((c) => (
+                  <li><a class="bl-pill bl-pill--lg" href={`/blog/category/${c.slug}`}>{c.name}</a></li>
+                ))
+              }
+            </ul>
+          </div>
+        </section>
+
+        <section class="bli-aud bli-aud--advisor" aria-labelledby="bli-advisors-title">
+          <div class="bli-aud-head">
+            <span class="bl-badge bl-badge--advisor"><BlogAudIcon audience="advisor" /> For advisors</span>
+            <h2 class="bli-h2" id="bli-advisors-title">For advisors</h2>
+            <p class="bli-aud-line">For exit planners, wealth advisors, accountants and attorneys whose clients are selling.</p>
+          </div>
+          <ul class="bl-grid bli-grid">
+            {advisorPosts.map((p) => <li class="bli-item"><BlogCard post={p} variant="grid" /></li>)}
+          </ul>
+          <div class="bli-aud-foot">
+            <a class="btn-teal" href="/for-advisors">Visit the Advisor Center</a>
+            <ul class="bli-pills" aria-label="Advisor topics">
+              {
+                advisorCats.map((c) => (
+                  <li><a class="bl-pill bl-pill--lg" href={`/blog/category/${c.slug}`}>{c.name}</a></li>
+                ))
+              }
+            </ul>
+          </div>
+        </section>
+      </div>
+      <Wave fill={tint} edge={whiteEdge} />
+    </section>
+
+    <!-- 6. Browse by topic -->
+    <section class="bl-band bli-band bl-band--tint" aria-labelledby="bli-topics-title">
+      <div class="bl-wrap">
+        <h2 class="bli-h2" id="bli-topics-title">Browse by topic</h2>
+        <ul class="bli-cats">
+          {
+            categories.map((c) => (
+              <li>
+                <a class="bli-cat" href={`/blog/category/${c.slug}`}>
+                  <span class={`bl-badge bl-badge--${c.audience}`}>
+                    <BlogAudIcon audience={c.audience} /> {audiences[c.audience].label}
+                  </span>
+                  <h3>{c.name}</h3>
+                  <p>{c.description}</p>
+                  <span class="bli-cat-count">{plural(countIn(c.slug))}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <Wave fill={white} edge={tintEdge} />
+    </section>
+
+    <!-- 7. Resources -->
+    <section class="bl-band bli-band" aria-labelledby="bli-res-title">
+      <div class="bl-wrap">
+        <h2 class="bli-h2" id="bli-res-title">Founder &amp; advisor resources</h2>
+        <div class="bli-res-cols">
+          <div class="bli-res-col">
+            <h3 class="bli-res-head bli-res-head--founder">
+              <span class="bli-ico bli-ico--founder"><BlogAudIcon audience="founder" size={16} /></span> For founders
+            </h3>
+            <ul class="bli-res">
+              {
+                resources.founder.map((r) => (
+                  <li>
+                    <a class="bli-res-link" href={r.href}>
+                      <span class="bli-res-text">
+                        <span class="bli-res-title">{r.title}</span>
+                        <span class="bli-res-line">{r.line}</span>
+                      </span>
+                      <span class="bli-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 16 16" width="16" height="16" fill="none">
+                          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </span>
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+          <div class="bli-res-col">
+            <h3 class="bli-res-head bli-res-head--advisor">
+              <span class="bli-ico bli-ico--advisor"><BlogAudIcon audience="advisor" size={16} /></span> For advisors
+            </h3>
+            <ul class="bli-res">
+              {
+                resources.advisor.map((r) => (
+                  <li>
+                    <a class="bli-res-link" href={r.href}>
+                      <span class="bli-res-text">
+                        <span class="bli-res-title">{r.title}</span>
+                        <span class="bli-res-line">{r.line}</span>
+                      </span>
+                      <span class="bli-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 16 16" width="16" height="16" fill="none">
+                          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </span>
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+      <Wave fill={tint} edge={whiteEdge} />
+    </section>
+
+    <!-- 8. Newsletter -->
+    <section class="bl-band bli-band bl-band--tint bli-nl-band" aria-label="Newsletter">
+      <div class="bl-wrap">
+        <BlogNewsletter idSuffix="index" heading="Get every new note by email" />
+        <p class="bli-nl-extra"><a href="/newsletter">See what the newsletter covers</a></p>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<script>
+  // Bundled (not inline) so it passes the site's Content-Security-Policy.
+  document.documentElement.classList.add("bl-js");
+  const root = document.querySelector<HTMLElement>("#bli-root");
+
+  if (root) {
+    const form = root.querySelector<HTMLFormElement>(".bl-search");
+    const input = root.querySelector<HTMLInputElement>("#bli-search");
+    const clear = root.querySelector<HTMLButtonElement>(".bl-clear");
+    const chips = Array.from(root.querySelectorAll<HTMLButtonElement>(".bl-chip"));
+    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>(".bli-tab"));
+    const items = Array.from(root.querySelectorAll<HTMLElement>("#bl-latest .bli-item"));
+    const emptyBox = root.querySelector<HTMLElement>("#bli-empty");
+    const emptyTerm = root.querySelector<HTMLElement>("#bli-empty-term");
+    const status = root.querySelector<HTMLElement>("#bli-status");
+    const count = root.querySelector<HTMLElement>("#bli-count");
+    const title = root.querySelector<HTMLElement>("#bli-latest-title");
+    const latest = root.querySelector<HTMLElement>("#bl-latest");
+
+    const labels: Record<string, string> = {
+      all: "",
+      founders: "For founders",
+      advisors: "For advisors",
+    };
+    let audience = "all";
+
+    /** Lower case, plain quotes, hyphens and dashes as spaces, no accents. */
+    const norm = (value: string): string =>
+      value
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[̀-ͯ]/g, "")
+        .replace(/[’‘`]/g, "'")
+        .replace(/[‐-―-]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+
+    const index = items.map((item) => norm(item.dataset.search ?? ""));
+    const noun = (n: number) => `${n} ${n === 1 ? "article" : "articles"}`;
+
+    const audienceOk = (value: string): boolean =>
+      audience === "all" ||
+      value === "both" ||
+      (audience === "founders" && value === "founder") ||
+      (audience === "advisors" && value === "advisor");
+
+    const syncUrl = (term: string) => {
+      const url = new URL(window.location.href);
+      if (term) url.searchParams.set("q", term);
+      else url.searchParams.delete("q");
+      if (audience !== "all") url.searchParams.set("for", audience);
+      else url.searchParams.delete("for");
+      window.history.replaceState(null, "", url);
+    };
+
+    const run = () => {
+      const value = input?.value ?? "";
+      const label = value.trim();
+      const query = norm(value);
+      clear?.classList.toggle("is-visible", value.length > 0);
+
+      chips.forEach((chip) => {
+        const on = query !== "" && norm(chip.dataset.blTerm ?? "") === query;
+        chip.classList.toggle("is-active", on);
+        chip.setAttribute("aria-pressed", String(on));
+      });
+      tabs.forEach((tab) => tab.setAttribute("aria-pressed", String(tab.dataset.blAud === audience)));
+
+      // Whole phrase first. If nothing has it, fall back to every word appearing somewhere.
+      let hits = index.map((text) => !query || text.includes(query));
+      if (query && !hits.some((hit, i) => hit && audienceOk(items[i].dataset.audience ?? ""))) {
+        const words = query.split(" ").filter((word) => word.length > 1);
+        if (words.length > 1) hits = index.map((text) => words.every((word) => text.includes(word)));
+      }
+
+      let shown = 0;
+      items.forEach((item, i) => {
+        const ok = hits[i] && audienceOk(item.dataset.audience ?? "");
+        item.hidden = !ok;
+        if (ok) shown += 1;
+      });
+
+      const filtering = query !== "" || audience !== "all";
+      root.classList.toggle("is-filtering", filtering);
+      if (title) title.textContent = filtering ? "Matching articles" : "Latest articles";
+
+      const parts = [noun(shown)];
+      if (label) parts[0] += ` for “${label}”`;
+      if (audience !== "all") parts.push(labels[audience]);
+      const summary = parts.join(" · ");
+      if (count) count.textContent = summary;
+
+      if (emptyBox) emptyBox.hidden = shown > 0;
+      if (emptyTerm) emptyTerm.textContent = label ? `“${label}”` : "this filter";
+      if (status) {
+        status.textContent =
+          shown === 0
+            ? label
+              ? `Nothing yet for “${label}”.`
+              : "No articles match this filter."
+            : filtering
+              ? `${summary}.`
+              : "";
+      }
+
+      syncUrl(label);
+    };
+
+    const setAudience = (next: string) => {
+      audience = next in labels ? next : "all";
+      run();
+    };
+
+    root.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+
+      const chip = target.closest<HTMLButtonElement>(".bl-chip");
+      if (chip && input) {
+        const term = chip.dataset.blTerm ?? "";
+        input.value = chip.classList.contains("is-active") ? "" : term;
+        run();
+        input.focus({ preventScroll: true });
+        return;
+      }
+
+      const tab = target.closest<HTMLButtonElement>(".bli-tab");
+      if (tab) {
+        setAudience(tab.dataset.blAud ?? "all");
+        return;
+      }
+
+      const jump = target.closest<HTMLAnchorElement>("[data-bl-set-aud]");
+      if (jump) {
+        event.preventDefault();
+        setAudience(jump.dataset.blSetAud ?? "all");
+        const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        latest?.scrollIntoView({ behavior: calm ? "auto" : "smooth", block: "start" });
+      }
+    });
+
+    if (input) {
+      let timer: number | undefined;
+      input.addEventListener("input", () => {
+        window.clearTimeout(timer);
+        timer = window.setTimeout(run, 140);
+      });
+      input.addEventListener("search", () => {
+        window.clearTimeout(timer);
+        run();
+      });
+      input.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && input.value) {
+          event.preventDefault();
+          input.value = "";
+          run();
+        }
+      });
+    }
+
+    form?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      run();
+    });
+
+    clear?.addEventListener("click", () => {
+      if (!input) return;
+      input.value = "";
+      run();
+      input.focus({ preventScroll: true });
+    });
+
+    // /blog?q=family&for=founders pre-fills the search and the audience switch.
+    const params = new URLSearchParams(window.location.search);
+    const preset = params.get("q");
+    const presetFor = params.get("for");
+    if (preset && input) input.value = preset;
+    if (presetFor && presetFor in labels) audience = presetFor;
+    if (preset || (presetFor && presetFor in labels)) run();
+  }
+</script>
