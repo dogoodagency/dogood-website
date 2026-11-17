@@ -664,6 +664,89 @@ html.adv-js .adv-faq-item:not(.is-open) .adv-faq-panel {
   margin: 0;
 }
 
+/* ---------- What advisors tell us (same card as the Stories testimonials) ---------- */
+
+.adv-quotes {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+  margin: 36px 0 0;
+}
+
+.adv-quote {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  grid-column: span 2;
+  min-width: 0;
+  margin: 0;
+  padding: 54px 28px 28px;
+  background: #fff;
+  border: 1px solid var(--adv-line);
+  border-radius: 18px;
+}
+
+/* Five cards: three on the first row, the last two centred beneath. */
+.adv-quote:nth-child(4) {
+  grid-column: 2 / span 2;
+}
+
+.adv-quote:nth-child(5) {
+  grid-column: 4 / span 2;
+}
+
+.adv-quote::before {
+  content: "\201C";
+  position: absolute;
+  top: 14px;
+  left: 24px;
+  color: #ea1458;
+  font-size: 64px;
+  font-weight: 900;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.adv-quote blockquote {
+  margin: 0 0 20px;
+  padding: 0;
+}
+
+.adv-page .adv-quote blockquote p {
+  margin: 0;
+  color: var(--adv-ink);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.adv-quote figcaption {
+  margin-top: auto;
+  color: var(--adv-ink);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.adv-quotes-close {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  margin-top: 44px;
+  text-align: center;
+}
+
+.adv-page .adv-quotes-close p {
+  max-width: 640px;
+  margin: 0;
+  color: var(--adv-ink);
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
 /* ---------- Responsive ---------- */
 
 @media (min-width: 1200px) {
@@ -695,6 +778,23 @@ html.adv-js .adv-faq-item:not(.is-open) .adv-faq-panel {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .adv-quotes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .adv-quote,
+  .adv-quote:nth-child(4),
+  .adv-quote:nth-child(5) {
+    grid-column: auto;
+  }
+
+  /* The odd fifth card sits centred on its own row. */
+  .adv-quote:nth-child(5) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 12px);
+  }
+
   .adv-hero-inner--split {
     gap: 36px;
   }
@@ -724,6 +824,16 @@ html.adv-js .adv-faq-item:not(.is-open) .adv-faq-panel {
 
   .adv-card {
     padding: 28px 24px;
+  }
+
+  .adv-quotes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .adv-quote:nth-child(5) {
+    grid-column: auto;
+    justify-self: stretch;
+    width: auto;
   }
 }
 

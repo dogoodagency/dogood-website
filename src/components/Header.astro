@@ -4,10 +4,28 @@ import logo from "../assets/photos/logo-nav.png";
 import { urls } from "../data/homepage";
 
 const links = [
-  { href: "/how-it-works", label: "How it works" },
+  { href: "/how-it-works", label: "How it works", menu: "nav-how" },
   { href: "/stories", label: "Stories" },
   { href: "/wayfinders", label: "Wayfinders" },
   { href: "/for-advisors", label: "Advisor Center", menu: "nav-advisors" },
+];
+
+const howGroups = [
+  {
+    label: "Choose your door",
+    items: [
+      {
+        href: "/exit-prep",
+        label: "Exit-Prep",
+        detail: "For founders who haven’t sold yet. Six private weekly sessions to prepare yourself, not just the company.",
+      },
+      {
+        href: "/the-reset",
+        label: "The Reset + The Build",
+        detail: "For founders who have sold. Start with 30 days to reset, then build what’s next when you’re ready.",
+      },
+    ],
+  },
 ];
 
 const advisorGroups = [
@@ -39,6 +57,38 @@ const advisorGroups = [
     ],
   },
 ];
+
+const menus: Record<
+  string,
+  {
+    phoneId: string;
+    groups: typeof advisorGroups;
+    card: { href: string; label: string; image: string; alt: string };
+  }
+> = {
+  "nav-how": {
+    phoneId: "nav-how-phone",
+    groups: howGroups,
+    card: {
+      href: "/how-it-works",
+      label: "How it works",
+      image: "how-it-works-dropdown-card",
+      alt: "A founder walks along a teal path past an empty archway toward an open door with a green landscape beyond, drawn as a napkin sketch.",
+    },
+  },
+  "nav-advisors": {
+    phoneId: "nav-advisors-phone",
+    groups: advisorGroups,
+    card: {
+      href: "/for-advisors",
+      label: "Advisor Center",
+      image: "advisors-dropdown-card",
+      alt: "A founder and two advisors, drawn as napkin-sketch figures, stand around a large unrolled map; one advisor points along a winding teal path toward a small arched doorway, marked with a single pink pin.",
+    },
+  },
+};
+
+const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id: link.menu, ...menus[link.menu] }] : []));
 ---
 
 <header class="nav">
@@ -73,43 +123,48 @@ const advisorGroups = [
       <span class="sr-only">Menu</span>
       <span class="nav-burger-icon" aria-hidden="true"></span>
     </button>
-    <div class="nav-mega" id="nav-advisors" aria-hidden="true">
-      <a class="nav-mega-card" href="/for-advisors">
-        <picture>
-          <source
-            type="image/webp"
-            srcset="/nav/advisors-dropdown-card@1x.webp 1x, /nav/advisors-dropdown-card@2x.webp 2x, /nav/advisors-dropdown-card@3x.webp 3x"
-          />
-          <img
-            src="/nav/advisors-dropdown-card@1x.png"
-            srcset="/nav/advisors-dropdown-card@1x.png 1x, /nav/advisors-dropdown-card@2x.png 2x, /nav/advisors-dropdown-card@3x.png 3x"
-            width="270"
-            height="315"
-            alt="A founder and two advisors, drawn as napkin-sketch figures, stand around a large unrolled map; one advisor points along a winding teal path toward a small arched doorway, marked with a single pink pin."
-            loading="lazy"
-            decoding="async"
-          />
-        </picture>
-        <span class="nav-mega-label">Advisor Center<span class="nav-mega-go" aria-hidden="true"></span></span>
-      </a>
-      <ul class="nav-mega-links">
-        {
-          advisorGroups.map((group) => (
-            <>
-              <li class="nav-mega-group">{group.label}</li>
-              {group.items.map((item) => (
-                <li>
-                  <a href={item.href}>
-                    <span class="nav-mega-name">{item.label}</span>
-                    <small>{item.detail}</small>
-                  </a>
-                </li>
-              ))}
-            </>
-          ))
-        }
-      </ul>
-    </div>
+    {
+      menuLinks.map((menu) => (
+        <div class="nav-mega" id={menu.id} aria-hidden="true">
+          <a class="nav-mega-card" href={menu.card.href}>
+            <picture>
+              <source
+                type="image/webp"
+                srcset={`/nav/${menu.card.image}@1x.webp 1x, /nav/${menu.card.image}@2x.webp 2x, /nav/${menu.card.image}@3x.webp 3x`}
+              />
+              <img
+                src={`/nav/${menu.card.image}@1x.png`}
+                srcset={`/nav/${menu.card.image}@1x.png 1x, /nav/${menu.card.image}@2x.png 2x, /nav/${menu.card.image}@3x.png 3x`}
+                width="270"
+                height="315"
+                alt={menu.card.alt}
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+            <span class="nav-mega-label">
+              {menu.card.label}
+              <span class="nav-mega-go" aria-hidden="true" />
+            </span>
+          </a>
+          <ul class="nav-mega-links">
+            {menu.groups.map((group) => (
+              <>
+                <li class="nav-mega-group">{group.label}</li>
+                {group.items.map((item) => (
+                  <li>
+                    <a href={item.href}>
+                      <span class="nav-mega-name">{item.label}</span>
+                      <small>{item.detail}</small>
+                    </a>
+                  </li>
+                ))}
+              </>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
   </div>
   <a class="nav-apply" href={urls.apply}>
     <span class="nav-apply-label">Apply for Stage 1</span>
@@ -120,32 +175,31 @@ const advisorGroups = [
   </a>
   <nav id="nav-panel" class="nav-panel" hidden aria-label="Primary">
     {
-      links.map((link) =>
-        link.menu ? (
+      links.map((link) => {
+        const menu = link.menu ? menus[link.menu] : undefined;
+        return menu ? (
           <>
-            <button type="button" class="nav-advisor-toggle" aria-expanded="false" aria-controls="nav-advisors-phone">
+            <button type="button" class="nav-advisor-toggle" aria-expanded="false" aria-controls={menu.phoneId}>
               {link.label}
             </button>
-            <div id="nav-advisors-phone" class="nav-advisor-links" hidden>
-              {
-                advisorGroups.map((group) => (
-                  <>
-                    <p class="nav-mega-group">{group.label}</p>
-                    {group.items.map((item) => (
-                      <a class="nav-sub" href={item.href}>
-                        <span class="nav-sub-title">{item.label}</span>
-                        <span class="nav-sub-note">{item.detail}</span>
-                      </a>
-                    ))}
-                  </>
-                ))
-              }
+            <div id={menu.phoneId} class="nav-advisor-links" hidden>
+              {menu.groups.map((group) => (
+                <>
+                  <p class="nav-mega-group">{group.label}</p>
+                  {group.items.map((item) => (
+                    <a class="nav-sub" href={item.href}>
+                      <span class="nav-sub-title">{item.label}</span>
+                      <span class="nav-sub-note">{item.detail}</span>
+                    </a>
+                  ))}
+                </>
+              ))}
             </div>
           </>
         ) : (
           <a href={link.href}>{link.label}</a>
-        ),
-      )
+        );
+      })
     }
   </nav>
 </header>
@@ -171,8 +225,10 @@ const advisorGroups = [
 
     document.addEventListener("keydown", (event) => {
       if (event.key !== "Escape" || burger.getAttribute("aria-expanded") !== "true") return;
-      const phoneLinks = panel.querySelector("#nav-advisors-phone");
-      if (phoneLinks instanceof HTMLElement && !phoneLinks.hidden) return;
+      const groupOpen = [...panel.querySelectorAll(".nav-advisor-links")].some(
+        (group) => group instanceof HTMLElement && !group.hidden,
+      );
+      if (groupOpen) return;
       setOpen(false);
       burger.focus();
     });
@@ -197,90 +253,29 @@ const advisorGroups = [
     });
   }
 
-  const advisor = header?.querySelector(".nav-item.has-menu");
-  const advisorLink = advisor?.querySelector("a[aria-controls]");
-  const advisorMenu = header?.querySelector("#nav-advisors");
-  if (
-    header instanceof HTMLElement &&
-    advisor instanceof HTMLElement &&
-    advisorLink instanceof HTMLAnchorElement &&
-    advisorMenu instanceof HTMLElement
-  ) {
+  /* Desktop mega menus: one controller per `.nav-item.has-menu`, tied to its own
+     `aria-controls` menu. Opening one closes the others. */
+  const controllers = [];
+
+  header?.querySelectorAll(".nav-item.has-menu").forEach((item) => {
+    const link = item.querySelector("a[aria-controls]");
+    const menuId = link?.getAttribute("aria-controls");
+    const menu = menuId ? header.querySelector(`#${menuId}`) : null;
+    if (!(item instanceof HTMLElement) || !(link instanceof HTMLAnchorElement) || !(menu instanceof HTMLElement)) return;
+
     let closing = false;
-    const menuOpen = () => advisorLink.getAttribute("aria-expanded") === "true";
-    const setMenu = (open) => {
-      advisor.classList.toggle("is-open", open);
-      advisorMenu.classList.toggle("is-open", open);
-      advisorLink.setAttribute("aria-expanded", open ? "true" : "false");
-      advisorMenu.setAttribute("aria-hidden", open ? "false" : "true");
-      if (open) requestAnimationFrame(fitAdvisorCard);
-    };
+    let closeTimer = 0;
+    const menuOpen = () => link.getAttribute("aria-expanded") === "true";
     const desktopMenu = () => {
-      const list = advisor.closest(".nav-links");
+      const list = item.closest(".nav-links");
       return list instanceof HTMLElement && getComputedStyle(list).display !== "none";
     };
-    const insideMenu = (node) =>
-      node instanceof Node && (advisor.contains(node) || advisorMenu.contains(node));
-
-    let closeTimer = 0;
+    const insideMenu = (node) => node instanceof Node && (item.contains(node) || menu.contains(node));
     const cancelClose = () => window.clearTimeout(closeTimer);
-    const scheduleClose = () => {
-      cancelClose();
-      closeTimer = window.setTimeout(() => {
-        if (insideMenu(document.activeElement)) return;
-        setMenu(false);
-      }, 180);
-    };
-    advisor.addEventListener("pointerenter", () => {
-      cancelClose();
-      if (desktopMenu()) setMenu(true);
-    });
-    advisorMenu.addEventListener("pointerenter", () => {
-      cancelClose();
-      if (desktopMenu()) setMenu(true);
-    });
-    advisor.addEventListener("pointerleave", scheduleClose);
-    advisorMenu.addEventListener("pointerleave", scheduleClose);
-    advisor.addEventListener("focusin", () => {
-      if (closing || !desktopMenu()) return;
-      setMenu(true);
-    });
-    advisorMenu.addEventListener("focusin", () => {
-      if (!desktopMenu()) return;
-      setMenu(true);
-    });
-    const blur = (event) => {
-      if (insideMenu(event.relatedTarget)) return;
-      setMenu(false);
-    };
-    advisor.addEventListener("focusout", blur);
-    advisorMenu.addEventListener("focusout", blur);
-    advisorLink.addEventListener("click", (event) => {
-      if (!desktopMenu() || menuOpen()) return;
-      event.preventDefault();
-      setMenu(true);
-      advisorMenu.querySelector("a")?.focus();
-    });
-    advisorLink.addEventListener("keydown", (event) => {
-      if (event.key !== "ArrowDown" || !desktopMenu()) return;
-      event.preventDefault();
-      setMenu(true);
-      advisorMenu.querySelector("a")?.focus();
-    });
-    document.addEventListener("keydown", (event) => {
-      if (event.key !== "Escape" || !menuOpen() || !desktopMenu()) return;
-      closing = true;
-      setMenu(false);
-      advisorLink.focus();
-      closing = false;
-    });
-    document.addEventListener("click", (event) => {
-      if (!menuOpen() || insideMenu(event.target)) return;
-      setMenu(false);
-    });
-    const fitAdvisorCard = () => {
-      const links = advisorMenu.querySelector(".nav-mega-links");
-      const card = advisorMenu.querySelector(".nav-mega-card");
+
+    const fitCard = () => {
+      const links = menu.querySelector(".nav-mega-links");
+      const card = menu.querySelector(".nav-mega-card");
       if (!(links instanceof HTMLElement) || !(card instanceof HTMLElement)) return;
       const measure = () => links.getBoundingClientRect().height;
       for (let pass = 0; pass < 3; pass += 1) {
@@ -291,11 +286,76 @@ const advisorGroups = [
         card.style.width = `${width}px`;
       }
     };
-    window.addEventListener("resize", () => {
-      if (desktopMenu()) fitAdvisorCard();
+
+    const setMenu = (open) => {
+      if (open) controllers.forEach((other) => other !== setMenu && other(false));
+      item.classList.toggle("is-open", open);
+      menu.classList.toggle("is-open", open);
+      link.setAttribute("aria-expanded", open ? "true" : "false");
+      menu.setAttribute("aria-hidden", open ? "false" : "true");
+      if (open) requestAnimationFrame(fitCard);
+    };
+    controllers.push(setMenu);
+
+    const scheduleClose = () => {
+      cancelClose();
+      closeTimer = window.setTimeout(() => {
+        if (insideMenu(document.activeElement)) return;
+        setMenu(false);
+      }, 180);
+    };
+    item.addEventListener("pointerenter", () => {
+      cancelClose();
+      if (desktopMenu()) setMenu(true);
     });
-    if (desktopMenu()) fitAdvisorCard();
-    const photo = advisorMenu.querySelector("img");
+    menu.addEventListener("pointerenter", () => {
+      cancelClose();
+      if (desktopMenu()) setMenu(true);
+    });
+    item.addEventListener("pointerleave", scheduleClose);
+    menu.addEventListener("pointerleave", scheduleClose);
+    item.addEventListener("focusin", () => {
+      if (closing || !desktopMenu()) return;
+      setMenu(true);
+    });
+    menu.addEventListener("focusin", () => {
+      if (!desktopMenu()) return;
+      setMenu(true);
+    });
+    const blur = (event) => {
+      if (insideMenu(event.relatedTarget)) return;
+      setMenu(false);
+    };
+    item.addEventListener("focusout", blur);
+    menu.addEventListener("focusout", blur);
+    link.addEventListener("click", (event) => {
+      if (!desktopMenu() || menuOpen()) return;
+      event.preventDefault();
+      setMenu(true);
+      menu.querySelector("a")?.focus();
+    });
+    link.addEventListener("keydown", (event) => {
+      if (event.key !== "ArrowDown" || !desktopMenu()) return;
+      event.preventDefault();
+      setMenu(true);
+      menu.querySelector("a")?.focus();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape" || !menuOpen() || !desktopMenu()) return;
+      closing = true;
+      setMenu(false);
+      link.focus();
+      closing = false;
+    });
+    document.addEventListener("click", (event) => {
+      if (!menuOpen() || insideMenu(event.target)) return;
+      setMenu(false);
+    });
+    window.addEventListener("resize", () => {
+      if (desktopMenu()) fitCard();
+    });
+    if (desktopMenu()) fitCard();
+    const photo = menu.querySelector("img");
     if (photo instanceof HTMLImageElement) {
       const hidePhoto = () => {
         photo.hidden = true;
@@ -303,22 +363,34 @@ const advisorGroups = [
       if (photo.complete && photo.naturalWidth === 0) hidePhoto();
       else photo.addEventListener("error", hidePhoto);
     }
-  }
+  });
 
-  const advisorToggle = panel?.querySelector(".nav-advisor-toggle");
-  const advisorPhone = panel?.querySelector("#nav-advisors-phone");
-  if (advisorToggle instanceof HTMLButtonElement && advisorPhone instanceof HTMLElement) {
-    advisorToggle.addEventListener("click", () => {
-      const open = advisorToggle.getAttribute("aria-expanded") !== "true";
-      advisorToggle.setAttribute("aria-expanded", open ? "true" : "false");
-      advisorPhone.hidden = !open;
-      if (open) advisorPhone.querySelector("a")?.focus();
+  /* Phone panel: each toggle controls its own accordion group; opening one closes the others. */
+  const toggles = [...(panel?.querySelectorAll(".nav-advisor-toggle") ?? [])];
+  const groupFor = (toggle) => {
+    const group = panel?.querySelector(`#${toggle.getAttribute("aria-controls")}`);
+    return group instanceof HTMLElement ? group : null;
+  };
+  toggles.forEach((toggle) => {
+    const group = groupFor(toggle);
+    if (!(toggle instanceof HTMLButtonElement) || !group) return;
+    toggle.addEventListener("click", () => {
+      const open = toggle.getAttribute("aria-expanded") !== "true";
+      toggles.forEach((other) => {
+        const otherGroup = groupFor(other);
+        if (other === toggle || !otherGroup) return;
+        other.setAttribute("aria-expanded", "false");
+        otherGroup.hidden = true;
+      });
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      group.hidden = !open;
+      if (open) group.querySelector("a")?.focus();
     });
     document.addEventListener("keydown", (event) => {
-      if (event.key !== "Escape" || advisorPhone.hidden) return;
-      advisorPhone.hidden = true;
-      advisorToggle.setAttribute("aria-expanded", "false");
-      advisorToggle.focus();
+      if (event.key !== "Escape" || group.hidden) return;
+      group.hidden = true;
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.focus();
     });
-  }
+  });
 </script>

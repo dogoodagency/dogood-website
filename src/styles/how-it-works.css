@@ -56,6 +56,15 @@ body:has(.hw-page) .footer-wave {
   overflow-wrap: break-word;
 }
 
+.hw-page .hw-hero .hw-eyebrow {
+  margin: 0;
+  color: var(--hw-teal);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
 .hw-page .hw-hero p {
   margin: 0;
   color: #f5f2ff;
@@ -1064,5 +1073,81 @@ body:has(.hw-page) .footer-wave {
 
   .hw-hero .hw-stage-card h2 {
     font-size: 23px;
+  }
+}
+
+/* ---------- Sound familiar? (quote cards, Stories testimonial style) ---------- */
+
+.hw-quotes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin: 32px 0 0;
+}
+
+.hw-qcard {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  padding: 54px 28px 28px;
+  background: #fff;
+  border: 1px solid var(--hw-line);
+  border-radius: 18px;
+}
+
+.hw-qcard::before {
+  content: "\201C";
+  position: absolute;
+  top: 14px;
+  left: 24px;
+  color: var(--hw-pink);
+  font-size: 64px;
+  font-weight: 900;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.hw-qcard blockquote {
+  margin: 0 0 20px;
+  padding: 0;
+}
+
+.hw-page .hw-qcard blockquote p {
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.55;
+}
+
+.hw-qcard figcaption {
+  color: var(--hw-ink);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hw-page .hw-notyet {
+  margin: 32px 0 0;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.hw-notyet a {
+  color: var(--hw-ink);
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: var(--hw-teal);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+}
+
+.hw-notyet a:hover,
+.hw-notyet a:focus-visible {
+  text-decoration-color: var(--hw-ink);
+}
+
+@media (max-width: 759px) {
+  .hw-quotes {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

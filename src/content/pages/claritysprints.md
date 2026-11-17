@@ -46,7 +46,7 @@ Apply to the Founder Reclamation Partnership.
 
 For 1:1 Clarity Sprints use the booking form below.
 
-<a class="btn-teal" href="/how-it-works">FRP Founder? Start Here</a>
+<a class="btn-teal" href="/the-reset">FRP Founder? Start Here</a>
 
 For founders + select founder-like executives
 

@@ -1,0 +1,114 @@
+---
+import "../styles/exit-prep.css";
+import Base from "../layouts/Base.astro";
+import Wave from "../components/Wave.astro";
+import { edgeAbove } from "../data/edge-line";
+
+const tint = "#F5F2FF";
+const white = "#ffffff";
+const heroEdge = edgeAbove("#2A0B4F");
+const bandEdge = edgeAbove(tint);
+const footerEdge = edgeAbove(tint);
+
+/** Wavy join between two bands: `from` is the band above, `to` the band below. */
+function wave(from: string, to: string) {
+  const above = from === tint ? "tint" : "white";
+  return `<div class="ep-divider ep-divider--${above}" aria-hidden="true"><svg style="--wave-edge:${bandEdge}" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${to}" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path><path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path></svg></div>`;
+}
+const toTint = wave(white, tint);
+const toWhite = wave(tint, white);
+
+const places = ["Thinking about selling.", "In a process or under LOI.", "An earnout ahead."];
+
+const quotes = [
+  "Maybe we're a year and a half out.",
+  "It would make sense to start to get clarity on the human part of it a year prior to that.",
+  "The truth is, I have no idea.",
+];
+---
+
+<Base
+  title="Exit-Prep | Prepare yourself, not just the company | DoGood Agency"
+  description="Six weekly sessions for founders who haven't sold yet. Fully remote."
+  canonical="https://www.dogoodagency.co/exit-prep"
+  footerStrip={tint}
+  footerEdge={footerEdge}
+>
+  <article class="ep-page">
+    <header class="ep-hero">
+      <div class="ep-hero-inner">
+        <p class="ep-eyebrow">Exit-Prep</p>
+        <h1>Prepare yourself, not just the company.</h1>
+        <p class="ep-sub">Six weekly sessions for founders who haven't sold yet. Fully remote.</p>
+        <a class="btn-teal" href="/orientation-call">Book a free call</a>
+      </div>
+      <Wave fill={tint} edge={heroEdge} />
+    </header>
+
+    <section class="ep-band ep-band-tint" aria-labelledby="ep-where">
+      <div class="ep-well ep-well-top">
+        <h2 id="ep-where">Where you might be</h2>
+        <ul class="ep-places">
+          {places.map((place) => <li class="ep-place">{place}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <Fragment set:html={toWhite} />
+
+    <section class="ep-band" aria-labelledby="ep-familiar">
+      <div class="ep-well ep-well-top">
+        <h2 id="ep-familiar">Sound familiar?</h2>
+        <div class="ep-quotes">
+          {
+            quotes.map((quote) => (
+              <figure class="ep-qcard">
+                <blockquote>
+                  <p>{quote}</p>
+                </blockquote>
+                <figcaption>Founder, before the sale</figcaption>
+              </figure>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <Fragment set:html={toTint} />
+
+    <section class="ep-band ep-band-tint" aria-labelledby="ep-advisors">
+      <div class="ep-well ep-well-top ep-prose">
+        <h2 id="ep-advisors">Working alongside your advisors</h2>
+        <p class="ep-lede">We work next to your exit planner, accountant, attorney and wealth advisor, never instead of them.</p>
+      </div>
+    </section>
+
+    <Fragment set:html={toWhite} />
+
+    <section class="ep-band" aria-labelledby="ep-faq-label">
+      <div class="ep-well ep-well-top">
+        <div class="ep-faq-wrap">
+        <p class="ep-eyebrow ep-eyebrow-dark" id="ep-faq-label">FAQ</p>
+        <details class="ep-faq" open>
+          <summary>
+            <span class="ep-faq-q">I like the idea, but does this concern me yet?</span>
+            <span class="ep-faq-icon" aria-hidden="true"></span>
+          </summary>
+          <p class="ep-faq-a">That's the most common thought we hear, and the best moment to start. The personal side is easiest to shape before the deal sets the timeline.</p>
+        </details>
+        <p class="ep-more"><a href="/faqs">More questions</a></p>
+        </div>
+      </div>
+    </section>
+
+    <Fragment set:html={toTint} />
+
+    <section class="ep-band ep-band-tint" aria-label="Book a free call">
+      <div class="ep-well ep-well-top">
+        <div class="ep-cta">
+          <a class="btn-teal" href="/orientation-call">Book a free call</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</Base>

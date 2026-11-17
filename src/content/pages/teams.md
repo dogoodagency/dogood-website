@@ -16,7 +16,7 @@ On this call, we’ll cover:
 - Whether founder readiness is already in place, and next step
 
 Founder-first reminder:
-If you’re the founder, the prerequisite is → [Stage 1: The Intensive (30 days](/how-it-works)) before any team engagement.
+If you’re the founder, the prerequisite is → [Stage 1: The Intensive (30 days](/the-reset)) before any team engagement.
 
 <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
 

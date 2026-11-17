@@ -60,6 +60,30 @@ const benefits = [
   },
 ];
 
+// [SEB] Quotes are Seb's words, verbatim, attributed by role only.
+const quotes = [
+  {
+    text: "Most people are talking with that founder around just the business side of the equation. They're not asking questions about the personal side.",
+    role: "Wealth advisor",
+  },
+  {
+    text: "Remember that founder has probably not built a business and sold one before. So they have no idea what's coming.",
+    role: "Wealth advisor",
+  },
+  {
+    text: "I can do my best work if I get someone before an LOI.",
+    role: "Wealth advisor",
+  },
+  {
+    text: "That's a conversation that I think is important to have, but I don't have the resource to support them.",
+    role: "Exit advisor",
+  },
+  {
+    text: "They don't actually internally… aren't ready to let go even though their company is for sale… and they blow up their own deals.",
+    role: "Exit advisor",
+  },
+];
+
 const faqs = [
   {
     q: "Will you contact my client without me?",
@@ -137,8 +161,30 @@ const faqs = [
           </picture>
         </figure>
       </div>
-      <Wave fill={tint} edge={heroEdge} />
+      <Wave fill="#fff" edge={heroEdge} />
     </header>
+
+    <section class="adv-band adv-band--white" aria-labelledby="adv-tell">
+      <div class="adv-well">
+        <h2 class="adv-section-title" id="adv-tell">What advisors tell us</h2>
+        <div class="adv-quotes">
+          {
+            quotes.map((quote) => (
+              <figure class="adv-quote">
+                <blockquote>
+                  <p>{quote.text}</p>
+                </blockquote>
+                <figcaption>{quote.role}</figcaption>
+              </figure>
+            ))
+          }
+        </div>
+        <div class="adv-quotes-close">
+          <p>That's the personal leg of exit planning. It's what we cover, so your deal and your client both land well.</p>
+          <a class="btn-teal" href="/internal">Become a partner</a>
+        </div>
+      </div>
+    </section>
 
     <section class="adv-band adv-band--lilac" aria-label="Introduction">
       <div class="adv-well">

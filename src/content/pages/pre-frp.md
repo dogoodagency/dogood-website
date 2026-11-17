@@ -13,4 +13,4 @@ This short call is an opportunity to look at where you are now and whether a Fou
 
 Please answer the questions during the booking process. This will help us prepare for our call.
 
-<a class="btn-teal" href="/how-it-works">See the 2‑Stage Partnership</a>
+<a class="btn-teal" href="/the-reset">See the 2‑Stage Partnership</a>

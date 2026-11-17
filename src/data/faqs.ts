@@ -314,6 +314,14 @@ export const faqCategories: FaqCategory[] = [
           "If you are in an acute crisis after your exit and timing is critical, we will discuss whether an Expedited Start is appropriate. If we cannot take you on responsibly, we will point you to a trusted alternative.",
         ],
       },
+      // [SEB]
+      {
+        id: "existing-advisors",
+        q: "Do you work with my existing advisors?",
+        a: [
+          "Yes, alongside them, never instead of them. You decide what we share with them.",
+        ],
+      },
     ],
   },
   {
@@ -362,6 +370,14 @@ export const faqCategories: FaqCategory[] = [
     id: "exit-prep",
     title: "Not exited yet? The Exit-Prep",
     items: [
+      // [SEB]
+      {
+        id: "only-sold-founders",
+        q: "Do you only work with founders who have already sold?",
+        a: [
+          "No. About half the founders we work with haven't sold yet. [Exit-Prep](/exit-prep) is built for them.",
+        ],
+      },
       // [ADDED – source: exit-prep-one-pager.md ("Why it exists", "Who it's for"); for-advisors.md FAQ; chat-brief-approved.txt §3]
       {
         id: "not-exited-yet",

@@ -180,6 +180,6 @@ Structured cadence + documentation/admin hygiene expectations (signals disciplin
 
 FRP is progress-tracked through several diagnostics + documented decisions, and weekly reviews.
 
-<a class="btn-teal" href="/how-it-works">See the 2‑Stage Partnership</a>
+<a class="btn-teal" href="/the-reset">See the 2‑Stage Partnership</a>
 
 Stage 1 (30 days) · Stage 2 invite-only
