@@ -287,6 +287,13 @@ h2.wf-h2.wf-center {
   inset: -8px -10px -2px;
 }
 
+/* Small screens: pins sit close together (California/Mexico, Iberia/Central Europe), so keep the tap area tight. */
+@media (max-width: 700px) {
+  .wf-pin::before {
+    inset: -2px -2px 0;
+  }
+}
+
 .wf-pin-icon {
   display: block;
   width: 100%;
