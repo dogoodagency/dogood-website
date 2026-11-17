@@ -1,0 +1,352 @@
+---
+import { getEntry } from "astro:content";
+import "../styles/advisors.css";
+import Base from "../layouts/Base.astro";
+import Wave from "../components/Wave.astro";
+import AdvisorNav from "../components/AdvisorNav.astro";
+import { edgeAbove } from "../data/edge-line";
+
+// Title and description come from the frontmatter of src/content/pages/for-advisors.md.
+// The words on this page are that file's copy, set out in sections.
+const entry = await getEntry("pages", "for-advisors");
+const title = entry?.data.title ?? "Advisor Center | DoGood Agency";
+const description =
+  entry?.data.description ??
+  "The Advisor Center: how DoGood works with exit and succession advisors, and free tools to help your clients with life after the sale.";
+
+const tint = "#F5F2FF";
+const heroEdge = edgeAbove("#2A0B4F");
+const footerEdge = edgeAbove(tint);
+
+const steps = [
+  {
+    title: "An intro conversation with Seb",
+    text: "A short call to see whether a partnership is a fit, and to walk through how we work together. This is also when we share the details of our Referral Partner Agreement.",
+  },
+  {
+    title: "You introduce the founder, with their permission",
+    text: "If your client is open to it, you make the introduction. We never approach a founder without that introduction, and we never ask you to make one without their permission.",
+  },
+  {
+    title: "A private Fit Call",
+    text: "We speak with the founder about whether Stage 1 is right for them. You do not need to be on this call. If it is not a fit, we say so clearly, and we tell you.",
+  },
+  {
+    title: "We keep you informed, with the founder's consent",
+    text: "If they go ahead, we keep you informed of the broad shape of things. We do not share confidential details from the work itself.",
+  },
+  {
+    title: "Stage 1 starts",
+    text: "The founder begins a private 30-day engagement. You stay the trusted advisor.",
+  },
+];
+
+const benefits = [
+  {
+    title: "A deeper client relationship",
+    text: `You have a careful answer when the deal is done and your client is still asking, "What now?"`,
+  },
+  {
+    title: "A trusted place for the personal side",
+    text: "You continue to look after the advice they already come to you for. We do not give financial or legal advice, and we do not poach.",
+  },
+  {
+    title: "Free tools with your name on the link",
+    text: "Every tool in the toolkit is free to share, and the readiness check comes with your own personal link.",
+  },
+  {
+    title: "A referral fee, under a written agreement",
+    text: "There is a referral fee, paid under a written Referral Partner Agreement. The details are in our partner agreement, and we share them on the intro call.",
+  },
+];
+
+// [SEB] Quotes are Seb's words, verbatim, attributed by role only.
+const quotes = [
+  {
+    text: "Most people are talking with that founder around just the business side of the equation. They're not asking questions about the personal side.",
+    role: "Wealth advisor",
+  },
+  {
+    text: "Remember that founder has probably not built a business and sold one before. So they have no idea what's coming.",
+    role: "Wealth advisor",
+  },
+  {
+    text: "I can do my best work if I get someone before an LOI.",
+    role: "Wealth advisor",
+  },
+  {
+    text: "That's a conversation that I think is important to have, but I don't have the resource to support them.",
+    role: "Exit advisor",
+  },
+  {
+    text: "They don't actually internally… aren't ready to let go even though their company is for sale… and they blow up their own deals.",
+    role: "Exit advisor",
+  },
+];
+
+const faqs = [
+  {
+    q: "Will you contact my client without me?",
+    a: "No. We never contact a founder without your introduction, and we only ask you to introduce them with their permission.",
+  },
+  {
+    q: "Who is a good fit to introduce?",
+    a: "Founders who have exited and are no longer in the day-to-day (a board or advisory role is fine). This is often a fit when they have more freedom than before, and it does not feel the way they expected. If you are unsure, we can talk it through on the intro call.",
+  },
+  {
+    q: "What about a client who has not sold yet?",
+    a: "We have a shorter Exit-Prep for founders who have firmly decided to exit and are preparing for it: six weekly sessions, held remotely, with the same guarantee as Stage 1. If they later want to go deeper after the sale, they can move on to Stage 1. Ask us about it on the intro call.",
+  },
+  {
+    q: "What should I tell them?",
+    a: "That DoGood is a private 30-day engagement for founders navigating life after exit, and that you would like to introduce them, if they are willing. We can give you a short way to say this on the intro call.",
+  },
+  {
+    q: "Do the free tools cost anything, or need a sign-up?",
+    a: "No. They are free to use and to share, with no sign-up for you. The only email we ask for is your client's, so we can send them their own readiness report. You see a copy only if they say yes.",
+  },
+  {
+    q: "How does the referral fee work?",
+    a: "There is a referral fee, paid under a written Referral Partner Agreement. The details are in that agreement, and we share them on the intro call. We do not publish amounts on this page.",
+  },
+  {
+    q: "Will I know how the work is going?",
+    a: "Yes, with the founder's consent. We keep you informed of the broad shape of things. We do not share confidential details from the sessions.",
+  },
+  {
+    q: "Do you give financial or legal advice?",
+    a: "No. We do not give financial or legal advice, and we do not poach. You stay the trusted advisor. We work only on the personal side of life after exit.",
+  },
+];
+---
+
+<Base
+  title={title}
+  description={description}
+  canonical="https://www.dogoodagency.co/for-advisors"
+  footerStrip={tint}
+  footerEdge={footerEdge}
+  ogTitle={title}
+>
+  <article class="adv-page">
+    <header class="adv-hero">
+      <div class="adv-hero-inner adv-hero-inner--split">
+        <div class="adv-hero-copy">
+          <p class="adv-eyebrow">Advisor Center · Refer a founder</p>
+          <h1>When the deal closes, the hard part starts.</h1>
+          <p class="adv-lede">
+            We support life in <span class="adv-founder"><strong>FOUNDER</strong>land</span>. You prepare the business for the sale. We prepare the founder for life after it.
+          </p>
+          <p class="adv-hero-audience">For exit planners and succession advisors, wealth advisors and family offices.</p>
+          <a class="btn-teal" href="/internal">Book an intro call</a>
+        </div>
+
+        <figure class="adv-hero-art">
+          <picture>
+            <source
+              type="image/webp"
+              srcset="/sketches/for-advisors-after-the-deal-sketch@1x.webp 560w, /sketches/for-advisors-after-the-deal-sketch@2x.webp 1120w"
+              sizes="(max-width: 860px) min(100vw, 460px), 480px"
+            />
+            <img
+              src="/sketches/for-advisors-after-the-deal-sketch@1x.png"
+              srcset="/sketches/for-advisors-after-the-deal-sketch@1x.png 560w, /sketches/for-advisors-after-the-deal-sketch@2x.png 1120w"
+              sizes="(max-width: 860px) min(100vw, 460px), 480px"
+              width="560"
+              height="420"
+              alt="A fine-liner sketch of an advisor beside a finished folder, a founder walking a teal path, and a guide waiting at an open door."
+              loading="eager"
+              decoding="async"
+            />
+          </picture>
+        </figure>
+      </div>
+      <Wave fill="#fff" edge={heroEdge} />
+    </header>
+
+    <section class="adv-band adv-band--white" aria-labelledby="adv-tell">
+      <div class="adv-well">
+        <h2 class="adv-section-title" id="adv-tell">What advisors tell us</h2>
+        <div class="adv-quotes">
+          {
+            quotes.map((quote) => (
+              <figure class="adv-quote">
+                <blockquote>
+                  <p>{quote.text}</p>
+                </blockquote>
+                <figcaption>{quote.role}</figcaption>
+              </figure>
+            ))
+          }
+        </div>
+        <div class="adv-quotes-close">
+          <p>That's the personal leg of exit planning. It's what we cover, so your deal and your client both land well.</p>
+          <a class="btn-teal" href="/internal">Become a partner</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="adv-band adv-band--lilac" aria-label="Introduction">
+      <div class="adv-well">
+        <AdvisorNav current="refer" />
+        <div class="adv-intro">
+          <p>You helped your client through the transaction. What comes next is personal: more freedom than they expected, and less certainty about what to do with it.</p>
+          <p>You stay the trusted advisor. We provide a private place for the part that is not financial or legal: helping them see what genuinely belongs in life after exit.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="adv-band adv-band--white" aria-labelledby="adv-why">
+      <div class="adv-well">
+        <h2 class="adv-section-title" id="adv-why">Why refer</h2>
+        <div class="adv-prose">
+          <p>Your client's deal can close and the hard part can still be starting.</p>
+          <p>The company gave their days structure, urgency, and a place to put their energy. Without it, many founders find the freedom they worked toward does not feel the way they expected. Exit and succession work, and wealth advice, look after the transaction and the money. Very few people help with what happens after.</p>
+          <p>A trusted introduction means they do not have to look for that help alone, and you remain the person they came from.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="adv-band adv-band--lilac" aria-labelledby="adv-gets">
+      <div class="adv-well">
+        <p class="adv-eyebrow">What your client gets</p>
+        <div class="adv-card">
+          <h2 class="adv-section-title" id="adv-gets">A private 30 days, for the personal side</h2>
+          <div class="adv-prose">
+            <p>Stage 1 is a private, confidential 30-day engagement for founders who have exited and do not want to make their next move from the same old patterns.</p>
+            <p>Over 30 days, we help them see what is really surfacing, separate distraction from genuine desire, and get clear on what needs attention before the next major decision. If it fits, Stage 2 follows by invitation only.</p>
+            <p>The work is limited to 5 new founders a month. If Stage 1 is not right, we say so, and we point them somewhere better. Stage 1 is covered by our Clarity-First Guarantee.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="adv-band adv-band--white" aria-labelledby="adv-toolkit">
+      <div class="adv-well">
+        <div class="adv-card">
+          <p class="adv-card-badge">Free toolkit</p>
+          <h2 class="adv-section-title" id="adv-toolkit">Something useful to hand your client, at no cost</h2>
+          <div class="adv-prose">
+            <p>Advisors told us the same thing again and again: their clients have no plan for life after the sale, and there is nothing to hand them that opens the personal conversation. So we are building free tools for exactly that. No sign-up for you, and no strings.</p>
+            <p>First comes the Founder Readiness Check. You send it with your own link. Your client gets a private report and a free debrief call. If they say yes, you get a copy.</p>
+          </div>
+          <div class="adv-card-actions">
+            <a class="btn-teal" href="/for-advisors/client-tools">See the free toolkit →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="adv-band adv-band--lilac" aria-labelledby="adv-how">
+      <div class="adv-well">
+        <h2 class="adv-section-title" id="adv-how">How a referral works</h2>
+        <p>A short, careful path. We never contact your client without you.</p>
+        <ol class="adv-steps" role="list">
+          {
+            steps.map((step) => (
+              <li class="adv-step">
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </li>
+            ))
+          }
+        </ol>
+        <div class="adv-note">
+          <p>Want to see it from the inside? A short walk-through, with a video from Seb, shows what happens after you refer someone. Coming soon.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="adv-band adv-band--white" aria-labelledby="adv-benefits">
+      <div class="adv-well">
+        <h2 class="adv-section-title" id="adv-benefits">What you get</h2>
+        <ul class="adv-grid adv-grid--2">
+          {
+            benefits.map((item) => (
+              <li class="adv-card">
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section class="adv-band adv-band--lilac" aria-labelledby="adv-conf">
+      <div class="adv-well">
+        <p class="adv-eyebrow">Confidentiality</p>
+        <h2 class="adv-section-title" id="adv-conf">How we treat your relationship</h2>
+        <div class="adv-prose">
+          <p>We never contact the founder without your introduction.</p>
+          <p>We do not poach, and we do not give financial or legal advice. The personal work stays private. Anything we tell you about how things are going is with the founder's consent, and never includes confidential details.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="adv-band adv-band--white" aria-labelledby="adv-faq">
+      <div class="adv-well">
+        <p class="adv-eyebrow">FAQ</p>
+        <h2 class="adv-section-title" id="adv-faq">Questions advisors ask</h2>
+        <ul class="adv-faq" data-adv-faq>
+          {
+            faqs.map((faq, i) => (
+              <li class="adv-faq-item">
+                <h3>
+                  <button
+                    class="adv-faq-trigger"
+                    type="button"
+                    id={`adv-faq-q-${i}`}
+                    aria-expanded="false"
+                    aria-controls={`adv-faq-a-${i}`}
+                  >
+                    <span class="adv-faq-q">{faq.q}</span>
+                    <span class="adv-faq-icon" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none">
+                        <path d="m3 6 5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                  </button>
+                </h3>
+                <div class="adv-faq-panel" id={`adv-faq-a-${i}`} role="region" aria-labelledby={`adv-faq-q-${i}`}>
+                  <div class="adv-faq-answer">
+                    <p>{faq.a}</p>
+                  </div>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section class="adv-band adv-band--lilac" aria-labelledby="adv-close">
+      <div class="adv-well">
+        <div class="adv-cta">
+          <h2 id="adv-close">If you have a client in mind, or might</h2>
+          <p>Book a short intro call with Seb, or send us an email. We can take it from there.</p>
+          <div class="adv-card-actions">
+            <a class="btn-teal" href="/internal">Book an intro call</a>
+            <a href="mailto:hiya@dogoodagency.co">hiya@dogoodagency.co</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</Base>
+
+<script>
+  // Bundled (not inline) so it passes the site's Content-Security-Policy.
+  // Without JavaScript every answer stays open; with it they collapse into an accordion.
+  document.documentElement.classList.add("adv-js");
+
+  document.querySelectorAll<HTMLElement>("[data-adv-faq] .adv-faq-item").forEach((item) => {
+    const trigger = item.querySelector<HTMLButtonElement>(".adv-faq-trigger");
+    if (!trigger) return;
+    trigger.addEventListener("click", () => {
+      const open = !item.classList.contains("is-open");
+      item.classList.toggle("is-open", open);
+      trigger.setAttribute("aria-expanded", String(open));
+    });
+  });
+</script>

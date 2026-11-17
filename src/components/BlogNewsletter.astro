@@ -1,0 +1,33 @@
+---
+import "../styles/blog.css";
+import { NEWSLETTER_ACTION } from "../data/blog";
+
+interface Props {
+  heading?: string;
+  /** Makes the input id unique when more than one block is on a page. */
+  idSuffix?: string;
+}
+
+const { heading, idSuffix = "main" } = Astro.props;
+const inputId = `bl-nl-email-${idSuffix}`;
+const titleId = `bl-nl-title-${idSuffix}`;
+---
+
+<section class="bl-nl" aria-labelledby={titleId}>
+  <div class="bl-nl-card">
+    <h2 id={titleId}>{heading !== undefined ? heading : <>Notes from <span class="bl-founderland"><strong>FOUNDER</strong><span class="bl-land">land</span></span></>}</h2>
+    <p class="bl-nl-intro">One email every two weeks with honest notes on life before and after the sale. No spam, unsubscribe any time.</p>
+    <form class="bl-nl-form js-subscribe" action={NEWSLETTER_ACTION} method="post">
+      <input type="hidden" name="ml-submit" value="1" />
+      <input type="hidden" name="anticsrf" value="true" />
+      <label for={inputId}>Email</label>
+      <input id={inputId} type="email" name="fields[email]" placeholder="Email" autocomplete="email" required />
+      <button class="btn-teal" type="submit">Subscribe</button>
+      <p data-status hidden></p>
+    </form>
+    <p class="bl-nl-print">
+      We'll only use your email to send these notes. Read our <a href="/privacy">privacy policy</a>.
+      <a class="bl-nl-more" href="/newsletter">More about the newsletter</a>
+    </p>
+  </div>
+</section>

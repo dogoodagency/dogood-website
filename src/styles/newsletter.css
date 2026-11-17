@@ -1,0 +1,757 @@
+/* Newsletter page (/newsletter). Every rule is prefixed .nl- so nothing here
+   can touch another page. Follows the case study house style (casestudy.css):
+   dark purple hero with wave, tint / white bands, 24px cards, btn-teal. */
+
+body:has(.nl-page) .footer-wave {
+  background: var(--footer-strip, #f5f2ff);
+}
+
+html:has(.nl-page) {
+  scroll-behavior: smooth;
+}
+
+.nl-page {
+  --nl-tint: #f5f2ff;
+  --nl-line: #c2b7dd;
+  --nl-ink: #2a0b4f;
+  --nl-teal: #28dbb0;
+  --nl-pink: #c10e46;
+  background: #fff;
+  color: var(--nl-ink);
+  overflow-x: clip;
+}
+
+.nl-page *,
+.nl-page *::before,
+.nl-page *::after {
+  box-sizing: border-box;
+}
+
+/* Hidden things stay hidden at every width, whatever display a button class sets. */
+.nl-page [hidden] {
+  display: none !important;
+}
+
+/* Anchors: keep the sticky header off the headings. */
+#note,
+#questions,
+#book,
+#prologue,
+#signup,
+#chapters {
+  scroll-margin-top: 110px;
+}
+
+/* ---------- Hero ---------- */
+
+.nl-hero {
+  margin-top: -94px;
+  padding-top: 94px;
+  background: #2a0b4f;
+  color: #fff;
+}
+
+.nl-hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 64px;
+  align-items: center;
+  width: min(1120px, calc(100% - 2 * var(--pad)));
+  margin: 0 auto;
+  padding: 56px 0 56px;
+}
+
+.nl-hero .hero-wave {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+.nl-copy {
+  min-width: 0;
+}
+
+.nl-eyebrow {
+  margin: 0 0 14px;
+  color: var(--nl-teal);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.nl-page h1 {
+  margin: 0 0 18px;
+  color: #fff;
+  font-size: clamp(32px, 3.8vw, 48px);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  overflow-wrap: break-word;
+}
+
+.nl-lede {
+  max-width: 600px;
+  margin: 0 0 30px;
+  color: #f5f2ff;
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.nl-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.nl-hero-actions .btn-teal {
+  white-space: normal;
+}
+
+/* Secondary button that reads on the dark hero. */
+.nl-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 10px 28px;
+  background: transparent;
+  border: 1.5px solid #fff;
+  border-radius: 16px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nl-btn-ghost:hover,
+.nl-btn-ghost:focus-visible {
+  background: #fff;
+  color: var(--nl-ink);
+}
+
+.nl-visual {
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+}
+
+.nl-visual-card {
+  width: 100%;
+  max-width: 440px;
+  padding: 28px 28px 20px;
+  background: var(--nl-tint);
+  border-radius: 24px;
+  box-shadow: 0 18px 48px rgba(17, 0, 39, 0.35);
+}
+
+.nl-visual-card picture,
+.nl-visual-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ---------- Bands ---------- */
+
+.nl-band {
+  background: #fff;
+}
+
+.nl-band-tint {
+  background: var(--nl-tint);
+}
+
+.nl-band-tint + .nl-band:not(.nl-band-tint),
+.nl-band:not(.nl-band-tint) + .nl-band-tint {
+  border-top: 1px solid var(--nl-line);
+}
+
+.nl-well {
+  width: min(1080px, calc(100% - 2 * var(--pad)));
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 72px 0;
+}
+
+.nl-divider {
+  display: block;
+  line-height: 0;
+  background: var(--nl-tint);
+}
+
+.nl-divider svg {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+/* ---------- Type ---------- */
+
+.nl-page h2 {
+  margin: 0 0 16px;
+  color: var(--nl-ink);
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  overflow-wrap: break-word;
+}
+
+.nl-page h3 {
+  margin: 0 0 10px;
+  color: var(--nl-ink);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  overflow-wrap: break-word;
+}
+
+.nl-page .nl-well p {
+  margin: 0 0 14px;
+  color: var(--nl-ink);
+  font-size: 18px;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+.nl-page .nl-well p:last-child {
+  margin-bottom: 0;
+}
+
+.nl-page .nl-well .nl-intro {
+  max-width: 760px;
+}
+
+/* ---------- Note from Seb ---------- */
+
+.nl-note {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 44px 52px 40px;
+  background: #fff;
+  border-left: 8px solid var(--nl-teal);
+  border-radius: 24px;
+  box-shadow: 0 10px 36px rgba(42, 11, 79, 0.07);
+}
+
+.nl-note-label {
+  margin: 0 0 16px;
+  color: var(--nl-pink);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.nl-note blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+.nl-page .nl-well .nl-note blockquote p {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.65;
+}
+
+.nl-page .nl-well .nl-note-sign {
+  margin: 22px 0 0;
+  color: var(--nl-ink);
+  font-size: 20px;
+  font-weight: 800;
+}
+
+/* ---------- The 7 questions ---------- */
+
+.nl-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 36px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nl-question {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+  padding: 28px 32px;
+  background: var(--nl-tint);
+  border-radius: 24px;
+}
+
+.nl-qnum {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background: var(--nl-teal);
+  border-radius: 50%;
+  color: var(--nl-ink);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.nl-question h3 {
+  margin: 4px 0 8px;
+}
+
+.nl-page .nl-well .nl-question p {
+  max-width: 720px;
+  margin: 0;
+}
+
+/* ---------- Downloads (hidden until the PDFs are uploaded) ---------- */
+
+.nl-download {
+  margin-top: 36px;
+}
+
+/* ---------- Book + prologue ---------- */
+
+.nl-book {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 44px 48px;
+  background: #2a0b4f;
+  border-radius: 24px;
+  box-shadow: 0 10px 36px rgba(42, 11, 79, 0.18);
+}
+
+.nl-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 16px;
+  background: var(--nl-teal);
+  border-radius: 999px;
+  color: var(--nl-ink);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.nl-page .nl-book h2 {
+  margin: 0;
+  color: #fff;
+}
+
+.nl-page .nl-well .nl-book p {
+  max-width: 680px;
+  margin: 0;
+  color: #f5f2ff;
+}
+
+/* FOUNDERland: whole word Montserrat 500, FOUNDER bold, soft pink on the dark card. */
+.nl-page .nl-founder {
+  color: var(--color-pink-soft, #ff8ab0);
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  font-synthesis: none;
+}
+
+.nl-page .nl-founder strong {
+  font-weight: 900;
+}
+
+.nl-prologue {
+  max-width: 860px;
+  margin: 40px auto 0;
+  padding: 48px 52px;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 10px 36px rgba(42, 11, 79, 0.07);
+}
+
+.nl-page .nl-prologue-title {
+  max-width: 680px;
+  margin: 0 0 24px;
+  font-size: clamp(24px, 2.6vw, 30px);
+  font-weight: 900;
+}
+
+.nl-prose {
+  max-width: 680px;
+}
+
+.nl-page .nl-well .nl-prose p {
+  margin: 0 0 1.35em;
+  font-size: 19px;
+  line-height: 1.8;
+}
+
+.nl-page .nl-well .nl-prose p.nl-emph {
+  font-weight: 800;
+}
+
+.nl-page .nl-well .nl-prose p.nl-source {
+  margin: 2em 0 0;
+  color: #5a3f78;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.nl-prologue .nl-download {
+  margin-top: 32px;
+}
+
+/* ---------- Sign-up ---------- */
+
+.nl-signup {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 44px 48px 40px;
+  background: var(--nl-tint);
+  border: 1px solid #e3dcf2;
+  border-radius: 24px;
+}
+
+.nl-page .nl-well .nl-signup .nl-intro {
+  margin-bottom: 24px;
+}
+
+.nl-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 520px;
+}
+
+.nl-form label {
+  color: var(--nl-ink);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.nl-form input[type="email"] {
+  width: 100%;
+  min-height: 52px;
+  padding: 0 22px;
+  background: #fff;
+  border: 1.5px solid var(--nl-line);
+  border-radius: 999px;
+  color: var(--nl-ink);
+  font-family: inherit;
+  font-size: 16px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nl-form input[type="email"]::placeholder {
+  color: #8e7ba6;
+}
+
+.nl-form input[type="email"]:focus {
+  border-color: var(--nl-ink);
+}
+
+.nl-form .btn-teal {
+  align-self: flex-start;
+  max-width: 100%;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.nl-form .btn-teal:disabled {
+  cursor: progress;
+  opacity: 0.75;
+}
+
+.nl-form [data-status] {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.nl-page .nl-well .nl-print {
+  margin: 18px 0 0;
+  color: #5a3f78;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.nl-print a {
+  color: var(--nl-ink);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.nl-print a:hover {
+  color: var(--nl-pink);
+}
+
+/* ---------- Chapters ---------- */
+
+.nl-chapters {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 32px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nl-chapter {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: baseline;
+  padding: 20px 28px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 10px 36px rgba(42, 11, 79, 0.07);
+}
+
+.nl-chapter-soon {
+  grid-template-columns: 32px minmax(0, 1fr);
+}
+
+.nl-chapter-num {
+  color: var(--nl-ink);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.nl-chapter-title {
+  min-width: 0;
+  color: var(--nl-ink);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.35;
+  overflow-wrap: break-word;
+}
+
+.nl-chapter-title a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.nl-chapter-title a:hover {
+  color: var(--nl-pink);
+}
+
+.nl-chapter-date {
+  color: #5a3f78;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: right;
+}
+
+.nl-chapter-soon {
+  border: 1.5px dashed var(--nl-line);
+  box-shadow: none;
+}
+
+/* ---------- Closing ---------- */
+
+.nl-closing {
+  margin-top: 56px;
+  padding: 44px 40px;
+  background: #2a0b4f;
+  border-radius: 24px;
+  box-shadow: 0 10px 36px rgba(42, 11, 79, 0.18);
+  text-align: center;
+}
+
+.nl-page .nl-well .nl-closing p {
+  max-width: 680px;
+  margin: 0 auto;
+  color: #f5f2ff;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+
+.nl-closing a {
+  color: var(--nl-teal);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.nl-closing a:hover {
+  color: #fff;
+}
+
+/* ---------- Focus ---------- */
+
+.nl-page a:focus-visible,
+.nl-page button:focus-visible,
+.nl-page input:focus-visible {
+  outline: 3px solid var(--nl-teal);
+  outline-offset: 3px;
+}
+
+.nl-well :is(a, button, input):focus-visible {
+  outline-color: var(--nl-ink);
+}
+
+.nl-band .btn-teal:focus-visible,
+.nl-band .nl-closing a:focus-visible {
+  outline-color: var(--nl-ink);
+}
+
+.nl-closing a:focus-visible {
+  outline-color: var(--nl-teal);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1023px) {
+  .nl-hero-inner {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  .nl-hero-inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+    padding: 44px 0 40px;
+  }
+
+  .nl-copy {
+    max-width: 620px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .nl-visual-card {
+    max-width: 360px;
+  }
+}
+
+@media (max-width: 767px) {
+  .nl-note {
+    padding: 32px 26px 30px;
+  }
+
+  .nl-book {
+    padding: 32px 26px;
+  }
+
+  .nl-prologue {
+    padding: 32px 24px;
+  }
+
+  .nl-signup {
+    padding: 32px 24px 28px;
+  }
+
+  .nl-question {
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: 16px;
+    padding: 22px 20px;
+  }
+
+  .nl-qnum {
+    width: 44px;
+    height: 44px;
+    font-size: 19px;
+  }
+
+  .nl-chapter {
+    grid-template-columns: 32px minmax(0, 1fr);
+  }
+
+  .nl-chapter-date {
+    grid-column: 2;
+    text-align: left;
+  }
+}
+
+@media (max-width: 600px) {
+  .nl-hero {
+    margin-top: -81px;
+    padding-top: 81px;
+  }
+
+  .nl-hero-inner {
+    padding: 36px 0 32px;
+  }
+
+  .nl-lede {
+    font-size: 17px;
+  }
+
+  .nl-hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nl-hero-actions .nl-btn-ghost,
+  .nl-hero-actions .btn-teal {
+    width: 100%;
+  }
+
+  .nl-well {
+    padding: 48px 0;
+  }
+
+  .nl-page .nl-well .nl-note blockquote p {
+    font-size: 18px;
+  }
+
+  .nl-page .nl-well .nl-prose p {
+    font-size: 18px;
+    line-height: 1.75;
+  }
+
+  .nl-form .btn-teal {
+    align-self: stretch;
+  }
+
+  .nl-closing {
+    margin-top: 40px;
+    padding: 32px 22px;
+  }
+
+  .nl-page .nl-well .nl-closing p {
+    font-size: 19px;
+  }
+
+  #note,
+  #questions,
+  #book,
+  #prologue,
+  #signup,
+  #chapters {
+    scroll-margin-top: 96px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:has(.nl-page) {
+    scroll-behavior: auto;
+  }
+
+  .nl-btn-ghost,
+  .nl-form input[type="email"] {
+    transition: none;
+  }
+}

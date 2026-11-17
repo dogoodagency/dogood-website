@@ -1,0 +1,98 @@
+---
+import "../styles/doors.css";
+import Base from "../layouts/Base.astro";
+import Wave from "../components/Wave.astro";
+import { edgeAbove } from "../data/edge-line";
+
+const tint = "#F5F2FF";
+const white = "#ffffff";
+const heroEdge = edgeAbove("#2A0B4F");
+const bandEdge = edgeAbove(tint);
+const footerEdge = edgeAbove(white);
+
+const quotes = [
+  "All of a sudden I look back and 10 years had passed.",
+  "This company and this lifestyle is all I've ever known.",
+  "I have a hard time really disconnecting myself from the day-to-day.",
+];
+---
+
+<Base
+  title="How it works | Exit-Prep or The Reset + The Build | DoGood Agency"
+  description="Wherever you are in FOUNDERland, there's a door for you: Exit-Prep before the sale, The Reset and The Build after it."
+  canonical="https://www.dogoodagency.co/how-it-works"
+  footerStrip={white}
+  footerEdge={footerEdge}
+>
+  <article class="dr-page">
+    <header class="dr-hero">
+      <div class="dr-hero-inner">
+        <div class="dr-hero-top">
+          <div class="dr-hero-copy">
+            <p class="dr-eyebrow">How it works</p>
+            <h1>Wherever you are in <span class="dr-founder"><strong>FOUNDER</strong>land</span>, there's a door for you.</h1>
+          </div>
+          <figure class="dr-sketch-card">
+            <picture>
+              <source type="image/webp" srcset="/sketches/how-it-works-two-stage-path-sketch@1x.webp 560w, /sketches/how-it-works-two-stage-path-sketch@2x.webp 1120w" sizes="(max-width: 899px) min(100vw, 380px), 380px" />
+              <img src="/sketches/how-it-works-two-stage-path-sketch@1x.png" srcset="/sketches/how-it-works-two-stage-path-sketch@1x.png 560w, /sketches/how-it-works-two-stage-path-sketch@2x.png 1120w" sizes="(max-width: 899px) min(100vw, 380px), 380px" width="560" height="420" alt="A founder walks along a teal path past an empty archway toward an open door with a green landscape beyond, drawn as a sketch." loading="eager" decoding="async" />
+            </picture>
+          </figure>
+        </div>
+
+        <div class="dr-doors">
+          <section class="dr-door" aria-labelledby="dr-door-before">
+            <h2 id="dr-door-before">I haven't sold yet</h2>
+            <p class="dr-door-line">Prepare yourself, not just the company.</p>
+            <div class="dr-door-foot">
+              <a class="btn-teal" href="/exit-prep">See Exit-Prep</a>
+            </div>
+          </section>
+          <section class="dr-door" aria-labelledby="dr-door-after">
+            <h2 id="dr-door-after">I've sold</h2>
+            <p class="dr-door-line">You've crossed the finish line. Now find what's next.</p>
+            <div class="dr-door-foot">
+              <a class="btn-teal" href="/the-reset">See The Reset</a>
+              <p class="dr-door-note">Then The Build, when you're ready to build what's next.</p>
+            </div>
+          </section>
+        </div>
+      </div>
+      <Wave fill={tint} edge={heroEdge} />
+    </header>
+
+    <section class="dr-band dr-band-tint" aria-labelledby="dr-familiar">
+      <div class="dr-well">
+        <h2 id="dr-familiar">Sound familiar?</h2>
+        <div class="dr-quotes">
+          {
+            quotes.map((quote) => (
+              <figure class="dr-qcard">
+                <blockquote>
+                  <p>{quote}</p>
+                </blockquote>
+                <figcaption>Founder</figcaption>
+              </figure>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <div class="dr-divider" aria-hidden="true">
+      <svg style={`--wave-edge:${bandEdge}`} viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path fill="#ffffff" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path>
+        <path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path>
+      </svg>
+    </div>
+
+    <section class="dr-band" aria-labelledby="dr-advisor">
+      <div class="dr-well dr-well-slim">
+        <div class="dr-strip">
+          <h2 id="dr-advisor">Are you an advisor? See how we work alongside you.</h2>
+          <a class="btn-teal" href="/for-advisors">Advisor Center</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</Base>

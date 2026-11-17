@@ -1,0 +1,228 @@
+---
+import "../../styles/podcast.css";
+import Base from "../../layouts/Base.astro";
+import Wave from "../../components/Wave.astro";
+import PodcastEpisodeCard from "../../components/PodcastEpisodeCard.astro";
+import PodcastPills from "../../components/PodcastPills.astro";
+import { edgeAbove } from "../../data/edge-line";
+import { episodes } from "../../data/podcast";
+
+export function getStaticPaths() {
+  return episodes.map((episode) => ({ params: { slug: episode.slug }, props: { slug: episode.slug } }));
+}
+
+const { slug } = Astro.props;
+const index = episodes.findIndex((e) => e.slug === slug);
+const episode = episodes[index];
+const more = [1, 2, 3].map((n) => episodes[(index + n) % episodes.length]);
+
+const white = "#ffffff";
+const tint = "#f5f2ff";
+const heroEdge = edgeAbove("#2A0B4F");
+
+const title = /DoGood/i.test(episode.metaTitle) ? episode.metaTitle : `${episode.metaTitle} | DoGood Insider`;
+const description = episode.metaDescription || episode.subtitle;
+const canonical = `https://www.dogoodagency.co/podcast/${episode.slug}`;
+const ogImage = `${episode.image}@2x.webp`;
+
+// Bold the guest name/role: the part before the first " — " in the first paragraph (if any).
+const [introFirst, ...introRest] = episode.guestIntro;
+const dashAt = introFirst ? introFirst.indexOf(" — ") : -1;
+const introLead = dashAt > -1 ? introFirst.slice(0, dashAt) : "";
+const introTail = dashAt > -1 ? introFirst.slice(dashAt) : (introFirst ?? "");
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "PodcastEpisode",
+  name: episode.title,
+  description,
+  url: canonical,
+  partOfSeries: { "@type": "PodcastSeries", name: "DoGood Insider", url: "https://www.dogoodagency.co/dogood-insider" },
+  ...(episode.youtubeId
+    ? {
+        associatedMedia: {
+          "@type": "VideoObject",
+          name: episode.title,
+          description,
+          thumbnailUrl: new URL(ogImage, canonical).href,
+          embedUrl: `https://www.youtube-nocookie.com/embed/${episode.youtubeId}`,
+          contentUrl: `https://www.youtube.com/watch?v=${episode.youtubeId}`,
+        },
+      }
+    : {}),
+};
+---
+
+<Base
+  title={title}
+  description={description}
+  canonical={canonical}
+  ogImage={ogImage}
+  footerStrip={tint}
+  footerEdge={edgeAbove(tint)}
+>
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <article class="pod-page">
+    <header class="pod-hero pod-ep-hero">
+      <div class="pod-well pod-ep-hero-inner">
+        <h1>{episode.title}</h1>
+        <p class="pod-sub">{episode.subtitle}</p>
+      </div>
+      <Wave fill={white} edge={heroEdge} />
+    </header>
+
+    <div class="pod-video-wrap">
+      <div class="pod-video" data-pod-video>
+        <img
+          src={`${episode.image}@1x.webp`}
+          srcset={`${episode.image}@1x.webp 400w, ${episode.image}@2x.webp 800w`}
+          sizes="(max-width: 800px) calc(100vw - 40px), 760px"
+          width="400"
+          height="225"
+          alt=""
+        />
+        {
+          episode.youtubeId && (
+            <button
+              type="button"
+              class="pod-play"
+              data-youtube-id={episode.youtubeId}
+              data-title={episode.title}
+              aria-label={`Play episode: ${episode.title}`}
+            >
+              <span class="pod-play-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M6 3.500v17l15-8.500L6 3.500Z" />
+                </svg>
+              </span>
+              <span>Play episode</span>
+            </button>
+          )
+        }
+        {
+          episode.youtubeId && episode.links.youtube && (
+            <noscript>
+              <p class="pod-video-noscript">
+                <a href={episode.links.youtube} target="_blank" rel="noopener">Watch on YouTube</a>
+              </p>
+            </noscript>
+          )
+        }
+      </div>
+      {!episode.youtubeId && <p class="pod-video-caption">Video coming soon — listen on your favourite platform below.</p>}
+    </div>
+
+    <section class="pod-ep-body">
+      <div class="pod-ep-narrow">
+        <PodcastPills links={episode.links} light />
+
+        <div class="pod-ep-block">
+          <h2 class="pod-h2">Guest Introduction</h2>
+          {
+            introFirst && (
+              <p>
+                {introLead && <strong>{introLead}</strong>}
+                {introTail}
+              </p>
+            )
+          }
+          {introRest.map((para) => <p>{para}</p>)}
+        </div>
+
+        <div class="pod-ep-block pod-tabs" data-pod-tabs>
+          <div class="pod-tablist" role="tablist" aria-label="Episode details">
+            <button type="button" class="pod-tab" role="tab" id="pod-tab-summary" aria-controls="pod-panel-summary" aria-selected="true">Summary</button>
+            <button type="button" class="pod-tab" role="tab" id="pod-tab-chapters" aria-controls="pod-panel-chapters" aria-selected="false" tabindex="-1">Chapters</button>
+          </div>
+          <div class="pod-tabpanel" role="tabpanel" id="pod-panel-summary" aria-labelledby="pod-tab-summary">
+            <h3 class="pod-panel-title">Summary</h3>
+            {episode.summary.map((para) => <p>{para}</p>)}
+          </div>
+          <div class="pod-tabpanel" role="tabpanel" id="pod-panel-chapters" aria-labelledby="pod-tab-chapters">
+            <h3 class="pod-panel-title">Chapters</h3>
+            <ul class="pod-chapters">
+              {episode.chapters.map((chapter) => <li>{chapter}</li>)}
+            </ul>
+          </div>
+        </div>
+
+        {
+          episode.keywords.length > 0 && (
+            <div class="pod-ep-block">
+              <h2 class="pod-h2">Keywords</h2>
+              <ul class="pod-chips">
+                {episode.keywords.map((keyword) => <li class="pod-chip">{keyword}</li>)}
+              </ul>
+            </div>
+          )
+        }
+      </div>
+    </section>
+
+    <section class="pod-more" aria-labelledby="pod-more-title">
+      <div class="pod-well">
+        <div class="pod-more-head">
+          <h2 id="pod-more-title">More episodes</h2>
+          <a class="pod-back" href="/dogood-insider">← All episodes</a>
+        </div>
+        <ul class="pod-grid">
+          {
+            more.map((item) => (
+              <li>
+                <PodcastEpisodeCard episode={item} />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+  </article>
+</Base>
+
+<script>
+  // Click-to-load video: swap the cover for a privacy-friendly YouTube embed only when asked.
+  document.querySelectorAll<HTMLButtonElement>("[data-youtube-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const stage = button.closest("[data-pod-video]");
+      const id = button.dataset.youtubeId;
+      if (!stage || !id || stage.querySelector("iframe")) return;
+      const frame = document.createElement("iframe");
+      frame.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0`;
+      frame.title = button.dataset.title || "DoGood Insider episode";
+      frame.allow = "autoplay; encrypted-media; picture-in-picture";
+      frame.allowFullscreen = true;
+      stage.replaceChildren(frame);
+      frame.focus();
+    });
+  });
+
+  // Tabs: without JS both panels are shown (see podcast.css); with JS this becomes a normal tablist.
+  document.querySelectorAll<HTMLElement>("[data-pod-tabs]").forEach((root) => {
+    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+    const panels = tabs.map((tab) => root.querySelector<HTMLElement>(`#${tab.getAttribute("aria-controls")}`));
+    const select = (active: number, focus = false) => {
+      tabs.forEach((tab, i) => {
+        const on = i === active;
+        tab.setAttribute("aria-selected", String(on));
+        tab.tabIndex = on ? 0 : -1;
+        panels[i]?.toggleAttribute("hidden", !on);
+      });
+      if (focus) tabs[active].focus();
+    };
+    root.classList.add("is-js");
+    select(0);
+    tabs.forEach((tab, i) => {
+      tab.addEventListener("click", () => select(i));
+      tab.addEventListener("keydown", (event) => {
+        const last = tabs.length - 1;
+        if (event.key === "ArrowRight") select(i === last ? 0 : i + 1, true);
+        else if (event.key === "ArrowLeft") select(i === 0 ? last : i - 1, true);
+        else if (event.key === "Home") select(0, true);
+        else if (event.key === "End") select(last, true);
+        else return;
+        event.preventDefault();
+      });
+    });
+  });
+</script>

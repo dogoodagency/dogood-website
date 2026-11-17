@@ -1,0 +1,88 @@
+---
+import "../../styles/advisors.css";
+import "../../styles/advisors-resources.css";
+import Base from "../../layouts/Base.astro";
+import Wave from "../../components/Wave.astro";
+import AdvisorNav from "../../components/AdvisorNav.astro";
+import { edgeAbove } from "../../data/edge-line";
+
+const tint = "#F5F2FF";
+const heroEdge = edgeAbove("#2A0B4F");
+const bandEdge = edgeAbove(tint);
+const footerEdge = edgeAbove("#ffffff");
+---
+
+<Base
+  title="Insights for Advisors | DoGood"
+  description="What founders struggle with before and after the sale, drawn anonymously from our conversations with exit and wealth advisors."
+  canonical="https://www.dogoodagency.co/for-advisors/insights"
+  ogTitle="Insights for Advisors | DoGood"
+  hideOptin
+  footerStrip="#ffffff"
+  footerEdge={footerEdge}
+>
+  <article class="adv-page advr-page">
+    <header class="advr-hero">
+      <div class="advr-hero-inner">
+        <p class="advr-eyebrow">Advisor Center · Advisor insights</p>
+        <h1>What we hear from advisors</h1>
+        <p class="advr-lede">
+          Advisors rarely hear from each other. We talk with many of them. Here we share the patterns, anonymously, so you can help your founders with life in <span class="pink-soft advr-founder"><strong>FOUNDER</strong>land</span>.
+        </p>
+      </div>
+      <Wave fill={tint} edge={heroEdge} />
+    </header>
+
+    <section class="advr-band advr-band-tint" aria-label="Advisor insights">
+      <div class="advr-well">
+        <div class="advr-nav">
+          <AdvisorNav current="insights" />
+        </div>
+
+        <div class="advr-grid">
+          <article class="advr-card" aria-labelledby="advr-ins-struggle">
+            <h2 id="advr-ins-struggle">What Founders Struggle With</h2>
+            <p>A short, anonymous paper built from real words of exit and succession advisors, with our recommended response to each pattern. Made to leave behind after a client conversation.</p>
+            <div class="advr-actions">
+              <button class="advr-status" type="button" disabled aria-disabled="true">Coming soon</button>
+            </div>
+          </article>
+
+          <article class="advr-card" aria-labelledby="advr-ins-book">
+            <h2 id="advr-ins-book">Before and After the Sale</h2>
+            <p>A book for founders on the inner side of selling, told through real, anonymized stories. We are writing it in the open: from 15 December, a new chapter arrives in our newsletter.</p>
+            <div class="advr-actions">
+              <button class="advr-status" type="button" disabled aria-disabled="true">First chapter 15 December</button>
+              <a class="advr-link" href="/newsletter#chapters">Read the chapters in the newsletter →</a>
+            </div>
+          </article>
+
+          <article class="advr-card" aria-labelledby="advr-ins-voices">
+            <h2 id="advr-ins-voices">Advisor voices</h2>
+            <p>Short recorded conversations with exit advisors about what they see when a founder sells. Their words, not ours, shared only with their written permission.</p>
+            <div class="advr-actions">
+              <button class="advr-status" type="button" disabled aria-disabled="true">Coming soon</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="advr-divider" aria-hidden="true">
+      <svg style={`--wave-edge:${bandEdge}`} viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path fill="#ffffff" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path>
+        <path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path>
+      </svg>
+    </div>
+
+    <section class="advr-band advr-band-white" aria-label="More insights">
+      <div class="advr-well">
+        <div class="advr-cta">
+          <p>More is on the way. Want to hear when each piece is ready?</p>
+          <a class="btn-teal" href="/contact">Get in touch</a>
+        </div>
+        <p class="advr-back"><a href="/for-advisors">Have a client in mind already? Visit the Advisor Center →</a></p>
+      </div>
+    </section>
+  </article>
+</Base>

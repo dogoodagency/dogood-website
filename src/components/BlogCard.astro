@@ -1,0 +1,100 @@
+---
+import type { CollectionEntry } from "astro:content";
+import "../styles/blog.css";
+import BlogImage from "./BlogImage.astro";
+import { audiences, formatDate, getCategory, initials, isoDate, postUrl } from "../data/blog";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+  variant?: "grid" | "feature" | "row";
+  /** Eager-load the image (use for the featured card above the fold). */
+  eager?: boolean;
+}
+
+const { post, variant = "grid", eager = false } = Astro.props;
+const d = post.data;
+const href = postUrl(post);
+const category = getCategory(d.category);
+const aud = audiences[d.audience];
+const Tag = variant === "feature" ? "h2" : "h3";
+---
+
+{
+  variant === "row" ? (
+    <article class="bl-card bl-card--row">
+      <a class="bl-row-thumb" href={href} tabindex="-1" aria-hidden="true">
+        <BlogImage src={d.heroImage} alt="" bg={d.heroBg} shape="thumb" />
+      </a>
+      <div class="bl-row-body">
+        <h3 class="bl-card-title">
+          <a href={href}>{d.title}</a>
+        </h3>
+        <p class="bl-meta">
+          <time datetime={isoDate(d.date)}>{formatDate(d.date)}</time>
+          <span aria-hidden="true"> · </span>
+          <span>{d.readTime} min read</span>
+        </p>
+        {category && (
+          <a class="bl-pill" href={`/insights/category/${category.slug}`}>
+            {category.name}
+          </a>
+        )}
+      </div>
+    </article>
+  ) : (
+    <article class:list={["bl-card", `bl-card--${variant}`]}>
+      <a class="bl-card-media" href={href} tabindex="-1" aria-hidden="true">
+        <BlogImage src={d.heroImage} alt="" bg={d.heroBg} eager={eager} />
+      </a>
+      <div class="bl-card-body">
+        <div class="bl-card-tags">
+          <span class:list={["bl-badge", `bl-badge--${d.audience}`]}>
+            {d.audience === "founder" && (
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="8" r="4" />
+                <path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7" />
+              </svg>
+            )}
+            {d.audience === "advisor" && (
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="7" width="18" height="13" rx="2" />
+                <path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18" />
+              </svg>
+            )}
+            {d.audience === "both" && (
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="9" cy="8" r="3.5" />
+                <circle cx="17" cy="9" r="2.5" />
+                <path d="M2 20c0-3.6 3.1-6 7-6s7 2.4 7 6M16 14.5c3 .2 6 1.8 6 5.5" />
+              </svg>
+            )}
+            {aud.label}
+          </span>
+          {category && (
+            <a class="bl-pill" href={`/insights/category/${category.slug}`}>
+              {category.name}
+            </a>
+          )}
+        </div>
+        <Tag class="bl-card-title">
+          <a href={href}>{d.title}</a>
+        </Tag>
+        <p class="bl-card-excerpt">{d.description}</p>
+        {variant === "feature" && (
+          <div class="bl-author bl-author--card">
+            <span class="bl-avatar" aria-hidden="true">{initials(d.author)}</span>
+            <span class="bl-author-text">
+              <span class="bl-author-name">{d.author}</span>
+              <span class="bl-author-role">{d.authorRole}</span>
+            </span>
+          </div>
+        )}
+        <p class="bl-meta">
+          <time datetime={isoDate(d.date)}>{formatDate(d.date)}</time>
+          <span aria-hidden="true"> · </span>
+          <span>{d.readTime} min read</span>
+        </p>
+      </div>
+    </article>
+  )
+}

@@ -1,0 +1,392 @@
+/* How it works fork page (/how-it-works). Every rule is prefixed .dr- so nothing here can
+   touch another page. Same house style as the About page. */
+
+body:has(.dr-page) .footer-wave {
+  background: var(--footer-strip, #fff);
+}
+
+.dr-page {
+  --dr-tint: #f5f2ff;
+  --dr-line: #c2b7dd;
+  --dr-ink: #2a0b4f;
+  --dr-teal: #28dbb0;
+  --dr-pink: #ea1458;
+  background: #fff;
+  color: var(--dr-ink);
+  overflow-x: clip;
+}
+
+.dr-page *,
+.dr-page *::before,
+.dr-page *::after {
+  box-sizing: border-box;
+}
+
+/* ---------- Hero ---------- */
+
+.dr-hero {
+  margin-top: -94px;
+  padding-top: 94px;
+  background: #2a0b4f;
+  color: #fff;
+}
+
+.dr-hero-inner {
+  width: min(1080px, calc(100% - 2 * var(--pad)));
+  margin: 0 auto;
+  padding: 56px 0 44px;
+}
+
+.dr-hero-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: 48px;
+  align-items: center;
+  margin-bottom: 44px;
+}
+
+.dr-page .dr-eyebrow {
+  margin: 0 0 14px;
+  color: var(--dr-teal);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.dr-hero h1 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(32px, 4.2vw, 54px);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  overflow-wrap: break-word;
+}
+
+.dr-founder {
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  font-synthesis: none;
+  color: var(--dr-teal);
+}
+
+.dr-founder strong {
+  font-weight: 800;
+}
+
+.dr-sketch-card {
+  margin: 0;
+  padding: 20px;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.28);
+}
+
+.dr-sketch-card picture,
+.dr-sketch-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.dr-hero .hero-wave {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+/* ---------- The two doors ---------- */
+
+.dr-doors {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  align-items: stretch;
+}
+
+.dr-door {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 40px 40px 36px;
+  background: #fff;
+  border: 1px solid var(--dr-line);
+  border-radius: 24px;
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.22);
+}
+
+.dr-page .dr-door h2 {
+  margin: 0 0 14px;
+  color: var(--dr-ink);
+  font-size: clamp(26px, 3vw, 34px);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  overflow-wrap: break-word;
+}
+
+.dr-page .dr-door .dr-door-line {
+  margin: 0 0 28px;
+  color: var(--dr-ink);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* Pushes the button to the bottom so both cards line up. */
+.dr-door-foot {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  margin-top: auto;
+}
+
+.dr-page .dr-door-foot .btn-teal {
+  white-space: normal;
+  text-align: center;
+}
+
+.dr-page .dr-door-note {
+  margin: 0;
+  color: #4a3a5c;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+/* Where subgrid is supported, both cards share the same three rows so the two
+   buttons sit on exactly the same line even though only one card has a note. */
+@supports (grid-template-rows: subgrid) {
+  .dr-doors {
+    grid-template-rows: auto 1fr auto;
+  }
+
+  .dr-door {
+    display: grid;
+    grid-row: span 3;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+  }
+
+  .dr-door-foot {
+    margin-top: 0;
+  }
+}
+
+/* ---------- Bands ---------- */
+
+.dr-band {
+  background: #fff;
+}
+
+.dr-band-tint {
+  background: var(--dr-tint);
+}
+
+.dr-well {
+  width: min(1080px, calc(100% - 2 * var(--pad)));
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 64px 0 72px;
+}
+
+.dr-well-slim {
+  padding: 24px 0 72px;
+}
+
+.dr-divider {
+  display: block;
+  line-height: 0;
+  background: var(--dr-tint);
+}
+
+.dr-divider svg {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+.dr-page h2 {
+  margin: 0 0 16px;
+  color: var(--dr-ink);
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  overflow-wrap: break-word;
+}
+
+.dr-page p {
+  overflow-wrap: break-word;
+}
+
+/* ---------- Sound familiar? (same card as the Stories testimonials) ---------- */
+
+.dr-quotes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+  margin: 32px 0 0;
+}
+
+.dr-qcard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  margin: 0;
+  padding: 54px 28px 28px;
+  background: #fff;
+  border: 1px solid var(--dr-line);
+  border-radius: 18px;
+}
+
+.dr-qcard::before {
+  content: "\201C";
+  position: absolute;
+  top: 14px;
+  left: 24px;
+  color: var(--dr-pink);
+  font-size: 64px;
+  font-weight: 900;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.dr-qcard blockquote {
+  margin: 0 0 20px;
+  padding: 0;
+}
+
+.dr-page .dr-qcard blockquote p {
+  margin: 0;
+  color: var(--dr-ink);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.dr-qcard figcaption {
+  margin-top: auto;
+  color: var(--dr-ink);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---------- Advisor strip ---------- */
+
+.dr-strip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  padding: 48px 40px;
+  background: #2a0b4f;
+  border-radius: 24px;
+  box-shadow: 0 10px 36px rgba(42, 11, 79, 0.18);
+  text-align: center;
+}
+
+.dr-page .dr-strip h2 {
+  max-width: 680px;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(22px, 2.6vw, 30px);
+}
+
+.dr-page .dr-strip .btn-teal {
+  white-space: normal;
+  text-align: center;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1023px) {
+  .dr-hero-top {
+    gap: 32px;
+  }
+
+  .dr-doors {
+    gap: 20px;
+  }
+
+  .dr-door {
+    padding: 32px 28px 30px;
+  }
+
+  .dr-quotes {
+    gap: 18px;
+  }
+}
+
+@media (max-width: 899px) {
+  .dr-hero-top {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dr-sketch-card {
+    width: min(100%, 380px);
+    justify-self: center;
+  }
+}
+
+@media (max-width: 799px) {
+  .dr-quotes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 759px) {
+  .dr-doors {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+  }
+
+  .dr-door {
+    display: flex;
+    grid-row: auto;
+  }
+
+  .dr-door-foot {
+    margin-top: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .dr-hero {
+    margin-top: -81px;
+    padding-top: 81px;
+  }
+
+  .dr-hero-inner {
+    padding: 40px 0 28px;
+  }
+
+  .dr-hero-top {
+    margin-bottom: 32px;
+  }
+
+  .dr-door {
+    padding: 28px 22px 26px;
+  }
+
+  .dr-page .dr-door .dr-door-line {
+    font-size: 18px;
+  }
+
+  .dr-well {
+    padding: 48px 0 56px;
+  }
+
+  .dr-well-slim {
+    padding: 16px 0 56px;
+  }
+
+  .dr-strip {
+    padding: 36px 22px;
+  }
+}

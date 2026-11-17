@@ -1,66 +1,396 @@
 ---
+import { Image } from "astro:assets";
+import logo from "../assets/photos/logo-nav.png";
+import { urls } from "../data/homepage";
+
 const links = [
+  { href: "/how-it-works", label: "How it works", menu: "nav-how" },
+  { href: "/stories", label: "Stories" },
+  { href: "/wayfinders", label: "Wayfinders" },
+  { href: "/for-advisors", label: "Advisor Center", menu: "nav-advisors" },
+];
+
+const howGroups = [
   {
-    href: "https://www.dogoodagency.co/founders",
-    label: "Founders",
-    hint: "start here",
-  },
-  {
-    href: "https://www.dogoodagency.co/wayfinders",
-    label: "Wayfinders",
-    hint: "meet the team",
+    label: "Choose your door",
+    items: [
+      {
+        href: "/exit-prep",
+        label: "Exit-Prep",
+        detail: "For founders who haven’t sold yet. Six private weekly sessions to prepare yourself, not just the company.",
+      },
+      {
+        href: "/the-reset",
+        label: "The Reset + The Build",
+        detail: "For founders who have sold. Start with 30 days to reset, then build what’s next when you’re ready.",
+      },
+    ],
   },
 ];
+
+const advisorGroups = [
+  {
+    label: "Work with us",
+    items: [
+      {
+        href: "/for-advisors",
+        label: "Refer a founder",
+        detail: "How a referral works, what your client gets, and how we keep you in the loop.",
+      },
+    ],
+  },
+  {
+    label: "Free resources",
+    items: [
+      {
+        href: "/for-advisors/client-tools",
+        label: "Free tools for your clients",
+        detail:
+          "A founder readiness check, a guide to the warning signs, and a planner. Free to use before and after the sale.",
+      },
+      {
+        href: "/for-advisors/insights",
+        label: "Advisor insights",
+        detail:
+          "What founders really go through when they sell, in short, anonymized notes from our talks with advisors.",
+      },
+    ],
+  },
+];
+
+const menus: Record<
+  string,
+  {
+    phoneId: string;
+    groups: typeof advisorGroups;
+    card: { href: string; label: string; image: string; alt: string };
+  }
+> = {
+  "nav-how": {
+    phoneId: "nav-how-phone",
+    groups: howGroups,
+    card: {
+      href: "/how-it-works",
+      label: "How it works",
+      image: "how-it-works-dropdown-card",
+      alt: "A founder walks along a teal path past an empty archway toward an open door with a green landscape beyond, drawn as a napkin sketch.",
+    },
+  },
+  "nav-advisors": {
+    phoneId: "nav-advisors-phone",
+    groups: advisorGroups,
+    card: {
+      href: "/for-advisors",
+      label: "Advisor Center",
+      image: "advisors-dropdown-card",
+      alt: "A founder and two advisors, drawn as napkin-sketch figures, stand around a large unrolled map; one advisor points along a winding teal path toward a small arched doorway, marked with a single pink pin.",
+    },
+  },
+};
+
+const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id: link.menu, ...menus[link.menu] }] : []));
 ---
 
-<header class="sticky top-0 z-40 bg-ink text-white">
-  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 md:px-6">
-    <a href="/" class="shrink-0" aria-label="DoGood Agency">
-      <img src="/logo.svg" alt="" width="160" height="61" class="h-12 w-auto md:h-14" />
+<header class="nav">
+  <div class="nav-bar">
+    <a class="nav-logo" href="/">
+      <Image
+        src={logo}
+        alt="DoGood Agency"
+        widths={[240, 480, 720]}
+        sizes="148px"
+        loading="eager"
+        fetchpriority="high"
+      />
     </a>
-
-    <nav class="hidden items-center gap-10 md:flex" aria-label="Primary">
+    <ul class="nav-links" aria-label="Primary">
       {
         links.map((link) => (
-          <a href={link.href} class="group text-center">
-            <span class="block text-base font-semibold">{link.label}</span>
-            <span class="block text-[10px] italic text-cloud">{link.hint}</span>
-          </a>
+          <li class:list={["nav-item", link.menu && "has-menu"]}>
+            <a
+              href={link.href}
+              aria-expanded={link.menu ? "false" : undefined}
+              aria-haspopup={link.menu ? "true" : undefined}
+              aria-controls={link.menu}
+            >
+              {link.label}
+            </a>
+          </li>
         ))
       }
-      <a
-        href="https://www.dogoodagency.co/apply-stage-1"
-        class="inline-flex min-h-12 items-center rounded-full border border-white/70 px-5 text-[19px] font-bold text-white transition hover:bg-white hover:text-ink"
-      >
-        Apply for Stage 1 →
-      </a>
-    </nav>
-
-    <details class="relative md:hidden">
-      <summary
-        class="flex min-h-12 cursor-pointer list-none items-center rounded-full border border-white/70 px-4 text-sm font-bold [&::-webkit-details-marker]:hidden"
-      >
-        Menu
-      </summary>
-      <nav
-        class="absolute right-0 mt-2 w-56 rounded-2xl bg-white p-3 text-ink shadow-xl"
-        aria-label="Primary"
-      >
-        {
-          links.map((link) => (
-            <a href={link.href} class="block rounded-xl px-3 py-3">
-              <span class="block font-semibold">{link.label}</span>
-              <span class="block text-xs italic text-ink/80">{link.hint}</span>
-            </a>
-          ))
-        }
-        <a
-          href="https://www.dogoodagency.co/apply-stage-1"
-          class="mt-1 flex min-h-12 items-center justify-center rounded-full bg-pink-deep px-4 text-[19px] font-bold text-white"
-        >
-          Apply for Stage 1 →
-        </a>
-      </nav>
-    </details>
+    </ul>
+    <button class="nav-burger" type="button" aria-expanded="false" aria-controls="nav-panel">
+      <span class="sr-only">Menu</span>
+      <span class="nav-burger-icon" aria-hidden="true"></span>
+    </button>
+    {
+      menuLinks.map((menu) => (
+        <div class="nav-mega" id={menu.id} aria-hidden="true">
+          <a class="nav-mega-card" href={menu.card.href}>
+            <picture>
+              <source
+                type="image/webp"
+                srcset={`/nav/${menu.card.image}@1x.webp 1x, /nav/${menu.card.image}@2x.webp 2x, /nav/${menu.card.image}@3x.webp 3x`}
+              />
+              <img
+                src={`/nav/${menu.card.image}@1x.png`}
+                srcset={`/nav/${menu.card.image}@1x.png 1x, /nav/${menu.card.image}@2x.png 2x, /nav/${menu.card.image}@3x.png 3x`}
+                width="270"
+                height="315"
+                alt={menu.card.alt}
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+            <span class="nav-mega-label">
+              {menu.card.label}
+              <span class="nav-mega-go" aria-hidden="true" />
+            </span>
+          </a>
+          <ul class="nav-mega-links">
+            {menu.groups.map((group) => (
+              <>
+                <li class="nav-mega-group">{group.label}</li>
+                {group.items.map((item) => (
+                  <li>
+                    <a href={item.href}>
+                      <span class="nav-mega-name">{item.label}</span>
+                      <small>{item.detail}</small>
+                    </a>
+                  </li>
+                ))}
+              </>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
   </div>
+  <a class="nav-apply" href={urls.apply}>
+    <span class="nav-apply-label">Apply for Stage 1</span>
+    <picture class="nav-apply-icon">
+      <source type="image/webp" srcset="/nav/apply-pill-icon-open-door-32.webp 1x, /nav/apply-pill-icon-open-door-64.webp 2x" />
+      <img src="/nav/apply-pill-icon-open-door-32.png" srcset="/nav/apply-pill-icon-open-door-32.png 1x, /nav/apply-pill-icon-open-door-64.png 2x" width="32" height="32" alt="" />
+    </picture>
+  </a>
+  <nav id="nav-panel" class="nav-panel" hidden aria-label="Primary">
+    {
+      links.map((link) => {
+        const menu = link.menu ? menus[link.menu] : undefined;
+        return menu ? (
+          <>
+            <button type="button" class="nav-advisor-toggle" aria-expanded="false" aria-controls={menu.phoneId}>
+              {link.label}
+            </button>
+            <div id={menu.phoneId} class="nav-advisor-links" hidden>
+              {menu.groups.map((group) => (
+                <>
+                  <p class="nav-mega-group">{group.label}</p>
+                  {group.items.map((item) => (
+                    <a class="nav-sub" href={item.href}>
+                      <span class="nav-sub-title">{item.label}</span>
+                      <span class="nav-sub-note">{item.detail}</span>
+                    </a>
+                  ))}
+                </>
+              ))}
+            </div>
+          </>
+        ) : (
+          <a href={link.href}>{link.label}</a>
+        );
+      })
+    }
+  </nav>
 </header>
+
+<script>
+  const header = document.querySelector("header.nav");
+  const burger = header?.querySelector(".nav-burger");
+  const panel = header?.querySelector("#nav-panel");
+
+  if (header instanceof HTMLElement && burger instanceof HTMLButtonElement && panel instanceof HTMLElement) {
+    const items = () => [...panel.querySelectorAll("a, button")].filter((item) => !item.closest("[hidden]"));
+
+    const setOpen = (open) => {
+      burger.setAttribute("aria-expanded", open ? "true" : "false");
+      panel.hidden = !open;
+    };
+
+    burger.addEventListener("click", () => {
+      const open = burger.getAttribute("aria-expanded") !== "true";
+      setOpen(open);
+      if (open) items()[0]?.focus();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape" || burger.getAttribute("aria-expanded") !== "true") return;
+      const groupOpen = [...panel.querySelectorAll(".nav-advisor-links")].some(
+        (group) => group instanceof HTMLElement && !group.hidden,
+      );
+      if (groupOpen) return;
+      setOpen(false);
+      burger.focus();
+    });
+
+    panel.addEventListener("keydown", (event) => {
+      if (event.key !== "Tab" || panel.hidden) return;
+      const list = items();
+      const first = list[0];
+      const last = list[list.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        burger.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        burger.focus();
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!(event.target instanceof Node) || header.contains(event.target)) return;
+      if (burger.getAttribute("aria-expanded") === "true") setOpen(false);
+    });
+  }
+
+  /* Desktop mega menus: one controller per `.nav-item.has-menu`, tied to its own
+     `aria-controls` menu. Opening one closes the others. */
+  const controllers = [];
+
+  header?.querySelectorAll(".nav-item.has-menu").forEach((item) => {
+    const link = item.querySelector("a[aria-controls]");
+    const menuId = link?.getAttribute("aria-controls");
+    const menu = menuId ? header.querySelector(`#${menuId}`) : null;
+    if (!(item instanceof HTMLElement) || !(link instanceof HTMLAnchorElement) || !(menu instanceof HTMLElement)) return;
+
+    let closing = false;
+    let closeTimer = 0;
+    const menuOpen = () => link.getAttribute("aria-expanded") === "true";
+    const desktopMenu = () => {
+      const list = item.closest(".nav-links");
+      return list instanceof HTMLElement && getComputedStyle(list).display !== "none";
+    };
+    const insideMenu = (node) => node instanceof Node && (item.contains(node) || menu.contains(node));
+    const cancelClose = () => window.clearTimeout(closeTimer);
+
+    const fitCard = () => {
+      const links = menu.querySelector(".nav-mega-links");
+      const card = menu.querySelector(".nav-mega-card");
+      if (!(links instanceof HTMLElement) || !(card instanceof HTMLElement)) return;
+      const measure = () => links.getBoundingClientRect().height;
+      for (let pass = 0; pass < 3; pass += 1) {
+        const height = Math.max(Math.round(measure()), 315);
+        const width = Math.round((height * 360) / 420);
+        if (card.style.height === `${height}px` && card.style.width === `${width}px`) break;
+        card.style.height = `${height}px`;
+        card.style.width = `${width}px`;
+      }
+    };
+
+    const setMenu = (open) => {
+      if (open) controllers.forEach((other) => other !== setMenu && other(false));
+      item.classList.toggle("is-open", open);
+      menu.classList.toggle("is-open", open);
+      link.setAttribute("aria-expanded", open ? "true" : "false");
+      menu.setAttribute("aria-hidden", open ? "false" : "true");
+      if (open) requestAnimationFrame(fitCard);
+    };
+    controllers.push(setMenu);
+
+    const scheduleClose = () => {
+      cancelClose();
+      closeTimer = window.setTimeout(() => {
+        if (insideMenu(document.activeElement)) return;
+        setMenu(false);
+      }, 180);
+    };
+    item.addEventListener("pointerenter", () => {
+      cancelClose();
+      if (desktopMenu()) setMenu(true);
+    });
+    menu.addEventListener("pointerenter", () => {
+      cancelClose();
+      if (desktopMenu()) setMenu(true);
+    });
+    item.addEventListener("pointerleave", scheduleClose);
+    menu.addEventListener("pointerleave", scheduleClose);
+    item.addEventListener("focusin", () => {
+      if (closing || !desktopMenu()) return;
+      setMenu(true);
+    });
+    menu.addEventListener("focusin", () => {
+      if (!desktopMenu()) return;
+      setMenu(true);
+    });
+    const blur = (event) => {
+      if (insideMenu(event.relatedTarget)) return;
+      setMenu(false);
+    };
+    item.addEventListener("focusout", blur);
+    menu.addEventListener("focusout", blur);
+    link.addEventListener("click", (event) => {
+      if (!desktopMenu() || menuOpen()) return;
+      event.preventDefault();
+      setMenu(true);
+      menu.querySelector("a")?.focus();
+    });
+    link.addEventListener("keydown", (event) => {
+      if (event.key !== "ArrowDown" || !desktopMenu()) return;
+      event.preventDefault();
+      setMenu(true);
+      menu.querySelector("a")?.focus();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape" || !menuOpen() || !desktopMenu()) return;
+      closing = true;
+      setMenu(false);
+      link.focus();
+      closing = false;
+    });
+    document.addEventListener("click", (event) => {
+      if (!menuOpen() || insideMenu(event.target)) return;
+      setMenu(false);
+    });
+    window.addEventListener("resize", () => {
+      if (desktopMenu()) fitCard();
+    });
+    if (desktopMenu()) fitCard();
+    const photo = menu.querySelector("img");
+    if (photo instanceof HTMLImageElement) {
+      const hidePhoto = () => {
+        photo.hidden = true;
+      };
+      if (photo.complete && photo.naturalWidth === 0) hidePhoto();
+      else photo.addEventListener("error", hidePhoto);
+    }
+  });
+
+  /* Phone panel: each toggle controls its own accordion group; opening one closes the others. */
+  const toggles = [...(panel?.querySelectorAll(".nav-advisor-toggle") ?? [])];
+  const groupFor = (toggle) => {
+    const group = panel?.querySelector(`#${toggle.getAttribute("aria-controls")}`);
+    return group instanceof HTMLElement ? group : null;
+  };
+  toggles.forEach((toggle) => {
+    const group = groupFor(toggle);
+    if (!(toggle instanceof HTMLButtonElement) || !group) return;
+    toggle.addEventListener("click", () => {
+      const open = toggle.getAttribute("aria-expanded") !== "true";
+      toggles.forEach((other) => {
+        const otherGroup = groupFor(other);
+        if (other === toggle || !otherGroup) return;
+        other.setAttribute("aria-expanded", "false");
+        otherGroup.hidden = true;
+      });
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      group.hidden = !open;
+      if (open) group.querySelector("a")?.focus();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape" || group.hidden) return;
+      group.hidden = true;
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.focus();
+    });
+  });
+</script>

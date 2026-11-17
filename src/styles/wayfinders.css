@@ -1,0 +1,1406 @@
+/* Wayfinders pages (/wayfinders and /wayfinders/clientfit). Every rule is prefixed .wf- (or scoped
+   under .wf-page) so nothing here can touch another page. Same house style as Exit-Prep / How it works. */
+
+body:has(.wf-page) .footer-wave {
+  background: var(--footer-strip, #f5f2ff);
+}
+
+.wf-page {
+  --wf-tint: #f5f2ff;
+  --wf-line: #c2b7dd;
+  --wf-ink: #2a0b4f;
+  --wf-teal: #28dbb0;
+  --wf-pink: #ea1458;
+  --wf-pin: #d6335f;
+  background: #fff;
+  color: var(--wf-ink);
+  overflow-x: clip;
+}
+
+.wf-page *,
+.wf-page *::before,
+.wf-page *::after {
+  box-sizing: border-box;
+}
+
+.wf-page p,
+.wf-page li,
+.wf-page dd,
+.wf-page dt {
+  overflow-wrap: break-word;
+}
+
+.wf-page a.btn-teal,
+.wf-page a.btn-apply {
+  white-space: normal;
+  text-align: left;
+}
+
+.wf-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+h2.wf-center {
+  display: block;
+}
+
+/* ---------- Hero ---------- */
+
+.wf-hero {
+  margin-top: -94px;
+  padding-top: 94px;
+  background: #2a0b4f;
+  color: #fff;
+}
+
+.wf-hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  width: min(1080px, calc(100% - 2 * var(--pad)));
+  margin: 0 auto;
+  padding: 64px 0 56px;
+}
+
+.wf-hero h1 {
+  max-width: 820px;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(34px, 5vw, 58px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  overflow-wrap: break-word;
+}
+
+.wf-hero-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 820px;
+}
+
+.wf-hero-copy p,
+.wf-hero-inner > .wf-lead {
+  margin: 0;
+  color: #f5f2ff;
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+.wf-page .wf-hero .wf-lead {
+  font-size: 21px;
+  font-weight: 500;
+  max-width: 760px;
+}
+
+.wf-page .wf-eyebrow {
+  margin: 0;
+  color: var(--wf-teal);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.wf-page .wf-eyebrow-dark {
+  color: var(--wf-pink);
+}
+
+.wf-hero .hero-wave {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+/* ---------- Bands ---------- */
+
+.wf-band {
+  background: #fff;
+}
+
+.wf-band-tint {
+  background: var(--wf-tint);
+}
+
+.wf-well {
+  width: min(1080px, calc(100% - 2 * var(--pad)));
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 72px 0;
+}
+
+.wf-well-top {
+  padding: 24px 0 64px;
+}
+
+.wf-well-wide {
+  width: min(1240px, calc(100% - 2 * var(--pad)));
+}
+
+.wf-divider {
+  display: block;
+  line-height: 0;
+}
+
+.wf-divider--white {
+  background: #fff;
+}
+
+.wf-divider--tint {
+  background: var(--wf-tint);
+}
+
+.wf-divider svg {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+.wf-page h2.wf-h2 {
+  margin: 0 0 16px;
+  color: var(--wf-ink);
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  overflow-wrap: break-word;
+}
+
+h2.wf-h2.wf-center {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.wf-intro {
+  max-width: 820px;
+}
+
+.wf-intro p {
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+.wf-page .wf-note {
+  margin: 0;
+  color: var(--wf-ink);
+  font-size: 15px;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+/* ---------- World map ---------- */
+
+.wf-map {
+  margin: 36px 0 8px;
+  padding: 0;
+}
+
+.wf-map-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1000 / 520;
+}
+
+.wf-map-land,
+.wf-halos {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.wf-halos {
+  overflow: visible;
+  pointer-events: none;
+}
+
+.wf-halo {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 350ms ease;
+}
+
+.wf-halo circle {
+  fill: #f9c9d8;
+  fill-opacity: 0.45;
+  stroke: var(--wf-pin);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: fill-opacity 350ms ease;
+  animation: wf-pulse 3.6s ease-in-out infinite alternate;
+  animation-delay: var(--d, 0s);
+}
+
+@keyframes wf-pulse {
+  from {
+    transform: scale(0.92);
+    opacity: 0.78;
+  }
+  to {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+}
+
+.wf-pins {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wf-pin-slot {
+  position: absolute;
+  width: 0;
+  height: 0;
+  margin: 0;
+}
+
+.wf-pin {
+  --w: clamp(16px, 2.7vw, 30px);
+  position: absolute;
+  left: calc(var(--w) / -2);
+  bottom: 0;
+  display: block;
+  width: var(--w);
+  height: calc(var(--w) * 1.286);
+  cursor: pointer;
+  outline: none;
+}
+
+/* Bigger tap/hover target than the icon itself. */
+.wf-pin::before {
+  content: "";
+  position: absolute;
+  inset: -8px -10px -2px;
+}
+
+/* Small screens: pins sit close together (California/Mexico, Iberia/Central Europe), so keep the tap area tight. */
+@media (max-width: 700px) {
+  .wf-pin::before {
+    inset: -2px -2px 0;
+  }
+}
+
+.wf-pin-icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  transform-origin: 50% 100%;
+  transition: transform 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 1px 2px rgba(42, 11, 79, 0.35));
+}
+
+.wf-pin-icon path {
+  fill: var(--wf-pin);
+}
+
+.wf-pin-icon circle {
+  fill: #fff;
+}
+
+.wf-pin:focus-visible .wf-pin-icon {
+  outline: none;
+  filter: drop-shadow(0 0 0 #fff) drop-shadow(0 0 3px var(--wf-teal)) drop-shadow(0 0 3px var(--wf-teal));
+}
+
+.wf-pin:hover .wf-pin-icon,
+.wf-pin:focus .wf-pin-icon {
+  transform: translateY(-5px) scale(1.12);
+}
+
+.wf-tip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 10px);
+  z-index: 3;
+  padding: 6px 12px;
+  background: var(--wf-ink);
+  border-radius: 999px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 4px);
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease;
+}
+
+.wf-pin-slot[data-edge="end"] .wf-tip {
+  left: auto;
+  right: -10px;
+  transform: translate(0, 4px);
+}
+
+.wf-pin-slot[data-edge="start"] .wf-tip {
+  left: -10px;
+  transform: translate(0, 4px);
+}
+
+.wf-pin:hover .wf-tip,
+.wf-pin:focus .wf-tip {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.wf-pin-slot[data-edge="end"] .wf-pin:hover .wf-tip,
+.wf-pin-slot[data-edge="end"] .wf-pin:focus .wf-tip,
+.wf-pin-slot[data-edge="start"] .wf-pin:hover .wf-tip,
+.wf-pin-slot[data-edge="start"] .wf-pin:focus .wf-tip {
+  transform: translate(0, 0);
+}
+
+.wf-pin-slot:has(.wf-pin:hover),
+.wf-pin-slot:has(.wf-pin:focus) {
+  z-index: 4;
+}
+
+/* The halo of the hovered/focused pin brightens and grows a little. */
+.wf-map:has(.wf-pin[data-i="0"]:is(:hover, :focus)) .wf-halo[data-i="0"],
+.wf-map:has(.wf-pin[data-i="1"]:is(:hover, :focus)) .wf-halo[data-i="1"],
+.wf-map:has(.wf-pin[data-i="2"]:is(:hover, :focus)) .wf-halo[data-i="2"],
+.wf-map:has(.wf-pin[data-i="3"]:is(:hover, :focus)) .wf-halo[data-i="3"],
+.wf-map:has(.wf-pin[data-i="4"]:is(:hover, :focus)) .wf-halo[data-i="4"],
+.wf-map:has(.wf-pin[data-i="5"]:is(:hover, :focus)) .wf-halo[data-i="5"],
+.wf-map:has(.wf-pin[data-i="6"]:is(:hover, :focus)) .wf-halo[data-i="6"],
+.wf-map:has(.wf-pin[data-i="7"]:is(:hover, :focus)) .wf-halo[data-i="7"],
+.wf-map:has(.wf-pin[data-i="8"]:is(:hover, :focus)) .wf-halo[data-i="8"] {
+  transform: scale(1.1);
+}
+
+.wf-map:has(.wf-pin[data-i="0"]:is(:hover, :focus)) .wf-halo[data-i="0"] circle,
+.wf-map:has(.wf-pin[data-i="1"]:is(:hover, :focus)) .wf-halo[data-i="1"] circle,
+.wf-map:has(.wf-pin[data-i="2"]:is(:hover, :focus)) .wf-halo[data-i="2"] circle,
+.wf-map:has(.wf-pin[data-i="3"]:is(:hover, :focus)) .wf-halo[data-i="3"] circle,
+.wf-map:has(.wf-pin[data-i="4"]:is(:hover, :focus)) .wf-halo[data-i="4"] circle,
+.wf-map:has(.wf-pin[data-i="5"]:is(:hover, :focus)) .wf-halo[data-i="5"] circle,
+.wf-map:has(.wf-pin[data-i="6"]:is(:hover, :focus)) .wf-halo[data-i="6"] circle,
+.wf-map:has(.wf-pin[data-i="7"]:is(:hover, :focus)) .wf-halo[data-i="7"] circle,
+.wf-map:has(.wf-pin[data-i="8"]:is(:hover, :focus)) .wf-halo[data-i="8"] circle {
+  fill-opacity: 0.8;
+}
+
+.wf-apply {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 28px;
+  text-align: center;
+}
+
+/* ---------- Client-Fit step row ---------- */
+
+.wf-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 36px;
+  margin: 0 0 32px;
+  padding: 0;
+  list-style: none;
+  counter-reset: none;
+}
+
+.wf-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  margin: 0;
+  padding: 26px 18px;
+  background: #fff;
+  border: 1px solid var(--wf-line);
+  border-radius: 18px;
+  text-align: center;
+}
+
+.wf-step:not(:last-child)::after {
+  content: "\2192";
+  position: absolute;
+  top: 50%;
+  right: -29px;
+  width: 22px;
+  color: var(--wf-pink);
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
+  transform: translateY(-50%);
+}
+
+.wf-step-n {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  background: var(--wf-teal);
+  border-radius: 50%;
+  color: var(--wf-ink);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.wf-step-t {
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.wf-page .wf-fit-copy {
+  max-width: 760px;
+  margin: 0 auto 28px;
+  font-size: 19px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* ---------- Team cards ---------- */
+
+.wf-members {
+  --gap: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: var(--gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wf-member {
+  display: flex;
+  flex: 0 1 calc((100% - 2 * var(--gap)) / 3);
+  flex-direction: column;
+  min-width: 0;
+  margin: 0;
+  padding: 18px 18px 26px;
+  background: #fff;
+  border: 1px solid var(--wf-line);
+  border-radius: 20px;
+  box-shadow: 0 10px 36px rgba(42, 11, 79, 0.07);
+}
+
+.wf-photo {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 320px;
+  margin-bottom: 18px;
+  overflow: hidden;
+  background: var(--wf-tint, #f5f2ff);
+  border-radius: 18px;
+}
+
+.wf-photo picture {
+  display: block;
+  height: 92%;
+}
+
+.wf-photo img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.wf-page h3.wf-name {
+  margin: 0 0 4px;
+  color: var(--wf-ink);
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.wf-page .wf-hub {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 8px;
+  margin: 0 0 12px;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.wf-hub strong {
+  color: var(--wf-pink);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.wf-flags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 18px;
+  padding: 0;
+  list-style: none;
+}
+
+.wf-flags li {
+  display: block;
+  margin: 0;
+  line-height: 0;
+}
+
+.wf-flags img {
+  display: block;
+  width: 24px;
+  height: 16px;
+  object-fit: cover;
+  border-radius: 2px;
+  outline: 1px solid rgba(42, 11, 79, 0.18);
+  outline-offset: -1px;
+}
+
+.wf-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+}
+
+.wf-lines > div {
+  min-width: 0;
+}
+
+.wf-lines dt {
+  margin: 0;
+  color: var(--wf-ink);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.wf-lines dd {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.wf-more {
+  margin: 16px 0 20px;
+  border-top: 1px solid var(--wf-line);
+}
+
+.wf-more summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 0;
+  color: var(--wf-ink);
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  list-style: none;
+}
+
+.wf-more summary::-webkit-details-marker {
+  display: none;
+}
+
+.wf-more summary:focus-visible {
+  outline: 3px solid var(--wf-teal);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+.wf-more-icon {
+  position: relative;
+  flex: 0 0 auto;
+  width: 26px;
+  height: 26px;
+  background: var(--wf-teal);
+  border-radius: 50%;
+}
+
+.wf-more-icon::before,
+.wf-more-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 11px;
+  height: 2px;
+  background: var(--wf-ink);
+  border-radius: 1px;
+  transform: translate(-50%, -50%);
+}
+
+.wf-more-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.wf-more[open] .wf-more-icon::after {
+  display: none;
+}
+
+.wf-more .wf-lines {
+  padding-bottom: 8px;
+}
+
+.wf-profile {
+  align-self: flex-start;
+  margin-top: auto;
+  color: var(--wf-ink);
+  font-size: 17px;
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: var(--wf-teal);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 5px;
+}
+
+.wf-profile::after {
+  content: " \2192";
+}
+
+.wf-profile:hover,
+.wf-profile:focus-visible {
+  text-decoration-color: var(--wf-ink);
+}
+
+/* ---------- Quality list ---------- */
+
+.wf-quality {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin: 0 0 32px;
+  padding: 0;
+  list-style: none;
+}
+
+.wf-quality li {
+  min-width: 0;
+  margin: 0;
+  padding: 28px 24px;
+  background: #fff;
+  border: 1px solid var(--wf-line);
+  border-left: 6px solid var(--wf-teal);
+  border-radius: 18px;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* ---------- Reviews rail (same look as the homepage rolling reviews) ---------- */
+
+.wf-page .reviews-rail {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  border-bottom: 1px solid var(--wf-line);
+}
+
+.wf-page .reviews-rail .reviews-band {
+  padding: 52px 12px 52px;
+}
+
+.wf-page .reviews-rail .reviews-band h2 {
+  max-width: calc(100% - 2 * var(--pad));
+  margin: 0 auto 32px;
+}
+
+.wf-page .reviews-rail .review {
+  background: #f5f2ff;
+  border: 0;
+}
+
+.wf-page .reviews-rail .review-who h3 {
+  color: #2a0b4f;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0;
+}
+
+.wf-page .reviews-rail .review-role {
+  color: #58447f;
+}
+
+/* ---------- Closing CTA ---------- */
+
+.wf-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px 20px;
+  padding: 48px 24px;
+  background: #2a0b4f;
+  border-radius: 24px;
+  box-shadow: 0 10px 36px rgba(42, 11, 79, 0.18);
+}
+
+.wf-cta-plain {
+  margin-top: 40px;
+}
+
+/* ---------- Client-Fit page ---------- */
+
+.wf-timeline {
+  position: relative;
+  max-width: 820px;
+  margin: 36px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wf-tl-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  gap: 24px;
+  margin: 0;
+  padding: 0 0 36px;
+}
+
+/* The line that links the numbers. */
+.wf-tl-item:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: 52px;
+  bottom: 0;
+  left: 25px;
+  width: 2px;
+  background: linear-gradient(var(--wf-teal), var(--wf-line));
+  border-radius: 1px;
+}
+
+.wf-tl-n {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  background: var(--wf-teal);
+  border: 4px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--wf-teal);
+  color: var(--wf-ink);
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.wf-tl-body {
+  min-width: 0;
+  padding: 22px 26px;
+  background: #fff;
+  border: 1px solid var(--wf-line);
+  border-radius: 18px;
+  box-shadow: 0 10px 36px rgba(42, 11, 79, 0.06);
+}
+
+.wf-page .wf-tl-body h3 {
+  margin: 0 0 6px;
+  color: var(--wf-ink);
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.wf-page .wf-tl-body p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.wf-tl-body a {
+  color: var(--wf-ink);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--wf-teal);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+}
+
+.wf-tl-body a:hover,
+.wf-tl-body a:focus-visible {
+  text-decoration-color: var(--wf-ink);
+}
+
+.wf-page .wf-sign {
+  margin: 8px 0 0 76px;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.wf-case {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  align-items: center;
+  gap: 36px;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 32px;
+  background: #fff;
+  border: 1px solid var(--wf-line);
+  border-radius: 20px;
+  box-shadow: 0 10px 36px rgba(42, 11, 79, 0.07);
+}
+
+.wf-case-portrait {
+  display: block;
+  width: 220px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 14px;
+}
+
+.wf-case-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+}
+
+.wf-page h2.wf-case-title {
+  margin: 0;
+  color: var(--wf-ink);
+  font-size: clamp(22px, 2.4vw, 28px);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.wf-page .wf-case-who {
+  margin: 0 0 6px;
+  font-weight: 700;
+}
+
+.wf-page .wf-case-note {
+  margin: 2px 0 0;
+  font-size: 15px;
+  opacity: 0.8;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1023px) {
+  .wf-member {
+    flex-basis: calc((100% - var(--gap)) / 2);
+  }
+
+  .wf-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 36px 36px;
+  }
+
+  .wf-step:nth-child(2)::after {
+    display: none;
+  }
+
+  .wf-quality {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .wf-members {
+    --gap: 20px;
+  }
+
+  .wf-member {
+    flex-basis: 100%;
+  }
+
+  .wf-photo {
+    height: 300px;
+  }
+
+  .wf-steps {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  .wf-step:nth-child(2)::after {
+    display: block;
+  }
+
+  .wf-step:not(:last-child)::after {
+    content: "\2193";
+    top: auto;
+    right: auto;
+    bottom: -37px;
+    left: 50%;
+    margin-left: -11px;
+    transform: none;
+  }
+
+  .wf-case {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+    padding: 26px 22px;
+  }
+
+  .wf-case-portrait {
+    width: 160px;
+  }
+}
+
+@media (max-width: 600px) {
+  .wf-hero {
+    margin-top: -81px;
+    padding-top: 81px;
+  }
+
+  .wf-hero-inner {
+    padding: 44px 0 36px;
+  }
+
+  .wf-hero-copy p,
+  .wf-page .wf-hero .wf-lead {
+    font-size: 18px;
+  }
+
+  .wf-well-top {
+    padding: 16px 0 48px;
+  }
+
+  .wf-intro p,
+  .wf-page .wf-fit-copy {
+    font-size: 18px;
+  }
+
+  .wf-map {
+    margin-top: 28px;
+  }
+
+  .wf-tip {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .wf-cta {
+    padding: 36px 20px;
+  }
+
+  .wf-tl-item {
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 14px;
+    padding-bottom: 26px;
+  }
+
+  .wf-tl-n {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .wf-tl-item:not(:last-child)::before {
+    top: 40px;
+    left: 19px;
+  }
+
+  .wf-tl-body {
+    padding: 18px 18px;
+  }
+
+  .wf-page .wf-tl-body h3 {
+    font-size: 19px;
+  }
+
+  .wf-page .wf-sign {
+    margin-left: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wf-halo circle {
+    animation: none;
+  }
+
+  .wf-halo,
+  .wf-halo circle,
+  .wf-pin-icon,
+  .wf-tip {
+    transition: none;
+  }
+}
+
+/* ---------- Wayfinder profile pages (/wayfinders/<slug>) ---------- */
+
+.wfp-hero-inner {
+  gap: 28px;
+  padding-bottom: 40px;
+}
+
+.wfp-crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: #f5f2ff;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.wfp-crumbs li {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  margin: 0;
+}
+
+.wfp-crumbs li + li::before {
+  content: "\203A";
+  margin: 0 10px;
+  opacity: 0.6;
+}
+
+.wfp-crumbs a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.wfp-crumbs a:hover {
+  color: var(--wf-teal);
+}
+
+.wfp-hero-grid {
+  display: grid;
+  grid-template-columns: 340px minmax(0, 1fr);
+  align-items: center;
+  gap: 56px;
+  width: 100%;
+}
+
+.wfp-photo {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  background: var(--wf-tint, #f5f2ff);
+  border-radius: 24px;
+  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.28);
+}
+
+.wfp-photo picture {
+  display: block;
+  height: 94%;
+}
+
+.wfp-photo img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.wfp-hero-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 0;
+}
+
+.wfp-hero .wfp-hero-copy h1 {
+  font-size: clamp(44px, 7vw, 84px);
+}
+
+.wf-page .wfp-extra {
+  margin: 0;
+  color: #f5f2ff;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.wfp-hero .wf-flags {
+  margin: 6px 0 0;
+}
+
+.wfp-hero .wf-flags img {
+  outline-color: rgba(255, 255, 255, 0.35);
+}
+
+/* Section cards: one centred column */
+
+.wfp-well {
+  max-width: 860px;
+}
+
+.wfp-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wfp-sec {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 0 24px;
+  margin: 0;
+  padding: 34px 38px 38px;
+  background: #fff;
+  border: 1px solid var(--wf-line);
+  border-radius: 20px;
+  box-shadow: 0 10px 36px rgba(42, 11, 79, 0.07);
+}
+
+.wfp-num {
+  color: var(--wf-pink);
+  font-size: 64px;
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+.wfp-sec-body {
+  min-width: 0;
+}
+
+.wf-page h2.wfp-sec-h {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  margin: 0 0 6px;
+  color: var(--wf-ink);
+  font-size: clamp(24px, 2.6vw, 30px);
+  font-weight: 900;
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+}
+
+.wfp-plane {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  fill: var(--wf-pink);
+  transform: rotate(45deg);
+}
+
+.wf-page .wfp-sub {
+  margin: 0 0 18px;
+  color: #58447f;
+  font-size: 17px;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.wf-page .wfp-p {
+  margin: 0 0 14px;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.wf-page .wfp-p:last-child {
+  margin-bottom: 0;
+}
+
+.wf-page .wfp-signature {
+  margin: 22px 0 0;
+  color: var(--wf-ink);
+  font-family: var(--font-script, "Mansalva", cursive);
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+/* Closing CTA + other Wayfinders */
+
+.wfp-cta {
+  margin-top: 48px;
+  padding: 52px 32px 40px;
+  background: #2a0b4f;
+  border-radius: 24px;
+  box-shadow: 0 10px 36px rgba(42, 11, 79, 0.18);
+  color: #fff;
+  text-align: center;
+}
+
+.wf-page .wfp-cta h2 {
+  max-width: 640px;
+  margin: 0 auto;
+  color: #fff;
+  font-size: clamp(26px, 3.4vw, 36px);
+  font-weight: 900;
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+}
+
+.wfp-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px 20px;
+  margin-top: 28px;
+}
+
+.wf-page .wfp-cta-actions a {
+  text-align: center;
+}
+
+.wfp-others {
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.wf-page .wfp-others h3 {
+  margin: 0 0 16px;
+  color: var(--wf-teal);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.wfp-others ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wfp-others li {
+  margin: 0;
+}
+
+.wf-page a.wfp-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 18px 6px 6px;
+  background: #fff;
+  border: 1px solid var(--wf-line);
+  border-radius: 999px;
+  color: var(--wf-ink);
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.wf-page a.wfp-chip:hover,
+.wf-page a.wfp-chip:focus-visible {
+  background: var(--wf-teal);
+  border-color: var(--wf-teal);
+}
+
+.wfp-av {
+  display: block;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  overflow: hidden;
+  background: var(--wf-tint, #f5f2ff);
+  border-radius: 50%;
+}
+
+.wfp-av picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.wfp-av img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 12%;
+}
+
+@media (max-width: 1023px) {
+  .wfp-hero-grid {
+    grid-template-columns: 300px minmax(0, 1fr);
+    gap: 36px;
+  }
+
+  .wfp-photo {
+    height: 360px;
+  }
+}
+
+@media (max-width: 767px) {
+  .wfp-hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .wfp-photo {
+    width: min(100%, 320px);
+    height: 330px;
+  }
+
+  .wfp-sec {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    padding: 26px 22px 30px;
+  }
+
+  .wfp-num {
+    font-size: 48px;
+  }
+
+  .wfp-cta {
+    padding: 40px 20px 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .wfp-hero-inner {
+    padding-bottom: 28px;
+  }
+
+  .wf-page .wfp-extra {
+    font-size: 18px;
+  }
+
+  .wf-page .wfp-p {
+    font-size: 17px;
+  }
+
+  .wf-page .wfp-signature {
+    font-size: 40px;
+  }
+}

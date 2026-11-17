@@ -1,0 +1,257 @@
+---
+import "../styles/wayfinders.css";
+import Base from "../layouts/Base.astro";
+import Wave from "../components/Wave.astro";
+import ReviewsRail from "../components/ReviewsRail.astro";
+import { edgeAbove } from "../data/edge-line";
+import { wayfinders, lineLabels, clientFitSteps, mapPins } from "../data/wayfinders";
+
+const tint = "#F5F2FF";
+const white = "#ffffff";
+const heroEdge = edgeAbove("#2A0B4F");
+const bandEdge = edgeAbove(tint);
+const footerEdge = edgeAbove(tint);
+
+/** Wavy join between two bands: `from` is the band above, `to` the band below. */
+function wave(from: string, to: string) {
+  const above = from === tint ? "tint" : "white";
+  return `<div class="wf-divider wf-divider--${above}" aria-hidden="true"><svg style="--wave-edge:${bandEdge}" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${to}" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path><path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path></svg></div>`;
+}
+const toTint = wave(white, tint);
+const toWhite = wave(tint, white);
+
+/** Lines shown on the card; the rest sit under "More about …". */
+const VISIBLE_LINES = 3;
+
+const site = "https://www.dogoodagency.co";
+const orgId = `${site}/#organization`;
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": orgId,
+      name: "DoGood Agency LLC",
+      url: `${site}/`,
+      logo: `${site}/logo.svg`,
+    },
+    {
+      "@type": "ItemList",
+      name: "DoGood Wayfinders",
+      itemListElement: wayfinders.map((w, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        item: {
+          "@type": "Person",
+          name: w.name,
+          jobTitle: `Wayfinder, ${w.hub}`,
+          url: `${site}${w.url}`,
+          image: `${site}${w.photo.base}@2x.webp`,
+          worksFor: { "@id": orgId },
+        },
+      })),
+    },
+  ],
+};
+
+const regionList = mapPins.map((pin) => pin.name).join(", ");
+const halos = mapPins.map((pin, i) => ({ ...pin, i, delay: `${-((i * 0.77) % 3.6).toFixed(2)}s` }));
+---
+
+<Base
+  title="Meet the Wayfinders | DoGood Founders"
+  description="Meet the small team of Wayfinders who guide founders through the Founder Reclamation Partnership, with over 70 years of combined founder experience."
+  canonical="https://www.dogoodagency.co/wayfinders"
+  footerStrip={tint}
+  footerEdge={footerEdge}
+>
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <article class="wf-page">
+    <header class="wf-hero">
+      <div class="wf-hero-inner">
+        <h1>Meet all Wayfinders</h1>
+        <div class="wf-hero-copy">
+          <h2 class="wf-eyebrow">What Wayfinders Are</h2>
+          <p class="wf-lead">
+            Wayfinders hold the container and steer the process: creating safety, asking direct questions, tracking the real thing, and keeping the work moving until you have stability and a clear next path (all while having fun).
+          </p>
+          <p>
+            FRP is carried out by an intentionally small team that collectively has over 70 years of hands-on founder-delivery experience. These professionals possess rare skills, not commonly found in typical work, and undergo rigorous training to uphold the highest industry standards, consistently delivering results-driven outcomes.
+          </p>
+        </div>
+      </div>
+      <Wave fill={white} edge={heroEdge} />
+    </header>
+
+    <!-- Where Wayfinders travel to + map -->
+    <section class="wf-band wf-band-map" aria-labelledby="wf-travel">
+      <div class="wf-well wf-well-top">
+        <div class="wf-intro">
+          <h2 class="wf-h2" id="wf-travel">Where Wayfinders Travel To</h2>
+          <p>
+            Each FRP stage includes 1x In-Person Intensive (for Stage 1 + Stage 2). In‑Person Intensive means a 1.5‑day in‑person get-together with your Wayfinder. We'll get on the plane and come to you.
+          </p>
+        </div>
+
+        <figure class="wf-map">
+          <div class="wf-map-stage">
+            <img class="wf-map-land" src="/media/wayfinders/world-land.svg" alt="" width="1000" height="520" decoding="async" />
+            <svg class="wf-halos" viewBox="0 0 1000 520" aria-hidden="true" focusable="false">
+              {
+                halos.map((pin) => (
+                  <g class="wf-halo" data-i={pin.i} transform={`translate(${pin.x} ${pin.y})`}>
+                    <circle r="90" style={`--d:${pin.delay}`} />
+                  </g>
+                ))
+              }
+            </svg>
+            <ul class="wf-pins">
+              {
+                halos.map((pin) => (
+                  <li
+                    class="wf-pin-slot"
+                    style={`left:${(pin.x / 10).toFixed(2)}%;top:${(pin.y / 5.2).toFixed(2)}%`}
+                    data-edge={pin.x > 800 ? "end" : pin.x < 200 ? "start" : undefined}
+                  >
+                    <span class="wf-pin" data-i={pin.i} tabindex="0" role="img" aria-label={`Wayfinders travel to ${pin.name}`}>
+                      <svg class="wf-pin-icon" viewBox="-14 -34 28 36" aria-hidden="true" focusable="false">
+                        <path d="M0 0C-3.5-6-12-12.5-12-21a12 12 0 1 1 24 0C12-12.5 3.5-6 0 0Z" />
+                        <circle cx="0" cy="-21" r="4.6" />
+                      </svg>
+                      <span class="wf-tip" aria-hidden="true">{pin.name}</span>
+                    </span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+          <figcaption class="visually-hidden">Map of the regions Wayfinders travel to: {regionList}.</figcaption>
+        </figure>
+
+        <div class="wf-apply">
+          <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
+          <p class="wf-note">For founders · Limited to 5 new founders/month</p>
+        </div>
+      </div>
+    </section>
+
+    <Fragment set:html={toTint} />
+
+    <!-- How the Client-Fit process works -->
+    <section class="wf-band wf-band-tint" aria-labelledby="wf-fit">
+      <div class="wf-well wf-well-top">
+        <h2 class="wf-h2 wf-center" id="wf-fit">How the Client-Fit process works</h2>
+        <ol class="wf-steps">
+          {
+            clientFitSteps.map((step, i) => (
+              <li class="wf-step">
+                <span class="wf-step-n" aria-hidden="true">{i + 1}</span>
+                <span class="wf-step-t">{step}</span>
+              </li>
+            ))
+          }
+        </ol>
+        <p class="wf-fit-copy">
+          You don’t pick a Wayfinder. We 'client-fit' you to the right one. If, within the first two sessions, you feel the Wayfinder isn't the best fit, we'll adjust the match to better suit your needs.
+        </p>
+        <div class="wf-center">
+          <a class="btn-teal" href="/wayfinders/clientfit">Client-Fit Process (details)</a>
+        </div>
+      </div>
+    </section>
+
+    <Fragment set:html={toWhite} />
+
+    <!-- Team -->
+    <section class="wf-band" aria-labelledby="wf-team">
+      <div class="wf-well wf-well-top wf-well-wide">
+        <h2 class="wf-h2 wf-center" id="wf-team">Meet the global Wayfinders team</h2>
+        <ul class="wf-members">
+          {
+            wayfinders.map((w) => {
+              const visible = lineLabels.slice(0, VISIBLE_LINES);
+              const more = lineLabels.slice(VISIBLE_LINES);
+              return (
+                <li class="wf-member">
+                  <div class="wf-photo" style={`--wf-tint:${w.tint}`}>
+                    <picture>
+                      <source type="image/webp" srcset={`${w.photo.base}@1x.webp 320w, ${w.photo.base}@2x.webp 640w`} sizes="(min-width: 1024px) 340px, (min-width: 640px) 320px, 70vw" />
+                      <img src={`${w.photo.base}@1x.png`} width={w.photo.width} height={w.photo.height} alt={w.photo.alt} loading="lazy" decoding="async" />
+                    </picture>
+                  </div>
+                  <h3 class="wf-name">{w.name}</h3>
+                  <p class="wf-hub">
+                    <strong>{w.hub}</strong>
+                    <span>{w.hubExtra}</span>
+                  </p>
+                  <ul class="wf-flags" aria-label={`${w.name}'s flags`}>
+                    {w.flags.map((flag) => (
+                      <li><img src={flag.src} width="24" height="16" alt={flag.name} loading="lazy" decoding="async" /></li>
+                    ))}
+                  </ul>
+                  <dl class="wf-lines">
+                    {visible.map(({ key, label }) => (
+                      <div>
+                        <dt>{label}</dt>
+                        <dd>{w.lines[key]}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                  <details class="wf-more">
+                    <summary>
+                      <span>More about {w.name}</span>
+                      <span class="wf-more-icon" aria-hidden="true"></span>
+                    </summary>
+                    <dl class="wf-lines">
+                      {more.map(({ key, label }) => (
+                        <div>
+                          <dt>{label}</dt>
+                          <dd>{w.lines[key]}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </details>
+                  <a class="wf-profile" href={w.url} aria-label={`View profile: ${w.name}`}>View profile</a>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </div>
+    </section>
+
+    <Fragment set:html={toTint} />
+
+    <!-- Consistency & quality -->
+    <section class="wf-band wf-band-tint" aria-labelledby="wf-quality">
+      <div class="wf-well wf-well-top">
+        <h2 class="wf-h2 wf-center" id="wf-quality">How we ensure consistency &amp; quality outcomes</h2>
+        <ul class="wf-quality">
+          <li>Delivered under the DoGood Agency brand; Wayfinders uphold strong DoGood learning IP and process frameworks.</li>
+          <li>Structured cadence + documentation/admin hygiene expectations (signals discipline with personality).</li>
+          <li>FRP is progress-tracked through several diagnostics + documented decisions, and weekly reviews.</li>
+        </ul>
+        <div class="wf-center">
+          <a class="btn-teal" href="/the-reset">See the 2‑Stage Partnership</a>
+          <p class="wf-note">Stage 1 (30 days) · Stage 2 invite-only</p>
+        </div>
+      </div>
+    </section>
+
+    <Fragment set:html={toWhite} />
+
+    <ReviewsRail />
+
+    <Fragment set:html={toTint} />
+
+    <section class="wf-band wf-band-tint" aria-label="Apply for Stage 1">
+      <div class="wf-well wf-well-top">
+        <div class="wf-cta">
+          <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
+          <a class="btn-teal" href="/how-it-works">See how it works</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</Base>

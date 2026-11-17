@@ -1,0 +1,261 @@
+---
+import "../styles/newsletter.css";
+import Base from "../layouts/Base.astro";
+import Wave from "../components/Wave.astro";
+import { edgeAbove } from "../data/edge-line";
+
+// Seb: switch to true on Saturday once the PDFs are in public/downloads/
+const SHOW_PDF_DOWNLOADS = false;
+
+const tint = "#F5F2FF";
+const heroEdge = edgeAbove("#2A0B4F");
+const bandEdge = edgeAbove(tint);
+const footerEdge = edgeAbove(tint);
+
+// MailerLite form already used by the footer and the old newsletter.md page.
+// Base.astro's global script handles every form.js-subscribe. Do not create new forms.
+const action =
+  "https://assets.mailerlite.com/jsonp/2046479/forms/180157154312849349/subscribe";
+
+/**
+ * Chapters of "Before and After the Sale".
+ * To add a chapter, push an object onto this array when it goes out, newest last, e.g.
+ *   { number: 1, title: "<chapter title>", date: "15 December", href: "/newsletter/<slug>" }
+ * `href` is optional. While the array is empty the page shows one "arrives" row.
+ */
+interface Chapter {
+  number: number;
+  title: string;
+  date: string;
+  href?: string;
+}
+const chapters: Chapter[] = [];
+
+const questions = [
+  {
+    q: "What am I actually tired from?",
+    a: "Years of running a company leave a tiredness that a holiday doesn't fix. Before you plan anything, name what drained you, so you don't walk straight back into it.",
+  },
+  {
+    q: "Who am I when nobody needs a decision from me?",
+    a: "For years your days were shaped by other people's questions. Notice who shows up when the questions stop.",
+  },
+  {
+    q: "What did the company give me that I'll miss?",
+    a: "It might be the structure, the status, the people or the sense of being needed. List it plainly. These are the things you'll be tempted to replace in a hurry.",
+  },
+  {
+    q: "What am I saying yes to, just to fill the space?",
+    a: "Board seats, advisory roles, a new venture. Some will be right. Ask of each one whether you'd still want it if your calendar were already full.",
+  },
+  {
+    q: "What did I promise myself I'd do after the sale, and do I still want it?",
+    a: "That promise was made by a busier version of you. Check whether it still belongs to you.",
+  },
+  {
+    q: "Who has been waiting for me to come back?",
+    a: "A partner, children, old friends, your own health. Some of them have waited a long time. Look at what they might need from you now.",
+  },
+  {
+    q: "What would I like to be true in a year, and what's the smallest first step?",
+    a: "You don't need the whole plan. One honest direction and one small step is enough for now.",
+  },
+];
+
+const heroLine =
+  "Seven questions to sit with before you commit the next stretch of your life to anything new. They're free and right here on this page, and you don't need to sign up.";
+---
+
+<Base
+  title="The first 90 days after the sale | DoGood Agency"
+  description={heroLine}
+  canonical="https://www.dogoodagency.co/newsletter"
+  footerStrip={tint}
+  footerEdge={footerEdge}
+  hideOptin
+>
+  <article class="nl-page">
+    <header class="nl-hero">
+      <div class="nl-hero-inner">
+        <div class="nl-copy">
+          <p class="nl-eyebrow">The DoGood newsletter</p>
+          <h1>The first 90 days after the sale</h1>
+          <p class="nl-lede">{heroLine}</p>
+          <div class="nl-hero-actions">
+            <a class="btn-teal" href="#questions">Read the 7 questions</a>
+            <a class="nl-btn-ghost" href="#prologue">Read the prologue</a>
+          </div>
+        </div>
+
+        <div class="nl-visual">
+          <div class="nl-visual-card">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="/sketches/newsletter-open-envelope-booklet@1x.webp 540w, /sketches/newsletter-open-envelope-booklet@2x.webp 1080w"
+                sizes="(max-width: 900px) 320px, 440px"
+              />
+              <img
+                src="/sketches/newsletter-open-envelope-booklet@1x.png"
+                srcset="/sketches/newsletter-open-envelope-booklet@1x.png 540w, /sketches/newsletter-open-envelope-booklet@2x.png 1080w"
+                sizes="(max-width: 900px) 320px, 440px"
+                width="540"
+                height="400"
+                alt="Sketch of an open envelope with a green booklet inside."
+                loading="eager"
+                decoding="async"
+              />
+            </picture>
+          </div>
+        </div>
+      </div>
+      <Wave fill={tint} edge={heroEdge} />
+    </header>
+
+    <section class="nl-band nl-band-tint" id="note" aria-labelledby="nl-note-label">
+      <div class="nl-well">
+        <figure class="nl-note">
+          <p class="nl-note-label" id="nl-note-label">A note from Seb</p>
+          <blockquote>
+            <p>A few years ago I paused my business to regroup. Nobody had told me how strange it would feel to stop. Since then, I've sat with founders in that same stretch after the deal, when the structure is gone and the calendar is suddenly quiet. These seven questions are the ones we keep coming back to. Take them, they're yours.</p>
+          </blockquote>
+          <figcaption class="nl-note-sign">— Seb</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <div class="nl-divider" aria-hidden="true">
+      <svg style={`--wave-edge:${bandEdge}`} viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path fill="#ffffff" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path>
+        <path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path>
+      </svg>
+    </div>
+
+    <section class="nl-band" id="questions" aria-labelledby="nl-questions-title">
+      <div class="nl-well">
+        <h2 id="nl-questions-title">Seven questions for the first 90 days</h2>
+        <p class="nl-intro">Take your time with them. There are no right answers, only honest ones.</p>
+        <ol class="nl-questions">
+          {
+            questions.map((item, i) => (
+              <li class="nl-question">
+                <span class="nl-qnum" aria-hidden="true">{i + 1}</span>
+                <div>
+                  <h3>{item.q}</h3>
+                  <p>{item.a}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+        <div class="nl-download" hidden={!SHOW_PDF_DOWNLOADS}>
+          <a
+            class="btn-teal"
+            href="/downloads/first-90-days-7-questions.pdf"
+            target="_blank"
+            rel="noopener"
+            hidden={!SHOW_PDF_DOWNLOADS}>Download the 7 questions (PDF)</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="nl-band nl-band-tint" id="book" aria-labelledby="nl-book-title">
+      <div class="nl-well">
+        <div class="nl-book">
+          <span class="nl-badge">First chapter 15 December</span>
+          <h2 id="nl-book-title">Before and After the Sale</h2>
+          <p>A book for founders on the inner side of selling, told through real, anonymised stories. We're writing it in the open, one chapter at a time, for everyone in <span class="pink-soft nl-founder"><strong>FOUNDER</strong>land</span>.</p>
+        </div>
+
+        <div class="nl-prologue" id="prologue">
+          <h3 class="nl-prologue-title">Prologue: The day after</h3>
+          <div class="nl-prose">
+            <p>The signing is usually quieter than people expect. There are papers, a few handshakes, maybe a dinner. Then you go home.</p>
+            <p>The next morning, your phone is quieter too. The questions that filled your days for years now go to someone else. The team you built still turns up to work, just not for you. You're free, and that's exactly what you worked for.</p>
+            <p class="nl-emph">So why does it feel so strange?</p>
+            <p>Founders rarely talk about this part. From the outside, the sale looks like the finish line, and everyone congratulates you. On the inside, something else is happening. The company gave your days a shape, it gave you a role, and in many ways it told you who you were. When it goes, all three go with it, at the same time.</p>
+            <p>This isn't a rare reaction. In a 2026 Concordia University study of founders who sold their companies, every founder interviewed described depression-like feelings after the exit. They were successful, capable people, and it happened to all of them.</p>
+            <p>Most of them handled it the way founders handle everything: by moving fast. A new venture, an investment, a board seat, a packed calendar. It's the most natural response in the world, and it's often the one that costs the most, because the next chapter gets chosen before the last one has been understood.</p>
+            <p>This book is about the space in between. It's about what founders feel before the sale, during it and in the months after, and what helps. Every story in it is real. Names and details are changed, so nobody can be recognised. Some chapters are about the founder, and some are about the people around them: a partner, an advisor, a family that waited a long time.</p>
+            <p>We're writing it in the open, one chapter every two weeks. Read it slowly if you can, and pass it on to someone who's about to sign.</p>
+            <p class="nl-emph">We'll start where the deal ends.</p>
+            <p class="nl-source">Source: Byezhanova, Concordia University, 2026.</p>
+          </div>
+          <div class="nl-download" hidden={!SHOW_PDF_DOWNLOADS}>
+            <a
+              class="btn-teal"
+              href="/downloads/before-and-after-the-sale-prologue.pdf"
+              target="_blank"
+              rel="noopener"
+              hidden={!SHOW_PDF_DOWNLOADS}>Download the prologue (PDF)</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="nl-band" id="signup" aria-labelledby="nl-signup-title">
+      <div class="nl-well">
+        <div class="nl-signup" data-nl-signup>
+          <h2 id="nl-signup-title">Keep reading</h2>
+          <p class="nl-intro">Get each new chapter of Before and After the Sale when it comes out, along with our notes on life after the sale. It's one email every two weeks, starting 15 December, then 12 January and 26 January.</p>
+          <form class="nl-form js-subscribe" action={action} method="post">
+            <input type="hidden" name="ml-submit" value="1" />
+            <input type="hidden" name="anticsrf" value="true" />
+            <label for="nl-email">Email</label>
+            <input id="nl-email" type="email" name="fields[email]" placeholder="Email" autocomplete="email" required />
+            <button class="btn-teal" type="submit">Send me the chapters</button>
+            <p data-status hidden></p>
+          </form>
+          <p class="nl-print">No spam, and you can unsubscribe at any time. We'll only use your email to send these notes. Read our <a href="/privacy">privacy policy</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="nl-band nl-band-tint" id="chapters" aria-labelledby="nl-chapters-title">
+      <div class="nl-well">
+        <h2 id="nl-chapters-title">The chapters</h2>
+        <p class="nl-intro">New chapters will be listed here as they arrive.</p>
+        <ol class="nl-chapters">
+          {
+            chapters.length > 0 ? (
+              chapters.map((chapter) => (
+                <li class="nl-chapter">
+                  <span class="nl-chapter-num">{chapter.number}.</span>
+                  <span class="nl-chapter-title">
+                    {chapter.href ? <a href={chapter.href}>{chapter.title}</a> : chapter.title}
+                  </span>
+                  <span class="nl-chapter-date">{chapter.date}</span>
+                </li>
+              ))
+            ) : (
+              <li class="nl-chapter nl-chapter-soon">
+                <span class="nl-chapter-num">1.</span>
+                <span class="nl-chapter-title">Chapter 1, arrives 15 December</span>
+              </li>
+            )
+          }
+        </ol>
+
+        <div class="nl-closing">
+          <p>If you already know you'd like a private place to do this work, you can <a href="/apply-stage-1">apply for Stage 1</a>.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+</Base>
+
+<script>
+  const box = document.querySelector<HTMLElement>("[data-nl-signup]");
+  const form = box?.querySelector<HTMLFormElement>("form.js-subscribe");
+  const submit = form?.querySelector<HTMLButtonElement>("button[type='submit']");
+
+  // Base.astro resets the button to "Subscribe" after an error. Keep our label.
+  if (submit) {
+    const label = submit.textContent?.trim() || "Send me the chapters";
+    new MutationObserver(() => {
+      if ((submit.textContent ?? "").trim() === "Subscribe") submit.textContent = label;
+    }).observe(submit, { childList: true, characterData: true, subtree: true });
+  }
+</script>
