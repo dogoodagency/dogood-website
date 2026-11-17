@@ -15,7 +15,7 @@ export const GET: APIRoute = async () => {
 
   const items = posts
     .map((post) => {
-      const link = `${SITE}/blog/${post.id}`;
+      const link = `${SITE}/insights/${post.id}`;
       const category = getCategory(post.data.category);
       return [
         "    <item>",
@@ -37,12 +37,12 @@ export const GET: APIRoute = async () => {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>DoGood Blog</title>
-    <link>${SITE}/blog</link>
+    <title>DoGood Insights</title>
+    <link>${SITE}/insights</link>
     <description>Notes for founders before and after the sale, and for the advisors who work with them.</description>
     <language>en</language>
     <lastBuildDate>${lastBuild}</lastBuildDate>
-    <atom:link href="${SITE}/blog/rss.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="${SITE}/insights/rss.xml" rel="self" type="application/rss+xml" />
 ${items}
   </channel>
 </rss>

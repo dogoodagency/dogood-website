@@ -35,7 +35,7 @@ const Tag = variant === "feature" ? "h2" : "h3";
           <span>{d.readTime} min read</span>
         </p>
         {category && (
-          <a class="bl-pill" href={`/blog/category/${category.slug}`}>
+          <a class="bl-pill" href={`/insights/category/${category.slug}`}>
             {category.name}
           </a>
         )}
@@ -71,7 +71,7 @@ const Tag = variant === "feature" ? "h2" : "h3";
             {aud.label}
           </span>
           {category && (
-            <a class="bl-pill" href={`/blog/category/${category.slug}`}>
+            <a class="bl-pill" href={`/insights/category/${category.slug}`}>
               {category.name}
             </a>
           )}

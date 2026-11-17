@@ -71,15 +71,15 @@ const breadcrumbJson = json({
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
-    { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE}/blog` },
+    { "@type": "ListItem", position: 2, name: "Insights", item: `${SITE}/insights` },
   ],
 });
 
 const blogJson = json({
   "@context": "https://schema.org",
   "@type": "Blog",
-  name: "Notes from FOUNDERland | The DoGood blog",
-  url: `${SITE}/blog`,
+  name: "DoGood Insights",
+  url: `${SITE}/insights`,
   description:
     "Honest notes for founders before and after the sale, and for the advisors who walk with them.",
   publisher: {
@@ -91,7 +91,7 @@ const blogJson = json({
   blogPost: posts.map((p) => ({
     "@type": "BlogPosting",
     headline: p.data.title,
-    url: `${SITE}/blog/${p.id}`,
+    url: `${SITE}/insights/${p.id}`,
     datePublished: p.data.date.toISOString().slice(0, 10),
     author: { "@type": "Person", name: p.data.author },
   })),
@@ -105,16 +105,15 @@ const tabs = [
 ---
 
 <Base
-  title="Blog: notes for founders before and after the sale | DoGood"
+  title="Insights: notes for founders before and after the sale | DoGood"
   description="Honest notes for founders before and after the sale, and for the advisors who walk with them. Articles on exit, identity and what comes next."
-  canonical={`${SITE}/blog`}
-  ogTitle="Notes from FOUNDERland | DoGood Blog"
-  hideOptin={true}
+  canonical={`${SITE}/insights`}
+  ogTitle="Notes from FOUNDERland | DoGood Insights"
   footerStrip={tint}
   footerEdge={tintEdge}
 >
   <Fragment slot="head">
-    <link rel="alternate" type="application/rss+xml" title="DoGood Blog" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title="DoGood Insights" href="/insights/rss.xml" />
     <script is:inline type="application/ld+json" set:html={blogJson} />
     <script is:inline type="application/ld+json" set:html={breadcrumbJson} />
   </Fragment>
@@ -123,13 +122,13 @@ const tabs = [
     <!-- 1. Hero + search -->
     <header class="bl-hero bli-hero">
       <div class="bl-hero-inner">
-        <p class="bl-box-label bl-box-label--light">The DoGood blog</p>
+        <p class="bl-box-label bl-box-label--light">DoGood Insights</p>
         <h1>Notes from <span class="bl-founderland"><strong>FOUNDER</strong><span class="bl-land">land</span></span></h1>
         <p class="bl-hero-lede">Honest notes for founders before and after the sale, and for the advisors who walk with them.</p>
 
         <div class="bl-search-wrap">
-          <form class="bl-search" role="search" action="/blog" method="get" novalidate>
-            <label class="bl-sr" for="bli-search">Search the articles</label>
+          <form class="bl-search" role="search" action="/insights" method="get" novalidate>
+            <label class="bl-sr" for="bli-search">Search the insights</label>
             <svg class="bl-search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="2"></circle>
               <path d="m15.5 15.5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
@@ -138,7 +137,7 @@ const tabs = [
               id="bli-search"
               name="q"
               type="search"
-              placeholder="Search the articles…"
+              placeholder="Search the insights…"
               autocomplete="off"
               enterkeyhint="search"
               spellcheck="false"
@@ -242,11 +241,11 @@ const tabs = [
             {founderPosts.slice(0, 3).map((p) => <li class="bli-item"><BlogCard post={p} variant="grid" /></li>)}
           </ul>
           <div class="bli-aud-foot">
-            <a class="btn-teal" href="/blog?for=founders#bl-latest" data-bl-set-aud="founders">All founder articles</a>
+            <a class="btn-teal" href="/insights?for=founders#bl-latest" data-bl-set-aud="founders">All founder articles</a>
             <ul class="bli-pills" aria-label="Founder topics">
               {
                 founderCats.map((c) => (
-                  <li><a class="bl-pill bl-pill--lg" href={`/blog/category/${c.slug}`}>{c.name}</a></li>
+                  <li><a class="bl-pill bl-pill--lg" href={`/insights/category/${c.slug}`}>{c.name}</a></li>
                 ))
               }
             </ul>
@@ -267,7 +266,7 @@ const tabs = [
             <ul class="bli-pills" aria-label="Advisor topics">
               {
                 advisorCats.map((c) => (
-                  <li><a class="bl-pill bl-pill--lg" href={`/blog/category/${c.slug}`}>{c.name}</a></li>
+                  <li><a class="bl-pill bl-pill--lg" href={`/insights/category/${c.slug}`}>{c.name}</a></li>
                 ))
               }
             </ul>
@@ -285,7 +284,7 @@ const tabs = [
           {
             categories.map((c) => (
               <li>
-                <a class="bli-cat" href={`/blog/category/${c.slug}`}>
+                <a class="bli-cat" href={`/insights/category/${c.slug}`}>
                   <span class={`bl-badge bl-badge--${c.audience}`}>
                     <BlogAudIcon audience={c.audience} /> {audiences[c.audience].label}
                   </span>
@@ -541,7 +540,7 @@ const tabs = [
       input.focus({ preventScroll: true });
     });
 
-    // /blog?q=family&for=founders pre-fills the search and the audience switch.
+    // /insights?q=family&for=founders pre-fills the search and the audience switch.
     const params = new URLSearchParams(window.location.search);
     const preset = params.get("q");
     const presetFor = params.get("for");

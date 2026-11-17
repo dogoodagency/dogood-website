@@ -33,7 +33,7 @@ const toc = headings.filter((h) => h.depth === 2);
 
 const category = getCategory(d.category);
 const aud = audiences[d.audience];
-const url = `${SITE}/blog/${post.id}`;
+const url = `${SITE}/insights/${post.id}`;
 const related = relatedPosts(post, all, 3);
 const heroPng2 = sketchSrc(d.heroImage).png2;
 
@@ -95,9 +95,9 @@ const blogPosting = json({
 
 const breadcrumbs = [
   { name: "Home", href: "/" },
-  { name: "Blog", href: "/blog" },
-  ...(category ? [{ name: category.name, href: `/blog/category/${category.slug}` }] : []),
-  { name: d.title, href: `/blog/${post.id}` },
+  { name: "Insights", href: "/insights" },
+  ...(category ? [{ name: category.name, href: `/insights/category/${category.slug}` }] : []),
+  { name: d.title, href: `/insights/${post.id}` },
 ];
 const breadcrumbJson = json({
   "@context": "https://schema.org",
@@ -124,19 +124,18 @@ const faqJson = d.faq.length
 ---
 
 <Base
-  title={`${d.title} | DoGood Blog`}
+  title={`${d.title} | DoGood Insights`}
   description={d.description}
   canonical={url}
   ogTitle={d.title}
   ogImage={heroPng2}
   ogType="article"
   robots={d.noindex ? "noindex, follow" : undefined}
-  hideOptin={true}
   footerStrip={tint}
   footerEdge={footerEdge}
 >
   <Fragment slot="head">
-    <link rel="alternate" type="application/rss+xml" title="DoGood Blog" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title="DoGood Insights" href="/insights/rss.xml" />
     <script is:inline type="application/ld+json" set:html={blogPosting} />
     <script is:inline type="application/ld+json" set:html={breadcrumbJson} />
     {faqJson && <script is:inline type="application/ld+json" set:html={faqJson} />}
@@ -178,7 +177,7 @@ const faqJson = d.faq.length
           <span class:list={["bl-badge", `bl-badge--${d.audience}`]}>{aud.label}</span>
           {
             category && (
-              <a class="bl-pill" href={`/blog/category/${category.slug}`}>
+              <a class="bl-pill" href={`/insights/category/${category.slug}`}>
                 {category.name}
               </a>
             )
@@ -303,7 +302,7 @@ const faqJson = d.faq.length
           <div class="bl-grid">
             {related.map((p) => <BlogCard post={p} variant="grid" />)}
           </div>
-          <p class="bl-back"><a href="/blog">← Back to the blog</a></p>
+          <p class="bl-back"><a href="/insights">← Back to Insights</a></p>
         </div>
       </section>
     </div>

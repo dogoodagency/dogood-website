@@ -1,18 +1,22 @@
-# The DoGood blog: how to add and manage articles
+# DoGood Insights: how to add and manage articles
 
 Articles are plain text files. You do not need to touch any code to publish one.
+
+Naming note: the public name is "Insights" and the web address is `/insights`. Internally the content collection is still called `blog`, and the folder is still `src/content/blog/`, along with `src/data/blog.ts`, `src/styles/blog*.css` and the `Blog*` components. Those are internal names only and visitors never see them, so they were left as they are.
+
+Old `/blog/...` addresses redirect (301) to the matching `/insights/...` address, both in `astro.config.mjs` and `netlify.toml`. If you add an article or category that already has a public `/blog/...` link, add a redirect for it too.
 
 Where things live:
 
 - Articles: `src/content/blog/*.md` (one file per article)
 - Categories and helper code: `src/data/blog.ts`
 - Look and feel: `src/styles/blog.css`
-- Pages: `src/pages/blog/[slug].astro` (article), `src/pages/blog/category/[category].astro` (category pages), `src/pages/blog/rss.xml.ts` (RSS feed)
+- Pages: `src/pages/insights/index.astro` (Insights home), `src/pages/insights/[slug].astro` (article), `src/pages/insights/category/[category].astro` (category pages), `src/pages/insights/rss.xml.ts` (RSS feed)
 
 ## Add an article
 
 1. Copy an existing file in `src/content/blog/`, for example `first-90-days-after-the-sale.md`.
-2. Rename it. The file name becomes the web address: `my-new-article.md` is published at `/blog/my-new-article`. Use lowercase words joined with hyphens.
+2. Rename it. The file name becomes the web address: `my-new-article.md` is published at `/insights/my-new-article`. Use lowercase words joined with hyphens.
 3. Change the fields between the two `---` lines at the top (the "frontmatter", explained below).
 4. Replace the text underneath with your article.
 5. Run `npm run build` to check nothing is wrong. If a field is missing or has a typo, the build says which one.
@@ -39,7 +43,7 @@ Where things live:
 | `author` | Optional. Defaults to "Seb Wichmann". |
 | `authorRole` | Optional. Defaults to "Founder, DoGood". |
 | `readTime` | Minutes to read, as a number. Roughly words divided by 220. |
-| `featured` | `true` makes it the big featured article on the blog index. Only one article should be `true` at a time. |
+| `featured` | `true` makes it the big featured article on the Insights index. Only one article should be `true` at a time. |
 | `pick` | Optional number 1, 2 or 3. Puts the article in the "Most read in FOUNDERland" card, in that order. Use each number once, or leave it out. |
 | `heroImage` | The sketch to show, as a path **without** `@1x` or `.webp` or `.png`, e.g. `"/sketches/insights-open-journals"`. See image rules below. |
 | `heroAlt` | A short plain description of the picture, for screen readers. |
@@ -82,7 +86,7 @@ Note that the whole site currently sends a "noindex, nofollow" robots tag, which
 | `working-with-founders` | Working with founders | advisor |
 | `personal-side-of-exit-planning` | Exit planning: the personal side | advisor |
 
-Each category has its own page at `/blog/category/<slug>`. Empty categories still get a page, with a "New articles are on their way" message.
+Each category has its own page at `/insights/category/<slug>`. Empty categories still get a page, with a "New articles are on their way" message.
 
 The "Call to action" box at the end of each article is chosen from the category:
 
@@ -106,8 +110,8 @@ The "Call to action" box at the end of each article is chosen from the category:
 
 ## The RSS feed
 
-The feed is at `/blog/rss.xml` and lists every article automatically. Nothing to maintain.
+The feed is at `/insights/rss.xml` and lists every article automatically. Nothing to maintain.
 
 ## Newsletter sign-up
 
-The sign-up box at the bottom of each blog page uses the same MailerLite form as the footer and `/newsletter`. The form address is set once in `src/data/blog.ts` (`NEWSLETTER_ACTION`). Do not create a new form.
+The sign-up box at the bottom of each Insights page uses the same MailerLite form as the footer and `/newsletter`. The form address is set once in `src/data/blog.ts` (`NEWSLETTER_ACTION`). Do not create a new form.

@@ -2835,6 +2835,12 @@ p.services-note {
   }
 }
 
+/* The Explore column's list items overlap the Advisor Center column at some widths; keep the advisor links clickable. */
+.footer-advisors {
+  position: relative;
+  z-index: 1;
+}
+
 @media (min-width: 1081px) {
   .footer-grid > * {
     min-width: 0;
@@ -2843,6 +2849,7 @@ p.services-note {
   .footer-explore {
     transform: translateX(70px);
   }
+
 
   .footer-about {
     display: flex;

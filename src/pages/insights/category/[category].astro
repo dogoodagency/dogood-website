@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 
 const { category, posts } = Astro.props;
 const aud = audiences[category.audience];
-const url = `${SITE}/blog/category/${category.slug}`;
+const url = `${SITE}/insights/category/${category.slug}`;
 
 const tint = "#F5F2FF";
 const heroEdge = edgeAbove("#2A0B4F");
@@ -31,8 +31,8 @@ const json = (value: unknown) => JSON.stringify(value).replace(/</g, "\\u003c");
 
 const breadcrumbs = [
   { name: "Home", href: "/" },
-  { name: "Blog", href: "/blog" },
-  { name: category.name, href: `/blog/category/${category.slug}` },
+  { name: "Insights", href: "/insights" },
+  { name: category.name, href: `/insights/category/${category.slug}` },
 ];
 
 const breadcrumbJson = json({
@@ -49,16 +49,16 @@ const breadcrumbJson = json({
 const collectionJson = json({
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  name: `${category.name} | DoGood Blog`,
+  name: `${category.name} | DoGood Insights`,
   description: category.description,
   url,
-  isPartOf: { "@type": "Blog", name: "DoGood Blog", url: `${SITE}/blog` },
+  isPartOf: { "@type": "Blog", name: "DoGood Insights", url: `${SITE}/insights` },
   mainEntity: {
     "@type": "ItemList",
     itemListElement: posts.map((p, i) => ({
       "@type": "ListItem",
       position: i + 1,
-      url: `${SITE}/blog/${p.id}`,
+      url: `${SITE}/insights/${p.id}`,
       name: p.data.title,
     })),
   },
@@ -66,15 +66,15 @@ const collectionJson = json({
 ---
 
 <Base
-  title={`${category.name} | DoGood Blog`}
-  description={`${category.name}: ${category.description} Articles from the DoGood Blog.`}
+  title={`${category.name} | DoGood Insights`}
+  description={`${category.name}: ${category.description} Articles from DoGood Insights.`}
   canonical={url}
-  ogTitle={`${category.name} | DoGood Blog`}
+  ogTitle={`${category.name} | DoGood Insights`}
   footerStrip={tint}
   footerEdge={footerEdge}
 >
   <Fragment slot="head">
-    <link rel="alternate" type="application/rss+xml" title="DoGood Blog" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title="DoGood Insights" href="/insights/rss.xml" />
     <script is:inline type="application/ld+json" set:html={breadcrumbJson} />
     <script is:inline type="application/ld+json" set:html={collectionJson} />
   </Fragment>
@@ -125,7 +125,7 @@ const collectionJson = json({
                 <li>
                   <a
                     class:list={["bl-pill", "bl-pill--lg", c.slug === category.slug && "is-current"]}
-                    href={`/blog/category/${c.slug}`}
+                    href={`/insights/category/${c.slug}`}
                     aria-current={c.slug === category.slug ? "page" : undefined}
                   >
                     {c.name}
@@ -134,7 +134,7 @@ const collectionJson = json({
               ))
             }
           </ul>
-          <p class="bl-back"><a href="/blog">← Back to the blog</a></p>
+          <p class="bl-back"><a href="/insights">← Back to Insights</a></p>
         </nav>
 
         <BlogNewsletter idSuffix="category" />

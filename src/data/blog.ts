@@ -26,7 +26,7 @@ export interface BlogCategory {
 
 /**
  * To add a category: add an object here AND add its slug to `categorySlugs`
- * in src/content.config.ts. See docs/BLOG.md.
+ * in src/content.config.ts. See docs/INSIGHTS.md.
  */
 export const categories: BlogCategory[] = [
   {
@@ -161,5 +161,5 @@ export function initials(name: string): string {
 }
 
 export function postUrl(post: Post): string {
-  return `/blog/${post.id}`;
+  return `/insights/${post.id}`;
 }
