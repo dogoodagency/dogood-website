@@ -1,0 +1,23 @@
+---
+import { Image } from "astro:assets";
+import caseJ from "../assets/cases/case-study-j-founder-life-after-exit.png";
+---
+
+<article class="bk-case">
+  <Image
+    class="bk-case-portrait"
+    src={caseJ}
+    width={220}
+    height={244}
+    widths={[220, 440]}
+    sizes="220px"
+    alt="Pixelated portrait of founder J, shown this way to protect their identity"
+  />
+  <div class="bk-case-body">
+    <p class="bk-case-eyebrow">Case Study</p>
+    <h2 class="bk-case-title">From exit anxiety to aligned legacy —<br />How J created a clear next life chapter</h2>
+    <p class="bk-case-who">J (anonymous), USD 2M founder</p>
+    <a class="btn-teal" href="/casestudies/j">Read the short case study</a>
+    <p class="bk-case-note">We protect our founders’ identities</p>
+  </div>
+</article>

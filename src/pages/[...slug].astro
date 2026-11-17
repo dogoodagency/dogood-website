@@ -6,9 +6,21 @@ import Wave from "../components/Wave.astro";
 import { edgeAbove } from "../data/edge-line";
 
 export async function getStaticPaths() {
+  // Booking pages with their own routes (src/pages/<slug>.astro). The markdown stays; thank-you pages are untouched.
+  // Kept inside getStaticPaths because Astro runs it in an isolated scope.
+  const bookingSlugs = new Set([
+    "internal",
+    "internal-60",
+    "catchup",
+    "claritysprints",
+    "pre-frp",
+    "frpfit",
+    "orientation-call",
+    "teams",
+  ]);
   const pages = await getCollection("pages");
   return pages
-    .filter((page) => page.id !== "error404" && page.id !== "contact" && page.id !== "apply-stage-1" && page.id !== "clarity-first-guarantee-terms" && page.id !== "casestudies/v" && page.id !== "casestudies/j" && page.id !== "faqs" && page.id !== "newsletter" && page.id !== "about" && page.id !== "stories" && page.id !== "how-it-works" && page.id !== "wayfinders" && page.id !== "wayfinders/clientfit" && page.id !== "wayfinders/seb" && page.id !== "wayfinders/vlora" && page.id !== "wayfinders/shiva" && page.id !== "wayfinders/katrin" && page.id !== "wayfinders/chantill" && page.id !== "for-advisors" && page.id !== "for-advisors/client-tools" && page.id !== "for-advisors/insights")
+    .filter((page) => page.id !== "error404" && page.id !== "contact" && page.id !== "apply-stage-1" && page.id !== "clarity-first-guarantee-terms" && page.id !== "casestudies/v" && page.id !== "casestudies/j" && page.id !== "faqs" && page.id !== "newsletter" && page.id !== "about" && page.id !== "stories" && page.id !== "how-it-works" && page.id !== "wayfinders" && page.id !== "wayfinders/clientfit" && page.id !== "wayfinders/seb" && page.id !== "wayfinders/vlora" && page.id !== "wayfinders/shiva" && page.id !== "wayfinders/katrin" && page.id !== "wayfinders/chantill" && page.id !== "for-advisors" && page.id !== "for-advisors/client-tools" && page.id !== "for-advisors/insights" && !bookingSlugs.has(page.id))
     .map((page) => ({ params: { slug: page.id } }));
 }
 
