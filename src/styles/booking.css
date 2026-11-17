@@ -478,7 +478,7 @@ body:has(.bk-page) .footer-wave {
   }
 
   .bk-page .bk-h1-suffix {
-    margin-left: 0;
+    margin-left: 0.15em;
     font-size: 40px;
     font-weight: 900;
     letter-spacing: 0;
