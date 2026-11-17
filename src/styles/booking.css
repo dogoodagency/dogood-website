@@ -10,13 +10,17 @@ body:has(.bk-page) .footer-wave {
 .bk-page {
   --bk-ink: #2a0b4f;
   --bk-teal: #28dbb0;
-  --bk-pink: #ff4d85;
+  --bk-pink: #ea1557;
   --bk-line: #c2b7dd;
   margin-top: -94px;
   padding-top: 94px;
   background: #2a0b4f;
   color: #fff;
   overflow-x: clip;
+}
+
+.bk-strip {
+  display: none;
 }
 
 .bk-page *,
@@ -410,5 +414,138 @@ body:has(.bk-page) .footer-wave {
   .bk-copy a.btn-apply,
   .bk-copy a.btn-teal {
     width: 100%;
+  }
+}
+
+/* ---------- Desktop (>=1024px): live-site structure ----------
+   Measured on dogoodagency.co/internal at 1440 (Wix 980px content box, left edge = 50% - 490px):
+   white strip from the header line (y 152) to 37px above the embed's bottom, right edge 50% - 206px (514px at 1440);
+   copy column left 50% - 156px (564px), 650px wide, H1 60px/84px Montserrat 900 with a 40px suffix, body 18px/25.2px;
+   TidyCal iframe left 50% - 684px (36px), 1225px wide, top 728px (about 93px below the last copy line).
+   TidyCal itself draws the white event-details pane on the left and the calendar on purple to the right.
+   Below 1368px the live iframe would start off-screen (live crops the event card at 1024), so the embed is pinned
+   16px from the left and narrowed (max 1150px); the strip and copy follow TidyCal's details pane (43.33% of the embed). */
+@media (min-width: 1024px) {
+  .bk-page {
+    --bk-emb-left: 16px;
+    --bk-emb-w: min(calc(100% - 32px), 1150px);
+    --bk-strip-w: calc(var(--bk-emb-left) + var(--bk-emb-w) * 0.4333);
+    --bk-copy-left: calc(var(--bk-strip-w) + 50px);
+  }
+
+  .bk-grid {
+    display: block;
+    position: relative;
+    padding-top: 100px;
+  }
+
+  .bk-strip {
+    display: block;
+    position: absolute;
+    top: 58px;
+    bottom: 37px;
+    left: 0;
+    width: var(--bk-strip-w);
+    background: #fff;
+  }
+
+  .bk-copy {
+    position: relative;
+    margin-left: var(--bk-copy-left);
+    padding: 0 24px 0 0;
+  }
+
+  .bk-copy-inner {
+    max-width: 650px;
+  }
+
+  .bk-copy strong,
+  .bk-copy .bk-teal,
+  .bk-copy .bk-pink,
+  .bk-copy p.bk-label:not(.bk-label--plain) {
+    font-weight: 900;
+  }
+
+  .bk-copy-inner > :last-child {
+    margin-bottom: 0;
+  }
+
+  .bk-page h1 {
+    margin: 0 0 25px;
+    font-size: 60px;
+    line-height: 84px;
+    letter-spacing: 0;
+  }
+
+  .bk-page .bk-h1-suffix {
+    margin-left: 0;
+    font-size: 40px;
+    font-weight: 900;
+    letter-spacing: 0;
+  }
+
+  .bk-copy p,
+  .bk-copy li {
+    font-size: 18px;
+    line-height: 25.2px;
+  }
+
+  .bk-copy p {
+    margin: 0 0 25.2px;
+  }
+
+  .bk-copy p.bk-tight,
+  .bk-copy p.bk-label {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .bk-copy ul {
+    margin: 0 0 25.2px;
+  }
+
+  .bk-copy ul li {
+    margin: 0;
+    padding-left: 32px;
+  }
+
+  .bk-copy ul li::before {
+    top: 10px;
+    left: 14px;
+  }
+
+  .bk-panel {
+    position: relative;
+    min-height: 611px;
+    margin: 66px 0 0 var(--bk-emb-left);
+    padding: 0;
+    width: var(--bk-emb-w);
+    background: transparent;
+  }
+
+  .bk-page .bk-panel .tidycal-embed {
+    min-height: 611px;
+  }
+}
+
+/* Wide desktop: exactly the live positions (embed 1225px wide, 50% - 684px from the left). */
+@media (min-width: 1368px) {
+  .bk-page {
+    --bk-emb-left: calc(50% - 684px);
+    --bk-emb-w: 1225px;
+    --bk-strip-w: calc(50% - 206px);
+    --bk-copy-left: calc(50% - 156px);
+  }
+}
+
+/* 1024-1367: the narrower copy column needs a smaller H1 so "Internal Sync" stays on one line. */
+@media (min-width: 1024px) and (max-width: 1367px) {
+  .bk-page h1 {
+    font-size: 46px;
+    line-height: 64px;
+  }
+
+  .bk-page .bk-h1-suffix {
+    font-size: 31px;
   }
 }
