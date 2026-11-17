@@ -4,6 +4,7 @@ import Base from "../layouts/Base.astro";
 import Wave from "../components/Wave.astro";
 import { edgeAbove } from "../data/edge-line";
 import { stats, reviews } from "../data/homepage";
+import { wayfinders } from "../data/wayfinders";
 import {
   houses,
   arrowSrc,
@@ -16,6 +17,12 @@ import {
   steps,
   reviewFiles,
 } from "../data/how-it-works";
+
+const wfFor = (name: string) => {
+  const found = wayfinders.find((w) => w.name === name);
+  if (!found) throw new Error(`No Wayfinder named ${name}`);
+  return found;
+};
 
 const tint = "#F5F2FF";
 const white = "#ffffff";
@@ -451,7 +458,15 @@ const [houseBefore, houseStage1, houseStage2] = houses;
               <div class="hw-hub-top">
                 <h3>{hub.name} <span class="hw-pink">Hub</span></h3>
                 <p class="hw-hub-also">{hub.also}</p>
-                <p class="hw-hub-name">{hub.wayfinder}</p>
+                <a class="hw-wf-link" href={wfFor(hub.wayfinder).url} style={`--hw-wf-tint:${wfFor(hub.wayfinder).tint}`}>
+                  <span class="hw-wf-photo">
+                    <picture>
+                      <source type="image/webp" srcset={`${wfFor(hub.wayfinder).photo.base}@1x.webp 320w, ${wfFor(hub.wayfinder).photo.base}@2x.webp 640w`} sizes="112px" />
+                      <img src={`${wfFor(hub.wayfinder).photo.base}@1x.png`} width={wfFor(hub.wayfinder).photo.width} height={wfFor(hub.wayfinder).photo.height} alt={`Photo of ${hub.wayfinder}, DoGood Wayfinder`} loading="lazy" decoding="async" />
+                    </picture>
+                  </span>
+                  <span class="hw-hub-name">{hub.wayfinder}</span>
+                </a>
               </div>
               <div class="hw-hub-bottom">
                 <p><strong>Human Side:</strong> {hub.human}</p>

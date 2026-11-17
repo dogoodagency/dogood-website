@@ -1,0 +1,132 @@
+---
+import "../../styles/wayfinders.css";
+import { Image } from "astro:assets";
+import Base from "../../layouts/Base.astro";
+import Wave from "../../components/Wave.astro";
+import { edgeAbove } from "../../data/edge-line";
+import caseJ from "../../assets/cases/case-study-j-founder-life-after-exit.png";
+
+const tint = "#F5F2FF";
+const white = "#ffffff";
+const heroEdge = edgeAbove("#2A0B4F");
+const bandEdge = edgeAbove(tint);
+const footerEdge = edgeAbove(tint);
+
+function wave(from: string, to: string) {
+  const above = from === tint ? "tint" : "white";
+  return `<div class="wf-divider wf-divider--${above}" aria-hidden="true"><svg style="--wave-edge:${bandEdge}" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${to}" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path><path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path></svg></div>`;
+}
+const toTint = wave(white, tint);
+
+const steps = [
+  {
+    title: "Apply for Stage 1",
+    text: "You share what’s happening (health, relationship, identity, pressure) and what you need most.",
+  },
+  {
+    title: "After the FRP-Fit Call",
+    text: "We confirm this is the right container: private, intensive, founder-first, and you can protect the required time.",
+  },
+  {
+    title: "Match to your Wayfinder",
+    text: "We match based on your situation and what you respond to: direct vs gentle, highly structured vs more spacious, crisis containment needs, and your stage (still running vs post-exit).",
+  },
+  {
+    title: "Optimize for proximity",
+    text: "After fit, we prioritize geographic/time zone alignment to reduce friction. We also keep travel within wellbeing guardrails (no extreme routes; long-haul is exception-only).",
+  },
+  {
+    title: "Early checkpoint + correction if needed",
+    text: "If within the first two sessions (within 7 days of your first private 1:1 session), the match feels wrong, we attempt to correct it promptly. If it can’t be corrected without disruption, you have the option to exit via the ",
+    link: { href: "/clarity-first-guarantee-terms", label: "Clarity‑First Guarantee" },
+    after: " (as long as you’re within the guarantee window and eligibility requirements are met).",
+  },
+];
+
+const site = "https://www.dogoodagency.co";
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
+    { "@type": "ListItem", position: 2, name: "Wayfinders", item: `${site}/wayfinders` },
+    { "@type": "ListItem", position: 3, name: "Client-Fit Process", item: `${site}/wayfinders/clientfit` },
+  ],
+};
+---
+
+<Base
+  title="Client-Fit Process | DoGood Founders"
+  description="A private 30-day Intensive for founders navigating life after exit. Start with Stage 1 of the Founder Reclamation Partnership. 5 founders a month."
+  canonical="https://www.dogoodagency.co/wayfinders/clientfit"
+  footerStrip={tint}
+  footerEdge={footerEdge}
+>
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <article class="wf-page">
+    <header class="wf-hero">
+      <div class="wf-hero-inner">
+        <h1>Client-Fit Process</h1>
+        <p class="wf-lead">
+          We match you to a Wayfinder for fit first because outcomes depend on the relationship and working style. Once the fit is satisfied, we prioritize proximity/time zone to keep scheduling clean and travel sustainable.
+        </p>
+      </div>
+      <Wave fill={white} edge={heroEdge} />
+    </header>
+
+    <section class="wf-band" aria-labelledby="wf-how">
+      <div class="wf-well wf-well-top">
+        <h2 class="wf-h2" id="wf-how">How it works</h2>
+        <ol class="wf-timeline">
+          {
+            steps.map((step, i) => (
+              <li class="wf-tl-item">
+                <span class="wf-tl-n" aria-hidden="true">{i + 1}</span>
+                <div class="wf-tl-body">
+                  <h3>{step.title}</h3>
+                  <p>
+                    {step.text}
+                    {step.link && <a href={step.link.href}>{step.link.label}</a>}
+                    {step.after}
+                  </p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+        <p class="wf-sign">Seb Wichmann | Founder, DoGood Agency</p>
+      </div>
+    </section>
+
+    <Fragment set:html={toTint} />
+
+    <section class="wf-band wf-band-tint" aria-label="Case study">
+      <div class="wf-well wf-well-top">
+        <article class="wf-case">
+          <Image
+            class="wf-case-portrait"
+            src={caseJ}
+            width={220}
+            height={244}
+            widths={[220, 440]}
+            sizes="220px"
+            alt="Pixelated portrait of founder J, shown this way to protect their identity"
+          />
+          <div class="wf-case-body">
+            <p class="wf-eyebrow wf-eyebrow-dark">Case Study</p>
+            <h2 class="wf-case-title">From exit anxiety to aligned legacy —<br />How J created a clear next life chapter</h2>
+            <p class="wf-case-who">J (anonymous), USD 2M founder</p>
+            <a class="btn-teal" href="/casestudies/j">Read the short case study</a>
+            <p class="wf-case-note">We protect our founders’ identities</p>
+          </div>
+        </article>
+
+        <div class="wf-cta wf-cta-plain">
+          <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
+          <a class="btn-teal" href="/wayfinders">Meet the Wayfinders</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</Base>
