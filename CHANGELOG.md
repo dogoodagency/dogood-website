@@ -8,7 +8,7 @@ why, and anything the next person needs to check.
 
 ## Preview 6, update 11: About page (vision, Wayfinders photo, IODA, What's next), no hero images, Insights clean-up (18 Nov 2026, night)
 
-**Made by:** Claude (claude.ai), from Seb's feedback (screenshots 12 and 13, IODA logo). **Branch:** `claude/preview-6`.
+**Made by:** Claude (claude.ai), from Seb's feedback (screenshots 12 and 13, IODA logo). **Branch:** `claude/preview-6`. **Commit:** `cc29a3c`.
 
 ### Rule: no images in heroes except the homepage (Seb)
 - Sketches removed from the heroes of /about, /for-advisors, /how-it-works and /stories;
