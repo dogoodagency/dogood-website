@@ -8,7 +8,7 @@ why, and anything the next person needs to check.
 
 ## Preview 6, update 9: one master footer, contact, client fit, FAQs, podcast and newsletter pages (18 Nov 2026, late night)
 
-**Made by:** Claude (claude.ai), from Seb's feedback with 8 screenshots. **Branch:** `claude/preview-6`.
+**Made by:** Claude (claude.ai), from Seb's feedback with 8 screenshots. **Branch:** `claude/preview-6`. **Commit:** `b706929`.
 
 ### Footer (all pages)
 - **One master footer.** Every page already used `src/components/Footer.astro` through
