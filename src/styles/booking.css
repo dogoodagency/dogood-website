@@ -1,7 +1,7 @@
 /* Booking pages (/internal, /internal-60, /catchup, /claritysprints, /pre-frp, /frpfit, /orientation-call, /teams).
    Every rule is prefixed .bk- (or scoped under .bk-page) so nothing here can touch another page.
-   Layout: purple page under the floating header; on desktop a white TidyCal column on the left and the
-   copy on the right; below 1024px the copy comes first and the calendar follows in a full-width white panel. */
+   Layout: purple page under the floating header; on desktop the copy on the right and the TidyCal embed below;
+   below 1024px the copy comes first and the calendar follows. Everything sits on purple (DREAM 500). */
 
 body:has(.bk-page) .footer-wave {
   background: #2a0b4f;
@@ -50,8 +50,9 @@ body:has(.bk-page) .footer-wave {
   min-width: 0;
   min-height: 700px;
   padding: 28px 20px 40px;
-  background: #fff;
-  color: var(--bk-ink);
+  /* Purple, like the page: TidyCal draws its own purple frame around its card (Seb, 18 Nov 2026). */
+  background: #2a0b4f;
+  color: #fff;
 }
 
 .bk-copy {
@@ -91,7 +92,7 @@ body:has(.bk-page) .footer-wave {
 }
 
 .bk-noscript a {
-  color: var(--bk-ink);
+  color: #fff;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -300,7 +301,6 @@ body:has(.bk-page) .footer-wave {
   color: var(--bk-ink);
   border: 1px solid var(--bk-line);
   border-radius: 20px;
-  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.25);
 }
 
 .bk-case-portrait {
@@ -446,7 +446,8 @@ body:has(.bk-page) .footer-wave {
     bottom: 37px;
     left: 0;
     width: var(--bk-strip-w);
-    background: #fff;
+    /* Was a white strip copied from Wix; purple since 18 Nov 2026 so the whole booking page is purple. */
+    background: #2a0b4f;
   }
 
   .bk-copy {

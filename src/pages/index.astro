@@ -130,14 +130,14 @@ const notFit = [
               />
             </picture>
             <div class="sparks" aria-hidden="true">
-              <img class="spark" src="/sketches/sparkle-dot-soft.svg" alt="" aria-hidden="true" style="left:81.5%;top:40%;--s:6px;--d:4.6s;--delay:-0.2s;--dx:-78px;--dy:-70px" />
-              <img class="spark" src="/sketches/sparkle-glint-4pt.svg" alt="" aria-hidden="true" style="left:84%;top:33%;--s:8px;--d:5.2s;--delay:-1.4s;--dx:-60px;--dy:-96px" />
-              <img class="spark" src="/sketches/sparkle-dot-soft.svg" alt="" aria-hidden="true" style="left:86.2%;top:41%;--s:4px;--d:3.8s;--delay:-2.1s;--dx:-104px;--dy:-58px" />
-              <img class="spark" src="/sketches/sparkle-glint-mint.svg" alt="" aria-hidden="true" style="left:82.6%;top:30%;--s:6px;--d:4.2s;--delay:-3s;--dx:-52px;--dy:-84px" />
-              <img class="spark" src="/sketches/sparkle-dot-soft.svg" alt="" aria-hidden="true" style="left:85%;top:37%;--s:5px;--d:5s;--delay:-3.8s;--dx:-92px;--dy:-88px" />
-              <img class="spark" src="/sketches/sparkle-glint-4pt.svg" alt="" aria-hidden="true" style="left:80.8%;top:35%;--s:7px;--d:4.4s;--delay:-0.9s;--dx:-70px;--dy:-62px" />
-              <img class="spark" src="/sketches/sparkle-dot-soft.svg" alt="" aria-hidden="true" style="left:83.4%;top:41%;--s:4px;--d:3.6s;--delay:-2.6s;--dx:-84px;--dy:-50px" />
-              <img class="spark" src="/sketches/sparkle-glint-mint.svg" alt="" aria-hidden="true" style="left:86.6%;top:31%;--s:5px;--d:4.8s;--delay:-4.3s;--dx:-46px;--dy:-100px" />
+              <img class="spark" src="/sketches/sparkle-dot-soft.svg" width="8" height="8" alt="" aria-hidden="true" style="left:81.5%;top:40%;--s:6px;--d:4.6s;--delay:-0.2s;--dx:-78px;--dy:-70px" />
+              <img class="spark" src="/sketches/sparkle-glint-4pt.svg" width="8" height="8" alt="" aria-hidden="true" style="left:84%;top:33%;--s:8px;--d:5.2s;--delay:-1.4s;--dx:-60px;--dy:-96px" />
+              <img class="spark" src="/sketches/sparkle-dot-soft.svg" width="8" height="8" alt="" aria-hidden="true" style="left:86.2%;top:41%;--s:4px;--d:3.8s;--delay:-2.1s;--dx:-104px;--dy:-58px" />
+              <img class="spark" src="/sketches/sparkle-glint-mint.svg" width="8" height="8" alt="" aria-hidden="true" style="left:82.6%;top:30%;--s:6px;--d:4.2s;--delay:-3s;--dx:-52px;--dy:-84px" />
+              <img class="spark" src="/sketches/sparkle-dot-soft.svg" width="8" height="8" alt="" aria-hidden="true" style="left:85%;top:37%;--s:5px;--d:5s;--delay:-3.8s;--dx:-92px;--dy:-88px" />
+              <img class="spark" src="/sketches/sparkle-glint-4pt.svg" width="8" height="8" alt="" aria-hidden="true" style="left:80.8%;top:35%;--s:7px;--d:4.4s;--delay:-0.9s;--dx:-70px;--dy:-62px" />
+              <img class="spark" src="/sketches/sparkle-dot-soft.svg" width="8" height="8" alt="" aria-hidden="true" style="left:83.4%;top:41%;--s:4px;--d:3.6s;--delay:-2.6s;--dx:-84px;--dy:-50px" />
+              <img class="spark" src="/sketches/sparkle-glint-mint.svg" width="8" height="8" alt="" aria-hidden="true" style="left:86.6%;top:31%;--s:5px;--d:4.8s;--delay:-4.3s;--dx:-46px;--dy:-100px" />
             </div>
           </div>
         </div>
@@ -153,7 +153,16 @@ const notFit = [
           [0, 1].map((copy) => (
             <div class:list={["logo-set", copy === 1 && "is-clone"]} aria-hidden={copy === 1}>
               {logoSet.map((logo) => (
-                <img src={logo.src.src} alt={logo.alt} />
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  height={44}
+                  width={Math.round((logo.src.width / logo.src.height) * 44)}
+                  densities={[1, 2]}
+                  format="webp"
+                  loading="lazy"
+                  decoding="async"
+                />
               ))}
             </div>
           ))

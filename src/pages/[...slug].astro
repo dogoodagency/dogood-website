@@ -17,6 +17,8 @@ export async function getStaticPaths() {
     "frpfit",
     "orientation-call",
     "teams",
+    // Thank-you pages with their own route in the booking style (src/pages/<slug>.astro).
+    "prefrp-thankyou",
   ]);
   const pages = await getCollection("pages");
   return pages

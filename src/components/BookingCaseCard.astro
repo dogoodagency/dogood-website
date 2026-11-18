@@ -1,23 +1,48 @@
 ---
 import { Image } from "astro:assets";
 import caseJ from "../assets/cases/case-study-j-founder-life-after-exit.png";
+import caseV from "../assets/cases/case-study-v-founder-life-after-exit.png";
+
+interface Props {
+  /** Which case study to show. Default "j" (used on /orientation-call and /claritysprints). */
+  study?: "j" | "v";
+}
+
+const { study = "j" } = Astro.props;
+const cases = {
+  j: {
+    img: caseJ,
+    alt: "Pixelated portrait of founder J, shown this way to protect their identity",
+    title: ["From exit anxiety to aligned legacy —", "How J created a clear next life chapter"],
+    who: "J (anonymous), USD 2M founder",
+    href: "/casestudies/j",
+  },
+  v: {
+    img: caseV,
+    alt: "Pixelated portrait of founder V, shown this way to protect their identity",
+    title: ["From identity void to decisive leadership —", "how V reclaimed life after success"],
+    who: "V (anonymous), USD 9M+ founder",
+    href: "/casestudies/v",
+  },
+};
+const c = cases[study];
 ---
 
 <article class="bk-case">
   <Image
     class="bk-case-portrait"
-    src={caseJ}
+    src={c.img}
     width={220}
     height={244}
     widths={[220, 440]}
     sizes="220px"
-    alt="Pixelated portrait of founder J, shown this way to protect their identity"
+    alt={c.alt}
   />
   <div class="bk-case-body">
     <p class="bk-case-eyebrow">Case Study</p>
-    <h2 class="bk-case-title">From exit anxiety to aligned legacy —<br />How J created a clear next life chapter</h2>
-    <p class="bk-case-who">J (anonymous), USD 2M founder</p>
-    <a class="btn-teal" href="/casestudies/j">Read the short case study</a>
+    <h2 class="bk-case-title">{c.title[0]}<br />{c.title[1]}</h2>
+    <p class="bk-case-who">{c.who}</p>
+    <a class="btn-teal" href={c.href}>Read the short case study</a>
     <p class="bk-case-note">We protect our founders’ identities</p>
   </div>
 </article>

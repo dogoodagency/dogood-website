@@ -1,0 +1,67 @@
+---
+// Thank-you page after booking the Pre-FRP call. Design: the purple booking-page style (booking.css),
+// content and order from the old Wix page (dogoodagency.co/prefrp-thankyou). Copy word for word from
+// src/content/pages/prefrp-thankyou.md, which is no longer rendered (see [...slug].astro).
+// Template for the other thank-you pages once Seb signs this one off.
+import "../styles/booking.css";
+import "../styles/thankyou.css";
+import Base from "../layouts/Base.astro";
+import BookingCaseCard from "../components/BookingCaseCard.astro";
+---
+
+<Base
+  title="Pre-FRP call booked | DoGood Agency"
+  description="Book a private Fit Call to confirm alignment for the Founder Reclamation Partnership. Confidential, selective, founders only."
+  canonical="https://www.dogoodagency.co/prefrp-thankyou"
+  robots="noindex"
+>
+  <article class="bk-page ty-page">
+    <div class="ty-grid">
+      <div class="ty-copy bk-copy">
+        <h1>
+          Pre-FRP Call
+          <span class="bk-h1-suffix">(with Seb)</span>
+        </h1>
+        <h2 class="ty-booked">You’re booked</h2>
+        <p>Welcome to <span class="pink-soft"><strong>FOUNDER</strong>land</span>.</p>
+        <p>
+          You will have received a <strong>calendar invite in your inbox</strong>, and the meeting should already be added.
+          Verify that it appears there.
+        </p>
+        <p>
+          We recommend you <strong>take the call somewhere private</strong>, with enough space to speak openly. We will
+          use the time to understand what life after exit looks like for you (now or in the near future), what needs
+          attention, and whether working together makes sense.
+        </p>
+        <p>
+          <strong>Before your call:</strong> Review the <strong>ClarityValue Shift™</strong>. This is our proprietary
+          4-step method inside Stage 1.
+        </p>
+      </div>
+
+      <div class="ty-map">
+        <a
+          class="ty-map-frame"
+          href="https://drive.google.com/file/d/1g6WwAU8fWcpbNIBKPgNZ382CbirxX4o4/view?usp=drive_link"
+          aria-label="Open the ClarityValue Shift 1-Page Map"
+        >
+          <img
+            src="/media/clarityvalue-shift-map@1x.webp"
+            srcset="/media/clarityvalue-shift-map@1x.webp 603w, /media/clarityvalue-shift-map@2x.webp 1206w"
+            sizes="(max-width: 1023px) calc(100vw - 44px), 560px"
+            width="1206"
+            height="674"
+            alt="Preview of the ClarityValue Shift 1-Page Map: purpose, the 4-step method (See, Interrupt, Choose, Reset) and what you get in Stage 1"
+            loading="eager"
+            decoding="async"
+          />
+        </a>
+        <a class="btn-teal" href="https://drive.google.com/file/d/1g6WwAU8fWcpbNIBKPgNZ382CbirxX4o4/view?usp=drive_link">View the 1-Page Map</a>
+      </div>
+    </div>
+
+    <div class="bk-after ty-after">
+      <BookingCaseCard study="v" />
+    </div>
+  </article>
+</Base>

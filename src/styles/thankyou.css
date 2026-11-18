@@ -1,0 +1,123 @@
+/* Thank-you pages in the purple booking-page style (first: /prefrp-thankyou).
+   Uses booking.css for the page, H1, copy and case card; this file only adds the two-column
+   copy + map layout. Colours and sizes from the DoGood Website Rulebook v7:
+   DREAM 500 #2A0B4F page, white text, GRASS 500 #28DBB0 accents on dark, H2 36/26px 900. */
+
+.ty-page {
+  padding-bottom: 8px;
+}
+
+.ty-grid {
+  display: grid;
+  /* Like the booking pages: the visual on the left, the copy on the right. */
+  grid-template-columns: minmax(0, 440px) minmax(0, 1fr);
+  grid-template-areas: "map copy";
+  gap: 56px;
+  align-items: start;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 100px var(--pad) 64px;
+}
+
+/* .ty-copy reuses the .bk-copy typography; undo the booking page's desktop positioning. */
+.ty-page .ty-copy {
+  grid-area: copy;
+  position: static;
+  max-width: 650px;
+  margin: 0;
+  padding: 0;
+}
+
+.ty-page .ty-copy > :last-child {
+  margin-bottom: 0;
+}
+
+.ty-page h2.ty-booked {
+  margin: 0 0 22px;
+  color: #28dbb0;
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.ty-map {
+  grid-area: map;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding-top: 12px;
+}
+
+.ty-map-frame {
+  display: block;
+  width: 100%;
+  border: 1px solid #533f79; /* DREAM 400 */
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.ty-map-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ty-map-frame:focus-visible {
+  outline: 3px solid #28dbb0;
+  outline-offset: 3px;
+}
+
+.ty-page .ty-map a.btn-teal {
+  color: #2a0b4f;
+}
+
+.ty-after {
+  padding-top: 0;
+  padding-bottom: 80px;
+}
+
+/* Tablet and phone: copy, then the map and its button, then the case study. */
+@media (max-width: 1023px) {
+  .ty-grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "copy"
+      "map";
+    gap: 32px;
+    padding-top: 44px;
+    padding-bottom: 48px;
+  }
+
+  .ty-page h2.ty-booked {
+    font-size: 26px;
+  }
+
+  .ty-after {
+    padding-top: 0;
+    padding-bottom: 48px;
+  }
+}
+
+@media (max-width: 600px) {
+  .ty-grid {
+    padding-top: 36px;
+  }
+
+  .ty-page .ty-map a.btn-teal {
+    width: 100%;
+  }
+}
+
+/* Desktop: keep the H1 and its suffix on one line where they fit. */
+@media (min-width: 1024px) {
+  .ty-page h1 {
+    font-size: 46px; /* Rulebook H1 at desktop */
+    line-height: 1.15;
+  }
+
+  .ty-page .bk-h1-suffix {
+    font-size: 30px;
+  }
+}
