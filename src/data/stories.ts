@@ -104,6 +104,19 @@ export const stories = [
     quote:
       "We hired DoGood to help me get my business to the next level. The team exceeded all my expectations and had enormous impact. The DGA team did a thorough diagnostic and identified a few key personal and professional sticking points, helped us incorporate goals, planning, and … set up more rigorous business processes to help us scale up. The team helped us write out thorough planning documentation and flesh out all the key details. While working with DGA we almost doubled in size.",
   },
+  // Added 19 Nov 2026 (Seb): testimonials from Chantill's clients, word for word.
+  {
+    slug: "gina-p",
+    name: "GINA P",
+    role: "The Wilder Practice, former Google organizational design executive",
+    quote: "Working with Chantill has had a twofold impact on me, both personally and in my work. I’ve become more fully aware of my nervous system state and have the ability to shift states in a way that creates greater capacity—to be with things that are hard, to manage times of stress, and to turn toward discomfort with more presence. I feel like a calmer, more settled person. I’m also more able to be present in joy, and to expand states like gratitude and contentment, really feeling them in my body. There’s more bandwidth now to experience the fullness of those moments. Because I have this awareness inside of me, it’s directly impacted my work. I’m able to hold a larger and more stable container for my clients in our coaching work. I’m looking forward to continuing to bring these tools in to support my clients in their personal and professional transformations. I’m seeing what’s possible for them based on what I’m experiencing within myself.",
+  },
+  {
+    slug: "tami-l",
+    name: "TAMI L",
+    role: "Studio T",
+    quote: "Before this, I was consistently operating in high gear, nothing ever felt like enough, and I was always pursuing the next level. Over the past three years, I’ve developed a consistent daily practice that allows me to connect inwardly and show up more intentionally and effectively. My work with Chantill has had a measurable impact, expanding my capacity to take risks, be vulnerable, and move from co-regulation to self-regulation with greater ease. As a result, I’m more present, more grounded, and better able to engage with both challenges and opportunities from a different lens.",
+  },
 ] as const;
 
 export const logoAlts: Record<string, string> = {

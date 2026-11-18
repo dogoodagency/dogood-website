@@ -5,6 +5,10 @@ import Wave from "../components/Wave.astro";
 import { edgeAbove } from "../data/edge-line";
 import { stories } from "../data/stories";
 import { caseTeasers, logoRails } from "../data/stories-page";
+import { Image } from "astro:assets";
+import caseJ from "../assets/cases/case-study-j-founder-life-after-exit.png";
+import caseV from "../assets/cases/case-study-v-founder-life-after-exit.png";
+const portraits = { j: caseJ, v: caseV };
 
 const white = "#ffffff";
 const tint = "#F5F2FF";
@@ -33,8 +37,7 @@ const logoDir = (dir: number) => (dir === 1 ? "1" : "-1");
       <div class="st-hero-inner">
         <div class="st-hero-copy">
           <h1>Stories</h1>
-          <p>Two short, anonymised stories from founders we have worked with. We keep their names private so they can be candid.</p>
-          <p>The reviews and logos below are from leaders and organisations our team has worked with. They are not all founders after an exit.</p>
+          <p>Anonymised stories from founders we have worked with. We keep their names private so they can be candid.</p>
         </div>
       </div>
       <Wave fill={tint} edge={heroEdge} />
@@ -43,22 +46,38 @@ const logoDir = (dir: number) => (dir === 1 ? "1" : "-1");
     <section class="st-band st-band-tint" aria-labelledby="st-cases-h">
       <div class="st-well">
         <h2 id="st-cases-h">Case studies</h2>
-        <ul class="st-cases">
+        <!-- Case studies redesigned (Seb, 18 Nov 2026): stacked, each in its own colour, portrait, key facts,
+             a shorter teaser and a clear button. The full text stays on the case study page. -->
+        <ul class="st-cases st-cases-stack">
           {
-            caseTeasers.map((c) => (
-              <li class="st-case">
-                <p class="st-case-eyebrow">Case study</p>
-                <h3>
-                  {c.headline} <span class="st-accent">{c.headlineAccent}</span>
-                </h3>
-                <p class="st-case-attr">{c.attribution}</p>
-                <p class="st-case-intro">{c.intro}</p>
-                {c.snapshot.map((text) => (
-                  <p class="st-case-text">{text}</p>
-                ))}
-                <h4>The problem</h4>
-                <p class="st-case-text st-problem">{c.problem}</p>
-                <a class="btn-teal" href={c.href}>Read the full story →</a>
+            caseTeasers.map((c, i) => (
+              <li class:list={["st-case", "st-case-feature", i % 2 === 0 ? "st-case--grass" : "st-case--sky"]}>
+                {c.portrait && (
+                  <div class="st-case-art">
+                    <Image
+                      src={portraits[c.portrait]}
+                      width={260}
+                      height={288}
+                      widths={[260, 520]}
+                      sizes="260px"
+                      alt={`Pixelated portrait of founder ${c.who}, shown this way to protect their identity`}
+                    />
+                  </div>
+                )}
+                <div class="st-case-body">
+                  <p class="st-case-eyebrow">Case study</p>
+                  <h3>
+                    {c.headline} <span class="st-accent">{c.headlineAccent}</span>
+                  </h3>
+                  <p class="st-case-attr">{c.attribution}</p>
+                  {c.highlights && (
+                    <ul class="st-case-chips">{c.highlights.map((h) => <li>{h}</li>)}</ul>
+                  )}
+                  <p class="st-case-intro">{c.intro}</p>
+                  <h4>The problem</h4>
+                  <p class="st-case-text st-problem">{c.problem}</p>
+                  <a class="btn-teal" href={c.href}>Read {c.who ?? "the"}'s full story</a>
+                </div>
               </li>
             ))
           }
@@ -79,9 +98,8 @@ const logoDir = (dir: number) => (dir === 1 ? "1" : "-1");
         <h2 id="st-testi-h">From leaders we have worked with</h2>
         <p class="st-note">These are words from leaders our team has worked with. They are not all founders after an exit.</p>
 
-        <div class="st-pause-bar">
-          <button class="st-pause" type="button" aria-pressed="false" data-st-pause>Pause testimonials</button>
-        </div>
+        <!-- Pause button removed (Seb, 18 Nov 2026). The wall still stops on hover and keyboard focus, and shows
+             as a still list for anyone who asks their device for reduced motion. -->
 
         <!-- Three vertical columns (1024px and up) -->
         <div class="st-vp st-vp-3">
@@ -163,7 +181,7 @@ const logoDir = (dir: number) => (dir === 1 ? "1" : "-1");
     <section class="st-logos" aria-labelledby="st-logos-h">
       <div class="st-logos-head">
         <h2 id="st-logos-h">Leaders from these organisations have worked with our team</h2>
-        <p class="st-note">These are organisations our team has worked with. They are not all founders after an exit.</p>
+        <p class="st-note st-note-small">The reviews and logos on this page are from leaders and organisations our team has worked with. They are not all founders after an exit.</p>
       </div>
       <div class="st-rails" role="group" aria-label="Organisations our team has worked with">
         {

@@ -735,3 +735,89 @@ body:has(.st-page) .footer-wave {
 .st-hero-copy p {
   max-width: 860px;
 }
+
+/* ---------- Case studies, redesigned 18 Nov 2026 (Seb): stacked feature cards ---------- */
+
+.st-cases.st-cases-stack {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 32px;
+}
+
+.st-case.st-case-feature {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 40px;
+  align-items: start;
+  padding: 44px 48px;
+  border-width: 1.5px;
+  box-shadow: none;
+}
+
+.st-case--grass {
+  background: #f3fffb; /* GRASS 25 */
+  border-color: #73e7c4; /* GRASS 400 */
+}
+
+.st-case--sky {
+  background: #f2f7ff; /* SKY 25 */
+  border-color: #aec8fe; /* SKY 200 */
+}
+
+.st-case-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.st-case-body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.st-case-feature h3 {
+  font-size: clamp(24px, 2.6vw, 32px);
+}
+
+.st-case-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 18px;
+  padding: 0;
+  list-style: none;
+}
+
+.st-case-chips li {
+  padding: 6px 14px;
+  background: #fff;
+  border: 1px solid var(--st-line);
+  border-radius: 999px;
+  color: var(--st-ink);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.st-case-feature .st-problem::after {
+  display: none;
+}
+
+.st-case-feature .btn-teal {
+  margin-top: 8px;
+}
+
+.st-note.st-note-small {
+  font-size: 12px;
+}
+
+@media (max-width: 767px) {
+  .st-case.st-case-feature {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    padding: 28px 22px;
+  }
+
+  .st-case-art {
+    width: min(200px, 60%);
+  }
+}

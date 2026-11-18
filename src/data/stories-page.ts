@@ -53,6 +53,8 @@ export const logoRails: LogoRail[] = [
       icon("BVG", "BVG"),
       icon("Nationale-Nederlanden", "Nationale-Nederlanden"),
       word("Upwork", "Upwork", 326),
+      icon("Sutter Health", "Sutter-Health"),
+      word("eXp Realty", "eXp-Realty", 185),
     ],
   },
   {
@@ -67,6 +69,11 @@ export const logoRails: LogoRail[] = [
       word("USM", "USM", 213),
       icon("Warrior", "Warrior"),
       word("ZenduIT", "ZenduIT", 522),
+      icon("BitFlow", "BitFlow"),
+      icon("LunchAssist", "LunchAssist"),
+      icon("Australian Physiotherapy Association", "APA"),
+      icon("Google", "Google"),
+      word("Spiralyze", "Spiralyze", 450),
     ],
   },
 ];
@@ -80,11 +87,20 @@ export type CaseTeaser = {
   intro: string;
   snapshot: string[];
   problem: string;
+  /** Short facts shown as chips on the Stories card (taken from the intro). */
+  highlights?: string[];
+  /** Portrait key for BookingCaseCard-style images: "j" or "v". */
+  portrait?: "j" | "v";
+  /** First name used on the button, e.g. "J". */
+  who?: string;
 };
 
 export const caseTeasers: CaseTeaser[] = [
   {
     href: "/casestudies/j",
+    portrait: "j",
+    who: "J",
+    highlights: ["Six-month engagement", "Stress regulated", "Exit plan committed"],
     headline: `From exit anxiety to aligned legacy`,
     headlineAccent: `—How J created a clear next life chapter`,
     attribution: `J (anonymous), USD 2M founder`,
@@ -97,6 +113,9 @@ export const caseTeasers: CaseTeaser[] = [
   },
   {
     href: "/casestudies/v",
+    portrait: "v",
+    who: "V",
+    highlights: ["Four months of focused work", "Identity restored", "Leadership reactivated"],
     headline: `From identity void to decisive leadership`,
     headlineAccent: `— how V reclaimed life after success`,
     attribution: `V (anonymous), USD 9M+ founder`,
