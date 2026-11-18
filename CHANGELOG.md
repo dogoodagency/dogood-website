@@ -6,6 +6,30 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 7: TidyCal purple row covered, article 5 (18 Nov 2026, night)
+
+**Made by:** Claude (claude.ai). **Branch:** `claude/preview-6`. **Commits:** `c47e2a1`, `c9f675c`, `3df60ce`.
+
+- **Seb approved** the new booking layout and the /exit, /wealth and thank-you
+  pages ("The pages look good"), and article 5.
+- `src/styles/booking.css` (desktop): TidyCal paints its own purple background
+  under its white details card (the "Powered by TidyCal" row), which showed as a
+  purple band across the white strip. `.bk-panel::after` lays a white patch over
+  that corner: 43.1% of the embed wide (stops just left of the badge), 80px
+  tall; 478px wide at 1368px and wider. `pointer-events: none`. Checked live at
+  1288px in Seb's browser.
+- **Article 5** `src/content/blog/why-deals-stall-when-the-founder-isnt-ready.md`:
+  audience advisor, category Working with founders (that category and the
+  advisor section on /insights show again). Body and FAQs from Seb's voice note,
+  no deal examples or statistics invented; takeaways, "Is this you?", tags and
+  hero sketch (`for-advisors-after-the-deal-sketch`) drafted by Claude.
+  Google Doc copy in Drive, SEO/AEO › Articles.
+- `src/content/blog/emotions-of-selling-a-business.md`: re-added the sentence
+  linking to article 5 (removed in update 4 while it didn't exist).
+- `public/llms.txt`: article 5 added.
+
+---
+
 ## Preview 6, update 6: Seb's booking and thank-you layout, advisor pages, Teams removed (18 Nov 2026, night)
 
 **Made by:** Claude (claude.ai), from Seb's two mockups (screenshots of /pre-frp and /prefrp-thankyou).
