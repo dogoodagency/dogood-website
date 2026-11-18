@@ -21,5 +21,8 @@ export default defineConfig({
   },
   build: {
     inlineStylesheets: "auto",
+    // Build pages as files (the-reset.html), not folders (the-reset/index.html),
+    // so Netlify serves /the-reset directly instead of 301-ing to /the-reset/.
+    format: "file",
   },
 });

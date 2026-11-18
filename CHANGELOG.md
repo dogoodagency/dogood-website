@@ -6,6 +6,49 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 3: trailing "/" fixed; Screaming Frog findings (18 Nov 2026)
+
+**Made by:** Claude (claude.ai), at Seb's request. **Branch:** `claude/preview-6`
+(pull request #6). Main and preview 5 untouched.
+
+### Screaming Frog crawl of preview 6 (Seb, free version, before this fix)
+
+Crawl stopped at the free limit of 500 addresses (327 internal: 135 HTML,
+161 images, 16 JS, 15 CSS). Results:
+
+- 67 pages 200, all "noindex" as intended for pre-launch.
+- **66 internal links returned 301**, all of them the trailing "/" redirect
+  (e.g. `/the-reset` → `/the-reset/`, `/insights` → `/insights/`, every
+  `/podcast/...`, `/wayfinders/...` and `/insights/...` page). Fixed below.
+- **2 broken links (404):** `/downloads/before-and-after-the-sale-prologue.pdf`
+  and `/downloads/first-90-days-7-questions.pdf`, linked from
+  `src/pages/newsletter.astro`. The `public/downloads/` folder does not exist.
+  **Not fixed: Seb to supply the two PDFs**, then add them to
+  `public/downloads/` with exactly those names (or remove the links).
+
+### What changed
+
+1. **`astro.config.mjs`: added `format: "file"` to the existing top-level
+   `build` block** (next to `inlineStylesheets`). Astro now builds
+   `dist/the-reset.html` instead of `dist/the-reset/index.html`, so Netlify
+   serves `/the-reset` directly. Note: the file has two `build` blocks (one
+   under `vite`, one top-level); a second top-level `build` key would silently
+   override the first, so keep these settings together.
+2. Canonical tags, sitemap and internal links were already without "/", so no
+   other code changed. Redirect targets in `_redirects` and `netlify.toml`
+   already had no trailing "/".
+
+### Checked
+
+- Build passes: 90 pages. Only `dist/index.html` (homepage) is still a folder
+  index, as expected.
+- `dist/the-reset.html` canonical: `https://www.dogoodagency.co/the-reset`.
+- No relative `./` or `../` links in the built pages that the change could
+  break.
+- Live on deploy preview: see "Browser check" below.
+
+---
+
 ## Preview 6, update 2: let the free Screaming Frog crawl; trailing "/" plan (18 Nov 2026)
 
 **Made by:** Claude (claude.ai), at Seb's request. **Branch:** `claude/preview-6`
