@@ -6,6 +6,89 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 5: thank-you design, purple booking pages, speed, llms.txt (18 Nov 2026, evening)
+
+**Made by:** Claude (claude.ai), at Seb's request. **Branch:** `claude/preview-6`
+(pull request #6). **Commits:** `b217515`, `8c46326`. Design rules from Seb's
+"DoGood Website Rulebook v7" (14 Nov 2026).
+
+### 1. Pre-FRP thank-you page redesigned (first of the thank-you pages)
+
+- New route `src/pages/prefrp-thankyou.astro` with `src/styles/thankyou.css`
+  (plus `booking.css`). The markdown `src/content/pages/prefrp-thankyou.md` is
+  no longer rendered: `prefrp-thankyou` was added to the own-route list in
+  `src/pages/[...slug].astro`. Copy is word for word from that markdown.
+- Design: the purple booking-page style (DREAM 500 page, white text), with the
+  content and order of the old Wix page (dogoodagency.co/prefrp-thankyou):
+  H1 "Pre-FRP Call (with Seb)", "You're booked" as a GRASS 500 H2, the
+  paragraphs with the old page's teal emphasis, the ClarityValue Shift 1-Page
+  Map preview linking to the Google Drive file, its teal button, then the
+  case study V card. Desktop: map left, copy right (like the booking pages);
+  phone: copy, map and button, case study. H1 46px on desktop (rulebook).
+- Map image copied from the Wix page:
+  `public/media/clarityvalue-shift-map@1x.webp` (603×337) and `@2x.webp`
+  (1206×674). Note: the image itself still says "DoGood Founders".
+- `src/components/BookingCaseCard.astro` now takes `study="j" | "v"`
+  (default "j", so /orientation-call and /claritysprints are unchanged).
+- **Waiting for Seb's sign-off.** Then apply the same design to the other nine
+  thank-you pages (application, catchup, claritysprints, frpfit, internal,
+  orientation-call, teams, thank-you, newsletter/thanks).
+
+### 2. Booking pages: purple behind the TidyCal embed
+
+- `src/styles/booking.css`: the panel around the TidyCal embed (`.bk-panel`,
+  phone and tablet) and the desktop strip (`.bk-strip`, was a white strip
+  copied from Wix) are now DREAM 500 #2A0B4F, so the whole page is purple and
+  TidyCal's own purple frame no longer sits on white. Applies to all eight
+  booking pages. Removed the shadow on the case study card (rulebook: no
+  shadows). Checked live on /pre-frp in Seb's browser.
+
+### 3. Images and speed
+
+- Homepage client logos (`src/pages/index.astro`): were 288px-tall PNGs shown
+  at 44px; now built by Astro as WebP at 44px and 88px (1x/2x) with
+  width/height. Example: Novartis 67 KB → 6 KB (1x) / 13 KB (2x).
+- Homepage sparkles: width/height added. **Every `<img>` on the site now has
+  width and height (0 of 1,007 missing).**
+- Homepage door glow: new `public/sketches/hero-door-glow@1x.webp/.png`
+  (970×673) and srcset/sizes, so phones and normal screens no longer load the
+  341 KB @2x file.
+- `src/layouts/Base.astro`: preloads Montserrat 400, 800 and 900 (fontsource
+  files) to reduce the font swap.
+- **Lighthouse** (local build served with compression; lab values, not real
+  visitors; SEO score is low only because of the pre-launch noindex):
+
+  | Page | Mobile perf | Desktop perf | Accessibility |
+  |---|---|---|---|
+  | / (before → after) | 88 → 98 (1,196 → 889 KB) | 99 → 100 | 96 |
+  | /the-reset | 97 | 99 | 96 |
+  | /exit-prep | 98 | 100 | 96 |
+  | /insights/first-90-days-after-the-sale | 86 → 88 | 100 | 100 |
+  | /pre-frp | 99 | 100 | 100 |
+  | /prefrp-thankyou | 96 | 100 | 96 |
+
+  Left open: on mobile the article page shows a 0.13 layout shift in the
+  simulated slow connection (the breadcrumb line reflows when the font
+  arrives); none in an unthrottled test. Accessibility 96 comes from the
+  10px captions (rulebook colours) and the "Let's Connect" link label. Re-run
+  PageSpeed Insights on the live domain after launch (handover Task 5).
+
+### 4. `/llms.txt` (new, `public/llms.txt`)
+
+- A short plain-text guide for AI tools: what DoGood does, the offers, the
+  advisor page, team, FAQs and the four articles, with links. No prices.
+  **Keep it up to date:** add each new article and any offer change.
+
+### Launch checklist additions
+
+- Domain: in Netlify, set **www.dogoodagency.co** as the primary domain (it is
+  already used in every canonical tag, the sitemap and structured data).
+  `dogoodagency.co` and every `http://` address must 301 to
+  `https://www.dogoodagency.co`. Netlify does this automatically once the
+  primary domain is set and HTTPS is on; check with `curl -I`.
+
+---
+
 ## Checks and decisions, no code change (18 Nov 2026, evening)
 
 **Made by:** Claude (claude.ai), at Seb's request.
