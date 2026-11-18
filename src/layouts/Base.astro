@@ -11,7 +11,6 @@ interface Props {
   title?: string;
   description?: string;
   canonical?: string;
-  hideOptin?: boolean;
   meetFunnel?: boolean;
   footerStrip?: string;
   footerEdge?: string;
@@ -27,7 +26,6 @@ const description =
   Astro.props.description ??
   "You built the company and got out, but it doesn't feel how you expected. Start with a private 30-day engagement for founders navigating life after exit.";
 const canonical = Astro.props.canonical ?? "https://www.dogoodagency.co/";
-const hideOptin = Astro.props.hideOptin ?? false;
 const meetFunnel = Astro.props.meetFunnel ?? false;
 const footerStrip = Astro.props.footerStrip;
 const footerEdge = Astro.props.footerEdge;
@@ -123,7 +121,7 @@ const organization = {
     <main id="main">
       <slot />
     </main>
-    <Footer hideOptin={hideOptin} meetFunnel={meetFunnel} edge={footerEdge} />
+    <Footer meetFunnel={meetFunnel} edge={footerEdge} />
     <script>
       const thankYou = "Thank you! You have successfully joined our subscriber list.";
 

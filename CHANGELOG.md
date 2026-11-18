@@ -6,6 +6,67 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 9: one master footer, contact, client fit, FAQs, podcast and newsletter pages (18 Nov 2026, late night)
+
+**Made by:** Claude (claude.ai), from Seb's feedback with 8 screenshots. **Branch:** `claude/preview-6`.
+
+### Footer (all pages)
+- **One master footer.** Every page already used `src/components/Footer.astro` through
+  `Base.astro`, but some pages hid the newsletter opt-in. The `hideOptin` option is
+  removed everywhere (Footer, Base, BookingPage, contact, newsletter, client tools,
+  advisor insights, the markdown route), so all 79 pages now render the identical
+  footer (checked: one unique footer across the build). **Change the footer only in
+  `Footer.astro`; it updates every page.** Pages can still set the colour of the
+  wave above it.
+- "Cookie Preferences" → **"Cookies"**.
+- The big "Let's Connect" is no longer a link (Contact sits right under it);
+  `home.css` selectors updated so it keeps its size.
+
+### Contact (`src/pages/contact.astro`, `home.css`)
+- Form field borders: SKY 400 `#477DFE` (were pink).
+- Newsletter link ("Not ready yet? … Fuel up, stay ready") removed; the footer opt-in
+  now shows on this page.
+- IODA line moved from under the map to under the letterbox sketch, as a quiet line.
+
+### Client fit (`src/pages/wayfinders/clientfit.astro`, `wayfinders.css`)
+- "Seb Wichmann | Founder, DoGood Agency" removed.
+- Bottom redesigned: case study in its own lilac band; a new white band with a purple
+  box the same width as the case study card (860px), with a heading, a short
+  description (new copy: "Ready to find your Wayfinder?" …) and the two buttons. No shadows.
+- The page's meta description now actually comes from this file (the update 8
+  change had gone to the unused markdown copy).
+
+### FAQs (`src/pages/faqs.astro`, `faqs.css`)
+- Hero intro on one line from 900px up; 50px more space between the hero and the wave.
+- Bottom newsletter line redesigned as a card: envelope sketch, eyebrow "The DoGood
+  newsletter", heading, two lines (new copy), "Join the newsletter" button.
+
+### Podcast hub (`src/pages/dogood-insider.astro`, `podcast.css`)
+- Hero image removed; the text runs wider (940px); the four platform buttons stay on
+  one row on wide screens.
+- The pink Seb band is now DREAM purple `#2A0B4F` (style guide), shadow removed.
+- Small pink text ("Listen now", Seb card highlight) in PINK 600 for contrast.
+- Old episodes: unchanged (Seb's earlier decision: keep the archive, reframe in the
+  second iteration).
+
+### Newsletter (`src/pages/newsletter.astro`, `newsletter.css`)
+- Hero image removed from the hero and moved into the "Keep reading" sign-up box;
+  hero text centred in a wider frame (900px).
+- **Seven questions:** each keeps its short line word for word and gains a "Go
+  deeper" section (same open/close as the FAQs): context, four questions behind the
+  question, a short step-by-step exercise and three journal prompts. **Drafted by
+  Claude, for Seb to review.**
+- **The chapters:** chapters 1 to 4 now show greyed out with dates (15 Dec, 12 Jan,
+  26 Jan, 9 Feb) and one line each. Titles and lines are **working drafts by Claude**
+  drawn from the prologue, marked "Working titles" on the page. Seb to confirm or
+  replace them in the `upcoming` array; when a chapter goes out, add it to `chapters`.
+
+### Checked
+- axe (WCAG 2 A/AA): 0 issues on contact, client fit, FAQs, podcast hub, newsletter, home.
+- No broken internal links.
+
+---
+
 ## Preview 6, update 8: booking renames, all thank-you pages, method pages, advisor buttons, SEO meta, accessibility, crawler lockdown (18 Nov 2026, late night)
 
 **Made by:** Claude (claude.ai). **Branch:** `claude/preview-6`. **Commit:** `849a5ce`.

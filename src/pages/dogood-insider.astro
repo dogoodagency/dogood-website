@@ -9,10 +9,10 @@ import { episodes, SHOW_LINKS } from "../data/podcast";
 
 const tint = "#f5f2ff";
 const white = "#ffffff";
-const pink = "#ea1557";
+const dream = "#2A0B4F"; // was HEART pink; DREAM purple per the style guide (Seb, 18 Nov 2026)
 const heroEdge = edgeAbove("#2A0B4F");
 const tintEdge = edgeAbove(tint);
-const pinkEdge = "#b80f45";
+const dreamEdge = edgeAbove("#2A0B4F");
 
 const title = "The DoGood Insider podcast archive | DoGood Agency";
 const description =
@@ -34,6 +34,7 @@ const jsonLd = {
 
   <article class="pod-page">
     <header class="pod-hero">
+      <!-- Hero image removed and copy widened (Seb, 18 Nov 2026). -->
       <div class="pod-well pod-hero-inner">
         <div class="pod-hero-copy">
           <h1>DoGood <span class="pod-pink">Insider</span></h1>
@@ -52,16 +53,6 @@ const jsonLd = {
             <p class="pod-avail-label">Available on</p>
             <PodcastPills links={SHOW_LINKS} />
           </div>
-        </div>
-        <div class="pod-hero-art">
-          <img
-            src="/media/podcast/host-main@1x.webp"
-            srcset="/media/podcast/host-main@1x.webp 560w, /media/podcast/host-main@2x.webp 1120w"
-            sizes="(max-width: 800px) 280px, 380px"
-            width="560"
-            height="778"
-            alt="Illustration of a man speaking into a podcast microphone"
-          />
         </div>
       </div>
       <Wave fill={white} edge={heroEdge} />
@@ -109,10 +100,10 @@ const jsonLd = {
     </section>
 
     <div class="pod-divider" style={`background:${tint}`} aria-hidden="true">
-      <Wave fill={pink} edge={tintEdge} />
+      <Wave fill={dream} edge={tintEdge} />
     </div>
 
-    <section class="pod-band pod-band-pink" aria-labelledby="pod-seb-name">
+    <section class="pod-band pod-band-dream" aria-labelledby="pod-seb-name">
       <div class="pod-well pod-seb-wrap">
         <div class="pod-seb">
           <div class="pod-seb-photo">
@@ -143,8 +134,8 @@ const jsonLd = {
       </div>
     </section>
 
-    <div class="pod-divider" style={`background:${pink}`} aria-hidden="true">
-      <Wave fill={white} edge={pinkEdge} />
+    <div class="pod-divider" style={`background:${dream}`} aria-hidden="true">
+      <Wave fill={white} edge={dreamEdge} />
     </div>
 
     <section class="pod-band">

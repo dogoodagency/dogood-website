@@ -769,3 +769,38 @@ body:has(.pod-page) .footer-wave {
     gap: 20px;
   }
 }
+
+/* ---------- Podcast hub update (Seb, 18 Nov 2026) ---------- */
+
+/* Hero: no image, the copy runs wider; the platform buttons stay on one row on wide screens. */
+.pod-hero-inner {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.pod-hero-copy {
+  max-width: 940px;
+}
+
+@media (min-width: 900px) {
+  .pod-hero .pod-pills {
+    flex-wrap: nowrap;
+  }
+}
+
+/* Seb band: DREAM purple instead of HEART pink, no shadow (rulebook). */
+.pod-band-dream {
+  background: #2a0b4f;
+}
+
+.pod-seb {
+  box-shadow: none;
+}
+
+/* Accessibility (18 Nov 2026): "Listen now" links in PINK 600 for 4.5:1 on white. */
+.pod-card-link {
+  color: #c10e46;
+}
+
+.pod-seb-copy .pod-pink {
+  color: #c10e46;
+}

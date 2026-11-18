@@ -1192,7 +1192,7 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
   font-size: 14.5px;
 }
 
-a.connect-mark {
+.connect-mark {
   display: block;
   max-width: 100%;
   margin: 0 0 56px;
@@ -2278,7 +2278,7 @@ main li {
   font: inherit;
   color: var(--color-ink);
   background: #fff;
-  border: 1px solid var(--color-pink);
+  border: 1px solid #477dfe; /* SKY 400 (Seb, 18 Nov 2026) */
   border-radius: 12px;
   padding: 12px 14px;
   width: 100%;
@@ -6302,14 +6302,13 @@ body:has(.page-clarity) .footer-wave {
 
 .page-contact .contact-ioda {
   box-sizing: border-box;
-  width: fit-content;
-  max-width: 100%;
-  margin: 24px 0 0;
-  padding: 20px 24px;
-  background: #fff;
-  border: 1px solid #c2b7dd;
-  border-radius: 18px;
-  box-shadow: none;
+  max-width: 340px;
+  margin: 8px auto 0;
+  padding: 0;
+  color: var(--color-ink);
+  font-size: 15px;
+  line-height: 1.5;
+  text-align: center;
 }
 
 @media (max-width: 800px) {
@@ -7486,7 +7485,7 @@ body:has(.page-home) {
 .footer h2.col-title,
 .footer h2.agency-name,
 .footer a:not(.connect-mark),
-.footer p,
+.footer p:not(.connect-mark),
 .footer .address,
 .footer .legal,
 .footer .legal a,

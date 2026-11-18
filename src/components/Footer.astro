@@ -7,13 +7,15 @@ import Wave from "./Wave.astro";
 const action =
   "https://assets.mailerlite.com/jsonp/2046479/forms/180157154312849349/subscribe";
 
+// The one master footer (Seb, 18 Nov 2026): every page renders this same component through Base.astro,
+// so a change here changes the footer on every page. The opt-in is always shown; pages can only pass the
+// colour of the wave above the footer (edge) and the homepage's filled wave (meetFunnel).
 interface Props {
-  hideOptin?: boolean;
   meetFunnel?: boolean;
   edge?: string;
 }
 
-const { hideOptin = false, meetFunnel = false, edge } = Astro.props;
+const { meetFunnel = false, edge } = Astro.props;
 const copyrightYear = new Date().getFullYear();
 
 const explore = [
@@ -42,7 +44,7 @@ const connectLinks = [
 const legal = [
   { href: "/privacy", label: "Privacy Policy" },
   { href: "/terms", label: "Terms" },
-  { href: "/cookies", label: "Cookie Preferences" },
+  { href: "/cookies", label: "Cookies" },
 ];
 ---
 
@@ -52,9 +54,6 @@ const legal = [
 <footer class="footer" id="footer">
   <div class="footer-layout">
     <div class="footer-subscribe">
-      {
-        !hideOptin && (
-          <>
       <h2>Not ready to apply? That’s okay.</h2>
       <div class="optin-fit">
       <p class="fine optin-copy">Get honest notes on what comes after the exit.</p>
@@ -90,9 +89,6 @@ const legal = [
         <p data-status hidden></p>
       </form>
       </div>
-          </>
-        )
-      }
     </div>
     <div class="footer-explore">
       <h2 class="col-title">Explore</h2>
@@ -125,10 +121,12 @@ const legal = [
       </a>
     </div>
     <div class="footer-lets">
-    <a class="connect-mark" href="/contact" aria-label="Let's Connect">
+    <!-- Not a link any more (Seb, 18 Nov 2026); Contact sits right below. -->
+    <p class="connect-mark">
+      <span class="visually-hidden">Let’s Connect</span>
       <span class="connect-lets" aria-hidden="true">Let’s</span>
       <span class="connect-word" aria-hidden="true"><span class="cn-co">Co</span><span class="cn-n cn-n1">n</span><span class="cn-n cn-n2">n</span><span class="cn-ect">ect</span></span>
-    </a>
+    </p>
     <ul class="connect-row">
       {
         connectLinks.map((link) => (

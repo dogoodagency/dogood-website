@@ -17,6 +17,7 @@ function wave(from: string, to: string) {
   return `<div class="wf-divider wf-divider--${above}" aria-hidden="true"><svg style="--wave-edge:${bandEdge}" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${to}" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path><path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path></svg></div>`;
 }
 const toTint = wave(white, tint);
+const toWhite = wave(tint, white);
 
 const steps = [
   {
@@ -57,7 +58,7 @@ const jsonLd = {
 
 <Base
   title="Client-Fit Process | DoGood Agency"
-  description="A private 30-day Intensive for founders navigating life after exit. Start with Stage 1 of the Founder Reclamation Partnership. 5 founders a month."
+  description="How DoGood matches founders to a Wayfinder: fit first, then time zone, with an early checkpoint so the match can be corrected quickly if it feels wrong."
   canonical="https://www.dogoodagency.co/wayfinders/clientfit"
   footerStrip={tint}
   footerEdge={footerEdge}
@@ -95,7 +96,6 @@ const jsonLd = {
             ))
           }
         </ol>
-        <p class="wf-sign">Seb Wichmann | Founder, DoGood Agency</p>
       </div>
     </section>
 
@@ -122,9 +122,25 @@ const jsonLd = {
           </div>
         </article>
 
-        <div class="wf-cta wf-cta-plain">
-          <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
-          <a class="btn-teal" href="/wayfinders">Meet the Wayfinders</a>
+      </div>
+    </section>
+
+    <Fragment set:html={toWhite} />
+
+    <!-- Bottom redesign (Seb, 18 Nov 2026): case study and next step in separate bands, both boxes the same
+         width, and the next-step box now says what each button is for. -->
+    <section class="wf-band" aria-labelledby="wf-next">
+      <div class="wf-well wf-well-top">
+        <div class="wf-cta wf-cta-box">
+          <h2 id="wf-next">Ready to find your Wayfinder?</h2>
+          <p>
+            It starts with your Stage 1 application. Tell us what is happening, and we take it from there: a private
+            FRP-Fit Call first, then a match with the Wayfinder who fits you best.
+          </p>
+          <div class="wf-cta-actions">
+            <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
+            <a class="btn-teal" href="/wayfinders">Meet the Wayfinders</a>
+          </div>
         </div>
       </div>
     </section>

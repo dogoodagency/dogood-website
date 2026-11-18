@@ -641,3 +641,84 @@ html.faq-js .faq-item:not(.is-open) .faq-panel {
     font-size: 24px;
   }
 }
+
+/* ---------- Newsletter card (redesign 18 Nov 2026) ---------- */
+
+.faq-news {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 28px 36px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 36px 40px;
+  background: #f5f2ff;
+  border: 1px solid #c2b7dd;
+  border-radius: 24px;
+}
+
+.faq-news-art img {
+  display: block;
+  width: 96px;
+  height: auto;
+}
+
+.faq-page .faq-news-eyebrow {
+  margin: 0 0 6px;
+  color: #c10e46;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.faq-page .faq-news h2 {
+  margin: 0 0 10px;
+  color: #2a0b4f;
+  font-size: clamp(22px, 2.4vw, 28px);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.faq-page .faq-news-body > p:last-child {
+  margin: 0;
+  color: #2a0b4f;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.faq-news a.btn-teal {
+  white-space: nowrap;
+}
+
+@media (max-width: 800px) {
+  .faq-news {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: start;
+    padding: 28px 22px;
+  }
+
+  .faq-news-art img {
+    width: 72px;
+  }
+}
+
+/* ---------- Hero spacing (18 Nov 2026): intro on one line, more room above the wave ---------- */
+
+.faq-hero-inner {
+  padding-bottom: 90px;
+}
+
+@media (min-width: 900px) {
+  .faq-hero .faq-hero-intro {
+    max-width: none;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 600px) {
+  .faq-hero-inner {
+    padding-bottom: 56px;
+  }
+}

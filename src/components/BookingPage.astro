@@ -16,15 +16,14 @@ interface Props {
   /** Absolute canonical URL. */
   canonical: string;
   robots?: string;
-  hideOptin?: boolean;
 }
 
-const { title, titleSuffix, tidycal, seoTitle, description, canonical, robots, hideOptin } = Astro.props;
+const { title, titleSuffix, tidycal, seoTitle, description, canonical, robots } = Astro.props;
 const hasAfter = Astro.slots.has("after");
 const fallbackHref = `https://tidycal.com/${tidycal}`;
 ---
 
-<Base title={seoTitle} description={description} canonical={canonical} robots={robots} hideOptin={hideOptin} footerEdge="#C2B7DD">
+<Base title={seoTitle} description={description} canonical={canonical} robots={robots} footerEdge="#C2B7DD">
   <article class="bk-page">
     <BookingHero title={title} titleSuffix={titleSuffix} />
     <div class="bk-body">

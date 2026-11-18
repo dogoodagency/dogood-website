@@ -1409,3 +1409,58 @@ h2.wf-h2.wf-center {
 .wf-member .wf-hub strong {
   color: #c10e46;
 }
+
+/* ---------- Client-Fit: next-step box (redesign 18 Nov 2026). Same width as the case study card above. ---------- */
+
+.wf-cta.wf-cta-box {
+  flex-direction: column;
+  gap: 0;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 56px 48px;
+  text-align: center;
+  box-shadow: none;
+}
+
+.wf-page .wf-cta-box h2 {
+  margin: 0 0 14px;
+  color: #fff;
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.wf-page .wf-cta-box p {
+  max-width: 600px;
+  margin: 0 auto 30px;
+  color: #f5f2ff;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.wf-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px 20px;
+}
+
+.wf-page .wf-case {
+  box-shadow: none;
+}
+
+@media (max-width: 600px) {
+  .wf-cta.wf-cta-box {
+    padding: 40px 22px;
+  }
+
+  .wf-page .wf-cta-box p {
+    font-size: 17px;
+  }
+}
+
+/* Accessibility (18 Nov 2026): small pink eyebrow in PINK 600 for 4.5:1 on white. */
+.wf-page .wf-eyebrow-dark {
+  color: #c10e46;
+}
