@@ -1,10 +1,53 @@
-/* Booking pages (/internal, /internal-60, /catchup, /claritysprints, /pre-frp, /frpfit, /orientation-call, /teams).
+/* Booking pages (/pre-frp, /frpfit, /internal, /internal-60, /catchup, /claritysprints, /orientation-call,
+   /exit, /wealth) and their thank-you pages (with thankyou.css).
    Every rule is prefixed .bk- (or scoped under .bk-page) so nothing here can touch another page.
-   Layout: purple page under the floating header; on desktop the copy on the right and the TidyCal embed below;
-   below 1024px the copy comes first and the calendar follows. Everything sits on purple (DREAM 500). */
+   Layout (Seb, 18 Nov 2026): purple hero with the H1, a wavy line, then on desktop a white strip on the left
+   (under TidyCal's white details pane) and purple on the right, down to the footer's wave. Below 1024px
+   everything is purple: copy first, then the calendar. */
+
+/* Split background: white strip | purple. The strip width tracks TidyCal's details pane (43.33% of the embed).
+   Defined on body so the footer's wave can use the same split. % values resolve against each element's width. */
+body:has(.bk-page) {
+  --bk-split: #2a0b4f;
+}
 
 body:has(.bk-page) .footer-wave {
+  background: var(--bk-split);
+}
+
+.bk-hero {
   background: #2a0b4f;
+}
+
+.bk-hero-inner {
+  padding: 44px var(--pad) 28px;
+}
+
+.bk-wave-top {
+  background: var(--bk-split);
+  line-height: 0;
+}
+
+.bk-wave-top svg {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+.bk-wave-fill {
+  fill: #2a0b4f;
+}
+
+.bk-wave-edge {
+  fill: none;
+  stroke: #c2b7dd;
+  stroke-width: 1px;
+  vector-effect: non-scaling-stroke;
+}
+
+.bk-body {
+  background: var(--bk-split);
+  padding-bottom: 72px;
 }
 
 .bk-page {
@@ -17,10 +60,6 @@ body:has(.bk-page) .footer-wave {
   background: #2a0b4f;
   color: #fff;
   overflow-x: clip;
-}
-
-.bk-strip {
-  display: none;
 }
 
 .bk-page *,
@@ -99,12 +138,13 @@ body:has(.bk-page) .footer-wave {
 
 /* ---------- Copy ---------- */
 
+/* Same H1 size as the other page heroes (FAQs, How it works, Stories). */
 .bk-page h1 {
-  margin: 0 0 22px;
+  margin: 0;
   color: #fff;
-  font-size: clamp(34px, 4.3vw, 56px);
+  font-size: clamp(34px, 5vw, 56px);
   font-weight: 900;
-  line-height: 1.1;
+  line-height: 1.12;
   letter-spacing: -0.03em;
 }
 
@@ -398,6 +438,10 @@ body:has(.bk-page) .footer-wave {
 }
 
 @media (max-width: 600px) {
+  .bk-wave-top svg {
+    height: 36px;
+  }
+
   .bk-page {
     margin-top: -81px;
     padding-top: 81px;
@@ -426,28 +470,27 @@ body:has(.bk-page) .footer-wave {
    Below 1368px the live iframe would start off-screen (live crops the event card at 1024), so the embed is pinned
    16px from the left and narrowed (max 1150px); the strip and copy follow TidyCal's details pane (43.33% of the embed). */
 @media (min-width: 1024px) {
-  .bk-page {
+  body:has(.bk-page) {
     --bk-emb-left: 16px;
     --bk-emb-w: min(calc(100% - 32px), 1150px);
     --bk-strip-w: calc(var(--bk-emb-left) + var(--bk-emb-w) * 0.4333);
     --bk-copy-left: calc(var(--bk-strip-w) + 50px);
+    --bk-split: linear-gradient(90deg, #fff 0 var(--bk-strip-w), #2a0b4f var(--bk-strip-w) 100%);
+  }
+
+  .bk-hero-inner {
+    padding: 56px 24px 36px var(--bk-copy-left);
   }
 
   .bk-grid {
     display: block;
     position: relative;
-    padding-top: 100px;
+    padding-top: 40px;
   }
 
-  .bk-strip {
-    display: block;
-    position: absolute;
-    top: 58px;
-    bottom: 37px;
-    left: 0;
-    width: var(--bk-strip-w);
-    /* Was a white strip copied from Wix; purple since 18 Nov 2026 so the whole booking page is purple. */
-    background: #2a0b4f;
+  /* Room under the calendar so it never runs into the footer, even when TidyCal grows (time slots, form). */
+  .bk-body {
+    padding-bottom: 140px;
   }
 
   .bk-copy {
@@ -471,18 +514,10 @@ body:has(.bk-page) .footer-wave {
     margin-bottom: 0;
   }
 
-  .bk-page h1 {
-    margin: 0 0 25px;
-    font-size: 60px;
-    line-height: 84px;
-    letter-spacing: 0;
-  }
-
   .bk-page .bk-h1-suffix {
     margin-left: 0.15em;
-    font-size: 40px;
+    font-size: 0.6em;
     font-weight: 900;
-    letter-spacing: 0;
   }
 
   .bk-copy p,
@@ -531,7 +566,7 @@ body:has(.bk-page) .footer-wave {
 
 /* Wide desktop: exactly the live positions (embed 1225px wide, 50% - 684px from the left). */
 @media (min-width: 1368px) {
-  .bk-page {
+  body:has(.bk-page) {
     --bk-emb-left: calc(50% - 684px);
     --bk-emb-w: 1225px;
     --bk-strip-w: calc(50% - 206px);
@@ -539,14 +574,3 @@ body:has(.bk-page) .footer-wave {
   }
 }
 
-/* 1024-1367: the narrower copy column needs a smaller H1 so "Internal Sync" stays on one line. */
-@media (min-width: 1024px) and (max-width: 1367px) {
-  .bk-page h1 {
-    font-size: 46px;
-    line-height: 64px;
-  }
-
-  .bk-page .bk-h1-suffix {
-    font-size: 31px;
-  }
-}

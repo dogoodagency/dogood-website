@@ -11,7 +11,7 @@ export default defineConfig({
     // The placeholder articles were replaced by real ones on 18 Nov 2026, so articles are included.
     filter: (page) =>
       // Thank-you, booking and form-acknowledgement pages stay out of the sitemap (and are noindex).
-      !/\/([a-z0-9-]*thankyou|thank-you|newsletter\/thanks|stage1-tc|internal|internal-60|catchup|pre-frp|frpfit|orientation-call|teams)\/?$/.test(page),
+      !/\/([a-z0-9-]*thankyou|thank-you|newsletter\/thanks|stage1-tc|internal|internal-60|catchup|pre-frp|frpfit|orientation-call|exit|wealth)\/?$/.test(page),
   })],
   vite: {
     plugins: [tailwindcss()],
