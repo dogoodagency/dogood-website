@@ -40,7 +40,9 @@ const ogDescription = Astro.props.description
 const twitterDescription = ogDescription;
 const ogImage = new URL(Astro.props.ogImage ?? "/og.jpg", canonical).href;
 const ogType = Astro.props.ogType ?? "website";
-const robots = Astro.props.robots ?? "noindex, nofollow";
+// Pre-launch default. "nofollow" removed on preview 6 so the free Screaming Frog can crawl;
+// at launch change this to "index, follow" (see CHANGELOG.md, launch checklist).
+const robots = Astro.props.robots ?? "noindex";
 
 const organization = {
   "@context": "https://schema.org",
