@@ -15,7 +15,7 @@ Last updated: 13 November 2026
 
 Cookies are small text files that a website stores on your device. Similar technologies, such as local storage, pixels and scripts from embedded content, work in a similar way. In this policy, "cookies" covers all of them.
 
-DoGood OÜ uses cookies on [www.dogoodagency.co](/). This policy explains which ones, why, and how you can control them. [Our Privacy Policy](/privacy/) explains how we handle personal data more generally.
+DoGood OÜ uses cookies on [www.dogoodagency.co](/). This policy explains which ones, why, and how you can control them. [Our Privacy Policy](/privacy) explains how we handle personal data more generally.
 
 ## Our legal basis
 

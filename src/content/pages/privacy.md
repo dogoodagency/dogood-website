@@ -89,7 +89,7 @@ To exercise these rights, contact us at: [hiya@dogoodagency.co](mailto:hiya@dogo
 
 ## 5. COOKIES
 
-COOKIES: We use only the cookies needed to run the site and, with your consent, cookies for optional features such as live chat. For details and to change your choices, see our [Cookies Policy](/cookies/).
+COOKIES: We use only the cookies needed to run the site and, with your consent, cookies for optional features such as live chat. For details and to change your choices, see our [Cookies Policy](/cookies).
 
 ## 6. DATA SECURITY
 
