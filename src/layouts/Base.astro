@@ -2,6 +2,10 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+// Preloaded so text is drawn in Montserrat straight away instead of swapping (avoids layout shift).
+import montserrat400 from "@fontsource/montserrat/files/montserrat-latin-400-normal.woff2?url";
+import montserrat800 from "@fontsource/montserrat/files/montserrat-latin-800-normal.woff2?url";
+import montserrat900 from "@fontsource/montserrat/files/montserrat-latin-900-normal.woff2?url";
 
 interface Props {
   title?: string;
@@ -75,6 +79,9 @@ const organization = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preload" href={montserrat400} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={montserrat800} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={montserrat900} as="font" type="font/woff2" crossorigin />
     <!--
       Preview only. At launch, delete this robots meta tag and update
       public/robots.txt so the site can be indexed.
