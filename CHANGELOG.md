@@ -47,6 +47,43 @@ Crawl stopped at the free limit of 500 addresses (327 internal: 135 HTML,
   break.
 - Live on deploy preview: see "Browser check" below.
 
+### Update 3b (same day, commit `8ab594f`)
+
+- `src/content/pages/privacy.md`: link `/cookies/` → `/cookies`.
+- `src/content/pages/cookies.md`: link `/privacy/` → `/privacy`.
+- `public/_redirects`: added `/team/sebastian` → `/wayfinders/seb` (301),
+  right after `/team/seb`. It must stay above the `/team/*` 410 rule, because
+  the first matching rule wins. `/team/sebastian` was in the live Wix sitemap.
+
+### Browser check (Claude, in Seb's browser, on the deployed preview 6)
+
+- **Whole-site crawl** from `sitemap-0.xml` (81 pages) plus every internal
+  link found on them: 211 addresses. 205 loaded with 200 and no redirect
+  (before the fix: 66 internal 301s). The rest were the four items below,
+  two of which are now fixed (`/privacy/`, `/cookies/`).
+- **Old Wix addresses:** all 169 addresses in the live Wix sitemap
+  (`https://www.dogoodagency.co/sitemap.xml`, 6 sub-sitemaps), plus the old
+  static pages listed in `_redirects`: 167 return 410; `/blog` → `/insights`,
+  `/team/seb` and `/team/sebastian` → `/wayfinders/seb`, both podcast
+  episodes with special characters → their clean addresses, 18 podcast
+  episodes 200. Also: `/founders` → `/the-reset`, `/podcast` →
+  `/dogood-insider`, `/sitemap.xml` → `/sitemap-index.xml`, `/the-reset/` →
+  `/the-reset`. Nothing returns 404 or lands on the wrong page.
+- Note: the Wix sitemap does not list Wix's static pages, so these were
+  taken from the 410 list in `_redirects`.
+
+### Found, for Seb to decide (not changed)
+
+- **`/casestudies` page** (`src/content/pages/casestudies.md`) still holds old
+  SME copy ("Clients", Synergy Plus, "mid-sized startups and digital
+  agencies") and a "READ MORE" button to the retired
+  `/case/empowering-synergy-plus...` page, which returns 410. Rewrite, remove
+  the old block, or remove the page.
+- **`/diagnostics` page** (`src/content/pages/diagnostics.md`, line 63): the
+  "continue here" link for HR leaders points to `/culture-teams`, which now
+  returns 410. Remove the link, or point it somewhere else.
+- **Two missing PDFs** on `/newsletter` (see above).
+
 ---
 
 ## Preview 6, update 2: let the free Screaming Frog crawl; trailing "/" plan (18 Nov 2026)
@@ -103,7 +140,8 @@ Crawl stopped at the free limit of 500 addresses (327 internal: 135 HTML,
   pages excluded in the handover's Task 2.
 - `astro.config.mjs`: change the sitemap filter so it excludes only articles
   marked noindex, once real articles replace the samples.
-- Trailing "/" fix above must be done and tested **before** launch.
+- Trailing "/" fix: done in update 3. On launch day, confirm `/the-reset`
+  returns 200 with no redirect on the live domain.
 - After deploying: `curl -I https://www.dogoodagency.co/` shows no
   `X-Robots-Tag`; view source shows `index, follow`; robots.txt allows all;
   submit `sitemap-index.xml` in Google Search Console and Bing Webmaster Tools.
