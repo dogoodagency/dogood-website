@@ -6,6 +6,33 @@ why, and anything the next person needs to check.
 
 ---
 
+## Checks and decisions, no code change (18 Nov 2026, evening)
+
+**Made by:** Claude (claude.ai), at Seb's request.
+
+- **Search Console addresses:** all 163 page addresses from Seb's Search
+  Console export (Wix, last 16 months) tested on preview 6 in Seb's browser,
+  plus trailing-"/" and query-string variants. Every one returns what was
+  decided: 410 for old SME content (all `/post/*`, `/blog/categories/*`,
+  `/team/*` except Seb, old service and utility pages), 301 for `/founders`,
+  `/team/seb`, `/blog`, the two podcast slugs with special characters, and 200
+  for kept pages and podcast episodes. The high-traffic `/post/` articles
+  (e.g. business-development-sop, shared-accountability-model) return 410 as
+  Seb decided: the old SME content is retired.
+- **Orphan check (built site):** 71 pages, 53 in the sitemap. Every sitemap
+  page is linked from somewhere, and no internal link points to a missing
+  page. Pages linked from nowhere: the booking and thank-you pages
+  (shared directly), including `/pre-frp` and `/frpfit`.
+- **Image dimensions:** 56 of 1,006 `<img>` tags have no width/height
+  (possible layout shift). Not fixed yet.
+- **Seb's decisions:** the drafted article takeaways and "Is this you?" lines
+  are fine for now; the case study call to action, the podcast pages and the
+  wider copy will be done in a second iteration. The podcast archive stays
+  online for now (no new episodes planned in the next 2–3 months; the
+  conversations are valuable but don't fit the founder focus exactly).
+
+---
+
 ## Preview 6, update 4: pages removed, markup, brand name, link previews, speed, real articles (18 Nov 2026)
 
 **Made by:** Claude (claude.ai), at Seb's request and with his decisions.
