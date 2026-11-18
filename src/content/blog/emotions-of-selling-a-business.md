@@ -70,7 +70,7 @@ What helps is staying neutral: answering clearly without defending, and not gett
 
 I'm not at the table when deals are negotiated. But advisors tell me, often, that they have lost deals because of the founder's emotions. The pattern is familiar: the closer the deal gets to signing, the harder the founder pulls on the brakes.
 
-That is why the work we do with founders before a sale helps their advisors too. A founder who has looked at their fears is less likely to stall the process without knowing it.
+That is why the work we do with founders before a sale helps their advisors too. A founder who has looked at their fears is less likely to stall the process without knowing it. We cover this side in more depth in [Why deals stall when the founder isn't ready](/insights/why-deals-stall-when-the-founder-isnt-ready).
 
 ## After closing: relief, resentment, guilt and grief
 
