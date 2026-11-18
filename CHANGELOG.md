@@ -8,7 +8,7 @@ why, and anything the next person needs to check.
 
 ## Preview 6, update 10: Insights hero, article layout, author photos (18 Nov 2026, late night)
 
-**Made by:** Claude (claude.ai), from Seb's feedback (screenshots 9 to 11 and three portraits). **Branch:** `claude/preview-6`.
+**Made by:** Claude (claude.ai), from Seb's feedback (screenshots 9 to 11 and three portraits). **Branch:** `claude/preview-6`. **Commit:** `22a648c`.
 
 ### Insights page (`blog-index.css`)
 - Hero: wider frame (1000px), more space between items and 90px more room above the
