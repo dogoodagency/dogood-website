@@ -8,9 +8,8 @@ export default defineConfig({
   site: "https://www.dogoodagency.co",
   trailingSlash: "never",
   integrations: [sitemap({
-    // Sample Insights articles are noindex for now; remove this filter at launch when real articles replace them.
+    // The placeholder articles were replaced by real ones on 18 Nov 2026, so articles are included.
     filter: (page) =>
-      !/\/insights\/(?!category\/)[^/]+\/?$/.test(page) &&
       // Thank-you, booking and form-acknowledgement pages stay out of the sitemap (and are noindex).
       !/\/([a-z0-9-]*thankyou|thank-you|newsletter\/thanks|stage1-tc|internal|internal-60|catchup|pre-frp|frpfit|orientation-call|teams)\/?$/.test(page),
   })],

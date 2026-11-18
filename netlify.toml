@@ -64,22 +64,22 @@
 
 [[redirects]]
   from = "/insights/who-are-you-now"
-  to = "/insights/who-am-i-without-the-company"
+  to = "/insights"
   status = 301
 
 [[redirects]]
   from = "/insights/who-are-you-now/"
-  to = "/insights/who-am-i-without-the-company"
+  to = "/insights"
   status = 301
 
 [[redirects]]
   from = "/insights/after-the-deal"
-  to = "/insights/raising-the-personal-side-of-exit-with-a-client"
+  to = "/insights"
   status = 301
 
 [[redirects]]
   from = "/insights/after-the-deal/"
-  to = "/insights/raising-the-personal-side-of-exit-with-a-client"
+  to = "/insights"
   status = 301
 
 [[redirects]]

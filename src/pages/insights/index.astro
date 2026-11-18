@@ -39,14 +39,16 @@ const picks = [...picked, ...posts.filter((p) => p.id !== featured?.id && !picke
 
 const founderPosts = posts.filter((p) => p.data.audience === "founder");
 const advisorPosts = posts.filter((p) => p.data.audience === "advisor");
-const founderCats = categories.filter((c) => c.audience === "founder");
-const advisorCats = categories.filter((c) => c.audience === "advisor");
+const countIn = (slug: string) => posts.filter((p) => p.data.category === slug).length;
+// Only show categories that hold at least one article.
+const liveCats = categories.filter((c) => countIn(c.slug) > 0);
+const founderCats = liveCats.filter((c) => c.audience === "founder");
+const advisorCats = liveCats.filter((c) => c.audience === "advisor");
 
 const searchText = (p: (typeof posts)[number]) => {
   const d = p.data;
   return [d.title, d.description, d.tags.join(" "), getCategory(d.category)?.name ?? "", audiences[d.audience].label].join(" ");
 };
-const countIn = (slug: string) => posts.filter((p) => p.data.category === slug).length;
 const plural = (n: number) => `${n} ${n === 1 ? "article" : "articles"}`;
 
 const resources = {
@@ -258,9 +260,13 @@ const tabs = [
             <h2 class="bli-h2" id="bli-advisors-title">For advisors</h2>
             <p class="bli-aud-line">For exit planners, wealth advisors, accountants and attorneys whose clients are selling.</p>
           </div>
-          <ul class="bl-grid bli-grid">
-            {advisorPosts.map((p) => <li class="bli-item"><BlogCard post={p} variant="grid" /></li>)}
-          </ul>
+          {
+            advisorPosts.length > 0 && (
+              <ul class="bl-grid bli-grid">
+                {advisorPosts.map((p) => <li class="bli-item"><BlogCard post={p} variant="grid" /></li>)}
+              </ul>
+            )
+          }
           <div class="bli-aud-foot">
             <a class="btn-teal" href="/for-advisors">Visit the Advisor Center</a>
             <ul class="bli-pills" aria-label="Advisor topics">
@@ -282,7 +288,7 @@ const tabs = [
         <h2 class="bli-h2" id="bli-topics-title">Browse by topic</h2>
         <ul class="bli-cats">
           {
-            categories.map((c) => (
+            liveCats.map((c) => (
               <li>
                 <a class="bli-cat" href={`/insights/category/${c.slug}`}>
                   <span class={`bl-badge bl-badge--${c.audience}`}>

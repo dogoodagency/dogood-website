@@ -10,7 +10,8 @@ import { SITE, audiences, categories, sortedPosts } from "../../../data/blog";
 
 export async function getStaticPaths() {
   const all = await getCollection("blog");
-  return categories.map((category) => ({
+  // Only build pages for categories that hold at least one article.
+  return categories.filter((category) => all.some((p) => p.data.category === category.slug)).map((category) => ({
     params: { category: category.slug },
     props: {
       category,
@@ -20,6 +21,8 @@ export async function getStaticPaths() {
 }
 
 const { category, posts } = Astro.props;
+const allPosts = await getCollection("blog");
+const liveCats = categories.filter((c) => allPosts.some((p) => p.data.category === c.slug));
 const aud = audiences[category.audience];
 const url = `${SITE}/insights/category/${category.slug}`;
 
@@ -121,7 +124,7 @@ const collectionJson = json({
           <h2 id="bl-cats-title">All categories</h2>
           <ul>
             {
-              categories.map((c) => (
+              liveCats.map((c) => (
                 <li>
                   <a
                     class:list={["bl-pill", "bl-pill--lg", c.slug === category.slug && "is-current"]}
