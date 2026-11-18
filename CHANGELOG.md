@@ -6,6 +6,79 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 6: Seb's booking and thank-you layout, advisor pages, Teams removed (18 Nov 2026, night)
+
+**Made by:** Claude (claude.ai), from Seb's two mockups (screenshots of /pre-frp and /prefrp-thankyou).
+**Branch:** `claude/preview-6` (pull request #6). **Commit:** `67d881b`.
+
+### Layout (all booking pages, via the shared component)
+
+- New `src/components/BookingHero.astro`: purple hero with the H1 (same size as
+  the other page heroes, `clamp(34px, 5vw, 56px)`; suffix 0.6em, 900 on
+  desktop), then a wavy line (same curve as `Wave.astro`, with a 1px #C2B7DD
+  line).
+- `src/components/BookingPage.astro`: H1 moved from the copy column into the
+  hero. Below the wave the page is split on desktop: **white strip on the left**
+  (sized to TidyCal's white details pane, 43.33% of the embed) and purple on the
+  right, down to the footer's wave, which uses the same split and now draws the
+  line too (`footerEdge="#C2B7DD"`). Below 1024px everything is purple.
+  Note: this brings back the white strip on desktop that update 5 had turned
+  purple; it matches Seb's mockup. On phones the panel round TidyCal stays purple.
+- 140px of space under the calendar on desktop (72px on phones). TidyCal's
+  iframe grows when a date, time or the form opens, and the page grows with it,
+  so the calendar never runs into the footer.
+- Phone: the wave is 36px tall so it doesn't look steep.
+- `src/styles/booking.css`: split background via `--bk-split` on
+  `body:has(.bk-page)` (so the footer can use it), hero and wave styles;
+  removed the old `.bk-strip` element and the 60/46px desktop H1 sizes.
+
+### Thank-you pages
+
+- New `src/components/ThankYouPage.astro` + rewritten `src/styles/thankyou.css`:
+  hero + wave as above, H1 centred over the purple side; then one column as wide
+  as the case study card (640px): "You're booked" (GRASS 500, centred), the
+  text, optional ClarityValue Shift map (`map`), optional extras (slot
+  `extra`), optional case study (`caseStudy="j" | "v"`).
+- `/prefrp-thankyou` moved onto it (same copy; map + case study V).
+
+### New pages (all noindex, out of the sitemap)
+
+- `/exit`: Exit Advisor Sync (TidyCal `dogoodagency/dogood-x-exit-advisors-sync`, 45 min).
+- `/wealth`: Wealth Advisor Sync (TidyCal `dogoodagency/dogood-x-exit-advisors-sync-3z7njrj`, 45 min).
+- `/exit-thankyou`, `/wealth-thankyou`: "Before our call" advisor resources,
+  new `src/components/AdvisorResources.astro`: two Insights article cards
+  (exit: Before you sign + Emotions of selling; wealth: Sudden wealth syndrome +
+  First 90 days) and links to the Advisor Center, #adv-how, #adv-conf, #adv-faq.
+- **Copy on these four pages was drafted by Claude** from the TidyCal
+  descriptions and Advisor Center wording. **Seb to review.**
+- Sitemap filter (`astro.config.mjs`): `exit` and `wealth` added; `teams` removed.
+
+### Removed
+
+- Teams booking page (Seb deleted the TidyCal booking type):
+  `src/pages/teams.astro`, `src/content/pages/teams.md`,
+  `src/content/pages/teams-thankyou.md`, their entries in `[...slug].astro`.
+
+### Next, after Seb approves the /exit and /wealth pages
+
+Apply the thank-you layout and rename to Seb's slugs (add 301s from the old
+ones, update internal links):
+
+| Booking page | Thank-you page | Thank-you extras |
+|---|---|---|
+| /pre-frp | /prefrp-thankyou | map + case study (done) |
+| /frpfit | /frpfit-thankyou | same layout as Pre-FRP |
+| /claritysprints → **/clarity** | /claritysprints-thankyou → **/clarity-thankyou** | testimonials and other elements (booking page too) |
+| /internal | /internal-thankyou | |
+| /internal-60 → **/internal60** | **/internal60-thankyou** (new) | |
+| /orientation-call → **/orientation** | /orientation-call-thankyou → **/orientation-thankyou** | case study (alternate J/V), no map |
+| /catchup | /catchup-thankyou | no map, no case study |
+
+`/orientation-call` and `/orientation-call-thankyou` were live on Wix (Search
+Console), so they need 301s to the new slugs.
+
+---
+
 ## Preview 6, update 5: thank-you design, purple booking pages, speed, llms.txt (18 Nov 2026, evening)
 
 **Made by:** Claude (claude.ai), at Seb's request. **Branch:** `claude/preview-6`
