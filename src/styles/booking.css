@@ -562,6 +562,20 @@ body:has(.bk-page) .footer-wave {
   .bk-page .bk-panel .tidycal-embed {
     min-height: 611px;
   }
+
+  /* TidyCal paints its own purple background under its white details card (the "Powered by" row), which
+     showed as a purple band on our white strip. A white patch over that corner, under the details card only,
+     hides it; the badge sits to the right of the strip and stays visible. Not clickable. */
+  .bk-panel::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 43.33%;
+    height: 56px;
+    background: #fff;
+    pointer-events: none;
+  }
 }
 
 /* Wide desktop: exactly the live positions (embed 1225px wide, 50% - 684px from the left). */
@@ -571,6 +585,11 @@ body:has(.bk-page) .footer-wave {
     --bk-emb-w: 1225px;
     --bk-strip-w: calc(50% - 206px);
     --bk-copy-left: calc(50% - 156px);
+  }
+
+  /* Strip edge minus embed left edge: (50% - 206px) - (50% - 684px). */
+  .bk-panel::after {
+    width: 478px;
   }
 }
 
