@@ -31,8 +31,6 @@ export const urls = {
   caseJ: "/casestudies/j",
   caseV: "/casestudies/v",
   guarantee: "/clarity-first-guarantee-terms",
-  diagnostic: "/diagnostics",
-  diagnosticForm: "https://form.jotform.com/260262699147869",
   linkedin: "https://www.linkedin.com/in/sebwichmann/",
   podcast: "/dogood-insider",
   contact: "/contact",

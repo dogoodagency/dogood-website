@@ -38,7 +38,6 @@ Seb from DoGood really opened my mind to many things holding me back. He has a g
 
 Start with a short diagnostic — see where you sit
 
-<a class="btn-teal" href="/diagnostics">Start the Founder Pressure Diagnostic™</a>
 
 Founder-focused · Not therapy, not medical advice, not psychological services
 
@@ -154,6 +153,5 @@ Ultimately, these behavioural improvements contributed to a more fulfilled priva
 
 If this resonates, start with our quick diagnostic to see whether FRP is right for you.
 
-<a class="btn-teal" href="/diagnostics">Start the Founder Pressure Diagnostic™</a>
 
 Founder-focused · Not therapy, not medical advice, not psychological services

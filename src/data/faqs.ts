@@ -79,7 +79,7 @@ export const faqCategories: FaqCategory[] = [
         q: "I sold my company a few years ago. Am I too late?",
         a: [
           "Not at all. There is no expiry date on “what now?” Some founders come to us right after the sale, others years later, when they notice the old patterns are still running the show. Wherever you are with it, it is a welcome place to start.",
-          "If you would like to see where you stand first, the free [Founder Diagnostic](/diagnostics) is a good first step. You can [apply for Stage 1](/apply-stage-1) when you are ready.",
+          "You can [apply for Stage 1](/apply-stage-1) when you are ready.",
         ],
       },
       // [ADDED – source: chat-brief-approved.txt §3 "Is this for co-founders too?"; apply-stage-1 fit note (equity founders)]
@@ -137,16 +137,6 @@ export const faqCategories: FaqCategory[] = [
         a: [
           "Spots are limited so every founder gets real attention. The work is private and one to one, and each founder has a Wayfinder who is genuinely with them through it, so we only take on as many founders as we can serve well. In practice that is a maximum of five new founders a month.",
           "When a month is full, you can join the waiting list and get priority for the next spots. Spots are not guaranteed, and if it is not the right fit, we will say so kindly and point you somewhere better.",
-        ],
-      },
-      // [ADDED – source: chat-brief-approved.txt §6 (Diagnostic) and §10 "What if I'm not ready yet?"; diagnostics.md; brief (newsletter, every two weeks)]
-      {
-        id: "founder-diagnostic",
-        q: "I’m not sure where I stand. What is the Founder Diagnostic?",
-        a: [
-          "The Founder Diagnostic™ is a free, private, founder-focused check-in on how you are really doing. It takes about 5–10 minutes. You answer based on the last 7–14 days, and you get a Pressure Score (0–100), your stage (1–5), an urgency window and practical next steps right away. We then follow up privately by email, free of charge.",
-          "It is not a medical or psychological diagnosis, and it is not therapy. It asks for your name and email so we can send your results and an action plan. [Take the Founder Diagnostic](/diagnostics).",
-          "Not ready for more than that yet? That is completely okay, and there is no rush. You can [join the newsletter](/newsletter): notes on life after exit, every two weeks.",
         ],
       },
     ],

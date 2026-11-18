@@ -44,7 +44,6 @@ Engagement: 8 months (1:1 sessions, live workshops & retreats)
 
 Start with a short diagnostic — see where you sit
 
-<a class="btn-teal" href="/diagnostics">Start the Founder Diagnostic™</a>
 
 Founder-focused · Not therapy, not medical advice, not psychological services
 
@@ -154,6 +153,5 @@ By transitioning in a way that preserved co-founder relationships and defined a 
 
 If this resonates, start with our diagnostic to see whether FRP is right for you.
 
-<a class="btn-teal" href="/diagnostics">Start the Founder Diagnostic™</a>
 
 Founder-focused · Not therapy, not medical advice, not psychological services

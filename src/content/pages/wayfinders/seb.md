@@ -62,7 +62,6 @@ Seb
 
 A 5-minute Founder Diagnostic™
 
-<a class="btn-teal" href="/diagnostics">See my Pressure Score Index</a>
 
 Private · 5 minutes · Immediate results
 

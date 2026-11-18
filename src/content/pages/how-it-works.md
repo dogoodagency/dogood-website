@@ -267,7 +267,6 @@ Are not ready to give real attention to their health, relationships, and life be
 
 The Founder Diagnostic™ shows you in 5 minutes.
 
-<a class="btn-teal" href="/diagnostics">See my Pressure Score Index</a>
 
 5 minutes · Results immediate · Confirms fit before you apply
 
