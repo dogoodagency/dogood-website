@@ -1,4 +1,4 @@
-/* Booking pages (/pre-frp, /frpfit, /internal, /internal-60, /catchup, /claritysprints, /orientation-call,
+/* Booking pages (/prefrp, /frpfit, /internal, /internal60, /catchup, /clarity, /orientation,
    /exit, /wealth) and their thank-you pages (with thankyou.css).
    Every rule is prefixed .bk- (or scoped under .bk-page) so nothing here can touch another page.
    Layout (Seb, 18 Nov 2026): purple hero with the H1, a wavy line, then on desktop a white strip on the left
@@ -194,6 +194,23 @@ body:has(.bk-page) .footer-wave {
   height: 6px;
   border-radius: 50%;
   background: #fff;
+}
+
+/* Numbered lists (thank-you pages): numbers in teal. Global CSS resets ol, so set it here. */
+.bk-copy ol {
+  margin: 0 0 20px;
+  padding-left: 26px;
+  list-style: decimal;
+}
+
+.bk-copy ol li {
+  margin: 0 0 8px;
+  padding-left: 4px;
+}
+
+.bk-copy ol li::marker {
+  color: #28dbb0;
+  font-weight: 800;
 }
 
 /* Lists whose items already start with an arrow glyph: no bullet. */
@@ -593,3 +610,92 @@ body:has(.bk-page) .footer-wave {
   }
 }
 
+
+/* ---------- Testimonials on a booking page (BookingTestimonials.astro, /clarity) ---------- */
+
+.bk-quotes {
+  max-width: 860px;
+  margin: 0 auto 48px;
+}
+
+.bk-page h2.bk-quotes-h {
+  margin: 0 0 20px;
+  color: #fff;
+  font-size: clamp(24px, 2.6vw, 30px);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.bk-quotes-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bk-quote {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px;
+  background: #fff;
+  color: var(--bk-ink);
+  border: 1px solid var(--bk-line);
+  border-radius: 16px;
+}
+
+.bk-quote blockquote {
+  margin: 0;
+}
+
+.bk-quote blockquote p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.bk-quote-who {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bk-quote-img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: none;
+}
+
+.bk-quote-who p {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.bk-quote-who strong {
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 860px) {
+  .bk-quotes-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Desktop: the lower band (testimonials, case study) sits on the purple side, right of the white strip. */
+@media (min-width: 1024px) {
+  .bk-after {
+    margin-left: var(--bk-strip-w);
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}

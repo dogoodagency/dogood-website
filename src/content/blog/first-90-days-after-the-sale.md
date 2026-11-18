@@ -1,5 +1,6 @@
 ---
 title: "What to do after selling your business: the first 90 days"
+seoTitle: "What to do after selling your business | DoGood"
 description: "What to do after selling your business in the first 90 days: celebrate, rest, then reflect. Why to avoid rushing in, and how to tell you're on track by day 90."
 audience: founder
 category: after-the-sale

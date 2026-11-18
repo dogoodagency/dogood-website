@@ -1,15 +1,18 @@
 ---
 import BookingPage from "../components/BookingPage.astro";
 import BookingCaseCard from "../components/BookingCaseCard.astro";
+import BookingTestimonials from "../components/BookingTestimonials.astro";
+// Not for Google (Seb, 18 Nov 2026): noindex, out of the sitemap (astro.config.mjs) and out of llms.txt.
 ---
 
 <BookingPage
   title="1:1 Clarity Sprints"
   titleSuffix="(3 months)"
   tidycal="dogoodagency/claritysprints"
+  robots="noindex, nofollow"
   seoTitle="Weekly 1:1 Clarity Sprints | DoGood Agency"
   description="A focused Clarity Sprints for founders under pressure. Get an honest read on what’s happening, what to do next, and whether we’re a fit."
-  canonical="https://www.dogoodagency.co/claritysprints"
+  canonical="https://www.dogoodagency.co/clarity"
 >
   <p>
     Founders rarely need more information. They need <strong>clarity. Fast.</strong> 1:1 Clarity Sprints help you make decisions and move forward in business and life (they’re the same system).
@@ -77,6 +80,7 @@ import BookingCaseCard from "../components/BookingCaseCard.astro";
   </ul>
 
   <Fragment slot="after">
+    <BookingTestimonials files={["michael-r.png", "christian-v.png", "manfred-t.png"]} />
     <BookingCaseCard />
   </Fragment>
 </BookingPage>

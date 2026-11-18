@@ -1404,3 +1404,8 @@ h2.wf-h2.wf-center {
     font-size: 40px;
   }
 }
+
+/* Accessibility check, 18 Nov 2026: small pink text uses PINK 600 for a 4.5:1 contrast on white. */
+.wf-member .wf-hub strong {
+  color: #c10e46;
+}

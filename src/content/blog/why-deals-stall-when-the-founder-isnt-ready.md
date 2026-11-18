@@ -1,5 +1,6 @@
 ---
 title: "Why deals stall when the founder isn't ready"
+seoTitle: "Why deals stall when the founder isn't ready | DoGood"
 description: "Why deals stall when the founder isn't emotionally ready to sell: the signs advisors see, how to tell fear from a real concern, and when to bring in support."
 audience: advisor
 category: working-with-founders

@@ -24,4 +24,4 @@ FRP is intentionally narrow. It’s designed for founders who match all three:
 
 If you don’t match this profile, you’ll likely get a better (faster, cleaner) outcome from a Clarity Sprint instead.
 
-<a class="btn-teal" href="/claritysprints">Weekly 1:1 Clarity Sprints</a>
+<a class="btn-teal" href="/clarity">Weekly 1:1 Clarity Sprints</a>

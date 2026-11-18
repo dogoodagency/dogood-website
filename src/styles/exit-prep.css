@@ -53,7 +53,7 @@ body:has(.ep-page) .footer-wave {
 
 .ep-page .ep-eyebrow-dark {
   margin-bottom: 16px;
-  color: var(--ep-pink);
+  color: #c10e46; /* PINK 600 for 4.5:1 on white (accessibility check, 18 Nov 2026) */
 }
 
 .ep-hero h1 {

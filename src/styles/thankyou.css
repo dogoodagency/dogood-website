@@ -175,3 +175,8 @@
     width: 100%;
   }
 }
+
+/* Text that follows the 1-Page Map (/frpfit-thankyou "Next Step"). */
+.ty-page .ty-text.ty-after-map {
+  margin-top: 44px;
+}

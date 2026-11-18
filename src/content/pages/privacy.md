@@ -1,6 +1,6 @@
 ---
 title: "Privacy - Customer Privacy Policy - DoGood Agency"
-description: "Learn our Privacy Promise at DoGood Agency. We have pure commitment in safeguarding your data as we prioritize and respect your privacy with integrity."
+description: "How DoGood collects, uses and protects personal data when you use dogoodagency.co or work with us, and the rights you have over your data."
 bandTint: "#F5F2FF"
 bandGroups:
   - "1-4"

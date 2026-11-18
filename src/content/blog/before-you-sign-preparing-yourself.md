@@ -1,5 +1,6 @@
 ---
 title: "Before you sign: how to prepare yourself to sell your business"
+seoTitle: "How to prepare yourself to sell your business | DoGood"
 description: "How to prepare yourself to sell your business: who you want to be without the company, why it takes 12 to 18 months, and the signs you're personally ready."
 audience: founder
 category: preparing-for-exit

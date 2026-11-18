@@ -6,6 +6,110 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 8: booking renames, all thank-you pages, method pages, advisor buttons, SEO meta, accessibility, crawler lockdown (18 Nov 2026, late night)
+
+**Made by:** Claude (claude.ai). **Branch:** `claude/preview-6`. **Commit:** see `git log` (update 8).
+
+### 1. Booking pages renamed (Seb: no dashes in the new slugs)
+
+| Old | New | Thank-you page |
+|---|---|---|
+| /pre-frp | /prefrp | /prefrp-thankyou (map + case study V, existing) |
+| /frpfit | /frpfit (unchanged) | /frpfit-thankyou: map + case study J (alternates with prefrp) |
+| /claritysprints | /clarity | /clarity-thankyou: case study V, no map |
+| /orientation-call | /orientation | /orientation-thankyou: case study V (booking page shows J), no map |
+| /internal | /internal (unchanged) | /internal-thankyou: no map, no case study |
+| /internal-60 | /internal60 | /internal60-thankyou: no map, no case study |
+| /catchup | /catchup (unchanged) | /catchup-thankyou: no map, no case study |
+
+- Files: `git mv` of `pre-frp.astro`, `claritysprints.astro`, `orientation-call.astro`,
+  `internal-60.astro`; canonicals updated. TidyCal embed slugs are unchanged
+  (`dogoodagency/pre-frp` etc. are TidyCal's own addresses).
+- New thank-you pages in `src/pages/*-thankyou.astro`, all on `ThankYouPage`
+  (noindex, out of the sitemap). Copy word for word from the old Wix markdown;
+  the Clarity Sprints step headings became bold-led paragraphs. Internal 60 has
+  no old page, so it uses the Internal Sync text.
+- Removed the old markdown copies in `src/content/pages/` (13 files: the booking
+  pages and their thank-you pages). `[...slug].astro` keeps a guard list.
+- `public/_redirects`: 301s /pre-frp, /claritysprints, /claritysprints-thankyou,
+  /orientation-call, /orientation-call-thankyou, /internal-60, /internal-60-thankyou.
+- Internal links updated: `/exit-prep` "Book a free call" (both) → **/prefrp**
+  (Seb); FAQs and `stage1-tc.md` → /clarity and /orientation.
+- `astro.config.mjs` sitemap filter: new slugs plus `clarity`.
+- **/clarity is not for Google** (Seb): `noindex, nofollow`, out of the sitemap,
+  removed from `llms.txt`. Added three client testimonials (new
+  `src/components/BookingTestimonials.astro`; Michael R, Christian V, Manfred T,
+  quotes word for word from `src/data/homepage.ts`) above the case study.
+- `booking.css`: lower band (testimonials, case study) now sits on the purple side
+  on desktop; numbered lists styled. `thankyou.css`: text after the map.
+- **Seb, in TidyCal:** set each booking type's redirect to the new thank-you
+  address (prefrp-thankyou, frpfit-thankyou, clarity-thankyou,
+  orientation-thankyou, internal-thankyou, internal60-thankyou, catchup-thankyou).
+  The old ones still work through the 301s.
+
+### 2. New method pages (Seb: content from the PDFs for now)
+
+- `/clarityvalue-shift` (Stage 1) and `/nextlife-passage` (Stage 2): new
+  `src/components/FrameworkPage.astro` + `src/styles/framework.css`, built on
+  the Exit-Prep look. Hero, the 4 steps, what you get, what to expect, where it
+  fits (both stages, linked to each other), call to action. Step texts, purpose
+  and deliverables from the 1-page PDFs (ClarityValue Shift v3.3, NextLife
+  Passage v2.2) and `src/data/how-it-works.ts`; a few framing lines are Claude's
+  first draft for Seb to review. HowTo structured data.
+- Indexable (in the sitemap once launched), linked under **Explore** in the
+  footer, and added to `llms.txt`.
+
+### 3. /for-advisors buttons (Seb)
+
+- Hero: "Book an intro call" removed.
+- "Become a partner" → two buttons: **Exit advisors: become a partner** (/exit)
+  and **Wealth advisors: become a partner** (/wealth).
+- Closing "Book an intro call" (Claude's call): same split, **Exit advisors: book
+  an intro call** / **Wealth advisors: book an intro call**, email link kept. It
+  used to go to /internal, the private internal-sync calendar. No page now links
+  to /internal.
+
+### 4. SEO meta pass (titles and descriptions only, no page copy changed)
+
+From the keyword map. Home, /exit-prep, /the-reset, /for-advisors,
+/for-advisors/client-tools, /faqs, /wayfinders/seb, /newsletter, /insights, the
+three category pages, /apply-stage-1, /clarity-first-guarantee-terms, /privacy,
+/terms, /wayfinders/clientfit, /dogood-insider. Articles got a shorter
+`seoTitle` (new optional field in `src/content.config.ts`; the H1 is unchanged).
+Categories got optional `seoTitle`/`seoDescription` in `src/data/blog.ts`.
+Newsletter title: "The DoGood newsletter: life after the sale, in your inbox";
+its description no longer reuses the page's hero line. Image alts checked across
+the build: every image has an alt; empty alts are decorative icons next to text.
+
+### 5. Keyboard and mobile menu check (Playwright + axe-core, WCAG 2 A/AA)
+
+- Skip link works; every link and button shows a focus style.
+- **Fixed:** desktop mega menus ("How it works", "Advisor Center") couldn't be
+  reached with Tab. `Header.astro`: Tab from the open trigger goes into the
+  menu, Tab past the last link goes on; Shift+Tab goes back. `home.css`: the menu
+  becomes visible at once on open (a transitioned `visibility` blocked focus).
+- Mobile menu: opens with Enter, focus goes into it and stays there, Escape
+  closes it and returns focus to the button; hidden when closed.
+- **Fixed contrast** (small pink and grey text below 4.5:1): pink eyebrows and
+  labels on /the-reset, /how-it-works, /exit-prep and /wayfinders now PINK 600
+  `#c10e46`; homepage grey captions `#8b7dae` → `#6b5c93`.
+- axe: 0 violations on the 24 pages checked.
+
+### 6. Crawler lockdown (Seb: not discoverable by any crawler until launch)
+
+- `public/robots.txt`: Screaming Frog exception and the `Sitemap:` line removed;
+  `Disallow: /` for all.
+- `netlify.toml`: `X-Robots-Tag = "noindex, nofollow"`.
+- `src/layouts/Base.astro`: default robots meta `"noindex, nofollow"`.
+
+### Launch day changes to the list above
+
+- `public/robots.txt`: replace the whole file with `User-agent: *`, `Allow: /`
+  and the `Sitemap:` line (instructions are in the file).
+- Keep `noindex` on /clarity, all booking and thank-you pages (they set it themselves).
+
+---
+
 ## Preview 6, update 7: TidyCal purple row covered, article 5 (18 Nov 2026, night)
 
 **Made by:** Claude (claude.ai). **Branch:** `claude/preview-6`. **Commits:** `c47e2a1`, `c9f675c`, `3df60ce`.

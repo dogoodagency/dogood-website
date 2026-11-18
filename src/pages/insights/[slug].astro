@@ -127,7 +127,7 @@ const faqJson = d.faq.length
 ---
 
 <Base
-  title={`${d.title} | DoGood Agency`}
+  title={d.seoTitle ?? `${d.title} | DoGood Agency`}
   description={d.description}
   canonical={url}
   ogTitle={d.title}

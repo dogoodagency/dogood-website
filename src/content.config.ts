@@ -30,6 +30,8 @@ const blog = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/blog" }),
   schema: z.object({
     title: z.string(),
+    /** Optional shorter <title> for search results (keep under ~60 characters). The H1 stays `title`. */
+    seoTitle: z.string().optional(),
     description: z.string().max(160),
     audience: z.enum(["founder", "advisor", "both"]),
     category: z.enum(categorySlugs),

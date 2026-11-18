@@ -22,6 +22,9 @@ export interface BlogCategory {
   description: string;
   intro: string;
   sketch: string;
+  /** Optional search-result title and description (meta only; the page heading and intro stay as they are). */
+  seoTitle?: string;
+  seoDescription?: string;
 }
 
 /**
@@ -34,6 +37,8 @@ export const categories: BlogCategory[] = [
     name: "Preparing for exit",
     audience: "founder",
     description: "Getting yourself ready for the sale, not just the company.",
+    seoTitle: "Preparing to sell your business | DoGood Insights",
+    seoDescription: "Notes on preparing to sell your business: getting yourself ready for the sale, not just the company. For founders who haven't sold yet.",
     intro:
       "The deal has a timeline. You do too, and it is a different one. These notes are for founders who haven't sold yet and want to look at the personal side early, while there is still room to shape it.",
     sketch: "/sketches/how-it-works-two-stage-path-sketch",
@@ -43,6 +48,8 @@ export const categories: BlogCategory[] = [
     name: "The first 90 days after the sale",
     audience: "founder",
     description: "What the first three months after closing really feel like.",
+    seoTitle: "Life after selling a business | DoGood Insights",
+    seoDescription: "Life after selling a business: what the first three months after closing really feel like, and what tends to help. Notes for founders.",
     intro:
       "The wire has landed and the calendar is suddenly empty. Many founders find the first months strange, flat or restless. These notes describe what is common and what tends to help.",
     sketch: "/sketches/life-after-exit-machine",
@@ -88,6 +95,8 @@ export const categories: BlogCategory[] = [
     name: "Working with founders",
     audience: "advisor",
     description: "For advisors: raising the personal side with clients.",
+    seoTitle: "For exit planning advisors: the founder side | DoGood Insights",
+    seoDescription: "For exit planning advisors: how to raise the personal side of the sale with founder clients, and when to bring in support. Notes from DoGood.",
     intro:
       "You see the deal up close. You also see the person behind it. These notes are for advisors who want to raise the personal side of an exit with clients in a way that feels natural and respectful.",
     sketch: "/sketches/podcast-two-chairs-microphone",

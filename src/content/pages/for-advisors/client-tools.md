@@ -1,5 +1,5 @@
 ---
-title: "Free Toolkit for Advisors | DoGood Agency"
+title: "Founder exit readiness tools | DoGood Agency"
 description: "Free tools for exit and succession advisors: a readiness check for your clients, a guide to spotting when a founder needs help, and a life-after-the-sale planner."
 hideOptin: true
 ---

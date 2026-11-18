@@ -1,5 +1,6 @@
 ---
 title: "The emotions of selling a business: before, during and after"
+seoTitle: "The emotions of selling a business | DoGood Agency"
 description: "The emotions of selling a business: why founders get cold feet before signing, how feelings can stall a deal, and the relief, guilt and grief after closing."
 audience: founder
 category: preparing-for-exit

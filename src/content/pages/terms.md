@@ -1,6 +1,6 @@
 ---
 title: "Terms - Legal Terms and Conditions - DoGood Agency"
-description: "Explore our terms for transparency and clarity at DoGood Agency's. Understand our commitment to ethical practices as we collaborate for impactful creative solutions."
+description: "The terms that apply when you use dogoodagency.co and DoGood Agency's services."
 bandTint: "#F3FFFB"
 bandGroups:
   - "1-6"

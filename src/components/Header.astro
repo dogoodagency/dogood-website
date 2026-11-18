@@ -340,6 +340,33 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
       setMenu(true);
       menu.querySelector("a")?.focus();
     });
+    // Keyboard check, 18 Nov 2026: the mega menu sits elsewhere in the DOM, so plain Tab skipped its links.
+    // Tab from the open trigger now goes into the menu; Tab past its last link goes on to the next top-level
+    // link, and Shift+Tab from its first link goes back to the trigger.
+    const menuLinks = () => [...menu.querySelectorAll("a")];
+    link.addEventListener("keydown", (event) => {
+      if (event.key !== "Tab" || event.shiftKey || !desktopMenu() || !menuOpen()) return;
+      const first = menuLinks()[0];
+      if (!first) return;
+      event.preventDefault();
+      first.focus();
+    });
+    menu.addEventListener("keydown", (event) => {
+      if (event.key !== "Tab" || !desktopMenu()) return;
+      const links = menuLinks();
+      if (!event.shiftKey && document.activeElement === links[links.length - 1]) {
+        const tops = [...header.querySelectorAll(".nav-links > li > a"), document.querySelector("a.nav-apply")];
+        const next = tops[tops.indexOf(link) + 1];
+        if (next instanceof HTMLElement) {
+          event.preventDefault();
+          setMenu(false);
+          next.focus();
+        }
+      } else if (event.shiftKey && document.activeElement === links[0]) {
+        event.preventDefault();
+        link.focus();
+      }
+    });
     document.addEventListener("keydown", (event) => {
       if (event.key !== "Escape" || !menuOpen() || !desktopMenu()) return;
       closing = true;

@@ -1,6 +1,6 @@
 ---
-title: "Advisor Center | DoGood Agency"
-description: "The Advisor Center: how DoGood works with exit and succession advisors, and free tools to help your clients with life after the sale."
+title: "Exit planning advisors: the personal readiness partner | DoGood"
+description: "For exit planning, succession and wealth advisors: DoGood prepares your founder client personally for the sale and life after it. Free tools and referrals."
 advisorLine: true
 ---
 

@@ -898,3 +898,17 @@ html.adv-js .adv-faq-item:not(.is-open) .adv-faq-panel {
     transition: none;
   }
 }
+
+/* Two partner buttons side by side (Exit advisors, Wealth advisors), Seb 18 Nov 2026. */
+.adv-btn-pair {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px 18px;
+}
+
+.adv-page .adv-btn-pair a.btn-teal,
+.adv-page .adv-cta .adv-card-actions a.btn-teal {
+  white-space: normal;
+  text-align: center;
+}

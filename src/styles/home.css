@@ -3583,6 +3583,9 @@ header.nav .nav-mega.is-open {
   opacity: 1;
   transform: none;
   pointer-events: auto;
+  /* Keyboard check, 18 Nov 2026: become visible at once on open, so focus can move into the menu straight away
+     (a transitioned visibility stays "hidden" for the first frame and focus() fails). Closing still fades. */
+  transition: transform 220ms ease, opacity 220ms ease, visibility 0s;
 }
 
 header.nav .nav-mega-card {
@@ -6281,7 +6284,7 @@ body:has(.page-clarity) .footer-wave {
 .page-contact .contact-privacy,
 .page-contact .contact-privacy a {
   font-size: 12px;
-  color: #8b7dae;
+  color: #6b5c93;
 }
 
 .page-contact .contact-map {
@@ -7153,7 +7156,7 @@ body:has(.page-home) {
   box-shadow: none;
   border-radius: 0;
   padding: 0;
-  color: #8b7dae;
+  color: #6b5c93;
   font-size: 12px;
   font-weight: 400;
   font-style: italic;
@@ -7317,7 +7320,7 @@ body:has(.page-home) {
 .page-home #case-v p.case-who,
 .page-apply #case-j p.case-who,
 .page-clarity #case-v p.case-who {
-  color: #8b7dae;
+  color: #6b5c93;
 }
 
 .page-home #asseen .asseen-frame {

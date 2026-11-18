@@ -18,6 +18,15 @@
 /podcast/building-tomorrow’s-culture            /podcast/building-tomorrows-culture    301
 /podcast/building-tomorrow%E2%80%99s-culture    /podcast/building-tomorrows-culture    301
 
+# Booking pages renamed (Seb, 18 Nov 2026): no dashes in the new slugs
+/pre-frp                                        /prefrp                                301
+/claritysprints                                 /clarity                               301
+/claritysprints-thankyou                        /clarity-thankyou                      301
+/orientation-call                               /orientation                           301
+/orientation-call-thankyou                      /orientation-thankyou                  301
+/internal-60                                    /internal60                            301
+/internal-60-thankyou                           /internal60-thankyou                   301
+
 # Removed for good (410 = gone): old SME content
 /post/*                                         /404.html                              410!
 /blog/*                                         /404.html                              410!

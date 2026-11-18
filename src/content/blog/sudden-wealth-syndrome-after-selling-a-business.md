@@ -1,5 +1,6 @@
 ---
 title: "Sudden wealth syndrome after selling your business"
+seoTitle: "Sudden wealth syndrome after selling a business | DoGood"
 description: "Sudden wealth syndrome after selling your business: why a good exit can leave founders feeling empty, what helps in the first year, and when to get support."
 audience: founder
 category: after-the-sale

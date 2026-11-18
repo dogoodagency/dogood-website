@@ -1,6 +1,6 @@
 ---
 title: "Client-Fit Process | DoGood Agency"
-description: "A private 30-day Intensive for founders navigating life after exit. Start with Stage 1 of the Founder Reclamation Partnership. 5 founders a month."
+description: "How DoGood matches founders to a Wayfinder: fit first, then time zone, with an early checkpoint so the match can be corrected quickly if it feels wrong."
 ---
 # Client-Fit Process
 

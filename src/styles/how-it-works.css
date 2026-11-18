@@ -292,7 +292,7 @@ body:has(.hw-page) .footer-wave {
 
 .hw-page .hw-eyebrow {
   margin: 0 0 8px;
-  color: var(--hw-pink);
+  color: #c10e46; /* PINK 600: small text needs 4.5:1 on white and lilac (accessibility check, 18 Nov 2026) */
   font-size: 14px;
   font-weight: 800;
   letter-spacing: 0.1em;
@@ -1201,4 +1201,11 @@ body:has(.hw-page) .footer-wave {
   .hw-quotes {
     grid-template-columns: minmax(0, 1fr);
   }
+}
+
+/* Accessibility check, 18 Nov 2026: small pink text uses PINK 600 for a 4.5:1 contrast on white and lilac. */
+.hw-page .hw-wf-access,
+.hw-page a.hw-wf-hub,
+.hw-page .hw-step-n {
+  color: #c10e46;
 }

@@ -9,15 +9,11 @@ export async function getStaticPaths() {
   // Booking pages with their own routes (src/pages/<slug>.astro). The markdown stays; thank-you pages are untouched.
   // Kept inside getStaticPaths because Astro runs it in an isolated scope.
   const bookingSlugs = new Set([
-    "internal",
-    "internal-60",
-    "catchup",
-    "claritysprints",
-    "pre-frp",
-    "frpfit",
-    "orientation-call",
-    // Thank-you pages with their own route in the booking style (src/pages/<slug>.astro).
-    "prefrp-thankyou",
+    // All booking and booking thank-you pages now have their own routes (src/pages/<slug>.astro);
+    // their markdown files were removed on 18 Nov 2026. Kept as a guard in case one is re-added.
+    "internal", "internal60", "catchup", "clarity", "prefrp", "frpfit", "orientation",
+    "internal-thankyou", "internal60-thankyou", "catchup-thankyou", "clarity-thankyou",
+    "prefrp-thankyou", "frpfit-thankyou", "orientation-thankyou",
   ]);
   const pages = await getCollection("pages");
   return pages
@@ -70,7 +66,7 @@ const pageNames: Record<string, string> = {
   "thank-you": "Thank you",
   wayfinders: "Wayfinders",
   "wayfinders/chantill": "Chantill",
-  "wayfinders/clientfit": "Client-Fit",
+  "wayfinders/clientfit": "How we match you with a Wayfinder",
   "wayfinders/katrin": "Katrin",
   "wayfinders/seb": "Seb",
   "wayfinders/shiva": "Shiva",
@@ -80,7 +76,7 @@ const pageNames: Record<string, string> = {
 const named = pageNames[slug];
 const stripped = entry.data.title.replace(/\s*\|\s*DoGood (Founders|Agency)\s*$/i, "").trim();
 const pageTitle =
-  entry.data.title === "Free Toolkit for Advisors | DoGood Agency" ||
+  entry.data.title === "Founder exit readiness tools | DoGood Agency" ||
   entry.data.title === "Insights for Advisors | DoGood Agency"
     ? entry.data.title
     : named
