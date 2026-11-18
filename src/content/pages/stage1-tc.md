@@ -1,10 +1,10 @@
 ---
-title: "Apply for Stage 1: The Intensive (30 days) | DoGood Founders"
+title: "Apply for Stage 1: The Intensive (30 days) | DoGood Agency"
 description: "Apply for Stage 1: The Intensive (30 days)—the entry point to the Founder Reclamation Partnership. For USD 6M+ founders or post-exit. Takes 5–10 min; reply in 24 hrs. Expect 5–6 hrs/week. Private, no cohorts."
 ---
 # Important Acknowledment
 
-# Read before you Submit
+## Read before you Submit
 
 To keep things simple and clean, I confirm that:
 

@@ -1,5 +1,5 @@
 ---
-title: "Shiva, Wayfinder for the Gulf | DoGood Founders"
+title: "Shiva, Wayfinder for the Gulf | DoGood Agency"
 description: "Meet Shiva, DoGood Wayfinder for the Gulf, North Africa and East Asia, for founders between worlds: post-exit, mid-collapse, or before the crash."
 ---
 # Shiva | Gulf Hub

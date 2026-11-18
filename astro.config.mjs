@@ -9,7 +9,10 @@ export default defineConfig({
   trailingSlash: "never",
   integrations: [sitemap({
     // Sample Insights articles are noindex for now; remove this filter at launch when real articles replace them.
-    filter: (page) => !/\/insights\/(?!category\/)[^/]+\/?$/.test(page),
+    filter: (page) =>
+      !/\/insights\/(?!category\/)[^/]+\/?$/.test(page) &&
+      // Thank-you, booking and form-acknowledgement pages stay out of the sitemap (and are noindex).
+      !/\/([a-z0-9-]*thankyou|thank-you|newsletter\/thanks|stage1-tc|internal|internal-60|catchup|pre-frp|frpfit|orientation-call|teams)\/?$/.test(page),
   })],
   vite: {
     plugins: [tailwindcss()],

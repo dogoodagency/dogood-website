@@ -1,5 +1,5 @@
 ---
-title: "Orientation Call | DoGood Founders"
+title: "Orientation Call | DoGood Agency"
 description: "A short call to get oriented, clarify fit and timing, and choose the right next step (or a clear “not now”). Not a free consult, audit, or strategy build-out."
 tidycal: "dogoodagency/orientation-call"
 ---

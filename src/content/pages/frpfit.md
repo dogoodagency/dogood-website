@@ -1,5 +1,5 @@
 ---
-title: "FRP-Fit Call  | DoGood Founders"
+title: "FRP-Fit Call | DoGood Agency"
 description: "Book a private Fit Call to confirm alignment for the Founder Reclamation Partnership. Confidential, selective, founders only."
 tidycal: "dogoodagency/frpfit"
 ---

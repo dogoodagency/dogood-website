@@ -65,6 +65,18 @@ const [houseBefore, houseStage1, houseStage2] = houses;
   footerStrip={tint}
   footerEdge={footerEdge}
 >
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: "Founder Reclamation Partnership: Stage 1 The Reset",
+      url: "https://www.dogoodagency.co/the-reset",
+      description: "A private 1:1 engagement for founders after exit. Stage 1, The Reset, runs for 30 days; Stage 2, The Build, is by invitation.",
+      serviceType: "1:1 founder coaching",
+      provider: { "@id": "https://www.dogoodagency.co/#organization" },
+      audience: { "@type": "Audience", audienceType: "Founders before or after an exit" },
+      areaServed: "Worldwide",
+      additionalProperty: { "@type": "PropertyValue", name: "Duration", value: "30 days (Stage 1); 12 weeks (Stage 2, by invitation)" },
+    })} />
   <article class="hw-page">
     <!-- 1. Hero -->
     <header class="hw-hero">

@@ -18,7 +18,7 @@ interface Props {
 }
 
 const title =
-  Astro.props.title ?? "DoGood Founders | A 30-Day Engagement for Life After Exit";
+  Astro.props.title ?? "A 30-Day Engagement for Life After Exit | DoGood Agency";
 const description =
   Astro.props.description ??
   "You built the company and got out, but it doesn't feel how you expected. Start with a private 30-day engagement for founders navigating life after exit.";
@@ -33,7 +33,8 @@ const bodyStyle = [
 ]
   .filter(Boolean)
   .join(";");
-const ogTitle = Astro.props.ogTitle ?? "DoGood Founders";
+// Link previews (WhatsApp, LinkedIn, Slack) show og:title, so default it to the page title.
+const ogTitle = Astro.props.ogTitle ?? title;
 const ogDescription = Astro.props.description
   ? description
   : "A private 30-day engagement for founders navigating life after exit. Start with Stage 1 of the Founder Reclamation Partnership. 5 founders a month.";
@@ -47,10 +48,12 @@ const robots = Astro.props.robots ?? "noindex";
 const organization = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "DoGood Agency LLC",
-  url: canonical,
-  logo: new URL("/logo.svg", canonical).href,
-  description,
+  "@id": "https://www.dogoodagency.co/#organization",
+  name: "DoGood Agency",
+  legalName: "DoGood Agency LLC",
+  url: "https://www.dogoodagency.co/",
+  logo: "https://www.dogoodagency.co/logo.svg",
+  description: "1:1 coaching for founders before and after an exit.",
   address: {
     "@type": "PostalAddress",
     streetAddress: "30 N Gould St Ste N",
@@ -91,7 +94,7 @@ const organization = {
     <meta property="og:description" content={ogDescription} />
     <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:site_name" content={ogTitle} />
+    <meta property="og:site_name" content="DoGood Agency" />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />

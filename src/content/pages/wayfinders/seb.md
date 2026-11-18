@@ -1,5 +1,5 @@
 ---
-title: "Seb, Wayfinder for Asia-Pacific | DoGood Founders"
+title: "Seb, Wayfinder for Asia-Pacific | DoGood Agency"
 description: "Meet Seb, DoGood Wayfinder for Asia-Pacific and the US: a founder whose successful business nearly broke him, now guiding founders through their reset."
 ---
 # Seb | Asia-Pacific Hub

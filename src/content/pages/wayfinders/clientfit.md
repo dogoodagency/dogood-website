@@ -1,5 +1,5 @@
 ---
-title: "Client-Fit Process | DoGood Founders"
+title: "Client-Fit Process | DoGood Agency"
 description: "A private 30-day Intensive for founders navigating life after exit. Start with Stage 1 of the Founder Reclamation Partnership. 5 founders a month."
 ---
 # Client-Fit Process

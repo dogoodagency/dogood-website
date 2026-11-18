@@ -81,8 +81,8 @@ const pageNames: Record<string, string> = {
 const named = pageNames[slug];
 const stripped = entry.data.title.replace(/\s*\|\s*DoGood (Founders|Agency)\s*$/i, "").trim();
 const pageTitle =
-  entry.data.title === "Free Toolkit for Advisors | DoGood" ||
-  entry.data.title === "Insights for Advisors | DoGood"
+  entry.data.title === "Free Toolkit for Advisors | DoGood Agency" ||
+  entry.data.title === "Insights for Advisors | DoGood Agency"
     ? entry.data.title
     : named
       ? `${named} | DoGood Agency`
@@ -156,6 +156,7 @@ const footerEdge = edgeAbove(bandStrip);
   hideOptin={entry.data.hideOptin}
   footerStrip={banded ? bandStrip : undefined}
   footerEdge={banded ? footerEdge : undefined}
+  robots={/thankyou$|^thank-you$|^newsletter\/thanks$|^stage1-tc$/.test(slug) ? "noindex" : undefined}
   ogTitle={slug === "for-advisors" || slug.startsWith("for-advisors/") ? pageTitle : undefined}
 >
   {banded ? (

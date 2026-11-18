@@ -4,7 +4,7 @@ description: "Book a short Team Readiness & Timing Call to confirm sequence, tim
 ---
 # Team Readiness & Timing Call
 
-# Thank you – You're booked
+## Thank you – You're booked
 
 Welcome to <span class="pink-soft"><strong>FOUNDER</strong>land</span>.
 

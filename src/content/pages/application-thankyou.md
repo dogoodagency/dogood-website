@@ -1,5 +1,5 @@
 ---
-title: "FRP-Fit Application | DoGood Founders"
+title: "FRP-Fit Application | DoGood Agency"
 description: "Founder Reclamation Partnership | Stage 1: The Intensive (30 days)"
 ---
 # Application Received

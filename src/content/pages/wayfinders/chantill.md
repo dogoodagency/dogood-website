@@ -1,5 +1,5 @@
 ---
-title: "Chantill, Wayfinder for North America | DoGood Founders"
+title: "Chantill, Wayfinder for North America | DoGood Agency"
 description: "Meet Chantill, DoGood Wayfinder for North America and Canada: a deeply relational partner for founders who feel lost and want a path back to themselves."
 ---
 # Chantill | North America Hub

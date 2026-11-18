@@ -1,5 +1,5 @@
 ---
-title: "Contact | DoGood Founders"
+title: "Contact | DoGood Agency"
 description: "Let's talk. Founders can apply for Stage 1, advisors can book an intro call, and everyone else can send a short message."
 hideOptin: true
 ---

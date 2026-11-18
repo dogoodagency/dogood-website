@@ -1,5 +1,5 @@
 ---
-title: "Meet the Wayfinders | DoGood Founders"
+title: "Meet the Wayfinders | DoGood Agency"
 description: "Meet the small team of Wayfinders who guide founders through the Founder Reclamation Partnership, with over 70 years of combined founder experience."
 ---
 # Meet all Wayfinders

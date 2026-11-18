@@ -1,5 +1,5 @@
 ---
-title: "404 Error Page | DoGood Founders"
+title: "404 Error Page | DoGood Agency"
 description: "A private 30-day Intensive for founders navigating life after exit. Start with Stage 1 of the Founder Reclamation Partnership. 5 founders a month."
 ---
 # Page not found

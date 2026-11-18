@@ -1,5 +1,5 @@
 ---
-title: "Katrin, Wayfinder for Europe | DoGood Founders"
+title: "Katrin, Wayfinder for Europe | DoGood Agency"
 description: "Meet Katrin, DoGood Wayfinder for Europe, the UK and Central America, for founders whose personal life starts to affect how they lead and decide."
 ---
 # Katrin | Europe Hub

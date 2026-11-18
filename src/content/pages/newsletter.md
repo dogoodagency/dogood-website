@@ -1,5 +1,5 @@
 ---
-title: "The first 90 days after exit | DoGood Founders"
+title: "The first 90 days after exit | DoGood Agency"
 description: "A short guide of seven questions to ask before your next move, and researched notes on life after exit, every two weeks."
 ---
 

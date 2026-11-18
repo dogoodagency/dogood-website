@@ -56,7 +56,7 @@ function build(
 
 export const profiles: Record<string, WayfinderProfile> = {
   seb: build(
-    "Seb, Wayfinder for Asia-Pacific | DoGood Founders",
+    "Seb, Wayfinder for Asia-Pacific | DoGood Agency",
     "Meet Seb, DoGood Wayfinder for Asia-Pacific and the US: a founder whose successful business nearly broke him, now guiding founders through their reset.",
     "Seb",
     [
@@ -92,7 +92,7 @@ export const profiles: Record<string, WayfinderProfile> = {
   ),
 
   vlora: build(
-    "Vlora, Wayfinder for the Atlantic Hub | DoGood Founders",
+    "Vlora, Wayfinder for the Atlantic Hub | DoGood Agency",
     "Meet Vlora, DoGood Wayfinder for Western Europe and South America, for founders at turning points, from high growth to life after exit.",
     "Vlora",
     [
@@ -130,7 +130,7 @@ export const profiles: Record<string, WayfinderProfile> = {
   ),
 
   shiva: build(
-    "Shiva, Wayfinder for the Gulf | DoGood Founders",
+    "Shiva, Wayfinder for the Gulf | DoGood Agency",
     "Meet Shiva, DoGood Wayfinder for the Gulf, North Africa and East Asia, for founders between worlds: post-exit, mid-collapse, or before the crash.",
     "Shiva",
     [
@@ -165,7 +165,7 @@ export const profiles: Record<string, WayfinderProfile> = {
   ),
 
   katrin: build(
-    "Katrin, Wayfinder for Europe | DoGood Founders",
+    "Katrin, Wayfinder for Europe | DoGood Agency",
     "Meet Katrin, DoGood Wayfinder for Europe, the UK and Central America, for founders whose personal life starts to affect how they lead and decide.",
     "Katrin",
     [
@@ -203,7 +203,7 @@ export const profiles: Record<string, WayfinderProfile> = {
   ),
 
   chantill: build(
-    "Chantill, Wayfinder for North America | DoGood Founders",
+    "Chantill, Wayfinder for North America | DoGood Agency",
     "Meet Chantill, DoGood Wayfinder for North America and Canada: a deeply relational partner for founders who feel lost and want a path back to themselves.",
     "Chantill",
     [

@@ -1,5 +1,5 @@
 ---
-title: "Stories | DoGood Founders"
+title: "Stories | DoGood Agency"
 description: "Anonymised stories from founders we have worked with, plus words from leaders at organisations our team has partnered with."
 ---
 

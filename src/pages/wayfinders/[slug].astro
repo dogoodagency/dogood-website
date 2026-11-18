@@ -35,7 +35,8 @@ const jsonLd = {
       description: profile.seoDescription,
       url: pageUrl,
       image: `${site}${w.photo.base}@2x.webp`,
-      worksFor: { "@type": "Organization", "@id": orgId, name: "DoGood Agency LLC", url: `${site}/` },
+      worksFor: { "@type": "Organization", "@id": orgId, name: "DoGood Agency", url: `${site}/` },
+      ...(w.url === "/wayfinders/seb" ? { sameAs: ["https://www.linkedin.com/in/sebwichmann/"] } : {}),
     },
     {
       "@type": "BreadcrumbList",

@@ -1,5 +1,5 @@
 ---
-title: "Vlora, Wayfinder for the Atlantic Hub | DoGood Founders"
+title: "Vlora, Wayfinder for the Atlantic Hub | DoGood Agency"
 description: "Meet Vlora, DoGood Wayfinder for Western Europe and South America, for founders at turning points, from high growth to life after exit."
 ---
 # Vlora | Atlantic Hub

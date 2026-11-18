@@ -1,5 +1,5 @@
 ---
-title: "You're on the list | DoGood Founders"
+title: "You're on the list | DoGood Agency"
 description: "Thanks for joining. The guide is still being written, and the notes start in December."
 hideOptin: true
 ---

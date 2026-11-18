@@ -1,5 +1,5 @@
 ---
-title: "Apply for Stage 1: The Reset (30 Days) | DoGood Founders"
+title: "Apply for Stage 1: The Reset (30 Days) | DoGood Agency"
 description: "Apply for Stage 1: The Reset, a private 30-day Intensive for founders after exit. Takes 5–10 minutes and is reviewed within 24 hours."
 ---
 # Stage 1: The Reset (30 days)

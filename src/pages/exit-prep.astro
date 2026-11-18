@@ -34,6 +34,18 @@ const quotes = [
   footerStrip={tint}
   footerEdge={footerEdge}
 >
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: "Exit-Prep",
+      url: "https://www.dogoodagency.co/exit-prep",
+      description: "Six weekly 1:1 sessions for founders who haven't sold yet: prepare yourself, not just the company. Fully remote.",
+      serviceType: "1:1 founder coaching",
+      provider: { "@id": "https://www.dogoodagency.co/#organization" },
+      audience: { "@type": "Audience", audienceType: "Founders preparing to sell their company" },
+      areaServed: "Worldwide",
+      additionalProperty: { "@type": "PropertyValue", name: "Duration", value: "Six weekly sessions" },
+    })} />
   <article class="ep-page">
     <header class="ep-hero">
       <div class="ep-hero-inner">
