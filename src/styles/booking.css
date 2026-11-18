@@ -571,8 +571,8 @@ body:has(.bk-page) .footer-wave {
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 43.33%;
-    height: 56px;
+    width: 43.1%; /* stops just left of the "Powered by TidyCal" badge */
+    height: 80px;
     background: #fff;
     pointer-events: none;
   }
