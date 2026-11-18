@@ -3,6 +3,11 @@
 #   Allow: /
 # Also remove the noindex meta tag in src/layouts/Base.astro
 # (search for "noindex").
+# Preview 6 only: lets Screaming Frog crawl the deploy preview for the
+# pre-launch audit. Remove these two lines at launch.
+User-agent: Screaming Frog SEO Spider
+Allow: /
+
 User-agent: *
 Disallow: /
 

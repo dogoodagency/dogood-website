@@ -4,7 +4,7 @@ Articles are plain text files. You do not need to touch any code to publish one.
 
 Naming note: the public name is "Insights" and the web address is `/insights`. Internally the content collection is still called `blog`, and the folder is still `src/content/blog/`, along with `src/data/blog.ts`, `src/styles/blog*.css` and the `Blog*` components. Those are internal names only and visitors never see them, so they were left as they are.
 
-Old `/blog/...` addresses redirect (301) to the matching `/insights/...` address, both in `astro.config.mjs` and `netlify.toml`. If you add an article or category that already has a public `/blog/...` link, add a redirect for it too.
+`/blog` redirects (301) to `/insights`. Every other `/blog/...` address returns 410 Gone, because on the old Wix site those were SME blog categories that were retired on purpose. The rules live in `public/_redirects` (see CHANGELOG.md, preview 6).
 
 Where things live:
 

@@ -7,6 +7,10 @@
 [build.environment]
   NODE_VERSION = "22"
 
+# Redirects and 410s for the old Wix site live in public/_redirects
+# (Netlify reads that file before the rules below). The rules here are
+# only for renamed pages on the new site.
+
 [[redirects]]
   from = "/for-advisors/resources"
   to = "/for-advisors/client-tools"
@@ -15,16 +19,6 @@
 [[redirects]]
   from = "/for-advisors/resources/"
   to = "/for-advisors/client-tools"
-  status = 301
-
-[[redirects]]
-  from = "/founders"
-  to = "/how-it-works"
-  status = 301
-
-[[redirects]]
-  from = "/founders/"
-  to = "/how-it-works"
   status = 301
 
 [[redirects]]
@@ -57,247 +51,6 @@
   to = "/wayfinders/clientfit"
   status = 301
 
-[[redirects]]
-  from = "/benchmark"
-  to = "/"
-  status = 301
-
-[[redirects]]
-  from = "/benchmark/"
-  to = "/"
-  status = 301
-
-[[redirects]]
-  from = "/chat"
-  to = "/"
-  status = 301
-
-[[redirects]]
-  from = "/chat/"
-  to = "/"
-  status = 301
-
-[[redirects]]
-  from = "/podcast-chat"
-  to = "/"
-  status = 301
-
-[[redirects]]
-  from = "/podcast-chat/"
-  to = "/"
-  status = 301
-
-[[redirects]]
-  from = "/culture-teams"
-  to = "/"
-  status = 301
-
-[[redirects]]
-  from = "/culture-teams/*"
-  to = "/"
-  status = 301
-
-[[redirects]]
-  from = "/culture-build-employee-engagement-consulting"
-  to = "/"
-  status = 301
-
-[[redirects]]
-  from = "/skill-boost-employee-training-and-development"
-  to = "/"
-  status = 301
-
-[[redirects]]
-  from = "/sop-development"
-  to = "/"
-  status = 301
-
-[[redirects]]
-  from = "/strategic-hiring-and-employee-onboarding"
-  to = "/"
-  status = 301
-
-# Blog renamed to Insights
-[[redirects]]
-  from = "/blog"
-  to = "/insights"
-  status = 301
-
-[[redirects]]
-  from = "/blog/"
-  to = "/insights"
-  status = 301
-
-[[redirects]]
-  from = "/blog/rss.xml"
-  to = "/insights/rss.xml"
-  status = 301
-
-[[redirects]]
-  from = "/blog/category/preparing-for-exit"
-  to = "/insights/category/preparing-for-exit"
-  status = 301
-
-[[redirects]]
-  from = "/blog/category/preparing-for-exit/"
-  to = "/insights/category/preparing-for-exit"
-  status = 301
-
-[[redirects]]
-  from = "/blog/category/after-the-sale"
-  to = "/insights/category/after-the-sale"
-  status = 301
-
-[[redirects]]
-  from = "/blog/category/after-the-sale/"
-  to = "/insights/category/after-the-sale"
-  status = 301
-
-[[redirects]]
-  from = "/blog/category/identity-and-purpose"
-  to = "/insights/category/identity-and-purpose"
-  status = 301
-
-[[redirects]]
-  from = "/blog/category/identity-and-purpose/"
-  to = "/insights/category/identity-and-purpose"
-  status = 301
-
-[[redirects]]
-  from = "/blog/category/health-and-energy"
-  to = "/insights/category/health-and-energy"
-  status = 301
-
-[[redirects]]
-  from = "/blog/category/health-and-energy/"
-  to = "/insights/category/health-and-energy"
-  status = 301
-
-[[redirects]]
-  from = "/blog/category/relationships-and-family"
-  to = "/insights/category/relationships-and-family"
-  status = 301
-
-[[redirects]]
-  from = "/blog/category/relationships-and-family/"
-  to = "/insights/category/relationships-and-family"
-  status = 301
-
-[[redirects]]
-  from = "/blog/category/whats-next"
-  to = "/insights/category/whats-next"
-  status = 301
-
-[[redirects]]
-  from = "/blog/category/whats-next/"
-  to = "/insights/category/whats-next"
-  status = 301
-
-[[redirects]]
-  from = "/blog/category/working-with-founders"
-  to = "/insights/category/working-with-founders"
-  status = 301
-
-[[redirects]]
-  from = "/blog/category/working-with-founders/"
-  to = "/insights/category/working-with-founders"
-  status = 301
-
-[[redirects]]
-  from = "/blog/category/personal-side-of-exit-planning"
-  to = "/insights/category/personal-side-of-exit-planning"
-  status = 301
-
-[[redirects]]
-  from = "/blog/category/personal-side-of-exit-planning/"
-  to = "/insights/category/personal-side-of-exit-planning"
-  status = 301
-
-[[redirects]]
-  from = "/blog/before-you-sign-preparing-yourself"
-  to = "/insights/before-you-sign-preparing-yourself"
-  status = 301
-
-[[redirects]]
-  from = "/blog/before-you-sign-preparing-yourself/"
-  to = "/insights/before-you-sign-preparing-yourself"
-  status = 301
-
-[[redirects]]
-  from = "/blog/dont-fill-the-calendar-yet"
-  to = "/insights/dont-fill-the-calendar-yet"
-  status = 301
-
-[[redirects]]
-  from = "/blog/dont-fill-the-calendar-yet/"
-  to = "/insights/dont-fill-the-calendar-yet"
-  status = 301
-
-[[redirects]]
-  from = "/blog/first-90-days-after-the-sale"
-  to = "/insights/first-90-days-after-the-sale"
-  status = 301
-
-[[redirects]]
-  from = "/blog/first-90-days-after-the-sale/"
-  to = "/insights/first-90-days-after-the-sale"
-  status = 301
-
-[[redirects]]
-  from = "/blog/raising-the-personal-side-of-exit-with-a-client"
-  to = "/insights/raising-the-personal-side-of-exit-with-a-client"
-  status = 301
-
-[[redirects]]
-  from = "/blog/raising-the-personal-side-of-exit-with-a-client/"
-  to = "/insights/raising-the-personal-side-of-exit-with-a-client"
-  status = 301
-
-[[redirects]]
-  from = "/blog/talking-about-the-next-chapter-at-home"
-  to = "/insights/talking-about-the-next-chapter-at-home"
-  status = 301
-
-[[redirects]]
-  from = "/blog/talking-about-the-next-chapter-at-home/"
-  to = "/insights/talking-about-the-next-chapter-at-home"
-  status = 301
-
-[[redirects]]
-  from = "/blog/who-am-i-without-the-company"
-  to = "/insights/who-am-i-without-the-company"
-  status = 301
-
-[[redirects]]
-  from = "/blog/who-am-i-without-the-company/"
-  to = "/insights/who-am-i-without-the-company"
-  status = 301
-
-[[redirects]]
-  from = "/blog/why-deals-stall-when-the-founder-isnt-ready"
-  to = "/insights/why-deals-stall-when-the-founder-isnt-ready"
-  status = 301
-
-[[redirects]]
-  from = "/blog/why-deals-stall-when-the-founder-isnt-ready/"
-  to = "/insights/why-deals-stall-when-the-founder-isnt-ready"
-  status = 301
-
-[[redirects]]
-  from = "/blog/why-your-body-crashes-after-the-deal-closes"
-  to = "/insights/why-your-body-crashes-after-the-deal-closes"
-  status = 301
-
-[[redirects]]
-  from = "/blog/why-your-body-crashes-after-the-deal-closes/"
-  to = "/insights/why-your-body-crashes-after-the-deal-closes"
-  status = 301
-
-[[redirects]]
-  from = "/blog/*"
-  to = "/insights/:splat"
-  status = 301
-
 # Old Insights pages now point at their closest new articles
 [[redirects]]
   from = "/insights/first-months-after-exit"
@@ -327,27 +80,6 @@
 [[redirects]]
   from = "/insights/after-the-deal/"
   to = "/insights/raising-the-personal-side-of-exit-with-a-client"
-  status = 301
-
-# Podcast: live episode URLs with encoded characters -> clean slugs
-[[redirects]]
-  from = "/podcast/building-tomorrow%E2%80%99s-culture"
-  to = "/podcast/building-tomorrows-culture"
-  status = 301
-
-[[redirects]]
-  from = "/podcast/building-tomorrow’s-culture"
-  to = "/podcast/building-tomorrows-culture"
-  status = 301
-
-[[redirects]]
-  from = "/podcast/no-compromise%2C-just-care"
-  to = "/podcast/no-compromise-just-care"
-  status = 301
-
-[[redirects]]
-  from = "/podcast/no-compromise,-just-care"
-  to = "/podcast/no-compromise-just-care"
   status = 301
 
 [[redirects]]
