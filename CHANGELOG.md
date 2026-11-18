@@ -8,7 +8,7 @@ why, and anything the next person needs to check.
 
 ## Preview 6, update 8: booking renames, all thank-you pages, method pages, advisor buttons, SEO meta, accessibility, crawler lockdown (18 Nov 2026, late night)
 
-**Made by:** Claude (claude.ai). **Branch:** `claude/preview-6`. **Commit:** see `git log` (update 8).
+**Made by:** Claude (claude.ai). **Branch:** `claude/preview-6`. **Commit:** `849a5ce`.
 
 ### 1. Booking pages renamed (Seb: no dashes in the new slugs)
 
