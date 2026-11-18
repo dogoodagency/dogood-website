@@ -678,3 +678,23 @@ html.bl-js .bli-switch {
     transform: none;
   }
 }
+
+/* Insights hero (Seb, 18 Nov 2026): less cluttered, more room above the wave, intro line on one line. */
+.bli-hero .bl-hero-inner {
+  width: min(1000px, calc(100% - 2 * var(--pad)));
+  gap: 24px;
+  padding-bottom: 90px;
+}
+
+@media (min-width: 1000px) {
+  .bli-hero .bl-hero-lede {
+    max-width: none;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 600px) {
+  .bli-hero .bl-hero-inner {
+    padding-bottom: 56px;
+  }
+}

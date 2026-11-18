@@ -6,8 +6,7 @@ audience: advisor
 category: working-with-founders
 tags: ["deal falls through", "exit readiness", "founder emotions", "advisors"]
 date: 2026-11-18
-author: "Seb Wichmann"
-authorRole: "Founder, DoGood"
+author: "seb"
 readTime: 6
 featured: false
 heroImage: "/sketches/for-advisors-after-the-deal-sketch"

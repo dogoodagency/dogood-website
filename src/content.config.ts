@@ -38,8 +38,10 @@ const blog = defineCollection({
     tags: z.array(z.string()),
     date: z.coerce.date(),
     updated: z.coerce.date().optional(),
-    author: z.string().default("Seb Wichmann"),
-    authorRole: z.string().default("Founder, DoGood"),
+    /** Who wrote it: "seb", "inka" or "edda" (see src/data/authors.ts). A full name like "Seb Wichmann" also works. */
+    author: z.string().default("seb"),
+    /** Optional role override; otherwise the role in src/data/authors.ts. */
+    authorRole: z.string().optional(),
     readTime: z.number(),
     featured: z.boolean().default(false),
     pick: z.number().int().min(1).max(3).optional(),

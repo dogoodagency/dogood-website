@@ -95,7 +95,7 @@ const blogJson = json({
     headline: p.data.title,
     url: `${SITE}/insights/${p.id}`,
     datePublished: p.data.date.toISOString().slice(0, 10),
-    author: { "@type": "Person", name: p.data.author },
+    author: { "@type": "Person", name: getAuthor(p.data.author).name },
   })),
 });
 
@@ -104,6 +104,7 @@ const tabs = [
   { key: "founders", label: "For founders", icon: "founder" as const },
   { key: "advisors", label: "For advisors", icon: "advisor" as const },
 ];
+import { getAuthor } from "../../data/authors";
 ---
 
 <Base

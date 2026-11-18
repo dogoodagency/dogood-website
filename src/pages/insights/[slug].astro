@@ -5,6 +5,8 @@ import Base from "../../layouts/Base.astro";
 import BlogImage from "../../components/BlogImage.astro";
 import BlogCard from "../../components/BlogCard.astro";
 import BlogNewsletter from "../../components/BlogNewsletter.astro";
+import AuthorByline from "../../components/AuthorByline.astro";
+import { getAuthor } from "../../data/authors";
 import Wave from "../../components/Wave.astro";
 import { edgeAbove } from "../../data/edge-line";
 import {
@@ -12,7 +14,6 @@ import {
   audiences,
   formatDate,
   getCategory,
-  initials,
   isoDate,
   relatedPosts,
   sketchSrc,
@@ -28,7 +29,19 @@ export async function getStaticPaths() {
 
 const { post, all } = Astro.props;
 const d = post.data;
-const { Content, headings } = await render(post);
+const { headings } = await render(post);
+const author = getAuthor(d.author);
+
+// Newsletter box in the middle of the article (Seb, 18 Nov 2026): split the rendered body before the
+// H2 closest to the middle, so readers see the sign-up while they read.
+const bodyHtml = post.rendered?.html ?? "";
+const h2At = [...bodyHtml.matchAll(/<h2[\s>]/g)].map((m) => m.index ?? 0);
+const middle = bodyHtml.length / 2;
+const splitAt = h2At.length > 1
+  ? h2At.slice(1).reduce((best, i) => (Math.abs(i - middle) < Math.abs(best - middle) ? i : best), h2At[1]!)
+  : -1;
+const bodyFirst = splitAt > 0 ? bodyHtml.slice(0, splitAt) : bodyHtml;
+const bodySecond = splitAt > 0 ? bodyHtml.slice(splitAt) : "";
 const toc = headings.filter((h) => h.depth === 2);
 
 const category = getCategory(d.category);
@@ -78,9 +91,9 @@ const blogPosting = json({
   dateModified: (d.updated ?? d.date).toISOString(),
   author: {
     "@type": "Person",
-    name: d.author,
-    jobTitle: d.authorRole,
-    ...(/^Seb\b/.test(d.author)
+    name: author.name,
+    jobTitle: d.authorRole ?? author.role,
+    ...(author.id === "seb"
       ? { "@id": `${SITE}/wayfinders/seb#person`, url: `${SITE}/wayfinders/seb` }
       : { url: `${SITE}/about` }),
   },
@@ -147,26 +160,12 @@ const faqJson = d.faq.length
   <div class="bl-page bl-article">
     <div class="bl-topband">
       <div class="bl-col">
-        <nav class="bl-crumbs bl-crumbs--dark" aria-label="Breadcrumb">
-          <ol>
-            {
-              breadcrumbs.map((b, i) => (
-                <li>
-                  {i === breadcrumbs.length - 1 ? (
-                    <span aria-current="page">{b.name}</span>
-                  ) : (
-                    <a href={b.href}>{b.name}</a>
-                  )}
-                </li>
-              ))
-            }
-          </ol>
-        </nav>
+        <!-- Visible breadcrumb removed (Seb, 18 Nov 2026); the BreadcrumbList markup in <head> stays for search engines. -->
       </div>
       <Wave fill={white} edge={heroEdge} />
     </div>
 
-    <div class="bl-col">
+    <div class="bl-col bl-col--wide">
       {
         d.sample && (
           <p class="bl-sample" role="note">
@@ -190,13 +189,7 @@ const faqJson = d.faq.length
         <p class="bl-dek">{d.description}</p>
 
         <div class="bl-byline">
-          <div class="bl-author">
-            <span class="bl-avatar" aria-hidden="true">{initials(d.author)}</span>
-            <span class="bl-author-text">
-              <span class="bl-author-name">{d.author}</span>
-              <span class="bl-author-role">{d.authorRole}</span>
-            </span>
-          </div>
+          <AuthorByline author={d.author} role={d.authorRole} />
           <p class="bl-meta">
             <span>Published <time datetime={isoDate(d.date)}>{formatDate(d.date)}</time></span>
             {
@@ -218,7 +211,7 @@ const faqJson = d.faq.length
       <BlogImage class="bl-hero-img" src={d.heroImage} alt={d.heroAlt} bg={d.heroBg} eager={true} />
     </div>
 
-    <div class="bl-col">
+    <div class="bl-col bl-col--wide bl-intro">
       <p class="bl-isyou"><strong>Is this you?</strong> {d.isThisYou}</p>
 
       <section class="bl-short" aria-label="The short answer">
@@ -226,17 +219,7 @@ const faqJson = d.faq.length
         <p class="bl-short-text">{d.shortAnswer}</p>
       </section>
 
-      {
-        d.questions.length > 0 && (
-          <section class="bl-questions" aria-labelledby="bl-questions-title">
-            <h2 class="bl-box-title" id="bl-questions-title">Questions this answers</h2>
-            <ul>
-              {d.questions.map((q) => <li>{q}</li>)}
-            </ul>
-          </section>
-        )
-      }
-
+      <!-- "Questions this answers" removed (Seb, 18 Nov 2026): it repeated "In this article". The questions stay in the frontmatter. -->
       {
         toc.length > 0 && (
           <nav class="bl-toc" aria-labelledby="bl-toc-title">
@@ -254,9 +237,26 @@ const faqJson = d.faq.length
         )
       }
 
+    </div>
+
+    <div class="bl-col">
       <div class="bl-prose">
-        <Content />
+        <Fragment set:html={bodyFirst} />
       </div>
+      {
+        bodySecond && (
+          <div class="bl-mid-nl">
+            <BlogNewsletter idSuffix="article" />
+          </div>
+        )
+      }
+      {
+        bodySecond && (
+          <div class="bl-prose">
+            <Fragment set:html={bodySecond} />
+          </div>
+        )
+      }
 
       <section class="bl-takeaways" aria-labelledby="bl-takeaways-title">
         <h2 id="bl-takeaways-title">Key takeaways</h2>
@@ -293,9 +293,13 @@ const faqJson = d.faq.length
       </aside>
     </div>
 
-    <div class="bl-col bl-col--wide">
-      <BlogNewsletter idSuffix="article" />
-    </div>
+    {
+      !bodySecond && (
+        <div class="bl-col bl-col--wide">
+          <BlogNewsletter idSuffix="article" />
+        </div>
+      )
+    }
 
     <div class="bl-more">
       <Wave fill={tint} edge={bandEdge} />

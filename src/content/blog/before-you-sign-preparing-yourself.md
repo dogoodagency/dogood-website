@@ -6,8 +6,7 @@ audience: founder
 category: preparing-for-exit
 tags: ["prepare to sell your business", "before the sale", "exit readiness", "founders"]
 date: 2026-11-18
-author: "Seb Wichmann"
-authorRole: "Founder, DoGood"
+author: "seb"
 readTime: 9
 featured: true
 heroImage: "/sketches/how-it-works-two-stage-path-sketch"

@@ -6,8 +6,7 @@ audience: founder
 category: after-the-sale
 tags: ["sudden wealth syndrome", "after the sale", "identity", "founders"]
 date: 2026-11-18
-author: "Seb Wichmann"
-authorRole: "Founder, DoGood"
+author: "seb"
 readTime: 7
 featured: false
 pick: 2

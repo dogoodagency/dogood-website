@@ -6,8 +6,7 @@ audience: founder
 category: preparing-for-exit
 tags: ["emotions of selling a business", "cold feet", "grief", "founders"]
 date: 2026-11-18
-author: "Seb Wichmann"
-authorRole: "Founder, DoGood"
+author: "seb"
 readTime: 7
 featured: false
 pick: 3

@@ -2,7 +2,8 @@
 import type { CollectionEntry } from "astro:content";
 import "../styles/blog.css";
 import BlogImage from "./BlogImage.astro";
-import { audiences, formatDate, getCategory, initials, isoDate, postUrl } from "../data/blog";
+import { audiences, formatDate, getCategory, isoDate, postUrl } from "../data/blog";
+import AuthorByline from "./AuthorByline.astro";
 
 interface Props {
   post: CollectionEntry<"blog">;
@@ -81,13 +82,7 @@ const Tag = variant === "feature" ? "h2" : "h3";
         </Tag>
         <p class="bl-card-excerpt">{d.description}</p>
         {variant === "feature" && (
-          <div class="bl-author bl-author--card">
-            <span class="bl-avatar" aria-hidden="true">{initials(d.author)}</span>
-            <span class="bl-author-text">
-              <span class="bl-author-name">{d.author}</span>
-              <span class="bl-author-role">{d.authorRole}</span>
-            </span>
-          </div>
+          <AuthorByline author={d.author} role={d.authorRole} card />
         )}
         <p class="bl-meta">
           <time datetime={isoDate(d.date)}>{formatDate(d.date)}</time>

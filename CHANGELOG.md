@@ -6,6 +6,51 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 10: Insights hero, article layout, author photos (18 Nov 2026, late night)
+
+**Made by:** Claude (claude.ai), from Seb's feedback (screenshots 9 to 11 and three portraits). **Branch:** `claude/preview-6`.
+
+### Insights page (`blog-index.css`)
+- Hero: wider frame (1000px), more space between items and 90px more room above the
+  wave; "Honest notes for founders before and after the sale, and for the advisors who
+  walk with them." on one line from 1000px up.
+
+### Article images (`blog.css`)
+- Image backgrounds now use the style guide's soft colours, on article heroes and
+  cards alike: purple → DREAM 25 `#F5F2FF`, teal → GRASS 25 `#F3FFFB`, pink → HEART 25
+  `#FFF9FA`, lilac → DREAM 10 `#FAF9FF`, with a 1px DREAM 100 line so they don't
+  disappear on white. The `heroBg` field in each article still picks which one.
+
+### Authors (new `src/data/authors.ts`, `src/components/AuthorByline.astro`, photos in `src/assets/authors/`)
+- Three authors with photos: **seb** (Seb Wichmann, Founder, DoGood), **inka** and
+  **edda** (roles "DoGood editorial team" are placeholders until Seb confirms; no
+  surnames given). Pick the author per article with `author: "seb"`, `"inka"` or
+  `"edda"` in the frontmatter; `authorRole` is now optional (overrides the role).
+  The five articles now say `author: "seb"`. The byline and the feature card show the
+  photo; the BlogPosting markup uses the author's name and role.
+- To add someone: a square photo in `src/assets/authors/<id>.jpg` and one entry in `authors.ts`.
+
+### Single article page (`src/pages/insights/[slug].astro`, `blog.css`, `BlogNewsletter.astro`)
+- Visible breadcrumb at the top removed (the BreadcrumbList markup stays for search engines).
+- The header above the image and the boxes below it ("Is this you?", the short answer,
+  "In this article") are now as wide as the image (56rem) at every screen size; the
+  article text keeps its narrower reading width.
+- More white space between those boxes (40px, 56px before the text).
+- "Questions this answers" removed: it repeated "In this article". The `questions` field
+  stays in the frontmatter.
+- "In this article": label, numbers and hover in HEART (PINK 600 `#C10E46` for small-text
+  contrast) instead of green.
+- The "Notes from FOUNDERland" sign-up now sits in the middle of every article (before
+  the H2 closest to the middle of the text), not at the bottom. The body is split from
+  the rendered HTML; an article with only one H2 keeps it at the end.
+- "More about the newsletter" link removed; the privacy sentence fits on one line on
+  desktop (wraps on phones).
+
+### Checked
+- axe: 0 issues on /insights and two articles; no horizontal scroll on phone.
+
+---
+
 ## Preview 6, update 9: one master footer, contact, client fit, FAQs, podcast and newsletter pages (18 Nov 2026, late night)
 
 **Made by:** Claude (claude.ai), from Seb's feedback with 8 screenshots. **Branch:** `claude/preview-6`. **Commit:** `b706929`.

@@ -1331,3 +1331,106 @@ html.bl-js .bl-common {
     transition: none !important;
   }
 }
+
+/* ---------- Update 18 Nov 2026 (Seb) ---------- */
+
+/* Article images: approved soft background colours from the style guide (Rulebook v7), with the 1px
+   DREAM 100 line the rulebook asks for where a soft colour meets white. Applies to heroes and cards. */
+.bl-img {
+  border: 1px solid #e6dcfc;
+}
+
+.bl-img--purple {
+  --bl-img-bg: #f5f2ff; /* DREAM 25 */
+}
+
+.bl-img--teal {
+  --bl-img-bg: #f3fffb; /* GRASS 25 */
+}
+
+.bl-img--pink {
+  --bl-img-bg: #fff9fa; /* HEART 25 */
+}
+
+.bl-img--lilac {
+  --bl-img-bg: #faf9ff; /* DREAM 10 */
+}
+
+/* Top band without the breadcrumb: just enough purple under the nav for the wave. */
+.bl-article .bl-topband .bl-col {
+  padding-top: 8px;
+}
+
+/* Author photos. */
+.bl-avatar.bl-avatar--photo {
+  display: block;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  background: #f5f2ff;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.bl-author--card .bl-avatar.bl-avatar--photo {
+  width: 36px;
+  height: 36px;
+}
+
+/* Intro boxes under the hero: as wide as the image, with more room between them. */
+.bl-intro {
+  margin-bottom: 8px;
+}
+
+.bl-intro .bl-isyou {
+  margin-bottom: 40px;
+}
+
+.bl-intro .bl-short {
+  margin-bottom: 40px;
+  padding: 28px 32px;
+}
+
+.bl-intro .bl-toc {
+  margin-bottom: 56px;
+  padding: 24px 32px;
+}
+
+/* "In this article": HEART accents instead of green (PINK 600 for small-text contrast). */
+.bl-toc .bl-box-label {
+  color: #c10e46;
+}
+
+.bl-toc ol {
+  list-style: decimal;
+}
+
+.bl-toc li::marker {
+  color: #c10e46;
+  font-weight: 800;
+}
+
+.bl-toc a:hover,
+.bl-toc a:focus-visible {
+  color: #c10e46;
+}
+
+/* Newsletter box in the middle of the article. */
+.bl-mid-nl {
+  margin: 48px 0;
+}
+
+.bl-mid-nl .bl-nl {
+  margin: 0;
+}
+
+.bl-nl-print {
+  white-space: normal;
+}
+
+@media (min-width: 900px) {
+  .bl-mid-nl .bl-nl-print,
+  .bl-col--wide .bl-nl-print {
+    white-space: nowrap;
+  }
+}
