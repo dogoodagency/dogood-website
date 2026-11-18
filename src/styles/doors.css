@@ -390,3 +390,8 @@ body:has(.dr-page) .footer-wave {
     padding: 36px 22px;
   }
 }
+
+/* No hero images outside the homepage (Seb, 18 Nov 2026). */
+.dr-hero-top {
+  grid-template-columns: minmax(0, 1fr);
+}

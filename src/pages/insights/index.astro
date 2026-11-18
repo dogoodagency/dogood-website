@@ -112,8 +112,8 @@ import { getAuthor } from "../../data/authors";
   description="Honest notes for founders before and after selling a business, and for the advisors who walk with them. Articles on exit, identity and what comes next."
   canonical={`${SITE}/insights`}
   ogTitle="Notes from FOUNDERland | DoGood Agency"
-  footerStrip={tint}
-  footerEdge={tintEdge}
+  footerStrip={white}
+  footerEdge={whiteEdge}
 >
   <Fragment slot="head">
     <link rel="alternate" type="application/rss+xml" title="DoGood Insights" href="/insights/rss.xml" />
@@ -283,32 +283,9 @@ import { getAuthor } from "../../data/authors";
       <Wave fill={tint} edge={whiteEdge} />
     </section>
 
-    <!-- 6. Browse by topic -->
-    <section class="bl-band bli-band bl-band--tint" aria-labelledby="bli-topics-title">
-      <div class="bl-wrap">
-        <h2 class="bli-h2" id="bli-topics-title">Browse by topic</h2>
-        <ul class="bli-cats">
-          {
-            liveCats.map((c) => (
-              <li>
-                <a class="bli-cat" href={`/insights/category/${c.slug}`}>
-                  <span class={`bl-badge bl-badge--${c.audience}`}>
-                    <BlogAudIcon audience={c.audience} /> {audiences[c.audience].label}
-                  </span>
-                  <h3>{c.name}</h3>
-                  <p>{c.description}</p>
-                  <span class="bli-cat-count">{plural(countIn(c.slug))}</span>
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-      <Wave fill={white} edge={tintEdge} />
-    </section>
-
+    <!-- "Browse by topic" removed (Seb, 18 Nov 2026). Resources now take the tinted band, the newsletter the white one. -->
     <!-- 7. Resources -->
-    <section class="bl-band bli-band" aria-labelledby="bli-res-title">
+    <section class="bl-band bli-band bl-band--tint" aria-labelledby="bli-res-title">
       <div class="bl-wrap">
         <h2 class="bli-h2" id="bli-res-title">Founder &amp; advisor resources</h2>
         <div class="bli-res-cols">
@@ -362,14 +339,13 @@ import { getAuthor } from "../../data/authors";
           </div>
         </div>
       </div>
-      <Wave fill={tint} edge={whiteEdge} />
+      <Wave fill={white} edge={tintEdge} />
     </section>
 
     <!-- 8. Newsletter -->
-    <section class="bl-band bli-band bl-band--tint bli-nl-band" aria-label="Newsletter">
+    <section class="bl-band bli-band bli-nl-band" aria-label="Newsletter">
       <div class="bl-wrap">
         <BlogNewsletter idSuffix="index" heading="Get every new note by email" />
-        <p class="bli-nl-extra"><a href="/newsletter">See what the newsletter covers</a></p>
       </div>
     </section>
   </div>

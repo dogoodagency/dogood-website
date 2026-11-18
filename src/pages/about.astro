@@ -5,7 +5,7 @@ import Base from "../layouts/Base.astro";
 import Wave from "../components/Wave.astro";
 import { edgeAbove } from "../data/edge-line";
 import team from "../assets/photos/wayfinders.png";
-import ioda from "../assets/photos/ioda.jpg";
+import ioda from "../assets/photos/ioda-logo.jpg"; // logo from Seb, 18 Nov 2026
 
 const tint = "#F5F2FF";
 const heroEdge = edgeAbove("#2A0B4F");
@@ -38,18 +38,13 @@ const premises = [
 >
   <article class="ab-page">
     <header class="ab-hero">
-      <div class="ab-hero-inner">
+      <!-- No hero image (Seb, 18 Nov 2026: hero images only on the homepage); the sketch moved to "Where we are going". -->
+      <div class="ab-hero-inner ab-hero-text">
         <div class="ab-hero-copy">
           <h1>We exist for <span class="ab-accent">life after the company.</span></h1>
           <p>DoGood is a private partnership for founders who have exited, or are getting ready to, and do not want life after the company to become another version of the life they left behind.</p>
           <p>You apply for Stage 1, The Reset, a private 30-day engagement. If it fits, Stage 2, The Build, follows by invitation only.</p>
         </div>
-        <figure class="ab-sketch-card">
-          <picture>
-            <source type="image/webp" srcset="/sketches/about-building-and-bench@1x.webp 540w, /sketches/about-building-and-bench@2x.webp 1080w" sizes="(max-width: 899px) min(100vw, 380px), 420px" />
-            <img src="/sketches/about-building-and-bench@1x.png" srcset="/sketches/about-building-and-bench@1x.png 540w, /sketches/about-building-and-bench@2x.png 1080w" sizes="(max-width: 899px) min(100vw, 380px), 420px" width="540" height="400" alt="A quiet unfilled workshop or office building stands to one side, with a garden bench, a folded jacket, a cup and a small plant on a teal patch of ground in front." loading="eager" decoding="async" />
-          </picture>
-        </figure>
       </div>
       <Wave fill={tint} edge={heroEdge} />
     </header>
@@ -134,7 +129,46 @@ const premises = [
       </div>
     </section>
 
-    <section class="ab-band ab-band-tint" aria-labelledby="ab-wayfinders">
+    <!-- NEW DRAFT COPY (18 Nov 2026), from Seb's vision notes, kept informal. Guesses from the notes (year-10
+         numbers, pricing) are deliberately left out. Seb is still shaping this. -->
+    <section class="ab-band ab-band-tint" aria-labelledby="ab-vision">
+      <div class="ab-well">
+        <div class="ab-vision-intro">
+          <div>
+            <p class="ab-eyebrow">Where we're going</p>
+            <h2 id="ab-vision">The fourth seat at the table</h2>
+            <p>Every serious exit has a lawyer, a banker and a wealth advisor around the table. The lawyer protects the deal. The banker prices it. The wealth advisor invests what comes out of it.</p>
+            <p>Nobody at that table is paid to ask the founder who they are becoming.</p>
+            <p>I found that out the hard way. I built a company, hit the wall, and paused it to regroup. The business had plenty of people looking after it. The person in the middle of it didn't.</p>
+          </div>
+          <figure class="ab-sketch-card">
+            <picture>
+              <source type="image/webp" srcset="/sketches/about-building-and-bench@1x.webp 540w, /sketches/about-building-and-bench@2x.webp 1080w" sizes="(max-width: 899px) min(100vw, 380px), 400px" />
+              <img src="/sketches/about-building-and-bench@1x.png" srcset="/sketches/about-building-and-bench@1x.png 540w, /sketches/about-building-and-bench@2x.png 1080w" sizes="(max-width: 899px) min(100vw, 380px), 400px" width="540" height="400" alt="A quiet unfilled workshop or office building stands to one side, with a garden bench, a folded jacket, a cup and a small plant on a teal patch of ground in front." loading="lazy" decoding="async" />
+            </picture>
+          </figure>
+        </div>
+
+        <ul class="ab-vision-cards">
+          <li class="ab-vision-card">
+            <h3>A transition partner in every serious exit</h3>
+            <p>We think the founder's side of a sale deserves the same care as the numbers. Over time, we want to train and certify transition partners who work inside exit planning, accounting, law and family business firms, right next to the people who already sit at that table. We look after the standard and the training. When a founder needs to go deeper, our Wayfinders are there.</p>
+          </li>
+          <li class="ab-vision-card">
+            <h3>A house for founders, before and after the sale</h3>
+            <p>Founders are often lonely twice. First while they quietly prepare to sell and can't tell anyone. Then after the sale, when nobody needs them any more. We want DoGood to be a place you can walk into through either door, with people who know both sides.</p>
+          </li>
+        </ul>
+
+        <div class="ab-vision-why">
+          <p><strong>Why now?</strong> Advisors already know the personal side matters. Yet in the Exit Planning Institute's 2023 survey of more than 1,100 business owners, 78% had no formal exit team, and only 41% had a written plan for life after the business.</p>
+          <p class="ab-vision-sign">We're still shaping it, and we're building it the way we work: one founder at a time. <span>— Seb</span></p>
+          <p class="ab-source">Source: Exit Planning Institute, 2023 National State of Owner Readiness Report.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ab-band ab-band-wf" aria-labelledby="ab-wayfinders">
       <div class="ab-well">
         <div class="ab-wf-copy">
           <h2 id="ab-wayfinders">Seb and the Wayfinders</h2>
@@ -154,21 +188,32 @@ const premises = [
       </div>
     </section>
 
-    <section class="ab-band" aria-labelledby="ab-ioda">
+    <!-- The team photo's bottom row tucks behind this wave (Seb, 18 Nov 2026). -->
+    <div class="ab-divider ab-divider--over" aria-hidden="true">
+      <svg style={`--wave-edge:${bandEdge}`} viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path fill="#F5F2FF" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path>
+        <path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path>
+      </svg>
+    </div>
+
+    <!-- IODA redesigned (Seb, 18 Nov 2026): soft DREAM band fading into white, logo card, two lines, link. -->
+    <section class="ab-band ab-band-ioda" aria-labelledby="ab-ioda">
       <div class="ab-well">
         <div class="ab-ioda">
           <figure class="ab-ioda-logo">
             <Image
               src={ioda}
               alt="IODA, the International Organization Development Association"
-              widths={[240, 480]}
-              sizes="240px"
+              widths={[260, 520]}
+              sizes="260px"
             />
           </figure>
-          <div>
-            <h2 id="ab-ioda">IODA</h2>
-            <p>We are a proud member of IODA, a global network of OD professionals spanning 50+ countries.</p>
-            <p><a class="ab-text-link" href="https://www.iodanet.org/iodas-history/">IODA</a></p>
+          <div class="ab-ioda-copy">
+            <p class="ab-eyebrow">Our professional network</p>
+            <h2 id="ab-ioda">Proud member of IODA</h2>
+            <p>IODA, the International Organization Development Association, is a global network of organisation development professionals spanning more than 50 countries.</p>
+            <p>Being part of it keeps us learning from colleagues who work with people and change in very different cultures, and keeps our own practice honest.</p>
+            <p><a class="ab-text-link" href="https://www.iodanet.org/iodas-history/" target="_blank" rel="noopener">Visit IODA <span aria-hidden="true">→</span></a></p>
           </div>
         </div>
       </div>
@@ -179,9 +224,8 @@ const premises = [
         <div class="ab-cta">
           <h2 id="ab-next">What's next?</h2>
           <p class="ab-cta-lead">Complete the short application for Stage 1 (30 days). We'll respond within 24 hours. If there's a fit, we'll have an honest conversation.</p>
-          <p class="ab-cta-note">Private. Limited to 5 new founders a month.</p>
           <a class="btn-teal" href="/apply-stage-1">Apply for Stage 1</a>
-          <a class="ab-cta-link" href="/the-reset">See the two-stage partnership →</a>
+          <p class="ab-cta-note">Private. Limited to 5 new founders a month.</p>
         </div>
       </div>
     </section>

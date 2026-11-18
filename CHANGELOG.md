@@ -6,6 +6,45 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 11: About page (vision, Wayfinders photo, IODA, What's next), no hero images, Insights clean-up (18 Nov 2026, night)
+
+**Made by:** Claude (claude.ai), from Seb's feedback (screenshots 12 and 13, IODA logo). **Branch:** `claude/preview-6`.
+
+### Rule: no images in heroes except the homepage (Seb)
+- Sketches removed from the heroes of /about, /for-advisors, /how-it-works and /stories;
+  each hero is now text only with a wider text frame. The About sketch moved into the
+  new vision section. **Not changed:** the Wayfinder profile pages keep their portrait
+  in the hero (a person's photo, not an illustration) until Seb decides.
+
+### About (`src/pages/about.astro`, `about.css`)
+- **New section "Where we're going: The fourth seat at the table"** (tint band, after
+  "Why 'DoGood'?"), from Seb's vision notes, informal and in Seb's voice: the lawyer,
+  banker and wealth advisor at the table and nobody for the founder; Seb's own story;
+  two cards (a transition partner in every serious exit; a house for founders before
+  and after the sale); a "Why now?" line with one sourced figure (Exit Planning
+  Institute, 2023 National State of Owner Readiness Report: 78% no formal exit team,
+  41% with a written plan for life after the business). The year-10 numbers, prices and
+  licensing model in the notes are marked GUESS and are **not** on the page. Draft for Seb.
+- Wayfinders photo 20% bigger (up to 1296px) and its bottom edge tucked behind the wave
+  into the next section (the wave and the IODA band sit above the photo).
+- IODA redesigned: soft DREAM band fading to white (DREAM 25 → DREAM 10 → white), new
+  logo (from Seb) in a white card, heading "Proud member of IODA", two sentences, "Visit
+  IODA →" link (iodanet.org, opens in a new tab). No shadows.
+- What's next: "See the two-stage partnership" link removed; "Private. Limited to 5 new
+  founders a month." now under the button at 12px; button 20% wider (234px); the lead
+  sentence runs on two lines on desktop.
+
+### Insights (`src/pages/insights/index.astro`)
+- "Browse by topic" removed. Category pages still exist (linked from article pills).
+- "See what the newsletter covers" removed under the sign-up ("More about the
+  newsletter" was removed site-wide in update 10). Bands rebalanced: resources on tint,
+  newsletter on white, footer wave from white.
+
+### Checked
+- axe: 0 issues on /about, /insights, /for-advisors, /how-it-works, /stories; no broken links.
+
+---
+
 ## Preview 6, update 10: Insights hero, article layout, author photos (18 Nov 2026, late night)
 
 **Made by:** Claude (claude.ai), from Seb's feedback (screenshots 9 to 11 and three portraits). **Branch:** `claude/preview-6`. **Commit:** `22a648c`.

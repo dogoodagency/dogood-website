@@ -726,3 +726,12 @@ body:has(.st-page) .footer-wave {
     display: none;
   }
 }
+
+/* No hero images outside the homepage (Seb, 18 Nov 2026): text-only hero, wider frame. */
+.st-hero-inner {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.st-hero-copy p {
+  max-width: 860px;
+}

@@ -912,3 +912,17 @@ html.adv-js .adv-faq-item:not(.is-open) .adv-faq-panel {
   white-space: normal;
   text-align: center;
 }
+
+/* No hero images outside the homepage (Seb, 18 Nov 2026): text-only hero, wider frame. */
+.adv-hero-inner--split {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.adv-hero-copy h1 {
+  max-width: 900px;
+}
+
+.adv-hero-copy .adv-lede,
+.adv-hero-audience {
+  max-width: 820px;
+}
