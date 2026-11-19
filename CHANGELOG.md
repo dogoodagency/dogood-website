@@ -6,6 +6,22 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 24: Seb's decisions on update 23 (19 Nov 2026, 13:15)
+
+**Commit:** `COMMIT24`.
+- Advisor page: "worth USD 3,000" removed; the section is now "A free session with a Wayfinder".
+- Audio section removed from /the-reset (Stage 2 inclusion only); it stays on /the-build and
+  /state-shift-audio.
+- State-Shift Audio full version: new **"A science-based approach"** block (draft for Seb, no quantum
+  claims): binaural-beat meta-analysis (22 studies, medium consistent effect on memory, attention, anxiety,
+  pain; before-task and longer listening work better; Garcia-Argibay, Santed & Reales, Psychological
+  Research 2019), breath-paced music slowing breathing and lowering arousal, strongest when personalised
+  (Leslie, Ghandeharioun, Zhou & Picard, IEEE ACII 2019), and checking tracks against WHOOP data.
+- Confirmed by Seb: Stage 1 GRASS, Stage 2 HEART, The Exit Prep SKY. Nav fork name: Seb to choose from five
+  suggestions ("Start here" stays until then).
+
+---
+
 ## Preview 6, update 23: animated WHOOP and State-Shift Audio sections, About context, IODA logo (19 Nov 2026, afternoon)
 
 **Made by:** Claude (claude.ai), Seb's feedback of 12:43 and 12:47, batch 6. **Commit:** `4fa2a10`.

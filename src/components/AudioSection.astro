@@ -3,7 +3,8 @@
  * Custom State-Shift Audio (Seb, 19 Nov 2026): animated waveforms (left tone, right tone, the beat the brain
  * hears) and the four modes with their brainwave bands. The science is stated with its real evidence level:
  * binaural beats have mixed, modest research support; subliminal audio has little. No "quantum" claims.
- * Used on /state-shift-audio (full) and /the-reset, /the-build (compact).
+ * Used on /state-shift-audio (full) and /the-build (compact). Stage 2 inclusion only (Seb, 19 Nov 2026).
+ * "A science-based approach" block added 19 Nov 2026 as a draft for Seb (no quantum claims).
  */
 interface Props {
   variant?: "full" | "compact";
@@ -76,6 +77,17 @@ const modes = [
 
   {
     variant === "full" && (
+      <div class="au-approach">
+        <h3>A science-based approach</h3>
+        <p>Every track is built on what research shows about sound, breath and the nervous system, and we keep checking it against your own data.</p>
+        <ul>
+          <li><strong>Brain rhythm.</strong> A 2019 meta-analysis of 22 studies found a medium, consistent effect of binaural beats on memory, attention, anxiety and pain. Listening before a task worked better than only during it, and longer listening helped more.</li>
+          <li><strong>Breath pacing.</strong> Music whose rhythm slows gently below your own breathing rate slows breathing and lowers arousal (heart rate, skin response), with the strongest effect when it is personalised (MIT Media Lab, 2019).</li>
+          <li><strong>Your body's data.</strong> With WHOOP, we can see whether a track actually moves your recovery, sleep and heart rate variability, and adjust it.</li>
+        </ul>
+        <p class="au-cite">Sources: Garcia-Argibay, Santed &amp; Reales, <em>Psychological Research</em> 2019; Leslie, Ghandeharioun, Zhou &amp; Picard, IEEE ACII 2019.</p>
+      </div>
+
       <div class="au-science">
         <div>
           <h3>The science, plainly</h3>
@@ -254,6 +266,20 @@ const modes = [
   .au-science ul { margin: 0; padding-left: 20px; }
   .au-science li { margin-bottom: 6px; }
   .au-fine { color: #c2b7dd !important; font-size: 14px !important; }
+
+  .au-approach {
+    margin-top: 28px;
+    padding: 24px 26px;
+    border: 1px solid #28dbb0;
+    border-radius: 18px;
+    background: #1d033c;
+  }
+
+  .au-approach h3 { margin: 0 0 8px; color: #28dbb0; font-size: 22px; font-weight: 900; }
+  .au-approach p, .au-approach li { color: #f5f2ff; font-size: 17px; line-height: 1.6; }
+  .au-approach ul { margin: 8px 0; padding-left: 20px; list-style: disc; }
+  .au-approach li { display: list-item; margin-bottom: 6px; }
+  .au-approach .au-cite { margin: 10px 0 0; color: #c2b7dd; font-size: 13px; }
 
   .au-more { margin: 18px 0 0; font-size: 17px; font-weight: 800; }
   .au-more a { color: #28dbb0; }
