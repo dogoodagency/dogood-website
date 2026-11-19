@@ -8,7 +8,7 @@ why, and anything the next person needs to check.
 
 ## Preview 6, update 19: The Reset and The Build, each in its own colour (19 Nov 2026, afternoon)
 
-**Made by:** Claude (claude.ai), Seb's feedback of 12:43, batch 2. **Branch:** `claude/preview-6`. **Commit:** `COMMIT19`.
+**Made by:** Claude (claude.ai), Seb's feedback of 12:43, batch 2. **Branch:** `claude/preview-6`. **Commit:** `dde0f18`.
 
 - **Colours:** Stage 1 (/the-reset) is GRASS (tint bands GRASS 25, frames GRASS 600, accents GRASS 700);
   Stage 2 (/the-build) is HEART (tint bands HEART 25, frames HEART 300/500, accents HEART 600). Classes
