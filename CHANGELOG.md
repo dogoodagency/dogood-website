@@ -8,7 +8,7 @@ why, and anything the next person needs to check.
 
 ## Preview 6, update 17: The Build gets its own page, footer rebuilt from Seb's mock-up, one link source (19 Nov 2026, late morning)
 
-**Made by:** Claude (claude.ai), from Seb's message of 10:36 and his footer mock-up. **Branch:** `claude/preview-6`. **Commit:** `COMMIT17`.
+**Made by:** Claude (claude.ai), from Seb's message of 10:36 and his footer mock-up. **Branch:** `claude/preview-6`. **Commit:** `abeb011`.
 
 ### The Reset / The Build split
 - **New page `/the-build`** (Stage 2): hero with the two-step progress bar, a "You've completed Stage 1"
