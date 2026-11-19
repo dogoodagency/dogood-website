@@ -4,7 +4,8 @@
  * stage cards on /the-reset and /the-build, which repeated each other. One switch, two positions: Stage 1
  * (GRASS) and Stage 2 (HEART). The panel below shows the chosen stage on a dark stage colour; both panels
  * sit in the same grid cell, so the frame keeps one size whichever stage is shown.
- * Without JS both panels show, one under the other.
+ * 19 Nov 2026 18:52 (Seb): the switch is navigation. Clicking the other stage slides the knob across and
+ * opens that stage's page; only the current stage's panel is shown.
  */
 interface Props {
   current: 1 | 2;
@@ -36,51 +37,45 @@ const stages = [
 ---
 
 <div class="ss" data-ss data-current={current}>
-  <div class="ss-switch" role="tablist" aria-label="The two stages">
+  <nav class="ss-switch" aria-label="The two stages">
     {
-      stages.map((s) => (
-        <button
-          class:list={["ss-tab", `ss-tab--${s.n}`]}
-          type="button"
-          role="tab"
-          id={`ss-tab-${s.n}`}
-          aria-controls={`ss-panel-${s.n}`}
-          aria-selected={s.n === current ? "true" : "false"}
-          tabindex={s.n === current ? 0 : -1}
-        >
-          <span class="ss-tab-n">Stage {s.n}</span>
-          <span class="ss-tab-name">{s.name.replace("™", "")}</span>
-        </button>
-      ))
+      stages.map((s) =>
+        s.n === current ? (
+          <span class:list={["ss-tab", `ss-tab--${s.n}`]} aria-current="page">
+            <span class="ss-tab-n">Stage {s.n}</span>
+            <span class="ss-tab-name">{s.name.replace("™", "")}</span>
+          </span>
+        ) : (
+          <a class:list={["ss-tab", `ss-tab--${s.n}`]} href={s.page.href} data-ss-go>
+            <span class="ss-tab-n">Stage {s.n}</span>
+            <span class="ss-tab-name">{s.name.replace("™", "")} →</span>
+          </a>
+        )
+      )
     }
     <span class="ss-knob" aria-hidden="true"></span>
-  </div>
+  </nav>
 
   <div class="ss-panels">
     {
-      stages.map((s) => (
-        <section
-          class:list={["ss-panel", `ss-panel--${s.n}`]}
-          id={`ss-panel-${s.n}`}
-          role="tabpanel"
-          aria-labelledby={`ss-tab-${s.n}`}
-          data-active={s.n === current ? "true" : "false"}
-        >
-          <p class="ss-kicker">
-            Stage {s.n}
-            {s.n === current ? <span class="ss-here">You are here</span> : <span class="ss-here ss-here--ghost">{s.note}</span>}
-          </p>
-          <h3 class="ss-title">
-            {s.name} <span>({s.time})</span>
-          </h3>
-          <p class="ss-line">{s.line}</p>
-          <p class="ss-text">{s.text}</p>
-          <p class="ss-links">
-            <a class="ss-btn" href={s.method.href}>{s.method.label} →</a>
-            {s.n !== current && <a class="ss-btn ss-btn--plain" href={s.page.href}>{s.page.label} →</a>}
-          </p>
-        </section>
-      ))
+      stages
+        .filter((s) => s.n === current)
+        .map((s) => (
+          <section class:list={["ss-panel", `ss-panel--${s.n}`]} aria-label={`Stage ${s.n}`}>
+            <p class="ss-kicker">
+              Stage {s.n}
+              <span class="ss-here">You are here</span>
+            </p>
+            <h3 class="ss-title">
+              {s.name} <span>({s.time})</span>
+            </h3>
+            <p class="ss-line">{s.line}</p>
+            <p class="ss-text">{s.text}</p>
+            <p class="ss-links">
+              <a class="ss-btn" href={s.method.href}>{s.method.label} →</a>
+            </p>
+          </section>
+        ))
     }
   </div>
 </div>
@@ -132,7 +127,27 @@ const stages = [
     font-weight: 900;
   }
 
-  .ss-tab[aria-selected="true"] {
+  .ss-tab[aria-current="page"] {
+    color: #fff;
+  }
+
+  .ss .ss-tab,
+  .ss .ss-tab * {
+    text-decoration: none !important;
+    background-image: none !important;
+    border-bottom: 0 !important;
+  }
+
+  .ss a.ss-tab:hover,
+  .ss a.ss-tab:focus-visible {
+    background: #f5f2ff;
+  }
+
+  .ss.is-going .ss-tab[aria-current="page"] {
+    color: #2a0b4f;
+  }
+
+  .ss.is-going a.ss-tab {
     color: #fff;
   }
 
@@ -192,10 +207,7 @@ const stages = [
     background: #960434;
   }
 
-  .ss-panel[data-active="false"] {
-    opacity: 0;
-    visibility: hidden;
-  }
+  
 
   .ss-kicker {
     display: flex;
@@ -301,25 +313,15 @@ const stages = [
 </style>
 
 <script>
+  // Slide the knob to the other stage, then open its page.
   document.querySelectorAll<HTMLElement>("[data-ss]").forEach((root) => {
-    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>(".ss-tab"));
-    const panels = Array.from(root.querySelectorAll<HTMLElement>(".ss-panel"));
-    const select = (i: number, focus = false) => {
-      root.dataset.current = String(i + 1);
-      tabs.forEach((t, k) => {
-        t.setAttribute("aria-selected", k === i ? "true" : "false");
-        t.tabIndex = k === i ? 0 : -1;
-      });
-      panels.forEach((p, k) => (p.dataset.active = k === i ? "true" : "false"));
-      if (focus) tabs[i]?.focus();
-    };
-    tabs.forEach((t, i) => {
-      t.addEventListener("click", () => select(i));
-      t.addEventListener("keydown", (e) => {
-        if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
-          e.preventDefault();
-          select(i === 0 ? 1 : 0, true);
-        }
+    root.querySelectorAll<HTMLAnchorElement>("[data-ss-go]").forEach((link) => {
+      link.addEventListener("click", (e) => {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        e.preventDefault();
+        root.dataset.current = root.dataset.current === "1" ? "2" : "1";
+        root.classList.add("is-going");
+        window.setTimeout(() => (window.location.href = link.href), 380);
       });
     });
   });

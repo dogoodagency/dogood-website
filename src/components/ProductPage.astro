@@ -81,7 +81,7 @@ const footerBg = closing ? (lastTint ? white : tint) : lastTint ? tint : white;
     <header class="ep-hero">
       <div class="ep-hero-inner">
         <p class="ep-eyebrow">{eyebrow}</p>
-        <h1>{h1}</h1>
+        <h1 set:html={h1} />
         <p class="ep-sub">{sub}</p>
         {tag && <p class="pp-tag">{tag}</p>}
         {soon && <p class="pp-soon pp-soon--hero">{soon}</p>}
@@ -100,7 +100,7 @@ const footerBg = closing ? (lastTint ? white : tint) : lastTint ? tint : white;
               {s.lede && <p class="pp-lede">{s.lede}</p>}
               {s.paras?.map((p) => <p class="ep-lede-plain" set:html={p} />)}
               {s.steps && (
-                <ol class="pp-steps">
+                <ol class="pp-steps" data-pp-steps>
                   {s.steps.map((st) => (
                     <li class="pp-step">
                       <span class="pp-step-label">{st.label}</span>
@@ -172,4 +172,17 @@ const footerBg = closing ? (lastTint ? white : tint) : lastTint ? tint : white;
       )
     }
   </article>
+  <script>
+    /* Steps appear one after another (Seb, 19 Nov 2026 18:52: "How the 1.5 days work"). */
+    document.querySelectorAll<HTMLElement>("[data-pp-steps]").forEach((el) => {
+      if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      el.classList.add("will-animate");
+      const io = new IntersectionObserver(([e]) => {
+        if (!e?.isIntersecting) return;
+        el.classList.add("is-in");
+        io.disconnect();
+      }, { threshold: 0.2 });
+      io.observe(el);
+    });
+  </script>
 </Base>

@@ -217,7 +217,7 @@ const [, houseStage1, houseStage2] = houses;
         <ul class="hw-stats">
           {stats.map((stat) => (
             <li>
-              <strong>{stat.value}</strong>
+              <strong>{stat.value.replace(" Million", "M")}</strong>
               <span>{stat.label}</span>
             </li>
           ))}
@@ -239,7 +239,7 @@ const [, houseStage1, houseStage2] = houses;
         </ol>
         <div class="hw-steps-cta">
           <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
-          <p class="hw-limited hw-limited-dark">You apply for Stage 1 only. Stage 2 is invite-only.</p>
+          <p class="hw-limited hw-limited-dark hw-btn-sub">You apply for Stage 1 only. Stage 2 is invite-only.</p>
           <p class="hw-center"><a class="hw-textlink" href="/faqs">Read the FAQs →</a></p>
         </div>
       </div>

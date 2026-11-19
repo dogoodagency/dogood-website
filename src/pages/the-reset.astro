@@ -340,10 +340,11 @@ const [houseBefore, houseStage1, houseStage2] = houses;
         <h2 id="hw-track" class="hw-center">Our team’s track record</h2>
         <ul class="hw-stats" data-count-group>
           {stats.map((stat) => {
-            const c = countFor(stat.value);
+            const v = stat.value.replace(" Million", "M"); // $19.4M (Seb, 19 Nov 2026 18:52)
+            const c = countFor(v);
             return (
               <li>
-                <strong data-count={c.count} data-prefix={c.prefix} data-suffix={c.suffix} data-decimals={c.decimals}>{stat.value}</strong>
+                <strong data-count={c.count} data-prefix={c.prefix} data-suffix={c.suffix} data-decimals={c.decimals}>{v}</strong>
                 <span>{stat.label}</span>
               </li>
             );
@@ -398,7 +399,7 @@ const [houseBefore, houseStage1, houseStage2] = houses;
         </ol>
         <div class="hw-steps-cta">
           <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
-          <p class="hw-limited hw-limited-dark">Stage 1 (30 days) · Week 3 decision on Stage 2</p>
+          <p class="hw-limited hw-limited-dark hw-btn-sub">Stage 1 (30 days) · Week 3 decision on Stage 2</p>
         </div>
       </div>
     </section>

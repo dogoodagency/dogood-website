@@ -104,21 +104,45 @@ const modes = [
         <p class="au-cite">Sources: Garcia-Argibay, Santed &amp; Reales, <em>Psychological Research</em> 2019; Leslie, Ghandeharioun, Zhou &amp; Picard, IEEE ACII 2019.</p>
       </div>
 
-      <div class="au-science">
-        <div>
-          <h3>The science, plainly</h3>
-          <p><strong>Binaural beats.</strong> When each ear hears a slightly different tone through headphones, say 200 Hz on the left and 210 Hz on the right, the brain perceives a third, slow beat of 10 Hz. That beat sits in the range of one of the brain's own rhythms: delta in deep sleep, theta in drowsy and reflective states, alpha in calm alertness, beta in active focus.</p>
+      <div class="au-sci">
+        <div class="au-sci-col">
+          <p class="au-approach-eyebrow">The science, plainly</p>
+          <h3>How a binaural beat works</h3>
+          <div class="au-beat" aria-hidden="true">
+            <div class="au-beat-ear au-beat-ear--l"><span>Left ear</span><strong>200 Hz</strong></div>
+            <span class="au-beat-plus">+</span>
+            <div class="au-beat-ear au-beat-ear--r"><span>Right ear</span><strong>210 Hz</strong></div>
+            <span class="au-beat-plus">=</span>
+            <div class="au-beat-ear au-beat-ear--b"><span>Your brain hears</span><strong>10 Hz</strong></div>
+          </div>
+          <p>When each ear hears a slightly different tone through headphones, the brain perceives a third, slow beat. That beat sits in the range of one of the brain's own rhythms:</p>
+          <ul class="au-bands">
+            <li class="au-band au-band--d"><strong>Delta</strong><span>deep sleep</span></li>
+            <li class="au-band au-band--t"><strong>Theta</strong><span>drowsy, reflective</span></li>
+            <li class="au-band au-band--a"><strong>Alpha</strong><span>calm alertness</span></li>
+            <li class="au-band au-band--b"><strong>Beta</strong><span>active focus</span></li>
+          </ul>
           <p>The idea, called entrainment, is that listening nudges attention and arousal toward that state. Research is promising but mixed: reviews find small to moderate effects on anxiety, attention and memory, and results vary between studies and people.</p>
         </div>
-        <div>
-          <h3>How we build your tracks</h3>
-          <ul>
-            <li><strong>Modulation curves</strong>: each track moves gently from your current state toward the one you need, for example from beta down into alpha to decompress.</li>
-            <li><strong>Your words</strong>: tracks can carry quiet spoken lines from your own work with your Wayfinder (subliminal audio). The evidence that messages below hearing change behaviour is weak, so we use them as a light anchor, not a promise.</li>
-            <li><strong>Practical use</strong>: a few minutes with headphones before the moment that matters.</li>
-          </ul>
-          <p class="au-fine">Not a medical treatment. Do not listen while driving or operating machinery. If you live with epilepsy or a seizure condition, ask your doctor first.</p>
+        <div class="au-sci-col">
+          <p class="au-approach-eyebrow">How we build your tracks</p>
+          <h3>Three layers, made for you</h3>
+          <ol class="au-layers">
+            <li>
+              <strong>Modulation curves</strong>
+              <span>Each track moves gently from your current state toward the one you need, for example from beta down into alpha to decompress.</span>
+            </li>
+            <li>
+              <strong>Your words</strong>
+              <span>Tracks can carry quiet spoken lines from your own work with your Wayfinder (subliminal audio). The evidence that messages below hearing change behaviour is weak, so we use them as a light anchor, not a promise.</span>
+            </li>
+            <li>
+              <strong>Practical use</strong>
+              <span>A few minutes with headphones before the moment that matters.</span>
+            </li>
+          </ol>
         </div>
+        <p class="au-fine au-sci-fine">Not a medical treatment. Do not listen while driving or operating machinery. If you live with epilepsy or a seizure condition, ask your doctor first.</p>
       </div>
     )
   }
@@ -270,17 +294,130 @@ const modes = [
     to { transform: scaleY(1); }
   }
 
-  .au-science {
+  /* The science, plainly + How we build your tracks (redesigned 19 Nov 2026 18:52): one light panel, two
+     columns, a small beat diagram, brainwave chips and three numbered layers. */
+  .au-sci {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 28px;
-    margin-top: 28px;
+    gap: 20px 28px;
+    margin-top: 20px;
+    padding: 30px 30px 22px;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    background: #fff;
+    color: #2a0b4f;
   }
 
-  .au-science h3 { margin: 0 0 8px; color: #28dbb0; font-size: 20px; font-weight: 900; }
-  .au-science p, .au-science li { color: #f5f2ff; font-size: 17px; line-height: 1.6; }
-  .au-science ul { margin: 0; padding-left: 20px; }
-  .au-science li { margin-bottom: 6px; }
+  .au-sci-col {
+    padding: 22px 22px 24px;
+    border: 1px solid #c2b7dd;
+    border-radius: 18px;
+    background: #faf9ff;
+  }
+
+  .au-sci-col + .au-sci-col {
+    border-color: #73e7c4;
+    background: #f3fffb;
+  }
+
+  .au-sci h3 { margin: 0 0 14px; color: #2a0b4f; font-size: 22px; font-weight: 900; }
+  .au-sci p { margin: 0 0 12px; color: #2a0b4f; font-size: 16px; line-height: 1.6; }
+
+  .au-beat {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 14px;
+  }
+
+  .au-beat-ear {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 12px;
+    border: 1px solid;
+    border-radius: 12px;
+    background: #fff;
+  }
+
+  .au-beat-ear span { font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+  .au-beat-ear strong { font-size: 18px; font-weight: 900; }
+  .au-beat-ear--l { border-color: #8b7dae; color: #58447f; }
+  .au-beat-ear--r { border-color: #fd6b82; color: #960434; }
+  .au-beat-ear--b { border-color: #01a684; background: #05745b; color: #fff; }
+  .au-beat-plus { color: #58447f; font-size: 22px; font-weight: 900; }
+
+  .au-bands {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    margin: 0 0 14px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .au-band {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 10px 10px;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .au-band strong { font-size: 15px; font-weight: 900; }
+  .au-band span { font-size: 12px; line-height: 1.3; }
+  .au-band--d { background: #2a0b4f; color: #fff; }
+  .au-band--t { background: #58447f; color: #fff; }
+  .au-band--a { background: #c2b7dd; color: #2a0b4f; }
+  .au-band--b { background: #e9e3f7; color: #2a0b4f; }
+
+  .au-layers {
+    display: grid;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: au-layer;
+  }
+
+  .au-layers li {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 14px 16px 14px 60px;
+    border: 1px solid #73e7c4;
+    border-radius: 14px;
+    background: #fff;
+    counter-increment: au-layer;
+  }
+
+  .au-layers li::before {
+    content: counter(au-layer);
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #05745b;
+    color: #fff;
+    font-weight: 900;
+  }
+
+  .au-layers strong { font-size: 17px; font-weight: 900; }
+  .au-layers span { font-size: 15px; line-height: 1.55; }
+
+  .au-sci .au-sci-fine { grid-column: 1 / -1; margin: 0; color: #58447f !important; }
+
+  @media (max-width: 860px) {
+    .au-sci { grid-template-columns: minmax(0, 1fr); padding: 20px 16px; }
+    .au-bands { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
   .au-fine { color: #c2b7dd !important; font-size: 14px !important; }
 
   .au-approach {
@@ -363,7 +500,7 @@ const modes = [
   @media (max-width: 640px) {
     .au { padding: 26px 18px; }
     .au-row { grid-template-columns: minmax(0, 1fr); gap: 2px; }
-    .au-modes, .au-science { grid-template-columns: minmax(0, 1fr); }
+    .au-modes { grid-template-columns: minmax(0, 1fr); }
   }
 
   @media (prefers-reduced-motion: reduce) {

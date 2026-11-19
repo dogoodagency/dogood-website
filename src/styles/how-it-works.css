@@ -1955,3 +1955,158 @@ html {
 .hw-page--s2 .hw-step .hw-step-n {
   color: #feb5bc;
 }
+
+/* ===== 19 Nov 2026 18:52 (Seb) ===== */
+
+/* Sound bites and testimonials: white cards. */
+.hw-page .tw .tw-card {
+  background: #fff;
+}
+
+/* "You will leave Stage 1/2 with" and the supports: cards on the stage's soft colour with a stage line. */
+.hw-page .hw-includes li,
+.hw-page section[aria-labelledby="hw-stage2"] .hw-includes li,
+.hw-page .hw-band-tint .hw-includes li {
+  border: 1px solid var(--hw-line);
+  background: var(--hw-soft);
+}
+
+.hw-page--s1 .hw-includes li { border-color: #73e7c4; }
+.hw-page--s2 .hw-includes li { border-color: #fd6b82; }
+
+/* Case V: no frame, centred under the card above (both pages). */
+.hw-page .hw-case--sky {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: center;
+}
+
+.hw-page .hw-case--sky > * {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Track record: HEART numbers 4px bigger. */
+.hw-page .hw-stats strong {
+  font-size: clamp(28px, 2.4vw, 34px);
+  color: #ea1557;
+}
+
+/* The line under the Apply button: 12px, regular, like the other button captions. */
+.hw-page .hw-steps-cta .hw-btn-sub {
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+/* How It Works as a real process: big numbered stops on one line with arrows, then the text. */
+.hw-page .hw-steps {
+  position: relative;
+  display: grid;
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
+  gap: 20px;
+  margin-top: 44px;
+  counter-reset: none;
+}
+
+.hw-page .hw-steps::before {
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 8%;
+  right: 8%;
+  height: 4px;
+  border-radius: 4px;
+  background: var(--hw-line);
+}
+
+.hw-page .hw-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: none;
+  padding: 0 0 4px;
+  border: 0;
+  background: transparent;
+  text-align: center;
+}
+
+.hw-page .hw-step .hw-step-n {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 84px;
+  height: 84px;
+  margin: 0 0 18px;
+  border: 6px solid #fff;
+  border-radius: 50%;
+  background: var(--hw-accent-ink);
+  color: #fff !important;
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.hw-page .hw-band-tint .hw-step .hw-step-n {
+  border-color: var(--hw-tint);
+}
+
+.hw-page .hw-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 33px;
+  right: -16px;
+  width: 14px;
+  height: 14px;
+  border-top: 4px solid var(--hw-accent);
+  border-right: 4px solid var(--hw-accent);
+  transform: rotate(45deg);
+}
+
+.hw-page .hw-step h3,
+.hw-page .hw-step p:not(.hw-step-n) {
+  color: #2a0b4f;
+}
+
+.hw-page .hw-step h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.hw-page .hw-step p:not(.hw-step-n) {
+  max-width: 300px;
+  margin: 0;
+  padding: 16px 18px;
+  border: 1px solid var(--hw-line);
+  border-radius: 16px;
+  background: #fff;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.hw-page .hw-step .hw-step-n:is(:not(:empty)) { letter-spacing: 0; }
+
+@media (max-width: 860px) {
+  .hw-page .hw-steps {
+    grid-auto-flow: row;
+    gap: 28px;
+  }
+
+  .hw-page .hw-steps::before {
+    top: 40px;
+    bottom: 40px;
+    left: calc(50% - 2px);
+    right: auto;
+    width: 4px;
+    height: auto;
+  }
+
+  .hw-page .hw-step:not(:last-child)::after { display: none; }
+}

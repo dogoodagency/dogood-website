@@ -247,7 +247,7 @@
 }
 
 .pp-page .ep-hero .ep-sub {
-  max-width: 820px;
+  max-width: none; /* one line where it fits (Seb, 19 Nov 2026 18:52) */
 }
 
 /* No SKY on DREAM (Seb, 19 Nov 2026 14:55): SKY boxes on the lilac band become white with a DREAM line. */
@@ -255,3 +255,27 @@
   border-color: #c2b7dd;
   background: #fff;
 }
+
+/* Steps (e.g. How the 1.5 days work): GRASS shades from light to deep, appearing one after another
+   (Seb, 19 Nov 2026 18:52). */
+.pp-page .pp-step { border-width: 1px; }
+.pp-page .ep-band .pp-steps .pp-step:nth-child(1) { border-color: #a3f2d7; background: #f3fffb; }
+.pp-page .ep-band .pp-steps .pp-step:nth-child(2) { border-color: #73e7c4; background: #e7fff6; }
+.pp-page .ep-band .pp-steps .pp-step:nth-child(3) { border-color: #28dbb0; background: #a3f2d7; }
+.pp-page .ep-band .pp-steps .pp-step:nth-child(4) { border-color: #01a684; background: #73e7c4; }
+.pp-page .ep-band .pp-steps .pp-step:nth-child(5) { border-color: #05745b; background: #05745b; }
+.pp-page .ep-band .pp-steps .pp-step:nth-child(5) :is(h3, p) { color: #fff; }
+.pp-page .ep-band .pp-steps .pp-step:nth-child(5) .pp-step-label { color: #a3f2d7; }
+.pp-page .pp-step .pp-step-label { color: #05745b; }
+
+.pp-steps.will-animate .pp-step { opacity: 0; transform: translateY(18px); }
+.pp-steps.is-in .pp-step {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.pp-steps.is-in .pp-step:nth-child(2) { transition-delay: 0.6s; }
+.pp-steps.is-in .pp-step:nth-child(3) { transition-delay: 1.2s; }
+.pp-steps.is-in .pp-step:nth-child(4) { transition-delay: 1.8s; }
+.pp-steps.is-in .pp-step:nth-child(5) { transition-delay: 2.4s; }
+.pp-steps.is-in .pp-step:nth-child(6) { transition-delay: 3s; }
