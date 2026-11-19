@@ -8,7 +8,7 @@ why, and anything the next person needs to check.
 
 ## Preview 6, update 13: five new logos, shared logo rails (homepage two rows), Wayfinders page (19 Nov 2026, morning)
 
-**Made by:** Claude (claude.ai), from Seb's feedback of 19 Nov 01:01 and 01:05 (recovered after the chat retry; Seb approved them again at 07:48), screenshots 20 to 22 and the logo files. **Branch:** `claude/preview-6`.
+**Made by:** Claude (claude.ai), from Seb's feedback of 19 Nov 01:01 and 01:05 (recovered after the chat retry; Seb approved them again at 07:48), screenshots 20 to 22 and the logo files. **Branch:** `claude/preview-6`. **Commit:** `9b52555`.
 
 ### Logos
 - Five new logos, cleaned and recoloured to HEART 500 like the others
