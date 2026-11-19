@@ -6,6 +6,26 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 21: Stories, Wayfinders, Client-fit (19 Nov 2026, afternoon)
+
+**Made by:** Claude (claude.ai), Seb's feedback of 12:43, batch 4. **Branch:** `claude/preview-6`. **Commit:** `COMMIT21`.
+
+- **Stories:** case cards match their portrait border. J: HEART 25 card, HEART 400 line, button HEART 600.
+  V: GRASS 50 card with a GRASS 600 line (clear against the DREAM 25 band), button GRASS 500, and its
+  pink phrases (eyebrow, headline accent, sub-heads) in GRASS 600, on this page only. Testimonial cards
+  DREAM 10 on white, 18px/500, pause on hover (update 18).
+- **Wayfinders:** "Where Wayfinders Travel To" centred over the map with more room under the hero.
+  Client-Fit steps tinted DREAM 10 → 25 → … deeper, card by card (the reveal animation stays). Team
+  photos: heads level and the same size (about 20% bigger), Chantill, Katrin and Shiva on the right edge
+  of the card (their photos are cut off there), Seb on the left (`photoFit` in wayfinders.astro). The two
+  large testimonials and the rolling reviews are replaced by the Stories-style moving wall titled
+  "Leaders who've been through it" (Gina P and Tami L first, word for word, "on working with Chantill").
+  Bottom box: "See how it works" → "Client-fit process" (/wayfinders/clientfit).
+- **Client-fit page:** the lilac strip before the footer is gone (footer strip now white); case study and
+  next-step boxes both 1000px wide, the case title's first line on one line.
+
+---
+
 ## Preview 6, update 20: How it works, The Exit Prep, Insights, Newsletter, wording (19 Nov 2026, afternoon)
 
 **Made by:** Claude (claude.ai), Seb's feedback of 12:43, batch 3. **Branch:** `claude/preview-6`. **Commit:** `f9aeee5`.

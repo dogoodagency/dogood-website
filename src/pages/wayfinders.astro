@@ -2,7 +2,8 @@
 import "../styles/wayfinders.css";
 import Base from "../layouts/Base.astro";
 import Wave from "../components/Wave.astro";
-import ReviewsRail from "../components/ReviewsRail.astro";
+import TestimonialWall from "../components/TestimonialWall.astro";
+import { reviews } from "../data/homepage";
 import { Image } from "astro:assets";
 import gina from "../assets/reviews/gina-p.png";
 import tami from "../assets/reviews/tami-l.png";
@@ -87,6 +88,23 @@ const voices = [
 
 const regionList = mapPins.map((pin) => pin.name).join(", ");
 const halos = mapPins.map((pin, i) => ({ ...pin, i, delay: `${-((i * 0.77) % 3.6).toFixed(2)}s` }));
+const portraitFiles = import.meta.glob<ImageMetadata>("../assets/reviews/*", { eager: true, import: "default" });
+const portraitFor = (file: string) => Object.entries(portraitFiles).find(([p]) => p.endsWith(`/${file}`))?.[1];
+const wallItems = [
+  ...voices.map((v) => ({ quote: v.quote.join(" "), name: v.name, role: `${v.role} · on working with ${v.wayfinder}`, image: v.image })),
+  ...reviews.filter((r) => !["gina-p.png", "tami-l.png"].includes(r.file)).map((r) => ({ quote: r.quote, name: r.name, role: r.role, image: portraitFor(r.file) })),
+];
+
+// Photo fit (Seb, 19 Nov 2026): heads about 20% bigger and the same size across the team, head tops level.
+// h = shown image height in px (head width ~106px for everyone); align = which card edge the photo sits on
+// (the source photos of Chantill, Katrin and Shiva are cut off on the right, Seb's on the left).
+const photoFit: Record<string, { h: number; align: "left" | "right" | "center" }> = {
+  Chantill: { h: 333, align: "right" },
+  Katrin: { h: 338, align: "right" },
+  Shiva: { h: 342, align: "right" },
+  Seb: { h: 408, align: "left" },
+  Vlora: { h: 409, align: "center" },
+};
 ---
 
 <Base
@@ -201,7 +219,7 @@ const halos = mapPins.map((pin, i) => ({ ...pin, i, delay: `${-((i * 0.77) % 3.6
               const more = lineLabels.slice(VISIBLE_LINES);
               return (
                 <li class="wf-member">
-                  <div class="wf-photo" style={`--wf-tint:${w.tint}`}>
+                  <div class:list={["wf-photo", `wf-photo--${photoFit[w.name]?.align ?? "center"}`]} style={`--wf-tint:${w.tint};--wf-img-h:${photoFit[w.name]?.h ?? 340}px`}>
                     <picture>
                       <source type="image/webp" srcset={`${w.photo.base}@1x.webp 320w, ${w.photo.base}@2x.webp 640w`} sizes="(min-width: 1024px) 340px, (min-width: 640px) 320px, 70vw" />
                       <img src={`${w.photo.base}@1x.png`} width={w.photo.width} height={w.photo.height} alt={w.photo.alt} loading="lazy" decoding="async" />
@@ -268,35 +286,16 @@ const halos = mapPins.map((pin, i) => ({ ...pin, i, delay: `${-((i * 0.77) % 3.6
 
     <Fragment set:html={toWhite} />
 
-    <!-- Testimonials about our Wayfinders (Seb, 19 Nov 2026), word for word, then the rolling reviews. -->
+    <!-- Testimonials (Seb, 19 Nov 2026): the Stories-style moving wall replaces the two large quotes and the
+         rolling reviews. Gina P and Tami L (word for word) come first, then the leaders' reviews. -->
     <section class="wf-band wf-band-voices" aria-labelledby="wf-voices">
       <div class="wf-well wf-well-top">
         <p class="wf-eyebrow wf-eyebrow-dark wf-center">Testimonials</p>
-        <h2 class="wf-h2 wf-center" id="wf-voices">What clients say about working with a Wayfinder</h2>
-        <div class="wf-voices">
-          {
-            voices.map((v) => (
-              <figure class="wf-voice">
-                <span class="wf-voice-mark" aria-hidden="true">“</span>
-                <blockquote>
-                  {v.quote.map((para) => <p>{para}</p>)}
-                </blockquote>
-                <figcaption>
-                  <Image class="wf-voice-face" src={v.image} alt="" width={64} height={64} densities={[1, 2]} />
-                  <span>
-                    <strong>{v.name}</strong>
-                    <span>{v.role}</span>
-                    <span class="wf-voice-about">On working with {v.wayfinder}</span>
-                  </span>
-                </figcaption>
-              </figure>
-            ))
-          }
-        </div>
+        <h2 class="wf-h2 wf-center" id="wf-voices">Leaders who've been through it</h2>
+        <p class="wf-center wf-voices-sub">Words from clients of our Wayfinders and from leaders our team has worked with. They are not all founders after an exit.</p>
+        <TestimonialWall items={wallItems} label="Testimonials from clients and leaders our team has worked with" />
       </div>
     </section>
-
-    <ReviewsRail exclude={["gina-p.png", "tami-l.png"]} />
 
     <Fragment set:html={toTint} />
 
@@ -308,9 +307,9 @@ const halos = mapPins.map((pin, i) => ({ ...pin, i, delay: `${-((i * 0.77) % 3.6
           <p>Your Stage 1 application tells us what is happening and what you need. We review it within 24 hours, talk with you, and match you with the Wayfinder who fits you best.</p>
           <div class="wf-cta-actions">
             <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
-            <a class="btn-teal" href="/how-it-works">See how it works</a>
+            <a class="btn-teal" href="/wayfinders/clientfit">Client-fit process</a>
           </div>
-          <p class="wf-cta-small">Not sure yet? How it works shows both doors: Exit-Prep before the sale, The Reset after it.</p>
+          <p class="wf-cta-small">Not sure yet? <a href="/how-it-works">Which door is mine?</a> shows both: The Exit Prep™ before the sale, Stage 1: The Reset™ after it.</p>
         </div>
       </div>
     </section>

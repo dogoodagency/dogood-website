@@ -837,3 +837,26 @@ body:has(.st-page) .footer-wave {
 .st-page .st-wall:hover .st-track {
   animation-play-state: paused;
 }
+
+/* Case studies (Seb, 19 Nov 2026): each card matches its portrait border. J: HEART (button HEART 600).
+   V: GRASS, with enough contrast against the DREAM 25 band (button GRASS 500; its pink phrases GRASS 600). */
+.st-case.st-case--heart {
+  background: #fff9fa;
+  border-color: #fd6b82;
+}
+
+.st-case.st-case--green {
+  background: #e7fff6;
+  border-color: #01a684;
+}
+
+.st-case--heart .btn-teal {
+  background: #c10e46 !important;
+  color: #fff !important;
+}
+
+.st-case--green .st-case-eyebrow,
+.st-case--green h3 .st-accent,
+.st-case--green h4 {
+  color: #01a684;
+}

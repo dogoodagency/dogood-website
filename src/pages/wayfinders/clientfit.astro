@@ -10,7 +10,7 @@ const tint = "#F5F2FF";
 const white = "#ffffff";
 const heroEdge = edgeAbove("#2A0B4F");
 const bandEdge = edgeAbove(tint);
-const footerEdge = edgeAbove(tint);
+const footerEdge = edgeAbove("#ffffff");
 
 function wave(from: string, to: string) {
   const above = from === tint ? "tint" : "white";
@@ -60,7 +60,7 @@ const jsonLd = {
   title="Client-Fit Process | DoGood Agency"
   description="How DoGood matches founders to a Wayfinder: fit first, then time zone, with an early checkpoint so the match can be corrected quickly if it feels wrong."
   canonical="https://www.dogoodagency.co/wayfinders/clientfit"
-  footerStrip={tint}
+  footerStrip="#ffffff"
   footerEdge={footerEdge}
 >
   <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

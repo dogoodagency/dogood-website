@@ -1680,3 +1680,87 @@ h2.wf-h2.wf-center {
   color: #cfc4e6;
   font-size: 14px;
 }
+
+/* ===== 19 Nov 2026 (Seb) ===== */
+
+/* Team photos: head tops level, heads the same size (about 20% bigger), each photo on the card edge where
+   its source is cut off. The card shows the head and shoulders; the rest is clipped at the bottom. */
+.wf-members .wf-photo {
+  position: relative;
+  display: block;
+  height: 360px;
+  padding: 0;
+}
+
+.wf-members .wf-photo picture {
+  position: absolute;
+  top: 26px;
+  left: 50%;
+  display: block;
+  width: auto;
+  height: var(--wf-img-h, 340px);
+  transform: translateX(-50%);
+}
+
+.wf-members .wf-photo--right picture {
+  right: 0;
+  left: auto;
+  transform: none;
+}
+
+.wf-members .wf-photo--left picture {
+  left: 0;
+  transform: none;
+}
+
+.wf-members .wf-photo img {
+  width: auto;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+}
+
+@media (max-width: 640px) {
+  .wf-members .wf-photo {
+    height: 320px;
+  }
+
+  .wf-members .wf-photo picture {
+    height: calc(var(--wf-img-h, 340px) * 0.88);
+  }
+}
+
+/* Where Wayfinders travel to: centred over the map, with more room under the hero. */
+.wf-band-map .wf-well-top {
+  padding-top: 88px;
+}
+
+.wf-band-map .wf-intro {
+  max-width: 760px;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+
+/* Client-Fit steps: each card a slightly deeper DREAM tint, to show progression. */
+.wf-steps .wf-step:nth-child(1) { background: #faf9ff; }
+.wf-steps .wf-step:nth-child(2) { background: #f5f2ff; }
+.wf-steps .wf-step:nth-child(3) { background: #ede8fb; }
+.wf-steps .wf-step:nth-child(4) { background: #e6defc; }
+.wf-steps .wf-step:nth-child(5) { background: #ddd3f7; }
+
+.wf-steps .wf-step {
+  border: 1px solid #c2b7dd;
+}
+
+/* Client-fit page (Seb, 19 Nov 2026): case study and next-step boxes equally wide (1000px) so the case
+   title's first line fits on one line. */
+.wf-page .wf-case,
+.wf-page .wf-cta.wf-cta-box {
+  max-width: 1000px;
+}
+
+@media (min-width: 1024px) {
+  .wf-page h2.wf-case-title {
+    white-space: nowrap;
+  }
+}
