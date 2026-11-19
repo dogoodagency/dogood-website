@@ -13,7 +13,7 @@ import { reviews, stats } from "../data/homepage";
 import TestimonialWall from "../components/TestimonialWall.astro";
 import HwHouse from "../components/HwHouse.astro";
 import HwSupports from "../components/HwSupports.astro";
-import StageProgress from "../components/StageProgress.astro";
+import StageSwitch from "../components/StageSwitch.astro";
 import { familiar } from "../data/sound-bites";
 import { Image } from "astro:assets";
 import caseJImg from "../assets/cases/case-study-j-founder-life-after-exit.png";
@@ -72,43 +72,21 @@ const [, houseStage1, houseStage2] = houses;
       <Wave fill={tint} edge={heroEdge} />
     </header>
 
-    <!-- 1. Where you are: the two stages, this page is Stage 2 -->
+    <!-- 1. The two stages as one switch (Seb, 19 Nov 2026 14:55) -->
     <section class="hw-band hw-band-tint hw-path" aria-labelledby="hw-path">
       <div class="hw-well">
-        <h2 id="hw-path" class="hw-center hw-path-title">Two stages. This page is Stage 2.</h2>
-        <StageProgress current={2} tone="light" showTitle={false} />
+        <p class="hw-eyebrow hw-center">The FRP is a 2-stage process</p>
+        <h2 id="hw-path" class="hw-center hw-path-title">Reset first. Then build.</h2>
+        <StageSwitch current={2} />
         <p class="hw-path-note">Stage 2 is invite-only. It starts after Stage 1. <a href="/the-reset">Start with Stage 1 →</a></p>
+        <p class="hw-flow hw-flow-sm hw-center"><a href="#anchor-1"><strong>How it works:</strong></a> Stage 1 → Week 3 decision → Invitation → Start Stage 2</p>
       </div>
     </section>
 
     <Fragment set:html={toWhite} />
 
-    <!-- 1a. The two stages -->
-    <section class="hw-band" aria-labelledby="hw-two">
-      <div class="hw-well">
-        <p class="hw-eyebrow hw-center">The FRP is a 2-stage process</p>
-        <h2 id="hw-two" class="hw-center">Reset first. Then build.</h2>
-        <div class="hw-stages hw-stages-light">
-          <div class="hw-stage-card hw-stage-card--s1">
-            <p class="hw-stage-n">Stage 1</p>
-            <h3>The Reset <span>(30 days)</span></h3>
-            <p class="hw-stage-line">get clear · set new values · shift patterns</p>
-            <a class="hw-stage-btn" href="/clarityvalue-shift">via ClarityValue Shift™ →</a>
-          </div>
-          <span class="hw-stage-arrow" aria-hidden="true">→</span>
-          <div class="hw-stage-card hw-stage-card--s2">
-            <p class="hw-stage-n">Stage 2</p>
-            <h3>The Build <span>(12 weeks)</span></h3>
-            <p class="hw-stage-line">rework life · go deeper · realign what matters</p>
-            <a class="hw-stage-btn" href="/nextlife-passage">via NextLife Passage™ →</a>
-          </div>
-        </div>
-        <p class="hw-flow hw-flow-sm hw-center"><a href="#anchor-1"><strong>How it works:</strong></a> Stage 1 → Week 3 decision → Invitation → Start Stage 2</p>
-      </div>
-    </section>
-
     <!-- 1b. Sound bites -->
-    <section class="hw-band hw-band-cont" aria-labelledby="hw-familiar">
+    <section class="hw-band" aria-labelledby="hw-familiar">
       <div class="hw-well">
         <h2 id="hw-familiar" class="hw-center">Sound bites</h2>
         <p class="hw-center hw-sub-center">Words from real calls with founders and the advisors who walk with them.</p>

@@ -561,3 +561,16 @@ body:has(.ep-page) .footer-wave {
 .ep-page .ep-feature {
   margin-top: 48px;
 }
+
+/* 19 Nov 2026 14:55 (Seb): the advisor link underlined in GRASS, like the other text links. */
+.ep-page .ep-adv-link a {
+  color: #2a0b4f;
+  text-decoration: underline;
+  text-decoration-color: #28dbb0;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.ep-page .ep-feature + .ep-feature {
+  margin-top: 28px;
+}

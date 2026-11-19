@@ -1,6 +1,7 @@
 ---
 import "../styles/exit-prep.css";
 import WhoopSection from "../components/WhoopSection.astro";
+import AudioSection from "../components/AudioSection.astro";
 import Base from "../layouts/Base.astro";
 import Wave from "../components/Wave.astro";
 import { edgeAbove } from "../data/edge-line";
@@ -128,6 +129,7 @@ const faqJson = {
           <p>A clearer decision about the sale, a picture of what comes next, and a calmer way into the sale itself, without delay.</p>
         </div>
         <div class="ep-feature"><WhoopSection /></div>
+        <div class="ep-feature"><AudioSection /></div>
       </div>
     </section>
 
@@ -147,7 +149,7 @@ const faqJson = {
       <div class="ep-well ep-well-top ep-prose">
         <h2 id="ep-advisors">Working alongside your advisors</h2>
         <p class="ep-lede-plain ep-lede-full">We work next to your exit planner, accountant, attorney and wealth advisor, never instead of them. They prepare the business. We prepare you, and with your permission we keep them in the loop.</p>
-        <p class="ep-read-label">Read more</p>
+        <p class="ep-read-label">Notes for founders · from Insights</p>
         <div class="ep-posts">
           {readPosts.map((p) => <BlogCard post={p} variant="grid" />)}
         </div>

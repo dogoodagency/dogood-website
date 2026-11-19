@@ -1802,3 +1802,156 @@ html {
 .hw-page .hw-feature {
   margin-top: 48px;
 }
+
+/* ===== 19 Nov 2026 14:55 (Seb) ===== */
+
+/* Stage switch band: the eyebrow sits right above the title. */
+.hw-page .hw-path .hw-eyebrow {
+  margin-bottom: 8px;
+}
+
+.hw-page .hw-path .hw-path-title {
+  margin-bottom: 28px;
+}
+
+.hw-page .hw-path .hw-flow {
+  margin-top: 18px;
+}
+
+.hw-page .hw-start .hw-well {
+  padding-top: 24px;
+}
+
+/* Not there yet?: GRASS 50 card with one thin GRASS 500 line all round, so it never sits white on white. */
+.hw-notyet-card {
+  background: #e7fff6;
+  border: 1px solid #28dbb0;
+}
+
+/* Stage descriptions: a darker frame (DREAM 300, the same line as the WHOOP section). Stage 2 is HEART. */
+.hw-stage-panel {
+  border: 1px solid #8b7dae;
+}
+
+.hw-page .wh {
+  border-color: #8b7dae;
+}
+
+.hw-page section[aria-labelledby="hw-stage2"] .hw-stage-panel {
+  background: #fff9fa;
+  border-color: #fd6b82;
+}
+
+.hw-page section[aria-labelledby="hw-recap"] .hw-stage-panel,
+.hw-page section[aria-labelledby="hw-stage1"] .hw-stage-panel {
+  border-color: #01a684;
+}
+
+/* Cards inside a tinted panel or band are white, so they stand out from it (You will leave Stage 2 with,
+   and the supports that run through both stages). */
+.hw-page section[aria-labelledby="hw-stage2"] .hw-includes li,
+.hw-page .hw-band-tint .hw-supports .hw-includes li,
+.hw-page .hw-band-tint .hw-includes li {
+  background: #fff;
+}
+
+.hw-page section[aria-labelledby="hw-stage2"] .hw-includes li {
+  border-color: #ea1557;
+}
+
+.hw-page .hw-retreat-link {
+  margin-top: 14px;
+}
+
+.hw-page .hw-retreat .hw-retreat-link a {
+  color: #28dbb0 !important;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Fit cards: one thin line all round, in a stronger colour. */
+.hw-fit-card.hw-fit-yes {
+  border: 1px solid #01a684;
+  background: #f3fffb;
+}
+
+.hw-fit-card.hw-fit-no {
+  border: 1px solid #ea1557;
+  background: #fff9fa;
+}
+
+/* Case J: a DREAM 500 card so it stands out. */
+.hw-page .hw-case--grass {
+  border-color: #2a0b4f;
+  background: #2a0b4f;
+}
+
+.hw-page .hw-case--grass,
+.hw-page .hw-case--grass h3,
+.hw-page .hw-case--grass p {
+  color: #fff !important;
+}
+
+.hw-page .hw-case--grass .hw-eyebrow {
+  color: #28dbb0 !important;
+}
+
+/* Case V on The Build: no frame, centred. */
+.hw-page--s2 .hw-case--sky {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+/* Track record: bigger cards and numbers, every number and label on one line. */
+@media (min-width: 1100px) {
+  .hw-page .hw-stats {
+    flex-wrap: nowrap;
+    margin-left: -70px;
+    margin-right: -70px;
+    gap: 16px;
+  }
+}
+
+.hw-page .hw-stats li {
+  flex: 1 1 0;
+  max-width: none;
+  padding: 30px 12px;
+}
+
+.hw-page .hw-stats strong {
+  font-size: clamp(24px, 2.1vw, 30px);
+  white-space: nowrap;
+}
+
+.hw-page .hw-stats span {
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+@media (max-width: 1099px) {
+  .hw-page .hw-stats span { white-space: normal; }
+}
+
+/* How it works steps: DREAM 500 cards, white text, so they hold their own on the page. */
+.hw-page .hw-step {
+  border: 1px solid #2a0b4f;
+  background: #2a0b4f;
+}
+
+.hw-page .hw-step,
+.hw-page .hw-step h3,
+.hw-page .hw-step p {
+  color: #fff;
+}
+
+.hw-page--s1 .hw-step .hw-step-n {
+  color: #73e7c4;
+}
+
+.hw-page--s2 .hw-step .hw-step-n {
+  color: #feb5bc;
+}

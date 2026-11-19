@@ -1,0 +1,326 @@
+---
+/**
+ * The two FRP stages as a switch (Seb, 19 Nov 2026 14:55). Replaces the progress pills and the two dark
+ * stage cards on /the-reset and /the-build, which repeated each other. One switch, two positions: Stage 1
+ * (GRASS) and Stage 2 (HEART). The panel below shows the chosen stage on a dark stage colour; both panels
+ * sit in the same grid cell, so the frame keeps one size whichever stage is shown.
+ * Without JS both panels show, one under the other.
+ */
+interface Props {
+  current: 1 | 2;
+}
+const { current } = Astro.props;
+
+const stages = [
+  {
+    n: 1,
+    name: "The Reset™",
+    time: "30 days",
+    line: "Get clear · Set new values · Shift patterns",
+    text: "Private 1:1 work, including a 1.5-day in-person residency. You apply for Stage 1 only.",
+    method: { href: "/clarityvalue-shift", label: "via ClarityValue Shift™" },
+    page: { href: "/the-reset", label: "Stage 1 page" },
+    note: "Apply for Stage 1",
+  },
+  {
+    n: 2,
+    name: "The Build™",
+    time: "12 weeks",
+    line: "Rework life · Go deeper · Realign what matters",
+    text: "By invitation, after Stage 1. By week 3 of Stage 1 we both know whether Stage 2 is the right next step.",
+    method: { href: "/nextlife-passage", label: "via NextLife Passage™" },
+    page: { href: "/the-build", label: "Stage 2 page" },
+    note: "By invitation",
+  },
+];
+---
+
+<div class="ss" data-ss data-current={current}>
+  <div class="ss-switch" role="tablist" aria-label="The two stages">
+    {
+      stages.map((s) => (
+        <button
+          class:list={["ss-tab", `ss-tab--${s.n}`]}
+          type="button"
+          role="tab"
+          id={`ss-tab-${s.n}`}
+          aria-controls={`ss-panel-${s.n}`}
+          aria-selected={s.n === current ? "true" : "false"}
+          tabindex={s.n === current ? 0 : -1}
+        >
+          <span class="ss-tab-n">Stage {s.n}</span>
+          <span class="ss-tab-name">{s.name.replace("™", "")}</span>
+        </button>
+      ))
+    }
+    <span class="ss-knob" aria-hidden="true"></span>
+  </div>
+
+  <div class="ss-panels">
+    {
+      stages.map((s) => (
+        <section
+          class:list={["ss-panel", `ss-panel--${s.n}`]}
+          id={`ss-panel-${s.n}`}
+          role="tabpanel"
+          aria-labelledby={`ss-tab-${s.n}`}
+          data-active={s.n === current ? "true" : "false"}
+        >
+          <p class="ss-kicker">
+            Stage {s.n}
+            {s.n === current ? <span class="ss-here">You are here</span> : <span class="ss-here ss-here--ghost">{s.note}</span>}
+          </p>
+          <h3 class="ss-title">
+            {s.name} <span>({s.time})</span>
+          </h3>
+          <p class="ss-line">{s.line}</p>
+          <p class="ss-text">{s.text}</p>
+          <p class="ss-links">
+            <a class="ss-btn" href={s.method.href}>{s.method.label} →</a>
+            {s.n !== current && <a class="ss-btn ss-btn--plain" href={s.page.href}>{s.page.label} →</a>}
+          </p>
+        </section>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .ss {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .ss-switch {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 auto 18px;
+    padding: 6px;
+    max-width: 560px;
+    border: 1px solid #8b7dae;
+    border-radius: 999px;
+    background: #fff;
+  }
+
+  .ss-tab {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 10px 16px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: #2a0b4f;
+    font: inherit;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+  .ss-tab-n {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .ss-tab-name {
+    font-size: 18px;
+    font-weight: 900;
+  }
+
+  .ss-tab[aria-selected="true"] {
+    color: #fff;
+  }
+
+  .ss-tab:focus-visible {
+    outline: 2px solid #2a0b4f;
+    outline-offset: 3px;
+  }
+
+  .ss-knob {
+    position: absolute;
+    top: 6px;
+    bottom: 6px;
+    left: 6px;
+    width: calc(50% - 6px);
+    border-radius: 999px;
+    background: #05745b;
+    transition: transform 0.35s cubic-bezier(0.3, 0.7, 0.3, 1), background-color 0.35s ease;
+  }
+
+  .ss[data-current="2"] .ss-knob {
+    transform: translateX(100%);
+    background: #960434;
+  }
+
+  .ss-panels {
+    display: grid;
+  }
+
+  .ss-panel :is(p, h3, span) {
+    color: #fff !important;
+  }
+
+  .ss-panel .ss-here:not(.ss-here--ghost) {
+    color: #2a0b4f !important;
+  }
+
+  .ss .ss-btn {
+    background-image: none !important;
+  }
+
+  .ss-panel {
+    grid-area: 1 / 1;
+    padding: 36px 44px 38px;
+    border-radius: 24px;
+    color: #fff;
+    text-align: center;
+    transition: opacity 0.3s ease;
+  }
+
+  .ss-panel--1 {
+    border: 1px solid #05745b;
+    background: #05745b;
+  }
+
+  .ss-panel--2 {
+    border: 1px solid #960434;
+    background: #960434;
+  }
+
+  .ss-panel[data-active="false"] {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .ss-kicker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 6px;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .ss-here {
+    padding: 3px 12px;
+    border-radius: 999px;
+    background: #fff;
+    color: #2a0b4f;
+    font-size: 12px;
+  }
+
+  .ss-here--ghost {
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    background: transparent;
+    color: #fff;
+  }
+
+  .ss-title {
+    margin: 0 0 8px;
+    color: #fff;
+    font-size: clamp(30px, 3.4vw, 40px);
+    font-weight: 900;
+    line-height: 1.1;
+  }
+
+  .ss-title span {
+    font-size: 0.55em;
+  }
+
+  .ss-line {
+    margin: 0 0 12px;
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .ss-text {
+    max-width: 600px;
+    margin: 0 auto 20px;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  .ss-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 0;
+  }
+
+  .ss .ss-btn {
+    display: inline-flex;
+    padding: 10px 20px;
+    border: 1px solid #fff;
+    border-radius: 999px;
+    background: #fff;
+    color: #2a0b4f !important;
+    text-decoration: none !important;
+    font-size: 16px;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .ss .ss-btn--plain {
+    background: transparent;
+    color: #fff !important;
+  }
+
+  .ss .ss-btn:hover,
+  .ss .ss-btn:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  @media (max-width: 640px) {
+    .ss-panel {
+      padding: 28px 22px 30px;
+    }
+
+    .ss-tab-name {
+      font-size: 15px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ss-knob,
+    .ss-panel {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-ss]").forEach((root) => {
+    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>(".ss-tab"));
+    const panels = Array.from(root.querySelectorAll<HTMLElement>(".ss-panel"));
+    const select = (i: number, focus = false) => {
+      root.dataset.current = String(i + 1);
+      tabs.forEach((t, k) => {
+        t.setAttribute("aria-selected", k === i ? "true" : "false");
+        t.tabIndex = k === i ? 0 : -1;
+      });
+      panels.forEach((p, k) => (p.dataset.active = k === i ? "true" : "false"));
+      if (focus) tabs[i]?.focus();
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener("click", () => select(i));
+      t.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+          e.preventDefault();
+          select(i === 0 ? 1 : 0, true);
+        }
+      });
+    });
+  });
+</script>

@@ -10,7 +10,7 @@ import TestimonialWall from "../components/TestimonialWall.astro";
 import HwHouse from "../components/HwHouse.astro";
 import HwSupports from "../components/HwSupports.astro";
 import HwWayfinders from "../components/HwWayfinders.astro";
-import StageProgress from "../components/StageProgress.astro";
+import StageSwitch from "../components/StageSwitch.astro";
 import { familiar } from "../data/sound-bites";
 import caseJImg from "../assets/cases/case-study-j-founder-life-after-exit.png";
 import caseVImg from "../assets/cases/case-study-v-founder-life-after-exit.png";
@@ -110,55 +110,39 @@ const [houseBefore, houseStage1, houseStage2] = houses;
       <Wave fill={tint} edge={heroEdge} />
     </header>
 
-    <!-- 1. Where you are: the two stages, this page is Stage 1 (Seb, 19 Nov 2026) -->
+    <!-- 1. The two stages as one switch (Seb, 19 Nov 2026 14:55): replaces the progress pills and the two dark
+         stage cards, which repeated each other. -->
     <section class="hw-band hw-band-tint hw-path" aria-labelledby="hw-path">
       <div class="hw-well">
-        <h2 id="hw-path" class="hw-center hw-path-title">Two stages. This page is Stage 1.</h2>
-        <StageProgress current={1} tone="light" showTitle={false} />
+        <p class="hw-eyebrow hw-center">The FRP is a 2-stage process</p>
+        <h2 id="hw-path" class="hw-center hw-path-title">Reset first. Then build.</h2>
+        <StageSwitch current={1} />
         <p class="hw-path-note">You apply for Stage 1 only. Stage 2 is invite-only. <a href="/the-build">What happens in Stage 2 →</a></p>
       </div>
     </section>
 
     <Fragment set:html={toWhite} />
 
-    <!-- 1a. The two stages (moved out of the hero, 19 Nov 2026) -->
-    <section class="hw-band" aria-labelledby="hw-two">
+    <!-- 1a. How to start, and the Exit Prep callout -->
+    <section class="hw-band hw-start" aria-label="How to start">
       <div class="hw-well">
-        <p class="hw-eyebrow hw-center">The FRP is a 2-stage process</p>
-        <h2 id="hw-two" class="hw-center">Reset first. Then build.</h2>
-        <div class="hw-stages hw-stages-light">
-          <div class="hw-stage-card hw-stage-card--s1">
-            <p class="hw-stage-n">Stage 1</p>
-            <h3>The Reset <span>(30 days)</span></h3>
-            <p class="hw-stage-line">get clear · set new values · shift patterns</p>
-            <a class="hw-stage-btn" href="/clarityvalue-shift">via ClarityValue Shift™ →</a>
-          </div>
-          <span class="hw-stage-arrow" aria-hidden="true">→</span>
-          <div class="hw-stage-card hw-stage-card--s2">
-            <p class="hw-stage-n">Stage 2</p>
-            <h3>The Build <span>(12 weeks)</span></h3>
-            <p class="hw-stage-line">rework life · go deeper · realign what matters</p>
-            <a class="hw-stage-btn" href="/nextlife-passage">via NextLife Passage™ →</a>
-          </div>
-        </div>
         <p class="hw-flow hw-flow-sm hw-center"><a href="#anchor-1"><strong>How it works:</strong></a> Apply → Conversation → Start Stage 1</p>
         <p class="hw-expedite hw-center">We protect our delivery quality: Ask about <a href="/expedited-start">Expedited Start</a> if urgent<br />(FRP can begin within 7 days)</p>
 
-        <!-- Not there yet? made a proper callout (Seb, 19 Nov 2026) -->
         <aside class="hw-notyet-card" aria-label="Not sold yet?">
           <div>
             <p class="hw-notyet-eyebrow">Not there yet?</p>
-            <p class="hw-notyet-text">If you haven't sold yet, <strong>Exit-Prep</strong> is for you: six weekly 1:1 sessions on the personal side of the sale, while the deal is still ahead of you.</p>
+            <p class="hw-notyet-text">If you haven't sold yet, <strong>The Exit Prep</strong> is for you: six weekly 1:1 sessions on the personal side of the sale, while the deal is still ahead of you.</p>
           </div>
-          <a class="btn-teal" href="/exit-prep">See Exit-Prep</a>
+          <a class="btn-teal" href="/exit-prep">See The Exit Prep</a>
         </aside>
       </div>
     </section>
 
-    <Fragment set:html={toWhite} />
+    <Fragment set:html={toTint} />
 
-    <!-- 1b. Sound bites: 6 quotes from real calls -->
-    <section class="hw-band" aria-labelledby="hw-familiar">
+    <!-- 1b. Sound bites: 6 quotes from real calls (own tinted band, 19 Nov 2026 14:55) -->
+    <section class="hw-band hw-band-tint" aria-labelledby="hw-familiar">
       <div class="hw-well">
         <h2 id="hw-familiar" class="hw-center">Sound bites</h2>
         <p class="hw-center hw-sub-center">Words from real calls with founders and the advisors who walk with them.</p>
@@ -166,8 +150,10 @@ const [houseBefore, houseStage1, houseStage2] = houses;
       </div>
     </section>
 
-    <!-- 2. Cost + What is FRP (same white band as the sound bites) -->
-    <section class="hw-band hw-band-cont" aria-labelledby="hw-cost">
+    <Fragment set:html={toWhite} />
+
+    <!-- 2. Cost + What is FRP -->
+    <section class="hw-band" aria-labelledby="hw-cost">
       <div class="hw-well hw-prose">
         <h2 id="hw-cost">The success is real. But so is the cost.</h2>
         <p>You thought stepping away would feel like arrival. Instead, you have more freedom but feel less settled than expected.</p>
