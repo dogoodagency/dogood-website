@@ -8,7 +8,7 @@ why, and anything the next person needs to check.
 
 ## Preview 6, update 12: How it works, Exit-Prep, The Reset and Stories reworked; new logos and testimonials; quote names (19 Nov 2026, morning)
 
-**Made by:** Claude (claude.ai), from Seb's feedback (screenshots 14 to 19, seven logos, two headshots, the Exit-Prep one-pager v1). **Branch:** `claude/preview-6`. **Commits:** `eea6d30`, `302f357`, and the quote-name commit below.
+**Made by:** Claude (claude.ai), from Seb's feedback (screenshots 14 to 19, seven logos, two headshots, the Exit-Prep one-pager v1). **Branch:** `claude/preview-6`. **Commits:** `eea6d30`, `302f357`, and `4ca8433` (quote names).
 
 ### Shared: moving testimonial wall (new `src/components/TestimonialWall.astro`, `testimonial-wall.css`)
 - Same motion as the Stories page: three columns drifting on desktop, two on tablet, a
