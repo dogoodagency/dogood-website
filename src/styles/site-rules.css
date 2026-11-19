@@ -54,3 +54,75 @@ details > summary:hover {
 .faq-trigger:hover {
   background-color: #ede8fb;
 }
+
+/* 19 Nov 2026 14:55 (Seb): buttons never change size on hover. The arrow still slides in, but the padding
+   keeps the same total width and nothing scales. */
+a.btn-apply:hover, a.btn-apply.lg:hover, a.btn-case:hover, a.btn-teal:hover, a.btn-partnership:hover,
+a.btn-terms:hover, button.btn-teal:hover, button.btn-subscribe:hover, .buzzsprout-gate button:hover,
+a.btn-apply:focus-visible, a.btn-apply.lg:focus-visible, a.btn-case:focus-visible, a.btn-teal:focus-visible,
+a.btn-partnership:focus-visible, a.btn-terms:focus-visible, button.btn-teal:focus-visible,
+button.btn-subscribe:focus-visible, .buzzsprout-gate button:focus-visible {
+  transform: none !important;
+  padding-left: 56px !important;
+  padding-right: 20px !important;
+}
+
+button.btn-subscribe:hover,
+button.btn-subscribe:focus-visible {
+  border: 1px solid #28dbb0 !important;
+}
+
+/* Testimonials on every page: body size and weight, in italics (Seb, 19 Nov 2026 14:55). */
+.tw .tw-card blockquote p,
+.st-page .st-card blockquote p,
+.st-card blockquote p,
+.review-body,
+.bk-quote blockquote p {
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  font-style: italic;
+  line-height: 1.6 !important;
+}
+
+/* Leftover coloured edges from the old thick top or left bars: one thin border, one colour, all round. */
+.ab-vision-card,
+.fw-step {
+  border-top-color: #c2b7dd !important;
+}
+
+.ep-place {
+  border-left-color: #c2b7dd !important;
+}
+
+.ab-good li {
+  border-left-color: #e3dcf2 !important;
+}
+
+/* FAQs (Seb, 19 Nov 2026 14:55): on hover the whole item tints, the open answer included, not only the
+   question row. */
+details.ep-faq,
+details.bl-faq-item,
+.faq-item,
+.adv-faq-item {
+  transition: background-color 0.2s ease;
+}
+
+details.ep-faq:hover,
+details.bl-faq-item:hover,
+.faq-item:hover,
+.adv-faq-item:hover {
+  background-color: #ede8fb !important;
+}
+
+details.ep-faq:hover > summary,
+details.bl-faq-item:hover > summary,
+.faq-item:hover .faq-trigger,
+.adv-faq-item:hover .adv-faq-trigger {
+  background-color: transparent !important;
+}
+
+/* No hover tint on the newsletter's "Go deeper" panels or the Wayfinder "More about" rows. */
+details.nl-deep > summary:hover,
+details.wf-more > summary:hover {
+  background-color: transparent;
+}

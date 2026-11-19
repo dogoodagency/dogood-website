@@ -7,6 +7,22 @@ import { fileURLToPath } from "node:url";
 
 const SKIP = /^(script|style|title|textarea|noscript)$/i;
 
+// Trademarked names (Seb, 19 Nov 2026: every trademarked word carries ™, on every page). The sign is added
+// after the name wherever it appears in visible text without one. Case-sensitive, so "the build" in a
+// sentence is left alone.
+const MARKS = [
+  "ClarityValue Shift",
+  "NextLife Passage",
+  "IntegralContinuity",
+  "FOUNDERland",
+  "Founder Diagnostic",
+  "Pressure Diagnostic",
+  "The Reset",
+  "The Build",
+  "Exit Prep",
+];
+const MARK_RE = new RegExp(`\\b(${MARKS.map((m) => m.replace(/ /g, "(?: |&nbsp;|\u00a0)")).join("|")})(?!™|[A-Za-z])`, "g");
+
 export function wrapTrademarks(html) {
   let out = "";
   let i = 0;
@@ -14,7 +30,7 @@ export function wrapTrademarks(html) {
   while (i < html.length) {
     const lt = html.indexOf("<", i);
     const text = lt === -1 ? html.slice(i) : html.slice(i, lt);
-    out += skipUntil ? text : text.replace(/™/g, '<span class="tm">™</span>');
+    out += skipUntil ? text : text.replace(MARK_RE, "$1™").replace(/™/g, '<span class="tm">™</span>');
     if (lt === -1) break;
     const gt = html.indexOf(">", lt);
     if (gt === -1) { out += html.slice(lt); break; }
@@ -50,7 +66,6 @@ export default function trademark() {
         let n = 0;
         for (const file of await walk(root)) {
           const html = await readFile(file, "utf8");
-          if (!html.includes("™")) continue;
           // Signs already wrapped by tm() are left alone: unwrap first, then wrap all once.
           const plain = html.replace(/<span class="tm">™<\/span>/g, "™");
           const next = wrapTrademarks(plain);

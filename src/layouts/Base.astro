@@ -130,7 +130,12 @@ const organization = {
       const setWallSpeed = () => {
         document.querySelectorAll<HTMLElement>(".tw-track, .st-track").forEach((track) => {
           const loop = track.scrollHeight / 2;
-          if (loop > 0) track.style.animationDuration = `${(loop / WALL_SPEED).toFixed(1)}s`;
+          // The middle lane runs the other way, so next to its neighbours it reads as faster at the same
+          // speed. It moves at 70% so all three lanes look the same (Seb, 19 Nov 2026 14:55).
+          const col = track.parentElement;
+          const middle = !!col && col.parentElement?.children.length === 3 && col === col.parentElement.children[1];
+          const speed = middle ? WALL_SPEED * 0.7 : WALL_SPEED;
+          if (loop > 0) track.style.animationDuration = `${(loop / speed).toFixed(1)}s`;
         });
       };
       if (document.readyState === "complete") setWallSpeed();

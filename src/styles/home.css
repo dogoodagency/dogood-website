@@ -7226,8 +7226,10 @@ body:has(.page-home) {
 }
 
 .page-home #for-you .card.rose {
-  background: #fff3f4;
-  border: 1px solid #fd6b82;
+  /* Style guide "NOT" box (Seb, 19 Nov 2026 14:55): HEART 25 with a thin HEART 300 line, as on the
+     service pages. */
+  background: #fff9fa;
+  border: 1px solid #feb5bc;
 }
 
 .page-home .foryou-grid h3 {
@@ -7869,10 +7871,11 @@ body:has(.page-home) {
   animation-delay: -4s !important;
 }
 
+/* 19 Nov 2026 14:55 (Seb): the words simply change in place, no upward movement. */
 @keyframes hero-swap {
-  0%, 42% { opacity: 1; transform: translateY(0); }
-  50%, 92% { opacity: 0; transform: translateY(-0.25em); }
-  100% { opacity: 1; transform: translateY(0); }
+  0%, 42% { opacity: 1; }
+  50%, 92% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {

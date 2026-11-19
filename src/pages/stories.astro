@@ -1,4 +1,5 @@
 ---
+import { clipWords } from "../data/clip-words";
 import "../styles/stories.css";
 import Base from "../layouts/Base.astro";
 import Wave from "../components/Wave.astro";
@@ -112,7 +113,7 @@ const cols2 = [0, 1].map((i) => stories.filter((_, idx) => idx % 2 === i));
                       col.map((s) => (
                         <figure class="st-card" aria-hidden={dup ? "true" : undefined}>
                           <blockquote>
-                            <p>{s.quote}</p>
+                            <p>{clipWords(s.quote)}</p>
                           </blockquote>
                           <figcaption>
                             <strong class="st-name">{s.name}</strong>
@@ -139,7 +140,7 @@ const cols2 = [0, 1].map((i) => stories.filter((_, idx) => idx % 2 === i));
                       col.map((s) => (
                         <figure class="st-card" aria-hidden={dup ? "true" : undefined}>
                           <blockquote>
-                            <p>{s.quote}</p>
+                            <p>{clipWords(s.quote)}</p>
                           </blockquote>
                           <figcaption>
                             <strong class="st-name">{s.name}</strong>
@@ -161,7 +162,7 @@ const cols2 = [0, 1].map((i) => stories.filter((_, idx) => idx % 2 === i));
             stories.map((s) => (
               <figure class="st-card">
                 <blockquote>
-                  <p>{s.quote}</p>
+                  <p>{clipWords(s.quote)}</p>
                 </blockquote>
                 <figcaption>
                   <strong class="st-name">{s.name}</strong>

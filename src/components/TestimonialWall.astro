@@ -7,6 +7,7 @@
 import "../styles/testimonial-wall.css";
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
+import { clipWords } from "../data/clip-words";
 
 export interface WallItem {
   quote: string;
@@ -34,7 +35,7 @@ const cols2 = [0, 1].map((i) => items.filter((_, idx) => idx % 2 === i));
     const card = (it: WallItem, hidden = false) => (
       <figure class="tw-card" aria-hidden={hidden ? "true" : undefined}>
         <blockquote>
-          <p>{it.quote}</p>
+          <p>{clipWords(it.quote)}</p>
         </blockquote>
         <figcaption>
           {it.image && <Image class="tw-face" src={it.image} alt="" width={48} height={48} densities={[1, 2]} />}

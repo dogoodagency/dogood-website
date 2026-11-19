@@ -10,7 +10,7 @@ import LogoRails from "../components/LogoRails.astro";
 import caseJ from "../assets/cases/case-study-j-founder-life-after-exit.png";
 import caseV from "../assets/cases/case-study-v-founder-life-after-exit.png";
 import team from "../assets/photos/wayfinders.png";
-import signature from "../assets/photos/signature.png";
+import SignatureDraw from "../components/SignatureDraw.astro";
 import TestimonialWall from "../components/TestimonialWall.astro";
 
 const portraits = import.meta.glob<ImageMetadata>("../assets/reviews/*", {
@@ -524,7 +524,7 @@ const notFit = [
       </p>
       </div>
       <div class="sig-row">
-        <Image class="sig" data-sig src={signature} alt="Seb’s signature" widths={[120, 240]} sizes="120px" />
+        <SignatureDraw class="sig" />
       </div>
       <p class="who">Seb &amp; the entire DoGood team</p>
     </article>
@@ -658,19 +658,6 @@ const notFit = [
       <p class="next-note">Limited to five new founders a month</p>
     </div>
   </section>
-  <script>
-    /* Founder's message: the signature writes itself in, left to right, when it scrolls into view. */
-    const sig = document.querySelector<HTMLElement>("[data-sig]");
-    if (sig && "IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      sig.classList.add("sig-ready");
-      const sigIo = new IntersectionObserver(([e]) => {
-        if (!e?.isIntersecting) return;
-        sigIo.disconnect();
-        sig.classList.add("sig-write");
-      }, { threshold: 0, rootMargin: "0px 0px -15% 0px" });
-      sigIo.observe(sig);
-    }
-  </script>
   <script>
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!reduce) {

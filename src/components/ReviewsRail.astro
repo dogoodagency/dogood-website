@@ -8,6 +8,7 @@
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
 import { reviews } from "../data/homepage";
+import { clipWords } from "../data/clip-words";
 
 interface Props {
   heading?: string;
@@ -34,11 +35,7 @@ const reviewSet = reviews
   .map((review) => ({ ...review, src: portrait(review.file) }));
 
 function clipQuote(quote: string) {
-  const clean = quote.replace(/\s+/g, " ").trim();
-  const limit = 320;
-  if (clean.length <= limit) return clean;
-  const cut = clean.slice(0, limit).replace(/\s+\S*$/, "").replace(/[.…,\s]+$/, "");
-  return `${cut}…`;
+  return clipWords(quote);
 }
 ---
 

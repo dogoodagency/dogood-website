@@ -60,7 +60,7 @@ const days = ["M", "T", "W", "T", "F", "S", "S"];
       <div class="wh-bars" role="img" aria-label="Sample sleep for one week, between 5.9 and 7.9 hours a night">
         {sleep.map((h, i) => (
           <div class="wh-bar-col">
-            <span class="wh-bar" style={`--h:${(h / 9) * 100}%;--d:${i * 90}ms`}></span>
+            <span class="wh-bar" style={`--h:${(h / 9) * 100}%;--d:${i * 180}ms`}></span>
             <span class="wh-day">{days[i]}</span>
           </div>
         ))}
@@ -78,33 +78,51 @@ const days = ["M", "T", "W", "T", "F", "S", "S"];
       <p class="wh-note">Load on the body across the day</p>
     </figure>
   </div>
-  <p class="wh-sample">Illustration with sample data. Drawn by DoGood, not WHOOP's own screens.</p>
+  <p class="wh-sample">Sample data only. Designed by DoGood. Not WHOOP’s display.</p>
 
   {
     variant === "full" && (
       <div class="wh-explain">
-        <div>
-          <h3>What WHOOP measures</h3>
-          <ul>
-            <li><strong>Recovery</strong>: a daily score from 1 to 99%, worked out each morning from heart rate variability, resting heart rate, sleep and breathing rate. Green means ready for a demanding day, yellow means moderate, red means the body needs rest.</li>
-            <li><strong>Heart rate variability (HRV)</strong>: the small changes in time between heartbeats, a window into how the nervous system is coping.</li>
-            <li><strong>Sleep</strong>: how much you slept against how much you need, and how well.</li>
-            <li><strong>Strain and stress</strong>: the load on the body across the day.</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Why it helps the work</h3>
-          <ul>
-            <li>It shows how the body responds to the changes you make, week by week.</li>
-            <li>It catches what words miss: a founder who "feels fine" but is sleeping five hours.</li>
-            <li>It makes stabilization measurable, so decisions are made from a rested place.</li>
-          </ul>
-          <h3>Good to know</h3>
-          <ul>
-            <li>The band has no screen, so it stays out of the way, and you charge it while you wear it.</li>
-            <li>Our Stage 1 and Stage 2 work with the WHOOP Life membership, which you buy separately from WHOOP. It adds an on-demand ECG and daily blood pressure insights (beta).</li>
-            <li>It is not medical care, and the data is not a diagnosis.</li>
-          </ul>
+        <h3 class="wh-explain-h">What WHOOP measures</h3>
+        <ul class="wh-metrics">
+          <li class="wh-metric wh-metric--grass">
+            <span class="wh-metric-tag">Every morning</span>
+            <h4>Recovery</h4>
+            <p>A daily score from 1 to 99%, worked out from heart rate variability, resting heart rate, sleep and breathing rate. Green means ready for a demanding day, yellow means moderate, red means the body needs rest.</p>
+          </li>
+          <li class="wh-metric wh-metric--dream">
+            <span class="wh-metric-tag">The nervous system</span>
+            <h4>Heart rate variability</h4>
+            <p>The small changes in time between heartbeats. A window into how the nervous system is coping.</p>
+          </li>
+          <li class="wh-metric wh-metric--heart">
+            <span class="wh-metric-tag">Every night</span>
+            <h4>Sleep</h4>
+            <p>How much you slept against how much your body needs, and how well.</p>
+          </li>
+          <li class="wh-metric wh-metric--sky">
+            <span class="wh-metric-tag">Across the day</span>
+            <h4>Strain and stress</h4>
+            <p>The load on the body from work, movement and pressure, hour by hour.</p>
+          </li>
+        </ul>
+        <div class="wh-pair">
+          <div class="wh-panel wh-panel--dark">
+            <h3>Why it helps the work</h3>
+            <ul>
+              <li>It shows how the body responds to the changes you make, week by week.</li>
+              <li>It catches what words miss: a founder who “feels fine” but is sleeping five hours.</li>
+              <li>It makes stabilization measurable, so decisions are made from a rested place.</li>
+            </ul>
+          </div>
+          <div class="wh-panel">
+            <h3>Good to know</h3>
+            <ul>
+              <li>The band has no screen, so it stays out of the way, and you charge it while you wear it.</li>
+              <li>Stage 1 and Stage 2 work with the WHOOP Life membership, which you buy separately from WHOOP. It adds an on-demand ECG and daily blood pressure insights (beta).</li>
+              <li>It is not medical care, and the data is not a diagnosis.</li>
+            </ul>
+          </div>
         </div>
       </div>
     )
@@ -145,7 +163,7 @@ const days = ["M", "T", "W", "T", "F", "S", "S"];
   }
 
   .wh-lede {
-    max-width: 760px;
+    max-width: none;
     margin: 0 0 26px;
     font-size: 18px;
     line-height: 1.6;
@@ -210,11 +228,11 @@ const days = ["M", "T", "W", "T", "F", "S", "S"];
     stroke-linecap: round;
     stroke-dasharray: 72 100;
     stroke-dashoffset: 72;
-    transition: stroke-dashoffset 1.6s cubic-bezier(0.3, 0.7, 0.3, 1);
+    transition: stroke-dashoffset 3.2s cubic-bezier(0.3, 0.7, 0.3, 1);
   }
 
   .wh-line { width: 100%; height: auto; overflow: visible; }
-  .wh-area { fill: rgba(40, 219, 176, 0.18); opacity: 0; transition: opacity 1s ease 1.2s; }
+  .wh-area { fill: rgba(40, 219, 176, 0.18); opacity: 0; transition: opacity 2s ease 2.4s; }
   .wh-path {
     fill: none;
     stroke: #28dbb0;
@@ -223,7 +241,7 @@ const days = ["M", "T", "W", "T", "F", "S", "S"];
     stroke-linecap: round;
     stroke-dasharray: 100;
     stroke-dashoffset: 100;
-    transition: stroke-dashoffset 1.8s ease;
+    transition: stroke-dashoffset 3.6s ease;
   }
 
   .wh-bars {
@@ -248,10 +266,10 @@ const days = ["M", "T", "W", "T", "F", "S", "S"];
     width: 100%;
     height: var(--h);
     border-radius: 6px 6px 2px 2px;
-    background: linear-gradient(180deg, #7ba4ff, #477dfe);
+    background: linear-gradient(180deg, #feb5bc, #fd6b82);
     transform: scaleY(0);
     transform-origin: bottom;
-    transition: transform 0.7s cubic-bezier(0.3, 0.7, 0.3, 1) var(--d);
+    transition: transform 1.4s cubic-bezier(0.3, 0.7, 0.3, 1) var(--d);
   }
 
   .wh-day { color: #c2b7dd; font-size: 11px; font-weight: 700; }
@@ -265,7 +283,7 @@ const days = ["M", "T", "W", "T", "F", "S", "S"];
     stroke-linecap: round;
     stroke-dasharray: 54 100;
     stroke-dashoffset: 54;
-    transition: stroke-dashoffset 1.6s ease 0.3s;
+    transition: stroke-dashoffset 3.2s ease 0.6s;
   }
 
   .wh.is-in .wh-ring-fg,
@@ -275,7 +293,7 @@ const days = ["M", "T", "W", "T", "F", "S", "S"];
   .wh.is-in .wh-bar { transform: scaleY(1); }
 
   /* A slow, live pulse once drawn. */
-  .wh.is-in .wh-ring { animation: wh-pulse 4s ease-in-out 2s infinite; }
+  .wh.is-in .wh-ring { animation: wh-pulse 8s ease-in-out 4s infinite; }
   @keyframes wh-pulse {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.72; }
@@ -288,28 +306,46 @@ const days = ["M", "T", "W", "T", "F", "S", "S"];
     font-style: italic;
   }
 
-  .wh-explain {
+  .wh-explain { margin-top: 36px; }
+  .wh-explain-h { margin: 0 0 16px; font-size: 24px; font-weight: 900; }
+  .wh-metrics {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 28px;
-    margin-top: 28px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
-
-  .wh-explain h3 { margin: 0 0 8px; font-size: 20px; font-weight: 900; }
-  .wh-explain h3:not(:first-child) { margin-top: 20px; }
-  .wh-explain ul { margin: 0; padding-left: 20px; font-size: 17px; line-height: 1.6; }
-  .wh-explain li { margin-bottom: 6px; }
+  .wh-metric { padding: 22px 20px 24px; border: 1px solid; border-radius: 18px; }
+  .wh-metric h4 { margin: 6px 0 8px; font-size: 20px; font-weight: 900; line-height: 1.25; }
+  .wh-metric p { margin: 0; font-size: 16px; line-height: 1.55; }
+  .wh-metric-tag { font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+  .wh-metric--grass { border-color: #73e7c4; background: #e7fff6; }
+  .wh-metric--grass .wh-metric-tag { color: #05745b; }
+  .wh-metric--dream { border-color: #c2b7dd; background: #f5f2ff; }
+  .wh-metric--dream .wh-metric-tag { color: #58447f; }
+  .wh-metric--heart { border-color: #feb5bc; background: #fff3f4; }
+  .wh-metric--heart .wh-metric-tag { color: #960434; }
+  .wh-metric--sky { border-color: #b9cdfb; background: #f2f7ff; }
+  .wh-metric--sky .wh-metric-tag { color: #0d329f; }
+  .wh-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 16px; }
+  .wh-panel { padding: 26px 28px; border: 1px solid #c2b7dd; border-radius: 18px; background: #faf9ff; }
+  .wh-panel--dark { border-color: #2a0b4f; background: #2a0b4f; color: #fff; }
+  .wh-panel h3 { margin: 0 0 10px; font-size: 22px; font-weight: 900; }
+  .wh-panel ul { margin: 0; padding-left: 20px; font-size: 17px; line-height: 1.6; }
+  .wh-panel li { margin-bottom: 8px; }
+  .wh-panel--dark li::marker { color: #28dbb0; }
 
   .wh-more { margin: 18px 0 0; font-size: 17px; font-weight: 800; }
   .wh-more a { color: #05745b; }
 
   @media (max-width: 1023px) {
-    .wh-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .wh-grid, .wh-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
 
   @media (max-width: 640px) {
     .wh { padding: 26px 18px; }
-    .wh-grid, .wh-explain { grid-template-columns: minmax(0, 1fr); }
+    .wh-grid, .wh-metrics, .wh-pair { grid-template-columns: minmax(0, 1fr); }
   }
 
   @media (prefers-reduced-motion: reduce) {
