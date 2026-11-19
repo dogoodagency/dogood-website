@@ -9,7 +9,7 @@ why, and anything the next person needs to check.
 ## Preview 6, update 22: Advisor Center pages, six resource pages, hero eyebrows (19 Nov 2026, afternoon)
 
 **Made by:** Claude (claude.ai), Seb's feedback of 12:43, batch 5. Sources: Advisor Toolkit Plan v0.4
-and "DoGood voice-of-customer findings" (18 Nov). **Draft copy for Seb to rewrite.** **Commit:** `COMMIT22`.
+and "DoGood voice-of-customer findings" (18 Nov). **Draft copy for Seb to rewrite.** **Commit:** `64cbd8a`.
 
 - **Refer a founder (/for-advisors):** hero line about audiences replaced by a "Who we work alongside"
   section with four coloured cards (exit planners, succession advisors, wealth advisors and family offices,
