@@ -1253,3 +1253,52 @@ html.adv-js .adv-faq-item:not(.is-open) .adv-faq-panel {
 @media (prefers-reduced-motion: reduce) {
   .adv-steps--color .adv-step { transition: none; }
 }
+
+/* ===== 19 Nov 2026 14:55 (Seb) =====
+   No SKY on DREAM backgrounds. Exit advisors are DREAM (purple buttons), wealth advisors GRASS (teal buttons),
+   the same throughout the page. */
+.adv-door--exit { border-color: #58447f; background: #fff; }
+.adv-door--exit .adv-door-label { color: #58447f; }
+.adv-door--wealth { border-color: #01a684; background: #fff; }
+
+/* How a referral works: DREAM shades, getting darker step by step, appearing at half the speed. */
+.adv-steps--color .adv-step:nth-child(1) { border-color: #c2b7dd; background: #faf9ff; }
+.adv-steps--color .adv-step:nth-child(1)::before { background: #8b7dae; }
+.adv-steps--color .adv-step:nth-child(2) { border-color: #8b7dae; background: #ede8fb; }
+.adv-steps--color .adv-step:nth-child(2)::before { background: #58447f; }
+.adv-steps--color .adv-step:nth-child(3) { border-color: #8b7dae; background: #c2b7dd; }
+.adv-steps--color .adv-step:nth-child(3)::before { background: #2a0b4f; }
+.adv-steps--color .adv-step:nth-child(4) { border-color: #58447f; background: #58447f; }
+.adv-steps--color .adv-step:nth-child(4)::before { background: #28dbb0; color: #2a0b4f; }
+.adv-steps--color .adv-step:nth-child(5) { border-color: #2a0b4f; background: #2a0b4f; }
+.adv-steps--color .adv-step:nth-child(5)::before { background: #28dbb0; color: #2a0b4f; }
+.adv-page .adv-steps--color .adv-step:nth-child(n + 4) h3,
+.adv-page .adv-steps--color .adv-step:nth-child(n + 4) p { color: #fff; }
+
+.adv-steps--color .adv-step { transition: opacity 1s ease, transform 1s ease; }
+.adv-steps--color.is-in .adv-step:nth-child(2) { transition-delay: 0.3s; }
+.adv-steps--color.is-in .adv-step:nth-child(3) { transition-delay: 0.6s; }
+.adv-steps--color.is-in .adv-step:nth-child(4) { transition-delay: 0.9s; }
+.adv-steps--color.is-in .adv-step:nth-child(5) { transition-delay: 1.2s; }
+
+/* What you get: two stronger colours, alternating (DREAM 400 and HEART 50). */
+.adv-page .adv-benefits .adv-benefit:nth-child(odd) { border-color: #58447f; background: #58447f; }
+.adv-page .adv-benefits .adv-benefit:nth-child(odd) h3 { color: #a3f2d7; }
+.adv-page .adv-benefits .adv-benefit:nth-child(odd) p { color: #fff; }
+.adv-page .adv-benefits .adv-benefit:nth-child(even) { border-color: #ea1557; background: #fff3f4; }
+
+/* No SKY on DREAM bands: the first audience card and the "personal leg" benefit move to DREAM. */
+.adv-aud-card--1 { border-color: #58447f; background: #fff; }
+
+/* Card borders follow the card's own colour, 2–3 shades darker (Seb, 19 Nov 2026 14:55). */
+.adv-aud-card--1 { border-color: #c2b7dd; background: #fff; }
+.adv-aud-card--2 { border-color: #c2b7dd; background: #faf9ff; }
+.adv-aud-card--3 { border-color: #73e7c4; background: #f3fffb; }
+.adv-aud-card--4 { border-color: #feb5bc; background: #fff9fa; }
+.adv-door--exit { border-color: #c2b7dd; background: #fff; }
+.adv-door--wealth { border-color: #73e7c4; background: #f3fffb; }
+.adv-page .adv-benefits .adv-benefit:nth-child(even) { border-color: #feb5bc; }
+.adv-page .adv-benefits .adv-benefit:nth-child(odd),
+.adv-page .adv-benefit-hero { border-color: transparent; }
+.adv-trial { border-color: #73e7c4 !important; }
+.adv-walk { border-color: #c2b7dd !important; }

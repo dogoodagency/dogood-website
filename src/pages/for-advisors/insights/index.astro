@@ -91,12 +91,56 @@ const footerEdge = edgeAbove("#ffffff");
     <section class="advr-band advr-band-white" aria-labelledby="advi-legs">
       <div class="advr-well advi-well">
         <h2 class="advi-h2" id="advi-legs">The three legs of the stool</h2>
-        <p class="advi-lede">Exit planners describe a good exit as three kinds of readiness. Advisors tell us the third is the one they skip, or are not set up to cover.</p>
-        <ul class="advi-legs">
-          <li class="advi-leg advi-leg--1"><h3>Business readiness</h3><p>Is the company transferable? Your work.</p></li>
-          <li class="advi-leg advi-leg--2"><h3>Financial readiness</h3><p>Is the money in place? Your work, or your colleague's.</p></li>
-          <li class="advi-leg advi-leg--3"><h3>Personal readiness</h3><p>What will the founder do with all that time? Our work, next to yours.</p></li>
+        <p class="advi-lede advi-lede-wide">In the Exit Planning Institute's Value Acceleration Methodology, a good exit stands on three legs: business, financial and personal readiness. CEPAs are trained to align all three. In practice, advisors tell us the first two have a full team behind them. The third often has a worksheet, or nobody.</p>
+
+        <!-- Visual (Seb, 19 Nov 2026 14:55): who holds each leg, and the gap in the third. -->
+        <figure class="stool" data-stool>
+          <svg class="stool-svg" viewBox="0 0 900 300" role="img" aria-labelledby="stool-t">
+            <title id="stool-t">A stool with three legs. The business and financial legs are solid and reach the seat. The personal leg is dashed and stops short, leaving a gap under the seat.</title>
+            <rect class="stool-seat" x="90" y="24" width="720" height="44" rx="22" />
+            <text class="stool-seat-t" x="450" y="53" text-anchor="middle">A good exit</text>
+            <rect class="stool-leg stool-leg--1" x="190" y="68" width="34" height="210" rx="10" />
+            <rect class="stool-leg stool-leg--2" x="433" y="68" width="34" height="210" rx="10" />
+            <rect class="stool-leg stool-leg--3" x="676" y="128" width="34" height="150" rx="10" />
+            <rect class="stool-gap" x="660" y="74" width="66" height="48" rx="12" />
+            <text class="stool-gap-t" x="740" y="104">the gap</text>
+          </svg>
+          <ul class="stool-cols">
+            <li class="stool-col stool-col--1">
+              <p class="stool-label">Business readiness</p>
+              <p class="stool-q">Is the company valuable and transferable?</p>
+              <p class="stool-who"><strong>Who leads it:</strong> exit planners and CEPAs, M&amp;A advisors, accountants, attorneys.</p>
+            </li>
+            <li class="stool-col stool-col--2">
+              <p class="stool-label">Financial readiness</p>
+              <p class="stool-q">Can the owner afford the life they want after the sale?</p>
+              <p class="stool-who"><strong>Who leads it:</strong> wealth advisors, financial planners, CPAs and family offices.</p>
+            </li>
+            <li class="stool-col stool-col--3">
+              <p class="stool-label">Personal readiness</p>
+              <p class="stool-q">Who is the founder without the company, and what is the freedom for?</p>
+              <p class="stool-who"><strong>Who leads it:</strong> too often nobody, or a questionnaire in a planning meeting. <strong>With us:</strong> a Wayfinder, before and after the sale.</p>
+            </li>
+          </ul>
+        </figure>
+
+        <h3 class="advi-h3">How the third leg differs, and where we fit</h3>
+        <ul class="stool-diff">
+          <li>
+            <h4>Work, not a worksheet</h4>
+            <p>Personal planning helps an owner picture life after the sale. EPI frames it as spiritual, things, experiences and people. We do the private 1:1 work that makes that picture livable: identity, time and structure, relationships and family, health and energy, and purpose.</p>
+          </li>
+          <li>
+            <h4>Before and after the closing</h4>
+            <p>The business and financial legs are mostly done at closing. The personal side often arrives weeks or months later, when the calendar is empty and the deal team has moved on. We are there then, too.</p>
+          </li>
+          <li>
+            <h4>Next to you, never instead</h4>
+            <p>You keep the business and financial legs, and the client relationship. We do not give financial or legal advice. With the founder's consent, we keep you in the loop on the broad shape of things.</p>
+          </li>
         </ul>
+        <p class="stool-cepa"><strong>For CEPAs:</strong> you already map all three legs with your clients. We are the specialist you bring in for the third, so the personal goals you write down actually get worked on.</p>
+        <p class="stool-src">Source for the three legs: the Exit Planning Institute's own descriptions of the Value Acceleration Methodology and its personal-planning model. What advisors tell us comes from our conversations with them: patterns, not statistics.</p>
       </div>
     </section>
 
@@ -153,4 +197,16 @@ const footerEdge = edgeAbove("#ffffff");
       </div>
     </section>
   </article>
+  <script>
+    document.querySelectorAll<HTMLElement>("[data-stool]").forEach((el) => {
+      if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      el.classList.add("will-animate");
+      const io = new IntersectionObserver(([e]) => {
+        if (!e?.isIntersecting) return;
+        el.classList.add("is-in");
+        io.disconnect();
+      }, { threshold: 0.3 });
+      io.observe(el);
+    });
+  </script>
 </Base>

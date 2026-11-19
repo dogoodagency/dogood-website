@@ -1764,3 +1764,22 @@ h2.wf-h2.wf-center {
     white-space: nowrap;
   }
 }
+
+/* 19 Nov 2026 14:55 (Seb): the Client-Fit steps appear at half the speed. */
+.wf-js [data-wf-steps] .wf-step { transition-duration: 1s, 1s; }
+.wf-js [data-wf-steps] .wf-step::after { transition-duration: 0.8s; }
+.wf-js [data-wf-steps].is-in .wf-step:nth-child(2) { transition-delay: 0.7s; }
+.wf-js [data-wf-steps].is-in .wf-step:nth-child(3) { transition-delay: 1.4s; }
+.wf-js [data-wf-steps].is-in .wf-step:nth-child(4) { transition-delay: 2.1s; }
+.wf-js [data-wf-steps].is-in .wf-step:nth-child(1)::after { transition-delay: 0.6s; }
+.wf-js [data-wf-steps].is-in .wf-step:nth-child(2)::after { transition-delay: 1.3s; }
+.wf-js [data-wf-steps].is-in .wf-step:nth-child(3)::after { transition-delay: 2s; }
+.wf-js [data-wf-steps].is-in .wf-step-n { animation-duration: 1s; }
+.wf-js [data-wf-steps].is-in .wf-step:nth-child(2) .wf-step-n { animation-delay: 0.7s; }
+.wf-js [data-wf-steps].is-in .wf-step:nth-child(3) .wf-step-n { animation-delay: 1.4s; }
+.wf-js [data-wf-steps].is-in .wf-step:nth-child(4) .wf-step-n { animation-delay: 2.1s; }
+
+/* No hover tint on the Wayfinder cards ("More about ..."). */
+.wf-page details.wf-more > summary:hover {
+  background-color: transparent !important;
+}

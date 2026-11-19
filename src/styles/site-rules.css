@@ -126,3 +126,12 @@ details.nl-deep > summary:hover,
 details.wf-more > summary:hover {
   background-color: transparent;
 }
+
+/* Purple button (DREAM 500), on every page: same colour on hover, only the arrow moves. */
+a.btn-teal.btn-dream,
+a.btn-teal.btn-dream:hover,
+a.btn-teal.btn-dream:focus-visible {
+  background: #2a0b4f !important;
+  border-color: #2a0b4f !important;
+  color: #fff !important;
+}

@@ -650,3 +650,186 @@ body:has(.advr-page) .footer-wave {
   display: list-item;
   margin-bottom: 4px;
 }
+
+/* 19 Nov 2026 14:55 (Seb): no SKY on DREAM bands. SKY-toned cards become white with a DREAM 400 line. */
+.advr-card--sky { border-color: #58447f; background: #fff; }
+.advr-card--sky:hover, .advr-card--sky:focus-visible { background: #f5f2ff; }
+.advd--sky .advd-block { border-color: #8b7dae; }
+.advi-pattern--before { border-color: #58447f; background: #fff; }
+
+/* Tool and insight cards: one thin line in the card's own colour, 2–3 shades darker. */
+.advr-card.advr-card--link { border-width: 1px; }
+.advr-card.advr-card--sky { border-color: #c2b7dd; background: #fff; }
+.advr-card.advr-card--heart { border-color: #feb5bc; background: #fff9fa; }
+.advr-card.advr-card--grass { border-color: #73e7c4; background: #f3fffb; }
+.advr-card.advr-card--heart:hover, .advr-card.advr-card--heart:focus-visible { border-color: #fd6b82; }
+.advr-card.advr-card--grass:hover, .advr-card.advr-card--grass:focus-visible { border-color: #28dbb0; }
+.advr-card.advr-card--sky:hover, .advr-card.advr-card--sky:focus-visible { border-color: #8b7dae; }
+
+/* "Read the chapters in the newsletter" sits under its card without making that card shorter. */
+.advr-cardwrap { position: relative; }
+.advr-under {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+}
+
+/* "More tools are on the way…" on one line (Seb, 19 Nov 2026 14:55). */
+@media (min-width: 900px) {
+  .advr-cta p {
+    max-width: none;
+    white-space: nowrap;
+    font-size: 19px;
+  }
+}
+
+/* ===== The three legs of the stool: visual (Seb, 19 Nov 2026 14:55) ===== */
+.advi-lede-wide { max-width: 860px; }
+
+.stool {
+  margin: 28px 0 0;
+  padding: 32px 32px 28px;
+  border: 1px solid #c2b7dd;
+  border-radius: 24px;
+  background: #faf9ff;
+}
+
+.stool-svg {
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.stool-seat { fill: #2a0b4f; }
+.stool-seat-t { fill: #fff; font: 900 22px Montserrat, sans-serif; letter-spacing: 0.02em; }
+.stool-leg { transform-box: fill-box; transform-origin: top; }
+.stool-leg--1 { fill: #58447f; }
+.stool-leg--2 { fill: #8b7dae; }
+.stool-leg--3 { fill: #28dbb0; }
+.stool-gap { fill: none; stroke: #ea1557; stroke-width: 3; stroke-dasharray: 8 7; }
+.stool-gap-t { fill: #c10e46; font: 800 18px Montserrat, sans-serif; }
+
+.stool.will-animate .stool-leg { transform: scaleY(0); }
+.stool.will-animate .stool-gap,
+.stool.will-animate .stool-gap-t { opacity: 0; }
+.stool.is-in .stool-leg { transform: none; transition: transform 1.4s cubic-bezier(0.3, 0.7, 0.3, 1); }
+.stool.is-in .stool-leg--2 { transition-delay: 0.3s; }
+.stool.is-in .stool-leg--3 { transition-delay: 0.6s; }
+.stool.is-in .stool-gap,
+.stool.is-in .stool-gap-t { opacity: 1; transition: opacity 0.8s ease 2s; }
+.stool.is-in .stool-gap { animation: stool-pulse 2.4s ease-in-out 2.8s infinite; }
+@keyframes stool-pulse { 50% { stroke-opacity: 0.35; } }
+
+.stool-cols {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stool-col {
+  padding: 20px 22px;
+  border: 1px solid;
+  border-radius: 18px;
+  background: #fff;
+}
+
+.stool-col--1 { border-color: #8b7dae; }
+.stool-col--2 { border-color: #c2b7dd; }
+.stool-col--3 { border-color: #01a684; background: #e7fff6; }
+
+.advr-page .stool-label {
+  margin: 0 0 6px;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.stool-col--1 .stool-label { color: #58447f; }
+.stool-col--2 .stool-label { color: #58447f; }
+.stool-col--3 .stool-label { color: #05745b; }
+
+.advr-page .stool-q {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.advr-page .stool-who {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.advr-page .advi-h3 {
+  margin: 44px 0 14px;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.stool-diff {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stool-diff li {
+  padding: 22px 24px;
+  border: 1px solid #2a0b4f;
+  border-radius: 18px;
+  background: #2a0b4f;
+  color: #fff;
+}
+
+.advr-page .stool-diff h4 {
+  margin: 0 0 8px;
+  color: #73e7c4;
+  font-size: 19px;
+  font-weight: 900;
+}
+
+.advr-page .stool-diff p {
+  margin: 0;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.advr-page .stool-cepa {
+  margin: 22px 0 0;
+  padding: 18px 22px;
+  border: 1px solid #feb5bc;
+  border-radius: 16px;
+  background: #fff9fa;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+.advr-page .stool-src {
+  margin: 14px 0 0;
+  color: #6b5c93;
+  font-size: 13px;
+  font-style: italic;
+}
+
+@media (max-width: 860px) {
+  .stool-cols,
+  .stool-diff { grid-template-columns: minmax(0, 1fr); }
+  .stool { padding: 20px 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stool.will-animate .stool-leg { transform: none; }
+  .stool.will-animate .stool-gap,
+  .stool.will-animate .stool-gap-t { opacity: 1; }
+  .stool.is-in .stool-gap { animation: none; }
+}
