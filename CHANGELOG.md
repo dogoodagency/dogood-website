@@ -8,7 +8,7 @@ why, and anything the next person needs to check.
 
 ## Preview 6, update 18: site-wide rules, Start here / Services nav, homepage and footer (19 Nov 2026, early afternoon)
 
-**Made by:** Claude (claude.ai), from Seb's feedback of 12:43 (batch 1 of several). **Branch:** `claude/preview-6`. **Commit:** `COMMIT18`.
+**Made by:** Claude (claude.ai), from Seb's feedback of 12:43 (batch 1 of several). **Branch:** `claude/preview-6`. **Commit:** `92ea37c`.
 
 ### Site-wide rules
 - `src/styles/site-rules.css` (loaded from Base.astro): no box-shadows anywhere (frames keep their thin
