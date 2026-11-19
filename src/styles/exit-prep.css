@@ -557,3 +557,7 @@ body:has(.ep-page) .footer-wave {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+.ep-page .ep-feature {
+  margin-top: 48px;
+}

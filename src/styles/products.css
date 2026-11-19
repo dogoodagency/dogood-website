@@ -227,3 +227,7 @@
   border: 1px solid #feb5bc;
   background: #fff9fa;
 }
+
+.pp-feature-well {
+  max-width: 1180px;
+}

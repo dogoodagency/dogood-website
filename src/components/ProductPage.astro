@@ -139,6 +139,16 @@ const footerBg = closing ? (lastTint ? white : tint) : lastTint ? tint : white;
     }
 
     {
+      Astro.slots.has("feature") && (
+        <section class="ep-band pp-feature" aria-label="Details">
+          <div class="ep-well ep-well-top pp-feature-well">
+            <slot name="feature" />
+          </div>
+        </section>
+      )
+    }
+
+    {
       closing && (
         <>
           <Fragment set:html={wave(lastTint)} />

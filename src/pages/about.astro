@@ -5,7 +5,7 @@ import Base from "../layouts/Base.astro";
 import Wave from "../components/Wave.astro";
 import { edgeAbove } from "../data/edge-line";
 import team from "../assets/photos/wayfinders.png";
-import ioda from "../assets/photos/ioda-logo.jpg"; // logo from Seb, 18 Nov 2026
+import ioda from "../assets/photos/ioda-logo-heart.png"; // Seb's logo (18 Nov), recoloured to HEART 500 like our client logos (19 Nov 2026)
 
 const tint = "#F5F2FF";
 const heroEdge = edgeAbove("#2A0B4F");
@@ -125,6 +125,47 @@ const premises = [
         <div class="ab-why-close">
           <p class="ab-closing">That is why we do this work.</p>
           <p>DoGood believes that success should not come at the expense of the people and parts of life that matter most.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW DRAFT CONTEXT (Seb, 19 Nov 2026: "include more context, we will rewrite later"). From what Seb has
+         told us about DoGood: two stages, Wayfinders, alongside advisors, markets. Draft for Seb's rewrite. -->
+    <section class="ab-band ab-band-tint" aria-labelledby="ab-how">
+      <div class="ab-well">
+        <h2 id="ab-how">How we work</h2>
+        <ul class="ab-cards ab-cards--3">
+          <li class="ab-card">
+            <h3>One founder, one Wayfinder</h3>
+            <p>Every founder works one to one with a Wayfinder from our global team, matched through our client-fit process. Our Wayfinders bring more than 75 years of combined experience.</p>
+          </li>
+          <li class="ab-card">
+            <h3>In stages, not all at once</h3>
+            <p>Before the sale, The Exit Prep™. After it, Stage 1: The Reset™ (30 days) and, by invitation, Stage 2: The Build™ (12 weeks). Each stage has a clear end, so you always know where you are.</p>
+          </li>
+          <li class="ab-card">
+            <h3>Measured, not guessed</h3>
+            <p>Next to the conversations, we use WHOOP recovery and stress data and, in Stage 2, custom audio, so the changes show up in how you sleep, recover and decide.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="ab-band" aria-labelledby="ab-who">
+      <div class="ab-well">
+        <div class="ab-duo">
+          <section class="ab-statement" aria-labelledby="ab-who">
+            <h2 id="ab-who">Who we work with</h2>
+            <p>Founders who have sold their company or stepped back from the day-to-day, and founders getting ready to sell, mostly in the US and Canada, the UK and Europe. We take five new founders a month.</p>
+          </section>
+          <section class="ab-statement" aria-labelledby="ab-alongside">
+            <h2 id="ab-alongside">Who we work alongside</h2>
+            <p>Exit planners, wealth advisors, M&amp;A advisors, accountants and attorneys. They look after the business and the money. We look after the founder, next to them, never instead of them.</p>
+          </section>
+        </div>
+        <div class="ab-notlist">
+          <h3>What we are not</h3>
+          <p>Not executive coaching. Not therapy. Not financial or legal advice. Not a course or a mastermind. A private partnership for the personal side of the sale.</p>
         </div>
       </div>
     </section>

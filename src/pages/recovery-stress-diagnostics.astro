@@ -1,5 +1,6 @@
 ---
 import ProductPage from "../components/ProductPage.astro";
+import WhoopSection from "../components/WhoopSection.astro";
 // Recovery & Stress Diagnostics (WHOOP) (Seb, 19 Nov 2026). Copy from the Stage 1 inclusion and the
 // "Why WHOOP" FAQ, which Seb wrote. Draft page, to be expanded.
 ---
@@ -43,4 +44,6 @@ import ProductPage from "../components/ProductPage.astro";
     text: "Read why we use it, and what it costs, in our FAQ.",
     cta: { href: "/faqs#why-whoop", label: "Why WHOOP" },
   }}
-/>
+>
+  <WhoopSection slot="feature" variant="full" />
+</ProductPage>

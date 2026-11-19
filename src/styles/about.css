@@ -779,3 +779,29 @@ body:has(.ab-page) .footer-wave {
     margin-top: -64px;
   }
 }
+
+/* 19 Nov 2026 (Seb): more context sections. */
+.ab-cards.ab-cards--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ab-notlist {
+  margin-top: 32px;
+  padding: 24px 28px;
+  border: 1.5px dashed #8b7dae;
+  border-radius: 20px;
+}
+
+.ab-page .ab-notlist h3 {
+  margin: 0 0 6px;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.ab-page .ab-notlist p {
+  margin: 0;
+}
+
+@media (max-width: 860px) {
+  .ab-cards.ab-cards--3 { grid-template-columns: minmax(0, 1fr); }
+}

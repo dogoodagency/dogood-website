@@ -4,6 +4,8 @@
  * for word; the two-step progress bar and the Stage 1 recap keep the link to Stage 1.
  */
 import "../styles/how-it-works.css";
+import WhoopSection from "../components/WhoopSection.astro";
+import AudioSection from "../components/AudioSection.astro";
 import Base from "../layouts/Base.astro";
 import Wave from "../components/Wave.astro";
 import { edgeAbove } from "../data/edge-line";
@@ -178,6 +180,8 @@ const [, houseStage1, houseStage2] = houses;
           </ul>
         </div>
         </div>
+        <div class="hw-feature"><WhoopSection /></div>
+        <div class="hw-feature"><AudioSection /></div>
       </div>
     </section>
 

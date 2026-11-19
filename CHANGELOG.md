@@ -6,6 +6,36 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 23: animated WHOOP and State-Shift Audio sections, About context, IODA logo (19 Nov 2026, afternoon)
+
+**Made by:** Claude (claude.ai), Seb's feedback of 12:43 and 12:47, batch 6. **Commit:** `COMMIT23`.
+
+- **`WhoopSection.astro`:** animated, illustrative graphs drawn by us (no WHOOP images), sample data: a
+  recovery ring filling to 72% (green), a 14-day HRV line drawing itself, a week of sleep bars rising, a
+  day-strain gauge. Starts when scrolled into view; still for reduced motion. The full version (on
+  /recovery-stress-diagnostics) explains recovery (1–99%, from HRV, resting heart rate, sleep and breathing
+  rate; green/yellow/red), HRV, sleep, strain and stress; why it helps the work; that the band has no screen;
+  that Stage 1 and 2 work with the **WHOOP Life** membership, bought separately from WHOOP (adds on-demand
+  ECG and daily blood pressure insights, beta); not medical care. Sources: whoop.com "the difference",
+  "WHOOP Life", "How does WHOOP recovery work 101" (paraphrased; how-it-works page could not be fetched).
+  Compact version on **/exit-prep, /the-reset, /the-build**.
+- **`AudioSection.astro`:** animated waveforms (left ear 200 Hz, right ear 210 Hz, the 10 Hz beat the
+  brain hears) and four modes with animated level meters: Focus (beta and low gamma), Decompression
+  (alpha), Reset (theta), High-stakes days (alpha into beta). The full version (on /state-shift-audio)
+  explains binaural beats and entrainment, modulation curves, and subliminal spoken lines, **stated with
+  the real evidence level** (binaural beats: promising but mixed, small to moderate effects in reviews;
+  subliminal audio: weak evidence). **"Quantum science" is not used**: there is no established scientific
+  basis for it here (Seb to confirm). Safety note: not a medical treatment, not while driving, ask a doctor
+  with epilepsy. Compact version on **/the-build** and, labelled "In Stage 2", on **/the-reset**. Not on
+  /exit-prep (the audio is a Stage 2 inclusion; Seb to confirm).
+- ProductPage gets an optional `feature` slot (used for the two full sections).
+- **About:** draft context sections: "How we work" (one founder, one Wayfinder, 75+ years combined
+  experience; in stages; measured, not guessed), "Who we work with" / "Who we work alongside", and "What
+  we are not". **IODA logo** recoloured to HEART 500 (`src/assets/photos/ioda-logo-heart.png`), like the
+  client logos.
+
+---
+
 ## Preview 6, update 22: Advisor Center pages, six resource pages, hero eyebrows (19 Nov 2026, afternoon)
 
 **Made by:** Claude (claude.ai), Seb's feedback of 12:43, batch 5. Sources: Advisor Toolkit Plan v0.4
