@@ -933,3 +933,323 @@ html.adv-js .adv-faq-item:not(.is-open) .adv-faq-panel {
   color: #533f79;
   font-size: 14px;
 }
+
+/* ===== Refer a founder, 19 Nov 2026 (Seb) ===== */
+
+/* Who we work alongside: four cards, each its own tint. */
+.adv-aud {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.adv-aud-card {
+  padding: 24px 22px;
+  border: 1px solid;
+  border-radius: 20px;
+}
+
+.adv-page .adv-aud-card h3 {
+  margin: 0 0 8px;
+  font-size: 19px;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.adv-page .adv-aud-card p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.adv-aud-card--1 { border-color: #477dfe; background: #f2f7ff; }
+.adv-aud-card--2 { border-color: #8b7dae; background: #faf9ff; }
+.adv-aud-card--3 { border-color: #01a684; background: #f3fffb; }
+.adv-aud-card--4 { border-color: #fd6b82; background: #fff9fa; }
+
+/* Two doors for the two kinds of advisor. */
+.adv-doors-intro {
+  max-width: 760px;
+  margin: 48px auto 20px;
+  text-align: center;
+}
+
+.adv-page .adv-doors-intro p {
+  margin: 0 0 6px;
+  font-size: 19px;
+  line-height: 1.55;
+}
+
+.adv-page .adv-doors-ask {
+  font-weight: 900;
+}
+
+.adv-doors {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.adv-door {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 30px 30px 32px;
+  border: 1px solid;
+  border-radius: 22px;
+}
+
+.adv-door--exit { border-color: #477dfe; background: #f2f7ff; }
+.adv-door--wealth { border-color: #01a684; background: #f3fffb; }
+
+.adv-page .adv-door-label {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.adv-door--exit .adv-door-label { color: #0d329f; }
+.adv-door--wealth .adv-door-label { color: #05745b; }
+
+.adv-page .adv-door h3 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.adv-page .adv-door p:not(.adv-door-label) {
+  margin: 0 0 10px;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.adv-door .btn-teal {
+  margin-top: auto;
+}
+
+/* Free session. */
+.adv-trial {
+  padding: 36px 40px;
+  border: 1px solid #01a684;
+  border-radius: 24px;
+  background: #e7fff6;
+}
+
+.adv-page .adv-trial-badge,
+.adv-page .adv-walk-badge {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0 12px;
+  padding: 6px 14px;
+  border: 1.5px dashed #01a684;
+  border-radius: 999px;
+  color: #05745b;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.adv-page .adv-walk-badge::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: #28dbb0;
+}
+
+/* How a referral works: coloured, numbered steps that come in one by one. */
+.adv-steps.adv-steps--color {
+  counter-reset: advstep;
+}
+
+.adv-steps--color .adv-step {
+  position: relative;
+  counter-increment: advstep;
+  border: 1px solid;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.adv-steps--color .adv-step::before {
+  content: counter(advstep);
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.adv-steps--color .adv-step:nth-child(1) { border-color: #477dfe; background: #f2f7ff; }
+.adv-steps--color .adv-step:nth-child(1)::before { background: #1d53ef; }
+.adv-steps--color .adv-step:nth-child(2) { border-color: #8b7dae; background: #faf9ff; }
+.adv-steps--color .adv-step:nth-child(2)::before { background: #58447f; }
+.adv-steps--color .adv-step:nth-child(3) { border-color: #fd6b82; background: #fff9fa; }
+.adv-steps--color .adv-step:nth-child(3)::before { background: #c10e46; }
+.adv-steps--color .adv-step:nth-child(4) { border-color: #73e7c4; background: #f3fffb; }
+.adv-steps--color .adv-step:nth-child(4)::before { background: #01a684; }
+.adv-steps--color .adv-step:nth-child(5) { border-color: #01a684; background: #e7fff6; }
+.adv-steps--color .adv-step:nth-child(5)::before { background: #05745b; }
+
+.adv-steps--color.will-animate .adv-step {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.adv-steps--color.will-animate.is-in .adv-step {
+  opacity: 1;
+  transform: none;
+}
+
+.adv-steps--color.is-in .adv-step:nth-child(2) { transition-delay: 0.15s; }
+.adv-steps--color.is-in .adv-step:nth-child(3) { transition-delay: 0.3s; }
+.adv-steps--color.is-in .adv-step:nth-child(4) { transition-delay: 0.45s; }
+.adv-steps--color.is-in .adv-step:nth-child(5) { transition-delay: 0.6s; }
+
+/* Walk-through: a prominent "coming soon" card. */
+.adv-walk {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px 32px;
+  margin-top: 32px;
+  padding: 28px 32px;
+  border: 1.5px dashed #8b7dae;
+  border-radius: 22px;
+  background: #fff;
+}
+
+.adv-walk > div {
+  flex: 1 1 420px;
+}
+
+.adv-page .adv-walk h3 {
+  margin: 0 0 6px;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.adv-page .adv-walk p:not(.adv-walk-badge) {
+  margin: 0;
+  font-size: 17px;
+}
+
+/* What you get. */
+.adv-page .adv-benefits-lede {
+  margin: 8px 0 24px;
+  color: #58447f;
+  font-size: 17px;
+}
+
+.adv-benefit-hero {
+  margin-bottom: 20px;
+  padding: 32px 36px;
+  border: 1px solid #2a0b4f;
+  border-radius: 22px;
+  background: #2a0b4f;
+  color: #fff;
+}
+
+.adv-page .adv-benefit-hero h3 {
+  margin: 0 0 10px;
+  color: #28dbb0;
+  font-size: 26px;
+  font-weight: 900;
+}
+
+.adv-page .adv-benefit-hero p {
+  margin: 0;
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.adv-benefits {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.adv-benefit {
+  padding: 24px 24px 26px;
+  border: 1px solid #c2b7dd;
+  border-radius: 20px;
+  background: #faf9ff;
+}
+
+.adv-page .adv-benefit h3 {
+  margin: 0 0 8px;
+  font-size: 19px;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.adv-page .adv-benefit p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.adv-benefit--leg { border-color: #477dfe; background: #f2f7ff; }
+.adv-benefit--after { border-color: #01a684; background: #f3fffb; }
+.adv-benefit--fee { border-color: #fd6b82; background: #fff9fa; }
+
+/* Recommend an advisor. */
+.adv-recommend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px 32px;
+  padding: 32px 36px;
+  border: 1px solid #c2b7dd;
+  border-radius: 22px;
+  background: #faf9ff;
+}
+
+.adv-recommend > div {
+  flex: 1 1 460px;
+}
+
+/* FAQ rows: a clear hover background. */
+.adv-faq-trigger {
+  padding-left: 14px;
+  padding-right: 14px;
+  transition: background-color 0.2s;
+}
+
+.adv-faq-trigger:hover {
+  background: #ede8fb;
+}
+
+@media (max-width: 1023px) {
+  .adv-aud { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .adv-benefits { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 680px) {
+  .adv-aud,
+  .adv-doors,
+  .adv-benefits { grid-template-columns: minmax(0, 1fr); }
+  .adv-trial,
+  .adv-benefit-hero,
+  .adv-recommend,
+  .adv-walk { padding: 24px 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .adv-steps--color .adv-step { transition: none; }
+}

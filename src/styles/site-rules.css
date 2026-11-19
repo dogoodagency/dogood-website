@@ -29,3 +29,18 @@ details > summary {
 details > summary:hover {
   background-color: #ede8fb;
 }
+
+/* Hero eyebrows on every page follow the Advisor Center style ("Advisor Center · Refer a founder"):
+   18px, weight 700, uppercase, 0.08em tracking, GRASS 500. */
+.hw-hero .hw-eyebrow,
+.ep-hero .ep-eyebrow,
+.dr-hero .dr-eyebrow,
+.advr-hero .advr-eyebrow,
+.nl-eyebrow,
+.bli-hero .bl-box-label--light,
+.bl-box-label.bl-box-label--light {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase;
+}

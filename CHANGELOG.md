@@ -6,6 +6,43 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 22: Advisor Center pages, six resource pages, hero eyebrows (19 Nov 2026, afternoon)
+
+**Made by:** Claude (claude.ai), Seb's feedback of 12:43, batch 5. Sources: Advisor Toolkit Plan v0.4
+and "DoGood voice-of-customer findings" (18 Nov). **Draft copy for Seb to rewrite.** **Commit:** `COMMIT22`.
+
+- **Refer a founder (/for-advisors):** hero line about audiences replaced by a "Who we work alongside"
+  section with four coloured cards (exit planners, succession advisors, wealth advisors and family offices,
+  sell-side M&A advisors). "What advisors tell us" is the moving quote wall (names note removed). The
+  personal-leg line now opens two doors: "I prepare the business for the sale" (exit, succession, M&A;
+  SKY) and "I look after the money and the family" (wealth, family office; GRASS), each with its partner
+  button. **New:** "A free session with a Wayfinder, worth USD 3,000" for a client who wants to try first
+  (Seb asked for the amount; note it is the only figure on the advisor pages). **New:** "Know an advisor
+  who should see this?" with a "Recommend an advisor" email link. "How a referral works": numbered steps,
+  each its own colour, coming in one by one on scroll. The walk-through note became a prominent "Coming
+  soon" card with "Ask Seb for a live walk-through now". **"What you get" rewritten and redesigned** from
+  the call findings: a dark lead card "Smoother deals" (cold feet, nitpicking buyers, stalled deals), then
+  six cards (the personal leg covered by a specialist; fewer regrets after closing; you stay the trusted
+  advisor; room for the family; free tools with your link; referral fee or a credit/donation if you do
+  not accept fees). Closing box: email removed, text set on two lines each. FAQ rows tint on hover. Band
+  colours rebalanced; footer strip white.
+- **Free tools (/for-advisors/client-tools):** hero shortened to two lines, the rest moved under the nav.
+  Cards are now links in their own colours (SKY, HEART, GRASS) with the "Coming soon" status right above
+  the title and "Read more →".
+- **Advisor insights (/for-advisors/insights):** same link cards; "Read the chapters in the newsletter →"
+  sits small under the book card. **New content:** "The three legs of the stool" (business, financial,
+  personal readiness), "In advisors' words" (quote wall), "What we hear most" (before and after the sale,
+  as patterns), and "How advisors raise it".
+- **Six new pages** (component `AdvisorResourcePage.astro`, noindex like the rest):
+  `/for-advisors/client-tools/readiness-check`, `/signals-guide`, `/life-after-the-sale-planner`;
+  `/for-advisors/insights/what-founders-struggle-with`, `/before-and-after-the-sale`, `/advisor-voices`.
+  Each shows its "Coming soon" status, what it is, how it works, and the plan's honesty rules (not
+  medical or financial advice, consent first, written permission for voices). The two index pages moved
+  to `client-tools/index.astro` and `insights/index.astro` (same URLs).
+- **Hero eyebrows site-wide** now use the Advisor Center style: 18px, weight 700, uppercase, 0.08em.
+
+---
+
 ## Preview 6, update 21: Stories, Wayfinders, Client-fit (19 Nov 2026, afternoon)
 
 **Made by:** Claude (claude.ai), Seb's feedback of 12:43, batch 4. **Branch:** `claude/preview-6`. **Commit:** `4f6890c`.
