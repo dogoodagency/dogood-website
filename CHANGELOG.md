@@ -6,6 +6,17 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 31: homepage hero button and headline (19 Nov 2026, 21:23)
+
+- **Apply for Stage 1** now sits centred directly below "We support life in FOUNDERland™", inside the hero copy
+  column (`index.astro`, `.hero-cta` in `home.css`). The hero no longer grows below the sketch, so the green
+  path runs behind the white wave again, as before update 29.
+- **Headline:** "who" stays fixed; only "’ve exited" / "’re planning to exit" change, now in DREAM 200
+  (#C2B7DD). "who" and its ending never split across lines (`.hero-who`); on phones the headline scales
+  slightly so "who’re planning to exit" fits on one line.
+
+---
+
 ## Preview 6, update 30: the full foundr.land page; nav logo frame (19 Nov 2026, 21:02)
 
 - **/foundrland** (`src/pages/foundrland.astro`) replaces the holding page. It follows the foundr.land logo board,

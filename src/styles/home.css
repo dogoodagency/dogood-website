@@ -7951,18 +7951,34 @@ body:has(.page-home) {
   border: 1px solid #c2b7dd;
 }
 
-/* Hero Apply button (Seb, 19 Nov 2026 20:47): centred under the hero copy and sketch, with room before the
-   wave so it never feels cramped. */
-.page-home .hero-cta {
+/* Hero Apply button (Seb, 19 Nov 2026 21:23): centred below "We support life in FOUNDERland" in the copy column.
+   The hero keeps its original bottom, so the sketch's path runs behind the white wave as before. */
+.page-home .hero .hero-cta {
   display: flex;
   justify-content: center;
-  margin: 40px 0 0;
-  padding-bottom: 72px;
+  margin: 32px 0 0;
+  padding: 0;
 }
 
-@media (max-width: 760px) {
-  .page-home .hero-cta {
-    margin-top: 28px;
-    padding-bottom: 48px;
+/* Headline: "who" stays put; only "'ve exited" / "'re planning to exit" change, in DREAM 200. */
+.page-home .hero h1 .hero-swap > span {
+  color: #c2b7dd;
+}
+
+/* Keep "who" on the same line as its ending, so it never breaks off on small screens. */
+.page-home .hero h1 .hero-who {
+  display: inline-flex;
+  align-items: baseline;
+  max-width: 100%;
+}
+
+/* Phones: the headline scales down just enough that "who're planning to exit" fits on one line. */
+@media (max-width: 720px) {
+  .page-home .hero h1.t-display {
+    font-size: min(32px, calc((100vw - 44px) / 12.3));
+  }
+
+  .page-home .hero h1 .hero-swap > span {
+    white-space: nowrap;
   }
 }

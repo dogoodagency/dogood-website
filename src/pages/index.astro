@@ -69,7 +69,7 @@ const notFit = [
            reader sees both; "the company they built." sits on line 2 in HEART. Screen readers get one sentence. -->
       <h1 class="t-display">
         <span class="visually-hidden">For founders who’ve exited, or are planning to exit, the company they built.</span>
-        <span class="hero-line" aria-hidden="true">For founders <span class="hero-swap"><span class="hero-swap-a">who’ve exited</span><span class="hero-swap-b">who’re planning to exit</span></span></span>
+        <span class="hero-line" aria-hidden="true">For founders <span class="hero-who">who<span class="hero-swap"><span class="hero-swap-a">’ve exited</span><span class="hero-swap-b">’re planning to exit</span></span></span></span>
         <span class="hero-line accent" aria-hidden="true">the company they <span class="hero-build">built</span>.</span>
       </h1>
       <p class="lede">
@@ -92,6 +92,11 @@ const notFit = [
             belongs beyond the company.
           </p>
           <p class="founder-line">We support life in <span class="founder-word">FOUNDERland</span>.</p>
+          <!-- Apply (Seb, 19 Nov 2026 21:23): centred below "We support life in FOUNDERland", inside the copy column, so
+               the sketch's path runs behind the wave again. -->
+          <div class="hero-cta">
+            <a class="btn-apply lg" href={urls.apply}>Apply for Stage 1</a>
+          </div>
         </div>
         <div class="hero-draw">
           <div class="hero-sketch-frame door-anim">
@@ -169,10 +174,6 @@ const notFit = [
             </div>
           </div>
         </div>
-      </div>
-      <!-- Apply moved here from the nav (Seb, 19 Nov 2026 20:47): centred under the hero, with room above the wave. -->
-      <div class="hero-cta">
-        <a class="btn-apply lg" href={urls.apply}>Apply for Stage 1</a>
       </div>
     </div>
     <Wave fill="#F5F2FF" edge="#110027" />
