@@ -29,19 +29,24 @@
   list-style: none;
 }
 
+/* Pill design (Seb, 19 Nov 2026): one design on both pages. The pill is a shade lighter than its band and
+   melts into it; the logo sits in a white circle (or white capsule for word logos). Padding between the
+   white part and the pill edge was cut by about 25%, logos are about 30% bigger, the name is body size (18px)
+   with a slightly stronger stroke. Icon files are normalised to equal visual weight (see CHANGELOG, update 14). */
 .lr-pill {
   display: flex;
   flex: none;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1rem;
   margin: 0;
-  padding: 1.25rem 2.5rem 1.25rem 1.25rem;
+  padding: 0.55rem 1.6rem 0.55rem 0.55rem;
+  border: 1px solid #e6dcfc;
   border-radius: 3.75rem;
-  background: #f5f2ff;
+  background: var(--lr-pill, #faf9ff);
 }
 
 .lr-pill-word {
-  padding: 1.25rem;
+  padding: 0.55rem;
 }
 
 .lr-pill-vis {
@@ -49,65 +54,49 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  width: 3.75rem;
-  height: 3.75rem;
-  padding: 1rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0;
   border-radius: 100%;
   background: #fff;
 }
 
 .lr-pill-vis img {
   display: block;
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 2.45rem;
+  height: 2.45rem;
   object-fit: contain;
 }
 
-.lr-pill-vis-word {
+.lr-pill-vis.lr-pill-vis-word {
   width: auto;
-  padding: 0 1.25rem;
+  padding: 0 1.1rem;
   border-radius: 3.75rem;
 }
 
 .lr-pill-vis-word img {
   width: auto;
   max-width: none;
-  height: 1.25rem;
+  height: 1.5rem;
 }
 
 .lr-rails p.lr-pill-name {
   margin: 0;
   color: var(--lr-ink);
-  font-size: 1.1875rem;
-  font-weight: 500;
-  letter-spacing: -0.04em;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   line-height: 1.25;
   white-space: nowrap;
 }
 
-/* Homepage: white pills on the light lavender band, slightly smaller. */
-.lr-rails--tint .lr-pill {
-  background: #fff;
-  border: 1px solid #e6dcfc;
-  padding: 0.75rem 2rem 0.75rem 0.75rem;
+/* Band colours: Stories sits on #E9E3F7, the homepage on DREAM 25 #F5F2FF. */
+.lr-rails--deep {
+  --lr-pill: #f5f2ff;
 }
 
-.lr-rails--tint .lr-pill-word {
-  padding: 0.75rem;
-}
-
-.lr-rails--tint .lr-pill-vis {
-  background: #f5f2ff;
-  width: 3.25rem;
-  height: 3.25rem;
-}
-
-.lr-rails--tint .lr-pill-vis.lr-pill-vis-word {
-  width: auto;
-}
-
-.lr-rails--tint p.lr-pill-name {
-  font-size: 1.0625rem;
+.lr-rails--tint {
+  --lr-pill: #faf9ff;
 }
 
 /* No JavaScript or reduced motion: a still, wrapped, centred set. */

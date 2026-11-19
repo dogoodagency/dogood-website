@@ -6,6 +6,32 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 14: logo pills refined (both strips), proper ECB logo (19 Nov 2026, morning)
+
+**Made by:** Claude (claude.ai), from Seb's voice feedback and the ECB logo file. **Branch:** `claude/preview-6`.
+
+- **One pill design on both strips** (`src/styles/logo-rails.css`): the pill is a shade
+  lighter than its band (Stories #F5F2FF on #E9E3F7, homepage DREAM 10 #FAF9FF on DREAM 25)
+  with a 1px DREAM 100 line, so it melts into the band; logos sit in a white circle, word
+  logos in a white capsule.
+- About 25% less padding between the white part and the pill edge (0.75rem → 0.55rem;
+  right side 2rem → 1.6rem). White circle 3.5rem; logos about 30% bigger (icon box
+  1.75rem → 2.45rem, word logos 1.25rem → 1.5rem high).
+- Logo names: body size (18px, as the site's body text), weight 600 (a slightly stronger
+  stroke, not bold).
+- **Icons balanced:** every `icon-*.png` in `public/media/stories/logos/` was trimmed and
+  rescaled so each mark has the same visual area (55% of the square, never past its
+  edges). Wide, thin marks (Generali, Arla, Tiny Home Tours, The Summit, ArcelorMittal) and
+  marks that had extra padding (APA, LunchAssist, BitFlow, Google, Sutter Health) now read
+  as large as BVG. New icons should get the same treatment (script idea in this entry:
+  trim to content, scale to 55% area, clamp to 128px).
+- **European Central Bank:** rebuilt from the proper logo file Seb sent (sharp; blue parts
+  in pink, the euro and stars cut out).
+- Homepage rails about 20% faster (0.28 → 0.34 px per frame).
+- axe: home and Stories 0 issues.
+
+---
+
 ## Preview 6, update 13: five new logos, shared logo rails (homepage two rows), Wayfinders page (19 Nov 2026, morning)
 
 **Made by:** Claude (claude.ai), from Seb's feedback of 19 Nov 01:01 and 01:05 (recovered after the chat retry; Seb approved them again at 07:48), screenshots 20 to 22 and the logo files. **Branch:** `claude/preview-6`. **Commit:** `9b52555`.

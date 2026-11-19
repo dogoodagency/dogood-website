@@ -23,8 +23,8 @@ if (rows === 2) {
   const longest = Math.max(...logoRails.map((r) => r.logos.length));
   for (let i = 0; i < longest; i += 1) logoRails.forEach((r) => r.logos[i] && all.push(r.logos[i]!));
   rails = [
-    { dir: 1, velocity: 0.28, logos: all.filter((_, i) => i % 2 === 0) },
-    { dir: -1, velocity: 0.28, logos: all.filter((_, i) => i % 2 === 1) },
+    { dir: 1, velocity: 0.34, logos: all.filter((_, i) => i % 2 === 0) },
+    { dir: -1, velocity: 0.34, logos: all.filter((_, i) => i % 2 === 1) },
   ];
 }
 ---
