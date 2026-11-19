@@ -8,7 +8,7 @@ why, and anything the next person needs to check.
 
 ## Preview 6, update 14: logo pills refined (both strips), proper ECB logo (19 Nov 2026, morning)
 
-**Made by:** Claude (claude.ai), from Seb's voice feedback and the ECB logo file. **Branch:** `claude/preview-6`.
+**Made by:** Claude (claude.ai), from Seb's voice feedback and the ECB logo file. **Branch:** `claude/preview-6`. **Commit:** `5daaf18`.
 
 - **One pill design on both strips** (`src/styles/logo-rails.css`): the pill is a shade
   lighter than its band (Stories #F5F2FF on #E9E3F7, homepage DREAM 10 #FAF9FF on DREAM 25)
