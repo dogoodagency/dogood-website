@@ -8,7 +8,7 @@ why, and anything the next person needs to check.
 
 ## Preview 6, update 23: animated WHOOP and State-Shift Audio sections, About context, IODA logo (19 Nov 2026, afternoon)
 
-**Made by:** Claude (claude.ai), Seb's feedback of 12:43 and 12:47, batch 6. **Commit:** `COMMIT23`.
+**Made by:** Claude (claude.ai), Seb's feedback of 12:43 and 12:47, batch 6. **Commit:** `4fa2a10`.
 
 - **`WhoopSection.astro`:** animated, illustrative graphs drawn by us (no WHOOP images), sample data: a
   recovery ring filling to 72% (green), a 14-day HRV line drawing itself, a week of sleep bars rising, a
