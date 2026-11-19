@@ -44,3 +44,13 @@ details > summary:hover {
   letter-spacing: 0.08em !important;
   text-transform: uppercase;
 }
+
+/* FAQ page and homepage FAQ buttons: the same hover tint as the other FAQ rows. */
+.faq-trigger {
+  border-radius: 12px;
+  transition: background-color 0.2s ease;
+}
+
+.faq-trigger:hover {
+  background-color: #ede8fb;
+}
