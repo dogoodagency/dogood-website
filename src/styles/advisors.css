@@ -1302,3 +1302,62 @@ html.adv-js .adv-faq-item:not(.is-open) .adv-faq-panel {
 .adv-page .adv-benefit-hero { border-color: transparent; }
 .adv-trial { border-color: #73e7c4 !important; }
 .adv-walk { border-color: #c2b7dd !important; }
+
+/* How a referral works, animated (Seb, 19 Nov 2026 18:52): a line draws across the steps, then each step
+   rises in and its number pops, one after another. */
+.adv-steps.adv-steps--color {
+  position: relative;
+}
+
+.adv-steps--color::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 40px;
+  left: 4%;
+  right: 4%;
+  height: 4px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #c2b7dd, #58447f, #2a0b4f);
+  transform-origin: left;
+}
+
+.adv-steps--color .adv-step { z-index: 1; }
+
+.adv-steps--color.will-animate::after { transform: scaleX(0); }
+.adv-steps--color.will-animate.is-in::after { transform: scaleX(1); transition: transform 3s cubic-bezier(0.3, 0.7, 0.3, 1); }
+
+.adv-steps--color.will-animate .adv-step { transform: translateY(32px); }
+.adv-steps--color.will-animate.is-in .adv-step { transition: opacity 1s ease, transform 1s cubic-bezier(0.34, 1.4, 0.64, 1); }
+.adv-steps--color.will-animate.is-in .adv-step:nth-child(2) { transition-delay: 0.6s; }
+.adv-steps--color.will-animate.is-in .adv-step:nth-child(3) { transition-delay: 1.2s; }
+.adv-steps--color.will-animate.is-in .adv-step:nth-child(4) { transition-delay: 1.8s; }
+.adv-steps--color.will-animate.is-in .adv-step:nth-child(5) { transition-delay: 2.4s; }
+
+.adv-steps--color.will-animate.is-in .adv-step::before {
+  animation: adv-pop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: inherit;
+}
+
+@keyframes adv-pop {
+  0% { transform: scale(0.4); }
+  100% { transform: scale(1); }
+}
+
+@media (max-width: 1023px) {
+  .adv-steps--color::after { display: none; }
+}
+
+/* What you get: the smaller cards under "Smoother deals" in DREAM 500. */
+.adv-page .adv-benefits .adv-benefit:nth-child(n) {
+  border-color: #2a0b4f;
+  background: #2a0b4f;
+}
+
+.adv-page .adv-benefits .adv-benefit:nth-child(n) h3 { color: #73e7c4; }
+.adv-page .adv-benefits .adv-benefit:nth-child(n) p { color: #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+  .adv-steps--color.will-animate::after { transform: none; }
+  .adv-steps--color.will-animate.is-in .adv-step::before { animation: none; }
+}

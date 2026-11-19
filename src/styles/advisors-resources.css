@@ -833,3 +833,138 @@ body:has(.advr-page) .footer-wave {
   .stool.will-animate .stool-gap-t { opacity: 1; }
   .stool.is-in .stool-gap { animation: none; }
 }
+
+/* Resource pages (Seb, 19 Nov 2026 18:52): step cards get a border in the page's colour; blocks follow it. */
+.advd-steps li {
+  border: 1px solid #c2b7dd;
+  background: #fff;
+}
+
+.advd--heart .advd-steps li { border-color: #fd6b82; background: #fff9fa; }
+.advd--grass .advd-steps li { border-color: #28dbb0; background: #f3fffb; }
+.advd--sky .advd-steps li { border-color: #8b7dae; background: #faf9ff; }
+.advd--heart .advd-block { border-color: #feb5bc; }
+.advd--grass .advd-block { border-color: #73e7c4; }
+
+/* ===== The three legs of the stool, redesign (Seb, 19 Nov 2026 18:52) =====
+   The seat spans the three cards; each leg stands over the centre of its own card, in its own colour
+   (DREAM 500, HEART 500, GRASS 500). The personal leg stops short, with a pulsing dashed "gap". */
+.stool2 {
+  margin: 28px 0 0;
+  padding: 32px 32px 28px;
+  border: 1px solid #c2b7dd;
+  border-radius: 24px;
+  background: #fff;
+}
+
+.stool2-seat {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  height: 56px;
+  margin: 0 3%;
+  border-radius: 28px;
+  background: linear-gradient(180deg, #3b1a63, #2a0b4f);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+.stool2-cols {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.stool2-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.stool2-legarea {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 150px;
+}
+
+.stool2-leg {
+  display: block;
+  width: 28px;
+  height: 100%;
+  border-radius: 0 0 10px 10px;
+  background: var(--leg);
+  transform-origin: top;
+}
+
+.stool2-col--3 .stool2-leg {
+  height: 58%;
+  border-radius: 10px;
+  transform-origin: bottom;
+}
+
+.stool2-gap {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 120px;
+  height: 46%;
+  border: 2px dashed #ea1557;
+  border-radius: 14px;
+  color: #c10e46;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  transform: translateX(-50%);
+}
+
+.stool2-card {
+  flex: 1;
+  padding: 20px 22px;
+  border: 1px solid var(--leg);
+  border-top-width: 1px;
+  border-radius: 18px;
+  background: var(--soft);
+}
+
+.stool2-col--1 { --leg: #2a0b4f; --soft: #f5f2ff; }
+.stool2-col--2 { --leg: #ea1557; --soft: #fff3f4; }
+.stool2-col--3 { --leg: #28dbb0; --soft: #e7fff6; }
+
+.stool2-col--1 .stool-label { color: #2a0b4f; }
+.stool2-col--2 .stool-label { color: #c10e46; }
+.stool2-col--3 .stool-label { color: #05745b; }
+
+.stool2.will-animate .stool2-leg { transform: scaleY(0); }
+.stool2.will-animate .stool2-gap { opacity: 0; }
+.stool2.is-in .stool2-leg { transform: none; transition: transform 1.6s cubic-bezier(0.3, 0.7, 0.3, 1); }
+.stool2.is-in .stool2-col--2 .stool2-leg { transition-delay: 0.35s; }
+.stool2.is-in .stool2-col--3 .stool2-leg { transition-delay: 0.7s; }
+.stool2.is-in .stool2-gap { opacity: 1; transition: opacity 0.8s ease 2.2s; animation: stool2-pulse 2.6s ease-in-out 3s infinite; }
+
+@keyframes stool2-pulse { 50% { border-color: rgba(234, 21, 87, 0.3); } }
+
+@media (max-width: 860px) {
+  .stool2 { padding: 20px 14px; }
+  .stool2-seat { display: none; }
+  .stool2-cols { grid-template-columns: minmax(0, 1fr); }
+  .stool2-legarea { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stool2.will-animate .stool2-leg { transform: none; }
+  .stool2.will-animate .stool2-gap { opacity: 1; }
+  .stool2.is-in .stool2-gap { animation: none; }
+}
+
+/* "More is on the way…" box: the same width as the cards above. */
+.advr-page .advr-cta {
+  max-width: none;
+  width: 100%;
+}

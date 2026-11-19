@@ -6,6 +6,51 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 27: Seb's feedback round of 19 Nov 2026, 18:52
+
+**Made by:** Claude (claude.ai). **Commits:** 27a–27d on `claude/preview-6`. axe: no issues on 21 pages; no
+horizontal scroll at 390px.
+
+- **Pre & Post journey** (`JourneyBar.astro`, rebuilt): own DREAM 500 band with more space; a winding road
+  that draws itself; seven stations as shaped badges (circle, diamond, hexagon, squircle) with line icons and
+  numbers; cards above/below the road with chips (Free, 30 days, 12 weeks…); phase ribbons (Start, Before the
+  sale, After the sale, Beyond). Vertical road on tablet/phone.
+- **Article cards everywhere** (`blog.css` end, `BlogCard.astro`): both labels left; topic labels with their own
+  mid-tone border per category (`bl-pill--{slug}`); titles 18px, weight 700; descriptions always 5 lines; author
+  and date pinned to the bottom.
+- **FAQ hover:** no background change on /faqs cards and the advisor FAQ (Exit Prep FAQ keeps its tint).
+- **The Reset / The Build:** the Stage switch is now navigation (`StageSwitch.astro`): the other stage is a link,
+  the knob slides across and the page changes; only the current stage's panel shows. Quote cards white.
+  "You will leave … with" and the supports on the stage's soft colour with a stage border. Case V frameless and
+  centred on both pages. Track record "$19.4M", HEART numbers 4px bigger. Button caption 12px regular.
+  **How It Works** redesigned as a process: 84px numbered circles on a line with arrows, text cards below.
+- **Residency:** "How the 1.5 days work" in GRASS shades, appearing one after another (`ProductPage.astro`
+  steps, applies to all product-page steps).
+- **Recovery:** subline on one line (product-page subline no longer capped).
+- **State-Shift Audio:** h1 "Shift state on demand,<br>when it counts."; sub "Mood-specific tracks designed for
+  focus, reset, and high-stakes days."; tag now also names The Exit Prep; "The science, plainly" and "How we
+  build your tracks" redesigned (beat diagram, brainwave chips, three numbered layers) (`AudioSection.astro`).
+- **Client-fit:** process twice as slow again; the five cards rewritten to 24–30 words each, same facts;
+  process centred on the case-study axis.
+- **Newsletter:** form sits higher; envelope sketch 40% bigger, centred on the form.
+- **Podcast:** round episode previews (episode covers); the newsletter has its own section.
+- **About:** hero title on one line (desktop); Seb's signature written in under the founder's message
+  (`SignatureDraw`); "Seb & the entire DoGood team" smaller, regular.
+- **Apply for Stage 1:** ™ small and raised; sketch 40% bigger, centred on the card; case study in the shared
+  case-compact layout.
+- **Case studies J and V** (`CaseStudy.astro`, `casestudy.css` end): short hero with a "Case study · identity
+  protected" pill and four key results (J: 30%, 40%, 7 weeks, 5 months from her outcomes; V: four qualitative
+  results from his outcomes); anonymity note moved into the Founder Snapshot; every card framed in its own
+  colour; "Net effect" dark; cards rise in on scroll.
+- **Refer a founder:** "How a referral works" animated (line draws, steps rise, numbers pop); "What you get"
+  small cards DREAM 500.
+- **Readiness check / Signals guide / Sale planner:** page band follows the card colour on the tools page
+  (DREAM / HEART / GRASS); step cards bordered in that colour (`AdvisorResourcePage.astro`).
+- **Advisor insights:** three-legs visual rebuilt in HTML/CSS: legs over the centre of each card, DREAM 500 /
+  HEART 500 / GRASS 500, personal leg short with a pulsing dashed "gap"; "More is on the way" box full width.
+
+---
+
 ## Preview 6, update 26: homepage client logos (19 Nov 2026, 18:08)
 
 - Homepage logo rail only (`logo-rails.css`, `.lr-rails--tint`): pill border removed; every logo recoloured to

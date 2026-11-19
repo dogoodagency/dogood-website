@@ -33,7 +33,8 @@ interface Props {
 }
 
 const { title, description, path, section, name, soon, lede, tone, blocks, note, extra } = Astro.props;
-const tint = "#F5F2FF";
+// Page colour follows the card colour on the tools / insights index (Seb, 19 Nov 2026 18:52).
+const tint = tone === "heart" ? "#FFF9FA" : tone === "grass" ? "#F3FFFB" : "#F5F2FF";
 const heroEdge = edgeAbove("#2A0B4F");
 const bandEdge = edgeAbove(tint);
 const back = section === "tools"
@@ -49,7 +50,7 @@ const back = section === "tools"
   footerStrip="#ffffff"
   footerEdge={edgeAbove("#ffffff")}
 >
-  <article class:list={["adv-page", "advr-page", "advd-page", `advd--${tone}`]}>
+  <article class:list={["adv-page", "advr-page", "advd-page", `advd--${tone}`]} style={`--advr-tint:${tint}`}>
     <header class="advr-hero">
       <div class="advr-hero-inner">
         <p class="advr-eyebrow">Advisor Center · {back.crumb}</p>
