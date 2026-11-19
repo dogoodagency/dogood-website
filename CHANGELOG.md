@@ -6,6 +6,23 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 30: the full foundr.land page; nav logo frame (19 Nov 2026, 21:02)
+
+- **/foundrland** (`src/pages/foundrland.astro`) replaces the holding page. It follows the foundr.land logo board,
+  not the DoGood style: light lilac, pastel PLAY / GRASS / SKY / HEART cards, DREAM 500 ink, Fraunces serif
+  accents (Google Fonts, this page only). All visuals are HTML/SVG drawn for the page (phone mock-up, clarity
+  wheel, journey flow, advisor workspace laptop); numbers in mock-ups are illustrative and labelled so.
+- **Sections:** hero (dark logo `foundrland-logo-dark@1x/@2x`, Seb's taglines and lede); the promise
+  (advisor / founder / DoGood); two ways in (Advisor or CEPA, founder directly → 7-day journey → outcomes);
+  seven days; the Clarity Wheel (Day 7 vs Day 30); after Day 7 (Discover → Navigate, Day 7 / 8–13 / 14 / 30 /
+  beyond, three paths); automation engine; advisor workspace; trust; first release vs following release
+  (Seb's feature list) and roadmap; pilot CTA to /contact. Copy drafted from Seb's notes and decks; needs his
+  sign-off. Marked "product concept, not yet built".
+- **Nav logo:** 10% bigger (141px; 110px under 1080px), DREAM 400 frame, DREAM 300 on hover, no border
+  (`site-rules.css`).
+
+---
+
 ## Preview 6, update 29: Apply button moves to the homepage hero; foundr.land logo and page (19 Nov 2026, 20:47)
 
 - **Nav (all pages):** "Apply for Stage 1" removed. In its place, the foundr.land logo (Seb's file, cropped and
