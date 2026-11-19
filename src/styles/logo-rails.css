@@ -101,8 +101,14 @@
   --lr-pill: #e9e3f7;
 }
 
+/* Homepage only (Seb, 19 Nov 2026 18:08): calmer rail. No border on the pill, and every logo in one colour,
+   DREAM 400 (#58447F), as in his reference. The Stories rail stays as it is. */
 .lr-rails--tint .lr-pill {
-  border-color: #c2b7dd;
+  border-color: transparent;
+}
+
+.lr-rails--tint .lr-pill-vis img {
+  filter: brightness(0) saturate(100%) invert(28%) sepia(17%) saturate(1630%) hue-rotate(222deg) brightness(92%) contrast(90%);
 }
 
 /* No JavaScript or reduced motion: a still, wrapped, centred set. */

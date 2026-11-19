@@ -6,6 +6,14 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 26: homepage client logos (19 Nov 2026, 18:08)
+
+- Homepage logo rail only (`logo-rails.css`, `.lr-rails--tint`): pill border removed; every logo recoloured to
+  DREAM 400 (#58447F) with a CSS filter, as in Seb's reference screenshot. Names unchanged (DREAM 500). The
+  Stories rail stays as it was (Seb's decision).
+
+---
+
 ## Preview 6, update 25: Seb's feedback round of 19 Nov 2026, 14:55 (whole site)
 
 **Made by:** Claude (claude.ai). **Commits:** `25a`–`25g` on `claude/preview-6`, last `059dca8`.
