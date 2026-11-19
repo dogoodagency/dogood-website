@@ -1119,3 +1119,27 @@ html:has(.nl-page) {
 .nl-closing a:hover {
   color: #2a0b4f;
 }
+
+/* 19 Nov 2026 18:52 (Seb): the form sits higher, and the envelope sketch is 40% bigger and centred on the
+   same line as the email field and the button. */
+.nl-signup.nl-signup-split {
+  grid-template-columns: minmax(0, 1fr) 480px;
+  max-width: 1120px;
+  row-gap: 8px;
+  align-items: center;
+}
+
+.nl-signup-copy {
+  align-self: center;
+}
+
+.nl-signup-art {
+  align-self: center;
+  margin-top: -24px;
+}
+
+@media (max-width: 900px) {
+  .nl-signup.nl-signup-split { grid-template-columns: minmax(0, 1fr); }
+  .nl-signup-copy, .nl-signup-art { margin-top: 0; }
+  .nl-signup-art { width: min(360px, 90%); }
+}

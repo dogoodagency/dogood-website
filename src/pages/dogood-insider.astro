@@ -26,7 +26,7 @@ const jsonLd = {
 };
 ---
 
-<Base title={title} description={description} canonical={canonical} footerStrip={white} footerEdge={edgeAbove(white)}>
+<Base title={title} description={description} canonical={canonical} footerStrip={tint} footerEdge={edgeAbove(tint)}>
   <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
   <!-- Reworked 19 Nov 2026 14:55 (Seb): a clear archive page for the new audience. Old illustrations and
@@ -92,7 +92,7 @@ const jsonLd = {
           {
             episodes.map((episode, i) => (
               <li class="pod2-ep">
-                <span class="pod2-ep-n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+                <img class="pod2-ep-img" src={`${episode.image}@1x.webp`} width="64" height="64" alt="" loading="lazy" decoding="async" />
                 <div class="pod2-ep-body">
                   <h3><a href={`/podcast/${episode.slug}`}>{episode.cardTitle}</a></h3>
                   <p>{episode.cardSubtitle}</p>
@@ -129,7 +129,27 @@ const jsonLd = {
           </div>
           <div class="pod2-next-actions">
             <a class="btn-teal" href="/insights">Read Insights</a>
-            <a class="pod2-link" href="/newsletter">Join the newsletter →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The newsletter as its own section (Seb, 19 Nov 2026 18:52) -->
+    <div class="pod-divider" style={`background:${white}`} aria-hidden="true">
+      <Wave fill={tint} edge={tintEdge} />
+    </div>
+    <section class="pod-band pod-band-tint" aria-labelledby="pod2-news">
+      <div class="pod-well pod-section">
+        <div class="pod2-news">
+          <picture class="pod2-news-art">
+            <source type="image/webp" srcset="/sketches/newsletter-open-envelope-booklet@1x.webp 1x, /sketches/newsletter-open-envelope-booklet@2x.webp 2x" />
+            <img src="/sketches/newsletter-open-envelope-booklet@1x.png" width="540" height="400" alt="" loading="lazy" />
+          </picture>
+          <div>
+            <p class="pod2-card-label">The newsletter</p>
+            <h2 id="pod2-news">Before and After the Sale, chapter by chapter</h2>
+            <p>One email every two weeks from 15 December: a new chapter of our book for founders, and our notes on life after the sale.</p>
+            <a class="btn-teal" href="/newsletter">Join the newsletter</a>
           </div>
         </div>
       </div>

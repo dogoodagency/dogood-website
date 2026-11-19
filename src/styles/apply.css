@@ -226,3 +226,40 @@
 .page-apply #case-j.apl-case {
   margin: 40px auto 0 !important;
 }
+
+/* 19 Nov 2026 18:52 (Seb): ™ sits small and high after the name; the sketch 40% bigger and centred on the
+   application card; the case study in the shared case-compact layout. */
+.apl-hero h1 .tm {
+  font-size: 0.42em;
+  font-weight: 400;
+  vertical-align: 0.95em;
+  margin-left: 2px;
+}
+
+.apl-main {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+}
+
+.apl-art img {
+  max-width: 640px;
+}
+
+.apl-case-wrap {
+  max-width: 900px;
+  margin: 48px auto 0;
+}
+
+.page-apply .apl-case-wrap .case-compact {
+  border: 1px solid #c2b7dd;
+  background: #fff;
+  box-shadow: none;
+}
+.apl-art img { transform: scale(1.4); transform-origin: center; }
+.page-apply .apl-case-wrap article.case-compact {
+  padding: 28px 32px !important;
+  border: 1px solid #c2b7dd !important;
+  border-radius: 24px;
+  background: #fff !important;
+}
+@media (max-width: 860px) { .apl-art img { transform: none; } }

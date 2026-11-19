@@ -1,4 +1,5 @@
 ---
+import SignatureDraw from "../components/SignatureDraw.astro";
 import "../styles/about.css";
 import { Image } from "astro:assets";
 import Base from "../layouts/Base.astro";
@@ -101,7 +102,10 @@ const premises = [
             <p>I know what it costs when the company becomes too much of who you are, and when the old patterns follow you long after the company is gone.</p>
             <p>DoGood is what I wish had existed then: a private partnership for founders who do not want life after exit to become another version of the life they left behind.</p>
           </blockquote>
-          <figcaption><strong>Seb &amp; the entire DoGood team</strong></figcaption>
+          <figcaption>
+            <SignatureDraw class="ab-sig" />
+            <span class="ab-sig-name">Seb &amp; the entire DoGood team</span>
+          </figcaption>
         </figure>
       </div>
     </section>

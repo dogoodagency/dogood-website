@@ -43,6 +43,8 @@ interface Props {
   howChange: string[];
   netEffect: string[];
   closing: string;
+  /** Optional key numbers for the hero, taken from the outcomes (19 Nov 2026 18:52). */
+  highlights?: { value: string; label: string }[];
 }
 
 const {
@@ -75,6 +77,7 @@ const {
   howChange,
   netEffect,
   closing,
+  highlights = [],
 } = Astro.props;
 
 const tint = "#F5F2FF";
@@ -94,9 +97,21 @@ const caption = "Founder-focused · Not therapy, not medical advice, not psychol
   <article class="cs-page">
     <header class="cs-hero">
       <div class="cs-hero-inner">
-        <p class="cs-anon"><strong>We protect our founders’ identities.</strong> Most founders we work with lead visible companies and public lives –– we don't ask them to tell the private parts of their story publicly. Anonymity lets founders be candid about their intimate work — without risking reputations, partnerships, or market fallout.</p>
+        <p class="cs-pill">Case study · identity protected</p>
         <h1>{headline} <span class="cs-accent">{headlineAccent}</span></h1>
         <p class="cs-intro">{intro}</p>
+        {
+          highlights.length > 0 && (
+            <ul class="cs-highlights" aria-label="Key results">
+              {highlights.map((h) => (
+                <li>
+                  <strong>{h.value}</strong>
+                  <span>{h.label}</span>
+                </li>
+              ))}
+            </ul>
+          )
+        }
       </div>
       <Wave fill={tint} edge={heroEdge} />
     </header>
@@ -123,7 +138,7 @@ const caption = "Founder-focused · Not therapy, not medical advice, not psychol
           </figure>
         </div>
 
-        <div class="cs-card cs-snapshot">
+        <div class="cs-card cs-card--white cs-snapshot" data-cs-reveal>
           <h2>Founder Snapshot</h2>
           <div class="cs-snapshot-grid">
             <div>
@@ -140,6 +155,7 @@ const caption = "Founder-focused · Not therapy, not medical advice, not psychol
               }
             </dl>
           </div>
+          <p class="cs-anon-note"><strong>We protect our founders’ identities.</strong> Most founders we work with lead visible companies and public lives –– we don't ask them to tell the private parts of their story publicly. Anonymity lets founders be candid about their intimate work — without risking reputations, partnerships, or market fallout.</p>
         </div>
 
       </div>
@@ -157,22 +173,22 @@ const caption = "Founder-focused · Not therapy, not medical advice, not psychol
         <h2>The Problem</h2>
         <p class="cs-lead">{problem}</p>
         <div class="cs-grid-2" style="margin-top: 36px;">
-          <div class="cs-card">
+          <div class="cs-card cs-card--heart" data-cs-reveal>
             <h3>Top symptoms</h3>
             <ul class="cs-list">
               {symptoms.map((item) => <li>{item}</li>)}
             </ul>
           </div>
           <div class="cs-stack">
-            <div class="cs-card">
+            <div class="cs-card cs-card--grass" data-cs-reveal>
               <h3>What {name} wanted</h3>
               <p>{wanted}</p>
             </div>
-            <div class="cs-card">
+            <div class="cs-card cs-card--dream" data-cs-reveal>
               <h3>What {name} tried before</h3>
               <p>{tried}</p>
             </div>
-            <div class="cs-card">
+            <div class="cs-card cs-card--sky" data-cs-reveal>
               <h3>The hardest change for {name}</h3>
               <p>{hardest}</p>
             </div>
@@ -186,7 +202,7 @@ const caption = "Founder-focused · Not therapy, not medical advice, not psychol
         <h2>Our Engagement Approach</h2>
         <p class="cs-lead">{approachIntro}</p>
         <div class="cs-stack" style="margin-top: 36px;">
-          <div class="cs-card">
+          <div class="cs-card cs-card--white" data-cs-reveal>
             <h3>What we actually did</h3>
             <ul class="cs-list">
               {did.map((item) => <li>{item}</li>)}
@@ -199,7 +215,7 @@ const caption = "Founder-focused · Not therapy, not medical advice, not psychol
               ))
             }
           </div>
-          <div class="cs-card">
+          <div class="cs-card cs-card--white" data-cs-reveal>
             <h3>Client actions –– What {name} did</h3>
             <ul class="cs-list cs-list-check">
               {actions.map((item) => <li>{item}</li>)}
@@ -221,13 +237,13 @@ const caption = "Founder-focused · Not therapy, not medical advice, not psychol
         <h2>The Outcomes</h2>
         <p class="cs-lead">{outcomesIntro}</p>
         <div class="cs-grid-2" style="margin-top: 36px;">
-          <div class="cs-card">
+          <div class="cs-card cs-card--grass" data-cs-reveal>
             <h3>Business outcomes</h3>
             <ol class="cs-numbered">
               {businessOutcomes.map((item) => <li>{item}</li>)}
             </ol>
           </div>
-          <div class="cs-card">
+          <div class="cs-card cs-card--heart" data-cs-reveal>
             <h3>Personal outcomes</h3>
             <ol class="cs-numbered">
               {personalOutcomes.map((item) => <li>{item}</li>)}
@@ -240,11 +256,11 @@ const caption = "Founder-focused · Not therapy, not medical advice, not psychol
     <section class="cs-band cs-band-tint">
       <div class="cs-well">
         <div class="cs-grid-2">
-          <div class="cs-card">
+          <div class="cs-card cs-card--white" data-cs-reveal>
             <h2>How the business change happened</h2>
             {howChange.map((paragraph) => <p>{paragraph}</p>)}
           </div>
-          <div class="cs-card">
+          <div class="cs-card cs-card--dark" data-cs-reveal>
             <h2>Net effect</h2>
             {netEffect.map((paragraph) => <p>{paragraph}</p>)}
           </div>
@@ -254,3 +270,19 @@ const caption = "Founder-focused · Not therapy, not medical advice, not psychol
     </section>
   </article>
 </Base>
+
+<script>
+  /* Cards fade and rise in as they come into view (Seb, 19 Nov 2026 18:52: "very static"). */
+  const cards = document.querySelectorAll<HTMLElement>("[data-cs-reveal]");
+  if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    cards.forEach((c) => c.classList.add("cs-will"));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        (e.target as HTMLElement).classList.add("cs-in");
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.15 });
+    cards.forEach((c) => io.observe(c));
+  }
+</script>

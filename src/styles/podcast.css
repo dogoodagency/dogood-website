@@ -1036,3 +1036,51 @@ body:has(.pod-page) .footer-wave {
   .pod2-host { grid-template-columns: minmax(0, 1fr); }
 }
 .pod-page--v2 .pod2-host-img { aspect-ratio: 1; height: 160px !important; max-width: none; }
+
+/* 19 Nov 2026 18:52 (Seb): a round preview of each episode, and the newsletter in its own section. */
+.pod2-ep-img {
+  width: 64px;
+  height: 64px;
+  border: 1px solid #c2b7dd;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.pod2-ep { grid-template-columns: 64px minmax(0, 1fr) auto auto; }
+
+.pod2-news {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  align-items: center;
+  gap: 40px;
+  padding: 36px 40px;
+  border: 1px solid #c2b7dd;
+  border-radius: 24px;
+  background: #fff;
+}
+
+.pod2-news-art img { display: block; width: 100%; height: auto; }
+
+.pod-page--v2 .pod2-news h2 {
+  margin: 0 0 10px;
+  color: #2a0b4f;
+  font-size: clamp(24px, 2.6vw, 32px);
+  font-weight: 900;
+}
+
+.pod-page--v2 .pod2-news p:not(.pod2-card-label) {
+  margin: 0 0 20px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.pod2-next-actions .btn-teal { white-space: nowrap; }
+
+@media (max-width: 860px) {
+  .pod2-ep { grid-template-columns: 48px minmax(0, 1fr); }
+  .pod2-ep-img { width: 48px; height: 48px; }
+  .pod2-news { grid-template-columns: minmax(0, 1fr); padding: 26px 20px; }
+  .pod2-news-art { max-width: 240px; }
+}
+.pod-page--v2 .pod2-ep-img { height: 64px !important; aspect-ratio: 1; max-width: none; }
+@media (max-width: 860px) { .pod-page--v2 .pod2-ep-img { width: 48px; height: 48px !important; } }

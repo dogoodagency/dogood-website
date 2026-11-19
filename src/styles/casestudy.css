@@ -551,3 +551,111 @@ body:has(.cs-page) .footer-wave {
     margin-bottom: 0;
   }
 }
+
+/* ===== 19 Nov 2026 18:52 (Seb): case studies J and V, slightly redesigned =====
+   Shorter hero with key results, every card framed in its own colour, a dark "Net effect" and cards that rise
+   in as you scroll. The anonymity note moved from the hero into the Founder Snapshot. */
+.cs-hero .cs-pill {
+  margin: 0;
+  padding: 6px 16px;
+  border: 1px solid #28dbb0;
+  border-radius: 999px;
+  color: #28dbb0;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cs-hero h1 {
+  font-size: clamp(32px, 4.2vw, 56px);
+}
+
+.cs-highlights {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cs-highlights li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.cs-highlights strong {
+  color: #28dbb0;
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.cs-highlights span {
+  color: #f5f2ff;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.cs-page .cs-card {
+  border: 1px solid #c2b7dd;
+  box-shadow: none;
+}
+
+.cs-page .cs-band .cs-card.cs-card--white { border-color: #c2b7dd; background: #fff; }
+.cs-page .cs-band .cs-card.cs-card--grass { border-color: #01a684; background: #e7fff6; }
+.cs-page .cs-band .cs-card.cs-card--heart { border-color: #fd6b82; background: #fff3f4; }
+.cs-page .cs-band .cs-card.cs-card--dream { border-color: #8b7dae; background: #f5f2ff; }
+.cs-page .cs-band .cs-card.cs-card--sky { border-color: #58447f; background: #fff; }
+.cs-page .cs-card--grass h3 { color: #05745b; }
+.cs-page .cs-card--heart h3 { color: #c10e46; }
+
+.cs-page .cs-band .cs-card.cs-card--dark {
+  border-color: #2a0b4f;
+  background: #2a0b4f;
+}
+
+.cs-page .cs-card--dark,
+.cs-page .cs-card--dark :is(h2, p) {
+  color: #fff;
+}
+
+.cs-page .cs-card--dark h2 {
+  color: #28dbb0;
+}
+
+.cs-page .cs-anon-note {
+  margin: 22px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid #e3dcf2;
+  color: #58447f;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.cs-page .cs-shot {
+  border: 1px solid #c2b7dd;
+}
+
+.cs-will {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.cs-will.cs-in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+@media (max-width: 760px) {
+  .cs-highlights { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

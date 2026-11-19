@@ -19,28 +19,29 @@ function wave(from: string, to: string) {
 const toTint = wave(white, tint);
 const toWhite = wave(tint, white);
 
+// Rewritten 19 Nov 2026 18:52 (Seb): every card about the same length (24–30 words), same facts.
 const steps = [
   {
     title: "Apply for Stage 1",
-    text: "You share what’s happening (health, relationship, identity, pressure) and what you need most.",
+    text: "You tell us what is happening right now, across health, relationships, identity and pressure, and what you need most from the work ahead.",
   },
   {
     title: "After the FRP-Fit Call",
-    text: "We confirm this is the right container: private, intensive, founder-first, and you can protect the required time.",
+    text: "Together we confirm this is the right container for you: private, intensive and founder-first, and that you can protect the time it asks for.",
   },
   {
     title: "Match to your Wayfinder",
-    text: "We match based on your situation and what you respond to: direct vs gentle, highly structured vs more spacious, how much steadying support you need right now, and your stage (still running vs post-exit).",
+    text: "We match on your situation and style: direct or gentle, structured or spacious, how much steadying support you need, and whether you are still running or post-exit.",
   },
   {
     title: "Optimize for proximity",
-    text: "After fit, we prioritize geographic/time zone alignment to reduce friction. We also keep travel within wellbeing guardrails (no extreme routes; long-haul is exception-only).",
+    text: "After fit, we look for time-zone and location alignment to reduce friction, and keep travel within wellbeing guardrails: no extreme routes, long-haul only by exception.",
   },
   {
-    title: "Early checkpoint + correction if needed",
-    text: "If within the first two sessions (within 7 days of your first private 1:1 session), the match feels wrong, we attempt to correct it promptly. If it can’t be corrected without disruption, you have the option to exit via the ",
+    title: "Early checkpoint + correction",
+    text: "If the match feels wrong within your first two sessions, we correct it quickly. If that is not possible, you can exit via the ",
     link: { href: "/clarity-first-guarantee-terms", label: "Clarity‑First Guarantee" },
-    after: " (as long as you’re within the guarantee window and eligibility requirements are met).",
+    after: " within its window.",
   },
 ];
 

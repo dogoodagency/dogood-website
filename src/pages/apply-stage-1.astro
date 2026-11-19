@@ -72,13 +72,20 @@ const apply = "https://form.jotform.com/DoGoodAgency/frp-stage-1";
           <li><span class="apl-next-n">3</span><strong>We talk</strong><span>A private conversation, then Stage 1 can start.</span></li>
         </ol>
 
-        <section id="case-j" class="apl-case" aria-label="Case study">
-          <img class="apl-case-img" src={caseJ.src} width="110" height="122" alt="Pixelated portrait of founder J, shown this way to protect their identity" />
-          <div>
-            <p class="apl-case-kicker">Case study</p>
-            <p class="apl-case-title">From exit anxiety to aligned legacy: how J created a clear next life chapter</p>
-            <a class="apl-case-link" href={urls.caseJ}>Read J’s short case study →</a>
-          </div>
+        <!-- Case study in the shared "case-compact" layout used on other pages (Seb, 19 Nov 2026 18:52). -->
+        <section id="case-j" class="apl-case-wrap" aria-label="Case study">
+          <article class="card case-compact">
+            <img class="portrait" src={caseJ.src} width="220" height="244" alt="Pixelated portrait of founder J, shown this way to protect their identity" />
+            <div>
+              <p class="t-kicker">Case Study</p>
+              <h3>From exit anxiety to aligned legacy —<br />How J created a clear next life chapter</h3>
+              <p class="caption case-who">J (anonymous), USD 2M founder</p>
+              <div class="btn-stack">
+                <a class="btn-case" href={urls.caseJ}>Read the short case study</a>
+                <p class="case-protect">We protect our founders’ identities</p>
+              </div>
+            </div>
+          </article>
         </section>
       </div>
     </section>
