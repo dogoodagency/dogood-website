@@ -1209,3 +1209,354 @@ body:has(.hw-page) .footer-wave {
 .hw-page .hw-step-n {
   color: #c10e46;
 }
+
+/* ---------- The Reset update, 19 Nov 2026 (Seb) ---------- */
+
+/* Wider reading column. */
+.hw-prose {
+  max-width: 820px;
+}
+
+.hw-page .hw-sub-center {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 18px;
+}
+
+/* Two-stage overview, now below the hero on a light band. */
+.hw-stages.hw-stages-light {
+  margin-top: 32px;
+}
+
+.hw-stages-light a.hw-stage-card {
+  display: block;
+  background: #fff;
+  border: 1.5px solid var(--hw-line);
+  color: var(--hw-ink);
+  text-decoration: none;
+  transition: border-color 0.2s ease;
+}
+
+.hw-stages-light a.hw-stage-card:hover,
+.hw-stages-light a.hw-stage-card:focus-visible {
+  border-color: var(--hw-teal);
+}
+
+.hw-stages-light .hw-stage-card h3 {
+  margin: 4px 0 8px;
+  color: var(--hw-ink);
+  font-size: clamp(24px, 2.6vw, 30px);
+  font-weight: 900;
+}
+
+.hw-stages-light .hw-stage-card h3 span {
+  font-size: 0.7em;
+}
+
+.hw-stages-light .hw-stage-n {
+  color: #c10e46;
+}
+
+.hw-stages-light .hw-stage-line {
+  color: var(--hw-ink);
+}
+
+.hw-stages-light .hw-stage-via {
+  color: #05745b;
+  font-weight: 700;
+}
+
+.hw-stages-light .hw-stage-arrow {
+  color: #c10e46;
+}
+
+.hw-page .hw-expedite.hw-center {
+  max-width: 720px;
+  margin: 8px auto 0;
+  color: #533f79;
+  font-size: 15px;
+}
+
+/* "Not there yet?" callout. */
+.hw-notyet-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 860px;
+  margin: 44px auto 0;
+  padding: 28px 32px;
+  background: #fff;
+  border: 2px solid var(--hw-teal);
+  border-left-width: 10px;
+  border-radius: 20px;
+}
+
+.hw-page .hw-notyet-eyebrow {
+  margin: 0 0 6px;
+  color: #c10e46;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hw-page .hw-notyet-text {
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.5;
+}
+
+.hw-notyet-card .btn-teal {
+  flex: none;
+}
+
+/* Sound bites: six cards. */
+.hw-quotes.hw-quotes-6 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: none;
+  margin-top: 32px;
+}
+
+/* Cost section sits in the same white band as the sound bites. */
+.hw-band-cont .hw-well {
+  padding-top: 8px;
+}
+
+/* House + stage content in one panel. */
+.hw-stage-panel {
+  padding: 48px 56px;
+  background: #fff;
+  border: 1px solid var(--hw-line);
+  border-radius: 28px;
+}
+
+.hw-band:not(.hw-band-tint) .hw-stage-panel {
+  background: var(--hw-tint);
+}
+
+.hw-stage-panel .hw-house-wrap {
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--hw-line);
+}
+
+/* Stage headings: kicker, title, tagline, via and flow each with their own size and colour. */
+.hw-page .hw-stage-head {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 14px;
+}
+
+.hw-stage-kicker {
+  color: #c10e46;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hw-stage-title {
+  color: var(--hw-ink);
+  font-size: clamp(32px, 3.6vw, 44px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.hw-page .hw-stage-block .hw-tagline {
+  margin: 0 0 6px;
+  color: #05745b;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hw-page .hw-stage-block .hw-via {
+  margin: 0 0 18px;
+  color: #533f79;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.hw-page .hw-flow.hw-flow-box {
+  display: inline-block;
+  margin: 0 0 22px;
+  padding: 12px 18px;
+  background: #2a0b4f;
+  border-radius: 14px;
+  color: #fff;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.hw-flow-box strong {
+  color: #28dbb0;
+}
+
+.hw-stage-block p,
+.hw-stage-block li {
+  line-height: 1.7;
+}
+
+/* Featured case studies with portraits. */
+.hw-case.hw-case-feature {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 36px;
+  align-items: center;
+  max-width: 900px;
+  padding: 36px 40px;
+  border-width: 1.5px;
+  box-shadow: none;
+}
+
+.hw-case--sky {
+  background: #f2f7ff;
+  border-color: #aec8fe;
+}
+
+.hw-case--grass {
+  background: #f3fffb;
+  border-color: #73e7c4;
+}
+
+.hw-case-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hw-case-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  min-width: 0;
+}
+
+.hw-case-feature h3 {
+  font-size: clamp(22px, 2.4vw, 28px) !important;
+  line-height: 1.25;
+}
+
+/* Testimonials on DREAM 500. */
+.hw-band.hw-band-dream {
+  background: #2a0b4f;
+}
+
+.hw-band-dream h2,
+.hw-page .hw-band-dream .hw-sub-center {
+  color: #fff;
+}
+
+/* Guarantee on DREAM 500 with the seal. */
+.hw-guarantee.hw-guarantee-dark {
+  position: relative;
+  padding: 48px 48px 48px 220px;
+  background: #2a0b4f;
+  border-color: #2a0b4f;
+  color: #fff;
+}
+
+.hw-guarantee-dark h2,
+.hw-page .hw-guarantee-dark p {
+  color: #fff;
+}
+
+.hw-seal {
+  position: absolute;
+  top: 44px;
+  left: 44px;
+  width: 150px;
+  height: auto;
+}
+
+/* Wayfinder cards: photo and name centred. */
+.hw-hub-top {
+  text-align: center;
+}
+
+.hw-page a.hw-wf-link {
+  align-items: center;
+  margin: 0 auto;
+}
+
+/* What happens after 30 days: two clearly different options. */
+.hw-option.hw-option-a {
+  background: #f3fffb;
+  border: 1.5px solid #73e7c4;
+}
+
+.hw-option.hw-option-b {
+  background: #2a0b4f;
+  border: 1.5px solid #2a0b4f;
+}
+
+.hw-page .hw-option-b h3,
+.hw-page .hw-option-b p {
+  color: #fff;
+}
+
+.hw-page .hw-option-b .hw-step-n {
+  color: #28dbb0;
+}
+
+@media (max-width: 1023px) {
+  .hw-quotes.hw-quotes-6 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .hw-quotes.hw-quotes-6 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hw-notyet-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 22px;
+  }
+
+  .hw-stage-panel {
+    padding: 28px 20px;
+  }
+
+  .hw-case.hw-case-feature {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 28px 22px;
+  }
+
+  .hw-case-img {
+    width: min(180px, 60%);
+  }
+
+  .hw-guarantee.hw-guarantee-dark {
+    padding: 200px 24px 36px;
+  }
+
+  .hw-seal {
+    top: 28px;
+    left: 24px;
+    width: 140px;
+  }
+}
+
+/* Hero sub-headline: as few lines as the width allows (Seb: no needless line breaks). */
+.hw-hero-inner {
+  width: min(1120px, calc(100% - 2 * var(--pad)));
+}
+
+.hw-page .hw-hero .hw-hero-lede {
+  max-width: 1040px;
+  font-size: clamp(19px, 1.9vw, 24px);
+}
+
+.hw-page .hw-stages-light a.hw-stage-card,
+.hw-page .hw-stages-light a.hw-stage-card * {
+  text-decoration: none;
+}

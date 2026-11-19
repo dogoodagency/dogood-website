@@ -4,6 +4,10 @@ import Base from "../layouts/Base.astro";
 import Wave from "../components/Wave.astro";
 import { edgeAbove } from "../data/edge-line";
 import { stats, reviews } from "../data/homepage";
+import { Image } from "astro:assets";
+import TestimonialWall from "../components/TestimonialWall.astro";
+import caseJImg from "../assets/cases/case-study-j-founder-life-after-exit.png";
+import caseVImg from "../assets/cases/case-study-v-founder-life-after-exit.png";
 import { wayfinders } from "../data/wayfinders";
 import {
   houses,
@@ -37,6 +41,9 @@ function wave(from: string, to: string) {
 }
 const toTint = wave(white, tint);
 const toWhite = wave(tint, white);
+const dream = "#2A0B4F";
+const toDream = `<div class="hw-divider hw-divider--tint" aria-hidden="true"><svg style="--wave-edge:${bandEdge}" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${dream}" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path></svg></div>`;
+const fromDream = `<div class="hw-divider" style="background:${dream}" aria-hidden="true"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${tint}" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path></svg></div>`;
 
 function clipQuote(quote: string) {
   const clean = quote.replace(/\s+/g, " ").trim();
@@ -46,13 +53,29 @@ function clipQuote(quote: string) {
   return `${cut}…`;
 }
 
-const shown = reviewFiles
-  .map((file) => reviews.find((review) => review.file === file))
-  .filter((review): review is (typeof reviews)[number] => Boolean(review));
+// All reviews with portraits for the moving wall (Seb, 19 Nov 2026: same motion as /stories, with photos).
+const portraitFiles = import.meta.glob<ImageMetadata>("../assets/reviews/*", { eager: true, import: "default" });
+const portraitFor = (file: string) => Object.entries(portraitFiles).find(([p]) => p.endsWith(`/${file}`))?.[1];
+const wallItems = reviews.map((r) => ({ quote: r.quote, name: r.name, role: r.role, image: portraitFor(r.file) }));
+void reviewFiles;
 
+// Track record numbers animated like the homepage (count-up when scrolled into view).
+const countFor = (value: string) => {
+  const m = value.match(/^(\D*)([\d,.]+)(.*)$/);
+  if (!m) return { count: "", prefix: "", suffix: "", decimals: "0" };
+  const num = m[2].replace(/,/g, "");
+  return { count: num, prefix: m[1], suffix: m[3], decimals: num.includes(".") ? String(num.split(".")[1].length) : "0" };
+};
+
+// Sound bites from real calls (Call Language Log, non-private rows, lightly cleaned; no names). The first two
+// were already here; four added 19 Nov 2026 (Q087, Q102, Q098, Q069).
 const familiar = [
-  "Nowhere, because there is no clarity.",
-  "This company and this lifestyle is all I've ever known.",
+  { quote: "Nowhere, because there is no clarity.", role: "Founder" },
+  { quote: "This company and this lifestyle is all I've ever known.", role: "Founder" },
+  { quote: "It was after selling that I realized I was the pattern. I didn't have a business anymore, but I still had the same tendencies.", role: "Exit advisor, on his own sale" },
+  { quote: "Almost always they talk about this void that they felt shortly after.", role: "Exit planner" },
+  { quote: "They're not going to be happy playing golf or fishing. They're used to having a lot of responsibility and identity.", role: "Exit planner" },
+  { quote: "The hardest thing is getting through that transition period. Both from a mental state and a financial state.", role: "Wealth advisor" },
 ];
 
 const [houseBefore, houseStage1, houseStage2] = houses;
@@ -83,62 +106,76 @@ const [houseBefore, houseStage1, houseStage2] = houses;
       <div class="hw-hero-inner">
         <p class="hw-eyebrow">The Reset + The Build</p>
         <h1>Founder Reclamation Partnership</h1>
-        <p class="hw-kicker">The FRP is a 2-stage process</p>
+        <!-- Hero slimmed (Seb, 19 Nov 2026): the two stage cards, the flow line and the expedite note moved into the next band. -->
         <p class="hw-hero-lede">A private, staged partnership for founders after exit who want to decide what this next chapter is actually for.</p>
         <p class="hw-hero-sub">You apply for Stage 1 only. Stage 2 is invite-only.</p>
-
-        <div class="hw-stages">
-          <div class="hw-stage-card">
-            <p class="hw-stage-n">Stage 1</p>
-            <h2>The Reset (30 days)</h2>
-            <p class="hw-stage-line">get clear · set new values · shift patterns</p>
-            <p class="hw-stage-via">via ClarityValue Shift™</p>
-          </div>
-          <span class="hw-stage-arrow" aria-hidden="true">→</span>
-          <div class="hw-stage-card">
-            <p class="hw-stage-n">Stage 2</p>
-            <h2>The Build (12 weeks)</h2>
-            <p class="hw-stage-line">rework life · go deeper · realign what matters</p>
-            <p class="hw-stage-via">via NextLife Passage™</p>
-          </div>
-        </div>
-
-        <p class="hw-flow"><strong>How it works:</strong> Apply → Conversation → Start Stage 1</p>
-
         <div class="hw-actions">
-          <a class="btn-teal" href="/the-reset#anchor-1">See the full process</a>
           <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
+          <a class="btn-teal" href="/the-reset#anchor-1">See the full process</a>
         </div>
         <p class="hw-limited">Limited to five new founders a month</p>
-        <p class="hw-expedite">We protect our delivery quality: Ask about Expedited Start if urgent (FRP can begin within 7 days)</p>
       </div>
       <Wave fill={tint} edge={heroEdge} />
     </header>
 
-    <!-- 1b. Sound familiar? (Seb, Nov 17) -->
-    <section class="hw-band hw-band-tint" aria-labelledby="hw-familiar">
-      <div class="hw-well hw-well-slim">
-        <h2 id="hw-familiar">Sound familiar?</h2>
-        <div class="hw-quotes">
-          {
-            familiar.map((quote) => (
-              <figure class="hw-qcard">
-                <blockquote>
-                  <p>{quote}</p>
-                </blockquote>
-                <figcaption>Founder</figcaption>
-              </figure>
-            ))
-          }
+    <!-- 1a. The two stages (moved out of the hero, 19 Nov 2026) -->
+    <section class="hw-band hw-band-tint" aria-labelledby="hw-two">
+      <div class="hw-well">
+        <p class="hw-eyebrow hw-center">The FRP is a 2-stage process</p>
+        <h2 id="hw-two" class="hw-center">Reset first. Then build.</h2>
+        <div class="hw-stages hw-stages-light">
+          <a class="hw-stage-card" href="/clarityvalue-shift">
+            <p class="hw-stage-n">Stage 1</p>
+            <h3>The Reset <span>(30 days)</span></h3>
+            <p class="hw-stage-line">get clear · set new values · shift patterns</p>
+            <p class="hw-stage-via">via ClarityValue Shift™</p>
+          </a>
+          <span class="hw-stage-arrow" aria-hidden="true">→</span>
+          <a class="hw-stage-card" href="/nextlife-passage">
+            <p class="hw-stage-n">Stage 2</p>
+            <h3>The Build <span>(12 weeks)</span></h3>
+            <p class="hw-stage-line">rework life · go deeper · realign what matters</p>
+            <p class="hw-stage-via">via NextLife Passage™</p>
+          </a>
         </div>
-        <p class="hw-notyet">Not there yet? <a href="/exit-prep">Exit-Prep</a> is for founders before the sale.</p>
+        <p class="hw-flow hw-center"><strong>How it works:</strong> Apply → Conversation → Start Stage 1</p>
+        <p class="hw-expedite hw-center">We protect our delivery quality: Ask about Expedited Start if urgent (FRP can begin within 7 days)</p>
+
+        <!-- Not there yet? made a proper callout (Seb, 19 Nov 2026) -->
+        <aside class="hw-notyet-card" aria-label="Not sold yet?">
+          <div>
+            <p class="hw-notyet-eyebrow">Not there yet?</p>
+            <p class="hw-notyet-text">If you haven't sold yet, <strong>Exit-Prep</strong> is for you: six weekly 1:1 sessions on the personal side of the sale, while the deal is still ahead of you.</p>
+          </div>
+          <a class="btn-teal" href="/exit-prep">See Exit-Prep</a>
+        </aside>
       </div>
     </section>
 
     <Fragment set:html={toWhite} />
 
-    <!-- 2. Cost + What is FRP -->
-    <section class="hw-band" aria-labelledby="hw-cost">
+    <!-- 1b. Sound bites: 6 quotes from real calls -->
+    <section class="hw-band" aria-labelledby="hw-familiar">
+      <div class="hw-well">
+        <h2 id="hw-familiar" class="hw-center">Sound bites</h2>
+        <p class="hw-center hw-sub-center">Words from real calls with founders and the advisors who walk with them.</p>
+        <div class="hw-quotes hw-quotes-6">
+          {
+            familiar.map((item) => (
+              <figure class="hw-qcard">
+                <blockquote>
+                  <p>{item.quote}</p>
+                </blockquote>
+                <figcaption>{item.role}</figcaption>
+              </figure>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Cost + What is FRP (same white band as the sound bites) -->
+    <section class="hw-band hw-band-cont" aria-labelledby="hw-cost">
       <div class="hw-well hw-prose">
         <h2 id="hw-cost">The success is real. But so is the cost.</h2>
         <p>You thought stepping away would feel like arrival. Instead, you have more freedom but feel less settled than expected.</p>
@@ -159,6 +196,7 @@ const [houseBefore, houseStage1, houseStage2] = houses;
     <!-- 4. House 1 + Stage 1 -->
     <section class="hw-band hw-band-tint" aria-labelledby="hw-stage1">
       <div class="hw-well">
+        <div class="hw-stage-panel">
         <div class="hw-house-wrap">
           <p class="hw-eyebrow">{houseBefore.eyebrow}</p>
           <h3 class="hw-house-title">{houseBefore.title}</h3>
@@ -186,10 +224,10 @@ const [houseBefore, houseStage1, houseStage2] = houses;
         </div>
 
         <div class="hw-prose hw-stage-block">
-          <h2 id="hw-stage1"><span class="hw-pink">Stage 1</span> The Reset <span class="hw-days">(30 days)</span></h2>
+          <h2 id="hw-stage1" class="hw-stage-head"><span class="hw-stage-kicker">Stage 1</span><span class="hw-stage-title">The Reset <span class="hw-days">(30 days)</span></span></h2>
           <p class="hw-tagline">Get Clear · Set New Values · Shift Patterns</p>
-          <p class="hw-via">via ClarityValue Shift™</p>
-          <p class="hw-flow"><strong>How it works:</strong> See → Interrupt → Choose → Reset</p>
+          <p class="hw-via">via <a href="/clarityvalue-shift">ClarityValue Shift™</a></p>
+          <p class="hw-flow hw-flow-box"><strong>How it works:</strong> See → Interrupt → Choose → Reset</p>
           <p>
             <a class="btn-teal" href="https://drive.google.com/file/d/1g6WwAU8fWcpbNIBKPgNZ382CbirxX4o4/view?usp=drive_link" target="_blank" rel="noopener">ClarityValue Shift™ (1‑page)</a>
           </p>
@@ -212,6 +250,7 @@ const [houseBefore, houseStage1, houseStage2] = houses;
             ))}
           </ul>
         </div>
+        </div>
       </div>
     </section>
 
@@ -220,6 +259,7 @@ const [houseBefore, houseStage1, houseStage2] = houses;
     <!-- 5. House 2 + Stage 2 -->
     <section class="hw-band" aria-labelledby="hw-stage2">
       <div class="hw-well">
+        <div class="hw-stage-panel">
         <div class="hw-house-wrap">
           <p class="hw-eyebrow">{houseStage1.eyebrow}</p>
           <h3 class="hw-house-title">{houseStage1.title}</h3>
@@ -247,10 +287,10 @@ const [houseBefore, houseStage1, houseStage2] = houses;
         </div>
 
         <div class="hw-prose hw-stage-block">
-          <h2 id="hw-stage2"><span class="hw-pink">Stage 2</span> The Build <span class="hw-days">(12 weeks)</span></h2>
+          <h2 id="hw-stage2" class="hw-stage-head"><span class="hw-stage-kicker">Stage 2</span><span class="hw-stage-title">The Build <span class="hw-days">(12 weeks)</span></span></h2>
           <p class="hw-tagline">Rework Life · Go Deeper · Realign What Matters</p>
-          <p class="hw-via">via NextLife Passage™</p>
-          <p class="hw-flow"><strong>How it works:</strong> Rework → Navigate → Realign → Integrate</p>
+          <p class="hw-via">via <a href="/nextlife-passage">NextLife Passage™</a></p>
+          <p class="hw-flow hw-flow-box"><strong>How it works:</strong> Rework → Navigate → Realign → Integrate</p>
           <p>
             <a class="btn-teal" href="https://drive.google.com/file/d/12qR6tjfv196rJ0Q32ltmUiHbGLVctyhh/view?usp=sharing" target="_blank" rel="noopener">NextLife Passage™ (1‑page)</a>
           </p>
@@ -270,6 +310,7 @@ const [houseBefore, houseStage1, houseStage2] = houses;
             ))}
           </ul>
         </div>
+        </div>
       </div>
     </section>
 
@@ -278,6 +319,7 @@ const [houseBefore, houseStage1, houseStage2] = houses;
     <!-- 6. House 3 + supports + retreat -->
     <section class="hw-band hw-band-tint" aria-labelledby="hw-supports">
       <div class="hw-well">
+        <div class="hw-stage-panel">
         <div class="hw-house-wrap">
           <p class="hw-eyebrow">{houseStage2.eyebrow}</p>
           <h3 class="hw-house-title">{houseStage2.title}</h3>
@@ -322,6 +364,7 @@ const [houseBefore, houseStage1, houseStage2] = houses;
             <p>Each year, we invite up to 10 founders who’ve made the most meaningful progress and applied themselves fully. If invited, hotel, meals, and activities are included (flights are not).</p>
           </div>
         </div>
+        </div>
       </div>
     </section>
 
@@ -339,12 +382,15 @@ const [houseBefore, houseStage1, houseStage2] = houses;
           <p>You want to understand what is driving the next move and deliberately choose how you want to live beyond the business.</p>
         </div>
 
-        <aside class="hw-case" aria-label="Case study">
-          <p class="hw-eyebrow hw-eyebrow-left">Case Study</p>
-          <h3>From identity void to decisive leadership — how V reclaimed life after success</h3>
-          <p class="hw-case-who">V (anonymous), USD 9M+ founder</p>
-          <a class="btn-teal" href="/casestudies/v">Read the short case study</a>
-          <p class="hw-case-note">We protect our founders’ identities</p>
+        <aside class="hw-case hw-case-feature hw-case--sky" aria-label="Case study">
+          <Image class="hw-case-img" src={caseVImg} width={220} height={244} widths={[220, 440]} sizes="220px" alt="Pixelated portrait of founder V, shown this way to protect their identity" />
+          <div class="hw-case-body">
+            <p class="hw-eyebrow hw-eyebrow-left">Featured case study</p>
+            <h3>From identity void to decisive leadership — how V reclaimed life after success</h3>
+            <p class="hw-case-who">V (anonymous), USD 9M+ founder</p>
+            <a class="btn-teal" href="/casestudies/v">Read V's story</a>
+            <p class="hw-case-note">We protect our founders’ identities</p>
+          </div>
         </aside>
 
         <div class="hw-fit">
@@ -388,47 +434,46 @@ const [houseBefore, houseStage1, houseStage2] = houses;
           <p class="hw-pull">Private work. Real consequences. Real change.</p>
         </div>
 
-        <aside class="hw-case" aria-label="Case study">
-          <p class="hw-eyebrow hw-eyebrow-left">Case Study</p>
-          <h3>From exit anxiety to aligned legacy —How J created a clear next life chapter</h3>
-          <p class="hw-case-who">J (anonymous), USD 2M founder</p>
-          <a class="btn-teal" href="/casestudies/j">Read the short case study</a>
-          <p class="hw-case-note">We protect our founders’ identities</p>
+        <aside class="hw-case hw-case-feature hw-case--grass" aria-label="Case study">
+          <Image class="hw-case-img" src={caseJImg} width={220} height={244} widths={[220, 440]} sizes="220px" alt="Pixelated portrait of founder J, shown this way to protect their identity" />
+          <div class="hw-case-body">
+            <p class="hw-eyebrow hw-eyebrow-left">Featured case study</p>
+            <h3>From exit anxiety to aligned legacy — How J created a clear next life chapter</h3>
+            <p class="hw-case-who">J (anonymous), USD 2M founder</p>
+            <a class="btn-teal" href="/casestudies/j">Read J's story</a>
+            <p class="hw-case-note">We protect our founders’ identities</p>
+          </div>
         </aside>
       </div>
     </section>
 
-    <Fragment set:html={toWhite} />
+    <Fragment set:html={toDream} />
 
-    <!-- 10. Testimonials -->
-    <section class="hw-band" aria-labelledby="hw-reviews">
+    <!-- 10. Testimonials: moving wall with photos on DREAM 500 (Seb, 19 Nov 2026) -->
+    <section class="hw-band hw-band-dream" aria-labelledby="hw-reviews">
       <div class="hw-well">
         <h2 id="hw-reviews" class="hw-center">Leaders who've been through it</h2>
-        <ul class="hw-reviews">
-          {shown.map((review) => (
-            <li class="hw-review">
-              <blockquote>{clipQuote(review.quote)}</blockquote>
-              <p class="hw-review-name">{review.name}</p>
-              <p class="hw-review-role">{review.role}</p>
-            </li>
-          ))}
-        </ul>
+        <p class="hw-center hw-sub-center">Words from leaders our team has worked with. They are not all founders after an exit.</p>
+        <TestimonialWall items={wallItems} tone="dark" label="Testimonials from leaders our team has worked with" />
       </div>
     </section>
 
-    <Fragment set:html={toTint} />
+    <Fragment set:html={fromDream} />
 
     <!-- 11. Numbers -->
     <section class="hw-band hw-band-tint" aria-labelledby="hw-track">
       <div class="hw-well">
         <h2 id="hw-track" class="hw-center">Our team’s track record</h2>
-        <ul class="hw-stats">
-          {stats.map((stat) => (
-            <li>
-              <strong>{stat.value}</strong>
-              <span>{stat.label}</span>
-            </li>
-          ))}
+        <ul class="hw-stats" data-count-group>
+          {stats.map((stat) => {
+            const c = countFor(stat.value);
+            return (
+              <li>
+                <strong data-count={c.count} data-prefix={c.prefix} data-suffix={c.suffix} data-decimals={c.decimals}>{stat.value}</strong>
+                <span>{stat.label}</span>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </section>
@@ -438,7 +483,8 @@ const [houseBefore, houseStage1, houseStage2] = houses;
     <!-- 12. Guarantee + apply -->
     <section class="hw-band" aria-labelledby="hw-guarantee">
       <div class="hw-well">
-        <div class="hw-guarantee">
+        <div class="hw-guarantee hw-guarantee-dark">
+          <img class="hw-seal" src="/sketches/clarity-seal-home@1x.png" srcset="/sketches/clarity-seal-home@1x.png 200w, /sketches/clarity-seal-home@2x.png 400w" sizes="150px" width="150" height="150" alt="" loading="lazy" decoding="async" />
           <h2 id="hw-guarantee">Clarity‑First Guarantee (Stage 1)</h2>
           <p>You can’t know whether FRP is right for you from the outside — you only know once you’ve been inside the work.</p>
           <p>Complete onboarding and attend your first two private 1:1 sessions. If you decide the partnership isn’t right for you, email us within 7 days of Session 1, and we’ll refund the remainder of your Stage 1 investment –– no matter the reason (we only retain the portion covering the two sessions delivered).</p>
@@ -462,7 +508,6 @@ const [houseBefore, houseStage1, houseStage2] = houses;
         <p class="hw-wf-intro">
           <span class="hw-wf-access">Access our</span>
           <a class="hw-wf-hub" href="/wayfinders">Wayfinder Hub →</a>
-          <span>to meet our Wayfinders up close, geo-travel map, fit-first matching process</span>
         </p>
         <ul class="hw-hubs">
           {hubs.map((hub) => (
@@ -510,20 +555,7 @@ const [houseBefore, houseStage1, houseStage2] = houses;
       </div>
     </section>
 
-    <Fragment set:html={toTint} />
-
-    <!-- 15. Apply anyway -->
-    <section class="hw-band hw-band-tint" aria-labelledby="hw-anyway">
-      <div class="hw-well hw-well-slim">
-        <div class="hw-anyway">
-          <h2 id="hw-anyway">Apply anyway</h2>
-          <p>If it’s not a fit, we’ll tell you directly and point you somewhere better. The application takes 5–10 minutes. If there's alignment, we'll schedule a call to explore whether the FRP is right for you.</p>
-          <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
-        </div>
-      </div>
-    </section>
-
-    <Fragment set:html={toWhite} />
+    <!-- "Apply anyway" removed (Seb, 19 Nov 2026); the FAQ link and the steps now share one white band. -->
 
     <!-- 16. Steps -->
     <section class="hw-band" id="anchor-1" aria-labelledby="hw-steps">
@@ -553,13 +585,13 @@ const [houseBefore, houseStage1, houseStage2] = houses;
         <h2 id="hw-after" class="hw-center">What Happens After 30 Days</h2>
         <p class="hw-after-lead">Most founders want to keep going. Some don’t need to.</p>
         <div class="hw-options">
-          <div class="hw-option">
+          <div class="hw-option hw-option-a">
             <p class="hw-step-n">Option A</p>
             <h3>You’re done.</h3>
             <p>You leave with clarity, a map, and the tools to move forward. No pressure.</p>
             <p>Some founders get what they need in 30 days.</p>
           </div>
-          <div class="hw-option">
+          <div class="hw-option hw-option-b">
             <p class="hw-step-n">Option B</p>
             <h3>We continue.</h3>
             <p>Stage 2 is where the redefinition of life happens over 12 weeks. That’s why most founders continue for months 2–4.</p>
@@ -569,3 +601,38 @@ const [houseBefore, houseStage1, houseStage2] = houses;
     </section>
   </article>
 </Base>
+
+<script>
+  // Count-up for the track record, same as the homepage.
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const group = document.querySelector("[data-count-group]");
+    const counters = Array.from(document.querySelectorAll<HTMLElement>("[data-count]")).filter((el) => el.dataset.count);
+    const format = (el: HTMLElement, value: number) => {
+      const decimals = Number(el.dataset.decimals ?? "0");
+      const shown = decimals ? value.toFixed(decimals) : Math.round(value).toLocaleString("en-US");
+      el.textContent = `${el.dataset.prefix ?? ""}${shown}${el.dataset.suffix ?? ""}`;
+    };
+    if (group && counters.length) {
+      let started = false;
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (started || !entries.some((e) => e.isIntersecting)) return;
+          started = true;
+          observer.disconnect();
+          counters.forEach((el) => {
+            const target = Number(el.dataset.count);
+            const begin = performance.now();
+            const tick = (now: number) => {
+              const p = Math.min(1, (now - begin) / 1800);
+              format(el, target * (1 - (1 - p) ** 3));
+              if (p < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+          });
+        },
+        { threshold: 0.35 },
+      );
+      observer.observe(group);
+    }
+  }
+</script>

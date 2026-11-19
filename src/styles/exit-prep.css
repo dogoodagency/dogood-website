@@ -407,3 +407,121 @@ body:has(.ep-page) .footer-wave {
     padding: 36px 20px;
   }
 }
+
+/* ---------- Update 19 Nov 2026 (Seb): one-pager content, sound bites, advisors, FAQs ---------- */
+
+.ep-page .ep-lede-plain {
+  max-width: 820px;
+  margin: 0 0 8px;
+  color: var(--ep-ink);
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.ep-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 28px;
+}
+
+.ep-box {
+  padding: 28px 30px;
+  border: 1.5px solid;
+  border-top-width: 8px;
+  border-radius: 20px;
+}
+
+.ep-box--sky {
+  background: #f2f7ff;
+  border-color: #477dfe;
+}
+
+.ep-box--grass {
+  background: #f3fffb;
+  border-color: #28dbb0;
+}
+
+.ep-page .ep-box h3 {
+  margin: 0 0 12px;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.ep-box ul {
+  margin: 0;
+  padding-left: 22px;
+  list-style: disc;
+}
+
+.ep-box li {
+  margin-bottom: 8px;
+  color: var(--ep-ink);
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.ep-outcome {
+  margin-top: 28px;
+  padding: 26px 30px;
+  background: #2a0b4f;
+  border-radius: 20px;
+}
+
+.ep-page .ep-outcome-label {
+  margin: 0 0 6px;
+  color: var(--ep-teal);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.ep-page .ep-outcome p:last-child {
+  margin: 0;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.ep-links {
+  display: grid;
+  gap: 10px;
+  max-width: 820px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ep-links a {
+  display: block;
+  padding: 16px 20px;
+  border: 1px solid var(--ep-line);
+  border-left: 6px solid var(--ep-teal);
+  border-radius: 14px;
+  color: var(--ep-ink);
+  font-size: 17px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.ep-links a:hover,
+.ep-links a:focus-visible {
+  border-color: var(--ep-teal);
+}
+
+.ep-faq + .ep-faq {
+  margin-top: 12px;
+}
+
+@media (max-width: 767px) {
+  .ep-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Hero sub-headline on one line where there is room (Seb, 19 Nov 2026). */
+.ep-page .ep-hero .ep-sub {
+  max-width: 960px;
+}

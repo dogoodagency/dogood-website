@@ -1,8 +1,17 @@
 ---
+// How it works (rebuilt 19 Nov 2026 from Seb's feedback): text-only hero, the two doors below it in their own
+// colours with context, "Which door is mine?" with the sketch, moving sound bites, notes for founders with the
+// newsletter, and a one-row advisor strip. New copy is Claude's draft for Seb to review; facts come from the
+// Exit-Prep one-pager (v1), the Reset page and the FAQs.
 import "../styles/doors.css";
+import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
 import Wave from "../components/Wave.astro";
+import BlogCard from "../components/BlogCard.astro";
+import BlogNewsletter from "../components/BlogNewsletter.astro";
+import TestimonialWall from "../components/TestimonialWall.astro";
 import { edgeAbove } from "../data/edge-line";
+import { sortedPosts } from "../data/blog";
 
 const tint = "#F5F2FF";
 const white = "#ffffff";
@@ -10,11 +19,22 @@ const heroEdge = edgeAbove("#2A0B4F");
 const bandEdge = edgeAbove(tint);
 const footerEdge = edgeAbove(white);
 
-const quotes = [
-  "All of a sudden I look back and 10 years had passed.",
-  "This company and this lifestyle is all I've ever known.",
-  "I have a hard time really disconnecting myself from the day-to-day.",
+function wave(from: string, to: string) {
+  return `<div class="dr-divider" style="background:${from}" aria-hidden="true"><svg style="--wave-edge:${bandEdge}" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${to}" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path><path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path></svg></div>`;
+}
+
+// Sound bites from real calls (Call Language Log, non-private rows, lightly cleaned; no names).
+// The first three were already here; three added 19 Nov 2026 (Q117, Q102, Q133).
+const soundBites = [
+  { quote: "All of a sudden I look back and 10 years had passed.", name: "Founder", role: "Before the sale" },
+  { quote: "This company and this lifestyle is all I've ever known.", name: "Founder", role: "Before the sale" },
+  { quote: "I have a hard time really disconnecting myself from the day-to-day.", name: "Founder", role: "Before the sale" },
+  { quote: "You always have differing degrees of cold feet the closer you get to the transaction.", name: "M&A advisor" },
+  { quote: "Almost always they talk about this void that they felt shortly after.", name: "Exit planner" },
+  { quote: "You don't know what life looks like without the company.", name: "Founder community owner" },
 ];
+
+const posts = sortedPosts((await getCollection("blog")).filter((p) => !p.data.noindex && !p.data.sample)).slice(0, 3);
 ---
 
 <Base
@@ -26,63 +46,107 @@ const quotes = [
 >
   <article class="dr-page">
     <header class="dr-hero">
-      <div class="dr-hero-inner">
-        <div class="dr-hero-top">
-          <div class="dr-hero-copy">
-            <p class="dr-eyebrow">How it works</p>
-            <h1>Wherever you are in <span class="dr-founder"><strong>FOUNDER</strong>land</span>, there's a door for you.</h1>
-          </div>
-        </div>
-
-        <div class="dr-doors">
-          <section class="dr-door" aria-labelledby="dr-door-before">
-            <h2 id="dr-door-before">I haven't sold yet</h2>
-            <p class="dr-door-line">Prepare yourself, not just the company.</p>
-            <div class="dr-door-foot">
-              <a class="btn-teal" href="/exit-prep">See Exit-Prep</a>
-            </div>
-          </section>
-          <section class="dr-door" aria-labelledby="dr-door-after">
-            <h2 id="dr-door-after">I've sold</h2>
-            <p class="dr-door-line">You've crossed the finish line. Now find what's next.</p>
-            <div class="dr-door-foot">
-              <a class="btn-teal" href="/the-reset">See The Reset</a>
-              <p class="dr-door-note">Then The Build, when you're ready to build what's next.</p>
-            </div>
-          </section>
-        </div>
+      <div class="dr-hero-inner dr-hero-text">
+        <p class="dr-eyebrow">How it works</p>
+        <h1>Wherever you are in <span class="dr-founder"><strong>FOUNDER</strong>land</span>, there's a door for you.</h1>
+        <p class="dr-hero-sub">Prepare yourself before the sale, or reset and rebuild after it. One door each, 1:1 and private.</p>
       </div>
-      <Wave fill={tint} edge={heroEdge} />
+      <Wave fill={white} edge={heroEdge} />
     </header>
 
-    <section class="dr-band dr-band-tint" aria-labelledby="dr-familiar">
-      <div class="dr-well">
-        <h2 id="dr-familiar">Sound familiar?</h2>
-        <div class="dr-quotes">
-          {
-            quotes.map((quote) => (
-              <figure class="dr-qcard">
-                <blockquote>
-                  <p>{quote}</p>
-                </blockquote>
-                <figcaption>Founder</figcaption>
-              </figure>
-            ))
-          }
+    <!-- The two doors, each in its own colour -->
+    <section class="dr-band" aria-label="Choose your door">
+      <div class="dr-well dr-well-top">
+        <div class="dr-doors dr-doors-split">
+          <section class="dr-door dr-door--before" aria-labelledby="dr-door-before">
+            <p class="dr-door-eyebrow">Before the sale</p>
+            <h2 id="dr-door-before">I haven't sold yet</h2>
+            <p class="dr-door-line">Prepare yourself, not just the company.</p>
+            <p class="dr-door-text">For founders who still run their company and plan to sell in the next few years. Your advisors get the business ready. Exit-Prep gets you ready: a clearer decision about the sale, a picture of what comes next, and a calmer way into the sale itself.</p>
+            <ul class="dr-door-list">
+              <li>Six weekly private sessions of 75 to 90 minutes</li>
+              <li>Fully remote, with support between sessions</li>
+              <li>Ideally 12 to 18 months before the exit</li>
+            </ul>
+            <div class="dr-door-foot">
+              <a class="btn-teal btn-dream" href="/exit-prep">See Exit-Prep</a>
+            </div>
+          </section>
+          <section class="dr-door dr-door--after" aria-labelledby="dr-door-after">
+            <p class="dr-door-eyebrow">After the sale</p>
+            <h2 id="dr-door-after">I've sold</h2>
+            <p class="dr-door-line">You've crossed the finish line. Now find what's next.</p>
+            <p class="dr-door-text">For founders who have exited or stepped back from the day-to-day. The Founder Reclamation Partnership starts with The Reset, 30 days of private 1:1 work. The Build follows by invitation, when you're ready to build what's next.</p>
+            <ul class="dr-door-list">
+              <li>Stage 1, The Reset: 30 days, including a 1.5-day in-person intensive</li>
+              <li>Stage 2, The Build: 12 weeks, by invitation</li>
+              <li>Limited to five new founders a month</li>
+            </ul>
+            <div class="dr-door-foot">
+              <a class="btn-teal" href="/the-reset">See The Reset</a>
+            </div>
+          </section>
         </div>
       </div>
     </section>
 
-    <div class="dr-divider" aria-hidden="true">
-      <svg style={`--wave-edge:${bandEdge}`} viewBox="0 0 1440 80" preserveAspectRatio="none">
-        <path fill="#ffffff" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path>
-        <path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path>
-      </svg>
-    </div>
+    <Fragment set:html={wave(white, tint)} />
+
+    <!-- Which door is mine? (with the sketch that used to sit in the hero) -->
+    <section class="dr-band dr-band-tint" aria-labelledby="dr-which">
+      <div class="dr-well dr-well-top">
+        <div class="dr-which">
+          <div>
+            <h2 id="dr-which">Which door is mine?</h2>
+            <ul class="dr-which-list">
+              <li><strong>You haven't signed anything yet.</strong> Start with <a href="/exit-prep">Exit-Prep</a>. The personal side is easiest to shape before the deal sets the timeline.</li>
+              <li><strong>You're in a process, under LOI or have an earnout ahead.</strong> Exit-Prep is built for that stretch too, alongside your advisors.</li>
+              <li><strong>The company is no longer your day-to-day.</strong> Start with <a href="/the-reset">The Reset</a>. Many founders begin around three months after the exit; some start sooner.</li>
+              <li><strong>Not sure?</strong> <a href="/orientation">Book a short orientation call</a>, or read the <a href="/faqs">FAQs</a>.</li>
+            </ul>
+          </div>
+          <figure class="dr-sketch-card">
+            <picture>
+              <source type="image/webp" srcset="/sketches/how-it-works-two-stage-path-sketch@1x.webp 560w, /sketches/how-it-works-two-stage-path-sketch@2x.webp 1120w" sizes="(max-width: 899px) min(100vw, 380px), 380px" />
+              <img src="/sketches/how-it-works-two-stage-path-sketch@1x.png" srcset="/sketches/how-it-works-two-stage-path-sketch@1x.png 560w, /sketches/how-it-works-two-stage-path-sketch@2x.png 1120w" sizes="(max-width: 899px) min(100vw, 380px), 380px" width="560" height="420" alt="A founder walks along a teal path past an empty archway toward an open door with a green landscape beyond, drawn as a sketch." loading="lazy" decoding="async" />
+            </picture>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <Fragment set:html={wave(tint, white)} />
+
+    <!-- Sound bites (moving, like the Stories testimonials) -->
+    <section class="dr-band" aria-labelledby="dr-familiar">
+      <div class="dr-well dr-well-top">
+        <h2 id="dr-familiar">Sound bites</h2>
+        <p class="dr-lead">Words from real calls with founders and the advisors who walk with them.</p>
+        <TestimonialWall items={soundBites} short label="Sound bites from real calls with founders and advisors" />
+      </div>
+    </section>
+
+    <Fragment set:html={wave(white, tint)} />
+
+    <!-- Notes for founders + newsletter -->
+    <section class="dr-band dr-band-tint" aria-labelledby="dr-notes">
+      <div class="dr-well dr-well-top">
+        <h2 id="dr-notes">Notes for founders</h2>
+        <p class="dr-lead">Honest reading for before and after the sale. <a href="/insights">All Insights</a></p>
+        <div class="dr-posts">
+          {posts.map((p) => <BlogCard post={p} variant="grid" />)}
+        </div>
+        <div class="dr-news">
+          <BlogNewsletter idSuffix="how" />
+        </div>
+      </div>
+    </section>
+
+    <Fragment set:html={wave(tint, white)} />
 
     <section class="dr-band" aria-labelledby="dr-advisor">
       <div class="dr-well dr-well-slim">
-        <div class="dr-strip">
+        <div class="dr-strip dr-strip-row">
           <h2 id="dr-advisor">Are you an advisor? See how we work alongside you.</h2>
           <a class="btn-teal" href="/for-advisors">Advisor Center</a>
         </div>

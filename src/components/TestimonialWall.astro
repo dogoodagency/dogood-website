@@ -1,0 +1,72 @@
+---
+/**
+ * Moving testimonial wall (same motion as the Stories page): 3 columns drifting up/down on desktop,
+ * 2 on tablet, a still list on phones and for reduced motion. Stops on hover and keyboard focus.
+ * Items may carry a portrait (ImageMetadata). Added 19 Nov 2026 for /the-reset and /exit-prep.
+ */
+import "../styles/testimonial-wall.css";
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+export interface WallItem {
+  quote: string;
+  name: string;
+  role?: string;
+  image?: ImageMetadata;
+}
+
+interface Props {
+  items: WallItem[];
+  /** "light" = white cards on a light band; "dark" = white cards on DREAM 500. */
+  tone?: "light" | "dark";
+  label: string;
+  /** Short quotes (sound bites) use a larger type size. */
+  short?: boolean;
+}
+
+const { items, tone = "light", label, short = false } = Astro.props;
+const cols3 = [0, 1, 2].map((i) => items.filter((_, idx) => idx % 3 === i));
+const cols2 = [0, 1].map((i) => items.filter((_, idx) => idx % 2 === i));
+---
+
+{
+  (() => {
+    const card = (it: WallItem, hidden = false) => (
+      <figure class="tw-card" aria-hidden={hidden ? "true" : undefined}>
+        <blockquote>
+          <p>{it.quote}</p>
+        </blockquote>
+        <figcaption>
+          {it.image && <Image class="tw-face" src={it.image} alt="" width={48} height={48} densities={[1, 2]} />}
+          <span class="tw-who">
+            <strong class="tw-name">{it.name}</strong>
+            {it.role && <span class="tw-role">{it.role}</span>}
+          </span>
+        </figcaption>
+      </figure>
+    );
+    return (
+      <div class:list={["tw", `tw--${tone}`, short && "tw--short"]} role="region" aria-label={label}>
+        <div class="tw-vp tw-vp-3" aria-hidden="true">
+          <div class="tw-wall">
+            {cols3.map((col) => (
+              <div class="tw-col">
+                <div class="tw-track">{[false, true].map((dup) => col.map((it) => card(it, dup)))}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="tw-vp tw-vp-2" aria-hidden="true">
+          <div class="tw-wall">
+            {cols2.map((col) => (
+              <div class="tw-col">
+                <div class="tw-track">{[false, true].map((dup) => col.map((it) => card(it, dup)))}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="tw-list">{items.map((it) => card(it))}</div>
+      </div>
+    );
+  })()
+}

@@ -3,6 +3,7 @@ import "../styles/exit-prep.css";
 import Base from "../layouts/Base.astro";
 import Wave from "../components/Wave.astro";
 import { edgeAbove } from "../data/edge-line";
+import TestimonialWall from "../components/TestimonialWall.astro";
 
 const tint = "#F5F2FF";
 const white = "#ffffff";
@@ -20,19 +21,51 @@ const toWhite = wave(tint, white);
 
 const places = ["Thinking about selling.", "In a process or under LOI.", "An earnout ahead."];
 
+// Sound bites from real calls (Call Language Log, non-private rows, lightly cleaned; no names).
+// The first three were already here; three added 19 Nov 2026 (Q005, Q092, Q132).
 const quotes = [
-  "Maybe we're a year and a half out.",
-  "It would make sense to start to get clarity on the human part of it a year prior to that.",
-  "The truth is, I have no idea.",
+  { quote: "Maybe we're a year and a half out.", name: "Founder", role: "Before the sale" },
+  { quote: "It would make sense to start to get clarity on the human part of it a year prior to that.", name: "Founder", role: "Before the sale" },
+  { quote: "The truth is, I have no idea.", name: "Founder", role: "Before the sale" },
+  { quote: "Or just sell it, take all the risk off the table and ride off into the sunset.", name: "Founder", role: "Before the sale" },
+  { quote: "Leading up to a transaction is very stressful.", name: "Exit advisor" },
+  { quote: "They really want to exit, but they're just scared. They're putting the brakes on.", name: "Founder community owner" },
 ];
+
+// From the Exit-Prep one-pager (v1, Seb, 19 Nov 2026). The price is left out until Seb decides on publishing prices.
+const included = [
+  "Six weekly private sessions of 75 to 90 minutes each",
+  "Fully remote",
+  "Async support between sessions (audio and text)",
+  "Recovery and stress diagnostics via WHOOP (device purchased separately)",
+  "All of DoGood's learning tools",
+];
+const forWho = [
+  "You still run your company and plan to sell.",
+  "You plan an exit within the next few years.",
+  "You want clarity about what comes next after the exit.",
+];
+
+// FAQs: the first was already here; three added 19 Nov 2026 for the questions founders search.
+const faqs = [
+  { q: "I like the idea, but does this concern me yet?", a: "That's the most common thought we hear, and the best moment to start. The personal side is easiest to shape before the deal sets the timeline." },
+  { q: "When should I start preparing myself to sell my business?", a: "Ideally 12 to 18 months before you sign. That gives you time to get clear on who you want to be without the company while the decision and the deal are still in your hands. If closing is closer than that, it is still worth starting." },
+  { q: "Can I do Exit-Prep if I'm already under LOI or have an earnout ahead?", a: "Yes. Exit-Prep is built for the whole stretch before and around the sale, including a live process, an LOI or an earnout. We work next to your advisors, never instead of them." },
+  { q: "Is Exit-Prep therapy or financial advice?", a: "Neither. Exit-Prep is private 1:1 work on the personal side of selling your business: the decision, what comes next and how you go into the sale. We don't give financial, tax or legal advice, and we are not a medical or psychological service." },
+];
+const faqJson = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+};
 ---
 
 <Base
   title="Should I sell my business? Exit-Prep coaching | DoGood Agency"
   description="Exit-Prep: six weekly 1:1 sessions for founders asking whether to sell their business, or preparing to. Get yourself ready, not just the company. Fully remote."
   canonical="https://www.dogoodagency.co/exit-prep"
-  footerStrip={tint}
-  footerEdge={footerEdge}
+  footerStrip={white}
+  footerEdge={edgeAbove(white)}
 >
   <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
@@ -46,6 +79,7 @@ const quotes = [
       areaServed: "Worldwide",
       additionalProperty: { "@type": "PropertyValue", name: "Duration", value: "Six weekly sessions" },
     })} />
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(faqJson)} />
   <article class="ep-page">
     <header class="ep-hero">
       <div class="ep-hero-inner">
@@ -68,59 +102,76 @@ const quotes = [
 
     <Fragment set:html={toWhite} />
 
-    <section class="ep-band" aria-labelledby="ep-familiar">
+    <!-- What Exit-Prep is (from the one-pager, 19 Nov 2026) -->
+    <section class="ep-band" aria-labelledby="ep-what">
       <div class="ep-well ep-well-top">
-        <h2 id="ep-familiar">Sound familiar?</h2>
-        <div class="ep-quotes">
-          {
-            quotes.map((quote) => (
-              <figure class="ep-qcard">
-                <blockquote>
-                  <p>{quote}</p>
-                </blockquote>
-                <figcaption>Founder, before the sale</figcaption>
-              </figure>
-            ))
-          }
+        <h2 id="ep-what">What Exit-Prep is</h2>
+        <p class="ep-lede-plain">A six-week, 1:1 engagement with a DoGood Wayfinder for founders who plan to sell their company but haven't yet. It helps you understand what to expect beyond the logistics of the exit, and gives you the space and tools to get clear on what comes next, at a commitment that matches where you are now.</p>
+        <div class="ep-grid">
+          <section class="ep-box ep-box--sky" aria-labelledby="ep-for">
+            <h3 id="ep-for">Who it's for</h3>
+            <ul>{forWho.map((t) => <li>{t}</li>)}</ul>
+          </section>
+          <section class="ep-box ep-box--grass" aria-labelledby="ep-incl">
+            <h3 id="ep-incl">What's included</h3>
+            <ul>{included.map((t) => <li>{t}</li>)}</ul>
+          </section>
+        </div>
+        <div class="ep-outcome">
+          <p class="ep-outcome-label">The outcomes</p>
+          <p>A clearer decision about the sale, a picture of what comes next, and a calmer way into the sale itself, without delay.</p>
         </div>
       </div>
     </section>
 
     <Fragment set:html={toTint} />
 
-    <section class="ep-band ep-band-tint" aria-labelledby="ep-advisors">
-      <div class="ep-well ep-well-top ep-prose">
-        <h2 id="ep-advisors">Working alongside your advisors</h2>
-        <p class="ep-lede">We work next to your exit planner, accountant, attorney and wealth advisor, never instead of them.</p>
+    <section class="ep-band ep-band-tint" aria-labelledby="ep-familiar">
+      <div class="ep-well ep-well-top">
+        <h2 id="ep-familiar">Sound bites</h2>
+        <p class="ep-lede-plain">Words from real calls with founders and the advisors who walk with them.</p>
+        <TestimonialWall items={quotes} short label="Sound bites from real calls with founders and advisors" />
       </div>
     </section>
 
     <Fragment set:html={toWhite} />
 
+    <section class="ep-band" aria-labelledby="ep-advisors">
+      <div class="ep-well ep-well-top ep-prose">
+        <h2 id="ep-advisors">Working alongside your advisors</h2>
+        <p class="ep-lede">We work next to your exit planner, accountant, attorney and wealth advisor, never instead of them.</p>
+        <p class="ep-lede-plain">They prepare the business and the numbers. We work on the part they aren't set up to cover: you. With your permission, we keep your advisors in the loop on how you're doing, so the deal and the person behind it move at the same pace.</p>
+        <ul class="ep-links">
+          <li><a href="/insights/before-you-sign-preparing-yourself">Before you sign: how to prepare yourself to sell your business</a></li>
+          <li><a href="/insights/emotions-of-selling-a-business">The emotions of selling a business: before, during and after</a></li>
+          <li><a href="/for-advisors">For your advisors: how we work alongside them</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Advisors and FAQ share one white band. -->
+
     <section class="ep-band" aria-labelledby="ep-faq-label">
       <div class="ep-well ep-well-top">
         <div class="ep-faq-wrap">
         <p class="ep-eyebrow ep-eyebrow-dark" id="ep-faq-label">FAQ</p>
-        <details class="ep-faq" open>
-          <summary>
-            <span class="ep-faq-q">I like the idea, but does this concern me yet?</span>
-            <span class="ep-faq-icon" aria-hidden="true"></span>
-          </summary>
-          <p class="ep-faq-a">That's the most common thought we hear, and the best moment to start. The personal side is easiest to shape before the deal sets the timeline.</p>
-        </details>
+        {
+          faqs.map((f, i) => (
+            <details class="ep-faq" open={i === 0}>
+              <summary>
+                <span class="ep-faq-q">{f.q}</span>
+                <span class="ep-faq-icon" aria-hidden="true"></span>
+              </summary>
+              <p class="ep-faq-a">{f.a}</p>
+            </details>
+          ))
+        }
         <p class="ep-more"><a href="/faqs">More questions</a></p>
         </div>
       </div>
     </section>
 
-    <Fragment set:html={toTint} />
+    <!-- "Book a free call" box at the bottom removed (Seb, 19 Nov 2026). -->
 
-    <section class="ep-band ep-band-tint" aria-label="Book a free call">
-      <div class="ep-well ep-well-top">
-        <div class="ep-cta">
-          <a class="btn-teal" href="/prefrp">Book a free call</a>
-        </div>
-      </div>
-    </section>
   </article>
 </Base>

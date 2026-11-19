@@ -395,3 +395,217 @@ body:has(.dr-page) .footer-wave {
 .dr-hero-top {
   grid-template-columns: minmax(0, 1fr);
 }
+
+/* ---------- Rebuild 19 Nov 2026 (Seb) ---------- */
+
+.dr-hero-inner.dr-hero-text {
+  padding-bottom: 64px;
+}
+
+.dr-page .dr-hero-sub {
+  margin: 18px 0 0;
+  color: #f5f2ff;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+@media (min-width: 1000px) {
+  .dr-page .dr-hero-sub {
+    white-space: nowrap;
+  }
+}
+
+.dr-well-top {
+  padding-top: 24px;
+}
+
+.dr-page .dr-lead {
+  max-width: 760px;
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+/* Doors in their own colours. */
+.dr-doors.dr-doors-split .dr-door {
+  display: flex;
+  flex-direction: column;
+  grid-row: auto;
+  box-shadow: none;
+  border-width: 1.5px;
+  border-top-width: 8px;
+}
+
+.dr-doors.dr-doors-split {
+  grid-template-rows: none;
+}
+
+.dr-door--before {
+  background: #f2f7ff;
+  border-color: #477dfe;
+}
+
+.dr-door--after {
+  background: #f3fffb;
+  border-color: #28dbb0;
+}
+
+.dr-page .dr-door-eyebrow {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.dr-door--before .dr-door-eyebrow {
+  color: #0d329f;
+}
+
+.dr-door--after .dr-door-eyebrow {
+  color: #05745b;
+}
+
+.dr-doors-split .dr-door .dr-door-line {
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+
+.dr-page .dr-door-text {
+  margin: 0 0 16px;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.dr-door-list {
+  margin: 0 0 28px;
+  padding-left: 22px;
+  color: var(--dr-ink);
+  font-size: 16px;
+  line-height: 1.6;
+  list-style: disc;
+}
+
+.dr-door-list li {
+  margin-bottom: 6px;
+}
+
+.dr-doors-split .dr-door-foot {
+  margin-top: auto;
+}
+
+/* Purple button (DREAM 500, "important" in the style guide) for the Exit-Prep door. */
+.dr-page a.btn-teal.btn-dream {
+  background: #2a0b4f;
+  border-color: #2a0b4f;
+  color: #fff;
+}
+
+.dr-page a.btn-teal.btn-dream:hover,
+.dr-page a.btn-teal.btn-dream:focus-visible {
+  background: #fff;
+  color: #2a0b4f;
+}
+
+/* Which door is mine? */
+.dr-which {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.dr-which-list {
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dr-which-list li {
+  margin: 0 0 14px;
+  padding: 16px 20px;
+  background: #fff;
+  border: 1px solid var(--dr-line);
+  border-left: 6px solid var(--dr-teal, #28dbb0);
+  border-radius: 14px;
+  color: var(--dr-ink);
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.dr-which-list a {
+  color: var(--dr-ink);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: #28dbb0;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.dr-page .dr-sketch-card {
+  box-shadow: none;
+  border: 1px solid var(--dr-line);
+}
+
+/* Notes for founders. */
+.dr-posts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 28px;
+}
+
+.dr-lead a {
+  color: var(--dr-ink);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: #28dbb0;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.dr-news .bl-nl {
+  margin-top: 48px;
+}
+
+.dr-news .bl-nl-card {
+  background: #fff;
+}
+
+/* Advisor strip on one row. */
+.dr-strip.dr-strip-row {
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 28px 40px;
+  text-align: left;
+  box-shadow: none;
+}
+
+.dr-page .dr-strip-row h2 {
+  max-width: none;
+  font-size: clamp(20px, 2.2vw, 26px);
+}
+
+.dr-strip-row .btn-teal {
+  flex: none;
+}
+
+@media (max-width: 899px) {
+  .dr-which,
+  .dr-posts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dr-strip.dr-strip-row {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 28px 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .dr-doors.dr-doors-split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
