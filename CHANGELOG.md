@@ -8,7 +8,7 @@ why, and anything the next person needs to check.
 
 ## Preview 6, update 20: How it works, The Exit Prep, Insights, Newsletter, wording (19 Nov 2026, afternoon)
 
-**Made by:** Claude (claude.ai), Seb's feedback of 12:43, batch 3. **Branch:** `claude/preview-6`. **Commit:** `COMMIT20`.
+**Made by:** Claude (claude.ai), Seb's feedback of 12:43, batch 3. **Branch:** `claude/preview-6`. **Commit:** `f9aeee5`.
 
 - **Article cards everywhere (BlogCard):** every card shows the author's avatar (Seb or Inka, from the
   article's `author`); founder article titles GRASS 600, advisor titles HEART 600; thin DREAM 200 border,
