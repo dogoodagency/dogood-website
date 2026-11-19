@@ -67,7 +67,10 @@ export default function trademark() {
         for (const file of await walk(root)) {
           const html = await readFile(file, "utf8");
           // Signs already wrapped by tm() are left alone: unwrap first, then wrap all once.
-          const plain = html.replace(/<span class="tm">™<\/span>/g, "™");
+          // "FOUNDER" and "land" in separate tags (the bold-FOUNDER style) still get the sign after "land".
+          const plain = html
+            .replace(/<span class="tm">™<\/span>/g, "™")
+            .replace(/(FOUNDER(?:<\/[a-z]+>)+(?:<[a-z][^>]*>)*land(?:<\/[a-z]+>)*)(?!™|[A-Za-z])/g, "$1™");
           const next = wrapTrademarks(plain);
           if (next !== html) { await writeFile(file, next); n++; }
         }

@@ -698,3 +698,56 @@ body:has(.dr-page) .footer-wave {
 .dr-band-news {
   padding-bottom: 24px;
 }
+
+/* ===== 19 Nov 2026 14:55 (Seb) ===== */
+
+/* Purple buttons keep their colour on hover (only the arrow moves), as every other button on the site. */
+.dr-page a.btn-teal.btn-dream:hover,
+.dr-page a.btn-teal.btn-dream:focus-visible {
+  background: #2a0b4f;
+  color: #fff;
+}
+
+/* "I've sold" door: two shades darker than GRASS 700. */
+.dr-page .dr-door--after h2,
+.dr-page .dr-door--after .dr-door-line,
+.dr-page .dr-door--after .dr-door-text,
+.dr-page .dr-door--after .dr-door-list li,
+.dr-page .dr-door--after .dr-door-eyebrow,
+.dr-path--after .dr-path-label {
+  color: #034a3a;
+}
+
+/* "Before the sale" cards in HEART, not SKY. */
+.dr-door--before,
+.dr-path--before {
+  background: #fff9fa;
+  border-color: #fd6b82;
+}
+
+.dr-door--before .dr-door-eyebrow,
+.dr-path--before .dr-path-label {
+  color: #960434;
+}
+
+/* Which door is mine: the sketch 20% bigger, with less padding round it. */
+.dr-page .dr-sketch-card {
+  padding: 8px;
+}
+
+.dr-page .dr-sketch-card picture,
+.dr-page .dr-sketch-card img {
+  width: 100%;
+  transform: scale(1.1);
+}
+
+.dr-page .dr-sketch-card {
+  overflow: hidden;
+}
+
+/* Notes from FOUNDERland: a DREAM 25 card so it stands apart from the white band. */
+.dr-page .bl-nl-card,
+.dr-news .bl-nl-card {
+  background: #f5f2ff;
+  border-color: #c2b7dd;
+}

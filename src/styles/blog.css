@@ -1493,3 +1493,110 @@ html.bl-js .bl-common {
   border: 1.5px solid #8b7dae;
   background: #faf9ff;
 }
+
+/* ===== 19 Nov 2026 14:55 (Seb): article cards everywhere (Insights, How it works, Exit Prep, articles) =====
+   - The same colours wherever a card appears (the blog variables also live on the card).
+   - Sketches 20% bigger, slightly less padding round the image.
+   - Labels 2px smaller, on one line; the audience label lines up with the image's left edge and the topic
+     label sits at the right. More room between labels and title, and between description and author.
+   - Titles 2px smaller (most fit in two lines), a touch bolder; founder titles GRASS 700.
+   - A thin border round the author photo. */
+.bl-card {
+  --bl-tint: #f5f2ff;
+  --bl-line: #c2b7dd;
+  --bl-ink: #2a0b4f;
+  --bl-muted: #5a3f78;
+  --bl-teal: #28dbb0;
+  --bl-pink: #c10e46;
+  background: #fff;
+  color: #2a0b4f;
+}
+
+.bl-card .bl-card-media {
+  padding: 10px 10px 0;
+}
+
+.bl-card .bl-img img {
+  padding: 0;
+  transform: scale(1.06);
+}
+
+.bl-card .bl-card-body {
+  padding: 16px 22px 22px;
+}
+
+.bl-card .bl-card-tags {
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  gap: 6px;
+  align-self: stretch;
+  margin: 0 -12px 8px;
+}
+
+.bl-card .bl-badge {
+  min-height: 24px;
+  padding: 2px 10px;
+  font-size: 10px;
+  flex: none;
+}
+
+.bl-card .bl-badge svg {
+  width: 12px;
+  height: 12px;
+}
+
+.bl-card .bl-pill {
+  min-height: 24px;
+  padding: 2px 10px;
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+/* Audience label colours, as on the Insights page. */
+.bl-card .bl-badge--founder {
+  background: #28dbb0;
+  color: #2a0b4f;
+}
+
+.bl-card .bl-badge--advisor {
+  background: #fde1ea;
+  color: #8f0a37;
+}
+
+.bl-card .bl-badge--both {
+  background: #e4dbf7;
+  color: #2a0b4f;
+}
+
+.bl-card .bl-card-title,
+.bl-page .bl-card:not(.bl-card--feature) .bl-card-title {
+  font-size: 19px;
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.bl-card--aud-founder .bl-card-title,
+.bl-card--aud-founder .bl-card-title a {
+  color: #05745b;
+}
+
+.bl-card .bl-card-excerpt {
+  font-size: 16px;
+}
+
+.bl-card .bl-author--card {
+  margin-top: 10px;
+}
+
+.bl-avatar.bl-avatar--photo {
+  border: 1px solid #c2b7dd;
+}
+
+/* Insights grid: slightly less space between cards, so each card is a little wider. */
+.bl-grid {
+  gap: 20px;
+}
