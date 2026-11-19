@@ -7950,3 +7950,19 @@ body:has(.page-home) {
 .page-contact .contact-map {
   border: 1px solid #c2b7dd;
 }
+
+/* Hero Apply button (Seb, 19 Nov 2026 20:47): centred under the hero copy and sketch, with room before the
+   wave so it never feels cramped. */
+.page-home .hero-cta {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0 0;
+  padding-bottom: 72px;
+}
+
+@media (max-width: 760px) {
+  .page-home .hero-cta {
+    margin-top: 28px;
+    padding-bottom: 48px;
+  }
+}

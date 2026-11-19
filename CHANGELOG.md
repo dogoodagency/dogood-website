@@ -6,6 +6,19 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 29: Apply button moves to the homepage hero; foundr.land logo and page (19 Nov 2026, 20:47)
+
+- **Nav (all pages):** "Apply for Stage 1" removed. In its place, the foundr.land logo (Seb's file, cropped and
+  exported to `public/media/foundrland/foundrland-logo@1x/@2x .png/.webp`) on a DREAM 500 pill, linking to
+  /foundrland (`Header.astro`, `site-rules.css`). The element keeps the `nav-apply` class for layout, with
+  `nav-apply--brand`.
+- **Homepage hero:** "Apply for Stage 1" (btn-apply lg) centred below the hero, under "We support life in
+  FOUNDERland™", with 72px of room before the wave (`index.astro`, `.hero-cta` in `home.css`).
+- **New page /foundrland** (`src/pages/foundrland.astro`): holding page with the logo, a "Coming soon" pill and
+  links to the newsletter and contact. No description of foundr.land yet; Seb to supply the copy.
+
+---
+
 ## Preview 6, update 28: Pathway, Reset process, advisor cards (19 Nov 2026, 19:42)
 
 - **/how-it-works is now /pathway** (`src/pages/pathway.astro`); every internal link, the canonical and

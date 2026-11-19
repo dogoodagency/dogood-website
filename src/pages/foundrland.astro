@@ -1,0 +1,132 @@
+---
+/**
+ * foundr.land (Seb, 19 Nov 2026 20:47): new page, linked from the foundr.land logo in the nav.
+ * Holding page until Seb sends the content: the logo, a "coming soon" line and two ways to stay close.
+ * Nothing here describes what foundr.land is; that copy is Seb's to write.
+ */
+import Base from "../layouts/Base.astro";
+import Wave from "../components/Wave.astro";
+import { edgeAbove } from "../data/edge-line";
+
+const tint = "#F5F2FF";
+const heroEdge = edgeAbove("#2A0B4F");
+const footerEdge = edgeAbove(tint);
+---
+
+<Base
+  title="foundr.land | DoGood Agency"
+  description="foundr.land, from DoGood. Coming soon."
+  canonical="https://www.dogoodagency.co/foundrland"
+  footerStrip={tint}
+  footerEdge={footerEdge}
+>
+  <article class="fl-page">
+    <section class="fl-hero" aria-labelledby="fl-title">
+      <h1 id="fl-title" class="fl-logo">
+        <picture>
+          <source type="image/webp" srcset="/media/foundrland/foundrland-logo@1x.webp 480w, /media/foundrland/foundrland-logo@2x.webp 960w" sizes="(max-width: 700px) 80vw, 560px" />
+          <img src="/media/foundrland/foundrland-logo@2x.png" width="960" height="226" alt="foundr.land" />
+        </picture>
+      </h1>
+      <p class="fl-soon"><span aria-hidden="true"></span>Coming soon</p>
+      <p class="fl-line">We’re building it now. Want to hear when it opens?</p>
+      <div class="fl-actions">
+        <a class="btn-teal" href="/newsletter">Join the newsletter</a>
+        <a class="fl-link" href="/contact">Get in touch →</a>
+      </div>
+    </section>
+    <Wave fill={tint} edge={heroEdge} />
+    <div class="fl-gap" aria-hidden="true"></div>
+  </article>
+</Base>
+
+<style>
+  :global(body:has(.fl-page) .footer-wave) {
+    background: var(--footer-strip, #f5f2ff);
+  }
+
+  .fl-page {
+    margin-top: -94px;
+    padding-top: 94px;
+    background: #2a0b4f;
+    color: #fff;
+  }
+
+  .fl-gap {
+    height: 48px;
+    background: #f5f2ff;
+  }
+
+  .fl-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    width: min(900px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 110px 0 100px;
+    text-align: center;
+  }
+
+  .fl-logo {
+    margin: 0;
+  }
+
+  .fl-logo img {
+    display: block;
+    width: min(560px, 80vw);
+    height: auto;
+  }
+
+  .fl-soon {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 12px 0 0;
+    padding: 8px 18px;
+    border: 1px dashed rgba(255, 255, 255, 0.5);
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .fl-soon span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #28dbb0;
+    animation: fl-blink 2.4s ease-in-out infinite;
+  }
+
+  @keyframes fl-blink {
+    50% { opacity: 0.3; }
+  }
+
+  .fl-line {
+    margin: 0;
+    color: #e6defc;
+    font-size: 20px;
+  }
+
+  .fl-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 18px 24px;
+    margin-top: 6px;
+  }
+
+  .fl-link {
+    color: #fff;
+    font-weight: 800;
+    text-decoration: underline;
+    text-decoration-color: #28dbb0;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fl-soon span { animation: none; }
+  }
+</style>
