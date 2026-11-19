@@ -10,7 +10,7 @@ why, and anything the next person needs to check.
 
 **Made by:** Claude (claude.ai), from Seb's feedback of 09:05, the FOX logo, five press logos, the colour
 shades file (DoGood-Colour-Shades-v4) and the Residency one-pagers (Intensive Menu, Intensive Debrief).
-**Branch:** `claude/preview-6`. **Commit:** `COMMIT15`.
+**Branch:** `claude/preview-6`. **Commit:** `47620e9`.
 
 ### Homepage (`src/pages/index.astro`, `src/styles/home.css`, `src/styles/logo-rails.css`)
 - Headline line restored from preview 4: "For founders who've exited the company they built, / or are
