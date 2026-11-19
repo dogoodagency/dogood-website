@@ -53,7 +53,11 @@ function wave(fromTint: boolean) {
   const to = fromTint ? white : tint;
   return `<div class="ep-divider ep-divider--${fromTint ? "tint" : "white"}" aria-hidden="true"><svg style="--wave-edge:${bandEdge}" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${to}" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path><path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path></svg></div>`;
 }
-const lastTint = sections.length % 2 === 1;
+// A "feature" slot gets its own band with a wave before it, so two bands of the same colour never meet
+// (Seb, 19 Nov 2026 14:55: a stray DREAM strip sat above the wave on /recovery-stress-diagnostics).
+const hasFeature = Astro.slots.has("feature");
+const sectionsEndTint = sections.length % 2 === 1;
+const lastTint = hasFeature ? !sectionsEndTint : sectionsEndTint;
 const footerBg = closing ? (lastTint ? white : tint) : lastTint ? tint : white;
 ---
 
@@ -139,12 +143,15 @@ const footerBg = closing ? (lastTint ? white : tint) : lastTint ? tint : white;
     }
 
     {
-      Astro.slots.has("feature") && (
-        <section class="ep-band pp-feature" aria-label="Details">
+      hasFeature && (
+        <>
+        <Fragment set:html={wave(sectionsEndTint)} />
+        <section class:list={["ep-band", "pp-feature", !sectionsEndTint && "ep-band-tint"]} aria-label="Details">
           <div class="ep-well ep-well-top pp-feature-well">
             <slot name="feature" />
           </div>
         </section>
+        </>
       )
     }
 

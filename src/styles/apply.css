@@ -1,0 +1,228 @@
+/* Apply for Stage 1 (redesigned 19 Nov 2026 14:55, Seb): calm, fresh, one action. Stage 1 colours (GRASS). */
+.apl-hero {
+  position: relative;
+  background: #2a0b4f;
+  color: #fff;
+}
+
+.apl-hero-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 72px 24px 120px;
+  text-align: center;
+}
+
+.apl-eyebrow {
+  margin: 0 0 12px;
+  color: #28dbb0;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.apl-hero h1 {
+  margin: 0 0 22px;
+  color: #fff;
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.apl-hero h1 span {
+  color: #73e7c4;
+  font-size: 0.55em;
+  white-space: nowrap;
+}
+
+.apl-words {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.apl-words li {
+  padding: 8px 18px;
+  border: 1px solid #28dbb0;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.apl-band {
+  background: #fff9fa;
+}
+
+.apl-well {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px 24px 88px;
+}
+
+.apl-main {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: 40px;
+}
+
+.apl-art img {
+  display: block;
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.apl-card {
+  padding: 40px 44px;
+  border: 1px solid #28dbb0;
+  border-radius: 28px;
+  background: #fff;
+  color: #2a0b4f;
+}
+
+.page-apply .apl-card h2 {
+  margin: 0 0 18px;
+  color: #2a0b4f;
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 900;
+}
+
+.apl-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 18px;
+  padding: 0;
+  list-style: none;
+}
+
+.apl-facts li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid #73e7c4;
+  border-radius: 999px;
+  background: #f3fffb;
+  color: #05745b;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.page-apply .apl-line {
+  margin: 0 0 26px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.page-apply .apl-card .btn-apply {
+  display: inline-flex;
+}
+
+.page-apply .apl-limit {
+  margin: 14px 0 0;
+  color: #58447f;
+  font-size: 15px;
+  font-style: italic;
+}
+
+.apl-next {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 56px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.apl-next li {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  grid-template-areas: "n title" "n text";
+  column-gap: 14px;
+  padding: 20px 22px;
+  border: 1px solid #feb5bc;
+  border-radius: 18px;
+  background: #fff;
+  color: #2a0b4f;
+}
+
+.apl-next-n {
+  grid-area: n;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #05745b;
+  color: #fff;
+  font-weight: 900;
+}
+
+.apl-next strong { grid-area: title; font-size: 18px; font-weight: 900; }
+.apl-next li > span:last-child { grid-area: text; font-size: 16px; line-height: 1.5; }
+
+.apl-case {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  max-width: 720px;
+  margin: 40px auto 0;
+  padding: 18px 22px;
+  border: 1px solid #c2b7dd;
+  border-radius: 20px;
+  background: #fff;
+}
+
+.apl-case-img {
+  flex: none;
+  width: 84px;
+  height: auto;
+  border-radius: 14px;
+}
+
+.page-apply .apl-case-kicker {
+  margin: 0 0 4px;
+  color: #c10e46;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.page-apply .apl-case-title {
+  margin: 0 0 6px;
+  color: #2a0b4f;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.page-apply .apl-case-link {
+  color: #2a0b4f;
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: #28dbb0;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 860px) {
+  .apl-main,
+  .apl-next { grid-template-columns: minmax(0, 1fr); }
+  .apl-art img { max-width: 300px; }
+  .apl-card { padding: 28px 22px; }
+  .apl-case { align-items: flex-start; }
+}
+
+.page-apply #case-j.apl-case {
+  margin: 40px auto 0 !important;
+}

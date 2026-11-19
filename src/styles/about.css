@@ -805,3 +805,20 @@ body:has(.ab-page) .footer-wave {
 @media (max-width: 860px) {
   .ab-cards.ab-cards--3 { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* How we work (Seb, 19 Nov 2026 14:55): the cards stand apart from the tinted band. One dark card between
+   two white ones, each with a thin line in its own colour. */
+.ab-band-tint .ab-cards--3 .ab-card {
+  border-color: #c2b7dd;
+  background: #fff;
+}
+
+.ab-band-tint .ab-cards--3 .ab-card:nth-child(2) {
+  border-color: #2a0b4f;
+  background: #2a0b4f;
+}
+
+.ab-band-tint .ab-cards--3 .ab-card:nth-child(2),
+.ab-band-tint .ab-cards--3 .ab-card:nth-child(2) :is(h3, p) {
+  color: #fff;
+}

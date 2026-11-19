@@ -231,3 +231,27 @@
 .pp-feature-well {
   max-width: 1180px;
 }
+
+/* 19 Nov 2026 14:55 (Seb): hero titles run wider, so they sit on two lines. */
+.pp-page .ep-hero h1 {
+  max-width: 1080px;
+}
+
+/* A feature band's cards (WHOOP, audio) sit on the band colour without their own white box edge clash. */
+.pp-page .pp-feature.ep-band-tint .wh {
+  background: #fff;
+}
+
+.pp-page .ep-hero-inner {
+  max-width: 1080px;
+}
+
+.pp-page .ep-hero .ep-sub {
+  max-width: 820px;
+}
+
+/* No SKY on DREAM (Seb, 19 Nov 2026 14:55): SKY boxes on the lilac band become white with a DREAM line. */
+.pp-page .ep-band-tint .ep-box--sky {
+  border-color: #c2b7dd;
+  background: #fff;
+}

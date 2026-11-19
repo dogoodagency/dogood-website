@@ -1,4 +1,5 @@
 ---
+import "../styles/apply.css";
 import Base from "../layouts/Base.astro";
 import Wave from "../components/Wave.astro";
 import { urls } from "../data/homepage";
@@ -18,54 +19,67 @@ const apply = "https://form.jotform.com/DoGoodAgency/frp-stage-1";
   footerStrip={heart}
   footerEdge={footerEdge}
 >
-  <article class="page-apply" style={`--band-tint:${heart}`}>
-    <header class="privacy-hero">
-      <div class="privacy-hero-inner">
-        <h1>Stage 1: The Reset (30 days)</h1>
+  <!-- Redesigned 19 Nov 2026 14:55 (Seb): fresher, calmer, one clear action. Nothing pulls away from applying. -->
+  <article class="page-apply apl" style={`--band-tint:${heart}`}>
+    <header class="apl-hero">
+      <div class="apl-hero-inner">
+        <p class="apl-eyebrow">Apply for Stage 1</p>
+        <h1>Stage 1: The Reset™ <span>(30 days)</span></h1>
+        <ul class="apl-words" aria-label="What Stage 1 is for">
+          <li>Get clear</li>
+          <li>Set new values</li>
+          <li>Shift patterns</li>
+        </ul>
       </div>
       <Wave fill={heart} edge={heroEdge} />
     </header>
 
-    <section class="privacy-band privacy-band-tint">
-      <div class="privacy-well">
-        <div class="apply-stack">
-          <picture class="apply-sketch">
+    <section class="apl-band">
+      <div class="apl-well">
+        <div class="apl-main">
+          <picture class="apl-art">
             <source
               type="image/webp"
               srcset="/sketches/apply-stage-1-garden-gate@1x.webp 540w, /sketches/apply-stage-1-garden-gate@2x.webp 1080w"
-              sizes="(max-width: 800px) 100vw, 540px"
+              sizes="(max-width: 800px) 90vw, 460px"
             />
             <img
               src="/sketches/apply-stage-1-garden-gate@1x.png"
               srcset="/sketches/apply-stage-1-garden-gate@1x.png 540w, /sketches/apply-stage-1-garden-gate@2x.png 1080w"
-              sizes="(max-width: 800px) 100vw, 540px"
+              sizes="(max-width: 800px) 90vw, 460px"
               width="540"
               height="400"
-              alt=""
+              alt="An open garden gate on a path, drawn as a napkin sketch."
             />
           </picture>
-          <article class="apply-frame">
-            <h2>Application</h2>
-            <p>Takes 5–10 minutes <span class="apply-dot">•</span> Private <span class="apply-dot">•</span> Review within 24 hours</p>
-            <p>This is Stage 1: The Reset (30 days) of the Founder Reclamation Partnership</p>
-            <a class="btn-apply" href={apply}>Apply for Stage 1</a>
-            <p class="apply-limit">Limited to five new founders a month</p>
-          </article>
-          <section id="case-j" aria-label="Case study">
-          <article class="card case-compact">
-            <img class="portrait" src={caseJ.src} width="220" height="244" alt="Pixelated portrait of founder J, shown this way to protect their identity" />
-            <div>
-              <p class="t-kicker">Case Study</p>
-              <h3>From exit anxiety to aligned legacy —<br />How J created a clear next life chapter</h3>
-              <p class="caption case-who">J (anonymous), USD 2M founder</p>
-              <div class="btn-stack">
-                <a class="btn-case" href={urls.caseJ}>Read the short case study</a>
-                <p class="case-protect">We protect our founders’ identities</p>
-              </div>
-            </div>
-          </article>
-          </section>
+
+          <div class="apl-card">
+            <h2>Your application</h2>
+            <ul class="apl-facts">
+              <li><span aria-hidden="true">◷</span> Takes 5–10 minutes</li>
+              <li><span aria-hidden="true">◎</span> Private</li>
+              <li><span aria-hidden="true">✓</span> Reviewed within 24 hours</li>
+            </ul>
+            <p class="apl-line">This is Stage 1 of the Founder Reclamation Partnership: 30 days of private 1:1 work, including a 1.5-day in-person residency.</p>
+            <a class="btn-apply lg" href={apply}>Apply for Stage 1</a>
+            <p class="apl-limit">Limited to five new founders a month</p>
+          </div>
         </div>
+
+        <ol class="apl-next" aria-label="What happens next">
+          <li><span class="apl-next-n">1</span><strong>You apply</strong><span>A short form, in your own words.</span></li>
+          <li><span class="apl-next-n">2</span><strong>We read it</strong><span>Within 24 hours, by a person, in confidence.</span></li>
+          <li><span class="apl-next-n">3</span><strong>We talk</strong><span>A private conversation, then Stage 1 can start.</span></li>
+        </ol>
+
+        <section id="case-j" class="apl-case" aria-label="Case study">
+          <img class="apl-case-img" src={caseJ.src} width="110" height="122" alt="Pixelated portrait of founder J, shown this way to protect their identity" />
+          <div>
+            <p class="apl-case-kicker">Case study</p>
+            <p class="apl-case-title">From exit anxiety to aligned legacy: how J created a clear next life chapter</p>
+            <a class="apl-case-link" href={urls.caseJ}>Read J’s short case study →</a>
+          </div>
+        </section>
       </div>
     </section>
   </article>
