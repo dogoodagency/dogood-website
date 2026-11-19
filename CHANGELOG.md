@@ -8,7 +8,7 @@ why, and anything the next person needs to check.
 
 ## Preview 6, update 21: Stories, Wayfinders, Client-fit (19 Nov 2026, afternoon)
 
-**Made by:** Claude (claude.ai), Seb's feedback of 12:43, batch 4. **Branch:** `claude/preview-6`. **Commit:** `COMMIT21`.
+**Made by:** Claude (claude.ai), Seb's feedback of 12:43, batch 4. **Branch:** `claude/preview-6`. **Commit:** `4f6890c`.
 
 - **Stories:** case cards match their portrait border. J: HEART 25 card, HEART 400 line, button HEART 600.
   V: GRASS 50 card with a GRASS 600 line (clear against the DREAM 25 band), button GRASS 500, and its
