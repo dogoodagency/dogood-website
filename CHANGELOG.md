@@ -6,6 +6,84 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 25: Seb's feedback round of 19 Nov 2026, 14:55 (whole site)
+
+**Made by:** Claude (claude.ai). **Commits:** `25a`–`25g` on `claude/preview-6`, last `059dca8`.
+All checked with axe (no issues on 20 pages) and for horizontal scroll at 390px (none).
+
+**Site-wide**
+- Nav fork renamed **"Pre & Post"** (Seb's choice); Stage 2 back in that menu under "I've sold" (`Header.astro`).
+- **™ automatic**: `integrations/trademark.mjs` now adds ™ after ClarityValue Shift, NextLife Passage,
+  IntegralContinuity, FOUNDERland (also when FOUNDER and land are in separate tags), Founder Diagnostic,
+  Pressure Diagnostic, The Reset, The Build and Exit Prep in visible text, case-sensitive. Titles, scripts and
+  attributes are untouched.
+- Buttons never change size on hover (no scale; padding keeps the same total width) (`site-rules.css`).
+  Purple buttons (`btn-teal btn-dream`) keep DREAM 500 on hover everywhere.
+- Testimonials: max **70 words** everywhere (`src/data/clip-words.ts`, used in TestimonialWall, ReviewsRail,
+  Stories, BookingTestimonials; full text stays in the data), body size and weight, italic.
+- Testimonial walls: the middle lane (which runs the other way) moves at 70% speed so all lanes *look* equal;
+  measured speeds were already equal (`Base.astro`).
+- FAQs: hover tints the whole item including the open answer (`site-rules.css`).
+- Leftover coloured top/left edges replaced by one thin border (`.ab-vision-card`, `.fw-step`, `.ep-place`,
+  `.ab-good li`).
+- No SKY on DREAM backgrounds: advisor pages, resource cards, audio waveform, product-page boxes.
+- **WHOOP** (`WhoopSection.astro`): all animations twice as slow; sleep bars HEART (not SKY); line
+  "Sample data only. Designed by DoGood. Not WHOOP's display."; intro runs full width (2 lines); full
+  variant redesigned: four coloured metric cards + two panels.
+- **Article cards everywhere** (`blog.css` end): images ~20% bigger, labels 2px smaller on one line (audience
+  label aligned with the image edge, topic label right), founder/advisor colours on every page, titles 2px
+  smaller and bolder, founder titles GRASS 700, thin border on author photos, Insights grid gap 20px.
+
+**Homepage:** headline words fade in place (no upward move); signature written as a pen stroke
+(`SignatureDraw.astro`, strokes traced from signature.png into `src/data/signature-paths.json`, reveals the
+real image); "NOT for you" card HEART 25 + HEART 300 line. Logo sample (no border, DREAM 400) sent to Seb as
+an image only, **not applied**, waiting for his yes.
+
+**How it works:** purple buttons keep colour; "I've sold" text darker (#034a3a); "Before the sale" cards
+HEART; sketch bigger with less padding; newsletter box on DREAM 25; "See The Exit Prep"; new
+**journey progress bar** (`JourneyBar.astro`): Read or subscribe → The Exit Prep → Stage 1 → Stage 2 →
+IntegralContinuity → Annual Signature Retreat → FOUNDERland Membership, every step linked, animated.
+
+**Exit Prep:** audio section added; "Read more" → "Notes for founders · from Insights"; advisor link
+underlined GRASS.
+
+**The Reset / The Build:** progress pills and the two dark stage cards replaced by one **Stage 1 / Stage 2
+switch** (`StageSwitch.astro`, accessible tabs, panels GRASS 700 / HEART 700, equal size); band order fixed
+(no white-on-white, no stray tint); "Not there yet?" card GRASS 50 with a full border; stage description
+frames DREAM 300, Stage 2 panel HEART; white cards inside tinted panels; retreat link under its text; fit
+cards with a strong 1px border; case J on DREAM 500; track-record cards wider, one line each; "How it works"
+steps DREAM 500; case V on The Build frameless and centred (`how-it-works.css` end, `HwSupports.astro`).
+
+**Advisor Center:** exit-advisor buttons purple, wealth-advisor buttons teal, throughout; doors and audience
+cards without SKY; referral steps in DREAM shades at half speed; "Smoother deals" cards alternate DREAM 400 /
+HEART 50; card borders in the card's own colour, 2–3 shades darker (also Free tools); "More tools…" on one
+line; newsletter link under its card without shortening it. **Three legs of the stool** rewritten from EPI's
+own description, with an animated stool visual (personal leg short, "the gap"), who leads each leg, how we
+differ, a line for CEPAs and a source note (`for-advisors/insights/index.astro`).
+
+**Wayfinders / Client-fit:** Client-Fit steps half speed; no hover tint on Wayfinder cards; Client-fit
+"How it works" appears step by step in GRASS shades.
+
+**FAQs / Footer:** envelope sketches removed; text and email field start further left.
+
+**Newsletter:** thin borders on "A note from Seb" and the Prologue; each "Go deeper" in three boxed parts,
+no hover; Keep reading sketch +30%; Stage 1 line as its own GRASS card.
+
+**Podcast** (`dogood-insider.astro`): reworked: hero with our two-chairs sketch, "What you'll hear" (founders,
+senior executives, L&D leaders; recorded before DoGood focused on the sale), numbered episode list (old covers
+and illustrations removed), short host section, closing card to Insights and the newsletter.
+
+**Recovery / Audio / Apply / About / Contact:** product-page hero titles wider (2 lines); a feature band now
+gets its own wave so bands never repeat (`ProductPage.astro`); science block redesigned as a light panel
+with three cards (`AudioSection.astro`); **Apply for Stage 1 redesigned** (`apply-stage-1.astro`,
+`apply.css`); About "How we work" cards white / DREAM 500; Contact: IODA line removed, sketch aligned with
+the form, map border.
+
+**Open for Seb:** logo sample yes/no; "$19.4 Million" vs "$19.4M" on the stats; review of new draft copy
+(three legs, podcast, apply, journey bar).
+
+---
+
 ## Preview 6, update 24: Seb's decisions on update 23 (19 Nov 2026, 13:15)
 
 **Commit:** `a823a80`.
