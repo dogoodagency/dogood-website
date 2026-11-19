@@ -6,6 +6,16 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 35: organisation profiles; launch notes (20 Nov 2026, 00:45)
+
+- **Organization `sameAs`** (Base.astro) now lists only DoGood's own profiles: the LinkedIn company page
+  (linkedin.com/company/dogood-agency) and the YouTube channel. Removed: Seb's personal LinkedIn (now on his
+  Person record), the Upwork agency page and the IODA history page (Seb, 20 Nov 2026).
+- **Launch checklist** (update 6 section): delete /foundrland and point the nav logo to the foundr.land website;
+  add analytics tags behind consent.
+
+---
+
 ## Preview 6, update 34: SEO and AEO meta pass (20 Nov 2026, 00:28)
 
 - **Titles** shortened to 60 characters or fewer, so Google shows them in full: homepage, Exit Prep, For Advisors,
@@ -977,6 +987,12 @@ the build: every image has an alt; empty alts are decorative icons next to text.
 - `public/robots.txt`: replace the whole file with `User-agent: *`, `Allow: /`
   and the `Sitemap:` line (instructions are in the file).
 - Keep `noindex` on /clarity, all booking and thank-you pages (they set it themselves).
+- **Before launch (Seb, 20 Nov 2026):** delete the /foundrland page (`src/pages/foundrland.astro`) and point the
+  nav foundr.land logo (`Header.astro`, `nav-apply--brand`) to the new foundr.land website instead. Add a 301
+  from /foundrland to that website in `public/_redirects`. Also: new DoGood branding is planned for launch
+  (new logo, then favicon and app icon).
+- **Before launch:** add the GA4 tag (measurement ID from Seb), Microsoft Clarity and the LinkedIn Insight Tag,
+  each behind CookieYes consent and allowed in the CSP in `netlify.toml`.
 
 ---
 

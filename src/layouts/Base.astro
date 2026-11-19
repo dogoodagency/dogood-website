@@ -82,10 +82,12 @@ const organization = {
     addressCountry: "US",
   },
   founder: { "@id": sebPersonId },
+  // DoGood's own profiles only (Seb, 20 Nov 2026). Seb's personal LinkedIn sits on his Person record
+  // (src/data/seb-person.ts); Upwork and the IODA history page were removed. The podcast's Apple, Spotify and
+  // Amazon Music links are on the PodcastSeries data on /dogood-insider.
   sameAs: [
-    "https://www.linkedin.com/in/sebwichmann/",
-    "http://www.upwork.com/agencies/dogoodagency",
-    "https://www.iodanet.org/iodas-history/",
+    "https://www.linkedin.com/company/dogood-agency",
+    "https://www.youtube.com/@RawStoriesOfDoGoodCultures",
   ],
 };
 ---
