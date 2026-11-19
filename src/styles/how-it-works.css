@@ -1560,3 +1560,62 @@ body:has(.hw-page) .footer-wave {
 .hw-page .hw-stages-light a.hw-stage-card * {
   text-decoration: none;
 }
+
+/* Two-stage cards back to the earlier frame style (Seb, 19 Nov 2026): DREAM 500 frames as they were in the
+   hero, pink stage label, white title, teal method line. No underlines (the cards are links). */
+.hw-page .hw-stages-light a.hw-stage-card {
+  padding: 32px 30px;
+  border: 1px solid #2a0b4f;
+  border-radius: 20px;
+  background: #2a0b4f;
+  box-shadow: 0 10px 30px rgba(42, 11, 79, 0.14);
+  color: #fff;
+  text-decoration: none !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hw-page .hw-stages-light a.hw-stage-card:hover,
+.hw-page .hw-stages-light a.hw-stage-card:focus-visible {
+  border-color: #28dbb0;
+  box-shadow: 0 14px 36px rgba(42, 11, 79, 0.22);
+  transform: translateY(-2px);
+}
+
+.hw-page .hw-stages-light .hw-stage-n {
+  margin: 0 0 6px;
+  color: #ff5c8f;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hw-page .hw-stages-light .hw-stage-card h3 {
+  margin: 0 0 10px;
+  color: #fff;
+  font-size: clamp(24px, 2.4vw, 28px);
+  font-weight: 900;
+  line-height: 1.15;
+}
+
+.hw-page .hw-stages-light .hw-stage-card h3 span {
+  font-size: 0.7em;
+}
+
+.hw-page .hw-stages-light .hw-stage-line {
+  margin: 0;
+  color: #f5f2ff;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.hw-page .hw-stages-light .hw-stage-via {
+  margin: 10px 0 0;
+  color: #28dbb0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.hw-page .hw-stages-light .hw-stage-arrow {
+  color: #c10e46;
+}

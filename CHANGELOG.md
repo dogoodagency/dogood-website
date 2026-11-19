@@ -6,6 +6,33 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 16: two-stage frames restored, three more pages, footer product links (19 Nov 2026, morning)
+
+**Made by:** Claude (claude.ai), from Seb's feedback of 09:19 (screenshot 6). **Branch:** `claude/preview-6`. **Commit:** `COMMIT16`.
+
+- **/the-reset, "Reset first. Then build."** (`src/styles/how-it-works.css`, appended): the two stage
+  cards are back in the earlier frame style (DREAM 500 frames as in the old hero: pink uppercase stage
+  label, white title, light line, teal method line). The teal underlines are gone (the cards are links;
+  `text-decoration: none !important` on the link).
+- "Ask about Expedited Start" on /the-reset now links to the new /expedited-start page.
+- **New pages** (noindex, ProductPage component, no prices):
+  - `/recovery-stress-diagnostics`: Recovery & Stress Diagnostics (WHOOP). Copy from Seb's Stage 1
+    inclusion and "Why WHOOP" FAQ; marked part of Stage 1 and The Exit Prep (as the FAQs say). Links to
+    the FAQ for the WHOOP cost.
+  - `/state-shift-audio`: Custom State-Shift Audio, Seb's text word for word; marked part of Stage 2
+    (as in the Stage 2 inclusions).
+  - `/expedited-start`: Expedited Start & Priority Hold, client-facing version of Seb's note. Left off the
+    page on purpose: the fee and deposit amounts (prices not published until Seb decides), the pricing
+    rationale, and the internal guardrails ("if truly maxed, don't sell it"). Kept: start within 7 days,
+    when it applies, what you get, approval only after a call, the Priority Hold terms (match the FAQ),
+    and the crisis note from the FAQ. Note: the "How quickly can we start" FAQ says the usual wait is
+    4–8 weeks; Seb's note says 4–6. The page gives no number.
+- **/products** hub: new "Inside the Partnership" section with the three pages.
+- **Footer Explore**: Products, the four nav products and the three new pages, after the stage links.
+- axe: /the-reset, /products and the three new pages, no issues reported.
+
+---
+
 ## Preview 6, update 15: homepage polish, offer names, Products menu and four product pages (19 Nov 2026, morning)
 
 **Made by:** Claude (claude.ai), from Seb's feedback of 09:05, the FOX logo, five press logos, the colour
