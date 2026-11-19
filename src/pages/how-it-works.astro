@@ -1,4 +1,5 @@
 ---
+import JourneyBar from "../components/JourneyBar.astro";
 // How it works (rebuilt 19 Nov 2026 from Seb's feedback): text-only hero, the two doors below it in their own
 // colours with context, "Which door is mine?" with the sketch, moving sound bites, notes for founders with the
 // newsletter, and a one-row advisor strip. New copy is Claude's draft for Seb to review; facts come from the
@@ -87,6 +88,13 @@ const posts = sortedPosts((await getCollection("blog")).filter((p) => !p.data.no
             </div>
           </section>
         </div>
+
+        <!-- The whole path as one progress bar (Seb, 19 Nov 2026 14:55) -->
+        <section class="dr-journey" aria-labelledby="dr-journey-h">
+          <h2 id="dr-journey-h">The whole path, step by step</h2>
+          <p class="dr-lead">Start wherever you are. Each step links to its own page.</p>
+          <JourneyBar />
+        </section>
       </div>
     </section>
 

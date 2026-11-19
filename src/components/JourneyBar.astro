@@ -1,0 +1,227 @@
+---
+/**
+ * The whole path through DoGood as one progress bar (Seb, 19 Nov 2026 14:55), on /how-it-works.
+ * Read or subscribe → The Exit Prep → Stage 1 → Stage 2 → IntegralContinuity → Annual Signature Retreat →
+ * FOUNDERland Membership. Every step links to its page. The line fills in when it scrolls into view.
+ * Colours: DREAM for reading, SKY for The Exit Prep, GRASS for Stage 1, HEART for Stage 2, DREAM after.
+ */
+const steps = [
+  { phase: "Start", title: "Read or subscribe", detail: "Insights", href: "/insights", alt: { href: "/newsletter", label: "Newsletter" }, tone: "dream" },
+  { phase: "Before the sale", title: "The Exit Prep™", detail: "Six weekly 1:1 sessions", href: "/exit-prep", tone: "sky" },
+  { phase: "After the sale", title: "Stage 1: The Reset™", detail: "30 days", href: "/the-reset", tone: "grass" },
+  { phase: "After the sale", title: "Stage 2: The Build™", detail: "12 weeks, by invitation", href: "/the-build", tone: "heart" },
+  { phase: "Beyond", title: "IntegralContinuity™", detail: "Ongoing sessions", href: "/integral-continuity", tone: "dream" },
+  { phase: "Beyond", title: "Annual Signature Retreat", detail: "By invitation", href: "/signature-retreat", tone: "dream" },
+  { phase: "Beyond", title: "FOUNDERland™ Membership", detail: "The house founders belong to", href: "/founderland-membership", tone: "dream" },
+];
+---
+
+<nav class="jb" data-jb aria-label="The DoGood path, step by step">
+  <ol class="jb-list">
+    {
+      steps.map((s, i) => (
+        <li class:list={["jb-step", `jb-step--${s.tone}`]} style={`--i:${i}`}>
+          <span class="jb-phase">{s.phase}</span>
+          <a class="jb-dot" href={s.href} aria-hidden="true" tabindex="-1">{i + 1}</a>
+          <a class="jb-title" href={s.href}>{s.title}</a>
+          <span class="jb-detail">
+            {s.detail}
+            {s.alt && <> · <a href={s.alt.href}>{s.alt.label}</a></>}
+          </span>
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+
+<style>
+  .jb {
+    --jb-line: #c2b7dd;
+    position: relative;
+    margin: 0 auto;
+    max-width: 1180px;
+  }
+
+  .jb-list {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* The line behind the dots, and the coloured fill that draws over it. */
+  .jb-list::before,
+  .jb-list::after {
+    content: "";
+    position: absolute;
+    top: 49px;
+    left: calc(100% / 14);
+    right: calc(100% / 14);
+    height: 4px;
+    border-radius: 4px;
+  }
+
+  .jb-list::before {
+    background: var(--jb-line);
+  }
+
+  .jb-list::after {
+    background: linear-gradient(90deg, #58447f 0%, #477dfe 22%, #28dbb0 45%, #ea1557 62%, #58447f 85%, #2a0b4f 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 3s cubic-bezier(0.3, 0.7, 0.3, 1);
+  }
+
+  .jb.is-in .jb-list::after {
+    transform: scaleX(1);
+  }
+
+  .jb-step {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+    text-align: center;
+  }
+
+  .jb-phase {
+    height: 18px;
+    color: #58447f;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .jb-step:nth-child(4) .jb-phase,
+  .jb-step:nth-child(6) .jb-phase,
+  .jb-step:nth-child(7) .jb-phase {
+    visibility: hidden;
+  }
+
+  .jb-dot {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border: 1px solid var(--jb-c);
+    border-radius: 50%;
+    background: #fff;
+    color: var(--jb-c);
+    font-size: 20px;
+    font-weight: 900;
+    text-decoration: none;
+    opacity: 0.35;
+    transform: scale(0.85);
+    transition: opacity 0.5s ease, transform 0.5s ease, background-color 0.5s ease, color 0.5s ease;
+    transition-delay: calc(var(--i) * 0.4s);
+  }
+
+  .jb.is-in .jb-dot {
+    opacity: 1;
+    transform: none;
+    background: var(--jb-c);
+    color: #fff;
+  }
+
+  .jb-title {
+    margin-top: 6px;
+    color: #2a0b4f;
+    font-size: 16px;
+    font-weight: 900;
+    line-height: 1.25;
+    text-decoration: underline;
+    text-decoration-color: var(--jb-c);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+
+  .jb-title:hover,
+  .jb-title:focus-visible {
+    color: var(--jb-c-ink);
+  }
+
+  .jb-detail {
+    color: #58447f;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .jb-detail a {
+    color: #2a0b4f;
+    font-weight: 700;
+  }
+
+  .jb-step--dream { --jb-c: #58447f; --jb-c-ink: #2a0b4f; }
+  .jb-step--sky { --jb-c: #1d53ef; --jb-c-ink: #0d329f; }
+  .jb-step--grass { --jb-c: #01a684; --jb-c-ink: #05745b; }
+  .jb-step--heart { --jb-c: #ea1557; --jb-c-ink: #960434; }
+
+  @media (max-width: 960px) {
+    .jb-list {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 18px;
+      padding-left: 8px;
+    }
+
+    .jb-list::before,
+    .jb-list::after {
+      top: 30px;
+      bottom: 30px;
+      left: 33px;
+      right: auto;
+      width: 4px;
+      height: auto;
+    }
+
+    .jb-list::after {
+      background: linear-gradient(180deg, #58447f 0%, #477dfe 22%, #28dbb0 45%, #ea1557 62%, #58447f 85%, #2a0b4f 100%);
+      transform: scaleY(0);
+      transform-origin: top;
+    }
+
+    .jb.is-in .jb-list::after {
+      transform: scaleY(1);
+    }
+
+    .jb-step {
+      display: grid;
+      grid-template-columns: 52px minmax(0, 1fr);
+      grid-template-areas: "dot phase" "dot title" "dot detail";
+      column-gap: 16px;
+      row-gap: 2px;
+      align-items: start;
+      text-align: left;
+    }
+
+    .jb-phase { grid-area: phase; height: auto; }
+    .jb-step:nth-child(n) .jb-phase { visibility: visible; }
+    .jb-dot { grid-area: dot; }
+    .jb-title { grid-area: title; margin: 0; }
+    .jb-detail { grid-area: detail; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .jb-list::after { transition: none; transform: none; }
+    .jb-dot { transition: none; opacity: 1; transform: none; background: var(--jb-c); color: #fff; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-jb]").forEach((el) => {
+    if (!("IntersectionObserver" in window)) return el.classList.add("is-in");
+    const io = new IntersectionObserver(([e]) => {
+      if (!e?.isIntersecting) return;
+      el.classList.add("is-in");
+      io.disconnect();
+    }, { threshold: 0.3 });
+    io.observe(el);
+  });
+</script>

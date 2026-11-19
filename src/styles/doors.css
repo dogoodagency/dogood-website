@@ -751,3 +751,16 @@ body:has(.dr-page) .footer-wave {
   background: #f5f2ff;
   border-color: #c2b7dd;
 }
+
+/* The whole path (journey bar). */
+.dr-journey {
+  margin-top: 72px;
+}
+
+.dr-journey h2 {
+  margin: 0 0 8px;
+}
+
+.dr-journey .dr-lead {
+  margin: 0 0 32px;
+}
