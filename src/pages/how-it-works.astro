@@ -88,17 +88,20 @@ const posts = sortedPosts((await getCollection("blog")).filter((p) => !p.data.no
             </div>
           </section>
         </div>
-
-        <!-- The whole path as one progress bar (Seb, 19 Nov 2026 14:55) -->
-        <section class="dr-journey" aria-labelledby="dr-journey-h">
-          <h2 id="dr-journey-h">The whole path, step by step</h2>
-          <p class="dr-lead">Start wherever you are. Each step links to its own page.</p>
-          <JourneyBar />
-        </section>
       </div>
     </section>
 
-    <Fragment set:html={wave(white, tint)} />
+    <!-- The whole path, in its own dark band with room to breathe (Seb, 19 Nov 2026 18:52) -->
+    <Fragment set:html={wave(white, "#2A0B4F")} />
+    <section class="dr-band dr-journey-band" aria-labelledby="dr-journey-h">
+      <div class="dr-well dr-journey-well">
+        <p class="dr-journey-eyebrow">Your path with DoGood</p>
+        <h2 id="dr-journey-h">The whole path, step by step</h2>
+        <p class="dr-journey-lead">Start wherever you are. Every stop links to its own page.</p>
+        <JourneyBar />
+      </div>
+    </section>
+    <Fragment set:html={wave("#2A0B4F", tint)} />
 
     <!-- Which door is mine? (with the sketch that used to sit in the hero) -->
     <section class="dr-band dr-band-tint" aria-labelledby="dr-which">

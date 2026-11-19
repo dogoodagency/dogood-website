@@ -1232,7 +1232,7 @@ html.adv-js .adv-faq-item:not(.is-open) .adv-faq-panel {
 }
 
 .adv-faq-trigger:hover {
-  background: #ede8fb;
+  background: transparent; /* no hover tint (Seb, 19 Nov 2026 18:52) */
 }
 
 @media (max-width: 1023px) {

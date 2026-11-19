@@ -52,7 +52,7 @@ details > summary:hover {
 }
 
 .faq-trigger:hover {
-  background-color: #ede8fb;
+  background-color: transparent; /* no hover tint on /faqs cards (Seb, 19 Nov 2026 18:52) */
 }
 
 /* 19 Nov 2026 14:55 (Seb): buttons never change size on hover. The arrow still slides in, but the padding
@@ -101,23 +101,17 @@ button.btn-subscribe:focus-visible {
 /* FAQs (Seb, 19 Nov 2026 14:55): on hover the whole item tints, the open answer included, not only the
    question row. */
 details.ep-faq,
-details.bl-faq-item,
-.faq-item,
-.adv-faq-item {
+details.bl-faq-item {
   transition: background-color 0.2s ease;
 }
 
 details.ep-faq:hover,
-details.bl-faq-item:hover,
-.faq-item:hover,
-.adv-faq-item:hover {
+details.bl-faq-item:hover {
   background-color: #ede8fb !important;
 }
 
 details.ep-faq:hover > summary,
-details.bl-faq-item:hover > summary,
-.faq-item:hover .faq-trigger,
-.adv-faq-item:hover .adv-faq-trigger {
+details.bl-faq-item:hover > summary {
   background-color: transparent !important;
 }
 

@@ -72,7 +72,7 @@ const Tag = variant === "feature" ? "h2" : "h3";
             {aud.label}
           </span>
           {category && (
-            <a class="bl-pill" href={`/insights/category/${category.slug}`}>
+            <a class:list={["bl-pill", `bl-pill--${category.slug}`]} href={`/insights/category/${category.slug}`}>
               {category.name}
             </a>
           )}

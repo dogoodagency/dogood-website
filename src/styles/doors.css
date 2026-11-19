@@ -764,3 +764,40 @@ body:has(.dr-page) .footer-wave {
 .dr-journey .dr-lead {
   margin: 0 0 32px;
 }
+
+/* The whole path: its own DREAM 500 band (Seb, 19 Nov 2026 18:52). */
+.dr-journey-band {
+  background: #2a0b4f;
+  color: #fff;
+}
+
+.dr-page .dr-journey-well {
+  width: min(1240px, calc(100% - 2 * var(--pad)));
+  padding-top: 64px;
+  padding-bottom: 88px;
+  text-align: center;
+}
+
+.dr-page .dr-journey-eyebrow {
+  margin: 0 0 10px;
+  color: #28dbb0;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dr-page .dr-journey-band h2 {
+  margin: 0 0 10px;
+  color: #fff;
+}
+
+.dr-page .dr-journey-lead {
+  margin: 0 0 44px;
+  color: #e6defc;
+  font-size: 19px;
+}
+
+.dr-journey-band .jr {
+  text-align: left;
+}

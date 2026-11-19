@@ -1600,3 +1600,53 @@ html.bl-js .bl-common {
 .bl-grid {
   gap: 20px;
 }
+
+/* ===== 19 Nov 2026 18:52 (Seb): article cards, round 2 =====
+   - Both labels sit left, side by side; each topic label has its own mid-tone border.
+   - Titles 18px (body size), less bold.
+   - Descriptions always take five lines, so the author and the date sit at the same place on every card. */
+.bl-card .bl-card-tags {
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.bl-card .bl-pill {
+  border: 1px solid #8b7dae;
+  background: #fff;
+  color: #2a0b4f;
+}
+
+.bl-pill--preparing-for-exit { border-color: #477dfe !important; }
+.bl-pill--after-the-sale { border-color: #28dbb0 !important; }
+.bl-pill--identity-and-purpose { border-color: #8b7dae !important; }
+.bl-pill--health-and-energy { border-color: #fd6b82 !important; }
+.bl-pill--relationships-and-family { border-color: #1d53ef !important; }
+.bl-pill--whats-next { border-color: #01a684 !important; }
+.bl-pill--working-with-founders { border-color: #ea1557 !important; }
+.bl-pill--personal-side-of-exit-planning { border-color: #58447f !important; }
+
+.bl-card .bl-card-title,
+.bl-page .bl-card:not(.bl-card--feature) .bl-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.bl-card:not(.bl-card--feature):not(.bl-card--row) .bl-card-excerpt {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+  overflow: hidden;
+  min-height: calc(1.55em * 5);
+}
+
+.bl-card:not(.bl-card--feature):not(.bl-card--row) .bl-author--card {
+  margin-top: auto;
+  padding-top: 6px;
+}
+
+.bl-card:not(.bl-card--feature):not(.bl-card--row) .bl-card-body .bl-meta {
+  margin-top: 0;
+}
