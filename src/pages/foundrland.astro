@@ -9,6 +9,11 @@
  * system image (Nov 2026). Everything is a product concept and is labelled so. All visuals are drawn here in
  * HTML/SVG (phone, clarity wheel, journey, workspace); the numbers in mock-ups are illustrative.
  */
+// Fraunces is self-hosted (20 Nov 2026): the site's Content-Security-Policy blocks Google Fonts, so the
+// earlier Google Fonts link never loaded and the serif fell back to Georgia.
+import "@fontsource/fraunces/latin-800.css";
+import "@fontsource/fraunces/latin-500-italic.css";
+import "@fontsource/fraunces/latin-700-italic.css";
 import Base from "../layouts/Base.astro";
 import { edgeAbove } from "../data/edge-line";
 
@@ -94,16 +99,13 @@ const svg = (k: string) => `<svg viewBox="0 0 24 24" aria-hidden="true">${I[k]}<
 
 <Base
   title="foundr.land | Life beyond the business | by DoGood Agency"
-  description="foundr.land helps exit and succession advisors turn personal readiness into practical conversations, clear next steps and ongoing founder support, before and after a business exit."
+  description="foundr.land helps exit and succession advisors turn personal readiness into practical conversations, next steps and founder support, before and after an exit."
   canonical="https://www.dogoodagency.co/foundrland"
   footerStrip={tint}
   footerEdge={footerEdge}
+  ogImage="/media/foundrland/foundrland-og.jpg"
+  robots="noindex, follow"
 >
-  <Fragment slot="head">
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,800;1,9..144,500;1,9..144,700&display=swap" />
-  </Fragment>
 
   <article class="fl">
     <!-- ===== Hero ===== -->

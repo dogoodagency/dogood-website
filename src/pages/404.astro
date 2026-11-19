@@ -7,7 +7,7 @@ if (!entry) throw new Error("Missing 404 copy");
 const { Content } = await render(entry);
 ---
 
-<Base title="Page not found | DoGood Agency" description="That page is not here. Head home, or send us a note.">
+<Base title="Page not found | DoGood Agency" description="That page is not here. Head home, or send us a note." robots="noindex" noCanonical>
   <section class="subhero">
   </section>
   <article class="page page-designed page-art page-404">

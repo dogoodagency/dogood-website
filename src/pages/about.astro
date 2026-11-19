@@ -5,6 +5,7 @@ import { Image } from "astro:assets";
 import Base from "../layouts/Base.astro";
 import Wave from "../components/Wave.astro";
 import { edgeAbove } from "../data/edge-line";
+import { sebPerson, sebBook, sebPersonId } from "../data/seb-person";
 import team from "../assets/photos/wayfinders.png";
 import ioda from "../assets/photos/ioda-logo-heart.png"; // Seb's logo (18 Nov), recoloured to HEART 500 like our client logos (19 Nov 2026)
 
@@ -28,6 +29,23 @@ const premises = [
     text: "Your sleep, your health and your family were easier to put off while the company needed you, and they deserve your attention now.",
   },
 ];
+// About page as structured data: the page is about DoGood Agency, founded by Seb (20 Nov 2026).
+const aboutLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "@id": "https://www.dogoodagency.co/about#webpage",
+      url: "https://www.dogoodagency.co/about",
+      name: "About DoGood",
+      isPartOf: { "@id": "https://www.dogoodagency.co/#website" },
+      about: { "@id": "https://www.dogoodagency.co/#organization" },
+      mentions: [{ "@id": sebPersonId }],
+    },
+    { ...sebPerson, image: "https://www.dogoodagency.co/media/wayfinders/seb@2x.webp" },
+    sebBook,
+  ],
+};
 ---
 
 <Base
@@ -37,6 +55,7 @@ const premises = [
   footerStrip={tint}
   footerEdge={footerEdge}
 >
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(aboutLd)} />
   <article class="ab-page">
     <header class="ab-hero">
       <!-- No hero image (Seb, 18 Nov 2026: hero images only on the homepage); the sketch moved to "Where we are going". -->

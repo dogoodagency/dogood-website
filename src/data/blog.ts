@@ -95,7 +95,7 @@ export const categories: BlogCategory[] = [
     name: "Working with founders",
     audience: "advisor",
     description: "For advisors: raising the personal side with clients.",
-    seoTitle: "For exit planning advisors: the founder side | DoGood Insights",
+    seoTitle: "For exit advisors: the founder side | DoGood Insights",
     seoDescription: "For exit planning advisors: how to raise the personal side of the sale with founder clients, and when to bring in support. Notes from DoGood.",
     intro:
       "You see the deal up close. You also see the person behind it. These notes are for advisors who want to raise the personal side of an exit with clients in a way that feels natural and respectful.",

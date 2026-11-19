@@ -6,6 +6,32 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 34: SEO and AEO meta pass (20 Nov 2026, 00:28)
+
+- **Titles** shortened to 60 characters or fewer, so Google shows them in full: homepage, Exit Prep, For Advisors,
+  Advisor voices, the book page, FOUNDERland Membership, Insights, the working-with-founders category,
+  IntegralContinuity, Pathway (no longer says "How it works"), The Build.
+- **Descriptions** trimmed to about 155 characters on 13 pages (Exit Prep, podcast archive, client tools x4,
+  advisor insights x2, IntegralContinuity, Residency, WHOOP, Services, Seb's profile, foundr.land).
+- **Podcast:** all 18 episode SEO titles rewritten around the founder story of each guest (e.g. "Succeeding the
+  founder: Titan CEO Paul Reitz"), and 11 over-long descriptions rewritten (`src/data/podcast.ts`,
+  `metaTitle` / `metaDescription`). The visible episode names still match Apple and Spotify.
+- **Structured data:**
+  - New `src/data/seb-person.ts`: Seb as a Person (role, education, credentials, SuperCoach award, languages,
+    topics, LinkedIn), from "Who Seb Is: Source of Truth v1.10". No exit, money or health claims. Used on
+    /wayfinders/seb and /about.
+  - /about: AboutPage data, Seb, and his book "Instant Silence".
+  - Organization data names Seb as founder. Homepage carries WebSite data.
+- **404:** no canonical link, noindex (`noCanonical` prop added to `Base.astro`).
+- **Sitemap:** every URL has `<lastmod>`, from the git date of the page's source file (`astro.config.mjs`).
+- **/foundrland:** noindex, follow and out of the sitemap (foundr.land gets its own website); own share image
+  `public/media/foundrland/foundrland-og.jpg`. Fraunces is now self-hosted (`@fontsource/fraunces`): the CSP
+  blocked the Google Fonts link, so the serif had been falling back to Georgia.
+- **Not changed, waiting on Seb:** the Organization `sameAs` links; the GA4 measurement ID (property
+  "Do Good Agency - GA4" exists); app icon (after the new logo).
+
+---
+
 ## Preview 6, update 33: nav foundr.land frame between DREAM 400 and 500 (20 Nov 2026, 00:00)
 
 - **Nav foundr.land logo frame:** #412867 at rest (halfway between DREAM 400 and DREAM 500, so it stays visible

@@ -57,7 +57,7 @@ function build(
 export const profiles: Record<string, WayfinderProfile> = {
   seb: build(
     "Seb, founder and exit coach | DoGood Agency",
-    "Meet Seb Wichmann, founder of DoGood and exit coach for Asia-Pacific and the US: his successful business nearly broke him; now he guides founders through theirs.",
+    "Seb Wichmann, founder of DoGood and exit coach for Asia-Pacific and the US: his successful business nearly broke him. Now he guides founders through theirs.",
     "Seb",
     [
       [

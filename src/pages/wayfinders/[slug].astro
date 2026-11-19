@@ -4,6 +4,7 @@ import Base from "../../layouts/Base.astro";
 import Wave from "../../components/Wave.astro";
 import { edgeAbove } from "../../data/edge-line";
 import { wayfinders, type Wayfinder } from "../../data/wayfinders";
+import { sebPerson } from "../../data/seb-person";
 
 export function getStaticPaths() {
   return wayfinders.map((w) => ({ params: { slug: w.slug }, props: { wayfinder: w } }));
@@ -36,7 +37,8 @@ const jsonLd = {
       url: pageUrl,
       image: `${site}${w.photo.base}@2x.webp`,
       worksFor: { "@type": "Organization", "@id": orgId, name: "DoGood Agency", url: `${site}/` },
-      ...(w.url === "/wayfinders/seb" ? { sameAs: ["https://www.linkedin.com/in/sebwichmann/"] } : {}),
+      // Seb: the full Person record from src/data/seb-person.ts (source of truth v1.10).
+      ...(w.url === "/wayfinders/seb" ? { ...sebPerson, image: `${site}${w.photo.base}@2x.webp` } : {}),
     },
     {
       "@type": "BreadcrumbList",

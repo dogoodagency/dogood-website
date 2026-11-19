@@ -1,5 +1,5 @@
 ---
-title: "Exit planning advisors: the personal readiness partner | DoGood"
+title: "Exit planning advisors: personal readiness | DoGood Agency"
 description: "For exit planning, succession and wealth advisors: DoGood prepares your founder client personally for the sale and life after it. Free tools and referrals."
 advisorLine: true
 ---

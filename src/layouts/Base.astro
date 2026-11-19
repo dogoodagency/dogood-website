@@ -3,6 +3,7 @@ import "../styles/global.css";
 import "../styles/site-rules.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import { sebPersonId } from "../data/seb-person";
 // Preloaded so text is drawn in Montserrat straight away instead of swapping (avoids layout shift).
 import montserrat400 from "@fontsource/montserrat/files/montserrat-latin-400-normal.woff2?url";
 import montserrat800 from "@fontsource/montserrat/files/montserrat-latin-800-normal.woff2?url";
@@ -19,6 +20,8 @@ interface Props {
   ogImage?: string;
   ogType?: string;
   robots?: string;
+  /** No canonical link (e.g. the 404 page, which has no address of its own). */
+  noCanonical?: boolean;
 }
 
 const title =
@@ -48,6 +51,19 @@ const ogType = Astro.props.ogType ?? "website";
 // at launch change this to "index, follow" (see CHANGELOG.md, launch checklist).
 const robots = Astro.props.robots ?? "noindex, nofollow";
 
+// The website itself (homepage only), so search engines and AI tools tie the site name to DoGood Agency.
+const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "/index.html";
+const website = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://www.dogoodagency.co/#website",
+  url: "https://www.dogoodagency.co/",
+  name: "DoGood Agency",
+  alternateName: "DoGood",
+  inLanguage: "en",
+  publisher: { "@id": "https://www.dogoodagency.co/#organization" },
+};
+
 const organization = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -65,6 +81,7 @@ const organization = {
     postalCode: "82801",
     addressCountry: "US",
   },
+  founder: { "@id": sebPersonId },
   sameAs: [
     "https://www.linkedin.com/in/sebwichmann/",
     "http://www.upwork.com/agencies/dogoodagency",
@@ -94,12 +111,12 @@ const organization = {
     <script data-cookieyes="cookieyes-necessary" src="/tawk-loader.js" defer></script>
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
+    {!Astro.props.noCanonical && <link rel="canonical" href={canonical} />}
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <meta property="og:title" content={ogTitle} />
     <meta property="og:description" content={ogDescription} />
     <meta property="og:type" content={ogType} />
-    <meta property="og:url" content={canonical} />
+    {!Astro.props.noCanonical && <meta property="og:url" content={canonical} />}
     <meta property="og:site_name" content="DoGood Agency" />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
@@ -109,6 +126,7 @@ const organization = {
     <meta name="twitter:description" content={twitterDescription} />
     <meta name="twitter:image" content={ogImage} />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(organization)} />
+    {isHome && <script is:inline type="application/ld+json" set:html={JSON.stringify(website)} />}
     <slot name="head" />
   </head>
   <body style={bodyStyle || undefined}>
