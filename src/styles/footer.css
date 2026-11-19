@@ -285,3 +285,8 @@
     margin-bottom: 52px;
   }
 }
+
+/* 19 Nov 2026 14:55 (Seb): no envelope in the email field, so the text starts further left. */
+.footer .ft-form input[type="email"] {
+  padding-left: 20px;
+}

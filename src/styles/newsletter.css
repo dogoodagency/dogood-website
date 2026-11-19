@@ -1050,3 +1050,72 @@ html:has(.nl-page) {
   border-color: #28dbb0;
   color: #28dbb0;
 }
+
+/* ===== 19 Nov 2026 14:55 (Seb) ===== */
+
+/* A note from Seb and the Prologue: a thin border all round instead of a shadow and a coloured edge. */
+.nl-note,
+.nl-prologue {
+  border: 1px solid #c2b7dd;
+  box-shadow: none;
+}
+
+/* Seven questions: no hover effect; "Go deeper" splits into three clear parts. */
+.nl-deep summary:hover span:first-child {
+  text-decoration: none;
+}
+
+.nl-deep-sec {
+  margin-top: 16px;
+  padding: 18px 22px 20px;
+  border: 1px solid;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.nl-page .nl-deep-sec h4 {
+  margin-top: 0;
+}
+
+.nl-deep-sec--ask { border-color: #c2b7dd; }
+.nl-deep-sec--try { border-color: #73e7c4; background: #f3fffb; }
+.nl-deep-sec--journal { border-color: #feb5bc; background: #fff9fa; }
+
+/* Keep reading: the envelope sketch 30% bigger. */
+.nl-signup.nl-signup-split {
+  grid-template-columns: minmax(0, 1fr) 390px;
+}
+
+@media (max-width: 800px) {
+  .nl-signup.nl-signup-split { grid-template-columns: minmax(0, 1fr); }
+  .nl-signup-art { width: min(312px, 80%); }
+}
+
+/* The Stage 1 line stands apart from the newsletter sequence: a Stage 1 (GRASS) card. */
+.nl-closing {
+  border: 1px solid #01a684;
+  background: #e7fff6;
+  box-shadow: none;
+}
+
+.nl-page .nl-well .nl-closing p {
+  color: #2a0b4f;
+}
+
+.nl-page .nl-well .nl-closing .nl-closing-label {
+  margin-bottom: 8px;
+  color: #05745b;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.nl-closing a {
+  color: #05745b;
+  text-decoration-color: #01a684;
+}
+
+.nl-closing a:hover {
+  color: #2a0b4f;
+}

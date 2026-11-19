@@ -319,12 +319,19 @@ const heroLine =
                     </summary>
                     <div class="nl-deep-body">
                       <p class="nl-deep-why">{item.why}</p>
-                      <h4>Questions behind the question</h4>
-                      <ul class="nl-deep-list">{item.ask.map((x) => <li>{x}</li>)}</ul>
-                      <h4>Try this: {item.exercise.title}</h4>
-                      <ol class="nl-deep-steps">{item.exercise.steps.map((x) => <li>{x}</li>)}</ol>
-                      <h4>Journal prompts</h4>
-                      <ul class="nl-deep-list nl-deep-journal">{item.journal.map((x) => <li>{x}</li>)}</ul>
+                      <!-- Three separate parts (Seb, 19 Nov 2026 14:55) -->
+                      <div class="nl-deep-sec nl-deep-sec--ask">
+                        <h4>Questions behind the question</h4>
+                        <ul class="nl-deep-list">{item.ask.map((x) => <li>{x}</li>)}</ul>
+                      </div>
+                      <div class="nl-deep-sec nl-deep-sec--try">
+                        <h4>Try this: {item.exercise.title}</h4>
+                        <ol class="nl-deep-steps">{item.exercise.steps.map((x) => <li>{x}</li>)}</ol>
+                      </div>
+                      <div class="nl-deep-sec nl-deep-sec--journal">
+                        <h4>Journal prompts</h4>
+                        <ul class="nl-deep-list nl-deep-journal">{item.journal.map((x) => <li>{x}</li>)}</ul>
+                      </div>
                     </div>
                   </details>
                 </div>
@@ -452,6 +459,7 @@ const heroLine =
         <p class="nl-chapters-note">Working titles. They may change as the chapters are written.</p>
 
         <div class="nl-closing">
+          <p class="nl-closing-label">Ready for more than reading?</p>
           <p>If you already know you'd like a private place to do this work, you can <a href="/apply-stage-1">apply for Stage 1</a>.</p>
         </div>
       </div>

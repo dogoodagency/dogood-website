@@ -722,3 +722,12 @@ html.faq-js .faq-item:not(.is-open) .faq-panel {
     padding-bottom: 56px;
   }
 }
+
+/* 19 Nov 2026 14:55 (Seb): no envelope sketch; the text starts at the left, with room on its right. */
+.faq-news {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.faq-news-body {
+  padding-right: 32px;
+}

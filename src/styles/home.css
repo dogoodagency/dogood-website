@@ -7934,3 +7934,19 @@ body:has(.page-home) {
     white-space: normal;
   }
 }
+
+/* 19 Nov 2026 14:55 (Seb): the letterbox sketch lines up with the top of the form, and the map has a thin
+   border. */
+@media (min-width: 801px) {
+  .page-contact .contact-top {
+    align-items: start;
+  }
+
+  .page-contact .contact-side {
+    margin-top: 98px;
+  }
+}
+
+.page-contact .contact-map {
+  border: 1px solid #c2b7dd;
+}

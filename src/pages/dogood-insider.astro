@@ -2,21 +2,18 @@
 import "../styles/podcast.css";
 import Base from "../layouts/Base.astro";
 import Wave from "../components/Wave.astro";
-import PodcastEpisodeCard from "../components/PodcastEpisodeCard.astro";
 import PodcastPills from "../components/PodcastPills.astro";
 import { edgeAbove } from "../data/edge-line";
 import { episodes, SHOW_LINKS } from "../data/podcast";
 
 const tint = "#f5f2ff";
 const white = "#ffffff";
-const dream = "#2A0B4F"; // was HEART pink; DREAM purple per the style guide (Seb, 18 Nov 2026)
 const heroEdge = edgeAbove("#2A0B4F");
 const tintEdge = edgeAbove(tint);
-const dreamEdge = edgeAbove("#2A0B4F");
 
 const title = "The DoGood Insider podcast archive | DoGood Agency";
 const description =
-  "The DoGood Insider archive: past podcast conversations with founders and leaders on company culture, teams and leadership, recorded before DoGood focused on exits.";
+  "The DoGood Insider archive: podcast conversations with founders, senior executives and L&D leaders on culture, leadership and growth, recorded before DoGood focused on the sale.";
 const canonical = "https://www.dogoodagency.co/dogood-insider";
 
 const jsonLd = {
@@ -32,43 +29,53 @@ const jsonLd = {
 <Base title={title} description={description} canonical={canonical} footerStrip={white} footerEdge={edgeAbove(white)}>
   <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
-  <article class="pod-page">
+  <!-- Reworked 19 Nov 2026 14:55 (Seb): a clear archive page for the new audience. Old illustrations and
+       episode covers removed; our own napkin sketch only. The recordings were made for culture work with
+       founders, senior executives and L&D leaders, before DoGood focused on the sale. -->
+  <article class="pod-page pod-page--v2">
     <header class="pod-hero">
-      <!-- Hero image removed and copy widened (Seb, 18 Nov 2026). -->
-      <div class="pod-well pod-hero-inner">
+      <div class="pod-well pod-hero-inner pod2-hero">
         <div class="pod-hero-copy">
+          <p class="pod2-eyebrow">The DoGood Insider · podcast archive</p>
           <h1>DoGood <span class="pod-pink">Insider</span></h1>
-          <p class="pod-sub">Raw Stories from Culture-First Founders &amp; CEOs</p>
+          <p class="pod-sub">Conversations on culture, leadership and the people behind the company</p>
           <p>
-            Step into unfiltered, <strong>raw talks for founders and CEOs</strong> who are navigating more than just business — they're navigating themselves.
-          </p>
-          <p>
-            This podcast reveals the hidden realities behind culture, growth, success, and <strong class="pod-pink">what happens when it starts to crack.</strong><br />
-            No polished corporate facades. Just the real human challenges, pivotal decisions, and breakthrough moments that don't make it into the press release.
-          </p>
-          <p>
-            Join us as founders and other leaders share their authentic journeys — through culture erosion, burnout, identity loss, reinvention, and what it actually takes to <strong>rebuild from the inside out</strong>.
+            Before DoGood focused on founders around the sale, Seb recorded these conversations for leaders building
+            culture: <strong>founders, senior executives and L&amp;D leaders.</strong> They talk honestly about growth,
+            teams, values, pressure, and what it costs the person at the top.
           </p>
           <div class="pod-avail">
-            <p class="pod-avail-label">Available on</p>
+            <p class="pod-avail-label">Listen on</p>
             <PodcastPills links={SHOW_LINKS} />
           </div>
         </div>
+        <picture class="pod2-art">
+          <source type="image/webp" srcset="/sketches/podcast-two-chairs-microphone@1x.webp 1x, /sketches/podcast-two-chairs-microphone@2x.webp 2x" />
+          <img src="/sketches/podcast-two-chairs-microphone@1x.png" srcset="/sketches/podcast-two-chairs-microphone@1x.png 1x, /sketches/podcast-two-chairs-microphone@2x.png 2x" width="420" height="320" alt="Two empty chairs facing each other with a microphone between them, drawn as a napkin sketch." />
+        </picture>
       </div>
       <Wave fill={white} edge={heroEdge} />
     </header>
 
-    <section class="pod-band" aria-labelledby="pod-episodes">
+    <section class="pod-band" aria-labelledby="pod2-about">
       <div class="pod-well pod-section">
-        <h2 class="pod-sr" id="pod-episodes">All episodes</h2>
-        <ul class="pod-grid">
-          {
-            episodes.map((episode, i) => (
-              <li>
-                <PodcastEpisodeCard episode={episode} eager={i < 3} />
-              </li>
-            ))
-          }
+        <h2 class="pod2-h2" id="pod2-about">What you'll hear</h2>
+        <ul class="pod2-cards">
+          <li class="pod2-card pod2-card--dream">
+            <p class="pod2-card-label">Who</p>
+            <h3>Founders, senior executives and L&amp;D leaders</h3>
+            <p>CEOs, co-founders, culture and people leaders from start-ups to large organisations.</p>
+          </li>
+          <li class="pod2-card pod2-card--grass">
+            <p class="pod2-card-label">What</p>
+            <h3>Culture, leadership and growth</h3>
+            <p>Values that hold under pressure, scaling teams, remote work, hiring, decisions and accountability.</p>
+          </li>
+          <li class="pod2-card pod2-card--heart">
+            <p class="pod2-card-label">Why it still matters</p>
+            <h3>The person behind the role</h3>
+            <p>The same questions come back around a sale: who am I without the role, and what is all this for?</p>
+          </li>
         </ul>
       </div>
     </section>
@@ -77,92 +84,53 @@ const jsonLd = {
       <Wave fill={tint} edge={tintEdge} />
     </div>
 
-    <section class="pod-band pod-band-tint">
-      <div class="pod-well pod-split pod-split-reverse">
-        <div class="pod-split-art">
-          <img
-            src="/media/podcast/host-second@1x.webp"
-            srcset="/media/podcast/host-second@1x.webp 560w, /media/podcast/host-second@2x.webp 1120w"
-            sizes="(max-width: 800px) 420px, 520px"
-            width="560"
-            height="400"
-            alt="Illustration of two people in conversation with speech bubbles"
-            loading="lazy"
-          />
-        </div>
-        <div class="pod-split-copy">
-          <p>
-            Hosted by <strong>DoGood Agency</strong> — a partner in founder transformation, operational excellence, and culture change — this podcast is for founders navigating more than just scale.
-          </p>
-          <p>It's for those facing the personal side of building, leading, and letting go.</p>
-        </div>
+    <section class="pod-band pod-band-tint" aria-labelledby="pod-episodes">
+      <div class="pod-well pod-section">
+        <h2 class="pod2-h2" id="pod-episodes">All episodes</h2>
+        <p class="pod2-lede">{episodes.length} conversations. Each page has the full episode, a summary and the chapters.</p>
+        <ol class="pod2-list">
+          {
+            episodes.map((episode, i) => (
+              <li class="pod2-ep">
+                <span class="pod2-ep-n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+                <div class="pod2-ep-body">
+                  <h3><a href={`/podcast/${episode.slug}`}>{episode.cardTitle}</a></h3>
+                  <p>{episode.cardSubtitle}</p>
+                </div>
+                <span class="pod2-ep-dur">{episode.duration}</span>
+                <a class="pod2-ep-go" href={`/podcast/${episode.slug}`} aria-label={`Listen: ${episode.cardTitle}`}>Listen →</a>
+              </li>
+            ))
+          }
+        </ol>
       </div>
     </section>
 
     <div class="pod-divider" style={`background:${tint}`} aria-hidden="true">
-      <Wave fill={dream} edge={tintEdge} />
+      <Wave fill={white} edge={tintEdge} />
     </div>
 
-    <section class="pod-band pod-band-dream" aria-labelledby="pod-seb-name">
-      <div class="pod-well pod-seb-wrap">
-        <div class="pod-seb">
-          <div class="pod-seb-photo">
-            <img
-              src="/media/podcast/seb-host@1x.webp"
-              srcset="/media/podcast/seb-host@1x.webp 560w, /media/podcast/seb-host@2x.webp 1120w"
-              sizes="(max-width: 800px) 100vw, 360px"
-              width="560"
-              height="834"
-              alt="Portrait of Seb Wichmann"
-              loading="lazy"
-            />
-          </div>
-          <div class="pod-seb-copy">
+    <section class="pod-band" aria-labelledby="pod-seb-name">
+      <div class="pod-well pod-section">
+        <div class="pod2-host">
+          <img class="pod2-host-img" src="/media/podcast/seb-host@1x.webp" width="160" height="160" alt="Portrait of Seb Wichmann" loading="lazy" />
+          <div>
+            <p class="pod2-card-label">Your host</p>
             <h2 id="pod-seb-name">Seb Wichmann</h2>
-            <p>
-              I've spent 14 years transforming cultures across 35+ countries — advising Fortune 500 companies, leading leadership programs, and earning recognition as an Upwork Expert-Vetted professional and 'SuperCoach' award recipient.
-            </p>
-            <p><strong>But my most important transformation was my own.</strong></p>
-            <p>
-              I built a successful business that nearly broke me. I know what it's like to perform at the top while quietly falling apart.
-            </p>
-            <p>
-              That journey is why <strong class="pod-pink">I now work exclusively with founders</strong> facing the same crossroads. Whether you're still in the thick of it or figuring out what comes next, I've been where you are.
-            </p>
+            <p>Seb has spent 14 years working on culture across 35+ countries, with Fortune 500 companies and leadership programmes. He built a business that nearly broke him, and today he works with founders on the personal side of the sale, with DoGood's team of Wayfinders.</p>
           </div>
         </div>
-      </div>
-    </section>
 
-    <div class="pod-divider" style={`background:${dream}`} aria-hidden="true">
-      <Wave fill={white} edge={dreamEdge} />
-    </div>
-
-    <section class="pod-band">
-      <div class="pod-well pod-split pod-split-last">
-        <div class="pod-split-copy">
-          <p>Most founder content is about winning — the tactics, the exits, the highlights reel.</p>
-          <p><strong>This podcast is about what happens in between.</strong></p>
-          <p>
-            The guests on <strong>DoGood <span class="pod-pink">Insider</span></strong> aren't here to impress you. They're here because they've lived through something real — and they're willing to talk about it honestly. The doubts. The pivots. The moments that reshaped how they lead and live.
-          </p>
-          <p>
-            You won't find scripts. Just founders, CEOs, and other leaders saying the things most people only admit in private.
-          </p>
-          <p>
-            If you've ever wondered whether anyone else feels the way you do — they do. <strong>And they're on this show.</strong>
-          </p>
-        </div>
-        <div class="pod-split-art">
-          <img
-            src="/media/podcast/routines-asset@1x.webp"
-            srcset="/media/podcast/routines-asset@1x.webp 560w, /media/podcast/routines-asset@2x.webp 900w"
-            sizes="(max-width: 800px) 420px, 520px"
-            width="560"
-            height="373"
-            alt="Illustration of a man with a clock"
-            loading="lazy"
-          />
+        <div class="pod2-next">
+          <div>
+            <p class="pod2-card-label pod2-card-label--light">Where the conversation goes now</p>
+            <h2>Honest notes for founders, before and after the sale</h2>
+            <p>New writing lives in Insights and the newsletter. New recorded conversations with exit advisors are coming as Advisor voices.</p>
+          </div>
+          <div class="pod2-next-actions">
+            <a class="btn-teal" href="/insights">Read Insights</a>
+            <a class="pod2-link" href="/newsletter">Join the newsletter →</a>
+          </div>
         </div>
       </div>
     </section>

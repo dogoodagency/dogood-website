@@ -79,7 +79,7 @@ const jsonLd = {
     <section class="wf-band" aria-labelledby="wf-how">
       <div class="wf-well wf-well-top">
         <h2 class="wf-h2" id="wf-how">How it works</h2>
-        <ol class="wf-timeline">
+        <ol class="wf-timeline wf-timeline--grass" data-wf-tl>
           {
             steps.map((step, i) => (
               <li class="wf-tl-item">
@@ -145,4 +145,17 @@ const jsonLd = {
       </div>
     </section>
   </article>
+  <script>
+    /* Client-fit steps appear one after another, in GRASS shades (Seb, 19 Nov 2026 14:55). */
+    document.querySelectorAll<HTMLElement>("[data-wf-tl]").forEach((el) => {
+      if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      el.classList.add("will-animate");
+      const io = new IntersectionObserver(([e]) => {
+        if (!e?.isIntersecting) return;
+        el.classList.add("is-in");
+        io.disconnect();
+      }, { threshold: 0.15 });
+      io.observe(el);
+    });
+  </script>
 </Base>
