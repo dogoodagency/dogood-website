@@ -2,7 +2,7 @@
 title: "FRP-Fit Application | DoGood Agency"
 description: "Founder Reclamation Partnership | Stage 1: The Intensive (30 days)"
 ---
-- [Founders](/how-it-works)
+- [Founders](/pathway)
 - [Wayfinders](/wayfinders)
 
 start here

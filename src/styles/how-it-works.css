@@ -1,4 +1,4 @@
-/* How It Works page (/how-it-works). Every rule is prefixed .hw- so nothing here can touch
+/* How It Works page (/pathway). Every rule is prefixed .hw- so nothing here can touch
    another page. Same house style as the About and FAQs pages. */
 
 body:has(.hw-page) .footer-wave {

@@ -968,3 +968,12 @@ body:has(.advr-page) .footer-wave {
   max-width: none;
   width: 100%;
 }
+
+/* "Read more" on the tool cards: GRASS underline on hover (Seb, 19 Nov 2026 19:42). */
+.advr-card--link:hover .advr-more,
+.advr-card--link:focus-visible .advr-more {
+  text-decoration: underline;
+  text-decoration-color: #28dbb0;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}

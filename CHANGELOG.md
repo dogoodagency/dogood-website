@@ -6,6 +6,21 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 28: Pathway, Reset process, advisor cards (19 Nov 2026, 19:42)
+
+- **/how-it-works is now /pathway** (`src/pages/pathway.astro`); every internal link, the canonical and
+  llms.txt updated; `public/_redirects` sends /how-it-works (and .html) to /pathway with a 301. Nav label
+  "Pathway" (was "Pre & Post").
+- **The Reset, How It Works:** same process design as The Build (numbered circles). The circles now show only the
+  number; "Step 1" stays as the accessible label.
+- **Advisor page, What you get:** "The personal leg…", "You stay the trusted advisor" and "Free tools with your
+  name on the link" in GRASS 50 with a GRASS 600 border; the other three stay DREAM 500.
+- **Advisor FAQ:** answers line up with the question (same 14px side padding).
+- **Free tools:** "For you" tag removed from the Signals Guide card; "Read more" gets a GRASS underline on card
+  hover.
+
+---
+
 ## Preview 6, update 27: Seb's feedback round of 19 Nov 2026, 18:52
 
 **Made by:** Claude (claude.ai). **Commits:** 27a–27d on `claude/preview-6`. axe: no issues on 21 pages; no

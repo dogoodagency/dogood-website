@@ -35,7 +35,7 @@ export const logos = [
 
 export const urls = {
   apply: "/apply-stage-1",
-  partnership: "/how-it-works",
+  partnership: "/pathway",
   caseJ: "/casestudies/j",
   caseV: "/casestudies/v",
   guarantee: "/clarity-first-guarantee-terms",

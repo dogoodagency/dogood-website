@@ -5,7 +5,7 @@ import { urls } from "../data/homepage";
 import { offers, products, advisorLinks, tm, type SiteLink } from "../data/site-links";
 
 const links = [
-  { href: "/how-it-works", label: "Pre & Post", menu: "nav-how" },
+  { href: "/pathway", label: "Pathway", menu: "nav-how" },
   { href: "/services", label: "Services", menu: "nav-products" },
   { href: "/stories", label: "Stories" },
   { href: "/wayfinders", label: "Wayfinders" },
@@ -14,7 +14,7 @@ const links = [
 
 // Menu links come from src/data/site-links.ts (one source for the nav and the footer).
 const toItem = (l: SiteLink) => ({ href: l.href, label: l.navLabel ?? l.label, detail: l.detail ?? "" });
-// "Pre & Post" (Seb, 19 Nov 2026; was "Start here"): the fork between before and after the sale.
+// "Pathway" (Seb, 19 Nov 2026 19:42; was "Pre & Post", before that "Start here"; page /pathway, was /how-it-works): the fork between before and after the sale.
 // Stage 2 is back in the menu under "I've sold" (Seb, 19 Nov 2026 14:55) so the two stages read clearly.
 const howGroups = [
   { label: "I haven’t sold yet", items: [toItem(offers[0])] },
@@ -38,7 +38,7 @@ const menus: Record<
     phoneId: "nav-how-phone",
     groups: howGroups,
     card: {
-      href: "/how-it-works",
+      href: "/pathway",
       label: "Which door is mine?",
       image: "how-it-works-dropdown-card",
       alt: "A founder walks along a teal path past an empty archway toward an open door with a green landscape beyond, drawn as a napkin sketch.",

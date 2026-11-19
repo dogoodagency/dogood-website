@@ -32,7 +32,7 @@ How it works:
 
 Apply → Conversation → Start Stage 1
 
-<a class="btn-teal" href="/how-it-works#anchor-1">See the full process</a>
+<a class="btn-teal" href="/pathway#anchor-1">See the full process</a>
 
 <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
 

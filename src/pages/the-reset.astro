@@ -391,7 +391,7 @@ const [houseBefore, houseStage1, houseStage2] = houses;
         <ol class="hw-steps">
           {steps.map((step) => (
             <li class="hw-step">
-              <p class="hw-step-n">{step.n}</p>
+              <p class="hw-step-n" aria-label={step.n}>{step.n.replace(/^Step\s*/i, "")}</p>
               <h3>{step.title}</h3>
               <p>{step.text}</p>
             </li>

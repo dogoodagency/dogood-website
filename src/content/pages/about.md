@@ -68,6 +68,6 @@ Private. Limited to 5 new founders a month.
 
 **Apply for Stage 1 →** [/apply-stage-1](/apply-stage-1)
 
-**See the two-stage partnership →** [/how-it-works](/how-it-works)
+**See the two-stage partnership →** [/how-it-works](/pathway)
 
 ---

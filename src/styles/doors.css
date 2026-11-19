@@ -1,4 +1,4 @@
-/* How it works fork page (/how-it-works). Every rule is prefixed .dr- so nothing here can
+/* How it works fork page (/pathway). Every rule is prefixed .dr- so nothing here can
    touch another page. Same house style as the About page. */
 
 body:has(.dr-page) .footer-wave {
