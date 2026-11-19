@@ -235,7 +235,7 @@ body:has(.bl-page) .footer-wave {
 .bl-isyou {
   margin: 0 0 24px;
   padding: 0 0 0 18px;
-  border-left: 4px solid var(--bl-teal);
+  border-left: 1px solid var(--bl-teal);
   font-size: 18px;
   line-height: 1.55;
 }

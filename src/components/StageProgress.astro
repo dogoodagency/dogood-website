@@ -6,15 +6,17 @@
 interface Props {
   current: 1 | 2;
   showTitle?: boolean;
+  /** "light": large version for its own band below the hero (Seb, 19 Nov 2026). */
+  tone?: "dark" | "light";
 }
-const { current, showTitle = true } = Astro.props;
+const { current, showTitle = true, tone = "dark" } = Astro.props;
 const steps = [
   { n: 1, href: "/the-reset", label: "Stage 1: The Reset™", note: "30 days" },
   { n: 2, href: "/the-build", label: "Stage 2: The Build™", note: "12 weeks · by invitation" },
 ];
 ---
 
-<nav class="sp" aria-label="Founder Reclamation Partnership stages">
+<nav class:list={["sp", `sp--${tone}`]} aria-label="Founder Reclamation Partnership stages">
   {showTitle && <p class="sp-title">Founder Reclamation Partnership</p>}
   <ol class="sp-steps">
     {
@@ -27,6 +29,7 @@ const steps = [
               <span class="sp-text">
                 <span class="sp-label" set:html={s.label.replace("™", '<span class="tm">™</span>')} />
                 <span class="sp-note">{s.note}</span>
+                {tone === "light" && s.n === current && <span class="sp-here">You are here</span>}
               </span>
             </a>
           </li>
@@ -143,6 +146,72 @@ const steps = [
   .sp :global(.tm) {
     font-size: calc(1em - 2px);
     font-weight: 300;
+  }
+
+  /* Light, large version: Stage 1 GRASS, Stage 2 HEART (the two pages' colours). */
+  .sp--light .sp-title {
+    color: #05745b;
+    text-align: center;
+  }
+
+  .sp--light .sp-steps {
+    max-width: 900px;
+  }
+
+  .sp.sp--light .sp-step a {
+    gap: 16px;
+    padding: 14px 26px 14px 14px;
+    border: 2px solid #c2b7dd;
+    background: #fff;
+    color: #2a0b4f !important;
+  }
+
+  .sp--light .sp-step:first-of-type a { border-color: #01a684; }
+  .sp--light .sp-step:last-of-type a { border-color: #fd6b82; }
+  .sp--light .sp-step.is-current:first-of-type a { background: #e7fff6; }
+  .sp--light .sp-step.is-current:last-of-type a { background: #fff3f4; }
+  .sp--light .sp-step:not(.is-current) a { opacity: 0.78; }
+  .sp--light .sp-step:not(.is-current) a:hover { opacity: 1; }
+
+  .sp--light .sp-dot {
+    width: 48px;
+    height: 48px;
+    border-color: #c2b7dd;
+    font-size: 20px;
+  }
+
+  .sp--light .sp-step:first-of-type .sp-dot { border-color: #01a684; color: #05745b; }
+  .sp--light .sp-step:last-of-type .sp-dot { border-color: #fd6b82; color: #c10e46; }
+  .sp--light .sp-step.is-current:first-of-type .sp-dot { background: #01a684; color: #fff; }
+  .sp--light .sp-step.is-current:last-of-type .sp-dot { background: #c10e46; border-color: #c10e46; color: #fff; }
+  .sp--light .sp-step.is-done .sp-dot { background: #e7fff6; }
+
+  .sp.sp--light .sp-label {
+    color: #2a0b4f;
+    font-size: 22px;
+    font-weight: 900;
+  }
+
+  .sp.sp--light .sp-note {
+    color: #58447f;
+    font-size: 16px;
+  }
+
+  .sp--light .sp-step:first-of-type .sp-here { color: #05745b; }
+  .sp--light .sp-step:last-of-type .sp-here { color: #c10e46; }
+
+  .sp--light .sp-line {
+    height: 3px;
+    background: linear-gradient(90deg, #01a684, #fd6b82);
+  }
+
+  .sp--light .sp-here {
+    display: block;
+    margin-top: 4px;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
 
   @media (max-width: 640px) {

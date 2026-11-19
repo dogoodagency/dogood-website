@@ -526,7 +526,7 @@ body:has(.dr-page) .footer-wave {
   padding: 16px 20px;
   background: #fff;
   border: 1px solid var(--dr-line);
-  border-left: 6px solid var(--dr-teal, #28dbb0);
+  border-left: 1px solid var(--dr-teal, #28dbb0);
   border-radius: 14px;
   color: var(--dr-ink);
   font-size: 17px;

@@ -339,7 +339,7 @@ body:has(.ab-page) .footer-wave {
   padding: 24px 22px;
   background: var(--ab-tint);
   border: 1px solid #e3dcf2;
-  border-left: 6px solid var(--ab-teal);
+  border-left: 1px solid var(--ab-teal);
   border-radius: 18px;
   font-size: 20px;
   font-weight: 800;

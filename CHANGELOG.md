@@ -6,6 +6,37 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 19: The Reset and The Build, each in its own colour (19 Nov 2026, afternoon)
+
+**Made by:** Claude (claude.ai), Seb's feedback of 12:43, batch 2. **Branch:** `claude/preview-6`. **Commit:** `COMMIT19`.
+
+- **Colours:** Stage 1 (/the-reset) is GRASS (tint bands GRASS 25, frames GRASS 600, accents GRASS 700);
+  Stage 2 (/the-build) is HEART (tint bands HEART 25, frames HEART 300/500, accents HEART 600). Classes
+  `.hw-page--s1` / `.hw-page--s2` in how-it-works.css; each page's wave tint matches.
+- **Progress band right below the hero** on both pages: "Two stages. This page is Stage 1/2." with a large
+  light progress bar (StageProgress `tone="light"`: Stage 1 green, Stage 2 pink, "You are here"), and the
+  line "You apply for Stage 1 only. Stage 2 is invite-only." (removed from the hero) with a link across.
+- **/the-reset:** hero lede smaller; hero buttons and "Limited to five new founders a month" removed. Stage
+  cards no longer move and are no longer links: each has a small button to ClarityValue Shift™ / NextLife
+  Passage™. "How it works: Apply → Conversation → Start Stage 1" smaller and links (smooth scroll) to the
+  steps at the bottom. "(FRP can begin within 7 days)" on its own line. Sound bites are the moving wall
+  (as on The Exit Prep); "Names are changed…" note removed. ClarityValue Shift 1-page button removed
+  (text link kept). "You will leave Stage 1 with" frames in GRASS 50 / GRASS 600. Stage 2 teaser gets
+  "How it works: Rework → Navigate → Realign → Integrate" and a text link instead of a button. Case V moved
+  to just before "After Stage 2 (FRP completed)". Signature Retreat renamed "Annual Signature Retreat" and
+  links to /signature-retreat (shared HwSupports). "Leaders who've been through it" now on white with DREAM
+  10 cards (DREAM 500 band removed). Track record numbers HEART 500. Apply button under the guarantee and
+  the whole Wayfinder section removed. Option B link visible on the dark card.
+- **/the-build:** same structure in HEART: hero, progress band, the two stage cards, sound bites, Stage 1
+  recap, case V then Stage 2 (1-page button removed, flow box), supports + retreat, What this partnership
+  is not + case J, testimonials, track record, How it works (Stage 1 → Week 3 decision → Invitation →
+  Start Stage 2) with Apply for Stage 1. Sound bites moved to `src/data/sound-bites.ts` (shared).
+- Thin frames site-wide, continued: thick left bars (4–10px) on text frames set to 1px (includes lists,
+  exit-prep, framework, doors, about, wayfinders, newsletter note, blog "is this you", insights audience
+  heads). Pull-quote bars inside articles kept.
+
+---
+
 ## Preview 6, update 18: site-wide rules, Start here / Services nav, homepage and footer (19 Nov 2026, early afternoon)
 
 **Made by:** Claude (claude.ai), from Seb's feedback of 12:43 (batch 1 of several). **Branch:** `claude/preview-6`. **Commit:** `92ea37c`.

@@ -701,7 +701,7 @@ h2.wf-h2.wf-center {
   padding: 28px 24px;
   background: #fff;
   border: 1px solid var(--wf-line);
-  border-left: 6px solid var(--wf-teal);
+  border-left: 1px solid var(--wf-teal);
   border-radius: 18px;
   font-size: 17px;
   font-weight: 600;

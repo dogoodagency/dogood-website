@@ -122,7 +122,7 @@
   min-width: 0;
   padding: 22px 24px;
   border: 1px solid var(--ep-line);
-  border-left: 6px solid var(--ep-teal);
+  border-left: 1px solid var(--ep-teal);
   border-radius: 16px;
   color: var(--ep-ink);
   font-size: 16px;

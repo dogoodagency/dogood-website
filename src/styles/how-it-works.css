@@ -377,7 +377,7 @@ body:has(.hw-page) .footer-wave {
   padding: 16px 20px;
   background: #fff;
   border: 1px solid var(--hw-line);
-  border-left: 6px solid var(--hw-teal);
+  border-left: 1px solid var(--hw-teal);
   border-radius: 16px;
   font-size: 17px;
   line-height: 1.5;
@@ -1288,7 +1288,7 @@ body:has(.hw-page) .footer-wave {
   padding: 28px 32px;
   background: #fff;
   border: 2px solid var(--hw-teal);
-  border-left-width: 10px;
+  border-left-width: 1px;
   border-radius: 20px;
 }
 
@@ -1618,4 +1618,183 @@ body:has(.hw-page) .footer-wave {
 
 .hw-page .hw-stages-light .hw-stage-arrow {
   color: #c10e46;
+}
+
+/* ===== Stage pages, update 19 (Seb, 19 Nov 2026) =====
+   Each stage has its own colour: Stage 1 (/the-reset) GRASS, Stage 2 (/the-build) HEART. Tint bands, frames
+   and accents follow the page colour; dark text stays DREAM 500. */
+.hw-page--s1 {
+  --hw-tint: #f3fffb;
+  --hw-line: #a3f2d7;
+  --hw-accent: #01a684;
+  --hw-accent-ink: #05745b;
+  --hw-soft: #e7fff6;
+}
+
+.hw-page--s2 {
+  --hw-tint: #fff9fa;
+  --hw-line: #feb5bc;
+  --hw-accent: #ea1557;
+  --hw-accent-ink: #c10e46;
+  --hw-soft: #fff3f4;
+}
+
+.hw-page--s1 .hw-band-tint,
+.hw-page--s2 .hw-band-tint {
+  background: var(--hw-tint);
+}
+
+.hw-page--s1 .hw-eyebrow-left,
+.hw-page--s2 .hw-eyebrow-left,
+.hw-page--s1 .hw-stage-kicker,
+.hw-page--s2 .hw-stage-kicker {
+  color: var(--hw-accent-ink);
+}
+
+/* Hero: the line under the title is smaller. */
+.hw-page .hw-hero .hw-hero-lede-sm {
+  max-width: 640px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* Where you are: the progress band right below the hero. */
+.hw-page .hw-band.hw-path {
+  padding-top: 64px;
+  padding-bottom: 48px;
+  min-height: 0;
+}
+
+.hw-page .hw-path-title {
+  margin: 0 0 32px;
+}
+
+.hw-page .hw-path-note {
+  margin: 28px auto 0;
+  color: var(--hw-ink);
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.hw-page .hw-path-note a {
+  margin-left: 8px;
+  color: var(--hw-accent-ink);
+  font-weight: 800;
+}
+
+/* Reset first. Then build: still cards (no hover lift); each links only through its small button. */
+.hw-page .hw-stages-light .hw-stage-card {
+  padding: 32px 30px;
+  border: 1px solid #2a0b4f;
+  border-radius: 20px;
+  background: #2a0b4f;
+  color: #fff;
+}
+
+.hw-page .hw-stages-light .hw-stage-card--s1 { border-color: #01a684; }
+.hw-page .hw-stages-light .hw-stage-card--s2 { border-color: #fd6b82; }
+.hw-page .hw-stages-light .hw-stage-card--s1 .hw-stage-n { color: #28dbb0; }
+.hw-page .hw-stages-light .hw-stage-card--s2 .hw-stage-n { color: #fd6b82; }
+
+.hw-page .hw-stage-btn {
+  display: inline-flex;
+  margin-top: 14px;
+  padding: 8px 16px;
+  border: 1px solid #28dbb0;
+  border-radius: 999px;
+  color: #28dbb0 !important;
+  background-image: none !important;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none !important;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.hw-page .hw-stage-card--s2 .hw-stage-btn {
+  border-color: #fd6b82;
+  color: #fd6b82 !important;
+}
+
+.hw-page .hw-stage-btn:hover,
+.hw-page .hw-stage-btn:focus-visible {
+  background: #28dbb0;
+  color: #2a0b4f !important;
+}
+
+.hw-page .hw-stage-card--s2 .hw-stage-btn:hover,
+.hw-page .hw-stage-card--s2 .hw-stage-btn:focus-visible {
+  background: #fd6b82;
+  color: #2a0b4f !important;
+}
+
+.hw-page .hw-flow-sm {
+  font-size: 16px;
+}
+
+.hw-page .hw-flow-sm a {
+  color: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* "You will leave Stage 1 with" / supports: frames in the page colour. */
+.hw-page--s1 .hw-includes li,
+.hw-page--s2 .hw-includes li {
+  border: 1px solid var(--hw-accent);
+  background: var(--hw-soft);
+}
+
+.hw-page--s1 .hw-includes li strong,
+.hw-page--s2 .hw-includes li strong {
+  color: var(--hw-accent-ink);
+}
+
+.hw-page .hw-list-title {
+  color: var(--hw-accent-ink, #2a0b4f);
+}
+
+.hw-page .hw-flow-box--s2 {
+  border-color: #fd6b82;
+  background: #fff3f4;
+}
+
+.hw-page .hw-textlink {
+  color: var(--hw-accent-ink, #2a0b4f);
+  font-weight: 800;
+}
+
+.hw-page .hw-case-top {
+  margin: 0 0 56px;
+}
+
+/* Track record numbers: HEART 500. */
+.hw-page .hw-stats strong {
+  color: #ea1557;
+}
+
+.hw-page .hw-retreat h3 a {
+  color: inherit;
+  text-decoration-color: var(--hw-accent, #28dbb0);
+}
+
+.hw-page .hw-retreat h3 a {
+  color: #fff !important;
+  background-image: none !important;
+}
+
+.hw-page .hw-path .hw-well {
+  padding-top: 56px;
+  padding-bottom: 40px;
+}
+
+.hw-page .hw-option-b a {
+  color: #28dbb0 !important;
+  font-weight: 800;
 }
