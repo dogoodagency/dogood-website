@@ -21,15 +21,15 @@ const toWhite = wave(tint, white);
 
 const places = ["Thinking about selling.", "In a process or under LOI.", "An earnout ahead."];
 
-// Sound bites from real calls (Call Language Log, non-private rows, lightly cleaned; no names).
+// Sound bites from real calls (Call Language Log, non-private rows, lightly cleaned). Names are stand-ins (first name + initial, Seb 19 Nov 2026); the page says they are changed.
 // The first three were already here; three added 19 Nov 2026 (Q005, Q092, Q132).
 const quotes = [
-  { quote: "Maybe we're a year and a half out.", name: "Founder", role: "Before the sale" },
-  { quote: "It would make sense to start to get clarity on the human part of it a year prior to that.", name: "Founder", role: "Before the sale" },
-  { quote: "The truth is, I have no idea.", name: "Founder", role: "Before the sale" },
-  { quote: "Or just sell it, take all the risk off the table and ride off into the sunset.", name: "Founder", role: "Before the sale" },
-  { quote: "Leading up to a transaction is very stressful.", name: "Exit advisor" },
-  { quote: "They really want to exit, but they're just scared. They're putting the brakes on.", name: "Founder community owner" },
+  { quote: "Maybe we're a year and a half out.", name: "Mark T", role: "Founder" },
+  { quote: "It would make sense to start to get clarity on the human part of it a year prior to that.", name: "David R", role: "Founder" },
+  { quote: "The truth is, I have no idea.", name: "Sarah K", role: "Co-founder" },
+  { quote: "Or just sell it, take all the risk off the table and ride off into the sunset.", name: "Paul M", role: "Founder" },
+  { quote: "Leading up to a transaction is very stressful.", name: "Lisa B", role: "Exit advisor" },
+  { quote: "They really want to exit, but they're just scared. They're putting the brakes on.", name: "James W", role: "Founder community owner" },
 ];
 
 // From the Exit-Prep one-pager (v1, Seb, 19 Nov 2026). The price is left out until Seb decides on publishing prices.
@@ -129,7 +129,7 @@ const faqJson = {
     <section class="ep-band ep-band-tint" aria-labelledby="ep-familiar">
       <div class="ep-well ep-well-top">
         <h2 id="ep-familiar">Sound bites</h2>
-        <p class="ep-lede-plain">Words from real calls with founders and the advisors who walk with them.</p>
+        <p class="ep-lede-plain">Words from real calls with founders and the advisors who walk with them. Names are changed to protect their privacy.</p>
         <TestimonialWall items={quotes} short label="Sound bites from real calls with founders and advisors" />
       </div>
     </section>

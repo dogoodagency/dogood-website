@@ -926,3 +926,10 @@ html.adv-js .adv-faq-item:not(.is-open) .adv-faq-panel {
 .adv-hero-audience {
   max-width: 820px;
 }
+
+/* Privacy note under "What advisors tell us" (19 Nov 2026). */
+.adv-page .adv-quotes-note {
+  margin: -8px 0 20px;
+  color: #533f79;
+  font-size: 14px;
+}

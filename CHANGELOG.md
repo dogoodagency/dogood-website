@@ -6,6 +6,79 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 12: How it works, Exit-Prep, The Reset and Stories reworked; new logos and testimonials; quote names (19 Nov 2026, morning)
+
+**Made by:** Claude (claude.ai), from Seb's feedback (screenshots 14 to 19, seven logos, two headshots, the Exit-Prep one-pager v1). **Branch:** `claude/preview-6`. **Commits:** `eea6d30`, `302f357`, and the quote-name commit below.
+
+### Shared: moving testimonial wall (new `src/components/TestimonialWall.astro`, `testimonial-wall.css`)
+- Same motion as the Stories page: three columns drifting on desktop, two on tablet, a
+  still list on phones and with reduced motion. Stops on hover and keyboard focus.
+  Optional portraits; `tone="dark"` for DREAM 500 bands; `short` for sound bites.
+
+### How it works (`how-it-works.astro`, `doors.css`)
+- Hero text only, subheadline on one line. The two doors sit below the hero, each in its
+  own colour (Exit-Prep: lilac frame, DREAM button; The Reset: mint frame, teal button),
+  with an eyebrow, a line of context and three facts each.
+- New "Which door is mine?" (four situations, links to Exit-Prep, The Reset, the
+  orientation call and FAQs) with the hero sketch moved here.
+- "Sound bites": six quotes on the moving wall (three new from the Call Language Log).
+- "Notes for founders": three latest articles plus the newsletter sign-up.
+- Advisor strip: heading and button on one row.
+
+### Exit-Prep (`exit-prep.astro`, `exit-prep.css`)
+- Hero subheadline on one line. "Sound familiar?" renamed **"Sound bites"** (moving wall,
+  three more quotes).
+- New "What Exit-Prep is" from the one-pager: what it is, who it's for, what's included,
+  the outcomes. **The price (USD 18,000) is not shown**; publishing prices is still Seb's
+  decision.
+- "Working alongside your advisors": more text and links to two articles and the
+  Advisor Center.
+- Three new FAQs (when to start, under LOI or earnout, therapy or financial advice), also in
+  the FAQPage markup. Bottom "Book a free call" box removed.
+
+### The Reset (`the-reset.astro`, `how-it-works.css`)
+- Hero slimmed (heading, one line, the apply and process buttons, the limit). The two
+  stage cards, the flow line and the expedite note moved into the next band.
+- "Not there yet? Exit-Prep" is now a highlighted callout with a button.
+- Six sound bites (four new). Wider text.
+- Each house image and its stage content now sit in one box; stage headings use separate
+  colours, sizes and spacing for the stage label, name, tagline, "via" and "How it works".
+- Case studies are featured cards with their portraits.
+- "Leaders who've been through it": moving wall with photos on DREAM 500.
+- Track record counts up on scroll, same script as the homepage.
+- Clarity-First Guarantee on DREAM 500 with the seal.
+- Wayfinder cards: photo and name centred; the "to meet our Wayfinders up close…" line removed.
+- "Apply anyway" removed. "What happens after 30 days": Option A mint, Option B purple.
+
+### Stories (`stories.astro`, `stories.css`, `src/data/stories*.ts`)
+- Hero: "Anonymised stories from founders we have worked with…" (no number of case
+  studies). The note about reviews and logos moved next to the logos at 12px.
+- Case studies stacked, full width, each in its own colour, with portrait, key facts,
+  "The problem" and a "Read … full story" button.
+- Pause button removed. The wall still stops on hover and keyboard focus and stays still
+  with reduced motion (note: WCAG 2.2.2 prefers a visible pause control for moving content).
+- New logos: Sutter Health, BitFlow, LunchAssist, Australian Physiotherapy Association,
+  Google (marks with the company name beside them), eXp Realty and Spiralyze (word marks);
+  on Stories and, recoloured to brand pink, in the homepage logo rail.
+- New testimonials, word for word, with headshots: Gina P (The Wilder Practice, former
+  Google organizational design executive) and Tami L (Studio T). Added to the reviews
+  data, nothing replaced.
+
+### Quote names (all pages with anonymous quotes)
+- Seb asked for a first name and last initial on every quote. The sound bites come from
+  real calls that must stay private, so they now carry **stand-in names** (first name +
+  initial, e.g. "Mark T, Founder", "Anna S, Co-founder") and each section says "Names are
+  changed to protect their privacy." Founders are "Founder" or "Co-founder"; advisors keep
+  their role (Exit planner, Wealth advisor…). Pages: /how-it-works, /exit-prep, /the-reset,
+  /for-advisors. A quote used on two pages keeps the same stand-in name.
+- Named testimonials (homepage, Stories, The Reset wall) are unchanged.
+
+### Checked
+- axe: 0 issues on /how-it-works, /exit-prep, /the-reset, /stories, /for-advisors, home.
+- No broken internal links.
+
+---
+
 ## Preview 6, update 11: About page (vision, Wayfinders photo, IODA, What's next), no hero images, Insights clean-up (18 Nov 2026, night)
 
 **Made by:** Claude (claude.ai), from Seb's feedback (screenshots 12 and 13, IODA logo). **Branch:** `claude/preview-6`. **Commit:** `cc29a3c`.
