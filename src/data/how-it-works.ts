@@ -104,7 +104,7 @@ export type Inclusion = { title: string; detail: string };
 
 export const stage1Includes: Inclusion[] = [
   { title: "8x virtual 1:1 sessions", detail: "2x weekly, 75 min | Diagnose what’s going on, make key distinctions, and set clear next steps" },
-  { title: "1.5-Day In-Person Intensive", detail: "We travel to you | Private block to accelerate one major breakthrough fast" },
+  { title: "1.5-Day In-Person Residency", detail: "We travel to you | Private block to accelerate one major breakthrough fast" },
   { title: "Foundational Founder OS", detail: "Your playbook of tools and exercises — so you can repeat the work" },
   { title: "Onboarding Starter Pack", detail: "Schedule, expectations, support rules, and what we need before Day 0" },
   { title: "Founder Completion Checkpoints", detail: "Tracked identity shifts + integrated, outcome-based proof points at key intervals" },
@@ -119,7 +119,7 @@ export const stage1Includes: Inclusion[] = [
 
 export const stage2Includes: Inclusion[] = [
   { title: "12x virtual 1:1 sessions", detail: "1x weekly, 90 min | Diagnose what's shifting, make key distinctions, and set clear next steps" },
-  { title: "1.5-Day In-Person Intensive", detail: "We travel to you | Private block to accelerate one major breakthrough fast" },
+  { title: "1.5-Day In-Person Residency", detail: "We travel to you | Private block to accelerate one major breakthrough fast" },
   { title: "Founder OS 2.0", detail: "Deeper mechanisms + tighter integration for systematic, long-term change" },
   { title: "NextLife Roadmap", detail: "Your personalized 12-week blueprint + anchor progression, showing where you are headed" },
   { title: "Progress Pulse", detail: "Tracks commitments → routines → patterns so we course-correct immediately" },

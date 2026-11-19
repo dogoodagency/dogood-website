@@ -39,7 +39,7 @@ export const lineLabels: { key: keyof WayfinderLines; label: string }[] = [
   { key: "bestFit", label: "Best Fit" },
   { key: "realStakes", label: "Real Stakes" },
   { key: "trainingMethods", label: "Training & Methods" },
-  { key: "travel", label: "Travel In-Person Intensives" },
+  { key: "travel", label: "Travel In-Person Residencies" },
   { key: "humanSide", label: "Human Side" },
   { key: "whatIdTellYou", label: "What I'd tell you" },
 ];

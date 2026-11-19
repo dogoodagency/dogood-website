@@ -7637,3 +7637,215 @@ body:has(.page-home) {
 .footer .footer-form button.btn-subscribe:focus-visible::before {
   transform: translateY(-50%) scale(0);
 }
+
+/* ===== Preview 6, update 15 (Seb, 19 Nov 2026) ===== */
+
+/* Hero: "We support life in FOUNDERland" at body size (18px). */
+.page-home .hero .hero-copy p.founder-line,
+.page-home .hero .hero-copy p.founder-line .founder-word {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* FOUNDERland in the "This is the first step" frame: GRASS 500. */
+.page-home #first-card .founder-word {
+  color: #28dbb0;
+}
+
+/* Text frames follow one style: 56px / 64px padding, 40px Black titles, 22px Black sub-titles,
+   18px body, highlighted words in Montserrat Black (900), never Bold (700/800). */
+.page-home #first-card,
+.page-home #why .why-copy {
+  padding: 56px 64px;
+}
+
+.page-home #first-card p.invite,
+.page-home #for-you .card h3.t-h3,
+.page-home #why .closing {
+  font-weight: 900;
+}
+
+.page-home #for-you .card h3.t-h3 {
+  font-size: 22px;
+  line-height: 1.3;
+}
+
+.page-home #why p.why-kicker {
+  margin: 0 0 6px;
+  color: #ea1557;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.page-home #why h2.t-h2 {
+  margin: 0 0 14px;
+  color: #2a0b4f;
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1.18;
+  white-space: normal;
+  text-wrap: balance;
+}
+
+.page-home #why .sub {
+  display: block;
+  margin: 0 0 18px;
+  color: #2a0b4f;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.page-home #why .why-copy p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+@media (max-width: 720px) {
+  .page-home #first-card,
+  .page-home #why .why-copy {
+    padding: 36px 24px;
+  }
+
+  .page-home #why h2.t-h2 {
+    font-size: 30px;
+  }
+}
+
+/* Testimonials: the shared moving wall (same as Stories). */
+.page-home #reviews .reviews-band h2 {
+  margin-bottom: 32px;
+}
+
+.page-home #reviews .tw {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* As seen on: a highlighted but quiet frame (DREAM 25 with a DREAM 200 line); DREAM 400 logos drift
+   slowly to the left and fade at the edges. Stops on hover; still and wrapped for reduced motion. */
+.page-home #asseen .asseen-frame {
+  position: relative;
+  overflow: hidden;
+  padding: 36px 0 40px;
+  border: 1px solid #c2b7dd;
+  background: #fff;
+  box-shadow: 0 14px 40px rgba(42, 11, 79, 0.07);
+}
+
+.page-home #asseen .asseen-kicker {
+  margin: 0 0 22px;
+  color: #58447f;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.press-rail {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+.press-track {
+  display: flex;
+  width: max-content;
+  animation: press-drift 46s linear infinite;
+}
+
+.press-rail:hover .press-track {
+  animation-play-state: paused;
+}
+
+.press-set {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 72px;
+  padding-right: 72px;
+}
+
+.press-logo {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  opacity: 0.88;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.press-logo:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.press-logo img {
+  display: block;
+  width: auto;
+  max-width: none;
+}
+
+@keyframes press-drift {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .press-track {
+    width: auto;
+    animation: none;
+  }
+
+  .press-set {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 28px 48px;
+    padding: 0 24px;
+  }
+
+  .press-set[aria-hidden="true"] {
+    display: none;
+  }
+
+  .press-rail {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+}
+
+/* Footer (19 Nov 2026): the longer offer names under Explore wrap inside their column. */
+@media (min-width: 1024px) {
+  .footer-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr) minmax(0, 0.85fr) minmax(450px, max-content);
+  }
+}
+
+/* The Explore column is shifted 70px right from 1081px up, so its padding keeps the text clear of Advisor
+   Center. The day counts sit on their own small line. */
+@media (min-width: 1081px) {
+  .footer .footer-explore {
+    padding-right: 76px;
+  }
+}
+
+.footer .footer-explore .fx-days {
+  display: block;
+  font-size: 0.86em;
+  line-height: 1.3;
+  opacity: 0.8;
+}
+
+.footer .footer-explore li,
+.footer .footer-explore a {
+  white-space: normal;
+}
+
+/* 1081–1279px: the opt-in line wraps so it doesn't run under the Explore column. */
+@media (min-width: 1081px) and (max-width: 1279px) {
+  .footer .footer-subscribe .optin-copy,
+  .footer .footer-subscribe p {
+    white-space: normal;
+  }
+}

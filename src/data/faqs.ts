@@ -158,7 +158,7 @@ export const faqCategories: FaqCategory[] = [
         id: "stage-1-included",
         q: "What’s included in Stage 1: The Reset?",
         a: [
-          "Stage 1 includes: 8 virtual 1:1 sessions (2× weekly, 75 min), a 1.5‑day in-person intensive (we travel to your location), the Foundational Founder OS, the 10‑Day Containment Protocol, Recovery & Stress Diagnostics (with WHOOP, purchased separately), and your 16‑Week Reclamation Plan.",
+          "Stage 1 includes: 8 virtual 1:1 sessions (2× weekly, 75 min), a 1.5‑day in-person residency (we travel to your location), the Foundational Founder OS, the 10‑Day Containment Protocol, Recovery & Stress Diagnostics (with WHOOP, purchased separately), and your 16‑Week Reclamation Plan.",
         ],
       },
       // [SEB]
@@ -220,7 +220,7 @@ export const faqCategories: FaqCategory[] = [
         id: "stage-2-included",
         q: "What is included in Stage 2: The Build?",
         a: [
-          "Stage 2 is a wider build around real life, deeper decisions and long-term alignment, over 12 weeks. It includes 12 virtual 1:1 sessions (weekly, 90 minutes), another 1.5-day in-person intensive, Founder OS 2.0, a NextLife Roadmap (your personalized 12-week blueprint), a Progress Pulse that tracks commitments, routines and patterns, custom state-shift audio, a Relationship + Health Restore Kit, and Partnership Reviews in Week 5 and Week 12.",
+          "Stage 2 is a wider build around real life, deeper decisions and long-term alignment, over 12 weeks. It includes 12 virtual 1:1 sessions (weekly, 90 minutes), another 1.5-day in-person residency, Founder OS 2.0, a NextLife Roadmap (your personalized 12-week blueprint), a Progress Pulse that tracks commitments, routines and patterns, custom state-shift audio, a Relationship + Health Restore Kit, and Partnership Reviews in Week 5 and Week 12.",
           "See the [1‑page NextLife Passage™](https://drive.google.com/file/d/12qR6tjfv196rJ0Q32ltmUiHbGLVctyhh/view?usp=sharing).",
         ],
       },
@@ -241,9 +241,9 @@ export const faqCategories: FaqCategory[] = [
       // [SEB]
       {
         id: "in-person-intensive",
-        q: "How does the in-person intensive work (travel, location, logistics)?",
+        q: "How does the in-person residency work (travel, location, logistics)?",
         a: [
-          "Stage 1 includes a private 1.5‑Day Intensive where we travel to your location. It’s not a retreat or group experience. It’s a focused working block to move one major issue faster than calls alone. Logistics (timing, setting, and schedule) are coordinated during onboarding once you’re accepted.",
+          "Stage 1 includes a private 1.5‑Day Residency where we travel to your location. It’s not a retreat or group experience. It’s a focused working block to move one major issue faster than calls alone. Logistics (timing, setting, and schedule) are coordinated during onboarding once you’re accepted.",
         ],
       },
       // [ADDED – source: chat-brief-approved.txt §7 & §10 ("Where are you based?", "What languages do you work in?"); wayfinders.md]
@@ -251,7 +251,7 @@ export const faqCategories: FaqCategory[] = [
         id: "location-and-languages",
         q: "Where are you based, and which languages do you work in?",
         a: [
-          "We work with founders internationally. Sessions are online, and your Wayfinder travels to you for the 1.5-day in-person intensive. The team is spread across several regions, including North America, Europe and Asia-Pacific, and the details depend on your Wayfinder, which we sort out with you after you apply.",
+          "We work with founders internationally. Sessions are online, and your Wayfinder travels to you for the 1.5-day in-person residency. The team is spread across several regions, including North America, Europe and Asia-Pacific, and the details depend on your Wayfinder, which we sort out with you after you apply.",
           "Sessions are available in English, German, Spanish, Albanian and Portuguese, depending on the Wayfinder, and every Wayfinder works in English. Mention your preferred language in your application and we will take it into account when we match you. You can [meet the Wayfinders](/wayfinders).",
         ],
       },
@@ -392,7 +392,7 @@ export const faqCategories: FaqCategory[] = [
         q: "How is The Exit-Prep different from Stage 1?",
         a: [
           "It is the same service at the level of commitment that fits where you are today. It is not a lite version of The Reset.",
-          "Stage 1: The Reset is a 30-day engagement for founders who have exited or stepped away, with eight virtual 1:1 sessions and a 1.5-day in-person intensive. The Exit-Prep is built for founders who still run the company: six weekly private sessions of 75–90 minutes over six weeks, held remotely. Both are one to one, private and confidential, with the same conditions. If you later want to go deeper after the sale, you can move on to Stage 1.",
+          "Stage 1: The Reset is a 30-day engagement for founders who have exited or stepped away, with eight virtual 1:1 sessions and a 1.5-day in-person residency. The Exit-Prep is built for founders who still run the company: six weekly private sessions of 75–90 minutes over six weeks, held remotely. Both are one to one, private and confidential, with the same conditions. If you later want to go deeper after the sale, you can move on to Stage 1.",
         ],
       },
     ],

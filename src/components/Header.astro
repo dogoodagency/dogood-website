@@ -5,6 +5,7 @@ import { urls } from "../data/homepage";
 
 const links = [
   { href: "/how-it-works", label: "How it works", menu: "nav-how" },
+  { href: "/products", label: "Products", menu: "nav-products" },
   { href: "/stories", label: "Stories" },
   { href: "/wayfinders", label: "Wayfinders" },
   { href: "/for-advisors", label: "Advisor Center", menu: "nav-advisors" },
@@ -16,13 +17,48 @@ const howGroups = [
     items: [
       {
         href: "/exit-prep",
-        label: "Exit-Prep",
+        label: "The Exit Prep™",
         detail: "For founders who haven’t sold yet. Six private weekly sessions to prepare yourself, not just the company.",
       },
       {
         href: "/the-reset",
-        label: "The Reset + The Build",
-        detail: "For founders who have sold. Start with 30 days to reset, then build what’s next when you’re ready.",
+        label: "Stage 1: The Reset™ (30 Days)",
+        detail: "For founders who have sold. 30 private days to see what is surfacing before the next big decision.",
+      },
+      {
+        // Own page still to come (Seb, 19 Nov 2026); points at the Stage 2 section until then.
+        href: "/the-reset#hw-stage2",
+        label: "Stage 2: The Build™ (12 Weeks)",
+        detail: "By invitation after Stage 1. Twelve weeks to build the life you chose, so it holds.",
+      },
+    ],
+  },
+];
+
+// Products (Seb, 19 Nov 2026): the offers around the two stages.
+const productGroups = [
+  {
+    label: "Beyond the two stages",
+    items: [
+      {
+        href: "/residency",
+        label: "1.5-Day In-Person Residency",
+        detail: "Play, adventure and meaning, in person with your Wayfinder. On its own, or as part of Stage 1 or Stage 2.",
+      },
+      {
+        href: "/integral-continuity",
+        label: "IntegralContinuity™",
+        detail: "Ongoing sessions with your Wayfinder after both stages, once or twice a month. Light or Private.",
+      },
+      {
+        href: "/signature-retreat",
+        label: "Annual Signature Retreat",
+        detail: "Invitation only. Our annual, in-person retreat with a small group of founders.",
+      },
+      {
+        href: "/founderland-membership",
+        label: "FOUNDERland Membership",
+        detail: "The house founders belong to, before and after the sale.",
       },
     ],
   },
@@ -74,6 +110,16 @@ const menus: Record<
       label: "How it works",
       image: "how-it-works-dropdown-card",
       alt: "A founder walks along a teal path past an empty archway toward an open door with a green landscape beyond, drawn as a napkin sketch.",
+    },
+  },
+  "nav-products": {
+    phoneId: "nav-products-phone",
+    groups: productGroups,
+    card: {
+      href: "/products",
+      label: "All products",
+      image: "products-dropdown-card",
+      alt: "Founders and their families laugh together around a long table with a teal runner and a single pink flower, drawn as a napkin sketch.",
     },
   },
   "nav-advisors": {

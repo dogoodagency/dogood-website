@@ -1,0 +1,30 @@
+---
+import ProductPage from "../components/ProductPage.astro";
+// Annual Signature Retreat (Seb, 19 Nov 2026). Copy from the FRP Signature Retreat box on /the-reset, word for word.
+// To be expanded later.
+---
+
+<ProductPage
+  title="Annual Signature Retreat (invitation only) | DoGood Agency"
+  description="Our annual, in-person retreat with a small group of founders, built for connection, perspective, and real conversations. Invitation only."
+  path="/signature-retreat"
+  eyebrow="Annual Signature Retreat"
+  h1="A small group of founders. Real conversations."
+  sub="Our annual, in-person retreat."
+  tag="Invitation only"
+  sections={[
+    {
+      id: "sr-what",
+      heading: "What it is",
+      paras: [
+        "Our annual, in-person retreat with a small group of founders, built for connection, perspective, and real conversations. For clients who’ve been with us 6+ months and are in excellent standing.",
+      ],
+      note: "This is not a service inclusion, and it's not guaranteed.",
+    },
+  ]}
+  closing={{
+    heading: "The way in is the work",
+    text: "Invitations go to founders who have been with us for a while. It starts with Stage 1.",
+    cta: { href: "/the-reset", label: "See the 2-Stage Partnership" },
+  }}
+/>

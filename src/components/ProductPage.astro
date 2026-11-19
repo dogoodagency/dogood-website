@@ -1,0 +1,154 @@
+---
+/**
+ * Product pages (Seb, 19 Nov 2026): /residency, /integral-continuity, /signature-retreat,
+ * /founderland-membership and the /products hub. Same look as /exit-prep (exit-prep.css): dark hero,
+ * then bands that alternate DREAM 25 and white with the wavy join. Content is passed in as sections.
+ */
+import "../styles/exit-prep.css";
+import "../styles/products.css";
+import Base from "../layouts/Base.astro";
+import Wave from "./Wave.astro";
+import { edgeAbove } from "../data/edge-line";
+
+export interface Box {
+  title: string;
+  tone?: "sky" | "grass";
+  items: string[];
+}
+
+export interface Section {
+  id: string;
+  heading: string;
+  lede?: string;
+  paras?: string[];
+  boxes?: Box[];
+  steps?: { label: string; title: string; text: string }[];
+  cards?: { href: string; title: string; text: string; tag?: string }[];
+  note?: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  eyebrow: string;
+  h1: string;
+  sub: string;
+  tag?: string;
+  cta?: { href: string; label: string };
+  sections: Section[];
+  closing?: { heading: string; text: string; cta: { href: string; label: string } };
+}
+
+const { title, description, path, eyebrow, h1, sub, tag, cta, sections, closing } = Astro.props;
+
+const tint = "#F5F2FF";
+const white = "#ffffff";
+const heroEdge = edgeAbove("#2A0B4F");
+const bandEdge = edgeAbove(tint);
+
+function wave(fromTint: boolean) {
+  const to = fromTint ? white : tint;
+  return `<div class="ep-divider ep-divider--${fromTint ? "tint" : "white"}" aria-hidden="true"><svg style="--wave-edge:${bandEdge}" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${to}" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path><path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path></svg></div>`;
+}
+const lastTint = sections.length % 2 === 1;
+const footerBg = closing ? (lastTint ? white : tint) : lastTint ? tint : white;
+---
+
+<Base
+  title={title}
+  description={description}
+  canonical={`https://www.dogoodagency.co${path}`}
+  footerStrip={footerBg}
+  footerEdge={edgeAbove(footerBg)}
+>
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: eyebrow.replace("™", ""),
+      url: `https://www.dogoodagency.co${path}`,
+      description,
+      provider: { "@id": "https://www.dogoodagency.co/#organization" },
+      areaServed: "Worldwide",
+    })} />
+  <article class="ep-page pp-page">
+    <header class="ep-hero">
+      <div class="ep-hero-inner">
+        <p class="ep-eyebrow">{eyebrow}</p>
+        <h1>{h1}</h1>
+        <p class="ep-sub">{sub}</p>
+        {tag && <p class="pp-tag">{tag}</p>}
+        {cta && <a class="btn-teal" href={cta.href}>{cta.label}</a>}
+      </div>
+      <Wave fill={tint} edge={heroEdge} />
+    </header>
+
+    {
+      sections.map((s, i) => (
+        <>
+          {i > 0 && <Fragment set:html={wave(i % 2 === 1)} />}
+          <section class:list={["ep-band", i % 2 === 0 && "ep-band-tint"]} aria-labelledby={s.id}>
+            <div class="ep-well ep-well-top pp-well">
+              <h2 id={s.id}>{s.heading}</h2>
+              {s.lede && <p class="pp-lede">{s.lede}</p>}
+              {s.paras?.map((p) => <p class="ep-lede-plain" set:html={p} />)}
+              {s.steps && (
+                <ol class="pp-steps">
+                  {s.steps.map((st) => (
+                    <li class="pp-step">
+                      <span class="pp-step-label">{st.label}</span>
+                      <h3>{st.title}</h3>
+                      <p>{st.text}</p>
+                    </li>
+                  ))}
+                </ol>
+              )}
+              {s.boxes && (
+                <div class="ep-grid">
+                  {s.boxes.map((b) => (
+                    <section class:list={["ep-box", `ep-box--${b.tone ?? "sky"}`]}>
+                      <h3>{b.title}</h3>
+                      <ul>{b.items.map((t) => <li>{t}</li>)}</ul>
+                    </section>
+                  ))}
+                </div>
+              )}
+              {s.cards && (
+                <ul class="pp-cards">
+                  {s.cards.map((c) => (
+                    <li>
+                      <a class="pp-card" href={c.href}>
+                        {c.tag && <span class="pp-card-tag">{c.tag}</span>}
+                        <h3>{c.title}</h3>
+                        <p>{c.text}</p>
+                        <span class="pp-card-go" aria-hidden="true">→</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {s.note && <p class="pp-note">{s.note}</p>}
+            </div>
+          </section>
+        </>
+      ))
+    }
+
+    {
+      closing && (
+        <>
+          <Fragment set:html={wave(lastTint)} />
+          <section class:list={["ep-band", !lastTint && "ep-band-tint"]} aria-labelledby="pp-close">
+            <div class="ep-well ep-well-top">
+              <div class="pp-close">
+                <h2 id="pp-close">{closing.heading}</h2>
+                <p>{closing.text}</p>
+                <a class="btn-apply" href={closing.cta.href}>{closing.cta.label}</a>
+              </div>
+            </div>
+          </section>
+        </>
+      )
+    }
+  </article>
+</Base>

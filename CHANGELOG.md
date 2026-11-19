@@ -6,6 +6,66 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 15: homepage polish, offer names, Products menu and four product pages (19 Nov 2026, morning)
+
+**Made by:** Claude (claude.ai), from Seb's feedback of 09:05, the FOX logo, five press logos, the colour
+shades file (DoGood-Colour-Shades-v4) and the Residency one-pagers (Intensive Menu, Intensive Debrief).
+**Branch:** `claude/preview-6`. **Commit:** `COMMIT15`.
+
+### Homepage (`src/pages/index.astro`, `src/styles/home.css`, `src/styles/logo-rails.css`)
+- Headline line restored from preview 4: "For founders who've exited the company they built, / or are
+  getting ready to." (wording to be revisited with the SEO changes).
+- "We support life in FOUNDERland" now 18px (body size).
+- Logo pills: DREAM 10 (#FAF9FF) is what the pills already were and gave no contrast with the white logo
+  circle, so the homepage pill is now the deeper lilac #E9E3F7 with a DREAM 200 line.
+- "This is the first step": FOUNDERland in GRASS 500 #28DBB0 (note: low contrast on white, 1.7:1).
+- Text frames aligned to one style: 56/64px padding, 40px Black titles (34px in the narrower Why frame,
+  allowed to wrap), 22px Black sub-titles, 18px body, highlights in Montserrat Black 900 (not 700/800).
+  Applies to "This is the first step", "This is for you if / NOT for you if" and "Why 'DoGood'?" (the
+  kicker is now pink, the title DREAM 500).
+- Testimonials: the shared moving wall (`TestimonialWall`, as on Stories) with the portrait left of the
+  name and role; stops on hover/focus; still list on phones and for reduced motion.
+- Roles now read "Founder, Company" (was "founder of ..."), in `src/data/homepage.ts` and
+  `src/data/stories.ts`; Gina P is "Founder, The Wilder Practice" (also on /wayfinders). Non-founder roles
+  unchanged (Anja N CEO, Bamboo HR, Realtor at eXp Realty, Tami L "Studio T").
+- As seen on: the single press image is replaced by six DREAM 400 (#58447F) logos
+  (`public/media/press/*.png`, 96px high, transparent), drifting slowly left in a white frame with a
+  DREAM 200 line and soft shadow, edges fading out; stops on hover; wrapped and still for reduced motion.
+  `src/assets/photos/as-seen-on-hires.png` is no longer used (kept).
+
+### Names and navigation (`src/components/Header.astro`, `src/components/Footer.astro`)
+- "Exit-Prep" is now **The Exit Prep™** in the menu and on /exit-prep (eyebrow, heading, title, FAQ,
+  schema). Other pages still say "Exit-Prep" in running copy (how-it-works, FAQs): Seb to confirm a
+  site-wide rename.
+- How it works menu: The Exit Prep™, **Stage 1: The Reset™ (30 Days)**, **Stage 2: The Build™ (12 Weeks)**.
+  Stage 2 links to `/the-reset#hw-stage2` until it gets its own page (proposal pending with Seb).
+- Footer Explore: the same three links added at the top (day counts on a small second line).
+- New **Products** menu (card image `public/nav/products-dropdown-card@1x/2x/3x`, from the long-table
+  sketch, recoloured for the dark card): Residency, IntegralContinuity™, Annual Signature Retreat,
+  FOUNDERland Membership; card links to /products.
+- Footer layout: Explore column padding so longer names don't run under Advisor Center; opt-in line
+  wraps between 1081 and 1279px.
+
+### New pages (all noindex like the rest of the preview; `src/components/ProductPage.astro`, `src/styles/products.css`)
+- `/products` hub, `/residency`, `/integral-continuity`, `/signature-retreat`, `/founderland-membership`.
+  Same look as /exit-prep. **Draft copy for Seb to review.**
+- Residency: from the Intensive Menu and Debrief one-pagers (what it is / is not, the four categories,
+  before and after). Internal planning steps left out. "Intensive" renamed **Residency** in
+  how-it-works data, /how-it-works, /wayfinders and FAQs. Left as "intensive" on purpose: the Clarity-First
+  Guarantee terms page and its FAQ (legal wording), and the Wayfinders' own bios (their words).
+  Note: the FAQ "How does the in-person residency work" still says it is "a focused working block to
+  move one major issue", which contradicts the one-pager ("not about solving your problems").
+- IntegralContinuity™: Light = one session a month, Private = two (our reading of Seb's note; to confirm),
+  async support, no travel, only after both stages.
+- Annual Signature Retreat: Seb's retreat text from /the-reset, word for word.
+- FOUNDERland Membership: no numbers, no money model, PEF not named; "Coming soon".
+- No prices anywhere.
+
+### Checks
+- axe: home, /exit-prep and the five new pages, no issues reported. No horizontal scroll at 390px.
+
+---
+
 ## Preview 6, update 14: logo pills refined (both strips), proper ECB logo (19 Nov 2026, morning)
 
 **Made by:** Claude (claude.ai), from Seb's voice feedback and the ECB logo file. **Branch:** `claude/preview-6`. **Commit:** `5daaf18`.

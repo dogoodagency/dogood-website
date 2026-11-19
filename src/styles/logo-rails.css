@@ -95,8 +95,14 @@
   --lr-pill: #f5f2ff;
 }
 
+/* Homepage (Seb, 19 Nov 2026): DREAM 10 gave no contrast with the white logo circle, so the pill is the
+   deeper lilac (#E9E3F7, the Stories band colour) with a DREAM 200 line. */
 .lr-rails--tint {
-  --lr-pill: #faf9ff;
+  --lr-pill: #e9e3f7;
+}
+
+.lr-rails--tint .lr-pill {
+  border-color: #c2b7dd;
 }
 
 /* No JavaScript or reduced motion: a still, wrapped, centred set. */

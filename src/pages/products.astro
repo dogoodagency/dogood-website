@@ -1,0 +1,50 @@
+---
+import ProductPage from "../components/ProductPage.astro";
+// Products hub (Seb, 19 Nov 2026): the offers around the two FRP stages. Linked from the Products menu.
+---
+
+<ProductPage
+  title="Products | DoGood Agency"
+  description="The offers around the Founder Reclamation Partnership: the 1.5-Day In-Person Residency, IntegralContinuity™, the Annual Signature Retreat and FOUNDERland Membership."
+  path="/products"
+  eyebrow="Products"
+  h1="Beyond the two stages."
+  sub="The ways to work with us around The Exit Prep™, The Reset™ and The Build™."
+  sections={[
+    {
+      id: "pr-all",
+      heading: "Our products",
+      cards: [
+        {
+          href: "/residency",
+          tag: "On its own or in Stage 1 and 2",
+          title: "1.5-Day In-Person Residency",
+          text: "Play, adventure and meaning, in person with your Wayfinder. When was the last time you did something for the first time?",
+        },
+        {
+          href: "/integral-continuity",
+          tag: "After both stages",
+          title: "IntegralContinuity™",
+          text: "Ongoing sessions with your Wayfinder, once or twice a month, with async support. Light or Private.",
+        },
+        {
+          href: "/signature-retreat",
+          tag: "Invitation only",
+          title: "Annual Signature Retreat",
+          text: "Our annual, in-person retreat with a small group of founders, built for connection, perspective, and real conversations.",
+        },
+        {
+          href: "/founderland-membership",
+          tag: "Coming soon",
+          title: "FOUNDERland Membership",
+          text: "The house founders belong to, before and after the sale.",
+        },
+      ],
+    },
+  ]}
+  closing={{
+    heading: "Not sure where to start?",
+    text: "Most founders start with The Exit Prep™ before the sale, or Stage 1: The Reset™ after it.",
+    cta: { href: "/how-it-works", label: "Choose your door" },
+  }}
+/>

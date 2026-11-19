@@ -11,7 +11,7 @@ import caseJ from "../assets/cases/case-study-j-founder-life-after-exit.png";
 import caseV from "../assets/cases/case-study-v-founder-life-after-exit.png";
 import team from "../assets/photos/wayfinders.png";
 import signature from "../assets/photos/signature.png";
-import press from "../assets/photos/as-seen-on-hires.png";
+import TestimonialWall from "../components/TestimonialWall.astro";
 
 const portraits = import.meta.glob<ImageMetadata>("../assets/reviews/*", {
   eager: true,
@@ -29,13 +29,19 @@ const reviewSet = reviews.map((review) => ({
   src: fromMap(portraits, review.file),
 }));
 
-function clipQuote(quote: string) {
-  const clean = quote.replace(/\s+/g, " ").trim();
-  const limit = 320;
-  if (clean.length <= limit) return clean;
-  const cut = clean.slice(0, limit).replace(/\s+\S*$/, "").replace(/[.…,\s]+$/, "");
-  return `${cut}…`;
-}
+const wallItems = reviewSet.map((r) => ({ quote: r.quote, name: r.name, role: r.role, image: r.src }));
+
+// DREAM 400 press logos (public/media/press, all 96px high). `h` = shown height in px, set by eye so the
+// six marks carry equal visual weight.
+const pressLogos = [
+  { file: "globe-and-mail.png", name: "The Globe and Mail", w: 96, h: 52 },
+  { file: "fox.png", name: "FOX", w: 223, h: 32 },
+  { file: "chronicle-journal.png", name: "The Chronicle Journal", w: 268, h: 42 },
+  { file: "benzinga.png", name: "Benzinga", w: 677, h: 24 },
+  { file: "starkville-daily-news.png", name: "Starkville Daily News", w: 544, h: 36 },
+  { file: "ncn.png", name: "ncn", w: 162, h: 40 },
+];
+
 
 const fit = [
   "You have exited or meaningfully stepped away from the company you built",
@@ -60,7 +66,9 @@ const notFit = [
   <section class="hero" id="hero">
     <div class="hero-inner">
       <h1 class="t-display">
-        <span class="hero-line">For founders who’ve exited <span class="accent">the company they <span class="hero-build">built</span>.</span></span>
+        <span class="hero-line">For founders who’ve exited <span class="accent">the company they <span class="hero-build">built</span>,</span></span>
+        <!-- Line restored from preview 4 (Seb, 19 Nov 2026); wording to be revisited with the SEO changes. -->
+        <span class="hero-line accent">or are getting ready to.</span>
       </h1>
       <p class="lede">
         Start with a private 30-day engagement for founders navigating life after exit.
@@ -444,39 +452,9 @@ const notFit = [
   <section id="reviews">
     <div class="reviews-band">
       <h2 class="t-h2">Leaders who've been through it</h2>
-      <div
-        class="reviews-viewport"
-        tabindex="0"
-        aria-label="Founder testimonials, rolling. Pauses on hover or focus."
-      >
-        <div class="reviews-track">
-          {
-            [0, 1].map((copy) => (
-              <div class:list={["reviews-set", copy === 1 && "is-clone"]} aria-hidden={copy === 1}>
-                {reviewSet.map((review) => (
-                  <article class="review">
-                    <div class="review-who">
-                      <Image
-                        src={review.src}
-                        alt={`Portrait of ${review.name}, ${review.role}`}
-                        width={56}
-                        height={56}
-                        widths={[56, 112]}
-                        sizes="56px"
-                      />
-                      <div>
-                        <h3>{review.name}</h3>
-                        <p class="review-role">{review.role}</p>
-                      </div>
-                    </div>
-                    <p class="review-body">{clipQuote(review.quote)}</p>
-                  </article>
-                ))}
-              </div>
-            ))
-          }
-        </div>
-      </div>
+      <!-- Same moving wall as the Stories page (Seb, 19 Nov 2026): portrait left of the name and role,
+           stops on hover or keyboard focus, still list on phones and for reduced motion. -->
+      <TestimonialWall items={wallItems} label="Testimonials from leaders our team has worked with" />
     </div>
   </section>
 
@@ -496,15 +474,21 @@ const notFit = [
   </section>
 
   <section id="asseen">
+    <!-- Press logos (Seb, 19 Nov 2026): DREAM 400, one slow drifting row with a soft light sweep. -->
     <div class="asseen-frame">
-      <p class="t-kicker">As seen on</p>
-      <div class="asseen-row">
-        <img
-          src={press.src}
-          width={press.width}
-          height={press.height}
-          alt="The Globe and Mail, The Chronicle Journal, FOX, Starkville Daily News, ncn, and Benzinga"
-        />
+      <p class="asseen-kicker">As seen on</p>
+      <div class="press-rail" role="list" aria-label="As seen on">
+        <div class="press-track">
+          {[false, true].map((dup) => (
+            <div class="press-set" aria-hidden={dup ? "true" : undefined}>
+              {pressLogos.map((p) => (
+                <span class="press-logo" role={dup ? undefined : "listitem"}>
+                  <img src={`/media/press/${p.file}`} width={p.w} height="96" style={`height:${p.h}px`} alt={dup ? "" : p.name} loading="lazy" decoding="async" />
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>
