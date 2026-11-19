@@ -161,11 +161,11 @@ header.nav .nav-brand-logo img {
   header.nav .nav-apply.nav-apply--brand:focus-visible { background: #3b1a63; }
 }
 
-/* 19 Nov 2026 21:02 (Seb): the foundr.land logo 10% bigger, no border. 23:55: one shade darker, a DREAM 500
-   frame that turns DREAM 400 on hover. */
+/* 19 Nov 2026 21:02 (Seb): the foundr.land logo 10% bigger, no border. 20 Nov 00:00: the frame sits halfway
+   between DREAM 400 and DREAM 500 (#412867), and turns DREAM 400 on hover. */
 header.nav .nav-apply.nav-apply--brand {
   border: 0;
-  background: #2a0b4f;
+  background: #412867;
   transition: background-color 0.25s ease;
 }
 

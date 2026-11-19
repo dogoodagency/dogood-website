@@ -6,6 +6,13 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 33: nav foundr.land frame between DREAM 400 and 500 (20 Nov 2026, 00:00)
+
+- **Nav foundr.land logo frame:** #412867 at rest (halfway between DREAM 400 and DREAM 500, so it stays visible
+  on the DREAM 500 homepage hero), DREAM 400 (#58447F) on hover.
+
+---
+
 ## Preview 6, update 32: one shade darker (19 Nov 2026, 23:55)
 
 - **Nav foundr.land logo frame:** DREAM 500 (#2A0B4F), DREAM 400 (#58447F) on hover (was DREAM 400 / 300). On pages
