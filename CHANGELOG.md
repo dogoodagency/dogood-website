@@ -29,6 +29,7 @@ why, and anything the next person needs to check.
   with epilepsy. Compact version on **/the-build** and, labelled "In Stage 2", on **/the-reset**. Not on
   /exit-prep (the audio is a Stage 2 inclusion; Seb to confirm).
 - ProductPage gets an optional `feature` slot (used for the two full sections).
+- Follow-up commit 08460b2: FAQ buttons on /faqs (and the homepage FAQ) get the same hover tint as every other FAQ row (site-rules.css).
 - **About:** draft context sections: "How we work" (one founder, one Wayfinder, 75+ years combined
   experience; in stages; measured, not guessed), "Who we work with" / "Who we work alongside", and "What
   we are not". **IODA logo** recoloured to HEART 500 (`src/assets/photos/ioda-logo-heart.png`), like the
