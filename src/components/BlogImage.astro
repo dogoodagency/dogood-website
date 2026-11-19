@@ -14,8 +14,10 @@ interface Props {
   class?: string;
 }
 
-const { src, alt, bg = "lilac", eager = false, shape = "wide", class: className = "" } = Astro.props;
-const s = sketchSrc(src);
+const { src, alt, eager = false, shape = "wide", class: className = "" } = Astro.props;
+// Every article image sits on DREAM 500 (Seb, 19 Nov 2026), with the light-line "-ondark" sketch versions.
+const bg = "dream";
+const s = sketchSrc(`${src}-ondark`);
 // Sketches are drawn on a 540 x 400 canvas; object-fit keeps any other ratio intact.
 const width = 540;
 const height = 400;

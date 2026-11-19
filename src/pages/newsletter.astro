@@ -382,9 +382,11 @@ const heroLine =
     <section class="nl-band" id="signup" aria-labelledby="nl-signup-title">
       <div class="nl-well">
         <div class="nl-signup nl-signup-split" data-nl-signup>
-          <div class="nl-signup-copy">
+          <div class="nl-signup-head">
           <h2 id="nl-signup-title">Keep reading</h2>
           <p class="nl-intro">Get each new chapter of Before and After the Sale when it comes out, along with our notes on life after the sale. It's one email every two weeks, starting 15 December, then 12 January and 26 January.</p>
+          </div>
+          <div class="nl-signup-copy">
           <form class="nl-form js-subscribe" action={action} method="post">
             <input type="hidden" name="ml-submit" value="1" />
             <input type="hidden" name="anticsrf" value="true" />
@@ -428,7 +430,7 @@ const heroLine =
                 <span class="nl-chapter-title">
                   {chapter.href ? <a href={chapter.href}>{chapter.title}</a> : chapter.title}
                 </span>
-                <span class="nl-chapter-date">{chapter.date}</span>
+                <span class="nl-chapter-date nl-date-pill">{chapter.date}</span>
               </li>
             ))
           }
@@ -442,7 +444,7 @@ const heroLine =
                     <span class="nl-chapter-title">{u.title}</span>
                     <p class="nl-chapter-about">{u.about}</p>
                   </div>
-                  <span class="nl-chapter-date">Arrives {u.date}</span>
+                  <span class="nl-chapter-date nl-date-pill">Arrives {u.date}</span>
                 </li>
               ))
           }

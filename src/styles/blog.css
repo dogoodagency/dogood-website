@@ -1434,3 +1434,62 @@ html.bl-js .bl-common {
     white-space: nowrap;
   }
 }
+
+/* ===== 19 Nov 2026 (Seb) =====
+   Article images on DREAM 500; cards have a thin DREAM 200 border (one shade darker than the band), no
+   shadow, no movement; hover changes colour. Founder titles GRASS 600, advisor titles HEART 600. */
+.bl-img--dream {
+  --bl-img-bg: #2a0b4f;
+}
+
+.bl-card {
+  border: 1px solid #c2b7dd;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.bl-card:hover,
+.bl-card:focus-within {
+  border-color: #58447f;
+  background: #faf9ff;
+  transform: none;
+}
+
+.bl-card--aud-founder .bl-card-title,
+.bl-card--aud-founder .bl-card-title a {
+  color: #01a684;
+}
+
+.bl-card--aud-advisor .bl-card-title,
+.bl-card--aud-advisor .bl-card-title a {
+  color: #c10e46;
+}
+
+.bl-card--aud-founder:hover,
+.bl-card--aud-founder:focus-within {
+  border-color: #01a684;
+  background: #f3fffb;
+}
+
+.bl-card--aud-advisor:hover,
+.bl-card--aud-advisor:focus-within {
+  border-color: #c10e46;
+  background: #fff9fa;
+}
+
+.bl-card .bl-author--card {
+  margin-top: 4px;
+}
+
+/* Notes from FOUNDERland: "land" is bold too; the email field is visible on a white card; thin border. */
+.bl-land {
+  font-weight: 900;
+}
+
+.bl-nl-card {
+  border: 1px solid #c2b7dd;
+}
+
+.bl-nl-form input[type="email"] {
+  border: 1.5px solid #8b7dae;
+  background: #faf9ff;
+}

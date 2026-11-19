@@ -525,3 +525,35 @@ body:has(.ep-page) .footer-wave {
 .ep-page .ep-hero .ep-sub {
   max-width: 960px;
 }
+
+/* 19 Nov 2026 (Seb): intro text runs to the right edge of the cards below; article links as Insights cards. */
+.ep-page .ep-lede-plain.ep-lede-full {
+  max-width: none;
+}
+
+.ep-page .ep-read-label {
+  margin: 28px 0 14px;
+  color: #c10e46;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.ep-page .ep-posts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.ep-page .ep-adv-link {
+  margin: 22px 0 0;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+@media (max-width: 760px) {
+  .ep-page .ep-posts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

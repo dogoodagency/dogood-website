@@ -98,20 +98,29 @@ const posts = sortedPosts((await getCollection("blog")).filter((p) => !p.data.no
         <div class="dr-which">
           <div>
             <h2 id="dr-which">Which door is mine?</h2>
-            <ul class="dr-which-list">
-              <li><strong>You haven't signed anything yet.</strong> Start with <a href="/exit-prep">Exit-Prep</a>. The personal side is easiest to shape before the deal sets the timeline.</li>
-              <li><strong>You're in a process, under LOI or have an earnout ahead.</strong> Exit-Prep is built for that stretch too, alongside your advisors.</li>
-              <li><strong>The company is no longer your day-to-day.</strong> Start with <a href="/the-reset">The Reset</a>. Many founders begin around three months after the exit; some start sooner.</li>
-              <li><strong>Not sure?</strong> <a href="/orientation">Book a short orientation call</a>, or read the <a href="/faqs">FAQs</a>.</li>
-            </ul>
+            <div class="dr-paths">
+              <div class="dr-path dr-path--before">
+                <p class="dr-path-label">Before the sale</p>
+                <p><strong>You haven't signed anything yet.</strong> Start with <a href="/exit-prep">The Exit Prep™</a>. The personal side is easiest to shape before the deal sets the timeline.</p>
+                <p><strong>You're in a process, under LOI or have an earnout ahead.</strong> The Exit Prep™ is built for that stretch too, alongside your advisors.</p>
+              </div>
+              <div class="dr-path dr-path--after">
+                <p class="dr-path-label">After the sale</p>
+                <p><strong>The company is no longer your day-to-day.</strong> Start with <a href="/the-reset">Stage 1: The Reset™</a>. Many founders begin around three months after the exit; some start sooner.</p>
+              </div>
+            </div>
           </div>
           <figure class="dr-sketch-card">
             <picture>
-              <source type="image/webp" srcset="/sketches/how-it-works-two-stage-path-sketch@1x.webp 560w, /sketches/how-it-works-two-stage-path-sketch@2x.webp 1120w" sizes="(max-width: 899px) min(100vw, 380px), 380px" />
-              <img src="/sketches/how-it-works-two-stage-path-sketch@1x.png" srcset="/sketches/how-it-works-two-stage-path-sketch@1x.png 560w, /sketches/how-it-works-two-stage-path-sketch@2x.png 1120w" sizes="(max-width: 899px) min(100vw, 380px), 380px" width="560" height="420" alt="A founder walks along a teal path past an empty archway toward an open door with a green landscape beyond, drawn as a sketch." loading="lazy" decoding="async" />
+              <source type="image/webp" srcset="/sketches/how-it-works-two-stage-path-sketch-ondark@1x.webp 560w, /sketches/how-it-works-two-stage-path-sketch-ondark@2x.webp 1120w" sizes="(max-width: 899px) min(100vw, 380px), 380px" />
+              <img src="/sketches/how-it-works-two-stage-path-sketch-ondark@1x.png" srcset="/sketches/how-it-works-two-stage-path-sketch-ondark@1x.png 560w, /sketches/how-it-works-two-stage-path-sketch-ondark@2x.png 1120w" sizes="(max-width: 899px) min(100vw, 380px), 380px" width="560" height="420" alt="A founder walks along a teal path past an empty archway toward an open door with a green landscape beyond, drawn as a sketch." loading="lazy" decoding="async" />
             </picture>
           </figure>
         </div>
+        <aside class="dr-notsure">
+          <p><strong>Not sure which door is yours?</strong> A short orientation call helps you choose, or read the <a href="/faqs">FAQs</a>.</p>
+          <a class="btn-teal btn-dream" href="/orientation">Book an orientation call</a>
+        </aside>
       </div>
     </section>
 
@@ -121,7 +130,7 @@ const posts = sortedPosts((await getCollection("blog")).filter((p) => !p.data.no
     <section class="dr-band" aria-labelledby="dr-familiar">
       <div class="dr-well dr-well-top">
         <h2 id="dr-familiar">Sound bites</h2>
-        <p class="dr-lead">Words from real calls with founders and the advisors who walk with them. Names are changed to protect their privacy.</p>
+        <p class="dr-lead">Words from real calls with founders and the advisors who walk with them.</p>
         <TestimonialWall items={soundBites} short label="Sound bites from real calls with founders and advisors" />
       </div>
     </section>
@@ -136,13 +145,17 @@ const posts = sortedPosts((await getCollection("blog")).filter((p) => !p.data.no
         <div class="dr-posts">
           {posts.map((p) => <BlogCard post={p} variant="grid" />)}
         </div>
-        <div class="dr-news">
-          <BlogNewsletter idSuffix="how" />
-        </div>
       </div>
     </section>
 
     <Fragment set:html={wave(tint, white)} />
+
+    <!-- Newsletter, in its own band (Seb, 19 Nov 2026) -->
+    <section class="dr-band dr-band-news" aria-label="Newsletter">
+      <div class="dr-well dr-well-top">
+        <BlogNewsletter idSuffix="how" />
+      </div>
+    </section>
 
     <section class="dr-band" aria-labelledby="dr-advisor">
       <div class="dr-well dr-well-slim">

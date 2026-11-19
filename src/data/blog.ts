@@ -45,7 +45,7 @@ export const categories: BlogCategory[] = [
   },
   {
     slug: "after-the-sale",
-    name: "The first 90 days after the sale",
+    name: "First 90 days",
     audience: "founder",
     description: "What the first three months after closing really feel like.",
     seoTitle: "Life after selling a business | DoGood Insights",

@@ -127,7 +127,7 @@ export const faqCategories: FaqCategory[] = [
         q: "What if you’re full, can I reserve a start date?",
         a: [
           "Yes. If we’re at capacity and you’re a fit, you can request a Priority Hold (seated reservation) to secure first access to the next available opening (terms are confirmed on the call). The deposit is non-refundable if you back out, and fully refundable if we can’t deliver the agreed start date.",
-          "If you’re in an acute crisis and timing is critical, we’ll discuss whether an Expedited Start is appropriate — or, if we can’t take you on responsibly, we’ll point you to a trusted alternative.",
+          "If things feel acute and timing is critical, we’ll discuss whether an Expedited Start is appropriate — or, if we can’t take you on responsibly, we’ll point you to a trusted alternative.",
         ],
       },
       // [ADDED – source: chat-brief-approved.txt §10 "Why are spots limited?"; apply-stage-1.astro ("Limited to five new founders a month")]
@@ -297,11 +297,11 @@ export const faqCategories: FaqCategory[] = [
       },
       // [ADDED – source: chat-brief-approved.txt §10 (distress) and §11 (not a crisis service); diagnostics.md (emergency-service note); Seb's FAQ (Expedited Start)]
       {
-        id: "in-crisis",
-        q: "What if I’m in crisis, or can’t cope right now?",
+        id: "urgent-support",
+        q: "What if things feel urgent, or I can’t cope right now?",
         a: [
-          "We are not an emergency or crisis service. If you are in danger, or feel you might harm yourself, please contact your local emergency services now. If you are feeling severely overwhelmed or can’t cope any longer, we recommend you reach out to a local emergency service for help. If you can, reach out to someone you trust or a doctor today, and tell them how you are feeling.",
-          "If you are in an acute crisis after your exit and timing is critical, we will discuss whether an Expedited Start is appropriate. If we cannot take you on responsibly, we will point you to a trusted alternative.",
+          "We are not an emergency service. If you are in danger, or feel you might harm yourself, please contact your local emergency services now. If you are feeling severely overwhelmed or can’t cope any longer, we recommend you reach out to a local emergency service for help. If you can, reach out to someone you trust or a doctor today, and tell them how you are feeling.",
+          "If things feel acute after your exit and timing is critical, we will discuss whether an Expedited Start is appropriate. If we cannot take you on responsibly, we will point you to a trusted alternative.",
         ],
       },
       // [SEB]

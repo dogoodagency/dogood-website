@@ -698,3 +698,26 @@ html.bl-js .bli-switch {
     padding-bottom: 56px;
   }
 }
+
+/* Founder & advisor resources (Seb, 19 Nov 2026): founder links turn GRASS on hover, advisor links HEART;
+   no lift, no shadow. */
+.bli-res-col--founder .bli-res-link:hover,
+.bli-res-col--founder .bli-res-link:focus-visible {
+  border-color: #01a684;
+  background: #e7fff6;
+}
+
+.bli-res-col--founder .bli-res-link:hover .bli-res-title { color: #05745b; }
+
+.bli-res-col--advisor .bli-res-link:hover,
+.bli-res-col--advisor .bli-res-link:focus-visible {
+  border-color: #c10e46;
+  background: #fff3f4;
+}
+
+.bli-res-col--advisor .bli-res-link:hover .bli-res-title { color: #c10e46; }
+
+.bli-res-link {
+  transform: none !important;
+  transition: background-color 0.2s, border-color 0.2s;
+}

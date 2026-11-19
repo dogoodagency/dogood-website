@@ -4,6 +4,11 @@ import Base from "../layouts/Base.astro";
 import Wave from "../components/Wave.astro";
 import { edgeAbove } from "../data/edge-line";
 import TestimonialWall from "../components/TestimonialWall.astro";
+import BlogCard from "../components/BlogCard.astro";
+import { getCollection } from "astro:content";
+const readSlugs = ["before-you-sign-preparing-yourself", "emotions-of-selling-a-business"];
+const allPosts = await getCollection("blog");
+const readPosts = readSlugs.map((slug) => allPosts.find((p) => p.id === slug || p.id.replace(/\.mdx?$/, "") === slug)).filter((p) => p !== undefined);
 
 const tint = "#F5F2FF";
 const white = "#ffffff";
@@ -106,7 +111,7 @@ const faqJson = {
     <section class="ep-band" aria-labelledby="ep-what">
       <div class="ep-well ep-well-top">
         <h2 id="ep-what">What The Exit Prep™ is</h2>
-        <p class="ep-lede-plain">A six-week, 1:1 engagement with a DoGood Wayfinder for founders who plan to sell their company but haven't yet. It helps you understand what to expect beyond the logistics of the exit, and gives you the space and tools to get clear on what comes next, at a commitment that matches where you are now.</p>
+        <p class="ep-lede-plain ep-lede-full">A six-week, 1:1 engagement with a DoGood Wayfinder for founders who plan to sell their company but haven't yet. It helps you understand what to expect beyond the logistics of the exit, and gives you the space and tools to get clear on what comes next, at a commitment that matches where you are now.</p>
         <div class="ep-grid">
           <section class="ep-box ep-box--sky" aria-labelledby="ep-for">
             <h3 id="ep-for">Who it's for</h3>
@@ -129,7 +134,7 @@ const faqJson = {
     <section class="ep-band ep-band-tint" aria-labelledby="ep-familiar">
       <div class="ep-well ep-well-top">
         <h2 id="ep-familiar">Sound bites</h2>
-        <p class="ep-lede-plain">Words from real calls with founders and the advisors who walk with them. Names are changed to protect their privacy.</p>
+        <p class="ep-lede-plain">Words from real calls with founders and the advisors who walk with them.</p>
         <TestimonialWall items={quotes} short label="Sound bites from real calls with founders and advisors" />
       </div>
     </section>
@@ -139,13 +144,12 @@ const faqJson = {
     <section class="ep-band" aria-labelledby="ep-advisors">
       <div class="ep-well ep-well-top ep-prose">
         <h2 id="ep-advisors">Working alongside your advisors</h2>
-        <p class="ep-lede">We work next to your exit planner, accountant, attorney and wealth advisor, never instead of them.</p>
-        <p class="ep-lede-plain">They prepare the business and the numbers. We work on the part they aren't set up to cover: you. With your permission, we keep your advisors in the loop on how you're doing, so the deal and the person behind it move at the same pace.</p>
-        <ul class="ep-links">
-          <li><a href="/insights/before-you-sign-preparing-yourself">Before you sign: how to prepare yourself to sell your business</a></li>
-          <li><a href="/insights/emotions-of-selling-a-business">The emotions of selling a business: before, during and after</a></li>
-          <li><a href="/for-advisors">For your advisors: how we work alongside them</a></li>
-        </ul>
+        <p class="ep-lede-plain ep-lede-full">We work next to your exit planner, accountant, attorney and wealth advisor, never instead of them. They prepare the business. We prepare you, and with your permission we keep them in the loop.</p>
+        <p class="ep-read-label">Read more</p>
+        <div class="ep-posts">
+          {readPosts.map((p) => <BlogCard post={p} variant="grid" />)}
+        </div>
+        <p class="ep-adv-link"><a href="/for-advisors">For your advisors: how we work alongside them →</a></p>
       </div>
     </section>
 

@@ -609,3 +609,92 @@ body:has(.dr-page) .footer-wave {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* ===== 19 Nov 2026 (Seb) ===== */
+
+/* "I've sold" door: text in dark GRASS. */
+.dr-page .dr-door--after h2,
+.dr-page .dr-door--after .dr-door-line,
+.dr-page .dr-door--after .dr-door-text,
+.dr-page .dr-door--after .dr-door-list li {
+  color: #05745b;
+}
+
+/* Which door is mine: two coloured paths, the sketch in a DREAM 500 frame of the same height, and a
+   separate "Not sure?" bar. */
+.dr-page .dr-which {
+  align-items: stretch;
+}
+
+.dr-paths {
+  display: grid;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.dr-path {
+  padding: 22px 24px;
+  border: 1px solid;
+  border-radius: 20px;
+}
+
+.dr-path p {
+  margin: 0 0 10px;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.dr-path p:last-child {
+  margin-bottom: 0;
+}
+
+.dr-path--before {
+  border-color: #477dfe;
+  background: #f2f7ff;
+}
+
+.dr-path--after {
+  border-color: #01a684;
+  background: #f3fffb;
+}
+
+.dr-page .dr-path-label {
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.dr-path--before .dr-path-label { color: #0d329f; }
+.dr-path--after .dr-path-label { color: #05745b; }
+
+.dr-page .dr-sketch-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  border: 1px solid #2a0b4f;
+  background: #2a0b4f;
+}
+
+.dr-notsure {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 28px;
+  margin-top: 40px;
+  padding: 22px 28px;
+  border: 1.5px dashed #8b7dae;
+  border-radius: 20px;
+  background: #fff;
+}
+
+.dr-notsure p {
+  margin: 0;
+  font-size: 17px;
+}
+
+.dr-band-news {
+  padding-bottom: 24px;
+}

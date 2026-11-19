@@ -22,7 +22,7 @@ const Tag = variant === "feature" ? "h2" : "h3";
 
 {
   variant === "row" ? (
-    <article class="bl-card bl-card--row">
+    <article class:list={["bl-card", "bl-card--row", `bl-card--aud-${d.audience}`]}>
       <a class="bl-row-thumb" href={href} tabindex="-1" aria-hidden="true">
         <BlogImage src={d.heroImage} alt="" bg={d.heroBg} shape="thumb" />
       </a>
@@ -43,7 +43,7 @@ const Tag = variant === "feature" ? "h2" : "h3";
       </div>
     </article>
   ) : (
-    <article class:list={["bl-card", `bl-card--${variant}`]}>
+    <article class:list={["bl-card", `bl-card--${variant}`, `bl-card--aud-${d.audience}`]}>
       <a class="bl-card-media" href={href} tabindex="-1" aria-hidden="true">
         <BlogImage src={d.heroImage} alt="" bg={d.heroBg} eager={eager} />
       </a>
@@ -81,9 +81,7 @@ const Tag = variant === "feature" ? "h2" : "h3";
           <a href={href}>{d.title}</a>
         </Tag>
         <p class="bl-card-excerpt">{d.description}</p>
-        {variant === "feature" && (
-          <AuthorByline author={d.author} role={d.authorRole} card />
-        )}
+        <AuthorByline author={d.author} role={d.authorRole} card />
         <p class="bl-meta">
           <time datetime={isoDate(d.date)}>{formatDate(d.date)}</time>
           <span aria-hidden="true"> · </span>

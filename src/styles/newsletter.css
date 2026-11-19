@@ -971,3 +971,82 @@ html:has(.nl-page) {
 .nl-deep-list li::marker {
   color: var(--nl-teal);
 }
+
+/* ===== 19 Nov 2026 (Seb) ===== */
+
+/* Keep reading: title and intro span the frame; the letter sketch sits level with the field and button. */
+.nl-signup.nl-signup-split {
+  grid-template-columns: minmax(0, 1fr) 260px;
+  align-items: end;
+}
+
+.nl-signup-head {
+  grid-column: 1 / -1;
+}
+
+.nl-page .nl-signup-head .nl-intro {
+  max-width: none;
+}
+
+.nl-signup-art {
+  align-self: end;
+}
+
+@media (max-width: 900px) {
+  .nl-signup-head {
+    grid-column: auto;
+  }
+}
+
+/* The chapters: rows alternate DREAM 500 and white, with livelier type, and each date sits in a dotted label
+   (not a link). */
+.nl-page .nl-chapters .nl-chapter {
+  border: 1px solid #c2b7dd;
+  background: #fff;
+}
+
+.nl-page .nl-chapters .nl-chapter:nth-child(odd) {
+  border-color: #2a0b4f;
+  background: #2a0b4f;
+}
+
+.nl-page .nl-chapters .nl-chapter .nl-chapter-num,
+.nl-page .nl-chapters .nl-chapter .nl-chapter-title {
+  color: #2a0b4f;
+}
+
+.nl-page .nl-well .nl-chapters .nl-chapter .nl-chapter-about {
+  color: #4a3a5c;
+}
+
+.nl-page .nl-chapters .nl-chapter:nth-child(odd) .nl-chapter-num {
+  color: #28dbb0;
+}
+
+.nl-page .nl-chapters .nl-chapter:nth-child(odd) .nl-chapter-title {
+  color: #fff;
+}
+
+.nl-page .nl-well .nl-chapters .nl-chapter:nth-child(odd) .nl-chapter-about {
+  color: #e6defc;
+}
+
+.nl-page .nl-chapters .nl-chapter:nth-child(even) .nl-chapter-num {
+  color: #ea1557;
+}
+
+.nl-page .nl-chapters .nl-date-pill {
+  display: inline-block;
+  padding: 6px 14px;
+  border: 2px dotted #ea1557;
+  border-radius: 999px;
+  color: #c10e46;
+  font-size: 14px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.nl-page .nl-chapters .nl-chapter:nth-child(odd) .nl-date-pill {
+  border-color: #28dbb0;
+  color: #28dbb0;
+}

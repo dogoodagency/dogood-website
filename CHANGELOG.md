@@ -6,6 +6,37 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 20: How it works, The Exit Prep, Insights, Newsletter, wording (19 Nov 2026, afternoon)
+
+**Made by:** Claude (claude.ai), Seb's feedback of 12:43, batch 3. **Branch:** `claude/preview-6`. **Commit:** `COMMIT20`.
+
+- **Article cards everywhere (BlogCard):** every card shows the author's avatar (Seb or Inka, from the
+  article's `author`); founder article titles GRASS 600, advisor titles HEART 600; thin DREAM 200 border,
+  no shadow, no movement; hover tints the card (founder GRASS 25 + GRASS 600 line, advisor HEART 25 +
+  HEART 600 line).
+- **Article images on DREAM 500** (BlogImage, all cards and article pages). Light-line versions of the five
+  sketches were made for the dark background: `public/sketches/*-ondark@1x/2x.png/webp`.
+- **Insights:** suggested topics "advisors" and "earnout" removed (one line); category "The first 90 days
+  after the sale" is now "First 90 days"; resource lists hover in GRASS (founders) / HEART (advisors).
+- **Notes from FOUNDERland** (BlogNewsletter): "land" bold; thin DREAM 200 border; the email field is
+  visible on white (DREAM 10 fill, DREAM 300 line).
+- **How it works:** "I've sold" door text in GRASS 700; "Which door is mine?" now shows two coloured paths
+  (Before the sale, SKY; After the sale, GRASS) next to the sketch in a DREAM 500 frame of the same height
+  (light-line sketch), and a separate dashed "Not sure which door is yours?" bar with "Book an orientation
+  call"; "Names are changed…" removed; the newsletter has its own band, apart from the articles.
+- **The Exit Prep:** "What The Exit Prep™ is" text runs to the right edge of the cards; "Working alongside
+  your advisors" shortened to one 18px paragraph, with the two articles as Insights cards under "Read more"
+  and a text link for advisors; "Names are changed…" removed.
+- **Newsletter page:** "Keep reading" title and intro span the frame, the letter sketch sits level with
+  the field and button; "The chapters" rows alternate DREAM 500 / white with brighter type, and each date
+  is a dotted label (HEART on white, GRASS on DREAM), not a link.
+- **No "crisis" wording** in DoGood's own copy: Expedited Start ("If things feel urgent right now",
+  "We are not an emergency service"), FAQ (question reworded, anchor now #urgent-support), client-fit
+  ("how much steadying support you need right now"), /clarity booking page. The safety line (contact
+  local emergency services if in danger) stays. Not changed: a Wayfinder's own bio and a podcast summary.
+
+---
+
 ## Preview 6, update 19: The Reset and The Build, each in its own colour (19 Nov 2026, afternoon)
 
 **Made by:** Claude (claude.ai), Seb's feedback of 12:43, batch 2. **Branch:** `claude/preview-6`. **Commit:** `dde0f18`.
