@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import "../styles/site-rules.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 // Preloaded so text is drawn in Montserrat straight away instead of swapping (avoids layout shift).
@@ -123,6 +124,18 @@ const organization = {
     </main>
     <Footer meetFunnel={meetFunnel} edge={footerEdge} />
     <script>
+      /* Moving testimonial walls (TestimonialWall and /stories): every column drifts at the same speed,
+         38px a second, whatever its length (Seb, 19 Nov 2026). */
+      const WALL_SPEED = 38;
+      const setWallSpeed = () => {
+        document.querySelectorAll<HTMLElement>(".tw-track, .st-track").forEach((track) => {
+          const loop = track.scrollHeight / 2;
+          if (loop > 0) track.style.animationDuration = `${(loop / WALL_SPEED).toFixed(1)}s`;
+        });
+      };
+      if (document.readyState === "complete") setWallSpeed();
+      else window.addEventListener("load", setWallSpeed);
+      window.addEventListener("resize", () => window.requestAnimationFrame(setWallSpeed));
       const thankYou = "Thank you! You have successfully joined our subscriber list.";
 
       document.querySelectorAll("form.js-subscribe").forEach((form) => {

@@ -185,3 +185,23 @@
 .tw-vp:focus-within .tw-track {
   animation-play-state: paused;
 }
+
+/* 19 Nov 2026 (Seb): quotes at body size (18px), weight 500 (a touch heavier, not bold); cards on a light
+   band are DREAM 10 so they never sit white on white. */
+.tw .tw-card blockquote p,
+.tw--short .tw-card blockquote p {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.tw--light .tw-card {
+  background: #faf9ff;
+}
+
+/* Hover or keyboard focus stops every column (the per-column animation shorthand above outranked the
+   older pause rule). */
+.tw .tw-vp:hover .tw-track,
+.tw .tw-vp:focus-within .tw-track {
+  animation-play-state: paused !important;
+}

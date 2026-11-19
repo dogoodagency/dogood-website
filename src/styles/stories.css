@@ -821,3 +821,19 @@ body:has(.st-page) .footer-wave {
     width: min(200px, 60%);
   }
 }
+
+/* 19 Nov 2026 (Seb): testimonial cards on white are DREAM 10; quotes at body size, weight 500. */
+.st-page .st-card {
+  background: #faf9ff;
+}
+
+.st-page .st-card blockquote p {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.st-page .st-vp:hover .st-track,
+.st-page .st-col:hover .st-track,
+.st-page .st-wall:hover .st-track {
+  animation-play-state: paused;
+}

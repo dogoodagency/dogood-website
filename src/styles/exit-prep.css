@@ -428,7 +428,7 @@ body:has(.ep-page) .footer-wave {
 .ep-box {
   padding: 28px 30px;
   border: 1.5px solid;
-  border-top-width: 8px;
+  border-top-width: 1px;
   border-radius: 20px;
 }
 

@@ -585,11 +585,11 @@ body:has(.hw-page) .footer-wave {
 }
 
 .hw-fit-yes {
-  border-top: 6px solid var(--hw-teal);
+  border-top: 1px solid var(--hw-teal);
 }
 
 .hw-fit-no {
-  border-top: 6px solid var(--hw-pink);
+  border-top: 1px solid var(--hw-pink);
 }
 
 .hw-ticks {

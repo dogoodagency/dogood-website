@@ -12,7 +12,7 @@ import { edgeAbove } from "../data/edge-line";
 
 export interface Box {
   title: string;
-  tone?: "sky" | "grass";
+  tone?: "sky" | "grass" | "rose";
   items: string[];
 }
 
@@ -23,7 +23,7 @@ export interface Section {
   paras?: string[];
   boxes?: Box[];
   steps?: { label: string; title: string; text: string }[];
-  cards?: { href: string; title: string; text: string; tag?: string }[];
+  cards?: { href: string; title: string; text: string; tag?: string; soon?: boolean }[];
   note?: string;
 }
 
@@ -35,12 +35,14 @@ interface Props {
   h1: string;
   sub: string;
   tag?: string;
+  /** Shows a "Coming soon" status in the hero (Seb, 19 Nov 2026). */
+  soon?: string;
   cta?: { href: string; label: string };
   sections: Section[];
   closing?: { heading: string; text: string; cta: { href: string; label: string } };
 }
 
-const { title, description, path, eyebrow, h1, sub, tag, cta, sections, closing } = Astro.props;
+const { title, description, path, eyebrow, h1, sub, tag, soon, cta, sections, closing } = Astro.props;
 
 const tint = "#F5F2FF";
 const white = "#ffffff";
@@ -78,6 +80,7 @@ const footerBg = closing ? (lastTint ? white : tint) : lastTint ? tint : white;
         <h1>{h1}</h1>
         <p class="ep-sub">{sub}</p>
         {tag && <p class="pp-tag">{tag}</p>}
+        {soon && <p class="pp-soon pp-soon--hero">{soon}</p>}
         {cta && <a class="btn-teal" href={cta.href}>{cta.label}</a>}
       </div>
       <Wave fill={tint} edge={heroEdge} />
@@ -121,6 +124,7 @@ const footerBg = closing ? (lastTint ? white : tint) : lastTint ? tint : white;
                         {c.tag && <span class="pp-card-tag">{c.tag}</span>}
                         <h3>{c.title}</h3>
                         <p>{c.text}</p>
+                        {c.soon && <span class="pp-soon">Coming soon · we’re building it now</span>}
                         <span class="pp-card-go" aria-hidden="true">→</span>
                       </a>
                     </li>
@@ -143,7 +147,7 @@ const footerBg = closing ? (lastTint ? white : tint) : lastTint ? tint : white;
               <div class="pp-close">
                 <h2 id="pp-close">{closing.heading}</h2>
                 <p>{closing.text}</p>
-                <a class="btn-apply" href={closing.cta.href}>{closing.cta.label}</a>
+                <a class="btn-teal" href={closing.cta.href}>{closing.cta.label}</a>
               </div>
             </div>
           </section>

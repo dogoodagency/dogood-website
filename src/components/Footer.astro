@@ -171,7 +171,7 @@ const legal = [
 </footer>
 <script is:inline>document.getElementById("copyright-year").textContent=String(new Date().getFullYear());</script>
 <script>
-  const word = document.querySelector(".connect-word");
+  const word = document.querySelector<HTMLElement>(".connect-word");
   const n1 = word?.querySelector(".cn-n1");
   if (word instanceof HTMLElement && n1 instanceof HTMLElement) {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -179,7 +179,16 @@ const legal = [
       const size = parseFloat(getComputedStyle(n1).fontSize) || 1;
       const em = (n1.getBoundingClientRect().width * 0.15) / size;
       word.style.setProperty("--cn-shift", `${em}em`);
+      alignRow(em * size, size);
     };
+    // Contact and LinkedIn start where "Connect" ends up after the animation (Seb, 19 Nov 2026).
+    const row = document.querySelector<HTMLElement>(".ft-lets .connect-row");
+    const co = word.querySelector<HTMLElement>(".cn-co");
+    const alignRow = (shiftPx: number, size: number) => {
+      if (!row || !co) return;
+      row.style.paddingLeft = `${Math.round(co.offsetLeft + shiftPx + size * 0.045)}px`;
+    };
+    window.addEventListener("resize", () => window.requestAnimationFrame(setShift));
     const arm = () => {
       setShift();
       if (reduce) return;

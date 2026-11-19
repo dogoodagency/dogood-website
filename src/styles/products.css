@@ -178,3 +178,52 @@
     padding: 40px 22px;
   }
 }
+
+/* 19 Nov 2026 (Seb): no white cards on white bands, no lift on hover (colour change instead), and a clear
+   "Coming soon" status in the advisor-page style. */
+.pp-page .ep-band:not(.ep-band-tint) .pp-card,
+.pp-page .ep-band:not(.ep-band-tint) .pp-step {
+  background: #faf9ff;
+}
+
+.pp-page .pp-card:hover,
+.pp-page .pp-card:focus-visible {
+  border-color: #ea1557;
+  background: #fff3f4;
+}
+
+.pp-soon {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 16px;
+  padding: 6px 14px;
+  border: 1.5px dashed #c2b7dd;
+  border-radius: 999px;
+  background: #f5f2ff;
+  color: #2a0b4f;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.pp-soon::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: #28dbb0;
+}
+
+.pp-soon--hero {
+  margin: 0 0 22px;
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 15px;
+}
+
+/* "What it is NOT" boxes: HEART 25 with a HEART 300 line. */
+.pp-page .ep-box--rose {
+  border: 1px solid #feb5bc;
+  background: #fff9fa;
+}

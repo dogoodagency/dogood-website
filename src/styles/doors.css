@@ -433,7 +433,7 @@ body:has(.dr-page) .footer-wave {
   grid-row: auto;
   box-shadow: none;
   border-width: 1.5px;
-  border-top-width: 8px;
+  border-top-width: 1px;
 }
 
 .dr-doors.dr-doors-split {

@@ -1,19 +1,19 @@
 ---
 import ProductPage from "../components/ProductPage.astro";
-// Products hub (Seb, 19 Nov 2026): the offers around the two FRP stages. Linked from the Products menu.
+// Services hub (renamed from Products, Seb 19 Nov 2026): the offers around the two FRP stages. Linked from the Products menu.
 ---
 
 <ProductPage
-  title="Products | DoGood Agency"
-  description="The offers around the Founder Reclamation Partnership: the 1.5-Day In-Person Residency, IntegralContinuity™, the Annual Signature Retreat and FOUNDERland Membership."
-  path="/products"
-  eyebrow="Products"
+  title="Services | DoGood Agency"
+  description="The services around the Founder Reclamation Partnership: the 1.5-Day In-Person Residency, IntegralContinuity™, the Annual Signature Retreat and FOUNDERland™ Membership."
+  path="/services"
+  eyebrow="Services"
   h1="Beyond the two stages."
   sub="The ways to work with us around The Exit Prep™, The Reset™ and The Build™."
   sections={[
     {
       id: "pr-all",
-      heading: "Our products",
+      heading: "Our services",
       cards: [
         {
           href: "/residency",
@@ -30,13 +30,15 @@ import ProductPage from "../components/ProductPage.astro";
         {
           href: "/signature-retreat",
           tag: "Invitation only",
+          soon: true,
           title: "Annual Signature Retreat",
           text: "Our annual, in-person retreat with a small group of founders, built for connection, perspective, and real conversations.",
         },
         {
           href: "/founderland-membership",
-          tag: "Coming soon",
-          title: "FOUNDERland Membership",
+          tag: "Before and after the sale",
+          soon: true,
+          title: "FOUNDERland™ Membership",
           text: "The house founders belong to, before and after the sale.",
         },
       ],
@@ -47,7 +49,7 @@ import ProductPage from "../components/ProductPage.astro";
       cards: [
         {
           href: "/recovery-stress-diagnostics",
-          tag: "Stage 1 and The Exit Prep™",
+          tag: "Stage 1, Stage 2 and The Exit Prep™",
           title: "Recovery & Stress Diagnostics (WHOOP)",
           text: "A WHOOP baseline for sleep, recovery and stress, so stabilization is measurable.",
         },
@@ -56,12 +58,6 @@ import ProductPage from "../components/ProductPage.astro";
           tag: "Stage 2",
           title: "Custom State-Shift Audio",
           text: "Mood-specific tracks designed for focus, decompression, reset, and high-stakes days.",
-        },
-        {
-          href: "/expedited-start",
-          tag: "Starting",
-          title: "Expedited Start & Priority Hold",
-          text: "Start within 7 days when change has to happen fast, or reserve the next start date when we’re full.",
         },
       ],
     },

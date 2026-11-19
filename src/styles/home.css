@@ -7849,3 +7849,85 @@ body:has(.page-home) {
     white-space: normal;
   }
 }
+
+/* ===== Preview 6, update 18 (Seb, 19 Nov 2026) ===== */
+
+/* Headline: the two endings swap every 4s (a soft lift-and-fade). Width follows the longer ending. */
+.page-home .hero h1 .hero-swap {
+  display: inline-grid;
+  vertical-align: bottom;
+}
+
+.page-home .hero h1 .hero-swap > span {
+  grid-area: 1 / 1;
+  white-space: nowrap;
+  animation: hero-swap 8s ease-in-out infinite;
+}
+
+.page-home .hero h1 .hero-swap-b {
+  opacity: 0;
+  animation-delay: -4s !important;
+}
+
+@keyframes hero-swap {
+  0%, 42% { opacity: 1; transform: translateY(0); }
+  50%, 92% { opacity: 0; transform: translateY(-0.25em); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-home .hero h1 .hero-swap > span { animation: none; }
+  .page-home .hero h1 .hero-swap-b { display: none; }
+}
+
+/* FOUNDERland in "This is the first step": GRASS 600 for contrast on white. */
+.page-home #first-card .founder-word {
+  color: #01a684;
+}
+
+/* Why DoGood: "Because we love entrepreneurship." on one line. */
+.page-home #why h2.t-h2 {
+  font-size: clamp(20px, 1.8vw, 26px);
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .page-home #why h2.t-h2 {
+    font-size: 22px;
+    white-space: normal;
+  }
+}
+
+/* Founder's message signature: written in, in the direction of the pen (about 2.6s). */
+.page-home .sig.sig-ready {
+  clip-path: inset(0 100% 0 0);
+}
+
+.page-home .sig.sig-write {
+  animation: sig-write 2.6s cubic-bezier(0.45, 0.05, 0.4, 1) 0.2s forwards;
+}
+
+@keyframes sig-write {
+  0% { clip-path: inset(0 100% 0 0); }
+  55% { clip-path: inset(0 30% 0 0); }
+  70% { clip-path: inset(0 22% 0 0); }
+  100% { clip-path: inset(0 0 0 0); }
+}
+
+/* As seen on: the frame is narrower than one full set of logos, so no logo shows twice at once. */
+.page-home #asseen .asseen-frame {
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 24px;
+}
+
+@media (max-width: 720px) {
+  .page-home .hero h1 .hero-swap {
+    display: inline-grid;
+  }
+
+  .page-home .hero h1 .hero-swap > span {
+    white-space: normal;
+  }
+}

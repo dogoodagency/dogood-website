@@ -6,6 +6,52 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 18: site-wide rules, Start here / Services nav, homepage and footer (19 Nov 2026, early afternoon)
+
+**Made by:** Claude (claude.ai), from Seb's feedback of 12:43 (batch 1 of several). **Branch:** `claude/preview-6`. **Commit:** `COMMIT18`.
+
+### Site-wide rules
+- `src/styles/site-rules.css` (loaded from Base.astro): no box-shadows anywhere (frames keep their thin
+  border); cards never lift on hover; FAQ rows (`details > summary`) get a DREAM tint on hover.
+- Thick top bars on text frames removed (8px/6px → 1px): doors (how-it-works and exit-prep), framework
+  cards, about cards, how-it-works stage boxes.
+- ™: a build step (`integrations/trademark.mjs`, runs after `astro build`) wraps every visible ™ on every
+  page in `<span class="tm">` (2px smaller, weight 300; Montserrat 300 now loaded). Titles, attributes,
+  scripts and JSON-LD are untouched.
+- Testimonial walls (TestimonialWall and /stories): every column moves at the same 38px a second (set in
+  Base.astro from each column's length), so no column runs faster; sound bites now move at the Stories
+  speed. Quotes 18px, weight 500. Cards on light bands are DREAM 10. Hover/focus pause fixed on the
+  shared wall (a shorthand was overriding it).
+
+### Navigation
+- "How it works" menu is now **Start here**, a fork: "I haven't sold yet" → The Exit Prep™; "I've sold"
+  → Stage 1: The Reset™ (30 Days), whose line says Stage 2 follows by invitation. Stage 2 is no longer in
+  the nav. Card: "Which door is mine?" → /how-it-works.
+- "Products" menu is now **Services** (card "All services" → /services). FOUNDERland™ Membership has
+  the ™ in the nav too. WHOOP and the audio stay out of the nav.
+- `/products` renamed **`/services`** (301 in `public/_redirects`). Services page: Expedited Start card
+  removed; WHOOP tagged Stage 1, Stage 2 and The Exit Prep; Retreat and Membership show a "Coming soon ·
+  we're building it now" pill (advisor-page style); no white cards on white bands; hover changes colour.
+- Residency: hero button removed; "What it is NOT" box now HEART 25 / HEART 300; closing button "Apply
+  for Stage 1". Product-page closing buttons are GRASS 500 on DREAM 500. Retreat and Membership pages
+  show a "Coming soon" pill in the hero. WHOOP page: part of Stage 1, Stage 2 and The Exit Prep.
+
+### Homepage
+- Headline: "For founders [who've exited | who're planning to exit]" (the two endings swap every 4s),
+  line 2 "the company they built." in HEART. Screen readers get one full sentence; reduced motion shows
+  "who've exited" only.
+- "We support life in FOUNDERland." (full stop). FOUNDERland in "This is the first step": GRASS 600
+  #01A684. "Because we love entrepreneurship." on one line (20–26px).
+- As seen on: frame max 920px so no logo shows twice at once.
+- A Founder's Message: the signature writes itself in (left-to-right reveal, 2.6s) when it scrolls in.
+
+### Footer
+- Opt-in centred against "Let's Connect"; Contact and LinkedIn moved up under "Connect" and start where
+  "Connect" ends after its animation (measured in Footer.astro). Explore gets "Clarity-First Guarantee"
+  (→ /clarity-first-guarantee-terms) after Newsletter.
+
+---
+
 ## Preview 6, update 17: The Build gets its own page, footer rebuilt from Seb's mock-up, one link source (19 Nov 2026, late morning)
 
 **Made by:** Claude (claude.ai), from Seb's message of 10:36 and his footer mock-up. **Branch:** `claude/preview-6`. **Commit:** `abeb011`.

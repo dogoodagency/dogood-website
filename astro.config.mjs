@@ -2,12 +2,13 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
+import trademark from "./integrations/trademark.mjs";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.dogoodagency.co",
   trailingSlash: "never",
-  integrations: [sitemap({
+  integrations: [trademark(), sitemap({
     // The placeholder articles were replaced by real ones on 18 Nov 2026, so articles are included.
     filter: (page) =>
       // Thank-you, booking and form-acknowledgement pages stay out of the sitemap (and are noindex).

@@ -19,7 +19,7 @@ export const offers: SiteLink[] = [
     href: "/the-reset",
     label: "Stage 1: The Reset™",
     navLabel: "Stage 1: The Reset™ (30 Days)",
-    detail: "For founders who have sold. 30 private days to see what is surfacing before the next big decision.",
+    detail: "For founders who have sold. 30 private days to see what is surfacing. Stage 2: The Build™ follows by invitation.",
   },
   {
     href: "/the-build",
@@ -29,7 +29,7 @@ export const offers: SiteLink[] = [
   },
 ];
 
-/** The products around the two stages (nav: Products; footer: Services, after the offers). */
+/** The services around the two stages (nav: Services; footer: Services, after the offers). */
 export const products: SiteLink[] = [
   {
     href: "/residency",
@@ -49,7 +49,6 @@ export const products: SiteLink[] = [
   {
     href: "/founderland-membership",
     label: "FOUNDERland™ Membership",
-    navLabel: "FOUNDERland Membership",
     detail: "The house founders belong to, before and after the sale.",
   },
 ];
@@ -66,6 +65,7 @@ export const explore: SiteLink[] = [
   { href: "/insights", label: "Insights" },
   { href: urls.podcast, label: "DoGood Insider Podcast" },
   { href: "/newsletter", label: "Newsletter" },
+  { href: "/clarity-first-guarantee-terms", label: "Clarity-First Guarantee" },
   { href: "/wayfinders/clientfit", label: "Client-fit process" },
   { href: "/expedited-start", label: "Expedited Start & Priority Hold" },
   { href: "/faqs", label: "FAQ" },

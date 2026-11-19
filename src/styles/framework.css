@@ -61,7 +61,7 @@
   padding: 28px 24px;
   background: #fff;
   border: 1px solid var(--ep-line);
-  border-top: 6px solid var(--ep-teal);
+  border-top: 1px solid var(--ep-teal);
   border-radius: 18px;
 }
 

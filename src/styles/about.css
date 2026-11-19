@@ -613,7 +613,7 @@ body:has(.ab-page) .footer-wave {
   padding: 32px 30px;
   background: #fff;
   border: 1px solid var(--ab-line);
-  border-top: 6px solid var(--ab-teal);
+  border-top: 1px solid var(--ab-teal);
   border-radius: 20px;
 }
 

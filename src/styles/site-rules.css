@@ -1,0 +1,31 @@
+/* Site-wide rules (Seb, 19 Nov 2026). Loaded last from Base.astro; !important only where a rule must win
+   over every page stylesheet.
+   1. No shadows anywhere: frames use a thin border instead.
+   2. Cards never move on hover: they change colour instead.
+   3. Text frames have one thin border all round (no thick top bars). */
+
+*,
+*::before,
+*::after {
+  box-shadow: none !important;
+}
+
+/* Cards that used to lift on hover stay still. */
+a[class*="card"]:hover,
+a[class*="card"]:focus-visible,
+.bl-card:hover,
+.bli-cat:hover,
+.bli-cat:focus-visible,
+.pp-card:hover,
+.pp-card:focus-visible {
+  transform: none !important;
+}
+
+/* FAQ rows on every page: a clear background change on hover. */
+details > summary {
+  transition: background-color 0.2s ease;
+}
+
+details > summary:hover {
+  background-color: #ede8fb;
+}
