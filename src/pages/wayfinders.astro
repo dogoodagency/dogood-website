@@ -3,6 +3,9 @@ import "../styles/wayfinders.css";
 import Base from "../layouts/Base.astro";
 import Wave from "../components/Wave.astro";
 import ReviewsRail from "../components/ReviewsRail.astro";
+import { Image } from "astro:assets";
+import gina from "../assets/reviews/gina-p.png";
+import tami from "../assets/reviews/tami-l.png";
 import { edgeAbove } from "../data/edge-line";
 import { wayfinders, lineLabels, clientFitSteps, mapPins } from "../data/wayfinders";
 
@@ -54,6 +57,34 @@ const jsonLd = {
   ],
 };
 
+// Testimonials Seb supplied on 19 Nov 2026 (Chantill's clients), word for word, paragraphs as supplied.
+const voices = [
+  {
+    name: "Gina P",
+    role: "The Wilder Practice, former Google organizational design executive",
+    wayfinder: "Chantill",
+    image: gina,
+    quote: [
+      "Working with Chantill has had a twofold impact on me, both personally and in my work.",
+      "I’ve become more fully aware of my nervous system state and have the ability to shift states in a way that creates greater capacity—to be with things that are hard, to manage times of stress, and to turn toward discomfort with more presence. I feel like a calmer, more settled person.",
+      "I’m also more able to be present in joy, and to expand states like gratitude and contentment, really feeling them in my body. There’s more bandwidth now to experience the fullness of those moments.",
+      "Because I have this awareness inside of me, it’s directly impacted my work. I’m able to hold a larger and more stable container for my clients in our coaching work. I’m looking forward to continuing to bring these tools in to support my clients in their personal and professional transformations.",
+      "I’m seeing what’s possible for them based on what I’m experiencing within myself.",
+    ],
+  },
+  {
+    name: "Tami L",
+    role: "Studio T",
+    wayfinder: "Chantill",
+    image: tami,
+    quote: [
+      "Before this, I was consistently operating in high gear, nothing ever felt like enough, and I was always pursuing the next level.",
+      "Over the past three years, I’ve developed a consistent daily practice that allows me to connect inwardly and show up more intentionally and effectively. My work with Chantill has had a measurable impact, expanding my capacity to take risks, be vulnerable, and move from co-regulation to self-regulation with greater ease.",
+      "As a result, I’m more present, more grounded, and better able to engage with both challenges and opportunities from a different lens.",
+    ],
+  },
+];
+
 const regionList = mapPins.map((pin) => pin.name).join(", ");
 const halos = mapPins.map((pin, i) => ({ ...pin, i, delay: `${-((i * 0.77) % 3.6).toFixed(2)}s` }));
 ---
@@ -70,16 +101,11 @@ const halos = mapPins.map((pin, i) => ({ ...pin, i, delay: `${-((i * 0.77) % 3.6
   <article class="wf-page">
     <header class="wf-hero">
       <div class="wf-hero-inner">
+        <!-- Hero trimmed (Seb, 19 Nov 2026): one type style, left-aligned, less text. -->
         <h1>Meet all Wayfinders</h1>
-        <div class="wf-hero-copy">
-          <h2 class="wf-eyebrow">What Wayfinders Are</h2>
-          <p class="wf-lead">
-            Wayfinders hold the container and steer the process: creating safety, asking direct questions, tracking the real thing, and keeping the work moving until you have stability and a clear next path (all while having fun).
-          </p>
-          <p>
-            FRP is carried out by an intentionally small team that collectively has over 70 years of hands-on founder-delivery experience. These professionals possess rare skills, not commonly found in typical work, and undergo rigorous training to uphold the highest industry standards, consistently delivering results-driven outcomes.
-          </p>
-        </div>
+        <p class="wf-lead">
+          Wayfinders hold the container and steer the process: creating safety, asking direct questions and keeping the work moving until you have stability and a clear next path. A small team with over 70 years of hands-on founder experience.
+        </p>
       </div>
       <Wave fill={white} edge={heroEdge} />
     </header>
@@ -142,7 +168,8 @@ const halos = mapPins.map((pin, i) => ({ ...pin, i, delay: `${-((i * 0.77) % 3.6
     <section class="wf-band wf-band-tint" aria-labelledby="wf-fit">
       <div class="wf-well wf-well-top">
         <h2 class="wf-h2 wf-center" id="wf-fit">How the Client-Fit process works</h2>
-        <ol class="wf-steps">
+        <!-- Animated on scroll (Seb, 19 Nov 2026): the steps appear one after another, then the arrows. -->
+        <ol class="wf-steps" data-wf-steps>
           {
             clientFitSteps.map((step, i) => (
               <li class="wf-step">
@@ -241,17 +268,87 @@ const halos = mapPins.map((pin, i) => ({ ...pin, i, delay: `${-((i * 0.77) % 3.6
 
     <Fragment set:html={toWhite} />
 
-    <ReviewsRail />
+    <!-- Testimonials about our Wayfinders (Seb, 19 Nov 2026), word for word, then the rolling reviews. -->
+    <section class="wf-band wf-band-voices" aria-labelledby="wf-voices">
+      <div class="wf-well wf-well-top">
+        <p class="wf-eyebrow wf-eyebrow-dark wf-center">Testimonials</p>
+        <h2 class="wf-h2 wf-center" id="wf-voices">What clients say about working with a Wayfinder</h2>
+        <div class="wf-voices">
+          {
+            voices.map((v) => (
+              <figure class="wf-voice">
+                <span class="wf-voice-mark" aria-hidden="true">“</span>
+                <blockquote>
+                  {v.quote.map((para) => <p>{para}</p>)}
+                </blockquote>
+                <figcaption>
+                  <Image class="wf-voice-face" src={v.image} alt="" width={64} height={64} densities={[1, 2]} />
+                  <span>
+                    <strong>{v.name}</strong>
+                    <span>{v.role}</span>
+                    <span class="wf-voice-about">On working with {v.wayfinder}</span>
+                  </span>
+                </figcaption>
+              </figure>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <ReviewsRail exclude={["gina-p.png", "tami-l.png"]} />
 
     <Fragment set:html={toTint} />
 
     <section class="wf-band wf-band-tint" aria-label="Apply for Stage 1">
       <div class="wf-well wf-well-top">
-        <div class="wf-cta">
-          <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
-          <a class="btn-teal" href="/how-it-works">See how it works</a>
+        <!-- Bottom box with context (Seb, 19 Nov 2026). -->
+        <div class="wf-cta wf-cta-ctx">
+          <h2>Ready to be matched with your Wayfinder?</h2>
+          <p>Your Stage 1 application tells us what is happening and what you need. We review it within 24 hours, talk with you, and match you with the Wayfinder who fits you best.</p>
+          <div class="wf-cta-actions">
+            <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
+            <a class="btn-teal" href="/how-it-works">See how it works</a>
+          </div>
+          <p class="wf-cta-small">Not sure yet? How it works shows both doors: Exit-Prep before the sale, The Reset after it.</p>
         </div>
       </div>
     </section>
   </article>
 </Base>
+
+<script>
+  // Client-Fit steps: reveal one after another when scrolled into view.
+  const steps = document.querySelector<HTMLElement>("[data-wf-steps]");
+  if (steps) {
+    document.documentElement.classList.add("wf-js");
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce || !("IntersectionObserver" in window)) steps.classList.add("is-in");
+    else {
+      const io = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((e) => e.isIntersecting)) {
+            steps.classList.add("is-in");
+            io.disconnect();
+          }
+        },
+        { threshold: 0.35 },
+      );
+      io.observe(steps);
+    }
+  }
+
+  // "More about …": opening one card opens them all, so every card shows its text (Seb, 19 Nov 2026).
+  const mores = Array.from(document.querySelectorAll<HTMLDetailsElement>(".wf-members .wf-more"));
+  let syncing = false;
+  mores.forEach((d) =>
+    d.addEventListener("toggle", () => {
+      if (syncing) return;
+      syncing = true;
+      mores.forEach((o) => {
+        if (o !== d) o.open = d.open;
+      });
+      syncing = false;
+    }),
+  );
+</script>

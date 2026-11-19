@@ -1464,3 +1464,219 @@ h2.wf-h2.wf-center {
 .wf-page .wf-eyebrow-dark {
   color: #c10e46;
 }
+
+/* ---------- Wayfinders page update (Seb, 19 Nov 2026) ---------- */
+
+/* Hero: one type style for the text under the H1, left-aligned. */
+.wf-page .wf-hero .wf-lead {
+  max-width: 820px;
+  margin: 0;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.55;
+  text-align: left;
+}
+
+/* Small note under buttons: lighter. */
+.wf-page .wf-note {
+  color: #6b5c93;
+  font-weight: 500;
+  opacity: 1;
+}
+
+/* Client-Fit steps: appear one after another, then the arrows. */
+.wf-js [data-wf-steps] .wf-step {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.wf-js [data-wf-steps] .wf-step::after {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.wf-js [data-wf-steps].is-in .wf-step {
+  opacity: 1;
+  transform: none;
+}
+
+.wf-js [data-wf-steps].is-in .wf-step::after {
+  opacity: 1;
+}
+
+.wf-js [data-wf-steps].is-in .wf-step:nth-child(1) { transition-delay: 0s; }
+.wf-js [data-wf-steps].is-in .wf-step:nth-child(2) { transition-delay: 0.35s; }
+.wf-js [data-wf-steps].is-in .wf-step:nth-child(3) { transition-delay: 0.7s; }
+.wf-js [data-wf-steps].is-in .wf-step:nth-child(4) { transition-delay: 1.05s; }
+.wf-js [data-wf-steps].is-in .wf-step:nth-child(1)::after { transition-delay: 0.3s; }
+.wf-js [data-wf-steps].is-in .wf-step:nth-child(2)::after { transition-delay: 0.65s; }
+.wf-js [data-wf-steps].is-in .wf-step:nth-child(3)::after { transition-delay: 1s; }
+
+.wf-js [data-wf-steps].is-in .wf-step-n {
+  animation: wf-pop 0.5s ease both;
+}
+
+.wf-js [data-wf-steps].is-in .wf-step:nth-child(2) .wf-step-n { animation-delay: 0.35s; }
+.wf-js [data-wf-steps].is-in .wf-step:nth-child(3) .wf-step-n { animation-delay: 0.7s; }
+.wf-js [data-wf-steps].is-in .wf-step:nth-child(4) .wf-step-n { animation-delay: 1.05s; }
+
+@keyframes wf-pop {
+  0% { transform: scale(0.6); }
+  70% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wf-js [data-wf-steps] .wf-step,
+  .wf-js [data-wf-steps] .wf-step::after {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .wf-js [data-wf-steps].is-in .wf-step-n {
+    animation: none;
+  }
+}
+
+/* Team cards: DREAM 500 behind every photo, whole figure visible (no heads or bodies cut off). */
+.wf-members .wf-photo {
+  align-items: flex-end;
+  background: #2a0b4f;
+  padding: 18px 12px 0;
+}
+
+.wf-members .wf-photo picture {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.wf-members .wf-photo img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+/* Testimonials about Wayfinders. */
+.wf-voices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.wf-voice {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 56px 32px 28px;
+  background: #f5f2ff;
+  border: 1px solid var(--wf-line);
+  border-radius: 22px;
+}
+
+.wf-voice-mark {
+  position: absolute;
+  top: 10px;
+  left: 28px;
+  color: #c10e46;
+  font-size: 72px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.wf-voice blockquote {
+  margin: 0 0 22px;
+}
+
+.wf-page .wf-voice blockquote p {
+  margin: 0 0 12px;
+  color: var(--wf-ink);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.wf-voice figcaption {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: auto;
+}
+
+.wf-voice-face {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: none;
+}
+
+.wf-voice figcaption > span {
+  display: flex;
+  flex-direction: column;
+  color: var(--wf-ink);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.wf-voice figcaption strong {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.wf-voice-about {
+  color: #6b5c93;
+}
+
+@media (max-width: 860px) {
+  .wf-voices {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* No line under the reviews rail before the wave. */
+.wf-page .reviews-rail {
+  border-bottom: 0;
+}
+
+/* Bottom box with context. */
+.wf-cta.wf-cta-ctx {
+  flex-direction: column;
+  gap: 0;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 52px 44px;
+  text-align: center;
+  box-shadow: none;
+}
+
+.wf-page .wf-cta-ctx h2 {
+  margin: 0 0 12px;
+  color: #fff;
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.wf-page .wf-cta-ctx p {
+  max-width: 620px;
+  margin: 0 auto 26px;
+  color: #f5f2ff;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.wf-page .wf-cta-ctx p.wf-cta-small {
+  margin: 18px auto 0;
+  color: #cfc4e6;
+  font-size: 14px;
+}

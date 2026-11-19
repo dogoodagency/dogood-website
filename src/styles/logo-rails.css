@@ -1,0 +1,144 @@
+/* Moving logo rails (LogoRails.astro): /stories and the homepage. Rules are .lr- only. */
+
+.lr-rails {
+  --lr-ink: #2a0b4f;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.lr-rail {
+  width: 100%;
+  overflow: hidden;
+}
+
+.lr-rail-inner {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.lr-pattern {
+  display: flex;
+  flex: none;
+  gap: 1rem;
+  margin: 0;
+  padding: 0 1rem 0 0;
+  list-style: none;
+}
+
+.lr-pill {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 1.25rem 2.5rem 1.25rem 1.25rem;
+  border-radius: 3.75rem;
+  background: #f5f2ff;
+}
+
+.lr-pill-word {
+  padding: 1.25rem;
+}
+
+.lr-pill-vis {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 3.75rem;
+  height: 3.75rem;
+  padding: 1rem;
+  border-radius: 100%;
+  background: #fff;
+}
+
+.lr-pill-vis img {
+  display: block;
+  width: 1.75rem;
+  height: 1.75rem;
+  object-fit: contain;
+}
+
+.lr-pill-vis-word {
+  width: auto;
+  padding: 0 1.25rem;
+  border-radius: 3.75rem;
+}
+
+.lr-pill-vis-word img {
+  width: auto;
+  max-width: none;
+  height: 1.25rem;
+}
+
+.lr-rails p.lr-pill-name {
+  margin: 0;
+  color: var(--lr-ink);
+  font-size: 1.1875rem;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+/* Homepage: white pills on the light lavender band, slightly smaller. */
+.lr-rails--tint .lr-pill {
+  background: #fff;
+  border: 1px solid #e6dcfc;
+  padding: 0.75rem 2rem 0.75rem 0.75rem;
+}
+
+.lr-rails--tint .lr-pill-word {
+  padding: 0.75rem;
+}
+
+.lr-rails--tint .lr-pill-vis {
+  background: #f5f2ff;
+  width: 3.25rem;
+  height: 3.25rem;
+}
+
+.lr-rails--tint .lr-pill-vis.lr-pill-vis-word {
+  width: auto;
+}
+
+.lr-rails--tint p.lr-pill-name {
+  font-size: 1.0625rem;
+}
+
+/* No JavaScript or reduced motion: a still, wrapped, centred set. */
+html:not(.lr-js) .lr-rail-inner {
+  width: auto;
+  justify-content: center;
+}
+
+html:not(.lr-js) .lr-pattern {
+  flex: 0 1 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-right: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lr-rail-inner {
+    width: auto;
+    justify-content: center;
+    transform: none !important;
+  }
+
+  .lr-pattern {
+    flex: 0 1 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-right: 0;
+    max-width: min(1200px, calc(100% - 2 * var(--pad)));
+  }
+
+  .lr-rail-inner > .lr-pattern[aria-hidden="true"] {
+    display: none;
+  }
+}

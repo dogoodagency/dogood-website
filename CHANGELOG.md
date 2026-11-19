@@ -6,6 +6,49 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 13: five new logos, shared logo rails (homepage two rows), Wayfinders page (19 Nov 2026, morning)
+
+**Made by:** Claude (claude.ai), from Seb's feedback of 19 Nov 01:01 and 01:05 (recovered after the chat retry; Seb approved them again at 07:48), screenshots 20 to 22 and the logo files. **Branch:** `claude/preview-6`.
+
+### Logos
+- Five new logos, cleaned and recoloured to HEART 500 like the others
+  (`public/media/stories/logos/`): word logos **CHEP** (without "A Brambles Company"),
+  **ASML** and **Randstad** (from the SVGs, sharp); round marks with the name beside them
+  **ArcelorMittal** (the arc mark) and **European Central Bank** (the file had a fake
+  checkerboard printed in and is tiny; cleaned and redrawn by threshold; a vector original
+  would be sharper). Added to `logoRails` in `src/data/stories-page.ts`.
+- **One logo strip for the whole site:** new `src/components/LogoRails.astro` +
+  `src/styles/logo-rails.css` (the Stories rails moved into a component). Stories uses
+  three rows; the **homepage now shows the same pills in two moving rows** (white pills on
+  the lavender band, a little slower), replacing the old single pink logo line. Add a logo
+  once in `stories-page.ts` and it appears on both pages. Rails follow the scroll
+  direction, pause off-screen and stand still with reduced motion.
+- `src/assets/logos/pink/*` and `logos` in `src/data/homepage.ts` are no longer used by the
+  homepage (kept for now).
+
+### Wayfinders (`src/pages/wayfinders.astro`, `wayfinders.css`, `src/data/wayfinders.ts`)
+- Hero: one type style, left-aligned, shorter text (eyebrow and second paragraph removed,
+  the 70-years line folded into the lead).
+- Note under the Apply button ("For founders · Limited to 5 new founders/month") lighter.
+- Client-Fit steps animate on scroll: the four steps appear one after another, the numbers
+  pop, then the arrows. Still with reduced motion.
+- Team cards: DREAM 500 behind every photo, whole figure scaled to fit (no heads or bodies
+  cut off). "(+ United Kingdom & Central America)" → "(+ UK & Central America)".
+- "More about …": opening one card opens all of them (and closing closes all), so no card
+  shows empty space.
+- New section "What clients say about working with a Wayfinder": Gina P and Tami L, word
+  for word in their paragraphs, with headshots and "On working with Chantill". The rolling
+  reviews below leave those two out (`ReviewsRail` has a new `exclude` prop).
+- Bottom box: heading "Ready to be matched with your Wayfinder?", a line on what happens
+  after applying, the two buttons and a small line on How it works. The thin line under the
+  reviews rail (above the wave) is removed.
+
+### Checked
+- axe: home and Stories 0 issues; Wayfinders only flags the Client-Fit steps while they are
+  still hidden before their scroll animation (fine once shown). No horizontal scroll on phone.
+
+---
+
 ## Preview 6, update 12: How it works, Exit-Prep, The Reset and Stories reworked; new logos and testimonials; quote names (19 Nov 2026, morning)
 
 **Made by:** Claude (claude.ai), from Seb's feedback (screenshots 14 to 19, seven logos, two headshots, the Exit-Prep one-pager v1). **Branch:** `claude/preview-6`. **Commits:** `eea6d30`, `302f357`, and `4ca8433` (quote names).

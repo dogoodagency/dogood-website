@@ -12,9 +12,11 @@ import { reviews } from "../data/homepage";
 interface Props {
   heading?: string;
   id?: string;
+  /** Review portrait file names to leave out (e.g. when the page already shows them in full). */
+  exclude?: string[];
 }
 
-const { heading = "Leaders who've been through it", id = "reviews-rail" } = Astro.props;
+const { heading = "Leaders who've been through it", id = "reviews-rail", exclude = [] } = Astro.props;
 
 const portraits = import.meta.glob<ImageMetadata>("../assets/reviews/*", {
   eager: true,
@@ -27,7 +29,9 @@ function portrait(file: string) {
   return found[1];
 }
 
-const reviewSet = reviews.map((review) => ({ ...review, src: portrait(review.file) }));
+const reviewSet = reviews
+  .filter((review) => !exclude.includes(review.file))
+  .map((review) => ({ ...review, src: portrait(review.file) }));
 
 function clipQuote(quote: string) {
   const clean = quote.replace(/\s+/g, " ").trim();

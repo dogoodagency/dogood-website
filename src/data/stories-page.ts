@@ -39,6 +39,9 @@ export const logoRails: LogoRail[] = [
       icon("Vodafone", "Vodafone"),
       word("Johnson & Johnson", "Johnson-and-Johnson", 508),
       icon("ABN AMRO", "ABN-AMRO"),
+      // Added 19 Nov 2026 (Seb, logos from the Wayfinders): recoloured to HEART 500, cleaned.
+      word("ASML", "ASML", 342),
+      word("Randstad", "Randstad", 647),
     ],
   },
   {
@@ -55,6 +58,8 @@ export const logoRails: LogoRail[] = [
       word("Upwork", "Upwork", 326),
       icon("Sutter Health", "Sutter-Health"),
       word("eXp Realty", "eXp-Realty", 185),
+      word("CHEP", "CHEP", 451),
+      icon("European Central Bank", "ECB"),
     ],
   },
   {
@@ -74,6 +79,7 @@ export const logoRails: LogoRail[] = [
       icon("Australian Physiotherapy Association", "APA"),
       icon("Google", "Google"),
       word("Spiralyze", "Spiralyze", 450),
+      icon("ArcelorMittal", "ArcelorMittal"),
     ],
   },
 ];
