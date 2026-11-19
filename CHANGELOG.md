@@ -6,6 +6,61 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 17: The Build gets its own page, footer rebuilt from Seb's mock-up, one link source (19 Nov 2026, late morning)
+
+**Made by:** Claude (claude.ai), from Seb's message of 10:36 and his footer mock-up. **Branch:** `claude/preview-6`. **Commit:** `COMMIT17`.
+
+### The Reset / The Build split
+- **New page `/the-build`** (Stage 2): hero with the two-step progress bar, a "You've completed Stage 1"
+  recap (house 2, Seb's Stage 1 lines), the full Stage 2 section moved word for word from /the-reset
+  (house 3), the supports + Signature Retreat, testimonials, the Wayfinder team, and "Stage 2 starts with
+  Stage 1" (Apply for Stage 1).
+- **/the-reset** is now the Stage 1 page: progress bar at the top of the hero, eyebrow
+  "Stage 1: The Reset™ (30 Days)" (H1 unchanged), and the Stage 2 section replaced by "What comes after
+  Stage 1": a short Stage 2 summary (Seb's own sentences), "Stage 2 is by invitation", and a button to
+  /the-build. Option B ("We continue") links to /the-build.
+- **`src/components/StageProgress.astro`**: the two-step bar (Stage 1 → Stage 2), current step in teal,
+  the done step ticked; both steps are links.
+- Shared pieces pulled out so both pages use the same source: `HwHouse.astro` (house sketch with labels),
+  `HwSupports.astro` (supports + retreat), `HwWayfinders.astro` (Wayfinder team band).
+- Nav and footer "Stage 2: The Build™" now link to `/the-build`.
+
+### Footer (`src/components/Footer.astro`, new `src/styles/footer.css`)
+- Rebuilt from Seb's mock-up (measured at its width, about 1728px): brand top left; columns Explore,
+  Services (+ Products below), Advisor Center starting at 41.6% / 64.5% / 87.9% of the content width;
+  Let's Connect across the first two columns; the opt-in to its right; About DoGood and the company below.
+  All text 14px (the services note is now 14px, was 12px); links 38px apart; titles 800.
+- Link names from the mock-up: Explore = About us, Insights, DoGood Insider Podcast, Newsletter,
+  Client-fit process, Expedited Start & Priority Hold, FAQ. Services = The Exit Prep™, Stage 1: The
+  Reset™, Stage 2: The Build™, 1.5-Day In-Person Residency, IntegralContinuity™, Annual Signature
+  Retreat, FOUNDERland™ Membership. Products = Recovery & Stress Diagnostics (WHOOP), Custom State-Shift
+  Audio. Advisor Center unchanged. Removed from the footer: /products (stays in the nav), ClarityValue
+  Shift™ and NextLife Passage™ (not in the mock-up; Seb to confirm).
+- Opt-in in its own frame (GRASS 500 line, light teal tint), 20px Black title, white email field with a
+  placeholder, Subscribe next to it. Same MailerLite form and script as before.
+- Tablet: brand, then the three columns side by side, then Let's Connect, opt-in, About. Phone: one
+  column with the opt-in above Let's Connect.
+- The old footer grid rules (`.footer-layout`, `.footer-explore` etc. in home.css) no longer match any
+  markup; left in place, safe to delete later.
+
+### ™ sign
+- New global class `.tm` (global.css): 2px smaller and weight 300. Used in the nav menus, the footer and
+  the progress bar via `tm()` in `src/data/site-links.ts`.
+
+### One source for the nav and the footer
+- **`src/data/site-links.ts`** holds every nav-menu and footer link (offers, products, tools, Explore,
+  Advisor Center). `Header.astro` and `Footer.astro` both read it. Every page renders the header and footer
+  through `Base.astro` (checked: no page has its own), so a change in site-links.ts, Header.astro or
+  Footer.astro shows on every page.
+
+### Other
+- /expedited-start: "the next available spot (usually 4–8 weeks)" (Seb confirmed 4–8; the FAQ already
+  said so).
+- axe: home, /the-reset, /the-build, /expedited-start, no issues reported. No sideways scroll at 390,
+  800, 1100, 1440, 1728px.
+
+---
+
 ## Preview 6, update 16: two-stage frames restored, three more pages, footer product links (19 Nov 2026, morning)
 
 **Made by:** Claude (claude.ai), from Seb's feedback of 09:19 (screenshot 6). **Branch:** `claude/preview-6`. **Commit:** `521a147`.

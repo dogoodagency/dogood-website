@@ -1,0 +1,173 @@
+---
+/**
+ * Stage 2: The Build (Seb, 19 Nov 2026). Its own page, split from /the-reset. Stage 2 copy moved here word
+ * for word; the two-step progress bar and the Stage 1 recap keep the link to Stage 1.
+ */
+import "../styles/how-it-works.css";
+import Base from "../layouts/Base.astro";
+import Wave from "../components/Wave.astro";
+import { edgeAbove } from "../data/edge-line";
+import { reviews } from "../data/homepage";
+import TestimonialWall from "../components/TestimonialWall.astro";
+import HwHouse from "../components/HwHouse.astro";
+import HwSupports from "../components/HwSupports.astro";
+import HwWayfinders from "../components/HwWayfinders.astro";
+import StageProgress from "../components/StageProgress.astro";
+import { houses, stage2Includes } from "../data/how-it-works";
+
+const tint = "#F5F2FF";
+const white = "#ffffff";
+const heroEdge = edgeAbove("#2A0B4F");
+const bandEdge = edgeAbove(tint);
+
+function wave(from: string, to: string) {
+  const above = from === tint ? "tint" : "white";
+  return `<div class="hw-divider hw-divider--${above}" aria-hidden="true"><svg style="--wave-edge:${bandEdge}" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${to}" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path><path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path></svg></div>`;
+}
+const toTint = wave(white, tint);
+const toWhite = wave(tint, white);
+const dream = "#2A0B4F";
+const _toDream = `<div class="hw-divider hw-divider--white" aria-hidden="true"><svg style="--wave-edge:${bandEdge}" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${dream}" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path></svg></div>`;
+const tintToDream = `<div class="hw-divider hw-divider--tint" aria-hidden="true"><svg style="--wave-edge:${bandEdge}" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${dream}" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path></svg></div>`;
+const fromDream = `<div class="hw-divider" style="background:${dream}" aria-hidden="true"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${tint}" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path></svg></div>`;
+
+const portraitFiles = import.meta.glob<ImageMetadata>("../assets/reviews/*", { eager: true, import: "default" });
+const portraitFor = (file: string) => Object.entries(portraitFiles).find(([p]) => p.endsWith(`/${file}`))?.[1];
+const wallItems = reviews.map((r) => ({ quote: r.quote, name: r.name, role: r.role, image: portraitFor(r.file) }));
+
+const [, houseStage1, houseStage2] = houses;
+---
+
+<Base
+  title="Stage 2: The Build, rebuilding life after selling a business | DoGood Agency"
+  description="Stage 2 of the Founder Reclamation Partnership: 12 weeks, by invitation after Stage 1. Rework life, go deeper and realign what matters after the exit."
+  canonical="https://www.dogoodagency.co/the-build"
+  footerStrip={white}
+  footerEdge={edgeAbove(white)}
+>
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: "Founder Reclamation Partnership: Stage 2 The Build",
+      url: "https://www.dogoodagency.co/the-build",
+      description: "Stage 2 of a private 1:1 engagement for founders after exit: 12 weeks, by invitation after Stage 1 (The Reset).",
+      serviceType: "1:1 founder coaching",
+      provider: { "@id": "https://www.dogoodagency.co/#organization" },
+      areaServed: "Worldwide",
+      additionalProperty: { "@type": "PropertyValue", name: "Duration", value: "12 weeks, by invitation" },
+    })} />
+  <article class="hw-page">
+    <header class="hw-hero">
+      <div class="hw-hero-inner">
+        <StageProgress current={2} showTitle={false} />
+        <p class="hw-eyebrow">Stage 2: The Build™ (12 Weeks)</p>
+        <h1>The Build</h1>
+        <p class="hw-hero-lede">Rework Life · Go Deeper · Realign What Matters</p>
+        <p class="hw-hero-sub">Stage 2 is invite-only. It follows Stage 1: The Reset.</p>
+        <div class="hw-actions">
+          <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
+          <a class="btn-teal" href="/the-reset">See Stage 1: The Reset</a>
+        </div>
+        <p class="hw-limited">Limited to five new founders a month</p>
+      </div>
+      <Wave fill={tint} edge={heroEdge} />
+    </header>
+
+    <!-- 1. Recap of Stage 1, so the page keeps its place in the partnership -->
+    <section class="hw-band hw-band-tint" aria-labelledby="hw-recap">
+      <div class="hw-well">
+        <div class="hw-stage-panel">
+        <HwHouse house={houseStage1} />
+        <div class="hw-prose hw-stage-block">
+          <p class="hw-eyebrow hw-eyebrow-left">You’ve completed Stage 1</p>
+          <h2 id="hw-recap" class="hw-stage-head"><span class="hw-stage-kicker">Stage 1</span><span class="hw-stage-title">The Reset <span class="hw-days">(30 days)</span></span></h2>
+          <p class="hw-tagline">Get Clear · Set New Values · Shift Patterns</p>
+          <p>Stage 1 is a focused reset around self, patterns, values, and immediate structure.</p>
+          <p>By day 30, you are not just clearer. You have started to reset how you live: what you pay attention to, what no longer runs your life, and what needs to change.</p>
+          <p>By week 3, we will know one of two things:</p>
+          <ul class="hw-plain">
+            <li>(1) Stage 1 gave you what you needed,</li>
+            <li>(2) There is a fit for Stage 2, and we continue.</li>
+          </ul>
+          <p><a href="/the-reset">Read about Stage 1: The Reset</a></p>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <Fragment set:html={toWhite} />
+
+    <!-- 2. Stage 2 (moved from /the-reset, word for word) -->
+    <section class="hw-band" aria-labelledby="hw-stage2">
+      <div class="hw-well">
+        <div class="hw-stage-panel">
+        <HwHouse house={houseStage2} />
+
+        <div class="hw-prose hw-stage-block">
+          <h2 id="hw-stage2" class="hw-stage-head"><span class="hw-stage-kicker">Stage 2</span><span class="hw-stage-title">The Build <span class="hw-days">(12 weeks)</span></span></h2>
+          <p class="hw-tagline">Rework Life · Go Deeper · Realign What Matters</p>
+          <p class="hw-via">via <a href="/nextlife-passage">NextLife Passage™</a></p>
+          <p class="hw-flow hw-flow-box"><strong>How it works:</strong> Rework → Navigate → Realign → Integrate</p>
+          <p>
+            <a class="btn-teal" href="https://drive.google.com/file/d/12qR6tjfv196rJ0Q32ltmUiHbGLVctyhh/view?usp=sharing" target="_blank" rel="noopener">NextLife Passage™ (1‑page)</a>
+          </p>
+          <p>Stage 1 resets what is misaligned. Stage 2 then naturally builds on what truly belongs next.</p>
+          <p>This is a wider build around real life, deeper decisions, and long-term alignment. We take the shift from Stage 1 and reorganise life around it, so the work becomes part of how you live practically.</p>
+          <p>That means looking more closely at the foundations of your life and rebuilding them in a way that fits who you are now.</p>
+          <p>We work through the deeper aspects to make practical changes to the areas that are the heaviest:</p>
+          <p>how your time is structured, how your health is being supported, how you show up in key relationships, what your next chapter is really for, and what no longer belongs in your way of living.</p>
+          <p>This is where new decisions start integrating visibly in your daily life, long-term. What mattered in the company stops dictating what matters now.</p>
+          <p>Stage 2 is where identity, relationships, health, and direction start moving in sync. The founder’s new version is not just fully understood, but properly integrated into how you live your life.</p>
+          <h3 class="hw-list-title">You will leave Stage 2 with:</h3>
+          <ul class="hw-includes">
+            {stage2Includes.map((item) => (
+              <li>
+                <strong>{item.title}</strong> ({item.detail})
+              </li>
+            ))}
+          </ul>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <Fragment set:html={toTint} />
+
+    <!-- 3. Supports through both stages + retreat -->
+    <section class="hw-band hw-band-tint" aria-labelledby="hw-supports">
+      <div class="hw-well">
+        <HwSupports />
+      </div>
+    </section>
+
+    <Fragment set:html={tintToDream} />
+
+    <!-- 4. Testimonials -->
+    <section class="hw-band hw-band-dream" aria-labelledby="hw-reviews">
+      <div class="hw-well">
+        <h2 id="hw-reviews" class="hw-center">Leaders who've been through it</h2>
+        <p class="hw-center hw-sub-center">Words from leaders our team has worked with. They are not all founders after an exit.</p>
+        <TestimonialWall items={wallItems} tone="dark" label="Testimonials from leaders our team has worked with" />
+      </div>
+    </section>
+
+    <Fragment set:html={fromDream} />
+
+    <HwWayfinders />
+
+    <Fragment set:html={toWhite} />
+
+    <!-- 5. Start with Stage 1 -->
+    <section class="hw-band" aria-labelledby="hw-start">
+      <div class="hw-well">
+        <div class="hw-apply-block">
+          <h2 id="hw-start" class="hw-center">Stage 2 starts with Stage 1</h2>
+          <p class="hw-center hw-sub-center">You apply for Stage 1 only. Stage 2 is invite-only.</p>
+          <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
+          <p class="hw-limited hw-limited-dark">Limited to five new founders a month</p>
+          <p class="hw-center"><a href="/faqs">Read the FAQs →</a></p>
+        </div>
+      </div>
+    </section>
+  </article>
+</Base>

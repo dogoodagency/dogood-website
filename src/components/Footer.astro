@@ -2,6 +2,8 @@
 import { Image } from "astro:assets";
 import logo from "../assets/photos/logo-nav.png";
 import { urls } from "../data/homepage";
+import { explore, offers, products, tools, advisorLinks, tm } from "../data/site-links";
+import "../styles/footer.css";
 import Wave from "./Wave.astro";
 
 const action =
@@ -18,35 +20,19 @@ interface Props {
 const { meetFunnel = false, edge } = Astro.props;
 const copyrightYear = new Date().getFullYear();
 
-const explore = [
-  // Added 19 Nov 2026 (Seb): the three offers, under Explore for now.
-  { href: "/exit-prep", label: "The Exit Prep™" },
-  { href: "/the-reset", label: "Stage 1: The Reset™", days: "(30 Days)" },
-  { href: "/the-reset#hw-stage2", label: "Stage 2: The Build™", days: "(12 Weeks)" },
-  // Products and add-ons (Seb, 19 Nov 2026), under Explore for now.
-  { href: "/products", label: "Products" },
-  { href: "/residency", label: "1.5-Day In-Person Residency" },
-  { href: "/integral-continuity", label: "IntegralContinuity™" },
-  { href: "/signature-retreat", label: "Annual Signature Retreat" },
-  { href: "/founderland-membership", label: "FOUNDERland Membership" },
-  { href: "/recovery-stress-diagnostics", label: "Recovery & Stress Diagnostics (WHOOP)" },
-  { href: "/state-shift-audio", label: "Custom State-Shift Audio" },
-  { href: "/expedited-start", label: "Expedited Start & Priority Hold" },
-  { href: "/about", label: "About us" },
-  { href: "/insights", label: "Insights" },
-  { href: "/newsletter", label: "Newsletter" },
-  { href: urls.podcast, label: "Podcast" },
-  { href: "/faqs", label: "FAQ" },
-  { href: "/wayfinders/clientfit", label: "Client fit" },
-  // Added 18 Nov 2026 (Seb): the two method pages, under Explore for now.
-  { href: "/clarityvalue-shift", label: "ClarityValue Shift™" },
-  { href: "/nextlife-passage", label: "NextLife Passage™" },
-];
-
-const advisors = [
-  { href: "/for-advisors", label: "Refer a founder" },
-  { href: "/for-advisors/client-tools", label: "Free tools for your clients" },
-  { href: "/for-advisors/insights", label: "Advisor insights" },
+// Link names and order follow Seb's footer mock-up (19 Nov 2026). All links come from src/data/site-links.ts,
+// the same source the top nav reads, so a change there shows in the nav and this footer on every page.
+const advisors = [...advisorLinks.work, ...advisorLinks.resources];
+const columns = [
+  { cls: "ft-explore", groups: [{ title: "Explore", links: explore }] },
+  {
+    cls: "ft-services",
+    groups: [
+      { title: "Services", links: [...offers, ...products] },
+      { title: "Products", links: tools },
+    ],
+  },
+  { cls: "ft-advisors", groups: [{ title: "Advisor Center", links: advisors }] },
 ];
 
 const connectLinks = [
@@ -65,12 +51,69 @@ const legal = [
   <Wave fill="#2A0B4F" edge={edge} />
 </div>
 <footer class="footer" id="footer">
-  <div class="footer-layout">
-    <div class="footer-subscribe">
-      <h2>Not ready to apply? That’s okay.</h2>
-      <div class="optin-fit">
-      <p class="fine optin-copy">Get honest notes on what comes after the exit.</p>
-      <form class="footer-form js-subscribe" action={action} method="post">
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <p class="ft-tagline">Supporting life in FOUNDERland, before and after the exit.</p>
+      <a class="footer-logo" href="/">
+        <Image src={logo} alt="DoGood Agency" widths={[176, 352]} sizes="117px" loading="lazy" />
+      </a>
+    </div>
+
+    {
+      columns.map((col) => (
+        <nav class:list={["ft-col", col.cls]} aria-label={col.groups[0].title}>
+          {col.groups.map((g) => (
+            <>
+              <h2 class="ft-title">{g.title}</h2>
+              <ul class="ft-links">
+                {g.links.map((link) => (
+                  <li>
+                    <a href={link.href} set:html={tm(link.label)} />
+                  </li>
+                ))}
+              </ul>
+            </>
+          ))}
+        </nav>
+      ))
+    }
+
+    <div class="footer-lets ft-lets">
+      <!-- Not a link any more (Seb, 18 Nov 2026); Contact sits right below. -->
+      <p class="connect-mark">
+        <span class="visually-hidden">Let’s Connect</span>
+        <span class="connect-lets" aria-hidden="true">Let’s</span>
+        <span class="connect-word" aria-hidden="true"><span class="cn-co">Co</span><span class="cn-n cn-n1">n</span><span class="cn-n cn-n2">n</span><span class="cn-ect">ect</span></span>
+      </p>
+      <ul class="connect-row">
+        {
+          connectLinks.map((link) => (
+            <li>
+              <a href={link.href} rel={link.external ? "noopener noreferrer" : undefined}>
+                <picture class="connect-slot" aria-hidden="true">
+                  <source type="image/svg+xml" srcset={`/icons/icon-${link.icon}.svg`} />
+                  <img
+                    src={`/icons/icon-${link.icon}@1x.png`}
+                    srcset={`/icons/icon-${link.icon}@1x.png 1x, /icons/icon-${link.icon}@2x.png 2x, /icons/icon-${link.icon}@3x.png 3x`}
+                    width="20"
+                    height="20"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                </picture>
+                <span>{link.label}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <!-- Opt-in in its own frame (Seb, 19 Nov 2026: make it more obvious). -->
+    <div class="ft-optin">
+      <h2 class="ft-optin-title">Not ready to apply? That’s okay.</h2>
+      <p class="ft-optin-copy">Get honest notes on what comes after the exit.</p>
+      <form class="footer-form js-subscribe ft-form" action={action} method="post">
         <input type="hidden" name="ml-submit" value="1" />
         <input type="hidden" name="anticsrf" value="true" />
         <label class="visually-hidden" for="news-email">Email</label>
@@ -92,7 +135,7 @@ const legal = [
             id="news-email"
             type="email"
             name="fields[email]"
-            placeholder=""
+            placeholder="Your email"
             autocomplete="email"
             aria-label="Email"
             required
@@ -101,82 +144,18 @@ const legal = [
         <button class="btn-subscribe" type="submit">Subscribe</button>
         <p data-status hidden></p>
       </form>
-      </div>
     </div>
-    <div class="footer-explore">
-      <h2 class="col-title">Explore</h2>
-      <ul>
-        {
-          explore.map((link) => (
-            <li>
-              <a href={link.href}>{link.label}{"days" in link && <span class="fx-days">{link.days}</span>}</a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-    <div class="footer-advisors">
-      <h2 class="col-title">Advisor Center</h2>
-      <ul>
-        {
-          advisors.map((link) => (
-            <li>
-              <a href={link.href}>{link.label}</a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-    <div class="footer-brand">
-      <p class="fine">Supporting life in FOUNDERland, before and after the exit.</p>
-      <a class="footer-logo" href="/">
-        <Image src={logo} alt="DoGood Agency" widths={[176, 352]} sizes="88px" loading="lazy" />
-      </a>
-    </div>
-    <div class="footer-lets">
-    <!-- Not a link any more (Seb, 18 Nov 2026); Contact sits right below. -->
-    <p class="connect-mark">
-      <span class="visually-hidden">Let’s Connect</span>
-      <span class="connect-lets" aria-hidden="true">Let’s</span>
-      <span class="connect-word" aria-hidden="true"><span class="cn-co">Co</span><span class="cn-n cn-n1">n</span><span class="cn-n cn-n2">n</span><span class="cn-ect">ect</span></span>
-    </p>
-    <ul class="connect-row">
-      {
-        connectLinks.map((link) => (
-          <li>
-            <a href={link.href} rel={link.external ? "noopener noreferrer" : undefined}>
-              <picture class="connect-slot" aria-hidden="true">
-                <source type="image/svg+xml" srcset={`/icons/icon-${link.icon}.svg`} />
-                <img
-                  src={`/icons/icon-${link.icon}@1x.png`}
-                  srcset={`/icons/icon-${link.icon}@1x.png 1x, /icons/icon-${link.icon}@2x.png 2x, /icons/icon-${link.icon}@3x.png 3x`}
-                  width="20"
-                  height="20"
-                  alt=""
-                  aria-hidden="true"
-                />
-              </picture>
-              <span>{link.label}</span>
-            </a>
-          </li>
-        ))
-      }
-      </ul>
-    </div>
-    <div class="footer-about">
-      <h2 class="col-title">About DoGood</h2>
-      <p class="fine">
-        Proud member of IODA, a global network of OD professionals spanning 50+ countries.
-      </p>
-      <h2 class="footer-subhead agency-name">DoGood Agency LLC</h2>
-      <p class="address">
+
+    <div class="ft-about">
+      <h2 class="ft-title">About DoGood</h2>
+      <p>Proud member of IODA, a global network of OD professionals spanning 50+ countries.</p>
+      <h2 class="ft-title ft-title-gap">DoGood Agency LLC</h2>
+      <p class="ft-address">
         30 N Gould St Ste N,<br />
         Sheridan WY 82801,<br />
         United States
       </p>
-      <p class="fine services-note">
-        Services are provided by DoGood OÜ, our EU-based operating company.
-      </p>
+      <p class="ft-note">Services are provided by DoGood OÜ, our EU-based operating company.</p>
     </div>
   </div>
   <div class="legal">

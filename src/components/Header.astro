@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import logo from "../assets/photos/logo-nav.png";
 import { urls } from "../data/homepage";
+import { offers, products, advisorLinks, tm, type SiteLink } from "../data/site-links";
 
 const links = [
   { href: "/how-it-works", label: "How it works", menu: "nav-how" },
@@ -11,87 +12,13 @@ const links = [
   { href: "/for-advisors", label: "Advisor Center", menu: "nav-advisors" },
 ];
 
-const howGroups = [
-  {
-    label: "Choose your door",
-    items: [
-      {
-        href: "/exit-prep",
-        label: "The Exit Prep™",
-        detail: "For founders who haven’t sold yet. Six private weekly sessions to prepare yourself, not just the company.",
-      },
-      {
-        href: "/the-reset",
-        label: "Stage 1: The Reset™ (30 Days)",
-        detail: "For founders who have sold. 30 private days to see what is surfacing before the next big decision.",
-      },
-      {
-        // Own page still to come (Seb, 19 Nov 2026); points at the Stage 2 section until then.
-        href: "/the-reset#hw-stage2",
-        label: "Stage 2: The Build™ (12 Weeks)",
-        detail: "By invitation after Stage 1. Twelve weeks to build the life you chose, so it holds.",
-      },
-    ],
-  },
-];
-
-// Products (Seb, 19 Nov 2026): the offers around the two stages.
-const productGroups = [
-  {
-    label: "Beyond the two stages",
-    items: [
-      {
-        href: "/residency",
-        label: "1.5-Day In-Person Residency",
-        detail: "Play, adventure and meaning, in person with your Wayfinder. On its own, or as part of Stage 1 or Stage 2.",
-      },
-      {
-        href: "/integral-continuity",
-        label: "IntegralContinuity™",
-        detail: "Ongoing sessions with your Wayfinder after both stages, once or twice a month. Light or Private.",
-      },
-      {
-        href: "/signature-retreat",
-        label: "Annual Signature Retreat",
-        detail: "Invitation only. Our annual, in-person retreat with a small group of founders.",
-      },
-      {
-        href: "/founderland-membership",
-        label: "FOUNDERland Membership",
-        detail: "The house founders belong to, before and after the sale.",
-      },
-    ],
-  },
-];
-
+// Menu links come from src/data/site-links.ts (one source for the nav and the footer).
+const toItem = (l: SiteLink) => ({ href: l.href, label: l.navLabel ?? l.label, detail: l.detail ?? "" });
+const howGroups = [{ label: "Choose your door", items: offers.map(toItem) }];
+const productGroups = [{ label: "Beyond the two stages", items: products.map(toItem) }];
 const advisorGroups = [
-  {
-    label: "Work with us",
-    items: [
-      {
-        href: "/for-advisors",
-        label: "Refer a founder",
-        detail: "How a referral works, what your client gets, and how we keep you in the loop.",
-      },
-    ],
-  },
-  {
-    label: "Free resources",
-    items: [
-      {
-        href: "/for-advisors/client-tools",
-        label: "Free tools for your clients",
-        detail:
-          "A founder readiness check, a guide to the warning signs, and a planner. Free to use before and after the sale.",
-      },
-      {
-        href: "/for-advisors/insights",
-        label: "Advisor insights",
-        detail:
-          "What founders really go through when they sell, in short, anonymized notes from our talks with advisors.",
-      },
-    ],
-  },
+  { label: "Work with us", items: advisorLinks.work.map(toItem) },
+  { label: "Free resources", items: advisorLinks.resources.map(toItem) },
 ];
 
 const menus: Record<
@@ -200,7 +127,7 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
                 {group.items.map((item) => (
                   <li>
                     <a href={item.href}>
-                      <span class="nav-mega-name">{item.label}</span>
+                      <span class="nav-mega-name" set:html={tm(item.label)} />
                       <small>{item.detail}</small>
                     </a>
                   </li>
@@ -234,7 +161,7 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
                   <p class="nav-mega-group">{group.label}</p>
                   {group.items.map((item) => (
                     <a class="nav-sub" href={item.href}>
-                      <span class="nav-sub-title">{item.label}</span>
+                      <span class="nav-sub-title" set:html={tm(item.label)} />
                       <span class="nav-sub-note">{item.detail}</span>
                     </a>
                   ))}
