@@ -6,6 +6,15 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 32: one shade darker (19 Nov 2026, 23:55)
+
+- **Nav foundr.land logo frame:** DREAM 500 (#2A0B4F), DREAM 400 (#58447F) on hover (was DREAM 400 / 300). On pages
+  with a DREAM 500 hero, such as the homepage, the frame blends into the background until hover.
+- **Homepage headline:** "’ve exited" / "’re planning to exit" in DREAM 300 (#8B7DAE), was DREAM 200. Contrast on
+  the hero is 4.5:1 (large text needs 3:1).
+
+---
+
 ## Preview 6, update 31: homepage hero button and headline (19 Nov 2026, 21:23)
 
 - **Apply for Stage 1** now sits centred directly below "We support life in FOUNDERland™", inside the hero copy

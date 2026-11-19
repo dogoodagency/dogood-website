@@ -7960,9 +7960,10 @@ body:has(.page-home) {
   padding: 0;
 }
 
-/* Headline: "who" stays put; only "'ve exited" / "'re planning to exit" change, in DREAM 200. */
+/* Headline: "who" stays put; only "'ve exited" / "'re planning to exit" change, in DREAM 300 (one shade darker
+   than DREAM 200, Seb 23:55). */
 .page-home .hero h1 .hero-swap > span {
-  color: #c2b7dd;
+  color: #8b7dae;
 }
 
 /* Keep "who" on the same line as its ending, so it never breaks off on small screens. */
