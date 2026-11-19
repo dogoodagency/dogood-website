@@ -160,3 +160,30 @@ header.nav .nav-brand-logo img {
   header.nav .nav-apply.nav-apply--brand:hover,
   header.nav .nav-apply.nav-apply--brand:focus-visible { background: #3b1a63; }
 }
+
+/* 19 Nov 2026 21:02 (Seb): the foundr.land logo 10% bigger, on a DREAM 400 frame that turns DREAM 300 on
+   hover. No border. */
+header.nav .nav-apply.nav-apply--brand {
+  border: 0;
+  background: #58447f;
+  transition: background-color 0.25s ease;
+}
+
+header.nav .nav-apply.nav-apply--brand::after {
+  content: none;
+}
+
+header.nav .nav-apply.nav-apply--brand:hover,
+header.nav .nav-apply.nav-apply--brand:focus-visible {
+  background: #8b7dae;
+}
+
+header.nav .nav-brand-logo,
+header.nav .nav-brand-logo img {
+  width: 141px;
+}
+
+@media (max-width: 1080px) {
+  header.nav .nav-brand-logo,
+  header.nav .nav-brand-logo img { width: 110px; }
+}

@@ -1,132 +1,1126 @@
 ---
 /**
- * foundr.land (Seb, 19 Nov 2026 20:47): new page, linked from the foundr.land logo in the nav.
- * Holding page until Seb sends the content: the logo, a "coming soon" line and two ways to stay close.
- * Nothing here describes what foundr.land is; that copy is Seb's to write.
+ * foundr.land (Seb, 19 Nov 2026 21:02): the product page for foundr.land, by DoGood Agency.
+ * Its own look, from the foundr.land logo selection board: light lilac, airy gradients, pastel cards in PLAY,
+ * GRASS, SKY and HEART, DREAM 500 ink, a serif accent (Fraunces) next to Montserrat. It deliberately does not
+ * follow the DoGood page style.
+ *
+ * Content comes from Seb's notes, the Product Vision & MVP deck, the brand visual deck and the Founder Journey
+ * system image (Nov 2026). Everything is a product concept and is labelled so. All visuals are drawn here in
+ * HTML/SVG (phone, clarity wheel, journey, workspace); the numbers in mock-ups are illustrative.
  */
 import Base from "../layouts/Base.astro";
-import Wave from "../components/Wave.astro";
 import { edgeAbove } from "../data/edge-line";
 
 const tint = "#F5F2FF";
-const heroEdge = edgeAbove("#2A0B4F");
 const footerEdge = edgeAbove(tint);
+
+// The six dimensions of the Personal Clarity Wheel (from the vision deck).
+const dims = [
+  { name: "Identity", q: "Who am I without my owner role?", tone: "grass" },
+  { name: "Time & structure", q: "What will everyday life look like?", tone: "play" },
+  { name: "Relationships", q: "Who is part of the transition?", tone: "sky" },
+  { name: "Purpose", q: "What am I moving toward?", tone: "heart" },
+  { name: "Letting go", q: "What feels difficult to release?", tone: "grass" },
+  { name: "Energy & support", q: "What do I need to move well?", tone: "play" },
+];
+
+// Seven days (from the vision deck).
+const days = [
+  { n: "01", t: "Identity", q: "Who am I beyond the company?" },
+  { n: "02", t: "Time", q: "What might my week look like?" },
+  { n: "03", t: "Relationships", q: "Who needs to be part of this?" },
+  { n: "04", t: "Purpose", q: "What is this next chapter for?" },
+  { n: "05", t: "Letting go", q: "What is hard to leave behind?" },
+  { n: "06", t: "Energy", q: "What support do I need?" },
+  { n: "07", t: "My next step", q: "Review and choose an action." },
+];
+
+// Radar geometry for the wheel (illustrative values, 0–5 scale).
+const cx = 160;
+const cy = 160;
+const R = 120;
+const angle = (i: number) => (-90 + i * 60) * (Math.PI / 180);
+const xy = (i: number, v: number) => {
+  const r = (v / 5) * R;
+  return [cx + r * Math.cos(angle(i)), cy + r * Math.sin(angle(i))];
+};
+const pt = (i: number, v: number) => xy(i, v).map((n) => n.toFixed(1)).join(",");
+const ring = (v: number) => [0, 1, 2, 3, 4, 5].map((i) => pt(i, v)).join(" ");
+const day7 = [3.2, 4.2, 2.6, 3.6, 2.1, 3];
+const day30 = [3.9, 4.5, 3.6, 4.1, 3.2, 3.8];
+const shape = (vals: number[]) => vals.map((v, i) => pt(i, v)).join(" ");
+const wheelLabels = ["Identity", "Time", "Relationships", "Purpose", "Letting go", "Energy"];
+const labelAt = (i: number) => {
+  const r = R + 26;
+  return [cx + r * Math.cos(angle(i)), cy + r * Math.sin(angle(i)) + 5];
+};
+
+// Feature plan (Seb's list, 19 Nov 2026). Proposed split: first release vs following release.
+const features: [string, "mvp" | "next"][] = [
+  ["Mobile-friendly founder account", "mvp"],
+  ["Seven-day guided reflections", "mvp"],
+  ["Six-dimension Clarity Wheel", "mvp"],
+  ["Personalised private report", "mvp"],
+  ["Suggested actions from a reviewed library", "mvp"],
+  ["Saved personal action and progress", "mvp"],
+  ["Automated email reminders", "mvp"],
+  ["Advisor link and light workspace", "mvp"],
+  ["Founder-controlled advisor sharing", "mvp"],
+  ["Optional DoGood specialist pathway", "mvp"],
+  ["Day 14 and 30 progress check-ins", "next"],
+  ["Original-versus-current Clarity Wheel", "next"],
+  ["Additional journeys for specific life stages", "next"],
+  ["Longer-term personal progress history", "next"],
+  ["Optional SMS or push notifications", "next"],
+];
+
+const I: Record<string, string> = {
+  link: '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
+  report: '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 16v-3M12 16v-6M15 16v-4"/>',
+  shield: '<path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6z"/><path d="m9 12 2 2 4-4"/>',
+  mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/>',
+  calendar: '<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16M9 14h.01M12 14h.01M15 14h.01M9 17h.01M12 17h.01"/>',
+  briefcase: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/>',
+  person: '<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/>',
+  compass: '<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/>',
+  eye: '<path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+  chat: '<path d="M4 5h16v10H9l-5 4z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/>',
+  lock: '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+  sprout: '<path d="M12 20v-8"/><path d="M12 12c0-4 3-6 7-6 0 4-3 6-7 6zM12 14c0-3-2.5-5-6-5 0 3 2.5 5 6 5z"/>',
+};
+const svg = (k: string) => `<svg viewBox="0 0 24 24" aria-hidden="true">${I[k]}</svg>`;
 ---
 
 <Base
-  title="foundr.land | DoGood Agency"
-  description="foundr.land, from DoGood. Coming soon."
+  title="foundr.land | Life beyond the business | by DoGood Agency"
+  description="foundr.land helps exit and succession advisors turn personal readiness into practical conversations, clear next steps and ongoing founder support, before and after a business exit."
   canonical="https://www.dogoodagency.co/foundrland"
   footerStrip={tint}
   footerEdge={footerEdge}
 >
-  <article class="fl-page">
-    <section class="fl-hero" aria-labelledby="fl-title">
-      <h1 id="fl-title" class="fl-logo">
-        <picture>
-          <source type="image/webp" srcset="/media/foundrland/foundrland-logo@1x.webp 480w, /media/foundrland/foundrland-logo@2x.webp 960w" sizes="(max-width: 700px) 80vw, 560px" />
-          <img src="/media/foundrland/foundrland-logo@2x.png" width="960" height="226" alt="foundr.land" />
-        </picture>
-      </h1>
-      <p class="fl-soon"><span aria-hidden="true"></span>Coming soon</p>
-      <p class="fl-line">We’re building it now. Want to hear when it opens?</p>
-      <div class="fl-actions">
-        <a class="btn-teal" href="/newsletter">Join the newsletter</a>
-        <a class="fl-link" href="/contact">Get in touch →</a>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,800;1,9..144,500;1,9..144,700&display=swap" />
+  </Fragment>
+
+  <article class="fl">
+    <!-- ===== Hero ===== -->
+    <header class="fl-hero">
+      <div class="fl-swoosh" aria-hidden="true"></div>
+      <div class="fl-wrap fl-hero-grid">
+        <div class="fl-hero-copy">
+          <h1 class="fl-logo">
+            <picture>
+              <source type="image/webp" srcset="/media/foundrland/foundrland-logo-dark@1x.webp 480w, /media/foundrland/foundrland-logo-dark@2x.webp 960w" sizes="(max-width: 700px) 70vw, 420px" />
+              <img src="/media/foundrland/foundrland-logo-dark@2x.png" width="960" height="226" alt="foundr.land" />
+            </picture>
+          </h1>
+          <p class="fl-tagline">Life beyond the business.</p>
+          <p class="fl-sub">Personal readiness before and after a business exit.</p>
+          <p class="fl-by">by DoGood Agency</p>
+          <p class="fl-lede">
+            foundr.land helps exit and succession advisors turn personal readiness into practical conversations,
+            clear next steps and ongoing founder support, before and after a business exit.
+          </p>
+          <ul class="fl-chips" aria-label="At a glance">
+            <li class="fl-chip fl-chip--grass">7-day founder journey</li>
+            <li class="fl-chip fl-chip--sky">Light advisor workspace</li>
+            <li class="fl-chip fl-chip--play">Private by default</li>
+          </ul>
+          <div class="fl-ctas">
+            <a class="fl-btn" href="/contact">Join the advisor pilot</a>
+            <a class="fl-btn fl-btn--ghost" href="#fl-journey">See the journey</a>
+          </div>
+        </div>
+
+        <!-- Phone mock-up, drawn in HTML/SVG -->
+        <div class="fl-hero-visual" aria-hidden="true">
+          <div class="fl-float fl-float--days">
+            <strong>7</strong>
+            <span>days of clarity</span>
+          </div>
+          <div class="fl-float fl-float--min">
+            <span class="fl-dot"></span>
+            5–7 min a day
+          </div>
+          <div class="fl-phone">
+            <div class="fl-phone-notch"></div>
+            <div class="fl-phone-screen">
+              <p class="fl-ph-brand">foundr<span>.</span>land</p>
+              <p class="fl-ph-pill">Day 7 of 7</p>
+              <p class="fl-ph-title">Your clarity wheel</p>
+              <svg class="fl-ph-wheel" viewBox="0 0 320 320">
+                {[1, 2, 3, 4, 5].map((v) => <polygon class="fl-w-ring" points={ring(v)} />)}
+                {[0, 1, 2, 3, 4, 5].map((i) => <line class="fl-w-spoke" x1={cx} y1={cy} x2={xy(i, 5)[0]} y2={xy(i, 5)[1]} />)}
+                <polygon class="fl-w-shape" points={shape(day7)} />
+                {day7.map((v, i) => <circle class="fl-w-dot" cx={xy(i, v)[0]} cy={xy(i, v)[1]} r="7" />)}
+              </svg>
+              <p class="fl-ph-note">A picture of how clear things feel today.</p>
+              <div class="fl-ph-card">
+                <span>Your next step</span>
+                <strong>Talk with your partner</strong>
+              </div>
+              <p class="fl-ph-btn">See my report</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="fl-wrap fl-concept">Product concept · in development</p>
+    </header>
+
+    <!-- ===== Promise ===== -->
+    <section class="fl-band" aria-labelledby="fl-promise">
+      <div class="fl-wrap">
+        <p class="fl-eyebrow">The promise</p>
+        <h2 id="fl-promise">One introduction. <em>A complete journey.</em></h2>
+        <p class="fl-intro">The system handles the routine work. The advisor keeps the relationship.</p>
+        <ul class="fl-three">
+          <li class="fl-card fl-card--sky">
+            <span class="fl-ico" set:html={svg("shield")} />
+            <p class="fl-card-tag">The advisor</p>
+            <h3>Confidence</h3>
+            <p>Introduce once. Receive useful insights only with the founder’s consent.</p>
+            <span class="fl-mini">No additional admin</span>
+          </li>
+          <li class="fl-card fl-card--dark">
+            <span class="fl-ico" set:html={svg("eye")} />
+            <p class="fl-card-tag">The founder</p>
+            <h3>Clarity</h3>
+            <p>Reflect in private. Understand what matters. Choose practical actions.</p>
+            <span class="fl-mini">Founder controls sharing</span>
+          </li>
+          <li class="fl-card fl-card--grass">
+            <span class="fl-ico" set:html={svg("compass")} />
+            <p class="fl-card-tag">DoGood</p>
+            <h3>Specialist support</h3>
+            <p>Step in when invited, with the right Wayfinder or other help.</p>
+            <span class="fl-mini">Help without pressure</span>
+          </li>
+        </ul>
       </div>
     </section>
-    <Wave fill={tint} edge={heroEdge} />
-    <div class="fl-gap" aria-hidden="true"></div>
+
+    <!-- ===== Two ways in ===== -->
+    <section class="fl-band fl-band--soft" aria-labelledby="fl-ways">
+      <div class="fl-wrap">
+        <p class="fl-eyebrow">How it starts</p>
+        <h2 id="fl-ways">A founder-facing service. <em>Advisor-enabled.</em></h2>
+        <p class="fl-intro">Two ways in, one private founder experience, and optional specialist support.</p>
+
+        <div class="fl-flow" data-fl-anim>
+          <div class="fl-entry fl-entry--advisor">
+            <span class="fl-ico" set:html={svg("briefcase")} />
+            <div>
+              <h3>Advisor or CEPA</h3>
+              <p>Introduces a founder once, with a personal link.</p>
+              <ul>
+                <li>Takes seconds</li>
+                <li>No extra workload</li>
+                <li>Kept informed, with consent</li>
+              </ul>
+            </div>
+          </div>
+          <div class="fl-entry fl-entry--founder">
+            <span class="fl-ico" set:html={svg("person")} />
+            <div>
+              <h3>Founder directly</h3>
+              <p>Starts privately, at their own pace.</p>
+              <ul>
+                <li>Confidential and supportive</li>
+                <li>The same guided experience</li>
+                <li>Specialist help when needed</li>
+              </ul>
+            </div>
+          </div>
+          <svg class="fl-flow-lines" viewBox="0 0 1000 80" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M250 0 C250 50, 500 30, 500 80" />
+            <path d="M750 0 C750 50, 500 30, 500 80" />
+          </svg>
+          <div class="fl-core">
+            <p class="fl-core-title">The 7-day mobile journey</p>
+            <p class="fl-core-sub">Reflect · Understand · Choose</p>
+          </div>
+          <svg class="fl-flow-lines" viewBox="0 0 1000 80" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M500 0 C500 40, 170 40, 170 80" />
+            <path d="M500 0 L500 80" />
+            <path d="M500 0 C500 40, 830 40, 830 80" />
+          </svg>
+          <div class="fl-outcomes">
+            <div class="fl-out fl-out--play"><strong>Founder</strong><span>Private report and a next step</span></div>
+            <div class="fl-out fl-out--sky"><strong>Advisor</strong><span>Consented summary and status</span></div>
+            <div class="fl-out fl-out--heart"><strong>DoGood Wayfinder</strong><span>Opt-in specialist help</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Seven days ===== -->
+    <section class="fl-band" id="fl-journey" aria-labelledby="fl-seven">
+      <div class="fl-wrap">
+        <p class="fl-eyebrow">Days 1–7 · Discover</p>
+        <h2 id="fl-seven">Seven days. Six dimensions. <em>One clearer picture.</em></h2>
+        <p class="fl-intro">Each daily reflection takes about 5–7 minutes. Progress is saved, so founders can return at their own pace.</p>
+        <ol class="fl-days" data-fl-anim>
+          {
+            days.map((d, i) => (
+              <li class:list={["fl-day", i === 6 && "fl-day--last"]} style={`--i:${i}`}>
+                <span class="fl-day-n">Day {d.n}</span>
+                <h3>{d.t}</h3>
+                <p>{d.q}</p>
+              </li>
+            ))
+          }
+        </ol>
+        <ul class="fl-principles">
+          <li><span set:html={svg("lock")} />Calm and private</li>
+          <li><span set:html={svg("calendar")} />5–7 minutes a day</li>
+          <li><span set:html={svg("sprout")} />Mobile first, no app store</li>
+          <li><span set:html={svg("shield")} />Not a clinical assessment</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Clarity wheel ===== -->
+    <section class="fl-band fl-band--soft" aria-labelledby="fl-wheel">
+      <div class="fl-wrap">
+        <p class="fl-eyebrow">The Personal Clarity Wheel</p>
+        <h2 id="fl-wheel">A visual language for <em>personal clarity.</em></h2>
+        <p class="fl-intro">Six self-reported dimensions create a useful picture for a conversation, not a clinical diagnosis or an exit-readiness score.</p>
+        <div class="fl-wheel-grid">
+          <figure class="fl-wheel" data-fl-anim>
+            <svg viewBox="-50 -20 420 360" role="img" aria-label="Illustrative clarity wheel with six dimensions, showing a Day 7 shape and a fuller Day 30 shape.">
+              {[1, 2, 3, 4, 5].map((v) => <polygon class="fl-w-ring" points={ring(v)} />)}
+              {[0, 1, 2, 3, 4, 5].map((i) => <line class="fl-w-spoke" x1={cx} y1={cy} x2={xy(i, 5)[0]} y2={xy(i, 5)[1]} />)}
+              <polygon class="fl-w-shape fl-w-shape--before" points={shape(day7)} />
+              <polygon class="fl-w-shape fl-w-shape--after" points={shape(day30)} />
+              {day30.map((v, i) => <circle class="fl-w-dot" cx={xy(i, v)[0]} cy={xy(i, v)[1]} r="6" />)}
+              {wheelLabels.map((l, i) => <text class="fl-w-label" x={labelAt(i)[0].toFixed(1)} y={labelAt(i)[1].toFixed(1)} text-anchor="middle">{l}</text>)}
+            </svg>
+            <figcaption>
+              <span><i class="fl-key fl-key--before"></i>Day 7</span>
+              <span><i class="fl-key fl-key--after"></i>Day 30</span>
+              <em>Illustrative responses. Designed to prompt reflection, not a psychometric instrument.</em>
+            </figcaption>
+          </figure>
+          <ul class="fl-dims">
+            {dims.map((d) => (
+              <li class:list={["fl-dim", `fl-dim--${d.tone}`]}>
+                <h3>{d.name}</h3>
+                <p>{d.q}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== After Day 7 ===== -->
+    <section class="fl-band" aria-labelledby="fl-after">
+      <div class="fl-wrap">
+        <p class="fl-eyebrow">Day 8 onward · Navigate</p>
+        <h2 id="fl-after">Day 7 is not the end. <em>It is where doing begins.</em></h2>
+        <p class="fl-intro">
+          The founder moves from understanding themselves to doing something with that understanding. No second
+          programme straight away, and no daily messages forever.
+        </p>
+
+        <div class="fl-phases">
+          <div class="fl-phase fl-phase--discover">
+            <p class="fl-phase-tag">Days 1–7</p>
+            <h3>Discover</h3>
+            <p>Guided reflections, six personal-clarity dimensions and a private report.</p>
+          </div>
+          <span class="fl-phase-arrow" aria-hidden="true">→</span>
+          <div class="fl-phase fl-phase--navigate">
+            <p class="fl-phase-tag">Day 8 onward</p>
+            <h3>Navigate</h3>
+            <p>Suggested practical actions, optional check-ins, visual progress and access to the right support.</p>
+          </div>
+        </div>
+
+        <ol class="fl-timeline" data-fl-anim>
+          <li style="--i:0">
+            <span class="fl-tl-day">Day 7</span>
+            <h3>Understand where I stand</h3>
+            <p>The Personal Clarity Wheel, a private report on the reflection themes and three or four suggested actions from a reviewed library. Choose one, or not yet.</p>
+          </li>
+          <li style="--i:1">
+            <span class="fl-tl-day">Days 8–13</span>
+            <h3>Put something into practice</h3>
+            <p>A simple home screen with the chosen action: complete it, change it or postpone it. No compulsory daily activity; an optional reminder helps.</p>
+          </li>
+          <li style="--i:2">
+            <span class="fl-tl-day">Day 14</span>
+            <h3>A gentle progress check</h3>
+            <p>A short reflection: what happened, what was learned, and whether a different next step would help.</p>
+          </li>
+          <li style="--i:3">
+            <span class="fl-tl-day">Day 30</span>
+            <h3>See what has changed</h3>
+            <p>Repeat the six self-ratings and compare the wheel with the original. Changes in self-reported clarity, never claims of psychological improvement.</p>
+          </li>
+          <li style="--i:4">
+            <span class="fl-tl-day">Beyond Day 30</span>
+            <h3>Continue when useful</h3>
+            <p>Return to the private space, begin another short journey, or ask for a check-in around a milestone such as completing the sale.</p>
+          </li>
+        </ol>
+
+        <h3 class="fl-h3">Three paths after Day 7</h3>
+        <ul class="fl-three">
+          <li class="fl-path fl-path--grass">
+            <span class="fl-ico" set:html={svg("sprout")} />
+            <h4>Continue independently</h4>
+            <p>Follow the chosen actions and keep the personal report and reflections close at hand.</p>
+          </li>
+          <li class="fl-path fl-path--sky">
+            <span class="fl-ico" set:html={svg("briefcase")} />
+            <h4>Continue with their advisor</h4>
+            <p>With explicit permission, the advisor receives a useful summary and conversation prompts. The system manages follow-ups; the advisor gains no admin.</p>
+          </li>
+          <li class="fl-path fl-path--heart">
+            <span class="fl-ico" set:html={svg("compass")} />
+            <h4>Work with DoGood</h4>
+            <p>A voluntary path to a Wayfinder conversation and, where it fits, deeper DoGood support. Nothing is sold or referred because of a wheel score.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Automation engine ===== -->
+    <section class="fl-band fl-band--dark" aria-labelledby="fl-engine">
+      <div class="fl-wrap">
+        <p class="fl-eyebrow fl-eyebrow--light">The automation engine</p>
+        <h2 id="fl-engine">Handles the routine work, <em>so nobody has to.</em></h2>
+        <ul class="fl-engine">
+          <li><span set:html={svg("link")} /><strong>Personal links</strong><small>One link per advisor</small></li>
+          <li><span set:html={svg("report")} /><strong>Private reflection report</strong><small>For the founder first</small></li>
+          <li><span set:html={svg("shield")} /><strong>Explicit sharing consent</strong><small>The founder decides what is shared</small></li>
+          <li><span set:html={svg("mail")} /><strong>Email follow-ups</strong><small>Discreet, opt-in reminders</small></li>
+          <li><span set:html={svg("calendar")} /><strong>Booking and referral routing</strong><small>To a Wayfinder, when asked</small></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Advisor workspace ===== -->
+    <section class="fl-band" aria-labelledby="fl-advisor">
+      <div class="fl-wrap fl-adv-grid">
+        <div>
+          <p class="fl-eyebrow">For advisors and CEPAs</p>
+          <h2 id="fl-advisor">The advisor workspace stays <em>intentionally small.</em></h2>
+          <p class="fl-intro fl-intro--left">One link to share. A clear overview. Only what the founder has agreed to share.</p>
+          <ul class="fl-adv-points">
+            <li><span set:html={svg("link")} />One link to share</li>
+            <li><span set:html={svg("report")} />A low-effort overview</li>
+            <li><span set:html={svg("shield")} />Consent-led information</li>
+            <li><span set:html={svg("chat")} />Suggested conversation prompts</li>
+            <li><span set:html={svg("compass")} />A path to DoGood specialist help</li>
+          </ul>
+        </div>
+        <div class="fl-laptop" aria-hidden="true">
+          <div class="fl-laptop-screen">
+            <div class="fl-lp-side">
+              <p class="fl-lp-brand">foundr<span>.</span>land</p>
+              <p class="fl-lp-role">Advisor</p>
+              <span class="is-on">Overview</span>
+              <span>My links</span>
+              <span>Founder journeys</span>
+              <span>Resources</span>
+              <span>DoGood support</span>
+            </div>
+            <div class="fl-lp-main">
+              <p class="fl-lp-title">Your founder journeys</p>
+              <div class="fl-lp-stats">
+                <div class="fl-lp-stat fl-lp-stat--play"><strong>4</strong><span>Invited</span></div>
+                <div class="fl-lp-stat fl-lp-stat--grass"><strong>2</strong><span>Active</span></div>
+                <div class="fl-lp-stat fl-lp-stat--sky"><strong>1</strong><span>Shared with consent</span></div>
+              </div>
+              <div class="fl-lp-link">
+                <span>foundr.land/join/your-firm</span>
+                <b>Copy link</b>
+              </div>
+              <div class="fl-lp-cards">
+                <div class="fl-lp-card">
+                  <p>Suggested conversation</p>
+                  <small>“What feels hardest to imagine about stepping away?”</small>
+                </div>
+                <div class="fl-lp-card fl-lp-card--heart">
+                  <p>Specialist backup</p>
+                  <small>Optional Wayfinder support, with founder permission.</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fl-laptop-base"></div>
+          <p class="fl-mock-note">Illustrative screen</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Trust ===== -->
+    <section class="fl-band fl-band--soft" aria-labelledby="fl-trust">
+      <div class="fl-wrap">
+        <p class="fl-eyebrow">Privacy and boundaries</p>
+        <h2 id="fl-trust">Trust is a <em>core feature.</em></h2>
+        <ul class="fl-trust">
+          <li class="fl-trust-card fl-trust-card--grass">
+            <span class="fl-ico" set:html={svg("person")} />
+            <h3>The founder stays in control</h3>
+            <p>Sharing results is a separate choice from accepting an advisor’s invitation.</p>
+          </li>
+          <li class="fl-trust-card fl-trust-card--sky">
+            <span class="fl-ico" set:html={svg("shield")} />
+            <h3>Least access necessary</h3>
+            <p>Only specifically consented summaries reach the advisor, never raw answers.</p>
+          </li>
+          <li class="fl-trust-card fl-trust-card--play">
+            <span class="fl-ico" set:html={svg("chat")} />
+            <h3>Human-reviewed guidance</h3>
+            <p>It supports reflection. It does not diagnose, and it does not coach clinically.</p>
+          </li>
+          <li class="fl-trust-card fl-trust-card--dark">
+            <span class="fl-ico" set:html={svg("lock")} />
+            <h3>Secure from the beginning</h3>
+            <p>Authentication, an audit trail, a deletion process and backups before any real data.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== What we will build ===== -->
+    <section class="fl-band" aria-labelledby="fl-build">
+      <div class="fl-wrap">
+        <p class="fl-eyebrow">What we will build</p>
+        <h2 id="fl-build">A small first release. <em>A large future.</em></h2>
+        <p class="fl-intro">We build the experience that proves demand first, then what real founders and advisors ask for.</p>
+        <div class="fl-build-grid">
+          <div class="fl-build fl-build--now">
+            <p class="fl-build-tag">First release</p>
+            <ul>{features.filter((f) => f[1] === "mvp").map((f) => <li>{f[0]}</li>)}</ul>
+          </div>
+          <div class="fl-build fl-build--next">
+            <p class="fl-build-tag">Following release</p>
+            <ul>{features.filter((f) => f[1] === "next").map((f) => <li>{f[0]}</li>)}</ul>
+            <p class="fl-build-note">Built from the start to grow into firm accounts and white-label versions for advisory firms.</p>
+          </div>
+        </div>
+
+        <ol class="fl-road">
+          <li><span>1</span><strong>Foundation</strong><small>Accounts, six dimensions, the daily flow, mobile screens</small></li>
+          <li><span>2</span><strong>Working journey</strong><small>Clarity Wheel, report, suggested action, reminders, consent</small></li>
+          <li><span>3</span><strong>Pilot</strong><small>10 advisors and consenting founders</small></li>
+          <li><span>4</span><strong>Scale</strong><small>Firm accounts, subscriptions, white-label options</small></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="fl-band fl-band--last" aria-labelledby="fl-cta">
+      <div class="fl-wrap">
+        <div class="fl-cta">
+          <div>
+            <p class="fl-eyebrow">The pilot</p>
+            <h2 id="fl-cta">Make the first seven days <em>feel remarkable.</em></h2>
+            <p>We are looking for a small group of exit planners, CEPAs and succession advisors to shape foundr.land with us. Interested, or want to hear when it opens?</p>
+          </div>
+          <div class="fl-ctas">
+            <a class="fl-btn" href="/contact">Join the advisor pilot</a>
+            <a class="fl-btn fl-btn--ghost" href="/newsletter">Follow along</a>
+          </div>
+        </div>
+        <p class="fl-concept fl-concept--end">foundr.land is a product concept by DoGood Agency and is not yet built. Everything shown is illustrative.</p>
+      </div>
+    </section>
   </article>
 </Base>
 
+<script>
+  document.querySelectorAll<HTMLElement>("[data-fl-anim]").forEach((el) => {
+    if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    el.classList.add("fl-will");
+    const io = new IntersectionObserver(([e]) => {
+      if (!e?.isIntersecting) return;
+      el.classList.add("fl-in");
+      io.disconnect();
+    }, { threshold: 0.2 });
+    io.observe(el);
+  });
+</script>
+
 <style>
-  :global(body:has(.fl-page) .footer-wave) {
+  :global(body:has(.fl) .footer-wave) {
     background: var(--footer-strip, #f5f2ff);
   }
 
-  .fl-page {
+  .fl {
+    --ink: #2a0b4f;
+    --ink-2: #58447f;
+    --play: #fefabe;
+    --play-soft: #fffde8;
+    --play-line: #efe27a;
+    --grass: #28dbb0;
+    --grass-soft: #e7fff6;
+    --sky: #1d53ef;
+    --sky-soft: #eef4ff;
+    --heart: #ea1557;
+    --heart-soft: #fff3f4;
+    --lilac: #f5f2ff;
+    --line: #e3dcf2;
+    --serif: "Fraunces", Georgia, serif;
     margin-top: -94px;
-    padding-top: 94px;
-    background: #2a0b4f;
+    overflow: hidden;
+    background: #fbfaff;
+    color: var(--ink);
+  }
+
+  .fl-wrap {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  .fl em {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  .fl h2 {
+    margin: 0 0 12px;
+    color: var(--ink);
+    font-size: clamp(30px, 3.6vw, 46px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+  }
+
+  .fl h2 em { color: var(--ink-2); }
+
+  .fl-eyebrow {
+    margin: 0 0 12px;
+    color: #05745b;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .fl-eyebrow--light { color: var(--grass); }
+
+  .fl-intro {
+    max-width: 760px;
+    margin: 0 0 40px;
+    color: var(--ink-2);
+    font-size: 19px;
+    line-height: 1.6;
+  }
+
+  .fl-band { position: relative; padding: 96px 0; }
+  .fl-band--soft { background: linear-gradient(180deg, #f5f2ff 0%, #fbfaff 100%); }
+  .fl-band--dark { background: var(--ink); color: #fff; }
+  .fl-band--dark h2 { color: #fff; }
+  .fl-band--dark h2 em { color: var(--play); }
+  .fl-band--last { background: #f5f2ff; }
+
+  .fl-ico {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 18px;
+    border-radius: 16px;
+    background: #fff;
+  }
+
+  .fl-ico :global(svg),
+  .fl-principles span :global(svg),
+  .fl-engine span :global(svg),
+  .fl-adv-points span :global(svg) {
+    width: 26px;
+    height: 26px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* Buttons: rounded DREAM 500; colour lifts on hover, size never changes. */
+  .fl .fl-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 26px;
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    background: var(--ink);
     color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.25s ease, border-color 0.25s ease;
   }
 
-  .fl-gap {
-    height: 48px;
-    background: #f5f2ff;
-  }
+  .fl .fl-btn:hover,
+  .fl .fl-btn:focus-visible { background: #58447f; border-color: #58447f; }
+  .fl .fl-btn--ghost { background: transparent; color: var(--ink); }
+  .fl .fl-btn--ghost:hover,
+  .fl .fl-btn--ghost:focus-visible { background: #fff; border-color: var(--ink); color: var(--ink); }
 
+  /* ===== Hero ===== */
   .fl-hero {
+    position: relative;
+    padding: 190px 0 40px;
+    background:
+      radial-gradient(60% 60% at 85% 20%, rgba(194, 183, 221, 0.55), transparent 70%),
+      radial-gradient(40% 50% at 10% 90%, rgba(254, 250, 190, 0.6), transparent 70%),
+      linear-gradient(180deg, #f1ecff 0%, #fbfaff 100%);
+  }
+
+  .fl-swoosh {
+    position: absolute;
+    top: -40px;
+    right: -12%;
+    width: 72%;
+    height: 360px;
+    border-bottom: 3px solid rgba(40, 219, 176, 0.55);
+    border-radius: 0 0 50% 50%;
+    transform: rotate(-6deg);
+    pointer-events: none;
+  }
+
+  .fl-hero-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: center;
+    gap: 48px;
+  }
+
+  .fl-logo { margin: 0 0 18px; }
+  .fl-logo img { display: block; width: min(420px, 70vw); height: auto; }
+
+  .fl-tagline {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: clamp(34px, 4.2vw, 54px);
+    font-style: italic;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .fl-sub { margin: 10px 0 0; font-size: 20px; font-weight: 700; }
+  .fl-by { margin: 6px 0 22px; color: var(--ink-2); font-size: 15px; font-weight: 600; letter-spacing: 0.04em; }
+  .fl-lede { max-width: 580px; margin: 0 0 24px; font-size: 18px; line-height: 1.65; }
+
+  .fl-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 0 30px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .fl-chip { padding: 8px 16px; border: 1px solid; border-radius: 999px; font-size: 14px; font-weight: 700; }
+  .fl-chip--grass { background: var(--grass-soft); border-color: #73e7c4; }
+  .fl-chip--sky { background: var(--sky-soft); border-color: #b9cdfb; }
+  .fl-chip--play { background: var(--play-soft); border-color: var(--play-line); }
+
+  .fl-ctas { display: flex; flex-wrap: wrap; gap: 14px; }
+
+  .fl-concept { margin-top: 56px; color: var(--ink-2); font-size: 13px; font-style: italic; text-align: right; }
+  .fl-concept--end { margin-top: 28px; text-align: center; }
+
+  .fl-hero-visual { position: relative; display: grid; place-items: center; min-height: 620px; }
+
+  .fl-phone {
+    position: relative;
+    width: 300px;
+    padding: 12px;
+    border-radius: 44px;
+    background: var(--ink);
+    box-shadow: 0 30px 60px rgba(42, 11, 79, 0.18);
+    animation: fl-bob 7s ease-in-out infinite;
+  }
+
+  @keyframes fl-bob { 50% { transform: translateY(-10px); } }
+
+  .fl-phone-notch {
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    z-index: 2;
+    width: 90px;
+    height: 22px;
+    border-radius: 12px;
+    background: var(--ink);
+    transform: translateX(-50%);
+  }
+
+  .fl-phone-screen { padding: 44px 20px 22px; border-radius: 34px; background: linear-gradient(180deg, #fbfaff, #f1ecff); }
+  .fl-ph-brand { margin: 0 0 12px; font-family: var(--serif); font-size: 17px; font-weight: 800; }
+  .fl-ph-brand span, .fl-lp-brand span { color: var(--heart); }
+  .fl-ph-pill { display: inline-block; margin: 0 0 8px; padding: 4px 12px; border-radius: 999px; background: var(--grass); font-size: 12px; font-weight: 800; }
+  .fl-ph-title { margin: 0; font-size: 21px; font-weight: 800; }
+  .fl-ph-wheel { display: block; width: 100%; margin: 6px 0; }
+  .fl-ph-note { margin: 0 0 10px; color: var(--ink-2); font-size: 12px; text-align: center; }
+
+  .fl-ph-card {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 10px;
+    padding: 10px 12px;
+    border: 1px solid var(--play-line);
+    border-radius: 14px;
+    background: var(--play-soft);
+  }
+
+  .fl-ph-card span { color: var(--ink-2); font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+  .fl-ph-card strong { font-size: 14px; }
+  .fl-ph-btn { margin: 0; padding: 11px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 14px; font-weight: 700; text-align: center; }
+
+  .fl-float { position: absolute; z-index: 3; border-radius: 20px; background: #fff; box-shadow: 0 16px 40px rgba(42, 11, 79, 0.12); }
+
+  .fl-float--days {
+    top: 110px;
+    left: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 22px;
-    width: min(900px, calc(100% - 40px));
-    margin: 0 auto;
-    padding: 110px 0 100px;
-    text-align: center;
+    padding: 18px 22px;
+    animation: fl-bob 6s ease-in-out 1s infinite;
   }
 
-  .fl-logo {
-    margin: 0;
-  }
+  .fl-float--days strong { color: #05745b; font-family: var(--serif); font-size: 48px; line-height: 1; }
+  .fl-float--days span { font-size: 14px; font-weight: 700; }
 
-  .fl-logo img {
-    display: block;
-    width: min(560px, 80vw);
-    height: auto;
-  }
-
-  .fl-soon {
-    display: inline-flex;
+  .fl-float--min {
+    right: 0;
+    bottom: 110px;
+    display: flex;
     align-items: center;
-    gap: 10px;
-    margin: 12px 0 0;
-    padding: 8px 18px;
-    border: 1px dashed rgba(255, 255, 255, 0.5);
-    border-radius: 999px;
-    font-size: 15px;
+    gap: 8px;
+    padding: 12px 16px;
+    font-size: 14px;
     font-weight: 700;
+    animation: fl-bob 8s ease-in-out 2s infinite;
   }
 
-  .fl-soon span {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #28dbb0;
-    animation: fl-blink 2.4s ease-in-out infinite;
-  }
+  .fl-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--grass); }
 
-  @keyframes fl-blink {
-    50% { opacity: 0.3; }
-  }
+  /* Wheel */
+  .fl-w-ring { fill: none; stroke: #e3dcf2; stroke-width: 1.5; }
+  .fl-w-spoke { stroke: #e3dcf2; stroke-width: 1.5; }
+  .fl-w-shape { fill: rgba(40, 219, 176, 0.35); stroke: #01a684; stroke-width: 3; stroke-linejoin: round; }
+  .fl-w-dot { fill: #01a684; stroke: #fff; stroke-width: 2; }
+  .fl-w-shape--before { fill: rgba(254, 250, 190, 0.8); stroke: #c9b730; stroke-dasharray: 6 6; }
+  .fl-w-shape--after { fill: rgba(40, 219, 176, 0.3); transform-box: view-box; transform-origin: 160px 160px; }
+  .fl-w-label { fill: #2a0b4f; font: 700 14px Montserrat, sans-serif; }
 
-  .fl-line {
+  /* Three-up grids */
+  .fl-three,
+  .fl-trust {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
     margin: 0;
-    color: #e6defc;
-    font-size: 20px;
+    padding: 0;
+    list-style: none;
   }
 
-  .fl-actions {
+  .fl-card { display: flex; flex-direction: column; padding: 30px 30px 26px; border: 1px solid var(--line); border-radius: 28px; }
+  .fl-card h3 { margin: 0 0 10px; font-family: var(--serif); font-size: 32px; font-weight: 800; }
+  .fl-card p { margin: 0 0 18px; font-size: 17px; line-height: 1.6; }
+  .fl .fl-card-tag { margin: 0 0 6px; font-size: 13px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+
+  .fl-mini {
+    align-self: flex-start;
+    margin-top: auto;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.75);
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .fl-card--sky { border-color: #b9cdfb; background: var(--sky-soft); }
+  .fl-card--sky .fl-ico { color: var(--sky); }
+  .fl-card--grass { border-color: #73e7c4; background: var(--grass-soft); }
+  .fl-card--grass .fl-ico { color: #05745b; }
+  .fl-card--dark { border-color: var(--ink); background: var(--ink); color: #fff; }
+  .fl-card--dark .fl-ico { background: var(--play); color: var(--ink); }
+  .fl-card--dark .fl-card-tag { color: var(--play); }
+  .fl-card--dark .fl-mini { background: rgba(255, 255, 255, 0.12); }
+
+  /* Two ways in */
+  .fl-flow { display: grid; grid-template-columns: 1fr 1fr; gap: 0 40px; }
+  .fl-entry { display: flex; gap: 18px; padding: 26px 28px; border: 1px solid; border-radius: 26px; }
+  .fl-entry h3 { margin: 0 0 6px; font-size: 22px; font-weight: 800; }
+  .fl-entry p { margin: 0 0 10px; font-size: 16px; }
+  .fl-entry ul { margin: 0; padding: 0; list-style: none; font-size: 15px; line-height: 1.7; }
+  .fl-entry li::before { content: "✓  "; color: #01a684; font-weight: 900; }
+  .fl-entry .fl-ico { flex: none; margin: 0; }
+  .fl-entry--advisor { border-color: var(--play-line); background: var(--play-soft); }
+  .fl-entry--founder { border-color: #b9cdfb; background: var(--sky-soft); }
+  .fl-flow-lines { grid-column: 1 / -1; width: 100%; height: 70px; }
+  .fl-flow-lines path { fill: none; stroke: #8b7dae; stroke-width: 2; stroke-dasharray: 6 6; vector-effect: non-scaling-stroke; }
+
+  .fl-core { grid-column: 1 / -1; justify-self: center; padding: 22px 40px; border-radius: 24px; background: var(--ink); color: #fff; text-align: center; }
+  .fl-core-title { margin: 0; font-family: var(--serif); font-size: 28px; font-weight: 800; }
+  .fl-core-sub { margin: 4px 0 0; color: var(--grass); font-weight: 700; letter-spacing: 0.06em; }
+
+  .fl-outcomes { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .fl-out { display: flex; flex-direction: column; gap: 4px; padding: 20px 22px; border: 1px solid; border-radius: 20px; text-align: center; }
+  .fl-out strong { font-size: 19px; }
+  .fl-out span { color: var(--ink-2); font-size: 15px; }
+  .fl-out--play { border-color: var(--play-line); background: var(--play-soft); }
+  .fl-out--sky { border-color: #b9cdfb; background: var(--sky-soft); }
+  .fl-out--heart { border-color: #feb5bc; background: var(--heart-soft); }
+
+  /* Seven days */
+  .fl-days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+  .fl-day { display: flex; flex-direction: column; padding: 20px 16px; border: 1px solid; border-radius: 22px; }
+  .fl-day:nth-child(3n + 1) { border-color: #a3f2d7; background: var(--grass-soft); }
+  .fl-day:nth-child(3n + 2) { border-color: var(--play-line); background: var(--play-soft); }
+  .fl-day:nth-child(3n) { border-color: #cfdcfc; background: var(--sky-soft); }
+  .fl-day.fl-day--last { border-color: var(--ink); background: var(--ink); color: #fff; }
+  .fl-day-n { align-self: flex-start; margin-bottom: 14px; padding: 4px 10px; border-radius: 999px; background: #fff; color: var(--ink); font-size: 12px; font-weight: 800; }
+  .fl-day--last .fl-day-n { background: var(--play); }
+  .fl-day h3 { margin: 0 0 8px; font-family: var(--serif); font-size: 21px; font-weight: 800; line-height: 1.15; }
+  .fl-day p { margin: 0; font-size: 14px; line-height: 1.45; }
+
+  .fl-principles { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 28px; margin: 36px 0 0; padding: 0; list-style: none; font-weight: 700; }
+  .fl-principles li { display: flex; align-items: center; gap: 10px; }
+  .fl-principles span { display: grid; place-items: center; color: #05745b; }
+
+  /* Wheel section */
+  .fl-wheel-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 40px; }
+  .fl-wheel { margin: 0; padding: 24px; border: 1px solid var(--line); border-radius: 28px; background: #fff; }
+  .fl-wheel svg { display: block; width: 100%; height: auto; }
+  .fl-wheel figcaption { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 10px; font-size: 14px; font-weight: 700; }
+  .fl-wheel figcaption em { flex-basis: 100%; color: var(--ink-2); font-family: Montserrat, sans-serif; font-size: 13px; font-weight: 400; }
+  .fl-key { display: inline-block; width: 14px; height: 14px; margin-right: 6px; border-radius: 4px; vertical-align: -2px; }
+  .fl-key--before { border: 2px dashed #c9b730; background: var(--play); }
+  .fl-key--after { border: 2px solid #01a684; background: rgba(40, 219, 176, 0.5); }
+
+  .fl-dims { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 0; padding: 0; list-style: none; }
+  .fl-dim { padding: 20px 22px; border: 1px solid; border-radius: 20px; }
+  .fl-dim h3 { margin: 0 0 6px; font-size: 19px; font-weight: 800; }
+  .fl-dim p { margin: 0; color: var(--ink-2); font-size: 15px; }
+  .fl-dim--grass { border-color: #a3f2d7; background: var(--grass-soft); }
+  .fl-dim--play { border-color: var(--play-line); background: var(--play-soft); }
+  .fl-dim--sky { border-color: #cfdcfc; background: var(--sky-soft); }
+  .fl-dim--heart { border-color: #feb5bc; background: var(--heart-soft); }
+
+  /* After Day 7 */
+  .fl-phases { display: grid; grid-template-columns: 1fr auto 1fr; align-items: stretch; gap: 18px; margin-bottom: 48px; }
+  .fl-phase { padding: 28px 30px; border-radius: 26px; }
+  .fl-phase h3 { margin: 0 0 8px; font-family: var(--serif); font-size: 36px; font-weight: 800; }
+  .fl-phase p { margin: 0; font-size: 17px; line-height: 1.55; }
+  .fl .fl-phase-tag { margin: 0 0 6px; font-size: 13px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+  .fl-phase--discover { border: 1px solid #a3f2d7; background: var(--grass-soft); }
+  .fl-phase--navigate { background: var(--ink); color: #fff; }
+  .fl-phase--navigate .fl-phase-tag { color: var(--play); }
+  .fl-phase-arrow { align-self: center; color: var(--ink-2); font-size: 36px; font-weight: 900; }
+
+  .fl-timeline { position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; margin: 0 0 56px; padding: 34px 0 0; list-style: none; }
+  .fl-timeline::before { content: ""; position: absolute; top: 10px; left: 2%; right: 2%; height: 4px; border-radius: 4px; background: linear-gradient(90deg, var(--grass), var(--play-line), var(--sky), var(--heart)); }
+  .fl-timeline li { position: relative; padding: 22px 20px; border: 1px solid var(--line); border-radius: 22px; background: #fff; }
+  .fl-timeline li::before { content: ""; position: absolute; top: -32px; left: 22px; width: 18px; height: 18px; border: 4px solid #fbfaff; border-radius: 50%; background: var(--ink); }
+  .fl-tl-day { display: inline-block; margin-bottom: 10px; padding: 4px 12px; border-radius: 999px; background: var(--lilac); font-size: 13px; font-weight: 800; }
+  .fl-timeline h3 { margin: 0 0 8px; font-size: 18px; font-weight: 800; line-height: 1.3; }
+  .fl-timeline p { margin: 0; color: var(--ink-2); font-size: 15px; line-height: 1.55; }
+
+  .fl .fl-h3 { margin: 0 0 20px; font-size: 26px; font-weight: 800; }
+  .fl-path { padding: 28px; border: 1px solid; border-radius: 26px; }
+  .fl-path h4 { margin: 0 0 8px; font-size: 21px; font-weight: 800; }
+  .fl-path p { margin: 0; font-size: 16px; line-height: 1.6; }
+  .fl-path--grass { border-color: #73e7c4; background: var(--grass-soft); }
+  .fl-path--grass .fl-ico { color: #05745b; }
+  .fl-path--sky { border-color: #b9cdfb; background: var(--sky-soft); }
+  .fl-path--sky .fl-ico { color: var(--sky); }
+  .fl-path--heart { border-color: #feb5bc; background: var(--heart-soft); }
+  .fl-path--heart .fl-ico { color: var(--heart); }
+
+  /* Engine */
+  .fl-engine { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin: 32px 0 0; padding: 0; list-style: none; }
+  .fl-engine li { display: flex; flex-direction: column; gap: 6px; padding: 22px 20px; border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 22px; background: rgba(255, 255, 255, 0.06); }
+  .fl-engine span { display: grid; place-items: center; width: 46px; height: 46px; margin-bottom: 8px; border-radius: 14px; background: var(--play); color: var(--ink); }
+  .fl-engine li:nth-child(2) span { background: var(--grass); }
+  .fl-engine li:nth-child(3) span { background: #b9cdfb; }
+  .fl-engine li:nth-child(4) span { background: #feb5bc; }
+  .fl-engine li:nth-child(5) span { background: #c2b7dd; }
+  .fl-engine strong { font-size: 17px; }
+  .fl-engine small { color: #c2b7dd; font-size: 14px; }
+
+  /* Advisor workspace */
+  .fl-adv-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); align-items: center; gap: 48px; }
+  .fl .fl-intro--left { margin-bottom: 24px; }
+  .fl-adv-points { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; font-weight: 700; }
+  .fl-adv-points li { display: flex; align-items: center; gap: 12px; }
+  .fl-adv-points span { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--lilac); color: var(--ink-2); }
+  .fl-adv-points span :global(svg) { width: 22px; height: 22px; }
+
+  .fl-laptop-screen {
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr);
+    min-height: 340px;
+    overflow: hidden;
+    border: 12px solid var(--ink);
+    border-bottom-width: 16px;
+    border-radius: 22px 22px 6px 6px;
+    background: #fbfaff;
+  }
+
+  .fl-laptop-base { height: 16px; margin: 0 -24px; border-radius: 0 0 20px 20px; background: linear-gradient(180deg, #c2b7dd, #8b7dae); }
+  .fl-lp-side { display: flex; flex-direction: column; gap: 6px; padding: 18px 12px; background: var(--ink); color: #e6defc; font-size: 12px; }
+  .fl-lp-side span { padding: 7px 10px; border-radius: 10px; }
+  .fl-lp-side .is-on { background: #fff; color: var(--ink); font-weight: 800; }
+  .fl-lp-brand { margin: 0; color: #fff; font-family: var(--serif); font-size: 17px; font-weight: 800; }
+  .fl-lp-role { margin: 0 0 10px; color: var(--play); font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+  .fl-lp-main { padding: 18px 20px; }
+  .fl-lp-title { margin: 0 0 12px; font-size: 20px; font-weight: 800; }
+  .fl-lp-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-bottom: 10px; }
+  .fl-lp-stat { display: flex; flex-direction: column; padding: 10px 12px; border-radius: 14px; }
+  .fl-lp-stat strong { font-size: 24px; line-height: 1; }
+  .fl-lp-stat span { color: var(--ink-2); font-size: 11px; }
+  .fl-lp-stat--play { background: var(--play-soft); }
+  .fl-lp-stat--grass { background: var(--grass-soft); }
+  .fl-lp-stat--sky { background: var(--sky-soft); }
+  .fl-lp-link { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 10px; padding: 8px 8px 8px 14px; border: 1px solid var(--line); border-radius: 999px; background: #fff; font-size: 12px; }
+  .fl-lp-link b { padding: 6px 12px; border-radius: 999px; background: #05745b; color: #fff; font-size: 11px; }
+  .fl-lp-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .fl-lp-card { padding: 12px; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+  .fl-lp-card p { margin: 0 0 4px; font-size: 13px; font-weight: 800; }
+  .fl-lp-card small { color: var(--ink-2); font-size: 11px; }
+  .fl-lp-card--heart { border-color: #feb5bc; background: var(--heart-soft); }
+  .fl-mock-note { margin: 10px 0 0; color: var(--ink-2); font-size: 12px; font-style: italic; text-align: right; }
+
+  /* Trust */
+  .fl-trust { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 32px; }
+  .fl-trust-card { padding: 26px 24px; border: 1px solid; border-radius: 24px; }
+  .fl-trust-card h3 { margin: 0 0 8px; font-size: 19px; font-weight: 800; line-height: 1.3; }
+  .fl-trust-card p { margin: 0; font-size: 15px; line-height: 1.55; }
+  .fl-trust-card--grass { border-color: #73e7c4; background: var(--grass-soft); }
+  .fl-trust-card--grass .fl-ico { color: #05745b; }
+  .fl-trust-card--sky { border-color: #b9cdfb; background: var(--sky-soft); }
+  .fl-trust-card--sky .fl-ico { color: var(--sky); }
+  .fl-trust-card--play { border-color: var(--play-line); background: var(--play-soft); }
+  .fl-trust-card--dark { border-color: var(--ink); background: var(--ink); color: #fff; }
+  .fl-trust-card--dark h3 { color: #fff; }
+  .fl-trust-card--dark .fl-ico { background: var(--play); color: var(--ink); }
+
+  /* Build */
+  .fl-build-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .fl-build { padding: 30px 32px; border: 1px solid; border-radius: 26px; }
+  .fl .fl-build-tag { margin: 0 0 14px; font-family: var(--serif); font-size: 28px; font-weight: 800; }
+  .fl-build ul { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+  .fl-build li { position: relative; padding-left: 30px; font-size: 16px; }
+  .fl-build li::before { content: ""; position: absolute; top: 2px; left: 0; width: 18px; height: 18px; border-radius: 50%; }
+  .fl-build--now { border-color: #73e7c4; background: var(--grass-soft); }
+  .fl-build--now li::before { background: var(--grass) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232a0b4f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12 4 4 8-8'/%3E%3C/svg%3E") center / 12px no-repeat; }
+  .fl-build--next { border-color: var(--line); background: #fff; }
+  .fl-build--next li::before { box-sizing: border-box; border: 2px dashed #8b7dae; }
+  .fl-build-note { margin: 18px 0 0; padding-top: 14px; border-top: 1px solid var(--line); color: var(--ink-2); font-size: 15px; }
+
+  .fl-road { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin: 40px 0 0; padding: 0; list-style: none; }
+  .fl-road li { display: flex; flex-direction: column; gap: 4px; padding: 20px; border: 1px solid var(--line); border-radius: 22px; background: var(--lilac); }
+  .fl-road span { display: grid; place-items: center; width: 36px; height: 36px; margin-bottom: 6px; border-radius: 50%; background: var(--ink); color: #fff; font-weight: 900; }
+  .fl-road li:nth-child(1) span { background: var(--grass); color: var(--ink); }
+  .fl-road li:nth-child(2) span { background: var(--play); color: var(--ink); }
+  .fl-road li:nth-child(3) span { background: var(--sky); }
+  .fl-road li:nth-child(4) span { background: var(--heart); }
+  .fl-road strong { font-size: 18px; }
+  .fl-road small { color: var(--ink-2); font-size: 14px; }
+
+  /* CTA */
+  .fl-cta {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
-    gap: 18px 24px;
-    margin-top: 6px;
+    justify-content: space-between;
+    gap: 28px 40px;
+    padding: 44px 48px;
+    border: 1px solid var(--line);
+    border-radius: 32px;
+    background:
+      radial-gradient(50% 80% at 100% 0%, rgba(254, 250, 190, 0.8), transparent 70%),
+      radial-gradient(50% 80% at 0% 100%, rgba(40, 219, 176, 0.18), transparent 70%),
+      #fff;
   }
 
-  .fl-link {
-    color: #fff;
-    font-weight: 800;
-    text-decoration: underline;
-    text-decoration-color: #28dbb0;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
+  .fl-cta > div:first-child { flex: 1 1 520px; }
+  .fl-cta p:not(.fl-eyebrow) { margin: 0; font-size: 18px; line-height: 1.6; }
+
+  /* Motion */
+  .fl-will .fl-day,
+  .fl-will.fl-timeline li,
+  .fl-will .fl-entry,
+  .fl-will .fl-core,
+  .fl-will .fl-out { opacity: 0; transform: translateY(22px); }
+
+  .fl-in .fl-day,
+  .fl-in.fl-timeline li,
+  .fl-in .fl-entry,
+  .fl-in .fl-core,
+  .fl-in .fl-out { opacity: 1; transform: none; transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.3, 0.7, 0.3, 1); }
+
+  .fl-in .fl-day,
+  .fl-in.fl-timeline li { transition-delay: calc(var(--i) * 0.15s); }
+  .fl-in .fl-core { transition-delay: 0.5s; }
+  .fl-in .fl-out { transition-delay: 0.9s; }
+  .fl-will .fl-flow-lines path { stroke-dashoffset: 300; }
+  .fl-in .fl-flow-lines path { stroke-dashoffset: 0; transition: stroke-dashoffset 2s ease 0.3s; }
+  .fl-will.fl-wheel .fl-w-shape--after { opacity: 0; transform: scale(0.6); }
+  .fl-in.fl-wheel .fl-w-shape--after { opacity: 1; transform: none; transition: opacity 1.2s ease 0.4s, transform 1.6s cubic-bezier(0.3, 0.7, 0.3, 1) 0.4s; }
+
+  /* Responsive */
+  @media (max-width: 1023px) {
+    .fl-hero-grid,
+    .fl-wheel-grid,
+    .fl-adv-grid { grid-template-columns: minmax(0, 1fr); }
+    .fl-days { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .fl-timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-top: 0; }
+    .fl-timeline::before,
+    .fl-timeline li::before { display: none; }
+    .fl-engine { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .fl-trust { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 760px) {
+    .fl-band { padding: 64px 0; }
+    .fl-hero { padding-top: 140px; }
+    .fl-three,
+    .fl-trust,
+    .fl-flow,
+    .fl-outcomes,
+    .fl-build-grid,
+    .fl-dims,
+    .fl-road,
+    .fl-engine,
+    .fl-timeline { grid-template-columns: minmax(0, 1fr); }
+    .fl-flow { gap: 14px; }
+    .fl-flow-lines { display: none; }
+    .fl-days { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .fl-phases { grid-template-columns: minmax(0, 1fr); }
+    .fl-phase-arrow { justify-self: center; transform: rotate(90deg); }
+    .fl-hero-visual { grid-template-columns: auto auto; justify-content: center; align-items: center; gap: 14px; min-height: 0; }
+    .fl-phone { grid-column: 1 / -1; order: -1; justify-self: center; width: 270px; margin-bottom: 6px; }
+    .fl-float { position: static; animation: none; }
+    .fl-float--days { flex-direction: row; gap: 8px; padding: 10px 16px; }
+    .fl-float--days strong { font-size: 30px; }
+    .fl-laptop-screen { grid-template-columns: minmax(0, 1fr); }
+    .fl-lp-side { display: none; }
+    .fl-laptop-base { margin: 0 -8px; }
+    .fl-cta { padding: 30px 22px; }
+    .fl-concept { text-align: left; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .fl-soon span { animation: none; }
+    .fl-phone,
+    .fl-float { animation: none; }
   }
 </style>
