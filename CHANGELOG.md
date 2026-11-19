@@ -8,7 +8,7 @@ why, and anything the next person needs to check.
 
 ## Preview 6, update 24: Seb's decisions on update 23 (19 Nov 2026, 13:15)
 
-**Commit:** `COMMIT24`.
+**Commit:** `a823a80`.
 - Advisor page: "worth USD 3,000" removed; the section is now "A free session with a Wayfinder".
 - Audio section removed from /the-reset (Stage 2 inclusion only); it stays on /the-build and
   /state-shift-audio.
