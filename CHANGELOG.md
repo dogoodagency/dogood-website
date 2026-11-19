@@ -8,7 +8,7 @@ why, and anything the next person needs to check.
 
 ## Preview 6, update 16: two-stage frames restored, three more pages, footer product links (19 Nov 2026, morning)
 
-**Made by:** Claude (claude.ai), from Seb's feedback of 09:19 (screenshot 6). **Branch:** `claude/preview-6`. **Commit:** `COMMIT16`.
+**Made by:** Claude (claude.ai), from Seb's feedback of 09:19 (screenshot 6). **Branch:** `claude/preview-6`. **Commit:** `521a147`.
 
 - **/the-reset, "Reset first. Then build."** (`src/styles/how-it-works.css`, appended): the two stage
   cards are back in the earlier frame style (DREAM 500 frames as in the old hero: pink uppercase stage
