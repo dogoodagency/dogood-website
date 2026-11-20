@@ -6,6 +6,10 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 8, update 15: Advisor Center, foundr.land section moved up
+
+- The foundr.land section now sits straight after "What advisors tell us" / "Which kind of advisor are you?", before the introduction.
+
 ## Preview 8, update 14: Pathway colours follow the phases
 
 - One colour per phase, used everywhere on the journey: Start = PLAY yellow, Before the sale = SKY blue, After the sale = GRASS green, Beyond = HEART pink-red, For life = rose. The green road, the foundr.land lane, the phase ribbons, the hand-over lines, the card borders, chips and badge backgrounds all use the same colour per phase (shades within a phase).
