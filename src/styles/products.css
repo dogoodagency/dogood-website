@@ -1,0 +1,281 @@
+/* Product pages (ProductPage.astro), on top of exit-prep.css. Rules are .pp- only. Added 19 Nov 2026. */
+
+.pp-well {
+  max-width: 980px;
+}
+
+.pp-page .pp-lede {
+  max-width: 760px;
+  margin: 0 0 16px;
+  color: #2a0b4f;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.pp-page .ep-lede-plain {
+  max-width: 760px;
+}
+
+.pp-page .ep-lede-plain strong {
+  font-weight: 900;
+}
+
+.pp-tag {
+  display: inline-block;
+  margin: 0 0 22px;
+  padding: 6px 16px;
+  border: 1px solid #28dbb0;
+  border-radius: 999px;
+  color: #28dbb0;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* Numbered steps (e.g. the Residency days). */
+.pp-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 20px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pp-step {
+  padding: 24px 24px 26px;
+  border: 1px solid #c2b7dd;
+  border-radius: 20px;
+  background: #fff;
+}
+
+.pp-step-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #ea1557;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.pp-page .pp-step h3 {
+  margin: 0 0 8px;
+  color: #2a0b4f;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.pp-step p {
+  margin: 0;
+  color: #2a0b4f;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+/* Product cards (the /products hub). */
+.pp-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pp-card {
+  position: relative;
+  display: block;
+  height: 100%;
+  padding: 28px 30px 56px;
+  border: 1px solid #c2b7dd;
+  border-radius: 20px;
+  background: #fff;
+  color: #2a0b4f;
+  text-decoration: none;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.pp-card:hover,
+.pp-card:focus-visible {
+  border-color: #ea1557;
+  box-shadow: 0 12px 32px rgba(42, 11, 79, 0.1);
+  transform: translateY(-2px);
+}
+
+.pp-card-tag {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #58447f;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.pp-page .pp-card h3 {
+  margin: 0 0 8px;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.pp-card p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.pp-card-go {
+  position: absolute;
+  right: 26px;
+  bottom: 20px;
+  color: #ea1557;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.pp-note {
+  max-width: 760px;
+  margin: 22px 0 0;
+  color: #6b5c93;
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.pp-close {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 56px 40px;
+  border-radius: 24px;
+  background: #2a0b4f;
+  text-align: center;
+}
+
+.pp-page .pp-close h2 {
+  margin: 0;
+  color: #fff;
+}
+
+.pp-close p {
+  max-width: 640px;
+  margin: 0;
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+@media (max-width: 760px) {
+  .pp-cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pp-close {
+    padding: 40px 22px;
+  }
+}
+
+/* 19 Nov 2026 (Seb): no white cards on white bands, no lift on hover (colour change instead), and a clear
+   "Coming soon" status in the advisor-page style. */
+.pp-page .ep-band:not(.ep-band-tint) .pp-card,
+.pp-page .ep-band:not(.ep-band-tint) .pp-step {
+  background: #faf9ff;
+}
+
+.pp-page .pp-card:hover,
+.pp-page .pp-card:focus-visible {
+  border-color: #ea1557;
+  background: #fff3f4;
+}
+
+.pp-soon {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 16px;
+  padding: 6px 14px;
+  border: 1.5px dashed #c2b7dd;
+  border-radius: 999px;
+  background: #f5f2ff;
+  color: #2a0b4f;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.pp-soon::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: #28dbb0;
+}
+
+.pp-soon--hero {
+  margin: 0 0 22px;
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 15px;
+}
+
+/* "What it is NOT" boxes: HEART 25 with a HEART 300 line. */
+.pp-page .ep-box--rose {
+  border: 1px solid #feb5bc;
+  background: #fff9fa;
+}
+
+.pp-feature-well {
+  max-width: 1180px;
+}
+
+/* 19 Nov 2026 14:55 (Seb): hero titles run wider, so they sit on two lines. */
+.pp-page .ep-hero h1 {
+  max-width: 1080px;
+}
+
+/* A feature band's cards (WHOOP, audio) sit on the band colour without their own white box edge clash. */
+.pp-page .pp-feature.ep-band-tint .wh {
+  background: #fff;
+}
+
+.pp-page .ep-hero-inner {
+  max-width: 1080px;
+}
+
+.pp-page .ep-hero .ep-sub {
+  max-width: none; /* one line where it fits (Seb, 19 Nov 2026 18:52) */
+}
+
+/* No SKY on DREAM (Seb, 19 Nov 2026 14:55): SKY boxes on the lilac band become white with a DREAM line. */
+.pp-page .ep-band-tint .ep-box--sky {
+  border-color: #c2b7dd;
+  background: #fff;
+}
+
+/* Steps (e.g. How the 1.5 days work): GRASS shades from light to deep, appearing one after another
+   (Seb, 19 Nov 2026 18:52). */
+.pp-page .pp-step { border-width: 1px; }
+.pp-page .ep-band .pp-steps .pp-step:nth-child(1) { border-color: #a3f2d7; background: #f3fffb; }
+.pp-page .ep-band .pp-steps .pp-step:nth-child(2) { border-color: #73e7c4; background: #e7fff6; }
+.pp-page .ep-band .pp-steps .pp-step:nth-child(3) { border-color: #28dbb0; background: #a3f2d7; }
+.pp-page .ep-band .pp-steps .pp-step:nth-child(4) { border-color: #01a684; background: #73e7c4; }
+.pp-page .ep-band .pp-steps .pp-step:nth-child(5) { border-color: #05745b; background: #05745b; }
+.pp-page .ep-band .pp-steps .pp-step:nth-child(5) :is(h3, p) { color: #fff; }
+.pp-page .ep-band .pp-steps .pp-step:nth-child(5) .pp-step-label { color: #a3f2d7; }
+.pp-page .pp-step .pp-step-label { color: #05745b; }
+
+.pp-steps.will-animate .pp-step { opacity: 0; transform: translateY(18px); }
+.pp-steps.is-in .pp-step {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.pp-steps.is-in .pp-step:nth-child(2) { transition-delay: 0.6s; }
+.pp-steps.is-in .pp-step:nth-child(3) { transition-delay: 1.2s; }
+.pp-steps.is-in .pp-step:nth-child(4) { transition-delay: 1.8s; }
+.pp-steps.is-in .pp-step:nth-child(5) { transition-delay: 2.4s; }
+.pp-steps.is-in .pp-step:nth-child(6) { transition-delay: 3s; }

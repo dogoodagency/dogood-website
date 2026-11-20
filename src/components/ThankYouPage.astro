@@ -1,0 +1,61 @@
+---
+// Thank-you page after a booking (Seb's layout, 18 Nov 2026): hero + wave like the booking pages,
+// then on the right-hand side "You're booked", the text, optional extras and an optional case study,
+// all in one column as wide as the case study card.
+import "../styles/booking.css";
+import "../styles/thankyou.css";
+import Base from "../layouts/Base.astro";
+import BookingHero from "./BookingHero.astro";
+import BookingCaseCard from "./BookingCaseCard.astro";
+
+interface Props {
+  title: string;
+  titleSuffix?: string;
+  seoTitle: string;
+  description: string;
+  canonical: string;
+  /** Show the ClarityValue Shift 1-Page Map and its button. */
+  map?: boolean;
+  /** Show a case study card: "j" or "v". */
+  caseStudy?: "j" | "v";
+}
+
+const { title, titleSuffix, seoTitle, description, canonical, map = false, caseStudy } = Astro.props;
+const mapHref = "https://drive.google.com/file/d/1g6WwAU8fWcpbNIBKPgNZ382CbirxX4o4/view?usp=drive_link";
+---
+
+<Base title={seoTitle} description={description} canonical={canonical} robots="noindex" footerEdge="#C2B7DD">
+  <article class="bk-page ty-page">
+    <BookingHero title={title} titleSuffix={titleSuffix} align="center" />
+    <div class="bk-body">
+      <div class="ty-main">
+        <div class="ty-col">
+          <h2 class="ty-booked">You’re booked</h2>
+          <div class="ty-text bk-copy">
+            <slot />
+          </div>
+          {
+            map && (
+              <div class="ty-map">
+                <a class="ty-map-frame" href={mapHref} aria-label="Open the ClarityValue Shift 1-Page Map">
+                  <img
+                    src="/media/clarityvalue-shift-map@1x.webp"
+                    srcset="/media/clarityvalue-shift-map@1x.webp 603w, /media/clarityvalue-shift-map@2x.webp 1206w"
+                    sizes="(max-width: 600px) calc(100vw - 44px), 360px"
+                    width="1206"
+                    height="674"
+                    alt="Preview of the ClarityValue Shift 1-Page Map: purpose, the 4-step method (See, Interrupt, Choose, Reset) and what you get in Stage 1"
+                    decoding="async"
+                  />
+                </a>
+                <a class="btn-teal" href={mapHref}>View the 1-Page Map</a>
+              </div>
+            )
+          }
+          <slot name="extra" />
+          {caseStudy && <div class="ty-case"><BookingCaseCard study={caseStudy} /></div>}
+        </div>
+      </div>
+    </div>
+  </article>
+</Base>

@@ -9,42 +9,42 @@ export const stories = [
   {
     slug: "jennifer-m",
     name: "JENNIFER M",
-    role: "Founder of LunchAssist",
+    role: "Founder, LunchAssist",
     quote:
       "Seb from DGA is a lovely human with a great mind for business. DGA would be a great support to any person in a leadership position. The team has a wealth of organizational leadership knowledge, great intuition, and a strong skillset in coaching and mentoring via the virtual workspace. I absolutely recommend DGA to anyone looking to partner with an emotionally intelligent and business-savvy training agency! Thank you, DGA!",
   },
   {
     slug: "michael-r",
     name: "MICHAEL R",
-    role: "Founder of Softwisery",
+    role: "Founder, Softwisery",
     quote:
       "For a long time, I struggled to efficiently organize my routines, often lacking a coherent system and clear vision. Seb from DGA emerged as the guiding force to help me overcome these challenges. With his expertise, I've achieved focus on my goals, enhanced my schedule, and streamlined my planning processes. Together, we eliminated redundancies, attaining the clarity I had long sought after. Collaborating with the DGA team was an absolute delight.",
   },
   {
     slug: "florian-w",
     name: "FLORIAN W",
-    role: "founder of BitFlow",
+    role: "Founder, BitFlow",
     quote:
       "DoGood, I would like to express my deepest gratitude for the incredible support and guidance your team has provided me with. It has been an absolute pleasure working with you all and witnessing your utmost professionalism throughout our time. I truly appreciate how proactive DGA has been in understanding my requirements and tailoring DGA’s advice to suit my individual needs. DGA’s ability to provide insightful and valuable guidance has had a profound impact on my personal development journey. I am genuinely impressed by their productivity and influence, as they have helped me grow in ways I never thought possible.",
   },
   {
     slug: "zach-g",
     name: "ZACH G",
-    role: "founder of Warrior Leader",
+    role: "Founder, Warrior Leader",
     quote:
       "Seb from DGA is a consummate professional. His knowledge and business acumen is only surpassed by his positive energy and enthusiasm. His drive and understanding of the learning process is second to none. I look forward to working with him again on many different projects in the future.",
   },
   {
     slug: "marcia-w",
     name: "MARCIA W",
-    role: "founder of USM Supply Chain",
+    role: "Founder, USM Supply Chain",
     quote:
       "Seb from DGA is amazing, he truly cares about progress, and shows great enthusiasm... After working for a short period with DoGood, we got more work than we were able to handle. Excellent results!",
   },
   {
     slug: "brook-h",
     name: "BROOK H",
-    role: "founder of Audacia Home",
+    role: "Founder, Audacia Home",
     quote:
       "Seb from DGA was excellent in all respects. The team helped us grow the business from the ground up and immensely helped us on a personal, professional, and performance level. I highly recommend DGA to anyone looking to increase and optimize their business performance.",
   },
@@ -58,51 +58,64 @@ export const stories = [
   {
     slug: "christian-v",
     name: "CHRISTIAN V",
-    role: "realtor at exp Realty",
+    role: "Realtor at eXp Realty",
     quote:
       "We started working with Seb from DGA because we needed a transformation... We were able to click right from the beginning, he took the time to listen and diagnose our problems from the start… DGA has helped us create goals, and a vision... The business started to turn around quickly because of all of these changes, and we started to make more money, and do more activities. I can’t thank Seb from DGA enough for all of his hard work and time he and the team put into our business.",
   },
   {
     slug: "manfred-t",
     name: "MANFRED T",
-    role: "founder of Berty Technologies",
+    role: "Founder, Berty Technologies",
     quote:
       "Seb from DoGood was proactive and gave us advice based on my requirements; the sessions were productive and influential. I look forward to working with DGA for the next semester.",
   },
   {
     slug: "stan-s",
     name: "STAN S",
-    role: "founder of The Propel Consulting Group",
+    role: "Founder, The Propel Consulting Group",
     quote:
       "We were thrilled to connect with Seb from DGA, they are very attentive to client needs and offer a variety of options to meet those needs. The team is an excellent thought partner, easy to work with, communicative, and goes above and beyond to make sure clients are satisfied with the final product. Our project was enhanced through our work together. Highly recommend DGA!",
   },
   {
     slug: "zeina-g",
     name: "ZEINA G",
-    role: "founder of Synergy Plus",
+    role: "Founder, Synergy Plus",
     quote:
       "The DGA team has many qualities that have made our experience working together phenomenal. The team has been able to help us redefine our business, create clarity around our goals, and help us find a path forward with intent and purpose. They have taught us how to create more value for our clients and how to value our own services and the work that we do. The DGA team has been able to guide us to make difficult decisions towards changes with both a firmness and sensitivity to the situation that we were in. The team has lead us to create completely new and different concepts, helped take us out of the usual “box” that our business was in, devised ways to get our clients on board with an entire reframing of the business always helping us move closer to our business and life goals.",
   },
   {
     slug: "amer-k",
     name: "AMER K",
-    role: "founder of Tweepi",
+    role: "Founder, Tweepi",
     quote:
       "Seb from DGA is a learning & development SUPERSTAR! The team helped us develop an online entrepreneurship learning initiative. When we hired DGA, my notes were a mess. The team guided us step by step. He started by interviewing our current students - using DGA’s unparalleled empathy to zoom in on the learner's persona. A crucial step that guided the rest of our work together. DGA’s guidance was educational and eye-opening. The team understands learners motivations and fears and gave us spot-on feedback at every step.",
   },
   {
     slug: "immanual-j",
     name: "IMMANUAL J",
-    role: "founder of Kulture of Kindness",
+    role: "Founder, Kulture of Kindness",
     quote:
       "Seb from DGA was a pleasure to work with. What started off as a discussion on RFP evolved into a full scale rediscovery of a learning effort. Seb and the team provided excellent insights and ideas on the way forward. The team is skilled and helped us see our blind spots and in the process create a new strategy for our e-learning initiative.",
   },
   {
     slug: "gajan-r",
     name: "GAJAN R",
-    role: "founder of Spiralyze",
+    role: "Founder, Spiralyze",
     quote:
       "We hired DoGood to help me get my business to the next level. The team exceeded all my expectations and had enormous impact. The DGA team did a thorough diagnostic and identified a few key personal and professional sticking points, helped us incorporate goals, planning, and … set up more rigorous business processes to help us scale up. The team helped us write out thorough planning documentation and flesh out all the key details. While working with DGA we almost doubled in size.",
+  },
+  // Added 19 Nov 2026 (Seb): testimonials from Chantill's clients, word for word.
+  {
+    slug: "gina-p",
+    name: "GINA P",
+    role: "Founder, The Wilder Practice",
+    quote: "Working with Chantill has had a twofold impact on me, both personally and in my work. I’ve become more fully aware of my nervous system state and have the ability to shift states in a way that creates greater capacity—to be with things that are hard, to manage times of stress, and to turn toward discomfort with more presence. I feel like a calmer, more settled person. I’m also more able to be present in joy, and to expand states like gratitude and contentment, really feeling them in my body. There’s more bandwidth now to experience the fullness of those moments. Because I have this awareness inside of me, it’s directly impacted my work. I’m able to hold a larger and more stable container for my clients in our coaching work. I’m looking forward to continuing to bring these tools in to support my clients in their personal and professional transformations. I’m seeing what’s possible for them based on what I’m experiencing within myself.",
+  },
+  {
+    slug: "tami-l",
+    name: "TAMI L",
+    role: "Studio T",
+    quote: "Before this, I was consistently operating in high gear, nothing ever felt like enough, and I was always pursuing the next level. Over the past three years, I’ve developed a consistent daily practice that allows me to connect inwardly and show up more intentionally and effectively. My work with Chantill has had a measurable impact, expanding my capacity to take risks, be vulnerable, and move from co-regulation to self-regulation with greater ease. As a result, I’m more present, more grounded, and better able to engage with both challenges and opportunities from a different lens.",
   },
 ] as const;
 
@@ -157,9 +170,9 @@ export const discover = [
 ];
 
 export const stats = [
-  { value: "76", label: "Founders Engaged" },
-  { value: "38,000", label: "Leaders Impacted" },
-  { value: "$16.5 Million", label: "Learning Initiatives Sold" },
-  { value: "11,500", label: "Coaching Hours Administered" },
+  { value: "186", label: "Founders Engaged" },
+  { value: "55,230", label: "Leaders Impacted" },
+  { value: "$19.4 Million", label: "Learning Initiatives Sold" },
+  { value: "18,360", label: "Coaching Hours Administered" },
   { value: "100%", label: "Client Satisfaction Score" },
 ];

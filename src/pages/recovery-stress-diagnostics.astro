@@ -1,0 +1,49 @@
+---
+import ProductPage from "../components/ProductPage.astro";
+import WhoopSection from "../components/WhoopSection.astro";
+// Recovery & Stress Diagnostics (WHOOP) (Seb, 19 Nov 2026). Copy from the Stage 1 inclusion and the
+// "Why WHOOP" FAQ, which Seb wrote. Draft page, to be expanded.
+---
+
+<ProductPage
+  title="Recovery & Stress Diagnostics with WHOOP | DoGood Agency"
+  description="A WHOOP baseline for sleep, recovery and stress, so stabilization is measurable, not just felt. Part of the Founder Reclamation Partnership. Not medical care."
+  path="/recovery-stress-diagnostics"
+  eyebrow="Recovery & Stress Diagnostics"
+  h1="See how your body is coping, not only how you feel."
+  sub="A WHOOP baseline for sleep, recovery and stress, so stabilization is measurable."
+  tag="Part of the Founder Reclamation Partnership"
+  sections={[
+    {
+      id: "rd-what",
+      heading: "What it is",
+      paras: [
+        "WHOOP supports the Recovery & Stress diagnostics so stabilization is faster and more measurable (not based only on mood).",
+        "It’s not medical care — think recovery visibility for better decisions under pressure.",
+      ],
+      boxes: [
+        {
+          title: "What you see",
+          tone: "grass",
+          items: ["Sleep", "Recovery", "Stress"],
+        },
+        {
+          title: "Good to know",
+          tone: "sky",
+          items: [
+            "Part of Stage 1: The Reset™, Stage 2: The Build™ and The Exit Prep™",
+            "WHOOP is required for the diagnostics and purchased separately",
+            "Not medical care, and not a diagnosis",
+          ],
+        },
+      ],
+    },
+  ]}
+  closing={{
+    heading: "Questions about WHOOP?",
+    text: "Read why we use it, and what it costs, in our FAQ.",
+    cta: { href: "/faqs#why-whoop", label: "Why WHOOP" },
+  }}
+>
+  <WhoopSection slot="feature" variant="full" />
+</ProductPage>

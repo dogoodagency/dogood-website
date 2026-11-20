@@ -1,0 +1,79 @@
+---
+/**
+ * The rolling "Leaders who've been through it" reviews, same markup and classes as the
+ * homepage (#reviews in index.astro) so the global home.css rules and its CSS animation
+ * apply unchanged. Page-level look-and-feel tweaks that the homepage scopes under
+ * `.page-home` live in the consuming page's stylesheet under `.reviews-rail`.
+ */
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import { reviews } from "../data/homepage";
+import { clipWords } from "../data/clip-words";
+
+interface Props {
+  heading?: string;
+  id?: string;
+  /** Review portrait file names to leave out (e.g. when the page already shows them in full). */
+  exclude?: string[];
+}
+
+const { heading = "Leaders who've been through it", id = "reviews-rail", exclude = [] } = Astro.props;
+
+const portraits = import.meta.glob<ImageMetadata>("../assets/reviews/*", {
+  eager: true,
+  import: "default",
+});
+
+function portrait(file: string) {
+  const found = Object.entries(portraits).find(([path]) => path.endsWith(`/${file}`));
+  if (!found) throw new Error(`Missing image ${file}`);
+  return found[1];
+}
+
+const reviewSet = reviews
+  .filter((review) => !exclude.includes(review.file))
+  .map((review) => ({ ...review, src: portrait(review.file) }));
+
+function clipQuote(quote: string) {
+  return clipWords(quote);
+}
+---
+
+<section id={id} class="reviews-rail">
+  <div class="reviews-band">
+    <h2 class="t-h2">{heading}</h2>
+    <div
+      class="reviews-viewport"
+      tabindex="0"
+      aria-label="Founder testimonials, rolling. Pauses on hover or focus."
+    >
+      <div class="reviews-track">
+        {
+          [0, 1].map((copy) => (
+            <div class:list={["reviews-set", copy === 1 && "is-clone"]} aria-hidden={copy === 1}>
+              {reviewSet.map((review) => (
+                <article class="review">
+                  <div class="review-who">
+                    <Image
+                      src={review.src}
+                      alt={`Portrait of ${review.name}, ${review.role}`}
+                      width={56}
+                      height={56}
+                      widths={[56, 112]}
+                      sizes="56px"
+                    />
+                    <div>
+                      <h3>{review.name}</h3>
+                      <p class="review-role">{review.role}</p>
+                    </div>
+                  </div>
+                  <p class="review-body">{clipQuote(review.quote)}</p>
+                </article>
+              ))}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

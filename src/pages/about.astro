@@ -1,0 +1,298 @@
+---
+import SignatureDraw from "../components/SignatureDraw.astro";
+import "../styles/about.css";
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import Wave from "../components/Wave.astro";
+import { edgeAbove } from "../data/edge-line";
+import { sebPerson, sebBook, sebPersonId } from "../data/seb-person";
+import team from "../assets/photos/wayfinders.png";
+import ioda from "../assets/photos/ioda-logo-heart.png"; // Seb's logo (18 Nov), recoloured to HEART 500 like our client logos (19 Nov 2026)
+
+const tint = "#F5F2FF";
+const heroEdge = edgeAbove("#2A0B4F");
+const bandEdge = edgeAbove(tint);
+const footerEdge = edgeAbove(tint);
+
+// NEW DRAFT COPY: for Seb's review (Premise cards)
+const premises = [
+  {
+    title: "Freedom does not settle itself.",
+    text: "You have more time and more options, but the structure is gone, and that can leave you unsettled.",
+  },
+  {
+    title: "You are more than the company.",
+    text: "When the company becomes too much of who you are, filling the space with more projects will not answer what belongs next.",
+  },
+  {
+    title: "Success should not cost what matters most.",
+    text: "Your sleep, your health and your family were easier to put off while the company needed you, and they deserve your attention now.",
+  },
+];
+// About page as structured data: the page is about DoGood Agency, founded by Seb (20 Nov 2026).
+const aboutLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "@id": "https://www.dogoodagency.co/about#webpage",
+      url: "https://www.dogoodagency.co/about",
+      name: "About DoGood",
+      isPartOf: { "@id": "https://www.dogoodagency.co/#website" },
+      about: { "@id": "https://www.dogoodagency.co/#organization" },
+      mentions: [{ "@id": sebPersonId }],
+    },
+    { ...sebPerson, image: "https://www.dogoodagency.co/media/wayfinders/seb@2x.webp" },
+    sebBook,
+  ],
+};
+---
+
+<Base
+  title="About DoGood: exit coaching for founders | DoGood Agency"
+  description="Why DoGood exists, what the name means, and the people behind the work: Seb Wichmann and a small team of Wayfinders."
+  canonical="https://www.dogoodagency.co/about"
+  footerStrip={tint}
+  footerEdge={footerEdge}
+>
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(aboutLd)} />
+  <article class="ab-page">
+    <header class="ab-hero">
+      <!-- No hero image (Seb, 18 Nov 2026: hero images only on the homepage); the sketch moved to "Where we are going". -->
+      <div class="ab-hero-inner ab-hero-text">
+        <div class="ab-hero-copy">
+          <h1>We exist for <span class="ab-accent">life after the company.</span></h1>
+          <p>DoGood is a private partnership for founders who have exited, or are getting ready to, and do not want life after the company to become another version of the life they left behind.</p>
+          <p>You apply for Stage 1, The Reset, a private 30-day engagement. If it fits, Stage 2, The Build, follows by invitation only.</p>
+        </div>
+      </div>
+      <Wave fill={tint} edge={heroEdge} />
+    </header>
+
+    <!-- NEW DRAFT COPY: for Seb's review (Our Purpose + Our Mission) -->
+    <div class="ab-band ab-band-tint">
+      <div class="ab-well">
+        <div class="ab-duo">
+          <section class="ab-statement" aria-labelledby="ab-purpose">
+            <h2 id="ab-purpose">Our Purpose</h2>
+            <p>We exist so founders can make life after the company a deliberate choice. Not another version of the life they left behind.</p>
+          </section>
+          <section class="ab-statement" aria-labelledby="ab-mission">
+            <h2 id="ab-mission">Our Mission</h2>
+            <p>We give founders who have exited a private space to slow down, look honestly at what is here, and work out what genuinely belongs next. One to one, in two stages.</p>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div class="ab-divider" aria-hidden="true">
+      <svg style={`--wave-edge:${bandEdge}`} viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path fill="#ffffff" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path>
+        <path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path>
+      </svg>
+    </div>
+
+    <!-- NEW DRAFT COPY: for Seb's review (Our Premise) -->
+    <section class="ab-band" aria-labelledby="ab-premise">
+      <div class="ab-well">
+        <h2 id="ab-premise">Our Premise</h2>
+        <ul class="ab-cards">
+          {
+            premises.map((item) => (
+              <li class="ab-card">
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section class="ab-band ab-band-tint" aria-labelledby="ab-why-exist">
+      <div class="ab-well">
+        <h2 id="ab-why-exist">Why we exist</h2>
+        <p class="ab-lead">A founder's message, from Seb:</p>
+        <figure class="ab-quote">
+          <blockquote>
+            <p>We exist because the support founders need after exit is rarely found in the usual places.</p>
+            <p>Executive coaches focus on performance. Therapists help people process what is difficult. Both can have value. But neither is built for the moment when the company is no longer central, and you are working out what genuinely belongs next.</p>
+            <p>You cannot solve that simply by finding another strategy or filling it with more projects.</p>
+            <p>I know what it costs when the company becomes too much of who you are, and when the old patterns follow you long after the company is gone.</p>
+            <p>DoGood is what I wish had existed then: a private partnership for founders who do not want life after exit to become another version of the life they left behind.</p>
+          </blockquote>
+          <figcaption>
+            <SignatureDraw class="ab-sig" />
+            <span class="ab-sig-name">Seb &amp; the entire DoGood team</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="ab-band" aria-labelledby="ab-why-dogood">
+      <div class="ab-well">
+        <h2 id="ab-why-dogood">Why 'DoGood'?</h2>
+        <p class="ab-lead">Because we love entrepreneurship.</p>
+        <div class="ab-why-grid">
+          <div>
+            <p>We love what founders build. We love what a great company can create for a family, a team, a community, and the world.</p>
+            <p>And the best founders we know are not only trying to build something successful. They want to do good.</p>
+          </div>
+          <ul class="ab-good">
+            <li>Good for themselves.</li>
+            <li>Good for their families.</li>
+            <li>Good for their teams.</li>
+            <li>Good for the world.</li>
+          </ul>
+        </div>
+        <div class="ab-why-close">
+          <p class="ab-closing">That is why we do this work.</p>
+          <p>DoGood believes that success should not come at the expense of the people and parts of life that matter most.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW DRAFT CONTEXT (Seb, 19 Nov 2026: "include more context, we will rewrite later"). From what Seb has
+         told us about DoGood: two stages, Wayfinders, alongside advisors, markets. Draft for Seb's rewrite. -->
+    <section class="ab-band ab-band-tint" aria-labelledby="ab-how">
+      <div class="ab-well">
+        <h2 id="ab-how">How we work</h2>
+        <ul class="ab-cards ab-cards--3">
+          <li class="ab-card">
+            <h3>One founder, one Wayfinder</h3>
+            <p>Every founder works one to one with a Wayfinder from our global team, matched through our client-fit process. Our Wayfinders bring more than 75 years of combined experience.</p>
+          </li>
+          <li class="ab-card">
+            <h3>In stages, not all at once</h3>
+            <p>Before the sale, The Exit Prep™. After it, Stage 1: The Reset™ (30 days) and, by invitation, Stage 2: The Build™ (12 weeks). Each stage has a clear end, so you always know where you are.</p>
+          </li>
+          <li class="ab-card">
+            <h3>Measured, not guessed</h3>
+            <p>Next to the conversations, we use WHOOP recovery and stress data and, in Stage 2, custom audio, so the changes show up in how you sleep, recover and decide.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="ab-band" aria-labelledby="ab-who">
+      <div class="ab-well">
+        <div class="ab-duo">
+          <section class="ab-statement" aria-labelledby="ab-who">
+            <h2 id="ab-who">Who we work with</h2>
+            <p>Founders who have sold their company or stepped back from the day-to-day, and founders getting ready to sell, mostly in the US and Canada, the UK and Europe. We take five new founders a month.</p>
+          </section>
+          <section class="ab-statement" aria-labelledby="ab-alongside">
+            <h2 id="ab-alongside">Who we work alongside</h2>
+            <p>Exit planners, wealth advisors, M&amp;A advisors, accountants and attorneys. They look after the business and the money. We look after the founder, next to them, never instead of them.</p>
+          </section>
+        </div>
+        <div class="ab-notlist">
+          <h3>What we are not</h3>
+          <p>Not executive coaching. Not therapy. Not financial or legal advice. Not a course or a mastermind. A private partnership for the personal side of the sale.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW DRAFT COPY (18 Nov 2026), from Seb's vision notes, kept informal. Guesses from the notes (year-10
+         numbers, pricing) are deliberately left out. Seb is still shaping this. -->
+    <section class="ab-band ab-band-tint" aria-labelledby="ab-vision">
+      <div class="ab-well">
+        <div class="ab-vision-intro">
+          <div>
+            <p class="ab-eyebrow">Where we're going</p>
+            <h2 id="ab-vision">The fourth seat at the table</h2>
+            <p>Every serious exit has a lawyer, a banker and a wealth advisor around the table. The lawyer protects the deal. The banker prices it. The wealth advisor invests what comes out of it.</p>
+            <p>Nobody at that table is paid to ask the founder who they are becoming.</p>
+            <p>I found that out the hard way. I built a company, hit the wall, and paused it to regroup. The business had plenty of people looking after it. The person in the middle of it didn't.</p>
+          </div>
+          <figure class="ab-sketch-card">
+            <picture>
+              <source type="image/webp" srcset="/sketches/about-building-and-bench@1x.webp 540w, /sketches/about-building-and-bench@2x.webp 1080w" sizes="(max-width: 899px) min(100vw, 380px), 400px" />
+              <img src="/sketches/about-building-and-bench@1x.png" srcset="/sketches/about-building-and-bench@1x.png 540w, /sketches/about-building-and-bench@2x.png 1080w" sizes="(max-width: 899px) min(100vw, 380px), 400px" width="540" height="400" alt="A quiet unfilled workshop or office building stands to one side, with a garden bench, a folded jacket, a cup and a small plant on a teal patch of ground in front." loading="lazy" decoding="async" />
+            </picture>
+          </figure>
+        </div>
+
+        <ul class="ab-vision-cards">
+          <li class="ab-vision-card">
+            <h3>A transition partner in every serious exit</h3>
+            <p>We think the founder's side of a sale deserves the same care as the numbers. Over time, we want to train and certify transition partners who work inside exit planning, accounting, law and family business firms, right next to the people who already sit at that table. We look after the standard and the training. When a founder needs to go deeper, our Wayfinders are there.</p>
+          </li>
+          <li class="ab-vision-card">
+            <h3>A house for founders, before and after the sale</h3>
+            <p>Founders are often lonely twice. First while they quietly prepare to sell and can't tell anyone. Then after the sale, when nobody needs them any more. We want DoGood to be a place you can walk into through either door, with people who know both sides.</p>
+          </li>
+        </ul>
+
+        <div class="ab-vision-why">
+          <p><strong>Why now?</strong> Advisors already know the personal side matters. Yet in the Exit Planning Institute's 2023 survey of more than 1,100 business owners, 78% had no formal exit team, and only 41% had a written plan for life after the business.</p>
+          <p class="ab-vision-sign">We're still shaping it, and we're building it the way we work: one founder at a time. <span>— Seb</span></p>
+          <p class="ab-source">Source: Exit Planning Institute, 2023 National State of Owner Readiness Report.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ab-band ab-band-wf" aria-labelledby="ab-wayfinders">
+      <div class="ab-well">
+        <div class="ab-wf-copy">
+          <h2 id="ab-wayfinders">Seb and the Wayfinders</h2>
+          <!-- Seb's bio (approved by Seb, 20 Nov 2026), from "Who Seb Is: Source of Truth v1.10". -->
+          <p><a href="/wayfinders/seb">Seb Wichmann</a> founded DoGood Agency. For 14+ years he has worked with founders, CEOs and executive teams across 35+ countries: leading learning and development across EMEA for Johnson &amp; Johnson, designing executive programs for Headspring (the Financial Times and IE Business School joint venture) in London and Madrid, then in his own consulting practice. He is an accredited Master NLP Practitioner and Master Trainer, a SuperCoach award recipient, and the author of <em>Instant Silence</em>.</p>
+          <p>His own business nearly broke him, so he knows from the inside what it costs when a company becomes who you are. That is the work DoGood does now: the personal side of the sale, before and after it.</p>
+          <p>FRP is delivered by an intentionally small, vetted team of Wayfinders, with 75+ years of combined founder-delivery experience: Seb, Katrin, Chantill, Shiva, and Vlora. You don't pick a Wayfinder. We match for fit first.</p>
+          <a class="btn-teal" href="/wayfinders">Meet the Wayfinders</a>
+        </div>
+        <figure class="ab-team">
+          <Image
+            src={team}
+            alt="The DoGood Wayfinders: Seb, Vlora, Chantill, Shiva and Katrin"
+            widths={[800, 1080, 1620]}
+            sizes="(max-width: 1080px) 100vw, 1080px"
+          />
+        </figure>
+      </div>
+    </section>
+
+    <!-- The team photo's bottom row tucks behind this wave (Seb, 18 Nov 2026). -->
+    <div class="ab-divider ab-divider--over" aria-hidden="true">
+      <svg style={`--wave-edge:${bandEdge}`} viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path fill="#F5F2FF" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path>
+        <path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path>
+      </svg>
+    </div>
+
+    <!-- IODA redesigned (Seb, 18 Nov 2026): soft DREAM band fading into white, logo card, two lines, link. -->
+    <section class="ab-band ab-band-ioda" aria-labelledby="ab-ioda">
+      <div class="ab-well">
+        <div class="ab-ioda">
+          <figure class="ab-ioda-logo">
+            <Image
+              src={ioda}
+              alt="IODA, the International Organization Development Association"
+              widths={[260, 520]}
+              sizes="260px"
+            />
+          </figure>
+          <div class="ab-ioda-copy">
+            <p class="ab-eyebrow">Our professional network</p>
+            <h2 id="ab-ioda">Proud member of IODA</h2>
+            <p>IODA, the International Organization Development Association, is a global network of organisation development professionals spanning more than 50 countries.</p>
+            <p>Being part of it keeps us learning from colleagues who work with people and change in very different cultures, and keeps our own practice honest.</p>
+            <p><a class="ab-text-link" href="https://www.iodanet.org/iodas-history/" target="_blank" rel="noopener">Visit IODA <span aria-hidden="true">→</span></a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ab-band ab-band-tint" aria-labelledby="ab-next">
+      <div class="ab-well">
+        <div class="ab-cta">
+          <h2 id="ab-next">What's next?</h2>
+          <p class="ab-cta-lead">Complete the short application for Stage 1 (30 days). We'll respond within 24 hours. If there's a fit, we'll have an honest conversation.</p>
+          <a class="btn-teal" href="/apply-stage-1">Apply for Stage 1</a>
+          <p class="ab-cta-note">Private. Limited to 5 new founders a month.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+</Base>

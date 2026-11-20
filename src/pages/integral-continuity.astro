@@ -1,0 +1,48 @@
+---
+import ProductPage from "../components/ProductPage.astro";
+// IntegralContinuity™ (Seb, 19 Nov 2026): maintenance after both FRP stages. Light + Private.
+// Draft copy for Seb to review: which tier is once a month and which twice is our reading of his note.
+---
+
+<ProductPage
+  title="IntegralContinuity™: ongoing founder support | DoGood Agency"
+  description="Ongoing sessions with your Wayfinder after Stage 1 and Stage 2, once or twice a month, with async support between. For founders who completed both stages."
+  path="/integral-continuity"
+  eyebrow="IntegralContinuity™"
+  h1="Keep what you built, as life keeps moving."
+  sub="Ongoing sessions with your Wayfinder after Stage 1 and Stage 2."
+  tag="For founders who have completed both stages"
+  sections={[
+    {
+      id: "ic-what",
+      heading: "What it is",
+      lede: "A maintenance stage, after The Reset and The Build.",
+      paras: [
+        "The two stages give you clarity and a life built around it. IntegralContinuity™ keeps it alive. You keep meeting your Wayfinder, in a more fluid style of coaching that follows what is happening in your life now.",
+        "It is only offered to founders who have completed both stages of the Founder Reclamation Partnership.",
+      ],
+    },
+    {
+      id: "ic-tiers",
+      heading: "Two ways to continue",
+      boxes: [
+        {
+          title: "IntegralContinuity™ Light",
+          tone: "grass",
+          items: ["One session a month with your Wayfinder", "Async support between sessions", "Remote, no travel"],
+        },
+        {
+          title: "IntegralContinuity™ Private",
+          tone: "sky",
+          items: ["Two sessions a month with your Wayfinder", "Async support between sessions", "Remote, no travel"],
+        },
+      ],
+      note: "Unlike Stage 1 and Stage 2, IntegralContinuity™ doesn't include a Residency or travel to you.",
+    },
+  ]}
+  closing={{
+    heading: "Finishing Stage 2?",
+    text: "Talk to your Wayfinder about continuing. New to DoGood? Start with Stage 1.",
+    cta: { href: "/the-reset", label: "See the 2-Stage Partnership" },
+  }}
+/>

@@ -1,0 +1,32 @@
+---
+/**
+ * Advisor Center sub-nav: three pill links. Styled in src/styles/advisors.css (.adv-nav*).
+ * Usage: <AdvisorNav current="refer" />   (or "tools" / "insights")
+ */
+interface Props {
+  current: "refer" | "tools" | "insights";
+}
+
+const { current } = Astro.props;
+
+const links = [
+  { key: "refer", label: "Refer a founder", href: "/for-advisors" },
+  { key: "tools", label: "Free tools for your clients", href: "/for-advisors/client-tools" },
+  { key: "insights", label: "Advisor insights", href: "/for-advisors/insights" },
+] as const;
+---
+
+<nav class="adv-nav" aria-labelledby="adv-nav-label">
+  <p class="adv-nav-label" id="adv-nav-label">Advisor Center</p>
+  <ul class="adv-nav-list">
+    {
+      links.map((link) => (
+        <li>
+          <a class="adv-nav-link" href={link.href} aria-current={link.key === current ? "page" : undefined}>
+            {link.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

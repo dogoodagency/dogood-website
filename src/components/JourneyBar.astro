@@ -1,0 +1,406 @@
+---
+/**
+ * The whole path through DoGood (Seb, 19 Nov 2026; redesigned 18:52 "more elaborate, shapes, professional and
+ * fun, more space"). On /pathway, in its own DREAM 500 band.
+ *
+ * Desktop: a winding road across the band with seven stations. Each station is a shaped badge on the road
+ * (circle, diamond, hexagon, …) with its own line icon, and a card above or below the road, joined by a short
+ * stem. Phase ribbons on top group the stations: Start, Before the sale, After the sale, Beyond.
+ * The road draws itself, then the stations pop in one by one. Mobile: a vertical road with the same pieces.
+ * Colours: DREAM for reading and the long-term offers, SKY for The Exit Prep, GRASS Stage 1, HEART Stage 2.
+ */
+const steps = [
+  { title: "Read or subscribe", detail: "Insights and the newsletter", chip: "Free", href: "/insights", tone: "lilac", shape: "circle", icon: "book" },
+  { title: "The Exit Prep™", detail: "Six weekly 1:1 sessions", chip: "Before the sale", href: "/exit-prep", tone: "sky", shape: "diamond", icon: "compass" },
+  { title: "Stage 1: The Reset™", detail: "Get clear, set new values", chip: "30 days", href: "/the-reset", tone: "grass", shape: "hex", icon: "reset" },
+  { title: "Stage 2: The Build™", detail: "By invitation, after Stage 1", chip: "12 weeks", href: "/the-build", tone: "heart", shape: "hex", icon: "blocks" },
+  { title: "IntegralContinuity™", detail: "Ongoing sessions", chip: "Ongoing", href: "/integral-continuity", tone: "lilac", shape: "squircle", icon: "loop" },
+  { title: "Annual Signature Retreat", detail: "Once a year, by invitation", chip: "Yearly", href: "/signature-retreat", tone: "lilac", shape: "diamond", icon: "sun" },
+  { title: "FOUNDERland™ Membership", detail: "The house founders belong to", chip: "Coming soon", href: "/founderland-membership", tone: "grass", shape: "circle", icon: "house" },
+];
+
+const phases = [
+  { label: "Start", from: 1, to: 1, tone: "lilac" },
+  { label: "Before the sale", from: 2, to: 2, tone: "sky" },
+  { label: "After the sale", from: 3, to: 4, tone: "grass" },
+  { label: "Beyond", from: 5, to: 7, tone: "heart" },
+];
+
+const icons: Record<string, string> = {
+  book: '<path d="M4 5.5C6.5 4 9.5 4 12 5.5v13C9.5 17 6.5 17 4 18.5z"/><path d="M20 5.5C17.5 4 14.5 4 12 5.5v13c2.5-1.5 5.5-1.5 8 0z"/>',
+  compass: '<circle cx="12" cy="12" r="8.5"/><path d="m15.5 8.5-2 5-5 2 2-5z"/>',
+  reset: '<path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3"/><path d="M4.5 4.5v4h4"/>',
+  blocks: '<rect x="4" y="13" width="7" height="7" rx="1.2"/><rect x="13" y="13" width="7" height="7" rx="1.2"/><rect x="8.5" y="4" width="7" height="7" rx="1.2"/>',
+  loop: '<path d="M7.5 9c-2.5 0-4 1.4-4 3s1.5 3 4 3c4 0 5-6 9-6 2.5 0 4 1.4 4 3s-1.5 3-4 3c-4 0-5-6-9-6z"/>',
+  sun: '<circle cx="12" cy="13" r="4"/><path d="M12 4v2.5M4.5 13H7M17 13h2.5M6.7 7.7l1.8 1.8M17.3 7.7l-1.8 1.8M3 20h18"/>',
+  house: '<path d="M4 11 12 4l8 7"/><path d="M6 10v10h12V10"/><path d="M10 20v-5h4v5"/>',
+};
+
+// The road: a gentle wave through the seven station points (x at the column centres of a 16-column grid).
+const X = (i: number) => ((2 * i + 1.5) / 16) * 1000;
+const Y = (i: number) => (i % 2 === 0 ? 46 : 74);
+let road = `M0 60 C ${X(0) / 2} 60, ${X(0) / 2} ${Y(0)}, ${X(0)} ${Y(0)}`;
+for (let i = 1; i < steps.length; i++) {
+  const mx = (X(i - 1) + X(i)) / 2;
+  road += ` C ${mx} ${Y(i - 1)}, ${mx} ${Y(i)}, ${X(i)} ${Y(i)}`;
+}
+road += ` C ${(X(6) + 1000) / 2} ${Y(6)}, ${(X(6) + 1000) / 2} 60, 1000 60`;
+---
+
+<nav class="jr" data-jr aria-label="The DoGood path, step by step">
+  <ol class="jr-phases" aria-hidden="true">
+    {phases.map((p) => <li class:list={["jr-phase", `jr-phase--${p.tone}`]} style={`--from:${p.from};--to:${p.to}`}>{p.label}</li>)}
+  </ol>
+
+  <div class="jr-stage">
+    <ol class="jr-list">
+      <li class="jr-roadrow" aria-hidden="true">
+        <svg class="jr-road" viewBox="0 0 1000 120" preserveAspectRatio="none">
+          <path class="jr-road-base" d={road} />
+          <path class="jr-road-dash" d={road} pathLength="100" />
+        </svg>
+      </li>
+      {
+        steps.map((s, i) => (
+          <li class:list={["jr-step", `jr-step--${s.tone}`, i % 2 === 0 ? "jr-step--up" : "jr-step--down"]} style={`--i:${i}`}>
+            <a class="jr-card" href={s.href}>
+              <span class="jr-chip">{s.chip}</span>
+              <span class="jr-title">{s.title}</span>
+              <span class="jr-detail">{s.detail}</span>
+              <span class="jr-go" aria-hidden="true">→</span>
+            </a>
+            <span class:list={["jr-badge", `jr-badge--${s.shape}`]} aria-hidden="true">
+              <span class="jr-badge-shape"></span>
+              <svg viewBox="0 0 24 24" set:html={icons[s.icon]} />
+              <span class="jr-num">{i + 1}</span>
+            </span>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</nav>
+
+<style>
+  .jr {
+    --jr-road: rgba(255, 255, 255, 0.18);
+    position: relative;
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  /* Phase ribbons: one rounded bar per phase, spanning its stations. */
+  .jr-phases {
+    display: grid;
+    grid-template-columns: repeat(16, minmax(0, 1fr));
+    gap: 8px;
+    margin: 0 0 18px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .jr-phase {
+    grid-column: calc(var(--from) * 2 - 1) / calc(var(--to) * 2 + 1);
+    white-space: nowrap;
+    padding: 8px 10px;
+    border-radius: 999px;
+    color: #2a0b4f;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .jr-phase--lilac { background: #c2b7dd; }
+  .jr-phase--sky { background: #e1ebfe; }
+  .jr-phase--grass { background: #a3f2d7; }
+  .jr-phase--heart { background: #feb5bc; }
+
+  .jr-stage {
+    position: relative;
+  }
+
+  .jr-roadrow {
+    grid-row: 2;
+    grid-column: 1 / -1;
+  }
+
+  .jr-road {
+    display: block;
+    width: 100%;
+    height: 120px;
+    overflow: visible;
+  }
+
+  .jr-road-base {
+    fill: none;
+    stroke: var(--jr-road);
+    stroke-width: 14;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .jr-road-dash {
+    fill: none;
+    stroke: #28dbb0;
+    stroke-width: 3;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .jr-list {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(16, minmax(0, 1fr));
+    grid-template-rows: auto 120px auto;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .jr-step {
+    display: contents;
+  }
+
+  /* Cards: above the road for odd stations, below for even ones, each 3 columns wide. */
+  .jr-card {
+    --c: #c2b7dd;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    grid-column: calc(var(--i) * 2 + 1) / span 3;
+    margin: 0 6px;
+    padding: 16px 30px 18px 16px;
+    border: 1px solid var(--c);
+    border-radius: 18px;
+    background: #fff;
+    color: #2a0b4f;
+    text-decoration: none;
+    transition: background-color 0.25s ease, border-color 0.25s ease;
+  }
+
+  .jr-step--up .jr-card {
+    grid-row: 1;
+    align-self: end;
+  }
+
+  .jr-step--down .jr-card {
+    grid-row: 3;
+    align-self: start;
+  }
+
+  /* The stem from card to badge. */
+  .jr-card::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 2px;
+    height: 34px;
+    background: var(--c);
+    transform: translateX(-50%);
+  }
+
+  .jr-step--up .jr-card::after { top: 100%; }
+  .jr-step--down .jr-card::after { bottom: 100%; }
+
+  .jr-card:hover,
+  .jr-card:focus-visible {
+    background: var(--soft);
+  }
+
+  .jr-card:focus-visible {
+    outline: 2px solid #28dbb0;
+    outline-offset: 3px;
+  }
+
+  .jr-chip {
+    align-self: flex-start;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: var(--soft);
+    color: var(--ink);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .jr-title {
+    font-size: 17px;
+    font-weight: 900;
+    line-height: 1.25;
+  }
+
+  .jr-detail {
+    color: #58447f;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .jr-go {
+    position: absolute;
+    right: 14px;
+    bottom: 12px;
+    color: var(--ink);
+    font-weight: 900;
+    transition: transform 0.25s ease;
+  }
+
+  .jr-card:hover .jr-go { transform: translateX(3px); }
+
+  /* Badges sit on the road, one per station, in the middle row. */
+  .jr-badge {
+    position: relative;
+    z-index: 2;
+    align-self: start;
+    display: grid;
+    place-items: center;
+    grid-row: 2;
+    grid-column: calc(var(--i) * 2 + 2) / span 1;
+    justify-self: center;
+    width: 64px;
+    height: 64px;
+    margin-top: calc(var(--y) - 32px);
+    color: #fff;
+  }
+
+  .jr-step--up .jr-badge { --y: 46px; }
+  .jr-step--down .jr-badge { --y: 74px; }
+
+  .jr-badge-shape {
+    position: absolute;
+    inset: 0;
+    background: var(--c);
+    box-shadow: 0 0 0 5px #2a0b4f;
+  }
+
+  .jr-badge--circle .jr-badge-shape { border-radius: 50%; }
+  .jr-badge--diamond .jr-badge-shape { inset: 9px; border-radius: 10px; transform: rotate(45deg); }
+  .jr-badge--hex .jr-badge-shape { clip-path: polygon(25% 4%, 75% 4%, 100% 50%, 75% 96%, 25% 96%, 0 50%); box-shadow: none; }
+  .jr-badge--squircle .jr-badge-shape { inset: 3px; border-radius: 22px; }
+
+  .jr-badge svg {
+    position: relative;
+    width: 28px;
+    height: 28px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .jr-num {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #2a0b4f;
+    border-radius: 50%;
+    background: #fff;
+    color: #2a0b4f;
+    font-size: 12px;
+    font-weight: 900;
+  }
+
+  .jr-step--lilac { --c: #8b7dae; --soft: #f5f2ff; --ink: #58447f; }
+  .jr-step--sky { --c: #477dfe; --soft: #f2f7ff; --ink: #0d329f; }
+  .jr-step--grass { --c: #01a684; --soft: #e7fff6; --ink: #05745b; }
+  .jr-step--heart { --c: #ea1557; --soft: #fff3f4; --ink: #960434; }
+  .jr-step--grass .jr-badge { color: #fff; }
+
+  /* Motion: the road draws in, then stations pop in one by one. */
+  .jr.will-animate .jr-road-dash { stroke-dashoffset: 100; }
+  .jr.will-animate .jr-badge,
+  .jr.will-animate .jr-card { opacity: 0; transform: scale(0.8); }
+  .jr.is-in .jr-road-dash { stroke-dashoffset: 0; transition: stroke-dashoffset 3.5s cubic-bezier(0.3, 0.7, 0.3, 1); }
+  .jr.is-in .jr-badge,
+  .jr.is-in .jr-card {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition-delay: calc(0.3s + var(--i) * 0.45s);
+  }
+
+  .jr.is-in .jr-badge-shape { animation: jr-breathe 5s ease-in-out calc(4s + var(--i) * 0.4s) infinite; }
+
+  @keyframes jr-breathe {
+    50% { filter: brightness(1.15); }
+  }
+
+  /* Tablet and phone: a vertical road. */
+  @media (max-width: 1023px) {
+    .jr-phases { display: none; }
+    .jr-roadrow { display: none; }
+
+    .jr-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      padding-left: 4px;
+    }
+
+    .jr-list::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      bottom: 20px;
+      left: 31px;
+      width: 6px;
+      border-radius: 6px;
+      background: var(--jr-road);
+    }
+
+    .jr-step {
+      position: relative;
+      display: grid;
+      grid-template-columns: 64px minmax(0, 1fr);
+      align-items: center;
+      gap: 18px;
+    }
+
+    .jr-card,
+    .jr-step--up .jr-card,
+    .jr-step--down .jr-card {
+      grid-row: 1;
+      grid-column: 2;
+      margin: 0;
+    }
+
+    .jr-card::after { display: none; }
+
+    .jr-badge {
+      grid-row: 1;
+      grid-column: 1;
+      margin: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .jr.will-animate .jr-road-dash { stroke-dashoffset: 0; }
+    .jr.will-animate .jr-badge,
+    .jr.will-animate .jr-card { opacity: 1; transform: none; }
+    .jr.is-in .jr-badge-shape { animation: none; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-jr]").forEach((el) => {
+    if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    el.classList.add("will-animate");
+    const io = new IntersectionObserver(([e]) => {
+      if (!e?.isIntersecting) return;
+      el.classList.add("is-in");
+      io.disconnect();
+    }, { threshold: 0.25 });
+    io.observe(el);
+  });
+</script>

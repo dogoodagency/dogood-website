@@ -1,0 +1,70 @@
+---
+import ProductPage from "../components/ProductPage.astro";
+// Services hub (renamed from Products, Seb 19 Nov 2026): the offers around the two FRP stages. Linked from the Products menu.
+---
+
+<ProductPage
+  title="Residency, retreat & ongoing coaching | DoGood Agency"
+  description="Beyond the two stages: the 1.5-Day In-Person Residency, IntegralContinuity™, the Annual Signature Retreat and FOUNDERland™ Membership."
+  path="/services"
+  eyebrow="Services"
+  h1="Beyond the two stages."
+  sub="The ways to work with us around The Exit Prep™, The Reset™ and The Build™."
+  sections={[
+    {
+      id: "pr-all",
+      heading: "Our services",
+      cards: [
+        {
+          href: "/residency",
+          tag: "On its own or in Stage 1 and 2",
+          title: "1.5-Day In-Person Residency",
+          text: "Play, adventure and meaning, in person with your Wayfinder. When was the last time you did something for the first time?",
+        },
+        {
+          href: "/integral-continuity",
+          tag: "After both stages",
+          title: "IntegralContinuity™",
+          text: "Ongoing sessions with your Wayfinder, once or twice a month, with async support. Light or Private.",
+        },
+        {
+          href: "/signature-retreat",
+          tag: "Invitation only",
+          soon: true,
+          title: "Annual Signature Retreat",
+          text: "Our annual, in-person retreat with a small group of founders, built for connection, perspective, and real conversations.",
+        },
+        {
+          href: "/founderland-membership",
+          tag: "Before and after the sale",
+          soon: true,
+          title: "FOUNDERland™ Membership",
+          text: "The house founders belong to, before and after the sale.",
+        },
+      ],
+    },
+    {
+      id: "pr-inside",
+      heading: "Inside the Partnership",
+      cards: [
+        {
+          href: "/recovery-stress-diagnostics",
+          tag: "Stage 1, Stage 2 and The Exit Prep™",
+          title: "Recovery & Stress Diagnostics (WHOOP)",
+          text: "A WHOOP baseline for sleep, recovery and stress, so stabilization is measurable.",
+        },
+        {
+          href: "/state-shift-audio",
+          tag: "Stage 2",
+          title: "Custom State-Shift Audio",
+          text: "Mood-specific tracks designed for focus, decompression, reset, and high-stakes days.",
+        },
+      ],
+    },
+  ]}
+  closing={{
+    heading: "Not sure where to start?",
+    text: "Most founders start with The Exit Prep™ before the sale, or Stage 1: The Reset™ after it.",
+    cta: { href: "/pathway", label: "Choose your door" },
+  }}
+/>

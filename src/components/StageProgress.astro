@@ -1,0 +1,231 @@
+---
+/**
+ * Two-step progress bar for the Founder Reclamation Partnership (Seb, 19 Nov 2026): sits at the top of
+ * /the-reset and /the-build so each page reads as one part of the same partnership.
+ */
+interface Props {
+  current: 1 | 2;
+  showTitle?: boolean;
+  /** "light": large version for its own band below the hero (Seb, 19 Nov 2026). */
+  tone?: "dark" | "light";
+}
+const { current, showTitle = true, tone = "dark" } = Astro.props;
+const steps = [
+  { n: 1, href: "/the-reset", label: "Stage 1: The Reset™", note: "30 days" },
+  { n: 2, href: "/the-build", label: "Stage 2: The Build™", note: "12 weeks · by invitation" },
+];
+---
+
+<nav class:list={["sp", `sp--${tone}`]} aria-label="Founder Reclamation Partnership stages">
+  {showTitle && <p class="sp-title">Founder Reclamation Partnership</p>}
+  <ol class="sp-steps">
+    {
+      steps.map((s, i) => (
+        <>
+          {i > 0 && <li class:list={["sp-line", current === 2 && "is-done"]} aria-hidden="true" />}
+          <li class:list={["sp-step", s.n === current && "is-current", s.n < current && "is-done"]}>
+            <a href={s.href} aria-current={s.n === current ? "page" : undefined}>
+              <span class="sp-dot" aria-hidden="true">{s.n < current ? "✓" : s.n}</span>
+              <span class="sp-text">
+                <span class="sp-label" set:html={s.label.replace("™", '<span class="tm">™</span>')} />
+                <span class="sp-note">{s.note}</span>
+                {tone === "light" && s.n === current && <span class="sp-here">You are here</span>}
+              </span>
+            </a>
+          </li>
+        </>
+      ))
+    }
+  </ol>
+</nav>
+
+<style>
+  .sp {
+    margin: 0 0 30px;
+  }
+
+  .sp-title {
+    margin: 0 0 12px;
+    color: #28dbb0;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .sp-steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+  }
+
+  .sp .sp-step a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 18px 8px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 999px;
+    color: #fff !important;
+    text-decoration: none !important;
+    box-shadow: none !important;
+    background-image: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .sp-step a:hover,
+  .sp-step a:focus-visible {
+    border-color: #28dbb0;
+  }
+
+  .sp-step.is-current a {
+    border-color: #28dbb0;
+    background: rgba(40, 219, 176, 0.14);
+  }
+
+  .sp-dot {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    font-size: 16px;
+    font-weight: 900;
+  }
+
+  .is-current .sp-dot {
+    border-color: #28dbb0;
+    background: #28dbb0;
+    color: #2a0b4f;
+  }
+
+  .is-done .sp-dot {
+    border-color: #28dbb0;
+    color: #28dbb0;
+  }
+
+  .sp-text {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    line-height: 1.25;
+  }
+
+  .sp .sp-label {
+    color: #fff;
+    font-size: 17px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .sp .sp-note {
+    color: #c2b7dd;
+    text-align: left;
+    font-size: 14px;
+  }
+
+  .sp-line {
+    flex: 1 1 32px;
+    min-width: 24px;
+    height: 2px;
+    margin: 0 10px;
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .sp-line.is-done {
+    background: #28dbb0;
+  }
+
+  .sp :global(.tm) {
+    font-size: calc(1em - 2px);
+    font-weight: 300;
+  }
+
+  /* Light, large version: Stage 1 GRASS, Stage 2 HEART (the two pages' colours). */
+  .sp--light .sp-title {
+    color: #05745b;
+    text-align: center;
+  }
+
+  .sp--light .sp-steps {
+    max-width: 900px;
+  }
+
+  .sp.sp--light .sp-step a {
+    gap: 16px;
+    padding: 14px 26px 14px 14px;
+    border: 2px solid #c2b7dd;
+    background: #fff;
+    color: #2a0b4f !important;
+  }
+
+  .sp--light .sp-step:first-of-type a { border-color: #01a684; }
+  .sp--light .sp-step:last-of-type a { border-color: #fd6b82; }
+  .sp--light .sp-step.is-current:first-of-type a { background: #e7fff6; }
+  .sp--light .sp-step.is-current:last-of-type a { background: #fff3f4; }
+  .sp--light .sp-step:not(.is-current) a { opacity: 0.78; }
+  .sp--light .sp-step:not(.is-current) a:hover { opacity: 1; }
+
+  .sp--light .sp-dot {
+    width: 48px;
+    height: 48px;
+    border-color: #c2b7dd;
+    font-size: 20px;
+  }
+
+  .sp--light .sp-step:first-of-type .sp-dot { border-color: #01a684; color: #05745b; }
+  .sp--light .sp-step:last-of-type .sp-dot { border-color: #fd6b82; color: #c10e46; }
+  .sp--light .sp-step.is-current:first-of-type .sp-dot { background: #01a684; color: #fff; }
+  .sp--light .sp-step.is-current:last-of-type .sp-dot { background: #c10e46; border-color: #c10e46; color: #fff; }
+  .sp--light .sp-step.is-done .sp-dot { background: #e7fff6; }
+
+  .sp.sp--light .sp-label {
+    color: #2a0b4f;
+    font-size: 22px;
+    font-weight: 900;
+  }
+
+  .sp.sp--light .sp-note {
+    color: #58447f;
+    font-size: 16px;
+  }
+
+  .sp--light .sp-step:first-of-type .sp-here { color: #05745b; }
+  .sp--light .sp-step:last-of-type .sp-here { color: #c10e46; }
+
+  .sp--light .sp-line {
+    height: 3px;
+    background: linear-gradient(90deg, #01a684, #fd6b82);
+  }
+
+  .sp--light .sp-here {
+    display: block;
+    margin-top: 4px;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 640px) {
+    .sp-steps {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .sp-line {
+      flex: none;
+      width: 2px;
+      height: 14px;
+      min-width: 0;
+      margin: 0 0 0 26px;
+    }
+  }
+</style>
