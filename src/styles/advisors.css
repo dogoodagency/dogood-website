@@ -1398,3 +1398,30 @@ html.adv-js .adv-faq-item:not(.is-open) .adv-faq-panel {
 }
 .adv-hero .adv-lede a:hover,
 .adv-hero .adv-lede a:focus-visible { text-decoration-color: #fff; }
+
+/* ===== 20 Nov 2026, 19:43 (Seb) =====
+   Advisor Center: intro under the hub centred; foundr.land on its own straight white section, set off from the
+   white section above by a hairline. */
+.adv-page .adv-intro { margin-left: auto; margin-right: auto; text-align: center; }
+.adv-page .adv-intro p { margin-left: auto; margin-right: auto; }
+.adv-fl-band { border-top: 1px solid #e9e2f7; }
+
+/* All three Advisor Center pages share one hero height, so moving between them only changes the words, and the
+   hub sits at the same place (Seb, 20 Nov 2026). Content stays at the top; the wave sits at the bottom. */
+.adv-page:has(.ahub) > header.adv-hero,
+.adv-page:has(.ahub) > header.advr-hero {
+  display: flex;
+  flex-direction: column;
+  min-height: 512px;
+}
+.adv-page:has(.ahub) > header > .hero-wave { margin-top: auto; }
+@media (max-width: 1100px) {
+  .adv-page:has(.ahub) > header.adv-hero,
+  .adv-page:has(.ahub) > header.advr-hero { min-height: 470px; }
+}
+@media (max-width: 640px) {
+  .adv-page:has(.ahub) > header.adv-hero,
+  .adv-page:has(.ahub) > header.advr-hero { min-height: 550px; }
+}
+.advr-hub-band .advr-nav { padding-top: 32px; }
+@media (max-width: 640px) { .advr-hub-band .advr-nav { padding-top: 16px; } }

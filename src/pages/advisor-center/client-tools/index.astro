@@ -18,8 +18,8 @@ const footerEdge = edgeAbove("#ffffff");
   description="Free exit readiness assessment tools for advisors: a client readiness check, a guide to spotting when a founder needs help, and a life-after-the-sale planner."
   canonical="https://www.dogoodagency.co/advisor-center/client-tools"
   ogTitle="Founder exit readiness tools | DoGood Agency"
-  footerStrip="#ffffff"
-  footerEdge={footerEdge}
+  footerStrip={tint}
+  footerEdge={bandEdge}
 >
   <article class="adv-page advr-page">
     <header class="advr-hero">
@@ -30,14 +30,20 @@ const footerEdge = edgeAbove("#ffffff");
           An exit readiness assessment for the founder, plus two more tools for the part nobody plans for: life in <span class="pink-soft advr-founder"><strong>FOUNDR</strong>.land</span>.<br />Free to use and share. No sign-up for you.
         </p>
       </div>
-      <Wave fill={tint} edge={heroEdge} />
+      <Wave fill="#fff" edge={heroEdge} />
     </header>
 
-    <section class="advr-band advr-band-tint" aria-label="Free tools">
+    <!-- Advisor Center hub on its own white section, the same on all three pages (Seb, 20 Nov 2026). -->
+    <section class="advr-band advr-band-white advr-hub-band" aria-label="Advisor Center">
       <div class="advr-well">
         <div class="advr-nav">
           <AdvisorNav current="tools" />
         </div>
+      </div>
+    </section>
+
+    <section class="advr-band advr-band-tint advr-band-straight" aria-label="Free tools">
+      <div class="advr-well">
 
         <div class="advr-intro">
           <p>Your clients get all your help with the deal. These tools help with the part nobody plans for: the founder themselves, before and after the sale.</p>
@@ -73,13 +79,7 @@ const footerEdge = edgeAbove("#ffffff");
       </div>
     </section>
 
-    <div class="advr-divider" aria-hidden="true">
-      <svg style={`--wave-edge:${bandEdge}`} viewBox="0 0 1440 80" preserveAspectRatio="none">
-        <path fill="#ffffff" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path>
-        <path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path>
-      </svg>
-    </div>
-
+    <!-- foundr.land on its own straight white section. -->
     <section class="advr-band advr-band-white fl-band" aria-label="foundr.land">
       <FoundrLand
         kind="small"
@@ -88,7 +88,7 @@ const footerEdge = edgeAbove("#ffffff");
       />
     </section>
 
-    <section class="advr-band advr-band-white" aria-label="More tools">
+    <section class="advr-band advr-band-tint" aria-label="More tools">
       <div class="advr-well">
         <div class="advr-cta">
           <p>More tools are on the way. Want to hear when each one is ready?</p>

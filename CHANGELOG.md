@@ -6,6 +6,14 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 8, update 17: Advisor Center pages share one layout
+
+- All three Advisor Center pages have the same hero height (512px on desktop, 470px on tablets, 550px on phones) and the hub sits at exactly the same place, so switching between them only changes the words.
+- The hub has its own white section on all three pages. After it, sections alternate by colour (white / lilac tint) with no two of the same colour next to each other.
+- foundr.land sits on its own straight white section (no wave) on all three pages; on the main page a hairline separates it from the white section above.
+- Main page: the two intro paragraphs under the hub are centred; "Who we work alongside" is now lilac and "What advisors tell us" white.
+- No objects or elements were redesigned.
+
 ## Preview 8, update 16: Advisor Center at /advisor-center, with a clear three-part hub
 
 - New address: /advisor-center (was /for-advisors), including /advisor-center/client-tools and /advisor-center/insights and their sub-pages. All internal links, canonicals, the sitemap and llms.txt use the new address. 301 redirects in netlify.toml send /for-advisors, /for-advisors/ and /for-advisors/* to the new pages. The content files keep their old names (src/content/pages/for-advisors*.md).

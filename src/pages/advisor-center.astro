@@ -198,7 +198,7 @@ const faqs = [
     </section>
 
     <!-- Who this is for: four cards (Seb, 19 Nov 2026; was one line in the hero) -->
-    <section class="adv-band adv-band--white" aria-labelledby="adv-who">
+    <section class="adv-band adv-band--lilac" aria-labelledby="adv-who">
       <div class="adv-well">
         <h2 class="adv-section-title" id="adv-who">Who we work alongside</h2>
         <ul class="adv-aud">
@@ -212,7 +212,7 @@ const faqs = [
       </div>
     </section>
 
-    <section class="adv-band adv-band--lilac" aria-labelledby="adv-tell">
+    <section class="adv-band adv-band--white" aria-labelledby="adv-tell">
       <div class="adv-well">
         <h2 class="adv-section-title" id="adv-tell">What advisors tell us</h2>
         <TestimonialWall items={quotes.map((q) => ({ quote: q.text, name: q.name, role: q.role }))} short label="What advisors tell us" />
@@ -238,7 +238,8 @@ const faqs = [
       </div>
     </section>
 
-    <FoundrLand kind="advisor" />
+    <!-- foundr.land on its own straight white section, set off by a hairline. -->
+    <div class="adv-fl-band"><FoundrLand kind="advisor" /></div>
 
     <section class="adv-band adv-band--lilac" aria-labelledby="adv-why">
       <div class="adv-well">

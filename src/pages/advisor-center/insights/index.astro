@@ -39,14 +39,20 @@ const footerEdge = edgeAbove("#ffffff");
           Advisors rarely hear from each other. We talk with many of them. Here we share the patterns, anonymously, so you can help your founders with life in <span class="pink-soft advr-founder"><strong>FOUNDR</strong>.land</span>.
         </p>
       </div>
-      <Wave fill={tint} edge={heroEdge} />
+      <Wave fill="#fff" edge={heroEdge} />
     </header>
 
-    <section class="advr-band advr-band-tint" aria-label="Advisor insights">
+    <!-- Advisor Center hub on its own white section, the same on all three pages (Seb, 20 Nov 2026). -->
+    <section class="advr-band advr-band-white advr-hub-band" aria-label="Advisor Center">
       <div class="advr-well">
         <div class="advr-nav">
           <AdvisorNav current="insights" />
         </div>
+      </div>
+    </section>
+
+    <section class="advr-band advr-band-tint advr-band-straight" aria-label="Advisor insights">
+      <div class="advr-well">
 
         <ul class="advr-grid advr-grid--links">
           <li class="advr-cardwrap">
@@ -81,13 +87,7 @@ const footerEdge = edgeAbove("#ffffff");
       </div>
     </section>
 
-    <div class="advr-divider" aria-hidden="true">
-      <svg style={`--wave-edge:${bandEdge}`} viewBox="0 0 1440 80" preserveAspectRatio="none">
-        <path fill="#ffffff" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path>
-        <path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path>
-      </svg>
-    </div>
-
+    <!-- foundr.land on its own straight white section. -->
     <section class="advr-band advr-band-white fl-band" aria-label="foundr.land">
       <FoundrLand
         kind="small"
@@ -97,7 +97,7 @@ const footerEdge = edgeAbove("#ffffff");
     </section>
 
     <!-- More content (Seb, 19 Nov 2026), from our conversations with advisors (patterns, not statistics). -->
-    <section class="advr-band advr-band-white" aria-labelledby="advi-legs">
+    <section class="advr-band advr-band-tint" aria-labelledby="advi-legs">
       <div class="advr-well advi-well">
         <h2 class="advi-h2" id="advi-legs">The three legs of the stool</h2>
         <p class="advi-lede advi-lede-wide">In the Exit Planning Institute's Value Acceleration Methodology, a good exit stands on three legs: business, financial and personal readiness. CEPAs are trained to align all three. In practice, advisors tell us the first two have a full team behind them. The third often has a worksheet, or nobody.</p>
@@ -159,14 +159,14 @@ const footerEdge = edgeAbove("#ffffff");
       </div>
     </section>
 
-    <section class="advr-band advr-band-tint" aria-labelledby="advi-voices">
+    <section class="advr-band advr-band-white" aria-labelledby="advi-voices">
       <div class="advr-well advi-well">
         <h2 class="advi-h2" id="advi-voices">In advisors' words</h2>
         <TestimonialWall items={advisorQuotes} short label="What advisors tell us" />
       </div>
     </section>
 
-    <section class="advr-band advr-band-white" aria-labelledby="advi-patterns">
+    <section class="advr-band advr-band-tint" aria-labelledby="advi-patterns">
       <div class="advr-well advi-well">
         <h2 class="advi-h2" id="advi-patterns">What we hear most</h2>
         <div class="advi-patterns">
