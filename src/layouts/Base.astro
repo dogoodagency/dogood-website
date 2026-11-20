@@ -1,4 +1,5 @@
 ---
+import { lastModifiedFor } from "../lib/lastmod.mjs";
 import "../styles/global.css";
 import "../styles/site-rules.css";
 import Header from "../components/Header.astro";
@@ -63,6 +64,24 @@ const website = {
   inLanguage: "en",
   publisher: { "@id": "https://www.dogoodagency.co/#organization" },
 };
+
+// "Last updated" for AI search and Google (20 Nov 2026): a WebPage record with dateModified, taken from the
+// date the page's source file last changed in git. Articles have their own Article record, so they skip this.
+const pageModified = ogType === "article" ? undefined : lastModifiedFor(Astro.url.pathname.replace(/\.html$/, ""));
+const webPage = pageModified && !Astro.props.noCanonical
+  ? {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      url: canonical,
+      name: title,
+      description,
+      inLanguage: "en",
+      isPartOf: { "@id": "https://www.dogoodagency.co/#website" },
+      publisher: { "@id": "https://www.dogoodagency.co/#organization" },
+      dateModified: pageModified,
+    }
+  : undefined;
 
 const organization = {
   "@context": "https://schema.org",
@@ -143,6 +162,7 @@ const organization = {
     <meta name="twitter:image" content={ogImage} />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(organization)} />
     {isHome && <script is:inline type="application/ld+json" set:html={JSON.stringify(website)} />}
+    {webPage && <script is:inline type="application/ld+json" set:html={JSON.stringify(webPage)} />}
     <slot name="head" />
   </head>
   <body style={bodyStyle || undefined}>

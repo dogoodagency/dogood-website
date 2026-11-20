@@ -6,6 +6,20 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 50: "last updated" date on every page (20 Nov 2026, 05:24)
+
+- New `src/lib/lastmod.mjs`: the git last-changed date of a page's source file (moved out of astro.config.mjs;
+  the sitemap <lastmod> uses it as before).
+- `Base.astro` now adds a WebPage JSON-LD record with `dateModified` (plus url, name, description, links to the
+  WebSite and Organization records) on every page that has a source file with git history. Articles skip it
+  (they have their own Article record with dateModified). Nothing visible changes.
+- Why: the AI-readiness check (Manifold) flagged "no machine-readable modified date" on the homepage; AI
+  answer engines use it as a freshness signal.
+- Check after launch: Netlify builds need git history for the dates; if the live pages show no WebPage record,
+  set `GIT_DEPTH` or similar so the build is not a shallow clone.
+
+---
+
 ## Preview 6, update 49: keyword map synced with the Google Doc; GTmetrix findings (20 Nov 2026, 05:12)
 
 - The Google Doc "DoGood keyword map" stays the source of truth. Added a section "Pages added 20 Nov 2026"
