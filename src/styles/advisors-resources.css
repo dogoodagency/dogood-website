@@ -977,3 +977,28 @@ body:has(.advr-page) .footer-wave {
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
 }
+
+/* 20 Nov 2026 12:33 (Seb): more white space on Advisor insights. Each extra section (three legs, advisors' words,
+   what we hear most) gets more room after the band change above it, the "How the third leg differs" block sits
+   further below the stool, and the blocks inside each section breathe a little more. */
+.advr-page .advi-well,
+.advr-page .advr-band-white .advi-well {
+  padding: 88px 0 104px;
+}
+.advr-page .advi-h2 { margin-bottom: 14px; }
+.advr-page .advi-lede { margin-bottom: 36px; }
+.advr-page .advi-h3 { margin: 88px 0 22px; }
+.advr-page .stool-diff { gap: 22px; }
+.advr-page .stool-cepa { margin-top: 32px; }
+.advr-page .stool-src { margin-top: 20px; }
+.advr-page .advi-patterns { margin-top: 28px; gap: 24px; }
+.advr-page .advi-raise { margin-top: 44px; }
+
+.advr-page .advi-well .tw { margin-top: 28px; }
+
+@media (max-width: 600px) {
+  .advr-page .advi-well,
+  .advr-page .advr-band-white .advi-well { padding: 60px 0 72px; }
+  .advr-page .advi-h3 { margin-top: 60px; }
+  .advr-page .stool-diff { gap: 16px; }
+}

@@ -6,6 +6,16 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 7, update 6: more white space on Advisor insights; Seb approves the wording (20 Nov 2026, 12:35)
+
+- Seb approved the preview 7 wording. Decisions: "coaching" stays in page titles and meta for search (not in body
+  copy); the "Coaching Hours" stat label stays. The three-legs section stays where it is (it already sits right
+  under the advisor sub-nav and cards).
+- Advisor insights spacing (end of `src/styles/advisors-resources.css`): the three extra sections get 88px above /
+  104px below (60/72 on phones) instead of 24-40/72, so headings no longer sit tight against the band change;
+  "How the third leg differs, and where we fit" now has 88px above it (60 on phones); a little more room between
+  the lede, cards, CEPA note, source line, patterns and the "How advisors raise it" box.
+
 ## Preview 7, update 5: foundr.land logo centred again (20 Nov 2026, 08:17)
 
 - Seb: the logo should not move up for "by DoGood". `.nav-brand-by` is now `position: absolute` in the card
