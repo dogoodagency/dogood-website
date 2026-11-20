@@ -1101,3 +1101,35 @@ body:has(.pod-page) .footer-wave {
   .pod2-host { grid-template-columns: minmax(0, 1fr); }
   .pod-page--v2 .pod2-host-img { width: 100%; max-width: 420px; }
 }
+
+/* 20 Nov 2026 15:25 (Seb): episode previews in 16:9 with rounded corners (not round); the host in a card with a
+   thin border and a round headshot (the article portrait). Replaces the 16:9 host photo from earlier today. */
+.pod2-ep-img {
+  width: 160px;
+  height: 90px;
+  border-radius: 12px;
+  aspect-ratio: 16 / 9;
+}
+.pod2-ep { grid-template-columns: 160px minmax(0, 1fr) auto auto; }
+.pod2-host {
+  grid-template-columns: 160px minmax(0, 1fr);
+  padding: 32px 36px;
+  border: 1px solid #c2b7dd;
+  border-radius: 24px;
+  background: #fff;
+}
+.pod-page--v2 .pod2-host-img {
+  width: 160px;
+  height: 160px !important;
+  aspect-ratio: 1;
+  border: 1px solid #c2b7dd;
+  border-radius: 50%;
+  object-fit: cover;
+}
+@media (max-width: 760px) {
+  .pod2-ep { grid-template-columns: minmax(0, 1fr); }
+  .pod2-ep-img { width: 100%; height: auto; }
+  .pod2-ep-dur, .pod-page--v2 .pod2-ep-go { grid-column: 1; }
+  .pod2-host { grid-template-columns: minmax(0, 1fr); padding: 24px; }
+  .pod-page--v2 .pod2-host-img { width: 120px; height: 120px !important; }
+}

@@ -24,6 +24,8 @@ function leftFirst(labels: HouseLabel[]): HouseLabel[] {
   return [...labels.filter((l) => l.x < 50), ...labels.filter((l) => l.x >= 50)];
 }
 
+// 20 Nov 2026 (Seb): labels and arrows moved 4% closer to the house (arrows overlap it a little more), so
+// the labels keep clear padding from the description card's edge.
 export const houses: House[] = [
   {
     id: "before",
@@ -35,16 +37,16 @@ export const houses: House[] = [
     height: 1189,
     alt: "Cutaway illustration of a messy, neglected house: dark rooms, cluttered floors, an unmade bed, a broken window and weeds in the garden.",
     arrows: [
-      { cx: 4.6, cy: 46.5, w: 13.6, rot: -14, flip: -1 },
-      { cx: 96.2, cy: 52.9, w: 12.4, rot: 0, flip: 1 },
-      { cx: 7.8, cy: 85.6, w: 12.4, rot: 136, flip: 1 },
-      { cx: 8.7, cy: 18.1, w: 13.5, rot: 27, flip: -1 },
+      { cx: 8.6, cy: 46.5, w: 13.6, rot: -14, flip: -1 },
+      { cx: 92.2, cy: 52.9, w: 12.4, rot: 0, flip: 1 },
+      { cx: 11.8, cy: 85.6, w: 12.4, rot: 136, flip: 1 },
+      { cx: 12.7, cy: 18.1, w: 13.5, rot: 27, flip: -1 },
     ],
     labels: leftFirst([
-      { x: -8.6, y: 18.3, w: 18.2, text: "You struggle sleeping" },
-      { x: -9.6, y: 50.6, w: 16.6, text: "Lights have gone out" },
-      { x: -15.9, y: 84.8, w: 16.7, text: "Weeds are everywhere" },
-      { x: 93.3, y: 55.8, w: 19.3, text: "Nothing feels in its place" },
+      { x: -4.6, y: 18.3, w: 18.2, text: "You struggle sleeping" },
+      { x: -5.6, y: 50.6, w: 16.6, text: "Lights have gone out" },
+      { x: -11.9, y: 84.8, w: 16.7, text: "Weeds are everywhere" },
+      { x: 89.3, y: 55.8, w: 19.3, text: "Nothing feels in its place" },
     ]),
   },
   {
@@ -57,18 +59,18 @@ export const houses: House[] = [
     height: 1222,
     alt: "Cutaway illustration of the same house after Stage 1: the main rooms are tidy and warmly lit, while the home office and the garden still need attention.",
     arrows: [
-      { cx: -3.8, cy: 50.7, w: 14.9, rot: -6, flip: -1 },
-      { cx: 97.4, cy: 47.2, w: 13.7, rot: -18, flip: 1 },
-      { cx: 6.3, cy: 18.3, w: 14.8, rot: 32, flip: -1 },
-      { cx: 5.2, cy: 90.4, w: 14.9, rot: -30, flip: -1 },
-      { cx: 97.8, cy: 26.9, w: 14.9, rot: 172, flip: -1 },
+      { cx: 0.2, cy: 50.7, w: 14.9, rot: -6, flip: -1 },
+      { cx: 93.4, cy: 47.2, w: 13.7, rot: -18, flip: 1 },
+      { cx: 10.3, cy: 18.3, w: 14.8, rot: 32, flip: -1 },
+      { cx: 9.2, cy: 90.4, w: 14.9, rot: -30, flip: -1 },
+      { cx: 93.8, cy: 26.9, w: 14.9, rot: 172, flip: -1 },
     ],
     labels: leftFirst([
-      { x: -25, y: 15.2, w: 26, text: "Happiness you've not felt in a long time" },
-      { x: -23.1, y: 54.6, w: 25, text: "Essential rooms work well" },
-      { x: -21.2, y: 96.5, w: 44.8, text: "You may feel uncomfortable about inviting friends" },
-      { x: 94.6, y: 13.9, w: 20.1, text: "Some rooms still need attention" },
-      { x: 105.5, y: 45.1, w: 18.4, text: "Rooms are light + clear" },
+      { x: -21.0, y: 15.2, w: 26, text: "Happiness you've not felt in a long time" },
+      { x: -19.1, y: 54.6, w: 25, text: "Essential rooms work well" },
+      { x: -14.2, y: 96.5, w: 44.8, text: "You may feel uncomfortable about inviting friends" },
+      { x: 90.6, y: 13.9, w: 20.1, text: "Some rooms still need attention" },
+      { x: 101.5, y: 45.1, w: 18.4, text: "Rooms are light + clear" },
     ]),
   },
   {
@@ -82,18 +84,18 @@ export const houses: House[] = [
     height: 1398,
     alt: "Cutaway illustration of the finished home after Stage 2: a rooftop terrace, connected open-plan rooms, a garden and a pool, everything intentional.",
     arrows: [
-      { cx: 89.4, cy: 20.6, w: 13.4, rot: -28, flip: 1 },
-      { cx: -3.8, cy: 55.4, w: 14.6, rot: 9, flip: -1 },
-      { cx: -0.9, cy: 19.8, w: 14.5, rot: 37, flip: -1 },
-      { cx: 101.9, cy: 40.0, w: 13.5, rot: 16, flip: 1 },
-      { cx: -5.5, cy: 84.7, w: 14.6, rot: -36, flip: -1 },
+      { cx: 85.4, cy: 20.6, w: 13.4, rot: -28, flip: 1 },
+      { cx: 0.2, cy: 55.4, w: 14.6, rot: 9, flip: -1 },
+      { cx: 3.1, cy: 19.8, w: 14.5, rot: 37, flip: -1 },
+      { cx: 97.9, cy: 40.0, w: 13.5, rot: 16, flip: 1 },
+      { cx: -1.5, cy: 84.7, w: 14.6, rot: -36, flip: -1 },
     ],
     labels: leftFirst([
-      { x: -28, y: 16.2, w: 19.6, text: "The whole house works together" },
-      { x: -20.3, y: 57.1, w: 18.2, text: "You love having people over" },
-      { x: -22, y: 89.9, w: 24.9, text: "Every space feels intentional" },
-      { x: 96, y: 17.5, w: 17, text: "Life at a whole new level" },
-      { x: 99.7, y: 43.8, w: 17, text: "Rooms connect + opened up" },
+      { x: -21.0, y: 16.2, w: 19.6, text: "The whole house works together" },
+      { x: -13.3, y: 57.1, w: 18.2, text: "You love having people over" },
+      { x: -15.0, y: 89.9, w: 24.9, text: "Every space feels intentional" },
+      { x: 92.0, y: 17.5, w: 17, text: "Life at a whole new level" },
+      { x: 95.7, y: 43.8, w: 17, text: "Rooms connect + opened up" },
     ]),
   },
 ];

@@ -2120,3 +2120,12 @@ html {
   margin-left: auto;
   margin-right: auto;
 }
+
+/* 20 Nov 2026 (Seb): inside the narrower description cards the house is a little smaller (500px; labels keep their width), so the labels
+   either side keep clear padding from the card's edge. */
+@media (min-width: 760px) {
+  :is(.hw-page--s1, .hw-page--s2) .hw-stage-panel .hw-house { width: min(500px, calc((100vw - 2 * var(--pad)) / 1.8)); }
+  :is(.hw-page--s1, .hw-page--s2) .hw-stage-panel .hw-label { width: calc(var(--lw) * 1.15); font-size: 14px; }
+  /* left-hand labels grow to the left, so they don't run into the house */
+  :is(.hw-page--s1, .hw-page--s2) .hw-stage-panel .hw-label--left { margin-left: calc(var(--lw) * -0.15); }
+}

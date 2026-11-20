@@ -147,7 +147,7 @@ const modes = [
     )
   }
 
-  {variant === "compact" && <p class="au-more"><a href="/state-shift-audio">How the audio works →</a></p>}
+  {variant === "compact" && <p class="au-more"><a class="btn-teal" href="/state-shift-audio">See how the audio works</a></p>}
 </section>
 
 <style>
@@ -506,6 +506,14 @@ const modes = [
   @media (prefers-reduced-motion: reduce) {
     .au-w, .au-meter span { animation: none; }
   }
+
+  /* 20 Nov 2026 (Seb): on The Build, the link to the audio page is a clear button; the intro has room before the
+     waveform panel; in the narrower card the four modes sit two by two, so no word breaks. */
+  .au-lede { margin-bottom: 28px !important; }
+  .au--compact .au-more { margin: 28px 0 8px; padding-bottom: 32px; }
+  .au--compact .au-more a { color: #2a0b4f; }
+  .au--compact .au-modes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (max-width: 600px) { .au--compact .au-modes { grid-template-columns: minmax(0, 1fr); } }
 </style>
 
 <script>

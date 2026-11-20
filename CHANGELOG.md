@@ -6,6 +6,31 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 8, update 3: podcast, The Build, house labels, audio card, SEO pass (20 Nov 2026, 15:31)
+
+- DoGood Insider: episode previews 16:9 with rounded corners; the host block says "Seb Wichmann" (Seb, 15:25)
+  with a round headshot (the article portrait) inside a card with a thin border. The 16:9 host photo from update
+  2 is removed.
+- The Build hero like The Reset: eyebrow "Stage 2: The Build™ (12 weeks)", H1 "Building the life you want after
+  the sale" (no more "The Build 12 weeks" three times).
+- House illustrations (The Reset, The Build): labels and arrows moved closer to the house (arrows overlap it a
+  little), the house is 500px inside the 820px cards, labels keep their width (left labels grow leftwards); every
+  label now has 36px+ padding to the card edge (`src/data/how-it-works.ts`, `HwHouse.astro`, end of
+  `how-it-works.css`).
+- Custom State-Shift Audio card (The Build): "See how the audio works" is a clear button; more room under the
+  intro and at the bottom of the card; modes two by two so "Decompression" no longer breaks.
+- SEO pass (all 94 pages audited: titles, descriptions, one H1, canonical, share image, image alt text and sizes):
+  - Visible search phrases added where a page had none in its first lines: Pathway sub-line ("For entrepreneurs
+    before or after selling their business"), Retreat eyebrow ("Annual founder retreat"), Membership eyebrow
+    ("a founder community"), Client tools eyebrow and intro ("Exit readiness tools", "An exit readiness
+    assessment"), Wayfinders intro ("guide founders through the transition before and after the sale").
+  - Podcast: the descriptive SEO titles (e.g. "Succeeding the founder: Titan CEO Paul Reitz") are now the visible
+    episode titles on the list and each episode page; the original episode name moves to the line below.
+  - Descriptions over 160 characters shortened (For Advisors, Membership, IntegralContinuity, Wayfinders); Pathway
+    title shortened to 58 characters.
+  - Every image has alt text or is marked decorative; all have width and height. Remaining audit notes are on
+    internal booking, thank-you and legal pages only.
+
 ## Preview 8, update 2: Seb's design feedback (20 Nov 2026, 15:05)
 
 Seb's feedback was given on preview 7 and is applied on preview 8 (preview 7 stays frozen as the approved

@@ -1,6 +1,6 @@
 ---
 title: "Exit planning advisors: personal readiness | DoGood Agency"
-description: "For exit planning advisors, succession planners and wealth advisors: we prepare your founder client personally for the sale and life after it. Free tools and referrals."
+description: "For exit planning advisors, succession planners and wealth advisors: we prepare your founder client personally for the sale and life after it. Free tools."
 advisorLine: true
 ---
 

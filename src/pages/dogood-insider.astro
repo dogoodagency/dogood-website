@@ -25,7 +25,7 @@ const jsonLd = {
   sameAs: Object.values(SHOW_LINKS),
 };
 import { Image } from "astro:assets";
-import sebAvatar from "../assets/photos/seb-host-16x9.jpg"; // 16:9 version of the article portrait (20 Nov 2026)
+import sebAvatar from "../assets/authors/seb.jpg"; // the article portrait, round (Seb, 20 Nov 2026 15:25)
 ---
 
 <Base title={title} description={description} canonical={canonical} footerStrip={tint} footerEdge={edgeAbove(tint)}>
@@ -94,13 +94,13 @@ import sebAvatar from "../assets/photos/seb-host-16x9.jpg"; // 16:9 version of t
           {
             episodes.map((episode, i) => (
               <li class="pod2-ep">
-                <img class="pod2-ep-img" src={`${episode.image}@1x.webp`} width="64" height="64" alt="" loading="lazy" decoding="async" />
+                <img class="pod2-ep-img" src={`${episode.image}@1x.webp`} srcset={`${episode.image}@1x.webp 1x, ${episode.image}@2x.webp 2x`} width="160" height="90" alt="" loading="lazy" decoding="async" />
                 <div class="pod2-ep-body">
-                  <h3><a href={`/podcast/${episode.slug}`}>{episode.cardTitle}</a></h3>
-                  <p>{episode.cardSubtitle}</p>
+                  <h3><a href={`/podcast/${episode.slug}`}>{episode.metaTitle}</a></h3>
+                  <p>{episode.cardTitle}: {episode.cardSubtitle}</p>
                 </div>
                 <span class="pod2-ep-dur">{episode.duration}</span>
-                <a class="pod2-ep-go" href={`/podcast/${episode.slug}`} aria-label={`Listen: ${episode.cardTitle}`}>Listen →</a>
+                <a class="pod2-ep-go" href={`/podcast/${episode.slug}`} aria-label={`Listen: ${episode.metaTitle}`}>Listen →</a>
               </li>
             ))
           }
@@ -115,10 +115,10 @@ import sebAvatar from "../assets/photos/seb-host-16x9.jpg"; // 16:9 version of t
     <section class="pod-band" aria-labelledby="pod-seb-name">
       <div class="pod-well pod-section">
         <div class="pod2-host">
-          <Image class="pod2-host-img" src={sebAvatar} alt="Portrait of Seb" widths={[320, 640]} sizes="320px" loading="lazy" />
+          <Image class="pod2-host-img" src={sebAvatar} alt="Portrait of Seb Wichmann" width={160} height={160} densities={[1, 1.5]} loading="lazy" />
           <div>
             <p class="pod2-card-label">Your host</p>
-            <h2 id="pod-seb-name">Seb</h2>
+            <h2 id="pod-seb-name">Seb Wichmann</h2>
             <p>Seb has spent 14 years working on culture across 35+ countries, with Fortune 500 companies and leadership programmes. He built a business that nearly broke him, and today he works with founders on the personal side of the sale, with DoGood's team of Wayfinders.</p>
           </div>
         </div>
