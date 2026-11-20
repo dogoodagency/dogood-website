@@ -6,6 +6,14 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 36: Seb's bio on /about (20 Nov 2026, 01:03)
+
+- /about, "Seb and the Wayfinders": Seb's approved bio replaces the old two lines (14+ years, J&J EMEA,
+  Headspring London and Madrid, NLP and Master Trainer, SuperCoach, *Instant Silence*; his business nearly broke
+  him). His name links to /wayfinders/seb with a GRASS underline (`about.css`).
+
+---
+
 ## Preview 6, update 35: organisation profiles; launch notes (20 Nov 2026, 00:45)
 
 - **Organization `sameAs`** (Base.astro) now lists only DoGood's own profiles: the LinkedIn company page

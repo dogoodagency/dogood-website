@@ -855,3 +855,18 @@ body:has(.ab-page) .footer-wave {
   font-size: 16px;
   font-weight: 400;
 }
+
+/* Seb's name links to his Wayfinder page (20 Nov 2026): GRASS underline, like "Read more" links. */
+.ab-wf-copy p a {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: #28dbb0;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.ab-wf-copy p a:hover,
+.ab-wf-copy p a:focus-visible {
+  text-decoration-color: #01a684;
+}
