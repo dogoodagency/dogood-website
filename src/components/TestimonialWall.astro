@@ -23,9 +23,11 @@ interface Props {
   label: string;
   /** Short quotes (sound bites) use a larger type size. */
   short?: boolean;
+  /** Phones only (under 600px): show just these items instead of the full list, each quote cut to 6 lines. */
+  phoneItems?: WallItem[];
 }
 
-const { items, tone = "light", label, short = false } = Astro.props;
+const { items, tone = "light", label, short = false, phoneItems } = Astro.props;
 const cols3 = [0, 1, 2].map((i) => items.filter((_, idx) => idx % 3 === i));
 const cols2 = [0, 1].map((i) => items.filter((_, idx) => idx % 2 === i));
 ---
@@ -66,7 +68,8 @@ const cols2 = [0, 1].map((i) => items.filter((_, idx) => idx % 2 === i));
             ))}
           </div>
         </div>
-        <div class="tw-list">{items.map((it) => card(it))}</div>
+        <div class:list={["tw-list", phoneItems && "tw-list--wide"]}>{items.map((it) => card(it))}</div>
+        {phoneItems && <div class="tw-list tw-list--phone">{phoneItems.map((it) => card(it))}</div>}
       </div>
     );
   })()

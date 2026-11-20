@@ -1,0 +1,127 @@
+/* 20 Nov 2026 22:28 (Seb): mobile pass on the home page and the shared header/footer.
+   Phones only (under 600px). Loaded after site-rules.css so it wins over earlier rules. */
+
+.ft-br-m { display: none; }
+
+
+@media (max-width: 599px) {
+  /* 1. Navbar: "by DoGood" under the foundr.land logo 1px smaller. */
+  header.nav .nav-brand-by { font-size: 9px; }
+
+  /* Things removed on phones only. */
+  .m-hide { display: none !important; }
+
+  /* 2. Hero drawing 20% bigger. The door's right edge lines up with the page's right padding
+     (door edge = 94.85% of the drawing's width); the path runs off the left edge and its end slides
+     under the wave into the next band. */
+  #hero { overflow-x: clip; }
+  #hero .hero-draw { justify-content: flex-start; margin-bottom: -46px; }
+  #hero .hero-sketch-frame {
+    flex: 0 0 auto;
+    width: 100vw;
+    max-width: none;
+    margin-left: calc(5.15vw - 2 * clamp(20px, 5.56vw, 80px));
+    margin-right: 0;
+  }
+
+  /* 3. Waves: half the height on every band edge (hero, section and footer waves). */
+  .hero-wave,
+  .privacy-divider-wave,
+  .section-wave .hero-wave,
+  .footer-wave .hero-wave,
+  .privacy-hero .hero-wave { height: 40px; }
+
+  /* The machine 30% bigger (the through line is placed from its box, so it still leaves at the lever). */
+  .exit-machine { width: 312px; max-width: calc(100vw - 2 * clamp(20px, 5.56vw, 80px)); margin-left: auto; margin-right: auto; }
+  .exit-machine img { width: 100%; height: auto; }
+
+  /* 4. Case studies J and V: a solid band behind the words so the moving line doesn't show through;
+     headline 2px smaller so it sits inside the side padding. */
+  #case-j .case-compact > div,
+  #case-v .case-compact > div {
+    position: relative;
+    z-index: 2;
+    background: #F5F2FF;
+    padding-bottom: 6px;
+  }
+  #case-j .case-compact h3,
+  #case-v .case-compact h3 { font-size: 28px; }
+
+  /* Who is this for: the Exit Prep line is gone, so the card ends closer to the last bullet. */
+  #for-you .foryou-grid > .card.ink { padding-bottom: 28px; }
+
+  /* The flying machine 20% bigger. */
+  #why { overflow-x: clip; }
+  #why .why-sketch .why-art,
+  #why .why-sketch .why-art picture,
+  #why .why-sketch .why-art img {
+    width: min(100%, 384px);
+    max-width: 384px;
+  }
+  #why .why-sketch .fm-anim picture,
+  #why .why-sketch .fm-anim img { width: 100%; max-width: none; }
+
+  /* Leaders who've been through it: the heading sits in the white band below the wave, cards follow. */
+  #reviews { margin-top: 0 !important; }
+  #reviews .reviews-band { padding-top: 28px; }
+  #reviews .reviews-band > h2 { margin-bottom: 28px; }
+
+  /* foundr.land card: no star. */
+  #message .fl-spark { display: none; }
+
+  /* Wayfinders: photo 20% bigger, arms may run off the screen; names as readable labels;
+     more room between the heads and the text above. */
+  #wayfinders { overflow-x: clip; }
+  #wayfinders .wf-group { margin-top: 44px; }
+  #wayfinders .wf-group .wf-img-wide { display: none; }
+  #wayfinders .wf-m {
+    position: relative;
+    display: block;
+    width: 120%;
+    margin-left: -10%;
+  }
+  #wayfinders .wf-m img {
+    display: block;
+    width: 100%;
+    height: auto;
+    /* the photo is cut flat at the bottom: fade it out where it runs wider than the card */
+    -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent 97%);
+    mask-image: linear-gradient(to bottom, #000 82%, transparent 97%);
+  }
+  #wayfinders .wf-name {
+    position: absolute;
+    translate: -50% -50%;
+    padding: 3px 7px;
+    border-radius: 999px;
+    background: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+    color: #EA1458;
+    white-space: nowrap;
+  }
+
+  /* Track record: 100% stat gone; bottom padding matches the top. */
+  #wayfinders .track-card { padding-bottom: 28px; }
+
+  /* The guarantee card no longer runs into the track record card. */
+  #guarantee { margin-top: 24px !important; }
+
+  /* What's next: the heading, text and button sit a little lower. */
+  #next .next-inner { padding-top: 128px; }
+  #next .next-inner > p:not(.next-note) { max-width: 270px; margin: 0 auto 40px; }
+  /* the green swell opens wider, so the lower-placed text sits on green, not across its edge */
+  #next { overflow-x: clip; }
+  #next .swell-bg { left: -40%; width: 180%; }
+
+  /* Footer. */
+  .ft-br-m { display: inline; }
+  .footer .ft-grid { row-gap: 48px; }
+  .footer .ft-links + .ft-title { margin-top: 48px; }
+  .footer .ft-optin { padding: 18px 20px 20px; margin-top: -16px; }
+  .footer .ft-optin .ft-optin-title { margin-bottom: 4px; }
+  .footer .ft-lets .connect-mark { font-size: calc(1.2 * clamp(40px, calc((100cqi - 48px) / 4.35), 196px)); }
+  .footer .ft-lets .connect-row { top: calc(100% - 0.264 * clamp(40px, calc((100cqi - 48px) / 4.35), 196px) + 18px); }
+  .footer .legal a { font-size: 12px; }
+  .footer .legal p { font-size: 12px; color: #8b7dae; }
+}

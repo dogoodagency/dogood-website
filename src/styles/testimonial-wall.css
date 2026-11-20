@@ -205,3 +205,20 @@
 .tw .tw-vp:focus-within .tw-track {
   animation-play-state: paused !important;
 }
+
+/* 20 Nov 2026 (Seb, mobile): a page can pass a short pick for phones; each quote is cut to 6 lines with "…". */
+.tw-list--phone { display: none; }
+@media (max-width: 599px) {
+  .tw-list.tw-list--wide { display: none; }
+  .tw-list.tw-list--phone { display: grid; }
+  .tw-list--phone .tw-card blockquote p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    line-clamp: 6;
+    overflow: hidden;
+  }
+}
+@media (min-width: 600px) {
+  .tw-list.tw-list--phone { display: none !important; }
+}

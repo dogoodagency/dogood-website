@@ -10,6 +10,7 @@ import LogoRails from "../components/LogoRails.astro";
 import caseJ from "../assets/cases/case-study-j-founder-life-after-exit.png";
 import caseV from "../assets/cases/case-study-v-founder-life-after-exit.png";
 import team from "../assets/photos/wayfinders.png";
+import teamMobile from "../assets/photos/wayfinders-mobile.png";
 import FoundrLand from "../components/FoundrLand.astro";
 import TestimonialWall from "../components/TestimonialWall.astro";
 
@@ -30,6 +31,9 @@ const reviewSet = reviews.map((review) => ({
 }));
 
 const wallItems = reviewSet.map((r) => ({ quote: r.quote, name: r.name, role: r.role, image: r.src }));
+// Phones: the five reviews closest to life after the exit (Seb, 20 Nov 2026: "choose 5 of the most relevant").
+const phonePick = ["TAMI L", "ZEINA G", "GAJAN R", "GINA P", "BROOK H"];
+const phoneWall = phonePick.map((n) => wallItems.find((w) => w.name === n)).filter((w): w is (typeof wallItems)[number] => !!w);
 
 // DREAM 400 press logos (public/media/press, all 96px high). `h` = shown height in px, set by eye so the
 // six marks carry equal visual weight.
@@ -356,7 +360,7 @@ const notFit = [
             </li>
           ))}
         </ul>
-        <p class="fit-presale">Haven’t sold yet? Start with <a href="/exit-prep">The Exit Prep</a>.</p>
+        <p class="fit-presale m-hide">Haven’t sold yet? Start with <a href="/exit-prep">The Exit Prep</a>.</p>
       </article>
       <article class="card rose drift-card">
         <h3 class="t-h3">NOT for you if...</h3>
@@ -454,7 +458,7 @@ const notFit = [
       <h2 class="t-h2">Leaders who've been through it</h2>
       <!-- Same moving wall as the Stories page (Seb, 19 Nov 2026): portrait left of the name and role,
            stops on hover or keyboard focus, still list on phones and for reduced motion. -->
-      <TestimonialWall items={wallItems} label="Testimonials from leaders our team has worked with" />
+      <TestimonialWall items={wallItems} phoneItems={phoneWall} label="Testimonials from leaders our team has worked with" />
     </div>
   </section>
 
@@ -520,7 +524,17 @@ const notFit = [
         alt="The DoGood Wayfinders: Seb, Vlora, Chantill, Shiva and Katrin"
         widths={[800, 1280, 1800]}
         sizes="(max-width: 1080px) 100vw, 1280px"
+        class="wf-img-wide"
       />
+      <!-- Phones (Seb, 20 Nov 2026): the photo without its drawn names, with larger name labels on top. -->
+      <div class="wf-m" aria-hidden="true">
+        <Image src={teamMobile} alt="" widths={[600, 900, 1200]} sizes="120vw" class="wf-img-m" />
+        <span class="wf-name" style="left:9%;top:33%">Seb</span>
+        <span class="wf-name" style="left:22.5%;top:5%">Vlora</span>
+        <span class="wf-name" style="left:53%;top:3%">Chantill</span>
+        <span class="wf-name" style="left:68.5%;top:1%">Shiva</span>
+        <span class="wf-name" style="left:96%;top:22%;translate:-100% -50%">Katrin</span>
+      </div>
     </div>
     <div class="track-block">
       <article class="card track-card">
@@ -534,7 +548,7 @@ const notFit = [
               { text: "18,360", label: "Coaching Hours", count: "18360", prefix: "", suffix: "", decimals: "0" },
               { text: "100%", label: "Client Satisfaction Score", count: "100", prefix: "", suffix: "%", decimals: "0" },
             ].map((stat) => (
-              <div>
+              <div class:list={[stat.suffix === "%" && "m-hide"]}>
                 <strong
                   data-count={stat.count}
                   data-prefix={stat.prefix}
@@ -623,8 +637,7 @@ const notFit = [
     <div class="next-inner">
       <h2 class="t-h2">What’s next?</h2>
       <p>
-        Complete the short application for Stage 1 (30 days). We’ll respond within 24 hours. If there’s
-        a fit, we’ll have an honest conversation.
+        Complete the application for Stage 1. We will respond within 24 hours.
       </p>
       <a class="btn-apply lg" href={urls.apply}>Apply for Stage 1</a>
       <p class="next-note">Limited to five new founders a month</p>

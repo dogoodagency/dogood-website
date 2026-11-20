@@ -6,6 +6,24 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 8, update 21: mobile pass on the home page, header and footer (Seb, 20 Nov 2026 22:28)
+
+Phones only (under 600px) unless marked "all sizes".
+- Header: "by DoGood" under the foundr.land logo 9px (was 10px).
+- Hero: drawing 20% bigger; the door's right edge lines up with the page padding; the path runs off the left edge and ends under the wave.
+- All band waves (hero, sections, footer) half as tall.
+- "Life after selling" machine 30% bigger; the green through line is 50% thicker and still leaves the machine at the lever.
+- Case studies J and V: solid background behind the words so the line doesn't show through; headline 2px smaller.
+- Who is this for: "Haven't sold yet? Start with The Exit Prep" removed, less space under the last bullet.
+- Flying machine 20% bigger.
+- "Leaders who've been through it" sits in the white band below the wave; five testimonials only (Tami L, Zeina G, Gajan R, Gina P, Brook H), each cut to 6 lines with "…".
+- foundr.land card: star removed.
+- Wayfinders: photo 20% bigger (arms may run off screen, bottom fades out behind the card), larger name labels, more space above the heads.
+- Track record: "100% Client Satisfaction Score" removed, bottom padding matches the top. Guarantee card no longer overlaps it.
+- What's next: content sits lower; the green swell opens wider. Text (all sizes): "Complete the application for Stage 1. We will respond within 24 hours."
+- Footer: tagline breaks after "FOUNDR.land,"; more space between link groups; newsletter box moved up and shorter; "Let's Connect" 20% bigger; legal links and copyright 12px, copyright in soft DREAM (#8b7dae).
+- Newsletter text (all sizes): "Not ready to apply?" / "Notes on what comes after the exit."
+
 ## Preview 8, update 20: no foundr.land links yet; screen-size fixes from the device test
 
 - foundr.land links removed until that site is public: the header logo, the section buttons and the Pathway link are plain text for now. /foundrland goes to the home page (temporary). To turn the links back on, set FOUNDRLAND_URL in src/data/foundrland.ts.
