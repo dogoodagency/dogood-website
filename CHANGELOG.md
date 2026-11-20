@@ -6,6 +6,13 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 7, update 5: foundr.land logo centred again (20 Nov 2026, 08:17)
+
+- Seb: the logo should not move up for "by DoGood". `.nav-brand-by` is now `position: absolute` in the card
+  (end of `src/styles/site-rules.css`), pinned to the exact spot it had before (right 20.1px / bottom 11.9px;
+  at 1080px and below right 12.1px / bottom 15.56px; at 600px and below bottom 9.06px). The logo is the only item in
+  the flow, so it's vertically centred again (equal gaps above and below, checked at 1440, 800 and 390px).
+
 ## Preview 7, update 4: second wording batch, logo replay on refresh, "by DoGood" tweak (20 Nov 2026, 08:12)
 
 - Nav G mark (also on preview 6): `public/dg-mark.js` now replays the animation on a page refresh as well as on
