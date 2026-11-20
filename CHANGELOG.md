@@ -6,6 +6,34 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 7, update 4: second wording batch, logo replay on refresh, "by DoGood" tweak (20 Nov 2026, 08:12)
+
+- Nav G mark (also on preview 6): `public/dg-mark.js` now replays the animation on a page refresh as well as on
+  the first page of a visit (Navigation Timing type "reload"). Moving between pages still doesn't replay it.
+- "by DoGood" (Seb, 08:08): 10px, regular weight (400), `margin-right: -1.9px` so its right edge lines up with the
+  logo's "d" (measured at 4x). Note: DREAM 300 on the button fails axe contrast (Seb's colour choice; text is
+  aria-hidden).
+- Founder pages say "sold" / "after the sale" instead of "exit" (Seb's rule; advisor pages keep "exit"): About,
+  Pathway, ClarityValue Shift, Pre-FRP and its thank-you page, footer tagline, FAQs (founder sections), the newsletter
+  page and its thank-you page (guide renamed "The first 90 days after the sale"), Stories/Reset/Build/Wayfinders
+  testimonial notes, Orientation, Expedited Start, The Reset "Who this is for" label, Vlora's card, Seb's profile.
+- "Coaching" removed from Orientation ("current clients", "1:1 work"). Testimonial quotes and credentials untouched.
+- New FAQs: "When is the right time to start?", "What if the sale falls through?", "Can my partner or family be
+  part of this?" (from the advisor page's "Room for the family too"). Exit-Prep FAQ now says 12–18 months before the
+  sale and what the six weeks are about (Seb's answers).
+- Page openings: About first sentence; Contact (who it's for, reply within one working day); Stories H1 "Founder
+  stories and case studies"; Services H1 "Residency, retreat, membership and ongoing support."; Residency "What is
+  the Residency?" with a who/where line; Recovery & Stress and State-Shift Audio plain-language first paragraphs;
+  ClarityValue "working again"; NextLife Passage "do I want to build again?" paragraph.
+- Seb's profile: meta description uses "Seb" only; self-praise softened ("strong sense", no "I'm great at what I
+  do").
+- Advisor insights: line that DoGood is independent of the Exit Planning Institute. Moving the three-legs section
+  higher was NOT done (it changes the band colours; layout, not wording).
+- First-90-days article: new section "Why it often hits later than you expect" (month 1 / 3 / one year).
+- HELD until Seb approves the wording: page titles, meta descriptions, category intros, visible "Last updated"
+  lines. Seb's full name still appears on About, the podcast, the guarantee terms and in schema (only the profile
+  page is first-name only).
+
 ## Preview 7, update 3: "by DoGood" under the foundr.land logo (20 Nov 2026, 08:04)
 
 - Seb: small "by DoGood" on the nav foundr.land logo, 9px, DREAM 300 (#8B7DAE), thin (Montserrat 300). New
