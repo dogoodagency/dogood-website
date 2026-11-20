@@ -1,5 +1,10 @@
 # Keyword map (20 Nov 2026)
 
+**Source of truth: the Google Sheet "DoGood keyword map"
+(https://docs.google.com/spreadsheets/d/1sv0tifAB8c7aMXBgYC6UIr1YM4KTqUxlUfMg-V2Mf88/edit), tabs Read me, Pages,
+Articles, Categories, Don't target, Overlap, Keyword data, Re-check. It replaces the Google Doc of the same name.
+When a title changes, update the Sheet first; this file is only a short summary.**
+
 One main search phrase per indexable page, so no two pages compete. Volumes are US monthly
 searches from DataForSEO via Manifold (19 Nov 2026); "AI" is monthly AI-engine prompt volume.
 "–" means too small to measure. Page wording is not changed for keywords without Seb's OK;
@@ -23,8 +28,7 @@ titles and descriptions carry the phrase.
 
 The main map (home, Exit-Prep, The Reset, How it works, For Advisors, client tools, FAQs, Seb,
 newsletter, all articles and category pages, "don't target" list and overlap rules) is the Google
-Doc "DoGood keyword map" (18 Nov 2026). That doc is the source of truth; these rows were added
-to it on 20 Nov 2026.
+Sheet "DoGood keyword map" (link above).
 
 | Page | Main phrase | Supporting phrases | Title tag (live on preview) |
 |---|---|---|---|
