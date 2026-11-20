@@ -256,7 +256,7 @@ const stages = [
   }
 
   .ss-text {
-    max-width: 600px;
+    max-width: 760px; /* 20 Nov 2026 (Seb): no short last lines where the card has room */
     margin: 0 auto 20px;
     font-size: 18px;
     line-height: 1.55;
@@ -310,6 +310,38 @@ const stages = [
       transition: none;
     }
   }
+
+  /* 20 Nov 2026 (Seb): both stages on DREAM 500. The stage colour moves to the border and the text: Stage 1
+     GRASS, Stage 2 HEART (a lighter HEART for text on DREAM, for contrast). Each toggle option takes its own
+     colour on hover. */
+  .ss-knob {
+    background: #2a0b4f;
+    border: 2px solid #28dbb0;
+  }
+  .ss[data-current="2"] .ss-knob {
+    background: #2a0b4f;
+    border-color: #ea1557;
+  }
+  .ss[data-current="1"] .ss-tab--1[aria-current="page"] { color: #28dbb0; }
+  .ss[data-current="2"] .ss-tab--2[aria-current="page"] { color: #ff8fb1; }
+  .ss a.ss-tab { transition: color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease; }
+  .ss a.ss-tab--1:hover,
+  .ss a.ss-tab--1:focus-visible { background: #e7fff6; color: #05745b; box-shadow: inset 0 0 0 1px #28dbb0; }
+  .ss a.ss-tab--2:hover,
+  .ss a.ss-tab--2:focus-visible { background: #fff0f4; color: #c10e46; box-shadow: inset 0 0 0 1px #ea1557; }
+  .ss.is-going a.ss-tab--1 { color: #28dbb0; }
+  .ss.is-going a.ss-tab--2 { color: #ff8fb1; }
+
+  .ss-panel--1,
+  .ss-panel--2 { background: #2a0b4f; border-width: 2px; }
+  .ss-panel--1 { border-color: #28dbb0; }
+  .ss-panel--2 { border-color: #ea1557; }
+  .ss-panel--1 :is(.ss-kicker, .ss-title, .ss-title span, .ss-line) { color: #28dbb0 !important; }
+  .ss-panel--2 :is(.ss-kicker, .ss-title, .ss-title span, .ss-line) { color: #ff8fb1 !important; }
+  .ss-panel--1 .ss-here:not(.ss-here--ghost) { background: #28dbb0; color: #2a0b4f !important; }
+  .ss-panel--2 .ss-here:not(.ss-here--ghost) { background: #ff8fb1; color: #2a0b4f !important; }
+  .ss-panel--1 .ss-btn { border-color: #28dbb0 !important; background: #28dbb0 !important; }
+  .ss-panel--2 .ss-btn { border-color: #ff8fb1 !important; background: #ff8fb1 !important; }
 </style>
 
 <script>

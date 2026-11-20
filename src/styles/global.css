@@ -56,9 +56,9 @@
 }
 
 
-/* Trademark sign (Seb, 19 Nov 2026): a thinner stroke and 2px smaller than the word it follows.
-   Used in the nav, the footer and the stage progress bar (helper tm() in src/data/site-links.ts). */
+/* Trademark sign: 2px smaller than the word it follows (Seb, 19 Nov 2026). Since 20 Nov 2026 (Seb) its stroke
+   matches the word before it (same weight), on every page. */
 .tm {
   font-size: calc(1em - 2px);
-  font-weight: 300;
+  font-weight: inherit;
 }

@@ -295,4 +295,32 @@ const aboutLd = {
       </div>
     </section>
   </article>
+  <script>
+    // 20 Nov 2026 (Seb): sections fade up as they scroll into view, cards one after another.
+    if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const groups = document.querySelectorAll<HTMLElement>(
+        ".ab-page .ab-duo, .ab-page .ab-cards, .ab-page .ab-quote, .ab-page .ab-why-grid, .ab-page .ab-good, .ab-page .ab-vision-cards, .ab-page .ab-vision-intro, .ab-page .ab-notlist, .ab-page .ab-wf-copy, .ab-page .ab-ioda",
+      );
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (!e.isIntersecting) return;
+            const el = e.target as HTMLElement;
+            el.classList.add("is-in");
+            el.querySelectorAll<HTMLElement>(".ab-reveal").forEach((c) => c.classList.add("is-in"));
+            io.unobserve(el);
+          });
+        },
+        { rootMargin: "0px 0px -10% 0px" },
+      );
+      groups.forEach((g) => {
+        const kids = g.matches(".ab-duo, .ab-cards, .ab-good, .ab-vision-cards") ? Array.from(g.children) as HTMLElement[] : [g];
+        kids.forEach((k, i) => {
+          k.classList.add("ab-reveal");
+          k.style.setProperty("--ab-d", `${i * 0.12}s`);
+        });
+        io.observe(g);
+      });
+    }
+  </script>
 </Base>

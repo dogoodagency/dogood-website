@@ -14,9 +14,11 @@ const steps = [
   { title: "The Exit Prep™", detail: "Six weekly 1:1 sessions", chip: "Before the sale", href: "/exit-prep", tone: "sky", shape: "diamond", icon: "compass" },
   { title: "Stage 1: The Reset™", detail: "Get clear, set new values", chip: "30 days", href: "/the-reset", tone: "grass", shape: "hex", icon: "reset" },
   { title: "Stage 2: The Build™", detail: "By invitation, after Stage 1", chip: "12 weeks", href: "/the-build", tone: "heart", shape: "hex", icon: "blocks" },
-  { title: "IntegralContinuity™", detail: "Ongoing sessions", chip: "Ongoing", href: "/integral-continuity", tone: "lilac", shape: "squircle", icon: "loop" },
-  { title: "Annual Signature Retreat", detail: "Once a year, by invitation", chip: "Yearly", href: "/signature-retreat", tone: "lilac", shape: "diamond", icon: "sun" },
-  { title: "FOUNDR.land Membership", detail: "The house founders belong to", chip: "Coming soon", href: "/founderland-membership", tone: "grass", shape: "circle", icon: "house" },
+  { title: "IntegralContinuity™", detail: "Ongoing sessions", chip: "Ongoing", href: "/integral-continuity", tone: "sun", shape: "squircle", icon: "loop" },
+  { title: "Annual Signature Retreat", detail: "Once a year, by invitation", chip: "Yearly", href: "/signature-retreat", tone: "coral", shape: "diamond", icon: "sun" },
+  { title: "FOUNDR.land Membership", detail: "The house founders belong to", chip: "Coming soon", href: "/founderland-membership", tone: "violet", shape: "circle", icon: "house" },
+  // Optional 8th phase (Seb, 20 Nov 2026): no page of its own.
+  { title: "Become lifelong friends", detail: "Where the journey can lead", chip: "Optional", href: "", tone: "rose", shape: "circle", icon: "heart" },
 ];
 
 const phases = [
@@ -24,6 +26,14 @@ const phases = [
   { label: "Before the sale", from: 2, to: 2, tone: "sky" },
   { label: "After the sale", from: 3, to: 4, tone: "grass" },
   { label: "Beyond", from: 5, to: 7, tone: "heart" },
+  { label: "For life", from: 8, to: 8, tone: "rose" },
+];
+// Vertical colour lines where one phase hands over to the next (after stations 1, 2, 4 and 7).
+const seps = [
+  { after: 1, tone: "sky" },
+  { after: 2, tone: "grass" },
+  { after: 4, tone: "heart" },
+  { after: 7, tone: "rose" },
 ];
 
 const icons: Record<string, string> = {
@@ -34,20 +44,26 @@ const icons: Record<string, string> = {
   loop: '<path d="M7.5 9c-2.5 0-4 1.4-4 3s1.5 3 4 3c4 0 5-6 9-6 2.5 0 4 1.4 4 3s-1.5 3-4 3c-4 0-5-6-9-6z"/>',
   sun: '<circle cx="12" cy="13" r="4"/><path d="M12 4v2.5M4.5 13H7M17 13h2.5M6.7 7.7l1.8 1.8M17.3 7.7l-1.8 1.8M3 20h18"/>',
   house: '<path d="M4 11 12 4l8 7"/><path d="M6 10v10h12V10"/><path d="M10 20v-5h4v5"/>',
+  heart: '<path d="M12 19.5s-7-4.3-7-9.2A3.8 3.8 0 0 1 12 8a3.8 3.8 0 0 1 7 2.3c0 4.9-7 9.2-7 9.2z"/>',
 };
 
-// The road: a gentle wave through the seven station points (x at the column centres of a 16-column grid).
-const X = (i: number) => ((2 * i + 1.5) / 16) * 1000;
+// The road: a gentle wave through the station points (x at the column centres of an 18-column grid; the last
+// column holds the arrow). Solid through station 7, then dashed through the optional 8th and on to the arrow:
+// the journey keeps going (Seb, 20 Nov 2026).
+const COLS = 18;
+const X = (i: number) => ((2 * i + 1.5) / COLS) * 1000;
 const Y = (i: number) => (i % 2 === 0 ? 46 : 74);
+const seg = (a: number, b: number) => {
+  const mx = (X(a) + X(b)) / 2;
+  return ` C ${mx} ${Y(a)}, ${mx} ${Y(b)}, ${X(b)} ${Y(b)}`;
+};
 let road = `M0 60 C ${X(0) / 2} 60, ${X(0) / 2} ${Y(0)}, ${X(0)} ${Y(0)}`;
-for (let i = 1; i < steps.length; i++) {
-  const mx = (X(i - 1) + X(i)) / 2;
-  road += ` C ${mx} ${Y(i - 1)}, ${mx} ${Y(i)}, ${X(i)} ${Y(i)}`;
-}
-road += ` C ${(X(6) + 1000) / 2} ${Y(6)}, ${(X(6) + 1000) / 2} 60, 1000 60`;
+for (let i = 1; i < 7; i++) road += seg(i - 1, i);
+const endX = 975;
+let roadOn = `M${X(6)} ${Y(6)}` + seg(6, 7) + ` C ${(X(7) + endX) / 2} ${Y(7)}, ${(X(7) + endX) / 2} 60, ${endX} 60`;
 ---
 
-<nav class="jr" data-jr aria-label="The DoGood path, step by step">
+<nav class="jr" data-jr aria-label="Our 7-phase customer life journey, plus an optional 8th, step by step">
   <ol class="jr-phases" aria-hidden="true">
     {phases.map((p) => <li class:list={["jr-phase", `jr-phase--${p.tone}`]} style={`--from:${p.from};--to:${p.to}`}>{p.label}</li>)}
   </ol>
@@ -58,17 +74,28 @@ road += ` C ${(X(6) + 1000) / 2} ${Y(6)}, ${(X(6) + 1000) / 2} 60, 1000 60`;
         <svg class="jr-road" viewBox="0 0 1000 120" preserveAspectRatio="none">
           <path class="jr-road-base" d={road} />
           <path class="jr-road-dash" d={road} pathLength="100" />
+          <path class="jr-road-on" d={roadOn} />
         </svg>
+        <span class="jr-arrow" aria-hidden="true"></span>
       </li>
+      {seps.map((sp) => <li class:list={["jr-sep", `jr-sep--${sp.tone}`]} style={`--after:${sp.after}`} aria-hidden="true"></li>)}
       {
         steps.map((s, i) => (
           <li class:list={["jr-step", `jr-step--${s.tone}`, i % 2 === 0 ? "jr-step--up" : "jr-step--down"]} style={`--i:${i}`}>
-            <a class="jr-card" href={s.href}>
-              <span class="jr-chip">{s.chip}</span>
-              <span class="jr-title">{s.title}</span>
-              <span class="jr-detail">{s.detail}</span>
-              <span class="jr-go" aria-hidden="true">→</span>
-            </a>
+            {s.href ? (
+              <a class="jr-card" href={s.href}>
+                <span class="jr-chip">{s.chip}</span>
+                <span class="jr-title">{s.title}</span>
+                <span class="jr-detail">{s.detail}</span>
+                <span class="jr-go" aria-hidden="true">→</span>
+              </a>
+            ) : (
+              <div class="jr-card jr-card--optional">
+                <span class="jr-chip">{s.chip}</span>
+                <span class="jr-title">{s.title}</span>
+                <span class="jr-detail">{s.detail}</span>
+              </div>
+            )}
             <span class:list={["jr-badge", `jr-badge--${s.shape}`]} aria-hidden="true">
               <span class="jr-badge-shape"></span>
               <svg viewBox="0 0 24 24" set:html={icons[s.icon]} />
@@ -389,6 +416,121 @@ road += ` C ${(X(6) + 1000) / 2} ${Y(6)}, ${(X(6) + 1000) / 2} 60, 1000 60`;
     .jr.will-animate .jr-badge,
     .jr.will-animate .jr-card { opacity: 1; transform: none; }
     .jr.is-in .jr-badge-shape { animation: none; }
+  }
+
+  /* ===== 20 Nov 2026 (Seb): the journey, redesigned. =====
+     An 18-column grid: 8 stations (7 phases plus the optional "Become lifelong friends") and a last column for
+     the arrow. Every station has its own colour; cards are all the same height, with real padding, and a
+     clearly darker shade on hover. Coloured vertical lines mark where one phase hands over to the next. The road
+     runs on past the membership as a dashed line with an arrow: long-term and ongoing. Motion is 30% slower. */
+  .jr { max-width: 1320px; margin-top: 12px; margin-bottom: 24px; }
+  .jr-phases,
+  .jr-list { grid-template-columns: repeat(18, minmax(0, 1fr)); }
+  .jr-phases { margin-bottom: 28px; }
+  .jr-phase--rose { background: #ffd1df; }
+  .jr-list { grid-template-rows: auto 130px auto; row-gap: 6px; }
+  .jr-road { height: 130px; }
+
+  .jr-phase { padding: 8px 4px; font-size: 11px; letter-spacing: 0.06em; }
+  .jr-card {
+    height: 184px;
+    margin: 0 5px;
+    padding: 16px 16px 40px;
+    gap: 8px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  }
+  .jr-card:hover,
+  .jr-card:focus-visible { background: var(--hover); border-color: var(--c); transform: translateY(-2px); }
+  .jr-card::after { height: 40px; }
+  .jr-title { font-size: 15px; letter-spacing: -0.01em; overflow-wrap: anywhere; }
+  .jr-go { right: 16px; bottom: 14px; }
+  .jr-card--optional { border-style: dashed; border-width: 2px; background: #fff; cursor: default; }
+  .jr-card--optional:hover { transform: none; }
+
+  .jr-step--lilac { --c: #8b7dae; --soft: #f5f2ff; --hover: #e3dcf2; --ink: #58447f; }
+  .jr-step--sky { --c: #477dfe; --soft: #f2f7ff; --hover: #d5e3ff; --ink: #0d329f; }
+  .jr-step--grass { --c: #01a684; --soft: #e7fff6; --hover: #bff3e0; --ink: #05745b; }
+  .jr-step--heart { --c: #ea1557; --soft: #fff3f4; --hover: #ffd6e0; --ink: #960434; }
+  .jr-step--sun { --c: #e0a800; --soft: #fffbe6; --hover: #fbeaa0; --ink: #6b4f00; }
+  .jr-step--coral { --c: #f2643a; --soft: #fff3ee; --hover: #ffd8c8; --ink: #9a3412; }
+  .jr-step--violet { --c: #8b5cf6; --soft: #f4efff; --hover: #e0d3fd; --ink: #5b21b6; }
+  .jr-step--rose { --c: #ff6f9a; --soft: #fff1f5; --hover: #ffd9e5; --ink: #a3154a; }
+  .jr-step--sun .jr-badge { color: #2a0b4f; }
+
+  /* Phase hand-over lines. */
+  .jr-sep {
+    grid-row: 1 / 4;
+    grid-column: calc(var(--after) * 2 + 1) / span 1;
+    justify-self: center;
+    width: 2px;
+    margin: -12px 0;
+    border-radius: 2px;
+    background: linear-gradient(to bottom, transparent, var(--sep) 15%, var(--sep) 85%, transparent);
+    opacity: 0.75;
+    z-index: 0;
+  }
+  .jr-sep--sky { --sep: #477dfe; }
+  .jr-sep--grass { --sep: #28dbb0; }
+  .jr-sep--heart { --sep: #ea1557; }
+  .jr-sep--rose { --sep: #ff6f9a; }
+
+  /* Beyond the membership: dashed road and an arrow. */
+  .jr-roadrow { position: relative; }
+  .jr-road-on {
+    fill: none;
+    stroke: #ff8fb1;
+    stroke-width: 3;
+    stroke-dasharray: 8 8;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+  }
+  .jr-arrow {
+    position: absolute;
+    right: 0;
+    top: 60px;
+    width: 16px;
+    height: 16px;
+    border-top: 3px solid #ff8fb1;
+    border-right: 3px solid #ff8fb1;
+    transform: translate(-6px, -50%) rotate(45deg);
+  }
+
+  /* 30% slower motion. */
+  .jr.is-in .jr-road-dash { transition: stroke-dashoffset 4.55s cubic-bezier(0.3, 0.7, 0.3, 1); }
+  .jr.will-animate .jr-road-on,
+  .jr.will-animate .jr-arrow,
+  .jr.will-animate .jr-sep { opacity: 0; }
+  .jr.is-in .jr-road-on,
+  .jr.is-in .jr-arrow { opacity: 1; transition: opacity 1s ease 4.6s; }
+  .jr.is-in .jr-sep { opacity: 0.75; transition: opacity 1s ease 1s; }
+  .jr.is-in .jr-badge,
+  .jr.is-in .jr-card {
+    transition: opacity 0.78s ease, transform 0.78s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease, border-color 0.2s ease;
+    transition-delay: calc(0.39s + var(--i) * 0.585s), calc(0.39s + var(--i) * 0.585s), 0s, 0s;
+  }
+  .jr.is-in .jr-card:hover { transition-delay: 0s; }
+  .jr.is-in .jr-badge-shape { animation-duration: 6.5s; animation-delay: calc(5.2s + var(--i) * 0.52s); }
+
+  @media (max-width: 1023px) {
+    .jr-sep, .jr-arrow { display: none; }
+    .jr-card { height: auto; min-height: 0; padding: 16px 40px 16px 16px; }
+    .jr-list::after {
+      content: "";
+      position: absolute;
+      left: 26px;
+      bottom: -18px;
+      width: 12px;
+      height: 12px;
+      border-right: 3px solid #ff8fb1;
+      border-bottom: 3px solid #ff8fb1;
+      transform: rotate(45deg);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .jr.will-animate .jr-road-on,
+    .jr.will-animate .jr-arrow { opacity: 1; }
+    .jr.will-animate .jr-sep { opacity: 0.75; }
   }
 </style>
 

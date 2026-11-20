@@ -801,3 +801,7 @@ body:has(.dr-page) .footer-wave {
 .dr-journey-band .jr {
   text-align: left;
 }
+
+/* 20 Nov 2026 (Seb): more breathing room around the journey. */
+.dr-page .dr-journey-lead { margin-bottom: 56px; }
+.dr-journey-band .dr-journey-well { padding-top: 96px; padding-bottom: 104px; }

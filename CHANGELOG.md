@@ -6,6 +6,44 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 8, update 2: Seb's design feedback (20 Nov 2026, 15:05)
+
+Seb's feedback was given on preview 7 and is applied on preview 8 (preview 7 stays frozen as the approved
+wording). Seb now reviews preview 8 once: design plus SEO.
+
+- Signature (`SignatureDraw.astro`, `src/data/signature-paths.json`): written left to right, name first, then a
+  short pause and the heart below it. Every stroke now runs left to right. The Clarity-First page uses the
+  animated signature too (About already had it).
+- FAQs: a sketch for each section, above the section title (`faqs.astro`, end of `faqs.css`).
+- Line lengths: hero titles and sub-lines use the full width (Exit-Prep title 4 → 3 lines, The Reset / The Build
+  sub-lines 4 → 3, About, Wayfinders, client-fit, insights category intros); product-page text, closing lines
+  (Expedited Start "Apply for Stage 1…" now one line), framework leads, advisor ledes, newsletter answers, stories
+  notes and similar run to the right padding where only 1–4 words wrapped (end of `site-rules.css`). Case study
+  J/V summaries are 2 lines.
+- Hero alignment: product pages (Residency, IntegralContinuity, Services, Retreat, Membership, Recovery, Audio,
+  Expedited Start) and Stories now start their sections at the hero's left edge (both 1080px). Advisor Center
+  heroes (client tools, insights, readiness check and the other detail pages) are left-aligned like every other
+  page, at the same left edge as the content below.
+- Newsletter "Keep reading": smaller card (920px), heading, intro and form on the left, envelope on the right.
+- DoGood Insider: host photo is the article portrait, rebuilt as a 16:9 image with rounded corners
+  (`src/assets/photos/seb-host-16x9.jpg`); "Seb" instead of the full name in the host block.
+- About: 22px body text down to 19px (cards keep their width); each card its own colour with a thin border all
+  round (Seb's no-thick-bars rule kept); "Good for …" in four colours; sections fade up on scroll; cards lift on
+  hover; a soft breathing glow on the founder's message; Why now? and Seb and the Wayfinders run to the right
+  padding.
+- Exit-Prep: "Book a free call" removed from the hero; "Where you might be" cards in GRASS, HEART and SUN.
+- ™ everywhere now has the same stroke weight as the word before it (`global.css`, `apply.css`,
+  `StageProgress.astro`).
+- The Reset / The Build: stage toggle and stage cards on DREAM 500, Stage 1 in GRASS (border and text), Stage 2
+  in HEART; each toggle option takes its own colour on hover. Description cards (before Stage 1, after Stage 1,
+  after Stage 2) and the WHOOP / audio cards are 820px, the width of the text above.
+- Pathway journey (`JourneyBar.astro`): now "our 7-phase customer life journey" plus an optional 8th phase
+  "Become lifelong friends" (no page). Every station has its own colour; all cards the same height with real
+  padding; a clearly darker shade on hover; coloured vertical lines where one phase hands over to the next; the
+  road continues past the membership as a dashed line with an arrow; animation 30% slower; more white space.
+- Services: each card its own colour (GRASS, HEART, SUN, CORAL), deeper shade on hover; "Coming soon" at the
+  bottom left of the card.
+
 ## Preview 8, update 1: SEO changes (20 Nov 2026, 12:58)
 
 Preview 8 (branch `claude/preview-8`, draft PR #8, do not merge) = preview 7 (wording approved by Seb) plus the

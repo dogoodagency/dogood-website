@@ -731,3 +731,28 @@ html.faq-js .faq-item:not(.is-open) .faq-panel {
 .faq-news-body {
   padding-right: 32px;
 }
+
+/* 20 Nov 2026 (Seb): a sketch for each FAQ section, on the right of the section heading. Decorative (alt=""). */
+.faq-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 96px;
+}
+.faq-card-sketch {
+  flex: 0 0 auto;
+  display: block;
+  width: 120px;
+}
+.faq-card-sketch img {
+  display: block;
+  width: 120px;
+  height: 90px;
+  object-fit: contain;
+}
+@media (max-width: 600px) {
+  .faq-card-sketch,
+  .faq-card-sketch img { width: 92px; height: 70px; }
+  .faq-card-head { min-height: 80px; }
+}

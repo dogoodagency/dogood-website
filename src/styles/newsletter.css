@@ -1143,3 +1143,32 @@ html:has(.nl-page) {
   .nl-signup-copy, .nl-signup-art { margin-top: 0; }
   .nl-signup-art { width: min(360px, 90%); }
 }
+
+/* 20 Nov 2026 (Seb): Keep reading card sized to its text. Heading, intro and form stack on the left; a smaller
+   envelope sits beside them on the right, so the card is about 40% shorter. */
+.nl-signup.nl-signup-split {
+  grid-template-columns: minmax(0, 1fr) 260px;
+  grid-template-areas: "head art" "copy art";
+  column-gap: 48px;
+  row-gap: 0;
+  align-items: center;
+  padding: 36px 44px 32px;
+}
+.nl-signup-split .nl-signup-head { grid-area: head; }
+.nl-signup-split .nl-signup-copy { grid-area: copy; align-self: start; }
+.nl-signup-split .nl-signup-art { grid-area: art; margin-top: 0; width: 260px; justify-self: center; }
+.nl-page .nl-well .nl-signup-split .nl-signup-head .nl-intro { margin-bottom: 20px; }
+.nl-signup-split .nl-form { max-width: 520px; }
+@media (max-width: 900px) {
+  .nl-signup.nl-signup-split {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "head" "copy" "art";
+    padding: 28px 24px;
+  }
+  .nl-signup-split .nl-signup-art { width: min(220px, 70%); margin-top: 16px; }
+}
+.nl-signup.nl-signup-split { max-width: 920px; grid-template-columns: minmax(0, 1fr) 240px; column-gap: 36px; }
+.nl-signup-split .nl-signup-art { width: 240px; }
+.nl-signup-split .nl-signup-art img { display: block; width: 100%; height: auto; max-width: none; }
+.nl-signup-split .nl-signup-art img { transform: scale(1.4); transform-origin: center; }
+@media (max-width: 900px) { .nl-signup-split .nl-signup-art img { transform: none; } }

@@ -860,3 +860,6 @@ body:has(.st-page) .footer-wave {
 .st-case--green h4 {
   color: #01a684;
 }
+
+/* 20 Nov 2026 (Seb): sections start at the hero's left edge (both 1080px wide). */
+.st-well { width: min(1080px, calc(100% - 2 * var(--pad))); }

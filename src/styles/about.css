@@ -870,3 +870,86 @@ body:has(.ab-page) .footer-wave {
 .ab-wf-copy p a:focus-visible {
   text-decoration-color: #01a684;
 }
+
+/* ===== 20 Nov 2026 (Seb): About, calmer type and more life. =====
+   Type: the large 22px body text comes down to 19px (cards keep their width; they only get shorter).
+   Colour: each card gets its own brand colour (GRASS, HEART, SKY on white bands only, SUN): a soft tint, a thin
+   border in the same colour all round and a matching number badge (no thick top or side bars). Motion: sections fade up as they scroll into view, cards lift on hover. */
+.ab-statement p,
+.ab-quote blockquote p,
+.ab-page .ab-lead,
+.ab-closing { font-size: 19px; }
+.ab-page .ab-card h3 { font-size: 20px; }
+.ab-statement h2 { font-size: 32px; }
+
+/* Text runs to the right padding (Why now?, Seb and the Wayfinders). */
+.ab-vision-why,
+.ab-vision-why p,
+.ab-wf-copy,
+.ab-wf-copy p { max-width: none; }
+
+/* Purpose / Mission (lilac band) and Who / Alongside (white band). */
+.ab-statement { transition: transform .25s ease, box-shadow .25s ease; }
+.ab-duo .ab-statement:nth-child(1) { --ab-c: #28dbb0; }
+.ab-duo .ab-statement:nth-child(2) { --ab-c: #ea1557; }
+.ab-band:not(.ab-band-tint) .ab-duo .ab-statement:nth-child(1) { --ab-c: #28dbb0; background: #f3fffb; }
+.ab-band:not(.ab-band-tint) .ab-duo .ab-statement:nth-child(2) { --ab-c: #477dfe; background: #f2f7ff; }
+.ab-statement h2::before { background: var(--ab-c) !important; }
+.ab-band-tint .ab-duo .ab-statement:nth-child(2) { background: #fff; box-shadow: 0 10px 36px rgba(234, 21, 87, 0.08); }
+
+/* Premise (white band): GRASS, SKY, HEART. How we work (lilac band): GRASS, DREAM (as before), HEART. */
+.ab-card { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.ab-band:not(.ab-band-tint) .ab-cards .ab-card:nth-child(1) { background: #f3fffb; border-color: #73e7c4; }
+.ab-band:not(.ab-band-tint) .ab-cards .ab-card:nth-child(2) { background: #f2f7ff; border-color: #a9c2ff; }
+.ab-band:not(.ab-band-tint) .ab-cards .ab-card:nth-child(3) { background: #fff9fa; border-color: #feb5bc; }
+.ab-band:not(.ab-band-tint) .ab-cards .ab-card:nth-child(2)::before { background: #477dfe; color: #fff; }
+.ab-band:not(.ab-band-tint) .ab-cards .ab-card:nth-child(3)::before { background: #ea1557; color: #fff; }
+.ab-band-tint .ab-cards--3 .ab-card:nth-child(1) { background: #f3fffb; border-color: #73e7c4; }
+.ab-band-tint .ab-cards--3 .ab-card:nth-child(3) { background: #fff9fa; border-color: #feb5bc; }
+.ab-band-tint .ab-cards--3 .ab-card:nth-child(3)::before { background: #ea1557; color: #fff; }
+.ab-card:hover,
+.ab-statement:hover,
+.ab-vision-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(42, 11, 79, 0.12); }
+
+/* "Good for …": four colours. */
+.ab-good li { transition: transform .25s ease; }
+.ab-good li { font-size: 18px; padding: 22px 18px; }
+.ab-page .ab-good li:nth-child(1) { background: #f3fffb; border: 1px solid #73e7c4 !important; }
+.ab-page .ab-good li:nth-child(2) { background: #fff9fa; border: 1px solid #feb5bc !important; }
+.ab-page .ab-good li:nth-child(3) { background: #f2f7ff; border: 1px solid #a9c2ff !important; }
+.ab-page .ab-good li:nth-child(4) { background: #fffbe6; border: 1px solid #f5e27a !important; }
+.ab-good li:hover { transform: translateY(-3px); }
+
+/* Vision cards (lilac band): HEART and GRASS, one thin border all round (Seb's no-thick-bars rule). */
+.ab-vision-card { transition: transform .25s ease, box-shadow .25s ease; }
+.ab-page .ab-vision-cards .ab-vision-card:nth-child(1) { background: #fff9fa; border: 1px solid #feb5bc !important; }
+.ab-page .ab-vision-cards .ab-vision-card:nth-child(2) { background: #f3fffb; border: 1px solid #73e7c4 !important; }
+
+/* Founder's message card: a soft glow that breathes once it is in view. */
+.ab-quote { position: relative; overflow: hidden; }
+.ab-quote::after {
+  content: "";
+  position: absolute;
+  right: -120px;
+  bottom: -120px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(40, 219, 176, 0.22), rgba(40, 219, 176, 0) 70%);
+  pointer-events: none;
+}
+.ab-quote.is-in::after { animation: ab-breathe 6s ease-in-out infinite; }
+@keyframes ab-breathe { 0%, 100% { transform: scale(1); opacity: .8; } 50% { transform: scale(1.15); opacity: 1; } }
+
+/* Scroll reveal (JS adds .ab-reveal; without JS or with reduced motion everything simply shows). */
+.ab-reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; transition-delay: var(--ab-d, 0s); }
+.ab-reveal.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .ab-reveal { opacity: 1; transform: none; transition: none; }
+  .ab-quote.is-in::after { animation: none; }
+  .ab-card:hover, .ab-statement:hover, .ab-vision-card:hover, .ab-good li:hover { transform: none; }
+}
+@media (max-width: 600px) {
+  .ab-statement p, .ab-quote blockquote p, .ab-page .ab-lead, .ab-closing { font-size: 17px; }
+  .ab-statement h2 { font-size: 26px; }
+}

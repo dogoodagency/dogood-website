@@ -574,3 +574,12 @@ body:has(.ep-page) .footer-wave {
 .ep-page .ep-feature + .ep-feature {
   margin-top: 28px;
 }
+
+/* 20 Nov 2026 (Seb): "Where you might be" cards each in their own colour (GRASS, HEART, SUN; no SKY on the
+   lilac band), thin border all round. */
+.ep-page .ep-places .ep-place { transition: transform .25s ease; }
+.ep-page .ep-places .ep-place:nth-child(1) { background: #f3fffb; border: 1px solid #73e7c4 !important; }
+.ep-page .ep-places .ep-place:nth-child(2) { background: #fff9fa; border: 1px solid #feb5bc !important; }
+.ep-page .ep-places .ep-place:nth-child(3) { background: #fffbe6; border: 1px solid #f5e27a !important; }
+.ep-page .ep-places .ep-place:hover { transform: translateY(-3px); }
+@media (prefers-reduced-motion: reduce) { .ep-page .ep-places .ep-place:hover { transform: none; } }

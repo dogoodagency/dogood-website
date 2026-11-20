@@ -24,6 +24,8 @@ const jsonLd = {
   url: canonical,
   sameAs: Object.values(SHOW_LINKS),
 };
+import { Image } from "astro:assets";
+import sebAvatar from "../assets/photos/seb-host-16x9.jpg"; // 16:9 version of the article portrait (20 Nov 2026)
 ---
 
 <Base title={title} description={description} canonical={canonical} footerStrip={tint} footerEdge={edgeAbove(tint)}>
@@ -113,10 +115,10 @@ const jsonLd = {
     <section class="pod-band" aria-labelledby="pod-seb-name">
       <div class="pod-well pod-section">
         <div class="pod2-host">
-          <img class="pod2-host-img" src="/media/podcast/seb-host@1x.webp" width="160" height="160" alt="Portrait of Seb Wichmann" loading="lazy" />
+          <Image class="pod2-host-img" src={sebAvatar} alt="Portrait of Seb" widths={[320, 640]} sizes="320px" loading="lazy" />
           <div>
             <p class="pod2-card-label">Your host</p>
-            <h2 id="pod-seb-name">Seb Wichmann</h2>
+            <h2 id="pod-seb-name">Seb</h2>
             <p>Seb has spent 14 years working on culture across 35+ countries, with Fortune 500 companies and leadership programmes. He built a business that nearly broke him, and today he works with founders on the personal side of the sale, with DoGood's team of Wayfinders.</p>
           </div>
         </div>

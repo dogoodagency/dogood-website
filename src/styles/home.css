@@ -7983,3 +7983,7 @@ body:has(.page-home) {
     white-space: nowrap;
   }
 }
+
+/* 20 Nov 2026 (Seb): the Clarity-First letter uses the animated signature (SignatureDraw); keep its size. */
+.page-clarity .promise-signature.sig-draw { width: 180px; }
+@media (max-width: 600px) { .page-clarity .promise-signature.sig-draw { width: 150px; } }

@@ -1002,3 +1002,16 @@ body:has(.advr-page) .footer-wave {
   .advr-page .advi-h3 { margin-top: 60px; }
   .advr-page .stool-diff { gap: 16px; }
 }
+
+/* 20 Nov 2026 (Seb): Advisor Center hero text is left-aligned like every other page, and starts at the same left
+   edge as the content below it (the Advisor Center nav and cards). Detail pages (readiness check, signals guide,
+   planner, insight pieces) use the narrower detail well, so their hero matches that width. */
+.advr-hero-inner {
+  align-items: flex-start;
+  text-align: left;
+  width: min(1080px, calc(100% - 2 * var(--pad)));
+}
+.advr-hero .advr-lede { max-width: 760px; }
+.advd-page .advr-hero-inner {
+  width: min(860px, calc(100% - 2 * var(--pad)));
+}

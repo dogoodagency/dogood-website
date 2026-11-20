@@ -5,7 +5,7 @@ import Wave from "../components/Wave.astro";
 import { urls } from "../data/homepage";
 import { edgeAbove } from "../data/edge-line";
 import caseV from "../assets/cases/case-study-v-founder-life-after-exit.png";
-import signature from "../assets/photos/signature.png";
+import SignatureDraw from "../components/SignatureDraw.astro";
 
 const grass = "#E7FFF6";
 const heroEdge = edgeAbove("#2A0B4F");
@@ -39,7 +39,7 @@ const joinEdge = edgeAbove("#ffffff");
           <p>We take real delivery risk here on purpose, because we only want to continue if it’s genuinely the right fit.</p>
           <div class="promise-sign">
             <div class="promise-byline">
-              <Image class="promise-signature" src={signature} alt="Seb’s signature" widths={[180, 360]} sizes="180px" />
+              <SignatureDraw class="promise-signature" />
               <p><span class="promise-name">Seb Wichmann</span> | Founder, DoGood Agency</p>
             </div>
             <picture class="seal-slot">

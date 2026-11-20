@@ -279,3 +279,39 @@
 .pp-steps.is-in .pp-step:nth-child(4) { transition-delay: 1.8s; }
 .pp-steps.is-in .pp-step:nth-child(5) { transition-delay: 2.4s; }
 .pp-steps.is-in .pp-step:nth-child(6) { transition-delay: 3s; }
+
+/* 20 Nov 2026 (Seb): the sections below the hero start at the hero's left edge (both 1080px wide). */
+.pp-well { max-width: 1080px; }
+/* 20 Nov 2026 (Seb): the closing sentence sits on one line where the card is wide enough. */
+.pp-close p { max-width: none; }
+
+/* 20 Nov 2026 (Seb): each service card in its own colour (GRASS, HEART, SUN, CORAL; no SKY on the lilac band),
+   a deeper shade of the same colour on hover, and a short "Coming soon" at the bottom left, level with the arrow. */
+.pp-page .pp-cards li:nth-child(1) .pp-card { --pc-bg: #f3fffb; --pc-line: #73e7c4; --pc-hover: #d6f9ec; --pc-ink: #01a684; }
+.pp-page .pp-cards li:nth-child(2) .pp-card { --pc-bg: #fff9fa; --pc-line: #feb5bc; --pc-hover: #ffe1e7; --pc-ink: #ea1557; }
+.pp-page .pp-cards li:nth-child(3) .pp-card { --pc-bg: #fffbe6; --pc-line: #f5e27a; --pc-hover: #fdf1b4; --pc-ink: #b38600; }
+.pp-page .pp-cards li:nth-child(4) .pp-card { --pc-bg: #fff4ef; --pc-line: #ffbfa6; --pc-hover: #ffe0d3; --pc-ink: #e0532a; }
+.pp-page .pp-cards .pp-card {
+  background: var(--pc-bg, #fff);
+  border-color: var(--pc-line, #c2b7dd);
+  padding-bottom: 72px;
+}
+.pp-page .pp-cards .pp-card:hover,
+.pp-page .pp-cards .pp-card:focus-visible {
+  background: var(--pc-hover, #fff3f4);
+  border-color: var(--pc-ink, #ea1557);
+}
+.pp-page .pp-cards .pp-card-go { color: var(--pc-ink, #ea1557); }
+.pp-page .pp-cards .pp-soon--card {
+  position: absolute;
+  left: 30px;
+  bottom: 18px;
+  margin: 0;
+  padding: 5px 14px;
+  border-color: var(--pc-line, #c2b7dd);
+  background: #fff;
+  font-size: 13px;
+}
+@media (max-width: 600px) {
+  .pp-page .pp-cards .pp-soon--card { left: 22px; }
+}

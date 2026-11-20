@@ -231,7 +231,7 @@
    application card; the case study in the shared case-compact layout. */
 .apl-hero h1 .tm {
   font-size: 0.42em;
-  font-weight: 400;
+  font-weight: inherit; /* 20 Nov 2026: matches the word before it */
   vertical-align: 0.95em;
   margin-left: 2px;
 }

@@ -1084,3 +1084,20 @@ body:has(.pod-page) .footer-wave {
 }
 .pod-page--v2 .pod2-ep-img { height: 64px !important; aspect-ratio: 1; max-width: none; }
 @media (max-width: 860px) { .pod-page--v2 .pod2-ep-img { width: 48px; height: 48px !important; } }
+
+/* 20 Nov 2026 (Seb): the host photo is the same portrait as on the articles, in a 16:9 frame with rounded
+   corners (not round). */
+.pod2-host { grid-template-columns: 320px minmax(0, 1fr); }
+.pod-page--v2 .pod2-host-img {
+  width: 320px;
+  height: auto !important;
+  aspect-ratio: 16 / 9;
+  border: 1px solid #c2b7dd;
+  border-radius: 20px;
+  object-fit: cover;
+  object-position: center;
+}
+@media (max-width: 760px) {
+  .pod2-host { grid-template-columns: minmax(0, 1fr); }
+  .pod-page--v2 .pod2-host-img { width: 100%; max-width: 420px; }
+}
