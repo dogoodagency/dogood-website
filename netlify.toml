@@ -11,14 +11,30 @@
 # (Netlify reads that file before the rules below). The rules here are
 # only for renamed pages on the new site.
 
+# Advisor Center moved from /for-advisors to /advisor-center (Seb, 20 Nov 2026).
 [[redirects]]
   from = "/for-advisors/resources"
-  to = "/for-advisors/client-tools"
+  to = "/advisor-center/client-tools"
   status = 301
 
 [[redirects]]
   from = "/for-advisors/resources/"
-  to = "/for-advisors/client-tools"
+  to = "/advisor-center/client-tools"
+  status = 301
+
+[[redirects]]
+  from = "/for-advisors"
+  to = "/advisor-center"
+  status = 301
+
+[[redirects]]
+  from = "/for-advisors/"
+  to = "/advisor-center"
+  status = 301
+
+[[redirects]]
+  from = "/for-advisors/*"
+  to = "/advisor-center/:splat"
   status = 301
 
 [[redirects]]

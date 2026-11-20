@@ -448,7 +448,7 @@ export const faqCategories: FaqCategory[] = [
         q: "I’m an advisor. How does a referral work?",
         a: [
           "It is a short, careful path, and we never contact your client without you. First, an intro conversation with Seb, to see whether a partnership is a fit. Then you introduce the founder, with their permission. We hold a private Fit Call with the founder, which you do not need to join. If they go ahead, we keep you informed of the broad shape of things, with the founder’s consent, and never share confidential details from the work itself. Then Stage 1 starts, and you remain the trusted advisor.",
-          "You can read more in the [Advisor Center](/for-advisors).",
+          "You can read more in the [Advisor Center](/advisor-center).",
         ],
       },
       // [ADDED – source: for-advisors.md FAQ "Will you contact my client without me?"]

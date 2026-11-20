@@ -6,7 +6,7 @@ import { offers, products, advisorLinks, tm, type SiteLink } from "../data/site-
 const links = [
   { href: "/pathway", label: "Pathway", menu: "nav-how" },
   { href: "/services", label: "Services", menu: "nav-products" },
-  { href: "/for-advisors", label: "Advisor Center", menu: "nav-advisors" },  // left of Stories (Seb, 20 Nov 2026)
+  { href: "/advisor-center", label: "Advisor Center", menu: "nav-advisors" },  // left of Stories (Seb, 20 Nov 2026)
   { href: "/stories", label: "Stories" },
   { href: "/wayfinders", label: "Wayfinders" },
 ];
@@ -21,8 +21,8 @@ const howGroups = [
 ];
 const productGroups = [{ label: "Beyond the two stages", items: products.map(toItem) }];  // menu "Services"
 const advisorGroups = [
-  { label: "Work with us", items: advisorLinks.work.map(toItem) },
-  { label: "Free resources", items: advisorLinks.resources.map(toItem) },
+  // One group, the same three as the hub on the Advisor Center pages (Seb, 20 Nov 2026: "Work with us" did not help).
+  { label: "Advisor Center", items: [...advisorLinks.work, ...advisorLinks.resources].map(toItem) },
 ];
 
 const menus: Record<
@@ -57,7 +57,7 @@ const menus: Record<
     phoneId: "nav-advisors-phone",
     groups: advisorGroups,
     card: {
-      href: "/for-advisors",
+      href: "/advisor-center",
       label: "Advisor Center",
       image: "advisors-dropdown-card",
       alt: "A founder and two advisors, drawn as napkin-sketch figures, stand around a large unrolled map; one advisor points along a winding teal path toward a small arched doorway, marked with a single pink pin.",

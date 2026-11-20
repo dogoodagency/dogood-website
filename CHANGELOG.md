@@ -6,6 +6,14 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 8, update 16: Advisor Center at /advisor-center, with a clear three-part hub
+
+- New address: /advisor-center (was /for-advisors), including /advisor-center/client-tools and /advisor-center/insights and their sub-pages. All internal links, canonicals, the sitemap and llms.txt use the new address. 301 redirects in netlify.toml send /for-advisors, /for-advisors/ and /for-advisors/* to the new pages. The content files keep their old names (src/content/pages/for-advisors*.md).
+- `AdvisorNav.astro` is now a hub: "Advisor Center · three parts", three large cards (icon, number, name, one line, "Go to this part →"); the current part is filled and says "You are here". Same on all three Advisor Center pages.
+- Main page: the hub and the two intro paragraphs now sit straight under the hero.
+- Naming: the first part is "Overview & referrals" (was "Refer a founder"). The nav menu has one "Advisor Center" group with the three parts (was "Work with us" + "Free resources").
+- Pending: update the keyword map sheet with the new URLs once the Google Sheets connector is on.
+
 ## Preview 8, update 15: Advisor Center, foundr.land section moved up
 
 - The foundr.land section now sits straight after "What advisors tell us" / "Which kind of advisor are you?", before the introduction.

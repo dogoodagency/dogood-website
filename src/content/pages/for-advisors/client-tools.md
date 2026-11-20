@@ -31,4 +31,4 @@ Your clients get all your help with the deal. These tools help with the part nob
 
 More tools are on the way. Want to hear when each one is ready? [Get in touch](/contact).
 
-<a href="/for-advisors">Have a client in mind already? Visit the Advisor Center →</a>
+<a href="/advisor-center">Have a client in mind already? Visit the Advisor Center →</a>

@@ -77,19 +77,19 @@ export const explore: SiteLink[] = [
 export const advisorLinks = {
   work: [
     {
-      href: "/for-advisors",
-      label: "Refer a founder",
-      detail: "How a referral works, what your client gets, and how we keep you in the loop.",
+      href: "/advisor-center",
+      label: "Overview & referrals",
+      detail: "How we work with advisors, how a referral works, and how you stay in the loop.",
     },
   ] as SiteLink[],
   resources: [
     {
-      href: "/for-advisors/client-tools",
+      href: "/advisor-center/client-tools",
       label: "Free tools for your clients",
       detail: "A readiness check, a warning-signs guide and a planner. Free to use.",
     },
     {
-      href: "/for-advisors/insights",
+      href: "/advisor-center/insights",
       label: "Advisor insights",
       detail: "What founders go through when they sell: short, anonymized notes from advisors.",
     },

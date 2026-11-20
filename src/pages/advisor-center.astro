@@ -8,7 +8,7 @@ import { edgeAbove } from "../data/edge-line";
 import TestimonialWall from "../components/TestimonialWall.astro";
 import FoundrLand from "../components/FoundrLand.astro";
 
-// Title and description come from the frontmatter of src/content/pages/for-advisors.md.
+// Title and description come from the frontmatter of src/content/pages/advisor-center.md.
 // The words on this page are that file's copy, set out in sections.
 const entry = await getEntry("pages", "for-advisors");
 const title = entry?.data.title ?? "Advisor Center | DoGood Agency";
@@ -166,7 +166,7 @@ const faqs = [
 <Base
   title={title}
   description={description}
-  canonical="https://www.dogoodagency.co/for-advisors"
+  canonical="https://www.dogoodagency.co/advisor-center"
   footerStrip="#ffffff"
   footerEdge={footerEdge}
   ogTitle={title}
@@ -178,13 +178,24 @@ const faqs = [
           <p class="adv-eyebrow">Advisor Center · For exit planning advisors</p>
           <h1>When the deal closes, the hard part starts.</h1>
           <p class="adv-lede">
-            We support life in <span class="adv-founder"><strong>FOUNDR</strong>.land</span>. You prepare the business and the money for the sale. We prepare the founder: the <a href="/for-advisors/insights#advi-legs">personal readiness leg</a> of exit planning.
+            We support life in <span class="adv-founder"><strong>FOUNDR</strong>.land</span>. You prepare the business and the money for the sale. We prepare the founder: the <a href="/advisor-center/insights#advi-legs">personal readiness leg</a> of exit planning.
           </p>
         </div>
 
       </div>
       <Wave fill="#fff" edge={heroEdge} />
     </header>
+
+    <!-- Advisor Center hub right under the hero (Seb, 20 Nov 2026) -->
+    <section class="adv-band adv-band--white" aria-label="Introduction">
+      <div class="adv-well">
+        <AdvisorNav current="refer" />
+        <div class="adv-intro">
+          <p>You helped your client through the transaction. What comes next is personal: more freedom than they expected, and less certainty about what to do with it.</p>
+          <p>You stay the trusted advisor. We provide a private place for the part that is not financial or legal: helping them see what they actually want in life after exit.</p>
+        </div>
+      </div>
+    </section>
 
     <!-- Who this is for: four cards (Seb, 19 Nov 2026; was one line in the hero) -->
     <section class="adv-band adv-band--white" aria-labelledby="adv-who">
@@ -228,16 +239,6 @@ const faqs = [
     </section>
 
     <FoundrLand kind="advisor" />
-
-    <section class="adv-band adv-band--white" aria-label="Introduction">
-      <div class="adv-well">
-        <AdvisorNav current="refer" />
-        <div class="adv-intro">
-          <p>You helped your client through the transaction. What comes next is personal: more freedom than they expected, and less certainty about what to do with it.</p>
-          <p>You stay the trusted advisor. We provide a private place for the part that is not financial or legal: helping them see what they actually want in life after exit.</p>
-        </div>
-      </div>
-    </section>
 
     <section class="adv-band adv-band--lilac" aria-labelledby="adv-why">
       <div class="adv-well">
@@ -290,7 +291,7 @@ const faqs = [
             <p>First comes the Founder Readiness Check. You send it with your own link. Your client gets a private report and a free debrief call. If they say yes, you get a copy.</p>
           </div>
           <div class="adv-card-actions">
-            <a class="btn-teal" href="/for-advisors/client-tools">See the free toolkit →</a>
+            <a class="btn-teal" href="/advisor-center/client-tools">See the free toolkit →</a>
           </div>
         </div>
       </div>

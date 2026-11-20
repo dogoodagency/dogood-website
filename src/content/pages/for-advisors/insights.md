@@ -31,4 +31,4 @@ Advisors rarely hear from each other. We talk with many of them. Here we share t
 
 More is on the way. Want to hear when each piece is ready? [Get in touch](/contact).
 
-<a href="/for-advisors">Have a client in mind already? Visit the Advisor Center →</a>
+<a href="/advisor-center">Have a client in mind already? Visit the Advisor Center →</a>

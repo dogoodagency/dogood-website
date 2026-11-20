@@ -53,7 +53,7 @@ Advisors told us the same thing again and again: their clients have no plan for 
 
 First comes the Founder Readiness Check. You send it with your own link. Your client gets a private report and a free debrief call. If they say yes, you get a copy.
 
-<a href="/for-advisors/client-tools">See the free toolkit →</a>
+<a href="/advisor-center/client-tools">See the free toolkit →</a>
 
 ---
 

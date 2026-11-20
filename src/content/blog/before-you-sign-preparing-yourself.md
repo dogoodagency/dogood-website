@@ -118,4 +118,4 @@ It also taught me valuable lessons, and I carry them into my next chapter of ent
 
 If you are one to two years from a sale, [Exit-Prep](/exit-prep) is six weekly sessions to work through these questions while the company is still yours. If you are feeling cold feet, read [The emotions of selling a business](/insights/emotions-of-selling-a-business).
 
-If you are an exit, succession or wealth advisor and want support with the personal side for your clients, see our [Advisor Center](/for-advisors).
+If you are an exit, succession or wealth advisor and want support with the personal side for your clients, see our [Advisor Center](/advisor-center).

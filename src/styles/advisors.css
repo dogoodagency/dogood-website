@@ -1,4 +1,4 @@
-/* Advisor Center pages (/for-advisors and everything under it).
+/* Advisor Center pages (/advisor-center and everything under it).
    SHARED: other advisor pages import this file too. Every rule is prefixed .adv-
    so nothing here can touch another page. Same house style as casestudy.css.
 
@@ -6,7 +6,7 @@
      .adv-page  .adv-hero  .adv-eyebrow  .adv-lede  .adv-band (--lilac, --white)
      .adv-well  .adv-section-title  .adv-grid (--2)  .adv-card  .adv-card-badge
      .adv-card-actions  .adv-cta  .adv-back  .adv-nav (AdvisorNav component)
-   PART 2: bits only used by /for-advisors (hero layout, steps, accordion). */
+   PART 2: bits only used by /advisor-center (hero layout, steps, accordion). */
 
 body:has(.adv-page) .footer-wave {
   background: var(--footer-strip, #f5f2ff);
@@ -390,7 +390,7 @@ body:has(.adv-page) .footer-wave {
 }
 
 /* ============================================================
-   PART 2: /for-advisors only
+   PART 2: /advisor-center only
    ============================================================ */
 
 .adv-hero-inner--split {

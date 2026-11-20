@@ -93,4 +93,4 @@ A stalled deal costs a lot of time, money and relationships, all of it. Preparin
 
 ## How we work with advisors
 
-If you are an exit advisor, succession planner or wealth advisor, see how we work alongside you in the [Advisor Center](/for-advisors). If your client hasn't sold yet, [Exit-Prep](/exit-prep) is six weekly sessions on the personal side of the sale. For founders who want to understand their own reactions, we write about them in [The emotions of selling a business](/insights/emotions-of-selling-a-business).
+If you are an exit advisor, succession planner or wealth advisor, see how we work alongside you in the [Advisor Center](/advisor-center). If your client hasn't sold yet, [Exit-Prep](/exit-prep) is six weekly sessions on the personal side of the sale. For founders who want to understand their own reactions, we write about them in [The emotions of selling a business](/insights/emotions-of-selling-a-business).
