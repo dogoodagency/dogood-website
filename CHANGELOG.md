@@ -6,6 +6,18 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 43: edge-to-edge favicon, round app icons (20 Nov 2026, 03:04)
+
+- **Favicon:** the G now fills the whole square on a transparent background. `public/favicon.svg` switches the G's
+  body from DREAM 500 to white when the browser is in dark mode (`prefers-color-scheme` inside the SVG);
+  `public/favicon.ico` is the purple-body version (16/32/48).
+- **App icons:** `public/icon-192.png` and `icon-512.png` (web manifest) are now the round purple app icon;
+  `public/apple-touch-icon.png` is a purple square (iOS rounds the corners itself and turns transparency black).
+- Sent to Seb as `dogood-favicon-app-icons.zip`: favicon light and dark (SVG, ICO, PNG 16 to 1024), round app icon
+  in purple and lilac (SVG, PNG 180 to 1024), square Apple icon.
+
+---
+
 ## Preview 6, update 42: G mark in the nav, bigger footer logo (20 Nov 2026, 02:53)
 
 - **Nav:** the full logo is replaced by the D5 G mark on its own (`public/dogood-mark.svg`, white body version),

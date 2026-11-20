@@ -120,8 +120,10 @@ const organization = {
     <title>{title}</title>
     <meta name="description" content={description} />
     {!Astro.props.noCanonical && <link rel="canonical" href={canonical} />}
-    <!-- New DoGood logo, concept D5 (Seb, 20 Nov 2026): SVG favicon for modern browsers, .ico fallback,
-         Apple home-screen icon and web manifest. -->
+    <!-- DoGood G favicon (Seb, 20 Nov 2026, 03:04): the G fills the whole square on a transparent background.
+         favicon.svg switches the G's body from purple to white when the browser is in dark mode; the .ico is the
+         purple-body version. Apple home-screen icon: purple square (iOS rounds the corners itself). Manifest
+         icons: round purple app icon. -->
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
