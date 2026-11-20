@@ -1387,3 +1387,14 @@ html.adv-js .adv-faq-item:not(.is-open) .adv-faq-panel {
   padding-left: 14px;
   padding-right: 54px;
 }
+
+/* Preview 8 (20 Nov 2026): link from the hero lede to the three-legs section on Advisor insights. */
+.adv-hero .adv-lede a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: #28dbb0;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+.adv-hero .adv-lede a:hover,
+.adv-hero .adv-lede a:focus-visible { text-decoration-color: #fff; }

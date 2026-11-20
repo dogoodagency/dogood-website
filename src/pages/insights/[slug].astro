@@ -8,6 +8,7 @@ import BlogNewsletter from "../../components/BlogNewsletter.astro";
 import AuthorByline from "../../components/AuthorByline.astro";
 import { getAuthor } from "../../data/authors";
 import Wave from "../../components/Wave.astro";
+import { gitDate } from "../../lib/lastmod.mjs";
 import { edgeAbove } from "../../data/edge-line";
 import {
   SITE,
@@ -28,6 +29,13 @@ export async function getStaticPaths() {
 }
 
 const { post, all } = Astro.props;
+// Visible "Last updated" date (preview 8, 20 Nov 2026): the frontmatter `updated` date when set, otherwise the
+// last git change to the article file, never earlier than the publish date.
+const lastUpdated: Date = (() => {
+  const fromGit = gitDate(`src/content/blog/${post.id}.md`);
+  const candidates = [post.data.updated, fromGit ? new Date(fromGit) : undefined, post.data.date].filter(Boolean) as Date[];
+  return post.data.updated ?? new Date(Math.max(...candidates.map((x) => x.getTime())));
+})();
 const d = post.data;
 const { headings } = await render(post);
 const author = getAuthor(d.author);
@@ -88,7 +96,7 @@ const blogPosting = json({
   description: d.description,
   image: `${SITE}${heroPng2}`,
   datePublished: d.date.toISOString(),
-  dateModified: (d.updated ?? d.date).toISOString(),
+  dateModified: lastUpdated.toISOString(),
   author: {
     "@type": "Person",
     name: author.name,
@@ -192,14 +200,8 @@ const faqJson = d.faq.length
           <AuthorByline author={d.author} role={d.authorRole} />
           <p class="bl-meta">
             <span>Published <time datetime={isoDate(d.date)}>{formatDate(d.date)}</time></span>
-            {
-              d.updated && (
-                <>
-                  <span aria-hidden="true"> · </span>
-                  <span>Updated <time datetime={isoDate(d.updated)}>{formatDate(d.updated)}</time></span>
-                </>
-              )
-            }
+            <span aria-hidden="true"> · </span>
+            <span>Last updated <time datetime={isoDate(lastUpdated)}>{formatDate(lastUpdated)}</time></span>
             <span aria-hidden="true"> · </span>
             <span>{d.readTime} min read</span>
           </p>

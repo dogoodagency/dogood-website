@@ -40,7 +40,7 @@ export const categories: BlogCategory[] = [
     seoTitle: "Preparing to sell your business | DoGood Insights",
     seoDescription: "Notes on preparing to sell your business: getting yourself ready for the sale, not just the company. For founders who haven't sold yet.",
     intro:
-      "The deal has a timeline. You do too, and it is a different one. These notes are for founders who haven't sold yet and want to look at the personal side early, while there is still room to shape it.",
+      "The deal has a timeline. You do too, and it is a different one. Preparing to sell your business usually means valuations, data rooms and tax plans. These notes are about the other side: getting yourself ready, not just the company. They are for founders who haven't sold yet and want to look at the personal side early, while there is still room to shape it, whether the sale is a year away or still a question.",
     sketch: "/sketches/how-it-works-two-stage-path-sketch",
   },
   {
@@ -51,7 +51,7 @@ export const categories: BlogCategory[] = [
     seoTitle: "Life after selling a business | DoGood Insights",
     seoDescription: "Life after selling a business: what the first three months after closing really feel like, and what tends to help. Notes for founders.",
     intro:
-      "The wire has landed and the calendar is suddenly empty. Many founders find the first months strange, flat or restless. These notes describe what is common and what tends to help.",
+      "The wire has landed and the calendar is suddenly empty. Life after selling a business rarely feels the way founders expect. Many find the first months strange, flat or restless, and the hard part often arrives weeks later rather than on the day they sign. These notes describe what is common in the first 90 days and beyond, and what tends to help.",
     sketch: "/sketches/life-after-exit-machine",
   },
   {
@@ -60,7 +60,7 @@ export const categories: BlogCategory[] = [
     audience: "founder",
     description: "Who you are when the company is no longer your title.",
     intro:
-      "For years the company answered the question of who you are. When it goes, that answer goes with it. These notes explore identity and purpose after a founder's exit, in plain words.",
+      "For years the company answered the question of who you are. When it goes, that answer goes with it. These notes explore identity and purpose after a founder sells, in plain words.",
     sketch: "/sketches/insights-open-journals",
   },
   {
@@ -69,7 +69,7 @@ export const categories: BlogCategory[] = [
     audience: "founder",
     description: "Sleep, energy and the body's slow landing after a long sprint.",
     intro:
-      "Years of pressure can hold a body together right up until the pressure stops. These notes look at sleep, energy and rest after an exit. They are general reflections, not medical advice.",
+      "Years of pressure can hold a body together right up until the pressure stops. These notes look at sleep, energy and rest after the sale. They are general reflections, not medical advice.",
     sketch: "/sketches/apply-stage-1-garden-gate",
   },
   {
@@ -78,7 +78,7 @@ export const categories: BlogCategory[] = [
     audience: "founder",
     description: "Partners, family and friends through the change.",
     intro:
-      "An exit changes the people around you too. Partners, children and close friends all have their own view of what comes next. These notes are about talking it through at home.",
+      "Selling the company changes the people around you too. Partners, children and close friends all have their own view of what comes next. These notes are about talking it through at home.",
     sketch: "/sketches/founder-long-table-family-team-sketch",
   },
   {
@@ -98,7 +98,7 @@ export const categories: BlogCategory[] = [
     seoTitle: "For exit advisors: the founder side | DoGood Insights",
     seoDescription: "For exit planning advisors: how to raise the personal side of the sale with founder clients, and when to bring in support. Notes from DoGood.",
     intro:
-      "You see the deal up close. You also see the person behind it. These notes are for advisors who want to raise the personal side of an exit with clients in a way that feels natural and respectful.",
+      "You see the deal up close. You also see the person behind it. These notes are for exit planning advisors, succession planners and wealth advisors who want to raise the personal side of a sale with founder clients in a way that feels natural and respectful: when to bring it up, what to say, and when to bring in support.",
     sketch: "/sketches/podcast-two-chairs-microphone",
   },
   {

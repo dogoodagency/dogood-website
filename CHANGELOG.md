@@ -6,6 +6,28 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 8, update 1: SEO changes (20 Nov 2026, 12:58)
+
+Preview 8 (branch `claude/preview-8`, draft PR #8, do not merge) = preview 7 (wording approved by Seb) plus the
+SEO changes, for side-by-side comparison. Main phrases come from the Google Sheet "DoGood keyword map".
+
+- Meta descriptions carry each page's main phrase and the approved wording: home ("coaching for founders selling
+  their business"), Exit-Prep ("Should I sell my business?"), Pathway ("coaching for entrepreneurs"), For Advisors
+  ("exit planning advisors", in `src/content/pages/for-advisors.md`), About ("exit coaching for founders"), Stories,
+  Signature Retreat ("founder retreat", partners included), Membership ("founder community"), Client tools
+  ("exit readiness assessment"). "Coaching" is used in titles and meta only (Seb, 20 Nov).
+- Pathway title: "Coaching for entrepreneurs, before or after the sale" (the page inherits /how-it-works).
+- Question headings: The Reset "Who is this for?" and "What happens after the first 30 days?"; Exit-Prep
+  "What is The Exit Prep™?".
+- For Advisors: eyebrow "Advisor Center · For exit planning advisors"; the hero's "personal readiness leg" links
+  to the three-legs section on Advisor insights (`#advi-legs`).
+- Insights category intros (`src/data/blog.ts`): Preparing for exit, First 90 days and Working with founders are
+  now 60-70 words with their phrase; unlaunched founder categories say "after the sale" instead of "exit".
+- Articles show "Last updated <date>" next to the publish date (frontmatter `updated`, else the article file's
+  last git change, never before the publish date); BlogPosting `dateModified` uses the same date.
+- One-sentence description (approved 20 Nov) in the Organization schema (`Base.astro`) and at the top of
+  `public/llms.txt`; llms.txt also says "after the sale" instead of "after exit".
+
 ## Preview 7, update 7: first name only on About and the podcast (20 Nov 2026, 12:55)
 
 - Seb: "Seb Wichmann" becomes "Seb" on the About page (text and meta description) and the podcast episodes
