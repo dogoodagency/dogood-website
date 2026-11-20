@@ -1103,6 +1103,9 @@ the build: every image has an alt; empty alts are decorative icons next to text.
 - **About a week before launch:** Seb signs up for Warmly (free plan) for person-level visitor identification
   (US visitors only). Install its script behind CookieYes "marketing" consent and add a line to the privacy policy
   (draft for Seb's approval).
+- **Before launch (Seb, 20 Nov 2026):** Seb has paused the MailerLite welcome automation for website sign-ups
+  (group "FOLLOWUP – Website Subscribers"). Rewrite its emails with Seb, then turn it back on. Every site form
+  (footer, blog card, /newsletter) posts to the one "Homepage Optin" form, so they all join that group.
 
 ---
 
