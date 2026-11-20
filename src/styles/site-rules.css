@@ -243,7 +243,7 @@ header.nav .nav-panel {
   background: #230745;
 }
 
-/* 20 Nov 2026 08:02 (Seb): "by DoGood" in small type under the foundr.land logo, DREAM 300, thin weight. */
+/* 20 Nov 2026 08:02 (Seb): "by DoGood" in small type (08:08: 10px, regular weight, right edge aligned with the logo) under the foundr.land logo, DREAM 300, thin weight. */
 header.nav .nav-apply.nav-apply--brand {
   flex-direction: column;
   justify-content: center;
@@ -254,10 +254,11 @@ header.nav .nav-brand-by {
   position: relative;
   z-index: 1;
   display: block;
-  font-size: 9px;
-  font-weight: 300;
+  font-size: 10px;
+  font-weight: 400;
   line-height: 1;
   letter-spacing: 0.04em;
+  margin-right: -1.9px; /* cancels the trailing letter-spacing and the glyph side space so the right edge lines up with the logo */
   color: #8b7dae;
   white-space: nowrap;
 }
