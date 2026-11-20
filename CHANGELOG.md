@@ -6,6 +6,13 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 55: G animation starts 1.5 s later (20 Nov 2026, 06:11)
+
+- Seb: wait another 1.5 s before the G builds itself. Delays now 2025 ms (red), 2970 ms (green), 3915 ms
+  (yellow); each piece still takes 1176 ms. Until then the white piece shows on its own. End of `site-rules.css`.
+
+---
+
 ## Preview 6, update 54: foundr.land back outside the bar; G animation fixed on Netlify (20 Nov 2026, 06:08)
 
 - Seb: foundr.land stays as before, outside the bar. Moved back after `.nav-bar` in `Header.astro`. The bar and

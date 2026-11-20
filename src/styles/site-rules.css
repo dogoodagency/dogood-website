@@ -216,9 +216,9 @@ html.dg-mark-play header.nav .dg-pc-yellow {
   opacity: 0;
   animation: dg-mark-lock 1176ms cubic-bezier(.34, 1.45, .64, 1) forwards;
 }
-html.dg-mark-play header.nav .dg-pc-red    { --dx: 46px; --dy: 46px;  animation-delay: 525ms; }
-html.dg-mark-play header.nav .dg-pc-green  { --dx: 0px;  --dy: -58px; animation-delay: 1470ms; }
-html.dg-mark-play header.nav .dg-pc-yellow { --dx: 64px; --dy: 0px;   animation-delay: 2415ms; }
+html.dg-mark-play header.nav .dg-pc-red    { --dx: 46px; --dy: 46px;  animation-delay: 2025ms; }
+html.dg-mark-play header.nav .dg-pc-green  { --dx: 0px;  --dy: -58px; animation-delay: 2970ms; }
+html.dg-mark-play header.nav .dg-pc-yellow { --dx: 64px; --dy: 0px;   animation-delay: 3915ms; }
 @keyframes dg-mark-lock {
   0%   { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(.55); }
   55%  { opacity: 1; }
