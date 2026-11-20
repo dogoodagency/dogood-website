@@ -6,6 +6,12 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 8, update 18: hero button removed; "Developed by DoGood Agency"; foundr.land strip spacing
+
+- Home hero: the "Apply for Stage 1" button is gone (the other Apply buttons further down stay).
+- Every foundr.land section (home, Exit Prep, The Reset, Advisor Center, Client tools, Advisor insights, and the Pathway lane) ends with a small "Developed by DoGood Agency".
+- Client tools and Advisor insights: the foundr.land strip now has 64px of white above and below it, so it sits on its own section instead of touching the coloured bands.
+
 ## Preview 8, update 17: Advisor Center pages share one layout
 
 - All three Advisor Center pages have the same hero height (512px on desktop, 470px on tablets, 550px on phones) and the hub sits at exactly the same place, so switching between them only changes the words.

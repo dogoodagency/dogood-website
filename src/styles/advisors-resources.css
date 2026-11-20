@@ -1015,3 +1015,7 @@ body:has(.advr-page) .footer-wave {
 .advd-page .advr-hero-inner {
   width: min(860px, calc(100% - 2 * var(--pad)));
 }
+
+/* foundr.land strip on its own white section with room above and below (Seb, 20 Nov 2026). */
+.advr-band.fl-band { padding: 64px 20px; }
+@media (max-width: 640px) { .advr-band.fl-band { padding: 44px 16px; } }

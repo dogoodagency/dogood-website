@@ -132,6 +132,7 @@ let roadOn = `M${X(6)} ${Y(6)}` + seg(6, 7) + ` C ${(X(7) + endX) / 2} ${Y(7)}, 
         {steps.map((_, i) => <span class="jr-lane-dot" style={`--i:${i}`}></span>)}
       </div>
       <a class="jr-lane-link" href={FOUNDRLAND_URL} target="_blank" rel="noopener" aria-label="Visit foundr.land (opens in a new tab)">Visit foundr.land ↗</a>
+      <p class="jr-lane-by">Developed by DoGood Agency</p>
     </div>
   </div>
 </nav>
@@ -755,6 +756,7 @@ let roadOn = `M${X(6)} ${Y(6)}` + seg(6, 7) + ` C ${(X(7) + endX) / 2} ${Y(7)}, 
   .jr.will-animate .jr-lane-track::before { transform: translateY(-50%); clip-path: inset(0 100% 0 0); }
   .jr.is-in .jr-lane-track::before { transform: translateY(-50%); clip-path: inset(0 0 0 0); transition: clip-path 9s linear; }
   .jr-lane-track::after { border-color: #ff8fb1; }
+  .jr-lane-by { grid-column: 1 / -1; margin: -6px 0 0; color: #8b7dae; font-size: 12px; font-weight: 600; }
 </style>
 
 <script>

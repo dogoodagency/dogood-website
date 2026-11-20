@@ -77,6 +77,7 @@ const days = [
           <img class="fl-logo fl-logo--sm" src="/media/foundrland/foundrland-logo-dark@1x.png" width="480" height="113" alt="foundr.land" />
         </picture>
         <p class="fl-small-line">{line}</p>
+        <p class="fl-by fl-by--sm">Developed by DoGood Agency</p>
       </div>
       <a class="fl-link" href={FOUNDRLAND_URL} target="_blank" rel="noopener" aria-label={`${linkLabel} (opens in a new tab)`}>{linkLabel} ↗</a>
     </aside>
@@ -131,6 +132,7 @@ const days = [
 
           <p class="fl-note">{kind === "advisor" ? "The advisor pathway is part of the planned product, not yet a live service." : "Product concept · in development"}</p>
           <a class="fl-btn" href={FOUNDRLAND_URL} target="_blank" rel="noopener" aria-label={`${linkLabel} (opens in a new tab)`}>{linkLabel} <span aria-hidden="true">↗</span></a>
+          <p class="fl-by">Developed by DoGood Agency</p>
         </div>
 
         <div class="fl-visual" aria-hidden="true">
@@ -615,4 +617,8 @@ const days = [
     .fl-app-pick { transform: translateX(calc(300% + 18px)); }
     .fl-flow-dot { left: 100%; }
   }
+  /* "Developed by DoGood Agency" under every foundr.land section (Seb, 20 Nov 2026). */
+  .fl-by { margin: 16px 0 0; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: #6b5a8c; }
+  .fl--home .fl-by { color: #c2b7dd; }
+  .fl-by--sm { margin-top: 6px; }
 </style>
