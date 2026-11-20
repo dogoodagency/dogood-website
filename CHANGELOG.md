@@ -6,6 +6,14 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 8, update 7: podcast cards on white with duration and "Listen now" (20 Nov 2026, 16:48)
+
+- Seb: episode cards on a white background, with the duration and a "Listen now →" link at the bottom (the
+  duration moved off the image so it shows once). The cards got their own class (`pod2-epcard`), because
+  `pod2-card` is already used by the dark "Who" cards on the same page.
+- All 18 published episodes are on the page (Apple Podcasts also lists 18). Asked Seb which episodes he finds
+  missing; two transcripts in Drive (Dawn Anderson, Douglas McCormick) have no published episode in the data.
+
 ## Preview 8, update 6: podcast episode previews like the episode page (20 Nov 2026, 16:38)
 
 - Seb (with a screenshot of an episode page player): the DoGood Insider list now shows each episode as a card with

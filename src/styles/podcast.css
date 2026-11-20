@@ -1144,7 +1144,13 @@ body:has(.pod-page) .footer-wave {
   padding: 0;
   list-style: none;
 }
-.pod2-card { min-width: 0; }
+.pod2-epcard {
+  min-width: 0;
+  padding: 18px 18px 16px;
+  border: 1px solid #c2b7dd;
+  border-radius: 22px;
+  background: #fff;
+}
 .pod2-card-link {
   display: flex;
   flex-direction: column;
@@ -1211,3 +1217,25 @@ body:has(.pod-page) .footer-wave {
   .pod2-card-media img, .pod2-card-play { transition: none; }
   .pod2-card-link:hover .pod2-card-media img { transform: none; }
 }
+
+/* 20 Nov 2026 16:46 (Seb): episode cards on white, with the duration and a "Listen now" link at the bottom. */
+.pod-page--v2 .pod2-grid .pod2-epcard { background: #fff; }
+.pod2-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 10px;
+}
+.pod2-card-time { color: #58447f; font-size: 14px; font-weight: 700; }
+.pod2-card-listen {
+  color: #2a0b4f;
+  font-size: 15px;
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: #28dbb0;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+.pod2-card-link:hover .pod2-card-listen { color: #05745b; }

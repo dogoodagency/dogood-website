@@ -93,7 +93,7 @@ import sebAvatar from "../assets/authors/seb.jpg"; // the article portrait, roun
         <ol class="pod2-list pod2-grid">
           {
             episodes.map((episode) => (
-              <li class="pod2-card">
+              <li class="pod2-epcard">
                 <a class="pod2-card-link" href={`/podcast/${episode.slug}`}>
                   <span class="pod2-card-media">
                     <img
@@ -109,10 +109,13 @@ import sebAvatar from "../assets/authors/seb.jpg"; // the article portrait, roun
                     <span class="pod2-card-play" aria-hidden="true">
                       <svg viewBox="0 0 24 24" focusable="false"><path d="M6 3.5v17l15-8.5L6 3.5Z" /></svg>
                     </span>
-                    <span class="pod2-card-dur">{episode.duration}</span>
                   </span>
                   <span class="pod2-card-title">{episode.metaTitle}</span>
                   <span class="pod2-card-sub">{episode.cardTitle}: {episode.cardSubtitle}</span>
+                  <span class="pod2-card-foot">
+                    <span class="pod2-card-time">{episode.duration}</span>
+                    <span class="pod2-card-listen">Listen now →</span>
+                  </span>
                 </a>
               </li>
             ))
