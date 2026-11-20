@@ -235,3 +235,10 @@ html.dg-mark-play header.nav .dg-pc-yellow { --dx: 64px; --dy: 0px;   animation-
     width: min(840px, calc(100% - 2 * clamp(20px, 5.56vw, 80px) - 203px));
   }
 }
+
+/* 20 Nov 2026 06:12 (Seb): nav bar colour halfway between DREAM 500 (#2A0B4F) and DREAM 600 (#1D033C, the old bar
+   colour), so slightly lighter. The mobile menu panel matches. */
+header.nav .nav-bar,
+header.nav .nav-panel {
+  background: #230745;
+}

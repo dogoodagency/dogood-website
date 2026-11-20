@@ -6,6 +6,13 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 56: nav bar slightly lighter (20 Nov 2026, 06:12)
+
+- Seb: nav bar colour between DREAM 500 (#2A0B4F) and DREAM 600 (#1D033C, the old bar colour): now #230745.
+  The mobile menu panel matches. End of `site-rules.css`.
+
+---
+
 ## Preview 6, update 55: G animation starts 1.5 s later (20 Nov 2026, 06:11)
 
 - Seb: wait another 1.5 s before the G builds itself. Delays now 2025 ms (red), 2970 ms (green), 3915 ms
