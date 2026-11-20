@@ -6,6 +6,15 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 8, update 13: foundr.land sections, each its own; living clarity wheel; Pathway pace
+
+- Home: the clarity wheel on the app phone now moves (redrawn in SVG over the phone image; the "Your next chapter" badge sits back on top).
+- The Exit Prep: smaller blue card (style guide Blue), "A quiet space between sessions.", a laptop showing the app's Day 1 question with the rating selection moving.
+- The Reset: smaller mint card (style guide Mint), "Seven small moments. A little more clarity.", the seven days lighting up one after another with a progress bar.
+- Advisor Center: smaller cream card (style guide Cream), "Better conversations begin beyond the deal.", Introduce → Reflect → Reconnect with a moving dot, and a "Shared with you" card.
+- `FoundrLand.astro` now takes `kind` (home, exit, reset, advisor, small).
+- Pathway: label reads "foundr.land is with you at every step"; the green road and the foundr.land lane move at the same speed; the pink dashed line draws on from station 7 at that pace and keeps running.
+
 ## Preview 8, update 12: home hero illustration and green through line back
 
 - Update 11 removed `#message-card`, which `ThroughLine.astro` measures to draw the green line; the script stopped, taking the line and the hero illustration with it. The script now also accepts the foundr.land card (`#message .fl-panel`).

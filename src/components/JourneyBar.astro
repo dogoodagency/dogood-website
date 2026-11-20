@@ -75,7 +75,12 @@ let roadOn = `M${X(6)} ${Y(6)}` + seg(6, 7) + ` C ${(X(7) + endX) / 2} ${Y(7)}, 
         <svg class="jr-road" viewBox="0 0 1000 120" preserveAspectRatio="none">
           <path class="jr-road-base" d={road} />
           <path class="jr-road-dash" d={road} pathLength="100" />
-          <path class="jr-road-on" d={roadOn} />
+          <defs>
+            <mask id="jr-on-mask" maskUnits="userSpaceOnUse" x="0" y="-20" width="1000" height="160">
+              <path class="jr-on-reveal" d={roadOn} pathLength="100" />
+            </mask>
+          </defs>
+          <path class="jr-road-on" d={roadOn} mask="url(#jr-on-mask)" />
         </svg>
         <span class="jr-arrow" aria-hidden="true"></span>
       </li>
@@ -111,7 +116,7 @@ let roadOn = `M${X(6)} ${Y(6)}` + seg(6, 7) + ` C ${(X(7) + endX) / 2} ${Y(7)}, 
     <div class="jr-lane">
       <p class="jr-lane-label">
         <img class="jr-lane-logo" src="/media/foundrland/foundrland-logo@1x.png" srcset="/media/foundrland/foundrland-logo@1x.png 1x, /media/foundrland/foundrland-logo@2x.png 2x" width="480" height="113" alt="foundr.land" />
-        <span>with you at every step</span>
+        <span>is with you at every step</span>
       </p>
       <div class="jr-lane-track" aria-hidden="true">
         <span class="jr-lane-flow"></span>
@@ -698,6 +703,27 @@ let roadOn = `M${X(6)} ${Y(6)}` + seg(6, 7) + ` C ${(X(7) + endX) / 2} ${Y(7)}, 
   .jr-lane-link:focus-visible { color: #fff; }
   @media (max-width: 1023px) {
     .jr-lane-link { display: inline-block; margin-top: 12px; }
+  }
+  /* ===== 20 Nov 2026, 18:19 (Seb) =====
+     The green road keeps the same pace as the foundr.land lane: both move left to right at the same speed
+     (the road ends under station 7, three quarters of the way across, so it takes 6.75 s of the lane's 9 s).
+     The pink dashed line then draws on from station 7 to the arrow at that same pace, and keeps running. */
+  .jr.is-in .jr-road-dash { transition: stroke-dashoffset 6.75s linear 0s; }
+  .jr-on-reveal {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 40;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 0;
+  }
+  .jr.will-animate .jr-road-on { opacity: 1; }
+  .jr.will-animate .jr-on-reveal { stroke-dashoffset: 100; }
+  .jr.is-in .jr-on-reveal { stroke-dashoffset: 0; transition: stroke-dashoffset 2.05s linear 6.75s; }
+  .jr.is-in .jr-road-on { opacity: 1; transition: none; animation: jr-march 0.9s linear infinite; }
+  .jr.is-in .jr-arrow { transition: opacity 0.5s ease 8.7s; }
+  @keyframes jr-march { to { stroke-dashoffset: -16; } }
+  @media (prefers-reduced-motion: reduce) {
+    .jr.is-in .jr-road-on { animation: none; }
   }
 </style>
 
