@@ -6,6 +6,16 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 7, update 2: FOUNDERland becomes FOUNDR.land (20 Nov 2026, 08:01)
+
+- Seb: no ™, and the word is written FOUNDR.land everywhere on the site. Replaced in every page, component, data
+  and Markdown file (headings, eyebrows, nav and footer labels, thank-you pages, titles and meta). Split styling
+  kept: `<strong>FOUNDR</strong>.land` where the word was `<strong>FOUNDER</strong>land`.
+- `integrations/trademark.mjs`: the name is no longer in the trademark list, so no ™ is added after the build.
+- URLs unchanged: /founderland-membership keeps its address. CSS class names (founder-word, bl-founderland) unchanged.
+
+---
+
 ## Preview 7, update 1: wording changes, first batch (20 Nov 2026, 07:50)
 
 Preview 7 (`claude/preview-7`, PR #7, do not merge) is a copy of preview 6 for wording changes only, so Seb can

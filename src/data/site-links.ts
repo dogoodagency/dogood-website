@@ -50,7 +50,7 @@ export const products: SiteLink[] = [
   },
   {
     href: "/founderland-membership",
-    label: "FOUNDERland™ Membership",
+    label: "FOUNDR.land Membership",
     detail: "A private community for founders who have sold. Opening September 2027.",
   },
 ];

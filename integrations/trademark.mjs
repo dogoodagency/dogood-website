@@ -14,7 +14,6 @@ const MARKS = [
   "ClarityValue Shift",
   "NextLife Passage",
   "IntegralContinuity",
-  "FOUNDERland",
   "Founder Diagnostic",
   "Pressure Diagnostic",
   "The Reset",

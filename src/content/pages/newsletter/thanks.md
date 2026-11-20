@@ -11,7 +11,7 @@ hideOptin: true
 
 # You're on the list.
 
-Welcome to <span class="pink-soft"><strong>FOUNDER</strong>land</span>.
+Welcome to <span class="pink-soft"><strong>FOUNDR</strong>.land</span>.
 
 Thank you. We'll send "The first 90 days after exit: 7 questions to ask before your next move" when the guide is ready. It is not written yet.
 
