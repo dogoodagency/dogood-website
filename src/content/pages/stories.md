@@ -1,5 +1,5 @@
 ---
-title: "Stories | DoGood Agency"
+title: "Founder exit coaching case studies | DoGood Agency"
 description: "Anonymised stories from founders we have worked with, plus words from leaders at organisations our team has partnered with."
 ---
 

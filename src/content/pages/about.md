@@ -1,5 +1,5 @@
 ---
-title: "About DoGood | For founders after the company"
+title: "About DoGood: exit coaching for founders | DoGood Agency"
 description: "Why DoGood exists, what the name means, and the people behind the work: Seb Wichmann and a small team of Wayfinders."
 ---
 

@@ -6,6 +6,19 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 48: keyword map for the newer pages (20 Nov 2026, 04:57)
+
+- New `docs/keyword-map.md`: one main search phrase per indexable page (old and new pages), with US volumes
+  from DataForSEO via Manifold, and four article clusters for future Insights articles.
+- Titles changed (copy unchanged): /about, /services, /stories, /wayfinders, /signature-retreat,
+  /founderland-membership, /for-advisors/insights (now names CEPAs; also the matching check in
+  `[...slug].astro`), /for-advisors/client-tools/readiness-check. /wayfinders description now says
+  "founder transition coaches". Markdown copies in `src/content/pages/` updated to match.
+- Finding for Seb: founder-side phrases have almost no measured Google volume; advisor phrases (CEPA,
+  exit planning) do. Pages that already matched their phrase were left alone.
+
+---
+
 ## Preview 6, update 47: lighter homepage images, clearer case-study links (20 Nov 2026, 04:45)
 
 From the PageSpeed Insights run on the preview (mobile 93, desktop 95; SEO 69 only because of noindex).
