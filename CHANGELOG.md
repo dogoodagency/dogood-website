@@ -6,6 +6,12 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 8, update 19: "Developed by DoGood Agency" placement
+
+- Removed from the Pathway page.
+- On the home, Exit Prep, The Reset and Advisor Center sections it now sits centred under the app mockup, in thin type (Montserrat 300), same 12px size.
+- The small strips (Client tools, Advisor insights) keep it under their line of text, also thin.
+
 ## Preview 8, update 18: hero button removed; "Developed by DoGood Agency"; foundr.land strip spacing
 
 - Home hero: the "Apply for Stage 1" button is gone (the other Apply buttons further down stay).

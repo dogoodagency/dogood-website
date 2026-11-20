@@ -132,7 +132,6 @@ const days = [
 
           <p class="fl-note">{kind === "advisor" ? "The advisor pathway is part of the planned product, not yet a live service." : "Product concept · in development"}</p>
           <a class="fl-btn" href={FOUNDRLAND_URL} target="_blank" rel="noopener" aria-label={`${linkLabel} (opens in a new tab)`}>{linkLabel} <span aria-hidden="true">↗</span></a>
-          <p class="fl-by">Developed by DoGood Agency</p>
         </div>
 
         <div class="fl-visual" aria-hidden="true">
@@ -229,6 +228,7 @@ const days = [
               </div>
             </div>
           )}
+          <p class="fl-by">Developed by DoGood Agency</p>
         </div>
       </div>
     </section>
@@ -618,7 +618,8 @@ const days = [
     .fl-flow-dot { left: 100%; }
   }
   /* "Developed by DoGood Agency" under every foundr.land section (Seb, 20 Nov 2026). */
-  .fl-by { margin: 16px 0 0; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: #6b5a8c; }
+  .fl-by { margin: 16px 0 0; font-size: 12px; font-weight: 300; letter-spacing: 0.02em; color: #6b5a8c; }
   .fl--home .fl-by { color: #c2b7dd; }
   .fl-by--sm { margin-top: 6px; }
+  .fl-visual .fl-by { justify-self: center; text-align: center; margin-top: 18px; }
 </style>
