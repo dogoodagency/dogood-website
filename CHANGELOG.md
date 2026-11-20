@@ -14,8 +14,8 @@ why, and anything the next person needs to check.
   who sell" (the Doc's rules say not to target CEPA/EPI terms, which are searches for EPI itself).
 - GTmetrix (Seb, 20 Nov, 04:51): LCP 1.1 s, TBT 188 ms, CLS 0, fully loaded 1.7 s, 1.3 MB. Two real contrast
   failures on the homepage at every width, not only mid-animation (correcting update 47): "FOUNDERland" in
-  #01a684 on white (3.09:1) and the "Why 'DoGood'?" kicker in #ea1557 on white (4.42:1, needs 4.5). Options
-  sent to Seb; not changed yet. Note: the axe step in the scratchpad a11y script takes page slugs, not URLs.
+  #01a684 on white (3.09:1) and the "Why 'DoGood'?" kicker in #ea1557 on white (4.42:1, needs 4.5). Seb's
+  decision (20 Nov, 05:21): keep both colours as they are. Do not change them in later contrast fixes. Note: the axe step in the scratchpad a11y script takes page slugs, not URLs.
 
 ---
 
