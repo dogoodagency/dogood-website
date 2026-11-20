@@ -135,7 +135,7 @@ export const supports: Inclusion[] = [
 ];
 
 export const fitSignals = [
-  "You have exited or stepped away, but the freedom feels less good than you expected.",
+  "You have sold or stepped away, but the freedom feels less good than you expected.",
   "You have more time, but are not sure what you want to do with it.",
   "The company no longer gives your days the structure it once did.",
   "You consider another project, investment, or role, but do not fully trust what is driving it.",

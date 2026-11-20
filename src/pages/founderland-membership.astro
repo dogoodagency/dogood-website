@@ -1,26 +1,27 @@
 ---
 import ProductPage from "../components/ProductPage.astro";
-// FOUNDERland Membership (Seb, 19 Nov 2026; reworked Vision B). First draft, to be looked at in more detail.
-// No numbers on the page, as asked. The illustrative money model in Seb's note stays off the site.
+// FOUNDERland Membership. Preview 7 (Seb, 20 Nov 2026): rewritten from Seb's answers. For founders who have sold
+// (not before the sale): mainly FRP Stage 2 graduates, by invitation; exited founders outside the programme also
+// considered. Cohorts of six, monthly calls with a facilitator, online community, yearly meet-up, a Wayfinder session
+// every two months. Opening September 2027. No prices on the page.
 ---
 
 <ProductPage
   title="FOUNDERland Membership: a founder community | DoGood Agency"
-  description="The house founders belong to, before and after the sale. A private community for founders who are preparing to sell, and for those who already have."
+  description="A private, invitation-only community for founders who have sold their business: small cohorts, monthly calls, a yearly meet-up and time with a Wayfinder. Opening September 2027."
   path="/founderland-membership"
   eyebrow="FOUNDERland™ Membership"
-  h1="The house founders belong to, before and after the sale."
-  sub="A private community for founders at either door."
-  tag="Before and after the sale"
-  soon="Coming soon · we’re building it right now"
+  h1="The house founders belong to, after the sale."
+  sub="A private community for founders who have sold their business."
+  tag="By invitation"
+  soon="Opening September 2027"
   sections={[
     {
       id: "fm-why",
-      heading: "Founders are lonely twice",
-      lede: "Once while they prepare to sell and can tell nobody. And again after the sale, when nobody needs them.",
+      heading: "After the sale, nobody needs you in the same way",
+      lede: "The calls stop. The decisions are smaller. And very few people around you know what this stage feels like.",
       paras: [
-        "Communities for founders who have already sold exist, and they prove how much the second loneliness is felt. Almost nothing exists for the first.",
-        "FOUNDERland is built for both. A founder can come in at either door, and the years before the sale are when membership matters most.",
+        "FOUNDERland Membership is a place to stay connected with founders who do. It follows the work you did in the Founder Reclamation Partnership and keeps it alive, in good company.",
       ],
     },
     {
@@ -28,31 +29,33 @@ import ProductPage from "../components/ProductPage.astro";
       heading: "How it works",
       boxes: [
         {
-          title: "Two doors in",
-          tone: "grass",
+          title: "What members get",
+          tone: "sky",
           items: [
-            "Before the sale: through The Exit Prep™",
-            "After the sale: through Stage 1: The Reset™",
-            "Completing either is how you join the house",
+            "A small cohort of six founders, with its own facilitator",
+            "A group call with your cohort every month",
+            "A private online community to meet and work with other members",
+            "One in-person gathering a year",
+            "A session with a Wayfinder every two months",
           ],
         },
         {
-          title: "What members share",
-          tone: "sky",
+          title: "Who it's for",
+          tone: "grass",
           items: [
-            "Small, confidential circles with founders at the same stage",
-            "Retreats together",
-            "Family sessions that spouses and partners can join",
-            "Over time: investing alongside each other, and giving together",
+            "Founders who have sold their business",
+            "Mainly founders who have completed Stage 2 of the partnership",
+            "Founders who sold without working with us are welcome to ask",
+            "By invitation only",
           ],
         },
       ],
-      note: "We are shaping FOUNDERland Membership now. Details will follow.",
+      note: "Membership opens in September 2027.",
     },
   ]}
   closing={{
     heading: "Want to hear when the doors open?",
-    text: "Start with the door that fits where you are today.",
-    cta: { href: "/pathway", label: "Choose your door" },
+    text: "Membership starts with the work. Begin with Stage 1, or tell us you'd like to hear when we open.",
+    cta: { href: "/the-reset", label: "See the 2-Stage Partnership" },
   }}
 />

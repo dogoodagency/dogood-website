@@ -1,26 +1,61 @@
 ---
 import ProductPage from "../components/ProductPage.astro";
-// Annual Signature Retreat (Seb, 19 Nov 2026). Copy from the FRP Signature Retreat box on /the-reset, word for word.
-// To be expanded later.
+// Annual Signature Retreat. Preview 7 (Seb, 20 Nov 2026): written from Seb's answers (format, group size, hosting,
+// invitation rule, first date November 2027). No prices on the page. Spouse included: Seb to double-check.
 ---
 
 <ProductPage
   title="Annual founder retreat, invitation only | DoGood Agency"
-  description="Our annual, in-person retreat with a small group of founders, built for connection, perspective, and real conversations. Invitation only."
+  description="Once a year, up to ten founders we have worked with spend 2.5 days together somewhere beautiful: a mastermind, guest speakers, fun and friendship. Invitation only."
   path="/signature-retreat"
   eyebrow="Annual Signature Retreat"
   h1="A small group of founders. Real conversations."
-  sub="Our annual, in-person retreat."
+  sub="Once a year, up to ten founders we have worked with spend 2.5 days together somewhere beautiful."
   tag="Invitation only"
-  soon="Coming soon · we’re planning the first retreat now"
+  soon="The first retreat is planned for November 2027"
   sections={[
     {
       id: "sr-what",
       heading: "What it is",
+      lede: "A hosted mastermind for founders after the sale, in a different place every year.",
       paras: [
-        "Our annual, in-person retreat with a small group of founders, built for connection, perspective, and real conversations. For clients who’ve been with us 6+ months and are in excellent standing.",
+        "Each year we choose a new location, somewhere like Thailand, Bali or Mexico. Up to ten founders come together with our team, around 15 to 20 people in all. We host and facilitate everything, so you can arrive and be present.",
+        "It is part work, part celebration. You work on your personal vision for the next chapter with founders who know exactly what this stage of life feels like, and you have a lot of fun doing it.",
       ],
-      note: "This is not a service inclusion, and it's not guaranteed.",
+    },
+    {
+      id: "sr-days",
+      heading: "How the 2.5 days unfold",
+      steps: [
+        { label: "Day 1", title: "Arrive and celebrate", text: "You arrive in the afternoon. A long lunch, then dinner together with music, getting to know each other and celebrating into the evening." },
+        { label: "Day 2", title: "Mastermind, then play", text: "A half-day workshop of four to five hours with guest speakers, where we mastermind live and work on designing your next chapter. In the afternoon: massages, jet skis and time on the water." },
+        { label: "Day 3", title: "Explore, then home", text: "Sightseeing in the morning. Everyone heads home in the afternoon." },
+      ],
+    },
+    {
+      id: "sr-details",
+      heading: "What to know",
+      boxes: [
+        {
+          title: "Who it's for",
+          tone: "grass",
+          items: [
+            "Founders who have been with us for six months or longer",
+            "By invitation only",
+            "Your partner is welcome to join you",
+          ],
+        },
+        {
+          title: "What you leave with",
+          tone: "sky",
+          items: [
+            "A clear personal vision for your next chapter",
+            "Friendships with founders who understand this stage",
+            "New ideas and, often, professional collaborations",
+          ],
+        },
+      ],
+      note: "We host the retreat: your stay, meals, the programme and the activities are covered. Flights are not included. The retreat is not part of any engagement, and an invitation is not guaranteed.",
     },
   ]}
   closing={{

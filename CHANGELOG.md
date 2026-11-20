@@ -6,6 +6,28 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 7, update 1: wording changes, first batch (20 Nov 2026, 07:50)
+
+Preview 7 (`claude/preview-7`, PR #7, do not merge) is a copy of preview 6 for wording changes only, so Seb can
+compare pages side by side. Technical fixes made on preview 6 are carried over to this branch. Preview 6 stays
+as it was.
+
+- Seb's answers (questions doc, 20 Nov): founder pages say "sold" / "after the sale", advisor pages keep "exit";
+  no "coaching" for DoGood's own work (use Wayfinder, wayfinding, partnership, engagement); 5 Wayfinders; the
+  Clarity Wheel name is retired; the Readiness Check becomes foundr.land's 7-day journey (first version 1 Feb 2027).
+- Changed: homepage hero, sub-line, first section and Founder's Message wording; Exit-Prep (H1 with "Should you
+  sell your business?", what the six weeks are for, outcomes, a second-thoughts FAQ); The Reset (H1, lede, "I sold
+  my business. Now what?", Stage 1 and Stage 2 descriptions in Seb's words); The Build (H1, lede, Stage 2 focus on
+  relationships, health and activities); For Advisors (personal readiness leg, cold feet, the two advisor doors,
+  a "How do I raise the personal side" FAQ); Signature Retreat and FOUNDERland Membership written out from Seb's
+  answers (first retreat Nov 2027; membership opens Sep 2027, for founders who have sold); IntegralContinuity
+  (Light once a month, Private twice a month with WhatsApp); Services lists only what is sold (WHOOP and audio
+  stay in the footer); nav dropdown lines for Retreat and Membership.
+- Launch-day decision (Seb, 20 Nov): robots.txt allows all crawlers, search and AI training alike.
+- Open for Seb: page titles still use "coaching" (search phrase); the homepage stat "Coaching Hours".
+
+---
+
 ## Preview 6, update 59: Advisor Center moved left of Stories (20 Nov 2026, 06:26)
 
 - Seb: nav order is now Pathway, Services, Advisor Center, Stories, Wayfinders (`links` in `Header.astro`; the

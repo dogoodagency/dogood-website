@@ -46,12 +46,12 @@ export const products: SiteLink[] = [
   {
     href: "/signature-retreat",
     label: "Annual Signature Retreat",
-    detail: "Invitation only. Our annual, in-person retreat with a small group of founders.",
+    detail: "Invitation only. 2.5 days, once a year, with up to ten founders.",
   },
   {
     href: "/founderland-membership",
     label: "FOUNDERland™ Membership",
-    detail: "The house founders belong to, before and after the sale.",
+    detail: "A private community for founders who have sold. Opening September 2027.",
   },
 ];
 
