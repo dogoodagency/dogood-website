@@ -6,6 +6,18 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 58: dropdown menus fit the narrower nav (20 Nov 2026, 06:19)
+
+- Seb: after the nav got narrower, the dropdowns displayed differently; rewrite lines to two at most and fix the
+  Services image. The Services menu had run away: `fitCard` in `Header.astro` sized the card from the link
+  column's height, so taller links made a wider card, which made the links taller again. The card width is now
+  capped at 320px (image uses object-fit: cover).
+- Shorter dropdown lines in `src/data/site-links.ts` (`detail`, only used by the nav), each now two lines or fewer
+  at 1440px and 1100px wide: Exit Prep, The Reset, The Build, Residency, IntegralContinuity, Free tools, Advisor
+  insights. Seb approved rewriting them slightly.
+
+---
+
 ## Preview 6, update 57: /foundrland deleted; nav logo links to the foundr.land website (20 Nov 2026, 06:16)
 
 - Seb: delete /foundrland and connect the logo to the foundr.land site. Deleted `src/pages/foundrland.astro` and

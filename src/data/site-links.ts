@@ -3,6 +3,8 @@
  * Header.astro (top nav) and Footer.astro (the master footer) both read from here, and every page renders
  * both through Base.astro. Change a name or link here once and it changes in the nav and the footer on every
  * page. `navLabel` is the longer name shown in the nav menus; `label` is the footer name.
+ * `detail` is the line under each name in the nav dropdowns: keep it to two lines (about 80 characters) since the
+ * nav got narrower (Seb, 20 Nov 2026).
  */
 import { urls } from "./homepage";
 
@@ -13,19 +15,19 @@ export const offers: SiteLink[] = [
   {
     href: "/exit-prep",
     label: "The Exit Prep™",
-    detail: "For founders who haven’t sold yet. Six private weekly sessions to prepare yourself, not just the company.",
+    detail: "For founders who haven’t sold yet. Six weekly sessions to prepare yourself.",
   },
   {
     href: "/the-reset",
     label: "Stage 1: The Reset™",
     navLabel: "Stage 1: The Reset™ (30 Days)",
-    detail: "For founders who have sold. 30 private days to see what is surfacing. Stage 2: The Build™ follows by invitation.",
+    detail: "For founders who have sold. 30 private days to see what is surfacing.",
   },
   {
     href: "/the-build",
     label: "Stage 2: The Build™",
     navLabel: "Stage 2: The Build™ (12 Weeks)",
-    detail: "By invitation after Stage 1. Twelve weeks to build the life you chose, so it holds.",
+    detail: "By invitation after Stage 1. Twelve weeks to build the life you chose.",
   },
 ];
 
@@ -34,12 +36,12 @@ export const products: SiteLink[] = [
   {
     href: "/residency",
     label: "1.5-Day In-Person Residency",
-    detail: "Play, adventure and meaning, in person with your Wayfinder. On its own, or as part of Stage 1 or Stage 2.",
+    detail: "Play, adventure and meaning, in person. On its own or within Stage 1 or 2.",
   },
   {
     href: "/integral-continuity",
     label: "IntegralContinuity™",
-    detail: "Ongoing sessions with your Wayfinder after both stages, once or twice a month. Light or Private.",
+    detail: "Ongoing sessions after both stages, once or twice a month.",
   },
   {
     href: "/signature-retreat",
@@ -84,12 +86,12 @@ export const advisorLinks = {
     {
       href: "/for-advisors/client-tools",
       label: "Free tools for your clients",
-      detail: "A founder readiness check, a guide to the warning signs, and a planner. Free to use before and after the sale.",
+      detail: "A readiness check, a warning-signs guide and a planner. Free to use.",
     },
     {
       href: "/for-advisors/insights",
       label: "Advisor insights",
-      detail: "What founders really go through when they sell, in short, anonymized notes from our talks with advisors.",
+      detail: "What founders go through when they sell: short, anonymized notes from advisors.",
     },
   ] as SiteLink[],
 };
