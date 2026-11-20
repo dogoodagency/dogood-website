@@ -16,7 +16,7 @@ From identity void to decisive leadership — how V reclaimed life after success
 
 V (anonymous), USD 9M+ founder
 
-<a class="btn-teal" href="/casestudies/v">Read the short case study</a>
+<a class="btn-teal" href="/casestudies/v" aria-label="Read the short case study: how V reclaimed life after success">Read the short case study</a>
 
 We protect our founders’ identities
 

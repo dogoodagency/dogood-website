@@ -6,6 +6,22 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 47: lighter homepage images, clearer case-study links (20 Nov 2026, 04:45)
+
+From the PageSpeed Insights run on the preview (mobile 93, desktop 95; SEO 69 only because of noindex).
+- **Images:** "first step" sketch: removed the AVIF source (the AVIF files were 2-3x larger than the WebP) and
+  added `spot1-v3@640w.webp`. Exit machine sketches: added `@480w` and `@640w` WebP sizes. A phone now loads the
+  640px versions instead of the 780px/1048px ones. Logo rails (`LogoRails.astro`, homepage and /stories): now load
+  WebP copies sized for display (`public/media/stories/logos/*.webp`, 72px tall words / 120px icons; 409 KB of
+  PNG down to 191 KB). The PNGs stay as the originals.
+- **Case-study buttons:** every "Read the short case study" link now has an `aria-label` naming the case
+  ("...: how J created a clear next life chapter" / "...: how V reclaimed life after success"), so screen readers
+  can tell the J and V links apart. Visible text unchanged. Covers pages, Markdown copies and `BookingCaseCard.astro`.
+- Not changed: colour contrast flags (hero "'re planning to exit", FOUNDERland line, first card, "Why 'DoGood'?"):
+  options sent to Seb. CookieYes "URL changed" and Tawk.to 403 errors only happen on the preview domain.
+
+---
+
 ## Preview 6, update 46: link preview images for the other eight booking pages (20 Nov 2026, 04:04)
 
 - New 1200x630 share images in `public/media/og/` from Seb's screenshots: `clarity-og.jpg`, `exit-og.jpg`,

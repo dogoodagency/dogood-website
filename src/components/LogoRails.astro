@@ -39,14 +39,14 @@ if (rows === 2) {
               logo.kind === "icon" ? (
                 <li class="lr-pill">
                   <span class="lr-pill-vis">
-                    <img src={`/media/stories/logos/${logo.file}`} width="128" height="128" alt="" loading="lazy" decoding="async" />
+                    <img src={`/media/stories/logos/${logo.file.replace(/\.png$/, ".webp")}`} width="128" height="128" alt="" loading="lazy" decoding="async" />
                   </span>
                   <p class="lr-pill-name">{logo.name}</p>
                 </li>
               ) : (
                 <li class="lr-pill lr-pill-word">
                   <span class="lr-pill-vis lr-pill-vis-word">
-                    <img src={`/media/stories/logos/${logo.file}`} width={logo.width} height="96" alt={logo.name} loading="lazy" decoding="async" />
+                    <img src={`/media/stories/logos/${logo.file.replace(/\.png$/, ".webp")}`} width={logo.width} height="96" alt={logo.name} loading="lazy" decoding="async" />
                   </span>
                 </li>
               ),

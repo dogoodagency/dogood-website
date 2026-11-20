@@ -24,7 +24,7 @@ The reviews and logos below are from leaders and organisations our team has work
 
 J (anonymous), USD 2M founder
 
-<a class="btn-teal" href="/casestudies/j">Read the short case study</a>
+<a class="btn-teal" href="/casestudies/j" aria-label="Read the short case study: how J created a clear next life chapter">Read the short case study</a>
 
 ### V
 
@@ -32,7 +32,7 @@ J (anonymous), USD 2M founder
 
 V (anonymous), USD 9M+ founder
 
-<a class="btn-teal" href="/casestudies/v">Read the short case study</a>
+<a class="btn-teal" href="/casestudies/v" aria-label="Read the short case study: how V reclaimed life after success">Read the short case study</a>
 
 We protect our founders’ identities. Most founders we work with lead visible companies and public lives –– we don't ask them to tell the private parts of their story publicly. Anonymity lets founders be candid about their intimate work — without risking reputations, partnerships, or market fallout.
 
