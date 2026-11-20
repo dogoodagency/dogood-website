@@ -6,6 +6,13 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 8, update 5: Pathway sub-line wraps (20 Nov 2026, 16:31)
+
+- The longer Pathway hero sub-line (SEO pass) ran off the right edge because of an old one-line rule
+  (`white-space: nowrap` in `doors.css`). It now wraps at 1080px: two lines on desktop, inside the frame on phones.
+- Seb approved the rest of preview 8 update 4. Podcast image format: kept at 16:9 for now (YouTube's format; the
+  thumbnails have text burned in that a 4:3 crop would cut). Waiting for Seb's answer.
+
 ## Preview 8, update 4: language pass from the call log (20 Nov 2026, 16:20)
 
 All 35 proposals in the doc "Website language pass: founder and advisor words"
