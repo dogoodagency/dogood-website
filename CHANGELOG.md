@@ -6,6 +6,28 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 8, update 23: mobile pass, round 3 (Seb, 20 Nov 2026 23:29 and 23:43)
+
+Phones under 600px unless marked "all sizes".
+- Fix: the mobile rules now carry enough weight to beat the page styles (some earlier footer and page changes had not shown).
+- Footer wave (all sizes): it now lies over the bottom of the last band, so no white line can show above the footer on any page. "Let's Connect" 20% bigger; more room between the link groups and "Not ready to apply?".
+- Hero text left aligned on every page; hero sub-lines at body weight.
+- Button captions: 12px, 6px under the button, on every page.
+- Sound bites everywhere: quote starts on the quote mark's line, name and role on one line, shorter cards, three per page.
+- Testimonial walls: five reviews with portraits, 6 lines each (The Reset, The Build, Stories and others).
+- Phone menu: Pathway, Services and Advisor Center now open their own page from the menu too.
+- Exit Prep: hero sub-line and outcomes at body weight; WHOOP tiles centred, "Designed by DoGood. Not WHOOP's display." (all sizes); audio illustration note removed (all sizes); audio button full width; advisors link removed; FAQ title centred and larger; "More questions" removed; "Not sure yet?" left aligned; foundr.land "Product concept · in development" removed (all sizes); laptop narrower with a shorter screen; foundr.land cards tighter, even padding.
+- The Reset / The Build: left aligned except How it works and the delivery-quality line; less space above "The FRP is a 2-stage process"; stage card left aligned; "(30 days)" / "(12 weeks)" on one line; houses keep arrows and labels around them (labels 12px), no boxes; case studies centred with a larger pin; Clarity-First seal and button centred; "Private work. Real consequences. Real change." removed under the guarantee (all sizes); step titles inside their frames.
+- WHOOP section: animation now starts on phones (it waited for 25% of a very tall block); panels' padding fixed.
+- Product pages (all sizes): "Part of the FRP" (WHOOP), "Part of The Exit Prep™ and Stage 2" (audio), "On its own or via Stage 1 and 2" (Residency), "For founders who have completed Stage 1 and Stage 2" (IntegralContinuity). Audio: numbers removed from the three layers, nested frames' padding evened out.
+- Clarity-First terms: shorter hero, seal and case study centred.
+- Advisor Center: left aligned; "Sound bites" heading (all sizes); referral numbers sit in each card's top-left corner; "If you have a client in mind" (all sizes); "Exit advisor: book a call" / "Wealth advisor: book a call" (all sizes) on one line, exit button visible on the dark card.
+- Free tools: "No sign-up for you." on its own line (all sizes); hub spacing; "More tools…" in a white frame; foundr.land strip with a large faint wheel behind the text (also Advisor insights).
+- Advisor insights: "Read the chapters in the newsletter" removed (all sizes); source line shortened (all sizes).
+- Stories: case chips smaller, intro at body weight, pins 208px centred; five reviews with portraits; "What's next" text normal weight, caption 12px on one line. Logo rails 30% smaller (also home).
+- Home: machine moved up and to the left edge; green line twice as thick again; walking-man sketch and flying machine 20% bigger; less space above "Leaders who've been through it"; foundr.land note removed; track record as cards like The Reset; hero copy with fewer line breaks; hero drawing 30% bigger, door kept in place.
+- Booking pages (all sizes): "(with Seb)" removed from Exit Advisor Sync, Wealth Advisor Sync and Pre-FRP Call; "– 45 min" removed from Internal Sync. Booking-page wave between the two earlier heights.
+
 ## Preview 8, update 22: mobile pass across the site (Seb, 20 Nov 2026 22:53)
 
 Site-wide (phones under 600px unless marked "all sizes"):

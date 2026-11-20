@@ -11,6 +11,17 @@ import { Image } from "astro:assets";
 import caseJ from "../assets/cases/case-study-j-founder-life-after-exit.png";
 import caseV from "../assets/cases/case-study-v-founder-life-after-exit.png";
 const portraits = { j: caseJ, v: caseV };
+import type { ImageMetadata } from "astro";
+import { reviews } from "../data/homepage";
+import TestimonialWall from "../components/TestimonialWall.astro";
+// Phones (Seb, 20 Nov 2026 23:29): five reviews with portraits on the left, as on the homepage, each cut to 6 lines.
+const reviewFaces = import.meta.glob<ImageMetadata>("../assets/reviews/*", { eager: true, import: "default" });
+const faceFor = (file: string) => Object.entries(reviewFaces).find(([k]) => k.endsWith(`/${file}`))?.[1];
+const phonePick = ["TAMI L", "ZEINA G", "GAJAN R", "GINA P", "BROOK H"];
+const phoneWall = phonePick
+  .map((n) => reviews.find((r) => r.name === n))
+  .filter((r): r is (typeof reviews)[number] => !!r)
+  .map((r) => ({ quote: r.quote, name: r.name, role: r.role, image: faceFor(r.file) }));
 
 const white = "#ffffff";
 const tint = "#F5F2FF";
@@ -156,7 +167,10 @@ const cols2 = [0, 1].map((i) => stories.filter((_, idx) => idx % 2 === i));
           </div>
         </div>
 
-        <!-- Plain list: phones, reduced motion, and the no-script fallback -->
+        <div class="st-phone-wall">
+          <TestimonialWall items={phoneWall} label="Testimonials from leaders our team has worked with" />
+        </div>
+        <!-- Plain list: reduced motion, and the no-script fallback -->
         <div class="st-list">
           {
             stories.map((s) => (

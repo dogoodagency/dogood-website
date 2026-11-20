@@ -27,7 +27,14 @@ interface Props {
   phoneItems?: WallItem[];
 }
 
-const { items, tone = "light", label, short = false, phoneItems } = Astro.props;
+const { items, tone = "light", label, short = false, phoneItems: phoneGiven } = Astro.props;
+// 20 Nov 2026 (Seb): on phones a testimonial wall shows five reviews (cut to 6 lines), the ones closest to life
+// after the exit when they are in the list, then the first ones. Sound bites (short) are cut to three in CSS.
+const PHONE_PICK = ["TAMI L", "ZEINA G", "GAJAN R", "GINA P", "BROOK H"];
+const phoneItems: WallItem[] | undefined = phoneGiven ?? (short || items.length <= 5 ? undefined : [
+  ...PHONE_PICK.map((n) => items.find((i) => i.name.toUpperCase() === n)).filter((i): i is WallItem => !!i),
+  ...items.filter((i) => !PHONE_PICK.includes(i.name.toUpperCase())),
+].slice(0, 5));
 const cols3 = [0, 1, 2].map((i) => items.filter((_, idx) => idx % 3 === i));
 const cols2 = [0, 1].map((i) => items.filter((_, idx) => idx % 2 === i));
 ---

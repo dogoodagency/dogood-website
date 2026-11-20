@@ -58,7 +58,6 @@ const modes = [
       <svg viewBox="0 0 600 50" preserveAspectRatio="none" class="au-svg"><polyline class="au-w au-w--b" points={beat()} /></svg>
     </div>
   </div>
-  <p class="au-sample">Illustration. Frequencies slowed down so the shape is visible.</p>
 
   <ul class="au-modes">
     {modes.map((m, i) => (
@@ -514,6 +513,17 @@ const modes = [
   .au--compact .au-more a { color: #2a0b4f; }
   .au--compact .au-modes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   @media (max-width: 600px) { .au--compact .au-modes { grid-template-columns: minmax(0, 1fr); } }
+  /* 20 Nov 2026 23:29 (Seb, phones): the button is as wide as the text frames above it; less space under it. */
+  @media (max-width: 599px) {
+    /* three nested frames on phones: thinner padding at each level, the same on both sides */
+    .au { padding: 24px 14px; }
+    .au-sci { padding: 18px 12px; }
+    .au-sci-col { padding: 18px 14px 20px; }
+    .au-layers li { padding: 14px 16px; }
+    .au-layers li::before { content: none; display: none; }
+    .au--compact .au-more { margin: 22px 0 0; padding-bottom: 0; }
+    .au--compact .au-more a.btn-teal { display: flex; width: 100%; box-sizing: border-box; justify-content: center; }
+  }
 </style>
 
 <script>

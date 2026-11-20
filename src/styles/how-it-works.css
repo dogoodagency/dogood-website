@@ -2129,3 +2129,85 @@ html {
   /* left-hand labels grow to the left, so they don't run into the house */
   :is(.hw-page--s1, .hw-page--s2) .hw-stage-panel .hw-label--left { margin-left: calc(var(--lw) * -0.15); }
 }
+
+/* ===== 20 Nov 2026 23:29 (Seb): The Reset and The Build on phones ===== */
+@media (max-width: 599px) {
+  /* Everything left aligned, except the "How it works" flow and steps and the delivery-quality line. */
+  html body .hw-page :is(p, h1, h2, h3, h4, li, .hw-house-wrap, .hw-center, .hw-sub-center) { text-align: left; }
+  html body .hw-page :is(.hw-flow, .hw-expedite, #anchor-1 *, .hw-steps-cta, .hw-steps-cta *) { text-align: center; }
+  html body .hw-page .hw-path-note a { display: inline; }
+
+  /* Less white space above "The FRP is a 2-stage process". */
+  html body .hw-page .hw-path .hw-well { padding-top: 28px; }
+
+  /* Stage card ("Stage 1 · You are here"): left aligned. */
+  html body .ss .ss-panel { text-align: left; padding: 26px 22px 28px; }
+  html body .ss .ss-panel :is(p, h3) { text-align: left; justify-content: flex-start; }
+  html body .ss .ss-panel .ss-kicker { justify-content: flex-start; }
+
+  /* "(12 weeks)" and "(30 days)" stay on the title's line, at the same size. */
+  html body .hw-page .hw-stage-head .hw-stage-title { white-space: nowrap; font-size: 30px; }
+  html body .hw-page .hw-stage-head .hw-days { font-size: 17px; }
+  html body .hw-page .hw-textlink { font-size: 15px; white-space: nowrap; }
+
+  /* Houses: arrows and labels around the house as on desktop, labels 2px smaller; no boxes. */
+  html body .hw-page .hw-house { width: 44%; margin: 18px auto 52px; }
+  html body .hw-page .hw-house-box { display: block; aspect-ratio: var(--ar); }
+  html body .hw-page .hw-house-img { margin: 0; }
+  html body .hw-page .hw-arrow { display: block; }
+  html body .hw-page .hw-label {
+    position: absolute;
+    display: block;
+    left: var(--x);
+    top: var(--y);
+    width: max(calc(var(--lw) * 2.5), 78px);
+    margin-left: calc(var(--lw) * 0.3);
+    padding: 0;
+    background: none;
+    border-radius: 0;
+    font-size: 12px;
+    line-height: 1.15;
+    text-align: center;
+  }
+  html body .hw-page .hw-label--left { margin-left: calc(var(--lw) - max(calc(var(--lw) * 2.5), 78px) - var(--lw) * 0.3); }
+  html body .hw-page .hw-label { hyphens: none; overflow-wrap: normal; word-break: normal; }
+  html body .hw-page .hw-label::before { content: none; display: none; }
+  html body .hw-page .hw-house-wrap .hw-eyebrow,
+  html body .hw-page .hw-house-wrap .hw-house-title,
+  html body .hw-page .hw-house-wrap .hw-badge { text-align: center; }
+  html body .hw-page .hw-house-wrap { display: flex; flex-direction: column; align-items: center; }
+
+  /* Case studies: centred, portrait like J on the homepage (208px), button centred. */
+  html body .hw-case.hw-case-feature { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; padding: 28px 22px; gap: 18px; }
+  html body .hw-case.hw-case-feature .hw-case-img { width: 208px; }
+  html body .hw-case.hw-case-feature .hw-case-body { align-items: center; text-align: center; }
+  html body .hw-case.hw-case-feature .hw-case-body > * { text-align: center; }
+  html body .hw-case.hw-case-feature h3 { font-size: 20px; }
+  html body .hw-page .hw-case-who { font-size: 16px; }
+
+  /* Clarity-First Guarantee card: seal and button centred. */
+  html body .hw-guarantee { padding: 28px 22px 30px; }
+  html body .hw-guarantee .hw-seal { position: static; display: block; width: 130px; margin: 0 auto 14px; align-self: center; }
+  html body .hw-guarantee .btn-teal { align-self: center; }
+
+  /* How it works: each step's title sits inside its frame. */
+  html body .hw-page .hw-step h3 {
+    width: min(100%, 300px);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 16px 18px 4px;
+    border: 1px solid var(--hw-line);
+    border-bottom: 0;
+    border-radius: 16px 16px 0 0;
+    background: #fff;
+    font-size: 18px;
+  }
+  html body .hw-page .hw-step p:not(.hw-step-n) {
+    width: min(100%, 300px);
+    box-sizing: border-box;
+    padding-top: 0;
+    border-top: 0;
+    border-radius: 0 0 16px 16px;
+  }
+  html body .hw-page .hw-steps-cta .hw-btn-sub { margin-top: 6px !important; font-size: 12px; }
+}

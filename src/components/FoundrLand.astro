@@ -130,7 +130,7 @@ const days = [
             </>
           )}
 
-          <p class="fl-note">{kind === "advisor" ? "The advisor pathway is part of the planned product, not yet a live service." : "Product concept · in development"}</p>
+          {kind === "advisor" && <p class="fl-note">The advisor pathway is part of the planned product, not yet a live service.</p>}
           {FOUNDRLAND_URL && <a class="fl-btn" href={FOUNDRLAND_URL} target="_blank" rel="noopener" aria-label={`${linkLabel} (opens in a new tab)`}>{linkLabel} <span aria-hidden="true">↗</span></a>}
         </div>
 
@@ -622,4 +622,32 @@ const days = [
   .fl--home .fl-by { color: #c2b7dd; }
   .fl-by--sm { margin-top: 6px; }
   .fl-visual .fl-by { justify-self: center; text-align: center; margin-top: 18px; }
+  /* 20 Nov 2026 23:29 (Seb, phones): the section lines up with the page padding; one even, slightly smaller
+     padding inside the card; the laptop is narrower than the card and its screen less tall. */
+  @media (max-width: 599px) {
+    .fl:not(.fl--home):not(.fl--small) { padding: 40px clamp(20px, 5.56vw, 80px); }
+    .fl-panel,
+    .fl--home .fl-panel { padding: 24px 20px; gap: 24px; }
+    .fl-laptop { width: 84%; margin: 0 auto; }
+    .fl-laptop-screen { padding: 8px 8px 10px; border-radius: 14px 14px 4px 4px; }
+    .fl-laptop-base { height: 10px; margin: 0 -16px; }
+    .fl-app { padding: 10px 12px 10px; }
+    .fl-app-top { margin-bottom: 6px; }
+    .fl-app-mark { font-size: 13px; }
+    .fl-app-q { margin-bottom: 8px; font-size: 16px; }
+    .fl-app-rate { padding: 8px; }
+    .fl-app-rq { margin-bottom: 6px; font-size: 11px; }
+    .fl-app-foot { margin-top: 8px; }
+  }
+  /* Small strip (Client tools, Advisor insights) on phones: the clarity wheel becomes a large, faint DREAM
+     pattern behind the text (about three quarters of the card), and the text starts at the card's padding. */
+  @media (max-width: 599px) {
+    .fl--small { position: relative; display: block; overflow: hidden; padding: 22px 20px; }
+    .fl-small-copy { position: relative; z-index: 1; }
+    .fl--small .fl-mini-wheel { position: absolute; z-index: 0; right: -18%; top: 50%; width: 78%; transform: translateY(-50%); opacity: 0.16; pointer-events: none; }
+    .fl--small .fl-mini-wheel svg { width: 100%; height: auto; }
+    .fl--small .fl-ring { stroke: #58447f; stroke-width: 1.2; }
+    .fl--small .fl-poly { fill: rgba(88, 68, 127, 0.35); stroke: #58447f; stroke-width: 2; animation: none; }
+    .fl--small .fl-hub { fill: #58447f; }
+  }
 </style>

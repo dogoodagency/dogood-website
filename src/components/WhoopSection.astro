@@ -78,7 +78,7 @@ const days = ["M", "T", "W", "T", "F", "S", "S"];
       <p class="wh-note">Load on the body across the day</p>
     </figure>
   </div>
-  <p class="wh-sample">Sample data only. Designed by DoGood. Not WHOOP’s display.</p>
+  <p class="wh-sample">Designed by DoGood. Not WHOOP’s display.</p>
 
   {
     variant === "full" && (
@@ -354,6 +354,21 @@ const days = ["M", "T", "W", "T", "F", "S", "S"];
     .wh-bar { transition: none; transform: none; }
     .wh.is-in .wh-ring { animation: none; }
   }
+  /* 20 Nov 2026 23:29 (Seb, phones): every tile centred: label, chart, figure and note on one axis. */
+  @media (max-width: 599px) {
+    .wh-head { text-align: left; }
+    .wh-card { align-items: center; text-align: center; gap: 10px; padding: 20px 18px; }
+    .wh-card figcaption { width: 100%; text-align: center; }
+    .wh-ring { margin: 4px auto 0; }
+    .wh-gauge { display: block; width: 150px; margin: 4px auto 0; }
+    .wh-line { width: 100%; }
+    .wh-bars { width: 100%; }
+    .wh-note { margin: 0; text-align: center; }
+    .wh-sample { text-align: center; }
+    .wh-panel { padding: 22px 20px; }
+    .wh-panel ul { padding-left: 0; list-style: none; }
+    .wh-panel li { padding-left: 0; }
+  }
 </style>
 
 <script>
@@ -363,7 +378,7 @@ const days = ["M", "T", "W", "T", "F", "S", "S"];
       if (!e?.isIntersecting) return;
       el.classList.add("is-in");
       io.disconnect();
-    }, { threshold: 0.25 });
+    }, { threshold: 0, rootMargin: "0px 0px -15% 0px" }); // tall on phones: never 25% visible at once
     io.observe(el);
   });
 </script>

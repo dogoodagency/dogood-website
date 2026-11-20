@@ -175,6 +175,13 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
               {link.label}
             </button>
             <div id={menu.phoneId} class="nav-advisor-links" hidden>
+              {/* 20 Nov 2026 (Seb): on phones the section's own page is reachable too, like on desktop. */}
+              {!menu.groups.some((g) => g.items.some((i) => i.href === link.href)) && (
+                <a class="nav-sub nav-sub--overview" href={link.href}>
+                  <span class="nav-sub-title">{link.label === "Services" ? "All services" : `${link.label} overview`}</span>
+                  <span class="nav-sub-note">{link.label === "Pathway" ? "The whole journey, step by step" : link.label === "Services" ? "Everything we offer, on one page" : "The overview page"}</span>
+                </a>
+              )}
               {menu.groups.map((group) => (
                 <>
                   <p class="nav-mega-group">{group.label}</p>
