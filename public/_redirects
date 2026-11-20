@@ -1,0 +1,65 @@
+# DoGood: redirects and 410s for the Wix -> Astro move (Netlify _redirects)
+# Netlify reads this file before the [[redirects]] in netlify.toml.
+# Rules run top to bottom and the first match wins, so specific rules come before wildcards.
+# "!" forces a rule even if a file exists at that path.
+# Test on a deploy preview, e.g.:  curl -I https://deploy-preview-6--dogoodagency.netlify.app/post/sop-development
+
+# Sitemap: Google still requests the old Wix sitemap address
+# 19 Nov 2026: /products renamed /services (Seb).
+/products  /services  301
+/how-it-works  /pathway  301
+/how-it-works.html  /pathway  301
+
+/sitemap.xml                                    /sitemap-index.xml                     301
+
+# Same content, new address (301 = moved permanently)
+/blog                                           /insights                              301
+/founders                                       /the-reset                             301!
+/team/seb                                       /wayfinders/seb                        301
+/casestudies                                    /stories                               301
+/team/sebastian                                 /wayfinders/seb                        301
+/podcast/no-compromise,-just-care               /podcast/no-compromise-just-care       301
+/podcast/no-compromise%2C-just-care             /podcast/no-compromise-just-care       301
+/podcast/building-tomorrow’s-culture            /podcast/building-tomorrows-culture    301
+/podcast/building-tomorrow%E2%80%99s-culture    /podcast/building-tomorrows-culture    301
+
+# Booking pages renamed (Seb, 18 Nov 2026): no dashes in the new slugs
+/pre-frp                                        /prefrp                                301
+/claritysprints                                 /clarity                               301
+/claritysprints-thankyou                        /clarity-thankyou                      301
+/orientation-call                               /orientation                           301
+/orientation-call-thankyou                      /orientation-thankyou                  301
+/internal-60                                    /internal60                            301
+/internal-60-thankyou                           /internal60-thankyou                   301
+
+# Removed for good (410 = gone): old SME content
+/post/*                                         /404.html                              410!
+/blog/*                                         /404.html                              410!
+/team/*                                         /404.html                              410!
+/case/*                                         /404.html                              410!
+/case-studies/*                                 /404.html                              410!
+/strategic-hiring-and-employee-onboarding       /404.html                              410!
+/culture-build-employee-engagement-consulting   /404.html                              410!
+/sop-development                                /404.html                              410!
+/skill-boost-employee-training-and-development  /404.html                              410!
+/culture-teams                                  /404.html                              410!
+/culture-teams/*                                /404.html                              410!
+/clients                                        /404.html                              410!
+/pricing-plans                                  /404.html                              410!
+/benchmark                                      /404.html                              410!
+/chat                                           /404.html                              410!
+/podcast-chat                                   /404.html                              410!
+/podcast-episode                                /404.html                              410!
+/session                                        /404.html                              410!
+/b1                                             /404.html                              410!
+/cleansudaji                                    /404.html                              410!
+/copy-of-booking-pages                          /404.html                              410!
+/copy-of-archive                                /404.html                              410!
+/copy-of-dogooders-a                            /404.html                              410!
+/copy-of-bookings-forms                         /404.html                              410!
+/copy-of-bookings-forms-1                       /404.html                              410!
+
+# 20 Nov 2026 (Seb): the /foundrland page is deleted; foundr.land has its own website.
+# Temporary (302) to the Vercel preview for now. LAUNCH DAY: change both to "https://foundr.land 301".
+/foundrland       https://foundr-land-git-preview-homepage-v1-do-good-agency.vercel.app/  302
+/foundrland.html  https://foundr-land-git-preview-homepage-v1-do-good-agency.vercel.app/  302

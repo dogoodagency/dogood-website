@@ -1,0 +1,280 @@
+/* Site-wide rules (Seb, 19 Nov 2026). Loaded last from Base.astro; !important only where a rule must win
+   over every page stylesheet.
+   1. No shadows anywhere: frames use a thin border instead.
+   2. Cards never move on hover: they change colour instead.
+   3. Text frames have one thin border all round (no thick top bars). */
+
+*,
+*::before,
+*::after {
+  box-shadow: none !important;
+}
+
+/* Cards that used to lift on hover stay still. */
+a[class*="card"]:hover,
+a[class*="card"]:focus-visible,
+.bl-card:hover,
+.bli-cat:hover,
+.bli-cat:focus-visible,
+.pp-card:hover,
+.pp-card:focus-visible {
+  transform: none !important;
+}
+
+/* FAQ rows on every page: a clear background change on hover. */
+details > summary {
+  transition: background-color 0.2s ease;
+}
+
+details > summary:hover {
+  background-color: #ede8fb;
+}
+
+/* Hero eyebrows on every page follow the Advisor Center style ("Advisor Center · Refer a founder"):
+   18px, weight 700, uppercase, 0.08em tracking, GRASS 500. */
+.hw-hero .hw-eyebrow,
+.ep-hero .ep-eyebrow,
+.dr-hero .dr-eyebrow,
+.advr-hero .advr-eyebrow,
+.nl-eyebrow,
+.bli-hero .bl-box-label--light,
+.bl-box-label.bl-box-label--light {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase;
+}
+
+/* FAQ page and homepage FAQ buttons: the same hover tint as the other FAQ rows. */
+.faq-trigger {
+  border-radius: 12px;
+  transition: background-color 0.2s ease;
+}
+
+.faq-trigger:hover {
+  background-color: transparent; /* no hover tint on /faqs cards (Seb, 19 Nov 2026 18:52) */
+}
+
+/* 19 Nov 2026 14:55 (Seb): buttons never change size on hover. The arrow still slides in, but the padding
+   keeps the same total width and nothing scales. */
+a.btn-apply:hover, a.btn-apply.lg:hover, a.btn-case:hover, a.btn-teal:hover, a.btn-partnership:hover,
+a.btn-terms:hover, button.btn-teal:hover, button.btn-subscribe:hover, .buzzsprout-gate button:hover,
+a.btn-apply:focus-visible, a.btn-apply.lg:focus-visible, a.btn-case:focus-visible, a.btn-teal:focus-visible,
+a.btn-partnership:focus-visible, a.btn-terms:focus-visible, button.btn-teal:focus-visible,
+button.btn-subscribe:focus-visible, .buzzsprout-gate button:focus-visible {
+  transform: none !important;
+  padding-left: 56px !important;
+  padding-right: 20px !important;
+}
+
+button.btn-subscribe:hover,
+button.btn-subscribe:focus-visible {
+  border: 1px solid #28dbb0 !important;
+}
+
+/* Testimonials on every page: body size and weight, in italics (Seb, 19 Nov 2026 14:55). */
+.tw .tw-card blockquote p,
+.st-page .st-card blockquote p,
+.st-card blockquote p,
+.review-body,
+.bk-quote blockquote p {
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  font-style: italic;
+  line-height: 1.6 !important;
+}
+
+/* Leftover coloured edges from the old thick top or left bars: one thin border, one colour, all round. */
+.ab-vision-card,
+.fw-step {
+  border-top-color: #c2b7dd !important;
+}
+
+.ep-place {
+  border-left-color: #c2b7dd !important;
+}
+
+.ab-good li {
+  border-left-color: #e3dcf2 !important;
+}
+
+/* FAQs (Seb, 19 Nov 2026 14:55): on hover the whole item tints, the open answer included, not only the
+   question row. */
+details.ep-faq,
+details.bl-faq-item {
+  transition: background-color 0.2s ease;
+}
+
+details.ep-faq:hover,
+details.bl-faq-item:hover {
+  background-color: #ede8fb !important;
+}
+
+details.ep-faq:hover > summary,
+details.bl-faq-item:hover > summary {
+  background-color: transparent !important;
+}
+
+/* No hover tint on the newsletter's "Go deeper" panels or the Wayfinder "More about" rows. */
+details.nl-deep > summary:hover,
+details.wf-more > summary:hover {
+  background-color: transparent;
+}
+
+/* Purple button (DREAM 500), on every page: same colour on hover, only the arrow moves. */
+a.btn-teal.btn-dream,
+a.btn-teal.btn-dream:hover,
+a.btn-teal.btn-dream:focus-visible {
+  background: #2a0b4f !important;
+  border-color: #2a0b4f !important;
+  color: #fff !important;
+}
+
+/* Nav: the foundr.land logo in place of the Apply button (Seb, 19 Nov 2026 20:47). Same size and shape as the
+   nav bar, in DREAM 500 so the light logo reads; a soft lift of the background on hover. */
+header.nav .nav-apply.nav-apply--brand {
+  padding: 0 22px;
+  background: #2a0b4f;
+}
+
+header.nav .nav-apply.nav-apply--brand::after {
+  background: #3b1a63;
+}
+
+header.nav .nav-brand-logo,
+header.nav .nav-brand-logo img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 128px;
+  height: auto;
+}
+
+@media (max-width: 1080px) {
+  header.nav .nav-apply.nav-apply--brand { padding: 0 14px; }
+  header.nav .nav-brand-logo,
+  header.nav .nav-brand-logo img { width: 100px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  header.nav .nav-apply.nav-apply--brand:hover,
+  header.nav .nav-apply.nav-apply--brand:focus-visible { background: #3b1a63; }
+}
+
+/* 19 Nov 2026 21:02 (Seb): the foundr.land logo 10% bigger, no border. 20 Nov 00:00: the frame sits halfway
+   between DREAM 400 and DREAM 500 (#412867), and turns DREAM 400 on hover. */
+header.nav .nav-apply.nav-apply--brand {
+  border: 0;
+  background: #412867;
+  transition: background-color 0.25s ease;
+}
+
+header.nav .nav-apply.nav-apply--brand::after {
+  content: none;
+}
+
+header.nav .nav-apply.nav-apply--brand:hover,
+header.nav .nav-apply.nav-apply--brand:focus-visible {
+  background: #58447f;
+}
+
+header.nav .nav-brand-logo,
+header.nav .nav-brand-logo img {
+  width: 141px;
+}
+
+@media (max-width: 1080px) {
+  header.nav .nav-brand-logo,
+  header.nav .nav-brand-logo img { width: 110px; }
+}
+
+/* 20 Nov 2026 (Seb): the nav shows the G mark alone; the footer logo is 40% bigger (42px -> 59px tall). */
+header.nav .nav-logo.nav-logo--mark img,
+header.nav .nav-logo.nav-logo--mark svg {
+  height: 44px;
+  width: auto;
+}
+
+@media (max-width: 1080px) {
+  header.nav .nav-logo.nav-logo--mark img,
+  header.nav .nav-logo.nav-logo--mark svg {
+    height: 36px;
+  }
+}
+
+.footer .footer-logo img {
+  height: auto;
+  width: 225px;
+}
+
+/* G mark animation in the nav (20 Nov 2026, Seb): red, then green, then yellow lock into place; once per visit. */
+header.nav .dg-mark { display: block; overflow: visible; }
+header.nav .dg-mark .dg-pc { transform-box: fill-box; transform-origin: center; }
+html.dg-mark-play header.nav .dg-pc-red,
+html.dg-mark-play header.nav .dg-pc-green,
+html.dg-mark-play header.nav .dg-pc-yellow {
+  opacity: 0;
+  animation: dg-mark-lock 1176ms cubic-bezier(.34, 1.45, .64, 1) forwards;
+}
+html.dg-mark-play header.nav .dg-pc-red    { --dx: 46px; --dy: 46px;  animation-delay: 2025ms; }
+html.dg-mark-play header.nav .dg-pc-green  { --dx: 0px;  --dy: -58px; animation-delay: 2970ms; }
+html.dg-mark-play header.nav .dg-pc-yellow { --dx: 64px; --dy: 0px;   animation-delay: 3915ms; }
+@keyframes dg-mark-lock {
+  0%   { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(.55); }
+  55%  { opacity: 1; }
+  100% { opacity: 1; transform: translate(0, 0) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.dg-mark-play header.nav .dg-pc { animation: none; opacity: 1; }
+}
+
+/* 20 Nov 2026 06:07 (Seb): bar plus foundr.land button together 100px narrower on each side than before
+   (1243px -> 1043px) and centred; foundr.land stays outside the bar, as before. 840 + 18 gap + 185 button. */
+@media (min-width: 1081px) {
+  header.nav .nav-bar {
+    width: min(840px, calc(100% - 2 * clamp(20px, 5.56vw, 80px) - 203px));
+  }
+}
+
+/* 20 Nov 2026 06:12 (Seb): nav bar colour halfway between DREAM 500 (#2A0B4F) and DREAM 600 (#1D033C, the old bar
+   colour), so slightly lighter. The mobile menu panel matches. */
+header.nav .nav-bar,
+header.nav .nav-panel {
+  background: #230745;
+}
+
+/* 20 Nov 2026 08:02 (Seb): "by DoGood" in small type (08:08: 10px, regular weight, right edge aligned with the logo) under the foundr.land logo, DREAM 300, thin weight. */
+header.nav .nav-apply.nav-apply--brand {
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 3px;
+}
+header.nav .nav-brand-by {
+  position: relative;
+  z-index: 1;
+  display: block;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  margin-right: -1.9px; /* cancels the trailing letter-spacing and the glyph side space so the right edge lines up with the logo */
+  color: #8b7dae;
+  white-space: nowrap;
+}
+
+/* 20 Nov 2026 08:16 (Seb): the logo sits centred in the card again; "by DoGood" stays where it was (taken out of
+   the flow and pinned to the card's bottom right, at the same spot it had at each breakpoint). */
+header.nav .nav-apply.nav-apply--brand { position: relative; }
+header.nav .nav-brand-by {
+  position: absolute;
+  right: 20.1px;
+  bottom: 11.9px;
+  margin-right: 0;
+}
+@media (max-width: 1080px) {
+  header.nav .nav-brand-by { right: 12.1px; bottom: 15.56px; }
+}
+@media (max-width: 600px) {
+  header.nav .nav-brand-by { bottom: 9.06px; }
+}

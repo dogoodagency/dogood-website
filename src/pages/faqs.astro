@@ -1,0 +1,370 @@
+---
+import "../styles/faqs.css";
+import Base from "../layouts/Base.astro";
+import Wave from "../components/Wave.astro";
+import { edgeAbove } from "../data/edge-line";
+import { faqCategories, faqHtml, faqPlain } from "../data/faqs";
+
+const white = "#ffffff";
+const tint = "#F5F2FF";
+const heroEdge = edgeAbove("#2A0B4F");
+const bandEdge = edgeAbove(tint);
+const footerEdge = edgeAbove(white);
+
+const commonSearches = ["Stage 1", "Timing", "Confidential", "WHOOP", "Exit-Prep"];
+
+const total = faqCategories.reduce((sum, category) => sum + category.items.length, 0);
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqCategories.flatMap((category) =>
+    category.items.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.a.map(faqPlain).join("\n\n"),
+      },
+    })),
+  ),
+};
+const schemaJson = JSON.stringify(schema).replace(/</g, "\\u003c");
+---
+
+<Base
+  title="FAQs: coaching before and after the sale | DoGood Agency"
+  description="Answers about coaching before and after the sale: Exit-Prep, The Reset and The Build, timing, format, privacy and the Clarity-First Guarantee."
+  canonical="https://www.dogoodagency.co/faqs"
+  footerStrip={white}
+  footerEdge={footerEdge}
+>
+  <article class="faq-page">
+    <script is:inline type="application/ld+json" set:html={schemaJson} />
+
+    <header class="faq-hero">
+      <div class="faq-hero-inner">
+        <h1>How can we help?</h1>
+        <p class="faq-hero-intro">Quick answers about how we work, who it is for and what to expect.</p>
+
+        <div class="faq-search-wrap">
+          <form class="faq-search" role="search" action="/faqs" method="get" novalidate>
+            <label class="faq-sr" for="faq-search">Search the questions</label>
+            <svg class="faq-search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="2"></circle>
+              <path d="m15.5 15.5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            </svg>
+            <input
+              id="faq-search"
+              name="q"
+              type="search"
+              placeholder="Search the questions…"
+              autocomplete="off"
+              enterkeyhint="search"
+              spellcheck="false"
+            />
+            <button class="faq-clear" type="button" aria-label="Clear search">
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="m4 4 8 8M12 4l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+              </svg>
+            </button>
+          </form>
+
+          <div class="faq-common" role="group" aria-labelledby="faq-common-label">
+            <p class="faq-common-label" id="faq-common-label">Common searches:</p>
+            {
+              commonSearches.map((term) => (
+                <button class="faq-chip" type="button" data-faq-term={term}>
+                  {term}
+                </button>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+      <Wave fill={tint} edge={heroEdge} />
+    </header>
+
+    <section class="faq-band faq-band-tint" aria-label="Frequently asked questions">
+      <div class="faq-well">
+        <p class="faq-sr" id="faq-status" role="status" aria-live="polite"></p>
+
+        <div class="faq-empty" id="faq-empty" hidden>
+          <picture>
+            <source
+              type="image/webp"
+              srcset="/sketches/faqs-index-cards@1x.webp 540w, /sketches/faqs-index-cards@2x.webp 1080w"
+              sizes="150px"
+            />
+            <img
+              class="faq-empty-sketch"
+              src="/sketches/faqs-index-cards@1x.png"
+              srcset="/sketches/faqs-index-cards@1x.png 540w, /sketches/faqs-index-cards@2x.png 1080w"
+              sizes="150px"
+              width="540"
+              height="400"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
+          <h2>No questions match <span id="faq-empty-term"></span></h2>
+          <p>
+            Try a different word, or <a href="/contact">get in touch</a>. We are happy to help.
+          </p>
+        </div>
+
+        <div class="faq-grid" data-faq-total={total}>
+          {
+            faqCategories.map((category) => (
+              <section class="faq-card" aria-labelledby={`faq-cat-${category.id}`}>
+                <div class="faq-card-head">
+                  <h2 id={`faq-cat-${category.id}`}>{category.title}</h2>
+                </div>
+                <ul class="faq-list">
+                  {category.items.map((faq) => (
+                    <li class="faq-item is-open" id={faq.id}>
+                      <h3 class="faq-q">
+                        <button
+                          class="faq-trigger"
+                          type="button"
+                          id={`${faq.id}-btn`}
+                          aria-expanded="true"
+                          aria-controls={`${faq.id}-panel`}
+                        >
+                          <span class="faq-q-text">{faq.q}</span>
+                          <span class="faq-icon" aria-hidden="true">
+                            <svg viewBox="0 0 16 16" fill="none">
+                              <path
+                                d="m3.5 6 4.5 4.5L12.5 6"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
+                            </svg>
+                          </span>
+                        </button>
+                      </h3>
+                      <div class="faq-panel" id={`${faq.id}-panel`}>
+                        <div class="faq-panel-inner">
+                          <div class="faq-answer">
+                            {faq.a.map((paragraph) => (
+                              <p set:html={faqHtml(paragraph)} />
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))
+          }
+
+          <section class="faq-contact" aria-labelledby="faq-contact-title">
+            <div>
+              <h2 id="faq-contact-title">Haven’t found what you need?</h2>
+              <p>Get in touch, we’re happy to help.</p>
+            </div>
+            <a class="btn-teal" href="/contact">Contact us</a>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <div class="faq-divider" aria-hidden="true">
+      <svg style={`--wave-edge:${bandEdge}`} viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path fill="#ffffff" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path>
+        <path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path>
+      </svg>
+    </div>
+
+    <!-- Newsletter block redesigned (Seb, 18 Nov 2026): a proper card instead of one line of text. -->
+    <section class="faq-band" aria-labelledby="faq-news-title">
+      <div class="faq-well">
+        <div class="faq-news">
+          <div class="faq-news-body">
+            <p class="faq-news-eyebrow">The DoGood newsletter</p>
+            <h2 id="faq-news-title">Notes on life after the sale, every two weeks</h2>
+            <p>
+              Honest notes for founders before and after the sale, and the new chapters of <em>Before and After the
+              Sale</em> as they come out. Start with seven free questions for your first 90 days.
+            </p>
+          </div>
+          <a class="btn-teal" href="/newsletter">Join the newsletter</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</Base>
+
+<script>
+  // Bundled (not inline) so it passes the site's Content-Security-Policy.
+  document.documentElement.classList.add("faq-js");
+  const root = document.querySelector<HTMLElement>(".faq-page");
+
+  if (root) {
+    const form = root.querySelector<HTMLFormElement>(".faq-search");
+    const input = root.querySelector<HTMLInputElement>("#faq-search");
+    const clear = root.querySelector<HTMLButtonElement>(".faq-clear");
+    const items = Array.from(root.querySelectorAll<HTMLElement>(".faq-item"));
+    const cards = Array.from(root.querySelectorAll<HTMLElement>(".faq-card"));
+    const emptyBox = root.querySelector<HTMLElement>("#faq-empty");
+    const emptyTerm = root.querySelector<HTMLElement>("#faq-empty-term");
+    const status = root.querySelector<HTMLElement>("#faq-status");
+
+    /** Lower case, plain quotes, hyphens and dashes as spaces, no accents. */
+    const norm = (value: string): string =>
+      value
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[̀-ͯ]/g, "")
+        .replace(/[’‘`]/g, "'")
+        .replace(/[‐-―-]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+
+    const index = items.map((item) => norm(item.textContent ?? ""));
+
+    const setOpen = (item: HTMLElement, open: boolean) => {
+      item.classList.toggle("is-open", open);
+      item.querySelector(".faq-trigger")?.setAttribute("aria-expanded", String(open));
+    };
+
+    const showAll = () => {
+      items.forEach((item) => {
+        item.hidden = false;
+        setOpen(item, false);
+      });
+      cards.forEach((card) => {
+        card.hidden = false;
+      });
+      if (emptyBox) emptyBox.hidden = true;
+      if (status) status.textContent = "";
+    };
+
+    const run = (value: string) => {
+      clear?.classList.toggle("is-visible", value.length > 0);
+      const query = norm(value);
+      if (!query) {
+        showAll();
+        return;
+      }
+
+      // Whole phrase first. If nothing has it, fall back to every word appearing somewhere.
+      let hits = index.map((text) => text.includes(query));
+      if (!hits.some(Boolean)) {
+        const words = query.split(" ").filter((word) => word.length > 1);
+        if (words.length > 1) hits = index.map((text) => words.every((word) => text.includes(word)));
+      }
+
+      let count = 0;
+      items.forEach((item, i) => {
+        item.hidden = !hits[i];
+        setOpen(item, hits[i]);
+        if (hits[i]) count += 1;
+      });
+      cards.forEach((card) => {
+        card.hidden = !card.querySelector(".faq-item:not([hidden])");
+      });
+
+      const label = value.trim();
+      if (emptyBox) emptyBox.hidden = count > 0;
+      if (emptyTerm) emptyTerm.textContent = `“${label}”`;
+      if (status) {
+        status.textContent =
+          count === 0
+            ? `No questions match “${label}”.`
+            : `${count} ${count === 1 ? "question matches" : "questions match"} “${label}”.`;
+      }
+    };
+
+    // Collapse every answer. (They are open in the HTML so the page works without JavaScript.)
+    items.forEach((item) => setOpen(item, false));
+
+    root.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+
+      const trigger = target.closest<HTMLButtonElement>(".faq-trigger");
+      if (trigger) {
+        const item = trigger.closest<HTMLElement>(".faq-item");
+        if (item) setOpen(item, !item.classList.contains("is-open"));
+        return;
+      }
+
+      const chip = target.closest<HTMLButtonElement>(".faq-chip");
+      if (chip && input) {
+        const term = chip.dataset.faqTerm ?? "";
+        input.value = term;
+        run(term);
+        input.focus({ preventScroll: true });
+      }
+    });
+
+    if (input) {
+      let timer: number | undefined;
+      input.addEventListener("input", () => {
+        window.clearTimeout(timer);
+        timer = window.setTimeout(() => run(input.value), 140);
+      });
+      input.addEventListener("search", () => {
+        window.clearTimeout(timer);
+        run(input.value);
+      });
+      input.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && input.value) {
+          event.preventDefault();
+          input.value = "";
+          run("");
+        }
+      });
+    }
+
+    form?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (input) run(input.value);
+    });
+
+    clear?.addEventListener("click", () => {
+      if (!input) return;
+      input.value = "";
+      run("");
+      input.focus({ preventScroll: true });
+    });
+
+    /** Opens the question named in the address (#why-whoop) and scrolls to it. */
+    const openFromHash = () => {
+      const id = decodeURIComponent(window.location.hash.slice(1));
+      if (!id) return;
+      const target = document.getElementById(id);
+      if (!(target instanceof HTMLElement) || !target.classList.contains("faq-item")) return;
+
+      if (input && input.value) {
+        input.value = "";
+        run("");
+      }
+      target.hidden = false;
+      const card = target.closest<HTMLElement>(".faq-card");
+      if (card) card.hidden = false;
+
+      root.classList.add("faq-no-anim");
+      setOpen(target, true);
+      target.scrollIntoView({ block: "center" });
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => root.classList.remove("faq-no-anim"));
+      });
+    };
+
+    // /faqs?q=whoop pre-fills the search.
+    const preset = new URLSearchParams(window.location.search).get("q");
+    if (preset && input) {
+      input.value = preset;
+      run(preset);
+    }
+
+    openFromHash();
+    window.addEventListener("hashchange", openFromHash);
+  }
+</script>

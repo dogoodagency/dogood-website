@@ -1,0 +1,482 @@
+---
+import "../styles/newsletter.css";
+import Base from "../layouts/Base.astro";
+import Wave from "../components/Wave.astro";
+import { edgeAbove } from "../data/edge-line";
+
+// Seb: switch to true on Saturday once the PDFs are in public/downloads/
+const SHOW_PDF_DOWNLOADS = false;
+
+const tint = "#F5F2FF";
+const heroEdge = edgeAbove("#2A0B4F");
+const bandEdge = edgeAbove(tint);
+const footerEdge = edgeAbove(tint);
+
+// MailerLite form already used by the footer and the old newsletter.md page.
+// Base.astro's global script handles every form.js-subscribe. Do not create new forms.
+const action =
+  "https://assets.mailerlite.com/jsonp/2046479/forms/180157154312849349/subscribe";
+
+/**
+ * Chapters of "Before and After the Sale".
+ * To add a chapter, push an object onto this array when it goes out, newest last, e.g.
+ *   { number: 1, title: "<chapter title>", date: "15 December", href: "/newsletter/<slug>" }
+ * `href` is optional. While the array is empty the page shows one "arrives" row.
+ */
+interface Chapter {
+  number: number;
+  title: string;
+  date: string;
+  href?: string;
+}
+const chapters: Chapter[] = [];
+
+// Each question: the short line `a` stays word for word; `deep` adds context, sub-questions, an exercise and
+// journal prompts, shown in an expandable section (Seb, 18 Nov 2026: "more context, more value"). Drafted by
+// Claude for Seb to review.
+const questions = [
+  {
+    q: "What am I actually tired from?",
+    a: "Years of running a company leave a tiredness that a holiday doesn't fix. Before you plan anything, name what drained you, so you don't walk straight back into it.",
+    why: "The tiredness after a sale is often less about the hours you worked and more about years of carrying responsibility, holding back worry and being “on” for everyone else. A holiday rests the body, but it doesn't always reach the part of you that was always in charge. If you don't name what drained you, it's easy to rebuild the same conditions in whatever comes next.",
+    ask: [
+      "Which parts of running the company took energy, and which gave it back?",
+      "What did I keep doing only because nobody else could?",
+      "Where did I hold back what I really thought or felt?",
+      "What does real rest look like for me, not for other people?",
+    ],
+    exercise: {
+      title: "The energy audit (20 minutes)",
+      steps: [
+        "Draw two columns on a page: “Drained me” and “Gave me energy”.",
+        "Walk through a typical week in your last year at the company: meetings, people, decisions, travel, evenings. Put each one in a column.",
+        "Circle the three biggest drains. For each, write what it was really about, for example “being the last line of defence” rather than “board meetings”.",
+        "Circle the three biggest sources of energy.",
+        "Finish one sentence: “In whatever I do next, I want more of ___ and none of ___.”",
+      ],
+    },
+    journal: [
+      "The moment I realised how tired I was…",
+      "If I'm honest, the part of the job I won't miss is…",
+      "Real rest, for me, would look like…",
+    ],
+  },
+  {
+    q: "Who am I when nobody needs a decision from me?",
+    a: "For years your days were shaped by other people's questions. Notice who shows up when the questions stop.",
+    why: "Being needed was part of who you were. Your phone, your calendar and your team kept telling you. When the questions stop, the silence can feel like emptiness, boredom or relief, and often all three in one week. All of them are normal. What shows up in that space tells you something about who you are underneath the role.",
+    ask: [
+      "What do I do first with a free morning, when nobody is waiting for me?",
+      "Which parts of me did I put on hold while I ran the company?",
+      "How do I answer when someone asks “What do you do now?”",
+      "What do I enjoy that has nothing to do with being useful?",
+    ],
+    exercise: {
+      title: "A day with no agenda",
+      steps: [
+        "Pick one day this month with nothing planned: no meetings, calls or errands.",
+        "Leave your phone in another room for the first two hours.",
+        "Do whatever you feel like, moment by moment.",
+        "In the evening, write down what you did, what you avoided, and when you felt restless or calm.",
+        "Repeat it two weeks later and compare the two pages.",
+      ],
+    },
+    journal: [
+      "When nobody needs me, I notice…",
+      "Before the company, I was someone who…",
+      "The question “What do you do now?” makes me feel… because…",
+    ],
+  },
+  {
+    q: "What did the company give me that I'll miss?",
+    a: "It might be the structure, the status, the people or the sense of being needed. List it plainly. These are the things you'll be tempted to replace in a hurry.",
+    why: "A company gives you far more than an income. It gives the week a rhythm, a place to go, people to see, problems to solve and a standing that others recognise. When it goes, all of these go at once. Founders often rush to replace them with the next venture or a board seat, without noticing which ones they actually miss. Naming them lets you replace them on purpose.",
+    ask: [
+      "Which of these did the company give me: structure, status, a team, purpose, challenge, identity, recognition?",
+      "Which do I already miss, and which am I glad to be rid of?",
+      "Where else in my life could I find the ones I miss?",
+      "Which one am I most likely to rush to fill?",
+    ],
+    exercise: {
+      title: "Five things the company gave me",
+      steps: [
+        "Write down five things the company gave you, apart from money.",
+        "Score each from 1 to 5: how much do you miss it today?",
+        "For the two highest scores, list three ways to find them outside a company. Structure might come from a fixed weekly routine; a team from a sport, a board or a community.",
+        "Choose one small way to try this month.",
+      ],
+    },
+    journal: [
+      "The thing I miss most surprised me, because…",
+      "Without the company, nobody calls me for… and that feels…",
+      "I'd like to find this somewhere new: …",
+    ],
+  },
+  {
+    q: "What am I saying yes to, just to fill the space?",
+    a: "Board seats, advisory roles, a new venture. Some will be right. Ask of each one whether you'd still want it if your calendar were already full.",
+    why: "After a sale, offers arrive quickly. Saying yes feels productive, and it quiets the discomfort of an empty calendar. But a yes given to fill a gap often turns into the next obligation you'll want to escape. A pause before you commit gives you room to choose what fits the person you are now.",
+    ask: [
+      "What have I agreed to since the sale, and why?",
+      "Would I still want this if my calendar were full?",
+      "Who am I trying not to disappoint?",
+      "What would happen if I waited three months before deciding?",
+    ],
+    exercise: {
+      title: "The 90-day filter",
+      steps: [
+        "List every new commitment and offer since the sale, accepted or still open.",
+        "Next to each, write the honest reason you're considering it: money, status, boredom, obligation or real interest.",
+        "Ask of each: “Would I still want this if my calendar were already full?”",
+        "Mark each one Keep, Pause or Let go.",
+        "For anything new in the next 90 days, have one reply ready: “Thank you. I'm taking time before I commit to anything new. Can we talk again in [month]?”",
+      ],
+    },
+    journal: [
+      "The yes I regret, or might come to regret, is…",
+      "Saying no feels hard when…",
+      "An empty calendar makes me feel…",
+    ],
+  },
+  {
+    q: "What did I promise myself I'd do after the sale, and do I still want it?",
+    a: "That promise was made by a busier version of you. Check whether it still belongs to you.",
+    why: "Many founders carry a list made in their busiest years: travel, write a book, spend more time with the children, get fit, build a house. Some of it is real. Some of it was a way of getting through the pressure at the time. Checking the list from where you stand today keeps you from chasing an older version of yourself.",
+    ask: [
+      "When did I make this promise, and what was going on at the time?",
+      "Does it still excite me, or does it feel like a duty?",
+      "Is there something I want now that was never on the list?",
+      "How could I try it on a small scale first?",
+    ],
+    exercise: {
+      title: "Re-signing your promises",
+      steps: [
+        "Write down every promise you made yourself about life after the sale.",
+        "Next to each, note roughly when you made it and how you were feeling then.",
+        "Read each one aloud and notice your first reaction: lighter, heavier or flat.",
+        "Re-sign the ones that feel lighter by writing today's date next to them. Cross out the rest, without guilt.",
+        "Pick one re-signed promise and plan a small first try within the next month.",
+      ],
+    },
+    journal: [
+      "The promise I made to get through the hard years was…",
+      "Something I want now that I didn't know I wanted then is…",
+      "If I let this promise go, I would feel…",
+    ],
+  },
+  {
+    q: "Who has been waiting for me to come back?",
+    a: "A partner, children, old friends, your own health. Some of them have waited a long time. Look at what they might need from you now.",
+    why: "While you built the company, other people adjusted around it: a partner who carried more at home, children who grew up quickly, friends you stopped seeing, and your own body. Some have waited patiently and some have stopped waiting. Coming back takes more than having time. It means asking what they need, and listening to the answer.",
+    ask: [
+      "Who carried more because I was busy?",
+      "Which relationships faded, and which one do I want back?",
+      "What does my body need that I've kept postponing?",
+      "What might the people closest to me say if I asked “What did you miss?”",
+    ],
+    exercise: {
+      title: "Three conversations",
+      steps: [
+        "Write down three people who have waited for you. Your own health can be one of them.",
+        "For each person, plan one unhurried conversation: a walk, a meal or a call with no agenda.",
+        "Ask one question, then only listen: “What have the last few years been like for you?”",
+        "Afterwards, write down what you heard, not what you wanted to say.",
+        "For your health, book the check-up or appointment you've been putting off.",
+      ],
+    },
+    journal: [
+      "The person I owe a real conversation to is…",
+      "What I hope they'll say, and what I'm afraid they'll say…",
+      "My body has been telling me…",
+    ],
+  },
+  {
+    q: "What would I like to be true in a year, and what's the smallest first step?",
+    a: "You don't need the whole plan. One honest direction and one small step is enough for now.",
+    why: "You don't need the next chapter worked out, and trying to plan all of it at once can leave you stuck. A direction is enough: how you'd like your days to feel, and what you'd like to be part of. Then one small step you can take this week and learn from.",
+    ask: [
+      "In a year, what would an ordinary Tuesday look like?",
+      "What would I like to be known for in this next chapter?",
+      "What would make me proud, regardless of money or status?",
+      "What is one step I could take in the next seven days?",
+    ],
+    exercise: {
+      title: "A letter from a year from now",
+      steps: [
+        "Write a one-page letter dated a year from today, from your future self to you now.",
+        "Describe an ordinary day: the people in it, how you feel, and what you're working on or learning.",
+        "Underline the three things in the letter that matter most to you.",
+        "For one of them, write the smallest step you could take this week, and put it in your calendar.",
+        "Keep the letter somewhere you'll find it in three months, and read it again then.",
+      ],
+    },
+    journal: [
+      "A year from now, I'd like to feel…",
+      "The step I keep putting off is…",
+      "What I want to be true has little to do with the company, and a lot to do with…",
+    ],
+  },
+];
+
+/**
+ * Planned chapters of "Before and After the Sale", shown greyed out until they arrive (Seb, 18 Nov 2026).
+ * Dates follow the newsletter plan (15 Dec, 12 Jan, 26 Jan, then every two weeks). Titles and lines are
+ * WORKING DRAFTS by Claude, drawn from the prologue: Seb to confirm or replace.
+ * When a chapter goes out, move it into `chapters` above with its href.
+ */
+const upcoming = [
+  {
+    number: 1,
+    date: "15 December",
+    title: "The quiet after the deal",
+    about: "The first weeks after closing, when the calls stop and freedom feels stranger than expected. What is happening, and why it is so common.",
+  },
+  {
+    number: 2,
+    date: "12 January",
+    title: "The decision that was still open",
+    about: "Before the sale: how a founder can be sure they want to sell and still pull on the brakes, and what helps the decision settle.",
+  },
+  {
+    number: 3,
+    date: "26 January",
+    title: "The people who waited",
+    about: "A partner, children, old friends. What the years of building cost the people around the founder, and how families find each other again.",
+  },
+  {
+    number: 4,
+    date: "9 February",
+    title: "Who am I without the company?",
+    about: "When the title goes, the question stays. How founders rebuild a sense of identity and purpose that doesn't depend on running something.",
+  },
+];
+
+const heroLine =
+  "Seven questions to sit with before you commit the next stretch of your life to anything new. They're free and right here on this page, and you don't need to sign up.";
+---
+
+<Base
+  title="The DoGood newsletter: life after the sale, in your inbox"
+  description="Sign up for the DoGood newsletter: honest notes for founders before and after selling a business. Plus 7 free questions for your first 90 days after the sale."
+  canonical="https://www.dogoodagency.co/newsletter"
+  footerStrip={tint}
+  footerEdge={footerEdge}
+>
+  <article class="nl-page">
+    <header class="nl-hero">
+      <!-- Hero image moved to the sign-up section; text centred in a wider frame (Seb, 18 Nov 2026). -->
+      <div class="nl-hero-inner nl-hero-center">
+        <div class="nl-copy">
+          <p class="nl-eyebrow">The DoGood newsletter</p>
+          <h1>The first 90 days after the sale</h1>
+          <p class="nl-lede">{heroLine}</p>
+          <div class="nl-hero-actions">
+            <a class="btn-teal" href="#questions">Read the 7 questions</a>
+            <a class="nl-btn-ghost" href="#prologue">Read the prologue</a>
+          </div>
+        </div>
+
+      </div>
+      <Wave fill={tint} edge={heroEdge} />
+    </header>
+
+    <section class="nl-band nl-band-tint" id="note" aria-labelledby="nl-note-label">
+      <div class="nl-well">
+        <figure class="nl-note">
+          <p class="nl-note-label" id="nl-note-label">A note from Seb</p>
+          <blockquote>
+            <p>A few years ago I paused my business to regroup. Nobody had told me how strange it would feel to stop. Since then, I've sat with founders in that same stretch after the deal, when the structure is gone and the calendar is suddenly quiet. These seven questions are the ones we keep coming back to. Take them, they're yours.</p>
+          </blockquote>
+          <figcaption class="nl-note-sign">— Seb</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <div class="nl-divider" aria-hidden="true">
+      <svg style={`--wave-edge:${bandEdge}`} viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path fill="#ffffff" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path>
+        <path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path>
+      </svg>
+    </div>
+
+    <section class="nl-band" id="questions" aria-labelledby="nl-questions-title">
+      <div class="nl-well">
+        <h2 id="nl-questions-title">Seven questions for the first 90 days</h2>
+        <p class="nl-intro">Take your time with them. There are no right answers, only honest ones.</p>
+        <p class="nl-intro nl-intro-small">Open “Go deeper” under any question for more context, the questions behind it, a short exercise and journal prompts.</p>
+        <ol class="nl-questions">
+          {
+            questions.map((item, i) => (
+              <li class="nl-question">
+                <span class="nl-qnum" aria-hidden="true">{i + 1}</span>
+                <div class="nl-q-body">
+                  <h3>{item.q}</h3>
+                  <p>{item.a}</p>
+                  <details class="nl-deep">
+                    <summary>
+                      <span>Go deeper: context, an exercise and journal prompts</span>
+                      <span class="nl-deep-icon" aria-hidden="true"></span>
+                    </summary>
+                    <div class="nl-deep-body">
+                      <p class="nl-deep-why">{item.why}</p>
+                      <!-- Three separate parts (Seb, 19 Nov 2026 14:55) -->
+                      <div class="nl-deep-sec nl-deep-sec--ask">
+                        <h4>Questions behind the question</h4>
+                        <ul class="nl-deep-list">{item.ask.map((x) => <li>{x}</li>)}</ul>
+                      </div>
+                      <div class="nl-deep-sec nl-deep-sec--try">
+                        <h4>Try this: {item.exercise.title}</h4>
+                        <ol class="nl-deep-steps">{item.exercise.steps.map((x) => <li>{x}</li>)}</ol>
+                      </div>
+                      <div class="nl-deep-sec nl-deep-sec--journal">
+                        <h4>Journal prompts</h4>
+                        <ul class="nl-deep-list nl-deep-journal">{item.journal.map((x) => <li>{x}</li>)}</ul>
+                      </div>
+                    </div>
+                  </details>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+        <div class="nl-download" hidden={!SHOW_PDF_DOWNLOADS}>
+          <a
+            class="btn-teal"
+            href="/downloads/first-90-days-7-questions.pdf"
+            target="_blank"
+            rel="noopener"
+            hidden={!SHOW_PDF_DOWNLOADS}>Download the 7 questions (PDF)</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="nl-band nl-band-tint" id="book" aria-labelledby="nl-book-title">
+      <div class="nl-well">
+        <div class="nl-book">
+          <span class="nl-badge">First chapter 15 December</span>
+          <h2 id="nl-book-title">Before and After the Sale</h2>
+          <p>A book for founders on the inner side of selling, told through real, anonymised stories. We're writing it in the open, one chapter at a time, for everyone in <span class="pink-soft nl-founder"><strong>FOUNDR</strong>.land</span>.</p>
+        </div>
+
+        <div class="nl-prologue" id="prologue">
+          <h3 class="nl-prologue-title">Prologue: The day after</h3>
+          <div class="nl-prose">
+            <p>The signing is usually quieter than people expect. There are papers, a few handshakes, maybe a dinner. Then you go home.</p>
+            <p>The next morning, your phone is quieter too. The questions that filled your days for years now go to someone else. The team you built still turns up to work, just not for you. You're free, and that's exactly what you worked for.</p>
+            <p class="nl-emph">So why does it feel so strange?</p>
+            <p>Founders rarely talk about this part. From the outside, the sale looks like the finish line, and everyone congratulates you. On the inside, something else is happening. The company gave your days a shape, it gave you a role, and in many ways it told you who you were. When it goes, all three go with it, at the same time.</p>
+            <p>This isn't a rare reaction. In a 2026 Concordia University study of founders who sold their companies, every founder interviewed described depression-like feelings after the exit. They were successful, capable people, and it happened to all of them.</p>
+            <p>Most of them handled it the way founders handle everything: by moving fast. A new venture, an investment, a board seat, a packed calendar. It's the most natural response in the world, and it's often the one that costs the most, because the next chapter gets chosen before the last one has been understood.</p>
+            <p>This book is about the space in between. It's about what founders feel before the sale, during it and in the months after, and what helps. Every story in it is real. Names and details are changed, so nobody can be recognised. Some chapters are about the founder, and some are about the people around them: a partner, an advisor, a family that waited a long time.</p>
+            <p>We're writing it in the open, one chapter every two weeks. Read it slowly if you can, and pass it on to someone who's about to sign.</p>
+            <p class="nl-emph">We'll start where the deal ends.</p>
+            <p class="nl-source">Source: Byezhanova, Concordia University, 2026.</p>
+          </div>
+          <div class="nl-download" hidden={!SHOW_PDF_DOWNLOADS}>
+            <a
+              class="btn-teal"
+              href="/downloads/before-and-after-the-sale-prologue.pdf"
+              target="_blank"
+              rel="noopener"
+              hidden={!SHOW_PDF_DOWNLOADS}>Download the prologue (PDF)</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="nl-band" id="signup" aria-labelledby="nl-signup-title">
+      <div class="nl-well">
+        <div class="nl-signup nl-signup-split" data-nl-signup>
+          <div class="nl-signup-head">
+          <h2 id="nl-signup-title">Keep reading</h2>
+          <p class="nl-intro">Get each new chapter of Before and After the Sale when it comes out, along with our notes on life after the sale. It's one email every two weeks, starting 15 December, then 12 January and 26 January.</p>
+          </div>
+          <div class="nl-signup-copy">
+          <form class="nl-form js-subscribe" action={action} method="post">
+            <input type="hidden" name="ml-submit" value="1" />
+            <input type="hidden" name="anticsrf" value="true" />
+            <label for="nl-email">Email</label>
+            <input id="nl-email" type="email" name="fields[email]" placeholder="Email" autocomplete="email" required />
+            <button class="btn-teal" type="submit">Send me the chapters</button>
+            <p data-status hidden></p>
+          </form>
+          <p class="nl-print">No spam, and you can unsubscribe at any time. We'll only use your email to send these notes. Read our <a href="/privacy">privacy policy</a>.</p>
+          </div>
+          <picture class="nl-signup-art">
+            <source
+              type="image/webp"
+              srcset="/sketches/newsletter-open-envelope-booklet@1x.webp 540w, /sketches/newsletter-open-envelope-booklet@2x.webp 1080w"
+              sizes="(max-width: 900px) 280px, 340px"
+            />
+            <img
+              src="/sketches/newsletter-open-envelope-booklet@1x.png"
+              srcset="/sketches/newsletter-open-envelope-booklet@1x.png 540w, /sketches/newsletter-open-envelope-booklet@2x.png 1080w"
+              sizes="(max-width: 900px) 280px, 340px"
+              width="540"
+              height="400"
+              alt="Sketch of an open envelope with a green booklet inside."
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <section class="nl-band nl-band-tint" id="chapters" aria-labelledby="nl-chapters-title">
+      <div class="nl-well">
+        <h2 id="nl-chapters-title">The chapters</h2>
+        <p class="nl-intro">One chapter every two weeks, each built on real, anonymised stories. Here is what is coming. Chapters open here as they arrive.</p>
+        <ol class="nl-chapters">
+          {
+            chapters.map((chapter) => (
+              <li class="nl-chapter">
+                <span class="nl-chapter-num">{chapter.number}.</span>
+                <span class="nl-chapter-title">
+                  {chapter.href ? <a href={chapter.href}>{chapter.title}</a> : chapter.title}
+                </span>
+                <span class="nl-chapter-date nl-date-pill">{chapter.date}</span>
+              </li>
+            ))
+          }
+          {
+            upcoming
+              .filter((u) => !chapters.some((c) => c.number === u.number))
+              .map((u) => (
+                <li class="nl-chapter nl-chapter-upcoming">
+                  <span class="nl-chapter-num">{u.number}.</span>
+                  <div class="nl-chapter-main">
+                    <span class="nl-chapter-title">{u.title}</span>
+                    <p class="nl-chapter-about">{u.about}</p>
+                  </div>
+                  <span class="nl-chapter-date nl-date-pill">Arrives {u.date}</span>
+                </li>
+              ))
+          }
+        </ol>
+        <p class="nl-chapters-note">Working titles. They may change as the chapters are written.</p>
+
+        <div class="nl-closing">
+          <p class="nl-closing-label">Ready for more than reading?</p>
+          <p>If you already know you'd like a private place to do this work, you can <a href="/apply-stage-1">apply for Stage 1</a>.</p>
+        </div>
+      </div>
+    </section>
+  </article>
+</Base>
+
+<script>
+  const box = document.querySelector<HTMLElement>("[data-nl-signup]");
+  const form = box?.querySelector<HTMLFormElement>("form.js-subscribe");
+  const submit = form?.querySelector<HTMLButtonElement>("button[type='submit']");
+
+  // Base.astro resets the button to "Subscribe" after an error. Keep our label.
+  if (submit) {
+    const label = submit.textContent?.trim() || "Send me the chapters";
+    new MutationObserver(() => {
+      if ((submit.textContent ?? "").trim() === "Subscribe") submit.textContent = label;
+    }).observe(submit, { childList: true, characterData: true, subtree: true });
+  }
+</script>

@@ -1,0 +1,42 @@
+---
+import AdvisorResourcePage from "../../../components/AdvisorResourcePage.astro";
+// Founder Readiness Check (Advisor Toolkit Plan v0.4, resource B). First draft for Seb to rewrite.
+---
+
+<AdvisorResourcePage
+  title="Founder exit readiness check for advisors | DoGood Agency"
+  description="A free founder readiness check advisors send with a personal link: a private PDF report and a free debrief call. Not a medical or psychological test."
+  path="/for-advisors/client-tools/readiness-check"
+  section="tools"
+  tone="sky"
+  name="Founder Readiness Check"
+  soon="Coming soon · we're building it now"
+  lede="A few calm questions that open the personal conversation with your client, before or after the sale."
+  blocks={[
+    {
+      heading: "What it is",
+      paras: [
+        "The heart of the toolkit. You send the check to a founder with a short, copy-and-paste email and your own personal link. Your client answers a few calm questions about life before and after the sale.",
+        "They get a private PDF report and the offer of a free debrief call. If they say yes, you get a copy of the report too.",
+      ],
+    },
+    {
+      heading: "How it works",
+      steps: [
+        { title: "You send it", text: "Use the ready-made email and your personal link. No sign-up for you." },
+        { title: "Your client answers", text: "A few calm questions. They give an email only so we can send their report." },
+        { title: "They get a private report", text: "A PDF in calm, plain language, with a free debrief call if they want one." },
+        { title: "You get a copy, if they say yes", text: "Consent first. You only see the results if your client clearly agrees." },
+      ],
+    },
+    {
+      heading: "What it is not",
+      list: [
+        "Not a medical or psychological test, and it says so",
+        "No stress or burnout labels: the report uses calm levels",
+        "Not the old Founder Diagnostic: this is a new check",
+      ],
+    },
+  ]}
+  note="Free to use and to share. Consent and data rules are checked before it goes live."
+/>

@@ -1,0 +1,145 @@
+/* Moving logo rails (LogoRails.astro): /stories and the homepage. Rules are .lr- only. */
+
+.lr-rails {
+  --lr-ink: #2a0b4f;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.lr-rail {
+  width: 100%;
+  overflow: hidden;
+}
+
+.lr-rail-inner {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.lr-pattern {
+  display: flex;
+  flex: none;
+  gap: 1rem;
+  margin: 0;
+  padding: 0 1rem 0 0;
+  list-style: none;
+}
+
+/* Pill design (Seb, 19 Nov 2026): one design on both pages. The pill is a shade lighter than its band and
+   melts into it; the logo sits in a white circle (or white capsule for word logos). Padding between the
+   white part and the pill edge was cut by about 25%, logos are about 30% bigger, the name is body size (18px)
+   with a slightly stronger stroke. Icon files are normalised to equal visual weight (see CHANGELOG, update 14). */
+.lr-pill {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 1rem;
+  margin: 0;
+  padding: 0.55rem 1.6rem 0.55rem 0.55rem;
+  border: 1px solid #e6dcfc;
+  border-radius: 3.75rem;
+  background: var(--lr-pill, #faf9ff);
+}
+
+.lr-pill-word {
+  padding: 0.55rem;
+}
+
+.lr-pill-vis {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0;
+  border-radius: 100%;
+  background: #fff;
+}
+
+.lr-pill-vis img {
+  display: block;
+  width: 2.45rem;
+  height: 2.45rem;
+  object-fit: contain;
+}
+
+.lr-pill-vis.lr-pill-vis-word {
+  width: auto;
+  padding: 0 1.1rem;
+  border-radius: 3.75rem;
+}
+
+.lr-pill-vis-word img {
+  width: auto;
+  max-width: none;
+  height: 1.5rem;
+}
+
+.lr-rails p.lr-pill-name {
+  margin: 0;
+  color: var(--lr-ink);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+/* Band colours: Stories sits on #E9E3F7, the homepage on DREAM 25 #F5F2FF. */
+.lr-rails--deep {
+  --lr-pill: #f5f2ff;
+}
+
+/* Homepage (Seb, 19 Nov 2026): DREAM 10 gave no contrast with the white logo circle, so the pill is the
+   deeper lilac (#E9E3F7, the Stories band colour) with a DREAM 200 line. */
+.lr-rails--tint {
+  --lr-pill: #e9e3f7;
+}
+
+/* Homepage only (Seb, 19 Nov 2026 18:08): calmer rail. No border on the pill, and every logo in one colour,
+   DREAM 400 (#58447F), as in his reference. The Stories rail stays as it is. */
+.lr-rails--tint .lr-pill {
+  border-color: transparent;
+}
+
+.lr-rails--tint .lr-pill-vis img {
+  filter: brightness(0) saturate(100%) invert(28%) sepia(17%) saturate(1630%) hue-rotate(222deg) brightness(92%) contrast(90%);
+}
+
+/* No JavaScript or reduced motion: a still, wrapped, centred set. */
+html:not(.lr-js) .lr-rail-inner {
+  width: auto;
+  justify-content: center;
+}
+
+html:not(.lr-js) .lr-pattern {
+  flex: 0 1 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-right: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lr-rail-inner {
+    width: auto;
+    justify-content: center;
+    transform: none !important;
+  }
+
+  .lr-pattern {
+    flex: 0 1 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-right: 0;
+    max-width: min(1200px, calc(100% - 2 * var(--pad)));
+  }
+
+  .lr-rail-inner > .lr-pattern[aria-hidden="true"] {
+    display: none;
+  }
+}

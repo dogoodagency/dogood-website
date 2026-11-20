@@ -1,0 +1,52 @@
+---
+// Advisor resources block for the advisor thank-you pages (/exit-thankyou, /wealth-thankyou).
+// Two Insights articles in the site's article-card style, then links into the Advisor Center.
+import { getCollection } from "astro:content";
+import "../styles/blog.css";
+import BlogCard from "./BlogCard.astro";
+
+interface Props {
+  /** Article slugs to show, in order. */
+  articles: string[];
+}
+
+const { articles } = Astro.props;
+const all = await getCollection("blog");
+const posts = articles
+  .map((slug) => all.find((p) => p.id === slug || p.id.replace(/\.md$/, "") === slug))
+  .filter((p): p is NonNullable<typeof p> => Boolean(p));
+
+const links = [
+  { href: "/for-advisors", label: "The Advisor Center" },
+  { href: "/for-advisors#adv-how", label: "How we work alongside advisors" },
+  { href: "/for-advisors#adv-conf", label: "Confidentiality: what we share, and when" },
+  { href: "/for-advisors#adv-faq", label: "Advisor FAQs" },
+];
+---
+
+<div class="ty-extra">
+  <h3>Before our call</h3>
+  {
+    posts.length > 0 && (
+      <ul class="ty-cards">
+        {posts.map((p) => (
+          <li>
+            <BlogCard post={p} variant="grid" />
+          </li>
+        ))}
+      </ul>
+    )
+  }
+  <ul class="ty-links">
+    {
+      links.map((l) => (
+        <li>
+          <a href={l.href}>
+            {l.label}
+            <span aria-hidden="true">→</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>

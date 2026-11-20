@@ -1,0 +1,37 @@
+---
+// ClarityValue Shift™: the Stage 1 method. Added 18 Nov 2026 (Seb: "use content from the actual PDF files" for now).
+// Step texts, purpose and deliverables from the 1-page PDF v3.3 (Drive 1g6WwAU8fWcpbNIBKPgNZ382CbirxX4o4) and
+// src/data/how-it-works.ts; the intro lines are new framing for Seb to review.
+import FrameworkPage from "../components/FrameworkPage.astro";
+import { stage1Includes } from "../data/how-it-works";
+---
+
+<FrameworkPage
+  slug="clarityvalue-shift"
+  seoTitle="ClarityValue Shift™: the 4-step reset after an exit | DoGood"
+  description="ClarityValue Shift™ is DoGood's 4-step method for life after selling a business: See, Interrupt, Choose, Reset. Stage 1 of the partnership, 30 days."
+  eyebrow="Stage 1 · The Reset (30 days)"
+  name="ClarityValue Shift™"
+  purpose="To move you from disorientation → clear direction, with depth for real change."
+  intro={[
+    "ClarityValue Shift™ is our proprietary 4-step method inside the Founder Reclamation Partnership, Stage 1: The Reset.",
+    "It is built for the weeks after the sale, when the structure of the company has gone and the noise has not.",
+  ]}
+  steps={[
+    { name: "See", text: "We slow the noise right down and look at what is actually happening, so you can separate what is real from the story around it and regain perspective." },
+    { name: "Interrupt", text: "We identify the loops shaping this chapter: behaviour, self-talk, avoidance, over-control. So you can stop being run by old patterns." },
+    { name: "Choose", text: "We clarify what is true now, what still matters, and what no longer fits, so your next decisions come from choice instead of instinctual habits." },
+    { name: "Reset", text: "We turn the shift into immediate structure through new routines, boundaries, and simple practices that help daily life start working again." },
+  ]}
+  includesLead="By the end of Stage 1, you don't just “feel better”, you leave with tangible, documented clarity:"
+  includes={stage1Includes}
+  expectation={[
+    "In Stage 1, we usually reset one major area (sometimes two) but not everything at once. Deep work needs focus, depth, and enough time to hold the shifts.",
+    "Confidential · 5 founders per month · For founders finding their footing after selling their business.",
+  ]}
+  pdfHref="https://drive.google.com/file/d/1g6WwAU8fWcpbNIBKPgNZ382CbirxX4o4/view?usp=drive_link"
+  pdfLabel="View the 1-Page Map"
+  stage={1}
+  primary={{ href: "/apply-stage-1", label: "Apply for Stage 1" }}
+  secondary={{ href: "/prefrp", label: "Not sure yet? Book a Pre-FRP call" }}
+/>

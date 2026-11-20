@@ -1,0 +1,68 @@
+---
+// Site-wide rule: never drop a Buzzsprout iframe straight onto a page.
+// This player stays a button until someone clicks it, or until CookieYes
+// grants functional consent. Same idea as tawk.to.
+interface Props {
+  src: string;
+  title: string;
+}
+
+const { src, title } = Astro.props;
+---
+
+<div class="buzzsprout-gate" data-buzzsprout-src={src}>
+  <button type="button">{title}</button>
+</div>
+
+<script>
+  const loadPlayer = (gate) => {
+    if (!(gate instanceof HTMLElement) || gate.querySelector("iframe")) return;
+    const src = gate.dataset.buzzsproutSrc;
+    if (!src) return;
+    const frame = document.createElement("iframe");
+    frame.src = src;
+    frame.title = gate.querySelector("button")?.textContent?.trim() || "Podcast episode";
+    frame.loading = "lazy";
+    frame.setAttribute("allow", "autoplay");
+    gate.replaceChildren(frame);
+  };
+
+  const functionalGranted = (accepted) =>
+    Array.isArray(accepted) && (accepted.includes("functional") || accepted.includes("preferences"));
+
+  const gates = () => document.querySelectorAll("[data-buzzsprout-src]");
+
+  gates().forEach((gate) => {
+    gate.querySelector("button")?.addEventListener("click", () => loadPlayer(gate));
+  });
+
+  document.addEventListener("cookieyes_consent_update", (event) => {
+    const accepted = event instanceof CustomEvent ? event.detail?.accepted : undefined;
+    if (!functionalGranted(accepted)) return;
+    gates().forEach((gate) => loadPlayer(gate));
+  });
+</script>
+
+<style>
+  .buzzsprout-gate {
+    min-height: 120px;
+  }
+
+  .buzzsprout-gate button {
+    min-height: 52px;
+    padding: 0 28px;
+    border: 0;
+    border-radius: 999px;
+    background: #28dbb0;
+    color: #2a0b4f;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .buzzsprout-gate iframe {
+    width: 100%;
+    min-height: 200px;
+    border: 0;
+  }
+</style>

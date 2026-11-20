@@ -1,0 +1,61 @@
+---
+import ProductPage from "../components/ProductPage.astro";
+// FOUNDR.land Membership. Preview 7 (Seb, 20 Nov 2026): rewritten from Seb's answers. For founders who have sold
+// (not before the sale): mainly FRP Stage 2 graduates, by invitation; exited founders outside the programme also
+// considered. Cohorts of six, monthly calls with a facilitator, online community, yearly meet-up, a Wayfinder session
+// every two months. Opening September 2027. No prices on the page.
+---
+
+<ProductPage
+  title="FOUNDR.land Membership: a founder community | DoGood Agency"
+  description="A private, invitation-only community for founders who have sold their business: small cohorts, monthly calls, a yearly meet-up and time with a Wayfinder. Opening September 2027."
+  path="/founderland-membership"
+  eyebrow="FOUNDR.land Membership"
+  h1="The house founders belong to, after the sale."
+  sub="A private community for founders who have sold their business."
+  tag="By invitation"
+  soon="Opening September 2027"
+  sections={[
+    {
+      id: "fm-why",
+      heading: "After the sale, nobody needs you in the same way",
+      lede: "The calls stop. The decisions are smaller. And very few people around you know what this stage feels like.",
+      paras: [
+        "FOUNDR.land Membership is a place to stay connected with founders who do. It follows the work you did in the Founder Reclamation Partnership and keeps it alive, in good company.",
+      ],
+    },
+    {
+      id: "fm-how",
+      heading: "How it works",
+      boxes: [
+        {
+          title: "What members get",
+          tone: "sky",
+          items: [
+            "A small cohort of six founders, with its own facilitator",
+            "A group call with your cohort every month",
+            "A private online community to meet and work with other members",
+            "One in-person gathering a year",
+            "A session with a Wayfinder every two months",
+          ],
+        },
+        {
+          title: "Who it's for",
+          tone: "grass",
+          items: [
+            "Founders who have sold their business",
+            "Mainly founders who have completed Stage 2 of the partnership",
+            "Founders who sold without working with us are welcome to ask",
+            "By invitation only",
+          ],
+        },
+      ],
+      note: "Membership opens in September 2027.",
+    },
+  ]}
+  closing={{
+    heading: "Want to hear when the doors open?",
+    text: "Membership starts with the work. Begin with Stage 1, or tell us you'd like to hear when we open.",
+    cta: { href: "/the-reset", label: "See the 2-Stage Partnership" },
+  }}
+/>
