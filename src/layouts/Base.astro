@@ -113,6 +113,8 @@ const organization = {
     <script data-cookieyes="cookieyes-necessary" src="/tawk-loader.js" defer></script>
     <!-- GA4 (20 Nov 2026): runs only after analytics consent (CookieYes) and only on the live domain. -->
     <script type="text/plain" data-cookieyes="cookieyes-analytics" src="/ga.js"></script>
+    <!-- LinkedIn Insight Tag (20 Nov 2026): runs only after advertisement consent (CookieYes), live domain only. -->
+    <script type="text/plain" data-cookieyes="cookieyes-advertisement" src="/li-insight.js"></script>
     <title>{title}</title>
     <meta name="description" content={description} />
     {!Astro.props.noCanonical && <link rel="canonical" href={canonical} />}

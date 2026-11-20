@@ -6,6 +6,18 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 38: LinkedIn Insight Tag behind consent (20 Nov 2026, 01:32)
+
+- **LinkedIn Insight Tag**, Partner ID `10160922` (DoGood Agency ad account), in `public/li-insight.js`, loaded
+  from `Base.astro` as `type="text/plain" data-cookieyes="cookieyes-advertisement"`: runs only after the visitor
+  accepts advertisement cookies in CookieYes, and only on the live domain.
+- **CSP** (`netlify.toml`): `snap.licdn.com` in script-src; `px.ads.linkedin.com` and `*.linkedin.com` in
+  connect-src; `px.ads.linkedin.com` in img-src.
+- **After launch:** the tag shows "Unverified" in Campaign Manager until the live site gets a visit that accepts
+  advertisement cookies; then it turns "Active".
+
+---
+
 ## Preview 6, update 37: Google Analytics 4 behind consent (20 Nov 2026, 01:13)
 
 - **GA4** measurement ID `G-35DQF3LDYG` (property "Do Good Agency - GA4"), in `public/ga.js`, loaded from
@@ -1013,7 +1025,7 @@ the build: every image has an alt; empty alts are decorative icons next to text.
   from /foundrland to that website in `public/_redirects`. Also: new DoGood branding is planned for launch
   (new logo, then favicon and app icon).
 - **Before launch:** GA4 is done (update 37). Still to add: Microsoft Clarity (Seb chose Clarity over PostHog,
-  20 Nov 2026) and the LinkedIn Insight Tag, each behind CookieYes consent and allowed in the CSP in `netlify.toml`.
+  20 Nov 2026); the LinkedIn Insight Tag is done (update 38), each behind CookieYes consent and allowed in the CSP in `netlify.toml`.
 - **About a week before launch:** Seb signs up for Warmly (free plan) for person-level visitor identification
   (US visitors only). Install its script behind CookieYes "marketing" consent and add a line to the privacy policy
   (draft for Seb's approval).
