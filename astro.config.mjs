@@ -15,8 +15,7 @@ export default defineConfig({
     // The placeholder articles were replaced by real ones on 18 Nov 2026, so articles are included.
     filter: (page) =>
       // Thank-you, booking and form-acknowledgement pages stay out of the sitemap (and are noindex).
-      // /foundrland stays out too (noindex): foundr.land gets its own website (Seb, 20 Nov 2026).
-      !/\/([a-z0-9-]*thankyou|thank-you|newsletter\/thanks|stage1-tc|internal|internal60|catchup|prefrp|frpfit|orientation|clarity|exit|wealth|foundrland)\/?$/.test(page),
+      !/\/([a-z0-9-]*thankyou|thank-you|newsletter\/thanks|stage1-tc|internal|internal60|catchup|prefrp|frpfit|orientation|clarity|exit|wealth)\/?$/.test(page),
     serialize(item) {
       const file = sourceFor(new URL(item.url).pathname);
       const date = file && gitDate(file);

@@ -147,8 +147,10 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
     }
   </div>
   <!-- 19 Nov 2026 20:47 (Seb): "Apply for Stage 1" left the nav (it now sits in the homepage hero). Its place
-       is the foundr.land logo, linking to /foundrland. Class nav-apply kept for the layout. -->
-  <a class="nav-apply nav-apply--brand" href="/foundrland" aria-label="foundr.land">
+       is the foundr.land logo. Class nav-apply kept for the layout.
+       20 Nov 2026 06:15 (Seb): links to the foundr.land website (new tab); the /foundrland page is deleted.
+       LAUNCH DAY: replace the Vercel preview link with https://foundr.land (see CHANGELOG launch checklist). -->
+  <a class="nav-apply nav-apply--brand" href="https://foundr-land-git-preview-homepage-v1-do-good-agency.vercel.app/" target="_blank" rel="noopener" aria-label="foundr.land (opens in a new tab)">
     <picture class="nav-brand-logo">
       <source type="image/webp" srcset="/media/foundrland/foundrland-logo@1x.webp 1x, /media/foundrland/foundrland-logo@2x.webp 2x" />
       <img src="/media/foundrland/foundrland-logo@1x.png" srcset="/media/foundrland/foundrland-logo@1x.png 1x, /media/foundrland/foundrland-logo@2x.png 2x" width="480" height="113" alt="" />

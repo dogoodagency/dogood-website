@@ -6,6 +6,19 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 57: /foundrland deleted; nav logo links to the foundr.land website (20 Nov 2026, 06:16)
+
+- Seb: delete /foundrland and connect the logo to the foundr.land site. Deleted `src/pages/foundrland.astro` and
+  its page-only images (`foundrland-logo-dark@*`, `foundrland-og.jpg`). The nav logo images stay.
+- Nav logo (`Header.astro`) now opens https://foundr-land-git-preview-homepage-v1-do-good-agency.vercel.app/ in a
+  new tab (aria-label says so). `public/_redirects`: /foundrland and /foundrland.html redirect there with 302
+  (temporary). Sitemap filter no longer mentions foundrland.
+- LAUNCH DAY: swap both for https://foundr.land, with 301 in the redirects (see launch checklist). A Vercel branch
+  preview link must not go live.
+- `@fontsource/fraunces` was only used by that page; the package is now unused (harmless; remove when convenient).
+
+---
+
 ## Preview 6, update 56: nav bar slightly lighter (20 Nov 2026, 06:12)
 
 - Seb: nav bar colour between DREAM 500 (#2A0B4F) and DREAM 600 (#1D033C, the old bar colour): now #230745.
@@ -1218,9 +1231,10 @@ the build: every image has an alt; empty alts are decorative icons next to text.
 - `public/robots.txt`: replace the whole file with `User-agent: *`, `Allow: /`
   and the `Sitemap:` line (instructions are in the file).
 - Keep `noindex` on /clarity, all booking and thank-you pages (they set it themselves).
-- **Before launch (Seb, 20 Nov 2026):** delete the /foundrland page (`src/pages/foundrland.astro`) and point the
-  nav foundr.land logo (`Header.astro`, `nav-apply--brand`) to the new foundr.land website instead. Add a 301
-  from /foundrland to that website in `public/_redirects`. New DoGood logo (concept D5) is in place since update 41.
+- **Launch day (foundr.land):** /foundrland was deleted in update 57 and the nav logo points to the Vercel
+  preview. Replace that link in `Header.astro` (`nav-apply--brand`) with https://foundr.land and change the two
+  /foundrland lines at the end of `public/_redirects` to `https://foundr.land 301`. Only if foundr.land is live
+  by then; if not, discuss with Seb before launch. New DoGood logo (concept D5) is in place since update 41.
 - **Before launch:** GA4 (update 37), LinkedIn Insight Tag (update 38) and Microsoft Clarity
   (update 39; Seb chose Clarity over PostHog) are done, each behind CookieYes consent and allowed in the CSP in `netlify.toml`.
 - /privacy and /cookies: updated for GA4, Clarity and the LinkedIn Insight Tag (update 40, Seb approved). After

@@ -58,3 +58,8 @@
 /copy-of-dogooders-a                            /404.html                              410!
 /copy-of-bookings-forms                         /404.html                              410!
 /copy-of-bookings-forms-1                       /404.html                              410!
+
+# 20 Nov 2026 (Seb): the /foundrland page is deleted; foundr.land has its own website.
+# Temporary (302) to the Vercel preview for now. LAUNCH DAY: change both to "https://foundr.land 301".
+/foundrland       https://foundr-land-git-preview-homepage-v1-do-good-agency.vercel.app/  302
+/foundrland.html  https://foundr-land-git-preview-homepage-v1-do-good-agency.vercel.app/  302
