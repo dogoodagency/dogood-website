@@ -6,6 +6,14 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 44: one favicon, the light version (20 Nov 2026, 03:09)
+
+- Seb chose the light favicon (purple G body, transparent background) for everywhere: `public/favicon.svg` no
+  longer switches to white in dark mode; `public/favicon.ico` (16/32/48) and new `public/favicon-512.png` are the
+  same version (`Base.astro` head links).
+
+---
+
 ## Preview 6, update 43: edge-to-edge favicon, round app icons (20 Nov 2026, 03:04)
 
 - **Favicon:** the G now fills the whole square on a transparent background. `public/favicon.svg` switches the G's

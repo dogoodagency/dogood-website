@@ -121,11 +121,11 @@ const organization = {
     <meta name="description" content={description} />
     {!Astro.props.noCanonical && <link rel="canonical" href={canonical} />}
     <!-- DoGood G favicon (Seb, 20 Nov 2026, 03:04): the G fills the whole square on a transparent background.
-         favicon.svg switches the G's body from purple to white when the browser is in dark mode; the .ico is the
-         purple-body version. Apple home-screen icon: purple square (iOS rounds the corners itself). Manifest
+         20 Nov 03:09 (Seb): one favicon everywhere, the light version (purple G body), as SVG, .ico and a 512px PNG. Apple home-screen icon: purple square (iOS rounds the corners itself). Manifest
          icons: round purple app icon. -->
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-512.png" type="image/png" sizes="512x512" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#2A0B4F" />
