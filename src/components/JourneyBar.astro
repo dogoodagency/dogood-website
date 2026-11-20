@@ -18,7 +18,7 @@ const steps = [
   { title: "Annual Signature Retreat", detail: "Once a year, by invitation", chip: "Yearly", href: "/signature-retreat", tone: "coral", shape: "diamond", icon: "sun" },
   { title: "FOUNDR.land Membership", detail: "The house founders belong to", chip: "Coming soon", href: "/founderland-membership", tone: "violet", shape: "circle", icon: "house" },
   // Optional 8th phase (Seb, 20 Nov 2026): no page of its own.
-  { title: "Become lifelong friends", detail: "Where the journey can lead", chip: "Optional", href: "", tone: "rose", shape: "circle", icon: "heart" },
+  { title: "Life-long friends", detail: "Where the journey can lead", chip: "Become", href: "", tone: "rose", shape: "circle", icon: "heart" },
 ];
 
 const phases = [
@@ -86,8 +86,7 @@ let roadOn = `M${X(6)} ${Y(6)}` + seg(6, 7) + ` C ${(X(7) + endX) / 2} ${Y(7)}, 
               <a class="jr-card" href={s.href}>
                 <span class="jr-chip">{s.chip}</span>
                 <span class="jr-title">{s.title}</span>
-                <span class="jr-detail">{s.detail}</span>
-                <span class="jr-go" aria-hidden="true">→</span>
+                <span class="jr-detail">{s.detail}<span class="jr-go" aria-hidden="true">→</span></span>
               </a>
             ) : (
               <div class="jr-card jr-card--optional">
@@ -105,6 +104,19 @@ let roadOn = `M${X(6)} ${Y(6)}` + seg(6, 7) + ` C ${(X(7) + endX) / 2} ${Y(7)}, 
         ))
       }
     </ol>
+
+    <!-- foundr.land runs alongside the whole journey (Seb, 20 Nov 2026): a second lane under the road, in
+         parallel with every station, with a light that keeps flowing along it. -->
+    <div class="jr-lane">
+      <p class="jr-lane-label">
+        <img class="jr-lane-logo" src="/media/foundrland/foundrland-logo@1x.png" srcset="/media/foundrland/foundrland-logo@1x.png 1x, /media/foundrland/foundrland-logo@2x.png 2x" width="480" height="113" alt="foundr.land" />
+        <span>with you at every step</span>
+      </p>
+      <div class="jr-lane-track" aria-hidden="true">
+        <span class="jr-lane-flow"></span>
+        {steps.map((_, i) => <span class="jr-lane-dot" style={`--i:${i}`}></span>)}
+      </div>
+    </div>
   </div>
 </nav>
 
@@ -531,6 +543,114 @@ let roadOn = `M${X(6)} ${Y(6)}` + seg(6, 7) + ` C ${(X(7) + endX) / 2} ${Y(7)}, 
     .jr.will-animate .jr-road-on,
     .jr.will-animate .jr-arrow { opacity: 1; }
     .jr.will-animate .jr-sep { opacity: 0.75; }
+  }
+  /* ===== 20 Nov 2026, 17:45 (Seb) =====
+     Cards only as tall as their text, with the arrow on the last line. Phase ribbons 20% taller, 2px bigger
+     type, and real side padding (Before the sale had none). Below the road, a foundr.land lane that runs in
+     parallel with the whole journey. */
+  .jr-card { height: auto; padding: 16px 16px 16px; }
+  .jr-step--up .jr-card { align-self: stretch; }
+  .jr-step--down .jr-card { align-self: stretch; }
+  .jr-go { position: static; display: inline-block; margin-left: 6px; }
+  .jr-card:hover .jr-go { transform: translateX(3px); }
+
+  .jr-phase { padding: 10px 14px; font-size: 13px; letter-spacing: 0.04em; }
+  /* Before the sale needs a little more room than one station: it borrows a column from After the sale. */
+  .jr-phase--sky { grid-column: 3 / 6; }
+  .jr-phase--grass { grid-column: 6 / 9; }
+
+  .jr-lane {
+    display: grid;
+    grid-template-columns: repeat(18, minmax(0, 1fr));
+    align-items: center;
+    row-gap: 12px;
+    margin-top: 34px;
+  }
+  .jr-lane-label {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    color: #c2b7dd;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .jr-lane-logo { width: 128px; height: auto; }
+  .jr-lane-track {
+    position: relative;
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    align-items: center;
+    height: 22px;
+  }
+  .jr-lane-track::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 20px;
+    top: 50%;
+    height: 8px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #f8e08e, #28dbb0 25%, #477dfe 50%, #ea1557 75%, #ff8fb1);
+    opacity: 0.85;
+    transform: translateY(-50%);
+    transform-origin: left center;
+  }
+  .jr-lane-flow {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 8px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, transparent 0, rgba(255, 255, 255, 0.95) 6%, transparent 12%) 0 0 / 50% 100% repeat-x;
+    transform: translateY(-50%);
+    animation: jr-flow 6s linear infinite;
+  }
+  .jr-lane-track::after {
+    content: "";
+    position: absolute;
+    right: 2px;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    border-top: 3px solid #ff8fb1;
+    border-right: 3px solid #ff8fb1;
+    transform: translate(0, -50%) rotate(45deg);
+  }
+  .jr-lane-dot {
+    position: relative;
+    grid-row: 1;
+    grid-column: calc(var(--i) * 2 + 2) / span 1;
+    justify-self: center;
+    width: 14px;
+    height: 14px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    background: #2a0b4f;
+  }
+  @keyframes jr-flow { to { background-position: 100% 0; } }
+
+  .jr.will-animate .jr-lane-track::before { transform: translateY(-50%) scaleX(0); }
+  .jr.will-animate .jr-lane-track::after { opacity: 0; }
+  .jr.is-in .jr-lane-track::after { opacity: 1; transition: opacity 1s ease 4.6s; }
+  .jr.will-animate .jr-lane-dot,
+  .jr.will-animate .jr-lane-label { opacity: 0; }
+  .jr.is-in .jr-lane-track::before { transform: translateY(-50%) scaleX(1); transition: transform 4.55s cubic-bezier(0.3, 0.7, 0.3, 1); }
+  .jr.is-in .jr-lane-label { opacity: 1; transition: opacity 1s ease 0.4s; }
+  .jr.is-in .jr-lane-dot { opacity: 1; transition: opacity 0.6s ease calc(0.39s + var(--i) * 0.585s); }
+
+  @media (max-width: 1023px) {
+    .jr-lane { display: block; margin-top: 30px; }
+    .jr-lane-label { flex-wrap: wrap; }
+    .jr-lane-track { display: block; height: 14px; margin-top: 12px; }
+    .jr-lane-dot { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .jr-lane-flow { animation: none; display: none; }
   }
 </style>
 

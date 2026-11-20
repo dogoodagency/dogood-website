@@ -6,6 +6,13 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 8, update 9: Pathway journey cards, phase ribbons and the foundr.land lane
+
+- Journey cards are only as tall as their text (still equal within each row), and the arrow now sits at the end of the last line.
+- The 8th card reads "Become" in the label and "Life-long friends" as the title.
+- Phase ribbons (Start, Before the sale, …) are 20% taller, with 2px bigger type and real side padding. Before the sale borrows one column from After the sale so it fits.
+- New lane under the road: the foundr.land logo, "with you at every step", and a colour line with a dot under each station, a light running along it and an arrow at the end, so it reads as running in parallel with the whole journey. It draws in with the road. On phones it sits under the list.
+
 ## Preview 8, update 8: missing podcast episode and YouTube thumbnails
 
 - Added the missing episode "Stop Letting Top Talent Slide" with Dawn Anderson (YouTube only, 42:18), with its own page at /podcast/stop-letting-top-talent-slide. The YouTube playlist has 19 episodes; the site now has all 19.
