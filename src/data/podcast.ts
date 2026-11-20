@@ -15,6 +15,56 @@ export const SHOW_LINKS = {
 };
 export const episodes: Episode[] = [
   {
+    "slug": "stop-letting-top-talent-slide",
+    "liveSlug": "stop-letting-top-talent-slide",
+    "title": "Stop Letting Top Talent Slide",
+    "subtitle": "Culture Matches What You Tolerate with Dawn Anderson",
+    "cardTitle": "Stop Letting Top Talent Slide",
+    "cardSubtitle": "Culture Matches What You Tolerate with Dawn Anderson",
+    "duration": "42:18",
+    "metaTitle": "Culture is what you tolerate: Butler Snow's CHRO",
+    "metaDescription": "Dawn Anderson, CHRO at Butler Snow, talks with Seb about holding high performers to the same values as everyone else, and how to raise it early.",
+    "youtubeId": "RaLnuLr0-E8",
+    "image": "/media/podcast/ep-stop-letting-top-talent-slide",
+    "links": {
+      "youtube": "https://youtu.be/RaLnuLr0-E8"
+    },
+    "guestIntro": [
+      "Dawn Anderson, CHRO at the law firm Butler Snow, where high-pressure work, strong egos and revenue targets all pull on the culture at once.",
+      "Dawn works on the moments most firms avoid: the high performer who behaves badly, the partner who won't delegate, and the new lawyer finding their feet in the first six months."
+    ],
+    "summary": [
+      "Many companies let high performers behave badly because the results look good. In this conversation, Seb and Dawn Anderson talk about why that quietly sets the real standard: your culture becomes whatever you tolerate, especially at the top.",
+      "Dawn shares how she holds up the mirror early, with empathy, how her team makes support easy to find, and how onboarding, mentoring and better delegation help collaboration hold up under pressure."
+    ],
+    "chapters": [
+      "Why high performers sometimes get a pass",
+      "Law firm culture, teamwork and ego",
+      "High-pressure work and stress",
+      "Delegation gaps and learning to collaborate",
+      "Onboarding and the first six months",
+      "Addressing poor behaviour by holding up the mirror",
+      "Making HR approachable and support visible",
+      "Lighter ways into difficult conversations",
+      "Crucial conversations and managing egos",
+      "Mentoring, delegation and embedding collaboration",
+      "Linking the first six months to performance reviews",
+      "Closing reflections"
+    ],
+    "keywords": [
+      "Butler Snow",
+      "accountability",
+      "company culture",
+      "CHRO",
+      "collaboration",
+      "delegation",
+      "difficult conversations",
+      "high performers",
+      "onboarding",
+      "workplace culture"
+    ]
+  },
+  {
     "slug": "decision-making-in-business",
     "liveSlug": "decision-making-in-business",
     "title": "Decision Making in Business",
@@ -401,13 +451,13 @@ export const episodes: Episode[] = [
     "duration": "34:43",
     "metaTitle": "Remote work that still connects: 8x8's CHRO",
     "metaDescription": "Jeanette emphasizes the need for emotional intelligence and the significance of recognizing and addressing employee engagement and disengagement.",
-    "youtubeId": null,
+    "youtubeId": "-C6sK9rGTcg",
     "image": "/media/podcast/ep-beyond-distance",
     "links": {
       "amazon": "https://music.amazon.com/podcasts/8a575c58-a94c-4707-9173-e2e42d17bbb5/episodes/5a549306-f608-4d0c-b331-6a3156d9e0e5/dogood-insider---raw-journeys-from-start-up-founders-to-scale-up-ceos-beyond-distance-transforming-remote-work-into-meaningful-connections-with-jeanette-winters",
       "spotify": "https://open.spotify.com/episode/2w4Lx5RtxNBP1lkRXHZLaH?si=yRHjk9W3RuG07zdD8FH4tA",
       "apple": "https://podcasts.apple.com/us/podcast/beyond-distance-transforming-remote-work-into-meaningful/id1786906519?i=1000708509058",
-      "youtube": "https://youtu.be/nhsR_DHZgu0"
+      "youtube": "https://youtu.be/-C6sK9rGTcg"
     },
     "guestIntro": [
       "Jeanette Winters, the CHRO from 8x8 who brings invaluable insights from managing a workforce where 48 % of employees are remote. As a leader navigating the complexities of distributed teams, Jeanette has pioneered approaches to keep remote employees deeply engaged with the company culture and mission.",

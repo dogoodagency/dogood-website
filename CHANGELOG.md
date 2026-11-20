@@ -6,6 +6,12 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 8, update 8: missing podcast episode and YouTube thumbnails
+
+- Added the missing episode "Stop Letting Top Talent Slide" with Dawn Anderson (YouTube only, 42:18), with its own page at /podcast/stop-letting-top-talent-slide. The YouTube playlist has 19 episodes; the site now has all 19.
+- Replaced five preview images that no longer matched YouTube: Culture Eats Strategy, Holistic Leadership in Action, Beyond Distance, No Compromise Just Care and Bridging Cultures. The other 13 already matched.
+- Beyond Distance now links to its current YouTube video (-C6sK9rGTcg), so its page shows the player again.
+
 ## Preview 8, update 7: podcast cards on white with duration and "Listen now" (20 Nov 2026, 16:48)
 
 - Seb: episode cards on a white background, with the duration and a "Listen now →" link at the bottom (the
