@@ -13,53 +13,33 @@ titles and descriptions carry the phrase.
   to their advisors and on LinkedIn, not in Google.
 - The advisor side is where measurable demand is: "CEPA" 6,600 (AI 521), "exit planning
   institute" 1,900, "exit planning" 720, "certified exit planning advisor" 720, "exit planning
-  advisor(s)" 210, "business exit planning services" 170.
+  advisor(s)" 210, "business exit planning services" 170. CEPA and EPI terms are
+  mostly people looking for EPI itself, so we don't target them (see "Don't target" in the Google Doc).
 - Coaching categories with AI demand: "CEO coaching" 1,600 (AI 269), "founder coach" 1,600,
   "retirement coaching" 390 (AI 291), "transition coaching" 260, "founder community" 90 (AI 157),
   "founder retreat" 40 (AI 42).
 
-## Page map
+## Page map: pages added 20 Nov 2026
 
-| Page | Main phrase | Related phrases |
-|---|---|---|
-| / | founder coaching before and after the sale | founder coach, exit coaching |
-| /exit-prep | should I sell my business | preparing to sell a business, personal exit readiness |
-| /the-reset | life after selling a business | what to do after selling your business, transition after selling a business |
-| /the-build | 12-week coaching after selling a business | next chapter after selling a business |
-| /pathway | coaching before or after selling a business | – |
-| /clarityvalue-shift | 4-step reset after an exit | – |
-| /nextlife-passage | building life after the exit | – |
-| /for-advisors | exit planning advisors: personal readiness | exit planning advisor, succession planning advisor |
-| /for-advisors/insights | insights for CEPAs and exit advisors | CEPA, certified exit planning advisor |
-| /for-advisors/client-tools/readiness-check | founder exit readiness check | exit readiness assessment, owner readiness |
-| /for-advisors/client-tools/life-after-the-sale-planner | life after the sale planner | life planning after selling a business |
-| /for-advisors/client-tools/signals-guide | signs a founder struggles with the sale | emotional side of selling a business |
-| /for-advisors/insights/before-and-after-the-sale | book about selling a business | – |
-| /for-advisors/insights/what-founders-struggle-with | what founders struggle with when they sell | – |
-| /for-advisors/insights/advisor-voices | exit advisor conversations | – |
-| /about | exit coaching for founders | DoGood Agency |
-| /wayfinders | founder transition coaches | transition coaching, life transition coach |
-| /wayfinders/seb | founder and exit coach | Seb Wichmann |
-| /stories | founder exit coaching case studies | coaching case study |
-| /casestudies/j, /casestudies/v | (case titles) | – |
-| /services | residency, retreat and ongoing founder coaching | – |
-| /residency | in-person residency for founders | coaching intensive |
-| /signature-retreat | founder retreat | CEO retreat, entrepreneur retreat |
-| /founderland-membership | founder community | community for founders who sold their business |
-| /integral-continuity | ongoing founder support | – |
-| /recovery-stress-diagnostics | WHOOP stress and recovery baseline | whoop stress monitor |
-| /state-shift-audio | custom state-shift audio for founders | – |
-| /expedited-start | expedited start | – |
-| /podcast, /dogood-insider | founder podcast | – |
+The main map (home, Exit-Prep, The Reset, How it works, For Advisors, client tools, FAQs, Seb,
+newsletter, all articles and category pages, "don't target" list and overlap rules) is the Google
+Doc "DoGood keyword map" (18 Nov 2026). That doc is the source of truth; these rows were added
+to it on 20 Nov 2026.
 
-## Article clusters (for new Insights articles)
+| Page | Main phrase | Supporting phrases | Title tag (live on preview) |
+|---|---|---|---|
+| /about | exit coaching for founders | coaching for founders selling their business | About DoGood: exit coaching for founders |
+| /wayfinders | founder transition coaches | transition coaching (260) · life transition coach (210) | Wayfinders: founder transition coaches |
+| /stories | founder exit coaching case studies | coaching case study (20) | Founder exit coaching case studies |
+| /services | residency, retreat and ongoing founder coaching | (hub for the four pages below) | Residency, retreat & ongoing coaching |
+| /signature-retreat | founder retreat (40, AI 42) | CEO retreat (30) · entrepreneur retreat (30) | Annual founder retreat, invitation only |
+| /founderland-membership | founder community (90, AI 157) | community for founders who sold their business | FOUNDERland Membership: a founder community |
+| /for-advisors/client-tools/readiness-check | founder exit readiness check | (supports /client-tools, which owns "exit readiness assessment") | Founder exit readiness check for advisors |
+| /for-advisors/insights | advisor insights on founders who sell | (supports /for-advisors; CEPA terms not targeted) | Advisor insights on founders who sell |
+| /residency, /integral-continuity, /recovery-stress-diagnostics, /state-shift-audio, /expedited-start, /clarityvalue-shift, /nextlife-passage, /the-build, /pathway, /contact, advisor sub-pages, case studies | titles already match their topic; no change | – | unchanged |
 
-Each article supports one hub page above and links to it; the hub links back.
+## Articles
 
-1. Hub /the-reset (life after the sale): identity after selling, losing structure, purpose,
-   partner and family, money without meaning, the first 90 days, seller's remorse.
-2. Hub /exit-prep (before the sale): should I sell, am I personally ready, what to do 12–18
-   months before, earn-outs and staying on, telling the team and family.
-3. Hub /for-advisors (advisors, CEPAs): the personal leg of exit planning, signals a client is not
-   ready, how to raise it, deals that stall for personal reasons, working with a transition coach.
-4. Hub /signature-retreat, /founderland-membership (community): founder peer groups, retreats.
+Article phrases, slugs, categories and the launch order are in the Google Doc "DoGood keyword map"
+and "DoGood article playbook". Each article supports one hub (Exit-Prep, The Reset, Advisor Center)
+and links to it; the hub links back.

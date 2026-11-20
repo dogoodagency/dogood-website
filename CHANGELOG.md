@@ -6,6 +6,19 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 49: keyword map synced with the Google Doc; GTmetrix findings (20 Nov 2026, 05:12)
+
+- The Google Doc "DoGood keyword map" stays the source of truth. Added a section "Pages added 20 Nov 2026"
+  there with the eight new rows. `docs/keyword-map.md` now only lists those rows and points to the Doc.
+- /for-advisors/insights title: "Insights for CEPAs and exit advisors" changed to "Advisor insights on founders
+  who sell" (the Doc's rules say not to target CEPA/EPI terms, which are searches for EPI itself).
+- GTmetrix (Seb, 20 Nov, 04:51): LCP 1.1 s, TBT 188 ms, CLS 0, fully loaded 1.7 s, 1.3 MB. Two real contrast
+  failures on the homepage at every width, not only mid-animation (correcting update 47): "FOUNDERland" in
+  #01a684 on white (3.09:1) and the "Why 'DoGood'?" kicker in #ea1557 on white (4.42:1, needs 4.5). Options
+  sent to Seb; not changed yet. Note: the axe step in the scratchpad a11y script takes page slugs, not URLs.
+
+---
+
 ## Preview 6, update 48: keyword map for the newer pages (20 Nov 2026, 04:57)
 
 - New `docs/keyword-map.md`: one main search phrase per indexable page (old and new pages), with US volumes
@@ -30,8 +43,8 @@ From the PageSpeed Insights run on the preview (mobile 93, desktop 95; SEO 69 on
 - **Case-study buttons:** every "Read the short case study" link now has an `aria-label` naming the case
   ("...: how J created a clear next life chapter" / "...: how V reclaimed life after success"), so screen readers
   can tell the J and V links apart. Visible text unchanged. Covers pages, Markdown copies and `BookingCaseCard.astro`.
-- Not changed: colour contrast flags (hero "'re planning to exit", FOUNDERland line, first card, "Why 'DoGood'?"):
-  options sent to Seb. CookieYes "URL changed" and Tawk.to 403 errors only happen on the preview domain.
+- Not changed: colour contrast flags (hero "'re planning to exit", FOUNDERland line, first card, "Why 'DoGood'?").
+  Two of them are real; see update 49. CookieYes "URL changed" and Tawk.to 403 errors only happen on the preview domain.
 
 ---
 

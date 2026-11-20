@@ -1,5 +1,5 @@
 ---
-title: "Insights for CEPAs and exit advisors | DoGood Agency"
+title: "Advisor insights on founders who sell | DoGood Agency"
 description: "What founders struggle with before and after the sale, drawn anonymously from our conversations with exit and wealth advisors."
 hideOptin: true
 ---
