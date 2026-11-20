@@ -14,8 +14,11 @@ interface Props {
 const { class: cls } = Astro.props;
 const total = data.paths.reduce((n, [, len]) => n + (len as number), 0);
 const DURATION = 3.2; // seconds for the whole signature
+const HEART_PAUSE = 0.35; // seconds between the name and the heart (Seb, 20 Nov 2026: name first, then the heart)
+const heartFrom = (data as { heartFrom?: number }).heartFrom ?? data.paths.length;
 let t = 0;
-const strokes = data.paths.map(([d, len]) => {
+const strokes = data.paths.map(([d, len], i) => {
+  if (i === heartFrom) t += HEART_PAUSE;
   const dur = ((len as number) / total) * DURATION;
   const s = { d: d as string, dur: Math.max(dur, 0.06).toFixed(2), delay: t.toFixed(2) };
   t += dur;
