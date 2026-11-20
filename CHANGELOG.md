@@ -6,6 +6,16 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 46: link preview images for the other eight booking pages (20 Nov 2026, 04:04)
+
+- New 1200x630 share images in `public/media/og/` from Seb's screenshots: `clarity-og.jpg`, `exit-og.jpg`,
+  `wealth-og.jpg`, `frpfit-og.jpg`, `prefrp-og.jpg`, `orientation-og.jpg`, `internal-og.jpg` (45 min) and
+  `internal60-og.jpg`. Each is cropped to the hero and the opening text; lines cut off at the bottom edge were
+  painted out. Each page sets `ogImage` on its BookingPage.
+- All nine booking pages now have their own preview. They show on LinkedIn and WhatsApp from launch (live domain).
+
+---
+
 ## Preview 6, update 45: link preview image for /catchup (20 Nov 2026, 03:58)
 
 - New `public/media/og/catchup-og.jpg` (1200x630, 39 KB): Seb's screenshot of the /catchup hero, cropped
