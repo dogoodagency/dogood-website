@@ -6,6 +6,11 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 8, update 14: Pathway colours follow the phases
+
+- One colour per phase, used everywhere on the journey: Start = PLAY yellow, Before the sale = SKY blue, After the sale = GRASS green, Beyond = HEART pink-red, For life = rose. The green road, the foundr.land lane, the phase ribbons, the hand-over lines, the card borders, chips and badge backgrounds all use the same colour per phase (shades within a phase).
+- The foundr.land lane now reveals with a clip instead of stretching, so each colour stays under its stations while it fills.
+
 ## Preview 8, update 13: foundr.land sections, each its own; living clarity wheel; Pathway pace
 
 - Home: the clarity wheel on the app phone now moves (redrawn in SVG over the phone image; the "Your next chapter" badge sits back on top).

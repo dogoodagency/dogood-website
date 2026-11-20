@@ -11,19 +11,19 @@ import { FOUNDRLAND_URL } from "../data/foundrland";
  * Colours: DREAM for reading and the long-term offers, SKY for The Exit Prep, GRASS Stage 1, HEART Stage 2.
  */
 const steps = [
-  { title: "Read or subscribe", detail: "Insights and the newsletter", chip: "Free", href: "/insights", tone: "lilac", shape: "circle", icon: "book" },
+  { title: "Read or subscribe", detail: "Insights and the newsletter", chip: "Free", href: "/insights", tone: "play", shape: "circle", icon: "book" },
   { title: "The Exit Prep™", detail: "Six weekly 1:1 sessions", chip: "Before the sale", href: "/exit-prep", tone: "sky", shape: "diamond", icon: "compass" },
   { title: "Stage 1: The Reset™", detail: "Get clear, set new values", chip: "30 days", href: "/the-reset", tone: "grass", shape: "hex", icon: "reset" },
-  { title: "Stage 2: The Build™", detail: "By invitation, after Stage 1", chip: "12 weeks", href: "/the-build", tone: "heart", shape: "hex", icon: "blocks" },
-  { title: "IntegralContinuity™", detail: "Ongoing sessions", chip: "Ongoing", href: "/integral-continuity", tone: "sun", shape: "squircle", icon: "loop" },
-  { title: "Annual Signature Retreat", detail: "Once a year, by invitation", chip: "Yearly", href: "/signature-retreat", tone: "coral", shape: "diamond", icon: "sun" },
-  { title: "FOUNDR.land Membership", detail: "The house founders belong to", chip: "Coming soon", href: "/founderland-membership", tone: "violet", shape: "circle", icon: "house" },
+  { title: "Stage 2: The Build™", detail: "By invitation, after Stage 1", chip: "12 weeks", href: "/the-build", tone: "grass2", shape: "hex", icon: "blocks" },
+  { title: "IntegralContinuity™", detail: "Ongoing sessions", chip: "Ongoing", href: "/integral-continuity", tone: "heart", shape: "squircle", icon: "loop" },
+  { title: "Annual Signature Retreat", detail: "Once a year, by invitation", chip: "Yearly", href: "/signature-retreat", tone: "heart2", shape: "diamond", icon: "sun" },
+  { title: "FOUNDR.land Membership", detail: "The house founders belong to", chip: "Coming soon", href: "/founderland-membership", tone: "heart3", shape: "circle", icon: "house" },
   // Optional 8th phase (Seb, 20 Nov 2026): no page of its own.
   { title: "Life-long friends", detail: "Where the journey can lead", chip: "Become", href: "", tone: "rose", shape: "circle", icon: "heart" },
 ];
 
 const phases = [
-  { label: "Start", from: 1, to: 1, tone: "lilac" },
+  { label: "Start", from: 1, to: 1, tone: "play" },
   { label: "Before the sale", from: 2, to: 2, tone: "sky" },
   { label: "After the sale", from: 3, to: 4, tone: "grass" },
   { label: "Beyond", from: 5, to: 7, tone: "heart" },
@@ -74,7 +74,16 @@ let roadOn = `M${X(6)} ${Y(6)}` + seg(6, 7) + ` C ${(X(7) + endX) / 2} ${Y(7)}, 
       <li class="jr-roadrow" aria-hidden="true">
         <svg class="jr-road" viewBox="0 0 1000 120" preserveAspectRatio="none">
           <path class="jr-road-base" d={road} />
-          <path class="jr-road-dash" d={road} pathLength="100" />
+          <defs>
+            <linearGradient id="jr-phase-grad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1000" y2="0">
+              <stop offset="0" stop-color="#f5c400" /><stop offset="0.145" stop-color="#f5c400" />
+              <stop offset="0.19" stop-color="#477dfe" /><stop offset="0.25" stop-color="#477dfe" />
+              <stop offset="0.305" stop-color="#28dbb0" /><stop offset="0.47" stop-color="#28dbb0" />
+              <stop offset="0.53" stop-color="#ea1557" /><stop offset="0.8" stop-color="#ea1557" />
+              <stop offset="0.86" stop-color="#ff8fb1" /><stop offset="1" stop-color="#ff8fb1" />
+            </linearGradient>
+          </defs>
+          <path class="jr-road-dash" d={road} pathLength="100" stroke="url(#jr-phase-grad)" />
           <defs>
             <mask id="jr-on-mask" maskUnits="userSpaceOnUse" x="0" y="-20" width="1000" height="160">
               <path class="jr-on-reveal" d={roadOn} pathLength="100" />
@@ -725,6 +734,27 @@ let roadOn = `M${X(6)} ${Y(6)}` + seg(6, 7) + ` C ${(X(7) + endX) / 2} ${Y(7)}, 
   @media (prefers-reduced-motion: reduce) {
     .jr.is-in .jr-road-on { animation: none; }
   }
+  /* ===== 20 Nov 2026, 18:30 (Seb) =====
+     One colour per phase, the same on the road, the cards, the badges, the ribbons and the foundr.land lane:
+     Start = PLAY yellow, Before the sale = SKY, After the sale = GRASS, Beyond = HEART, For life = rose.
+     Stations in one phase use shades of that phase's colour. The lane is revealed with a clip, so its colours
+     stay under their stations while it fills. */
+  .jr-road-dash { stroke: url(#jr-phase-grad); }
+  .jr-phase--play { background: #fbe88a; }
+  .jr-step--play { --c: #f5c400; --soft: #fffbe6; --hover: #fbeaa0; --ink: #6b4f00; }
+  .jr-step--play .jr-badge { color: #2a0b4f; }
+  .jr-step--grass2 { --c: #12b894; --soft: #e7fff6; --hover: #bff3e0; --ink: #05745b; }
+  .jr-step--heart2 { --c: #c8104a; --soft: #fff1f4; --hover: #ffd3df; --ink: #8a0a33; }
+  .jr-step--heart3 { --c: #f0457a; --soft: #fff3f6; --hover: #ffd9e4; --ink: #9e1446; }
+  .jr-step--heart { --c: #ea1557; --soft: #fff3f4; --hover: #ffd6e0; --ink: #960434; }
+  .jr-lane-track::before {
+    background: linear-gradient(90deg, #f5c400 0%, #f5c400 14.5%, #477dfe 19%, #477dfe 25%, #28dbb0 30.5%, #28dbb0 47%, #ea1557 53%, #ea1557 80%, #ff8fb1 86%, #ff8fb1 100%);
+    opacity: 1;
+    transform: translateY(-50%);
+  }
+  .jr.will-animate .jr-lane-track::before { transform: translateY(-50%); clip-path: inset(0 100% 0 0); }
+  .jr.is-in .jr-lane-track::before { transform: translateY(-50%); clip-path: inset(0 0 0 0); transition: clip-path 9s linear; }
+  .jr-lane-track::after { border-color: #ff8fb1; }
 </style>
 
 <script>
