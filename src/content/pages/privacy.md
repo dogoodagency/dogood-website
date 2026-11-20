@@ -8,7 +8,7 @@ bandGroups:
   - "9-12"
 ---
 
-Last updated: 13 November 2026
+Last updated: 20 November 2026
 
 The controller is DoGood OÜ (Estonia, registry code 14695833). Contact: hiya@dogoodagency.co.
 
@@ -18,7 +18,9 @@ At DoGood Agency, we respect your privacy and are committed to protecting your p
 
 ### Automatically Collected Information
 
-Our website host processes basic technical data (IP address, browser and device type, pages requested, referring page) to deliver the site and keep it secure. We don't use analytics or tracking tools.
+Our website host processes basic technical data (IP address, browser and device type, pages requested, referring page) to deliver the site and keep it secure.
+
+With your consent, we also use Google Analytics and Microsoft Clarity to understand how visitors use the site (pages viewed, clicks, scrolling, device and approximate location), and the LinkedIn Insight Tag to see, in aggregate, what kinds of professionals visit and to measure LinkedIn advertising. Clarity records anonymised sessions; it masks text you type. These tools only run after you accept analytics or advertisement cookies in our cookie banner, and you can withdraw consent at any time.
 
 ### Information You Provide
 
@@ -57,7 +59,7 @@ We will never sell your personal information to third parties.
 
 We may share your information only in the following circumstances:
 
-We share data only with service providers who help us run DoGood, under data processing terms: website hosting, cookie consent, live chat, call booking, online forms, email newsletter, customer records, e-signature, email and office tools, and our podcast player. Payments are handled by Wise (bank transfer) and Stripe (card payment). A current list of providers is available on request at hiya@dogoodagency.co.
+We share data only with service providers who help us run DoGood, under data processing terms: website hosting, cookie consent, live chat, call booking, online forms, email newsletter, customer records, e-signature, email and office tools, our podcast player, website analytics (Google, Microsoft) and advertising measurement (LinkedIn). Payments are handled by Wise (bank transfer) and Stripe (card payment). A current list of providers is available on request at hiya@dogoodagency.co.
 
 Legal Requirements: We may disclose information if required by law, court order, or government regulation, or if necessary to protect our rights, prevent fraud, or ensure safety.
 
@@ -67,7 +69,7 @@ Aggregate Data: We may share anonymized, aggregate statistics about our website 
 
 ### Legal basis
 
-We handle data to answer you and to prepare or perform a contract, because the law requires it (for example accounting), with your consent (newsletter and functional cookies), or for our legitimate interest in running a secure site.
+We handle data to answer you and to prepare or perform a contract, because the law requires it (for example accounting), with your consent (newsletter, and functional, analytics and advertisement cookies), or for our legitimate interest in running a secure site.
 
 ### Transfers
 
@@ -89,7 +91,7 @@ To exercise these rights, contact us at: [hiya@dogoodagency.co](mailto:hiya@dogo
 
 ## 5. COOKIES
 
-COOKIES: We use only the cookies needed to run the site and, with your consent, cookies for optional features such as live chat. For details and to change your choices, see our [Cookies Policy](/cookies).
+COOKIES: We use only the cookies needed to run the site and, with your consent, cookies for optional features such as live chat, analytics (Google Analytics, Microsoft Clarity) and advertising measurement (LinkedIn Insight Tag). For details and to change your choices, see our [Cookies Policy](/cookies).
 
 ## 6. DATA SECURITY
 

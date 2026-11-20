@@ -1,15 +1,15 @@
 ---
 title: Cookies Policy
 description: How DoGood OÜ uses cookies and similar tools on dogoodagency.co.
-updated: "13 November 2026"
+updated: "20 November 2026"
 bandTint: "#FEFEF3"
 bandGroups:
   - "1-3"
-  - "4-6"
-  - "7-9"
+  - "4-7"
+  - "8-10"
 ---
 
-Last updated: 13 November 2026
+Last updated: 20 November 2026
 
 ## What cookies are
 
@@ -39,9 +39,22 @@ These add features you choose to use. They load only after you accept functional
 | --- | --- | --- | --- | --- |
 | tawk.to live chat (shown as "Ava") | Runs the chat window and keeps your conversation going between pages. It loads only after you accept functional cookies | tawk.to | tawk_uuid_* (6 months); twk_idm_key (session); TawkConnectionTime (session) | 6 months; session; session |
 
-## Analytics and advertising cookies
+## Analytics cookies
 
-We don't use analytics or advertising cookies. We don't use any LinkedIn tracking (such as the LinkedIn Insight Tag).
+These help us understand how the site is used. They load only after you accept analytics cookies in our cookie banner.
+
+| Tool | Purpose | Set by | Cookie names | Duration |
+| --- | --- | --- | --- | --- |
+| Google Analytics | Counts visits and shows which pages are used | Google | Listed in the cookie banner (Cookie settings) | Listed in the cookie banner |
+| Microsoft Clarity | Shows anonymised recordings and heatmaps of how pages are used; text you type is masked | Microsoft | Listed in the cookie banner (Cookie settings) | Listed in the cookie banner |
+
+## Advertisement cookies
+
+These load only after you accept advertisement cookies in our cookie banner.
+
+| Tool | Purpose | Set by | Cookie names | Duration |
+| --- | --- | --- | --- | --- |
+| LinkedIn Insight Tag | Shows us aggregate information about visitors who are LinkedIn members, such as job titles and industries, never names, and measures our LinkedIn advertising | LinkedIn | Listed in the cookie banner (Cookie settings) | Listed in the cookie banner |
 
 ## Things that set no cookies on our site
 

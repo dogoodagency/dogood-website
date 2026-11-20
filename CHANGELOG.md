@@ -6,6 +6,20 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 40: Privacy and Cookies Policy updated for analytics (20 Nov 2026, 01:53)
+
+Seb approved the wording.
+- **/privacy** (`src/content/pages/privacy.md`): new paragraph under "Automatically Collected Information" on
+  Google Analytics, Microsoft Clarity and the LinkedIn Insight Tag, all consent-only; providers list adds website
+  analytics (Google, Microsoft) and advertising measurement (LinkedIn); legal basis and section 5 mention
+  analytics and advertisement cookies. Last updated 20 November 2026.
+- **/cookies** (`src/content/pages/cookies.md`): "We don't use analytics or advertising cookies" replaced by an
+  "Analytics cookies" table (Google Analytics, Microsoft Clarity) and an "Advertisement cookies" table (LinkedIn
+  Insight Tag). Cookie names and durations point to the cookie banner (CookieYes scan). Band groups now 1-3, 4-7,
+  8-10. Last updated 20 November 2026.
+
+---
+
 ## Preview 6, update 39: Microsoft Clarity behind consent (20 Nov 2026, 01:40)
 
 - **Microsoft Clarity**, project ID `zgclthwg5f`, in `public/clarity.js`, loaded from `Base.astro` as
@@ -1038,9 +1052,8 @@ the build: every image has an alt; empty alts are decorative icons next to text.
   (new logo, then favicon and app icon).
 - **Before launch:** GA4 (update 37), LinkedIn Insight Tag (update 38) and Microsoft Clarity
   (update 39; Seb chose Clarity over PostHog) are done, each behind CookieYes consent and allowed in the CSP in `netlify.toml`.
-- **Before launch (must):** update /privacy and /cookies. Both still say the site uses no analytics or tracking
-  tools and no LinkedIn tracking, which stops being true at launch (GA4, Clarity, LinkedIn Insight Tag). Draft
-  wording sent to Seb on 20 Nov 2026 for approval.
+- /privacy and /cookies: updated for GA4, Clarity and the LinkedIn Insight Tag (update 40, Seb approved). After
+  launch, let the CookieYes scan list the exact cookie names and durations in the banner.
 - **Clarity:** in Clarity, connect Google Analytics (Settings > Setup) and turn on the Clarity Consent API toggle
   in CookieYes; confirm in CookieYes that GA4 and Clarity are listed under Analytics, LinkedIn under Advertisement.
 - **About a week before launch:** Seb signs up for Warmly (free plan) for person-level visitor identification
