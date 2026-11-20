@@ -11,7 +11,7 @@ const heroEdge = edgeAbove("#2A0B4F");
 const bandEdge = edgeAbove(tint);
 const footerEdge = edgeAbove(white);
 
-const commonSearches = ["Stage 1", "Timing", "Confidential", "WHOOP", "Exit-Prep"];
+const commonSearches = ["Stage 1", "Timing", "Confidential", "Guarantee", "WHOOP", "Exit-Prep"];
 
 const total = faqCategories.reduce((sum, category) => sum + category.items.length, 0);
 
@@ -82,8 +82,7 @@ const faqSketch: Record<string, { src: string; alt: string }> = {
             </button>
           </form>
 
-          <div class="faq-common" role="group" aria-labelledby="faq-common-label">
-            <p class="faq-common-label" id="faq-common-label">Common searches:</p>
+          <div class="faq-common" role="group" aria-label="Common searches">
             {
               commonSearches.map((term) => (
                 <button class="faq-chip" type="button" data-faq-term={term}>

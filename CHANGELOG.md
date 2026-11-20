@@ -6,6 +6,21 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 8, update 22: mobile pass across the site (Seb, 20 Nov 2026 22:53)
+
+Site-wide (phones under 600px unless marked "all sizes"):
+- Every wave is half as tall, and overlaps the next band or footer by a pixel so no hairline shows.
+- One type standard: body copy, hero intro text and card copy 17px / 1.6; section headlines 26px; card headlines 21px.
+- Paragraphs and list items use normal line wrapping (all sizes). Safari's "pretty" wrapping evened out every line and left a wide gap on the right of text in cards and heroes.
+
+Pages:
+- FAQ: "Common searches:" label removed, "Guarantee" added as a topic (all sizes); section sketches hidden on phones; newsletter card redesigned on phones (one column on DREAM 500, full-width button).
+- Client-fit: case study card centred, pin 30% larger, title, founder line, kicker and note 2px smaller; "Meet the Wayfinders" button removed from "Ready to find your Wayfinder?" (all sizes).
+- Newsletter: note from Seb at body size; question numbers removed, question cards and the Keep reading card at 15px; prologue at body size; Keep reading in one column (it was squeezed into a narrow column); chapter numbers removed, dates as centred pills; "Working titles…" note removed on phones; "Ready for more than reading?" left aligned, one size; privacy line 12px.
+- Podcast: hero sketch hidden on phones; "founders, Sr. execs and L&D leaders" (all sizes); Seb's photo centred with a DREAM 200 ring; "Where the conversation goes now" card uses the same padding as the host card; newsletter card redesigned (small centred envelope, full-width button).
+- Insights: "Suggested topics:" label removed, "advisors" added (all sizes); featured headline 3px smaller; other article titles 1px larger; thumbnails 96px, aligned to the top of the title; privacy line 12px.
+- About: Wayfinders photo 30% larger; IODA logo 40% smaller, under the text to the right of "Visit IODA"; "What's next" text at normal body weight.
+
 ## Preview 8, update 21: mobile pass on the home page, header and footer (Seb, 20 Nov 2026 22:28)
 
 Phones only (under 600px) unless marked "all sizes".

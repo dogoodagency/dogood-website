@@ -125,3 +125,90 @@
   .footer .legal a { font-size: 12px; }
   .footer .legal p { font-size: 12px; color: #8b7dae; }
 }
+
+/* ===== 20 Nov 2026 22:53 (Seb): site-wide mobile standards ===== */
+
+/* Body copy runs to the right padding. Safari's "pretty" wrapping evens out every line and leaves a wide
+   ragged gap on the right on phones, so paragraphs and list items use normal wrapping (all sizes). */
+main p,
+main li { text-wrap: wrap; }
+
+@media (max-width: 599px) {
+  /* Every wave on phones: half as tall (all wave SVGs share the 1440 x 80 drawing). Each overlaps the band
+     below by a pixel so no hairline shows between a wave and the next band or the footer. */
+  svg[viewBox="0 0 1440 80"][preserveAspectRatio="none"] {
+    height: 40px !important;
+    margin-bottom: -1px;
+  }
+  .bk-wave-top svg[viewBox="0 0 1440 80"] { height: 18px !important; }
+  .footer-wave { position: relative; z-index: 2; margin-bottom: -2px; }
+
+  /* Type scale on phones:
+     hero headline (h1) as set per page; section headline 26px; card headline 21px;
+     body copy, hero intro and card copy 17px / 1.6; captions 14px. */
+  main p:not([class]),
+  main li:not([class]),
+  main :is(.lede, .founder-line, .ep-sub, .ep-lede, .ep-lede-plain, .advr-lede, .adv-lede, .wfp-extra, .wfp-p, .wfp-sub,
+    .bl-dek, .bl-hero-lede, .wf-lead, .hw-hero-lede, .hw-center, .cs-intro, .cs-lead, .faq-hero-intro, .dr-hero-sub,
+    .nl-lede, .nl-intro, .wh-lede, .au-lede, .fw-lead, .bl-isyou, .pod-sub) {
+    font-size: 17px !important;
+    line-height: 1.6 !important;
+  }
+  main .t-h2,
+  main h2:not([class]) { font-size: 26px; line-height: 1.2; }
+  main .t-h3,
+  main h3:not([class]) { font-size: 21px; line-height: 1.25; }
+}
+
+/* Client-fit page, case study card (Seb, 20 Nov 22:53): centred, smaller type, larger pin. */
+@media (max-width: 599px) {
+  .wf-case { justify-items: center; text-align: center; }
+  .wf-case .wf-case-portrait { width: 208px; height: auto; margin-inline: auto; }
+  .wf-case .wf-case-body { align-items: center; text-align: center; }
+  .wf-case .wf-case-body > .wf-eyebrow { font-size: 13px; }
+  .wf-case .wf-case-title { font-size: 20px; }
+  .wf-case .wf-case-who { font-size: 16px; }
+  .wf-case .btn-teal { align-self: center; }
+  .wf-case .wf-case-note { font-size: 13px; text-align: center; align-self: center; width: 100%; }
+}
+
+/* Podcast page (Seb, 20 Nov 22:53). */
+@media (max-width: 599px) {
+  .pod-hero .pod2-art { display: none; }
+  .pod-hero .pod-hero-inner { padding-bottom: 12px; }
+  .pod2-host .pod2-host-img { justify-self: center; margin-inline: auto; border: 2px solid #c2b7dd; border-radius: 50%; }
+  .pod2-next { padding: 24px; margin-top: 32px; }
+  /* Newsletter card: envelope small and centred over the text, button full width. */
+  .pod2-news { padding: 24px; gap: 8px; }
+  .pod2-news .pod2-news-art { justify-self: center; width: 150px; }
+  .pod2-news .pod2-news-art img { width: 150px; height: auto; }
+  .pod2-news h2 { font-size: 24px !important; line-height: 1.2; }
+  .pod2-news .btn-teal { width: 100%; justify-content: center; }
+}
+
+/* Insights (Seb, 20 Nov 22:53). */
+@media (max-width: 599px) {
+  html .bl-page .bl-card--feature .bl-card-title { font-size: 23px !important; }
+  html .bl-page .bl-card:not(.bl-card--feature) .bl-card-title { font-size: 19px !important; }
+  html .bl-card--row { align-items: flex-start !important; }
+  html .bl-card--row .bl-row-thumb,
+  html .bli-picks .bl-row-thumb { flex: 0 0 96px !important; width: 96px !important; margin-top: 3px; }
+  html .bl-card--row .bl-row-thumb img { width: 96px; height: 96px; object-fit: cover; }
+  html .bl-nl-print { font-size: 12px; max-width: none !important; width: 100%; white-space: normal; }
+}
+
+/* About (Seb, 20 Nov 22:53). */
+@media (max-width: 599px) {
+  html .ab-band-wf { overflow-x: clip; }
+  html .ab-band-wf .ab-team { width: 130%; max-width: none; margin: 40px 0 0 -15%; transform: none; translate: none; }
+  html .ab-band-wf .ab-team img { width: 100%; height: auto; }
+  /* IODA: logo 40% smaller, under the text, to the right of "Visit IODA". */
+  html .ab-page .ab-ioda { grid-template-columns: minmax(0, 1fr) 168px; gap: 0 16px; column-gap: 16px; align-items: center; }
+  html .ab-ioda .ab-ioda-copy { display: contents; }
+  html .ab-ioda .ab-ioda-copy > * { grid-column: 1 / span 2; }
+  html .ab-ioda .ab-ioda-copy > p:last-child { grid-column: 1 / span 1; grid-row: 5; margin: 0; }
+  html .ab-ioda .ab-ioda-logo { grid-column: 2; grid-row: 5; width: 168px; padding: 14px 17px; margin: 0; border-radius: 14px; }
+  html .ab-ioda .ab-ioda-logo img { width: 100%; height: auto; }
+  /* What's next: normal body copy. */
+  html .ab-cta .ab-cta-lead { font-size: 17px; font-weight: 400; line-height: 1.6; }
+}

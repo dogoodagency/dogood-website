@@ -756,3 +756,28 @@ html.faq-js .faq-item:not(.is-open) .faq-panel {
   .faq-card-sketch img { width: 92px; height: 70px; }
   .faq-card-head { min-height: 80px; }
 }
+
+/* 20 Nov 2026 22:53 (Seb, mobile): no section sketches on phones; the newsletter card is redesigned as one
+   column on DREAM 500 with the button at full width. */
+@media (max-width: 800px) {
+  .faq-news {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: stretch;
+    gap: 22px;
+  }
+  .faq-news-body { padding-right: 0; }
+}
+@media (max-width: 599px) {
+  .faq-card-sketch { display: none !important; }
+  .faq-card-head { min-height: 0; }
+  .faq-news {
+    padding: 30px 22px 26px;
+    background: #2A0B4F;
+    border-color: #2A0B4F;
+    text-align: left;
+  }
+  .faq-page .faq-news-eyebrow { color: #28DBB0; font-size: 13px; margin-bottom: 10px; }
+  .faq-page .faq-news h2 { color: #fff; font-size: 24px; margin-bottom: 12px; }
+  .faq-page .faq-news-body > p:last-child { color: #e9e3f7; font-size: 17px; }
+  .faq-news a.btn-teal { justify-self: stretch; justify-content: center; text-align: center; white-space: normal; }
+}

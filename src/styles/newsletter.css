@@ -1172,3 +1172,53 @@ html:has(.nl-page) {
 .nl-signup-split .nl-signup-art img { display: block; width: 100%; height: auto; max-width: none; }
 .nl-signup-split .nl-signup-art img { transform: scale(1.4); transform-origin: center; }
 @media (max-width: 900px) { .nl-signup-split .nl-signup-art img { transform: none; } }
+
+/* ===== 20 Nov 2026 22:53 (Seb): newsletter page on phones ===== */
+@media (max-width: 599px) {
+  /* A note from Seb: body size. */
+  .nl-page .nl-well .nl-note blockquote p { font-size: 17px; line-height: 1.6; font-weight: 400; }
+
+  /* Seven questions (white band): no number badges, text starts at the card padding;
+     everything but the section headline is 2px under body size, one size throughout. */
+  .nl-page .nl-qnum { display: none; }
+  .nl-page .nl-question { grid-template-columns: minmax(0, 1fr); gap: 0; padding: 22px 22px; }
+  .nl-page #questions .nl-well :is(p, li, h3, summary, summary *, .nl-deep-body *):not(h2) { font-size: 15px; }
+  .nl-page #questions .nl-question h3 { line-height: 1.4; }
+
+  /* Prologue: same body size as the rest of the site. */
+  .nl-page .nl-well .nl-prose p { font-size: 17px; line-height: 1.6; }
+  .nl-page .nl-well .nl-prose p.nl-source { font-size: 14px; }
+
+  /* Keep reading (white band): one column; heading, text, form, then the envelope. */
+  .nl-signup.nl-signup-split {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "head" "copy" "art";
+    padding: 26px 22px;
+  }
+  .nl-signup-split .nl-signup-art { width: min(200px, 70%); margin-top: 18px; }
+  .nl-page #signup .nl-well :is(p, label):not(.nl-print) { font-size: 15px; }
+  .nl-page #signup .nl-print { font-size: 12px; max-width: none; }
+
+  /* The chapters: no numbers, text at the card padding; date as a centred pill. */
+  .nl-page .nl-chapters .nl-chapter .nl-chapter-num { display: none; }
+  .nl-page .nl-chapters .nl-chapter { grid-template-columns: minmax(0, 1fr) !important; padding-left: 22px; padding-right: 22px; }
+  .nl-page .nl-chapters .nl-chapter > * { grid-column: 1 / -1 !important; margin-left: 0; }
+  .nl-page .nl-chapters .nl-date-pill {
+    justify-self: center;
+    align-self: center;
+    width: auto;
+    margin-inline: auto;
+    padding: 8px 18px;
+    border-style: solid;
+    text-align: center;
+  }
+  .nl-page .nl-chapters-note { display: none; }
+
+  /* Ready for more than reading: left aligned, one size. */
+  .nl-page .nl-closing { text-align: left; }
+  .nl-page .nl-well .nl-closing p,
+  .nl-page .nl-well .nl-closing p.nl-closing-label { font-size: 17px; text-align: left; letter-spacing: 0; text-transform: none; }
+}
+@media (max-width: 599px) {
+  .nl-page .nl-well .nl-closing p:not(.nl-closing-label) { font-weight: 400; }
+}

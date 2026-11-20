@@ -26,6 +26,7 @@ const topics = [
   "family",
   "energy",
   "what's next",
+  "advisors",
 ];  // "advisors" and "earnout" dropped so the topics fit on one line (Seb, 19 Nov 2026)
 
 // Featured post, then the three editor's picks (sorted by pick, newest first on a tie).
@@ -150,8 +151,7 @@ import { getAuthor } from "../../data/authors";
             </button>
           </form>
 
-          <div class="bl-common" role="group" aria-labelledby="bli-common-label">
-            <p class="bl-common-label" id="bli-common-label">Suggested topics:</p>
+          <div class="bl-common" role="group" aria-label="Suggested topics">
             {
               topics.map((term) => (
                 <button class="bl-chip" type="button" aria-pressed="false" data-bl-term={term}>
