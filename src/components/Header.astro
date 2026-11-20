@@ -73,15 +73,9 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
     <a class="nav-logo nav-logo--mark" href="/">
       <!-- G mark animation (Seb, 20 Nov 2026): the white piece is fixed; red, then green, then yellow come out of the
            background and lock into place. No rotation. Plays once per visit (sessionStorage); reduced motion shows
-           the finished mark. Same shapes as public/dogood-mark.svg. -->
-      <script is:inline>
-        try {
-          if (!sessionStorage.getItem("dg-mark-played")) {
-            document.documentElement.classList.add("dg-mark-play");
-            sessionStorage.setItem("dg-mark-played", "1");
-          }
-        } catch (e) {}
-      </script>
+           the finished mark. Same shapes as public/dogood-mark.svg. The flag is set by public/dg-mark.js (an external file,
+           because the CSP blocks inline scripts). -->
+      <script is:inline src="/dg-mark.js"></script>
       <svg class="dg-mark" viewBox="194 160 616 667" width="616" height="667" role="img" aria-label="DoGood Agency">
         <path class="dg-pc" d="M330.0 385.4A205 205 0 0 0 596.2 681.0" fill="none" stroke="#FFFFFF" stroke-width="190" />
         <g transform="translate(22,30) rotate(6 500 500)"><path class="dg-pc dg-pc-red" d="M570.1 692.6A205 205 0 0 0 698.9 549.6" fill="none" stroke="#EA1557" stroke-width="190" /></g>
@@ -105,15 +99,6 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
         ))
       }
     </ul>
-    <!-- 19 Nov 2026 20:47 (Seb): "Apply for Stage 1" left the nav (it now sits in the homepage hero). Its place
-         is the foundr.land logo, linking to /foundrland. Class nav-apply kept for the layout.
-         20 Nov 2026 06:00 (Seb): moved inside the nav bar. -->
-    <a class="nav-apply nav-apply--brand" href="/foundrland" aria-label="foundr.land">
-      <picture class="nav-brand-logo">
-        <source type="image/webp" srcset="/media/foundrland/foundrland-logo@1x.webp 1x, /media/foundrland/foundrland-logo@2x.webp 2x" />
-        <img src="/media/foundrland/foundrland-logo@1x.png" srcset="/media/foundrland/foundrland-logo@1x.png 1x, /media/foundrland/foundrland-logo@2x.png 2x" width="480" height="113" alt="" />
-      </picture>
-    </a>
     <button class="nav-burger" type="button" aria-expanded="false" aria-controls="nav-panel">
       <span class="sr-only">Menu</span>
       <span class="nav-burger-icon" aria-hidden="true"></span>
@@ -161,6 +146,14 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
       ))
     }
   </div>
+  <!-- 19 Nov 2026 20:47 (Seb): "Apply for Stage 1" left the nav (it now sits in the homepage hero). Its place
+       is the foundr.land logo, linking to /foundrland. Class nav-apply kept for the layout. -->
+  <a class="nav-apply nav-apply--brand" href="/foundrland" aria-label="foundr.land">
+    <picture class="nav-brand-logo">
+      <source type="image/webp" srcset="/media/foundrland/foundrland-logo@1x.webp 1x, /media/foundrland/foundrland-logo@2x.webp 2x" />
+      <img src="/media/foundrland/foundrland-logo@1x.png" srcset="/media/foundrland/foundrland-logo@1x.png 1x, /media/foundrland/foundrland-logo@2x.png 2x" width="480" height="113" alt="" />
+    </picture>
+  </a>
   <nav id="nav-panel" class="nav-panel" hidden aria-label="Primary">
     {
       links.map((link) => {

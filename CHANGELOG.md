@@ -6,6 +6,18 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 54: foundr.land back outside the bar; G animation fixed on Netlify (20 Nov 2026, 06:08)
+
+- Seb: foundr.land stays as before, outside the bar. Moved back after `.nav-bar` in `Header.astro`. The bar and
+  the button together are still 100px narrower on each side (1043px: 840px bar + 18px gap + 185px button) and
+  centred. The update 53 CSS was replaced (end of `site-rules.css`).
+- The G animation didn't play on the preview: the site's CSP (`netlify.toml`, script-src 'self' + one hash)
+  blocks inline scripts, so the once-per-visit flag was never set. The script now lives in `public/dg-mark.js`,
+  loaded with `<script is:inline src>` just before the SVG. Lesson: no new inline scripts without adding their hash
+  to the CSP (local `python -m http.server` has no CSP, so it won't show this).
+
+---
+
 ## Preview 6, update 53: one centred nav bar with foundr.land inside (20 Nov 2026, 06:02)
 
 - `Header.astro`: the foundr.land logo link moved inside `.nav-bar` (after the links, before the burger).

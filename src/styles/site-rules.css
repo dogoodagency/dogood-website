@@ -228,43 +228,10 @@ html.dg-mark-play header.nav .dg-pc-yellow { --dx: 64px; --dy: 0px;   animation-
   html.dg-mark-play header.nav .dg-pc { animation: none; opacity: 1; }
 }
 
-/* 20 Nov 2026 06:00 (Seb): one nav bar, 100px narrower on each side than the old bar + foundr.land button
-   (1243px -> 1043px), centred, with the foundr.land logo inside the bar on the right. */
-header.nav .nav-bar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-header.nav .nav-bar > .nav-apply.nav-apply--brand {
-  position: relative;
-  flex: 0 0 auto;
-  display: inline-flex;
-  align-items: center;
-  height: 52px;
-  min-height: 0;
-  margin: 0 0 0 6px;
-  padding: 0 18px;
-  border-radius: 12px;
-}
-header.nav .nav-bar > .nav-apply.nav-apply--brand .nav-brand-logo,
-header.nav .nav-bar > .nav-apply.nav-apply--brand .nav-brand-logo img { width: 124px; }
+/* 20 Nov 2026 06:07 (Seb): bar plus foundr.land button together 100px narrower on each side than before
+   (1243px -> 1043px) and centred; foundr.land stays outside the bar, as before. 840 + 18 gap + 185 button. */
 @media (min-width: 1081px) {
   header.nav .nav-bar {
-    width: min(1043px, calc(100% - 2 * clamp(20px, 5.56vw, 80px)));
-    margin: 0 auto;
+    width: min(840px, calc(100% - 2 * clamp(20px, 5.56vw, 80px) - 203px));
   }
-}
-@media (max-width: 1080px) {
-  header.nav .nav-bar > .nav-apply.nav-apply--brand {
-    order: 2;
-    margin-left: auto;
-    height: 44px;
-    padding: 0 12px;
-  }
-  header.nav .nav-bar > .nav-burger { order: 3; }
-  header.nav .nav-bar > .nav-apply.nav-apply--brand .nav-brand-logo,
-  header.nav .nav-bar > .nav-apply.nav-apply--brand .nav-brand-logo img { width: 100px; }
-}
-@media (max-width: 600px) {
-  header.nav .nav-bar > .nav-apply.nav-apply--brand { height: 40px; min-height: 0; }
 }
