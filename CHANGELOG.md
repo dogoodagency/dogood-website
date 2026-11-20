@@ -6,6 +6,39 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 8, update 4: language pass from the call log (20 Nov 2026, 16:20)
+
+All 35 proposals in the doc "Website language pass: founder and advisor words"
+(https://claude.ai/artifact/7oQc36R4g9R9spSD6jrBwE) approved by Seb and applied, from the Call Language Log, the
+transcripts and the log's Suggestions tab. Highlights:
+
+- Our words out, theirs in: "what is surfacing", "genuinely belongs", "separate distraction from genuine desire",
+  "compress the timeline", "surface-level interventions" replaced across Home, About, The Reset, For Advisors,
+  FAQs and the nav. The 10-Day Containment Protocol and Founder Completion Checkpoints keep their names; only
+  their descriptions changed (Seb).
+- Home: hero speaks to founders who have sold and who are getting ready to ("no idea yet"); Stage 1 line names
+  both doors; "hard for a reason" adds the pre-sale point and "most founders sell a company once"; "Who is this
+  for?" is an H2 with "Haven't sold yet? Start with The Exit Prep" under the list; founder's message (also About)
+  says the patterns "come with you".
+- The Exit Prep: fourth card "Not sure you want to sell at all", heading "Where are you right now?"; new H2
+  "Should I sell my business, or am I just tired?"; "no headspace" line in Who it's for; FAQs on the company and
+  team, and on cost ("We share the fee on the first call… six weeks, with a simple agreement before you
+  start", Seb); closing card "Not sure yet? Talk it through first." linking to /prefrp (Seb).
+- The Reset: H2 "Why does it feel this way when the sale went well?", the brave-face paragraph, "the picture of
+  life after work everyone talks about", "Many founders feel this and never quite say it", a new fit signal
+  ("can't really switch off"), and a plain closing promise ("a Wayfinder who has walked many founders through
+  this").
+- The Build: hero mentions "whether you want to build again"; the blocks repeated from The Reset (WHOOP, What
+  This Partnership Is Not with case J, testimonials, track record) are replaced by one "same foundations as Stage
+  1" link back (Seb approved the trim).
+- For Advisors: "What your client gets" covers before and after the sale; good-fit FAQ starts with the signs
+  advisors see before the sale; new FAQ "What happens when the owner isn't ready?".
+- Pathway: a door for "not sure you want to sell at all". About: "never sold one before"; team line on About and
+  Wayfinders ("walked many founders through this transition").
+- FAQs: answer-first openings on 7 answers; new "Is it too early if I'm a year or two from selling?" and "I'm too
+  busy with the sale to think about myself".
+- First-90-days article: "the first ordinary Monday with nothing in it".
+
 ## Preview 8, update 3: podcast, The Build, house labels, audio card, SEO pass (20 Nov 2026, 15:31)
 
 - DoGood Insider: episode previews 16:9 with rounded corners; the host block says "Seb Wichmann" (Seb, 15:25)

@@ -583,3 +583,27 @@ body:has(.ep-page) .footer-wave {
 .ep-page .ep-places .ep-place:nth-child(3) { background: #fffbe6; border: 1px solid #f5e27a !important; }
 .ep-page .ep-places .ep-place:hover { transform: translateY(-3px); }
 @media (prefers-reduced-motion: reduce) { .ep-page .ep-places .ep-place:hover { transform: none; } }
+
+/* 20 Nov 2026 (Seb): four "Where are you right now?" cards (fourth colour: lilac); question heading above
+   "What is The Exit Prep"; a soft closing card. */
+.ep-page .ep-places { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.ep-page .ep-places .ep-place:nth-child(4) { background: #f5f2ff; border: 1px solid #c2b7dd !important; }
+.ep-page .ep-places .ep-place:nth-child(1) { background: #fff; border: 1px solid #8b7dae !important; }
+.ep-page .ep-places .ep-place:nth-child(2) { background: #f3fffb; border: 1px solid #73e7c4 !important; }
+.ep-page .ep-places .ep-place:nth-child(3) { background: #fff9fa; border: 1px solid #feb5bc !important; }
+.ep-page .ep-places .ep-place:nth-child(4) { background: #fffbe6; border: 1px solid #f5e27a !important; }
+@media (max-width: 900px) { .ep-page .ep-places { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .ep-page .ep-places { grid-template-columns: minmax(0, 1fr); } }
+.ep-page #ep-what { margin-top: 40px; }
+.ep-soft {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 44px 48px;
+  border: 1px solid #c2b7dd;
+  border-radius: 24px;
+  background: #f5f2ff;
+  text-align: center;
+}
+.ep-page .ep-soft h2 { margin: 0 0 12px; }
+.ep-page .ep-soft p { max-width: 640px; margin: 0 auto 22px; font-size: 18px; line-height: 1.6; }
+@media (max-width: 600px) { .ep-soft { padding: 32px 22px; } }

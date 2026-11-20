@@ -82,7 +82,7 @@ If you want somewhere to start, we have put together [seven questions for the fi
 
 ## Why it often hits later than you expect
 
-Many founders feel fine in the first month. The deal is done, there is relief, and often a celebration. The quiet tends to arrive around month three, when the congratulations stop and the calendar stays empty. For some it comes later still, around the one-year mark, when a handover ends or the next venture doesn't feel the way they hoped.
+Many founders feel fine in the first month. The deal is done, there is relief, and often a celebration. The quiet tends to arrive around month three, when the congratulations stop and the calendar stays empty: the first ordinary Monday with nothing in it. For some it comes later still, around the one-year mark, when a handover ends or the next venture doesn't feel the way they hoped.
 
 If that happens to you, nothing has gone wrong. It is a common pattern, and it is the reason the reflection in month three matters.
 

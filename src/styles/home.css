@@ -7987,3 +7987,10 @@ body:has(.page-home) {
 /* 20 Nov 2026 (Seb): the Clarity-First letter uses the animated signature (SignatureDraw); keep its size. */
 .page-clarity .promise-signature.sig-draw { width: 180px; }
 @media (max-width: 600px) { .page-clarity .promise-signature.sig-draw { width: 150px; } }
+
+/* 20 Nov 2026 (Seb, language pass #12): "Who is this for?" is an H2 now (same look), with a door for founders
+   who haven't sold yet under the list. */
+.foryou-grid h2 { margin: 0 0 18px; }
+.page-home .card.ink .fit-presale { margin: 18px 0 0; color: #fff; font-size: 16px; font-weight: 700; }
+.page-home .card.ink .fit-presale a { color: #fff; text-decoration: underline; text-decoration-color: #28dbb0; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.page-home .hero-copy a[href="/exit-prep"] { color: inherit; text-decoration: underline; text-decoration-color: #28dbb0; text-decoration-thickness: 2px; text-underline-offset: 4px; }

@@ -103,7 +103,7 @@ export const faqCategories: FaqCategory[] = [
         id: "not-a-founder",
         q: "I’m not a founder. Is there something for me?",
         a: [
-          "You are very welcome here. The Founder Reclamation Partnership is built specifically for founders, so it is probably not the right fit for you personally.",
+          "Not for the Founder Reclamation Partnership itself, but you are very welcome here. The Founder Reclamation Partnership is built specifically for founders, so it is probably not the right fit for you personally.",
           "If you are a senior executive in a founder-like role, our [1:1 Clarity Sprints](/clarity) might be: focused one-to-one sessions on business, leadership and life. If you are asking on behalf of a team or company, or about something else, you can [book a short orientation call](/orientation) or email [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co).",
         ],
       },
@@ -123,11 +123,19 @@ export const faqCategories: FaqCategory[] = [
         ],
       },
       // [SEB]
+      // [ADDED 20 Nov 2026 – language pass #34 (timing objection, founders and advisors)]
+      {
+        id: "too-early",
+        q: "Is it too early if I'm a year or two from selling?",
+        a: [
+          "No. 12 to 18 months out is the best time. The personal side moves slower than the deal, and starting early keeps the decision in your hands. [The Exit-Prep](/exit-prep) is built for that stretch.",
+        ],
+      },
       {
         id: "how-quickly",
         q: "How quickly can we start?",
         a: [
-          "Start timing depends on capacity and travel logistics. On the FRP‑Fit Call we’ll confirm fit, urgency, and the soonest realistic start date. Standard Start begins at the next available slot (capacity‑dependent) — typically 4–8 weeks from acceptance. In acute crises, we’ll assess whether an Expedited Start is appropriate (and whether we can ethically create that space) — if so, start within 7 days after approval. If you want certainty on timing once accepted, ask about Priority Hold. The next step is to [apply for Stage 1](/apply-stage-1) and completing the FRP‑Fit Call.",
+          "As soon as capacity allows, and within 7 days with Expedited Start. Start timing depends on capacity and travel logistics. On the FRP‑Fit Call we’ll confirm fit, urgency, and the soonest realistic start date. Standard Start begins at the next available slot (capacity‑dependent) — typically 4–8 weeks from acceptance. In acute crises, we’ll assess whether an Expedited Start is appropriate (and whether we can ethically create that space) — if so, start within 7 days after approval. If you want certainty on timing once accepted, ask about Priority Hold. The next step is to [apply for Stage 1](/apply-stage-1) and completing the FRP‑Fit Call.",
         ],
       },
       // [SEB]
@@ -191,7 +199,7 @@ export const faqCategories: FaqCategory[] = [
         id: "why-whoop",
         q: "Why WHOOP — and is it medical?",
         a: [
-          "WHOOP supports the Recovery & Stress diagnostics so stabilization is faster and more measurable (not based only on mood). It’s not medical care — think recovery visibility for better decisions under pressure. [WHOOP](https://www.whoop.com/us/en/life) is required for diagnostics and purchased separately (about USD 35/month, paid annually).",
+          "It shows how your body is coping, not only how you feel, and no, it is not medical care. WHOOP supports the Recovery & Stress diagnostics so progress is easier to see. It’s not medical care — think recovery visibility for better decisions under pressure. [WHOOP](https://www.whoop.com/us/en/life) is required for diagnostics and purchased separately (about USD 35/month, paid annually).",
         ],
       },
       // [ADDED – source: how-it-works.md ("These supports remain consistent throughout both FRP stages")]
@@ -300,7 +308,7 @@ export const faqCategories: FaqCategory[] = [
         id: "different-from-coaching",
         q: "How is this different from coaching, therapy, masterminds, or retreats?",
         a: [
-          "FRP is a private, structured partnership built specifically for founders navigating life after the sale. Coaching can help with performance and direction. Therapy can offer an important space to process what is difficult. Masterminds and retreats can provide perspective and connection. Each can have value. FRP brings together the parts that matter in this particular transition: understanding what is surfacing, and addressing what was neglected while building. There are clear milestones, documented decisions, and real accountability throughout.",
+          "It is built for one transition only: your life around the sale of your business. FRP is a private, structured partnership for founders navigating life after the sale. Coaching can help with performance and direction. Therapy can offer an important space to process what is difficult. Masterminds and retreats can provide perspective and connection. Each can have value. FRP brings together the parts that matter in this particular transition: understanding what is really going on for you, and addressing what was neglected while building. There are clear milestones, documented decisions, and real accountability throughout.",
         ],
       },
       // [ADDED – source: chat-brief-approved.txt §4 "Is this therapy?"; diagnostics.md ("Founder-focused · Not therapy, not medical advice, not psychological services")]
@@ -340,7 +348,7 @@ export const faqCategories: FaqCategory[] = [
         id: "stage-1-cost",
         q: "How much does Stage 1 cost?",
         a: [
-          "It depends on your situation and what fits, so we would rather walk you through it properly than give a number that might not suit you. We cover all of it openly in the conversation after you apply, with no pressure to commit, and questions about payment are welcome in that same conversation.",
+          "We share the fee on the FRP-Fit Call, because it depends on your situation and what fits, so we would rather walk you through it properly than give a number that might not suit you. We cover all of it openly in the conversation after you apply, with no pressure to commit, and questions about payment are welcome in that same conversation.",
           "WHOOP is purchased separately (see [why WHOOP](#why-whoop)), and Stage 1 is covered by our Clarity-First Guarantee. You can [apply for Stage 1](/apply-stage-1) or email [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co) with questions first.",
         ],
       },
@@ -349,7 +357,7 @@ export const faqCategories: FaqCategory[] = [
         id: "guarantee-results",
         q: "Can you guarantee results?",
         a: [
-          "No one should guarantee how your life will turn out, and we will not. Everyone’s situation is different, and results depend on the person and the work. What we can say is that the work is focused, private and built around you, and that Stage 1 is covered by the Clarity-First Guarantee, described in the next answer.",
+          "No. No one should guarantee how your life will turn out, and we will not. Everyone’s situation is different, and results depend on the person and the work. What we can say is that the work is focused, private and built around you, and that Stage 1 is covered by the Clarity-First Guarantee, described in the next answer.",
         ],
       },
       // [ADDED – source: how-it-works.md "Clarity‑First Guarantee (Stage 1)"; clarity-first-guarantee-terms.md; chat-brief-approved.txt §5]
@@ -357,7 +365,7 @@ export const faqCategories: FaqCategory[] = [
         id: "start-and-not-right",
         q: "What if I start and it isn’t right for me?",
         a: [
-          "That is what the Clarity-First Guarantee is for. You can’t know whether FRP is right for you from the outside, only once you’ve been inside the work. Complete onboarding and attend your first two private 1:1 sessions. If you decide the partnership isn’t right for you, email us within 7 calendar days of your first session. We keep only the part of the Stage 1 investment that covers those two sessions, and we refund the rest, no matter the reason.",
+          "You can stop, and the Clarity-First Guarantee refunds everything except the two sessions you used. You can’t know whether FRP is right for you from the outside, only once you’ve been inside the work. Complete onboarding and attend your first two private 1:1 sessions. If you decide the partnership isn’t right for you, email us within 7 calendar days of your first session. We keep only the part of the Stage 1 investment that covers those two sessions, and we refund the rest, no matter the reason.",
           "You keep all decisions, plans and tools from those first sessions. We take real delivery risk on purpose, because we only want to continue if it is genuinely the right fit.",
         ],
       },
@@ -404,6 +412,14 @@ export const faqCategories: FaqCategory[] = [
         ],
       },
       // [ADDED 20 Nov 2026 – source: Seb's answers (Exit-Prep is about the founder's clarity, not the deal)]
+      // [ADDED 20 Nov 2026 – language pass #33 (no headspace during the sale)]
+      {
+        id: "too-busy-with-the-sale",
+        q: "I'm too busy with the sale to think about myself. Is now the wrong time?",
+        a: [
+          "No. That is usually the right time. One session a week fits around a deal, and the clarity tends to make the sale itself easier.",
+        ],
+      },
       {
         id: "sale-falls-through",
         q: "What if the sale falls through?",

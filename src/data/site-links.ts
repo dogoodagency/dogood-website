@@ -21,7 +21,7 @@ export const offers: SiteLink[] = [
     href: "/the-reset",
     label: "Stage 1: The Reset™",
     navLabel: "Stage 1: The Reset™ (30 Days)",
-    detail: "For founders who have sold. 30 private days to see what is surfacing.",
+    detail: "For founders who have sold. 30 private days to get clear on what’s next.",
   },
   {
     href: "/the-build",
