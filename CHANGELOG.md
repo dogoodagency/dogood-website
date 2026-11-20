@@ -6,6 +6,18 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 39: Microsoft Clarity behind consent (20 Nov 2026, 01:40)
+
+- **Microsoft Clarity**, project ID `zgclthwg5f`, in `public/clarity.js`, loaded from `Base.astro` as
+  `type="text/plain" data-cookieyes="cookieyes-analytics"`: runs only after analytics consent, live domain only.
+  It sends Clarity's Consent API v2 signal (analytics granted, ads denied), which Clarity requires for visitors
+  from the EEA, UK and Switzerland.
+- **CSP** (`netlify.toml`): `www.clarity.ms` and `*.clarity.ms` in script-src; `*.clarity.ms` in connect-src;
+  `*.clarity.ms` and `c.bing.com` in img-src.
+- **Launch blocker noted:** /privacy and /cookies must be updated before launch (see launch checklist).
+
+---
+
 ## Preview 6, update 38: LinkedIn Insight Tag behind consent (20 Nov 2026, 01:32)
 
 - **LinkedIn Insight Tag**, Partner ID `10160922` (DoGood Agency ad account), in `public/li-insight.js`, loaded
@@ -1024,8 +1036,13 @@ the build: every image has an alt; empty alts are decorative icons next to text.
   nav foundr.land logo (`Header.astro`, `nav-apply--brand`) to the new foundr.land website instead. Add a 301
   from /foundrland to that website in `public/_redirects`. Also: new DoGood branding is planned for launch
   (new logo, then favicon and app icon).
-- **Before launch:** GA4 is done (update 37). Still to add: Microsoft Clarity (Seb chose Clarity over PostHog,
-  20 Nov 2026); the LinkedIn Insight Tag is done (update 38), each behind CookieYes consent and allowed in the CSP in `netlify.toml`.
+- **Before launch:** GA4 (update 37), LinkedIn Insight Tag (update 38) and Microsoft Clarity
+  (update 39; Seb chose Clarity over PostHog) are done, each behind CookieYes consent and allowed in the CSP in `netlify.toml`.
+- **Before launch (must):** update /privacy and /cookies. Both still say the site uses no analytics or tracking
+  tools and no LinkedIn tracking, which stops being true at launch (GA4, Clarity, LinkedIn Insight Tag). Draft
+  wording sent to Seb on 20 Nov 2026 for approval.
+- **Clarity:** in Clarity, connect Google Analytics (Settings > Setup) and turn on the Clarity Consent API toggle
+  in CookieYes; confirm in CookieYes that GA4 and Clarity are listed under Analytics, LinkedIn under Advertisement.
 - **About a week before launch:** Seb signs up for Warmly (free plan) for person-level visitor identification
   (US visitors only). Install its script behind CookieYes "marketing" consent and add a line to the privacy policy
   (draft for Seb's approval).
