@@ -6,6 +6,12 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 8, update 20: no foundr.land links yet; screen-size fixes from the device test
+
+- foundr.land links removed until that site is public: the header logo, the section buttons and the Pathway link are plain text for now. /foundrland goes to the home page (temporary). To turn the links back on, set FOUNDRLAND_URL in src/data/foundrland.ts.
+- Home, laptop widths (1081–1709px): the case-study headline and the "Who is this for?" card no longer run off the right edge; text now wraps inside the screen at every width tested.
+- Apply for Stage 1, small phones (320px): the three fact pills now fit the screen instead of pushing it sideways.
+
 ## Preview 8, update 19: "Developed by DoGood Agency" placement
 
 - Removed from the Pathway page.

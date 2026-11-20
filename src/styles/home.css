@@ -7994,3 +7994,23 @@ body:has(.page-home) {
 .page-home .card.ink .fit-presale { margin: 18px 0 0; color: #fff; font-size: 16px; font-weight: 700; }
 .page-home .card.ink .fit-presale a { color: #fff; text-decoration: underline; text-decoration-color: #28dbb0; text-decoration-thickness: 2px; text-underline-offset: 4px; }
 .page-home .hero-copy a[href="/exit-prep"] { color: inherit; text-decoration: underline; text-decoration-color: #28dbb0; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+
+/* Laptop widths (1081–1709px), 20 Nov 2026 responsive pass: the home layout is drawn for a 1710px screen. Below
+   that, the case-study headlines (J, V) ran off the right edge and the "Who is this for?" card was cut off.
+   Headlines now wrap inside the screen and the two "for you" cards share the width. 1710px+ is unchanged. */
+@media (min-width: 1081px) and (max-width: 1709px) {
+  #case-j .case-compact {
+    grid-template-columns: calc(257 * 100vw / 1710) minmax(0, 1fr);
+    width: auto;
+    max-width: calc(100vw - 501 * 100vw / 1710 - var(--pad));
+  }
+  #case-v .case-compact {
+    grid-template-columns: calc(251 * 100vw / 1710) minmax(0, 1fr);
+    width: auto;
+    max-width: calc(100vw - 395 * 100vw / 1710 - var(--pad));
+  }
+  .foryou-grid {
+    grid-template-columns: repeat(2, minmax(0, 675px));
+    padding-right: var(--pad);
+  }
+}

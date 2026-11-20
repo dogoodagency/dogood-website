@@ -115,6 +115,15 @@
   color: #05745b;
   font-size: 15px;
   font-weight: 800;
+  max-width: 100%;
+}
+
+@media (max-width: 380px) {
+  .apl-facts li {
+    padding: 7px 11px;
+    font-size: 14px;
+    white-space: normal;
+  }
 }
 
 .page-apply .apl-line {
