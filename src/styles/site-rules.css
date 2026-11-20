@@ -187,3 +187,20 @@ header.nav .nav-brand-logo img {
   header.nav .nav-brand-logo,
   header.nav .nav-brand-logo img { width: 110px; }
 }
+
+/* 20 Nov 2026 (Seb): the nav shows the G mark alone; the footer logo is 40% bigger (42px -> 59px tall). */
+header.nav .nav-logo.nav-logo--mark img {
+  height: 44px;
+  width: auto;
+}
+
+@media (max-width: 1080px) {
+  header.nav .nav-logo.nav-logo--mark img {
+    height: 36px;
+  }
+}
+
+.footer .footer-logo img {
+  height: auto;
+  width: 225px;
+}

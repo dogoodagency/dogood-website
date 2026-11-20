@@ -1,6 +1,4 @@
 ---
-import { Image } from "astro:assets";
-import logo from "../assets/photos/logo-nav.png";
 import { urls } from "../data/homepage";
 import { offers, products, advisorLinks, tm, type SiteLink } from "../data/site-links";
 
@@ -71,15 +69,9 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
 
 <header class="nav">
   <div class="nav-bar">
-    <a class="nav-logo" href="/">
-      <Image
-        src={logo}
-        alt="DoGood Agency"
-        widths={[240, 480, 720]}
-        sizes="148px"
-        loading="eager"
-        fetchpriority="high"
-      />
+    <!-- Nav shows the DoGood G mark on its own (Seb, 20 Nov 2026); the full logo stays in the footer. -->
+    <a class="nav-logo nav-logo--mark" href="/">
+      <img src="/dogood-mark.svg" alt="DoGood Agency" width="616" height="667" fetchpriority="high" />
     </a>
     <ul class="nav-links" aria-label="Primary">
       {

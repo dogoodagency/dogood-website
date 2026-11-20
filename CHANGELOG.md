@@ -6,6 +6,16 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 42: G mark in the nav, bigger footer logo (20 Nov 2026, 02:53)
+
+- **Nav:** the full logo is replaced by the D5 G mark on its own (`public/dogood-mark.svg`, white body version),
+  44px tall on desktop, 36px under 1080px (`Header.astro`, `.nav-logo--mark` in `site-rules.css`). Alt text
+  stays "DoGood Agency".
+- **Footer:** logo 40% bigger, 160px to 225px wide (`.footer .footer-logo img` in `site-rules.css`; `Footer.astro`
+  image widths raised to 240/480/720).
+
+---
+
 ## Preview 6, update 41: new DoGood logo and favicon (20 Nov 2026, 02:48)
 
 Seb chose logo concept D5 ("drifting into place": a G built from a GRASS cap, white/DREAM body, HEART lower piece
