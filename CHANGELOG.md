@@ -6,6 +6,15 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 7, update 3: "by DoGood" under the foundr.land logo (20 Nov 2026, 08:04)
+
+- Seb: small "by DoGood" on the nav foundr.land logo, 9px, DREAM 300 (#8B7DAE), thin (Montserrat 300). New
+  `span.nav-brand-by` in `Header.astro` (hidden from screen readers; the link's label now says "foundr.land by
+  DoGood"). The logo and the line stack right-aligned inside the button (end of `site-rules.css`).
+- Design change on preview 7 only; preview 6 is left as it is, as Seb asked.
+
+---
+
 ## Preview 7, update 2: FOUNDERland becomes FOUNDR.land (20 Nov 2026, 08:01)
 
 - Seb: no ™, and the word is written FOUNDR.land everywhere on the site. Replaced in every page, component, data

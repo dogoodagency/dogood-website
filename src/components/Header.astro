@@ -150,11 +150,13 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
        is the foundr.land logo. Class nav-apply kept for the layout.
        20 Nov 2026 06:15 (Seb): links to the foundr.land website (new tab); the /foundrland page is deleted.
        LAUNCH DAY: replace the Vercel preview link with https://foundr.land (see CHANGELOG launch checklist). -->
-  <a class="nav-apply nav-apply--brand" href="https://foundr-land-git-preview-homepage-v1-do-good-agency.vercel.app/" target="_blank" rel="noopener" aria-label="foundr.land (opens in a new tab)">
+  <a class="nav-apply nav-apply--brand" href="https://foundr-land-git-preview-homepage-v1-do-good-agency.vercel.app/" target="_blank" rel="noopener" aria-label="foundr.land by DoGood (opens in a new tab)">
     <picture class="nav-brand-logo">
       <source type="image/webp" srcset="/media/foundrland/foundrland-logo@1x.webp 1x, /media/foundrland/foundrland-logo@2x.webp 2x" />
       <img src="/media/foundrland/foundrland-logo@1x.png" srcset="/media/foundrland/foundrland-logo@1x.png 1x, /media/foundrland/foundrland-logo@2x.png 2x" width="480" height="113" alt="" />
     </picture>
+    <!-- 20 Nov 2026 08:02 (Seb): "by DoGood" under the logo, 9px, DREAM 300, thin. -->
+    <span class="nav-brand-by" aria-hidden="true">by DoGood</span>
   </a>
   <nav id="nav-panel" class="nav-panel" hidden aria-label="Primary">
     {
