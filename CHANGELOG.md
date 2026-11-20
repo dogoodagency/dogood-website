@@ -6,6 +6,15 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 7, update 7: first name only on About and the podcast (20 Nov 2026, 12:55)
+
+- Seb: "Seb Wichmann" becomes "Seb" on the About page (text and meta description) and the podcast episodes
+  (`src/data/podcast.ts`, summaries and meta descriptions). The full name stays in the guarantee terms and in the
+  structured data, as Seb decided.
+- Signature Retreat: Seb confirmed spouses/partners are included (the page already says "Your partner is welcome
+  to join you"); source note updated.
+- "by DoGood" stays in DREAM 300 (Seb approved).
+
 ## Preview 7, update 6: more white space on Advisor insights; Seb approves the wording (20 Nov 2026, 12:35)
 
 - Seb approved the preview 7 wording. Decisions: "coaching" stays in page titles and meta for search (not in body
