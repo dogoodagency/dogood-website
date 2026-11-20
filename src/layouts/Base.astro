@@ -111,6 +111,8 @@ const organization = {
       src="https://cdn-cookieyes.com/client_data/cd7b3fec7b1066719107b4a2189a47ad/script.js"
     ></script>
     <script data-cookieyes="cookieyes-necessary" src="/tawk-loader.js" defer></script>
+    <!-- GA4 (20 Nov 2026): runs only after analytics consent (CookieYes) and only on the live domain. -->
+    <script type="text/plain" data-cookieyes="cookieyes-analytics" src="/ga.js"></script>
     <title>{title}</title>
     <meta name="description" content={description} />
     {!Astro.props.noCanonical && <link rel="canonical" href={canonical} />}

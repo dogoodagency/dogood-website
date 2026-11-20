@@ -6,6 +6,19 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 37: Google Analytics 4 behind consent (20 Nov 2026, 01:13)
+
+- **GA4** measurement ID `G-35DQF3LDYG` (property "Do Good Agency - GA4"), in `public/ga.js`, loaded from
+  `Base.astro` as `type="text/plain" data-cookieyes="cookieyes-analytics"`: CookieYes only runs it after the
+  visitor accepts analytics cookies. It runs only on www.dogoodagency.co / dogoodagency.co, so preview and local
+  visits never mix into the live data. IP anonymised.
+- **CSP** (`netlify.toml`): `www.googletagmanager.com` in script-src; Google Analytics hosts in connect-src and
+  img-src.
+- **To check after launch:** in CookieYes, GA should sit under Analytics; GA4 Realtime should show a visit after
+  accepting cookies on the live site.
+
+---
+
 ## Preview 6, update 36: Seb's bio on /about (20 Nov 2026, 01:03)
 
 - /about, "Seb and the Wayfinders": Seb's approved bio replaces the old two lines (14+ years, J&J EMEA,
