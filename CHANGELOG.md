@@ -1012,8 +1012,11 @@ the build: every image has an alt; empty alts are decorative icons next to text.
   nav foundr.land logo (`Header.astro`, `nav-apply--brand`) to the new foundr.land website instead. Add a 301
   from /foundrland to that website in `public/_redirects`. Also: new DoGood branding is planned for launch
   (new logo, then favicon and app icon).
-- **Before launch:** add the GA4 tag (measurement ID from Seb), Microsoft Clarity and the LinkedIn Insight Tag,
-  each behind CookieYes consent and allowed in the CSP in `netlify.toml`.
+- **Before launch:** GA4 is done (update 37). Still to add: Microsoft Clarity (Seb chose Clarity over PostHog,
+  20 Nov 2026) and the LinkedIn Insight Tag, each behind CookieYes consent and allowed in the CSP in `netlify.toml`.
+- **About a week before launch:** Seb signs up for Warmly (free plan) for person-level visitor identification
+  (US visitors only). Install its script behind CookieYes "marketing" consent and add a line to the privacy policy
+  (draft for Seb's approval).
 
 ---
 
