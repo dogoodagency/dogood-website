@@ -639,7 +639,7 @@
       const pinV = at("#case-v .portrait");
       const seen = at("#asseen .asseen-frame");
       const apply2 = at("#apply-v .btn-apply");
-      const message = at("#message-card");
+      const message = at("#message-card, #message .fl-panel");
       const finders = at("#wayfinders");
       const track = at(".track-card");
       const guarantee = at(".guarantee-card");
@@ -1047,7 +1047,7 @@
           }
           return edge + (side === "left" ? -founderStroke / 2 : founderStroke / 2);
         };
-        const messageCard = box(document.querySelector("#message-card"));
+        const messageCard = box(document.querySelector("#message-card, #message .fl-panel"));
         const wayTitle = box(document.querySelector("#wayfinders h2"));
         const guaranteeCard = box(document.querySelector(".guarantee-card"));
         const place = (name, x, y) => {

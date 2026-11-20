@@ -6,6 +6,10 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 8, update 12: home hero illustration and green through line back
+
+- Update 11 removed `#message-card`, which `ThroughLine.astro` measures to draw the green line; the script stopped, taking the line and the hero illustration with it. The script now also accepts the foundr.land card (`#message .fl-panel`).
+
 ## Preview 8, update 11: foundr.land sections on six pages
 
 - New component `src/components/FoundrLand.astro` in the foundr.land style (Visual Style Guide v1.0): Georgia-style serif headline with one HEART dot, lavender panel, the real foundr.land logo and the app phone from the foundr.land homepage concept (background removed, `public/media/foundrland/foundrland-app-phone@1x/2x.webp`, dark logo `foundrland-logo-dark@1x/2x`). Copy follows the foundr.land site and says the product is in development.
