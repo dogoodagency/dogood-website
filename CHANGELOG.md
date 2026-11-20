@@ -6,6 +6,13 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 8, update 6: podcast episode previews like the episode page (20 Nov 2026, 16:38)
+
+- Seb (with a screenshot of an episode page player): the DoGood Insider list now shows each episode as a card with
+  a large 16:9 image, rounded corners, the pink play button in the middle and the duration in the corner, then the
+  title and subtitle. Grid of 3 / 2 / 1 columns (`dogood-insider.astro`, end of `podcast.css`). The format is
+  16:9, the same as YouTube and the episode page.
+
 ## Preview 8, update 5: Pathway sub-line wraps (20 Nov 2026, 16:31)
 
 - The longer Pathway hero sub-line (SEO pass) ran off the right edge because of an old one-line rule

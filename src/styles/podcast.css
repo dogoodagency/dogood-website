@@ -1133,3 +1133,81 @@ body:has(.pod-page) .footer-wave {
   .pod2-host { grid-template-columns: minmax(0, 1fr); padding: 24px; }
   .pod-page--v2 .pod2-host-img { width: 120px; height: 120px !important; }
 }
+
+/* 20 Nov 2026 16:36 (Seb): episode previews as on the episode page: large 16:9 images with rounded corners and
+   the pink play button, in a grid of cards (3 / 2 / 1 columns). */
+.pod2-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px 24px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.pod2-card { min-width: 0; }
+.pod2-card-link {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+  color: #2a0b4f;
+  text-decoration: none !important;
+  background-image: none !important;
+}
+.pod2-card-media {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 6px;
+  overflow: hidden;
+  border: 1px solid #c2b7dd;
+  border-radius: 18px;
+  background: #2a0b4f;
+}
+.pod2-card-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+.pod2-card-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #ea1557;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transform: translate(-50%, -50%);
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+.pod2-card-play svg { width: 26px; height: 26px; margin-left: 3px; fill: #fff; }
+.pod2-card-dur {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 3px 8px;
+  border-radius: 8px;
+  background: rgba(42, 11, 79, 0.85);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+.pod2-card-title { font-size: 18px; font-weight: 900; line-height: 1.3; }
+.pod2-card-sub { color: #58447f; font-size: 15px; line-height: 1.45; }
+.pod2-card-link:hover .pod2-card-media img,
+.pod2-card-link:focus-visible .pod2-card-media img { transform: scale(1.03); }
+.pod2-card-link:hover .pod2-card-play,
+.pod2-card-link:focus-visible .pod2-card-play { background: #c10e46; transform: translate(-50%, -50%) scale(1.08); }
+.pod2-card-link:hover .pod2-card-title { text-decoration: underline; text-decoration-color: #28dbb0; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.pod2-card-link:focus-visible { outline: 2px solid #28dbb0; outline-offset: 4px; border-radius: 18px; }
+@media (max-width: 1023px) { .pod2-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .pod2-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (prefers-reduced-motion: reduce) {
+  .pod2-card-media img, .pod2-card-play { transition: none; }
+  .pod2-card-link:hover .pod2-card-media img { transform: none; }
+}

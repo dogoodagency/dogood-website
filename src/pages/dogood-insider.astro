@@ -90,17 +90,30 @@ import sebAvatar from "../assets/authors/seb.jpg"; // the article portrait, roun
       <div class="pod-well pod-section">
         <h2 class="pod2-h2" id="pod-episodes">All episodes</h2>
         <p class="pod2-lede">{episodes.length} conversations. Each page has the full episode, a summary and the chapters.</p>
-        <ol class="pod2-list">
+        <ol class="pod2-list pod2-grid">
           {
-            episodes.map((episode, i) => (
-              <li class="pod2-ep">
-                <img class="pod2-ep-img" src={`${episode.image}@1x.webp`} srcset={`${episode.image}@1x.webp 1x, ${episode.image}@2x.webp 2x`} width="160" height="90" alt="" loading="lazy" decoding="async" />
-                <div class="pod2-ep-body">
-                  <h3><a href={`/podcast/${episode.slug}`}>{episode.metaTitle}</a></h3>
-                  <p>{episode.cardTitle}: {episode.cardSubtitle}</p>
-                </div>
-                <span class="pod2-ep-dur">{episode.duration}</span>
-                <a class="pod2-ep-go" href={`/podcast/${episode.slug}`} aria-label={`Listen: ${episode.metaTitle}`}>Listen →</a>
+            episodes.map((episode) => (
+              <li class="pod2-card">
+                <a class="pod2-card-link" href={`/podcast/${episode.slug}`}>
+                  <span class="pod2-card-media">
+                    <img
+                      src={`${episode.image}@1x.webp`}
+                      srcset={`${episode.image}@1x.webp 400w, ${episode.image}@2x.webp 800w`}
+                      sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1023px) 45vw, 360px"
+                      width="400"
+                      height="225"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span class="pod2-card-play" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" focusable="false"><path d="M6 3.5v17l15-8.5L6 3.5Z" /></svg>
+                    </span>
+                    <span class="pod2-card-dur">{episode.duration}</span>
+                  </span>
+                  <span class="pod2-card-title">{episode.metaTitle}</span>
+                  <span class="pod2-card-sub">{episode.cardTitle}: {episode.cardSubtitle}</span>
+                </a>
               </li>
             ))
           }
