@@ -189,13 +189,15 @@ header.nav .nav-brand-logo img {
 }
 
 /* 20 Nov 2026 (Seb): the nav shows the G mark alone; the footer logo is 40% bigger (42px -> 59px tall). */
-header.nav .nav-logo.nav-logo--mark img {
+header.nav .nav-logo.nav-logo--mark img,
+header.nav .nav-logo.nav-logo--mark svg {
   height: 44px;
   width: auto;
 }
 
 @media (max-width: 1080px) {
-  header.nav .nav-logo.nav-logo--mark img {
+  header.nav .nav-logo.nav-logo--mark img,
+  header.nav .nav-logo.nav-logo--mark svg {
     height: 36px;
   }
 }
@@ -203,4 +205,25 @@ header.nav .nav-logo.nav-logo--mark img {
 .footer .footer-logo img {
   height: auto;
   width: 225px;
+}
+
+/* G mark animation in the nav (20 Nov 2026, Seb): red, then green, then yellow lock into place; once per visit. */
+header.nav .dg-mark { display: block; overflow: visible; }
+header.nav .dg-mark .dg-pc { transform-box: fill-box; transform-origin: center; }
+html.dg-mark-play header.nav .dg-pc-red,
+html.dg-mark-play header.nav .dg-pc-green,
+html.dg-mark-play header.nav .dg-pc-yellow {
+  opacity: 0;
+  animation: dg-mark-lock 1176ms cubic-bezier(.34, 1.45, .64, 1) forwards;
+}
+html.dg-mark-play header.nav .dg-pc-red    { --dx: 46px; --dy: 46px;  animation-delay: 525ms; }
+html.dg-mark-play header.nav .dg-pc-green  { --dx: 0px;  --dy: -58px; animation-delay: 1470ms; }
+html.dg-mark-play header.nav .dg-pc-yellow { --dx: 64px; --dy: 0px;   animation-delay: 2415ms; }
+@keyframes dg-mark-lock {
+  0%   { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(.55); }
+  55%  { opacity: 1; }
+  100% { opacity: 1; transform: translate(0, 0) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.dg-mark-play header.nav .dg-pc { animation: none; opacity: 1; }
 }

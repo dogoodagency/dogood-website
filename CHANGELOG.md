@@ -6,6 +6,18 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 52: animated G mark in the nav (20 Nov 2026, 05:58)
+
+- `Header.astro`: the nav mark is now an inline SVG (same shapes as `public/dogood-mark.svg`) instead of an <img>.
+  The white piece is fixed; red, then green, then yellow fade out of the background, grow from 55% and slide
+  into place with a small snap. No rotation. Seb approved the timing in a preview: 1176 ms per piece, starting
+  at 525 ms, 1470 ms and 2415 ms (about 3.6 s in total).
+- Plays once per visit: an inline script sets `html.dg-mark-play` only when sessionStorage has no
+  `dg-mark-played` flag. Later pages in the same visit show the finished mark. Reduced motion shows the finished
+  mark. Styles at the end of `src/styles/site-rules.css` (`dg-mark-lock`).
+
+---
+
 ## Preview 6, update 50: "last updated" date on every page (20 Nov 2026, 05:24)
 
 - New `src/lib/lastmod.mjs`: the git last-changed date of a page's source file (moved out of astro.config.mjs;
