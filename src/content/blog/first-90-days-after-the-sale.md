@@ -18,6 +18,7 @@ questions:
   - "Why the first 90 days are simpler than the checklists suggest"
   - "Months one and two: celebrate, rest, recover"
   - "Month three: reflect and get clear"
+  - "Why it often hits later than you expect"
   - "The empty calendar: what replaces the structure?"
   - "Staying on after the sale: why no hard cuts"
   - "What changes at home"
@@ -36,7 +37,7 @@ faq:
   - q: "Should I stay on in the company after the sale?"
     a: "If you can, a gradual handover is usually better than a hard cut. Staying on the board or involved for 90 days to six months helps the business and gives you time to let go."
   - q: "When should I start thinking about what's next?"
-    a: "Ideally 12 to 18 months before the exit. If the sale has already happened, rest first and start reflecting from around month three. Avoid committing to a new venture before you are clear about what you want to do differently."
+    a: "Ideally 12 to 18 months before the sale. If the sale has already happened, rest first and start reflecting from around month three. Avoid committing to a new venture before you are clear about what you want to do differently."
   - q: "Is it normal to feel lost even though the sale went well?"
     a: "Yes. Many founders expect to feel different once the deal is done, and are surprised when the drive and purpose disappear instead. We write about this in Sudden wealth syndrome after selling your business and The emotions of selling a business."
 sample: false
@@ -78,6 +79,12 @@ Write the answers down. You don't need to act on them yet. You need to see them 
 This step matters because of patterns. Founders who skip it and go straight into a new venture carry the old patterns with them, the same ones that created the problems last time. The new company ends up looking a lot like the old one.
 
 If you want somewhere to start, we have put together [seven questions for the first 90 days](/newsletter). They are free, and you don't need to sign up to read them.
+
+## Why it often hits later than you expect
+
+Many founders feel fine in the first month. The deal is done, there is relief, and often a celebration. The quiet tends to arrive around month three, when the congratulations stop and the calendar stays empty. For some it comes later still, around the one-year mark, when a handover ends or the next venture doesn't feel the way they hoped.
+
+If that happens to you, nothing has gone wrong. It is a common pattern, and it is the reason the reflection in month three matters.
 
 ## The empty calendar: what replaces the structure?
 

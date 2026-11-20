@@ -57,20 +57,20 @@ function build(
 export const profiles: Record<string, WayfinderProfile> = {
   seb: build(
     "Seb, founder and exit coach | DoGood Agency",
-    "Seb Wichmann, founder of DoGood and exit coach for Asia-Pacific and the US: his successful business nearly broke him. Now he guides founders through theirs.",
+    "Seb, founder of DoGood and exit coach for Asia-Pacific and the US: his successful business nearly broke him. Now he guides founders through theirs.",
     "Seb",
     [
       [
         "I believe I’ve been where you are. I built a successful business that nearly broke me — then life came to an unapologetic halt too and forced a reset where I lost everything. I felt lost, beaten up, and genuinely unsure if I could get back up. The work I’m here for started when I did the hardest project: me.",
       ],
       [
-        "I have an intuitive gift for sensing what’s needed to take you to the next level — whether that’s greater clarity or empowered decisions — so you can thrive and live a fulfilled life. I’m great at what I do, and my clients often become lifelong friends and close allies. Not because I’m trying to be liked — but because truth and authenticity create results that change the relationship too.",
+        "I have a strong sense for what’s needed to take you to the next level — whether that’s greater clarity or empowered decisions — so you can thrive and live a fulfilled life. Many of my clients have become lifelong friends and close allies. Not because I’m trying to be liked — but because truth and authenticity create results that change the relationship too.",
       ],
       [
         "I can be both nurturing and blunt when it’s warranted. I sense when people buy into their own limiting story of what they cannot do — and if it’s for your benefit, I’ll call out what no one else will tell you. I’m interested in rapid transformation to create clarity, so you can make empowered decisions fast again.",
       ],
       [
-        "Over the years, I’ve worked a lot with founders who’ve built USD 5M+ companies while their life around the business isn’t all that much fun — broken relationships, health scares, or an inner calm that’s… questionable. If you have a problem in life that you’ve been rolling around with, I can help. If you’re still running, I help you reclaim clarity without stepping back. If you’re post-exit (or close), I help you rebuild identity so the next chapter feels clear and intentional.",
+        "Over the years, I’ve worked a lot with founders who’ve built USD 5M+ companies while their life around the business isn’t all that much fun — broken relationships, health scares, or an inner calm that’s… questionable. If you have a problem in life that you’ve been rolling around with, I can help. If you’re still running, I help you reclaim clarity without stepping back. If you’ve sold (or are close), I help you rebuild identity so the next chapter feels clear and intentional.",
       ],
       [
         // Dropped from the live text: ", totaling USD 16.5M in enterprise value".

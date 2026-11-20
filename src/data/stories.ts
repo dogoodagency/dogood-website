@@ -147,7 +147,7 @@ export const logoAlts: Record<string, string> = {
 };
 
 export const fit = [
-  "You have exited or meaningfully stepped away from the company you built",
+  "You have sold or meaningfully stepped away from the company you built",
   "You are no longer involved in the day-to-day (you may still have a board or advisory role)",
   "You have more freedom than before, but it does not feel the way you expected",
   "You want to fill the space with the next thing, and avoid making that choice on autopilot",

@@ -62,7 +62,7 @@ export const faqCategories: FaqCategory[] = [
         id: "who-is-frp-for",
         q: "Who is FRP for (and who is it not for)?",
         a: [
-          "FRP is for founders who have exited or meaningfully stepped away from the company they built, and are now finding their footing in life after it. You may have more freedom, time, and options than before, but not feel as settled or fulfilled as you expected. It is not for founders still trying to solve operational business problems, looking for productivity tactics, or wanting someone to prescribe the next venture.",
+          "FRP is for founders who have sold or meaningfully stepped away from the company they built, and are now finding their footing in life after it. You may have more freedom, time, and options than before, but not feel as settled or fulfilled as you expected. It is not for founders still trying to solve operational business problems, looking for productivity tactics, or wanting someone to prescribe the next venture.",
         ],
       },
       // [SEB]
@@ -70,7 +70,7 @@ export const faqCategories: FaqCategory[] = [
         id: "difficult-time",
         q: "I’m in the middle of a difficult time. Is now the right moment to start?",
         a: [
-          "Often, yes. Some founders come to Stage 1 feeling restless, overwhelmed by the amount of space they now have, or aware that their health and closest relationships need attention. Others simply know that life after exit is not feeling the way they expected. Stage 1 gives you a private, structured space to slow down, make sense of what is happening, and decide what deserves attention first. From there, we build a clear path into what comes next.",
+          "Often, yes. Some founders come to Stage 1 feeling restless, overwhelmed by the amount of space they now have, or aware that their health and closest relationships need attention. Others simply know that life after the sale is not feeling the way they expected. Stage 1 gives you a private, structured space to slow down, make sense of what is happening, and decide what deserves attention first. From there, we build a clear path into what comes next.",
         ],
       },
       // [ADDED – source: chat-brief-approved.txt §3 "I sold my company a few years ago. Am I too late?"]
@@ -82,12 +82,20 @@ export const faqCategories: FaqCategory[] = [
           "You can [apply for Stage 1](/apply-stage-1) when you are ready.",
         ],
       },
+      // [ADDED 20 Nov 2026 – source: for-advisors.astro "Room for the family too" (Seb, 19 Nov 2026)]
+      {
+        id: "partner-family",
+        q: "Can my partner or family be part of this?",
+        a: [
+          "Yes, if you want them to be. The sale changes life at home too, and spouses and partners can be part of the conversation. A family that is aligned on what comes next makes the transition easier for everyone. The work itself stays one to one, and nothing is shared without your consent.",
+        ],
+      },
       // [ADDED – source: chat-brief-approved.txt §3 "Is this for co-founders too?"; apply-stage-1 fit note (equity founders)]
       {
         id: "co-founders",
         q: "Is this for co-founders too?",
         a: [
-          "Yes. If you are a co-founder who has exited or meaningfully stepped away from the company you built, you are in the right place. The question of what comes next can be just as personal for a co-founder, and the work is built around you.",
+          "Yes. If you are a co-founder who has sold or meaningfully stepped away from the company you built, you are in the right place. The question of what comes next can be just as personal for a co-founder, and the work is built around you.",
         ],
       },
       // [ADDED – source: chat-brief-approved.txt §3 "I'm not a founder"; stage1-tc.md (equity founders only, Clarity Sprints instead)]
@@ -105,6 +113,15 @@ export const faqCategories: FaqCategory[] = [
     id: "starting",
     title: "Starting & timing",
     items: [
+      // [ADDED 20 Nov 2026 – source: Seb's answers (Exit-Prep 12–18 months before the sale; The Reset weeks or months after)]
+      {
+        id: "when-to-start",
+        q: "When is the right time to start?",
+        a: [
+          "Before the sale, the best time is 12 to 18 months out, while there is still room to think. [The Exit-Prep](/exit-prep) is built for that stretch.",
+          "After the sale, most founders start [The Reset](/the-reset) a few weeks or months in, once the deal is done and the quiet sets in. There is no deadline. Some come to us years later.",
+        ],
+      },
       // [SEB]
       {
         id: "how-quickly",
@@ -283,7 +300,7 @@ export const faqCategories: FaqCategory[] = [
         id: "different-from-coaching",
         q: "How is this different from coaching, therapy, masterminds, or retreats?",
         a: [
-          "FRP is a private, structured partnership built specifically for founders navigating life after exit. Coaching can help with performance and direction. Therapy can offer an important space to process what is difficult. Masterminds and retreats can provide perspective and connection. Each can have value. FRP brings together the parts that matter in this particular transition: understanding what is surfacing, and addressing what was neglected while building. There are clear milestones, documented decisions, and real accountability throughout.",
+          "FRP is a private, structured partnership built specifically for founders navigating life after the sale. Coaching can help with performance and direction. Therapy can offer an important space to process what is difficult. Masterminds and retreats can provide perspective and connection. Each can have value. FRP brings together the parts that matter in this particular transition: understanding what is surfacing, and addressing what was neglected while building. There are clear milestones, documented decisions, and real accountability throughout.",
         ],
       },
       // [ADDED – source: chat-brief-approved.txt §4 "Is this therapy?"; diagnostics.md ("Founder-focused · Not therapy, not medical advice, not psychological services")]
@@ -301,7 +318,7 @@ export const faqCategories: FaqCategory[] = [
         q: "What if things feel urgent, or I can’t cope right now?",
         a: [
           "We are not an emergency service. If you are in danger, or feel you might harm yourself, please contact your local emergency services now. If you are feeling severely overwhelmed or can’t cope any longer, we recommend you reach out to a local emergency service for help. If you can, reach out to someone you trust or a doctor today, and tell them how you are feeling.",
-          "If things feel acute after your exit and timing is critical, we will discuss whether an Expedited Start is appropriate. If we cannot take you on responsibly, we will point you to a trusted alternative.",
+          "If things feel acute after the sale and timing is critical, we will discuss whether an Expedited Start is appropriate. If we cannot take you on responsibly, we will point you to a trusted alternative.",
         ],
       },
       // [SEB]
@@ -358,7 +375,7 @@ export const faqCategories: FaqCategory[] = [
   },
   {
     id: "exit-prep",
-    title: "Not exited yet? The Exit-Prep",
+    title: "Not sold yet? The Exit-Prep",
     items: [
       // [SEB]
       {
@@ -371,9 +388,9 @@ export const faqCategories: FaqCategory[] = [
       // [ADDED – source: exit-prep-one-pager.md ("Why it exists", "Who it's for"); for-advisors.md FAQ; chat-brief-approved.txt §3]
       {
         id: "not-exited-yet",
-        q: "I haven’t exited yet. Is this for me?",
+        q: "I haven’t sold yet. Is this for me?",
         a: [
-          "It can be. Stage 1 is for founders who have exited or meaningfully stepped away. If you still run your company but know an exit is coming, we have The Exit-Prep. It is for founders who still run the company or are getting ready to exit, and who may be stuck on the decision itself, sometimes for years. It meets you where you are today.",
+          "It can be. Stage 1 is for founders who have sold or meaningfully stepped away. If you still run your company but know a sale is coming, we have The Exit-Prep. It is for founders who still run the company or are getting ready to sell, and who may be stuck on the decision itself, sometimes for years. It meets you where you are today.",
           "If you are not planning to sell or step back at all, the partnership is probably not the right fit, but [1:1 Clarity Sprints](/clarity) may be. To talk it through, [get in touch](/contact).",
         ],
       },
@@ -382,8 +399,16 @@ export const faqCategories: FaqCategory[] = [
         id: "what-is-exit-prep",
         q: "What is The Exit-Prep?",
         a: [
-          "The Exit-Prep is for founders who know an exit is coming but are not ready for The Reset yet. It runs for six weeks, fully remote, with no travel: six weekly private sessions of 75–90 minutes with a Wayfinder, one to one, private and confidential.",
-          "It comes with the same conditions as Stage 1: WhatsApp support between sessions, WHOOP, and all our learning tools. The aim is a clear decision, and a next chapter you can see.",
+          "The Exit-Prep is for founders who know a sale is coming, ideally 12 to 18 months before it. It runs for six weeks, fully remote, with no travel: six weekly private sessions of 75–90 minutes with a Wayfinder, one to one, private and confidential.",
+          "It comes with the same conditions as Stage 1: WhatsApp support between sessions, WHOOP, and all our learning tools. The six weeks are about clarity: what you want to do after the sale, or what is getting in the way, such as a conversation that needs to happen, health you have been putting off, or the busyness that keeps you from deciding. By the end, founders are clear and decisive.",
+        ],
+      },
+      // [ADDED 20 Nov 2026 – source: Seb's answers (Exit-Prep is about the founder's clarity, not the deal)]
+      {
+        id: "sale-falls-through",
+        q: "What if the sale falls through?",
+        a: [
+          "The work still counts. The Exit-Prep is about you, not the deal: what you want, what is in the way, and what you would do next. That stays useful whether the sale happens now, later or not at all.",
         ],
       },
       // [ADDED – source: exit-prep-one-pager.md; for-advisors.md FAQ ("move on to Stage 1"); how-it-works.md / Seb's FAQ (Stage 1 contents)]
@@ -392,7 +417,7 @@ export const faqCategories: FaqCategory[] = [
         q: "How is The Exit-Prep different from Stage 1?",
         a: [
           "It is the same service at the level of commitment that fits where you are today. It is not a lite version of The Reset.",
-          "Stage 1: The Reset is a 30-day engagement for founders who have exited or stepped away, with eight virtual 1:1 sessions and a 1.5-day in-person residency. The Exit-Prep is built for founders who still run the company: six weekly private sessions of 75–90 minutes over six weeks, held remotely. Both are one to one, private and confidential, with the same conditions. If you later want to go deeper after the sale, you can move on to Stage 1.",
+          "Stage 1: The Reset is a 30-day engagement for founders who have sold or stepped away, with eight virtual 1:1 sessions and a 1.5-day in-person residency. The Exit-Prep is built for founders who still run the company: six weekly private sessions of 75–90 minutes over six weeks, held remotely. Both are one to one, private and confidential, with the same conditions. If you later want to go deeper after the sale, you can move on to Stage 1.",
         ],
       },
     ],

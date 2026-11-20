@@ -183,10 +183,10 @@ export const wayfinders: Wayfinder[] = [
     url: "/wayfinders/vlora",
     profile: profiles.vlora,
     lines: {
-      whyFoundersCome: "High-growth. Identity shifts. Post-exits. I help founders restore clarity so the next chapter is chosen consciously, with renewed energy.",
+      whyFoundersCome: "High-growth. Identity shifts. Life after the sale. I help founders restore clarity so the next chapter is chosen consciously, with renewed energy.",
       myEdge: "Operational literacy meets nervous system depth. I align strategic thinking with internal steadiness and creative momentum.",
       workingStyle: "Grounded, structured, and precise. Subconscious coaching, hypnosis, somatic regulation, and clear integration.",
-      bestFit: "Post-exit reflection. Leadership evolution. You want clarity, aligned momentum, and depth that feels energizing, not heavy.",
+      bestFit: "Reflection after the sale. Leadership evolution. You want clarity, aligned momentum, and depth that feels energizing, not heavy.",
       realStakes: "12+ years in startups. Co-founder. Accelerator ecosystems. I integrate business fluency with embodied intelligence.",
       trainingMethods:
         "Two-year certification in subconscious coaching and hypnosis. Yoga teacher and advanced Yin training. Ocean Therapy Practitioner. BBA + dual Master’s in International Mgt.",
