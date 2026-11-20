@@ -120,7 +120,13 @@ const organization = {
     <title>{title}</title>
     <meta name="description" content={description} />
     {!Astro.props.noCanonical && <link rel="canonical" href={canonical} />}
-    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <!-- New DoGood logo, concept D5 (Seb, 20 Nov 2026): SVG favicon for modern browsers, .ico fallback,
+         Apple home-screen icon and web manifest. -->
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#2A0B4F" />
     <meta property="og:title" content={ogTitle} />
     <meta property="og:description" content={ogDescription} />
     <meta property="og:type" content={ogType} />

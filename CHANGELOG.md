@@ -6,6 +6,21 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 41: new DoGood logo and favicon (20 Nov 2026, 02:48)
+
+Seb chose logo concept D5 ("drifting into place": a G built from a GRASS cap, white/DREAM body, HEART lower piece
+and PLAY bar) from the "DoGood logo concepts" design board.
+- **Header and footer logo:** `src/assets/photos/logo-nav.png` replaced with the reversed (white) D5 logo, same
+  file name and near-identical proportions, so no CSS changes.
+- **Favicon:** `public/favicon.ico` (16/32/48), new `public/favicon.svg`, `public/apple-touch-icon.png` (180),
+  `public/icon-192.png`, `public/icon-512.png`, new `public/site.webmanifest`, theme colour #2A0B4F
+  (`Base.astro` head links).
+- **Structured-data logo:** `public/logo.svg` is now the D5 logo for light backgrounds.
+- Master files (light/dark logo PNG 2000/4000px + SVG, favicon light/dark) were sent to Seb as
+  `dogood-logo-light-dark.zip`.
+
+---
+
 ## Preview 6, update 40: Privacy and Cookies Policy updated for analytics (20 Nov 2026, 01:53)
 
 Seb approved the wording.
@@ -1048,8 +1063,7 @@ the build: every image has an alt; empty alts are decorative icons next to text.
 - Keep `noindex` on /clarity, all booking and thank-you pages (they set it themselves).
 - **Before launch (Seb, 20 Nov 2026):** delete the /foundrland page (`src/pages/foundrland.astro`) and point the
   nav foundr.land logo (`Header.astro`, `nav-apply--brand`) to the new foundr.land website instead. Add a 301
-  from /foundrland to that website in `public/_redirects`. Also: new DoGood branding is planned for launch
-  (new logo, then favicon and app icon).
+  from /foundrland to that website in `public/_redirects`. New DoGood logo (concept D5) is in place since update 41.
 - **Before launch:** GA4 (update 37), LinkedIn Insight Tag (update 38) and Microsoft Clarity
   (update 39; Seb chose Clarity over PostHog) are done, each behind CookieYes consent and allowed in the CSP in `netlify.toml`.
 - /privacy and /cookies: updated for GA4, Clarity and the LinkedIn Insight Tag (update 40, Seb approved). After
