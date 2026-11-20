@@ -6,6 +6,17 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 45: link preview image for /catchup (20 Nov 2026, 03:58)
+
+- New `public/media/og/catchup-og.jpg` (1200x630, 39 KB): Seb's screenshot of the /catchup hero, cropped
+  above the TidyCal calendar so it shows the title, intro line and button.
+- `src/components/BookingPage.astro` now takes an optional `ogImage` prop and passes it to Base; `/catchup`
+  sets it. The other booking pages still use the default `/og.jpg` until they get their own image.
+- **Check:** share images use the live domain, so LinkedIn and WhatsApp only show this image after launch.
+  Before then, LinkedIn shows the current Wix preview or none.
+
+---
+
 ## Preview 6, update 44: one favicon, the light version (20 Nov 2026, 03:09)
 
 - Seb chose the light favicon (purple G body, transparent background) for everywhere: `public/favicon.svg` no
