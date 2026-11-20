@@ -6,6 +6,13 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 59: Advisor Center moved left of Stories (20 Nov 2026, 06:26)
+
+- Seb: nav order is now Pathway, Services, Advisor Center, Stories, Wayfinders (`links` in `Header.astro`; the
+  mobile menu follows). Dropdowns and keyboard checks re-run: all fine.
+
+---
+
 ## Preview 6, update 58: dropdown menus fit the narrower nav (20 Nov 2026, 06:19)
 
 - Seb: after the nav got narrower, the dropdowns displayed differently; rewrite lines to two at most and fix the
