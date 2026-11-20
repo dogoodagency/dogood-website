@@ -8,6 +8,7 @@ import { edgeAbove } from "../data/edge-line";
 import TestimonialWall from "../components/TestimonialWall.astro";
 import BlogCard from "../components/BlogCard.astro";
 import { getCollection } from "astro:content";
+import FoundrLand from "../components/FoundrLand.astro";
 const readSlugs = ["before-you-sign-preparing-yourself", "emotions-of-selling-a-business"];
 const allPosts = await getCollection("blog");
 const readPosts = readSlugs.map((slug) => allPosts.find((p) => p.id === slug || p.id.replace(/\.mdx?$/, "") === slug)).filter((p) => p !== undefined);
@@ -163,6 +164,11 @@ const faqJson = {
         <p class="ep-adv-link"><a href="/for-advisors">For your advisors: how we work alongside them →</a></p>
       </div>
     </section>
+
+    <FoundrLand
+      eyebrow="Alongside The Exit Prep™"
+      line="During The Exit Prep™, foundr.land holds what comes up between sessions, so each conversation starts where you really are."
+    />
 
     <!-- Advisors and FAQ share one white band. -->
 

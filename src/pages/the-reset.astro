@@ -15,6 +15,7 @@ import { familiar } from "../data/sound-bites";
 import caseJImg from "../assets/cases/case-study-j-founder-life-after-exit.png";
 import caseVImg from "../assets/cases/case-study-v-founder-life-after-exit.png";
 import { wayfinders } from "../data/wayfinders";
+import FoundrLand from "../components/FoundrLand.astro";
 import {
   houses,
   arrowSrc,
@@ -254,6 +255,10 @@ const [houseBefore, houseStage1, houseStage2] = houses;
     </section>
 
     <Fragment set:html={toWhite} />
+    <FoundrLand
+      eyebrow="Alongside Stage 1: The Reset™"
+      line="During the 30 days, foundr.land keeps the work going between sessions and shows your clarity growing on one simple wheel."
+    />
 
     <!-- 8. Who this is for -->
     <section class="hw-band" aria-labelledby="hw-who">

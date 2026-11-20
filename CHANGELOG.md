@@ -6,6 +6,18 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 8, update 11: foundr.land sections on six pages
+
+- New component `src/components/FoundrLand.astro` in the foundr.land style (Visual Style Guide v1.0): Georgia-style serif headline with one HEART dot, lavender panel, the real foundr.land logo and the app phone from the foundr.land homepage concept (background removed, `public/media/foundrland/foundrland-app-phone@1x/2x.webp`, dark logo `foundrland-logo-dark@1x/2x`). Copy follows the foundr.land site and says the product is in development.
+- Home: the founder's message card is replaced by the foundr.land card (DREAM background with soft orbs, as on the style guide cover). Nothing else on the home page changed. The founder's message is still on About.
+- Large section: The Exit Prep (before the FAQ), The Reset (after the supports section), Advisor Center (after the free toolkit; advisor version with the sharing controls card).
+- Small strip: Client tools and Advisor insights.
+- `src/data/foundrland.ts` holds the foundr.land URL (still the Vercel preview); the header and Pathway use it too.
+
+## Preview 8, update 10: Pathway timing and foundr.land link
+
+- Stations arrive one per second. The foundr.land lane fills left to right at the same pace, reaching each dot as the station above it appears; each dot lights up then. A small "Visit foundr.land ↗" link sits under the lane.
+
 ## Preview 8, update 9: Pathway journey cards, phase ribbons and the foundr.land lane
 
 - Journey cards are only as tall as their text (still equal within each row), and the arrow now sits at the end of the last line.

@@ -5,6 +5,7 @@ import Base from "../../../layouts/Base.astro";
 import Wave from "../../../components/Wave.astro";
 import AdvisorNav from "../../../components/AdvisorNav.astro";
 import { edgeAbove } from "../../../data/edge-line";
+import FoundrLand from "../../../components/FoundrLand.astro";
 
 const tint = "#F5F2FF";
 const heroEdge = edgeAbove("#2A0B4F");
@@ -78,6 +79,14 @@ const footerEdge = edgeAbove("#ffffff");
         <path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path>
       </svg>
     </div>
+
+    <section class="advr-band advr-band-white fl-band" aria-label="foundr.land">
+      <FoundrLand
+        size="small"
+        variant="advisor"
+        line="These free tools are the first step. In foundr.land, your client can carry on privately and, if they choose, share their progress with you."
+      />
+    </section>
 
     <section class="advr-band advr-band-white" aria-label="More tools">
       <div class="advr-well">

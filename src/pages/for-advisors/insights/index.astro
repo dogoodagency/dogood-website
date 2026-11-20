@@ -6,6 +6,7 @@ import Wave from "../../../components/Wave.astro";
 import AdvisorNav from "../../../components/AdvisorNav.astro";
 import { edgeAbove } from "../../../data/edge-line";
 import TestimonialWall from "../../../components/TestimonialWall.astro";
+import FoundrLand from "../../../components/FoundrLand.astro";
 // Same advisor quotes as the Refer a founder page (stand-in names).
 const advisorQuotes = [
   { quote: "Most people are talking with that founder around just the business side of the equation. They're not asking questions about the personal side.", name: "Robert H", role: "Wealth advisor" },
@@ -86,6 +87,14 @@ const footerEdge = edgeAbove("#ffffff");
         <path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path>
       </svg>
     </div>
+
+    <section class="advr-band advr-band-white fl-band" aria-label="foundr.land">
+      <FoundrLand
+        size="small"
+        variant="advisor"
+        line="foundr.land is built around these patterns: one place where founders find clarity and advisors stay in the loop, with the founder’s consent."
+      />
+    </section>
 
     <!-- More content (Seb, 19 Nov 2026), from our conversations with advisors (patterns, not statistics). -->
     <section class="advr-band advr-band-white" aria-labelledby="advi-legs">

@@ -10,7 +10,7 @@ import LogoRails from "../components/LogoRails.astro";
 import caseJ from "../assets/cases/case-study-j-founder-life-after-exit.png";
 import caseV from "../assets/cases/case-study-v-founder-life-after-exit.png";
 import team from "../assets/photos/wayfinders.png";
-import SignatureDraw from "../components/SignatureDraw.astro";
+import FoundrLand from "../components/FoundrLand.astro";
 import TestimonialWall from "../components/TestimonialWall.astro";
 
 const portraits = import.meta.glob<ImageMetadata>("../assets/reviews/*", {
@@ -503,33 +503,7 @@ const notFit = [
   </section>
 
   <section id="message">
-    <article class="card ink" id="message-card">
-      <h2 class="t-h2">A Founder’s Message</h2>
-      <div class="msg-copy">
-      <p>
-        “We exist because the support founders need after the sale is{" "}
-        <strong class="em-black accent-pink">rarely found in the usual places.</strong>
-      </p>
-      <p>
-        Executive coaches focus on performance. Therapists help people process what is difficult. Both
-        can have value. But neither is built for the moment when the company is no longer central, and{" "}
-        <strong class="em-black">you are working out what you actually want next.</strong>
-      </p>
-      <p>You cannot solve that simply by finding another strategy or filling it with more projects.</p>
-      <p>
-        I know what it costs when the company becomes too much of who you are, and when you find the
-        patterns were never only the company’s. They come with you.
-      </p>
-      <p>
-        <strong class="em-black accent-pink">DoGood</strong> is what I wish had existed then: a private partnership for
-        founders who do not want life after the sale to become another version of the life they left behind.”
-      </p>
-      </div>
-      <div class="sig-row">
-        <SignatureDraw class="sig" />
-      </div>
-      <p class="who">Seb &amp; the entire DoGood team</p>
-    </article>
+    <FoundrLand size="home" />
   </section>
 
   <section id="wayfinders">
