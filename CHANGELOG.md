@@ -6,6 +6,18 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 6, update 53: one centred nav bar with foundr.land inside (20 Nov 2026, 06:02)
+
+- `Header.astro`: the foundr.land logo link moved inside `.nav-bar` (after the links, before the burger).
+- `site-rules.css` (end): the bar is 1043px wide on desktop, 100px narrower on each side than the old bar plus
+  foundr.land button (1243px), and centred. foundr.land sits on the right inside the bar as a 52px-high button
+  (44px under 1080px, 40px under 600px), and on phones it sits between the G and the menu button.
+- Also fixes the 1081–1240px range, where the old bar plus button overflowed to the left.
+- Checked: dropdowns line up with the bar, keyboard and mobile menu checks pass, no new axe issues. Seen while
+  testing (not new, not changed): two step texts on /for-advisors fail colour contrast (`.adv-step p`).
+
+---
+
 ## Preview 6, update 52: animated G mark in the nav (20 Nov 2026, 05:58)
 
 - `Header.astro`: the nav mark is now an inline SVG (same shapes as `public/dogood-mark.svg`) instead of an <img>.
