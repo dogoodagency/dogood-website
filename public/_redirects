@@ -60,6 +60,7 @@
 /copy-of-bookings-forms-1                       /404.html                              410!
 
 # 20 Nov 2026 (Seb): the /foundrland page is deleted; foundr.land has its own website.
-# Temporary (302) to the Vercel preview for now. LAUNCH DAY: change both to "https://foundr.land 301".
-/foundrland       https://foundr-land-git-preview-homepage-v1-do-good-agency.vercel.app/  302
-/foundrland.html  https://foundr-land-git-preview-homepage-v1-do-good-agency.vercel.app/  302
+# Temporary (302) to the home page until foundr.land is public (the Vercel preview needs a login). When it is
+# public: change both to "<foundr.land address> 301".
+/foundrland       /  302
+/foundrland.html  /  302

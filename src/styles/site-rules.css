@@ -315,3 +315,6 @@ header.nav .nav-brand-by {
   gap: 10px;
 }
 .faq-card-sketch img { object-position: left center; }
+
+/* foundr.land logo without a link (until foundr.land is public, Seb 20 Nov 2026): no hover effect. */
+header.nav .nav-apply--static { pointer-events: none; cursor: default; }

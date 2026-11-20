@@ -79,7 +79,7 @@ const days = [
         <p class="fl-small-line">{line}</p>
         <p class="fl-by fl-by--sm">Developed by DoGood Agency</p>
       </div>
-      <a class="fl-link" href={FOUNDRLAND_URL} target="_blank" rel="noopener" aria-label={`${linkLabel} (opens in a new tab)`}>{linkLabel} ↗</a>
+      {FOUNDRLAND_URL && <a class="fl-link" href={FOUNDRLAND_URL} target="_blank" rel="noopener" aria-label={`${linkLabel} (opens in a new tab)`}>{linkLabel} ↗</a>}
     </aside>
   ) : (
     <section class:list={["fl", `fl--${kind}`]} aria-labelledby={uid}>
@@ -131,7 +131,7 @@ const days = [
           )}
 
           <p class="fl-note">{kind === "advisor" ? "The advisor pathway is part of the planned product, not yet a live service." : "Product concept · in development"}</p>
-          <a class="fl-btn" href={FOUNDRLAND_URL} target="_blank" rel="noopener" aria-label={`${linkLabel} (opens in a new tab)`}>{linkLabel} <span aria-hidden="true">↗</span></a>
+          {FOUNDRLAND_URL && <a class="fl-btn" href={FOUNDRLAND_URL} target="_blank" rel="noopener" aria-label={`${linkLabel} (opens in a new tab)`}>{linkLabel} <span aria-hidden="true">↗</span></a>}
         </div>
 
         <div class="fl-visual" aria-hidden="true">
