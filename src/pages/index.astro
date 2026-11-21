@@ -61,10 +61,6 @@ const afterSale = [
   "You can protect 5–6 hours a week for 30 days.",
 ];
 
-const notFit = [
-  "You want a quick fix, productivity advice or a plan for your next venture.",
-  "You want someone to tell you what to do.",
-];
 ---
 
 <Base title="Founder coaching before and after the sale | DoGood Agency" description="Private 1:1 coaching for founders selling their business, before and after the sale: get clear on what comes next, alongside your exit and wealth advisors." meetFunnel>
@@ -339,10 +335,9 @@ const notFit = [
   </section>
 
   <section id="for-you">
-    <h2 class="t-h3">Who is this for?</h2>
     <div class="foryou-grid foryou-grid--pair">
-      <article class="card ink">
-        <h3 class="t-h3">Before the sale</h3>
+      <article class="card card-before">
+        <h3 class="t-h3">For founders before the sale</h3>
         <ul>
           {beforeSale.map((item) => (
             <li>
@@ -363,10 +358,10 @@ const notFit = [
             </li>
           ))}
         </ul>
-        <a class="btn-apply" href="/exit-prep">Start with The Exit Prep</a>
+        <a class="btn-teal btn-dream" href="/exit-prep">Start with The Exit Prep</a>
       </article>
-      <article class="card ink">
-        <h3 class="t-h3">After the sale</h3>
+      <article class="card card-after">
+        <h3 class="t-h3">For founders after the sale</h3>
         <ul>
           {afterSale.map((item) => (
             <li>
@@ -388,31 +383,6 @@ const notFit = [
           ))}
         </ul>
         <a class="btn-apply" href={urls.apply}>Apply for Stage 1</a>
-      </article>
-    </div>
-    <div class="foryou-grid foryou-grid--not">
-      <article class="card rose drift-card">
-        <h3 class="t-h3">NOT for you if...</h3>
-        <ul>
-          {notFit.map((item) => (
-            <li>
-              <picture class="fit-icon" aria-hidden="true">
-                <source
-                  type="image/webp"
-                  srcset="/sketches/icon-cross-not-for-you@1x.webp 1x, /sketches/icon-cross-not-for-you@2x.webp 2x"
-                />
-                <img
-                  src="/sketches/icon-cross-not-for-you@1x.png"
-                  srcset="/sketches/icon-cross-not-for-you@1x.png 1x, /sketches/icon-cross-not-for-you@2x.png 2x"
-                  width="28"
-                  height="28"
-                  alt=""
-                />
-              </picture>
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
       </article>
     </div>
   </section>
@@ -666,14 +636,17 @@ const notFit = [
     </svg>
     <div class="next-inner">
       <h2 class="t-h2">What’s next?</h2>
-      <p>
-        Selling in the next few years? Start with The Exit Prep. Already sold? Apply for Stage 1. We reply within 24 hours.
-      </p>
-      <p>
-        <a class="btn-apply lg" href="/exit-prep">Start with The Exit Prep</a>{" "}
-        <a class="btn-apply lg" href={urls.apply}>Apply for Stage 1</a>
-      </p>
-      <p class="next-note">Limited to five new founders a month</p>
+      <p>We reply within 24 hours.</p>
+      <div class="next-doors">
+        <div class="card card-before">
+          <p>Selling in the next few years?</p>
+          <a class="btn-teal btn-dream" href="/exit-prep">Start with The Exit Prep</a>
+        </div>
+        <div class="card card-after">
+          <p>Already sold?</p>
+          <a class="btn-apply" href={urls.apply}>Apply for Stage 1</a>
+        </div>
+      </div>
     </div>
   </section>
   <script>

@@ -1425,3 +1425,16 @@ html.adv-js .adv-faq-item:not(.is-open) .adv-faq-panel {
 }
 .advr-hub-band .advr-nav { padding-top: 32px; }
 @media (max-width: 640px) { .advr-hub-band .advr-nav { padding-top: 16px; } }
+
+/* Preview 9 — Seb, 21 Nov 20:23: only the introduction starts at the well's left edge.
+   Keep the existing DREAM 500 #2A0B4F text; balanced wrapping avoids short last lines. */
+.adv-page .adv-intro {
+  max-width: none;
+  margin-inline: 0;
+  text-align: left;
+}
+.adv-page .adv-intro p {
+  margin-inline: 0;
+  text-align: left;
+  text-wrap: pretty;
+}

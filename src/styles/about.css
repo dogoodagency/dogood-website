@@ -987,3 +987,82 @@ body:has(.ab-page) .footer-wave {
   .ab-team-m img { display: block; width: 100%; height: auto; }
   .ab-team-m .wf-name { position: absolute; translate: -50% -50%; padding: 3px 7px; border-radius: 999px; background: #fff; color: #ea1458; font-size: 13px; font-weight: 700; line-height: 1; white-space: nowrap; }
 }
+
+/* Preview 9 — Seb, 21 Nov 20:23: vision / mission below the hero.
+   DREAM 25 #F5F2FF band; White #FFFFFF cards; HEART 500 #EA1557 edges;
+   DREAM 500 #2A0B4F copy and DREAM 100 #E6DEFC join into the white premise band. */
+.ab-page .ab-band-statements { background: #F5F2FF; }
+.ab-page .ab-band-statements + .ab-band { border-top: 1px solid #E6DEFC; }
+.ab-page .ab-band-statements .ab-duo .ab-statement {
+  padding: 40px 44px;
+  border: 1px solid #EA1557;
+  border-radius: 24px;
+  background: #FFFFFF;
+  box-shadow: none;
+}
+.ab-page .ab-band-statements .ab-duo .ab-statement h2 {
+  padding-top: 0;
+  color: #2A0B4F;
+}
+.ab-page .ab-band-statements .ab-duo .ab-statement h2::before { content: none; }
+.ab-page .ab-band-statements .ab-duo .ab-statement p {
+  color: #2A0B4F;
+  font-size: 22px !important; /* Override the older phone-only 19px important rule. */
+  font-weight: 400;
+}
+
+/* Two-door close: same light fills, thin border and button pairing as Home. */
+.ab-page .ab-cta {
+  gap: 0;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+}
+.ab-page .ab-cta h2 {
+  margin-bottom: 16px;
+  color: #2A0B4F; /* DREAM 500 */
+}
+.ab-page .ab-cta p { color: #2A0B4F; }
+.ab-page .ab-cta .ab-next-doors {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  width: 100%;
+  margin-top: 32px;
+}
+.ab-page .ab-cta .ab-door {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 40px 44px;
+  background: #F3FFFB; /* GRASS 25 */
+  border: 1px solid #EA1557; /* HEART 500 */
+  border-radius: 24px;
+  color: #2A0B4F; /* DREAM 500 */
+  box-shadow: none;
+}
+.ab-page .ab-cta .ab-door--after { background: #FFF9FA; /* HEART 25 */ }
+.ab-page .ab-cta .ab-door > a {
+  align-self: center;
+  margin: 32px 0;
+  max-width: 100%;
+  border: 0;
+}
+
+/* Apply alone uses HEART 600 #B0013E / White #FFFFFF. */
+.ab-page .ab-cta .ab-door > a.btn-apply {
+  background: #B0013E;
+  color: #FFFFFF;
+}
+
+@media (max-width: 1080px) {
+  .ab-page .ab-cta .ab-door { padding: 28px 22px; }
+}
+@media (max-width: 799px) {
+  .ab-page .ab-band-statements .ab-duo,
+  .ab-page .ab-cta .ab-next-doors {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  .ab-page .ab-band-statements .ab-duo .ab-statement { padding: 28px 22px; }
+}

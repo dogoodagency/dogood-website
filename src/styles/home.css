@@ -8038,57 +8038,85 @@ body:has(.page-home) {
   #apply-first .apply-first-slot { position: static !important; margin: 28px auto 0 !important; text-align: center; }
 }
 
-/* Preview 9: desktop Before / After row with a content-height, full-width NOT card.
-   Override the former staggered two-card layout; keep its rules above for reference.
-   The 28px top margin preserves the existing spacing below 1081px. */
-.page-home #for-you > .foryou-grid--not {
-  margin-top: 28px;
+/* Preview 9 — Seb, 21 Nov 20:23: light Before / After cards and two-door close.
+   GRASS 25 #F3FFFB / HEART 25 #FFF9FA fills; HEART 500 #EA1557 edge;
+   DREAM 500 #2A0B4F text. Existing button components retain their slide hover. */
+.page-home :is(#for-you, #next) .card-before,
+.page-home :is(#for-you, #next) .card-after {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  padding: 40px 44px;
+  border: 1px solid #EA1557; /* HEART 500 */
+  border-radius: 24px;
+  background: #F3FFFB; /* GRASS 25 */
+  color: #2A0B4F; /* DREAM 500 */
+  box-shadow: none;
 }
 
+.page-home :is(#for-you, #next) .card-after {
+  background: #FFF9FA; /* HEART 25 */
+}
+
+.page-home :is(#for-you, #next) :is(.card-before, .card-after) :is(h3, p, li) {
+  color: #2A0B4F; /* DREAM 500 */
+}
+
+/* HEART 600 #B0013E / White #FFFFFF, only on Apply; preserve the inherited hover motion. */
+.page-home :is(#for-you, #next) .card-after > a.btn-apply {
+  background: #B0013E;
+  color: #FFFFFF;
+}
+
+.page-home #for-you .foryou-grid--pair ul { flex: 1; }
+
+.page-home :is(#for-you, #next) :is(.card-before, .card-after) > a {
+  align-self: center;
+  margin: 32px 0;
+  max-width: 100%;
+  border: 0;
+}
+
+/* Replace the preview-9 desktop overrides; stacked cards keep their existing layout. */
 @media (min-width: 1081px) {
-  .page-home #for-you > h2.t-h3 {
-    max-width: 675px;
-    position: relative;
-    z-index: 2;
-  }
-
-  .page-home #for-you > .foryou-grid--pair {
-    align-items: stretch;
-  }
-
-  .page-home #for-you .foryou-grid--pair > .card.ink {
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .page-home #for-you .foryou-grid--pair > .card.ink > a.btn-apply {
-    margin-top: auto;
-  }
-
-  .page-home #for-you > .foryou-grid--not {
-    grid-template-columns: minmax(0, 1fr);
-    width: calc(1350px + 147 * 100vw / 1710);
-    margin-top: calc(147 * 100vw / 1710);
-  }
-
-  .page-home #for-you .foryou-grid--not > .card.rose {
-    min-height: 0;
-    margin-top: 0;
+  .page-home #for-you > .foryou-grid--pair { align-items: stretch; }
+  /* Raise the flying machine toward Seb's 200px, without covering the For-you cards.
+     Offset = #why padding-top (56*vw/1710) + transparent top of the 540-wide art
+     (84px) scaled to the sketch width (857*vw/1710), minus a 24px gap, capped at 200px. */
+  .page-home #why .why-sketch {
+    top: max(-200px, calc(-1 * (56 * 100vw / 1710 + (84 / 540) * (857 * 100vw / 1710) - 24px)));
   }
 }
 
-/* Match the pair's shrinking tracks, including its existing right padding.
-   Keep the heading over the left column so the through-line stays in the gutter. */
-@media (min-width: 1081px) and (max-width: 1709px) {
-  .page-home #for-you > h2.t-h3 {
-    max-width: calc((100% - var(--pad) - 147 * 100vw / 1710) / 2);
-  }
+/* CARDS-2: the close stays on its existing swell, with the normal 1080px content well. */
+.page-home #next .next-inner {
+  box-sizing: content-box;
+  width: auto;
+  max-width: 1080px;
+  padding-inline: var(--pad);
+}
 
-  .page-home #for-you > .foryou-grid--not {
-    box-sizing: border-box;
-    width: 100%;
-    padding-right: var(--pad);
+.page-home #next .next-inner > p:not(.next-note) {
+  color: #2A0B4F; /* DREAM 500 */
+}
+
+.page-home #next .next-doors {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  margin-top: 32px;
+}
+
+.page-home #next .next-doors p { margin: 0; }
+
+@media (max-width: 1080px) {
+  .page-home :is(#for-you, #next) :is(.card-before, .card-after) { padding: 28px 22px; }
+}
+
+@media (max-width: 799px) {
+  .page-home #next .next-doors {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
   }
 }

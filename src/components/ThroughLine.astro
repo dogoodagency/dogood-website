@@ -61,6 +61,7 @@
     let triggers = [];
 
     const box = (el) => {
+      if (!el) return null;
       const r = el.getBoundingClientRect();
       const m = main.getBoundingClientRect();
       const x = r.left - m.left;
@@ -632,7 +633,9 @@
       const stones = at("#first-draw");
       const firstCard = at("#first-card");
       const apply1 = at("#apply-first .btn-apply");
-      const forYou = at("#for-you .card.ink");
+      const forYou = at("#for-you .foryou-grid--pair");
+      const beforeDoor = at("#for-you .card-before");
+      const afterDoor = at("#for-you .card-after");
       const notYou = at("#for-you .card.rose");
       const flyer = at(".why-sketch");
       const leaders = at("#reviews");
@@ -780,8 +783,12 @@
         founderPts.push({ x: lane, y: apply1.bottom + founderStroke });
       }
       if (forYou) {
-        put(lane, forYou.y + founderStroke);
-        put(lane, forYou.bottom + 36);
+        // Keep this run in the gutter between the two light cards on desktop.
+        const doorLane = width >= 1081 && beforeDoor && afterDoor
+          ? (beforeDoor.right + afterDoor.left) / 2
+          : lane;
+        put(doorLane, forYou.y + founderStroke);
+        put(doorLane, forYou.bottom + 36);
       }
       if (flyer) {
         const centre = flyer.left + flyer.w * 0.5;

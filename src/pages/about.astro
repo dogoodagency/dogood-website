@@ -63,16 +63,6 @@ const aboutLd = {
       <div class="ab-hero-inner ab-hero-text">
         <div class="ab-hero-copy">
           <h1>For founders, <span class="ab-accent">before and after the sale.</span></h1>
-        </div>
-          <section class="ab-statement card" aria-labelledby="ab-purpose" style="margin-bottom: 18px">
-            <h2 id="ab-purpose">Our vision</h2>
-            <p>Every entrepreneur builds consciously: a life of creation and service that does good to them, to the people they love and to the world.</p>
-          </section>
-          <section class="ab-statement card" aria-labelledby="ab-mission" style="margin-bottom: 18px">
-            <h2 id="ab-mission">Our mission</h2>
-            <p>We put free tools for the human side of entrepreneurship in the hands of every entrepreneur on the planet, and walk beside founders 1:1 when the stakes are highest, starting with the sale.</p>
-          </section>
-        <div class="ab-hero-copy">
           <p>DoGood Agency is a private 1:1 partnership for founders before and after they sell their business. We are for founders who do not want life after the company to become another version of the life they left behind.</p>
           <p>You apply for Stage 1, The Reset, a private 30-day engagement. If it fits, Stage 2, The Build, follows by invitation only.</p>
         </div>
@@ -80,12 +70,21 @@ const aboutLd = {
       <Wave fill={tint} edge={heroEdge} />
     </header>
 
-    <div class="ab-divider" aria-hidden="true">
-      <svg style={`--wave-edge:${bandEdge}`} viewBox="0 0 1440 80" preserveAspectRatio="none">
-        <path fill="#ffffff" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path>
-        <path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path>
-      </svg>
-    </div>
+    <!-- 21 Nov 20:23 (Seb): vision / mission in the first DREAM 25 #F5F2FF band. -->
+    <section class="ab-band ab-band-tint ab-band-statements" aria-label="Our vision and mission">
+      <div class="ab-well">
+        <div class="ab-duo">
+          <section class="ab-statement card" aria-labelledby="ab-purpose">
+            <h2 id="ab-purpose">Our vision</h2>
+            <p>Every entrepreneur builds consciously: a life of creation and service that does good to them, to the people they love and to the world.</p>
+          </section>
+          <section class="ab-statement card" aria-labelledby="ab-mission">
+            <h2 id="ab-mission">Our mission</h2>
+            <p>We put free tools for the human side of entrepreneurship in the hands of every entrepreneur on the planet, and walk beside founders 1:1 when the stakes are highest, starting with the sale.</p>
+          </section>
+        </div>
+      </div>
+    </section>
 
     <!-- NEW DRAFT COPY: for Seb's review (Our Premise) -->
     <section class="ab-band" aria-labelledby="ab-premise">
@@ -293,10 +292,17 @@ const aboutLd = {
       <div class="ab-well">
         <div class="ab-cta">
           <h2 id="ab-next">What's next?</h2>
-          <p class="ab-cta-lead">Selling in the next few years? Start with The Exit Prep. Already sold? Apply for Stage 1. We reply within 24 hours.</p>
-          <a class="btn-teal" href="/exit-prep">Start with The Exit Prep</a>
-          <a class="btn-teal" href="/apply-stage-1">Apply for Stage 1</a>
-          <p class="ab-cta-note">Private. Limited to 5 new founders a month.</p>
+          <p>We reply within 24 hours.</p>
+          <div class="ab-next-doors">
+            <div class="ab-door ab-door--before">
+              <p>Selling in the next few years?</p>
+              <a class="btn-teal btn-dream" href="/exit-prep">Start with The Exit Prep</a>
+            </div>
+            <div class="ab-door ab-door--after">
+              <p>Already sold?</p>
+              <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
