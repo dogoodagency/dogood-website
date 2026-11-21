@@ -66,7 +66,7 @@ html body #wayfinders .wf-m { display: none; }
 
   /* Leaders who've been through it: the heading sits in the white band below the wave, cards follow. */
   html body #reviews { margin-top: 0 !important; }
-  html body #reviews .reviews-band { padding-top: 28px; }
+  html body #reviews .reviews-band { padding-top: 35px; }
   html body #reviews .reviews-band > h2 { margin-bottom: 28px; }
 
   /* foundr.land card: no star. */
@@ -111,7 +111,7 @@ html body #wayfinders .wf-m { display: none; }
   html body #guarantee { margin-top: 24px !important; }
 
   /* What's next: the heading, text and button sit a little lower. */
-  html body #next .next-inner { padding-top: 128px; }
+  html body #next .next-inner { padding-top: 152px; }
   html body #next .next-inner > p:not(.next-note) { max-width: 270px; margin: 0 auto 40px; }
   /* the green swell opens wider, so the lower-placed text sits on green, not across its edge */
   html body #next { overflow-x: clip; }
@@ -178,7 +178,7 @@ html body main li { text-wrap: wrap; }
 /* Podcast page (Seb, 20 Nov 22:53). */
 @media (max-width: 599px) {
   html body .pod-hero .pod2-art { display: none; }
-  html body .pod-hero .pod-hero-inner { padding-bottom: 12px; }
+  html body .pod-hero .pod-hero-inner { padding-bottom: 15px; }
   html body .pod2-host .pod2-host-img { justify-self: center; margin-inline: auto; border: 2px solid #c2b7dd; border-radius: 50%; }
   html body .pod2-next { padding: 24px; margin-top: 32px; }
   /* Newsletter card: envelope small and centred over the text, button full width. */
@@ -279,7 +279,7 @@ html body .footer-wave { background: transparent !important; margin-top: -80px; 
 /* Clarity-First Guarantee terms page (Seb, 20 Nov 23:29). */
 @media (max-width: 599px) {
   html body .page-clarity .privacy-hero { height: auto; }
-  html body .page-clarity .privacy-hero-inner { padding: 28px 0 36px; flex: none; }
+  html body .page-clarity .privacy-hero-inner { padding: 35px 0 45px; flex: none; }
   html body .seal-slot { display: block; margin-inline: auto; text-align: center; }
   html body .seal-slot img { margin-inline: auto; }
   html body .case-compact { text-align: center; }
@@ -321,14 +321,10 @@ html body .pbreak-m { display: none; }
   html body .adv-page .adv-cta a { white-space: nowrap; }
 }
 @media (max-width: 599px) {
-  /* The exit-advisor button sat dark on the dark card: white on DREAM there. */
-  html body .adv-page .adv-cta a.btn-dream { background: #fff !important; color: #2a0b4f !important; border-color: #fff !important; }
-}
-@media (max-width: 599px) {
   /* Advisor Center sub-pages: less space under the three-part hub, more room above the first card below it. */
-  html body .advr-hub-band .advr-well { padding-bottom: 28px; }
+  html body .advr-hub-band .advr-well { padding-bottom: 35px; }
   html body .advr-hub-band .ahub { margin-bottom: 0; }
-  html body .advr-hub-band + .advr-band .advr-well { padding-top: 36px; }
+  html body .advr-hub-band + .advr-band .advr-well { padding-top: 45px; }
   /* "More tools are on the way" in a white frame on the DREAM band. */
   html body .advr-band-tint .advr-cta { background: #fff !important; }
 }
@@ -355,11 +351,11 @@ html body .st-phone-wall { display: none; }
 
 /* Home (Seb, 20 Nov 23:29). */
 @media (max-width: 599px) {
-  html body #exit { padding-top: 40px; }
+  html body #exit { padding-top: 50px; }
   html body .exit-machine { margin-left: 0 !important; }
   html body #first-draw { overflow: visible; }
   html body #first-draw img { width: 384px; max-width: none; margin-left: calc((100% - 384px) / 2); }
-  html body #why { padding-bottom: 40px; }
+  html body #why { padding-bottom: 50px; }
   /* Track record: the same cards as on The Reset. */
   html body #wayfinders .track-card { padding: 24px 0 8px; background: transparent; border: 0; box-shadow: none; }
   html body #wayfinders .track-nums { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 12px; }
@@ -380,7 +376,7 @@ html body .st-phone-wall { display: none; }
 }
 @media (max-width: 599px) {
   /* Product pages: the closing card gets room above and below. */
-  html body .pp-page section[aria-labelledby="pp-close"] .ep-well { padding-top: 56px; padding-bottom: 32px; }
+  html body .pp-page section[aria-labelledby="pp-close"] .ep-well { padding-top: 70px; padding-bottom: 40px; }
   html body .pp-page .pp-note { font-size: 15px; }
   html body .pp-page .pp-soon--hero { white-space: nowrap; }
 }
@@ -418,9 +414,23 @@ html body .st-phone-wall { display: none; }
 }
 @media (max-width: 599px) {
   /* Pathway (21 Nov): more room under the hero; door buttons centred. */
-  html body .dr-band .dr-well-top { padding-top: 56px; }
+  html body .dr-band .dr-well-top { padding-top: 70px; }
   html body .dr-door .dr-door-foot { display: flex; flex-direction: column; align-items: center; text-align: center; }
   /* Services: "Our services" centred, larger, lower. */
   html body .pp-page h2#pr-all { text-align: center; font-size: 30px !important; }
-  html body .pp-page section[aria-labelledby="pr-all"] .ep-well { padding-top: 56px; }
+  html body .pp-page section[aria-labelledby="pr-all"] .ep-well { padding-top: 70px; }
+}
+
+/* Round 2 G4–G5: identical Residency subline on phones, tighter button captions. */
+@media (max-width: 599px) {
+  :root {
+    --hero-subline-size: 17px;
+    --hero-subline-weight: 400;
+    --hero-subline-leading: 1.6;
+  }
+  html body main :is(a.btn-apply, a.btn-teal, a.btn-case, a[class*="btn-"]) + p {
+    margin-top: 4px !important;
+    font-size: var(--button-caption-size) !important;
+  }
+  html body .bl-card :is(.bl-badge, .bl-pill) { font-size: 10px !important; }
 }

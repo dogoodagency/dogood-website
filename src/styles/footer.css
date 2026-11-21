@@ -198,6 +198,10 @@
   margin-top: clamp(48px, 9vw, 150px);
 }
 
+.footer .legal :is(a, p) {
+  font-weight: 400;
+}
+
 /* Between laptop and tablet: two link columns side by side, the rest full width. */
 @media (max-width: 1080px) {
   .footer .ft-grid {

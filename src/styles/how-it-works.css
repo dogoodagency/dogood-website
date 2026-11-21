@@ -42,7 +42,7 @@ body:has(.hw-page) .footer-wave {
   gap: 18px;
   width: min(960px, calc(100% - 2 * var(--pad)));
   margin: 0 auto;
-  padding: 56px 0 40px;
+  padding: 70px 0 50px;
   text-align: center;
 }
 
@@ -195,7 +195,7 @@ body:has(.hw-page) .footer-wave {
   width: min(1080px, calc(100% - 2 * var(--pad)));
   max-width: 100%;
   margin: 0 auto;
-  padding: 72px 0;
+  padding: 90px 0;
 }
 
 .hw-well-wide {
@@ -203,7 +203,7 @@ body:has(.hw-page) .footer-wave {
 }
 
 .hw-well-slim {
-  padding: 56px 0;
+  padding: 70px 0;
 }
 
 .hw-divider {
@@ -1096,15 +1096,15 @@ body:has(.hw-page) .footer-wave {
   }
 
   .hw-hero-inner {
-    padding: 40px 0 28px;
+    padding: 50px 0 35px;
   }
 
   .hw-well {
-    padding: 48px 0;
+    padding: 60px 0;
   }
 
   .hw-well-slim {
-    padding: 40px 0;
+    padding: 50px 0;
   }
 
   .hw-page .hw-pull,
@@ -1320,7 +1320,7 @@ body:has(.hw-page) .footer-wave {
 
 /* Cost section sits in the same white band as the sound bites. */
 .hw-band-cont .hw-well {
-  padding-top: 8px;
+  padding-top: 10px;
 }
 
 /* House + stage content in one panel. */
@@ -1790,8 +1790,8 @@ html {
 }
 
 .hw-page .hw-path .hw-well {
-  padding-top: 56px;
-  padding-bottom: 40px;
+  padding-top: 70px;
+  padding-bottom: 50px;
 }
 
 .hw-page .hw-option-b a {
@@ -2138,7 +2138,7 @@ html {
   html body .hw-page .hw-path-note a { display: inline; }
 
   /* Less white space above "The FRP is a 2-stage process". */
-  html body .hw-page .hw-path .hw-well { padding-top: 28px; }
+  html body .hw-page .hw-path .hw-well { padding-top: 35px; }
 
   /* Stage card ("Stage 1 · You are here"): left aligned. */
   html body .ss .ss-panel { text-align: left; padding: 26px 22px 28px; }

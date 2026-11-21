@@ -79,7 +79,7 @@ body:has(.pod-page) .footer-wave {
   grid-template-columns: minmax(0, 1fr) minmax(0, 380px);
   align-items: center;
   gap: 48px;
-  padding: 56px 0 40px;
+  padding: 70px 0 50px;
 }
 
 .pod-hero-copy {
@@ -216,7 +216,7 @@ body:has(.pod-page) .footer-wave {
 }
 
 .pod-section {
-  padding: 24px 0 64px;
+  padding: 30px 0 80px;
 }
 
 .pod-grid {
@@ -317,7 +317,7 @@ body:has(.pod-page) .footer-wave {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: center;
   gap: 56px;
-  padding: 56px 0;
+  padding: 70px 0;
 }
 
 .pod-split-copy {
@@ -349,7 +349,7 @@ body:has(.pod-page) .footer-wave {
 }
 
 .pod-seb-wrap {
-  padding: 40px 0 56px;
+  padding: 50px 0 70px;
 }
 
 .pod-seb {
@@ -413,7 +413,7 @@ body:has(.pod-page) .footer-wave {
   flex-direction: column;
   align-items: center;
   gap: 14px;
-  padding: 56px 0 104px;
+  padding: 70px 0 128px;
   text-align: center;
 }
 
@@ -529,7 +529,7 @@ body:has(.pod-page) .footer-wave {
 }
 
 .pod-ep-body {
-  padding: 28px 0 24px;
+  padding: 35px 0 30px;
 }
 
 .pod-ep-narrow {
@@ -647,7 +647,7 @@ body:has(.pod-page) .footer-wave {
 }
 
 .pod-more {
-  padding: 56px 0 72px;
+  padding: 70px 0 90px;
   background: var(--pod-tint);
 }
 
@@ -705,7 +705,7 @@ body:has(.pod-page) .footer-wave {
 @media (max-width: 800px) {
   .pod-hero-inner {
     grid-template-columns: minmax(0, 1fr);
-    padding-top: 40px;
+    padding-top: 50px;
   }
 
   .pod-hero-art {
@@ -714,7 +714,7 @@ body:has(.pod-page) .footer-wave {
 
   .pod-split {
     grid-template-columns: minmax(0, 1fr);
-    padding: 40px 0;
+    padding: 50px 0;
   }
 
   .pod-split-art img {

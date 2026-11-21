@@ -34,7 +34,7 @@ body:has(.dr-page) .footer-wave {
 .dr-hero-inner {
   width: min(1080px, calc(100% - 2 * var(--pad)));
   margin: 0 auto;
-  padding: 56px 0 44px;
+  padding: 70px 0 55px;
 }
 
 .dr-hero-top {
@@ -189,11 +189,11 @@ body:has(.dr-page) .footer-wave {
   width: min(1080px, calc(100% - 2 * var(--pad)));
   max-width: 100%;
   margin: 0 auto;
-  padding: 64px 0 72px;
+  padding: 80px 0 90px;
 }
 
 .dr-well-slim {
-  padding: 24px 0 72px;
+  padding: 30px 0 90px;
 }
 
 .dr-divider {
@@ -363,7 +363,7 @@ body:has(.dr-page) .footer-wave {
   }
 
   .dr-hero-inner {
-    padding: 40px 0 28px;
+    padding: 50px 0 35px;
   }
 
   .dr-hero-top {
@@ -379,11 +379,11 @@ body:has(.dr-page) .footer-wave {
   }
 
   .dr-well {
-    padding: 48px 0 56px;
+    padding: 60px 0 70px;
   }
 
   .dr-well-slim {
-    padding: 16px 0 56px;
+    padding: 20px 0 70px;
   }
 
   .dr-strip {
@@ -417,7 +417,7 @@ body:has(.dr-page) .footer-wave {
 }
 
 .dr-well-top {
-  padding-top: 24px;
+  padding-top: 30px;
 }
 
 .dr-page .dr-lead {
@@ -773,8 +773,8 @@ body:has(.dr-page) .footer-wave {
 
 .dr-page .dr-journey-well {
   width: min(1240px, calc(100% - 2 * var(--pad)));
-  padding-top: 64px;
-  padding-bottom: 88px;
+  padding-top: 80px;
+  padding-bottom: 110px;
   text-align: center;
 }
 
@@ -804,7 +804,7 @@ body:has(.dr-page) .footer-wave {
 
 /* 20 Nov 2026 (Seb): more breathing room around the journey. */
 .dr-page .dr-journey-lead { margin-bottom: 56px; }
-.dr-journey-band .dr-journey-well { padding-top: 96px; padding-bottom: 104px; }
+.dr-journey-band .dr-journey-well { padding-top: 120px; padding-bottom: 128px; }
 
 /* 20 Nov 2026 (Seb): the longer Pathway sub-line wraps inside the hero instead of running off the right edge. */
 .dr-page .dr-hero-sub { white-space: normal !important; max-width: 1080px; }

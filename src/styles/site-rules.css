@@ -355,3 +355,127 @@ form [data-status].is-subscribed {
 .contact-form button.btn-teal:focus-visible { padding: 10px 56px 10px 20px !important; }
 .contact-form button.btn-teal:hover,
 .contact-form button.btn-teal:focus-visible { padding: 10px 20px 10px 56px !important; }
+
+/* Round 2 G1–G2: compact actions, fixed total padding in both chevron positions.
+   Keep these shared rules after page-specific button skins. */
+html body :is(a.btn-apply, a.btn-case, a.btn-teal, a.btn-partnership, a.btn-terms,
+  button.btn-teal, button.btn-subscribe, .buzzsprout-gate button):is([class], button) {
+  min-height: 44px !important;
+  height: auto !important;
+  border: 1px solid var(--color-grass-500) !important;
+  padding: 8px 48px 8px 17px !important;
+}
+html body :is(a.btn-apply, a.btn-case, a.btn-teal, a.btn-partnership, a.btn-terms,
+  button.btn-teal, button.btn-subscribe, .buzzsprout-gate button):is([class], button):is(:hover, :focus-visible) {
+  padding: 8px 17px 8px 48px !important;
+}
+html body :is(a.btn-apply, a.btn-case, a.btn-teal, a.btn-partnership, a.btn-terms,
+  button.btn-teal, button.btn-subscribe, .buzzsprout-gate button)::before,
+html body :is(a.btn-apply, a.btn-case, a.btn-teal, a.btn-partnership, a.btn-terms,
+  button.btn-teal, button.btn-subscribe, .buzzsprout-gate button)::after {
+  width: 30px !important;
+  height: 30px !important;
+}
+html body :is(a.btn-teal, button.btn-teal, button.btn-subscribe, .buzzsprout-gate button,
+  .btn-outline, .btn-soft, .nl-btn-ghost, .ss .ss-btn),
+html body :is(a.btn-teal, button.btn-teal, button.btn-subscribe, .buzzsprout-gate button,
+  .btn-outline, .btn-soft, .nl-btn-ghost, .ss .ss-btn):is(:hover, :focus-visible) {
+  background: var(--color-grass-500) !important;
+  border-color: var(--color-grass-500) !important;
+  color: var(--color-dream-500) !important;
+  font-weight: 700 !important;
+}
+html body :is(a.btn-case, a.btn-partnership, a.btn-terms, a.btn-teal.btn-dream),
+html body :is(a.btn-case, a.btn-partnership, a.btn-terms, a.btn-teal.btn-dream):is(:hover, :focus-visible) {
+  background: var(--color-dream-500) !important;
+  border-color: var(--color-grass-500) !important;
+  color: var(--color-white) !important;
+}
+/* Apply is the only action with a HEART 600 fill, including external application forms.
+   Legacy booking-row links using btn-apply keep the secondary skin below. */
+html body :is(a.btn-apply, a.btn-teal[href*="apply"]),
+html body :is(a.btn-apply, a.btn-teal[href*="apply"]):is(:hover, :focus-visible) {
+  background: var(--color-heart-600) !important;
+  border-color: var(--color-heart-600) !important;
+  color: var(--color-white) !important;
+}
+html body .bk-btn-row a.btn-apply:not([href*="apply"]),
+html body .bk-btn-row a.btn-apply:not([href*="apply"]):is(:hover, :focus-visible) {
+  background: var(--color-grass-500) !important;
+  border-color: var(--color-grass-500) !important;
+  color: var(--color-dream-500) !important;
+}
+html body :is(.btn-outline, .btn-soft, .nl-btn-ghost, .ss .ss-btn) {
+  height: auto;
+  min-height: 44px;
+  padding: 8px 17px;
+}
+@media (hover: none), (pointer: coarse) {
+  html body :is(a[class*="btn-"], button[class*="btn-"], .buzzsprout-gate button) { min-height: 44px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html body :is(a.btn-apply, a.btn-case, a.btn-teal, a.btn-partnership, a.btn-terms,
+    button.btn-teal, button.btn-subscribe, .buzzsprout-gate button):is([class], button):is(:hover, :focus-visible) {
+    padding: 8px 48px 8px 17px !important;
+  }
+}
+
+/* G4: Residency's hero subline typography, including its phone scale. */
+html body main :is(.hero .lede, .ep-hero .ep-sub, .hw-hero .hw-hero-lede, .hw-hero .hw-hero-sub,
+  .dr-hero-sub, .advr-hero .advr-lede, .adv-hero .adv-lede, .wf-hero .wf-lead,
+  .wfp-hero .wfp-extra, .bl-hero-lede, .bl-head .bl-dek, .ab-hero-copy > p, .faq-hero-intro,
+  .st-hero-copy > p, .cs-hero .cs-intro, .pod-hero .pod-sub, .nl-hero .nl-lede,
+  .privacy-hero-sub, .subhero > p, .apl-hero .apl-sub) {
+  font-family: var(--font-sans) !important;
+  font-size: var(--hero-subline-size) !important;
+  font-weight: var(--hero-subline-weight) !important;
+  line-height: var(--hero-subline-leading) !important;
+  letter-spacing: 0 !important;
+  font-style: normal !important;
+}
+/* G5: one caption style for all Stage/button subtitles. */
+html body main :is(.stage-note, .btn-caption, .hw-btn-sub, .hw-hero-cta-note,
+  .wf-apply .wf-note, .wf-cta .wf-note, .st-cta-note,
+  .btn-stack > .case-protect, #apply-first .cap-pill, #apply-v .cap-small, #next .next-note),
+html body main :is(a.btn-apply, a.btn-teal, a.btn-case, a[class*="btn-"]) + p:not(.au-more):not(.wh-more) {
+  margin-top: 4px !important;
+  font-size: var(--button-caption-size) !important;
+  font-weight: 400 !important;
+  font-style: italic !important;
+  line-height: 1.45 !important;
+}
+html body main :is(a[class*="btn-"]):has(+ :is(.stage-note, .btn-caption, .hw-btn-sub, .wf-note, .st-cta-note)) {
+  margin-bottom: 0 !important;
+}
+
+/* G8: intro only; quotes keep their own alignment. Enough width for the desktop lede. */
+html body main :is(#hw-familiar, #ep-familiar, #dr-familiar, #adv-tell, #advi-voices),
+html body main :is(#hw-familiar, #ep-familiar, #dr-familiar, #adv-tell, #advi-voices) + p {
+  max-width: none !important;
+  width: 100%;
+  margin-inline: auto;
+  text-align: center !important;
+}
+
+/* G10–G11: override the stage-page decorative link underline as well. */
+html body main :is(.au-more, .wh-more) a {
+  background-image: none !important;
+  text-decoration: underline !important;
+  text-decoration-color: var(--color-grass-500) !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 5px;
+}
+html body main .au--compact .au-more a { color: var(--color-white) !important; }
+
+/* G13: method headings and stage taglines use HEART 500. Light pill backgrounds keep red legible. */
+html body main :is(.hw-tagline, .hw-flow > strong, .hw-flow > a, .hw-flow > a > strong, #hw-steps),
+html body .ss .ss-panel .ss-line { color: var(--color-heart-500) !important; }
+html body main .hw-tagline,
+html body .ss .ss-panel .ss-line { background: var(--color-dream-25) !important; }
+
+/* Every content card retains the v7 one-pixel HEART outline; outer section frames are excluded. */
+html body main :is(.card, .bl-card, .tw-card, .st-card, .review-card, .bk-quote, .ep-box,
+  .ep-qcard, .pp-step, .pp-card, .au-mode, .au-ac, .au-sci-col, .wh-card, .wh-metric,
+  .wh-panel, .adv-aud-card, .adv-step, .ab-vision-card, .fw-step, .ss-panel) {
+  border: 1px solid var(--color-heart-500) !important;
+}

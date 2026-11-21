@@ -43,6 +43,7 @@ interface Props {
 }
 
 const { title, description, path, eyebrow, h1, sub, tag, soon, cta, sections, closing } = Astro.props;
+const partnership = ["/state-shift-audio", "/recovery-stress-diagnostics", "/founderland/membership", "/founderland-membership", "/signature-retreat", "/residency"].includes(path);
 
 const tint = "#F5F2FF";
 const white = "#ffffff";
@@ -77,7 +78,7 @@ const footerBg = closing ? (lastTint ? white : tint) : lastTint ? tint : white;
       provider: { "@id": "https://www.dogoodagency.co/#organization" },
       areaServed: "Worldwide",
     })} />
-  <article class="ep-page pp-page">
+  <article class:list={["ep-page", "pp-page", partnership && "pp-partnership"]}>
     <header class="ep-hero">
       <div class="ep-hero-inner">
         <p class="ep-eyebrow" set:html={eyebrow} />

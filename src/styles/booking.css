@@ -20,7 +20,7 @@ body:has(.bk-page) .footer-wave {
 }
 
 .bk-hero-inner {
-  padding: 44px var(--pad) 28px;
+  padding: 55px var(--pad) 35px;
 }
 
 .bk-wave-top {
@@ -496,7 +496,7 @@ body:has(.bk-page) .footer-wave {
   }
 
   .bk-hero-inner {
-    padding: 56px 24px 36px var(--bk-copy-left);
+    padding: 70px 24px 45px var(--bk-copy-left);
   }
 
   .bk-grid {

@@ -45,7 +45,7 @@ body:has(.adv-page) .footer-wave {
   gap: 20px;
   width: min(900px, calc(100% - 2 * var(--pad)));
   margin: 0 auto;
-  padding: 56px 0 44px;
+  padding: 70px 0 55px;
   text-align: center;
 }
 
@@ -121,7 +121,7 @@ body:has(.adv-page) .footer-wave {
   width: min(1080px, calc(100% - 2 * var(--pad)));
   max-width: 100%;
   margin: 0 auto;
-  padding: 72px 0;
+  padding: 90px 0;
 }
 
 /* ---------- Type ---------- */
@@ -845,7 +845,7 @@ html.adv-js .adv-faq-item:not(.is-open) .adv-faq-panel {
 
   .adv-hero-inner {
     gap: 18px;
-    padding: 40px 0 28px;
+    padding: 50px 0 35px;
   }
 
   .adv-lede {
@@ -853,7 +853,7 @@ html.adv-js .adv-faq-item:not(.is-open) .adv-faq-panel {
   }
 
   .adv-well {
-    padding: 48px 0;
+    padding: 60px 0;
   }
 
   .adv-intro p {

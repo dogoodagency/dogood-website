@@ -64,7 +64,7 @@ h2.wf-center {
   gap: 24px;
   width: min(1080px, calc(100% - 2 * var(--pad)));
   margin: 0 auto;
-  padding: 64px 0 56px;
+  padding: 80px 0 70px;
 }
 
 .wf-hero h1 {
@@ -133,11 +133,11 @@ h2.wf-center {
   width: min(1080px, calc(100% - 2 * var(--pad)));
   max-width: 100%;
   margin: 0 auto;
-  padding: 72px 0;
+  padding: 90px 0;
 }
 
 .wf-well-top {
-  padding: 24px 0 64px;
+  padding: 30px 0 80px;
 }
 
 .wf-well-wide {
@@ -974,7 +974,7 @@ h2.wf-h2.wf-center {
   }
 
   .wf-hero-inner {
-    padding: 44px 0 36px;
+    padding: 55px 0 45px;
   }
 
   .wf-hero-copy p,
@@ -983,7 +983,7 @@ h2.wf-h2.wf-center {
   }
 
   .wf-well-top {
-    padding: 16px 0 48px;
+    padding: 20px 0 60px;
   }
 
   .wf-intro p,
@@ -1051,7 +1051,7 @@ h2.wf-h2.wf-center {
 
 .wfp-hero-inner {
   gap: 28px;
-  padding-bottom: 40px;
+  padding-bottom: 50px;
 }
 
 .wfp-crumbs ol {
@@ -1389,7 +1389,7 @@ h2.wf-h2.wf-center {
 
 @media (max-width: 600px) {
   .wfp-hero-inner {
-    padding-bottom: 28px;
+    padding-bottom: 35px;
   }
 
   .wf-page .wfp-extra {
@@ -1732,7 +1732,7 @@ h2.wf-h2.wf-center {
 
 /* Where Wayfinders travel to: centred over the map, with more room under the hero. */
 .wf-band-map .wf-well-top {
-  padding-top: 88px;
+  padding-top: 110px;
 }
 
 .wf-band-map .wf-intro {

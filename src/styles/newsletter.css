@@ -58,7 +58,7 @@ html:has(.nl-page) {
   align-items: center;
   width: min(1120px, calc(100% - 2 * var(--pad)));
   margin: 0 auto;
-  padding: 56px 0 56px;
+  padding: 70px 0 70px;
 }
 
 .nl-hero .hero-wave {
@@ -176,7 +176,7 @@ html:has(.nl-page) {
   width: min(1080px, calc(100% - 2 * var(--pad)));
   max-width: 100%;
   margin: 0 auto;
-  padding: 72px 0;
+  padding: 90px 0;
 }
 
 .nl-divider {
@@ -632,7 +632,7 @@ html:has(.nl-page) {
   .nl-hero-inner {
     grid-template-columns: minmax(0, 1fr);
     gap: 40px;
-    padding: 44px 0 40px;
+    padding: 55px 0 50px;
   }
 
   .nl-copy {
@@ -692,7 +692,7 @@ html:has(.nl-page) {
   }
 
   .nl-hero-inner {
-    padding: 36px 0 32px;
+    padding: 45px 0 40px;
   }
 
   .nl-lede {
@@ -710,7 +710,7 @@ html:has(.nl-page) {
   }
 
   .nl-well {
-    padding: 48px 0;
+    padding: 60px 0;
   }
 
   .nl-page .nl-well .nl-note blockquote p {

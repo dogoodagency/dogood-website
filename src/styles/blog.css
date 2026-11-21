@@ -65,7 +65,7 @@ body:has(.bl-page) .footer-wave {
 
 .bl-band {
   background: #fff;
-  padding: 24px 0 72px;
+  padding: 30px 0 90px;
 }
 
 .bl-band--tint {
@@ -1012,7 +1012,7 @@ body:has(.bl-page) .footer-wave {
 
 .bl-more-band {
   background: var(--bl-tint);
-  padding: 0 0 56px;
+  padding: 0 0 70px;
 }
 
 .bl-page .bl-more h2 {
@@ -1049,7 +1049,7 @@ body:has(.bl-page) .footer-wave {
   gap: 16px;
   width: min(1120px, calc(100% - 2 * var(--pad)));
   margin: 0 auto;
-  padding: 26px 0 32px;
+  padding: 32.5px 0 40px;
 }
 
 .bl-hero h1 {
@@ -1144,7 +1144,7 @@ body:has(.bl-page) .footer-wave {
   }
 
   .bl-band {
-    padding-bottom: 56px;
+    padding-bottom: 70px;
   }
 
   .bl-faq-q {
@@ -1650,3 +1650,31 @@ html.bl-js .bl-common {
 .bl-card:not(.bl-card--feature):not(.bl-card--row) .bl-card-body .bl-meta {
   margin-top: 0;
 }
+
+/* Round 2 G7: one inset for the image, labels and copy in every notes rail. */
+html body .bl-card:not(.bl-card--row) { --bl-card-inset: 22px; }
+html body .bl-card.bl-card--feature { --bl-card-inset: 28px; }
+html body .bl-card:not(.bl-card--row) .bl-card-media {
+  margin: var(--bl-card-inset) var(--bl-card-inset) 0 !important;
+  padding: 0 !important;
+  width: auto !important;
+}
+html body .bl-card:not(.bl-card--row) .bl-card-body {
+  padding-inline: var(--bl-card-inset) !important;
+}
+html body .bl-card .bl-card-tags {
+  margin-inline: 0 !important;
+  padding-inline: 0 !important;
+  flex-wrap: wrap;
+}
+html body .bl-card .bl-img img { transform: none; }
+@media (min-width: 900px) {
+  html body .bl-card--feature .bl-card-media { margin-bottom: var(--bl-card-inset) !important; }
+  html body .bli-feature .bl-card--feature .bl-card-media { margin-bottom: 0 !important; }
+}
+@media (max-width: 599px) {
+  html body .bl-card.bl-card--feature { --bl-card-inset: 22px; }
+}
+
+/* Compact article rows keep the image and copy inside the same card inset. */
+html body .bl-card.bl-card--row { padding: 18px !important; }

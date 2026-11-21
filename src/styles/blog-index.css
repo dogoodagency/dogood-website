@@ -6,7 +6,7 @@
   align-items: center;
   gap: 20px;
   width: min(900px, calc(100% - 2 * var(--pad)));
-  padding: 48px 0 40px;
+  padding: 60px 0 50px;
   text-align: center;
 }
 
@@ -39,11 +39,11 @@
 }
 
 .bli-band > .bl-wrap {
-  padding: 48px 0 64px;
+  padding: 60px 0 80px;
 }
 
 .bli-nl-band > .bl-wrap {
-  padding-bottom: 72px;
+  padding-bottom: 90px;
 }
 
 .bl-page .bli-nl-band .bl-nl {
@@ -607,7 +607,7 @@ html.bl-js .bli-switch {
 @media (max-width: 639px) {
   .bli-hero .bl-hero-inner {
     gap: 18px;
-    padding: 36px 0 28px;
+    padding: 45px 0 35px;
   }
 
   .bli-hero .bl-hero-lede {
@@ -683,7 +683,7 @@ html.bl-js .bli-switch {
 .bli-hero .bl-hero-inner {
   width: min(1000px, calc(100% - 2 * var(--pad)));
   gap: 24px;
-  padding-bottom: 90px;
+  padding-bottom: 112.5px;
 }
 
 @media (min-width: 1000px) {
@@ -695,7 +695,7 @@ html.bl-js .bli-switch {
 
 @media (max-width: 600px) {
   .bli-hero .bl-hero-inner {
-    padding-bottom: 56px;
+    padding-bottom: 70px;
   }
 }
 

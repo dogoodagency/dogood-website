@@ -50,7 +50,7 @@ body:has(.faq-page) .footer-wave {
   gap: 22px;
   width: min(900px, calc(100% - 2 * var(--pad)));
   margin: 0 auto;
-  padding: 56px 0 40px;
+  padding: 70px 0 50px;
   text-align: center;
 }
 
@@ -232,7 +232,7 @@ html.faq-js .faq-search-wrap {
   width: min(1240px, calc(100% - 2 * var(--pad)));
   max-width: 100%;
   margin: 0 auto;
-  padding: 56px 0 72px;
+  padding: 70px 0 90px;
 }
 
 .faq-divider {
@@ -610,7 +610,7 @@ html.faq-js .faq-item:not(.is-open) .faq-panel {
 
   .faq-hero-inner {
     gap: 18px;
-    padding: 40px 0 28px;
+    padding: 50px 0 35px;
   }
 
   .faq-hero .faq-hero-intro {
@@ -630,7 +630,7 @@ html.faq-js .faq-item:not(.is-open) .faq-panel {
   }
 
   .faq-well {
-    padding: 40px 0 56px;
+    padding: 50px 0 70px;
   }
 
   .faq-contact {
@@ -707,7 +707,7 @@ html.faq-js .faq-item:not(.is-open) .faq-panel {
 /* ---------- Hero spacing (18 Nov 2026): intro on one line, more room above the wave ---------- */
 
 .faq-hero-inner {
-  padding-bottom: 90px;
+  padding-bottom: 112.5px;
 }
 
 @media (min-width: 900px) {
@@ -719,7 +719,7 @@ html.faq-js .faq-item:not(.is-open) .faq-panel {
 
 @media (max-width: 600px) {
   .faq-hero-inner {
-    padding-bottom: 56px;
+    padding-bottom: 70px;
   }
 }
 

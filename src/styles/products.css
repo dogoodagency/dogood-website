@@ -315,3 +315,30 @@
 @media (max-width: 600px) {
   .pp-page .pp-cards .pp-soon--card { left: 22px; }
 }
+
+/* Round 2 G9: partnership content sits directly on its section band. */
+.pp-partnership :is(.pp-well, .pp-feature-well, .ep-well, .pp-close, .au--full, .wh--full) {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.pp-partnership :is(.pp-close, .au--full, .wh--full) { padding: 0; }
+.pp-partnership .au--full :is(.au-approach, .au-sci) {
+  margin-top: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.pp-partnership .pp-close { gap: 22px; }
+.pp-partnership .pp-close :is(h2, p),
+.pp-partnership .au--full,
+.pp-partnership .au--full :is(h2, .au-lede) { color: var(--color-dream-500); }
+.pp-partnership .au--full .au-eyebrow { color: var(--color-grass-700); }
+/* GRASS 700 meets AA on the pale green cards; GRASS 600 did not at 14px. */
+.pp-partnership .au-mode--grass { --au-c: var(--color-grass-700); }
+.pp-partnership .pp-step .pp-step-label { color: var(--color-dream-500); }
+.pp-partnership .wh-panel--dark h3 { color: var(--color-white); }
+@media (prefers-reduced-motion: reduce) {
+  .pp-steps.will-animate .pp-step { opacity: 1; transform: none; transition: none; }
+}

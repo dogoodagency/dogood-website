@@ -146,7 +146,7 @@ const modes = [
     )
   }
 
-  {variant === "compact" && <p class="au-more"><a class="btn-teal" href="/state-shift-audio">See how the audio works</a></p>}
+  {variant === "compact" && <p class="au-more"><a href="/state-shift-audio">See how the audio works</a></p>}
 </section>
 
 <style>
@@ -473,7 +473,7 @@ const modes = [
   }
 
   .au-ac--grass .au-ac-n { background: #05745b; }
-  .au-ac--heart .au-ac-n { background: #c10e46; }
+  .au-ac--heart .au-ac-n { background: #2a0b4f; }
   .au-ac--dream .au-ac-n { background: #58447f; }
 
   .au-ac-tag { margin: 0 0 6px; font-size: 13px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; }
@@ -506,14 +506,20 @@ const modes = [
     .au-w, .au-meter span { animation: none; }
   }
 
-  /* 20 Nov 2026 (Seb): on The Build, the link to the audio page is a clear button; the intro has room before the
-     waveform panel; in the narrower card the four modes sit two by two, so no word breaks. */
+  /* Compact audio: the intro and waveform have breathing room; modes sit two by two in narrower cards. */
   .au-lede { margin-bottom: 28px !important; }
   .au--compact .au-more { margin: 28px 0 8px; padding-bottom: 32px; }
-  .au--compact .au-more a { color: #2a0b4f; }
+  .au--compact .au-more a {
+    color: #fff;
+    text-decoration: underline;
+    text-decoration-color: var(--color-grass-500);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+  }
+  .au--compact .au-modes { margin-top: 32px; }
   .au--compact .au-modes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   @media (max-width: 600px) { .au--compact .au-modes { grid-template-columns: minmax(0, 1fr); } }
-  /* 20 Nov 2026 23:29 (Seb, phones): the button is as wide as the text frames above it; less space under it. */
+  /* Phones: keep the nested content compact and leave less space under the text link. */
   @media (max-width: 599px) {
     /* three nested frames on phones: thinner padding at each level, the same on both sides */
     .au { padding: 24px 14px; }
@@ -529,7 +535,6 @@ const modes = [
     .au-beat-ear--b { grid-column: 1 / 4; }
     .au-modes { margin-top: 22px; }
     .au--compact .au-more { margin: 22px 0 0; padding-bottom: 0; }
-    .au--compact .au-more a.btn-teal { display: flex; width: 100%; box-sizing: border-box; justify-content: center; }
   }
 </style>
 

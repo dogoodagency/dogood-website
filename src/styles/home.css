@@ -290,7 +290,7 @@ main ul {
 }
 
 .hero-inner {
-  padding: 75px var(--pad) 0;
+  padding: 93.75px var(--pad) 0;
 }
 
 .hero h1 {
@@ -406,7 +406,7 @@ main ul {
   position: relative;
   z-index: 2;
   background: transparent;
-  padding: 18px 0 10px;
+  padding: 22.5px 0 12.5px;
 }
 
 .logo-viewport {
@@ -490,7 +490,7 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
 }
 
 #exit {
-  padding: 36px var(--pad) 10px;
+  padding: 45px var(--pad) 12.5px;
 }
 
 .exit-grid {
@@ -505,7 +505,7 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
 }
 
 .sec {
-  padding: 40px var(--pad) 8px;
+  padding: 50px var(--pad) 10px;
 }
 
 .case-compact {
@@ -568,7 +568,7 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
 }
 
 #first-step {
-  padding: 36px var(--pad) 0;
+  padding: 45px var(--pad) 0;
 }
 
 .first-grid {
@@ -640,11 +640,11 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
 }
 
 #apply-first {
-  padding: 32px var(--pad) 24px;
+  padding: 40px var(--pad) 30px;
 }
 
 #apply-v {
-  padding: 24px var(--pad) 12px;
+  padding: 30px var(--pad) 15px;
 }
 
 .cap-pill {
@@ -660,7 +660,7 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
 }
 
 #for-you {
-  padding: 28px var(--pad) 20px;
+  padding: 35px var(--pad) 25px;
 }
 
 .foryou-grid {
@@ -701,7 +701,7 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
 }
 
 #why {
-  padding: 40px var(--pad) 28px;
+  padding: 50px var(--pad) 35px;
 }
 
 .why-grid {
@@ -820,7 +820,7 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
 }
 
 .reviews-band {
-  padding: 48px var(--pad) 52px;
+  padding: 60px var(--pad) 65px;
   background: #fff;
 }
 
@@ -919,12 +919,12 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
 }
 
 #case-v {
-  padding-top: 48px;
+  padding-top: 60px;
   padding-bottom: 4px;
 }
 
 #asseen {
-  padding: 16px var(--pad) 8px;
+  padding: 20px var(--pad) 10px;
 }
 
 .asseen-frame {
@@ -953,7 +953,7 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
 }
 
 #message {
-  padding: 24px var(--pad) 28px;
+  padding: 30px var(--pad) 35px;
 }
 
 #message-card {
@@ -987,7 +987,7 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
 }
 
 #wayfinders {
-  padding: 48px var(--pad) 10px;
+  padding: 60px var(--pad) 12.5px;
 }
 
 .wf-intro {
@@ -1079,7 +1079,7 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
 }
 
 #guarantee {
-  padding: 56px var(--pad) 20px;
+  padding: 70px var(--pad) 25px;
 }
 
 .guarantee-card {
@@ -1131,7 +1131,7 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
   text-align: center;
   max-width: 760px;
   margin: 0 auto;
-  padding: 180px 48px 88px;
+  padding: 204px 48px 110px;
   color: var(--color-ink);
 }
 
@@ -1372,7 +1372,7 @@ footer a.connect-mark:focus-visible {
   }
 
   .hero-inner {
-    padding-top: 36px;
+    padding-top: 45px;
   }
 
   .hero-grid,
@@ -1421,7 +1421,7 @@ footer a.connect-mark:focus-visible {
   }
 
   .reviews-band {
-    padding: 36px 20px 40px;
+    padding: 45px 20px 50px;
   }
 
   .review {
@@ -1453,7 +1453,7 @@ footer a.connect-mark:focus-visible {
   }
 
   .next-inner {
-    padding: 120px 20px 64px;
+    padding: 144px 20px 80px;
   }
 
   #next {
@@ -1553,12 +1553,12 @@ main li {
 }
 
 #clients {
-  padding-top: 28px;
-  padding-bottom: 20px;
+  padding-top: 35px;
+  padding-bottom: 25px;
 }
 
 #exit {
-  padding: 96px var(--pad) 56px;
+  padding: 120px var(--pad) 70px;
 }
 
 #exit-card {
@@ -1674,11 +1674,11 @@ main li {
 }
 
 #case-v {
-  padding-bottom: 64px;
+  padding-bottom: 80px;
 }
 
 #first-step {
-  padding-top: 88px;
+  padding-top: 110px;
 }
 
 #first-card .invite {
@@ -1694,13 +1694,13 @@ main li {
 }
 
 #apply-first {
-  padding-top: 72px;
-  padding-bottom: 120px;
+  padding-top: 90px;
+  padding-bottom: 144px;
 }
 
 #for-you {
-  padding-top: 72px;
-  padding-bottom: 72px;
+  padding-top: 90px;
+  padding-bottom: 90px;
 }
 
 .foryou-grid {
@@ -1708,8 +1708,8 @@ main li {
 }
 
 #why {
-  padding-top: 96px;
-  padding-bottom: 80px;
+  padding-top: 120px;
+  padding-bottom: 100px;
 }
 
 #why .closing {
@@ -1745,8 +1745,8 @@ main li {
 }
 
 #asseen {
-  padding-top: 56px;
-  padding-bottom: 24px;
+  padding-top: 70px;
+  padding-bottom: 30px;
 }
 
 .asseen-frame,
@@ -1767,7 +1767,7 @@ main li {
 }
 
 #message {
-  padding-top: 80px;
+  padding-top: 100px;
 }
 
 .msg-copy {
@@ -1779,7 +1779,7 @@ main li {
 }
 
 #wayfinders {
-  padding-top: 104px;
+  padding-top: 128px;
 }
 
 .wf-intro {
@@ -1807,7 +1807,7 @@ main li {
 }
 
 #guarantee {
-  padding-top: 120px;
+  padding-top: 144px;
 }
 
 .guarantee-card {
@@ -2046,11 +2046,11 @@ main li {
 }
 
 #exit {
-  padding-top: 140px;
+  padding-top: 164px;
 }
 
 #clients {
-  padding-bottom: 36px;
+  padding-bottom: 45px;
 }
 
 .caption,
@@ -2107,7 +2107,7 @@ main li {
 }
 
 #asseen {
-  padding: 88px 0 72px;
+  padding: 110px 0 90px;
 }
 
 .asseen-frame {
@@ -2145,7 +2145,7 @@ main li {
 }
 
 #next .next-inner {
-  padding: 96px 48px 56px;
+  padding: 120px 48px 70px;
 }
 
 .track-title {
@@ -2489,7 +2489,7 @@ h1.t-display .hero-line {
 
 #asseen {
   width: 100%;
-  padding: 72px var(--pad) 80px;
+  padding: 90px var(--pad) 100px;
   overflow: hidden;
 }
 
@@ -4630,7 +4630,7 @@ button.btn-subscribe:focus-visible,
 
 @media (min-width: 1081px) {
   .hero-inner {
-    padding-top: 156px;
+    padding-top: 180px;
   }
 
   .hero-sketch {
@@ -4657,7 +4657,7 @@ button.btn-subscribe:focus-visible,
   }
 
   #exit {
-    padding-top: 220px;
+    padding-top: 244px;
   }
 
   .exit-layout {
@@ -4972,7 +4972,7 @@ button.btn-subscribe:focus-visible {
   }
 
   .hero-inner {
-    padding-top: 108px;
+    padding-top: 132px;
   }
 
   .exit-layout,
@@ -5229,19 +5229,19 @@ button.btn-subscribe:focus-visible {
 
 @media (min-width: 1081px) {
   #exit {
-    padding-top: 250px;
+    padding-top: 274px;
   }
 
   #case-j {
-    padding-top: 160px;
+    padding-top: 184px;
   }
 
   #for-you {
-    padding-top: 107px;
+    padding-top: 131px;
   }
 
   #reviews {
-    padding-top: 79px;
+    padding-top: 98.75px;
   }
 
   .reviews-band {
@@ -5250,20 +5250,20 @@ button.btn-subscribe:focus-visible {
 
   #message {
     margin-top: 0;
-    padding-top: 107px;
+    padding-top: 131px;
   }
 
   #wayfinders {
-    padding-top: 160px;
+    padding-top: 184px;
   }
 
   #guarantee {
-    padding-top: 160px;
+    padding-top: 184px;
   }
 
   #next {
-    padding-top: 160px;
-    padding-bottom: 194px;
+    padding-top: 184px;
+    padding-bottom: 218px;
   }
 }
 
@@ -5284,26 +5284,26 @@ button.btn-subscribe:focus-visible {
   }
 
   #case-j {
-    padding-top: 64px;
+    padding-top: 80px;
   }
 
   #first-step {
-    padding-top: 92px;
+    padding-top: 115px;
   }
 
   #apply-first {
-    padding-top: 120px;
+    padding-top: 144px;
     padding-bottom: 0;
   }
 
   #for-you {
-    padding-top: 67px;
-    padding-bottom: 24px;
+    padding-top: 83.75px;
+    padding-bottom: 30px;
   }
 
   #why {
-    padding-top: 96px;
-    padding-bottom: 103px;
+    padding-top: 120px;
+    padding-bottom: 127px;
   }
 
   #reviews {
@@ -5314,31 +5314,31 @@ button.btn-subscribe:focus-visible {
 
   .reviews-band {
     padding-top: 0;
-    padding-bottom: 40px;
+    padding-bottom: 50px;
   }
 
   #case-v {
-    padding-top: 120px;
+    padding-top: 144px;
     padding-bottom: 0;
   }
 
   #asseen {
-    padding-top: 120px;
-    padding-bottom: 40px;
+    padding-top: 144px;
+    padding-bottom: 50px;
   }
 
   #apply-v {
-    padding-top: 80px;
+    padding-top: 100px;
     padding-bottom: 0;
   }
 
   #message {
-    padding-top: 51px;
+    padding-top: 63.75px;
     padding-bottom: 0;
   }
 
   #wayfinders {
-    padding-top: 120px;
+    padding-top: 144px;
     padding-bottom: 0;
   }
 
@@ -5349,7 +5349,7 @@ button.btn-subscribe:focus-visible {
 
   #next {
     margin-top: -56px;
-    padding-bottom: 64px;
+    padding-bottom: 80px;
   }
 }
 
@@ -5542,7 +5542,7 @@ button.btn-subscribe:focus-visible {
 
 @media (min-width: 1081px) {
   #exit {
-    padding: 42px var(--pad) 48px 0;
+    padding: 52.5px var(--pad) 60px 0;
   }
 
   .exit-layout {
@@ -5605,7 +5605,7 @@ button.btn-subscribe:focus-visible {
 
   #first-step {
     position: relative;
-    padding: calc(57 * 100vw / 1710) 0 0;
+    padding: calc(57 * 100vw / 1710 + min(24px, 14.25 * 100vw / 1710)) 0 0;
   }
 
   .first-grid {
@@ -5655,7 +5655,7 @@ button.btn-subscribe:focus-visible {
   }
 
   #for-you {
-    padding: calc(226 * 100vw / 1710) var(--pad) 0 calc(var(--pad) + 9 * 100vw / 1710);
+    padding: calc(226 * 100vw / 1710 + min(24px, (226 * 100vw / 1710) * 0.25)) var(--pad) 0 calc(var(--pad) + 9 * 100vw / 1710);
   }
 
   .foryou-grid {
@@ -5680,7 +5680,7 @@ button.btn-subscribe:focus-visible {
 
   #why {
     position: relative;
-    padding: calc(56 * 100vw / 1710) 0 calc(40 * 100vw / 1710);
+    padding: calc(56 * 100vw / 1710 + min(24px, (56 * 100vw / 1710) * 0.25)) 0 calc(40 * 100vw / 1710 + min(24px, (40 * 100vw / 1710) * 0.25));
   }
 
   .why-grid {
@@ -5716,12 +5716,12 @@ button.btn-subscribe:focus-visible {
   }
 
   #reviews {
-    padding-top: calc(242 * 100vw / 1710);
-    padding-bottom: 40px;
+    padding-top: calc(242 * 100vw / 1710 + min(24px, (242 * 100vw / 1710) * 0.25));
+    padding-bottom: 50px;
   }
 
   #case-v {
-    padding-top: calc(232 * 100vw / 1710);
+    padding-top: calc(232 * 100vw / 1710 + min(24px, (232 * 100vw / 1710) * 0.25));
   }
 
   #case-v .case-compact {
@@ -5740,7 +5740,7 @@ button.btn-subscribe:focus-visible {
   }
 
   #asseen {
-    padding-top: calc(193 * 100vw / 1710);
+    padding-top: calc(193 * 100vw / 1710 + min(24px, 48.25 * 100vw / 1710));
     padding-bottom: 0;
   }
 
@@ -5750,7 +5750,7 @@ button.btn-subscribe:focus-visible {
     align-items: center;
     width: fit-content;
     text-align: center;
-    padding: calc(242 * 100vw / 1710) 0 0 calc(395 * 100vw / 1710);
+    padding: calc(242 * 100vw / 1710 + min(24px, (242 * 100vw / 1710) * 0.25)) 0 0 calc(395 * 100vw / 1710);
   }
 
   #apply-v .caption {
@@ -5759,7 +5759,7 @@ button.btn-subscribe:focus-visible {
   }
 
   #message {
-    padding: calc(213 * 100vw / 1710) 0 0;
+    padding: calc(213 * 100vw / 1710 + min(24px, (213 * 100vw / 1710) * 0.25)) 0 0;
   }
 
   #message-card {
@@ -5769,7 +5769,7 @@ button.btn-subscribe:focus-visible {
   }
 
   #wayfinders {
-    padding-top: calc(256 * 100vw / 1710);
+    padding-top: calc(256 * 100vw / 1710 + min(24px, (256 * 100vw / 1710) * 0.25));
   }
 
   #wayfinders .wf-intro {
@@ -5800,11 +5800,11 @@ button.btn-subscribe:focus-visible {
   }
 
   #next .next-inner {
-    padding-top: 264px;
+    padding-top: 288px;
   }
 
   #guarantee {
-    padding: calc(115 * 100vw / 1710) 0 0;
+    padding: calc(115 * 100vw / 1710 + min(24px, (115 * 100vw / 1710) * 0.25)) 0 0;
   }
 
   .guarantee-layout {
@@ -5928,11 +5928,11 @@ button.btn-subscribe:focus-visible {
   }
 
   #exit {
-    padding-bottom: 105px;
+    padding-bottom: 129px;
   }
 
   #first-step {
-    padding-bottom: 33px;
+    padding-bottom: 41.25px;
   }
 }
 
@@ -6127,7 +6127,7 @@ body:has(.page-clarity) .footer-wave {
   gap: 48px;
   width: min(1080px, calc(100% - 2 * clamp(20px, 5.56vw, 80px)));
   margin: 0 auto;
-  padding: 24px 0 32px;
+  padding: 30px 0 40px;
   flex: 1;
   text-align: center;
 }
@@ -6203,7 +6203,7 @@ body:has(.page-clarity) .footer-wave {
   box-sizing: border-box;
   width: min(1080px, calc(100% - 2 * clamp(20px, 5.56vw, 80px)));
   margin: 0 auto;
-  padding: 80px 0;
+  padding: 100px 0;
   max-width: 100%;
   overflow-x: auto;
 }
@@ -6407,7 +6407,7 @@ body:has(.page-clarity) .footer-wave {
   }
 
   .privacy-well {
-    padding: 48px 0;
+    padding: 60px 0;
   }
 
   .page-privacy h2,
@@ -6430,7 +6430,7 @@ body:has(.page-clarity) .footer-wave {
 }
 
 .page-apply .privacy-well {
-  padding-bottom: 300px;
+  padding-bottom: 324px;
   overflow: visible;
 }
 
@@ -7289,11 +7289,11 @@ body:has(.page-home) {
 
 @media (min-width: 1081px) {
   .page-home #reviews {
-    padding-top: 52.5px;
+    padding-top: 65.625px;
   }
 
   .page-home #reviews .reviews-band {
-    padding-top: 52px;
+    padding-top: 65px;
   }
 }
 
