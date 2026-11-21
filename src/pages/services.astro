@@ -1,0 +1,53 @@
+---
+import ProductPage from "../components/ProductPage.astro";
+// Services hub (renamed from Products, Seb 19 Nov 2026): the offers around the two FRP stages. Linked from the Products menu.
+// Preview 7 (Seb, 20 Nov 2026): services we sell only; WHOOP and State-Shift Audio live in the footer only.
+---
+
+<ProductPage
+  title="Residency, retreat & ongoing coaching | DoGood Agency"
+  description="Beyond the two stages: the 1.5-Day In-Person Residency, IntegralContinuity™, the Annual Signature Retreat and FOUNDR.land Membership."
+  path="/services"
+  eyebrow="Services"
+  h1="Residency, retreat, membership and ongoing support."
+  sub="Beyond the two stages: the ways to work with us around The Exit Prep™, The Reset™ and The Build™."
+  sections={[
+    {
+      id: "pr-all",
+      heading: "Our services",
+      cards: [
+        {
+          href: "/residency",
+          tag: "On its own or in Stage 1 and 2",
+          title: "1.5-Day In-Person Residency",
+          text: "Play, adventure and meaning, in person with your Wayfinder. When was the last time you did something for the first time?",
+        },
+        {
+          href: "/integral-continuity",
+          tag: "After both stages",
+          title: "IntegralContinuity™",
+          text: "Ongoing sessions with your Wayfinder after both stages: once a month (Light) or twice a month with WhatsApp support (Private).",
+        },
+        {
+          href: "/signature-retreat",
+          tag: "Invitation only · first retreat November 2027",
+          soon: true,
+          title: "Annual Signature Retreat",
+          text: "Once a year, up to ten founders we have worked with spend 2.5 days together somewhere beautiful.",
+        },
+        {
+          href: "/founderland-membership",
+          tag: "After the sale · opening September 2027",
+          soon: true,
+          title: "FOUNDR.land Membership",
+          text: "A private community for founders who have sold: small cohorts, monthly calls and a yearly gathering.",
+        },
+      ],
+    },
+  ]}
+  closing={{
+    heading: "Not sure where to start?",
+    text: "Most founders start with The Exit Prep™ before the sale, or Stage 1: The Reset™ after it.",
+    cta: { href: "/pathway", label: "Choose your door" },
+  }}
+/>

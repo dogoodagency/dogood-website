@@ -1,0 +1,655 @@
+---
+/**
+ * foundr.land sections (Seb, 20 Nov 2026): bring the foundr.land app onto the DoGood site, so founders and
+ * advisors see that foundr.land is where our founder support and our advisor support come together.
+ * Visual language: "foundr.land — Visual Style Guide v1.0 APPROVED" (20 Nov 2026). Georgia-style serif display
+ * with exactly one HEART terminal dot, Montserrat body, soft surfaces (lavender, mint, cream, blue), rounded
+ * cards, gentle 5–15 s loops, and a still version under reduced motion.
+ * Copy follows the foundr.land homepage concept; it says the product is in development, and that the advisor
+ * pathway is planned, not live.
+ *
+ * kind: "home"    – dark card on the home page (replaces the founder's message): the app phone, with its clarity
+ *                   wheel animated (the wheel is redrawn in SVG over the phone image; the badge sits on top).
+ *       "exit"    – The Exit Prep: compact blue card, a laptop showing the app's Day 1 question; the rating moves.
+ *       "reset"   – The Reset: compact mint card, the seven days of the journey lighting up one after another.
+ *       "advisor" – Advisor Center: compact cream card, Introduce → Reflect → Reconnect with a moving consent dot.
+ *       "small"   – one strip with the logo, one line and a link (Client tools, Advisor insights).
+ */
+import { FOUNDRLAND_URL } from "../data/foundrland";
+
+interface Props {
+  kind: "home" | "exit" | "reset" | "advisor" | "small";
+  /** The one line, for kind "small". */
+  line?: string;
+  /** Link label for kind "small". */
+  linkLabel?: string;
+}
+const { kind, line, linkLabel: smallLabel } = Astro.props;
+const uid = `fl-${kind}`;
+const advisor = kind === "advisor" || (kind === "small" && !!smallLabel?.includes("advisor"));
+const linkLabel = smallLabel ?? (kind === "advisor" ? "See foundr.land for advisors" : "Explore foundr.land");
+
+// The clarity wheel on the phone (home). Coordinates are in the 680 × 996 pixels of the phone image @2x:
+// hub at (322, 607), outer ring 135, turned 6.6° like the phone.
+const CX = 322;
+const CY = 607;
+const RR = 135;
+const at = (k: number, v: number) => {
+  const a = (Math.PI / 3) * k;
+  return [CX + Math.sin(a) * v * RR, CY - Math.cos(a) * v * RR];
+};
+const shape = (vals: number[]) => vals.map((v, k) => at(k, v).map((n) => n.toFixed(1)).join(",")).join(" ");
+const states = [
+  [0.69, 0.59, 0.57, 0.69, 0.65, 0.7],
+  [0.8, 0.72, 0.66, 0.76, 0.72, 0.84],
+  [0.74, 0.84, 0.76, 0.66, 0.8, 0.76],
+  [0.69, 0.59, 0.57, 0.69, 0.65, 0.7],
+];
+const polyValues = states.map(shape).join(";");
+const rings = [0.2, 0.4, 0.6, 0.8, 1].map((f) => shape([f, f, f, f, f, f]));
+const spokes = [0, 1, 2, 3, 4, 5].map((k) => at(k, 1));
+
+const days = [
+  ["01", "Identity"],
+  ["02", "Time"],
+  ["03", "Relationships"],
+  ["04", "Purpose"],
+  ["05", "Letting go"],
+  ["06", "Energy"],
+  ["07", "My next step"],
+];
+---
+
+{
+  kind === "small" ? (
+    <aside class:list={["fl", "fl--small"]} aria-label="foundr.land">
+      <span class="fl-mini-wheel" aria-hidden="true">
+        <svg viewBox="0 0 120 120">
+          <polygon points="60,12 101.6,36 101.6,84 60,108 18.4,84 18.4,36" class="fl-ring" />
+          <polygon points="60,36 80.8,48 80.8,72 60,84 39.2,72 39.2,48" class="fl-ring" />
+          <polygon points="60,22 92,44 86,76 60,98 30,78 32,42" class="fl-poly fl-breathe" />
+          <circle cx="60" cy="60" r="7" class="fl-hub" />
+        </svg>
+      </span>
+      <div class="fl-small-copy">
+        <picture>
+          <source type="image/webp" srcset="/media/foundrland/foundrland-logo-dark@1x.webp 1x, /media/foundrland/foundrland-logo-dark@2x.webp 2x" />
+          <img class="fl-logo fl-logo--sm" src="/media/foundrland/foundrland-logo-dark@1x.png" width="480" height="113" alt="foundr.land" />
+        </picture>
+        <p class="fl-small-line">{line}</p>
+        <p class="fl-by fl-by--sm">Developed by DoGood Agency</p>
+      </div>
+      {FOUNDRLAND_URL && <a class="fl-link" href={FOUNDRLAND_URL} target="_blank" rel="noopener" aria-label={`${linkLabel} (opens in a new tab)`}>{linkLabel} ↗</a>}
+    </aside>
+  ) : (
+    <section class:list={["fl", `fl--${kind}`]} aria-labelledby={uid}>
+      <div class="fl-panel">
+        {kind === "home" && (
+          <>
+            <span class="fl-orb fl-orb--a" aria-hidden="true" />
+            <span class="fl-orb fl-orb--b" aria-hidden="true" />
+            <span class="fl-spark" aria-hidden="true">✳</span>
+          </>
+        )}
+
+        <div class="fl-copy">
+          {kind === "home" ? (
+            <img class="fl-logo fl-logo--light" src="/media/foundrland/foundrland-logo@1x.png" srcset="/media/foundrland/foundrland-logo@1x.png 1x, /media/foundrland/foundrland-logo@2x.png 2x" width="480" height="113" alt="foundr.land" />
+          ) : (
+            <picture>
+              <source type="image/webp" srcset="/media/foundrland/foundrland-logo-dark@1x.webp 1x, /media/foundrland/foundrland-logo-dark@2x.webp 2x" />
+              <img class="fl-logo" src="/media/foundrland/foundrland-logo-dark@1x.png" width="480" height="113" alt="foundr.land" />
+            </picture>
+          )}
+
+          {kind === "home" && (
+            <>
+              <h2 class="fl-title" id={uid}>Life beyond the <em>business</em><span class="fl-dot">.</span></h2>
+              <p class="fl-lede">You’ve built a business. What comes next for you? foundr.land is a private, seven-day reflection journey to explore who you are beyond your business, what matters now, and where you might go next.</p>
+            </>
+          )}
+          {kind === "exit" && (
+            <>
+              <p class="fl-eyebrow">Alongside The Exit Prep™</p>
+              <h2 class="fl-title" id={uid}>A quiet space between <em>sessions</em><span class="fl-dot">.</span></h2>
+              <p class="fl-lede">A few minutes a day in foundr.land: who you are beyond the business, what matters now, what comes next. It’s there when we meet, and private unless you choose to share it.</p>
+            </>
+          )}
+          {kind === "reset" && (
+            <>
+              <p class="fl-eyebrow">Alongside Stage 1: The Reset™</p>
+              <h2 class="fl-title" id={uid}>Seven small moments. A little more <em>clarity</em><span class="fl-dot">.</span></h2>
+              <p class="fl-lede">Through the 30 days, foundr.land keeps the work going between sessions: one question a day, from identity to your next step, coming together in your personal clarity wheel.</p>
+            </>
+          )}
+          {kind === "advisor" && (
+            <>
+              <p class="fl-eyebrow">foundr.land for advisors</p>
+              <h2 class="fl-title" id={uid}>Better conversations begin beyond the <em>deal</em><span class="fl-dot">.</span></h2>
+              <p class="fl-lede">foundr.land is where our founder support and our advisor support meet. You introduce a founder, they reflect in private, and you reconnect when they choose, seeing only the summaries they approve.</p>
+            </>
+          )}
+
+          {kind === "advisor" && <p class="fl-note">The advisor pathway is part of the planned product, not yet a live service.</p>}
+          {FOUNDRLAND_URL && <a class="fl-btn" href={FOUNDRLAND_URL} target="_blank" rel="noopener" aria-label={`${linkLabel} (opens in a new tab)`}>{linkLabel} <span aria-hidden="true">↗</span></a>}
+        </div>
+
+        <div class="fl-visual" aria-hidden="true">
+          {kind === "home" && (
+            <div class="fl-phone">
+              <picture>
+                <source type="image/webp" srcset="/media/foundrland/foundrland-app-phone-nowheel@1x.webp 1x, /media/foundrland/foundrland-app-phone-nowheel@2x.webp 2x" />
+                <img class="fl-phone-img" src="/media/foundrland/foundrland-app-phone-nowheel@1x.webp" width="340" height="498" alt="" loading="lazy" decoding="async" />
+              </picture>
+              <svg class="fl-phone-wheel" viewBox="0 0 680 996">
+                <g class="fl-wheel-grid">
+                  {rings.map((r) => <polygon points={r} />)}
+                  {spokes.map(([x, y]) => <line x1={CX} y1={CY} x2={x} y2={y} />)}
+                </g>
+                <polygon class="fl-wheel-shape" points={shape(states[0])}>
+                  <animate class="fl-smil" attributeName="points" dur="9s" repeatCount="indefinite" values={polyValues} keyTimes="0;0.33;0.66;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1" />
+                </polygon>
+                {[0, 1, 2, 3, 4, 5].map((k) => {
+                  const pts = states.map((s) => at(k, s[k]));
+                  return (
+                    <circle class="fl-wheel-node" cx={pts[0][0]} cy={pts[0][1]} r="9">
+                      <animate attributeName="cx" dur="9s" repeatCount="indefinite" values={pts.map((p) => p[0].toFixed(1)).join(";")} keyTimes="0;0.33;0.66;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1" />
+                      <animate attributeName="cy" dur="9s" repeatCount="indefinite" values={pts.map((p) => p[1].toFixed(1)).join(";")} keyTimes="0;0.33;0.66;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1" />
+                    </circle>
+                  );
+                })}
+                <circle cx={CX} cy={CY} r="8" class="fl-wheel-hub" />
+              </svg>
+              <picture>
+                <source type="image/webp" srcset="/media/foundrland/foundrland-app-badge@1x.webp 1x, /media/foundrland/foundrland-app-badge@2x.webp 2x" />
+                <img class="fl-phone-badge" src="/media/foundrland/foundrland-app-badge@1x.webp" width="141" height="65" alt="" loading="lazy" decoding="async" />
+              </picture>
+            </div>
+          )}
+
+          {kind === "exit" && (
+            <div class="fl-laptop">
+              <div class="fl-laptop-screen">
+                <div class="fl-app">
+                  <div class="fl-app-top">
+                    <span class="fl-app-mark">foundr<span class="fl-dot">.</span>land</span>
+                    <span class="fl-app-day">Day 01 / 07</span>
+                  </div>
+                  <p class="fl-app-cap">Identity</p>
+                  <p class="fl-app-q">Who am I beyond the business<span class="fl-dot">.</span></p>
+                  <div class="fl-app-rate">
+                    <p class="fl-app-rq">How clear does this feel today?</p>
+                    <ol class="fl-app-scale">
+                      <li>1</li><li>2</li><li>3</li><li>4</li><li>5</li>
+                      <span class="fl-app-pick" />
+                    </ol>
+                  </div>
+                  <div class="fl-app-foot">
+                    <span class="fl-app-prev">← Previous</span>
+                    <span class="fl-app-next">Continue ↗</span>
+                  </div>
+                </div>
+              </div>
+              <div class="fl-laptop-base" />
+            </div>
+          )}
+
+          {kind === "reset" && (
+            <div class="fl-days">
+              <p class="fl-days-cap">The seven-day journey</p>
+              <div class="fl-days-bar"><span /></div>
+              <ol class="fl-days-list">
+                {days.map(([n, label], i) => (
+                  <li style={`--d:${i}`}>
+                    <span class="fl-days-n">{n}</span>
+                    <span class="fl-days-label">{label}</span>
+                  </li>
+                ))}
+              </ol>
+              <p class="fl-days-foot">5–7 minutes a day · your pace, your choice</p>
+            </div>
+          )}
+
+          {kind === "advisor" && (
+            <div class="fl-flow">
+              <ol class="fl-flow-steps">
+                <li class="fl-flow-step fl-flow-step--1"><span class="fl-flow-n">01</span><span class="fl-flow-t">Introduce</span><span class="fl-flow-s">A simple invitation</span></li>
+                <li class="fl-flow-step fl-flow-step--2"><span class="fl-flow-n">02</span><span class="fl-flow-t">Reflect</span><span class="fl-flow-s">The founder’s private journey</span></li>
+                <li class="fl-flow-step fl-flow-step--3"><span class="fl-flow-n">03</span><span class="fl-flow-t">Reconnect</span><span class="fl-flow-s">Only with their consent</span></li>
+              </ol>
+              <span class="fl-flow-line"><span class="fl-flow-dot" /></span>
+              <div class="fl-flow-share">
+                <p class="fl-flow-share-cap">Shared with you</p>
+                <ul>
+                  <li class="is-on">Clarity summary</li>
+                  <li class="is-on">Chosen actions</li>
+                  <li>Private reflections</li>
+                </ul>
+              </div>
+            </div>
+          )}
+          <p class="fl-by">Developed by DoGood Agency</p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .fl {
+    --dream: #2a0b4f;
+    --heart: #ea1557;
+    --grass: #28dbb0;
+    --sky: #1d53ef;
+    --play: #fefabe;
+    --lav: #f0e8fc;
+    --canvas: #f8f5ff;
+    --mint: #e7fcf4;
+    --cream: #fff8dd;
+    --blue: #eaf0ff;
+    --serif: Georgia, "Times New Roman", serif;
+    color: var(--dream);
+  }
+  .fl-dot { color: var(--heart); }
+
+  /* ---------- Shared panel ---------- */
+  .fl:not(.fl--home):not(.fl--small) { padding: 56px 20px; background: #fff; }
+
+  .fl-panel {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 40px;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 44px 48px;
+    overflow: hidden;
+    border: 1px solid #ddd0f5;
+    border-radius: 28px;
+  }
+  .fl--exit .fl-panel { background: var(--blue); border-color: #cbd8ff; }
+  .fl--reset .fl-panel { background: var(--mint); border-color: #b9f0dc; }
+  .fl--advisor .fl-panel { background: var(--cream); border-color: #f3e3a6; }
+
+  .fl-copy { position: relative; z-index: 1; }
+  .fl-logo { display: block; width: 170px; height: auto; }
+  .fl-eyebrow {
+    margin: 18px 0 0;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #58447f;
+  }
+  .fl-title {
+    margin: 10px 0 14px;
+    font-family: var(--serif);
+    font-size: clamp(30px, 3.2vw, 40px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    color: var(--dream);
+  }
+  .fl-title em { font-style: italic; }
+  .fl-lede { margin: 0 0 12px; max-width: 520px; font-size: 16.5px; line-height: 1.6; color: #3d2a5c; }
+  .fl-note { margin: 0 0 18px; font-size: 13px; font-style: italic; color: #6b5a8c; }
+
+  .fl-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 46px;
+    padding: 0 24px;
+    border-radius: 999px;
+    background: var(--dream);
+    font-size: 15px;
+    font-weight: 800;
+    transition: background-color 0.2s ease;
+  }
+  .fl a.fl-btn { color: #fff !important; text-decoration: none !important; }
+  .fl-btn:hover,
+  .fl-btn:focus-visible { background: #4a2380; }
+  .fl-btn:focus-visible { outline: 2px solid var(--grass); outline-offset: 3px; }
+
+  .fl-visual { position: relative; z-index: 1; display: grid; place-items: center; }
+
+  /* ---------- Home: dark card, phone with a living clarity wheel ---------- */
+  .fl--home .fl-panel {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: 48px;
+    padding: 64px;
+    border: 0;
+    border-radius: 34px;
+    background: var(--dream);
+  }
+  .fl-orb { position: absolute; border-radius: 50%; pointer-events: none; }
+  .fl-orb--a { right: -60px; top: -110px; width: 560px; height: 560px; background: #3d1a6e; }
+  .fl-orb--b { left: -120px; bottom: -200px; width: 420px; height: 420px; background: #351566; }
+  .fl-spark { position: absolute; top: 34px; right: 46%; color: var(--play); font-size: 30px; line-height: 1; }
+  .fl--home .fl-panel::after {
+    content: "";
+    position: absolute;
+    left: 48%;
+    bottom: 64px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--heart);
+  }
+  .fl-logo--light { width: 260px; max-width: 70%; }
+  .fl--home .fl-title { margin-top: 16px; font-size: clamp(36px, 4.2vw, 54px); color: #fff; }
+  .fl--home .fl-lede { font-size: 17px; color: #e3dcf2; }
+  .fl--home .fl-note { color: #c2b7dd; }
+  .fl--home a.fl-btn { background: #fff; color: var(--dream) !important; }
+  .fl--home .fl-btn:hover,
+  .fl--home .fl-btn:focus-visible { background: var(--lav); }
+
+  .fl-phone {
+    position: relative;
+    width: 340px;
+    max-width: 100%;
+    filter: drop-shadow(0 28px 40px rgba(0, 0, 0, 0.45));
+    animation: fl-float 9s ease-in-out infinite;
+  }
+  .fl-phone-img { display: block; width: 100%; height: auto; }
+  .fl-phone-wheel { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .fl-phone-wheel > * { transform: rotate(6.6deg); transform-origin: 322px 607px; }
+  .fl-wheel-grid polygon,
+  .fl-wheel-grid line { fill: none; stroke: #e0d8ef; stroke-width: 2.5; }
+  .fl-wheel-shape { fill: rgba(40, 219, 176, 0.32); stroke: #01a684; stroke-width: 6; stroke-linejoin: round; }
+  .fl-wheel-node { fill: #01a684; stroke: #fff; stroke-width: 4; }
+  .fl-wheel-hub { fill: #21084e; }
+  /* The badge from the phone image sits back on top of the redrawn wheel. */
+  .fl-phone-badge { position: absolute; left: 55.88%; top: 66.87%; width: 41.47%; height: auto; }
+
+  /* ---------- The Exit Prep: a laptop with the app's Day 1 question ---------- */
+  .fl-laptop { width: 100%; max-width: 470px; animation: fl-float 11s ease-in-out infinite; }
+  .fl-laptop-screen {
+    padding: 12px 12px 14px;
+    border-radius: 18px 18px 6px 6px;
+    background: var(--dream);
+    box-shadow: 0 24px 40px rgba(29, 83, 239, 0.18);
+  }
+  .fl-laptop-base {
+    position: relative;
+    height: 14px;
+    margin: 0 -26px;
+    border-radius: 0 0 16px 16px;
+    background: linear-gradient(#cdbfe6, #a99bc8);
+  }
+  .fl-laptop-base::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 70px;
+    height: 5px;
+    border-radius: 0 0 6px 6px;
+    background: #8e7fb0;
+    transform: translateX(-50%);
+  }
+  .fl-app { padding: 16px 18px 14px; border-radius: 10px; background: #fff; }
+  .fl-app-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+  .fl-app-mark { font-family: var(--serif); font-size: 15px; }
+  .fl-app-day,
+  .fl-app-cap { font-size: 9px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #5b21b6; }
+  .fl-app-cap { margin: 0 0 4px; }
+  .fl-app-q { margin: 0 0 12px; font-family: var(--serif); font-size: 22px; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
+  .fl-app-rate { padding: 12px; border-radius: 12px; background: var(--canvas); }
+  .fl-app-rq { margin: 0 0 8px; font-family: var(--serif); font-size: 13px; font-weight: 700; }
+  .fl-app-scale {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .fl-app-scale li {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    height: 26px;
+    border: 1px solid #ddd0f5;
+    border-radius: 8px;
+    background: #fff;
+    font-size: 11px;
+    font-weight: 800;
+  }
+  /* The moving selection: a DREAM tile that settles on 2, then 3, then 4. */
+  .fl-app-pick {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: calc((100% - 24px) / 5);
+    height: 26px;
+    border-radius: 8px;
+    background: rgba(40, 219, 176, 0.25);
+    box-shadow: inset 0 0 0 2px var(--dream);
+    animation: fl-pick 9s cubic-bezier(0.45, 0, 0.2, 1) infinite;
+  }
+  .fl-app-foot { display: flex; justify-content: space-between; margin-top: 12px; font-size: 10px; font-weight: 800; }
+  .fl-app-prev { padding: 6px 12px; border: 1px solid #ddd0f5; border-radius: 999px; }
+  .fl-app-next { padding: 6px 12px; border-radius: 999px; background: var(--dream); color: #fff; }
+  @keyframes fl-pick {
+    0%, 22% { transform: translateX(calc(100% + 6px)); }
+    33%, 55% { transform: translateX(calc(200% + 12px)); }
+    66%, 88% { transform: translateX(calc(300% + 18px)); }
+    100% { transform: translateX(calc(100% + 6px)); }
+  }
+
+  /* ---------- The Reset: the seven days light up one after another ---------- */
+  .fl-days {
+    width: 100%;
+    max-width: 440px;
+    padding: 20px 20px 18px;
+    border: 1px solid #b9f0dc;
+    border-radius: 22px;
+    background: #fff;
+    box-shadow: 0 20px 36px rgba(1, 166, 132, 0.14);
+  }
+  .fl-days-cap { margin: 0 0 10px; font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #05745b; }
+  .fl-days-bar { height: 6px; margin-bottom: 14px; border-radius: 6px; background: #e7fcf4; overflow: hidden; }
+  .fl-days-bar span {
+    display: block;
+    height: 100%;
+    border-radius: 6px;
+    background: var(--grass);
+    transform-origin: left center;
+    animation: fl-days-bar 10.5s linear infinite;
+  }
+  .fl-days-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: 0; padding: 0; list-style: none; }
+  .fl-days-list li {
+    display: grid;
+    gap: 2px;
+    padding: 10px 10px 9px;
+    border: 1px solid #e6dcf7;
+    border-radius: 12px;
+    background: var(--canvas);
+    animation: fl-day 10.5s ease infinite;
+    animation-delay: calc(var(--d) * 1.2s);
+  }
+  .fl-days-list li:last-child { grid-column: span 2; background: var(--dream); border-color: var(--dream); color: #fff; }
+  .fl-days-n { font-family: var(--serif); font-size: 15px; }
+  .fl-days-label { font-size: 11px; font-weight: 700; line-height: 1.25; }
+  .fl-days-foot { margin: 12px 0 0; font-size: 11px; font-weight: 600; color: #58447f; }
+  @keyframes fl-days-bar { 0% { transform: scaleX(0); } 80%, 100% { transform: scaleX(1); } }
+  @keyframes fl-day {
+    0%, 2% { background-color: var(--canvas); border-color: #e6dcf7; }
+    6%, 14% { background-color: #bff3e0; border-color: var(--grass); }
+    20%, 100% { background-color: var(--canvas); border-color: #e6dcf7; }
+  }
+  .fl-days-list li:last-child { animation-name: fl-day-last; }
+  @keyframes fl-day-last { 0%, 2%, 20%, 100% { box-shadow: none; } 6%, 14% { box-shadow: 0 0 0 4px rgba(40, 219, 176, 0.5); } }
+
+  /* ---------- Advisor Center: Introduce → Reflect → Reconnect ---------- */
+  .fl-flow { position: relative; width: 100%; max-width: 440px; }
+  .fl-flow-steps { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 0; padding: 0; list-style: none; }
+  .fl-flow-step {
+    display: grid;
+    gap: 4px;
+    padding: 14px 12px;
+    border: 1px solid #f3e3a6;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 14px 26px rgba(42, 11, 79, 0.08);
+  }
+  .fl-flow-n { font-family: var(--serif); font-size: 18px; }
+  .fl-flow-t { font-size: 13px; font-weight: 800; }
+  .fl-flow-s { font-size: 11px; line-height: 1.35; color: #58447f; }
+  .fl-flow-step--3 { background: var(--dream); border-color: var(--dream); color: #fff; }
+  .fl-flow-step--3 .fl-flow-s { color: #c2b7dd; }
+  .fl-flow-line {
+    position: relative;
+    display: block;
+    height: 3px;
+    margin: 18px 16px 0;
+    border-radius: 3px;
+    background: repeating-linear-gradient(90deg, #e0c96b 0 8px, transparent 8px 14px);
+  }
+  .fl-flow-dot {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    background: var(--heart);
+    box-shadow: 0 2px 8px rgba(234, 21, 87, 0.4);
+    transform: translate(-50%, -50%);
+    animation: fl-flow 7s ease-in-out infinite;
+  }
+  @keyframes fl-flow { 0%, 8% { left: 0; } 45%, 55% { left: 50%; } 92%, 100% { left: 100%; } }
+  .fl-flow-share {
+    width: 230px;
+    margin: 18px 0 0 auto;
+    padding: 14px 14px 12px;
+    border: 1px solid #f3e3a6;
+    border-radius: 16px;
+    background: #fff;
+  }
+  .fl-flow-share-cap { margin: 0 0 8px; font-size: 9.5px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #58447f; }
+  .fl-flow-share ul { display: grid; gap: 5px; margin: 0; padding: 0; list-style: none; }
+  .fl-flow-share li {
+    position: relative;
+    padding: 6px 10px 6px 30px;
+    border-radius: 9px;
+    background: var(--canvas);
+    font-size: 11.5px;
+    font-weight: 600;
+  }
+  .fl-flow-share li::before {
+    content: "";
+    position: absolute;
+    left: 9px;
+    top: 50%;
+    width: 13px;
+    height: 13px;
+    border: 1.5px solid #8b7dae;
+    border-radius: 4px;
+    background: #fff;
+    transform: translateY(-50%);
+  }
+  .fl-flow-share li.is-on { background: var(--mint); }
+  .fl-flow-share li.is-on::before {
+    border-color: var(--dream);
+    background: var(--dream) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center / 10px no-repeat;
+  }
+
+  /* ---------- Small strip ---------- */
+  .fl--small {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 22px;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 22px 28px;
+    border: 1px solid #ddd0f5;
+    border-radius: 24px;
+    background: var(--lav);
+  }
+  .fl-mini-wheel svg { display: block; width: 64px; height: 64px; }
+  .fl-ring { fill: none; stroke: #c2b7dd; stroke-width: 1.5; }
+  .fl-poly { fill: rgba(40, 219, 176, 0.3); stroke: #01a684; stroke-width: 3; stroke-linejoin: round; }
+  .fl-hub { fill: var(--dream); }
+  .fl-breathe { transform-origin: 60px 60px; animation: fl-breathe 8s ease-in-out infinite; }
+  .fl-logo--sm { width: 150px; margin-bottom: 6px; }
+  .fl-small-line { margin: 0; font-size: 16px; line-height: 1.5; color: #3d2a5c; }
+  .fl a.fl-link {
+    color: var(--dream) !important;
+    font-size: 15px;
+    font-weight: 800;
+    white-space: nowrap;
+    text-decoration: underline;
+    text-decoration-color: var(--grass);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+
+  @keyframes fl-float { 50% { transform: translateY(-8px); } }
+  @keyframes fl-breathe { 50% { transform: scale(1.06); } }
+
+  @media (max-width: 960px) {
+    .fl-panel,
+    .fl--home .fl-panel { grid-template-columns: 1fr; padding: 36px 26px; gap: 30px; }
+    .fl--home .fl-panel::after { display: none; }
+    .fl-spark { right: 24px; top: 20px; }
+  }
+  @media (max-width: 640px) {
+    .fl:not(.fl--home):not(.fl--small) { padding: 40px 16px; }
+    .fl--small { grid-template-columns: auto 1fr; padding: 20px; }
+    .fl-link { grid-column: 1 / -1; }
+    .fl-phone { width: 270px; }
+    .fl-days-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .fl-flow-steps { grid-template-columns: 1fr; }
+    .fl-flow-line { display: none; }
+    .fl-flow-share { margin: 14px auto 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fl-phone, .fl-laptop, .fl-app-pick, .fl-days-bar span, .fl-days-list li, .fl-flow-dot, .fl-breathe { animation: none; }
+    .fl-app-pick { transform: translateX(calc(300% + 18px)); }
+    .fl-flow-dot { left: 100%; }
+  }
+  /* "Developed by DoGood Agency" under every foundr.land section (Seb, 20 Nov 2026). */
+  .fl-by { margin: 16px 0 0; font-size: 12px; font-weight: 300; letter-spacing: 0.02em; color: #6b5a8c; }
+  .fl--home .fl-by { color: #c2b7dd; }
+  .fl-by--sm { margin-top: 6px; }
+  .fl-visual .fl-by { justify-self: center; text-align: center; margin-top: 18px; }
+  /* 20 Nov 2026 23:29 (Seb, phones): the section lines up with the page padding; one even, slightly smaller
+     padding inside the card; the laptop is narrower than the card and its screen less tall. */
+  @media (max-width: 599px) {
+    .fl:not(.fl--home):not(.fl--small) { padding: 40px clamp(20px, 5.56vw, 80px); }
+    .fl-panel,
+    .fl--home .fl-panel { padding: 24px 20px; gap: 24px; }
+    .fl-laptop { width: 100%; margin: 0 auto; }
+    .fl-laptop .fl-app-foot { display: none; }
+    .fl-flow-share { width: 100%; max-width: none; margin-left: 0; margin-right: 0; box-sizing: border-box; }  /* 21 Nov (Seb): a laptop-shaped screen, not a tall one */
+    .fl-laptop-screen { padding: 8px 8px 10px; border-radius: 14px 14px 4px 4px; }
+    .fl-laptop-base { height: 10px; margin: 0 -16px; }
+    .fl-app { padding: 10px 12px 10px; }
+    .fl-app-top { margin-bottom: 6px; }
+    .fl-app-mark { font-size: 13px; }
+    .fl-app-q { margin-bottom: 8px; font-size: 16px; }
+    .fl-app-rate { padding: 8px; }
+    .fl-app-rq { margin-bottom: 6px; font-size: 11px; }
+    .fl-app-foot { margin-top: 8px; }
+  }
+  /* Small strip (Client tools, Advisor insights) on phones: the clarity wheel becomes a large, faint DREAM
+     pattern behind the text (about three quarters of the card), and the text starts at the card's padding. */
+  @media (max-width: 599px) {
+    .fl--small { position: relative; display: block; overflow: hidden; padding: 22px 20px; }
+    .fl-small-copy { position: relative; z-index: 1; }
+    .fl--small .fl-mini-wheel { position: absolute; z-index: 0; right: -18%; top: 50%; width: 78%; transform: translateY(-50%); opacity: 0.16; pointer-events: none; }
+    .fl--small .fl-mini-wheel svg { width: 100%; height: auto; }
+    .fl--small .fl-ring { stroke: #58447f; stroke-width: 1.2; }
+    .fl--small .fl-poly { fill: rgba(88, 68, 127, 0.35); stroke: #58447f; stroke-width: 2; animation: none; }
+    .fl--small .fl-hub { fill: #58447f; }
+  }
+</style>

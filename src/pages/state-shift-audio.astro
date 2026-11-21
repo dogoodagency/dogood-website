@@ -1,0 +1,44 @@
+---
+import ProductPage from "../components/ProductPage.astro";
+import AudioSection from "../components/AudioSection.astro";
+// Custom State-Shift Audio (Seb, 19 Nov 2026). Copy word for word from Seb's note.
+---
+
+<ProductPage
+  title="Custom State-Shift Audio for founders | DoGood Agency"
+  description="Personalized audio tools to help you shift state on demand, especially before high-pressure contexts: meetings, decisions, conflict, fatigue."
+  path="/state-shift-audio"
+  eyebrow="Custom State-Shift Audio"
+  h1="Shift state on demand,<br />when it counts."
+  sub="Mood-specific tracks designed for focus, reset, and high-stakes days."
+  tag="Part of The Exit Prep™ and Stage 2"
+  sections={[
+    {
+      id: "sa-what",
+      heading: "What it is",
+      paras: [
+        "Short audio tracks made for you, to help you change state before the moments that count: a hard conversation, a big decision, or a day when you are running on empty.",
+        "The function is practical: support focus, recovery, and regulation so you can execute your intentions when it counts.",
+      ],
+      boxes: [
+        {
+          title: "Tracks for",
+          tone: "grass",
+          items: ["Focus", "Decompression", "Reset", "High-stakes days"],
+        },
+        {
+          title: "When you use them",
+          tone: "sky",
+          items: ["Meetings", "Decisions", "Conflict", "Fatigue"],
+        },
+      ],
+    },
+  ]}
+  closing={{
+    heading: "Part of the 2-Stage Partnership",
+    text: "Custom State-Shift Audio is part of Stage 2: The Build™.",
+    cta: { href: "/the-reset", label: "See the 2-Stage Partnership" },
+  }}
+>
+  <AudioSection slot="feature" variant="full" />
+</ProductPage>

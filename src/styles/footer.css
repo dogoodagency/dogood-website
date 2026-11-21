@@ -1,0 +1,292 @@
+/* Master footer (Footer.astro), rebuilt from Seb's mock-up of 19 Nov 2026. Rules are .ft- plus the shared
+   Let's Connect classes. Measured from the mock-up at about 1728px wide: content 80px from the left, columns
+   start at 41.6% / 64.5% / 87.9% of the content width, 14px text, links 38px apart, titles Black-ish 800. */
+
+.footer .ft-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 645fr) minmax(0, 355fr) minmax(0, 363fr) minmax(190px, 187fr);
+  grid-template-areas:
+    "brand explore services advisors"
+    "lets lets optin optin"
+    ". . about about";
+  column-gap: 0;
+  row-gap: 32px;
+  align-items: start;
+}
+
+.footer .ft-brand { grid-area: brand; }
+.footer .ft-explore { grid-area: explore; }
+.footer .ft-services { grid-area: services; }
+.footer .ft-advisors { grid-area: advisors; }
+.footer .ft-grid .ft-lets { grid-area: lets; grid-column: 1 / 3; grid-row: 2; }
+.footer .ft-optin { grid-area: optin; }
+.footer .ft-about { grid-area: about; }
+
+/* Text: 14px throughout, as in the mock-up. */
+.footer .ft-grid p,
+.footer .ft-grid a:not(.footer-logo),
+.footer .ft-grid h2 {
+  font-size: 14px;
+}
+
+.footer .ft-tagline {
+  margin: 0 0 14px;
+  color: rgba(255, 255, 255, 0.84);
+  line-height: 1.55;
+}
+
+.footer .ft-title {
+  margin: 0 0 14px;
+  color: #28dbb0;
+  font-weight: 800;
+  line-height: 1.6;
+}
+
+.footer .ft-links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer .ft-links li {
+  margin: 0 0 15px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footer .ft-links li:last-child {
+  margin-bottom: 0;
+}
+
+.footer .ft-links + .ft-title {
+  margin-top: 44px;
+}
+
+.footer .ft-links a {
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.footer .ft-col {
+  padding-right: 24px;
+}
+
+/* Let's Connect: spans the first two columns, sized to that width. */
+.footer .ft-lets {
+  min-width: 0;
+  margin-top: 8px;
+  container-type: inline-size;
+}
+
+.footer .ft-lets .connect-mark {
+  width: auto;
+  margin: 0 0 40px;
+  font-size: clamp(40px, calc((100cqi - 48px) / 4.35), 196px);
+  font-weight: 900;
+  font-synthesis: none;
+  line-height: 0.84;
+  letter-spacing: -0.045em;
+}
+
+.footer .ft-lets .connect-row {
+  margin-top: 0;
+}
+
+/* Opt-in: its own frame so it reads as the one thing to do here. */
+.footer .ft-optin {
+  align-self: end;
+  max-width: 560px;
+  margin-bottom: 64px;
+  padding: 26px 28px 28px;
+  border: 1px solid #28dbb0;
+  border-radius: 20px;
+  background: rgba(40, 219, 176, 0.08);
+}
+
+.footer .ft-optin .ft-optin-title {
+  margin: 0 0 6px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.footer .ft-optin .ft-optin-copy {
+  margin: 0 0 18px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.footer .ft-optin .ft-form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 20px;
+  margin: 0;
+}
+
+.footer .ft-form .email-field {
+  position: relative;
+  flex: 1 1 240px;
+  min-width: 0;
+}
+
+.footer .ft-form input[type="email"] {
+  width: 100%;
+  height: 46px;
+  padding: 0 18px 0 46px;
+  border: 1px solid #fff;
+  border-radius: 999px;
+  background: #fff;
+  color: #2a0b4f;
+  font-size: 15px;
+}
+
+.footer .ft-form input[type="email"]::placeholder {
+  color: #6b5c93;
+  opacity: 1;
+}
+
+.footer .ft-form input[type="email"]:focus-visible {
+  outline: 2px solid #28dbb0;
+  outline-offset: 3px;
+}
+
+.footer .ft-form .stay-envelope {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  z-index: 1;
+  display: block;
+  transform: translateY(-50%);
+}
+
+.footer .ft-optin .ft-form .btn-subscribe {
+  flex: none;
+  height: 46px;
+  margin: 0;
+}
+
+.footer .ft-form [data-status] {
+  flex-basis: 100%;
+  margin: 0;
+  color: #fff;
+}
+
+/* About DoGood and the company. */
+.footer .ft-about p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.84);
+  line-height: 1.55;
+}
+
+.footer .ft-about .ft-title-gap {
+  margin-top: 32px;
+}
+
+.footer .ft-about .ft-address {
+  line-height: 1.9;
+}
+
+.footer .ft-about .ft-note {
+  margin-top: 14px;
+}
+
+.footer .legal {
+  margin-top: clamp(48px, 9vw, 150px);
+}
+
+/* Between laptop and tablet: two link columns side by side, the rest full width. */
+@media (max-width: 1080px) {
+  .footer .ft-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+      "brand brand brand"
+      "explore services advisors"
+      "lets lets lets"
+      "optin optin optin"
+      "about about about";
+    row-gap: 40px;
+  }
+
+  .footer .ft-grid .ft-lets {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
+
+  .footer .ft-links a {
+    white-space: normal;
+  }
+
+  .footer .ft-optin {
+    align-self: start;
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer .ft-grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "brand"
+      "explore"
+      "services"
+      "advisors"
+      "optin"
+      "lets"
+      "about";
+    row-gap: 36px;
+  }
+
+  .footer .ft-grid .ft-lets {
+    grid-column: 1;
+    grid-row: 6;
+  }
+
+  .footer .ft-optin {
+    padding: 22px 20px 24px;
+  }
+}
+
+/* Narrow laptops: long link names wrap inside their column. */
+@media (max-width: 1279px) {
+  .footer .ft-links a {
+    white-space: normal;
+  }
+}
+
+/* 19 Nov 2026, Seb: the opt-in sits level with the middle of "Let's Connect"; Contact and LinkedIn move up
+   to just under "Connect" and start where "Connect" ends up after its animation (left set in Footer.astro). */
+.footer .ft-lets {
+  position: relative;
+  margin-bottom: 44px;
+}
+
+.footer .ft-lets .connect-mark {
+  margin: 0;
+}
+
+.footer .ft-lets .connect-row {
+  position: absolute;
+  top: calc(100% - 0.22 * clamp(40px, calc((100cqi - 48px) / 4.35), 196px) + 18px);
+  left: 0;
+  margin: 0;
+}
+
+.footer .ft-optin {
+  align-self: center;
+  margin-bottom: 0;
+}
+
+@media (max-width: 1080px) {
+  .footer .ft-lets {
+    margin-bottom: 52px;
+  }
+}
+
+/* 19 Nov 2026 14:55 (Seb): no envelope in the email field, so the text starts further left. */
+.footer .ft-form input[type="email"] {
+  padding-left: 20px;
+}

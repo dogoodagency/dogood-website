@@ -1,0 +1,86 @@
+---
+/**
+ * Moving testimonial wall (same motion as the Stories page): 3 columns drifting up/down on desktop,
+ * 2 on tablet, a still list on phones and for reduced motion. Stops on hover and keyboard focus.
+ * Items may carry a portrait (ImageMetadata). Added 19 Nov 2026 for /the-reset and /exit-prep.
+ */
+import "../styles/testimonial-wall.css";
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import { clipWords } from "../data/clip-words";
+
+export interface WallItem {
+  quote: string;
+  name: string;
+  role?: string;
+  image?: ImageMetadata;
+}
+
+interface Props {
+  items: WallItem[];
+  /** "light" = white cards on a light band; "dark" = white cards on DREAM 500. */
+  tone?: "light" | "dark";
+  label: string;
+  /** Short quotes (sound bites) use a larger type size. */
+  short?: boolean;
+  /** Phones only (under 600px): show just these items instead of the full list, each quote cut to 6 lines. */
+  phoneItems?: WallItem[];
+  /** Phones only: the names to show, in order (see data/phone-picks.ts). Wayfinder voices are kept too. */
+  phonePick?: readonly string[];
+}
+
+const { items, tone = "light", label, short = false, phoneItems: phoneGiven0, phonePick } = Astro.props;
+const phoneGiven = phoneGiven0 ?? (phonePick ? phonePick.map((n) => items.find((i) => i.name.toUpperCase() === n.toUpperCase())).filter((i): i is WallItem => !!i) : undefined);
+// 20 Nov 2026 (Seb): on phones a testimonial wall shows five reviews (cut to 6 lines), the ones closest to life
+// after the exit when they are in the list, then the first ones. Sound bites (short) are cut to three in CSS.
+const PHONE_PICK = ["TAMI L", "ZEINA G", "GAJAN R", "GINA P", "BROOK H"];
+const phoneItems: WallItem[] | undefined = phoneGiven ?? (short || items.length <= 5 ? undefined : [
+  ...PHONE_PICK.map((n) => items.find((i) => i.name.toUpperCase() === n)).filter((i): i is WallItem => !!i),
+  ...items.filter((i) => !PHONE_PICK.includes(i.name.toUpperCase())),
+].slice(0, 5));
+const cols3 = [0, 1, 2].map((i) => items.filter((_, idx) => idx % 3 === i));
+const cols2 = [0, 1].map((i) => items.filter((_, idx) => idx % 2 === i));
+---
+
+{
+  (() => {
+    const card = (it: WallItem, hidden = false) => (
+      <figure class="tw-card" aria-hidden={hidden ? "true" : undefined}>
+        <blockquote>
+          <p>{clipWords(it.quote)}</p>
+        </blockquote>
+        <figcaption>
+          {it.image && <Image class="tw-face" src={it.image} alt="" width={48} height={48} densities={[1, 2]} />}
+          <span class="tw-who">
+            <strong class="tw-name">{it.name}</strong>
+            {it.role && <span class="tw-role">{it.role}</span>}
+          </span>
+        </figcaption>
+      </figure>
+    );
+    return (
+      <div class:list={["tw", `tw--${tone}`, short && "tw--short"]} role="region" aria-label={label}>
+        <div class="tw-vp tw-vp-3" aria-hidden="true">
+          <div class="tw-wall">
+            {cols3.map((col) => (
+              <div class="tw-col">
+                <div class="tw-track">{[false, true].map((dup) => col.map((it) => card(it, dup)))}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="tw-vp tw-vp-2" aria-hidden="true">
+          <div class="tw-wall">
+            {cols2.map((col) => (
+              <div class="tw-col">
+                <div class="tw-track">{[false, true].map((dup) => col.map((it) => card(it, dup)))}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class:list={["tw-list", phoneItems && "tw-list--wide"]}>{items.map((it) => card(it))}</div>
+        {phoneItems && <div class="tw-list tw-list--phone">{phoneItems.map((it) => card(it))}</div>}
+      </div>
+    );
+  })()
+}

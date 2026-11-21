@@ -1,0 +1,87 @@
+---
+import BookingPage from "../components/BookingPage.astro";
+import BookingCaseCard from "../components/BookingCaseCard.astro";
+import BookingTestimonials from "../components/BookingTestimonials.astro";
+// Not for Google (Seb, 18 Nov 2026): noindex, out of the sitemap (astro.config.mjs) and out of llms.txt.
+---
+
+<BookingPage
+  title="1:1 Clarity Sprints"
+  titleSuffix="(3 months)"
+  tidycal="dogoodagency/claritysprints"
+  robots="noindex, nofollow"
+  ogImage="/media/og/clarity-og.jpg"
+  seoTitle="Weekly 1:1 Clarity Sprints | DoGood Agency"
+  description="A focused Clarity Sprints for founders under pressure. Get an honest read on what’s happening, what to do next, and whether we’re a fit."
+  canonical="https://www.dogoodagency.co/clarity"
+>
+  <p>
+    Founders rarely need more information. They need <strong>clarity. Fast.</strong> 1:1 Clarity Sprints help you make decisions and move forward in business and life (they’re the same system).
+  </p>
+
+  <p class="bk-label bk-tight">Each session is a focused working block. We’ll:</p>
+  <ul>
+    <li>Find the real constraint (not the surface problem)</li>
+    <li>Get to the decision you know needs to happen</li>
+    <li>Leave with clear action points for the next 7 days</li>
+  </ul>
+
+  <p class="bk-label bk-tight">What we work on:</p>
+  <ul>
+    <li><strong>Business:</strong> offer clarity, positioning, acquisition/lead gen, strategy</li>
+    <li><strong>Leadership:</strong> boundaries, team dynamics, decision-making</li>
+    <li><strong>Life:</strong> stress/emotion load, relationships, identity, health &amp; money concerns</li>
+  </ul>
+
+  <p class="bk-label bk-tight">This is for you if…</p>
+  <ul>
+    <li>You want focused 1:1 support (not a structured FRP program)</li>
+    <li>You need clarity + execution (not just insights)</li>
+    <li>You have decision fog and feel reactive instead of clear</li>
+    <li>You’re high-performing externally, but internally you’re paying for it (health/relationship/identity strain)</li>
+  </ul>
+
+  <p class="bk-label bk-tight">This is not for…</p>
+  <ul>
+    <li>FRP-fit founders (FRP routing)</li>
+    <li>Team / culture / ops delivery work (separate service)</li>
+    <li>Therapy, emergency care, or medical support</li>
+  </ul>
+
+  <p class="bk-label bk-tight">For new clients, here’s how booking works:</p>
+  <p>
+    First, we’ll book <strong>12 sessions</strong>. These sessions will happen <strong>4 times each month</strong>. You start by booking the very first session today. We’ll then schedule the other 11 sessions for the same day of the week + time. After these 12 sessions, we’ll decide if we want to continue working together. Most clients stay with us for 12 months and longer.
+  </p>
+
+  <p class="bk-label bk-tight">Important: (FRP routing)</p>
+  <p>
+    If you’re a founder (post-exit) in an acute phase / identity collapse (health scare, panic spiral, divorce in motion, can’t-function volatility), <strong>do not book on this page.</strong>
+  </p>
+  <div class="bk-btn-row">
+    <a class="btn-apply" href="/apply-stage-1">Apply to the Founder Reclamation Partnership</a>
+  </div>
+
+  <p>For 1:1 Clarity Sprints use the booking form below.</p>
+
+  <div class="bk-btn-row">
+    <a class="btn-apply" href="/pathway">FRP Founder? Start Here</a>
+  </div>
+
+  <p class="bk-label bk-tight">For founders + select founder-like executives</p>
+  <p>
+    These weekly sprints are optimized for founders with <strong>USD 300K+ ARR</strong>, navigating high-stakes pressure and decision fatigue, and seeking clarity rather than generic coaching.
+  </p>
+
+  <ul class="bk-flow" aria-label="Clarity, then decision, then execution">
+    <li>Clarity</li>
+    <li class="bk-flow-arrow" aria-hidden="true">→</li>
+    <li>Decision</li>
+    <li class="bk-flow-arrow" aria-hidden="true">→</li>
+    <li>Execution</li>
+  </ul>
+
+  <Fragment slot="after">
+    <BookingTestimonials files={["michael-r.png", "christian-v.png", "manfred-t.png"]} />
+    <BookingCaseCard />
+  </Fragment>
+</BookingPage>

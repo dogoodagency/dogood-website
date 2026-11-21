@@ -1,0 +1,393 @@
+---
+/**
+ * The two FRP stages as a switch (Seb, 19 Nov 2026 14:55). Replaces the progress pills and the two dark
+ * stage cards on /the-reset and /the-build, which repeated each other. One switch, two positions: Stage 1
+ * (GRASS) and Stage 2 (HEART). The panel below shows the chosen stage on a dark stage colour; both panels
+ * sit in the same grid cell, so the frame keeps one size whichever stage is shown.
+ * 19 Nov 2026 18:52 (Seb): the switch is navigation. Clicking the other stage slides the knob across and
+ * opens that stage's page; only the current stage's panel is shown.
+ */
+interface Props {
+  current: 1 | 2;
+}
+const { current } = Astro.props;
+
+const stages = [
+  {
+    n: 1,
+    name: "The Reset™",
+    time: "30 days",
+    line: "Get clear · Set new values · Shift patterns",
+    text: "Private 1:1 work, including a 1.5-day in-person residency.",
+    method: { href: "/clarityvalue-shift", label: "via ClarityValue Shift™" },
+    page: { href: "/the-reset", label: "Stage 1 page" },
+    note: "Apply for Stage 1",
+  },
+  {
+    n: 2,
+    name: "The Build™",
+    time: "12 weeks",
+    line: "Rework life · Go deeper · Realign what matters",
+    text: "By invitation, after Stage 1. By week 3 of Stage 1 we both know whether Stage 2 is the right next step.",
+    method: { href: "/nextlife-passage", label: "via NextLife Passage™" },
+    page: { href: "/the-build", label: "Stage 2 page" },
+    note: "By invitation",
+  },
+];
+---
+
+<div class="ss" data-ss data-current={current}>
+  <nav class="ss-switch" aria-label="The two stages">
+    {
+      stages.map((s) =>
+        s.n === current ? (
+          <span class:list={["ss-tab", `ss-tab--${s.n}`]} aria-current="page">
+            <span class="ss-tab-n">Stage {s.n}</span>
+            <span class="ss-tab-name">{s.name.replace("™", "")}</span>
+          </span>
+        ) : (
+          <a class:list={["ss-tab", `ss-tab--${s.n}`]} href={s.page.href} data-ss-go>
+            <span class="ss-tab-n">Stage {s.n}</span>
+            <span class="ss-tab-name">{s.name.replace("™", "")} →</span>
+          </a>
+        )
+      )
+    }
+    <span class="ss-knob" aria-hidden="true"></span>
+  </nav>
+
+  <div class="ss-panels">
+    {
+      stages
+        .filter((s) => s.n === current)
+        .map((s) => (
+          <section class:list={["ss-panel", `ss-panel--${s.n}`]} aria-label={`Stage ${s.n}`}>
+            <p class="ss-kicker">
+              Stage {s.n}
+              <span class="ss-here">You are here</span>
+            </p>
+            <h3 class="ss-title">
+              {s.name} <span>({s.time})</span>
+            </h3>
+            <p class="ss-line">{s.line}</p>
+            <p class="ss-text">{s.text}</p>
+            <p class="ss-links">
+              <a class="ss-btn" href={s.method.href}>{s.method.label} →</a>
+            </p>
+          </section>
+        ))
+    }
+  </div>
+</div>
+
+<style>
+  .ss {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .ss-switch {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 auto 18px;
+    padding: 6px;
+    max-width: 560px;
+    border: 1px solid #8b7dae;
+    border-radius: 999px;
+    background: #fff;
+  }
+
+  .ss-tab {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 10px 16px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: #2a0b4f;
+    font: inherit;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+  .ss-tab-n {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .ss-tab-name {
+    font-size: 18px;
+    font-weight: 900;
+  }
+
+  .ss-tab[aria-current="page"] {
+    color: #fff;
+  }
+
+  .ss .ss-tab,
+  .ss .ss-tab * {
+    text-decoration: none !important;
+    background-image: none !important;
+    border-bottom: 0 !important;
+  }
+
+  .ss a.ss-tab:hover,
+  .ss a.ss-tab:focus-visible {
+    background: #f5f2ff;
+  }
+
+  .ss.is-going .ss-tab[aria-current="page"] {
+    color: #2a0b4f;
+  }
+
+  .ss.is-going a.ss-tab {
+    color: #fff;
+  }
+
+  .ss-tab:focus-visible {
+    outline: 2px solid #2a0b4f;
+    outline-offset: 3px;
+  }
+
+  .ss-knob {
+    position: absolute;
+    top: 6px;
+    bottom: 6px;
+    left: 6px;
+    width: calc(50% - 6px);
+    border-radius: 999px;
+    background: #05745b;
+    transition: transform 0.35s cubic-bezier(0.3, 0.7, 0.3, 1), background-color 0.35s ease;
+  }
+
+  .ss[data-current="2"] .ss-knob {
+    transform: translateX(100%);
+    background: #960434;
+  }
+
+  .ss-panels {
+    display: grid;
+  }
+
+  .ss-panel :is(p, h3, span) {
+    color: #fff !important;
+  }
+
+  .ss-panel .ss-here:not(.ss-here--ghost) {
+    color: #2a0b4f !important;
+  }
+
+  .ss .ss-btn {
+    background-image: none !important;
+  }
+
+  .ss-panel {
+    grid-area: 1 / 1;
+    padding: 36px 44px 38px;
+    border-radius: 24px;
+    color: #fff;
+    text-align: center;
+    transition: opacity 0.3s ease;
+  }
+
+  .ss-panel--1 {
+    border: 1px solid #05745b;
+    background: #05745b;
+  }
+
+  .ss-panel--2 {
+    border: 1px solid #960434;
+    background: #960434;
+  }
+
+  
+
+  .ss-kicker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 6px;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .ss-here {
+    padding: 3px 12px;
+    border-radius: 999px;
+    background: #fff;
+    color: #2a0b4f;
+    font-size: 12px;
+  }
+
+  .ss-here--ghost {
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    background: transparent;
+    color: #fff;
+  }
+
+  .ss-title {
+    margin: 0 0 8px;
+    color: #fff;
+    font-size: clamp(30px, 3.4vw, 40px);
+    font-weight: 900;
+    line-height: 1.1;
+  }
+
+  .ss-title span {
+    font-size: 0.55em;
+  }
+
+  .ss-line {
+    margin: 0 0 12px;
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .ss-text {
+    max-width: 760px; /* 20 Nov 2026 (Seb): no short last lines where the card has room */
+    margin: 0 auto 20px;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  .ss-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 0;
+  }
+
+  .ss .ss-btn {
+    display: inline-flex;
+    padding: 10px 20px;
+    border: 1px solid #fff;
+    border-radius: 999px;
+    background: #fff;
+    color: #2a0b4f !important;
+    text-decoration: none !important;
+    font-size: 16px;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .ss .ss-btn--plain {
+    background: transparent;
+    color: #fff !important;
+  }
+
+  .ss .ss-btn:hover,
+  .ss .ss-btn:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  @media (max-width: 640px) {
+    .ss-panel {
+      padding: 28px 22px 30px;
+    }
+
+    .ss-tab-name {
+      font-size: 15px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ss-knob,
+    .ss-panel {
+      transition: none;
+    }
+  }
+
+  /* 20 Nov 2026 (Seb): both stages on DREAM 500. The stage colour moves to the border and the text: Stage 1
+     GRASS, Stage 2 HEART (a lighter HEART for text on DREAM, for contrast). Each toggle option takes its own
+     colour on hover. */
+  .ss-knob {
+    background: #2a0b4f;
+    border: 2px solid #28dbb0;
+  }
+  .ss[data-current="2"] .ss-knob {
+    background: #2a0b4f;
+    border-color: #ea1557;
+  }
+  .ss[data-current="1"] .ss-tab--1[aria-current="page"] { color: #28dbb0; }
+  .ss[data-current="2"] .ss-tab--2[aria-current="page"] { color: #ff8fb1; }
+  .ss a.ss-tab { transition: color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease; }
+  .ss a.ss-tab--1:hover,
+  .ss a.ss-tab--1:focus-visible { background: #e7fff6; color: #05745b; box-shadow: inset 0 0 0 1px #28dbb0; }
+  .ss a.ss-tab--2:hover,
+  .ss a.ss-tab--2:focus-visible { background: #fff0f4; color: #c10e46; box-shadow: inset 0 0 0 1px #ea1557; }
+  .ss.is-going a.ss-tab--1 { color: #28dbb0; }
+  .ss.is-going a.ss-tab--2 { color: #ff8fb1; }
+
+  .ss-panel--1,
+  .ss-panel--2 { background: #2a0b4f; border-width: 2px; }
+  .ss-panel--1 { border-color: #28dbb0; }
+  .ss-panel--2 { border-color: #ea1557; }
+  .ss-panel--1 :is(.ss-kicker, .ss-title, .ss-title span, .ss-line) { color: #28dbb0 !important; }
+  .ss-panel--2 :is(.ss-kicker, .ss-title, .ss-title span, .ss-line) { color: #ff8fb1 !important; }
+  .ss-panel--1 .ss-here:not(.ss-here--ghost) { background: #28dbb0; color: #2a0b4f !important; }
+  .ss-panel--2 .ss-here:not(.ss-here--ghost) { background: #ff8fb1; color: #2a0b4f !important; }
+  .ss-panel--1 .ss-btn { border-color: #28dbb0 !important; background: #28dbb0 !important; }
+  .ss-panel--2 .ss-btn { border-color: #ff8fb1 !important; background: #ff8fb1 !important; }
+  /* 21 Nov 2026 01:19 (Seb): no borders on the switch or the panel. The switch is a soft DREAM 100 track.
+     Stage 1 stays on DREAM 500 with GRASS; its tagline is a DREAM 600 pill with GRASS text.
+     Stage 2 is a white card with HEART 500 (title, tagline text, badge, button) on a DREAM 25 pill,
+     so the red reads as Stage 2 without a pink panel. */
+  .ss .ss-switch { border: 0; background: #e9e3f7; }
+  .ss .ss-knob { border: 0; }
+  .ss[data-current="1"] .ss-knob { background: #2a0b4f; }
+  .ss[data-current="2"] .ss-knob { background: #ea1557; }
+  .ss[data-current="2"] .ss-tab--2[aria-current="page"] { color: #fff; }
+  .ss.is-going a.ss-tab--2 { color: #fff; }
+  .ss .ss-panel--1,
+  .ss .ss-panel--2 { border: 0; }
+  .ss .ss-line {
+    display: inline-block;
+    margin: 2px 0 14px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+  }
+  .ss .ss-panel--1 .ss-line { background: #1d033c; color: #28dbb0 !important; }
+  .ss .ss-panel--2 { background: #fff; box-shadow: 0 10px 36px rgba(42, 11, 79, 0.07); }
+  .ss .ss-panel--2 :is(.ss-kicker, .ss-title, .ss-title span) { color: #ea1557 !important; }
+  .ss .ss-panel--2 .ss-line { background: #f5f2ff; color: #ea1557 !important; }
+  .ss .ss-panel--2 .ss-text { color: #2a0b4f !important; }
+  .ss .ss-panel--2 .ss-here:not(.ss-here--ghost) { background: #ea1557; color: #fff !important; }
+  .ss .ss-panel--2 .ss-btn { border-color: #ea1557 !important; background: #ea1557 !important; color: #fff !important; }
+  @media (max-width: 640px) {
+    .ss .ss-panel { text-align: left; }
+    .ss .ss-kicker { justify-content: flex-start; }
+    .ss .ss-links { justify-content: flex-start; }
+    .ss .ss-line { font-size: 12px; }
+  }
+</style>
+
+<script>
+  // Slide the knob to the other stage, then open its page.
+  document.querySelectorAll<HTMLElement>("[data-ss]").forEach((root) => {
+    root.querySelectorAll<HTMLAnchorElement>("[data-ss-go]").forEach((link) => {
+      link.addEventListener("click", (e) => {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        e.preventDefault();
+        root.dataset.current = root.dataset.current === "1" ? "2" : "1";
+        root.classList.add("is-going");
+        window.setTimeout(() => (window.location.href = link.href), 380);
+      });
+    });
+  });
+</script>

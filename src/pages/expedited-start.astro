@@ -1,0 +1,79 @@
+---
+import ProductPage from "../components/ProductPage.astro";
+// Expedited Start & Priority Hold (Seb, 19 Nov 2026). Client-facing version of Seb's note: the pricing
+// rationale and internal guardrails stay off the page, and so do the fee and deposit amounts (prices are
+// not published until Seb decides). Terms match the Priority Hold FAQ.
+---
+
+<ProductPage
+  title="Expedited Start & Priority Hold | DoGood Agency"
+  description="Start within 7 days when change has to happen fast, or reserve the next available start date when we are full. Both are approved only after a call."
+  path="/expedited-start"
+  eyebrow="Expedited Start &amp;<br />Priority Hold"
+  h1="When the timing can’t wait, or when we’re full."
+  sub="Two ways to secure your start. Both are approved only after a call."
+  sections={[
+    {
+      id: "es-expedited",
+      heading: "Expedited Start",
+      lede: "Start within 7 days, instead of waiting for the next available spot (usually 4–8 weeks).",
+      paras: [
+        "For founders in a more acute situation, where change has to happen fast. Starting you means we rearrange real commitments, so Expedited Start is a paid priority option on top of Stage 1.",
+      ],
+      boxes: [
+        {
+          title: "When it applies",
+          tone: "sky",
+          items: [
+            "A health scare escalating",
+            "A divorce or separation in motion",
+            "A collapse after the sale",
+            "A board or investor event while you feel unstable",
+          ],
+        },
+        {
+          title: "What you get",
+          tone: "grass",
+          items: [
+            "Your start within 7 days",
+            "Immediate scheduling priority",
+            "Optional: one extra short stability call in week 1",
+          ],
+        },
+      ],
+      note: "A slot is approved only after a call. If we can’t take you on responsibly, we will point you to a trusted alternative.",
+    },
+    {
+      id: "es-hold",
+      heading: "Priority Hold",
+      lede: "Reserve the next available start date when we’re fully booked.",
+      paras: [
+        "We take five new founders a month. If we’re full and you’re a fit, a Priority Hold deposit reserves your seat for the next available start. It is applied to Stage 1, or to the full path (Stage 1 and Stage 2). It’s a seat reservation, not a discount.",
+      ],
+      boxes: [
+        {
+          title: "Terms",
+          tone: "grass",
+          items: [
+            "Non-refundable",
+            "Fully refundable if we can’t deliver the agreed start date",
+            "Valid for the next 60 days of availability, then it converts to our general waitlist",
+            "One spot per person",
+          ],
+        },
+      ],
+    },
+    {
+      id: "es-urgent",
+      heading: "If things feel urgent right now",
+      paras: [
+        "We are not an emergency service. If you are in danger, or feel you might harm yourself, please contact your local emergency services now. If you can, reach out to someone you trust or a doctor today, and tell them how you are feeling.",
+      ],
+    },
+  ]}
+  closing={{
+    heading: "Ask about your start",
+    text: "Apply for Stage 1 and tell us about your timing. We’ll respond within 24 hours.",
+    cta: { href: "/apply-stage-1", label: "Apply for Stage 1" },
+  }}
+/>

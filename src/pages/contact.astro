@@ -1,0 +1,109 @@
+---
+import Base from "../layouts/Base.astro";
+import Wave from "../components/Wave.astro";
+import { edgeAbove } from "../data/edge-line";
+
+const sky = "#F2F7FF";
+const heroEdge = edgeAbove("#2A0B4F");
+const footerEdge = edgeAbove(sky);
+---
+
+<Base
+  title="Contact | DoGood Agency"
+  description="Let's talk. Founders can apply for Stage 1. Press, podcasts and general questions can send a short message."
+  canonical="https://www.dogoodagency.co/contact"
+  footerStrip={sky}
+  footerEdge={footerEdge}
+>
+  <article class="page-privacy page-contact" style={`--band-tint:${sky}`}>
+    <header class="privacy-hero">
+      <div class="privacy-hero-inner">
+        <h1>Let's talk</h1>
+      </div>
+      <Wave fill={sky} edge={heroEdge} />
+    </header>
+
+    <section class="privacy-band privacy-band-tint">
+      <div class="privacy-well">
+        <p class="contact-lead">
+          Whether you're planning to sell your company, have recently sold it, or advise founders who do, this is the quickest way to reach us. We reply within one working day.
+        </p>
+        <div class="contact-top">
+          <div class="contact-main">
+            <h2>Everything else</h2>
+            <p>Press, podcasts and general questions.</p>
+            <p class="contact-thanks" hidden>Thank you. Your message is with us. Welcome to <span class="pink-soft"><strong>FOUNDR</strong>.land</span>.</p>
+            <form class="contact-form" name="contact" method="POST" action="/contact?thanks" data-netlify="true" data-netlify-honeypot="bot-field">
+                  <input type="hidden" name="form-name" value="contact" />
+                  <p class="hp" hidden>
+                    <label>Don't fill this out <input name="bot-field" /></label>
+                  </p>
+                  <label for="contact-name">Name</label>
+                  <input id="contact-name" name="name" type="text" autocomplete="name" required />
+                  <label for="contact-email">Email</label>
+                  <input id="contact-email" name="email" type="email" autocomplete="email" required />
+                  <label for="contact-phone">Phone (optional)</label>
+                  <input id="contact-phone" name="phone" type="tel" autocomplete="tel" />
+                  <label for="contact-role">I am a…</label>
+                  <select id="contact-role" name="role" required>
+                    <option value="">Choose one</option>
+                    <option>Founder</option>
+                    <option>Advisor</option>
+                    <option>Press or podcast</option>
+                    <option>Other</option>
+                  </select>
+                  <label for="contact-message">Message</label>
+                  <textarea id="contact-message" name="message" rows="5" required />
+                  <button class="btn-teal" type="submit">Send</button>
+                  <p class="contact-status" data-contact-status hidden></p>
+                </form>
+            <p class="contact-privacy">We use this only to reply to you. <a href="/privacy">Privacy policy</a></p>
+          </div>
+          <aside class="contact-side">
+            <picture class="contact-sketch">
+              <source type="image/webp" srcset="/sketches/contact-letterbox@1x.webp 540w, /sketches/contact-letterbox@2x.webp 1080w" sizes="(max-width: 800px) min(100vw, 420px), 360px" />
+              <img src="/sketches/contact-letterbox@1x.png" srcset="/sketches/contact-letterbox@1x.png 540w, /sketches/contact-letterbox@2x.png 1080w" sizes="(max-width: 800px) min(100vw, 420px), 360px" width="540" height="400" alt="A wall letterbox with its flag raised and a teal envelope halfway in the slot, with a small pink stamp." />
+            </picture>
+          </aside>
+        </div>
+        <iframe
+          class="contact-map"
+          title="Map showing DoGood Agency LLC at 30 N Gould St Ste N, Sheridan, Wyoming"
+          src="https://www.google.com/maps?q=44.7977708,-106.9549504&z=16&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+        <p class="contact-address"><strong>DoGood Agency LLC</strong>, 30 N Gould St Ste N, Sheridan WY 82801, United States</p>
+      </div>
+    </section>
+  </article>
+  <script>
+    // 21 Nov 2026: send in the background (Netlify Forms AJAX), so the page never leaves /contact. If the
+    // send fails, say so and offer email, instead of a 404.
+    const form = document.querySelector<HTMLFormElement>(".contact-form");
+    const thanks = document.querySelector<HTMLElement>(".contact-thanks");
+    const showThanks = () => {
+      form?.setAttribute("hidden", "");
+      thanks?.removeAttribute("hidden");
+    };
+    if (new URLSearchParams(location.search).has("thanks")) showThanks();
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const button = form.querySelector<HTMLButtonElement>("button[type='submit']");
+      const note = form.querySelector<HTMLElement>("[data-contact-status]");
+      if (button) { button.disabled = true; button.textContent = "Sending…"; }
+      try {
+        const body = new URLSearchParams(new FormData(form) as unknown as Record<string, string>).toString();
+        const res = await fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body });
+        if (!res.ok) throw new Error(String(res.status));
+        showThanks();
+      } catch {
+        if (button) { button.disabled = false; button.textContent = "Send"; }
+        if (note) {
+          note.hidden = false;
+          note.innerHTML = 'Sorry, that did not go through. Please email us at <a href="mailto:hiya@dogoodagency.co">hiya@dogoodagency.co</a>.';
+        }
+      }
+    });
+  </script>
+</Base>

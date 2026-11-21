@@ -1,0 +1,352 @@
+---
+import { phonePicks } from "../data/phone-picks";
+import "../styles/wayfinders.css";
+import Base from "../layouts/Base.astro";
+import Wave from "../components/Wave.astro";
+import TestimonialWall from "../components/TestimonialWall.astro";
+import { reviews } from "../data/homepage";
+import { Image } from "astro:assets";
+import gina from "../assets/reviews/gina-p.png";
+import tami from "../assets/reviews/tami-l.png";
+import { edgeAbove } from "../data/edge-line";
+import { wayfinders, lineLabels, clientFitSteps, mapPins } from "../data/wayfinders";
+
+const tint = "#F5F2FF";
+const white = "#ffffff";
+const heroEdge = edgeAbove("#2A0B4F");
+const bandEdge = edgeAbove(tint);
+const footerEdge = edgeAbove(tint);
+
+/** Wavy join between two bands: `from` is the band above, `to` the band below. */
+function wave(from: string, to: string) {
+  const above = from === tint ? "tint" : "white";
+  return `<div class="wf-divider wf-divider--${above}" aria-hidden="true"><svg style="--wave-edge:${bandEdge}" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${to}" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path><path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path></svg></div>`;
+}
+const toTint = wave(white, tint);
+const toWhite = wave(tint, white);
+
+/** Lines shown on the card; the rest sit under "More about …". */
+const VISIBLE_LINES = 3;
+
+const site = "https://www.dogoodagency.co";
+const orgId = `${site}/#organization`;
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": orgId,
+      name: "DoGood Agency LLC",
+      url: `${site}/`,
+      logo: `${site}/logo.svg`,
+    },
+    {
+      "@type": "ItemList",
+      name: "DoGood Wayfinders",
+      itemListElement: wayfinders.map((w, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        item: {
+          "@type": "Person",
+          name: w.name,
+          jobTitle: `Wayfinder, ${w.hub}`,
+          url: `${site}${w.url}`,
+          image: `${site}${w.photo.base}@2x.webp`,
+          worksFor: { "@id": orgId },
+        },
+      })),
+    },
+  ],
+};
+
+// Testimonials Seb supplied on 19 Nov 2026 (Chantill's clients), word for word, paragraphs as supplied.
+const voices = [
+  {
+    name: "Gina P",
+    role: "Founder, The Wilder Practice",
+    wayfinder: "Chantill",
+    image: gina,
+    quote: [
+      "Working with Chantill has had a twofold impact on me, both personally and in my work.",
+      "I’ve become more fully aware of my nervous system state and have the ability to shift states in a way that creates greater capacity—to be with things that are hard, to manage times of stress, and to turn toward discomfort with more presence. I feel like a calmer, more settled person.",
+      "I’m also more able to be present in joy, and to expand states like gratitude and contentment, really feeling them in my body. There’s more bandwidth now to experience the fullness of those moments.",
+      "Because I have this awareness inside of me, it’s directly impacted my work. I’m able to hold a larger and more stable container for my clients in our coaching work. I’m looking forward to continuing to bring these tools in to support my clients in their personal and professional transformations.",
+      "I’m seeing what’s possible for them based on what I’m experiencing within myself.",
+    ],
+  },
+  {
+    name: "Tami L",
+    role: "Studio T",
+    wayfinder: "Chantill",
+    image: tami,
+    quote: [
+      "Before this, I was consistently operating in high gear, nothing ever felt like enough, and I was always pursuing the next level.",
+      "Over the past three years, I’ve developed a consistent daily practice that allows me to connect inwardly and show up more intentionally and effectively. My work with Chantill has had a measurable impact, expanding my capacity to take risks, be vulnerable, and move from co-regulation to self-regulation with greater ease.",
+      "As a result, I’m more present, more grounded, and better able to engage with both challenges and opportunities from a different lens.",
+    ],
+  },
+];
+
+const regionList = mapPins.map((pin) => pin.name).join(", ");
+const halos = mapPins.map((pin, i) => ({ ...pin, i, delay: `${-((i * 0.77) % 3.6).toFixed(2)}s` }));
+const portraitFiles = import.meta.glob<ImageMetadata>("../assets/reviews/*", { eager: true, import: "default" });
+const portraitFor = (file: string) => Object.entries(portraitFiles).find(([p]) => p.endsWith(`/${file}`))?.[1];
+const wallItems = [
+  ...voices.map((v) => ({ quote: v.quote.join(" "), name: v.name, role: `${v.role} · on working with ${v.wayfinder}`, image: v.image })),
+  ...reviews.filter((r) => !["gina-p.png", "tami-l.png"].includes(r.file)).map((r) => ({ quote: r.quote, name: r.name, role: r.role, image: portraitFor(r.file) })),
+];
+
+// Photo fit (Seb, 19 Nov 2026): heads about 20% bigger and the same size across the team, head tops level.
+// h = shown image height in px (head width ~106px for everyone); align = which card edge the photo sits on
+// (the source photos of Chantill, Katrin and Shiva are cut off on the right, Seb's on the left).
+const photoFit: Record<string, { h: number; align: "left" | "right" | "center" }> = {
+  Chantill: { h: 333, align: "right" },
+  Katrin: { h: 338, align: "right" },
+  Shiva: { h: 342, align: "right" },
+  Seb: { h: 408, align: "left" },
+  Vlora: { h: 409, align: "center" },
+};
+---
+
+<Base
+  title="Wayfinders: founder transition coaches | DoGood Agency"
+  description="Meet the Wayfinders, the founder transition coaches who guide founders before and after the sale, with over 70 years of combined founder experience."
+  canonical="https://www.dogoodagency.co/wayfinders"
+  footerStrip={tint}
+  footerEdge={footerEdge}
+>
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <article class="wf-page">
+    <header class="wf-hero">
+      <div class="wf-hero-inner">
+        <!-- Hero trimmed (Seb, 19 Nov 2026): one type style, left-aligned, less text. -->
+        <h1>Meet all Wayfinders</h1>
+        <p class="wf-lead">
+          Our Wayfinders have walked many founders through the transition, before and after the sale. They create <strong>safety</strong>, ask direct questions and keep the work moving until you have <strong>a clear next path</strong>. A small team with 70+ years of founder experience.
+        </p>
+      </div>
+      <Wave fill={white} edge={heroEdge} />
+    </header>
+
+    <!-- Where Wayfinders travel to + map -->
+    <section class="wf-band wf-band-map" aria-labelledby="wf-travel">
+      <div class="wf-well wf-well-top">
+        <div class="wf-intro">
+          <h2 class="wf-h2" id="wf-travel">Where Wayfinders Travel To</h2>
+          <p>
+            Each FRP stage includes 1x In-Person Residency (for Stage 1 + Stage 2). In‑Person Residency means a 1.5‑day in‑person get-together with your Wayfinder. We'll get on the plane and come to you.
+          </p>
+        </div>
+
+        <figure class="wf-map">
+          <div class="wf-map-stage">
+            <img class="wf-map-land" src="/media/wayfinders/world-land.svg" alt="" width="1000" height="520" decoding="async" />
+            <svg class="wf-halos" viewBox="0 0 1000 520" aria-hidden="true" focusable="false">
+              {
+                halos.map((pin) => (
+                  <g class="wf-halo" data-i={pin.i} transform={`translate(${pin.x} ${pin.y})`}>
+                    <circle r="90" style={`--d:${pin.delay}`} />
+                  </g>
+                ))
+              }
+            </svg>
+            <ul class="wf-pins">
+              {
+                halos.map((pin) => (
+                  <li
+                    class="wf-pin-slot"
+                    style={`left:${(pin.x / 10).toFixed(2)}%;top:${(pin.y / 5.2).toFixed(2)}%`}
+                    data-edge={pin.x > 800 ? "end" : pin.x < 200 ? "start" : undefined}
+                  >
+                    <span class="wf-pin" data-i={pin.i} tabindex="0" role="img" aria-label={`Wayfinders travel to ${pin.name}`}>
+                      <svg class="wf-pin-icon" viewBox="-14 -34 28 36" aria-hidden="true" focusable="false">
+                        <path d="M0 0C-3.5-6-12-12.5-12-21a12 12 0 1 1 24 0C12-12.5 3.5-6 0 0Z" />
+                        <circle cx="0" cy="-21" r="4.6" />
+                      </svg>
+                      <span class="wf-tip" aria-hidden="true">{pin.name}</span>
+                    </span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+          <figcaption class="visually-hidden">Map of the regions Wayfinders travel to: {regionList}.</figcaption>
+        </figure>
+
+        <div class="wf-apply">
+          <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
+          <p class="wf-note">Limited to 5 new founders a month</p>
+        </div>
+      </div>
+    </section>
+
+    <Fragment set:html={toTint} />
+
+    <!-- How the Client-Fit process works -->
+    <section class="wf-band wf-band-tint" aria-labelledby="wf-fit">
+      <div class="wf-well wf-well-top">
+        <h2 class="wf-h2 wf-center" id="wf-fit">How the Client-Fit process works</h2>
+        <!-- Animated on scroll (Seb, 19 Nov 2026): the steps appear one after another, then the arrows. -->
+        <ol class="wf-steps" data-wf-steps>
+          {
+            clientFitSteps.map((step, i) => (
+              <li class="wf-step">
+                <span class="wf-step-n" aria-hidden="true">{i + 1}</span>
+                <span class="wf-step-t">{step}</span>
+              </li>
+            ))
+          }
+        </ol>
+        <p class="wf-fit-copy">
+          You don’t pick a Wayfinder. We 'client-fit' you to the right one. If, within the first two sessions, you feel the Wayfinder isn't the best fit, we'll adjust the match to better suit your needs.
+        </p>
+        <div class="wf-center">
+          <a class="btn-teal" href="/wayfinders/clientfit">Client-Fit Process (details)</a>
+        </div>
+      </div>
+    </section>
+
+    <Fragment set:html={toWhite} />
+
+    <!-- Team -->
+    <section class="wf-band" aria-labelledby="wf-team">
+      <div class="wf-well wf-well-top wf-well-wide">
+        <h2 class="wf-h2 wf-center" id="wf-team">Meet the global Wayfinders team</h2>
+        <ul class="wf-members">
+          {
+            wayfinders.map((w) => {
+              const visible = lineLabels.slice(0, VISIBLE_LINES);
+              const more = lineLabels.slice(VISIBLE_LINES);
+              return (
+                <li class="wf-member">
+                  <div class:list={["wf-photo", `wf-photo--${photoFit[w.name]?.align ?? "center"}`]} style={`--wf-tint:${w.tint};--wf-img-h:${photoFit[w.name]?.h ?? 340}px`}>
+                    <picture>
+                      <source type="image/webp" srcset={`${w.photo.base}@1x.webp 320w, ${w.photo.base}@2x.webp 640w`} sizes="(min-width: 1024px) 340px, (min-width: 640px) 320px, 70vw" />
+                      <img src={`${w.photo.base}@1x.png`} width={w.photo.width} height={w.photo.height} alt={w.photo.alt} loading="lazy" decoding="async" />
+                    </picture>
+                  </div>
+                  <h3 class="wf-name">{w.name}</h3>
+                  <p class="wf-hub">
+                    <strong>{w.hub}</strong>
+                    <span>{w.hubExtra}</span>
+                  </p>
+                  <ul class="wf-flags" aria-label={`${w.name}'s flags`}>
+                    {w.flags.map((flag) => (
+                      <li><img src={flag.src} width="24" height="16" alt={flag.name} loading="lazy" decoding="async" /></li>
+                    ))}
+                  </ul>
+                  <dl class="wf-lines">
+                    {visible.map(({ key, label }) => (
+                      <div>
+                        <dt>{label}</dt>
+                        <dd>{w.lines[key]}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                  <details class="wf-more">
+                    <summary>
+                      <span>More about {w.name}</span>
+                      <span class="wf-more-icon" aria-hidden="true"></span>
+                    </summary>
+                    <dl class="wf-lines">
+                      {more.map(({ key, label }) => (
+                        <div>
+                          <dt>{label}</dt>
+                          <dd>{w.lines[key]}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </details>
+                  <a class="wf-profile" href={w.url} aria-label={`View profile: ${w.name}`}>View profile</a>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </div>
+    </section>
+
+    <Fragment set:html={toTint} />
+
+    <!-- Consistency & quality -->
+    <section class="wf-band wf-band-tint" aria-labelledby="wf-quality">
+      <div class="wf-well wf-well-top">
+        <h2 class="wf-h2 wf-center" id="wf-quality">How we ensure consistency &amp; quality outcomes</h2>
+        <ul class="wf-quality">
+          <li>Delivered under the DoGood Agency brand; Wayfinders uphold strong DoGood learning IP and process frameworks.</li>
+          <li>Structured cadence + documentation/admin hygiene expectations (signals discipline with personality).</li>
+          <li>FRP is progress-tracked through several diagnostics + documented decisions, and weekly reviews.</li>
+        </ul>
+        <div class="wf-center">
+          <a class="btn-teal" href="/the-reset">See the 2‑Stage Partnership</a>
+          <p class="wf-note">Stage 1 (30 days) · Stage 2 invite-only</p>
+        </div>
+      </div>
+    </section>
+
+    <Fragment set:html={toWhite} />
+
+    <!-- Testimonials (Seb, 19 Nov 2026): the Stories-style moving wall replaces the two large quotes and the
+         rolling reviews. Gina P and Tami L (word for word) come first, then the leaders' reviews. -->
+    <section class="wf-band wf-band-voices" aria-labelledby="wf-voices">
+      <div class="wf-well wf-well-top">
+        <p class="wf-eyebrow wf-eyebrow-dark wf-center">Testimonials</p>
+        <h2 class="wf-h2 wf-center" id="wf-voices">Leaders who've been through it</h2>
+        <p class="wf-center wf-voices-sub">Words from clients of our Wayfinders and from leaders our team has worked with. They are not all founders who have sold.</p>
+        <TestimonialWall items={wallItems} phoneItems={[...wallItems.slice(0, voices.length), ...phonePicks.wayfinders.map((n) => wallItems.find((w) => w.name.toUpperCase() === n)).filter((w): w is (typeof wallItems)[number] => !!w)]} label="Testimonials from clients and leaders our team has worked with" />
+      </div>
+    </section>
+
+    <Fragment set:html={toTint} />
+
+    <section class="wf-band wf-band-tint" aria-label="Apply for Stage 1">
+      <div class="wf-well wf-well-top">
+        <!-- Bottom box with context (Seb, 19 Nov 2026). -->
+        <div class="wf-cta wf-cta-ctx">
+          <h2>Ready to be matched with your Wayfinder?</h2>
+          <p>We read your application, talk with you, and match you with the Wayfinder who fits you best.</p>
+          <div class="wf-cta-actions">
+            <a class="btn-teal" href="/wayfinders/clientfit">Client-fit process</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</Base>
+
+<script>
+  // Client-Fit steps: reveal one after another when scrolled into view.
+  const steps = document.querySelector<HTMLElement>("[data-wf-steps]");
+  if (steps) {
+    document.documentElement.classList.add("wf-js");
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce || !("IntersectionObserver" in window)) steps.classList.add("is-in");
+    else {
+      const io = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((e) => e.isIntersecting)) {
+            steps.classList.add("is-in");
+            io.disconnect();
+          }
+        },
+        { threshold: 0.35 },
+      );
+      io.observe(steps);
+    }
+  }
+
+  // "More about …": opening one card opens them all, so every card shows its text (Seb, 19 Nov 2026).
+  const mores = Array.from(document.querySelectorAll<HTMLDetailsElement>(".wf-members .wf-more"));
+  let syncing = false;
+  mores.forEach((d) =>
+    d.addEventListener("toggle", () => {
+      if (syncing) return;
+      syncing = true;
+      mores.forEach((o) => {
+        if (o !== d) o.open = d.open;
+      });
+      syncing = false;
+    }),
+  );
+</script>
