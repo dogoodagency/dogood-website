@@ -111,7 +111,7 @@ import sebAvatar from "../assets/authors/seb.jpg"; // the article portrait, roun
                     </span>
                   </span>
                   <span class="pod2-card-title">{episode.metaTitle}</span>
-                  <span class="pod2-card-sub">{episode.cardTitle}: {episode.cardSubtitle}</span>
+                  <span class="pod2-card-sub">{episode.cardTitle}{episode.cardSubtitle ? `: ${episode.cardSubtitle}` : ""}</span>
                   <span class="pod2-card-foot">
                     <span class="pod2-card-time">{episode.duration}</span>
                     <span class="pod2-card-listen">Listen now →</span>
@@ -166,7 +166,7 @@ import sebAvatar from "../assets/authors/seb.jpg"; // the article portrait, roun
           <div>
             <p class="pod2-card-label">The newsletter</p>
             <h2 id="pod2-news">Before and After the Sale, chapter by chapter</h2>
-            <p>One email every two weeks from 15 December: a new chapter of our book for founders, and our notes on life after the sale.</p>
+            <p>One email every two weeks from December 15: a new chapter of our book for founders, and our notes on life after the sale.</p>
             <a class="btn-teal" href="/newsletter">Join the newsletter</a>
           </div>
         </div>
