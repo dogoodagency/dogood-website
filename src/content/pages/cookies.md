@@ -9,7 +9,7 @@ bandGroups:
   - "8-10"
 ---
 
-Last updated: 20 November 2026
+Last updated: November 20, 2026
 
 ## What cookies are
 
@@ -46,7 +46,7 @@ These help us understand how the site is used. They load only after you accept a
 | Tool | Purpose | Set by | Cookie names | Duration |
 | --- | --- | --- | --- | --- |
 | Google Analytics | Counts visits and shows which pages are used | Google | Listed in the cookie banner (Cookie settings) | Listed in the cookie banner |
-| Microsoft Clarity | Shows anonymised recordings and heatmaps of how pages are used; text you type is masked | Microsoft | Listed in the cookie banner (Cookie settings) | Listed in the cookie banner |
+| Microsoft Clarity | Shows anonymized recordings and heatmaps of how pages are used; text you type is masked | Microsoft | Listed in the cookie banner (Cookie settings) | Listed in the cookie banner |
 
 ## Advertisement cookies
 

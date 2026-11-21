@@ -21,10 +21,10 @@ const schema = {
   mainEntity: faqCategories.flatMap((category) =>
     category.items.map((faq) => ({
       "@type": "Question",
-      name: faq.q,
+      name: faq.schemaQ ?? faq.q,
       acceptedAnswer: {
         "@type": "Answer",
-        text: faq.a.map(faqPlain).join("\n\n"),
+        text: (faq.schemaA ?? faq.a).map(faqPlain).join("\n\n"),
       },
     })),
   ),

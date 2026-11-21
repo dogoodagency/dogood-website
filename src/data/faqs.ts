@@ -14,6 +14,8 @@ export interface Faq {
   id: string;
   q: string;
   a: string[];
+  schemaQ?: string;
+  schemaA?: string[];
 }
 
 export interface FaqCategory {
@@ -306,7 +308,11 @@ export const faqCategories: FaqCategory[] = [
       // [SEB]
       {
         id: "different-from-coaching",
-        q: "How is this different from coaching, therapy, masterminds, or retreats?",
+        schemaQ: "How is this different from coaching or therapy?",
+        schemaA: [
+          "It is built for one transition only: your life around the sale of your business. FRP is a private, structured partnership for founders navigating life after the sale. Coaching can help with performance and direction. Therapy can offer an important space to process what is difficult. Masterminds and retreats can provide perspective and connection. Each can have value. FRP brings together the parts that matter in this particular transition: understanding what is really going on for you, and addressing what was neglected while building. There are clear milestones, documented decisions, and real accountability throughout.",
+        ],
+        q: "How is this different from coaching or therapy?",
         a: [
           "It is built for one transition only: your life around the sale of your business. FRP is a private, structured partnership for founders navigating life after the sale. Coaching can help with performance and direction. Therapy can offer an important space to process what is difficult. Masterminds and retreats can provide perspective and connection. Each can have value. FRP brings together the parts that matter in this particular transition: understanding what is really going on for you, and addressing what was neglected while building. There are clear milestones, documented decisions, and real accountability throughout.",
         ],
@@ -464,7 +470,7 @@ export const faqCategories: FaqCategory[] = [
         id: "advisor-not-sold-yet",
         q: "Can I refer a client who hasn’t sold yet?",
         a: [
-          "Yes, if they have firmly decided to exit and are preparing for it. For those founders we have The Exit-Prep: six weekly private sessions, held remotely, on the same conditions as Stage 1. If they later want to go deeper after the sale, they can move on to Stage 1. Ask us about it on the intro call.",
+          "Yes, if they have firmly decided to exit and are preparing for it. For those founders we have The Exit-Prep: six weekly private sessions, held remotely, covered by the Clarity-First Guarantee. If they later want to go deeper after the sale, they can move on to Stage 1. Ask us about it on the intro call.",
         ],
       },
       // [ADDED – source: for-advisors.md FAQ "Do you give financial or legal advice?"; chat-brief-approved.txt §4]

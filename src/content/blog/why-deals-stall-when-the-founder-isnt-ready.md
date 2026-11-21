@@ -75,7 +75,7 @@ That is one more reason to raise it early, before the pressure of the deal makes
 
 Taking it personally. When a founder gets emotional, it is natural to defend your work, and the conversation gets inflamed. That rarely helps either side.
 
-It helps to recognise what is happening. This is the emotional side of a founder who hasn't been through many deals and isn't equipped to deal with it yet. It is an emotional imbalance, if you will, not a verdict on your work.
+It helps to recognize what is happening. This is the emotional side of a founder who hasn't been through many deals and isn't equipped to deal with it yet. It is an emotional imbalance, if you will, not a verdict on your work.
 
 ## When should you bring in support, and how does it work?
 

@@ -33,7 +33,7 @@ faq:
   - q: "Is it normal to have second thoughts about selling my business?"
     a: "Yes. Most founders are selling for the first time, and the company is something they have raised for years. Second thoughts close to signing are common, and having them doesn't mean the sale is wrong."
   - q: "How do I know if cold feet mean I shouldn't sell?"
-    a: "Start by asking whether you have actually made the decision, or only started the process. Working with an advisor can feel like a decision while the real one is still open. If the doubt is about the deal itself, such as the buyer, the terms or the timing, take it to your advisors. If it is about who you will be afterwards, that fear doesn't go away by delaying the sale. It needs its own attention."
+    a: "Start by asking whether you have actually made the decision, or only started the process. Working with an advisor can feel like a decision while the real one is still open. If the doubt is about the deal itself, such as the buyer, the terms or the timing, take it to your advisors. If it is about who you will be afterward, that fear doesn't go away by delaying the sale. It needs its own attention."
   - q: "Can my emotions really affect the sale?"
     a: "Yes. Advisors tell us they lose deals because of a founder's emotions, usually as the deal nears closing. Founders often don't notice they are slowing things down."
   - q: "Should I wait until after the sale to deal with this?"
@@ -48,7 +48,7 @@ For most founders this is their first exit. There is no previous sale to compare
 
 In the years before a sale, the business often gets the blame for everything that feels heavy: the headaches, the responsibility, the burnout. Some of that is fair. But something surprising happens after the exit. The responsibility and the daily problem-solving that founders wanted to get rid of turn out to be the very things they miss. The business was the source of the stress, and it was also the source of the drive.
 
-Knowing this in advance won't stop the feelings, but it does make them easier to recognise when they arrive.
+Knowing this in advance won't stop the feelings, but it does make them easier to recognize when they arrive.
 
 ## Before you sign: why do founders get cold feet?
 
@@ -64,7 +64,7 @@ Due diligence is a buyer's job. They need to question the numbers, test the assu
 
 From the founder's side, it can feel personal. Every question about the business lands as a question about you, and the natural response is to justify and prove yourself. That is understandable, and it rarely helps.
 
-What helps is staying neutral: answering clearly without defending, and not getting too attached to any single outcome, including the price. That is difficult when the business has been your life's work. It is also a skill that can be practised, and it is a large part of what we help founders with at DoGood.
+What helps is staying neutral: answering clearly without defending, and not getting too attached to any single outcome, including the price. That is difficult when the business has been your life's work. It is also a skill that can be practiced, and it is a large part of what we help founders with at DoGood.
 
 ## How do a founder's emotions affect the deal?
 
@@ -88,7 +88,7 @@ None of these means the sale was a mistake. They mean something important has en
 
 They are related, but they are not the same. The grief is about the loss of the company itself: the thing you built, the people, the place it had in your life.
 
-Identity loss is internal. It is not knowing who you are without the company, and not knowing what to do next. The sense of purpose that organised your days has gone, and nothing has replaced it yet. We write about this side in [Sudden wealth syndrome after selling your business](/insights/sudden-wealth-syndrome-after-selling-a-business).
+Identity loss is internal. It is not knowing who you are without the company, and not knowing what to do next. The sense of purpose that organized your days has gone, and nothing has replaced it yet. We write about this side in [Sudden wealth syndrome after selling your business](/insights/sudden-wealth-syndrome-after-selling-a-business).
 
 It helps to tell the two apart, because they need different things. Grief needs time and room. The identity question needs active work on who you are becoming.
 

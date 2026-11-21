@@ -60,9 +60,9 @@ The first six to eight weeks are often good. There is freedom, rest and time tha
 
 What surprises founders next is the loss of meaning. The purpose they felt for years is gone. There is no drive and no reason to get up in the morning. Nobody warned them about that part.
 
-Then comes a harder realisation. Many founders worked toward the exit for years, believing they would feel differently about themselves and their life once it happened. When it does, nothing inside has changed. Some feel worse, precisely because nothing changed. The next question is the difficult one: if that wasn't it, what is? That question is where many founders fall into a hole.
+Then comes a harder realization. Many founders worked toward the exit for years, believing they would feel differently about themselves and their life once it happened. When it does, nothing inside has changed. Some feel worse, precisely because nothing changed. The next question is the difficult one: if that wasn't it, what is? That question is where many founders fall into a hole.
 
-I know that hole from the inside. I didn't sell my company. I lost it, and I had to let my team go. The money was different, but the drop afterwards was the same: the structure was gone, the identity was gone, and so was the answer to what I was for.
+I know that hole from the inside. I didn't sell my company. I lost it, and I had to let my team go. The money was different, but the drop afterward was the same: the structure was gone, the identity was gone, and so was the answer to what I was for.
 
 Two other things often come up in that first year:
 
@@ -85,7 +85,7 @@ There is an old saying that more money only amplifies who you already are, the g
 
 ## When is it more than an adjustment?
 
-Feeling lost, flat or restless after a sale is common. Some signs mean coaching is not the right first step:
+Feeling lost, flat or restless after a sale is common. Some signs mean working with a Wayfinder is not the right first step:
 
 - you are drinking more than you used to, or using alcohol or anything else to get through the day
 - dark thoughts or heavy moods that don't lift, or that are getting worse

@@ -81,7 +81,7 @@ const jsonLd = {
 
           <div class="wfp-hero-copy">
             <p class="wf-eyebrow">Wayfinder · {w.hub}</p>
-            <h1>{w.name}</h1>
+            <h1>{w.slug === "seb" ? "Seb Wichmann" : w.name}</h1>
             <p class="wfp-extra">{w.hubExtra}</p>
             <ul class="wf-flags" aria-label={`${w.name}'s flags`}>
               {w.flags.map((flag) => (

@@ -8,7 +8,7 @@ bandGroups:
   - "9-12"
 ---
 
-Last updated: 20 November 2026
+Last updated: November 20, 2026
 
 The controller is DoGood OÜ (Estonia, registry code 14695833). Contact: hiya@dogoodagency.co.
 
@@ -20,7 +20,7 @@ At DoGood Agency, we respect your privacy and are committed to protecting your p
 
 Our website host processes basic technical data (IP address, browser and device type, pages requested, referring page) to deliver the site and keep it secure.
 
-With your consent, we also use Google Analytics and Microsoft Clarity to understand how visitors use the site (pages viewed, clicks, scrolling, device and approximate location), and the LinkedIn Insight Tag to see, in aggregate, what kinds of professionals visit and to measure LinkedIn advertising. Clarity records anonymised sessions; it masks text you type. These tools only run after you accept analytics or advertisement cookies in our cookie banner, and you can withdraw consent at any time.
+With your consent, we also use Google Analytics and Microsoft Clarity to understand how visitors use the site (pages viewed, clicks, scrolling, device and approximate location), and the LinkedIn Insight Tag to see, in aggregate, what kinds of professionals visit and to measure LinkedIn advertising. Clarity records anonymized sessions; it masks text you type. These tools only run after you accept analytics or advertisement cookies in our cookie banner, and you can withdraw consent at any time.
 
 ### Information You Provide
 

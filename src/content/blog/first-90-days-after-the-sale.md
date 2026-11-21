@@ -100,7 +100,7 @@ A few fixed anchors help: time outdoors, regular exercise, a standing time each 
 
 ## Staying on after the sale: why no hard cuts
 
-If you have the option, a smooth handover is better than a hard cut. I am in favour of founders staying on the board, or staying involved in the company, for the first 90 days or even six months after the sale.
+If you have the option, a smooth handover is better than a hard cut. I am in favor of founders staying on the board, or staying involved in the company, for the first 90 days or even six months after the sale.
 
 A gradual exit gives the team, the customers and the buyer continuity. It also gives you time to let go step by step, instead of losing your role, your routine and your people on the same day.
 
@@ -121,7 +121,7 @@ Watch for these:
 - Rushing into a new venture and carrying the old patterns straight into it.
 - Using holidays and purchases to avoid reflection, rather than to rest.
 - Filling the empty calendar with things that mean nothing to them.
-- Treating the transition as one more project to optimise.
+- Treating the transition as one more project to optimize.
 - Cutting all ties overnight instead of letting go step by step.
 - Ignoring what is surfacing at home.
 

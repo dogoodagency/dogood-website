@@ -10,7 +10,7 @@ bandGroups:
 
 This website is run by DoGood OÜ (Estonia, registry code 14695833).
 
-Last updated: 13 November 2026.
+Last updated: November 13, 2026.
 
 Thank you for visiting our website! If you wish to use [www.dogoodagency.co](https://www.dogoodagency.co/) you must agree that you will abide by and be legally bound by the terms and conditions listed below. If you don’t agree with any of the terms or conditions below, please do not use our website.
 
@@ -114,6 +114,6 @@ Estonian law applies and disputes go to the courts of Estonia. If you're a consu
 
 These terms and conditions, including the policies incorporated herein by express reference, constitute your entire agreement with us with respect to your use of our website
 
-Please note that the content of this page can change without prior notice. This Terms and Conditions of Use Policy was last updated on 13 November 2026.
+Please note that the content of this page can change without prior notice. This Terms and Conditions of Use Policy was last updated on November 13, 2026.
 
 © 2026 DoGood OÜ. All rights reserved.

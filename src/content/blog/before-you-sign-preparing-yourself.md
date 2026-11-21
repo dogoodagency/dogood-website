@@ -10,7 +10,7 @@ author: "seb"
 readTime: 9
 featured: true
 heroImage: "/sketches/how-it-works-two-stage-path-sketch"
-heroAlt: "A man walking along a green path towards an open doorway that looks out on hills and trees."
+heroAlt: "A man walking along a green path toward an open doorway that looks out on hills and trees."
 heroBg: purple
 shortAnswer: "Preparing yourself to sell your business means getting clear, ideally 12 to 18 months before you sign, about who you want to be without the company: what matters to you, what you have been ignoring, and what you want to step into next. Your exit advisors prepare the company. This is the other half of the work, and it is a process of reflection, not a checklist you tick off in a weekend."
 questions:
@@ -64,7 +64,7 @@ It means taking time to think, honestly and in some depth, about questions most 
 - What legacy do you want to leave beyond the company?
 - What does your health need from you?
 
-Underneath all of them is one bigger question: how do you want to step forward into a version of yourself that you are truly inspired by? Not a version the company needed, or one that other people expect, but one you feel energised by.
+Underneath all of them is one bigger question: how do you want to step forward into a version of yourself that you are truly inspired by? Not a version the company needed, or one that other people expect, but one you feel energized by.
 
 ## Why it takes 12 to 18 months
 
@@ -86,7 +86,7 @@ A sign you are not ready is a life that is constantly being filled with new thin
 
 Exit advisors spend a lot of time on owner dependency: how much the business relies on you personally. Reducing it raises the value of the company, and it does something else too.
 
-It teaches the company independence. Your leadership team has to step up to the plate and make decisions without you. That is a real leadership skill, and it has to be trained and embodied, not just written into an organisation chart. The earlier it starts, the more natural it is by the time a buyer is looking at it.
+It teaches the company independence. Your leadership team has to step up to the plate and make decisions without you. That is a real leadership skill, and it has to be trained and embodied, not just written into an organization chart. The earlier it starts, the more natural it is by the time a buyer is looking at it.
 
 ## How clear do you need to be about what's next?
 
@@ -100,7 +100,7 @@ Exit planners often describe readiness as a three-legged stool: the business, yo
 
 Exit advisors, succession planners, family offices, wealth advisors and sell-side M&A advisors already do a great deal. Some exit planners work on owner dependency, leadership and a more diversified client mix. Some prepare the whole transaction, and some also bring in the buyer. That is a lot of work, and it is important work.
 
-What none of them has is help with the personal side. That is what we specialise in at DoGood, and we work alongside these advisors, not instead of them. In our view it is not optional. Without the personal leg, the stool doesn't stand.
+What none of them has is help with the personal side. That is what we specialize in at DoGood, and we work alongside these advisors, not instead of them. In our view it is not optional. Without the personal leg, the stool doesn't stand.
 
 ## What does a well-prepared founder look like after the sale?
 

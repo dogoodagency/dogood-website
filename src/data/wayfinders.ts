@@ -117,7 +117,7 @@ export const wayfinders: Wayfinder[] = [
       workingStyle: "I integrate psychology and cognitive understanding with mindfulness, meditation, and somatic awareness.",
       bestFit: "Brought in for relationship strain, family responsibility, health pressure, relocations, and personal identity challenges.",
       realStakes: "13+ years working with leaders and teams within Enterprise and Fortune 500 environments.",
-      trainingMethods: "Master’s degree in Psychology, specialization in Coaching & Consulting Psychology.",
+      trainingMethods: "Master’s degree in Psychology, specialization in Consulting Psychology.",
       travel: "Available all over Europe, the U.S., Canada, Mexico, and Latin America.",
       humanSide:
         "Worldview rooted in presence, cross-cultural insight, and steadiness; grounded in movement, mindfulness, nature, travel, and animal welfare.",
@@ -185,11 +185,11 @@ export const wayfinders: Wayfinder[] = [
     lines: {
       whyFoundersCome: "High-growth. Identity shifts. Life after the sale. I help founders restore clarity so the next chapter is chosen consciously, with renewed energy.",
       myEdge: "Operational literacy meets nervous system depth. I align strategic thinking with internal steadiness and creative momentum.",
-      workingStyle: "Grounded, structured, and precise. Subconscious coaching, hypnosis, somatic regulation, and clear integration.",
+      workingStyle: "Grounded, structured, and precise. Subconscious work, hypnosis, somatic regulation, and clear integration.",
       bestFit: "Reflection after the sale. Leadership evolution. You want clarity, aligned momentum, and depth that feels energizing, not heavy.",
       realStakes: "12+ years in startups. Co-founder. Accelerator ecosystems. I integrate business fluency with embodied intelligence.",
       trainingMethods:
-        "Two-year certification in subconscious coaching and hypnosis. Yoga teacher and advanced Yin training. Ocean Therapy Practitioner. BBA + dual Master’s in International Mgt.",
+        "Two-year certification in hypnosis and subconscious work. Yoga teacher and advanced Yin training. Ocean Therapy Practitioner. BBA + dual Master’s in International Mgt.",
       travel: "Europe-based. Available for structured international engagements.",
       humanSide: "Meditation, breathwork, hot Yin, surfing, retreats, and podcasting. I protect recovery, value aliveness.",
       whatIdTellYou: "Clarity under pressure is cultivated. When the nervous system settles, direction becomes clear, creative and surprisingly energizing.",
