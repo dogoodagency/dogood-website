@@ -122,8 +122,8 @@ export const caseTeasers: CaseTeaser[] = [
     portrait: "v",
     who: "V",
     highlights: ["Four months of focused work", "Identity restored", "Leadership reactivated"],
-    headline: `From identity void to decisive leadership`,
-    headlineAccent: `— how V reclaimed life after success`,
+    headline: `From feeling lost to decisive leadership:`,
+    headlineAccent: `how V reclaimed life after success`,
     attribution: `V (anonymous), USD 9M+ founder`,
     intro: `In four months of focused work, V rebuilt routine, restored identity, and reactivated leadership — while keeping the company moving.`,
     snapshot: [

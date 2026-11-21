@@ -12,7 +12,7 @@ Seb & the DoGood Team
 
 Case Study
 
-From identity void to decisive leadership — how V reclaimed life after success
+From feeling lost to decisive leadership: how V reclaimed life after success
 
 V (anonymous), USD 9M+ founder
 

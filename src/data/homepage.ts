@@ -50,7 +50,7 @@ export const stats = [
   { value: "186", label: "Founders Engaged" },
   { value: "55,230", label: "Leaders Impacted" },
   { value: "$19.4 Million", label: "Learning Initiatives Sold" },
-  { value: "18,360", label: "Coaching Hours" },
+  { value: "18,360", label: "Session Hours" },
   { value: "100%", label: "Client Satisfaction Score" },
 ] as const;
 
@@ -66,7 +66,7 @@ export const reviews = [
     file: "jennifer-m.png",
     name: "JENNIFER M",
     role: "Founder, LunchAssist",
-    quote: "Seb from DGA is a lovely human with a great mind for business. DGA would be a great support to any person in a leadership position. The team has a wealth of organizational leadership knowledge, great intuition, and a strong skillset in coaching and mentoring via the virtual workspace. I absolutely recommend DGA to anyone looking to partner with an emotionally intelligent and business-savvy training agency! Thank you, DGA!",
+    quote: "Seb from DGA is a lovely human with a great mind for business. DGA would be a great support to any person in a leadership position. The team has a wealth of organizational leadership knowledge, great intuition, and a strong skillset in […] mentoring via the virtual workspace. I absolutely recommend DGA to anyone looking to partner with an emotionally intelligent and business-savvy training agency! Thank you, DGA!",
   },
   {
     file: "michael-r.png",

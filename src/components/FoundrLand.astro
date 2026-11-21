@@ -27,7 +27,7 @@ interface Props {
 const { kind, line, linkLabel: smallLabel } = Astro.props;
 const uid = `fl-${kind}`;
 const advisor = kind === "advisor" || (kind === "small" && !!smallLabel?.includes("advisor"));
-const linkLabel = smallLabel ?? (kind === "advisor" ? "See foundr.land for advisors" : "Explore foundr.land");
+const linkLabel = smallLabel ?? (kind === "advisor" ? "See FOUNDR.land for advisors" : "Explore FOUNDR.land");
 
 // The clarity wheel on the phone (home). Coordinates are in the 680 × 996 pixels of the phone image @2x:
 // hub at (322, 607), outer ring 135, turned 6.6° like the phone.
@@ -62,7 +62,7 @@ const days = [
 
 {
   kind === "small" ? (
-    <aside class:list={["fl", "fl--small"]} aria-label="foundr.land">
+    <aside class:list={["fl", "fl--small"]} aria-label="FOUNDR.land">
       <span class="fl-mini-wheel" aria-hidden="true">
         <svg viewBox="0 0 120 120">
           <polygon points="60,12 101.6,36 101.6,84 60,108 18.4,84 18.4,36" class="fl-ring" />
@@ -74,7 +74,7 @@ const days = [
       <div class="fl-small-copy">
         <picture>
           <source type="image/webp" srcset="/media/foundrland/foundrland-logo-dark@1x.webp 1x, /media/foundrland/foundrland-logo-dark@2x.webp 2x" />
-          <img class="fl-logo fl-logo--sm" src="/media/foundrland/foundrland-logo-dark@1x.png" width="480" height="113" alt="foundr.land" />
+          <img class="fl-logo fl-logo--sm" src="/media/foundrland/foundrland-logo-dark@1x.png" width="480" height="113" alt="FOUNDR.land" />
         </picture>
         <p class="fl-small-line">{line}</p>
         <p class="fl-by fl-by--sm">Developed by DoGood Agency</p>
@@ -94,39 +94,39 @@ const days = [
 
         <div class="fl-copy">
           {kind === "home" ? (
-            <img class="fl-logo fl-logo--light" src="/media/foundrland/foundrland-logo@1x.png" srcset="/media/foundrland/foundrland-logo@1x.png 1x, /media/foundrland/foundrland-logo@2x.png 2x" width="480" height="113" alt="foundr.land" />
+            <img class="fl-logo fl-logo--light" src="/media/foundrland/foundrland-logo@1x.png" srcset="/media/foundrland/foundrland-logo@1x.png 1x, /media/foundrland/foundrland-logo@2x.png 2x" width="480" height="113" alt="FOUNDR.land" />
           ) : (
             <picture>
               <source type="image/webp" srcset="/media/foundrland/foundrland-logo-dark@1x.webp 1x, /media/foundrland/foundrland-logo-dark@2x.webp 2x" />
-              <img class="fl-logo" src="/media/foundrland/foundrland-logo-dark@1x.png" width="480" height="113" alt="foundr.land" />
+              <img class="fl-logo" src="/media/foundrland/foundrland-logo-dark@1x.png" width="480" height="113" alt="FOUNDR.land" />
             </picture>
           )}
 
           {kind === "home" && (
             <>
               <h2 class="fl-title" id={uid}>Life beyond the <em>business</em><span class="fl-dot">.</span></h2>
-              <p class="fl-lede">You’ve built a business. What comes next for you? foundr.land is a private, seven-day reflection journey to explore who you are beyond your business, what matters now, and where you might go next.</p>
+              <p class="fl-lede">You’ve built a business. What comes next for you? FOUNDR.land is a private, seven-day reflection journey to explore who you are beyond your business, what matters now, and where you might go next.</p>
             </>
           )}
           {kind === "exit" && (
             <>
               <p class="fl-eyebrow">Alongside The Exit Prep™</p>
               <h2 class="fl-title" id={uid}>A quiet space between <em>sessions</em><span class="fl-dot">.</span></h2>
-              <p class="fl-lede">A few minutes a day in foundr.land: who you are beyond the business, what matters now, what comes next. It’s there when we meet, and private unless you choose to share it.</p>
+              <p class="fl-lede">A few minutes a day in FOUNDR.land: who you are beyond the business, what matters now, what comes next. It’s there when we meet, and private unless you choose to share it.</p>
             </>
           )}
           {kind === "reset" && (
             <>
               <p class="fl-eyebrow">Alongside Stage 1: The Reset™</p>
               <h2 class="fl-title" id={uid}>Seven small moments. A little more <em>clarity</em><span class="fl-dot">.</span></h2>
-              <p class="fl-lede">Through the 30 days, foundr.land keeps the work going between sessions: one question a day, from identity to your next step, coming together in your personal clarity wheel.</p>
+              <p class="fl-lede">Through the 30 days, FOUNDR.land keeps the work going between sessions: one question a day, from identity to your next step, coming together in your personal clarity wheel.</p>
             </>
           )}
           {kind === "advisor" && (
             <>
-              <p class="fl-eyebrow">foundr.land for advisors</p>
+              <p class="fl-eyebrow">FOUNDR.land for advisors</p>
               <h2 class="fl-title" id={uid}>Better conversations begin beyond the <em>deal</em><span class="fl-dot">.</span></h2>
-              <p class="fl-lede">foundr.land is where our founder support and our advisor support meet. You introduce a founder, they reflect in private, and you reconnect when they choose, seeing only the summaries they approve.</p>
+              <p class="fl-lede">FOUNDR.land is where our founder support and our advisor support meet. You introduce a founder, they reflect in private, and you reconnect when they choose, seeing only the summaries they approve.</p>
             </>
           )}
 
