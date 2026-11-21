@@ -527,7 +527,17 @@
         const edge = window.innerHeight * 0.5;
         const atEnd =
           window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
-        const fillY = reduce.matches || atEnd ? stripRect.bottom + 2 : edge;
+        let fillY = reduce.matches || atEnd ? stripRect.bottom + 2 : edge;
+        // Keep "What's next?" and the reply line in the mint, with a gap below the teal
+        // cut. The two-door block made #next taller, so the mid-viewport fill was landing
+        // on the heading. Once the heading has scrolled off the top, fill as before.
+        const nextHeading = document.querySelector("#next .next-inner h2");
+        if (!reduce.matches && !atEnd && nextHeading instanceof HTMLElement) {
+          const hr = nextHeading.getBoundingClientRect();
+          if (hr.bottom > 0 && hr.top < window.innerHeight) {
+            fillY = Math.min(fillY, hr.top - 40);
+          }
+        }
         const fractionIn = (rect) => {
           if (rect.height <= 1 || fillY <= rect.top) return 0;
           if (fillY >= rect.bottom) return 1;
