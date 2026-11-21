@@ -196,7 +196,7 @@ const organization = {
       if (document.readyState === "complete") setWallSpeed();
       else window.addEventListener("load", setWallSpeed);
       window.addEventListener("resize", () => window.requestAnimationFrame(setWallSpeed));
-      const thankYou = "Thank you! You have successfully joined our subscriber list.";
+      const thankYou = "You've subscribed";
 
       document.querySelectorAll("form.js-subscribe").forEach((form) => {
         form.addEventListener("submit", async (event) => {
@@ -213,12 +213,13 @@ const organization = {
             });
             const result = await response.json();
             if (result.success) {
-              form.querySelectorAll("input, button").forEach((field) => {
+              form.querySelectorAll("input, button, label").forEach((field) => {
                 if (field instanceof HTMLElement && field !== status) field.hidden = true;
               });
               if (status) {
                 status.hidden = false;
                 status.textContent = thankYou;
+                status.classList.add("is-subscribed");
               }
               return;
             }

@@ -337,3 +337,21 @@ header.nav .nav-apply--static { pointer-events: none; cursor: default; }
 @media (prefers-reduced-motion: reduce) {
   :is(.pp-soon, .advr-soon, .adv-page .adv-walk-badge)::before { animation: none; }
 }
+
+/* 21 Nov 2026 (Seb): newsletter sign-up confirmation: "You've subscribed" in GRASS 600, Montserrat Black,
+   10px above the form's usual message size (all forms, all sizes). */
+form [data-status].is-subscribed {
+  color: #01a684 !important;
+  font-family: var(--font-sans);
+  font-size: 26px !important;
+  font-weight: 900 !important;
+  line-height: 1.2;
+}
+.footer form [data-status].is-subscribed { font-size: 24px !important; }
+
+/* Contact form: the Send button keeps its width on hover (all sizes). */
+.contact-form button.btn-teal,
+.contact-form button.btn-teal:hover,
+.contact-form button.btn-teal:focus-visible { padding: 10px 56px 10px 20px !important; }
+.contact-form button.btn-teal:hover,
+.contact-form button.btn-teal:focus-visible { padding: 10px 20px 10px 56px !important; }

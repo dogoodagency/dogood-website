@@ -397,7 +397,7 @@ const heroLine =
           <form class="nl-form js-subscribe" action={action} method="post">
             <input type="hidden" name="ml-submit" value="1" />
             <input type="hidden" name="anticsrf" value="true" />
-            <label for="nl-email">Email</label>
+            <label for="nl-email" class="visually-hidden">Email</label>
             <input id="nl-email" type="email" name="fields[email]" placeholder="Email" autocomplete="email" required />
             <button class="btn-teal" type="submit">Send me the chapters</button>
             <p data-status hidden></p>
