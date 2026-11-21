@@ -953,3 +953,37 @@ body:has(.ab-page) .footer-wave {
   .ab-statement p, .ab-quote blockquote p, .ab-page .ab-lead, .ab-closing { font-size: 17px; }
   .ab-statement h2 { font-size: 26px; }
 }
+
+/* ===== 21 Nov 2026 01:19 (Seb): About ===== */
+/* Calmer scroll reveal: a short fade with only a small lift (all sizes). */
+.ab-reveal { transform: translateY(8px); transition: opacity .5s ease, transform .5s ease; transition-delay: 0s !important; }
+.ab-card:hover, .ab-statement:hover, .ab-vision-card:hover { transform: none; }
+.ab-team-m { display: none; }
+/* How we work, card 1: BLUE instead of GRASS. */
+.ab-band-tint .ab-cards--3 .ab-card:nth-child(1) { background: #f2f7ff; border-color: #a9c2ff; }
+.ab-band-tint .ab-cards--3 .ab-card:nth-child(1)::before { background: #477dfe; color: #fff; }
+/* Who we work with / alongside: a visible DREAM 200 line. */
+.ab-statement { border: 1px solid #c2b7dd; }
+/* Professional network: GRASS 600. */
+.ab-ioda-copy .ab-eyebrow,
+.ab-ioda-copy h2,
+.ab-ioda-copy .ab-text-link { color: #01a684 !important; }
+
+@media (max-width: 599px) {
+  /* Numbers sit in the card's top-left corner; the cards get shorter. */
+  .ab-card { position: relative; overflow: hidden; padding: 56px 22px 24px; }
+  .ab-card::before { position: absolute; top: 0; left: 0; margin: 0; border-radius: 0 0 16px 0; }
+  .ab-card h3 { margin-bottom: 8px; }
+  /* Four seats: building and bench 40% bigger, may run past the card. */
+  .ab-sketch-card { overflow: visible; }
+  .ab-sketch-card picture { display: block; width: 140%; max-width: none; margin-left: -20%; }
+  .ab-sketch-card img { width: 100%; max-width: none; height: auto; }
+  /* Wayfinders: centred, name pills. */
+  .ab-team { position: relative; }
+  .ab-team .ab-team-wide { display: none; }
+  .ab-team-m { position: relative; display: block; width: 120%; margin-left: -10%; }
+  .ab-band-wf { overflow-x: clip; }
+  .ab-band-wf .btn-teal { align-self: center; margin-inline: auto; display: flex; width: fit-content; }
+  .ab-team-m img { display: block; width: 100%; height: auto; }
+  .ab-team-m .wf-name { position: absolute; translate: -50% -50%; padding: 3px 7px; border-radius: 999px; background: #fff; color: #ea1458; font-size: 13px; font-weight: 700; line-height: 1; white-space: nowrap; }
+}

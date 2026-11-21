@@ -71,7 +71,7 @@ const footerBg = closing ? (lastTint ? white : tint) : lastTint ? tint : white;
   <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Service",
-      name: eyebrow.replace("™", ""),
+      name: eyebrow.replace("™", "").replace("<br />", " ").replace("&amp;", "&"),
       url: `https://www.dogoodagency.co${path}`,
       description,
       provider: { "@id": "https://www.dogoodagency.co/#organization" },
@@ -80,7 +80,7 @@ const footerBg = closing ? (lastTint ? white : tint) : lastTint ? tint : white;
   <article class="ep-page pp-page">
     <header class="ep-hero">
       <div class="ep-hero-inner">
-        <p class="ep-eyebrow">{eyebrow}</p>
+        <p class="ep-eyebrow" set:html={eyebrow} />
         <h1 set:html={h1} />
         <p class="ep-sub">{sub}</p>
         {tag && <p class="pp-tag">{tag}</p>}

@@ -1,4 +1,5 @@
 ---
+import { phonePicks } from "../data/phone-picks";
 import "../styles/how-it-works.css";
 import WhoopSection from "../components/WhoopSection.astro";
 import Base from "../layouts/Base.astro";
@@ -118,7 +119,7 @@ const [houseBefore, houseStage1, houseStage2] = houses;
         <p class="hw-eyebrow hw-center">The FRP is a 2-stage process</p>
         <h2 id="hw-path" class="hw-center hw-path-title">Reset first. Then build.</h2>
         <StageSwitch current={1} />
-        <p class="hw-path-note">You apply for Stage 1 only. Stage 2 is invite-only. <a href="/the-build">What happens in Stage 2 →</a></p>
+        <p class="hw-path-note">Stage 2 is invite-only. <a href="/the-build">What happens in Stage 2 →</a></p>
       </div>
     </section>
 
@@ -147,7 +148,7 @@ const [houseBefore, houseStage1, houseStage2] = houses;
       <div class="hw-well">
         <h2 id="hw-familiar" class="hw-center">Sound bites</h2>
         <p class="hw-center hw-sub-center">Words from real calls with founders and the advisors who walk with them.</p>
-        <TestimonialWall items={familiar.map((q) => ({ quote: q.quote, name: q.name, role: q.role }))} short label="Sound bites from real calls with founders and advisors" />
+        <TestimonialWall items={familiar.map((q) => ({ quote: q.quote, name: q.name, role: q.role }))} short phonePick={phonePicks.resetBites} label="Sound bites from real calls with founders and advisors" />
       </div>
     </section>
 
@@ -189,7 +190,7 @@ const [houseBefore, houseStage1, houseStage2] = houses;
           <p>We interrupt the patterns shaping this chapter, clarify what is aligned for you now, and help you see what is driving your decisions, energy, and behaviour so you can begin moving toward the version of yourself that actually belongs next.</p>
           <p>By day 30, you are not just clearer. You have started to reset how you live: what you pay attention to, what no longer runs your life, and what needs to change.</p>
           <p>Important: Stage 1 is focused work. We usually address 1-2 major areas, rather than trying to change everything at once.</p>
-          <p>By week 3, we will know one of two things:</p>
+          <p>By week 3, we will know:</p>
           <ul class="hw-plain">
             <li>(1) Stage 1 gave you what you needed,</li>
             <li>(2) There is a fit for Stage 2, and we continue.</li>
@@ -331,7 +332,7 @@ const [houseBefore, houseStage1, houseStage2] = houses;
       <div class="hw-well">
         <h2 id="hw-reviews" class="hw-center">Leaders who've been through it</h2>
         <p class="hw-center hw-sub-center">Words from leaders our team has worked with. They are not all founders who have sold.</p>
-        <TestimonialWall items={wallItems} label="Testimonials from leaders our team has worked with" />
+        <TestimonialWall items={wallItems} phonePick={phonePicks.reset} label="Testimonials from leaders our team has worked with" />
       </div>
     </section>
 
@@ -376,7 +377,7 @@ const [houseBefore, houseStage1, houseStage2] = houses;
     <section class="hw-band" aria-labelledby="hw-faq">
       <div class="hw-well hw-well-slim">
         <div class="hw-faq-link">
-          <h2 id="hw-faq">Find answers to common questions about the partnership</h2>
+          <h2 id="hw-faq">Find answers to common questions</h2>
           <a class="btn-teal" href="/faqs">Read the FAQs →</a>
         </div>
       </div>

@@ -202,8 +202,8 @@ html body main li { text-wrap: wrap; }
 /* About (Seb, 20 Nov 22:53). */
 @media (max-width: 599px) {
   html body .ab-band-wf { overflow-x: clip; }
-  html body .ab-band-wf .ab-team { width: 130%; max-width: none; margin: 40px 0 0 -15%; transform: none; translate: none; }
-  html body .ab-band-wf .ab-team img { width: 100%; height: auto; }
+  html body .ab-band-wf .ab-team { width: 100%; max-width: none; margin: 44px 0 0; transform: none; translate: none; }
+  html body .ab-band-wf .ab-team-m img { width: 100%; height: auto; }
   /* IODA: logo 40% smaller, under the text, to the right of "Visit IODA". */
   html body .ab-page .ab-ioda { grid-template-columns: minmax(0, 1fr) 168px; gap: 0 16px; column-gap: 16px; align-items: center; }
   html body .ab-ioda .ab-ioda-copy { display: contents; }
@@ -361,11 +361,65 @@ html body .st-phone-wall { display: none; }
   html body #why { padding-bottom: 40px; }
   /* Track record: the same cards as on The Reset. */
   html body #wayfinders .track-card { padding: 24px 0 8px; background: transparent; border: 0; box-shadow: none; }
-  html body #wayfinders .track-nums { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  html body #wayfinders .track-nums { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 12px; }
   html body #wayfinders .track-nums > div {
     display: flex; flex-direction: column; gap: 6px; align-items: center; justify-content: center;
     padding: 22px 10px; background: #fff; border: 1px solid #a3f2d7; border-radius: 20px; text-align: center;
   }
   html body #wayfinders .track-nums strong { font-size: 20px; font-weight: 900; line-height: 1.1; white-space: nowrap; }
   html body #wayfinders .track-nums span { color: #5b3d8a; font-size: 15px; font-weight: 600; line-height: 1.35; }
+}
+
+/* ===== 21 Nov 2026 01:19 (Seb): round 4 ===== */
+@media (max-width: 599px) {
+  /* More room between the last frame on a page and the footer wave: the last band grows by 48px in its own
+     colour (a transparent border shows the band's background). */
+  html body main > :last-child:not(article),
+  html body main > article > :last-child { border-bottom: 48px solid transparent; }
+}
+@media (max-width: 599px) {
+  /* Product pages: the closing card gets room above and below. */
+  html body .pp-page section[aria-labelledby="pp-close"] .ep-well { padding-top: 56px; padding-bottom: 32px; }
+  html body .pp-page .pp-note { font-size: 15px; }
+  html body .pp-page .pp-soon--hero { white-space: nowrap; }
+}
+@media (max-width: 599px) {
+  /* Podcast: host photo 50% bigger; envelope 50% bigger; card labels centred; "The newsletter" in GRASS 600;
+     "Where the chat goes now" on one line. */
+  html body .pod2-host .pod2-host-img { width: 180px !important; height: 180px !important; }
+  html body .pod2-news .pod2-news-art,
+  html body .pod2-news .pod2-news-art img { width: 225px !important; }
+  html body .pod2-card-label { text-align: center; }
+  html body .pod2-news .pod2-card-label { color: #01a684 !important; }
+  html body .pod2-next .pod2-card-label { white-space: nowrap; }
+  html body .pod2-next > * { min-width: 0; }
+  /* FAQ hero topics centred. */
+  html body .faq-hero .faq-common { justify-content: center !important; text-align: center; }
+}
+@media (max-width: 599px) {
+  /* Insights cards: picture and labels start and end where the text does (22px in from the card edge). */
+  html body .bl-page .bl-card:not(.bl-card--row) .bl-card-media { margin: 22px 22px 0 !important; width: auto !important; }
+  html body .bl-page .bl-card:not(.bl-card--row) .bl-card-body { padding-left: 22px !important; padding-right: 22px !important; }
+  html body .bl-page .bl-card:not(.bl-card--row) .bl-card-tags { margin-left: 0 !important; margin-right: 0 !important; padding-left: 0 !important; }
+  html body .bl-page .bl-card--feature .bl-card-title { font-size: 21px !important; }
+  html body .bl-page .bl-card:not(.bl-card--feature) .bl-card-title { font-size: 17px !important; }
+  /* Newsletter strip: heading on one line, white field. */
+  html body .bl-nl h2 { white-space: nowrap; font-size: 22px; }
+  html body .bl-nl-form input[type="email"] { background: #fff !important; }
+}
+@media (max-width: 599px) {
+  /* Stories (21 Nov): picture centred, "How …" on its own line, identity line at caption size, more room
+     before the logos. */
+  html body .st-page .st-case-art { display: flex !important; justify-content: center; width: 100%; }
+  html body .st-page .st-accent { display: block; }
+  html body .st-page .st-anon { font-size: 12px; line-height: 1.5; }
+  html body .st-page .st-phone-wall { margin-bottom: 40px; }
+}
+@media (max-width: 599px) {
+  /* Pathway (21 Nov): more room under the hero; door buttons centred. */
+  html body .dr-band .dr-well-top { padding-top: 56px; }
+  html body .dr-door .dr-door-foot { display: flex; flex-direction: column; align-items: center; text-align: center; }
+  /* Services: "Our services" centred, larger, lower. */
+  html body .pp-page h2#pr-all { text-align: center; font-size: 30px !important; }
+  html body .pp-page section[aria-labelledby="pr-all"] .ep-well { padding-top: 56px; }
 }

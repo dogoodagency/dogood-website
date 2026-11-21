@@ -628,7 +628,9 @@ const days = [
     .fl:not(.fl--home):not(.fl--small) { padding: 40px clamp(20px, 5.56vw, 80px); }
     .fl-panel,
     .fl--home .fl-panel { padding: 24px 20px; gap: 24px; }
-    .fl-laptop { width: 84%; margin: 0 auto; }
+    .fl-laptop { width: 100%; margin: 0 auto; }
+    .fl-laptop .fl-app-foot { display: none; }
+    .fl-flow-share { width: 100%; max-width: none; margin-left: 0; margin-right: 0; box-sizing: border-box; }  /* 21 Nov (Seb): a laptop-shaped screen, not a tall one */
     .fl-laptop-screen { padding: 8px 8px 10px; border-radius: 14px 14px 4px 4px; }
     .fl-laptop-base { height: 10px; margin: 0 -16px; }
     .fl-app { padding: 10px 12px 10px; }

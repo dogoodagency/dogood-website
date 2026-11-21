@@ -124,8 +124,8 @@ const modes = [
           <p>The idea, called entrainment, is that listening nudges attention and arousal toward that state. Research is promising but mixed: reviews find small to moderate effects on anxiety, attention and memory, and results vary between studies and people.</p>
         </div>
         <div class="au-sci-col">
-          <p class="au-approach-eyebrow">How we build your tracks</p>
-          <h3>Three layers, made for you</h3>
+          <p class="au-approach-eyebrow">How we build tracks</p>
+          <h3>Three layers</h3>
           <ol class="au-layers">
             <li>
               <strong>Modulation curves</strong>
@@ -521,6 +521,13 @@ const modes = [
     .au-sci-col { padding: 18px 14px 20px; }
     .au-layers li { padding: 14px 16px; }
     .au-layers li::before { content: none; display: none; }
+    /* 21 Nov 2026 01:19 (Seb): research cards take their number in the top-left corner (as on the Advisor
+       Center referral steps); the 10 Hz box is as wide as the two ear boxes above it. */
+    .au-ac { position: relative; overflow: hidden; padding: 54px 20px 22px; }
+    .au-ac .au-ac-n { position: absolute; top: 0; left: 0; width: 40px; height: 40px; margin: 0; border-radius: 0 0 16px 0; }
+    .au-beat { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto; }
+    .au-beat-ear--b { grid-column: 1 / 4; }
+    .au-modes { margin-top: 22px; }
     .au--compact .au-more { margin: 22px 0 0; padding-bottom: 0; }
     .au--compact .au-more a.btn-teal { display: flex; width: 100%; box-sizing: border-box; justify-content: center; }
   }

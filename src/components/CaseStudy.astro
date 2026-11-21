@@ -98,11 +98,11 @@ const caption = "Founder-focused · Not therapy, not medical advice, not psychol
     <header class="cs-hero">
       <div class="cs-hero-inner">
         <p class="cs-pill">Case study · identity protected</p>
-        <h1>{headline} <span class="cs-accent">{headlineAccent}</span></h1>
+        <h1>{headline} <span class="cs-accent">{headlineAccent.replace(/^\s*—\s*/, "")}</span></h1>
         <p class="cs-intro">{intro}</p>
         {
           highlights.length > 0 && (
-            <ul class="cs-highlights" aria-label="Key results">
+            <ul class="cs-highlights cs-highlights--wide" aria-label="Key results">
               {highlights.map((h) => (
                 <li>
                   <strong>{h.value}</strong>
@@ -118,6 +118,17 @@ const caption = "Founder-focused · Not therapy, not medical advice, not psychol
 
     <section class="cs-band cs-band-tint">
       <div class="cs-well">
+        {/* Phones (Seb, 21 Nov 2026): the results sit below the hero, as equal frames. */}
+        {highlights.length > 0 && (
+          <ul class="cs-highlights cs-highlights--m" aria-hidden="true">
+            {highlights.map((h) => (
+              <li>
+                <strong>{h.value}</strong>
+                <span>{h.label}</span>
+              </li>
+            ))}
+          </ul>
+        )}
         <div class="cs-quote-row">
           <figure class="cs-quote">
             <blockquote>

@@ -1222,3 +1222,26 @@ html:has(.nl-page) {
 @media (max-width: 599px) {
   .nl-page .nl-well .nl-closing p:not(.nl-closing-label) { font-weight: 400; }
 }
+
+/* ===== 21 Nov 2026 01:19 (Seb): newsletter page on phones ===== */
+@media (max-width: 599px) {
+  /* Seven questions: question at card-headline size, answers and "Go deeper" text at body size;
+     the three "Go deeper" parts are split by thin lines instead of boxes, so the text gets the full width. */
+  html body .nl-page #questions .nl-question h3 { font-size: 19px !important; line-height: 1.3; }
+  html body .nl-page #questions .nl-well :is(p, li, summary span:first-child):not(h3) { font-size: 16px !important; line-height: 1.55; }
+  html body .nl-page #questions .nl-deep h4 { font-size: 13px !important; }
+  html body .nl-page .nl-deep-sec {
+    margin: 0;
+    padding: 18px 0 6px;
+    border: 0 !important;
+    border-top: 1px solid #c2b7dd !important;
+    border-radius: 0;
+    background: transparent !important;
+  }
+  html body .nl-page .nl-deep-sec h4 { margin-top: 0; }
+  html body .nl-page .nl-question { padding: 22px 18px; }
+  /* Keep reading: envelope 50% bigger. */
+  html body .nl-signup-split .nl-signup-art { width: min(300px, 100%); }
+  /* Arrival dates: dotted outline. */
+  html body .nl-page .nl-chapters .nl-date-pill { border: 1.5px dotted currentColor !important; }
+}

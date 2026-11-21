@@ -79,8 +79,10 @@ let roadOn = `M${X(6)} ${Y(6)}` + seg(6, 7) + ` C ${(X(7) + endX) / 2} ${Y(7)}, 
               <stop offset="0" stop-color="#f5c400" /><stop offset="0.145" stop-color="#f5c400" />
               <stop offset="0.19" stop-color="#477dfe" /><stop offset="0.25" stop-color="#477dfe" />
               <stop offset="0.305" stop-color="#28dbb0" /><stop offset="0.47" stop-color="#28dbb0" />
-              <stop offset="0.53" stop-color="#ea1557" /><stop offset="0.8" stop-color="#ea1557" />
-              <stop offset="0.86" stop-color="#ff8fb1" /><stop offset="1" stop-color="#ff8fb1" />
+              <stop offset="0.53" stop-color="#ea1557" /><stop offset="0.62" stop-color="#ea1557" />
+              <stop offset="0.65" stop-color="#fd6b82" /><stop offset="0.71" stop-color="#fd6b82" />
+              <stop offset="0.74" stop-color="#feb5bc" /><stop offset="0.8" stop-color="#feb5bc" />
+              <stop offset="0.86" stop-color="#c2b7dd" /><stop offset="1" stop-color="#c2b7dd" />
             </linearGradient>
           </defs>
           <path class="jr-road-dash" d={road} pathLength="100" stroke="url(#jr-phase-grad)" />
@@ -756,6 +758,22 @@ let roadOn = `M${X(6)} ${Y(6)}` + seg(6, 7) + ` C ${(X(7) + endX) / 2} ${Y(7)}, 
   .jr.is-in .jr-lane-track::before { transform: translateY(-50%); clip-path: inset(0 0 0 0); transition: clip-path 9s linear; }
   .jr-lane-track::after { border-color: #ff8fb1; }
   .jr-lane-by { grid-column: 1 / -1; margin: -6px 0 0; color: #8b7dae; font-size: 12px; font-weight: 600; }
+  /* ===== 21 Nov 2026 01:19 (Seb) =====
+     Beyond: IntegralContinuity HEART 500, the Retreat HEART 400, the Membership HEART 200. For life: DREAM.
+     The "Life-long friends" card is solid like the others. The lane label is thin and sits on the logo's line. */
+  .jr-step--heart2 { --c: #fd6b82; --soft: #fff6f7; --hover: #ffd9df; --ink: #c10e46; }
+  .jr-step--heart3 { --c: #feb5bc; --soft: #fff9fa; --hover: #ffe3e6; --ink: #c10e46; }
+  .jr-step--heart3 .jr-badge { color: #960434; }
+  .jr-step--rose { --c: #c2b7dd; --soft: #f5f2ff; --hover: #e9e3f7; --ink: #58447f; }
+  .jr-step--rose .jr-badge { color: #2a0b4f; }
+  .jr-phase--rose { background: #e9e3f7; color: #2a0b4f; }
+  .jr-card--optional { border-style: solid; border-width: 1px; }
+  .jr-lane-track::before {
+    background: linear-gradient(90deg, #f5c400 0%, #f5c400 14.5%, #477dfe 19%, #477dfe 25%, #28dbb0 30.5%, #28dbb0 47%, #ea1557 53%, #ea1557 62%, #fd6b82 65%, #fd6b82 71%, #feb5bc 74%, #feb5bc 80%, #c2b7dd 86%, #c2b7dd 100%);
+  }
+  .jr-lane-track::after { border-color: #c2b7dd; }
+  .jr-lane-label { align-items: flex-end; }
+  .jr-lane-label span { font-weight: 300; line-height: 1; padding-bottom: 0.42em; }
 </style>
 
 <script>

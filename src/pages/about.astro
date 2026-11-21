@@ -7,6 +7,7 @@ import Wave from "../components/Wave.astro";
 import { edgeAbove } from "../data/edge-line";
 import { sebPerson, sebBook, sebPersonId } from "../data/seb-person";
 import team from "../assets/photos/wayfinders.png";
+import teamMobile from "../assets/photos/wayfinders-mobile.png";
 import ioda from "../assets/photos/ioda-logo-heart.png"; // Seb's logo (18 Nov), recoloured to HEART 500 like our client logos (19 Nov 2026)
 
 const tint = "#F5F2FF";
@@ -248,7 +249,17 @@ const aboutLd = {
             alt="The DoGood Wayfinders: Seb, Vlora, Chantill, Shiva and Katrin"
             widths={[800, 1080, 1620]}
             sizes="(max-width: 1080px) 100vw, 1080px"
+            class="ab-team-wide"
           />
+          <!-- Phones (Seb, 21 Nov 2026): the photo without its drawn names, with name pills on top (as on the homepage). -->
+          <div class="ab-team-m" aria-hidden="true">
+            <Image src={teamMobile} alt="" widths={[600, 900, 1200]} sizes="130vw" />
+            <span class="wf-name" style="left:9%;top:33%">Seb</span>
+            <span class="wf-name" style="left:22.5%;top:5%">Vlora</span>
+            <span class="wf-name" style="left:53%;top:3%">Chantill</span>
+            <span class="wf-name" style="left:68.5%;top:1%">Shiva</span>
+            <span class="wf-name" style="left:96%;top:22%;translate:-100% -50%">Katrin</span>
+          </div>
         </figure>
       </div>
     </section>

@@ -318,3 +318,22 @@ header.nav .nav-brand-by {
 
 /* foundr.land logo without a link (until foundr.land is public, Seb 20 Nov 2026): no hover effect. */
 header.nav .nav-apply--static { pointer-events: none; cursor: default; }
+
+/* 21 Nov 2026 01:19 (Seb): every "Coming soon" / "Opening" / "First …" status dot pulses, all at the same size
+   and in the same rhythm, centred on the line (all sizes). */
+@keyframes dg-soon-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(40, 219, 176, 0.55); transform: scale(1); }
+  50% { box-shadow: 0 0 0 6px rgba(40, 219, 176, 0); transform: scale(1.15); }
+}
+:is(.pp-soon, .advr-soon, .adv-page .adv-walk-badge)::before {
+  flex: none;
+  align-self: center;
+  width: 8px !important;
+  height: 8px !important;
+  background: #28dbb0 !important;
+  animation: dg-soon-pulse 1.8s ease-in-out infinite;
+}
+:is(.pp-soon, .advr-soon) { align-items: center; }
+@media (prefers-reduced-motion: reduce) {
+  :is(.pp-soon, .advr-soon, .adv-page .adv-walk-badge)::before { animation: none; }
+}

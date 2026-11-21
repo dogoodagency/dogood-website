@@ -2151,7 +2151,7 @@ html {
   html body .hw-page .hw-textlink { font-size: 15px; white-space: nowrap; }
 
   /* Houses: arrows and labels around the house as on desktop, labels 2px smaller; no boxes. */
-  html body .hw-page .hw-house { width: 44%; margin: 18px auto 52px; }
+  html body .hw-page .hw-house { width: 50%; margin: 22px auto 56px; }
   html body .hw-page .hw-house-box { display: block; aspect-ratio: var(--ar); }
   html body .hw-page .hw-house-img { margin: 0; }
   html body .hw-page .hw-arrow { display: block; }
@@ -2160,16 +2160,16 @@ html {
     display: block;
     left: var(--x);
     top: var(--y);
-    width: max(calc(var(--lw) * 2.5), 78px);
+    width: max(calc(var(--lw) * 2), 72px);
     margin-left: calc(var(--lw) * 0.3);
     padding: 0;
     background: none;
     border-radius: 0;
-    font-size: 12px;
+    font-size: 11px;
     line-height: 1.15;
     text-align: center;
   }
-  html body .hw-page .hw-label--left { margin-left: calc(var(--lw) - max(calc(var(--lw) * 2.5), 78px) - var(--lw) * 0.3); }
+  html body .hw-page .hw-label--left { margin-left: calc(var(--lw) - max(calc(var(--lw) * 2), 72px) - var(--lw) * 0.3); }
   html body .hw-page .hw-label { hyphens: none; overflow-wrap: normal; word-break: normal; }
   html body .hw-page .hw-label::before { content: none; display: none; }
   html body .hw-page .hw-house-wrap .hw-eyebrow,
@@ -2210,4 +2210,65 @@ html {
     border-radius: 0 0 16px 16px;
   }
   html body .hw-page .hw-steps-cta .hw-btn-sub { margin-top: 6px !important; font-size: 12px; }
+}
+
+/* ===== 21 Nov 2026 01:19 (Seb): stage sections on phones ===== */
+@media (max-width: 599px) {
+  /* The house stands free on the band; the frame starts below it, around the description. */
+  html body .hw-page .hw-stage-panel { padding: 0; background: transparent !important; border: 0; border-radius: 0; box-shadow: none; }
+  html body .hw-page .hw-stage-panel .hw-house-wrap { margin-bottom: 8px; padding-bottom: 0; border-bottom: 0; }
+  html body .hw-page .hw-stage-panel .hw-stage-block {
+    padding: 26px 22px 28px;
+    background: #fff;
+    border: 1px solid var(--hw-line);
+    border-radius: 24px;
+  }
+  html body .hw-page .hw-band:not(.hw-band-tint) .hw-stage-panel .hw-stage-block { background: var(--hw-tint); }
+  html body .hw-page .hw-arrow { width: calc(var(--w) * 1.35); }
+  html body .hw-page .hw-stage-block .hw-flow-box { text-align: left; }
+  /* "You may feel uncomfortable about inviting friends": further right, off the edge. */
+  html body .hw-page .hw-house--stage1 p.hw-label:nth-of-type(3) { left: 4%; margin-left: 0; width: 86%; }
+
+  /* Stage colours: Stage 1 GRASS 600, Stage 2 HEART 500. Taglines are pills: Stage 1 a DREAM 500 pill with
+     GRASS 500 text, Stage 2 a DREAM 25 pill with HEART 500 text. */
+  html body .hw-page :is(section[aria-labelledby="hw-recap"], section[aria-labelledby="hw-stage1"]) .hw-stage-kicker { color: #01a684; }
+  html body .hw-page section[aria-labelledby="hw-stage2"] .hw-stage-kicker,
+  html body .hw-page section[aria-labelledby="hw-stage2"] .hw-stage-title { color: #ea1557; }
+  html body .hw-page .hw-stage-block .hw-tagline {
+    display: inline-block;
+    margin: 4px 0 14px;
+    padding: 8px 14px;
+    border-radius: 14px;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+  }
+  html body .hw-page :is(section[aria-labelledby="hw-recap"], section[aria-labelledby="hw-stage1"]) .hw-stage-block .hw-tagline { background: #2a0b4f; color: #28dbb0; }
+  html body .hw-page section[aria-labelledby="hw-stage2"] .hw-stage-block .hw-tagline { background: #f5f2ff; color: #ea1557; border: 1px solid #feb5bc; }
+
+  /* How it works lines. The Reset: centred, the steps on one line under the label. The Build: left aligned,
+     with room under the "Start with Stage 1" link. */
+  html body .hw-page .hw-start .hw-flow-sm { text-align: center; font-size: 15px; }
+  html body .hw-page .hw-start .hw-flow-sm a { display: block; }
+  html body .hw-page .hw-path .hw-path-note { text-align: center; }
+  html body .hw-page--s2 .hw-path .hw-path-note { text-align: left; margin-bottom: 18px; }
+  html body .hw-page--s2 .hw-path .hw-flow-sm { text-align: left; }
+  /* Not there yet?: GRASS 600. */
+  html body .hw-page .hw-notyet-eyebrow { color: #01a684; }
+  /* Sound bites: a section headline. */
+  html body .hw-page #hw-familiar { font-size: 26px !important; line-height: 1.2; }
+}
+@media (max-width: 599px) {
+  /* Section headlines on the stage pages at the section size. */
+  html body .hw-page :is(#hw-steps, #hw-track, #hw-faq, #hw-supports) { font-size: 26px !important; line-height: 1.2; }
+  html body .hw-page .hw-faq-link { text-align: center; align-items: center; }
+  html body .hw-page .hw-faq-link h2 { text-align: center !important; }
+  html body .hw-page .hw-faq-link .btn-teal { align-self: center; }
+  /* "Our Annual Signature Retreat →": white, one line. */
+  html body .hw-page .hw-retreat .hw-retreat-link a { color: #fff !important; white-space: nowrap; font-size: 16px; }
+  /* Clarity-First card: no gap above the seal. */
+  html body .hw-page .hw-guarantee { padding-top: 24px !important; }
+  html body .hw-guarantee .hw-seal { margin-top: 0; }
+  /* More room at the end of the page, above the footer wave. */
+
 }

@@ -6,6 +6,28 @@ why, and anything the next person needs to check.
 
 ---
 
+## Preview 8, update 24: mobile pass, round 4 (Seb, 21 Nov 2026 01:19)
+
+Phones under 600px unless marked "all sizes".
+- All pages: more room between the last frame and the footer wave; footer link "Privacy" (all sizes); every "Coming soon" / status dot pulses in the same rhythm (all sizes).
+- Testimonials on phones: no testimonial appears on two pages (data/phone-picks.ts): Home, Stories, The Reset and Wayfinders each have their own; The Reset and The Build split the six sound bites. Peter V is "Founder" (all sizes).
+- The Reset / The Build: stage switch without borders, Stage 2 on a white card with HEART 500, Stage 1 on DREAM with a GRASS tagline pill (all sizes). House sections: the house stands free and bigger, the frame starts under it; labels 11px, arrows larger. Stage 1 GRASS 600, Stage 2 HEART 500, taglines as pills. "How it works" added to the Stage 1 recap on The Build (all sizes). "You've completed Stage 1" removed; "By week 3, we will know:"; "You apply for Stage 1 only." removed (all sizes); How it works lines centred (Reset) / left (Build); sound bites heading at section size; Not there yet? GRASS 600; FAQ "Find answers to common questions" centred (all sizes); "These supports run through both stages:" and "Our Annual Signature Retreat →" in white (all sizes); less space above the Clarity-First seal; bigger section headlines.
+- State-Shift Audio: research cards numbered in the corner; 10 Hz box as wide as the two ear boxes; "Three layers" and "How we build tracks" (all sizes); more space above Focus (also Exit Prep). WHOOP heading tighter.
+- Product pages: closing cards with more room; FOUNDR.land Membership eyebrow breaks before "a founder community"; "First retreat: Nov 2027"; retreat note smaller; Residency: two notes removed, "You plan it with your Wayfinder, from four categories." (all sizes).
+- Expedited Start (all sizes): title breaks before "Priority Hold"; "Non-refundable", "A collapse after the sale", "A health scare escalating".
+- Exit Prep / foundr.land: laptop full width with a shorter screen; advisor "Shared with you" box full width.
+- FAQ: topic pills centred.
+- Newsletter: question headings 19px, answers 16px; "Go deeper" parts split by lines instead of boxes; envelope 50% bigger; dotted date pills.
+- Podcast: host photo and envelope 50% bigger; labels centred, "The newsletter" GRASS 600; "Where the chat goes now" (all sizes).
+- Insights: card picture and labels on the text padding; titles 2px smaller; "Get every new insight" (all sizes) on one line; white email field.
+- About: calmer reveal (all sizes); numbers in the card corners; How we work 1 in BLUE (all sizes); Who we work with/alongside with a DREAM 200 line (all sizes); building and bench 40% bigger; Wayfinders photo with name pills, button centred; IODA eyebrow, headline and link GRASS 600 (all sizes).
+- Case studies J and V: results moved under the hero as equal frames; dash before "How" removed (all sizes, also Stories); "How …" on its own line, 2px smaller.
+- Pathway: comma after FOUNDR.land in the same green (all sizes); Beyond colours HEART 500 / 400 / 200, Life-long friends DREAM, solid card (all sizes); "is with you at every step" thin, on the logo's line (all sizes); more room under the hero; door buttons centred.
+- Services: "Our services" centred, larger, lower.
+- Stories: picture centred, identity line at caption size, more room before the logos.
+- Wayfinders: shorter hero text with two words highlighted (all sizes); map full width; Japan & Korea pin on Japan (all sizes); "Limited to 5 new founders a month" centred under the button; soft DREAM pattern behind each Wayfinder (all sizes); "Ready to be matched" left aligned, one button (Client-fit process), shorter text, "Not sure yet…" removed (all sizes).
+- Home: track record cards the same height.
+
 ## Preview 8, update 23: mobile pass, round 3 (Seb, 20 Nov 2026 23:29 and 23:43)
 
 Phones under 600px unless marked "all sizes".

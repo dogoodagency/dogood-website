@@ -25,9 +25,12 @@ interface Props {
   short?: boolean;
   /** Phones only (under 600px): show just these items instead of the full list, each quote cut to 6 lines. */
   phoneItems?: WallItem[];
+  /** Phones only: the names to show, in order (see data/phone-picks.ts). Wayfinder voices are kept too. */
+  phonePick?: readonly string[];
 }
 
-const { items, tone = "light", label, short = false, phoneItems: phoneGiven } = Astro.props;
+const { items, tone = "light", label, short = false, phoneItems: phoneGiven0, phonePick } = Astro.props;
+const phoneGiven = phoneGiven0 ?? (phonePick ? phonePick.map((n) => items.find((i) => i.name.toUpperCase() === n.toUpperCase())).filter((i): i is WallItem => !!i) : undefined);
 // 20 Nov 2026 (Seb): on phones a testimonial wall shows five reviews (cut to 6 lines), the ones closest to life
 // after the exit when they are in the list, then the first ones. Sound bites (short) are cut to three in CSS.
 const PHONE_PICK = ["TAMI L", "ZEINA G", "GAJAN R", "GINA P", "BROOK H"];

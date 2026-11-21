@@ -1829,3 +1829,23 @@ h2.wf-h2.wf-center {
   margin-left: auto;
   margin-right: auto;
 }
+
+/* ===== 21 Nov 2026 01:19 (Seb) ===== */
+/* Wayfinder photos: a soft DREAM pattern behind each person, so the card is not plain (all sizes). */
+.wf-photo {
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(194, 183, 221, 0.35) 0 2px, transparent 2.5px),
+    radial-gradient(circle at 70% 70%, rgba(194, 183, 221, 0.25) 0 1.5px, transparent 2px),
+    radial-gradient(120% 90% at 50% 110%, rgba(233, 227, 247, 0.9), transparent 70%);
+  background-size: 22px 22px, 30px 30px, 100% 100%;
+}
+@media (max-width: 599px) {
+  /* Map: the world spans the full screen width. */
+  .wf-page .wf-map { width: 100vw; max-width: none; margin-left: calc(50% - 50vw); margin-right: 0; }
+  .wf-page .wf-apply { display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .wf-page .wf-apply .wf-note { margin-top: 6px; text-align: center; }
+  /* Ready to be matched: left aligned, tighter. */
+  .wf-page .wf-cta { text-align: left; align-items: flex-start; padding: 26px 22px; }
+  .wf-page .wf-cta :is(h2, p) { text-align: left; }
+  .wf-page .wf-cta .wf-cta-actions { justify-content: flex-start; }
+}

@@ -659,3 +659,26 @@ body:has(.cs-page) .footer-wave {
 @media (max-width: 760px) {
   .cs-highlights { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+
+/* ===== 21 Nov 2026 01:19 (Seb): case studies on phones ===== */
+.cs-highlights--m { display: none; }
+@media (max-width: 599px) {
+  .cs-highlights--wide { display: none !important; }
+  .cs-page .cs-highlights--m {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 1fr;
+    gap: 12px;
+    margin: 0 0 28px;
+  }
+  .cs-page .cs-highlights--m li {
+    justify-content: center;
+    padding: 18px 14px;
+    border: 1px solid #c2b7dd;
+    background: #fff;
+    text-align: center;
+  }
+  .cs-page .cs-highlights--m strong { color: #01a684; font-size: 26px; }
+  .cs-page .cs-highlights--m span { color: #2a0b4f; font-size: 14px; }
+  .cs-hero h1 .cs-accent { display: block; font-size: calc(1em - 2px); }
+}

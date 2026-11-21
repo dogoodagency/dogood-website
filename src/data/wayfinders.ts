@@ -210,7 +210,7 @@ export const mapPins: { name: string; x: number; y: number }[] = [
   { name: "Portugal & Spain", x: 483.5, y: 216.4 },
   { name: "Central Europe", x: 527.4, y: 187.9 },
   { name: "UAE", x: 649.6, y: 262.1 },
-  { name: "Japan & Korea", x: 867.8, y: 224.3 },
+  { name: "Japan & Korea", x: 884, y: 222 },
   { name: "Southeast Asia", x: 807.4, y: 330.7 },
   { name: "Australia (east coast)", x: 914.4, y: 415.6 },
 ];

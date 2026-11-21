@@ -1,4 +1,5 @@
 ---
+import { phonePicks } from "../data/phone-picks";
 /**
  * Stage 2: The Build (Seb, 19 Nov 2026). Its own page, split from /the-reset. Stage 2 copy moved here word
  * for word; the two-step progress bar and the Stage 1 recap keep the link to Stage 1.
@@ -88,7 +89,7 @@ const [, houseStage1, houseStage2] = houses;
       <div class="hw-well">
         <h2 id="hw-familiar" class="hw-center">Sound bites</h2>
         <p class="hw-center hw-sub-center">Words from real calls with founders and the advisors who walk with them.</p>
-        <TestimonialWall items={familiar.map((q) => ({ quote: q.quote, name: q.name, role: q.role }))} short label="Sound bites from real calls with founders and advisors" />
+        <TestimonialWall items={familiar.map((q) => ({ quote: q.quote, name: q.name, role: q.role }))} short phonePick={phonePicks.buildBites} label="Sound bites from real calls with founders and advisors" />
       </div>
     </section>
 
@@ -100,12 +101,12 @@ const [, houseStage1, houseStage2] = houses;
         <div class="hw-stage-panel">
         <HwHouse house={houseStage1} />
         <div class="hw-prose hw-stage-block">
-          <p class="hw-eyebrow hw-eyebrow-left">You’ve completed Stage 1</p>
           <h2 id="hw-recap" class="hw-stage-head"><span class="hw-stage-kicker">Stage 1</span><span class="hw-stage-title">The Reset <span class="hw-days">(30 days)</span></span></h2>
           <p class="hw-tagline">Get Clear · Set New Values · Shift Patterns</p>
+          <p class="hw-flow hw-flow-box"><strong>How it works:</strong> See → Interrupt → Choose → Reset</p>
           <p>Stage 1 is about discovering who you want to be without the company: the identity-level shifts, what excites you, how you want to live, and what matters to you now.</p>
           <p>By day 30, you are not just clearer. You have started to reset how you live: what you pay attention to, what no longer runs your life, and what needs to change.</p>
-          <p>By week 3, we will know one of two things:</p>
+          <p>By week 3, we will know:</p>
           <ul class="hw-plain">
             <li>(1) Stage 1 gave you what you needed,</li>
             <li>(2) There is a fit for Stage 2, and we continue.</li>
