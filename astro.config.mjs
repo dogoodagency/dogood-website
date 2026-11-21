@@ -3,6 +3,10 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import trademark from "./integrations/trademark.mjs";
+import indexing from "./integrations/indexing.mjs";
+
+// OFF unless consciously enabled on launch day; see docs/launch-index-switch.md.
+const siteIndexable = process.env.SITE_INDEXABLE === "true";
 
 // Sitemap <lastmod>: see src/lib/lastmod.mjs.
 import { gitDate, sourceFor } from "./src/lib/lastmod.mjs";
@@ -11,7 +15,7 @@ import { gitDate, sourceFor } from "./src/lib/lastmod.mjs";
 export default defineConfig({
   site: "https://www.dogoodagency.co",
   trailingSlash: "never",
-  integrations: [trademark(), sitemap({
+  integrations: [indexing(siteIndexable), trademark(), sitemap({
     // The placeholder articles were replaced by real ones on 18 Nov 2026, so articles are included.
     filter: (page) =>
       // Thank-you, booking and form-acknowledgement pages stay out of the sitemap (and are noindex).
@@ -24,6 +28,7 @@ export default defineConfig({
     },
   })],
   vite: {
+    define: { "import.meta.env.SITE_INDEXABLE": JSON.stringify(String(siteIndexable)) },
     plugins: [tailwindcss()],
     build: {
       // Netlify's script-src 'self' blocks inlined module scripts. Keep every

@@ -1,7 +1,7 @@
 ---
 title: Cookies Policy
 description: How DoGood OÜ uses cookies and similar tools on dogoodagency.co.
-updated: "20 November 2026"
+updated: "November 21, 2026"
 bandTint: "#FEFEF3"
 bandGroups:
   - "1-3"
@@ -9,7 +9,7 @@ bandGroups:
   - "8-10"
 ---
 
-Last updated: November 20, 2026
+Last updated: November 21, 2026
 
 ## What cookies are
 
@@ -19,7 +19,7 @@ DoGood OÜ uses cookies on [www.dogoodagency.co](/). This policy explains which 
 
 ## Our legal basis
 
-We only use cookies that are not strictly necessary if you agree. This follows the EU ePrivacy rules as applied in Estonia, and the GDPR. Where cookies involve personal data, our legal basis is your consent (Art. 6(1)(a) GDPR).
+Analytics and advertisement cookies load only if you agree. This follows the EU ePrivacy rules as applied in Estonia, and the GDPR. Where these cookies involve personal data, our legal basis is your consent (Art. 6(1)(a) GDPR). The live-chat widget loads on every visit without waiting for functional-cookie consent, as described below.
 
 Strictly necessary cookies do not need your consent. Without them, the site or a service you asked for would not work.
 
@@ -33,11 +33,11 @@ These make the site work and remember your choices. They are always on.
 
 ## Functional cookies
 
-These add features you choose to use. They load only after you accept functional cookies in our cookie banner.
+These support features such as live chat. The chat widget loads on every visit and does not wait for functional-cookie consent in our cookie banner.
 
 | Tool | Purpose | Set by | Cookie names | Duration |
 | --- | --- | --- | --- | --- |
-| tawk.to live chat (shown as "Ava") | Runs the chat window and keeps your conversation going between pages. It loads only after you accept functional cookies | tawk.to | tawk_uuid_* (6 months); twk_idm_key (session); TawkConnectionTime (session) | 6 months; session; session |
+| tawk.to live chat (shown as "Ava") | Runs the chat window and keeps your conversation going between pages. It loads on every visit without waiting for functional-cookie consent | tawk.to | tawk_uuid_* (6 months); twk_idm_key (session); TawkConnectionTime (session) | 6 months; session; session |
 
 ## Analytics cookies
 
@@ -65,7 +65,7 @@ These load only after you accept advertisement cookies in our cookie banner.
 
 ## How to change or withdraw your consent
 
-You can reopen the cookie banner at any time with the "Cookie settings" link in the site footer, next to Privacy and Terms. There you can accept, decline or change your choices for each group.
+You can change or withdraw consent through the cookie banner. This page explains the cookie groups so you can review your preferences. The live-chat widget loads independently of functional-cookie consent.
 
 If you withdraw your consent, this does not affect anything that happened before you withdrew.
 

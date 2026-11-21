@@ -49,9 +49,8 @@ const ogDescription = Astro.props.description
 const twitterDescription = ogDescription;
 const ogImage = new URL(Astro.props.ogImage ?? "/og.jpg", canonical).href;
 const ogType = Astro.props.ogType ?? "website";
-// Pre-launch default. "nofollow" removed on preview 6 so the free Screaming Frog can crawl;
-// at launch change this to "index, follow" (see CHANGELOG.md, launch checklist).
-const robots = Astro.props.robots ?? "noindex, nofollow";
+// Single launch-day switch: docs/launch-index-switch.md. Explicit page noindex always wins.
+const robots = Astro.props.robots ?? (import.meta.env.SITE_INDEXABLE === "true" ? "index, follow" : "noindex, nofollow");
 
 // The website itself (homepage only), so search engines and AI tools tie the site name to DoGood Agency.
 const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "/index.html";
@@ -121,10 +120,7 @@ const organization = {
     <link rel="preload" href={montserrat400} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={montserrat800} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={montserrat900} as="font" type="font/woff2" crossorigin />
-    <!--
-      Preview only. At launch, delete this robots meta tag and update
-      public/robots.txt so the site can be indexed.
-    -->
+    <!-- Keep this tag: booking, thank-you and other private pages override the launch default. -->
     <meta name="robots" content={robots} />
     <script
       id="cookieyes"

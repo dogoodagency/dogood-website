@@ -1,10 +1,4 @@
-# Preview build. No crawler may crawl or index this site until launch (Seb, 18 Nov 2026).
-# The Screaming Frog exception from preview 6 was removed on 18 Nov 2026.
-# At launch, replace this whole file with:
-#   User-agent: *
-#   Allow: /
-#
-#   Sitemap: https://www.dogoodagency.co/sitemap-index.xml
-# Also remove the noindex meta default in src/layouts/Base.astro and the X-Robots-Tag line in netlify.toml.
+# Preview lockdown. Single launch-day switch: docs/launch-index-switch.md.
+# The build writes the launch version only when SITE_INDEXABLE is exactly true.
 User-agent: *
 Disallow: /

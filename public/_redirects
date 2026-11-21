@@ -12,6 +12,30 @@
 
 /sitemap.xml                                    /sitemap-index.xml                     301
 
+# Old Wix sitemap children (21 Nov 2026), including slash variants.
+/sitemap.xml/  /sitemap-index.xml  301
+/pages-sitemap.xml  /sitemap-index.xml  301
+/pages-sitemap.xml/  /sitemap-index.xml  301
+/blog-posts-sitemap.xml  /sitemap-index.xml  301
+/blog-posts-sitemap.xml/  /sitemap-index.xml  301
+/blog-categories-sitemap.xml  /sitemap-index.xml  301
+/blog-categories-sitemap.xml/  /sitemap-index.xml  301
+/dynamic-team_p_c0484db3_544b_43ea_a21e_4136c15dc7ea_0_5000-sitemap.xml  /sitemap-index.xml  301
+/dynamic-team_p_c0484db3_544b_43ea_a21e_4136c15dc7ea_0_5000-sitemap.xml/  /sitemap-index.xml  301
+/dynamic-case-studies_p_22977572_31ae_4dde_ad0e_4d1a8bcd76b4_0_5000-sitemap.xml  /sitemap-index.xml  301
+/dynamic-case-studies_p_22977572_31ae_4dde_ad0e_4d1a8bcd76b4_0_5000-sitemap.xml/  /sitemap-index.xml  301
+/dynamic-case_p_65ff031b_2feb_4621_a50b_d08f9b1dcbde_0_5000-sitemap.xml  /sitemap-index.xml  301
+/dynamic-case_p_65ff031b_2feb_4621_a50b_d08f9b1dcbde_0_5000-sitemap.xml/  /sitemap-index.xml  301
+/dynamic-podcast_p_2d811c3f_9796_465a_a7cc_2f29687a76ac_0_5000-sitemap.xml  /sitemap-index.xml  301
+/dynamic-podcast_p_2d811c3f_9796_465a_a7cc_2f29687a76ac_0_5000-sitemap.xml/  /sitemap-index.xml  301
+
+# Retired diagnostics and blog feed: no redirect or replacement page.
+/diagnostics  /404.html  410!
+/diagnostics/  /404.html  410!
+/diagnostics.html  /404.html  410!
+/blog-feed.xml  /404.html  410!
+/blog-feed.xml/  /404.html  410!
+
 # Same content, new address (301 = moved permanently)
 /blog                                           /insights                              301
 /founders                                       /the-reset                             301!

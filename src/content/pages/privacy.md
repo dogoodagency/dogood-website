@@ -1,6 +1,7 @@
 ---
 title: "Privacy - Customer Privacy Policy - DoGood Agency"
 description: "How DoGood collects, uses and protects personal data when you use dogoodagency.co or work with us, and the rights you have over your data."
+updated: "November 21, 2026"
 bandTint: "#F5F2FF"
 bandGroups:
   - "1-4"
@@ -8,7 +9,7 @@ bandGroups:
   - "9-12"
 ---
 
-Last updated: November 20, 2026
+Last updated: November 21, 2026
 
 The controller is DoGood OÜ (Estonia, registry code 14695833). Contact: hiya@dogoodagency.co.
 
@@ -20,7 +21,7 @@ At DoGood Agency, we respect your privacy and are committed to protecting your p
 
 Our website host processes basic technical data (IP address, browser and device type, pages requested, referring page) to deliver the site and keep it secure.
 
-With your consent, we also use Google Analytics and Microsoft Clarity to understand how visitors use the site (pages viewed, clicks, scrolling, device and approximate location), and the LinkedIn Insight Tag to see, in aggregate, what kinds of professionals visit and to measure LinkedIn advertising. Clarity records anonymized sessions; it masks text you type. These tools only run after you accept analytics or advertisement cookies in our cookie banner, and you can withdraw consent at any time.
+With your consent, we use analytics and heat-map tools to understand how visitors use the site (pages viewed, clicks, scrolling, device and approximate location), and an advertising measurement tool to see, in aggregate, what kinds of professionals visit and to measure advertising. The heat-map tool records anonymized sessions and masks text you type. Analytics and heat-map tools only run after you accept analytics cookies; advertising measurement only runs after you accept advertisement cookies in our cookie banner. You can withdraw consent at any time.
 
 ### Information You Provide
 
@@ -39,7 +40,7 @@ This may include your name, email address, company name, job title, phone number
 
 ### Payment Information
 
-If you purchase services from us, we collect payment information through secure third-party processors (bank transfer through Wise, or card payment through Stripe). We do not store your full credit card details on our servers.
+If you purchase services from us, we collect payment information through secure third-party processors (bank transfer through our bank-transfer provider, or card payment through our card-payment provider). We do not store your full credit card details on our servers.
 
 ## 2. HOW WE USE YOUR INFORMATION
 
@@ -59,7 +60,7 @@ We will never sell your personal information to third parties.
 
 We may share your information only in the following circumstances:
 
-We share data only with service providers who help us run DoGood, under data processing terms: website hosting, cookie consent, live chat, call booking, online forms, email newsletter, customer records, e-signature, email and office tools, our podcast player, website analytics (Google, Microsoft) and advertising measurement (LinkedIn). Payments are handled by Wise (bank transfer) and Stripe (card payment). A current list of providers is available on request at hiya@dogoodagency.co.
+We share data only with service providers who help us run DoGood, under data processing terms: website hosting, cookie consent, live chat, call booking, online forms, email newsletter, customer records, e-signature, email and office tools, our podcast player, analytics and heat-map tools and an advertising measurement tool. Payments are handled by our bank-transfer provider and our card-payment provider. A current list of providers is available on request at hiya@dogoodagency.co.
 
 Legal Requirements: We may disclose information if required by law, court order, or government regulation, or if necessary to protect our rights, prevent fraud, or ensure safety.
 
@@ -73,7 +74,7 @@ We handle data to answer you and to prepare or perform a contract, because the l
 
 ### Transfers
 
-Some providers, including our payment providers (Wise, Stripe), process data outside the EU/EEA; where they do, we rely on safeguards such as the EU Standard Contractual Clauses.
+Some providers, including our payment providers, process data outside the EU/EEA; where they do, we rely on safeguards such as the EU Standard Contractual Clauses.
 
 ## 4. YOUR PRIVACY RIGHTS
 
@@ -91,7 +92,7 @@ To exercise these rights, contact us at: [hiya@dogoodagency.co](mailto:hiya@dogo
 
 ## 5. COOKIES
 
-COOKIES: We use only the cookies needed to run the site and, with your consent, cookies for optional features such as live chat, analytics (Google Analytics, Microsoft Clarity) and advertising measurement (LinkedIn Insight Tag). For details and to change your choices, see our [Cookies Policy](/cookies).
+COOKIES: We use cookies to run the site and live chat. The live-chat provider loads on every visit without waiting for functional-cookie consent. Analytics and heat-map tools run only after analytics consent, and advertising measurement runs only after advertisement consent. For details and to change your choices, see our [Cookies Policy](/cookies).
 
 ## 6. DATA SECURITY
 

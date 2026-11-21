@@ -4,7 +4,7 @@ import Base from "../layouts/Base.astro";
 import Wave from "../components/Wave.astro";
 import { edgeAbove } from "../data/edge-line";
 
-// Seb: switch to true on Saturday once the PDFs are in public/downloads/
+// Seb: switch to true once the PDFs exist in public/downloads/
 const SHOW_PDF_DOWNLOADS = false;
 
 const tint = "#F5F2FF";
@@ -339,15 +339,16 @@ const heroLine =
             ))
           }
         </ol>
-        <div class="nl-download" hidden={!SHOW_PDF_DOWNLOADS}>
-          <a
-            class="btn-teal"
-            href="/downloads/first-90-days-7-questions.pdf"
-            target="_blank"
-            rel="noopener"
-            hidden={!SHOW_PDF_DOWNLOADS}>Download the 7 questions (PDF)</a
-          >
-        </div>
+        {SHOW_PDF_DOWNLOADS && (
+          <div class="nl-download">
+            <a
+              class="btn-teal"
+              href="/downloads/first-90-days-7-questions.pdf"
+              target="_blank"
+              rel="noopener"
+            >Download the 7 questions (PDF)</a>
+          </div>
+        )}
       </div>
     </section>
 
@@ -373,15 +374,16 @@ const heroLine =
             <p class="nl-emph">We'll start where the deal ends.</p>
             <p class="nl-source">Source: Byezhanova, Concordia University, 2026.</p>
           </div>
-          <div class="nl-download" hidden={!SHOW_PDF_DOWNLOADS}>
-            <a
-              class="btn-teal"
-              href="/downloads/before-and-after-the-sale-prologue.pdf"
-              target="_blank"
-              rel="noopener"
-              hidden={!SHOW_PDF_DOWNLOADS}>Download the prologue (PDF)</a
-            >
-          </div>
+          {SHOW_PDF_DOWNLOADS && (
+            <div class="nl-download">
+              <a
+                class="btn-teal"
+                href="/downloads/before-and-after-the-sale-prologue.pdf"
+                target="_blank"
+                rel="noopener"
+              >Download the prologue (PDF)</a>
+            </div>
+          )}
         </div>
       </div>
     </section>
