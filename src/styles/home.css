@@ -8014,3 +8014,26 @@ body:has(.page-home) {
     padding-right: var(--pad);
   }
 }
+
+/* 21 Nov 2026 (Seb, iPad/laptop check): between 1081px and 1535px the hero drawing ran over the hero text.
+   In that range the text takes the full width and the drawing sits under it, door on the right. */
+@media (min-width: 1081px) and (max-width: 1535px) {
+  .page-home .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .page-home .hero-copy { max-width: 760px; }
+  .page-home .hero-draw { position: relative; display: block; }
+  .page-home .hero-draw::before { display: none; }
+  .page-home .hero-sketch-frame,
+  .page-home .hero-sketch-frame.door-anim {
+    position: relative;
+    left: auto;
+    top: auto;
+    translate: none;
+    width: min(980px, 82%);
+    margin: -50px 0 -70px auto;
+  }
+}
+@media (min-width: 1081px) and (max-width: 1535px) {
+  /* "Apply for Stage 1" under the first-step card instead of beside it (it ran into the card). */
+  #apply-first { display: flex; justify-content: center; }
+  #apply-first .apply-first-slot { position: static !important; margin: 28px auto 0 !important; text-align: center; }
+}

@@ -2,6 +2,7 @@
    Phones only (under 600px). Loaded after site-rules.css so it wins over earlier rules. */
 
 html body .ft-br-m { display: none; }
+html body #wayfinders .wf-m { display: none; }
 
 
 @media (max-width: 599px) {
