@@ -8073,10 +8073,16 @@ body:has(.page-home) {
 
 .page-home :is(#for-you, #next) :is(.card-before, .card-after) > a {
   align-self: center;
-  margin: 32px 0;
+  margin: 32px 0 0;
+  box-sizing: border-box;
+  width: 300px;
   max-width: 100%;
   border: 0;
 }
+
+.page-home #next .next-doors p { flex: 1; }
+
+.page-home #next :is(.card-before, .card-after) > a.btn-apply { width: 300px; }
 
 /* Replace the preview-9 desktop overrides; stacked cards keep their existing layout. */
 @media (min-width: 1081px) {
@@ -8095,6 +8101,14 @@ body:has(.page-home) {
   width: auto;
   max-width: 1080px;
   padding-inline: var(--pad);
+}
+
+@media (min-width: 1081px) {
+  .page-home #next .next-inner { padding-top: 336px; }
+}
+
+@media (max-width: 599px) {
+  .page-home #next .next-inner { padding-top: 168px; }
 }
 
 .page-home #next .next-inner > p:not(.next-note) {
