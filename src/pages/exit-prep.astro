@@ -32,12 +32,12 @@ const places = ["Not sure you want to sell at all.", "Thinking about selling.", 
 // Sound bites from real calls (Call Language Log, non-private rows, lightly cleaned). Names are stand-ins (first name + initial, Seb 19 Nov 2026); the page says they are changed.
 // The first three were already here; three added 19 Nov 2026 (Q005, Q092, Q132).
 const quotes = [
-  { quote: "Maybe we're a year and a half out.", name: "Mark T", role: "Founder" },
-  { quote: "It would make sense to start to get clarity on the human part of it a year prior to that.", name: "David R", role: "Founder" },
-  { quote: "The truth is, I have no idea.", name: "Sarah K", role: "Co-founder" },
-  { quote: "Or just sell it, take all the risk off the table and ride off into the sunset.", name: "Paul M", role: "Founder" },
-  { quote: "Leading up to a transaction is very stressful.", name: "Lisa B", role: "Exit advisor" },
-  { quote: "They really want to exit, but they're just scared. They're putting the brakes on.", name: "James W", role: "Founder community owner" },
+  { quote: "Maybe we're a year and a half out.", name: "Founder" },
+  { quote: "The truth is, I have no idea.", name: "Founder" },
+  { quote: "It would make sense maybe to start to get clarity on the human part of it, a year prior to that.", name: "Founder" },
+  { quote: "They get so tunnel focused on making it happen that they don't necessarily plan for their own finances or their own careers or their happiness.", name: "Exit advisor" },
+  { quote: "Leading up to a transaction is very stressful.", name: "Exit advisor" },
+  { quote: "They really want to exit, but they're just scared. They're putting the brakes on.", name: "Founder" },
 ];
 
 // From the Exit-Prep one-pager (v1, Seb, 19 Nov 2026). The price is left out until Seb decides on publishing prices.
@@ -60,7 +60,7 @@ const faqs = [
   { q: "I like the idea, but does this concern me yet?", a: "That's the most common thought we hear, and the best moment to start. The personal side is easiest to shape before the deal sets the timeline." },
   { q: "When should I start preparing myself to sell my business?", a: "Ideally 12 to 18 months before you sign. That gives you time to get clear on who you want to be without the company while the decision and the deal are still in your hands. If closing is closer than that, it is still worth starting." },
   { q: "Can I do The Exit Prep if I'm already under LOI or have an earnout ahead?", a: "Yes. The Exit Prep is built for the whole stretch before and around the sale, including a live process, an LOI or an earnout. We work next to your advisors, never instead of them." },
-  { q: "What if I'm having second thoughts about selling?", a: "That is common, and it is not a sign you shouldn't sell. Second thoughts usually come from not being able to picture life afterwards. The Exit Prep gives that picture shape, so you make the decision calmly, whichever way it goes." },
+  { q: "What if I'm having second thoughts about selling?", a: "That is common, and it is not a sign you shouldn't sell. Second thoughts usually come from not being able to picture life afterward. The Exit Prep gives that picture shape, so you make the decision calmly, whichever way it goes." },
   { q: "What if I'm worried about what happens to the company and my team after I go?", a: "That worry is common, and it often keeps founders from deciding at all. We look at it directly: what you need to see in place to let go, and what is yours to carry and what isn't." },
   { q: "What does it cost?", a: "We share the fee on the first call, so it fits where you are. The Exit Prep is six weeks, with a simple agreement before you start." },
   { q: "Is The Exit Prep therapy or financial advice?", a: "Neither. The Exit Prep is private 1:1 work on the personal side of selling your business: the decision, what comes next and how you go into the sale. We don't give financial, tax or legal advice, and we are not a medical or psychological service." },
@@ -118,7 +118,7 @@ const faqJson = {
     <section class="ep-band" aria-labelledby="ep-what">
       <div class="ep-well ep-well-top">
         <h2 id="ep-should">Should I sell my business, or am I just tired?</h2>
-        <p class="ep-lede-plain ep-lede-full">Most founders who ask whether to sell are really asking what life looks like afterwards. Tired of the company, or ready to leave it? That question deserves an answer before you sign anything.</p>
+        <p class="ep-lede-plain ep-lede-full">Most founders who ask whether to sell are really asking what life looks like afterward. Tired of the company, or ready to leave it? That question deserves an answer before you sign anything.</p>
         <h2 id="ep-what">What is The Exit Prep™?</h2>
         <p class="ep-lede-plain ep-lede-full">A six-week, 1:1 engagement with a DoGood Wayfinder for founders who plan to sell their company but haven't yet. The six weeks create the clarity to decide, at a commitment that matches where you are now.</p>
         <p class="ep-lede-plain ep-lede-full">For some founders, clarity means knowing what they actually want to get busy with after the sale. For others, it means working through what quietly holds them back from letting go: a conversation that needs to happen, a health question that keeps getting postponed, or a life outside the company they have been too busy to look at.</p>
@@ -145,9 +145,9 @@ const faqJson = {
 
     <section class="ep-band ep-band-tint" aria-labelledby="ep-familiar">
       <div class="ep-well ep-well-top">
-        <h2 id="ep-familiar">Sound bites</h2>
-        <p class="ep-lede-plain">Words from real calls with founders and the advisors who walk with them.</p>
-        <TestimonialWall items={quotes} short label="Sound bites from real calls with founders and advisors" />
+        <h2 id="ep-familiar">In their words</h2>
+        <p class="ep-lede-plain">Real words from our conversations with founders and the advisors who work with them. Shared without names.</p>
+        <TestimonialWall items={quotes} short label="In their words" />
       </div>
     </section>
 

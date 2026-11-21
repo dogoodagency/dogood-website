@@ -9,11 +9,11 @@ import TestimonialWall from "../../../components/TestimonialWall.astro";
 import FoundrLand from "../../../components/FoundrLand.astro";
 // Same advisor quotes as the Refer a founder page (stand-in names).
 const advisorQuotes = [
-  { quote: "Most people are talking with that founder around just the business side of the equation. They're not asking questions about the personal side.", name: "Robert H", role: "Wealth advisor" },
-  { quote: "Remember that founder has probably not built a business and sold one before. So they have no idea what's coming.", name: "Julia M", role: "Wealth advisor" },
-  { quote: "I can do my best work if I get someone before an LOI.", name: "Kevin S", role: "Wealth advisor" },
-  { quote: "That's a conversation that I think is important to have, but I don't have the resource to support them.", name: "Nathan C", role: "Exit advisor" },
-  { quote: "They don't actually internally… aren't ready to let go even though their company is for sale… and they blow up their own deals.", name: "Olivia G", role: "Exit advisor" },
+  { quote: "Remember that founder has probably not built a business and sold one before. So they have no idea what's coming.", name: "Wealth advisor" },
+  { quote: "They are actually better sellers because less of their identity is attached, which means they're less likely to just say no to every buyer.", name: "Exit advisor" },
+  { quote: "Do they know they need it early? Maybe not. But they certainly will know when the transaction closes.", name: "Exit advisor" },
+  { quote: "This isn't like going to therapy because there's something wrong with you… this is how this goes.", name: "Exit advisor" },
+  { quote: "Let's talk about why you're doing this, what the real reasons are.", name: "Sell-side M&A advisor" },
 ];
 
 const tint = "#F5F2FF";
@@ -66,10 +66,10 @@ const footerEdge = edgeAbove("#ffffff");
           </li>
           <li class="advr-cardwrap">
             <a class="advr-card advr-card--link advr-card--heart" href="/advisor-center/insights/before-and-after-the-sale">
-              <span class="advr-soon">First chapter 15 December</span>
+              <span class="advr-soon">First chapter December 15</span>
               
               <h2>Before and After the Sale</h2>
-              <p>A book for founders on the inner side of selling, told through real, anonymised stories and written in the open.</p>
+              <p>A book for founders on the inner side of selling, told through real, anonymized stories and written in the open.</p>
               <span class="advr-more">Read more →</span>
             </a>
           </li>
@@ -87,11 +87,11 @@ const footerEdge = edgeAbove("#ffffff");
     </section>
 
     <!-- foundr.land on its own straight white section. -->
-    <section class="advr-band advr-band-white fl-band" aria-label="foundr.land">
+    <section class="advr-band advr-band-white fl-band" aria-label="FOUNDR.land">
       <FoundrLand
         kind="small"
-        linkLabel="See foundr.land for advisors"
-        line="foundr.land is built around these patterns: one place where founders find clarity and advisors stay in the loop, with the founder’s consent."
+        linkLabel="See FOUNDR.land for advisors"
+        line="FOUNDR.land is built around these patterns: one place where founders find clarity and advisors stay in the loop, with the founder’s consent."
       />
     </section>
 
@@ -160,8 +160,8 @@ const footerEdge = edgeAbove("#ffffff");
 
     <section class="advr-band advr-band-white" aria-labelledby="advi-voices">
       <div class="advr-well advi-well">
-        <h2 class="advi-h2" id="advi-voices">In advisors' words</h2>
-        <TestimonialWall items={advisorQuotes} short label="Sound bites from advisors" />
+        <h2 class="advi-h2" id="advi-voices">In their words</h2>
+        <TestimonialWall items={advisorQuotes} short label="In their words" />
       </div>
     </section>
 
@@ -173,14 +173,14 @@ const footerEdge = edgeAbove("#ffffff");
             <p class="advi-pattern-label">Before the sale</p>
             <ul>
               <li><strong>Cold feet</strong> grow the closer the founder gets to the transaction.</li>
-              <li><strong>Deals stall</strong> when the founder nitpicks every buyer because they cannot picture life afterwards.</li>
+              <li><strong>Deals stall</strong> when the founder nitpicks every buyer because they cannot picture life afterward.</li>
               <li><strong>Timing:</strong> advisors want to start before the LOI; founders feel it is "too early".</li>
             </ul>
           </section>
           <section class="advi-pattern advi-pattern--after">
             <p class="advi-pattern-label">After the sale</p>
             <ul>
-              <li><strong>The emptiness arrives late:</strong> weeks or months after closing, once the calendar is empty.</li>
+              <li><strong>It arrives late:</strong> weeks or months after closing, once everything stops.</li>
               <li><strong>Identity:</strong> the company was "all they've ever known".</li>
               <li><strong>Old patterns</strong> follow the founder into the next venture.</li>
             </ul>

@@ -23,7 +23,7 @@ const footerEdge = edgeAbove("#ffffff");
 const steps = [
   {
     title: "An intro conversation with Seb",
-    text: "A short call to see whether a partnership is a fit, and to walk through how we work together. This is also when we share the details of our Referral Partner Agreement.",
+    text: "A short call to see whether a partnership is a fit, and to walk through how we work together. This is also when we share the details of our Referral Partner Agreement. Referrals start once we have both signed it.",
   },
   {
     title: "You introduce the founder, with their permission",
@@ -59,7 +59,7 @@ const benefits = [
   {
     key: "after",
     title: "Fewer regrets after closing",
-    text: "The emptiness often arrives weeks or months after the deal, when the calendar is empty. Your client has a place for that, and remembers who made the introduction.",
+    text: "The hard part often happens weeks or months after the deal, when everything stops. Your client has a place for that, and remembers who made the introduction.",
   },
   {
     key: "trusted",
@@ -92,31 +92,11 @@ const audiences = [
 
 // [SEB] Quotes are Seb's words, verbatim. Stand-in first names + initial added 19 Nov 2026 (Seb); real names stay private, the page says so.
 const quotes = [
-  {
-    text: "Most people are talking with that founder around just the business side of the equation. They're not asking questions about the personal side.",
-    name: "Robert H",
-    role: "Wealth advisor",
-  },
-  {
-    text: "Remember that founder has probably not built a business and sold one before. So they have no idea what's coming.",
-    name: "Julia M",
-    role: "Wealth advisor",
-  },
-  {
-    text: "I can do my best work if I get someone before an LOI.",
-    name: "Kevin S",
-    role: "Wealth advisor",
-  },
-  {
-    text: "That's a conversation that I think is important to have, but I don't have the resource to support them.",
-    name: "Nathan C",
-    role: "Exit advisor",
-  },
-  {
-    text: "They don't actually internally… aren't ready to let go even though their company is for sale… and they blow up their own deals.",
-    name: "Olivia G",
-    role: "Exit advisor",
-  },
+  { text: "Most people are talking with that founder around just the business side of the equation. They're not asking questions about the personal side.", name: "Wealth advisor" },
+  { text: "I think that's a gap… dealing with the personal side and making sure that they're personally ready.", name: "Exit advisor" },
+  { text: "They aren't ready to let go even though their company is for sale. … They tend to nitpick every buyer… and they blow up their own deals.", name: "Exit advisor" },
+  { text: "I can do my best work if I get someone before an LOI.", name: "Wealth advisor" },
+  { text: "How do I even bring it up in a productive way?", name: "Exit advisor" },
 ];
 
 const faqs = [
@@ -126,11 +106,11 @@ const faqs = [
   },
   {
     q: "Who is a good fit to introduce?",
-    a: "Before the sale: a founder who hesitates, keeps finding faults with buyers, or can't say what they'll do afterwards. After the sale: founders who have exited and are no longer in the day-to-day (a board or advisory role is fine). This is often a fit when they have more freedom than before, and it does not feel the way they expected. If you are unsure, we can talk it through on the intro call.",
+    a: "Before the sale: a founder who hesitates, keeps finding faults with buyers, or can't say what they'll do afterward. After the sale: founders who have exited and are no longer in the day-to-day (a board or advisory role is fine). This is often a fit when they have more freedom than before, and it does not feel the way they expected. If you are unsure, we can talk it through on the intro call.",
   },
   {
     q: "What about a client who has not sold yet?",
-    a: "We have a shorter Exit-Prep for founders who have firmly decided to exit and are preparing for it: six weekly sessions, held remotely, with the same guarantee as Stage 1. If they later want to go deeper after the sale, they can move on to Stage 1. Ask us about it on the intro call.",
+    a: "The Exit Prep is built for them: six weekly 1:1 sessions, fully remote, for founders who are thinking about selling, not yet sure, or already under LOI. Its Clarity-First Guarantee works like The Reset's: if it isn't right, the founder tells us within 24 hours after Session 2 and we refund the rest. If they want to go deeper after the sale, Stage 1 follows. Ask us about it on the intro call.",
   },
   {
     q: "What happens when the owner isn't ready?",
@@ -176,7 +156,7 @@ const faqs = [
       <div class="adv-hero-inner adv-hero-inner--split">
         <div class="adv-hero-copy">
           <p class="adv-eyebrow">Advisor Center · For exit planning advisors</p>
-          <h1>When the deal closes, the hard part starts.</h1>
+          <h1>The personal leg of exit planning, before the LOI and after closing.</h1>
           <p class="adv-lede">
             We support life in <span class="adv-founder"><strong>FOUNDR</strong>.land</span>. You prepare the business and the money for the sale. We prepare the founder: the <a href="/advisor-center/insights#advi-legs">personal readiness leg</a> of exit planning.
           </p>
@@ -191,7 +171,7 @@ const faqs = [
       <div class="adv-well">
         <AdvisorNav current="refer" />
         <div class="adv-intro">
-          <p>You helped your client through the transaction. What comes next is personal: more freedom than they expected, and less certainty about what to do with it.</p>
+          <p>You get the business and the money ready. We get the founder ready, so the deal doesn't stall and life after it has a plan.</p>
           <p>You stay the trusted advisor. We provide a private place for the part that is not financial or legal: helping them see what they actually want in life after exit.</p>
         </div>
       </div>
@@ -214,8 +194,8 @@ const faqs = [
 
     <section class="adv-band adv-band--white" aria-labelledby="adv-tell">
       <div class="adv-well">
-        <h2 class="adv-section-title" id="adv-tell">Sound bites</h2>
-        <TestimonialWall items={quotes.map((q) => ({ quote: q.text, name: q.name, role: q.role }))} short label="Sound bites from advisors" />
+        <h2 class="adv-section-title" id="adv-tell">In their words</h2>
+        <TestimonialWall items={quotes.map((q) => ({ quote: q.text, name: q.name }))} short label="In their words" />
         <!-- Two doors (Seb, 19 Nov 2026) -->
         <div class="adv-doors-intro">
           <p>That's the personal leg of exit planning. It's what we cover, so your deal and your client both land well.</p>
@@ -223,7 +203,7 @@ const faqs = [
         </div>
         <div class="adv-doors">
           <section class="adv-door adv-door--exit" aria-labelledby="adv-door-exit">
-            <p class="adv-door-label">Exit, succession and M&amp;A</p>
+            <p class="adv-door-label">Exit and succession</p>
             <h3 id="adv-door-exit">I prepare the business for the sale</h3>
             <p>You know the founder before the sale. Bring us in 12 to 18 months out, or at least before the LOI, so the founder walks into the deal ready, and out of it with a plan for life after.</p>
             <a class="btn-teal btn-dream" href="/exit">Exit advisors: become a partner</a>
@@ -245,7 +225,7 @@ const faqs = [
       <div class="adv-well">
         <h2 class="adv-section-title" id="adv-why">Why refer</h2>
         <div class="adv-prose">
-          <p>Before the sale, a founder who can't picture life afterwards gets cold feet: they put the brakes on, nitpick buyers, or stall the deal at the last minute. A founder who is personally ready signs calmly.</p>
+          <p>Before the sale, a founder who can't picture life afterward gets cold feet: they put the brakes on, nitpick buyers, or stall the deal at the last minute. A founder who is personally ready signs calmly.</p>
           <p>After the sale, your client's deal can close and the hard part can still be starting.</p>
           <p>The company gave their days structure, urgency, and a place to put their energy. Without it, many founders find the freedom they worked toward does not feel the way they expected. Exit and succession work, and wealth advice, look after the transaction and the money. Very few people help with what happens after.</p>
           <p>A trusted introduction means they do not have to look for that help alone, and you remain the person they came from.</p>
@@ -261,7 +241,7 @@ const faqs = [
           <div class="adv-prose">
             <p><strong>Before the sale:</strong> <a href="/exit-prep">The Exit Prep</a>, six weekly sessions, fully remote, built to fit around a busy deal.</p>
             <p><strong>After the sale:</strong> Stage 1, a private, confidential 30 days. We help them see what is really going on for them, tell the next shiny thing from what they really want, and get clear on what needs attention before the next major decision. If it fits, Stage 2 follows by invitation only.</p>
-            <p>The work is limited to 5 new founders a month. If Stage 1 is not right, we say so, and we point them somewhere better. Stage 1 is covered by our Clarity-First Guarantee.</p>
+            <p>The work is limited to 5 new founders a month. If Stage 1 is not right, we say so, and we point them somewhere better. The Exit Prep and Stage 1 are both covered by our Clarity-First Guarantee.</p>
           </div>
         </div>
       </div>
@@ -273,7 +253,7 @@ const faqs = [
         <div class="adv-trial">
           <p class="adv-trial-badge">For your client, on us</p>
           <h2 class="adv-section-title" id="adv-trial">A free session with a Wayfinder</h2>
-          <p>Have a client who is interested but wants to try us first? Introduce them, and they get one private session with one of our Wayfinders at no cost. No obligation for them, and no paperwork for you.</p>
+          <p>Have a client who is interested but wants to try us first? As a referral partner, introduce them, and they get one private session with one of our Wayfinders at no cost. No obligation for them.</p>
           <div class="adv-card-actions">
             <a class="btn-teal btn-dream" href="/exit">Exit advisors: arrange a free session</a>
             <a class="btn-teal" href="/wealth">Wealth advisors: arrange a free session</a>

@@ -1,5 +1,4 @@
 ---
-import { phonePicks } from "../data/phone-picks";
 /**
  * Stage 2: The Build (Seb, 19 Nov 2026). Its own page, split from /the-reset. Stage 2 copy moved here word
  * for word; the two-step progress bar and the Stage 1 recap keep the link to Stage 1.
@@ -14,7 +13,7 @@ import TestimonialWall from "../components/TestimonialWall.astro";
 import HwHouse from "../components/HwHouse.astro";
 import HwSupports from "../components/HwSupports.astro";
 import StageSwitch from "../components/StageSwitch.astro";
-import { familiar } from "../data/sound-bites";
+import { buildFamiliar } from "../data/sound-bites";
 import { Image } from "astro:assets";
 import caseVImg from "../assets/cases/case-study-v-founder-life-after-exit.png";
 
@@ -87,9 +86,9 @@ const [, houseStage1, houseStage2] = houses;
     <!-- 1b. Sound bites -->
     <section class="hw-band" aria-labelledby="hw-familiar">
       <div class="hw-well">
-        <h2 id="hw-familiar" class="hw-center">Sound bites</h2>
-        <p class="hw-center hw-sub-center">Words from real calls with founders and the advisors who walk with them.</p>
-        <TestimonialWall items={familiar.map((q) => ({ quote: q.quote, name: q.name, role: q.role }))} short phonePick={phonePicks.buildBites} label="Sound bites from real calls with founders and advisors" />
+        <h2 id="hw-familiar" class="hw-center">In their words</h2>
+        <p class="hw-center hw-sub-center">Real words from our conversations with founders and the advisors who work with them. Shared without names.</p>
+        <TestimonialWall items={buildFamiliar.map((q) => ({ quote: q.quote, name: q.name }))} short label="In their words" />
       </div>
     </section>
 
@@ -126,7 +125,7 @@ const [, houseStage1, houseStage2] = houses;
           <Image class="hw-case-img" src={caseVImg} width={220} height={244} widths={[220, 440]} sizes="220px" alt="Pixelated portrait of founder V, shown this way to protect their identity" />
           <div class="hw-case-body">
             <p class="hw-eyebrow hw-eyebrow-left">Featured case study</p>
-            <h3>From identity void to decisive leadership — how V reclaimed life after success</h3>
+            <h3>From feeling lost to decisive leadership: how V reclaimed life after success</h3>
             <p class="hw-case-who">V (anonymous), USD 9M+ founder</p>
             <a class="btn-teal" href="/casestudies/v">Read V's story</a>
             <p class="hw-case-note">We protect our founders’ identities</p>
@@ -141,7 +140,7 @@ const [, houseStage1, houseStage2] = houses;
           <p class="hw-via">via <a href="/nextlife-passage">NextLife Passage™</a></p>
           <p class="hw-flow hw-flow-box hw-flow-box--s2"><strong>How it works:</strong> Rework → Navigate → Realign → Integrate</p>
           <p>Stage 2 is no longer about you alone. In Stage 1 the work was inward. In Stage 2 we go out and build a life that inspires you again.</p>
-          <p>This is a wider build around real life, deeper decisions, and long-term alignment. We take the shift from Stage 1 and reorganise life around it, so the work becomes part of how you live practically.</p>
+          <p>This is a wider build around real life, deeper decisions, and long-term alignment. We take the shift from Stage 1 and reorganize life around it, so the work becomes part of how you live practically.</p>
           <p>That means looking more closely at the foundations of your life and rebuilding them in a way that fits who you are now.</p>
           <p>We work on the parts of life that carry the most weight now:</p>
           <p>the relationships you want, building new ones and rekindling old ones; looking after your health; getting engaged in the activities that enrich you; how your time is structured; and what your next chapter is really for, including whether you want to build again.</p>

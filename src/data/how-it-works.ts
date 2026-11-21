@@ -148,7 +148,7 @@ export const fitSignals = [
 
 export const notFor = [
   "Are still primarily trying to solve a business or operational problem.",
-  "Want productivity tactics, routines, or performance coaching.",
+  "Want productivity tactics, routines, or performance training.",
   "Are looking for a quick answer or someone to tell them what to do next.",
   "Want to rush into another venture without looking honestly at what is driving the choice.",
   "Are not ready to give real attention to their health, relationships, and life beyond work.",
