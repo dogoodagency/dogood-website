@@ -107,7 +107,7 @@ const [houseBefore, houseStage1, houseStage2] = houses;
       <div class="hw-hero-inner">
         <p class="hw-eyebrow">Stage 1: The Reset™ (30 Days)</p>
         <h1>Life after selling your business, starting with 30 days</h1>
-        <p class="hw-hero-lede hw-hero-lede-sm">The Founder Reclamation Partnership is a private 1:1 partnership for founders after the sale. It starts with The Reset: 30 days with a Wayfinder to get clear on who you want to be without the company.</p>
+        <p class="hw-hero-lede hw-hero-lede-sm">The Founder Reclamation Partnership is a private 1:1 partnership for a founder's transition after selling a business. It starts with The Reset: 30 days with a Wayfinder to get clear on who you want to be without the company.</p>
       </div>
       <Wave fill={tint} edge={heroEdge} />
     </header>
@@ -159,7 +159,7 @@ const [houseBefore, houseStage1, houseStage2] = houses;
     <section class="hw-band" aria-labelledby="hw-cost">
       <div class="hw-well hw-prose">
         <h2 id="hw-cost">Why does it feel this way when the sale went well?</h2>
-        <p>You thought stepping away would feel like arrival. Instead, you have more freedom but feel less settled than expected.</p>
+        <p>You thought selling your business would feel like arrival. Instead, you have more freedom but feel lost, even regretful.</p>
         <p>For years you had to look steady for your team and your clients. There was nowhere private to put what you were carrying.</p>
         <p>The company gave your days structure, urgency, and a place to put your energy. Without it, the question is how you want to live now, and what you do not want to recreate.</p>
         <p>Your sleep. Your health. Your family. The parts of life that were easier to put off while the company needed you.</p>
@@ -279,7 +279,9 @@ const [houseBefore, houseStage1, houseStage2] = houses;
               {fitSignals.map((text) => (
                 <li>
                   <span class="hw-icon hw-icon-yes" aria-hidden="true">✓</span>
-                  <span>{text}</span>
+                  <span>{text === "You have more time, but are not sure what you want to do with it." ? (
+                    <>You have more time, but are <a class="hw-textlink" href="/insights/first-90-days-after-the-sale">not sure what you want to do with it</a>.</>
+                  ) : text}</span>
                 </li>
               ))}
             </ul>
