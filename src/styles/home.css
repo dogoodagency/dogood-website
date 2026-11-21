@@ -8037,3 +8037,58 @@ body:has(.page-home) {
   #apply-first { display: flex; justify-content: center; }
   #apply-first .apply-first-slot { position: static !important; margin: 28px auto 0 !important; text-align: center; }
 }
+
+/* Preview 9: desktop Before / After row with a content-height, full-width NOT card.
+   Override the former staggered two-card layout; keep its rules above for reference.
+   The 28px top margin preserves the existing spacing below 1081px. */
+.page-home #for-you > .foryou-grid--not {
+  margin-top: 28px;
+}
+
+@media (min-width: 1081px) {
+  .page-home #for-you > h2.t-h3 {
+    max-width: 675px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .page-home #for-you > .foryou-grid--pair {
+    align-items: stretch;
+  }
+
+  .page-home #for-you .foryou-grid--pair > .card.ink {
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .page-home #for-you .foryou-grid--pair > .card.ink > a.btn-apply {
+    margin-top: auto;
+  }
+
+  .page-home #for-you > .foryou-grid--not {
+    grid-template-columns: minmax(0, 1fr);
+    width: calc(1350px + 147 * 100vw / 1710);
+    margin-top: calc(147 * 100vw / 1710);
+  }
+
+  .page-home #for-you .foryou-grid--not > .card.rose {
+    min-height: 0;
+    margin-top: 0;
+  }
+}
+
+/* Match the pair's shrinking tracks, including its existing right padding.
+   Keep the heading over the left column so the through-line stays in the gutter. */
+@media (min-width: 1081px) and (max-width: 1709px) {
+  .page-home #for-you > h2.t-h3 {
+    max-width: calc((100% - var(--pad) - 147 * 100vw / 1710) / 2);
+  }
+
+  .page-home #for-you > .foryou-grid--not {
+    box-sizing: border-box;
+    width: 100%;
+    padding-right: var(--pad);
+  }
+}
