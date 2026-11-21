@@ -385,6 +385,13 @@ export const faqCategories: FaqCategory[] = [
           "If the Wayfinder match feels wrong in the first two sessions, we will correct it quickly. If we can’t correct it without delay, you can exit through the guarantee. To use it, [email us](mailto:hiya@dogoodagency.co?subject=Clarity%E2%80%91First%20Guarantee%20%E2%80%94%20Exit%20Request) with your full name and the date of Session 1. Read the [full terms](/clarity-first-guarantee-terms).",
         ],
       },
+      {
+        id: "exit-prep-guarantee",
+        q: "Does the guarantee cover The Exit Prep?",
+        a: [
+          "Yes. The Exit Prep has its own Clarity-First Guarantee. Complete onboarding and attend your first two private 1:1 sessions. If it isn't right for you, email us within 24 hours of Session 2. We keep only the part that covers those two sessions and refund the rest, no matter the reason. Read the [full terms](/clarity-first-guarantee-terms).",
+        ],
+      },
     ],
   },
   {

@@ -1,6 +1,6 @@
 ---
 /**
- * Moving testimonial wall (same motion as the Stories page): 3 columns drifting up/down on desktop,
+ * Moving testimonial wall (same motion as the Stories page): 2–3 columns drifting up/down on desktop,
  * 2 on tablet, a still list on phones and for reduced motion. Stops on hover and keyboard focus.
  * Items may carry a portrait (ImageMetadata). Added 19 Nov 2026 for /the-reset and /exit-prep.
  */
@@ -40,6 +40,8 @@ const phoneItems: WallItem[] | undefined = phoneGiven ?? (short || items.length 
 ].slice(0, 5));
 const cols3 = [0, 1, 2].map((i) => items.filter((_, idx) => idx % 3 === i));
 const cols2 = [0, 1].map((i) => items.filter((_, idx) => idx % 2 === i));
+// Keep at least two unique quotes per desktop column before duplicating the loop.
+const desktopCols = cols3.every((col) => col.length >= 2) ? cols3 : cols2;
 ---
 
 {
@@ -62,7 +64,7 @@ const cols2 = [0, 1].map((i) => items.filter((_, idx) => idx % 2 === i));
       <div class:list={["tw", `tw--${tone}`, short && "tw--short"]} role="region" aria-label={label}>
         <div class="tw-vp tw-vp-3" aria-hidden="true">
           <div class="tw-wall">
-            {cols3.map((col) => (
+            {desktopCols.map((col) => (
               <div class="tw-col">
                 <div class="tw-track">{[false, true].map((dup) => col.map((it) => card(it, dup)))}</div>
               </div>

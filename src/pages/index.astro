@@ -48,13 +48,17 @@ const pressLogos = [
 ];
 
 
-const fit = [
-  "You have sold or meaningfully stepped away from the company you built",
-  "You are no longer involved in the day-to-day (you may still have a board or advisory role)",
-  "You have more freedom than before, but it does not feel the way you expected",
-  "You want to fill the space with the next thing, and avoid making that choice on autopilot",
-  "You are ready to look honestly at what this next phase of life could be about",
-  "You can protect 5-6 hours a week for 30 days",
+const beforeSale = [
+  "You still run your company and are thinking about selling, or aren't sure you want to.",
+  "Your advisors are getting the business ready, and nobody is getting you ready.",
+  "You can't yet picture life without the company.",
+];
+
+const afterSale = [
+  "You have sold or stepped away from the company you built.",
+  "You have more freedom than before, but it doesn't feel the way you expected.",
+  "You want to choose what comes next on purpose, not on autopilot.",
+  "You can protect 5–6 hours a week for 30 days.",
 ];
 
 const notFit = [
@@ -335,11 +339,12 @@ const notFit = [
   </section>
 
   <section id="for-you">
+    <h2 class="t-h3">Who is this for?</h2>
     <div class="foryou-grid">
       <article class="card ink">
-        <h2 class="t-h3">Who is this for?</h2>
+        <h3 class="t-h3">Before the sale</h3>
         <ul>
-          {fit.map((item) => (
+          {beforeSale.map((item) => (
             <li>
               <picture class="fit-icon" aria-hidden="true">
                 <source
@@ -358,8 +363,34 @@ const notFit = [
             </li>
           ))}
         </ul>
-        <p class="fit-presale m-hide">Haven’t sold yet? Start with <a href="/exit-prep">The Exit Prep</a>.</p>
+        <a class="btn-apply" href="/exit-prep">Start with The Exit Prep</a>
       </article>
+      <article class="card ink">
+        <h3 class="t-h3">After the sale</h3>
+        <ul>
+          {afterSale.map((item) => (
+            <li>
+              <picture class="fit-icon" aria-hidden="true">
+                <source
+                  type="image/webp"
+                  srcset="/sketches/icon-tick-for-you@1x.webp 1x, /sketches/icon-tick-for-you@2x.webp 2x"
+                />
+                <img
+                  src="/sketches/icon-tick-for-you@1x.png"
+                  srcset="/sketches/icon-tick-for-you@1x.png 1x, /sketches/icon-tick-for-you@2x.png 2x"
+                  width="28"
+                  height="28"
+                  alt=""
+                />
+              </picture>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+        <a class="btn-apply" href={urls.apply}>Apply for Stage 1</a>
+      </article>
+    </div>
+    <div class="foryou-grid" style="margin-top: 28px">
       <article class="card rose drift-card">
         <h3 class="t-h3">NOT for you if...</h3>
         <ul>
@@ -397,6 +428,7 @@ const notFit = [
           And the best founders we know are not only trying to build something successful.{" "}
           <strong class="em-black">They want to do good.</strong>
         </p>
+        <p>We believe the next era of entrepreneurship is built consciously: thoughtful and reflective, not bulldozing through. Good for you, for the people you love, and for the world.</p>
         <p>Good for themselves. Good for their families. Good for their teams. Good for the world.</p>
         <p class="closing">That is why we do this work.</p>
         <p>
@@ -635,9 +667,12 @@ const notFit = [
     <div class="next-inner">
       <h2 class="t-h2">What’s next?</h2>
       <p>
-        Complete the application for Stage 1. We will respond within 24 hours.
+        Selling in the next few years? Start with The Exit Prep. Already sold? Apply for Stage 1. We reply within 24 hours.
       </p>
-      <a class="btn-apply lg" href={urls.apply}>Apply for Stage 1</a>
+      <p>
+        <a class="btn-apply lg" href="/exit-prep">Start with The Exit Prep</a>{" "}
+        <a class="btn-apply lg" href={urls.apply}>Apply for Stage 1</a>
+      </p>
       <p class="next-note">Limited to five new founders a month</p>
     </div>
   </section>

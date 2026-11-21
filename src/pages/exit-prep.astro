@@ -129,7 +129,10 @@ const faqJson = {
           </section>
           <section class="ep-box ep-box--grass" aria-labelledby="ep-incl">
             <h3 id="ep-incl">What's included</h3>
-            <ul>{included.map((t) => <li>{t}</li>)}</ul>
+            <ul>
+              {included.map((t) => <li>{t}</li>)}
+              <li>Covered by our Clarity-First Guarantee: if it isn't right for you, tell us within 24 hours of Session 2 and we refund everything except the two sessions you used. <a href="/clarity-first-guarantee-terms">Read the terms</a>.</li>
+            </ul>
           </section>
         </div>
         <div class="ep-outcome">
@@ -148,6 +151,7 @@ const faqJson = {
         <h2 id="ep-familiar">In their words</h2>
         <p class="ep-lede-plain">Real words from our conversations with founders and the advisors who work with them. Shared without names.</p>
         <TestimonialWall items={quotes} short label="In their words" />
+        <p class="ep-lede-plain">Lightly trimmed for length.</p>
       </div>
     </section>
 

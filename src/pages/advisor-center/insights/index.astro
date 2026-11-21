@@ -7,7 +7,7 @@ import AdvisorNav from "../../../components/AdvisorNav.astro";
 import { edgeAbove } from "../../../data/edge-line";
 import TestimonialWall from "../../../components/TestimonialWall.astro";
 import FoundrLand from "../../../components/FoundrLand.astro";
-// Same advisor quotes as the Refer a founder page (stand-in names).
+// Advisor conversations, shared anonymously with role-only labels.
 const advisorQuotes = [
   { quote: "Remember that founder has probably not built a business and sold one before. So they have no idea what's coming.", name: "Wealth advisor" },
   { quote: "They are actually better sellers because less of their identity is attached, which means they're less likely to just say no to every buyer.", name: "Exit advisor" },
@@ -161,7 +161,9 @@ const footerEdge = edgeAbove("#ffffff");
     <section class="advr-band advr-band-white" aria-labelledby="advi-voices">
       <div class="advr-well advi-well">
         <h2 class="advi-h2" id="advi-voices">In their words</h2>
+        <p class="advi-lede">Real words from our conversations with the advisors who work with founders. Shared without names.</p>
         <TestimonialWall items={advisorQuotes} short label="In their words" />
+        <p class="advi-lede">Lightly trimmed for length.</p>
       </div>
     </section>
 

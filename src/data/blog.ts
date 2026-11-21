@@ -37,8 +37,8 @@ export const categories: BlogCategory[] = [
     name: "Preparing for exit",
     audience: "founder",
     description: "Getting yourself ready for the sale, not just the company.",
-    seoTitle: "Preparing to sell your business | DoGood Insights",
-    seoDescription: "Notes on preparing to sell your business: getting yourself ready for the sale, not just the company. For founders who haven't sold yet.",
+    seoTitle: "Before the sale: notes for founders | DoGood Insights",
+    seoDescription: "Notes for founders who haven't sold yet: how to get yourself ready for the sale, not just the company, and what to settle before you sign.",
     intro:
       "The deal has a timeline. You do too, and it is a different one. Preparing to sell your business usually means valuations, data rooms and tax plans. These notes are about the other side: getting yourself ready, not just the company. They are for founders who haven't sold yet and want to look at the personal side early, while there is still room to shape it, whether the sale is a year away or still a question.",
     sketch: "/sketches/how-it-works-two-stage-path-sketch",
@@ -48,8 +48,8 @@ export const categories: BlogCategory[] = [
     name: "First 90 days",
     audience: "founder",
     description: "What the first three months after closing really feel like.",
-    seoTitle: "Life after selling a business | DoGood Insights",
-    seoDescription: "Life after selling a business: what the first three months after closing really feel like, and what tends to help. Notes for founders.",
+    seoTitle: "After the sale: notes for founders | DoGood Insights",
+    seoDescription: "Notes for founders after the sale: what the first months after closing really feel like, and what tends to help. From the Wayfinders at DoGood.",
     intro:
       "The wire has landed and the calendar is suddenly empty. Life after selling a business rarely feels the way founders expect. Many find the first months strange, flat or restless, and the hard part often arrives weeks later rather than on the day they sign. These notes describe what is common in the first 90 days and beyond, and what tends to help.",
     sketch: "/sketches/life-after-exit-machine",
