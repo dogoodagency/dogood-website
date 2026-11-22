@@ -753,6 +753,11 @@ article.card.rose :is(h1, h2, h3, h4, h5, h6, p, li, a, span, strong, em) {
   font-weight: 800;
 }
 
+/* Seb round 2, 22 Nov 2026: decorative Home sketches let clicks reach links beneath. */
+.page-home :is(.hero-sketch-frame, .exit-machine, #first-draw, .why-sketch, .guarantee-scale, .guarantee-seal) {
+  pointer-events: none;
+}
+
 .why-sketch {
   display: flex;
   align-items: center;

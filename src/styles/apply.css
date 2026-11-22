@@ -224,14 +224,6 @@
   text-underline-offset: 4px;
 }
 
-@media (max-width: 860px) {
-  .apl-main,
-  .apl-next { grid-template-columns: minmax(0, 1fr); }
-  .apl-art img { max-width: 300px; }
-  .apl-card { padding: 28px 22px; }
-  .apl-case { align-items: flex-start; }
-}
-
 .page-apply #case-j.apl-case {
   margin: 40px auto 0 !important;
 }
@@ -271,4 +263,11 @@
   border-radius: 24px;
   background: #fff !important;
 }
-@media (max-width: 860px) { .apl-art img { transform: none; } }
+/* Seb round 2, 22 Nov 2026: stack after desktop overrides and keep the sketch centred. */
+@media (max-width: 860px) {
+  .apl-main,
+  .apl-next { grid-template-columns: minmax(0, 1fr); }
+  .apl-art img { max-width: 300px; transform: none; }
+  .apl-card { padding: 28px 22px; }
+  .apl-case { align-items: flex-start; }
+}
