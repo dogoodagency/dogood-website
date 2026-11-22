@@ -1,4 +1,5 @@
 ---
+import WriteToUs from "../components/WriteToUs.astro";
 /**
  * Stage 2: The Build (Seb, 19 Nov 2026). Its own page, split from /the-reset. Stage 2 copy moved here word
  * for word; the two-step progress bar and the Stage 1 recap keep the link to Stage 1.
@@ -203,6 +204,7 @@ const [, houseStage1, houseStage2] = houses;
         <div class="hw-steps-cta">
           <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
           <p class="hw-limited hw-limited-dark hw-btn-sub">You apply for Stage 1 only. Stage 2 is invite-only.</p>
+          <WriteToUs />
           <p class="hw-center"><a class="hw-textlink" href="/faqs">Read the FAQs →</a></p>
         </div>
       </div>

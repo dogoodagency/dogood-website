@@ -27,7 +27,7 @@ via ClarityValue Shift™
 
 How it works: See → Interrupt → Choose → Reset
 
-<a class="btn-teal" href="https://drive.google.com/file/d/1g6WwAU8fWcpbNIBKPgNZ382CbirxX4o4/view?usp=drive_link">ClarityValue Shift™ (1‑page)</a>
+<a class="btn-teal" href="https://drive.google.com/file/d/1NjBwM9TWxTJDUIsUGQ0pTLaTnigAHmli/view" target="_blank" rel="noopener">ClarityValue Shift™ (1‑page)</a>
 
 Stage 1 is a focused reset around self, patterns, values, and immediate structure.
 
@@ -126,7 +126,7 @@ via NextLife Passage™
 
 How it works: Rework → Navigate → Realign → Integrate
 
-<a class="btn-teal" href="https://drive.google.com/file/d/12qR6tjfv196rJ0Q32ltmUiHbGLVctyhh/view?usp=sharing">NextLife Passage™ (1‑page)</a>
+<a class="btn-teal" href="https://drive.google.com/file/d/1GGeLMbKzGeooRViFF0LbG-lpQO-GzKOJ/view" target="_blank" rel="noopener">NextLife Passage™ (1‑page)</a>
 
 Stage 1 resets what is misaligned. Stage 2 then naturally builds on what truly belongs next.
 

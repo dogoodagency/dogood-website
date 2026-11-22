@@ -314,7 +314,7 @@ html:has(.nl-page) {
   margin: 0;
 }
 
-/* ---------- Downloads (hidden until the PDFs are uploaded) ---------- */
+/* ---------- Downloads ---------- */
 
 .nl-download {
   margin-top: 36px;

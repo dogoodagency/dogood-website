@@ -206,7 +206,7 @@ html body main#main .hw-page .hw-includes a:is(:hover, :focus-visible) {
   color: var(--stage-accent) !important;
   text-decoration-thickness: 3px;
 }
-html body main#main .hw-page--s1 :is(.hw-fit-no, .hw-fit-yes, .hw-option-a, .hw-notyet-card) {
+html body main#main .hw-page--s1 :is(.hw-fit-yes, .hw-option-a, .hw-notyet-card) {
   background: var(--color-grass-50);
   border: 1px solid var(--color-heart-500);
 }

@@ -1869,8 +1869,8 @@ html {
 }
 
 .hw-fit-card.hw-fit-no {
-  border: 1px solid #ea1557;
-  background: #fff9fa;
+  border: 1px solid var(--color-heart-400);
+  background: var(--color-heart-50);
 }
 
 /* Case J: a DREAM 500 card so it stands out. */

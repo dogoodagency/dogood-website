@@ -3,6 +3,7 @@ import { phonePicks } from "../data/phone-picks";
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
 import Base from "../layouts/Base.astro";
+import SevenQuestionsBand from "../components/SevenQuestionsBand.astro";
 import ThroughLine from "../components/ThroughLine.astro";
 import Wave from "../components/Wave.astro";
 import { reviews, urls } from "../data/homepage";
@@ -324,6 +325,8 @@ const afterSale = [
       </article>
     </div>
   </section>
+
+  <SevenQuestionsBand variant="home" />
 
   <section id="apply-first">
     <div class="apply-first-slot">

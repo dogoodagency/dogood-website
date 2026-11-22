@@ -1,4 +1,5 @@
 ---
+import WriteToUs from "../components/WriteToUs.astro";
 import "../styles/faqs.css";
 import Base from "../layouts/Base.astro";
 import Wave from "../components/Wave.astro";
@@ -142,6 +143,8 @@ const schemaJson = JSON.stringify(schema).replace(/</g, "\\u003c");
               </section>
             ))
           }
+
+          <WriteToUs />
 
           <section class="faq-contact" aria-labelledby="faq-contact-title">
             <div>

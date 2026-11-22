@@ -146,8 +146,8 @@ No. We do not give financial or legal advice, and we do not poach. You stay the 
 
 ## If you have a client in mind, or might
 
-Book a short intro call with Seb, or send us an email. We can take it from there.
+Visit the Advisor Center, or send us an email. We can take it from there.
 
-<a class="btn-teal" href="/internal">Book an intro call</a>
+<a class="btn-teal" href="/advisor-center">Visit the Advisor Center</a>
 
 <a href="mailto:hiya@dogoodagency.co">hiya@dogoodagency.co</a>

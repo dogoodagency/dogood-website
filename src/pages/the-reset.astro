@@ -1,4 +1,6 @@
 ---
+import SevenQuestionsBand from "../components/SevenQuestionsBand.astro";
+import WriteToUs from "../components/WriteToUs.astro";
 import { phonePicks } from "../data/phone-picks";
 import "../styles/how-it-works.css";
 import WhoopSection from "../components/WhoopSection.astro";
@@ -309,6 +311,8 @@ const [houseBefore, houseStage1, houseStage2] = houses;
       </div>
     </section>
 
+    <SevenQuestionsBand variant="reset" />
+
     <Fragment set:html={toTint} />
 
     <!-- 9. What this partnership is not + case J -->
@@ -416,6 +420,7 @@ const [houseBefore, houseStage1, houseStage2] = houses;
         <div class="hw-steps-cta">
           <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
           <p class="hw-limited hw-limited-dark hw-btn-sub">Stage 1 (30 days) · Week 3 decision on Stage 2</p>
+          <WriteToUs />
         </div>
       </div>
     </section>

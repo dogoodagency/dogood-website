@@ -265,6 +265,7 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
     if (!(item instanceof HTMLElement) || !(link instanceof HTMLButtonElement) || !(menu instanceof HTMLElement)) return;
 
     let closeTimer = 0;
+    let clickOpened = false;
     const menuOpen = () => link.getAttribute("aria-expanded") === "true";
     const desktopMenu = () => {
       const list = item.closest(".nav-links");
@@ -292,6 +293,8 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
     };
 
     const setMenu = (open) => {
+      cancelClose();
+      if (!open) clickOpened = false;
       if (open) controllers.forEach((other) => other !== setMenu && other(false));
       item.classList.toggle("is-open", open);
       menu.classList.toggle("is-open", open);
@@ -304,7 +307,7 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
     const scheduleClose = () => {
       cancelClose();
       closeTimer = window.setTimeout(() => {
-        if (insideMenu(document.activeElement)) return;
+        if (clickOpened || insideMenu(document.activeElement)) return;
         setMenu(false);
       }, 180);
     };
@@ -325,7 +328,7 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
       setMenu(true);
     });
     const blur = (event) => {
-      if (insideMenu(event.relatedTarget)) return;
+      if (clickOpened || insideMenu(event.relatedTarget)) return;
       setMenu(false);
     };
     item.addEventListener("focusout", blur);
@@ -333,12 +336,15 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
     link.addEventListener("click", (event) => {
       event.preventDefault();
       if (!desktopMenu()) return;
-      setMenu(!menuOpen());
+      const open = !clickOpened;
+      setMenu(open);
+      clickOpened = open;
     });
     link.addEventListener("keydown", (event) => {
       if (event.key !== "ArrowDown" || !desktopMenu()) return;
       event.preventDefault();
       setMenu(true);
+      clickOpened = true;
       menu.querySelector("a")?.focus();
     });
     // Keyboard check, 18 Nov 2026: the mega menu sits elsewhere in the DOM, so plain Tab skipped its links.

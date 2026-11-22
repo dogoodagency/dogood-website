@@ -4,8 +4,7 @@ import Base from "../layouts/Base.astro";
 import Wave from "../components/Wave.astro";
 import { edgeAbove } from "../data/edge-line";
 
-// Seb: switch to true once the PDFs exist in public/downloads/
-const SHOW_PDF_DOWNLOADS = false;
+import { sevenQuestionsPdf } from "../data/seven-questions";
 
 const tint = "#F5F2FF";
 const heroEdge = edgeAbove("#2A0B4F");
@@ -21,7 +20,7 @@ const action =
  * Chapters of "Before and After the Sale".
  * To add a chapter, push an object onto this array when it goes out, newest last, e.g.
  *   { number: 1, title: "<chapter title>", date: "December 15", href: "/newsletter/<slug>" }
- * `href` is optional. While the array is empty the page shows one "arrives" row.
+ * `href` is optional.
  */
 interface Chapter {
   number: number;
@@ -29,7 +28,9 @@ interface Chapter {
   date: string;
   href?: string;
 }
-const chapters: Chapter[] = [];
+const chapters: Chapter[] = [
+  { number: 1, title: "The quiet after the deal", date: "out Dec 15", href: "https://drive.google.com/file/d/1cHIFy_rbsSeTJRAkGOweQNhw8VfqpMtD/view" },
+];
 
 // Each question: the short line `a` stays word for word; `deep` adds context, sub-questions, an exercise and
 // journal prompts, shown in an expandable section (Seb, 18 Nov 2026: "more context, more value"). Drafted by
@@ -256,8 +257,8 @@ const heroLine =
 ---
 
 <Base
-  title="The DoGood newsletter: before and after the sale"
-  description="Honest notes for founders before and after selling a business, in your inbox. Plus seven free questions to take into the months after the sale."
+  title="The DoGood newsletter: coaching before and after the sale"
+  description="Honest notes and coaching insights for founders before and after selling a business, in your inbox. Plus seven free questions for the months after the sale."
   canonical="https://www.dogoodagency.co/newsletter"
   footerStrip={tint}
   footerEdge={footerEdge}
@@ -338,23 +339,21 @@ const heroLine =
             ))
           }
         </ol>
-        {SHOW_PDF_DOWNLOADS && (
-          <div class="nl-download">
-            <a
-              class="btn-teal"
-              href="/downloads/first-90-days-7-questions.pdf"
-              target="_blank"
-              rel="noopener"
-            >Download the 7 questions (PDF)</a>
-          </div>
-        )}
+        <div class="nl-download">
+          <a
+            class="btn-teal"
+            href={sevenQuestionsPdf}
+            target="_blank"
+            rel="noopener"
+          >Download the 7 questions (PDF)</a>
+        </div>
       </div>
     </section>
 
     <section class="nl-band nl-band-tint" id="book" aria-labelledby="nl-book-title">
       <div class="nl-well">
         <div class="nl-book">
-          <span class="nl-badge">First chapter December 15</span>
+          <span class="nl-badge">Chapter 1 · out Dec 15</span>
           <h2 id="nl-book-title">Before and After the Sale</h2>
           <p>A book for founders on the inner side of selling, told through real, anonymized stories. We're writing it in the open, one chapter at a time, for everyone in <span class="pink-soft nl-founder"><strong>FOUNDR</strong>.land</span>.</p>
         </div>
@@ -411,7 +410,7 @@ const heroLine =
               <li class="nl-chapter">
                 <span class="nl-chapter-num">{chapter.number}.</span>
                 <span class="nl-chapter-title">
-                  {chapter.href ? <a href={chapter.href}>{chapter.title}</a> : chapter.title}
+                  {chapter.href ? <><span>{chapter.title}</span><a class="nl-chapter-download" href={chapter.href} target="_blank" rel="noopener">Read Chapter 1 (PDF)</a></> : chapter.title}
                 </span>
                 <span class="nl-chapter-date nl-date-pill">{chapter.date}</span>
               </li>
@@ -427,7 +426,7 @@ const heroLine =
                     <span class="nl-chapter-title">{u.title}</span>
                     <p class="nl-chapter-about">{u.about}</p>
                   </div>
-                  <span class="nl-chapter-date nl-date-pill">Arrives {u.date}</span>
+                  <span class="nl-chapter-date nl-date-pill">{u.number === 2 ? "Coming Jan 12" : `Arrives ${u.date}`}</span>
                 </li>
               ))
           }

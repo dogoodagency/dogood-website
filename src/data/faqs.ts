@@ -193,7 +193,7 @@ export const faqCategories: FaqCategory[] = [
         id: "clarityvalue-shift",
         q: "What is the ClarityValue Shift™?",
         a: [
-          "The ClarityValue Shift™ is the Stage 1 engine: See → Interrupt → Choose → Reset. We stop the 'doom spiral', separate story vs reality, interrupt the patterns driving the real issue (self-talk → emotion → action), and help you reset so the shift integrates long-term. See our [1‑page ClarityValue Shift™](https://drive.google.com/file/d/1g6WwAU8fWcpbNIBKPgNZ382CbirxX4o4/view?usp=drive_link).",
+          "The ClarityValue Shift™ is the Stage 1 engine: See → Interrupt → Choose → Reset. We stop the 'doom spiral', separate story vs reality, interrupt the patterns driving the real issue (self-talk → emotion → action), and help you reset so the shift integrates long-term. See our [1‑page ClarityValue Shift™](https://drive.google.com/file/d/1NjBwM9TWxTJDUIsUGQ0pTLaTnigAHmli/view).",
         ],
       },
       // [SEB]
@@ -248,7 +248,7 @@ export const faqCategories: FaqCategory[] = [
         q: "What is included in Stage 2: The Build?",
         a: [
           "Stage 2 is a wider build around real life, deeper decisions and long-term alignment, over 12 weeks. It includes 12 virtual 1:1 sessions (weekly, 90 minutes), another 1.5-day in-person residency, Founder OS 2.0, a NextLife Roadmap (your personalized 12-week blueprint), a Progress Pulse that tracks commitments, routines and patterns, custom state-shift audio, a Relationship + Health Restore Kit, and Partnership Reviews in Week 5 and Week 12.",
-          "See the [1‑page NextLife Passage™](https://drive.google.com/file/d/12qR6tjfv196rJ0Q32ltmUiHbGLVctyhh/view?usp=sharing).",
+          "See the [1‑page NextLife Passage™](https://drive.google.com/file/d/1GGeLMbKzGeooRViFF0LbG-lpQO-GzKOJ/view).",
         ],
       },
     ],

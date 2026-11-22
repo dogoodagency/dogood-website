@@ -11,6 +11,7 @@ import BookingCaseCard from "./BookingCaseCard.astro";
 interface Props {
   title: string;
   titleSuffix?: string;
+  heading?: string;
   seoTitle: string;
   description: string;
   canonical: string;
@@ -20,8 +21,8 @@ interface Props {
   caseStudy?: "j" | "v";
 }
 
-const { title, titleSuffix, seoTitle, description, canonical, map = false, caseStudy } = Astro.props;
-const mapHref = "https://drive.google.com/file/d/1g6WwAU8fWcpbNIBKPgNZ382CbirxX4o4/view?usp=drive_link";
+const { title, titleSuffix, seoTitle, description, canonical, map = false, caseStudy, heading = "You’re booked" } = Astro.props;
+const mapHref = "https://drive.google.com/file/d/1NjBwM9TWxTJDUIsUGQ0pTLaTnigAHmli/view";
 ---
 
 <Base title={seoTitle} description={description} canonical={canonical} robots="noindex" footerEdge="#C2B7DD">
@@ -30,14 +31,14 @@ const mapHref = "https://drive.google.com/file/d/1g6WwAU8fWcpbNIBKPgNZ382CbirxX4
     <div class="bk-body">
       <div class="ty-main">
         <div class="ty-col">
-          <h2 class="ty-booked">You’re booked</h2>
+          <h2 class="ty-booked">{heading}</h2>
           <div class="ty-text bk-copy">
             <slot />
           </div>
           {
             map && (
               <div class="ty-map">
-                <a class="ty-map-frame" href={mapHref} aria-label="Open the ClarityValue Shift 1-Page Map">
+                <a class="ty-map-frame" href={mapHref} target="_blank" rel="noopener" aria-label="Open the ClarityValue Shift 1-Page Map">
                   <img
                     src="/media/clarityvalue-shift-map@1x.webp"
                     srcset="/media/clarityvalue-shift-map@1x.webp 603w, /media/clarityvalue-shift-map@2x.webp 1206w"
@@ -48,7 +49,7 @@ const mapHref = "https://drive.google.com/file/d/1g6WwAU8fWcpbNIBKPgNZ382CbirxX4
                     decoding="async"
                   />
                 </a>
-                <a class="btn-teal" href={mapHref}>View the 1-Page Map</a>
+                <a class="btn-teal" href={mapHref} target="_blank" rel="noopener">View the 1-Page Map</a>
               </div>
             )
           }

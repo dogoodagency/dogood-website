@@ -1,4 +1,5 @@
 ---
+import WriteToUs from "../components/WriteToUs.astro";
 import "../styles/exit-prep.css";
 import WhoopSection from "../components/WhoopSection.astro";
 import AudioSection from "../components/AudioSection.astro";
@@ -202,11 +203,10 @@ const faqJson = {
     </section>
 
 
-    <section class="ep-band ep-contact-band" aria-labelledby="ep-contact">
+    <section class="ep-band ep-contact-band" aria-label="Contact us">
       <div class="ep-well ep-contact-close">
-        <h2 id="ep-contact">Not ready to apply, or still before your exit?</h2>
-        <p><a href="/contact">Write to us</a>.</p>
-        <p><a href="mailto:hiya@dogoodagency.co">hiya@dogoodagency.co</a></p>
+        <WriteToUs />
+        <p class="guide-teaser"><a class="r3-inline-link" href="/seven-questions">What to take into the first 90 days after the sale: The 7 questions →</a></p>
       </div>
     </section>
   </article>
