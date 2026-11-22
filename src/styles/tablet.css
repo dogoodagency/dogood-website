@@ -398,6 +398,44 @@
   html body .page-home .exit-layout { grid-template-columns: minmax(0, 1.6fr) minmax(0, 0.8fr); }
   html body .page-home .first-grid { grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); }
   html body .page-home .why-grid { grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr); }
+
+  /* Seb round 2 final pass, 22 Nov 2026: T1, contain five equal stats inside the well. */
+  html body .hw-page .hw-well .hw-stats {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    margin-left: 0;
+    margin-right: 0;
+  }
+  /* Seb round 2 final pass, 22 Nov 2026: T1, let each stat shrink within its column. */
+  html body .hw-page .hw-well .hw-stats li { min-width: 0; }
+  /* Seb round 2 final pass, 22 Nov 2026: T1, wrap stat captions within their boxes. */
+  html body .hw-page .hw-well .hw-stats span { white-space: normal; }
+
+  /* Seb round 2 final pass, 22 Nov 2026: T4, use the card's grid span without moving stations. */
+  html body .dr-page .jr-card { margin-inline: 0; padding-inline: 8px; }
+  /* Seb round 2 final pass, 22 Nov 2026: T4, fit whole title words on the journey cards. */
+  html body .dr-page .jr-title {
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: -0.03em;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+  }
+
+  /* Seb round 2 final pass, 22 Nov 2026: T5, hide the line across the paired referral steps. */
+  html body .adv-page .adv-steps.adv-steps--color::after { display: none; }
+
+  /* Seb round 2 final pass, 22 Nov 2026: T7, mirror the portrait contact card beside For advisors. */
+  html body .faq-page .faq-contact {
+    grid-column: auto;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 32px 28px;
+  }
+  /* Seb round 2 final pass, 22 Nov 2026: T7, retain the portrait contact heading size. */
+  html body .faq-page .faq-contact h2 { font-size: 26px; }
+  /* Seb round 2 final pass, 22 Nov 2026: T7, retain the portrait contact action alignment. */
+  html body .faq-page .faq-contact a.btn-teal { flex: 0 1 auto; align-self: flex-start; }
 }
 
 /* Seb round 2, 22 Nov 2026: restore paired content at portrait-tablet widths. */
@@ -418,6 +456,38 @@
 
 /* Seb round 2, 22 Nov 2026: dense features stack before either column becomes a narrow gutter. */
 @media (min-width: 601px) and (max-width: 1023px) {
+  /* Seb round 2 final pass, 22 Nov 2026: T2, give each house label room for its longest word. */
+  html body .hw-page .hw-label {
+    font-size: 13px;
+    min-width: min-content;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+  }
+
+  /* Seb round 2 final pass, 22 Nov 2026: T3, pair the insight cards with proportional images. */
+  html body .dr-page .dr-posts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  /* Seb round 2 final pass, 22 Nov 2026: T6, fit single-line labels inside the door card padding. */
+  html body .adv-page .adv-doors .adv-door a.btn-teal {
+    align-self: center;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding-left: 16px !important;
+    padding-right: 44px !important;
+    font-size: clamp(12px, calc(2vw - 3.4px), 13px);
+    white-space: nowrap !important;
+  }
+  /* Seb round 2 final pass, 22 Nov 2026: T6, keep room for the arrow when it moves left. */
+  html body .adv-page .adv-doors .adv-door a.btn-teal:is(:hover, :focus-visible) {
+    padding-left: 44px !important;
+    padding-right: 16px !important;
+  }
+
   /* Seb round 2, 22 Nov 2026: full-width hero copy, then centred door art. */
   html body .page-home #hero .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
   html body .page-home #hero .hero-draw { width: min(100%, 480px); margin-inline: auto; }
@@ -453,6 +523,8 @@
 
 /* Seb round 2, 22 Nov 2026: narrow mid-widths keep generous text columns and contained art. */
 @media (min-width: 601px) and (max-width: 767px) {
+  /* Seb round 2 final pass, 22 Nov 2026: T6, stack the advisor doors before one-line labels get too tight. */
+  html body .adv-page .adv-doors { grid-template-columns: minmax(0, 1fr); }
   html body .page-home #for-you .foryou-grid--pair,
   html body .page-home #next .next-doors,
   html body main :is(.tw .tw-list--wide, .tw > .tw-list:not(.tw-list--phone), .st-page .st-list,
