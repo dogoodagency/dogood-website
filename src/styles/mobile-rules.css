@@ -111,7 +111,8 @@ html body #wayfinders .wf-m { display: none; }
   html body #guarantee { margin-top: 24px !important; }
 
   /* What's next: the heading, text and button sit a little lower. */
-  html body #next .next-inner { padding-top: 152px; }
+  /* Seb round 2, 22 Nov 2026: 60px more room for the rolling teal fill. */
+  html body .page-home #next .next-inner { padding-top: 212px; }
   html body #next .next-inner > p:not(.next-note) { max-width: 270px; margin: 0 auto 40px; }
   /* the green swell opens wider, so the lower-placed text sits on green, not across its edge */
   html body #next { overflow-x: clip; }
@@ -241,13 +242,6 @@ html body .footer-wave { background: transparent !important; margin-top: -80px; 
   html body :is(.ep-hero, .advr-hero, .adv-hero, .wf-hero, .bl-hero, .bl-head, .hw-hero, .cs-hero, .faq-hero, .st-hero,
     .dr-hero, .ab-hero, .pod-hero, .apl-hero, .nl-hero, .privacy-hero, .subhero) :is(p, li):not([class*="eyebrow"]):not([class*="label"]):not([class*="pill"]):not([class*="tag"]):not([class*="soon"]):not([class*="meta"]) {
     font-weight: 400;
-  }
-
-  /* Button captions: the homepage size (12px italic), 6px under the button, on every page. */
-  html body main :is(a.btn-apply, a.btn-teal, a.btn-case, a[class*="btn-"]) + p {
-    margin-top: 6px !important;
-    font-size: 12px !important;
-    line-height: 1.4;
   }
 
   /* Sound bites everywhere: quote text starts on the line of the quote mark; name and role on one line,
@@ -421,16 +415,12 @@ html body .st-phone-wall { display: none; }
   html body .pp-page section[aria-labelledby="pr-all"] .ep-well { padding-top: 70px; }
 }
 
-/* Round 2 G4–G5: identical Residency subline on phones, tighter button captions. */
+/* Seb round 2, 22 Nov 2026: Residency phone type and unchanged blog labels. */
 @media (max-width: 599px) {
   :root {
     --hero-subline-size: 17px;
     --hero-subline-weight: 400;
     --hero-subline-leading: 1.6;
-  }
-  html body main :is(a.btn-apply, a.btn-teal, a.btn-case, a[class*="btn-"]) + p {
-    margin-top: 4px !important;
-    font-size: var(--button-caption-size) !important;
   }
   html body .bl-card :is(.bl-badge, .bl-pill) { font-size: 10px !important; }
 }

@@ -263,7 +263,7 @@
       return d;
     };
 
-    const toSmoothPath = (points, minRadius) => {
+    const toSmoothPath = (points, minRadius, flyerRun = null) => {
       const pts = dedupe(points);
       if (pts.length < 2) return "";
       const fmt = (value) => value.toFixed(1);
@@ -276,6 +276,19 @@
         const p1 = pts[i];
         const p2 = pts[i + 1];
         const p3 = pts[Math.min(pts.length - 1, i + 2)];
+        // Seb round 2, 22 Nov 2026: only the door-to-flyer run gets bounded handles.
+        if (flyerRun && p1.y >= flyerRun.from.y && p2.y <= flyerRun.to.y) {
+          if (p1.x === flyerRun.from.x && p1.y === flyerRun.from.y) {
+            const middleY = Math.max(p1.y, Math.min(p2.y, flyerRun.middleY));
+            const handle = (middleY - p1.y) / 2;
+            d += ` C ${fmt(p1.x)} ${fmt(p1.y + handle)}, ${fmt(p2.x)} ${fmt(middleY - handle)}, ${fmt(p2.x)} ${fmt(middleY)}`;
+            d += ` C ${fmt(p2.x)} ${fmt(middleY + (p2.y - middleY) / 3)}, ${fmt(p2.x)} ${fmt(p2.y - (p2.y - middleY) / 3)}, ${fmt(p2.x)} ${fmt(p2.y)}`;
+          } else {
+            const handle = (p2.y - p1.y) / 3;
+            d += ` C ${fmt(p1.x)} ${fmt(p1.y + handle)}, ${fmt(p2.x)} ${fmt(p2.y - handle)}, ${fmt(p2.x)} ${fmt(p2.y)}`;
+          }
+          continue;
+        }
         const span = dist(p1, p2) || 1;
         const turn = i > 0 ? Math.abs(turnBetween(p0, p1, p2)) : 0;
         const maxHandle = Math.min(span * 0.42, Math.max(span * 0.2, minRadius * (turn > 0.6 ? 0.9 : 0.45)));
@@ -648,6 +661,7 @@
       const mouthX = swell.x + swell.w * (720 / 1440);
       const intoMouth = swell.y + Math.min(72, Math.max(40, swell.h * 0.08));
       const founderPts = [];
+      let flyerRun = null;
       const add = (list, x, y) => {
         const prev = list[list.length - 1];
         const point = {
@@ -788,9 +802,11 @@
         const centre = flyer.left + flyer.w * 0.5;
         const wave = box(document.querySelector(".section-wave"));
         const intoWave = wave ? wave.y + wave.h * 0.7 : flyer.bottom + founderStroke;
+        const from = forYou ? founderPts[founderPts.length - 1] : null;
         put(centre, flyer.bottom - flyer.h * 0.04);
         put(centre, intoWave);
         put(centre, (wave ? wave.bottom : flyer.bottom) + founderStroke * 0.55);
+        if (from) flyerRun = { from, to: founderPts[founderPts.length - 1], middleY: flyer.cy };
       }
       if (pinV) {
         put(pinV.cx, pinV.y - founderStroke * 0.8);
@@ -853,7 +869,7 @@
 
       const routeRadius = Math.max(founderStroke, phone ? Math.max(36, turnRadius * 0.7) : founderStroke);
       const companyRadius = phone ? Math.max(28, turnRadius * 0.85) : 72;
-      let founderD = toSmoothPath(founderPts, founderStroke);
+      let founderD = toSmoothPath(founderPts, founderStroke, flyerRun);
       if (!phone) {
         const photo = box(document.querySelector("#wayfinders .wf-group"));
         founderD = smoothMessageGap(founderD, message, photo, founderStroke);

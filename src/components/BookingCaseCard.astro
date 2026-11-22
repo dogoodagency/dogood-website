@@ -42,7 +42,9 @@ const c = cases[study];
     <p class="bk-case-eyebrow">Case Study</p>
     <h2 class="bk-case-title">{c.title[0]}<br />{c.title[1]}</h2>
     <p class="bk-case-who">{c.who}</p>
-    <a class="btn-teal" href={c.href} aria-label={`Read the short case study: ${c.title[1].charAt(0).toLowerCase() + c.title[1].slice(1)}`}>Read the short case study</a>
-    <p class="bk-case-note">We protect our founders’ identities</p>
+    <div class="btn-with-caption">
+      <a class="btn-teal" href={c.href} aria-label={`Read the short case study: ${c.title[1].charAt(0).toLowerCase() + c.title[1].slice(1)}`}>Read the short case study</a>
+      <p class="bk-case-note">We protect our founders’ identities</p>
+    </div>
   </div>
 </article>

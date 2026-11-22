@@ -38,6 +38,8 @@
     --hero-subline-weight: 500;
     --hero-subline-leading: 1.5;
     --button-caption-size: 11px;
+    /* Seb round 2, 22 Nov 2026. */
+    --section-space-scale: 1.25;
   }
 
   html {

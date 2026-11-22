@@ -198,8 +198,13 @@
   margin-top: clamp(48px, 9vw, 150px);
 }
 
-.footer .legal :is(a, p) {
+/* Seb round 2, 22 Nov 2026: legal links match the copyright exactly. */
+html body .footer .legal :is(a, p) {
+  font-size: 14px;
   font-weight: 400;
+}
+@media (max-width: 599px) {
+  html body .footer .legal :is(a, p) { font-size: 12px; }
 }
 
 /* Between laptop and tablet: two link columns side by side, the rest full width. */

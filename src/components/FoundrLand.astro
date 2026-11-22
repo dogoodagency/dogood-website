@@ -349,7 +349,7 @@ const days = [
     position: relative;
     width: 340px;
     max-width: 100%;
-    filter: drop-shadow(0 28px 40px rgba(0, 0, 0, 0.45));
+    filter: none;
     animation: fl-float 9s ease-in-out infinite;
   }
   .fl-phone-img { display: block; width: 100%; height: auto; }
@@ -622,6 +622,9 @@ const days = [
   .fl--home .fl-by { color: #c2b7dd; }
   .fl-by--sm { margin-top: 6px; }
   .fl-visual .fl-by { justify-self: center; text-align: center; margin-top: 18px; }
+  /* Seb round 2, 22 Nov 2026: caption directly below the phone, not the stretched grid. */
+  .fl--home .fl-visual { align-self: center; align-content: center; }
+  .fl--home .fl-by { color: #b2a6cf; }
   /* 20 Nov 2026 23:29 (Seb, phones): the section lines up with the page padding; one even, slightly smaller
      padding inside the card; the laptop is narrower than the card and its screen less tall. */
   @media (max-width: 599px) {

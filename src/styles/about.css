@@ -1310,6 +1310,8 @@ body:has(.ab-page) .footer-wave {
 html body main .ab-page .ab-band-wf .ab-team { margin-top: 72px; }
 .ab-page .ab-ioda-copy :is(.ab-eyebrow, h2, .ab-text-link) { color: #2A0B4F !important; }
 .ab-page .ab-band-next .ab-well { padding-top: 138px; }
+/* Seb round 2, 22 Nov 2026: breathing room below the closing doors. */
+.ab-page .ab-band-next { padding-bottom: 48px; }
 .ab-page .ab-cta .ab-next-doors {
   max-width: 820px;
   margin-top: 32px;
@@ -1346,6 +1348,7 @@ html body main .ab-page .ab-band-wf .ab-team { margin-top: 72px; }
   .ab-quote blockquote p:first-child::before,
   .ab-quote blockquote p:last-child::after { font-size: 36px; }
   .ab-page .ab-band-next .ab-well { padding-top: 108px; }
+  .ab-page .ab-band-next { padding-bottom: 32px; }
   .ab-page .ab-cta .ab-next-doors { max-width: 440px; }
   .ab-page .ab-cta .ab-door { padding: 24px 20px; }
 }

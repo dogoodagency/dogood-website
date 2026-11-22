@@ -7631,13 +7631,6 @@ body:has(.page-home) {
   right: 8px;
   width: 36px;
   height: 36px;
-  transform: translateY(-50%) scale(1);
-}
-
-.footer .footer-form button.btn-subscribe::before,
-.footer .footer-form button.btn-subscribe:hover::before,
-.footer .footer-form button.btn-subscribe:focus-visible::before {
-  transform: translateY(-50%) scale(0);
 }
 
 /* ===== Preview 6, update 15 (Seb, 19 Nov 2026) ===== */
@@ -8019,7 +8012,7 @@ body:has(.page-home) {
    In that range the text takes the full width and the drawing sits under it, door on the right. */
 @media (min-width: 1081px) and (max-width: 1535px) {
   .page-home .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 0; }
-  .page-home .hero-copy { max-width: 760px; }
+  .page-home .hero-copy { max-width: 900px; }
   .page-home .hero-draw { position: relative; display: block; }
   .page-home .hero-draw::before { display: none; }
   .page-home .hero-sketch-frame,
@@ -8075,14 +8068,14 @@ body:has(.page-home) {
   align-self: center;
   margin: 32px 0 0;
   box-sizing: border-box;
-  width: 300px;
+  width: 270px;
   max-width: 100%;
   border: 0;
 }
 
 .page-home #next .next-doors p { flex: 1; }
 
-.page-home #next :is(.card-before, .card-after) > a.btn-apply { width: 300px; }
+.page-home #next :is(.card-before, .card-after) > a.btn-apply { width: 270px; }
 
 /* Replace the preview-9 desktop overrides; stacked cards keep their existing layout. */
 @media (min-width: 1081px) {
@@ -8104,11 +8097,12 @@ body:has(.page-home) {
 }
 
 @media (min-width: 1081px) {
-  .page-home #next .next-inner { padding-top: 336px; }
+  .page-home #next .next-inner { padding-top: 348px; }
 }
 
-@media (max-width: 599px) {
-  .page-home #next .next-inner { padding-top: 168px; }
+/* Seb round 2, 22 Nov 2026: retain the extra 60px at tablet widths too. */
+@media (min-width: 600px) and (max-width: 1080px) {
+  .page-home #next .next-inner { padding-top: 180px; }
 }
 
 .page-home #next .next-inner > p:not(.next-note) {
@@ -8134,3 +8128,28 @@ body:has(.page-home) {
     gap: 20px;
   }
 }
+
+/* Seb round 2, 22 Nov 2026: a pause before the presale paragraph. */
+.page-home #exit-card .exit-before-sale { margin-top: 28px; }
+
+/* Seb round 2, 22 Nov 2026: wider paragraphs stay clear of the door. */
+@media (min-width: 1081px) {
+  .page-home #hero .hero-copy { max-width: 860px; }
+  .page-home #hero .hero-copy > p { max-width: 860px; }
+}
+@media (min-width: 1081px) and (max-width: 1280px) {
+  .page-home #hero .hero-copy,
+  .page-home #hero .hero-copy > p { max-width: 67.1875vw; }
+}
+
+/* Seb round 2, 22 Nov 2026: matching door cards and bottom-aligned buttons. */
+.page-home #for-you .foryou-grid--pair {
+  align-items: stretch;
+  grid-auto-rows: 1fr;
+}
+.page-home #for-you :is(.card-before, .card-after) > a {
+  margin-top: auto;
+  width: 270px;
+  align-self: center;
+}
+.page-home #for-you .foryou-grid--pair ul { margin-bottom: 32px; }

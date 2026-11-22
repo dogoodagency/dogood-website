@@ -1248,7 +1248,12 @@ html:has(.nl-page) {
 
 /* Seb round 2, 22 Nov 2026: heading, signup alignment and closing space. */
 .nl-page #nl-questions-title {
-  max-width: 640px;
+  max-width: none;
+}
+
+/* Seb round 2, 22 Nov 2026: one desktop line, two complete phone phrases. */
+@media (min-width: 1081px) {
+  .nl-page #nl-questions-title { white-space: nowrap; }
 }
 
 .nl-question-ending {
@@ -1314,7 +1319,7 @@ html:has(.nl-page) {
   }
 }
 
-@media (max-width: 599px) {
+@media (max-width: 600px) {
   html body .nl-page #nl-questions-title {
     text-wrap: balance;
   }

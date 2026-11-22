@@ -10,6 +10,10 @@
   box-shadow: none !important;
 }
 
+/* Seb round 2, 22 Nov 2026: remove the remaining map shadows; retain keyboard focus. */
+.wf-pin-icon { filter: none !important; }
+.wf-pin:focus-visible { outline: 2px solid #28dbb0; outline-offset: 3px; }
+
 /* Cards that used to lift on hover stay still. */
 a[class*="card"]:hover,
 a[class*="card"]:focus-visible,
@@ -356,40 +360,57 @@ form [data-status].is-subscribed {
 .contact-form button.btn-teal:hover,
 .contact-form button.btn-teal:focus-visible { padding: 10px 20px 10px 56px !important; }
 
-/* Round 2 G1–G2: compact actions, fixed total padding in both chevron positions.
-   Keep these shared rules after page-specific button skins. */
+/* Seb round 2, 22 Nov 2026: compact actions clear the 32px disc in both states. */
 html body :is(a.btn-apply, a.btn-case, a.btn-teal, a.btn-partnership, a.btn-terms,
   button.btn-teal, button.btn-subscribe, .buzzsprout-gate button):is([class], button) {
-  min-height: 44px !important;
+  box-sizing: border-box;
+  min-width: 0 !important;
+  max-width: 100%;
+  min-height: 46px !important;
   height: auto !important;
-  border: 1px solid var(--color-grass-500) !important;
-  padding: 8px 48px 8px 17px !important;
+  border: 0 !important;
+  padding: 8px 52px 8px 18px !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
 }
 html body :is(a.btn-apply, a.btn-case, a.btn-teal, a.btn-partnership, a.btn-terms,
   button.btn-teal, button.btn-subscribe, .buzzsprout-gate button):is([class], button):is(:hover, :focus-visible) {
-  padding: 8px 17px 8px 48px !important;
+  padding: 8px 18px 8px 52px !important;
 }
 html body :is(a.btn-apply, a.btn-case, a.btn-teal, a.btn-partnership, a.btn-terms,
   button.btn-teal, button.btn-subscribe, .buzzsprout-gate button)::before,
 html body :is(a.btn-apply, a.btn-case, a.btn-teal, a.btn-partnership, a.btn-terms,
   button.btn-teal, button.btn-subscribe, .buzzsprout-gate button)::after {
-  width: 30px !important;
-  height: 30px !important;
+  width: 32px !important;
+  height: 32px !important;
 }
-html body :is(a.btn-teal, button.btn-teal, button.btn-subscribe, .buzzsprout-gate button,
-  .btn-outline, .btn-soft, .nl-btn-ghost, .ss .ss-btn),
-html body :is(a.btn-teal, button.btn-teal, button.btn-subscribe, .buzzsprout-gate button,
-  .btn-outline, .btn-soft, .nl-btn-ghost, .ss .ss-btn):is(:hover, :focus-visible) {
+html body :is(a.btn-apply, a.btn-case, a.btn-teal, a.btn-partnership, a.btn-terms,
+  button.btn-teal, button.btn-subscribe, .buzzsprout-gate button)::before {
+  left: 8px !important;
+}
+html body :is(a.btn-apply, a.btn-case, a.btn-teal, a.btn-partnership, a.btn-terms,
+  button.btn-teal, button.btn-subscribe, .buzzsprout-gate button)::after {
+  right: 8px !important;
+}
+html body :is(a.btn-teal, a.btn-terms, button.btn-teal, button.btn-subscribe, .buzzsprout-gate button,
+  .btn-soft, .nl-btn-ghost, .ss .ss-btn, .fl--home .fl-btn),
+html body :is(a.btn-teal, a.btn-terms, button.btn-teal, button.btn-subscribe, .buzzsprout-gate button,
+  .btn-soft, .nl-btn-ghost, .ss .ss-btn, .fl--home .fl-btn):is(:hover, :focus-visible) {
   background: var(--color-grass-500) !important;
   border-color: var(--color-grass-500) !important;
   color: var(--color-dream-500) !important;
-  font-weight: 700 !important;
 }
-html body :is(a.btn-case, a.btn-partnership, a.btn-terms, a.btn-teal.btn-dream),
-html body :is(a.btn-case, a.btn-partnership, a.btn-terms, a.btn-teal.btn-dream):is(:hover, :focus-visible) {
+html body :is(a.btn-case, a.btn-partnership, a.btn-teal.btn-dream, .btn-outline),
+html body :is(a.btn-case, a.btn-partnership, a.btn-teal.btn-dream, .btn-outline):is(:hover, :focus-visible) {
   background: var(--color-dream-500) !important;
   border-color: var(--color-grass-500) !important;
   color: var(--color-white) !important;
+}
+/* Seb round 2, 22 Nov 2026: purple actions use teal on the dark closing band. */
+html body .adv-cta a.btn-teal.btn-dream,
+html body .adv-cta a.btn-teal.btn-dream:is(:hover, :focus-visible) {
+  background: var(--color-grass-500) !important;
+  color: var(--color-dream-500) !important;
 }
 /* Apply is the only action with a HEART 600 fill, including external application forms.
    Legacy booking-row links using btn-apply keep the secondary skin below. */
@@ -405,27 +426,38 @@ html body .bk-btn-row a.btn-apply:not([href*="apply"]):is(:hover, :focus-visible
   border-color: var(--color-grass-500) !important;
   color: var(--color-dream-500) !important;
 }
-html body :is(.btn-outline, .btn-soft, .nl-btn-ghost, .ss .ss-btn) {
+html body :is(.btn-outline, .btn-soft, .nl-btn-ghost, .ss .ss-btn, .fl--home .fl-btn) {
   height: auto;
-  min-height: 44px;
-  padding: 8px 17px;
+  min-height: 46px !important;
+  border: 0 !important;
+  box-sizing: border-box;
+  padding: 7px 15px;
 }
 @media (hover: none), (pointer: coarse) {
-  html body :is(a[class*="btn-"], button[class*="btn-"], .buzzsprout-gate button) { min-height: 44px !important; }
+  html body :is(a[class*="btn-"], button[class*="btn-"], .buzzsprout-gate button) { min-height: 46px !important; }
 }
 @media (prefers-reduced-motion: reduce) {
   html body :is(a.btn-apply, a.btn-case, a.btn-teal, a.btn-partnership, a.btn-terms,
     button.btn-teal, button.btn-subscribe, .buzzsprout-gate button):is([class], button):is(:hover, :focus-visible) {
-    padding: 8px 48px 8px 17px !important;
+    padding: 8px 52px 8px 18px !important;
   }
 }
 
-/* G4: Residency's hero subline typography, including its phone scale. */
+/* Seb round 2, 22 Nov 2026: keep case chevrons visible on the solid purple fill. */
+html body a.btn-case::before,
+html body a.btn-case::after {
+  background-color: #fff !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6 3.5 10.5 8 6 12.5' fill='none' stroke='%232A0B4F' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+}
+
+/* Seb round 2, 22 Nov 2026: Residency subline, shared across heroes. */
 html body main :is(.hero .lede, .ep-hero .ep-sub, .hw-hero .hw-hero-lede, .hw-hero .hw-hero-sub,
   .dr-hero-sub, .advr-hero .advr-lede, .adv-hero .adv-lede, .wf-hero .wf-lead,
   .wfp-hero .wfp-extra, .bl-hero-lede, .bl-head .bl-dek, .ab-hero-copy > p, .faq-hero-intro,
   .st-hero-copy > p, .cs-hero .cs-intro, .pod-hero .pod-sub, .nl-hero .nl-lede,
-  .privacy-hero-sub, .subhero > p, .apl-hero .apl-sub) {
+  .privacy-hero-sub, .subhero > p, .apl-hero .apl-sub, .pod-ep-hero .pod-sub,
+  .bli-hero .bl-dek, .bk-head > p:not([class])) {
+  color: #fff !important;
   font-family: var(--font-sans) !important;
   font-size: var(--hero-subline-size) !important;
   font-weight: var(--hero-subline-weight) !important;
@@ -433,18 +465,41 @@ html body main :is(.hero .lede, .ep-hero .ep-sub, .hw-hero .hw-hero-lede, .hw-he
   letter-spacing: 0 !important;
   font-style: normal !important;
 }
-/* G5: one caption style for all Stage/button subtitles. */
-html body main :is(.stage-note, .btn-caption, .hw-btn-sub, .hw-hero-cta-note,
-  .wf-apply .wf-note, .wf-cta .wf-note, .st-cta-note,
-  .btn-stack > .case-protect, #apply-first .cap-pill, #apply-v .cap-small, #next .next-note),
-html body main :is(a.btn-apply, a.btn-teal, a.btn-case, a[class*="btn-"]) + p:not(.au-more):not(.wh-more) {
-  margin-top: 4px !important;
+/* Seb round 2, 22 Nov 2026: captions sit 6px below actions, including flex gaps. */
+main { --button-caption-color: #8171a3; }
+main :is(.hero, .ep-hero, .hw-hero, .dr-hero, .advr-hero, .adv-hero, .wf-hero,
+  .st-hero, .cs-hero, .ab-hero, .nl-hero, .pod-hero, .bl-hero, .bli-hero, .privacy-hero,
+  .apl-hero, .card.ink, .st-cta, .wf-cta) { --button-caption-color: #b2a6cf; }
+main :is(.card:not(.ink), .ep-box, .hw-stage-block) { --button-caption-color: #8171a3; }
+main :is(.caption-on-grass, .card-before) { --button-caption-color: #01a684; }
+main .caption-on-play { --button-caption-color: #a9973e; }
+html body main :is(.stage-note, .btn-caption, .hw-btn-sub, .hw-hero-cta-note, .hw-wf-note,
+  .wf-note, .st-cta-note, .case-protect, .hw-case-note, .wf-case-note, .bk-case-note, .apl-limit, #apply-first .cap-pill,
+  #apply-v .cap-small, #next .next-note) {
+  margin-top: calc(6px - var(--button-caption-parent-gap, 0px)) !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: none !important;
+  opacity: 1 !important;
+  color: var(--button-caption-color) !important;
   font-size: var(--button-caption-size) !important;
   font-weight: 400 !important;
   font-style: italic !important;
-  line-height: 1.45 !important;
+  line-height: 1.6 !important;
+  text-align: center !important;
 }
-html body main :is(a[class*="btn-"]):has(+ :is(.stage-note, .btn-caption, .hw-btn-sub, .wf-note, .st-cta-note)) {
+html body main :is(.hw-steps-cta, .hw-wf-cta, .wf-apply, .wf-center:has(> .wf-note), .btn-with-caption, .btn-stack) {
+  row-gap: 0;
+}
+html body main .btn-with-caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+}
+main .st-cta { --button-caption-parent-gap: 18px; }
+html body main :is(a[class*="btn-"]):has(+ :is(.stage-note, .btn-caption, .hw-btn-sub, .hw-wf-note, .wf-note, .st-cta-note)) {
   margin-bottom: 0 !important;
 }
 
@@ -457,15 +512,16 @@ html body main :is(#hw-familiar, #ep-familiar, #dr-familiar, #adv-tell, #advi-vo
   text-align: center !important;
 }
 
-/* G10–G11: override the stage-page decorative link underline as well. */
+/* Seb round 2, 22 Nov 2026: plain audio/WHOOP links inherit their band text colour. */
+html body main :is(.au-more, .wh-more) { color: inherit !important; }
 html body main :is(.au-more, .wh-more) a {
+  color: inherit !important;
   background-image: none !important;
   text-decoration: underline !important;
   text-decoration-color: var(--color-grass-500) !important;
   text-decoration-thickness: 2px !important;
-  text-underline-offset: 5px;
+  text-underline-offset: 4px;
 }
-html body main .au--compact .au-more a { color: var(--color-white) !important; }
 
 /* G13: method headings and stage taglines use HEART 500. Light pill backgrounds keep red legible. */
 html body main :is(.hw-tagline, .hw-flow > strong, .hw-flow > a, .hw-flow > a > strong, #hw-steps),
