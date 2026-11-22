@@ -31,7 +31,8 @@ const heroEdge = edgeAbove("#2A0B4F");
 const tintEdge = edgeAbove(tint);
 const whiteEdge = edgeAbove(white);
 const logoEdge = edgeAbove(logoBg);
-const footerEdge = edgeAbove(white);
+const closingBg = "#F3FFFB";
+const footerEdge = edgeAbove(closingBg);
 
 // Round-robin into columns: 3 for desktop, 2 for tablet.
 const cols3 = [0, 1, 2].map((i) => stories.filter((_, idx) => idx % 3 === i));
@@ -42,7 +43,7 @@ const cols2 = [0, 1].map((i) => stories.filter((_, idx) => idx % 2 === i));
   title="Founder stories before and after the sale | DoGood Agency"
   description="Anonymized stories from founders we have worked with before and after the sale, plus words from leaders at organizations our team has partnered with."
   canonical="https://www.dogoodagency.co/stories"
-  footerStrip={white}
+  footerStrip={closingBg}
   footerEdge={footerEdge}
 >
   <article class="st-page">
@@ -197,23 +198,26 @@ const cols2 = [0, 1].map((i) => stories.filter((_, idx) => idx % 2 === i));
     <section class="st-logos" aria-labelledby="st-logos-h">
       <div class="st-logos-head">
         <h2 id="st-logos-h">Leaders from these organizations have worked with our team</h2>
-        <p class="st-note st-note-small">The reviews and logos on this page are from leaders and organizations our team has worked with. They are not all founders who have sold.</p>
       </div>
       <!-- Logo rails: shared component (also on the homepage, two rows there). -->
       <LogoRails rows={3} tone="deep" />
+      <p class="st-note st-note-small st-logos-note">These logos are from organizations our team has worked with. They are not all founders who have sold.</p>
     </section>
 
     <div class="st-divider" style={`--st-from:${logoBg}`}>
-      <Wave fill={white} edge={logoEdge} />
+      <Wave fill={closingBg} edge={logoEdge} />
     </div>
 
-    <section class="st-band" aria-labelledby="st-next">
+    <!-- Seb round 2, 22 Nov 2026 -->
+    <section class="st-band st-band-next" aria-labelledby="st-next">
       <div class="st-well">
         <div class="st-cta">
           <h2 id="st-next">What’s next?</h2>
           <p class="st-cta-lead">Complete the short application for Stage 1 (30 days). We’ll respond within 24 hours. If there’s a fit, we’ll have an honest conversation.</p>
-          <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
-          <p class="st-cta-note">Limited to five new founders a month</p>
+          <div class="st-cta-action">
+            <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
+            <p class="st-cta-note">Limited to five new founders a month</p>
+          </div>
         </div>
       </div>
     </section>

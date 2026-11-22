@@ -133,7 +133,7 @@ h2.wf-center {
   width: min(1080px, calc(100% - 2 * var(--pad)));
   max-width: 100%;
   margin: 0 auto;
-  padding: 90px 0;
+  padding: calc(72px * var(--section-space-scale)) 0;
 }
 
 .wf-well-top {
@@ -1830,6 +1830,19 @@ h2.wf-h2.wf-center {
   margin-right: auto;
 }
 
+/* Seb round 2, 22 Nov 2026: case study directly on the band. */
+.wf-page-clientfit .wf-case {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+.wf-page-clientfit .wf-case :is(.wf-eyebrow, .wf-case-title, .wf-case-who, .wf-case-note) {
+  color: var(--color-dream-500);
+  opacity: 1;
+}
+
 /* ===== 21 Nov 2026 01:19 (Seb) ===== */
 /* Wayfinder photos: a soft DREAM pattern behind each person, so the card is not plain (all sizes). */
 .wf-photo {
@@ -1848,4 +1861,70 @@ h2.wf-h2.wf-center {
   .wf-page .wf-cta { text-align: left; align-items: flex-start; padding: 26px 22px; }
   .wf-page .wf-cta :is(h2, p) { text-align: left; }
   .wf-page .wf-cta .wf-cta-actions { justify-content: flex-start; }
+}
+
+/* Seb round 2, 22 Nov 2026 */
+.wf-page-overview .wf-fit-copy {
+  max-width: 1080px;
+  text-align: center;
+}
+
+.wf-page-overview .wf-member {
+  border: 1px solid #ea1557;
+  box-shadow: none;
+}
+
+.wf-page-overview .wf-members .wf-photo {
+  isolation: isolate;
+  background: #f5f2ff;
+}
+
+.wf-page-overview .wf-photo::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 28px 12px 20px 6px;
+  background: #e6defc;
+  opacity: 0.75;
+  border-radius: 43% 57% 64% 36% / 38% 42% 58% 62%;
+  transform: rotate(-8deg);
+  pointer-events: none;
+}
+
+.wf-page-overview .wf-member:nth-child(even) .wf-photo::before {
+  border-radius: 58% 42% 38% 62% / 52% 64% 36% 48%;
+  transform: rotate(8deg);
+}
+
+.wf-page-overview .wf-photo picture {
+  z-index: 1;
+}
+
+.wf-page-overview section[aria-labelledby="wf-quality"] .wf-well {
+  padding-top: calc(30px + 48px);
+}
+
+.wf-page-overview #wf-voices {
+  margin-bottom: 10px;
+}
+
+.wf-page-overview .wf-voices-sub {
+  margin: 0 auto;
+  color: #2a0b4f;
+}
+
+.wf-page-overview section[aria-label="Apply for Stage 1"] .wf-well {
+  padding-bottom: calc(80px + 48px);
+}
+
+.wf-page-overview .wf-cta.wf-cta-ctx {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.wf-page-overview .wf-cta-ctx :is(h2, p) {
+  color: #2a0b4f;
 }

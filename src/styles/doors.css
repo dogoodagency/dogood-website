@@ -808,3 +808,221 @@ body:has(.dr-page) .footer-wave {
 
 /* 20 Nov 2026 (Seb): the longer Pathway sub-line wraps inside the hero instead of running off the right edge. */
 .dr-page .dr-hero-sub { white-space: normal !important; max-width: 1080px; }
+
+/* Seb round 2, 22 Nov 2026 */
+.dr-page .dr-band-doors .dr-well {
+  padding-top: calc(30px + 48px);
+}
+
+.dr-page .dr-doors-split .dr-door {
+  border: 1px solid #ea1557;
+}
+
+.dr-page .dr-door--before .dr-door-eyebrow,
+.dr-page .dr-door--after :is(h2, .dr-door-line, .dr-door-text, .dr-door-list li, .dr-door-eyebrow) {
+  color: #2a0b4f;
+}
+
+.dr-page .dr-which {
+  display: block;
+}
+
+.dr-which-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 28px;
+}
+
+.dr-page .dr-which-head h2 {
+  margin: 0;
+}
+
+.dr-page .dr-which .dr-sketch-card {
+  flex: 0 0 240px;
+  width: 240px;
+  padding: 8px;
+  border: 0;
+  box-shadow: none;
+}
+
+.dr-page .dr-which .dr-sketch-card :is(picture, img) {
+  transform: none;
+}
+
+.dr-page .dr-paths {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 28px;
+  margin-top: 0;
+}
+
+.dr-page .dr-path {
+  min-width: 0;
+  padding: 28px;
+  border-radius: 24px;
+}
+
+.dr-page .dr-path--before {
+  background: #f5f2ff;
+  border-color: #b2a6cf;
+}
+
+.dr-page .dr-path--after {
+  background: #e7fff6;
+  border-color: #73e7c4;
+}
+
+.dr-page .dr-path-label {
+  margin: 0 0 24px;
+  color: #2a0b4f;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  text-transform: none;
+}
+
+.dr-path-rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dr-path-rows li {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+}
+
+.dr-path-rows li + li {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e6defc;
+}
+
+.dr-path-marker {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  background: #e6defc;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.dr-path--after .dr-path-marker {
+  background: #a3f2d7;
+}
+
+.dr-page .dr-path-rows p {
+  margin: 0 0 12px;
+  color: #2a0b4f;
+}
+
+.dr-page .dr-path-rows p:last-child {
+  margin-bottom: 0;
+}
+
+.dr-page a.dr-door-pill {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  margin-block: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #2a0b4f;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.5;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+.dr-page .dr-path--after a.dr-door-pill {
+  background: #28dbb0;
+  color: #2a0b4f;
+}
+
+.dr-page a.dr-door-pill:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.dr-page a.dr-door-pill:focus-visible {
+  outline: 3px solid #28dbb0;
+  outline-offset: 3px;
+}
+
+.dr-page .dr-notsure {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 28px;
+  border: 1px solid #ea1557;
+  border-radius: 24px;
+}
+
+.dr-notsure > .btn-teal {
+  max-width: 100%;
+  white-space: normal;
+  text-align: center;
+}
+
+.dr-page #dr-familiar,
+.dr-page #dr-familiar + .dr-lead {
+  max-width: none;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.dr-page .dr-strip-row h2 {
+  font-weight: 500;
+}
+
+.dr-page .dr-well-slim {
+  padding-bottom: calc(90px + 48px);
+}
+
+@media (max-width: 799px) {
+  .dr-page .dr-paths,
+  .dr-page .dr-notsure {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dr-notsure > .btn-teal {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 599px) {
+  html body .dr-page .dr-band-doors .dr-well {
+    padding-top: calc(70px + 48px);
+  }
+
+  .dr-which-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .dr-page .dr-which .dr-sketch-card {
+    flex-basis: auto;
+    align-self: center;
+    max-width: 100%;
+  }
+
+  .dr-page .dr-path,
+  .dr-page .dr-notsure {
+    padding: 24px 20px;
+  }
+
+  .dr-page .dr-well-slim {
+    padding-bottom: calc(70px + 48px);
+  }
+}

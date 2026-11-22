@@ -110,7 +110,7 @@ body:has(.st-page) .footer-wave {
   width: min(1120px, calc(100% - 2 * var(--pad)));
   max-width: 100%;
   margin: 0 auto;
-  padding: 90px 0;
+  padding: calc(72px * var(--section-space-scale)) 0;
 }
 
 /* ---------- Type ---------- */
@@ -667,7 +667,7 @@ body:has(.st-page) .footer-wave {
   }
 
   .st-well {
-    padding: 60px 0;
+    padding: calc(48px * var(--section-space-scale)) 0;
   }
 
   .st-case {
@@ -863,3 +863,75 @@ body:has(.st-page) .footer-wave {
 
 /* 20 Nov 2026 (Seb): sections start at the hero's left edge (both 1080px wide). */
 .st-well { width: min(1080px, calc(100% - 2 * var(--pad))); }
+
+/* Seb round 2, 22 Nov 2026 */
+.st-page .st-anon {
+  margin-inline: auto;
+  font-size: 16px;
+  text-align: center;
+}
+
+.st-testi :is(.st-eyebrow, #st-testi-h, .st-note) {
+  text-align: center;
+}
+
+.st-testi .st-note {
+  margin-inline: auto;
+  margin-bottom: 24px;
+}
+
+.st-logos-head {
+  width: min(1280px, calc(100% - 2 * var(--pad)));
+}
+
+.st-page .st-note.st-logos-note {
+  width: min(1080px, calc(100% - 2 * var(--pad)));
+  margin: 28px auto 0;
+  font-size: 14px;
+  text-align: center;
+}
+
+.st-page .st-band-next {
+  background: #f3fffb;
+}
+
+.st-page .st-cta {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.st-page .st-cta :is(h2, .st-cta-lead) {
+  color: #2a0b4f;
+}
+
+.st-cta-action {
+  --button-caption-color: #2a0b4f;
+  --button-caption-size: 10px;
+  --button-caption-parent-gap: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  max-width: 100%;
+}
+
+.st-page .st-case--heart .btn-teal {
+  background: #2a0b4f !important;
+}
+
+.st-page .st-case-feature {
+  border: 1px solid #ea1557;
+}
+
+.st-page .st-case--green :is(.st-case-eyebrow, h3 .st-accent, h4) {
+  color: #2a0b4f;
+}
+
+@media (max-width: 599px) {
+  html body .st-page .st-anon {
+    font-size: 10px;
+  }
+}

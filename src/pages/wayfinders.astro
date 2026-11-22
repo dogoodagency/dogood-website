@@ -117,7 +117,7 @@ const photoFit: Record<string, { h: number; align: "left" | "right" | "center" }
 >
   <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
-  <article class="wf-page">
+  <article class="wf-page wf-page-overview">
     <header class="wf-hero">
       <div class="wf-hero-inner">
         <!-- Hero trimmed (Seb, 19 Nov 2026): one type style, left-aligned, less text. -->
@@ -293,7 +293,7 @@ const photoFit: Record<string, { h: number; align: "left" | "right" | "center" }
       <div class="wf-well wf-well-top">
         <p class="wf-eyebrow wf-eyebrow-dark wf-center">Testimonials</p>
         <h2 class="wf-h2 wf-center" id="wf-voices">Leaders who've been through it</h2>
-        <p class="wf-center wf-voices-sub">Words from clients of our Wayfinders and from leaders our team has worked with. They are not all founders who have sold.</p>
+        <p class="wf-center wf-voices-sub">Words from clients of our Wayfinders and leaders our team has worked with.</p>
         <TestimonialWall items={wallItems} phoneItems={[...wallItems.slice(0, voices.length), ...phonePicks.wayfinders.map((n) => wallItems.find((w) => w.name.toUpperCase() === n)).filter((w): w is (typeof wallItems)[number] => !!w)]} label="Testimonials from clients and leaders our team has worked with" />
       </div>
     </section>
@@ -302,7 +302,7 @@ const photoFit: Record<string, { h: number; align: "left" | "right" | "center" }
 
     <section class="wf-band wf-band-tint" aria-label="Apply for Stage 1">
       <div class="wf-well wf-well-top">
-        <!-- Bottom box with context (Seb, 19 Nov 2026). -->
+        <!-- Seb round 2, 22 Nov 2026 -->
         <div class="wf-cta wf-cta-ctx">
           <h2>Ready to be matched with your Wayfinder?</h2>
           <p>We read your application, talk with you, and match you with the Wayfinder who fits you best.</p>

@@ -56,7 +56,7 @@ const posts = sortedPosts((await getCollection("blog")).filter((p) => !p.data.no
     </header>
 
     <!-- The two doors, each in its own colour -->
-    <section class="dr-band" aria-label="Choose your door">
+    <section class="dr-band dr-band-doors" aria-label="Choose your door">
       <div class="dr-well dr-well-top">
         <div class="dr-doors dr-doors-split">
           <section class="dr-door dr-door--before" aria-labelledby="dr-door-before">
@@ -103,34 +103,62 @@ const posts = sortedPosts((await getCollection("blog")).filter((p) => !p.data.no
     </section>
     <Fragment set:html={wave("#2A0B4F", tint)} />
 
-    <!-- Which door is mine? (with the sketch that used to sit in the hero) -->
+    <!-- Seb round 2, 22 Nov 2026 -->
     <section class="dr-band dr-band-tint" aria-labelledby="dr-which">
       <div class="dr-well dr-well-top">
         <div class="dr-which">
-          <div>
+          <div class="dr-which-head">
             <h2 id="dr-which">Which door is mine?</h2>
-            <div class="dr-paths">
-              <div class="dr-path dr-path--before">
-                <p class="dr-path-label">Before the sale</p>
-                <p><strong>You're not sure you want to sell at all.</strong> Start with <a href="/exit-prep">The Exit Prep™</a>. Deciding is part of the work.</p>
-                <p><strong>You haven't signed anything yet.</strong> Start with <a href="/exit-prep">The Exit Prep™</a>. The personal side is easiest to shape before the deal sets the timeline.</p>
-                <p><strong>You're in a process, under LOI or have an earnout ahead.</strong> The Exit Prep™ is built for that stretch too, alongside your advisors.</p>
-              </div>
-              <div class="dr-path dr-path--after">
-                <p class="dr-path-label">After the sale</p>
-                <p><strong>The company is no longer your day-to-day.</strong> Start with <a href="/the-reset">Stage 1: The Reset™</a>. Many founders begin around three months after the sale; some start sooner.</p>
-              </div>
-            </div>
+            <figure class="dr-sketch-card">
+              <picture>
+                <source type="image/webp" srcset="/sketches/how-it-works-two-stage-path-sketch-ondark@1x.webp 560w, /sketches/how-it-works-two-stage-path-sketch-ondark@2x.webp 1120w" sizes="240px" />
+                <img src="/sketches/how-it-works-two-stage-path-sketch-ondark@1x.png" srcset="/sketches/how-it-works-two-stage-path-sketch-ondark@1x.png 560w, /sketches/how-it-works-two-stage-path-sketch-ondark@2x.png 1120w" sizes="240px" width="560" height="420" alt="A founder walks along a teal path past an empty archway toward an open door with a green landscape beyond, drawn as a sketch." loading="lazy" decoding="async" />
+              </picture>
+            </figure>
           </div>
-          <figure class="dr-sketch-card">
-            <picture>
-              <source type="image/webp" srcset="/sketches/how-it-works-two-stage-path-sketch-ondark@1x.webp 560w, /sketches/how-it-works-two-stage-path-sketch-ondark@2x.webp 1120w" sizes="(max-width: 899px) min(100vw, 380px), 380px" />
-              <img src="/sketches/how-it-works-two-stage-path-sketch-ondark@1x.png" srcset="/sketches/how-it-works-two-stage-path-sketch-ondark@1x.png 560w, /sketches/how-it-works-two-stage-path-sketch-ondark@2x.png 1120w" sizes="(max-width: 899px) min(100vw, 380px), 380px" width="560" height="420" alt="A founder walks along a teal path past an empty archway toward an open door with a green landscape beyond, drawn as a sketch." loading="lazy" decoding="async" />
-            </picture>
-          </figure>
+          <div class="dr-paths">
+            <section class="dr-path dr-path--before" aria-labelledby="dr-path-before">
+              <h3 class="dr-path-label" id="dr-path-before">Before the sale</h3>
+              <ol class="dr-path-rows">
+                <li>
+                  <span class="dr-path-marker" aria-hidden="true">1</span>
+                  <div>
+                    <p><strong>You're not sure you want to sell at all.</strong></p>
+                    <p>Start with <a class="dr-door-pill" href="/exit-prep"><span aria-hidden="true">→ </span>The Exit Prep™</a>. Deciding is part of the work.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="dr-path-marker" aria-hidden="true">2</span>
+                  <div>
+                    <p><strong>You haven't signed anything yet.</strong></p>
+                    <p>Start with <a class="dr-door-pill" href="/exit-prep"><span aria-hidden="true">→ </span>The Exit Prep™</a>. The personal side is easiest to shape before the deal sets the timeline.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="dr-path-marker" aria-hidden="true">3</span>
+                  <div>
+                    <p><strong>You're in a process, under LOI or have an earnout ahead.</strong></p>
+                    <p><a class="dr-door-pill" href="/exit-prep"><span aria-hidden="true">→ </span>The Exit Prep™</a> is built for that stretch too, alongside your advisors.</p>
+                  </div>
+                </li>
+              </ol>
+            </section>
+            <section class="dr-path dr-path--after" aria-labelledby="dr-path-after">
+              <h3 class="dr-path-label" id="dr-path-after">After the sale</h3>
+              <ol class="dr-path-rows">
+                <li>
+                  <span class="dr-path-marker" aria-hidden="true">1</span>
+                  <div>
+                    <p><strong>The company is no longer your day-to-day.</strong></p>
+                    <p>Start with <a class="dr-door-pill" href="/the-reset"><span aria-hidden="true">→ </span>Stage 1: The Reset™</a>. Many founders begin around three months after the sale; some start sooner.</p>
+                  </div>
+                </li>
+              </ol>
+            </section>
+          </div>
         </div>
         <aside class="dr-notsure">
-          <p><strong>Not sure which door is yours?</strong> A short orientation call helps you choose, or read the <a href="/faqs">FAQs</a>.</p>
+          <p><strong>Not sure which door is yours?</strong><br />A short orientation call helps you choose, or read the <a href="/faqs">FAQs</a>.</p>
           <a class="btn-teal btn-dream" href="/orientation">Book an orientation call</a>
         </aside>
       </div>
