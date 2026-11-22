@@ -418,6 +418,10 @@
 
 /* Seb round 2, 22 Nov 2026: dense features stack before either column becomes a narrow gutter. */
 @media (min-width: 601px) and (max-width: 1023px) {
+  /* Seb round 2, 22 Nov 2026: full-width hero copy, then centred door art. */
+  html body .page-home #hero .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  html body .page-home #hero .hero-draw { width: min(100%, 480px); margin-inline: auto; }
+
   html body main :is(.ab-why-grid, .cs-snapshot-grid, .hw-fit,
     .adv-sale-columns, .nl-question, .page-contact .contact-top) {
     grid-template-columns: minmax(0, 1fr);
@@ -449,9 +453,6 @@
 
 /* Seb round 2, 22 Nov 2026: narrow mid-widths keep generous text columns and contained art. */
 @media (min-width: 601px) and (max-width: 767px) {
-  html body .page-home #hero .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
-  html body .page-home #hero .hero-draw { max-width: 480px; margin-inline: auto; }
-  html body .page-home #hero .hero-sketch-frame { margin: 0; }
   html body .page-home #for-you .foryou-grid--pair,
   html body .page-home #next .next-doors,
   html body main :is(.tw .tw-list--wide, .tw > .tw-list:not(.tw-list--phone), .st-page .st-list,

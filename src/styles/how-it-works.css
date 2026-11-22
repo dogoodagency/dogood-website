@@ -2125,6 +2125,11 @@ html {
   :is(.hw-page--s1, .hw-page--s2) .hw-stage-panel .hw-label--left { margin-left: calc(var(--lw) * -0.15); }
 }
 
+/* Seb round 2, 22 Nov 2026: running-text links wrap within phone cards. */
+@media (max-width: 600px) {
+  html body .hw-page :is(p, li) .hw-textlink { white-space: normal; }
+}
+
 /* ===== 20 Nov 2026 23:29 (Seb): The Reset and The Build on phones ===== */
 @media (max-width: 599px) {
   /* Everything left aligned, except the "How it works" flow and steps and the delivery-quality line. */
@@ -2143,7 +2148,7 @@ html {
   /* "(12 weeks)" and "(30 days)" stay on the title's line, at the same size. */
   html body .hw-page .hw-stage-head .hw-stage-title { white-space: nowrap; font-size: 30px; }
   html body .hw-page .hw-stage-head .hw-days { font-size: 17px; }
-  html body .hw-page .hw-textlink { font-size: 15px; white-space: nowrap; }
+  html body .hw-page .hw-textlink { font-size: 15px; }
 
   /* Houses: arrows and labels around the house as on desktop, labels 2px smaller; no boxes. */
   html body .hw-page .hw-house { width: 50%; margin: 22px auto 56px; }
