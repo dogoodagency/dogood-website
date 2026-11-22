@@ -1,38 +1,35 @@
 ---
 import AdvisorResourcePage from "../../../components/AdvisorResourcePage.astro";
-// What Founders Struggle With (Advisor Toolkit Plan v0.4, resource F). First draft for Seb to rewrite.
+const patterns = [
+  { title: "No plan for what comes next", quote: "Do they know they need it early? Maybe not. But they certainly will know when the transaction closes.", role: "Exit advisor", response: "Ask the founder what they want an ordinary week to look like, before the deal makes the timetable for them." },
+  { title: "Nothing to back up the personal conversation", quote: "I think that's a gap… dealing with the personal side and making sure that they're personally ready.", role: "Exit advisor", response: "Offer a question they can sit with privately. The 7 Questions gives you something to leave behind without asking for an immediate answer." },
+  { title: "Identity still tied to the company", quote: "They aren't ready to let go even though their company is for sale. … They tend to nitpick every buyer… and they blow up their own deals.", role: "Exit advisor", response: "Make space for what leaving means to the person. Explore the company decision alongside who they want to be beyond the role." },
+  { title: "A brave face hiding a fear nobody talks about", quote: "The truth is, I have no idea.", role: "Founder", response: "Give uncertainty room. Ask what feels least settled, without expecting a confident plan or treating the uncertainty as a problem to fix." },
+  { title: "Money fears mixed up with the personal side", quote: "The hardest thing is… that transition period. Both from a mental state… and a financial state.", role: "Wealth advisor", response: "Separate the financial questions from the questions about identity, time and purpose. Keep the right specialist alongside the founder for each." },
+];
 ---
 
 <AdvisorResourcePage
-  title="What founders struggle with when they sell | DoGood Agency"
-  description="A short leave-behind for advisors: the patterns advisors see when a founder sells, from our conversations with them, with our response to each."
+  title="Where founders get stuck: coaching before and after a sale | DoGood Agency"
+  description="The emotional side of selling a business, in anonymous founder and advisor words, with recommended responses and coaching support before and after the sale."
   path="/advisor-center/insights/what-founders-struggle-with"
   section="insights"
   tone="sky"
-  name="What Founders Struggle With"
+  name="Where founders get stuck"
   soon="Coming soon · a short leave-behind"
   lede="The patterns advisors see when a founder sells, and our recommended response to each."
-  blocks={[
-    {
-      heading: "What advisors told us",
-      paras: ["From our conversations with exit planners, succession, wealth and M&A advisors. These are patterns, not statistics."],
-      list: [
-        "No plan for what comes next",
-        "Nothing to back up the personal conversation",
-        "Deals that blow up when identity is still tied to the company",
-        "A brave face hiding a fear nobody talks about",
-        "Not knowing when to raise it",
-        "Money fears mixed up with the personal side",
-      ],
-    },
-    {
-      heading: "What the paper will give you",
-      list: [
-        "Each pattern in advisors' own anonymous words",
-        "Our recommended response, one page per pattern",
-        "A short version to leave behind after a client conversation",
-      ],
-    },
-  ]}
-  note="Excerpts will also appear weekly on LinkedIn."
-/>
+  blocks={[]}
+>
+  <section class="advd-struggles" aria-labelledby="struggles-emotional">
+    <h2 id="struggles-emotional">The emotional side of selling a business</h2>
+    <p>From our conversations with exit advisors, succession planners, wealth advisors and family offices, and sell-side M&amp;A advisors. These are patterns, not statistics. Use them as a leave-behind for a conversation before or after the sale.</p>
+    {patterns.map((pattern) => (
+      <section class="advd-block">
+        <h3>{pattern.title}</h3>
+        <figure class="advd-pattern-quote"><blockquote><p>“{pattern.quote}”</p></blockquote><figcaption>{pattern.role}</figcaption></figure>
+        <p><strong>Our recommended response:</strong> {pattern.response}</p>
+      </section>
+    ))}
+    <p>For timing and words to use, see <a href="/advisor-center/client-tools/signals-guide#how-to-raise-the-personal-side">How to raise the personal side in the Signals Guide</a>.</p>
+  </section>
+</AdvisorResourcePage>

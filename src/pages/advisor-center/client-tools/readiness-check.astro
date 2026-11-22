@@ -1,42 +1,59 @@
 ---
 import AdvisorResourcePage from "../../../components/AdvisorResourcePage.astro";
-// Founder Readiness Check (Advisor Toolkit Plan v0.4, resource B). First draft for Seb to rewrite.
 ---
 
 <AdvisorResourcePage
-  title="Founder exit readiness check for advisors | DoGood Agency"
-  description="A free founder readiness check advisors send with a personal link: a private PDF report and a free debrief call. Not a medical or psychological test."
+  title="Founder readiness check and coaching tools for advisors | DoGood Agency"
+  description="Preview a founder readiness check for conversations before and after a sale, alongside our coaching tools. Private reflection, shared only with the founder's consent."
   path="/advisor-center/client-tools/readiness-check"
   section="tools"
   tone="sky"
   name="Founder Readiness Check"
-  soon="Coming soon · we're building it now"
+  soon="Coming soon"
   lede="A few calm questions that open the personal conversation with your client, before or after the sale."
   blocks={[
     {
-      heading: "What it is",
+      heading: "From reflection to a conversation",
       paras: [
-        "The heart of the toolkit. You send the check to a founder with a short, copy-and-paste email and your own personal link. Your client answers a few calm questions about life before and after the sale.",
-        "They get a private PDF report and the offer of a free debrief call. If they say yes, you get a copy of the report too.",
+        "The check gives a founder space to reflect on life beyond the business, whether they are weighing a sale or finding their feet after one. The screens above show the personal baseline and private summary in FOUNDR.land's design preview.",
+        "The planned advisor pathway brings those reflections into a founder conversation brief. The founder chooses what to share; you use the approved summary to open the personal conversation alongside the business and the money.",
       ],
     },
     {
-      heading: "How it works",
+      heading: "Discover / Act / Navigate",
       steps: [
-        { title: "You send it", text: "Use the ready-made email and your personal link. No sign-up for you." },
-        { title: "Your client answers", text: "A few calm questions. They give an email only so we can send their report." },
-        { title: "They get a private report", text: "A PDF in calm, plain language, with a free debrief call if they want one." },
-        { title: "You get a copy, if they say yes", text: "Consent first. You only see the results if your client clearly agrees." },
+        { title: "Discover", text: "Notice what matters now. The personal baseline invites reflection on life beyond the business, including relationships and belonging." },
+        { title: "Act", text: "Choose a small next step from those reflections. The private summary makes room for what the founder wants to try." },
+        { title: "Navigate", text: "Return to the reflections as life changes. In the planned advisor pathway, a summary the founder approves can guide your next conversation." },
       ],
     },
     {
       heading: "What it is not",
       list: [
-        "Not a medical or psychological test, and it says so",
-        "No stress or burnout labels: the report uses calm levels",
-        "Not the old Founder Diagnostic: this is a new check",
+        "Not a medical or psychological test",
+        "Not a readiness score or a judgment about whether someone should sell",
+        "Not an automatic report to an advisor: the founder decides what to share",
       ],
     },
   ]}
-  note="Free to use and to share. Consent and data rules are checked before it goes live."
-/>
+  note="Free to use and share when released. The advisor pathway is in development."
+>
+  <section slot="before-blocks" class="advd-preview" aria-labelledby="readiness-preview">
+    <h2 id="readiness-preview">A look inside the check</h2>
+    <p>A personal baseline, then a private summary. These screens use example answers.</p>
+    <figure>
+      <picture>
+        <source media="(max-width: 599px)" srcset="/media/readiness-check/mobile-question-framed@1x.webp 1x, /media/readiness-check/mobile-question-framed@2x.webp 2x" width="514" height="1062" />
+        <img src="/media/readiness-check/desktop-question-framed@1x.webp" srcset="/media/readiness-check/desktop-question-framed@1x.webp 1x, /media/readiness-check/desktop-question-framed@2x.webp 2x" width="1552" height="1056" alt="FOUNDR.land personal baseline, question 3 of 10: Relationships and Belonging, with a rating of 6 selected." decoding="async" />
+      </picture>
+      <figcaption>The check: a moment to reflect on connection beyond the business role.</figcaption>
+    </figure>
+    <figure>
+      <picture>
+        <source media="(max-width: 599px)" srcset="/media/readiness-check/mobile-report-framed@1x.webp 1x, /media/readiness-check/mobile-report-framed@2x.webp 2x" width="514" height="1916" />
+        <img src="/media/readiness-check/desktop-report-framed@1x.webp" srcset="/media/readiness-check/desktop-report-framed@1x.webp 1x, /media/readiness-check/desktop-report-framed@2x.webp 2x" width="1552" height="1440" alt="FOUNDR.land My Insights: an approved private summary of the founder's reflections and next step, with a Print or save my private PDF option." loading="lazy" decoding="async" />
+      </picture>
+      <figcaption>The private summary: the founder reviews their own words and chooses what to share.</figcaption>
+    </figure>
+  </section>
+</AdvisorResourcePage>

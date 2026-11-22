@@ -2,7 +2,7 @@
 /**
  * Detail page for an Advisor Center resource (Seb, 19 Nov 2026): the three free tools and the three advisor
  * insights pieces. Content comes from the Advisor Toolkit Plan v0.4 and is a first draft; Seb will rewrite.
- * Every resource is still in the making, so each page shows a clear "Coming soon" status.
+ * Resource status and download links reflect what is available on each page.
  */
 import "../styles/advisors.css";
 import "../styles/advisors-resources.css";
@@ -25,19 +25,30 @@ interface Props {
   path: string;
   section: "tools" | "insights";
   name: string;
-  soon: string;
+  soon?: string;
+  download?: { href: string; label: string };
   lede: string;
   tone: "sky" | "grass" | "heart";
   blocks: Block[];
   note?: string;
 }
 
-const { title, description, path, section, name, soon, lede, tone, blocks, note } = Astro.props;
+const { title, description, path, section, name, soon, lede, tone, blocks, note, download } = Astro.props;
 // Page colour follows the card colour on the tools / insights index (Seb, 19 Nov 2026 18:52).
 const tint = tone === "heart" ? "#FFF9FA" : tone === "grass" ? "#F3FFFB" : "#F5F2FF";
 const heroEdge = edgeAbove("#2A0B4F");
+const siblings = section === "tools" ? [
+  { slug: "readiness-check", label: "Readiness Check" },
+  { slug: "signals-guide", label: "Signals Guide" },
+  { slug: "life-after-the-sale-planner", label: "Planner" },
+] : [
+  { slug: "what-founders-struggle-with", label: "Where founders get stuck" },
+  { slug: "before-and-after-the-sale", label: "The book" },
+  { slug: "advisor-voices", label: "Advisor voices" },
+];
+const sectionPath = section === "tools" ? "client-tools" : "insights";
 const back = section === "tools"
-  ? { href: "/advisor-center/client-tools", label: "All free tools", crumb: "Free tools for your clients" }
+  ? { href: "/advisor-center/client-tools", label: "All free tools", crumb: "Free tools" }
   : { href: "/advisor-center/insights", label: "All advisor insights", crumb: "Advisor insights" };
 ---
 
@@ -54,18 +65,32 @@ const back = section === "tools"
       <div class="advr-hero-inner">
         <p class="advr-eyebrow">Advisor Center · {back.crumb}</p>
         <h1>{name}</h1>
-        <p class="advd-soon">{soon}</p>
+        {soon && <p class="advd-soon">{soon}</p>}
         <p class="advr-lede">{lede}</p>
       </div>
       <Wave fill="#fff" edge={heroEdge} />
     </header>
 
     <section class="advr-band advr-band-white advr-hub-band" aria-label="Advisor Center">
-      <div class="advr-well"><div class="advr-nav"><AdvisorNav current={section} /></div></div>
+      <div class="advr-well">
+        <div class="advr-nav"><AdvisorNav current={section} /></div>
+        <nav class="advd-breadcrumb" aria-label="Breadcrumb">
+          <a href="/advisor-center">Advisor Center</a><span aria-hidden="true">›</span>
+          <a href={back.href}>{back.crumb}</a><span aria-hidden="true">›</span>
+          <span aria-current="page">{name}</span>
+        </nav>
+        <nav class="advd-siblings" aria-label={section === "tools" ? "Client tools" : "Advisor insights"}>
+          {siblings.map((item) => (
+            <a href={`/advisor-center/${sectionPath}/${item.slug}`} aria-current={path.endsWith(`/${item.slug}`) ? "page" : undefined}>{item.label}</a>
+          ))}
+        </nav>
+      </div>
     </section>
 
     <section class="advr-band advr-band-tint" aria-label={name}>
       <div class="advr-well advd-well">
+        {download && <p class="advd-download"><a class="btn-teal btn-dream" href={download.href} target="_blank" rel="noopener">{download.label}</a></p>}
+        <slot name="before-blocks" />
         {
           blocks.map((b) => (
             <section class="advd-block">
@@ -85,10 +110,11 @@ const back = section === "tools"
             </section>
           ))
         }
+        <slot />
         {note && <p class="advd-note">{note}</p>}
       </div>
     </section>
 
-    <div class="adv-fl-band"><FoundrLand kind="advisor" /></div>
+    <div class="advd-foundr-band"><FoundrLand kind={section === "tools" ? "home" : "advisor"} /></div>
   </article>
 </Base>

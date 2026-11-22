@@ -7,6 +7,7 @@ import AdvisorNav from "../../../components/AdvisorNav.astro";
 import { edgeAbove } from "../../../data/edge-line";
 import TestimonialWall from "../../../components/TestimonialWall.astro";
 import FoundrLand from "../../../components/FoundrLand.astro";
+import PartnershipIcon from "../../../components/PartnershipIcon.astro";
 // Advisor conversations, shared anonymously with role-only labels.
 const advisorQuotes = [
   { quote: "Remember that founder has probably not built a business and sold one before. So they have no idea what's coming.", name: "Wealth advisor" },
@@ -23,10 +24,10 @@ const footerEdge = edgeAbove(tint);
 ---
 
 <Base
-  title="Advisor insights on founders who sell | DoGood Agency"
-  description="What founders struggle with before and after the sale, drawn anonymously from our conversations with exit and wealth advisors."
+  title="Founder coaching insights for advisors | DoGood Agency"
+  description="Founder coaching insights before and after a sale: patterns in anonymous advisor conversations, a book to share with founders, and the voices behind both."
   canonical="https://www.dogoodagency.co/advisor-center/insights"
-  ogTitle="Advisor insights on founders who sell | DoGood Agency"
+  ogTitle="Founder coaching insights for advisors | DoGood Agency"
   footerStrip={tint}
   footerEdge={footerEdge}
 >
@@ -34,9 +35,9 @@ const footerEdge = edgeAbove(tint);
     <header class="advr-hero">
       <div class="advr-hero-inner">
         <p class="advr-eyebrow">Advisor Center · Advisor insights</p>
-        <h1>What we hear from advisors</h1>
+        <h1>For the conversations you have with founders</h1>
         <p class="advr-lede">
-          Advisors rarely hear from each other. We talk with many of them. Here we share the patterns, anonymously, so you can help your founders with life in <span class="pink-soft advr-founder"><strong>FOUNDR</strong>.land</span>.
+          Advisors rarely hear from each other about the personal side. Here is a leave-behind on the patterns, a book you can share with a founder, and the voices behind both.
         </p>
       </div>
       <Wave fill="#fff" edge={heroEdge} />
@@ -59,7 +60,7 @@ const footerEdge = edgeAbove(tint);
             <a class="advr-card advr-card--link advr-card--sky" href="/advisor-center/insights/what-founders-struggle-with">
               <span class="advr-soon">Coming soon</span>
               
-              <h2>What Founders Struggle With</h2>
+              <h2>Where founders get stuck</h2>
               <p>A short, anonymous leave-behind built from advisors' real words, with our recommended response to each pattern.</p>
               <span class="advr-more">Read more →</span>
             </a>
@@ -68,8 +69,8 @@ const footerEdge = edgeAbove(tint);
             <a class="advr-card advr-card--link advr-card--heart" href="/advisor-center/insights/before-and-after-the-sale">
               <span class="advr-soon">First chapter December 15</span>
               
-              <h2>Before and After the Sale</h2>
-              <p>A book for founders on the inner side of selling, told through real, anonymized stories and written in the open.</p>
+              <h2>The book, written in the open</h2>
+              <p>Before and After the Sale: a book for founders on the inner side of selling, told through real, anonymized stories. Read it chapter by chapter.</p>
               <span class="advr-more">Read more →</span>
             </a>
           </li>
@@ -77,8 +78,8 @@ const footerEdge = edgeAbove(tint);
             <a class="advr-card advr-card--link advr-card--grass" href="/advisor-center/insights/advisor-voices">
               <span class="advr-soon">Coming soon</span>
               
-              <h2>Advisor voices</h2>
-              <p>Short recorded conversations with exit advisors about what they see when a founder sells. Shared only with their written permission.</p>
+              <h2>Advisors, in conversation</h2>
+              <p>Anonymous voices on what founders bring into the room, with short, casual advisor conversations to come.</p>
               <span class="advr-more">Read more →</span>
             </a>
           </li>
@@ -95,7 +96,7 @@ const footerEdge = edgeAbove(tint);
     <section class="advr-band advr-band-tint" aria-labelledby="advi-legs">
       <div class="advr-well advi-well">
         <h2 class="advi-h2" id="advi-legs">The three legs of the stool</h2>
-        <p class="advi-lede advi-lede-wide">In the Exit Planning Institute's Value Acceleration Methodology, a good exit stands on three legs: business, financial and personal readiness. CEPAs are trained to align all three. In practice, advisors tell us the first two have a full team behind them. The third often has a worksheet, or nobody.</p>
+        <p class="advi-lede advi-lede-wide">The Exit Planning Institute's Value Acceleration Methodology aligns business, financial and personal readiness. Advisors tell us the first two have a team behind them. The personal leg often has a worksheet, or nobody.</p>
 
         <!-- Visual (Seb, 19 Nov 2026 14:55): who holds each leg, and the gap in the third. -->
         <!-- Redesigned 19 Nov 2026 18:52 (Seb): each leg stands over the centre of its card, three distinct
@@ -109,7 +110,7 @@ const footerEdge = edgeAbove(tint);
               <div class="stool2-card">
                 <p class="stool-label">Business readiness</p>
                 <p class="stool-q">Is the company valuable and transferable?</p>
-                <p class="stool-who"><strong>Who leads it:</strong> exit planners and CEPAs, M&amp;A advisors, accountants, attorneys.</p>
+                <p class="stool-who"><strong>Who leads it:</strong> exit advisors, succession planners and sell-side M&amp;A advisors.</p>
               </div>
             </div>
             <div class="stool2-col stool2-col--2">
@@ -135,21 +136,22 @@ const footerEdge = edgeAbove(tint);
         </figure>
 
         <h3 class="advi-h3">How the third leg differs, and where we fit</h3>
-        <ul class="stool-diff">
-          <li>
-            <h4>Work, not a worksheet</h4>
-            <p>Personal planning helps an owner picture life after the sale. EPI frames it as spiritual, things, experiences and people. We do the private 1:1 work that makes that picture livable: identity, time and structure, relationships and family, health and energy, and purpose.</p>
-          </li>
-          <li>
-            <h4>Before and after the closing</h4>
-            <p>The business and financial legs are mostly done at closing. The personal side often arrives weeks or months later, when the calendar is empty and the deal team has moved on. We are there then, too.</p>
-          </li>
-          <li>
-            <h4>Next to you, never instead</h4>
-            <p>You keep the business and financial legs, and the client relationship. We do not give financial or legal advice. With the founder's consent, we keep you in the loop on the broad shape of things.</p>
-          </li>
-        </ul>
-        <p class="stool-cepa"><strong>For CEPAs:</strong> you already map all three legs with your clients. We are the specialist you bring in for the third, so the personal goals you write down actually get worked on.</p>
+        <div class="advi-comparison" role="table" aria-label="Three kinds of readiness">
+          <div role="rowgroup"><div role="row">
+            <div role="columnheader"><PartnershipIcon name="focus" /><span>Business</span></div>
+            <div role="columnheader"><PartnershipIcon name="ring" /><span>Money</span></div>
+            <div role="columnheader"><PartnershipIcon name="people" /><span>Founder</span></div>
+          </div></div>
+          <div role="rowgroup"><div role="row">
+            <div role="cell">Prepare a company that is valuable and transferable.</div>
+            <div role="cell">Plan the resources for life after the sale.</div>
+            <div role="cell">Work on identity, relationships, time and purpose before and after closing.</div>
+          </div></div>
+        </div>
+        <div class="advi-fit">
+          <h4>Where we fit</h4>
+          <p>You keep the business and financial legs, and the client relationship. Our Wayfinders do the private 1:1 work on the personal side, before and after the sale. With the founder's consent, we keep you in the loop. We do not give financial or legal advice.</p>
+        </div>
         <p class="stool-src">Source: Exit Planning Institute. Advisor views are patterns from our conversations.</p>
       </div>
     </section>
@@ -168,27 +170,21 @@ const footerEdge = edgeAbove(tint);
       <div class="advr-well advi-well">
         <h2 class="advi-h2" id="advi-patterns">What we hear most</h2>
         <div class="advi-patterns">
-          <section class="advi-pattern advi-pattern--before">
-            <p class="advi-pattern-label">Before the sale</p>
-            <ul>
-              <li><strong>Cold feet</strong> grow the closer the founder gets to the transaction.</li>
-              <li><strong>Deals stall</strong> when the founder nitpicks every buyer because they cannot picture life afterward.</li>
-              <li><strong>Timing:</strong> advisors want to start before the LOI; founders feel it is "too early".</li>
-            </ul>
-          </section>
-          <section class="advi-pattern advi-pattern--after">
-            <p class="advi-pattern-label">After the sale</p>
-            <ul>
-              <li><strong>It arrives late:</strong> weeks or months after closing, once everything stops.</li>
-              <li><strong>Identity:</strong> the company was "all they've ever known".</li>
-              <li><strong>Old patterns</strong> follow the founder into the next venture.</li>
-            </ul>
-          </section>
+          <figure class="advi-pattern advi-pattern--before">
+            <svg class="advi-napkin" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5 30 3 32 29 6 32Z M22 4 23 13 31 12 M10 17h15m-14 5h12m-11 5h9" /></svg>
+            <figcaption class="advi-pattern-label">Before the sale · Exit advisor</figcaption>
+            <blockquote><p>“They aren't ready to let go even though their company is for sale. … They tend to nitpick every buyer… and they blow up their own deals.”</p></blockquote>
+          </figure>
+          <figure class="advi-pattern advi-pattern--after">
+            <svg class="advi-napkin" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5 30 3 32 29 6 32Z M22 4 23 13 31 12 M10 17h15m-14 5h12m-11 5h9" /></svg>
+            <figcaption class="advi-pattern-label">After the sale · Exit advisor</figcaption>
+            <blockquote><p>“They didn't expect to be in that place where they'd lose their purpose for getting up.”</p></blockquote>
+          </figure>
         </div>
         <div class="advi-raise">
           <h3>How advisors raise it</h3>
-          <p>Two ways work: make the personal leg part of exit planning from the first meeting, so it is never a surprise; or wait until the founder opens up about life after the sale, then introduce a specialist.</p>
-          <a class="btn-teal" href="/advisor-center">Refer a founder</a>
+          <p>For signals, timing and words you can use, read the Signals Guide.</p>
+          <a class="btn-teal" href="/advisor-center/client-tools/signals-guide#how-to-raise-the-personal-side">How to raise the personal side</a>
         </div>
       </div>
     </section>

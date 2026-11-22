@@ -1,35 +1,23 @@
 ---
 import AdvisorResourcePage from "../../../components/AdvisorResourcePage.astro";
-// Advisor voices (Advisor Toolkit Plan v0.4, new). First draft for Seb to rewrite.
+import AdvisorQuoteWall from "../../../components/AdvisorQuoteWall.astro";
 ---
 
 <AdvisorResourcePage
-  title="Advisor voices: talks with exit advisors | DoGood Agency"
-  description="Short recorded conversations with exit advisors about what they see when a founder sells. Their words, shared only with their written permission."
+  title="Advisors, in conversation: founder coaching insights | DoGood Agency"
+  description="Anonymous founder and advisor quotes on the personal side of selling a business and coaching before and after a sale, with casual advisor conversations to come."
   path="/advisor-center/insights/advisor-voices"
   section="insights"
   tone="grass"
-  name="Advisor voices"
-  soon="Coming soon · recording the first conversations"
-  lede="Short conversations with exit advisors about what they see when a founder sells."
-  blocks={[
-    {
-      heading: "What it is",
-      paras: [
-        "A podcast-style series of short recorded conversations with real exit advisors. Their voices, not ours: what they see before the deal, at closing and in the months after.",
-      ],
-    },
-    {
-      heading: "How we make it",
-      list: [
-        "Only with each advisor's written permission",
-        "Client stories stay anonymous, always",
-        "Clips feed our leave-behind paper, the book and LinkedIn",
-      ],
-    },
-    {
-      heading: "Want to take part?",
-      paras: ["If you work with founders before or after the sale and would like to share what you see, we would love to talk."],
-    },
-  ]}
-/>
+  name="Advisors, in conversation"
+  lede="What founders and their advisors see before the deal, at closing, and in the months after."
+  blocks={[]}
+>
+  <AdvisorQuoteWall />
+  <section class="advd-conversations" aria-labelledby="voices-conversations">
+    <p class="advr-soon">Coming soon</p>
+    <h2 id="voices-conversations">Casual conversations with advisors</h2>
+    <p>Every advisor quote on this site, in one place, plus short, casual conversations with advisors about the problems founders actually bring into the room. Coming soon.</p>
+    <p>Advisors appear only with their written permission. Client stories stay anonymous.</p>
+  </section>
+</AdvisorResourcePage>

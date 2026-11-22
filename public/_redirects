@@ -10,6 +10,10 @@
 /advisors  /advisor-center  301
 /advisors/  /advisor-center  301
 
+# The seven questions already live in the newsletter reading section.
+/seven-questions  /newsletter#questions  301
+/seven-questions/  /newsletter#questions  301
+
 # Sitemap: Google still requests the old Wix sitemap address
 # 19 Nov 2026: /products renamed /services (Seb).
 /products  /pathway  301
