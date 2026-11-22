@@ -1239,3 +1239,78 @@ body:has(.pod-page) .footer-wave {
   text-underline-offset: 4px;
 }
 .pod2-card-link:hover .pod2-card-listen { color: #05745b; }
+
+/* Seb round 2, 22 Nov 2026: full-width intro and matching frames. */
+.pod-page--v2 .pod2-hero {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.pod-page--v2 .pod-hero-copy {
+  max-width: none;
+}
+
+.pod-page--v2 .pod-hero-copy > p:not(.pod2-eyebrow) {
+  color: #fff;
+}
+
+.pod-page--v2 .pod2-host-section {
+  padding-top: 78px;
+}
+
+.pod-page--v2 .pod2-frame {
+  width: 100%;
+  max-width: none;
+  padding: 40px;
+  border: 1px solid var(--color-heart-500);
+  border-radius: 24px;
+  background: var(--color-dream-25);
+  color: var(--color-dream-500);
+}
+
+.pod-page--v2 .pod2-next {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.pod-page--v2 .pod2-next :is(h2, p:not(.pod2-card-label)) {
+  color: var(--color-dream-500);
+}
+
+.pod-page--v2 .pod2-frame .pod2-card-label {
+  color: var(--color-dream-500);
+}
+
+.pod-page--v2 .pod2-next-actions {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.pod-page--v2 .pod2-next-actions .btn-teal {
+  width: 100%;
+}
+
+.pod-page--v2 .pod2-news-section {
+  padding-block: 70px 120px;
+}
+
+.pod-page--v2 .pod2-news {
+  border: 1px solid var(--color-heart-500);
+}
+
+@media (max-width: 599px) {
+  html body .pod-page--v2 .pod2-frame {
+    padding: 32px 24px;
+  }
+
+  .pod-page--v2 .pod2-next {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  html body .pod-page--v2 .pod2-frame .pod2-card-label {
+    white-space: normal;
+  }
+}

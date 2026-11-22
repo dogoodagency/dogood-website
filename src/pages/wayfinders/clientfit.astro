@@ -66,7 +66,7 @@ const jsonLd = {
 >
   <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
-  <article class="wf-page">
+  <article class="wf-page wf-page-clientfit">
     <header class="wf-hero">
       <div class="wf-hero-inner">
         <h1>Client-Fit Process</h1>
@@ -118,8 +118,10 @@ const jsonLd = {
             <p class="wf-eyebrow wf-eyebrow-dark">Case Study</p>
             <h2 class="wf-case-title">From exit anxiety to aligned legacy —<br />How J created a clear next life chapter</h2>
             <p class="wf-case-who">J (anonymous), USD 2M founder</p>
-            <a class="btn-teal" href="/casestudies/j" aria-label="Read the short case study: how J created a clear next life chapter">Read the short case study</a>
-            <p class="wf-case-note">We protect our founders’ identities</p>
+            <div class="btn-with-caption">
+              <a class="btn-teal" href="/casestudies/j" aria-label="Read the short case study: how J created a clear next life chapter">Read the short case study</a>
+              <p class="wf-case-note">We protect our founders’ identities</p>
+            </div>
           </div>
         </article>
 

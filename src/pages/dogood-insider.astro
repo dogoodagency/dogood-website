@@ -49,10 +49,6 @@ import sebAvatar from "../assets/authors/seb.jpg"; // the article portrait, roun
             <PodcastPills links={SHOW_LINKS} />
           </div>
         </div>
-        <picture class="pod2-art">
-          <source type="image/webp" srcset="/sketches/podcast-two-chairs-microphone@1x.webp 1x, /sketches/podcast-two-chairs-microphone@2x.webp 2x" />
-          <img src="/sketches/podcast-two-chairs-microphone@1x.png" srcset="/sketches/podcast-two-chairs-microphone@1x.png 1x, /sketches/podcast-two-chairs-microphone@2x.png 2x" width="420" height="320" alt="Two empty chairs facing each other with a microphone between them, drawn as a napkin sketch." />
-        </picture>
       </div>
       <Wave fill={white} edge={heroEdge} />
     </header>
@@ -127,8 +123,8 @@ import sebAvatar from "../assets/authors/seb.jpg"; // the article portrait, roun
     </div>
 
     <section class="pod-band" aria-labelledby="pod-seb-name">
-      <div class="pod-well pod-section">
-        <div class="pod2-host">
+      <div class="pod-well pod-section pod2-host-section">
+        <div class="pod2-host pod2-frame">
           <Image class="pod2-host-img" src={sebAvatar} alt="Portrait of Seb Wichmann" width={160} height={160} densities={[1, 1.5]} loading="lazy" />
           <div>
             <p class="pod2-card-label">Your host</p>
@@ -137,7 +133,7 @@ import sebAvatar from "../assets/authors/seb.jpg"; // the article portrait, roun
           </div>
         </div>
 
-        <div class="pod2-next">
+        <div class="pod2-next pod2-frame">
           <div>
             <p class="pod2-card-label pod2-card-label--light">Where the conversation goes now</p>
             <h2>Honest notes for founders, before and after the sale</h2>
@@ -145,7 +141,6 @@ import sebAvatar from "../assets/authors/seb.jpg"; // the article portrait, roun
           </div>
           <div class="pod2-next-actions">
             <a class="btn-teal" href="/insights">Read Insights</a>
-            <a class="btn-teal" href="/newsletter">Join the newsletter</a>
           </div>
         </div>
       </div>
@@ -156,7 +151,7 @@ import sebAvatar from "../assets/authors/seb.jpg"; // the article portrait, roun
       <Wave fill={tint} edge={tintEdge} />
     </div>
     <section class="pod-band pod-band-tint" aria-labelledby="pod2-news">
-      <div class="pod-well pod-section">
+      <div class="pod-well pod-section pod2-news-section">
         <div class="pod2-news">
           <picture class="pod2-news-art">
             <source type="image/webp" srcset="/sketches/newsletter-open-envelope-booklet@1x.webp 1x, /sketches/newsletter-open-envelope-booklet@2x.webp 2x" />

@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import "../styles/contact.css";
 import Wave from "../components/Wave.astro";
 import { edgeAbove } from "../data/edge-line";
 
@@ -26,12 +27,12 @@ const footerEdge = edgeAbove(sky);
     <section class="privacy-band privacy-band-tint">
       <div class="privacy-well">
         <p class="contact-lead">
-          Whether you're planning to sell your company, have recently sold it, or advise founders who do, this is the quickest way to reach us. We reply within one working day.
+          Whether you're planning to sell your company, have recently sold it,<br />or advise founders who do, this is the quickest way to reach us. We reply within one working day.
         </p>
         <div class="contact-top">
           <div class="contact-main">
-            <h2>Everything else</h2>
-            <p>Press, podcasts and general questions.</p>
+            <h2>Something else?</h2>
+            <p>Press, podcasts, or a question that doesn't fit above.</p>
             <p class="contact-thanks" hidden>Thank you. Your message is with us. Welcome to <span class="pink-soft"><strong>FOUNDR</strong>.land</span>.</p>
             <form class="contact-form" name="contact" method="POST" action="/contact?thanks" data-netlify="true" data-netlify-honeypot="bot-field">
                   <input type="hidden" name="form-name" value="contact" />

@@ -176,7 +176,7 @@ html:has(.nl-page) {
   width: min(1080px, calc(100% - 2 * var(--pad)));
   max-width: 100%;
   margin: 0 auto;
-  padding: 90px 0;
+  padding: calc(72px * var(--section-space-scale)) 0;
 }
 
 .nl-divider {
@@ -710,7 +710,7 @@ html:has(.nl-page) {
   }
 
   .nl-well {
-    padding: 60px 0;
+    padding: calc(48px * var(--section-space-scale)) 0;
   }
 
   .nl-page .nl-well .nl-note blockquote p {
@@ -1244,4 +1244,83 @@ html:has(.nl-page) {
   html body .nl-signup-split .nl-signup-art { width: min(300px, 100%); }
   /* Arrival dates: dotted outline. */
   html body .nl-page .nl-chapters .nl-date-pill { border: 1.5px dotted currentColor !important; }
+}
+
+/* Seb round 2, 22 Nov 2026: heading, signup alignment and closing space. */
+.nl-page #nl-questions-title {
+  max-width: 640px;
+}
+
+.nl-question-ending {
+  white-space: nowrap;
+}
+
+.nl-page .nl-signup,
+.nl-page .nl-closing {
+  border: 1px solid var(--color-heart-500);
+}
+
+.nl-signup-split > .nl-print {
+  grid-column: 1 / -1;
+}
+
+.nl-page .nl-closing {
+  padding-block: 84px;
+  background: #F3FFFB;
+}
+
+.nl-page .nl-well .nl-closing .nl-closing-label,
+.nl-page .nl-closing a,
+.nl-page .nl-well .nl-print {
+  color: var(--color-dream-500);
+}
+
+@media (max-width: 1023px) {
+  .nl-signup.nl-signup-split {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "head" "copy" "art" "print";
+  }
+
+  .nl-signup-split .nl-signup-art img {
+    transform: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .nl-signup.nl-signup-split {
+    grid-template-columns: minmax(0, 1fr) 336px;
+    grid-template-areas: "head head" "copy art" "print print";
+    row-gap: 0;
+  }
+
+  .nl-signup-split .nl-signup-copy {
+    align-self: center;
+  }
+
+  .nl-signup-split .nl-signup-art {
+    width: 336px;
+    align-self: center;
+  }
+
+  .nl-signup-split .nl-signup-art img {
+    transform: none;
+  }
+
+  .nl-page .nl-well .nl-signup-split > .nl-print {
+    grid-area: print;
+    max-width: none;
+    margin-top: 18px;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 599px) {
+  html body .nl-page #nl-questions-title {
+    text-wrap: balance;
+  }
+
+  .nl-page .nl-closing {
+    margin-top: 56px;
+    padding-block: 48px;
+  }
 }
