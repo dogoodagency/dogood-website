@@ -8068,14 +8068,16 @@ body:has(.page-home) {
   align-self: center;
   margin: 32px 0 0;
   box-sizing: border-box;
-  width: 270px;
+  /* Seb round 2, 22 Nov 2026: fit the complete Exit Prep label and trademark. */
+  width: max-content;
+  white-space: nowrap !important;
   max-width: 100%;
   border: 0;
 }
 
 .page-home #next .next-doors p { flex: 1; }
 
-.page-home #next :is(.card-before, .card-after) > a.btn-apply { width: 270px; }
+.page-home #next :is(.card-before, .card-after) > a.btn-apply { width: max-content; }
 
 /* Replace the preview-9 desktop overrides; stacked cards keep their existing layout. */
 @media (min-width: 1081px) {
@@ -8149,7 +8151,7 @@ body:has(.page-home) {
 }
 .page-home #for-you :is(.card-before, .card-after) > a {
   margin-top: auto;
-  width: 270px;
+  width: max-content;
   align-self: center;
 }
 .page-home #for-you .foryou-grid--pair ul { margin-bottom: 32px; }

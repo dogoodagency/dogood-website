@@ -392,6 +392,8 @@ html body :is(a.btn-apply, a.btn-case, a.btn-teal, a.btn-partnership, a.btn-term
   button.btn-teal, button.btn-subscribe, .buzzsprout-gate button)::after {
   right: 8px !important;
 }
+/* Seb round 2, 22 Nov 2026: story actions retain the shared secondary fill. */
+html body .st-page .st-case a.btn-teal,
 html body :is(a.btn-teal, a.btn-terms, button.btn-teal, button.btn-subscribe, .buzzsprout-gate button,
   .btn-soft, .nl-btn-ghost, .ss .ss-btn, .fl--home .fl-btn),
 html body :is(a.btn-teal, a.btn-terms, button.btn-teal, button.btn-subscribe, .buzzsprout-gate button,
@@ -495,8 +497,12 @@ html body main .btn-with-caption {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: fit-content;
+  /* Seb round 2, 22 Nov 2026: avoid percentage-button shrinkage inside captions. */
+  width: max-content;
   max-width: 100%;
+}
+html body main .btn-with-caption > :is(a.btn-apply, a.btn-case, a.btn-teal) {
+  width: max-content;
 }
 main .st-cta { --button-caption-parent-gap: 18px; }
 html body main :is(a[class*="btn-"]):has(+ :is(.stage-note, .btn-caption, .hw-btn-sub, .hw-wf-note, .wf-note, .st-cta-note)) {
