@@ -37,6 +37,9 @@ const wfFor = (name: string) => {
 };
 
 const tint = "#F3FFFB"; // GRASS 25: Stage 1 colour (Seb, 19 Nov 2026)
+// Seb round 2, 22 Nov 2026: distinct stage bands.
+const stage1Tint = "#E7FFF6";
+const stage2Tint = "#E6DEFC";
 const white = "#ffffff";
 const heroEdge = edgeAbove("#2A0B4F");
 const bandEdge = edgeAbove(tint);
@@ -45,7 +48,7 @@ const footerEdge = edgeAbove(tint);
 /** Wavy join between two bands: `from` is the band above, `to` the band below. */
 function wave(from: string, to: string) {
   const above = from === tint ? "tint" : "white";
-  return `<div class="hw-divider hw-divider--${above}" aria-hidden="true"><svg style="--wave-edge:${bandEdge}" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${to}" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path><path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path></svg></div>`;
+  return `<div class="hw-divider hw-divider--${above}" style="background:${from}" aria-hidden="true"><svg style="--wave-edge:${edgeAbove(from)}" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${to}" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path><path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path></svg></div>`;
 }
 const toTint = wave(white, tint);
 const toWhite = wave(tint, white);
@@ -172,10 +175,10 @@ const [houseBefore, houseStage1, houseStage2] = houses;
       </div>
     </section>
 
-    <Fragment set:html={toTint} />
+    <Fragment set:html={wave(white, stage1Tint)} />
 
     <!-- 4. House 1 + Stage 1 -->
-    <section class="hw-band hw-band-tint" aria-labelledby="hw-stage1">
+    <section class="hw-band hw-band-tint hw-band-stage1" aria-labelledby="hw-stage1">
       <div class="hw-well">
         <div class="hw-stage-panel">
         <HwHouse house={houseBefore} />
@@ -209,10 +212,10 @@ const [houseBefore, houseStage1, houseStage2] = houses;
       </div>
     </section>
 
-    <Fragment set:html={toWhite} />
+    <Fragment set:html={wave(stage1Tint, stage2Tint)} />
 
     <!-- 5. What comes after Stage 1 (Seb, 19 Nov 2026: Stage 2 has its own page, /the-build). -->
-    <section class="hw-band" aria-labelledby="hw-stage2">
+    <section class="hw-band hw-band-tint hw-band-stage2" aria-labelledby="hw-stage2">
       <div class="hw-well">
         <div class="hw-stage-panel">
         <HwHouse house={houseStage1} />
@@ -232,7 +235,7 @@ const [houseBefore, houseStage1, houseStage2] = houses;
       </div>
     </section>
 
-    <Fragment set:html={toTint} />
+    <Fragment set:html={wave(stage2Tint, tint)} />
 
     <!-- 6. Case V (moved here, Seb 19 Nov 2026), then house 3 + supports + retreat -->
     <section class="hw-band hw-band-tint" aria-labelledby="hw-supports">
@@ -243,8 +246,10 @@ const [houseBefore, houseStage1, houseStage2] = houses;
             <p class="hw-eyebrow hw-eyebrow-left">Featured case study</p>
             <h3>From feeling lost to decisive leadership: how V reclaimed life after success</h3>
             <p class="hw-case-who">V (anonymous), USD 9M+ founder</p>
-            <a class="btn-teal" href="/casestudies/v">Read V's story</a>
-            <p class="hw-case-note">We protect our founders’ identities</p>
+            <div class="btn-with-caption">
+              <a class="btn-teal" href="/casestudies/v">Read V's story</a>
+              <p class="hw-case-note">We protect our founders’ identities</p>
+            </div>
           </div>
         </aside>
         <div class="hw-stage-panel">
@@ -320,8 +325,10 @@ const [houseBefore, houseStage1, houseStage2] = houses;
             <p class="hw-eyebrow hw-eyebrow-left">Featured case study</p>
             <h3>From exit anxiety to aligned legacy — How J created a clear next life chapter</h3>
             <p class="hw-case-who">J (anonymous), USD 2M founder</p>
-            <a class="btn-teal" href="/casestudies/j">Read J's story</a>
-            <p class="hw-case-note">We protect our founders’ identities</p>
+            <div class="btn-with-caption">
+              <a class="btn-teal" href="/casestudies/j">Read J's story</a>
+              <p class="hw-case-note">We protect our founders’ identities</p>
+            </div>
           </div>
         </aside>
       </div>
@@ -395,8 +402,10 @@ const [houseBefore, houseStage1, houseStage2] = houses;
           {steps.map((step) => (
             <li class="hw-step">
               <p class="hw-step-n" aria-label={step.n}>{step.n.replace(/^Step\s*/i, "")}</p>
-              <h3>{step.title}</h3>
-              <p>{step.text}</p>
+              <div class="hw-step-copy">
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </div>
             </li>
           ))}
         </ol>

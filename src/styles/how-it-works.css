@@ -195,7 +195,7 @@ body:has(.hw-page) .footer-wave {
   width: min(1080px, calc(100% - 2 * var(--pad)));
   max-width: 100%;
   margin: 0 auto;
-  padding: 90px 0;
+  padding: calc(72px * var(--section-space-scale)) 0;
 }
 
 .hw-well-wide {
@@ -203,7 +203,7 @@ body:has(.hw-page) .footer-wave {
 }
 
 .hw-well-slim {
-  padding: 70px 0;
+  padding: calc(56px * var(--section-space-scale)) 0;
 }
 
 .hw-divider {
@@ -299,7 +299,7 @@ body:has(.hw-page) .footer-wave {
   text-transform: uppercase;
 }
 
-.hw-page a:not(.btn-teal):not(.btn-apply):not(.hw-wf-hub) {
+.hw-page a:not(.btn-teal):not(.btn-apply):not(.btn-outline):not(.ss-tab):not(.hw-wf-hub) {
   color: var(--hw-ink);
   font-weight: 700;
   text-decoration: underline;
@@ -313,14 +313,6 @@ body:has(.hw-page) .footer-wave {
   max-width: 100%;
   text-align: center;
   white-space: normal;
-}
-
-.hw-page .btn-teal {
-  padding-block: 12px;
-}
-
-.hw-page .btn-apply {
-  padding-block: 12px;
 }
 
 /* ---------- Stage blocks ---------- */
@@ -1100,11 +1092,11 @@ body:has(.hw-page) .footer-wave {
   }
 
   .hw-well {
-    padding: 60px 0;
+    padding: calc(48px * var(--section-space-scale)) 0;
   }
 
   .hw-well-slim {
-    padding: 50px 0;
+    padding: calc(40px * var(--section-space-scale)) 0;
   }
 
   .hw-page .hw-pull,
@@ -1995,19 +1987,13 @@ html {
   color: #ea1557;
 }
 
-/* The line under the Apply button: 12px, regular, like the other button captions. */
-.hw-page .hw-steps-cta .hw-btn-sub {
-  margin-top: 10px;
-  font-size: 12px;
-  font-weight: 400;
-}
-
 /* How It Works as a real process: big numbered stops on one line with arrows, then the text. */
 .hw-page .hw-steps {
   position: relative;
   display: grid;
   grid-auto-columns: minmax(0, 1fr);
   grid-auto-flow: column;
+  align-items: stretch;
   gap: 20px;
   margin-top: 44px;
   counter-reset: none;
@@ -2030,6 +2016,7 @@ html {
   flex-direction: column;
   align-items: center;
   flex: none;
+  height: 100%;
   padding: 0 0 4px;
   border: 0;
   background: transparent;
@@ -2043,6 +2030,7 @@ html {
   place-items: center;
   width: 84px;
   height: 84px;
+  flex-shrink: 0;
   margin: 0 0 18px;
   border: 6px solid #fff;
   border-radius: 50%;
@@ -2080,13 +2068,19 @@ html {
   font-weight: 900;
 }
 
-.hw-page .hw-step p:not(.hw-step-n) {
+/* Seb round 2, 22 Nov 2026: one equal-height frame per step. */
+.hw-page .hw-step-copy {
+  flex: 1;
+  width: 100%;
   max-width: 300px;
-  margin: 0;
   padding: 16px 18px;
-  border: 1px solid var(--hw-line);
+  border: 1px solid #ea1557;
   border-radius: 16px;
   background: #fff;
+}
+
+.hw-page .hw-step-copy p {
+  margin: 0;
   font-size: 16px;
   line-height: 1.55;
 }
@@ -2096,6 +2090,7 @@ html {
 @media (max-width: 860px) {
   .hw-page .hw-steps {
     grid-auto-flow: row;
+    grid-auto-rows: 1fr;
     gap: 28px;
   }
 
@@ -2190,26 +2185,9 @@ html {
   html body .hw-guarantee .hw-seal { position: static; display: block; width: 130px; margin: 0 auto 14px; align-self: center; }
   html body .hw-guarantee .btn-teal { align-self: center; }
 
-  /* How it works: each step's title sits inside its frame. */
-  html body .hw-page .hw-step h3 {
-    width: min(100%, 300px);
-    box-sizing: border-box;
-    margin: 0;
-    padding: 16px 18px 4px;
-    border: 1px solid var(--hw-line);
-    border-bottom: 0;
-    border-radius: 16px 16px 0 0;
-    background: #fff;
-    font-size: 18px;
-  }
-  html body .hw-page .hw-step p:not(.hw-step-n) {
-    width: min(100%, 300px);
-    box-sizing: border-box;
-    padding-top: 0;
-    border-top: 0;
-    border-radius: 0 0 16px 16px;
-  }
-  html body .hw-page .hw-steps-cta .hw-btn-sub { margin-top: 6px !important; font-size: 12px; }
+  /* Seb round 2, 22 Nov 2026: shared frame on phones too. */
+  html body .hw-page .hw-step h3 { font-size: 18px; }
+
 }
 
 /* ===== 21 Nov 2026 01:19 (Seb): stage sections on phones ===== */
@@ -2271,4 +2249,113 @@ html {
   html body .hw-guarantee .hw-seal { margin-top: 0; }
   /* More room at the end of the page, above the footer wave. */
 
+}
+
+/* Seb round 2, 22 Nov 2026: stage progression. */
+html body .hw-page .hw-band-stage1 { background: #e7fff6; --hw-tint: #e7fff6; }
+html body .hw-page .hw-band-stage2 { background: #e6defc; --hw-tint: #e6defc; }
+html body .hw-page :is(.hw-band-stage1, .hw-band-stage2) .hw-stage-panel {
+  background: #fff;
+  border-color: #ea1557;
+}
+html body .hw-page .hw-band-stage2 :is(.hw-stage-head, .hw-stage-kicker, .hw-stage-title, .hw-days, .hw-eyebrow, .hw-tagline),
+html body .hw-page #hw-steps { color: #ea1557; }
+
+/* Seb round 2, 22 Nov 2026: centred intro with room for the desktop lede. */
+html body .hw-page #hw-familiar,
+html body .hw-page #hw-familiar + .hw-sub-center {
+  max-width: none;
+  width: 100%;
+  text-align: center;
+}
+
+/* Seb round 2, 22 Nov 2026: contain the final margin for a seamless rail loop. */
+.hw-page--s2 .tw-track { display: flow-root; }
+.hw-page--s2 :is(.tw-card, .hw-step) {
+  transform: none;
+  animation: none;
+}
+
+/* Seb round 2, 22 Nov 2026: left-aligned case copy; captions stay with their action. */
+html body .hw-page .hw-case-feature { --button-caption-size: 10px; }
+html body .hw-page .hw-case-feature,
+html body .hw-page .hw-case-feature .hw-case-body,
+html body .hw-page .hw-case-feature .hw-case-body > :is(h3, p) {
+  text-align: left;
+}
+html body .hw-page .hw-case-feature .hw-case-body { align-items: flex-start; }
+html body .hw-page .hw-case-feature .hw-case-note {
+  margin-top: 6px;
+  font-size: 10px;
+  text-align: center;
+}
+.hw-page .hw-case--grass { border: 1px solid #ea1557; --button-caption-color: #b2a6cf; }
+html body .hw-page--s2 .hw-case-feature .btn-with-caption {
+  width: 240px;
+  max-width: 100%;
+}
+html body .hw-page--s2 .hw-case-feature .btn-teal { width: 100%; }
+
+/* Seb round 2, 22 Nov 2026: supports with distinct fills and clear edges. */
+html body .hw-page .hw-supports .hw-includes li {
+  border: 1px solid #ea1557;
+  background: #f5f2ff;
+  color: #2a0b4f;
+}
+html body .hw-page .hw-supports .hw-includes li:nth-child(2) { background: #e7fff6; }
+html body .hw-page .hw-supports .hw-includes li:nth-child(3) { background: #f2f7ff; }
+html body .hw-page .hw-supports .hw-includes strong { color: #2a0b4f; }
+html body .hw-page .hw-retreat .hw-retreat-link a {
+  color: #fff !important;
+  text-decoration-color: #28dbb0;
+  background-image: none;
+}
+
+/* Seb round 2, 22 Nov 2026: guarantee paragraphs use the frame's full width. */
+html body .hw-page--s1 .hw-guarantee {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  border: 1px solid #ea1557;
+  gap: 14px 28px;
+  padding: 48px;
+}
+html body .hw-page--s1 .hw-guarantee .hw-seal {
+  position: static;
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  width: 150px;
+  margin: 0;
+}
+html body .hw-page--s1 .hw-guarantee :is(h2, p) { grid-column: 2; margin-inline: 0; }
+html body .hw-page--s1 .hw-guarantee p:nth-of-type(n+2) {
+  grid-column: 1 / -1;
+  max-width: none;
+  width: 100%;
+  text-align: left;
+}
+html body .hw-page--s1 .hw-guarantee .btn-teal {
+  grid-column: 1 / -1;
+  justify-self: center;
+}
+
+/* Seb round 2, 22 Nov 2026: six pixels from Apply to its caption. */
+html body .hw-page .hw-steps-cta { row-gap: 0; }
+html body .hw-page .hw-steps-cta .hw-btn-sub { margin-top: 6px; text-align: center; }
+
+/* Seb round 2, 22 Nov 2026: more space before the final transitions. */
+.hw-page--s2 > #anchor-1 > .hw-well { padding-bottom: calc(72px * var(--section-space-scale) + 48px); }
+.hw-page--s1 > section[aria-labelledby="hw-after"] > .hw-well { padding-bottom: calc(72px * var(--section-space-scale) + 48px); }
+
+@media (max-width: 759px) {
+  html body .hw-page--s1 .hw-guarantee { grid-template-columns: minmax(0, 1fr); padding: 28px 22px 30px; }
+  html body .hw-page--s1 .hw-guarantee .hw-seal { grid-column: 1; grid-row: auto; justify-self: center; width: 130px; }
+  html body .hw-page--s1 .hw-guarantee :is(h2, p) { grid-column: 1; }
+}
+@media (max-width: 600px) {
+  .hw-page--s2 > #anchor-1 > .hw-well { padding-bottom: calc(48px * var(--section-space-scale) + 48px); }
+  .hw-page--s1 > section[aria-labelledby="hw-after"] > .hw-well { padding-bottom: calc(48px * var(--section-space-scale) + 32px); }
+  html body .hw-page .hw-retreat .hw-retreat-link a { white-space: normal; }
+}
+@media (max-width: 599px) {
+  html body .hw-page :is(.hw-band-stage1, .hw-band-stage2) .hw-stage-block { border-color: #ea1557; }
 }

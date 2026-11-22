@@ -20,13 +20,16 @@ import caseVImg from "../assets/cases/case-study-v-founder-life-after-exit.png";
 import { houses, stage2Includes } from "../data/how-it-works";
 
 const tint = "#FFF9FA"; // HEART 25: Stage 2 colour (Seb, 19 Nov 2026)
+// Seb round 2, 22 Nov 2026: distinct stage bands.
+const stage1Tint = "#E7FFF6";
+const stage2Tint = "#E6DEFC";
 const white = "#ffffff";
 const heroEdge = edgeAbove("#2A0B4F");
 const bandEdge = edgeAbove(tint);
 
 function wave(from: string, to: string) {
   const above = from === tint ? "tint" : "white";
-  return `<div class="hw-divider hw-divider--${above}" aria-hidden="true"><svg style="--wave-edge:${bandEdge}" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${to}" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path><path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path></svg></div>`;
+  return `<div class="hw-divider hw-divider--${above}" style="background:${from}" aria-hidden="true"><svg style="--wave-edge:${edgeAbove(from)}" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${to}" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path><path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path></svg></div>`;
 }
 const toTint = wave(white, tint);
 const toWhite = wave(tint, white);
@@ -92,10 +95,10 @@ const [, houseStage1, houseStage2] = houses;
       </div>
     </section>
 
-    <Fragment set:html={toTint} />
+    <Fragment set:html={wave(white, stage1Tint)} />
 
     <!-- 1c. Recap of Stage 1, so the page keeps its place in the partnership -->
-    <section class="hw-band hw-band-tint" aria-labelledby="hw-recap">
+    <section class="hw-band hw-band-tint hw-band-stage1" aria-labelledby="hw-recap">
       <div class="hw-well">
         <div class="hw-stage-panel">
         <HwHouse house={houseStage1} />
@@ -116,10 +119,10 @@ const [, houseStage1, houseStage2] = houses;
       </div>
     </section>
 
-    <Fragment set:html={toWhite} />
+    <Fragment set:html={wave(stage1Tint, stage2Tint)} />
 
     <!-- 2. Stage 2 (moved from /the-reset, word for word) -->
-    <section class="hw-band" aria-labelledby="hw-stage2">
+    <section class="hw-band hw-band-tint hw-band-stage2" aria-labelledby="hw-stage2">
       <div class="hw-well">
         <aside class="hw-case hw-case-feature hw-case--sky hw-case-top" aria-label="Case study">
           <Image class="hw-case-img" src={caseVImg} width={220} height={244} widths={[220, 440]} sizes="220px" alt="Pixelated portrait of founder V, shown this way to protect their identity" />
@@ -127,8 +130,10 @@ const [, houseStage1, houseStage2] = houses;
             <p class="hw-eyebrow hw-eyebrow-left">Featured case study</p>
             <h3>From feeling lost to decisive leadership: how V reclaimed life after success</h3>
             <p class="hw-case-who">V (anonymous), USD 9M+ founder</p>
-            <a class="btn-teal" href="/casestudies/v">Read V's story</a>
-            <p class="hw-case-note">We protect our founders’ identities</p>
+            <div class="btn-with-caption">
+              <a class="btn-teal" href="/casestudies/v">Read V's story</a>
+              <p class="hw-case-note">We protect our founders’ identities</p>
+            </div>
           </div>
         </aside>
         <div class="hw-stage-panel">
@@ -160,7 +165,7 @@ const [, houseStage1, houseStage2] = houses;
       </div>
     </section>
 
-    <Fragment set:html={toTint} />
+    <Fragment set:html={wave(stage2Tint, tint)} />
 
     <!-- 3. Supports through both stages + retreat -->
     <section class="hw-band hw-band-tint" aria-labelledby="hw-supports">
@@ -190,10 +195,10 @@ const [, houseStage1, houseStage2] = houses;
       <div class="hw-well">
         <h2 id="hw-steps" class="hw-center">How It Works</h2>
         <ol class="hw-steps">
-          <li class="hw-step"><p class="hw-step-n">1</p><h3>Stage 1: The Reset</h3><p>You apply for Stage 1 and start your 30 days with your Wayfinder.</p></li>
-          <li class="hw-step"><p class="hw-step-n">2</p><h3>Week 3 decision</h3><p>By week 3, we will know together whether Stage 1 gave you what you needed, or whether there is a fit for Stage 2.</p></li>
-          <li class="hw-step"><p class="hw-step-n">3</p><h3>Invitation</h3><p>If there is a fit, we invite you to Stage 2. Stage 2 is invite-only.</p></li>
-          <li class="hw-step"><p class="hw-step-n">4</p><h3>Stage 2: The Build</h3><p>Twelve weeks to rework life, go deeper and realign what matters.</p></li>
+          <li class="hw-step"><p class="hw-step-n">1</p><div class="hw-step-copy"><h3>Stage 1: The Reset</h3><p>You apply for Stage 1 and start your 30 days with your Wayfinder.</p></div></li>
+          <li class="hw-step"><p class="hw-step-n">2</p><div class="hw-step-copy"><h3>Week 3 decision</h3><p>By week 3, we will know together whether Stage 1 gave you what you needed, or whether there is a fit for Stage 2.</p></div></li>
+          <li class="hw-step"><p class="hw-step-n">3</p><div class="hw-step-copy"><h3>Invitation</h3><p>If there is a fit, we invite you to Stage 2. Stage 2 is invite-only.</p></div></li>
+          <li class="hw-step"><p class="hw-step-n">4</p><div class="hw-step-copy"><h3>Stage 2: The Build</h3><p>Twelve weeks to rework life, go deeper and realign what matters.</p></div></li>
         </ol>
         <div class="hw-steps-cta">
           <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>

@@ -205,7 +205,7 @@ export const steps = [
   {
     n: "Step 3",
     title: "Commit / Onboard",
-    text: "Pay + we'll confirm start window. If your start date is later, you'll receive the Pre‑Start Stabilization Kit upon acceptance",
+    text: "Pay + we'll confirm start window.",
   },
   { n: "Step 4", title: "Start Stage 1 (30 days)", text: "Day 1 starts on your first private 1:1 session (not onboarding)" },
   { n: "Step 5", title: "Review in week 3", text: "Invite to Stage 2 or complete Stage 1" },
