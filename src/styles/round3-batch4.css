@@ -137,10 +137,10 @@ html body main#main .advr-page .advd-preview figure { width: 100%; max-width: 86
 html body main#main .advr-page .advd-preview img { display: block; width: 100%; max-width: 860px; height: auto; pointer-events: auto; }
 html body main#main .advr-page .advd-preview figcaption { margin-top: 12px; color: var(--color-dream-500); font-size: 14px; }
 html body main#main .advr-page .advd-foundr-band {
-  padding: 64px var(--pad) 80px;
+  padding: 64px var(--pad) calc(150px + 64px);
   background: var(--color-white);
 }
-html body main#main .advr-page .advd-foundr-band .fl { padding: 0; }
+html body main#main .advr-page .advd-foundr-band .fl { width: 100%; max-width: 1080px; margin-inline: auto; padding: 0; }
 html body main#main .advr-page .advd-foundr-band .fl-panel { width: 100%; max-width: 1080px; margin-inline: auto; }
 html body main#main .advr-page .advd-signal-parts { display: grid; gap: 32px; }
 html body main#main .advr-page .advd-signals { scroll-margin-top: 150px; }
@@ -229,7 +229,7 @@ html body main#main .advr-page .advi-pattern-label { color: var(--color-dream-50
   html body main#main .advr-page .advd-siblings a { padding: 8px 12px; font-size: 13px; }
   html body main#main .advr-page .advd-chapter-list li { flex-direction: column; align-items: flex-start; }
   html body main#main .advr-page .av-wall { columns: 1; }
-  html body main#main .advr-page .advd-foundr-band { padding-block: 48px 80px; }
+  html body main#main .advr-page .advd-foundr-band { padding-block: 48px calc(150px + 64px); }
   html body main#main .advr-page .advi-comparison :is([role="columnheader"], [role="cell"]) { padding: 16px 8px; font-size: 14px; }
   html body main#main .advr-page .advi-comparison [role="columnheader"] { flex-direction: column; gap: 8px; align-items: flex-start; }
   html body main#main .advr-page :is(.advi-fit, .advi-pattern) { padding: 24px 20px; }

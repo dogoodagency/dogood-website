@@ -483,12 +483,20 @@ html body main :is(.stage-note, .btn-caption, .hw-btn-sub, .hw-hero-cta-note, .h
   border: 0 !important;
   background: none !important;
   opacity: 1 !important;
-  color: var(--button-caption-color) !important;
-  font-size: var(--button-caption-size) !important;
   font-weight: 400 !important;
   font-style: italic !important;
   line-height: 1.6 !important;
   text-align: center !important;
+}
+/* One image/button caption style, including pages with older local overrides. */
+html body main#main :is(.caption, .stage-note, .btn-caption, .hw-btn-sub, .hw-hero-cta-note,
+  .hw-wf-note, .wf-note, .st-cta-note, .case-protect, .hw-case-note, .wf-case-note,
+  .bk-case-note, .apl-limit, .cap-pill, .cap-small, .next-note, .hw-limited,
+  .nl-closing-caption, .ab-cta-note, .dr-door-note, .pod-video-caption, .st-anon,
+  .btn-with-caption > p, figure:has(> img, > picture) > figcaption) {
+  color: var(--color-dream-400) !important;
+  font-size: 12px !important;
+  font-style: italic !important;
 }
 html body main :is(.hw-steps-cta, .hw-wf-cta, .wf-apply, .wf-center:has(> .wf-note), .btn-with-caption, .btn-stack) {
   row-gap: 0;
@@ -614,13 +622,13 @@ html body main#main .dr-path--after a.dr-door-pill:is(:hover, :focus-visible) {
     margin-block: 32px;
   }
 
-  /* Equal Home door buttons and a wider V story button on The Build only. */
+  /* Equal Home door buttons and matching V story buttons on Reset and Build. */
   html body .page-home #for-you .foryou-grid--pair :is(.card-before, .card-after) > a {
     box-sizing: border-box;
     min-width: 272px !important;
   }
-  html body main .hw-page--s2 .hw-case-feature .btn-with-caption { min-width: 259px; }
-  html body main .hw-page--s2 .hw-case-feature .btn-with-caption > .btn-teal {
+  html body main :is(.hw-page--s1, .hw-page--s2) .hw-case-feature .btn-with-caption { min-width: 259px; }
+  html body main :is(.hw-page--s1, .hw-page--s2) .hw-case-feature .btn-with-caption > .btn-teal {
     box-sizing: border-box;
     min-width: 259px !important;
   }

@@ -282,7 +282,10 @@ html body main#main .ep-exit-prep :is(#ep-faq-label, .ep-more) { text-align: cen
 
 /* X6: the final blocks are separate bands; the closing contact block is unframed. */
 html body main#main .ep-exit-prep #ep-insights { margin-bottom: 28px; }
-html body main#main .ep-exit-prep .ep-contact-band { background: var(--color-play-100); }
+html body main#main .ep-exit-prep .ep-contact-band {
+  background: var(--color-play-100);
+  padding-bottom: calc(150px + 28px);
+}
 html body main#main .ep-exit-prep .ep-contact-close { text-align: center; }
 html body main#main .ep-exit-prep .ep-contact-close p { margin: 12px 0 0; }
 html body main#main .ep-exit-prep .ep-contact-close a {

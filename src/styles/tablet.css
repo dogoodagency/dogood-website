@@ -599,4 +599,6 @@
   html body main#main .sq-band .sq-copy h2 { font-size: 24px; }
   html body main#main .sq-actions { gap: 16px; }
   html body main#main .sq-actions .btn-teal { max-width: 100%; white-space: normal; }
+  html body main#main .sq-band--home { margin-top: 64px; }
+  html body main#main .sq-band--home .sq-inner { margin-inline: auto; }
 }

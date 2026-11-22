@@ -26,6 +26,7 @@ interface Props {
   footerEdge?: string;
   ogTitle?: string;
   ogImage?: string;
+  ogImageHeight?: number;
   ogType?: string;
   robots?: string;
   /** Standalone landing page without navigation, footer, or chat. */
@@ -163,7 +164,7 @@ const organization = {
     <meta property="og:site_name" content="DoGood Agency" />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image:height" content={Astro.props.ogImageHeight ?? 630} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={ogTitle} />
     <meta name="twitter:description" content={twitterDescription} />

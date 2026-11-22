@@ -1033,6 +1033,11 @@ body:has(.bl-page) .footer-wave {
   text-underline-offset: 4px;
 }
 
+.bl-back a:is(:hover, :focus-visible) {
+  color: var(--color-grass-700);
+  text-decoration-thickness: 3px;
+}
+
 /* ---------- Category archive ---------- */
 
 .bl-hero {

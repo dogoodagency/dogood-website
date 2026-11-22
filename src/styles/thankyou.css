@@ -1,14 +1,20 @@
 /* Thank-you pages after a booking (ThankYouPage.astro), on top of booking.css.
-   Layout (Seb, 18 Nov 2026): hero + wave like the booking pages; below it, on the right-hand (purple) side,
-   one centred column as wide as the case study card: "You're booked", the text, optional map or resources,
+   Layout: hero + wave like the booking pages, with one centred column on solid DREAM 500:
+   "You're booked", the text, optional map or resources,
    optional case study. Rulebook v7: DREAM 500 #2A0B4F, GRASS 500 #28DBB0 accents on dark, no shadows. */
 
 .ty-page {
-  --ty-col: 640px;
+  --ty-col: 820px;
 }
 
-/* Hero H1 centred over the right-hand area. */
+/* Thank-you pages have no calendar or left-side content to support a split. */
+body:has(.bk-page.ty-page) {
+  --bk-split: var(--color-dream-500);
+}
+
+/* Hero H1 centred over the page. */
 .ty-page .bk-hero--center .bk-hero-inner {
+  padding-inline: var(--pad);
   text-align: center;
 }
 
@@ -54,9 +60,20 @@
 .ty-map-frame {
   display: block;
   width: min(360px, 100%);
-  border: 1px solid #533f79; /* DREAM 400 */
+  border: 1px solid var(--color-heart-500);
   border-radius: 14px;
   overflow: hidden;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.ty-map-frame:is(:hover, :focus-visible) {
+  border-color: var(--color-grass-500);
+  transform: translateY(-6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ty-map-frame { transition: none; }
+  .ty-map-frame:is(:hover, :focus-visible) { transform: none; }
 }
 
 .ty-map-frame img {
@@ -145,16 +162,11 @@
   border-color: #28dbb0;
 }
 
-/* ---------- Desktop: the column sits on the purple side, right of the white strip ---------- */
+/* ---------- Desktop ---------- */
 
 @media (min-width: 1024px) {
-  .ty-page .bk-hero--center .bk-hero-inner {
-    padding-left: var(--bk-strip-w);
-    padding-right: 0;
-  }
-
   .ty-main {
-    margin-left: var(--bk-strip-w);
+    margin-inline: auto;
     padding: 48px 40px 0;
   }
 }

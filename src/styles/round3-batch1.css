@@ -59,10 +59,11 @@ html body .page-home #next .next-doors {
   margin-inline: auto;
 }
 html body .page-home #next :is(.card-before, .card-after) { padding: 28px 32px; }
-html body .page-home #next .next-doors h3 { font-size: 22px; }
+html body .page-home #next .next-doors :is(h3, p) { font-size: 22px; }
 @media (max-width: 600px) {
   html body .page-home #next .next-doors { max-width: 400px; }
   html body .page-home #next :is(.card-before, .card-after) { padding: 28px 24px; }
+  html body .page-home #next .next-doors :is(h3, p) { font-size: 20px; }
 }
 
 /* FQ1–FQ3: title-only strips; the question bodies stay white. */
@@ -119,10 +120,6 @@ html body main#main .nl-closing.closing-unframed > .btn-apply {
 }
 html body main#main .nl-closing.closing-unframed > p.nl-closing-caption {
   margin: 6px auto 0;
-  color: var(--color-dream-300) !important;
-  font-size: 10px;
-  font-style: italic;
-  font-weight: 400;
 }
 
 /* P1 / FR6–FR8 / I4: keep newsletter boxes, extend their bands. */
