@@ -27,7 +27,6 @@ import {
   notFor,
   hubs,
   steps,
-  reviewFiles,
 } from "../data/how-it-works";
 
 const wfFor = (name: string) => {
@@ -39,7 +38,7 @@ const wfFor = (name: string) => {
 const tint = "#F3FFFB"; // GRASS 25: Stage 1 colour (Seb, 19 Nov 2026)
 // Seb round 2, 22 Nov 2026: distinct stage bands.
 const stage1Tint = "#E7FFF6";
-const stage2Tint = "#E6DEFC";
+const stage2Tint = "#CCFDEC";
 const white = "#ffffff";
 const heroEdge = edgeAbove("#2A0B4F");
 const bandEdge = edgeAbove(tint);
@@ -64,11 +63,16 @@ function clipQuote(quote: string) {
   return `${cut}…`;
 }
 
-// All reviews with portraits for the moving wall (Seb, 19 Nov 2026: same motion as /stories, with photos).
-const portraitFiles = import.meta.glob<ImageMetadata>("../assets/reviews/*", { eager: true, import: "default" });
-const portraitFor = (file: string) => Object.entries(portraitFiles).find(([p]) => p.endsWith(`/${file}`))?.[1];
-const wallItems = reviews.map((r) => ({ quote: r.quote, name: r.name, role: r.role, image: portraitFor(r.file) }));
-void reviewFiles;
+// Keep the original identifiers only for selecting phone quotes; public attributions are roles only.
+const wallItemFor = (r: (typeof reviews)[number]) => ({
+  quote: r.quote,
+  name: r.role === "Studio T" ? "Client" : r.role.split(/,| at /)[0],
+});
+const wallItems = reviews.map(wallItemFor);
+const phoneWallItems = phonePicks.reset
+  .map((name) => reviews.find((r) => r.name.toUpperCase() === name.toUpperCase()))
+  .filter((r): r is (typeof reviews)[number] => !!r)
+  .map(wallItemFor);
 
 // Track record numbers animated like the homepage (count-up when scrolled into view).
 const countFor = (value: string) => {
@@ -86,8 +90,8 @@ const [houseBefore, houseStage1, houseStage2] = houses;
 ---
 
 <Base
-  title="Life after selling a business: The Reset | DoGood Agency"
-  description="Life after selling a business: a private 2-stage partnership for founders after the sale. Start with The Reset (30 days). Limited to 5 new founders a month."
+  title="Life after selling a business: The Reset coaching | DoGood Agency"
+  description="Life after selling a business: private coaching through a 2-stage partnership for founders after the sale. Start with The Reset (30 days). Limited to 5 new founders a month."
   canonical="https://www.dogoodagency.co/the-reset"
   footerStrip={tint}
   footerEdge={footerEdge}
@@ -341,7 +345,7 @@ const [houseBefore, houseStage1, houseStage2] = houses;
       <div class="hw-well">
         <h2 id="hw-reviews" class="hw-center">Leaders who've been through it</h2>
         <p class="hw-center hw-sub-center">Words from leaders our team has worked with. They are not all founders who have sold.</p>
-        <TestimonialWall items={wallItems} phonePick={phonePicks.reset} label="Testimonials from leaders our team has worked with" />
+        <TestimonialWall items={wallItems} phoneItems={phoneWallItems} label="Testimonials from leaders our team has worked with" />
       </div>
     </section>
 
@@ -353,7 +357,7 @@ const [houseBefore, houseStage1, houseStage2] = houses;
         <h2 id="hw-track" class="hw-center">Our team’s track record</h2>
         <ul class="hw-stats" data-count-group>
           {stats.map((stat) => {
-            const v = stat.value.replace(" Million", "M"); // $19.4M (Seb, 19 Nov 2026 18:52)
+            const v = stat.value;
             const c = countFor(v);
             return (
               <li>

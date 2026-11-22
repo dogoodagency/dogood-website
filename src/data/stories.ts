@@ -170,7 +170,7 @@ export const discover = [
 ];
 
 export const stats = [
-  { value: "186", label: "Founders Engaged" },
+  { value: "165", label: "Founders Engaged" },
   { value: "55,230", label: "Leaders Impacted" },
   { value: "$19.4 Million", label: "Learning Initiatives Sold" },
   { value: "18,360", label: "Coaching Hours Administered" },

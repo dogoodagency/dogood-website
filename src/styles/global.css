@@ -41,6 +41,8 @@
   --color-sky-100: #e1ebfe;
   --color-sky-200: #aec8fe;
   --color-play-400: #fcf9d2;
+  --color-play-100: #fefef3;
+  --color-grass-600: #01a684;
 }
 
 @layer base {

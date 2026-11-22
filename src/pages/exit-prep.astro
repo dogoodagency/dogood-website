@@ -9,6 +9,7 @@ import TestimonialWall from "../components/TestimonialWall.astro";
 import BlogCard from "../components/BlogCard.astro";
 import { getCollection } from "astro:content";
 import FoundrLand from "../components/FoundrLand.astro";
+import PartnershipIcon from "../components/PartnershipIcon.astro";
 const readSlugs = ["before-you-sign-preparing-yourself", "emotions-of-selling-a-business"];
 const allPosts = await getCollection("blog");
 const readPosts = readSlugs.map((slug) => allPosts.find((p) => p.id === slug || p.id.replace(/\.mdx?$/, "") === slug)).filter((p) => p !== undefined);
@@ -17,7 +18,7 @@ const tint = "#F5F2FF";
 const white = "#ffffff";
 const heroEdge = edgeAbove("#2A0B4F");
 const bandEdge = edgeAbove(tint);
-const footerEdge = edgeAbove(tint);
+const closingTint = "#FEFEF3"; // PLAY 100
 
 /** Wavy join between two bands: `from` is the band above, `to` the band below. */
 function wave(from: string, to: string) {
@@ -73,11 +74,11 @@ const faqJson = {
 ---
 
 <Base
-  title="Should I sell my business? The Exit Prep | DoGood Agency"
-  description="Should I sell my business? The Exit Prep is six weekly 1:1 sessions that get you ready, not just the company. Best started 12 to 18 months before the sale."
+  title="Should I sell my business? The Exit Prep coaching | DoGood Agency"
+  description="Should I sell my business? The Exit Prep is six weekly 1:1 coaching sessions that get you ready, not just the company. Best started 12 to 18 months before the sale."
   canonical="https://www.dogoodagency.co/exit-prep"
-  footerStrip={white}
-  footerEdge={edgeAbove(white)}
+  footerStrip={closingTint}
+  footerEdge={edgeAbove(closingTint)}
 >
   <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
@@ -92,7 +93,7 @@ const faqJson = {
       additionalProperty: { "@type": "PropertyValue", name: "Duration", value: "Six weekly sessions" },
     })} />
   <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(faqJson)} />
-  <article class="ep-page">
+  <article class="ep-page ep-exit-prep">
     <header class="ep-hero">
       <div class="ep-hero-inner">
         <p class="ep-eyebrow">The Exit Prep™</p>
@@ -122,26 +123,29 @@ const faqJson = {
         <h2 id="ep-what">What is The Exit Prep™?</h2>
         <p class="ep-lede-plain ep-lede-full">A six-week, 1:1 engagement with a DoGood Wayfinder for founders who plan to sell their company but haven't yet. The six weeks create the clarity to decide, at a commitment that matches where you are now.</p>
         <p class="ep-lede-plain ep-lede-full">For some founders, clarity means knowing what they actually want to get busy with after the sale. For others, it means working through what quietly holds them back from letting go: a conversation that needs to happen, a health question that keeps getting postponed, or a life outside the company they have been too busy to look at.</p>
-        <div class="ep-grid">
+        <div class="ep-grid ep-fit-inclusions">
           <section class="ep-box ep-box--sky" aria-labelledby="ep-for">
             <h3 id="ep-for">Who it's for</h3>
-            <ul>{forWho.map((t) => <li>{t}</li>)}</ul>
+            <ul>{forWho.map((t, i) => <li><PartnershipIcon name={["people", "calendar", "compass", "battery"][i]} /><span>{t}</span></li>)}</ul>
           </section>
           <section class="ep-box ep-box--grass" aria-labelledby="ep-incl">
             <h3 id="ep-incl">What's included</h3>
             <ul>
-              {included.map((t) => <li>{t}</li>)}
-              <li>Covered by our Clarity-First Guarantee: if it isn't right for you, tell us within 24 hours of Session 2 and we refund everything except the two sessions you used. <a href="/clarity-first-guarantee-terms">Read the terms</a>.</li>
+              {included.map((t, i) => <li><PartnershipIcon name={["chat", "globe", "wave", "heart", "map"][i]} /><span>{t}</span></li>)}
             </ul>
           </section>
         </div>
-        <div class="ep-outcome">
-          <p class="ep-outcome-label">The outcomes</p>
-          <p class="ep-outcome-statement">Founders are rarely short of intelligence. What stalls them is a lack of clarity. After six weeks, most know what they want, decide with confidence again, and look forward to the chapter after the company: a clearer decision about the sale, a picture of what comes next, and a calmer way into the sale itself.</p>
-        </div>
+        <p class="ep-guarantee-note">Covered by our Clarity-First Guarantee: if it isn't right for you, tell us within 24 hours of Session 2 and we refund everything except the two sessions you used. <a href="/clarity-first-guarantee-terms">Read the terms</a>.</p>
         <div class="ep-feature"><WhoopSection /></div>
         <div class="ep-feature"><AudioSection /></div>
       </div>
+    </section>
+
+    <section class="ep-band ep-outcomes-band" aria-labelledby="ep-outcomes">
+        <div class="ep-well ep-outcome">
+          <h2 id="ep-outcomes">The outcomes</h2>
+          <p class="ep-outcome-statement">Founders are rarely short of intelligence. What stalls them is a lack of clarity. After six weeks, most know what they want, decide with confidence again, and look forward to the chapter after the company: a clearer decision about the sale, a picture of what comes next, and a calmer way into the sale itself.</p>
+        </div>
     </section>
 
     <Fragment set:html={toTint} />
@@ -160,17 +164,22 @@ const faqJson = {
       <div class="ep-well ep-well-top ep-well-spaced ep-prose">
         <h2 id="ep-advisors">Working alongside your advisors</h2>
         <p class="ep-lede-plain ep-lede-full">We work alongside exit advisors, succession planners, wealth advisors and family offices, and sell-side M&amp;A advisors. They prepare the business. We prepare you, and with your permission we keep them in the loop.</p>
-        <p class="ep-read-label">Notes for founders · from Insights</p>
+        <p class="ep-adv-link"><a href="/advisor-center">For your advisors: how we work alongside them →</a></p>
+      </div>
+    </section>
+
+    <section class="ep-band ep-band-tint" aria-labelledby="ep-insights">
+      <div class="ep-well">
+        <h2 id="ep-insights">Insights for founders</h2>
         <div class="ep-posts">
           {readPosts.map((p) => <BlogCard post={p} variant="grid" />)}
         </div>
-        <p class="ep-adv-link"><a href="/advisor-center">For your advisors: how we work alongside them →</a></p>
       </div>
     </section>
 
     <FoundrLand kind="exit" />
 
-    <!-- Advisors and FAQ share one white band. -->
+    <!-- Each final section has its own band. -->
 
     <section class="ep-band" aria-labelledby="ep-faq-label">
       <div class="ep-well ep-well-top">
@@ -193,5 +202,12 @@ const faqJson = {
     </section>
 
 
+    <section class="ep-band ep-contact-band" aria-labelledby="ep-contact">
+      <div class="ep-well ep-contact-close">
+        <h2 id="ep-contact">Not ready to apply, or still before your exit?</h2>
+        <p><a href="/contact">Write to us</a>.</p>
+        <p><a href="mailto:hiya@dogoodagency.co">hiya@dogoodagency.co</a></p>
+      </div>
+    </section>
   </article>
 </Base>
