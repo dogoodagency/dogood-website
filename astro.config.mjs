@@ -18,8 +18,8 @@ export default defineConfig({
   integrations: [indexing(siteIndexable), trademark(), sitemap({
     // The placeholder articles were replaced by real ones on 18 Nov 2026, so articles are included.
     filter: (page) =>
-      // Thank-you, booking and form-acknowledgement pages stay out of the sitemap (and are noindex).
-      !/\/([a-z0-9-]*thankyou|thank-you|newsletter\/thanks|stage1-tc|internal|internal60|catchup|prefrp|frpfit|orientation|clarity|exit|wealth)\/?$/.test(page),
+      // Thank-you, booking, form-acknowledgement and standalone guide pages stay out of the sitemap (and are noindex).
+      !/\/([a-z0-9-]*thankyou|thank-you|newsletter\/thanks|stage1-tc|internal|internal60|catchup|prefrp|frpfit|orientation|clarity|exit|wealth|seven-questions)\/?$/.test(page),
     serialize(item) {
       const file = sourceFor(new URL(item.url).pathname);
       const date = file && gitDate(file);

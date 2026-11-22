@@ -798,6 +798,10 @@ html:has(.nl-page) {
   border: 1px solid var(--nl-line);
 }
 
+.nl-deep summary:is(:hover, :focus-visible) .nl-deep-icon {
+  background: var(--color-grass-500);
+}
+
 .nl-deep-icon::before,
 .nl-deep-icon::after {
   content: "";

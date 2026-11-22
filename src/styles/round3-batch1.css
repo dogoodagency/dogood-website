@@ -24,7 +24,10 @@ html body main#main :is(.ep-well, .wf-well, .nl-well, .faq-well):has(> .closing-
 }
 
 /* L1: match the other inline stage links, including keyboard focus. */
-html body main#main .hw-option-b a.hw-textlink { color: var(--color-white); }
+html body main#main .hw-option-b a.hw-textlink {
+  color: var(--color-white) !important;
+  text-decoration-color: var(--color-white) !important;
+}
 html body main#main .hw-page a.hw-textlink:is(:hover, :focus-visible) {
   color: var(--inline-hover-color, var(--color-grass-700)) !important;
   text-decoration: underline !important;

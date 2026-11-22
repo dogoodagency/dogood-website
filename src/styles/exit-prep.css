@@ -281,8 +281,12 @@ body:has(.ep-page) .footer-wave {
   flex: 0 0 auto;
   width: 28px;
   height: 28px;
-  background: var(--ep-teal);
+  background: var(--color-dream-25);
   border-radius: 50%;
+}
+
+.ep-faq summary:is(:hover, :focus-visible) .ep-faq-icon {
+  background: var(--color-grass-500);
 }
 
 .ep-faq-icon::before,
