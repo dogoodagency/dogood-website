@@ -1,0 +1,33 @@
+---
+import AdvisorResourcePage from "../../../components/AdvisorResourcePage.astro";
+// Before and After the Sale (Advisor Toolkit Plan v0.4, resource C). First draft for Seb to rewrite.
+---
+
+<AdvisorResourcePage
+  title="Before and After the Sale: the book | DoGood Agency"
+  description="A book on the inner side of selling a business, told through real, anonymized stories and written chapter by chapter in our newsletter from 15 December."
+  path="/advisor-center/insights/before-and-after-the-sale"
+  section="insights"
+  tone="heart"
+  name="Before and After the Sale"
+  soon="First chapter December 15"
+  lede="A book for founders on the inner side of selling, written in the open, chapter by chapter."
+  blocks={[
+    {
+      heading: "What it is",
+      paras: [
+        "A story-led book about what founders feel before the sale, during it and in the months after, and what helps. Every story is real; names and details are changed so nobody can be recognized.",
+        "It is written to be a good read, one a spouse would recommend too. Some chapters are about the founder, and some about the people around them.",
+      ],
+    },
+    {
+      heading: "How it arrives",
+      list: [
+        "A new chapter in our newsletter every two weeks, from December 15",
+        "The full book later, built in public",
+        "Free to share with your clients",
+      ],
+    },
+  ]}
+  extra={{ href: "/newsletter#chapters", label: "Read the chapters in the newsletter →" }}
+/>

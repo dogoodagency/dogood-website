@@ -1,0 +1,706 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import Base from "../layouts/Base.astro";
+import ThroughLine from "../components/ThroughLine.astro";
+import Wave from "../components/Wave.astro";
+import { logos, reviews, urls } from "../data/homepage";
+
+import caseJ from "../assets/cases/case-study-j-founder-life-after-exit.png";
+import caseV from "../assets/cases/case-study-v-founder-life-after-exit.png";
+import team from "../assets/photos/wayfinders.png";
+import signature from "../assets/photos/signature.png";
+import press from "../assets/photos/as-seen-on-hires.png";
+
+const logoFiles = import.meta.glob<ImageMetadata>("../assets/logos/pink/*", {
+  eager: true,
+  import: "default",
+});
+const portraits = import.meta.glob<ImageMetadata>("../assets/reviews/*", {
+  eager: true,
+  import: "default",
+});
+
+function fromMap(map: Record<string, ImageMetadata>, file: string) {
+  const found = Object.entries(map).find(([path]) => path.endsWith(`/${file}`));
+  if (!found) throw new Error(`Missing image ${file}`);
+  return found[1];
+}
+
+const logoSet = logos.map((logo) => ({ ...logo, src: fromMap(logoFiles, logo.file) }));
+const reviewSet = reviews.map((review) => ({
+  ...review,
+  src: fromMap(portraits, review.file),
+}));
+
+function clipQuote(quote: string) {
+  const clean = quote.replace(/\s+/g, " ").trim();
+  const limit = 320;
+  if (clean.length <= limit) return clean;
+  const cut = clean.slice(0, limit).replace(/\s+\S*$/, "").replace(/[.…,\s]+$/, "");
+  return `${cut}…`;
+}
+
+const fit = [
+  "You have exited or meaningfully stepped away from the company you built",
+  "You are no longer involved in the day-to-day (you may still have a board or advisory role)",
+  "You have more freedom than before, but it does not feel the way you expected",
+  "You want to fill the space with the next thing, and avoid making that choice on autopilot",
+  "You are ready to look honestly at what this next phase of life could be about",
+  "You can protect 5-6 hours a week for 30 days",
+];
+
+const notFit = [
+  "You are still trying to solve a business problem or get out of the day-to-day",
+  "You are looking for productivity advice, performance, or a plan for your next venture",
+  "You want a quick answer, rather than a private space to understand what needs attention",
+  "You want someone to tell you what to do, but are not ready to look honestly at this phase",
+];
+---
+
+<Base title="Home | DoGood Agency" description="A private 30-day engagement for founders navigating life after exit." meetFunnel>
+  <ThroughLine />
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <h1 class="t-display">
+        <span class="hero-line">For founders who’ve exited <span class="accent">the company they <span class="hero-build">built</span>,</span></span>
+        <span class="hero-line accent">or are getting ready to.</span>
+      </h1>
+      <p class="lede">
+        Start with a private 30-day engagement for founders navigating life after exit.
+      </p>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p>
+            <strong class="em-black">You built the business. You got&nbsp;out.</strong><br />
+            But it does not feel the way you expected.
+          </p>
+          <p>
+            You have more time, more freedom, and more options.<br />
+            But the structure is gone.<br />
+            Before you fill the space with the next thing, there is the question:<br />
+            <strong class="em-black">“What now?”</strong>
+          </p>
+          <p>
+            Stage 1 helps you see what is surfacing, what is shaping your next move, and what genuinely
+            belongs beyond the company.
+          </p>
+        </div>
+        <div class="hero-draw">
+          <picture class="hero-sketch-frame">
+            <img
+              class="hero-sketch"
+              src="/sketches/hero-v8@1x.png"
+              srcset="/sketches/hero-v8@1x.png 970w, /sketches/hero-v8@2x.png 1940w"
+              sizes="(max-width: 1080px) calc(100vw - 40px), 864px"
+              width="970"
+              height="673"
+              alt="A man and a woman, drawn as napkin sketches, walk side by side along a winding teal path toward a big open door with a bright, green view of mountains and birds beyond. The path carries on from behind the man's heels, widening as it comes toward the viewer."
+            />
+          </picture>
+        </div>
+      </div>
+    </div>
+    <Wave fill="#f5f2f9" />
+  </section>
+
+  <section id="clients" aria-label="Client organisations">
+    <div class="logo-viewport">
+      <div class="logo-track">
+        {
+          [0, 1].map((copy) => (
+            <div class:list={["logo-set", copy === 1 && "is-clone"]} aria-hidden={copy === 1}>
+              {logoSet.map((logo) => (
+                <img src={logo.src.src} alt={logo.alt} />
+              ))}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="exit">
+    <div class="exit-layout">
+    <article class="card ink drift-card" id="exit-card">
+      <div class="exit-split">
+        <div class="exit-copy">
+          <h2 class="t-h2">Life after exit is hard for a reason.</h2>
+          <p>
+            You can leave the company and still find the old pace shaping your new life,
+            your decisions, and what you want to reach for next.
+          </p>
+          <p>
+            Exit advisors handle the transaction. Business consultants focus on the business.
+            But very few people <strong class="em-black">help you deal with what happens after.</strong>
+          </p>
+          <p>
+            When the company gave you meaning and structure for years, sometimes decades,
+            stepping away is as much personal as it is practical.
+          </p>
+          <p>
+            <strong class="em-black">We help you see what is really driving the next chapter,</strong> so you do not fill the freedom you worked so hard for with another version of the life you left behind.
+          </p>
+        </div>
+      </div>
+    </article>
+    <div class="exit-machine" data-line-reveal>
+      <picture class="exit-machine-still">
+        <source
+          type="image/webp"
+          srcset="/sketches/life-after-exit-machine@1x.webp 390w, /sketches/life-after-exit-machine@2x.webp 780w"
+          sizes="(max-width: 1080px) 240px, 390px"
+        />
+        <img
+          src="/sketches/life-after-exit-machine@1x.png"
+          srcset="/sketches/life-after-exit-machine@1x.png 390w, /sketches/life-after-exit-machine@2x.png 780w"
+          sizes="(max-width: 1080px) 240px, 390px"
+          width="390"
+          height="414"
+          alt="Company machine still running: a compact engine with a hopper, gears and a lever."
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
+      <picture class="exit-machine-body">
+        <source
+          type="image/webp"
+          srcset="/sketches/life-after-exit-machine-without-wheel@1x.webp 390w, /sketches/life-after-exit-machine-without-wheel@2x.webp 780w"
+          sizes="(max-width: 1080px) 240px, 390px"
+        />
+        <img
+          src="/sketches/life-after-exit-machine-without-wheel@1x.png"
+          srcset="/sketches/life-after-exit-machine-without-wheel@1x.png 390w, /sketches/life-after-exit-machine-without-wheel@2x.png 780w"
+          sizes="(max-width: 1080px) 240px, 390px"
+          width="390"
+          height="414"
+          alt="Company machine still running: a compact engine with a hopper, gears and a lever."
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
+      <picture class="exit-wheel">
+        <source
+          type="image/webp"
+          srcset="/sketches/life-after-exit-machine-wheel-only@1x.webp 390w, /sketches/life-after-exit-machine-wheel-only@2x.webp 780w"
+          sizes="(max-width: 1080px) 240px, 390px"
+        />
+        <img
+          src="/sketches/life-after-exit-machine-wheel-only@1x.png"
+          srcset="/sketches/life-after-exit-machine-wheel-only@1x.png 390w, /sketches/life-after-exit-machine-wheel-only@2x.png 780w"
+          sizes="(max-width: 1080px) 240px, 390px"
+          width="390"
+          height="414"
+          alt=""
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
+    </div>
+    </div>
+  </section>
+
+  <section class="sec" id="case-j">
+    <article class="card case-compact">
+      <img class="portrait" src={caseJ.src} width="220" height="244" alt="Pixelated portrait of founder J, shown this way to protect their identity" />
+      <div>
+        <p class="t-kicker">Case Study</p>
+        <h3>From exit anxiety to aligned legacy —<br />How J created a clear next life chapter</h3>
+        <p class="caption case-who">J (anonymous), USD 2M founder</p>
+        <div class="btn-stack">
+          <a class="btn-case" href={urls.caseJ}>Read the short case study</a>
+          <p class="case-protect">We protect our founders’ identities</p>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section id="first-step">
+    <div class="first-grid">
+      <div id="first-draw">
+        <picture>
+          <source
+            type="image/avif"
+            srcset="/sketches/spot1-v3@1x.avif 524w, /sketches/spot1-v3@2x.avif 1048w"
+            sizes="(max-width: 1080px) 320px, 540px"
+          />
+          <source
+            type="image/webp"
+            srcset="/sketches/spot1-v3@1x.webp 524w, /sketches/spot1-v3@2x.webp 1048w"
+            sizes="(max-width: 1080px) 320px, 540px"
+          />
+          <img
+            src="/sketches/spot1-v3@1x.png"
+            srcset="/sketches/spot1-v3@1x.png 524w, /sketches/spot1-v3@2x.png 1048w"
+            sizes="(max-width: 1080px) 320px, 540px"
+            width="524"
+            height="531"
+            alt="Sketch of a greying man stepping out of shallow water onto the first of a path of irregular stones."
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+      </div>
+      <article class="card drift-card" id="first-card">
+        <h2 class="t-h2">This is the first step.</h2>
+        <p>
+          Stage 1 is a <strong class="em-black">private, confidential 30-day engagement</strong> for founders who have
+          exited or meaningfully stepped away and do not want to make their next move from the same old
+          patterns.
+        </p>
+        <p>
+          Over 30 days, we help you see what is really surfacing, separate distraction from genuine
+          desire, and get clear on what needs attention before the next major decision.
+        </p>
+        <p class="invite">If it fits, Stage 2 follows by invitation only.</p>
+        <p>
+          This is a private space to slow down, look honestly at what is here, and shape life after the
+          company from an intentional choice.
+        </p>
+        <div class="btn-stack">
+          <a class="btn-partnership" href={urls.partnership}>See the 2‑Stage Partnership</a>
+          <p class="stage-note">Stage 1 is Days 1-30, Stage 2 invite only</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="apply-first">
+    <div class="apply-first-slot">
+      <a class="btn-apply lg" href={urls.apply}>Apply for Stage 1</a>
+      <p class="caption cap-pill">Limited to five new founders a month</p>
+    </div>
+  </section>
+
+  <section id="for-you">
+    <div class="foryou-grid">
+      <article class="card ink">
+        <h3 class="t-h3">This is for you if...</h3>
+        <ul>
+          {fit.map((item) => (
+            <li>
+              <picture class="fit-icon" aria-hidden="true">
+                <source
+                  type="image/webp"
+                  srcset="/sketches/icon-tick-for-you@1x.webp 1x, /sketches/icon-tick-for-you@2x.webp 2x"
+                />
+                <img
+                  src="/sketches/icon-tick-for-you@1x.png"
+                  srcset="/sketches/icon-tick-for-you@1x.png 1x, /sketches/icon-tick-for-you@2x.png 2x"
+                  width="28"
+                  height="28"
+                  alt=""
+                />
+              </picture>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </article>
+      <article class="card rose drift-card">
+        <h3 class="t-h3">NOT for you if...</h3>
+        <ul>
+          {notFit.map((item) => (
+            <li>
+              <picture class="fit-icon" aria-hidden="true">
+                <source
+                  type="image/webp"
+                  srcset="/sketches/icon-cross-not-for-you@1x.webp 1x, /sketches/icon-cross-not-for-you@2x.webp 2x"
+                />
+                <img
+                  src="/sketches/icon-cross-not-for-you@1x.png"
+                  srcset="/sketches/icon-cross-not-for-you@1x.png 1x, /sketches/icon-cross-not-for-you@2x.png 2x"
+                  width="28"
+                  height="28"
+                  alt=""
+                />
+              </picture>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="why-grid">
+      <div class="card why-copy drift-card">
+        <p class="why-kicker">Why 'DoGood'?</p>
+        <h2 class="t-h2">Because we love entrepreneurship.</h2>
+        <span class="sub">We love what founders build.</span>
+        <p>We love what a great company can create for a family, a team, a&nbsp;community, and&nbsp;the&nbsp;world.</p>
+        <p>
+          And the best founders we know are not only trying to build something successful.{" "}
+          <strong class="em-black">They want to do good.</strong>
+        </p>
+        <p>Good for themselves. Good for their families. Good for their teams. Good for the world.</p>
+        <p class="closing">That is why we do this work.</p>
+        <p>
+          DoGood believes that success should not come at the expense of the people and parts of life
+          that matter most.
+        </p>
+      </div>
+      <div class="why-sketch">
+        <div class="why-art">
+          <picture>
+          <source
+            type="image/webp"
+            srcset="/sketches/why-dogood-future-flying-machine-v4@1x.webp 1x, /sketches/why-dogood-future-flying-machine-v4@2x.webp 2x, /sketches/why-dogood-future-flying-machine-v4@3x.webp 3x"
+          />
+          <img
+            src="/sketches/why-dogood-future-flying-machine-v4@1x.png"
+            srcset="/sketches/why-dogood-future-flying-machine-v4@1x.png 1x, /sketches/why-dogood-future-flying-machine-v4@2x.png 2x, /sketches/why-dogood-future-flying-machine-v4@3x.png 3x"
+            width="540"
+            height="566"
+            alt="Two colleagues finishing a clean-energy flying machine, with the handwritten caption “Our clean-energy flying machine MVP.” He fits the lattice nose; she stretches a teal solar-fabric wing."
+            loading="lazy"
+            decoding="async"
+          />
+          </picture>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-wave" aria-hidden="true">
+    <Wave fill="#ffffff" />
+  </div>
+
+  <section id="reviews">
+    <div class="reviews-band">
+      <h2 class="t-h2">Leaders who've been through it</h2>
+      <div
+        class="reviews-viewport"
+        tabindex="0"
+        aria-label="Founder testimonials, rolling. Pauses on hover or focus."
+      >
+        <div class="reviews-track">
+          {
+            [0, 1].map((copy) => (
+              <div class:list={["reviews-set", copy === 1 && "is-clone"]} aria-hidden={copy === 1}>
+                {reviewSet.map((review) => (
+                  <article class="review">
+                    <div class="review-who">
+                      <Image
+                        src={review.src}
+                        alt={`Portrait of ${review.name}, ${review.role}`}
+                        width={56}
+                        height={56}
+                        widths={[56, 112]}
+                        sizes="56px"
+                      />
+                      <div>
+                        <h3>{review.name}</h3>
+                        <p class="review-role">{review.role}</p>
+                      </div>
+                    </div>
+                    <p class="review-body">{clipQuote(review.quote)}</p>
+                  </article>
+                ))}
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="case-v">
+    <article class="card case-compact case-v">
+      <img class="portrait" src={caseV.src} width="220" height="244" alt="Pixelated portrait of founder V, shown this way to protect their identity" />
+      <div>
+        <p class="t-kicker">Case Study</p>
+        <h3>From identity void to decisive leadership —<br />How V reclaimed life after success</h3>
+        <p class="caption case-who">V (anonymous), USD 9M+ founder</p>
+        <div class="btn-stack">
+          <a class="btn-case" href={urls.caseV}>Read the short case study</a>
+          <p class="case-protect">We protect our founders’ identities</p>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section id="asseen">
+    <div class="asseen-frame">
+      <p class="t-kicker">As seen on</p>
+      <div class="asseen-row">
+        <img
+          src={press.src}
+          width={press.width}
+          height={press.height}
+          alt="The Globe and Mail, The Chronicle Journal, FOX, Starkville Daily News, ncn, and Benzinga"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section id="apply-v">
+    <a class="btn-apply lg" href={urls.apply}>Apply for Stage 1</a>
+    <p class="caption cap-small">Limited to five new founders a month</p>
+  </section>
+
+  <section id="message">
+    <article class="card ink" id="message-card">
+      <h2 class="t-h2">A Founder’s Message</h2>
+      <div class="msg-copy">
+      <p>
+        “We exist because the support founders need after exit is{" "}
+        <strong class="em-black accent-pink">rarely found in the usual places.</strong>
+      </p>
+      <p>
+        Executive coaches focus on performance. Therapists help people process what is difficult. Both
+        can have value. But neither is built for the moment when the company is no longer central, and{" "}
+        <strong class="em-black">you are working out what genuinely belongs next.</strong>
+      </p>
+      <p>You cannot solve that simply by finding another strategy or filling it with more projects.</p>
+      <p>
+        I know what it costs when the company becomes too much of who you are, and when the old
+        patterns follow you long after the company is gone.
+      </p>
+      <p>
+        <strong class="em-black accent-pink">DoGood</strong> is what I wish had existed then: a private partnership for
+        founders who do not want life after exit to become another version of the life they left behind.”
+      </p>
+      </div>
+      <div class="sig-row">
+        <Image class="sig" src={signature} alt="Seb’s signature" widths={[120, 240]} sizes="120px" />
+      </div>
+      <p class="who">Seb &amp; the entire DoGood team</p>
+    </article>
+  </section>
+
+  <section id="wayfinders">
+    <div class="wf-intro">
+      <div class="wf-title">
+        <h2 class="t-h2">Your Wayfinders</h2>
+      </div>
+      <p class="lead">
+        FRP is delivered by an intentionally small, vetted team of Wayfinders{" "}
+        <span class="years">with 75+ years of combined founder-delivery experience.</span>{" "}
+        They’re the kind of rare people you don’t find in usual channels. All are trained to meet our
+        quality standards to ensure consistency and outcome-driven deliveries. Every time.
+      </p>
+    </div>
+    <div class="wf-group">
+      <Image
+        src={team}
+        alt="The DoGood Wayfinders: Seb, Vlora, Chantill, Shiva and Katrin"
+        widths={[800, 1280, 1800]}
+        sizes="(max-width: 1080px) 100vw, 1280px"
+      />
+    </div>
+    <div class="track-block">
+      <article class="card track-card">
+        <h3 class="track-title">Our team’s track record</h3>
+        <div class="track-nums" data-count-group>
+          {
+            [
+              { text: "76", label: "Founders Engaged", count: "76", prefix: "", suffix: "", decimals: "0" },
+              { text: "38,000", label: "Leaders Impacted", count: "38000", prefix: "", suffix: "", decimals: "0" },
+              { text: "$16.5 Million", label: "Learning Initiatives Sold", count: "16.5", prefix: "$", suffix: " Million", decimals: "1" },
+              { text: "11,500", label: "Coaching Hours", count: "11500", prefix: "", suffix: "", decimals: "0" },
+              { text: "100%", label: "Client Satisfaction Score", count: "100", prefix: "", suffix: "%", decimals: "0" },
+            ].map((stat) => (
+              <div>
+                <strong
+                  data-count={stat.count}
+                  data-prefix={stat.prefix}
+                  data-suffix={stat.suffix}
+                  data-decimals={stat.decimals}
+                >
+                  {stat.text}
+                </strong>
+                <span>{stat.label}</span>
+              </div>
+            ))
+          }
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="guarantee">
+    <div class="guarantee-layout">
+    <picture class="guarantee-scale">
+      <source
+        type="image/webp"
+        srcset="/sketches/clarity-first-guarantee-scale-v2@1x.webp 390w, /sketches/clarity-first-guarantee-scale-v2@2x.webp 780w, /sketches/clarity-first-guarantee-scale-v2@3x.webp 1170w"
+        sizes="(max-width: 1080px) 200px, 390px"
+      />
+      <img
+        src="/sketches/clarity-first-guarantee-scale-v2@1x.png"
+        srcset="/sketches/clarity-first-guarantee-scale-v2@1x.png 390w, /sketches/clarity-first-guarantee-scale-v2@2x.png 780w, /sketches/clarity-first-guarantee-scale-v2@3x.png 1170w"
+        sizes="(max-width: 1080px) 200px, 390px"
+        width="390"
+        height="334"
+        alt="A napkin-sketch balance scale, gently tipped toward a small standing figure beside the lower teal pan, with a dashed line arcing over the beam."
+        loading="lazy"
+        decoding="async"
+      />
+    </picture>
+    <article class="card guarantee-card">
+      <img
+        class="guarantee-seal"
+        src="/sketches/clarity-seal-home@1x.png"
+        srcset="/sketches/clarity-seal-home@1x.png 200w, /sketches/clarity-seal-home@2x.png 400w, /sketches/clarity-seal-home@3x.png 600w"
+        sizes="(max-width: 640px) 148px, 176px"
+        width="176"
+        height="176"
+        alt=""
+        decoding="async"
+      />
+      <div class="guarantee-head">
+        <h2 class="t-h2">Clarity‑First Guarantee (Stage 1)</h2>
+      </div>
+      <p class="say-no">We say no. If it’s not right, we’ll tell you and point you somewhere better.</p>
+      <p>
+        You can’t know whether FRP is right for you from the outside. You only know once you’ve been
+        inside the work.
+      </p>
+      <p>
+        Complete onboarding and attend your first two private 1:1 sessions. If you decide the
+        partnership isn’t right for you, email us within 7 days of Session 1, and we’ll <strong class="em-black">refund the
+        remainder of your Stage 1 investment</strong>. No matter the reason (we only retain the portion covering
+        the two sessions delivered).
+      </p>
+      <p>
+        You keep all decisions, plans, and tools from our first sessions. We take real delivery risk on
+        purpose, because we only want to continue if it’s <strong class="em-black">genuinely the right fit</strong>.
+      </p>
+        <p class="terms-row">
+        <a class="btn-terms" href={urls.guarantee}>Read full terms</a>
+      </p>
+    </article>
+    </div>
+  </section>
+
+  <section id="next">
+    <svg class="swell-bg" viewBox="0 0 1710 1000" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="swellGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop id="swell-dark" offset="0" stop-color="#D4F4EB"></stop>
+          <stop id="swell-light" offset="1" stop-color="#D4F4EB"></stop>
+        </linearGradient>
+      </defs>
+      <path
+        fill="url(#swellGrad)"
+        d="M760,0 C760,240 90,520 0,760 L0,1000 L1710,1000 L1710,760 C1620,520 950,240 950,0 Z"
+      ></path>
+    </svg>
+    <div class="next-inner">
+      <h2 class="t-h2">What’s next?</h2>
+      <p>
+        Complete the short application for Stage 1 (30 days). We’ll respond within 24 hours. If there’s
+        a fit, we’ll have an honest conversation.
+      </p>
+      <a class="btn-apply lg" href={urls.apply}>Apply for Stage 1</a>
+      <p class="next-note">Limited to five new founders a month</p>
+    </div>
+  </section>
+  <script>
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduce) {
+      const counters = document.querySelectorAll("[data-count]");
+      const format = (el, value) => {
+        const prefix = el.dataset.prefix ?? "";
+        const suffix = el.dataset.suffix ?? "";
+        const decimals = Number(el.dataset.decimals ?? "0");
+        const shown = decimals
+          ? value.toFixed(decimals)
+          : Math.round(value).toLocaleString("en-US");
+        el.textContent = `${prefix}${shown}${suffix}`;
+      };
+      const start = (el) => {
+        const target = Number(el.dataset.count);
+        const begin = performance.now();
+        const duration = 1800;
+        const tick = (now) => {
+          const progress = Math.min(1, (now - begin) / duration);
+          const eased = 1 - (1 - progress) ** 3;
+          format(el, target * eased);
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      };
+      const group = document.querySelector("[data-count-group]");
+      if (group) {
+        let started = false;
+        const observer = new IntersectionObserver(
+          (entries) => {
+            if (started || !entries.some((entry) => entry.isIntersecting)) return;
+            started = true;
+            observer.disconnect();
+            counters.forEach((el) => {
+              if (el instanceof HTMLElement) start(el);
+            });
+          },
+          { threshold: 0.35 },
+        );
+        observer.observe(group);
+      }
+    }
+  </script>
+  <script>
+    const driftCards = [...document.querySelectorAll(".drift-card")];
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const wide = window.matchMedia("(min-width: 601px)");
+    const active = new Set();
+    const half = () => (wide.matches ? 105 : 52);
+    const layoutTop = (el) => {
+      const previous = el.style.transform;
+      el.style.transform = "none";
+      const top = el.getBoundingClientRect().top + window.scrollY;
+      el.style.transform = previous;
+      return top;
+    };
+    const shiftFor = (el) => {
+      const travel = half();
+      const progress = (window.scrollY + window.innerHeight - layoutTop(el)) / (window.innerHeight + el.offsetHeight);
+      const t = Math.min(1, Math.max(0, progress));
+      return travel - t * travel * 2;
+    };
+    let frame = 0;
+    const paint = () => {
+      frame = 0;
+      if (reduceMotion.matches) {
+        driftCards.forEach((el) => {
+          el.style.transform = "";
+          el.style.willChange = "";
+        });
+        return;
+      }
+      active.forEach((el) => {
+        el.style.transform = `translate3d(0, ${shiftFor(el).toFixed(2)}px, 0)`;
+      });
+    };
+    const queue = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(paint);
+    };
+    const watcher = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const el = entry.target;
+        if (!(el instanceof HTMLElement)) return;
+        if (entry.isIntersecting) {
+          el.style.willChange = "transform";
+          active.add(el);
+        } else {
+          active.delete(el);
+          el.style.willChange = "";
+          if (!reduceMotion.matches) {
+            const above = el.getBoundingClientRect().top < 0;
+            el.style.transform = `translate3d(0, ${above ? -half() : half()}px, 0)`;
+          }
+        }
+      });
+      queue();
+    }, { rootMargin: "100px 0px" });
+    driftCards.forEach((el) => watcher.observe(el));
+    window.addEventListener("scroll", queue, { passive: true });
+    window.addEventListener("resize", queue);
+    reduceMotion.addEventListener("change", queue);
+    wide.addEventListener("change", queue);
+    queue();
+  </script>
+</Base>

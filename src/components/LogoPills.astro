@@ -1,0 +1,26 @@
+---
+const files = import.meta.glob("../assets/logos/pink/*.{png,jpg,jpeg,webp}", {
+  eager: true,
+  import: "default",
+});
+const logos = Object.entries(files)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([file, src]) => {
+    const image = src as { src?: string } | string;
+    return {
+      src: typeof image === "string" ? image : image.src || "",
+      alt: file.split("/").pop()?.replace(/\.[^.]+$/, "").replace(/[-_]/g, " ") ?? "Client logo",
+    };
+  })
+  .filter((logo) => logo.src);
+---
+
+<ul class="logo-pills" aria-label="Organisations our team has worked with">
+  {
+    logos.map((logo) => (
+      <li>
+        <img src={logo.src} alt={logo.alt} loading="lazy" />
+      </li>
+    ))
+  }
+</ul>

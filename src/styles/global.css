@@ -1,15 +1,19 @@
 @import "tailwindcss";
+@import "@fontsource/montserrat/latin-300.css";
 @import "@fontsource/montserrat/latin-400.css";
+@import "@fontsource/montserrat/latin-500.css";
 @import "@fontsource/montserrat/latin-600.css";
 @import "@fontsource/montserrat/latin-700.css";
 @import "@fontsource/montserrat/latin-800.css";
+@import "@fontsource/montserrat/latin-900.css";
 @import "@fontsource/mansalva/latin-400.css";
+@import "./home.css";
 
 @theme {
   --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
   --font-script: "Mansalva", cursive;
   --color-ink: #2a0b4f;
-  --color-pink: #ed1566;
+  --color-pink: #ea1557;
   --color-pink-deep: #a30d4c;
   --color-pink-soft: #ff8ab0;
   --color-teal: #28dbb0;
@@ -17,18 +21,40 @@
   --color-lilac: #f5f2f9;
   --color-mist: #d6cee0;
   --color-cloud: #b4a3c7;
+  /* Style guide v7: shared action and typography tokens. */
+  --color-heart-500: #ea1557;
+  --color-heart-600: #b0013e;
+  --color-dream-500: #2a0b4f;
+  --color-dream-25: #f5f2ff;
+  --color-grass-500: #28dbb0;
+  --color-grass-700: #05745b;
+  --color-white: #fff;
 }
 
 @layer base {
+  :root {
+    --pink-text: #ea1557;
+    --hero-subline-size: 21px;
+    --hero-subline-weight: 500;
+    --hero-subline-leading: 1.5;
+    --button-caption-size: 11px;
+    /* Seb round 2, 22 Nov 2026. */
+    --section-space-scale: 1.25;
+  }
+
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    background: #fff;
+    background: var(--color-lilac);
     color: var(--color-ink);
     font-family: var(--font-sans);
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: 400;
     text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
   }
 
   :focus-visible {
@@ -43,36 +69,10 @@
   }
 }
 
-.marquee {
-  overflow: hidden;
-  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
-}
 
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee 70s linear infinite;
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: center;
-  }
-}
-
-.stories {
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-pink) transparent;
+/* Trademark sign: 2px smaller than the word it follows (Seb, 19 Nov 2026). Since 20 Nov 2026 (Seb) its stroke
+   matches the word before it (same weight), on every page. */
+.tm {
+  font-size: calc(1em - 2px);
+  font-weight: inherit;
 }

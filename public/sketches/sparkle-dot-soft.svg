@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+  <!-- soft dust mote. PLAY 100 #FEFEF3 to PLAY 500 #FEFABE -->
+  <defs><radialGradient id="d" cx="6" cy="6" r="6" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#FEFEF3" stop-opacity="1"/><stop offset="0.35" stop-color="#FEFEF3" stop-opacity="0.9"/>
+    <stop offset="0.6" stop-color="#FEFABE" stop-opacity="0.35"/><stop offset="1" stop-color="#FEFABE" stop-opacity="0"/></radialGradient></defs>
+  <circle cx="6" cy="6" r="6" fill="url(#d)"/>
+</svg>

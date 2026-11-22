@@ -1,0 +1,67 @@
+---
+import ProductPage from "../components/ProductPage.astro";
+// Annual Signature Retreat. Preview 7 (Seb, 20 Nov 2026): written from Seb's answers (format, group size, hosting,
+// invitation rule, first date November 2027). No prices on the page. Spouse included (Seb confirmed 20 Nov 2026).
+---
+
+<ProductPage
+  title="Annual founder retreat, invitation only | DoGood Agency"
+  description="An annual founder retreat, by invitation: up to ten founders we have worked with, and their partners, spend 2.5 days together somewhere beautiful."
+  path="/signature-retreat"
+  eyebrow="Annual founder retreat · by invitation"
+  h1="A small group of founders. Real conversations."
+  sub="Once a year, up to ten founders we have worked with spend 2.5 days together somewhere beautiful."
+  tag="Invitation only"
+  soon="First retreat: Nov 2027"
+  sections={[
+    {
+      id: "sr-what",
+      heading: "What it is",
+      lede: "A hosted mastermind for founders after the sale, in a different place every year.",
+      paras: [
+        "Each year we choose a new location, somewhere like Thailand, Bali or Mexico. Up to ten founders come together with our team, around 15 to 20 people in all. We host and facilitate everything, so you can arrive and be present.",
+        "It is part work, part celebration. You work on your personal vision for the next chapter with founders who know exactly what this stage of life feels like, and you have a lot of fun doing it.",
+      ],
+    },
+    {
+      id: "sr-days",
+      heading: "How the 2.5 days unfold",
+      steps: [
+        { label: "Day 1", icon: "spark", title: "Arrive and celebrate", text: "You arrive in the afternoon. A long lunch, then dinner together with music, getting to know each other and celebrating into the evening." },
+        { label: "Day 2", icon: "bulb", title: "Mastermind, then play", text: "A half-day workshop of four to five hours with guest speakers, where we mastermind live and work on designing your next chapter. In the afternoon: massages, jet skis and time on the water." },
+        { label: "Day 3", icon: "compass", title: "Explore, then home", text: "Sightseeing in the morning. Everyone heads home in the afternoon." },
+      ],
+    },
+    {
+      id: "sr-details",
+      heading: "What to know",
+      boxes: [
+        {
+          title: "Who it's for",
+          tone: "grass",
+          items: [
+            "Founders who have been with us for 6 months",
+            "Your partner is welcome to join you",
+          ],
+          icons: ["people", "heart"],
+        },
+        {
+          title: "What you leave with",
+          tone: "sky",
+          items: [
+            "A clear personal vision for your next chapter",
+            "Friendships with founders who understand this stage",
+            "New ideas and, often, professional collaborations",
+          ],
+          icons: ["compass", "handshake", "bulb"],
+        },
+      ],
+      note: "We host the retreat: your stay, meals, the program and the activities are covered. Flights are not included. The retreat is not part of any engagement, and an invitation is not guaranteed.",
+    },
+  ]}
+  closing={{
+    heading: "The way in is the work",
+    text: "Invitations go to founders who have been with us for a while. It starts with Stage 1.",
+    cta: { href: "/the-reset", label: "See the 2-Stage Partnership" },
+  }}
+/>

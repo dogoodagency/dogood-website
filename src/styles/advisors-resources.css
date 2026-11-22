@@ -1,0 +1,1071 @@
+/* Advisor Center resource pages (/advisor-center/client-tools and
+   /advisor-center/insights). Every rule is prefixed .advr- so nothing here can
+   touch another page. Follows the case study house style (casestudy.css):
+   dark purple hero with wave, lilac and white bands, 24px cards, btn-teal. */
+
+body:has(.advr-page) .footer-wave {
+  background: var(--footer-strip, #fff);
+}
+
+.advr-page {
+  --advr-tint: #f5f2ff;
+  --advr-line: #c2b7dd;
+  --advr-ink: #2a0b4f;
+  --advr-teal: #28dbb0;
+  background: #fff;
+  color: var(--advr-ink);
+  overflow-x: clip;
+}
+
+.advr-page *,
+.advr-page *::before,
+.advr-page *::after {
+  box-sizing: border-box;
+}
+
+/* ---------- Hero ---------- */
+
+.advr-hero {
+  margin-top: -94px;
+  padding-top: 94px;
+  background: #2a0b4f;
+  color: #fff;
+}
+
+.advr-hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  width: min(900px, calc(100% - 2 * var(--pad)));
+  margin: 0 auto;
+  padding: 70px 0 45px;
+  text-align: center;
+}
+
+.advr-eyebrow {
+  margin: 0;
+  color: var(--advr-teal);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.advr-hero h1 {
+  width: 100%;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(30px, 3.6vw, 46px);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  overflow-wrap: break-word;
+}
+
+.advr-hero .advr-lede {
+  max-width: 720px;
+  margin: 0;
+  color: #f5f2ff;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* FOUNDERland: same pattern as the rest of the site, in the soft pink that
+   reads on the dark hero. FOUNDER bold, whole word in Montserrat. */
+.advr-hero .advr-founder {
+  color: var(--color-pink-soft, #ff8ab0);
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  font-synthesis: none;
+}
+
+.advr-hero .advr-founder strong {
+  font-weight: 900;
+}
+
+.advr-hero .hero-wave {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+/* ---------- Bands ---------- */
+
+.advr-band {
+  background: #fff;
+}
+
+.advr-band-tint {
+  background: var(--advr-tint);
+}
+
+.advr-well {
+  width: min(1080px, calc(100% - 2 * var(--pad)));
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 30px 0 90px;
+}
+
+.advr-band-white .advr-well {
+  padding: 50px 0 90px;
+}
+
+.advr-divider {
+  display: block;
+  line-height: 0;
+  background: var(--advr-tint);
+}
+
+.advr-divider svg {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+.advr-nav {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 40px;
+}
+
+/* ---------- Resource grid and cards ---------- */
+
+.advr-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  align-items: stretch;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.advr-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  padding: 36px 32px;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 10px 36px rgba(42, 11, 79, 0.07);
+}
+
+.advr-card h2 {
+  margin: 0 0 14px;
+  color: var(--advr-ink);
+  font-size: clamp(22px, 2vw, 26px);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  overflow-wrap: break-word;
+}
+
+.advr-card p {
+  margin: 0;
+  color: var(--advr-ink);
+  font-size: 17px;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+.advr-badge {
+  display: inline-block;
+  margin: 0 0 16px;
+  padding: 4px 12px;
+  background: #e7fff6;
+  border: 1px solid #a3f2d7;
+  border-radius: 999px;
+  color: #0a6b56;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.advr-card .advr-badge {
+  margin: 0 0 16px;
+  color: #0a6b56;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.advr-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+/* Disabled "Coming soon" button, shown as a quiet status pill. */
+.advr-status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 18px;
+  background: var(--advr-tint);
+  border: 1.5px dashed var(--advr-line);
+  border-radius: 999px;
+  color: var(--advr-ink);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: left;
+  cursor: default;
+}
+
+.advr-status::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  margin-right: 10px;
+  background: var(--advr-teal);
+  border-radius: 50%;
+}
+
+.advr-card a.advr-link {
+  color: var(--advr-ink);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-decoration: underline;
+  text-decoration-color: var(--advr-teal);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.advr-card a.advr-link:hover,
+.advr-card a.advr-link:focus-visible {
+  text-decoration-color: var(--advr-ink);
+}
+
+/* ---------- Closing CTA and back link ---------- */
+
+.advr-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px 40px;
+  padding: 32px 40px;
+  background: var(--advr-tint);
+  border: 1px solid #e3dcf2;
+  border-radius: 24px;
+}
+
+.advr-cta p {
+  max-width: 640px;
+  margin: 0;
+  color: var(--advr-ink);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.advr-cta a.btn-teal {
+  flex: 0 0 auto;
+  white-space: normal;
+  text-align: center;
+}
+
+.advr-back {
+  margin: 36px 0 0;
+  text-align: center;
+}
+
+.advr-back a {
+  color: var(--advr-ink);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-color: var(--advr-teal);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.advr-back a:hover,
+.advr-back a:focus-visible {
+  text-decoration-color: var(--advr-ink);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1023px) {
+  .advr-grid {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .advr-card {
+    padding: 32px 28px;
+  }
+}
+
+@media (max-width: 767px) {
+  .advr-cta {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 28px 24px;
+  }
+
+  .advr-cta a.btn-teal {
+    align-self: stretch;
+  }
+}
+
+@media (max-width: 600px) {
+  .advr-hero {
+    margin-top: -81px;
+    padding-top: 81px;
+  }
+
+  .advr-hero-inner {
+    gap: 18px;
+    padding: 50px 0 35px;
+  }
+
+  .advr-hero .advr-lede {
+    font-size: 18px;
+  }
+
+  .advr-well {
+    padding: 20px 0 70px;
+  }
+
+  .advr-band-white .advr-well {
+    padding: 40px 0 70px;
+  }
+
+  .advr-nav {
+    margin-bottom: 28px;
+  }
+
+  .advr-card {
+    padding: 28px 24px;
+  }
+}
+
+/* ===== 19 Nov 2026 (Seb) ===== */
+
+.advr-divider--hide { display: none; }
+
+.advr-intro {
+  max-width: 760px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+
+.advr-page .advr-intro p {
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+/* Resource cards: each card is a link to its own page, in its own colour, with the status right above the
+   title. No shadow, no movement; hover changes colour. */
+.advr-grid.advr-grid--links {
+  list-style: none;
+}
+
+.advr-cardwrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.advr-card.advr-card--link {
+  flex: 1;
+  border: 1.5px solid;
+  color: #2a0b4f;
+  text-decoration: none;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.advr-card--sky { border-color: #477dfe; background: #f2f7ff; }
+.advr-card--heart { border-color: #fd6b82; background: #fff9fa; }
+.advr-card--grass { border-color: #01a684; background: #f3fffb; }
+
+.advr-card--sky:hover, .advr-card--sky:focus-visible { background: #e1ebfe; }
+.advr-card--heart:hover, .advr-card--heart:focus-visible { background: #fff3f4; border-color: #c10e46; }
+.advr-card--grass:hover, .advr-card--grass:focus-visible { background: #e7fff6; }
+
+.advr-soon {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 5px 12px;
+  border: 1.5px dashed currentColor;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.advr-soon::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.advr-card--sky .advr-soon { color: #0d329f; }
+.advr-card--heart .advr-soon { color: #c10e46; }
+.advr-card--grass .advr-soon { color: #05745b; }
+
+.advr-more {
+  margin-top: auto;
+  padding-top: 18px;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.advr-under {
+  font-size: 14px;
+  font-weight: 700;
+  color: #2a0b4f;
+}
+
+/* Detail pages. */
+.advd-page .advd-soon {
+  display: inline-flex;
+  margin: 0;
+  padding: 6px 16px;
+  border: 1.5px dashed #28dbb0;
+  border-radius: 999px;
+  color: #28dbb0;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.advd-well {
+  max-width: 860px;
+}
+
+.advd-block {
+  margin-top: 36px;
+  padding: 30px 32px;
+  border: 1px solid #c2b7dd;
+  border-radius: 22px;
+  background: #fff;
+}
+
+.advd-sky .advd-block:first-of-type { border-color: #477dfe; }
+.advd--sky .advd-block { border-color: #aec8fe; }
+.advd--heart .advd-block { border-color: #feb5bc; }
+.advd--grass .advd-block { border-color: #a3f2d7; }
+
+.advd-page .advd-block h2 {
+  margin: 0 0 12px;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.advd-page .advd-block p {
+  margin: 0 0 10px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.advd-list {
+  margin: 8px 0 0;
+  padding-left: 20px;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.advd-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: advd;
+}
+
+.advd-steps li {
+  counter-increment: advd;
+  padding: 18px;
+  border-radius: 16px;
+  background: #faf9ff;
+}
+
+.advd-steps li::before {
+  content: counter(advd);
+  display: block;
+  margin-bottom: 6px;
+  color: #c10e46;
+  font-weight: 900;
+}
+
+.advd-page .advd-steps h3 {
+  margin: 0 0 6px;
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.advd-page .advd-steps p {
+  margin: 0;
+  font-size: 15px;
+}
+
+.advd-page .advd-note {
+  margin: 24px 0 0;
+  color: #58447f;
+  font-size: 15px;
+  font-style: italic;
+}
+
+/* Advisor insights: extra sections. */
+.advi-well {
+  max-width: 1000px;
+}
+
+.advr-page .advi-h2 {
+  margin: 0 0 10px;
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 900;
+}
+
+.advr-page .advi-lede {
+  max-width: 760px;
+  margin: 0 0 24px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.advi-legs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.advi-leg {
+  padding: 22px 24px;
+  border: 1px solid #c2b7dd;
+  border-radius: 20px;
+  background: #faf9ff;
+}
+
+.advi-leg--3 {
+  border-color: #01a684;
+  background: #e7fff6;
+}
+
+.advr-page .advi-leg h3 {
+  margin: 0 0 6px;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.advr-page .advi-leg p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.advi-patterns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 16px;
+}
+
+.advi-pattern {
+  padding: 24px 26px;
+  border: 1px solid;
+  border-radius: 20px;
+}
+
+.advi-pattern--before { border-color: #477dfe; background: #f2f7ff; }
+.advi-pattern--after { border-color: #01a684; background: #f3fffb; }
+
+.advr-page .advi-pattern-label {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.advi-pattern ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.advi-raise {
+  margin-top: 24px;
+  padding: 26px 28px;
+  border: 1px solid #2a0b4f;
+  border-radius: 20px;
+  background: #2a0b4f;
+  color: #fff;
+}
+
+.advr-page .advi-raise h3 {
+  margin: 0 0 8px;
+  color: #28dbb0;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.advr-page .advi-raise p {
+  margin: 0 0 16px;
+  color: #fff;
+  font-size: 17px;
+}
+
+@media (max-width: 760px) {
+  .advi-legs,
+  .advi-patterns { grid-template-columns: minmax(0, 1fr); }
+  .advd-block { padding: 22px 20px; }
+}
+
+.advr-card.advr-card--link p {
+  font-weight: 400;
+}
+
+.advd-list,
+.advi-pattern ul {
+  list-style: disc;
+}
+
+.advd-list li,
+.advi-pattern li {
+  display: list-item;
+  margin-bottom: 4px;
+}
+
+/* 19 Nov 2026 14:55 (Seb): no SKY on DREAM bands. SKY-toned cards become white with a DREAM 400 line. */
+.advr-card--sky { border-color: #58447f; background: #fff; }
+.advr-card--sky:hover, .advr-card--sky:focus-visible { background: #f5f2ff; }
+.advd--sky .advd-block { border-color: #8b7dae; }
+.advi-pattern--before { border-color: #58447f; background: #fff; }
+
+/* Tool and insight cards: one thin line in the card's own colour, 2–3 shades darker. */
+.advr-card.advr-card--link { border-width: 1px; }
+.advr-card.advr-card--sky { border-color: #c2b7dd; background: #fff; }
+.advr-card.advr-card--heart { border-color: #feb5bc; background: #fff9fa; }
+.advr-card.advr-card--grass { border-color: #73e7c4; background: #f3fffb; }
+.advr-card.advr-card--heart:hover, .advr-card.advr-card--heart:focus-visible { border-color: #fd6b82; }
+.advr-card.advr-card--grass:hover, .advr-card.advr-card--grass:focus-visible { border-color: #28dbb0; }
+.advr-card.advr-card--sky:hover, .advr-card.advr-card--sky:focus-visible { border-color: #8b7dae; }
+
+/* "Read the chapters in the newsletter" sits under its card without making that card shorter. */
+.advr-cardwrap { position: relative; }
+.advr-under {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+}
+
+/* "More tools are on the way…" on one line (Seb, 19 Nov 2026 14:55). */
+@media (min-width: 900px) {
+  .advr-cta p {
+    max-width: none;
+    white-space: nowrap;
+    font-size: 19px;
+  }
+}
+
+/* ===== The three legs of the stool: visual (Seb, 19 Nov 2026 14:55) ===== */
+.advi-lede-wide { max-width: 860px; }
+
+.stool {
+  margin: 28px 0 0;
+  padding: 32px 32px 28px;
+  border: 1px solid #c2b7dd;
+  border-radius: 24px;
+  background: #faf9ff;
+}
+
+.stool-svg {
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.stool-seat { fill: #2a0b4f; }
+.stool-seat-t { fill: #fff; font: 900 22px Montserrat, sans-serif; letter-spacing: 0.02em; }
+.stool-leg { transform-box: fill-box; transform-origin: top; }
+.stool-leg--1 { fill: #58447f; }
+.stool-leg--2 { fill: #8b7dae; }
+.stool-leg--3 { fill: #28dbb0; }
+.stool-gap { fill: none; stroke: #ea1557; stroke-width: 3; stroke-dasharray: 8 7; }
+.stool-gap-t { fill: #c10e46; font: 800 18px Montserrat, sans-serif; }
+
+.stool.will-animate .stool-leg { transform: scaleY(0); }
+.stool.will-animate .stool-gap,
+.stool.will-animate .stool-gap-t { opacity: 0; }
+.stool.is-in .stool-leg { transform: none; transition: transform 1.4s cubic-bezier(0.3, 0.7, 0.3, 1); }
+.stool.is-in .stool-leg--2 { transition-delay: 0.3s; }
+.stool.is-in .stool-leg--3 { transition-delay: 0.6s; }
+.stool.is-in .stool-gap,
+.stool.is-in .stool-gap-t { opacity: 1; transition: opacity 0.8s ease 2s; }
+.stool.is-in .stool-gap { animation: stool-pulse 2.4s ease-in-out 2.8s infinite; }
+@keyframes stool-pulse { 50% { stroke-opacity: 0.35; } }
+
+.stool-cols {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stool-col {
+  padding: 20px 22px;
+  border: 1px solid;
+  border-radius: 18px;
+  background: #fff;
+}
+
+.stool-col--1 { border-color: #8b7dae; }
+.stool-col--2 { border-color: #c2b7dd; }
+.stool-col--3 { border-color: #01a684; background: #e7fff6; }
+
+.advr-page .stool-label {
+  margin: 0 0 6px;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.stool-col--1 .stool-label { color: #58447f; }
+.stool-col--2 .stool-label { color: #58447f; }
+.stool-col--3 .stool-label { color: #05745b; }
+
+.advr-page .stool-q {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.advr-page .stool-who {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.advr-page .advi-h3 {
+  margin: 44px 0 14px;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.stool-diff {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stool-diff li {
+  padding: 22px 24px;
+  border: 1px solid #2a0b4f;
+  border-radius: 18px;
+  background: #2a0b4f;
+  color: #fff;
+}
+
+.advr-page .stool-diff h4 {
+  margin: 0 0 8px;
+  color: #73e7c4;
+  font-size: 19px;
+  font-weight: 900;
+}
+
+.advr-page .stool-diff p {
+  margin: 0;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.advr-page .stool-cepa {
+  margin: 22px 0 0;
+  padding: 18px 22px;
+  border: 1px solid #feb5bc;
+  border-radius: 16px;
+  background: #fff9fa;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+.advr-page .stool-src {
+  margin: 14px 0 0;
+  color: #6b5c93;
+  font-size: 13px;
+  font-style: italic;
+}
+
+@media (max-width: 860px) {
+  .stool-cols,
+  .stool-diff { grid-template-columns: minmax(0, 1fr); }
+  .stool { padding: 20px 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stool.will-animate .stool-leg { transform: none; }
+  .stool.will-animate .stool-gap,
+  .stool.will-animate .stool-gap-t { opacity: 1; }
+  .stool.is-in .stool-gap { animation: none; }
+}
+
+/* Resource pages (Seb, 19 Nov 2026 18:52): step cards get a border in the page's colour; blocks follow it. */
+.advd-steps li {
+  border: 1px solid #c2b7dd;
+  background: #fff;
+}
+
+.advd--heart .advd-steps li { border-color: #fd6b82; background: #fff9fa; }
+.advd--grass .advd-steps li { border-color: #28dbb0; background: #f3fffb; }
+.advd--sky .advd-steps li { border-color: #8b7dae; background: #faf9ff; }
+.advd--heart .advd-block { border-color: #feb5bc; }
+.advd--grass .advd-block { border-color: #73e7c4; }
+
+/* ===== The three legs of the stool, redesign (Seb, 19 Nov 2026 18:52) =====
+   The seat spans the three cards; each leg stands over the centre of its own card, in its own colour
+   (DREAM 500, HEART 500, GRASS 500). The personal leg stops short, with a pulsing dashed "gap". */
+.stool2 {
+  margin: 28px 0 0;
+  padding: 32px 32px 28px;
+  border: 1px solid #c2b7dd;
+  border-radius: 24px;
+  background: #fff;
+}
+
+.stool2-seat {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  height: 56px;
+  margin: 0 3%;
+  border-radius: 28px;
+  background: linear-gradient(180deg, #3b1a63, #2a0b4f);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+.stool2-cols {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.stool2-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.stool2-legarea {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 150px;
+}
+
+.stool2-leg {
+  display: block;
+  width: 28px;
+  height: 100%;
+  border-radius: 0 0 10px 10px;
+  background: var(--leg);
+  transform-origin: top;
+}
+
+.stool2-col--3 .stool2-leg {
+  height: 58%;
+  border-radius: 10px;
+  transform-origin: bottom;
+}
+
+.stool2-gap {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 120px;
+  height: 46%;
+  border: 2px dashed #ea1557;
+  border-radius: 14px;
+  color: #c10e46;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  transform: translateX(-50%);
+}
+
+.stool2-card {
+  flex: 1;
+  padding: 20px 22px;
+  border: 1px solid var(--leg);
+  border-top-width: 1px;
+  border-radius: 18px;
+  background: var(--soft);
+}
+
+.stool2-col--1 { --leg: #2a0b4f; --soft: #f5f2ff; }
+.stool2-col--2 { --leg: #ea1557; --soft: #fff3f4; }
+.stool2-col--3 { --leg: #28dbb0; --soft: #e7fff6; }
+
+.stool2-col--1 .stool-label { color: #2a0b4f; }
+.stool2-col--2 .stool-label { color: #c10e46; }
+.stool2-col--3 .stool-label { color: #05745b; }
+
+.stool2.will-animate .stool2-leg { transform: scaleY(0); }
+.stool2.will-animate .stool2-gap { opacity: 0; }
+.stool2.is-in .stool2-leg { transform: none; transition: transform 1.6s cubic-bezier(0.3, 0.7, 0.3, 1); }
+.stool2.is-in .stool2-col--2 .stool2-leg { transition-delay: 0.35s; }
+.stool2.is-in .stool2-col--3 .stool2-leg { transition-delay: 0.7s; }
+.stool2.is-in .stool2-gap { opacity: 1; transition: opacity 0.8s ease 2.2s; animation: stool2-pulse 2.6s ease-in-out 3s infinite; }
+
+@keyframes stool2-pulse { 50% { border-color: rgba(234, 21, 87, 0.3); } }
+
+@media (max-width: 860px) {
+  .stool2 { padding: 20px 14px; }
+  .stool2-seat { display: none; }
+  .stool2-cols { grid-template-columns: minmax(0, 1fr); }
+  .stool2-legarea { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stool2.will-animate .stool2-leg { transform: none; }
+  .stool2.will-animate .stool2-gap { opacity: 1; }
+  .stool2.is-in .stool2-gap { animation: none; }
+}
+
+/* "More is on the way…" box: the same width as the cards above. */
+.advr-page .advr-cta {
+  max-width: none;
+  width: 100%;
+}
+
+/* "Read more" on the tool cards: GRASS underline on hover (Seb, 19 Nov 2026 19:42). */
+.advr-card--link:hover .advr-more,
+.advr-card--link:focus-visible .advr-more {
+  text-decoration: underline;
+  text-decoration-color: #28dbb0;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+/* 20 Nov 2026 12:33 (Seb): more white space on Advisor insights. Each extra section (three legs, advisors' words,
+   what we hear most) gets more room after the band change above it, the "How the third leg differs" block sits
+   further below the stool, and the blocks inside each section breathe a little more. */
+.advr-page .advi-well,
+.advr-page .advr-band-white .advi-well {
+  padding: 110px 0 128px;
+}
+.advr-page .advi-h2 { margin-bottom: 14px; }
+.advr-page .advi-lede { margin-bottom: 36px; }
+.advr-page .advi-h3 { margin: 88px 0 22px; }
+.advr-page .stool-diff { gap: 22px; }
+.advr-page .stool-cepa { margin-top: 32px; }
+.advr-page .stool-src { margin-top: 20px; }
+.advr-page .advi-patterns { margin-top: 28px; gap: 24px; }
+.advr-page .advi-raise { margin-top: 44px; }
+
+.advr-page .advi-well .tw { margin-top: 28px; }
+
+@media (max-width: 600px) {
+  .advr-page .advi-well,
+  .advr-page .advr-band-white .advi-well { padding: 75px 0 90px; }
+  .advr-page .advi-h3 { margin-top: 60px; }
+  .advr-page .stool-diff { gap: 16px; }
+}
+
+/* 20 Nov 2026 (Seb): Advisor Center hero text is left-aligned like every other page, and starts at the same left
+   edge as the content below it (the Advisor Center nav and cards). Detail pages (readiness check, signals guide,
+   planner, insight pieces) use the narrower detail well, so their hero matches that width. */
+.advr-hero-inner {
+  align-items: flex-start;
+  text-align: left;
+  width: min(1080px, calc(100% - 2 * var(--pad)));
+}
+.advr-hero .advr-lede { max-width: 760px; }
+.advd-page .advr-hero-inner {
+  width: min(860px, calc(100% - 2 * var(--pad)));
+}
+
+/* foundr.land strip on its own white section with room above and below (Seb, 20 Nov 2026). */
+.advr-band.fl-band { padding: 64px 20px; }
+@media (max-width: 640px) { .advr-band.fl-band { padding: 44px 16px; } }
+
+/* Seb round 2, 22 Nov 2026: separate tools perks and more room at transitions. */
+.advr-perks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.advr-tools-page .advr-perks li {
+  margin: 0;
+  padding: 10px 18px;
+  border: 1.5px dashed #01a684;
+  border-radius: 999px;
+  background: #e7fff6;
+  color: #2a0b4f;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.advr-tools-page .advr-perks li:nth-child(2) { background: #f2f7ff; border-color: #477dfe; }
+html body .advr-tools-page .advr-hub-band + .advr-band .advr-well { padding-top: 70px; }
+.advr-tools-page .advr-more-tools .advr-well { padding-top: 78px; }
+.advr-tools-page .advr-more-tools .advr-cta {
+  background: #fff;
+  border: 1px solid #ea1557;
+  border-radius: 24px;
+  flex-wrap: wrap;
+}
+.advr-tools-page .advr-more-tools .advr-cta p { white-space: normal; }
+
+/* Seb round 2, 22 Nov 2026: balanced insights spacing and a clear stool gap. */
+html body .advr-insights-page .advr-hub-band + .advr-band .advr-well { padding-block: 90px; }
+.advr-insights-page [aria-labelledby="advi-legs"] .advi-well { padding-block: 128px; }
+.advr-insights-page .stool2-col--3 .stool2-leg { height: 48%; }
+.advr-insights-page .stool2-gap { top: 8px; height: 54px; color: #2a0b4f; }
+.advr-insights-page .stool-src { color: #2a0b4f; }
+html body main .adv-page.advr-insights-page .advi-voices-head :is(h2, p) { max-width: none; text-align: center; }
+.advr-insights-page .advr-more-insights .advr-well { padding-bottom: 138px; }
+
+@media (max-width: 1023px) {
+  .advr-tools-page .advr-more-tools .advr-cta { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 600px) {
+  html body .advr-tools-page .advr-hub-band + .advr-band .advr-well { padding-top: 85px; }
+  .advr-tools-page .advr-more-tools .advr-well { padding-top: 68px; }
+  html body .advr-insights-page .advr-hub-band + .advr-band .advr-well { padding-block: 70px; }
+  .advr-insights-page [aria-labelledby="advi-legs"] .advi-well { padding-block: 90px; }
+  .advr-insights-page .advr-more-insights .advr-well { padding-bottom: 118px; }
+}
