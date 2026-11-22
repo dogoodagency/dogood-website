@@ -107,7 +107,7 @@ body:has(.ab-page) .footer-wave {
   width: min(1080px, calc(100% - 2 * var(--pad)));
   max-width: 100%;
   margin: 0 auto;
-  padding: 90px 0;
+  padding: calc(72px * var(--section-space-scale)) 0;
 }
 
 .ab-divider {
@@ -530,7 +530,7 @@ body:has(.ab-page) .footer-wave {
   }
 
   .ab-well {
-    padding: 60px 0;
+    padding: calc(48px * var(--section-space-scale)) 0;
   }
 
   .ab-statement p,
@@ -1065,4 +1065,291 @@ body:has(.ab-page) .footer-wave {
     gap: 20px;
   }
   .ab-page .ab-band-statements .ab-duo .ab-statement { padding: 28px 22px; }
+}
+
+/* Seb round 2, 22 Nov 2026: connected purpose diagrams. */
+.ab-page .ab-purpose-flow {
+  position: relative;
+  gap: 64px;
+}
+.ab-page .ab-purpose-flow .ab-statement {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+}
+.ab-page .ab-purpose-flow .ab-statement p {
+  font-size: 18px !important;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+.ab-diagram {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: auto;
+  overflow: visible;
+}
+.ab-pen {
+  stroke: #2A0B4F;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ab-accent-fill { fill: #28DBB0; }
+.ab-pink-stroke { stroke: #EA1557; }
+.ab-diagram-label {
+  fill: #2A0B4F;
+  stroke: none;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+}
+.ab-flow-line {
+  stroke: #2A0B4F;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 5 7;
+}
+.ab-card-connector {
+  position: absolute;
+  top: 50%;
+  left: -64px;
+  width: 64px;
+  height: 64px;
+  translate: 0 -50%;
+  overflow: visible;
+}
+.ab-card-connector .ab-flow-line { stroke: #01A684; }
+@media (prefers-reduced-motion: no-preference) {
+  .ab-purpose-flow .is-flowing .ab-flow-line {
+    animation: ab-purpose-dash 3s linear infinite;
+  }
+}
+@keyframes ab-purpose-dash { to { stroke-dashoffset: -24; } }
+
+/* Seb round 2, 22 Nov 2026: balanced letter and hanging quotation marks. */
+.ab-page .ab-quote {
+  margin: 0;
+  padding: 48px 64px;
+  background: #2A0B4F;
+  overflow: visible;
+}
+.ab-page .ab-quote::before,
+.ab-page .ab-quote::after { content: none; }
+.ab-page .ab-quote > .ab-lead {
+  max-width: none;
+  margin: 0 0 32px;
+  color: #FFFFFF;
+}
+.ab-page .ab-quote blockquote { max-width: none; }
+.ab-page .ab-quote blockquote p { color: #FFFFFF; }
+.ab-quote blockquote p:first-child { position: relative; }
+.ab-quote blockquote p:first-child::before,
+.ab-quote blockquote p:last-child::after {
+  color: #28DBB0;
+  font-size: 48px;
+  font-weight: 900;
+  line-height: 0;
+  pointer-events: none;
+}
+.ab-quote blockquote p:first-child::before {
+  content: "\201C";
+  position: absolute;
+  top: 24px;
+  left: -32px;
+}
+.ab-quote blockquote p:last-child::after {
+  content: "\201D";
+  display: inline-block;
+  margin-left: 6px;
+  vertical-align: -16px;
+}
+.ab-page .ab-quote figcaption .ab-sig-name { color: #FFFFFF; }
+
+/* Seb round 2, 22 Nov 2026: founder journey and connected advisors. */
+.ab-page .ab-people { gap: 28px; }
+.ab-page .ab-people .ab-statement {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  border: 1px solid #EA1557;
+}
+.ab-page .ab-people .ab-statement h2 {
+  padding-top: 0;
+  font-size: 28px;
+}
+.ab-people .ab-statement h2::before { content: none; }
+.ab-page .ab-people .ab-statement p {
+  margin-top: auto;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+.ab-founder-journey {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 20px 0 32px;
+  padding: 0;
+  list-style: none;
+}
+.ab-founder-journey::before {
+  content: "";
+  position: absolute;
+  top: 24px;
+  left: 16%;
+  right: 16%;
+  border-top: 2px dashed #01A684;
+}
+.ab-page .ab-founder-journey li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+.ab-journey-dot {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #2A0B4F;
+  border-radius: 50%;
+  background: #FFFFFF;
+}
+.ab-journey-dot--founder { background: #28DBB0; }
+.ab-journey-dot svg,
+.ab-founder-pill svg {
+  width: 32px;
+  height: 32px;
+  stroke: #2A0B4F;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+.ab-founder-journey small {
+  margin-top: -8px;
+  font-size: 12px;
+  font-weight: 400;
+}
+.ab-advisor-network { margin: 8px 0 32px; }
+.ab-founder-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 6px 18px;
+  border-radius: 999px;
+  background: #28DBB0;
+  font-size: 14px;
+  font-weight: 800;
+}
+.ab-advisor-pills {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+  padding: 28px 0 0;
+  list-style: none;
+}
+.ab-advisor-pills::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 28px;
+  border-left: 2px dashed #2A0B4F;
+}
+.ab-page .ab-advisor-pills li {
+  padding: 6px 12px;
+  border: 1px dashed #2A0B4F;
+  border-radius: 999px;
+  background: #FFFFFF;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+/* Seb round 2, 22 Nov 2026: a fourth seat and two illustrated goals. */
+.ab-page .ab-vision-intro {
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 40px;
+}
+.ab-table-sketch { width: 100%; margin: 0; }
+.ab-table-sketch svg { display: block; width: 100%; height: auto; }
+.ab-table-sketch .ab-diagram-label { font-size: 18px; }
+.ab-table-guide { stroke: #01A684; stroke-dasharray: 4 6; }
+.ab-page .ab-vision-cards { gap: 28px; margin-top: 48px; }
+.ab-page .ab-vision-card { padding: 32px; }
+.ab-goal-icon { display: block; width: 64px; height: 64px; margin-bottom: 24px; }
+.ab-page .ab-vision-cards .ab-vision-card { border: 1px solid #EA1557 !important; }
+.ab-page .ab-vision-why {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 0 48px;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px dashed #2A0B4F;
+}
+.ab-vision-why > p:first-child { grid-column: 1; grid-row: 1; }
+.ab-vision-why > .ab-source { grid-column: 1; grid-row: 2; }
+.ab-vision-why > .ab-vision-sign { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+.ab-vision-why > p:first-child strong { display: block; margin-bottom: 12px; font-size: 22px; }
+
+/* Seb round 2, 22 Nov 2026: centered team action and a quieter two-door close. */
+.ab-wf-action { display: flex; justify-content: center; margin-top: 48px; }
+html body main .ab-page .ab-band-wf .ab-team { margin-top: 72px; }
+.ab-page .ab-ioda-copy :is(.ab-eyebrow, h2, .ab-text-link) { color: #2A0B4F !important; }
+.ab-page .ab-band-next .ab-well { padding-top: 138px; }
+.ab-page .ab-cta .ab-next-doors {
+  max-width: 820px;
+  margin-top: 32px;
+}
+.ab-page .ab-cta .ab-door { padding: 24px; }
+.ab-page .ab-cta .ab-door--before { background: #E7FFF6; }
+.ab-page .ab-cta .ab-door--after { background: #FFF3F4; }
+.ab-page .ab-cta .ab-door > a { margin: 24px 0 0; min-width: 0; }
+.ab-page .ab-cta .ab-door > a.btn-dream,
+.ab-page .ab-cta .ab-door > a.btn-dream:hover,
+.ab-page .ab-cta .ab-door > a.btn-dream:focus-visible { background: #2A0B4F; color: #FFFFFF; }
+
+@media (max-width: 899px) {
+  .ab-page .ab-vision-intro { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .ab-table-sketch { max-width: 480px; margin: 0 auto; }
+}
+@media (max-width: 799px) {
+  .ab-page .ab-purpose-flow,
+  .ab-page .ab-people,
+  .ab-page .ab-vision-cards { grid-template-columns: minmax(0, 1fr); }
+  .ab-page .ab-purpose-flow { gap: 64px; }
+  .ab-page .ab-purpose-flow .ab-statement { padding: 28px 22px; }
+  .ab-purpose-flow .ab-diagram { max-width: 440px; margin-inline: auto; }
+  .ab-card-connector { top: -64px; left: 50%; translate: -50% 0; rotate: 90deg; }
+  .ab-page .ab-people .ab-statement { padding: 28px 22px; }
+  .ab-page .ab-people .ab-statement h2 { font-size: 26px; }
+  .ab-page .ab-vision-card { padding: 28px 22px; }
+  .ab-page .ab-vision-why { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .ab-vision-why > .ab-vision-sign { grid-column: 1; grid-row: 3; }
+}
+@media (max-width: 600px) {
+  .ab-page .ab-quote { padding: 32px; }
+  .ab-quote blockquote p:first-child::before { left: -24px; top: 20px; }
+  .ab-quote blockquote p:first-child::before,
+  .ab-quote blockquote p:last-child::after { font-size: 36px; }
+  .ab-page .ab-band-next .ab-well { padding-top: 108px; }
+  .ab-page .ab-cta .ab-next-doors { max-width: 440px; }
+  .ab-page .ab-cta .ab-door { padding: 24px 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ab-page .ab-reveal { opacity: 1; transform: none; transition: none; }
+  .ab-page .ab-flow-line { animation: none; stroke-dashoffset: 0; }
 }
