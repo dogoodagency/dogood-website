@@ -271,3 +271,13 @@
   .apl-card { padding: 28px 22px; }
   .apl-case { align-items: flex-start; }
 }
+
+@media (max-width: 599px) {
+  /* Seb round 2 final pass, 22 Nov 2026: P2, let the case text share the white card background. */
+  html body .page-apply #case-j.apl-case-wrap article.case-compact > div { background: transparent; }
+  /* Seb round 2 final pass, 22 Nov 2026: P2, centre the portrait within the case card. */
+  html body .page-apply #case-j.apl-case-wrap article.case-compact .portrait {
+    justify-self: center;
+    margin-inline: auto;
+  }
+}
