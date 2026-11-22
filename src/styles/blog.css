@@ -1651,7 +1651,7 @@ html.bl-js .bl-common {
   margin-top: 0;
 }
 
-/* Round 2 G7: one inset for the image, labels and copy in every notes rail. */
+/* Seb round 2, 22 Nov 2026: G7 shares the image, label and copy inset. */
 html body .bl-card:not(.bl-card--row) { --bl-card-inset: 22px; }
 html body .bl-card.bl-card--feature { --bl-card-inset: 28px; }
 html body .bl-card:not(.bl-card--row) .bl-card-media {
@@ -1663,7 +1663,7 @@ html body .bl-card:not(.bl-card--row) .bl-card-body {
   padding-inline: var(--bl-card-inset) !important;
 }
 html body .bl-card .bl-card-tags {
-  margin-inline: 0 !important;
+  margin: 0 0 8px !important;
   padding-inline: 0 !important;
   flex-wrap: wrap;
 }

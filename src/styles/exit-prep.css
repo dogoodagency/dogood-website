@@ -102,7 +102,7 @@ body:has(.ep-page) .footer-wave {
   width: min(1080px, calc(100% - 2 * var(--pad)));
   max-width: 100%;
   margin: 0 auto;
-  padding: 90px 0;
+  padding: calc(72px * var(--section-space-scale)) 0;
 }
 
 /* The wave above each band already supplies the top breathing room. */
@@ -577,12 +577,9 @@ body:has(.ep-page) .footer-wave {
 
 /* 20 Nov 2026 (Seb): "Where you might be" cards each in their own colour (GRASS, HEART, SUN; no SKY on the
    lilac band), thin border all round. */
-.ep-page .ep-places .ep-place { transition: transform .25s ease; }
 .ep-page .ep-places .ep-place:nth-child(1) { background: #f3fffb; border: 1px solid #73e7c4 !important; }
 .ep-page .ep-places .ep-place:nth-child(2) { background: #fff9fa; border: 1px solid #feb5bc !important; }
 .ep-page .ep-places .ep-place:nth-child(3) { background: #fffbe6; border: 1px solid #f5e27a !important; }
-.ep-page .ep-places .ep-place:hover { transform: translateY(-3px); }
-@media (prefers-reduced-motion: reduce) { .ep-page .ep-places .ep-place:hover { transform: none; } }
 
 /* 20 Nov 2026 (Seb): four "Where are you right now?" cards (fourth colour: lilac); question heading above
    "What is The Exit Prep"; a soft closing card. */
@@ -591,7 +588,8 @@ body:has(.ep-page) .footer-wave {
 .ep-page .ep-places .ep-place:nth-child(1) { background: #fff; border: 1px solid #8b7dae !important; }
 .ep-page .ep-places .ep-place:nth-child(2) { background: #f3fffb; border: 1px solid #73e7c4 !important; }
 .ep-page .ep-places .ep-place:nth-child(3) { background: #fff9fa; border: 1px solid #feb5bc !important; }
-.ep-page .ep-places .ep-place:nth-child(4) { background: #fffbe6; border: 1px solid #f5e27a !important; }
+/* Seb round 2, 22 Nov 2026: PLAY 700 earnout edge. */
+.ep-page .ep-places .ep-place:nth-child(4) { background: #fdfce8; border: 1px solid #c4b76a !important; }
 @media (max-width: 900px) { .ep-page .ep-places { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .ep-page .ep-places { grid-template-columns: minmax(0, 1fr); } }
 .ep-page #ep-what { margin-top: 40px; }
@@ -607,3 +605,56 @@ body:has(.ep-page) .footer-wave {
 .ep-page .ep-soft h2 { margin: 0 0 12px; }
 .ep-page .ep-soft p { max-width: 640px; margin: 0 auto 22px; font-size: 18px; line-height: 1.6; }
 @media (max-width: 600px) { .ep-soft { padding: 32px 22px; } }
+
+/* Seb round 2, 22 Nov 2026: breathing room and unframed statements. */
+.ep-page .ep-well-spaced { padding-top: 78px; }
+html body .ep-page .ep-band .ep-outcome {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.ep-page .ep-outcome-label { color: #b0013e; }
+html body .ep-page .ep-outcome p.ep-outcome-statement:last-child {
+  color: #2a0b4f;
+  font-size: clamp(22px, 2vw, 26px);
+  font-weight: 700;
+  line-height: 1.5;
+}
+.ep-page .ep-lede-plain.ep-voices-lede {
+  max-width: none;
+  text-align: center;
+}
+html body .ep-page .ep-soft-band .ep-soft {
+  padding-inline: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  text-align: center;
+}
+html body .ep-page .ep-soft-band .ep-soft > * {
+  margin-inline: auto;
+  text-align: center;
+}
+.ep-page .ep-soft-band .ep-well-top { padding-bottom: 130px; }
+
+/* Seb round 2, 22 Nov 2026: FAQ hover stays still; focus and disclosure remain. */
+.ep-page details.ep-faq,
+.ep-page details.ep-faq:hover {
+  background: #fff !important;
+  color: var(--ep-ink);
+  transform: none;
+  transition: none;
+}
+.ep-page details.ep-faq > summary,
+.ep-page details.ep-faq > summary:hover {
+  background: transparent !important;
+  color: var(--ep-ink);
+  transform: none;
+  transition: none;
+}
+
+@media (max-width: 600px) {
+  .ep-page .ep-well-spaced { padding-top: 68px; }
+  .ep-page .ep-soft-band .ep-well-top { padding-bottom: 110px; }
+}
