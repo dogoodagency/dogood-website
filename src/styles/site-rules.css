@@ -541,3 +541,98 @@ html body main :is(.card, .bl-card, .tw-card, .st-card, .review-card, .bk-quote,
   .wh-panel, .adv-aud-card, .adv-step, .ab-vision-card, .fw-step, .ss-panel) {
   border: 1px solid var(--color-heart-500) !important;
 }
+
+/* Webb round-2 QA: illustrations must not intercept content links. ThroughLine is unchanged. */
+html body .page-home :is(.hero-draw, .exit-machine, .why-sketch) {
+  pointer-events: none;
+}
+html body .page-home :is(.hero-draw, .exit-machine, .why-sketch) :is(a, button) {
+  pointer-events: auto;
+}
+
+/* Running-text links retain their rest state; hover and keyboard focus share a cue. */
+html body main#main a[href]:not([class*="btn"], [class*="pill"], [class*="tab"], [class*="badge"], [class*="card"], [class*="nav"], [class*="logo"], [class*="media"], [class*="thumb"]):not(:has(img, picture, h2, h3, h4)):not(nav a, [role="navigation"] a):is(:hover, :focus-visible) {
+  color: var(--inline-hover-color, #05745b) !important;
+  background-image: none !important;
+  text-decoration-line: underline !important;
+  text-decoration-color: var(--inline-hover-color, #05745b) !important;
+  text-decoration-thickness: 3px !important;
+  text-underline-offset: 4px;
+}
+html body main#main a[href]:not([class*="btn"], [class*="pill"], [class*="tab"], [class*="badge"], [class*="card"], [class*="nav"], [class*="logo"], [class*="media"], [class*="thumb"]):not(:has(img, picture, h2, h3, h4)):not(nav a, [role="navigation"] a):is(:hover, :focus-visible) :is(strong, em, span) {
+  color: inherit !important;
+}
+/* White text on purple bands needs bright GRASS, including compact audio embeds. */
+main :is(.hero, .ep-hero, .hw-hero, .dr-hero, .advr-hero, .adv-hero, .wf-hero,
+  .st-hero, .cs-hero, .ab-hero, .nl-hero, .pod-hero, .bl-hero, .bli-hero, .privacy-hero,
+  .apl-hero, .au--compact, .hw-retreat, .hw-option-b, .card.ink, .pp-close) {
+  --inline-hover-color: #28dbb0;
+}
+
+/* Disclosure controls requested here; Exit Prep FAQ keeps its existing behavior. */
+html body main#main details.wf-more > summary:is(:hover, :focus-visible) {
+  background-color: rgba(88, 68, 127, .1) !important;
+  color: #05745b !important;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+}
+html body main#main .adv-center-page .adv-faq-trigger:is(:hover, :focus-visible) {
+  background-color: rgba(88, 68, 127, .1) !important;
+}
+html body main#main .adv-center-page .adv-faq-item:has(.adv-faq-trigger:is(:hover, :focus-visible)) {
+  border-color: #58447f;
+}
+
+/* Linked labels use button-proportional corners at every width. */
+html body main#main :is(a.bl-pill, .dr-page a.dr-door-pill, .bli-tab) { border-radius: 10px; }
+html body main#main :is(a.bl-pill, a.dr-door-pill, .bli-tab):not(.is-current, [aria-current="page"], [aria-pressed="true"]):is(:hover, :focus-visible) {
+  background-color: rgba(40, 219, 176, .25) !important;
+  border-color: #05745b !important;
+  color: #05745b !important;
+}
+/* Dark door labels keep a solid fill so white surroundings do not affect contrast. */
+html body main#main .dr-page a.dr-door-pill:is(:hover, :focus-visible) {
+  background-color: #58447f !important;
+  border-color: #58447f !important;
+  color: #fff !important;
+}
+html body main#main .dr-path--after a.dr-door-pill:is(:hover, :focus-visible) {
+  background-color: #05745b !important;
+  border-color: #05745b !important;
+}
+
+@media (min-width: 1366px) {
+  /* N1: preserve the shared 21px / 31.5px hero typography. */
+  html body .nl-page .nl-hero-center :is(.nl-copy, .nl-lede) { max-width: 1080px; }
+
+  /* N4 / C4 / E3: extra space belongs outside the closing frames. */
+  html body .nl-page .nl-closing { margin-top: 125px; margin-bottom: 32px; }
+  html body .page-contact > .privacy-band:last-child { padding-bottom: 35px; }
+  html body .pp-page:has(#es-hold) .pp-close {
+    padding-block: 56px; /* b7dc1a2 original, src/styles/products.css */
+    margin-block: 32px;
+  }
+
+  /* Equal Home door buttons and a wider V story button on The Build only. */
+  html body .page-home #for-you .foryou-grid--pair :is(.card-before, .card-after) > a {
+    box-sizing: border-box;
+    min-width: 272px !important;
+  }
+  html body main .hw-page--s2 .hw-case-feature .btn-with-caption { min-width: 259px; }
+  html body main .hw-page--s2 .hw-case-feature .btn-with-caption > .btn-teal {
+    box-sizing: border-box;
+    min-width: 259px !important;
+  }
+
+  /* Only action captions on light surfaces: identity notices retain their existing styles. */
+  html body main :is(.stage-note, #apply-first .cap-pill, #apply-v .cap-small,
+    .wf-note, .hw-limited, .hw-wf-note, .apl-card .apl-limit, .st-cta-note) {
+    color: #58447f !important;
+  }
+  html body main .st-cta-note { --button-caption-size: 11px; }
+  html body main :is(.wf-note, .hw-wf-note, .apl-card .apl-limit) { --button-caption-size: 14px; }
+  html body main .hw-page--s2 .hw-limited.hw-btn-sub { --button-caption-size: 12px; }
+
+  html body .advr-tools-page .advr-perks li { border-style: dotted; }
+}

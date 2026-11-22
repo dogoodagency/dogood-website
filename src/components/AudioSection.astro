@@ -522,6 +522,8 @@ const modes = [
   .au-modes { margin-top: 32px; }
   .au--compact .au-modes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   @media (max-width: 600px) { .au--compact .au-modes { grid-template-columns: minmax(0, 1fr); } }
+  /* Webb round-2 QA: compact embeds need 64px; the full variant already has it. */
+  @media (min-width: 1366px) { .au--compact .au-modes { margin-top: 64px; } }
   /* Phones: keep the nested content compact and leave less space under the text link. */
   @media (max-width: 599px) {
     /* three nested frames on phones: thinner padding at each level, the same on both sides */
