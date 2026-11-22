@@ -121,7 +121,7 @@ body:has(.adv-page) .footer-wave {
   width: min(1080px, calc(100% - 2 * var(--pad)));
   max-width: 100%;
   margin: 0 auto;
-  padding: 90px 0;
+  padding: calc(72px * var(--section-space-scale)) 0;
 }
 
 /* ---------- Type ---------- */
@@ -853,7 +853,7 @@ html.adv-js .adv-faq-item:not(.is-open) .adv-faq-panel {
   }
 
   .adv-well {
-    padding: 60px 0;
+    padding: calc(48px * var(--section-space-scale)) 0;
   }
 
   .adv-intro p {
@@ -1437,4 +1437,183 @@ html.adv-js .adv-faq-item:not(.is-open) .adv-faq-panel {
   margin-inline: 0;
   text-align: left;
   text-wrap: pretty;
+}
+
+/* Seb round 2, 22 Nov 2026: Advisor Center layouts. */
+html body main .adv-page.adv-center-page .adv-voices-head :is(h2, p) {
+  max-width: none;
+  text-align: center;
+}
+
+.adv-center-page .adv-door--exit {
+  background: #e6defc;
+  border-color: #b2a6cf;
+}
+
+.adv-center-page .adv-door--exit .adv-door-label { color: #2a0b4f; }
+
+.adv-why-flow {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr 1fr;
+  gap: 36px;
+  margin: 32px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.adv-why-flow > li {
+  position: relative;
+  min-width: 0;
+  padding: 0;
+}
+
+.adv-why-flow > li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 24px;
+  left: 64px;
+  right: -20px;
+  border-top: 1.5px dashed #b2a6cf;
+}
+
+.adv-why-number {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 24px;
+  border-radius: 50%;
+  background: #2a0b4f;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.adv-why-flow > li:nth-child(2) .adv-why-number { background: #e6defc; color: #2a0b4f; }
+.adv-why-flow > li:nth-child(3) .adv-why-number { background: #28dbb0; color: #2a0b4f; }
+
+.adv-client-journey > h2 { max-width: 820px; }
+
+.adv-sale-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 76px minmax(0, 1fr);
+  align-items: stretch;
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.adv-sale-side {
+  min-width: 0;
+  padding: 28px;
+  border: 1px solid #ea1557;
+  border-radius: 24px;
+  background: #f5f2ff;
+}
+
+.adv-sale-side:last-child { background: #f3fffb; }
+.adv-sale-side ul { margin: 20px 0 0; padding-left: 20px; list-style: disc; }
+.adv-sale-side li { display: list-item; margin: 0 0 12px; padding-left: 4px; }
+.adv-sale-side li:last-child { margin-bottom: 0; }
+
+.adv-sale-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  color: #2a0b4f;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.adv-sale-marker::before,
+.adv-sale-marker::after {
+  content: "";
+  flex: 1;
+  min-height: 24px;
+  border-left: 1.5px dashed #b2a6cf;
+}
+
+.adv-sale-marker span { padding: 8px 14px; border-radius: 999px; background: #28dbb0; }
+.adv-center-page .adv-sale-note { margin: 28px 0 0; }
+
+/* Seb round 2, 22 Nov 2026: match Exit Prep FAQ geometry; no hover effects. */
+.adv-center-page .adv-faq-well { width: min(880px, calc(100% - 2 * var(--pad))); }
+.adv-center-page .adv-faq { max-width: none; border: 0; }
+.adv-center-page .adv-faq-item {
+  margin: 0 0 14px;
+  border: 1px solid #ea1557;
+  border-radius: 18px;
+  background: #fff;
+}
+.adv-center-page .adv-faq-item:last-child { margin-bottom: 0; }
+.adv-center-page .adv-faq-item h3 { font-size: 22px; line-height: 1.35; letter-spacing: -0.02em; }
+.adv-center-page .adv-faq-trigger {
+  align-items: center;
+  gap: 20px;
+  padding: 24px 28px;
+  border-radius: 18px;
+  font-size: inherit;
+  font-weight: 800;
+  line-height: inherit;
+  letter-spacing: inherit;
+  background: transparent;
+  transition: none;
+}
+.adv-center-page .adv-faq-icon,
+.adv-center-page .adv-faq-trigger:hover .adv-faq-icon,
+.adv-center-page .adv-faq-item.is-open .adv-faq-icon {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  margin: 0;
+  background: #28dbb0;
+  transform: none;
+  transition: none;
+}
+.adv-center-page .adv-faq-icon::before,
+.adv-center-page .adv-faq-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 2px;
+  border-radius: 1px;
+  background: #2a0b4f;
+  transform: translate(-50%, -50%);
+}
+.adv-center-page .adv-faq-icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+.adv-center-page .adv-faq-item.is-open .adv-faq-icon::after { display: none; }
+.adv-center-page .adv-faq-answer { padding: 0 28px 28px; }
+.adv-center-page .adv-faq-answer p { color: #2a0b4f; font-size: 18px; line-height: 1.6; }
+
+/* Seb round 2, 22 Nov 2026: closing content directly on the band. */
+.adv-center-page .adv-close-band .adv-well { padding-bottom: calc(72px * var(--section-space-scale) + 96px); }
+.adv-close-content { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+html body main .adv-page.adv-center-page .adv-close-content :is(h2, p) { margin: 0; text-align: center; }
+.adv-close-content .adv-card-actions { margin-top: 0; padding-top: 6px; justify-content: center; }
+
+@media (max-width: 800px) {
+  .adv-why-flow { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .adv-why-flow > li { padding-left: 68px; }
+  .adv-why-number { position: absolute; top: 0; left: 0; margin: 0; }
+  .adv-why-flow > li:not(:last-child)::after {
+    top: 64px;
+    bottom: -16px;
+    left: 24px;
+    right: auto;
+    border-top: 0;
+    border-left: 1.5px dashed #b2a6cf;
+  }
+  .adv-sale-columns { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .adv-sale-marker { flex-direction: row; }
+  .adv-sale-marker::before,
+  .adv-sale-marker::after { min-height: 0; border-left: 0; border-top: 1.5px dashed #b2a6cf; }
+}
+
+@media (max-width: 600px) {
+  .adv-sale-side { padding: 24px 20px; }
+  .adv-center-page .adv-faq-trigger { padding: 20px; gap: 14px; }
+  .adv-center-page .adv-faq-answer { padding: 0 20px 24px; }
+  .adv-center-page .adv-close-band .adv-well { padding-bottom: calc(48px * var(--section-space-scale) + 84px); }
 }

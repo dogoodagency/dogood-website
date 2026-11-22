@@ -152,7 +152,7 @@ const faqs = [
   footerEdge={footerEdge}
   ogTitle={title}
 >
-  <article class="adv-page">
+  <article class="adv-page adv-center-page">
     <header class="adv-hero">
       <div class="adv-hero-inner adv-hero-inner--split">
         <div class="adv-hero-copy">
@@ -172,7 +172,7 @@ const faqs = [
       <div class="adv-well">
         <AdvisorNav current="refer" />
         <div class="adv-intro">
-          <p>You get the business and the money ready. We get the founder ready, so the deal doesn't stall and life after it has a&nbsp;plan.</p>
+          <p>You get the business and money ready. We get the founder ready, so the deal doesn't stall.</p>
           <p>You stay the trusted advisor. We provide a private place for the part that is not financial or legal: helping them see what they actually want in life after&nbsp;exit.</p>
         </div>
       </div>
@@ -195,8 +195,10 @@ const faqs = [
 
     <section class="adv-band adv-band--white" aria-labelledby="adv-tell">
       <div class="adv-well">
-        <h2 class="adv-section-title" id="adv-tell">In their words</h2>
-        <p>Real words from our conversations with the advisors who work with founders.</p>
+        <div class="adv-voices-head">
+          <h2 class="adv-section-title" id="adv-tell">In their words</h2>
+          <p>Real words from our conversations with the advisors who work with founders.</p>
+        </div>
         <TestimonialWall items={quotes.map((q) => ({ quote: q.text, name: q.name }))} short label="In their words" />
         <!-- Two doors (Seb, 19 Nov 2026) -->
         <div class="adv-doors-intro">
@@ -225,25 +227,51 @@ const faqs = [
     <section class="adv-band adv-band--lilac" aria-labelledby="adv-why">
       <div class="adv-well">
         <h2 class="adv-section-title" id="adv-why">Why refer</h2>
-        <div class="adv-prose">
-          <p>Before the sale, a founder who can't picture life afterward gets cold feet: they put the brakes on, nitpick buyers, or stall the deal at the last minute. A founder who is personally ready signs calmly.</p>
-          <p>After the sale, your client's deal can close and the hard part can still be starting.</p>
-          <p>The company gave their days structure, urgency, and a place to put their energy. Without it, many founders find the freedom they worked toward does not feel the way they expected. Exit and succession work, and wealth advice, look after the transaction and the money. Very few people help with what happens after.</p>
-          <p>A trusted introduction means they do not have to look for that help alone, and you remain the person they came from.</p>
-        </div>
+        <!-- Seb round 2, 22 Nov 2026: three connected reasons, original words. -->
+        <ol class="adv-why-flow">
+          <li>
+            <span class="adv-why-number" aria-hidden="true">1</span>
+            <p>Before the sale, a founder who can't picture life afterward gets cold feet: they put the brakes on, nitpick buyers, or stall the deal at the last minute. A founder who is personally ready signs calmly.</p>
+          </li>
+          <li>
+            <span class="adv-why-number" aria-hidden="true">2</span>
+            <p>After the sale, your client's deal can close and the hard part can still be starting.</p>
+            <p>The company gave their days structure, urgency, and a place to put their energy. Without it, many founders find the freedom they worked toward does not feel the way they expected. Exit and succession work, and wealth advice, look after the transaction and the money. Very few people help with what happens after.</p>
+          </li>
+          <li>
+            <span class="adv-why-number" aria-hidden="true">3</span>
+            <p>A trusted introduction means they do not have to look for that help alone, and you remain the person they came from.</p>
+          </li>
+        </ol>
       </div>
     </section>
 
     <section class="adv-band adv-band--white" aria-labelledby="adv-gets">
       <div class="adv-well">
         <p class="adv-eyebrow">What your client gets</p>
-        <div class="adv-card">
+        <div class="adv-client-journey">
           <h2 class="adv-section-title" id="adv-gets">Before or after the sale, a private place for the personal side</h2>
-          <div class="adv-prose">
-            <p><strong>Before the sale:</strong> <a href="/exit-prep">The Exit Prep</a>, six weekly sessions, fully remote, built to fit around a busy deal.</p>
-            <p><strong>After the sale:</strong> Stage 1, a private, confidential 30 days. We help them see what is really going on for them, tell the next shiny thing from what they really want, and get clear on what needs attention before the next major decision. If it fits, Stage 2 follows by invitation only.</p>
-            <p>The work is limited to 5 new founders a month. If Stage 1 is not right, we say so, and we point them somewhere better. The Exit Prep and Stage 1 are both covered by our Clarity-First Guarantee.</p>
+          <div class="adv-sale-columns">
+            <section class="adv-sale-side" aria-labelledby="adv-before-sale">
+              <h3 id="adv-before-sale">Before the sale</h3>
+              <ul>
+                <li><a href="/exit-prep">The Exit Prep</a> offers six weekly sessions.</li>
+                <li>Sessions are fully remote.</li>
+                <li>The work is built to fit around a busy deal.</li>
+              </ul>
+            </section>
+            <div class="adv-sale-marker"><span>Sale</span></div>
+            <section class="adv-sale-side" aria-labelledby="adv-after-sale">
+              <h3 id="adv-after-sale">After the sale</h3>
+              <ul>
+                <li>Stage 1 is a private, confidential 30 days.</li>
+                <li>We help them see what is really going on for them and tell the next shiny thing from what they really want.</li>
+                <li>They get clear on what needs attention before the next major decision.</li>
+                <li>If it fits, Stage 2 follows by invitation only.</li>
+              </ul>
+            </section>
           </div>
+          <p class="adv-sale-note">The work is limited to 5 new founders a month. If Stage 1 is not right, we say so, and we point them somewhere better. The Exit Prep and Stage 1 are both covered by our Clarity-First Guarantee.</p>
         </div>
       </div>
     </section>
@@ -349,7 +377,7 @@ const faqs = [
     </section>
 
     <section class="adv-band adv-band--lilac" aria-labelledby="adv-faq">
-      <div class="adv-well">
+      <div class="adv-well adv-faq-well">
         <p class="adv-eyebrow">FAQ</p>
         <h2 class="adv-section-title" id="adv-faq">Questions advisors ask</h2>
         <ul class="adv-faq" data-adv-faq>
@@ -366,9 +394,6 @@ const faqs = [
                   >
                     <span class="adv-faq-q">{faq.q}</span>
                     <span class="adv-faq-icon" aria-hidden="true">
-                      <svg viewBox="0 0 16 16" fill="none">
-                        <path d="m3 6 5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                      </svg>
                     </span>
                   </button>
                 </h3>
@@ -384,11 +409,11 @@ const faqs = [
       </div>
     </section>
 
-    <section class="adv-band adv-band--white" aria-labelledby="adv-close">
+    <section class="adv-band adv-band--white adv-close-band" aria-labelledby="adv-close">
       <div class="adv-well">
-        <div class="adv-cta">
+        <div class="adv-close-content">
           <h2 id="adv-close">If you have a client in mind</h2>
-          <p>Book a short intro call with Seb.<br />We can take it from there.</p>
+          <p>Book a short intro call with Seb.</p>
           <div class="adv-card-actions">
             <a class="btn-teal btn-dream" href="/exit">Exit advisor: book a call</a>
             <a class="btn-teal" href="/wealth">Wealth advisor: book a call</a>

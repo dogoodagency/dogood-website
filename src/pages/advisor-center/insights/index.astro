@@ -30,7 +30,7 @@ const footerEdge = edgeAbove("#ffffff");
   footerStrip="#ffffff"
   footerEdge={footerEdge}
 >
-  <article class="adv-page advr-page">
+  <article class="adv-page advr-page advr-insights-page">
     <header class="advr-hero">
       <div class="advr-hero-inner">
         <p class="advr-eyebrow">Advisor Center · Advisor insights</p>
@@ -154,14 +154,16 @@ const footerEdge = edgeAbove("#ffffff");
           </li>
         </ul>
         <p class="stool-cepa"><strong>For CEPAs:</strong> you already map all three legs with your clients. We are the specialist you bring in for the third, so the personal goals you write down actually get worked on.</p>
-        <p class="stool-src">Source: Exit Planning Institute (Value Acceleration Methodology). Advisor views are patterns from our conversations, not statistics. DoGood is not affiliated with the Exit Planning Institute.</p>
+        <p class="stool-src">Source: Exit Planning Institute. Advisor views are patterns from our conversations.</p>
       </div>
     </section>
 
     <section class="advr-band advr-band-white" aria-labelledby="advi-voices">
       <div class="advr-well advi-well">
-        <h2 class="advi-h2" id="advi-voices">In their words</h2>
-        <p class="advi-lede">Real words from our conversations with the advisors who work with founders.</p>
+        <div class="advi-voices-head">
+          <h2 class="advi-h2" id="advi-voices">In their words</h2>
+          <p class="advi-lede">Real words from our conversations with the advisors who work with founders.</p>
+        </div>
         <TestimonialWall items={advisorQuotes} short label="In their words" />
       </div>
     </section>
@@ -202,13 +204,12 @@ const footerEdge = edgeAbove("#ffffff");
       </svg>
     </div>
 
-    <section class="advr-band advr-band-white" aria-label="More insights">
+    <section class="advr-band advr-band-white advr-more-insights" aria-label="More insights">
       <div class="advr-well">
         <div class="advr-cta">
           <p>More is on the way. Want to hear when each piece is ready?</p>
           <a class="btn-teal" href="/contact">Get in touch</a>
         </div>
-        <p class="advr-back"><a href="/advisor-center">Have a client in mind already? Visit the Advisor Center →</a></p>
       </div>
     </section>
   </article>

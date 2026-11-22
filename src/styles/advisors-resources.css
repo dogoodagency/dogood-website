@@ -1019,3 +1019,53 @@ body:has(.advr-page) .footer-wave {
 /* foundr.land strip on its own white section with room above and below (Seb, 20 Nov 2026). */
 .advr-band.fl-band { padding: 64px 20px; }
 @media (max-width: 640px) { .advr-band.fl-band { padding: 44px 16px; } }
+
+/* Seb round 2, 22 Nov 2026: separate tools perks and more room at transitions. */
+.advr-perks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.advr-tools-page .advr-perks li {
+  margin: 0;
+  padding: 10px 18px;
+  border: 1.5px dashed #01a684;
+  border-radius: 999px;
+  background: #e7fff6;
+  color: #2a0b4f;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.advr-tools-page .advr-perks li:nth-child(2) { background: #f2f7ff; border-color: #477dfe; }
+html body .advr-tools-page .advr-hub-band + .advr-band .advr-well { padding-top: 70px; }
+.advr-tools-page .advr-more-tools .advr-well { padding-top: 78px; }
+.advr-tools-page .advr-more-tools .advr-cta {
+  background: #fff;
+  border: 1px solid #ea1557;
+  border-radius: 24px;
+  flex-wrap: wrap;
+}
+.advr-tools-page .advr-more-tools .advr-cta p { white-space: normal; }
+
+/* Seb round 2, 22 Nov 2026: balanced insights spacing and a clear stool gap. */
+html body .advr-insights-page .advr-hub-band + .advr-band .advr-well { padding-block: 90px; }
+.advr-insights-page [aria-labelledby="advi-legs"] .advi-well { padding-block: 128px; }
+.advr-insights-page .stool2-col--3 .stool2-leg { height: 48%; }
+.advr-insights-page .stool2-gap { top: 8px; height: 54px; color: #2a0b4f; }
+.advr-insights-page .stool-src { color: #2a0b4f; }
+html body main .adv-page.advr-insights-page .advi-voices-head :is(h2, p) { max-width: none; text-align: center; }
+.advr-insights-page .advr-more-insights .advr-well { padding-bottom: 138px; }
+
+@media (max-width: 1023px) {
+  .advr-tools-page .advr-more-tools .advr-cta { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 600px) {
+  html body .advr-tools-page .advr-hub-band + .advr-band .advr-well { padding-top: 85px; }
+  .advr-tools-page .advr-more-tools .advr-well { padding-top: 68px; }
+  html body .advr-insights-page .advr-hub-band + .advr-band .advr-well { padding-block: 70px; }
+  .advr-insights-page [aria-labelledby="advi-legs"] .advi-well { padding-block: 90px; }
+  .advr-insights-page .advr-more-insights .advr-well { padding-bottom: 118px; }
+}
