@@ -29,6 +29,18 @@
   --color-grass-500: #28dbb0;
   --color-grass-700: #05745b;
   --color-white: #fff;
+  --color-dream-100: #e6defc;
+  --color-dream-200: #b2a6cf;
+  --color-dream-300: #8171a3;
+  --color-grass-25: #f3fffb;
+  --color-grass-50: #e7fff6;
+  --color-grass-200: #ccfdec;
+  --color-heart-25: #fff9fa;
+  --color-heart-50: #fff3f4;
+  --color-heart-200: #ffe2e4;
+  --color-sky-100: #e1ebfe;
+  --color-sky-200: #aec8fe;
+  --color-play-400: #fcf9d2;
 }
 
 @layer base {

@@ -106,7 +106,7 @@ export const faqCategories: FaqCategory[] = [
         q: "I’m not a founder. Is there something for me?",
         a: [
           "Not for the Founder Reclamation Partnership itself, but you are very welcome here. The Founder Reclamation Partnership is built specifically for founders, so it is probably not the right fit for you personally.",
-          "If you are a senior executive in a founder-like role, our [1:1 Clarity Sprints](/clarity) might be: focused one-to-one sessions on business, leadership and life. If you are asking on behalf of a team or company, or about something else, you can [book a short orientation call](/orientation) or email [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co).",
+          "If you are asking on behalf of a team or company, or about something else, email [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co).",
         ],
       },
     ],
@@ -412,7 +412,7 @@ export const faqCategories: FaqCategory[] = [
         q: "I haven’t sold yet. Is this for me?",
         a: [
           "It can be. Stage 1 is for founders who have sold or meaningfully stepped away. If you still run your company but know a sale is coming, we have The Exit-Prep. It is for founders who still run the company or are getting ready to sell, and who may be stuck on the decision itself, sometimes for years. It meets you where you are today.",
-          "If you are not planning to sell or step back at all, the partnership is probably not the right fit, but [1:1 Clarity Sprints](/clarity) may be. To talk it through, [get in touch](/contact).",
+          "If you are not planning to sell or step back at all, the partnership is probably not the right fit. If you have questions, [get in touch](/contact).",
         ],
       },
       // [ADDED – source: exit-prep-one-pager.md ("How it works", "What changes")]

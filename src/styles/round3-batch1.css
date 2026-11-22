@@ -1,0 +1,155 @@
+/* Round 3, batch 1: Seb's approved closing bands and page refinements. */
+html body main#main .closing-unframed {
+  --inline-hover-color: var(--color-grass-700);
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0;
+  box-shadow: none !important;
+  color: var(--color-dream-500) !important;
+  text-align: center !important;
+  align-items: center;
+}
+html body main#main .closing-unframed :is(h2, h3, p) {
+  color: var(--color-dream-500) !important;
+  text-align: center !important;
+}
+html body main#main .closing-unframed :is(.wf-cta-actions, .wfp-cta-actions) {
+  justify-content: center;
+}
+/* Add space outside the closing content, on its existing band. */
+html body main#main :is(.ep-well, .wf-well, .nl-well, .faq-well):has(> .closing-unframed)::after {
+  content: "";
+  display: block;
+  height: 80px;
+}
+
+/* L1: match the other inline stage links, including keyboard focus. */
+html body main#main .hw-option-b a.hw-textlink { color: var(--color-white); }
+html body main#main .hw-page a.hw-textlink:is(:hover, :focus-visible) {
+  color: var(--inline-hover-color, var(--color-grass-700)) !important;
+  text-decoration: underline !important;
+  text-decoration-thickness: 3px !important;
+  text-underline-offset: 4px;
+}
+
+/* L2 / E1–E6: three dark information boxes; the closing content is unframed. */
+html body main#main .pp-page:has(#es-hold) .ep-box {
+  background: var(--color-dream-500) !important;
+  border: 0 !important;
+  box-shadow: none;
+  color: var(--color-white);
+}
+html body main#main .pp-page:has(#es-hold) .ep-box :is(h3, p, li, li::marker) {
+  color: var(--color-white);
+}
+html body main#main .pp-page:has(#es-hold) .ep-box small {
+  color: var(--color-dream-200);
+}
+html body main#main .pp-page:has(#es-hold) .pp-close { margin-top: 32px; }
+@media (min-width: 1366px) {
+  html body main#main .pp-page:has(#es-hold) .pp-close { margin-top: 64px; }
+}
+
+/* H2: compact, centered door cards. The Home green line is untouched. */
+html body .page-home #next .next-doors {
+  max-width: 828px;
+  margin-inline: auto;
+}
+html body .page-home #next :is(.card-before, .card-after) { padding: 28px 32px; }
+html body .page-home #next .next-doors h3 { font-size: 22px; }
+@media (max-width: 600px) {
+  html body .page-home #next .next-doors { max-width: 400px; }
+  html body .page-home #next :is(.card-before, .card-after) { padding: 28px 24px; }
+}
+
+/* FQ1–FQ3: title-only strips; the question bodies stay white. */
+.faq-card--about { --faq-strip: var(--color-dream-100); }
+.faq-card--starting { --faq-strip: var(--color-sky-100); }
+.faq-card--stage-1 { --faq-strip: var(--color-grass-200); }
+.faq-card--stage-2 { --faq-strip: var(--color-heart-200); }
+.faq-card--format { --faq-strip: var(--color-play-400); }
+.faq-card--privacy { --faq-strip: var(--color-dream-25); }
+.faq-card--pricing { --faq-strip: var(--color-grass-50); }
+.faq-card--exit-prep { --faq-strip: var(--color-sky-200); }
+.faq-card--advisors { --faq-strip: var(--color-heart-50); }
+html body main#main .faq-card { padding: 0; background: var(--color-white); }
+html body main#main .faq-card-head {
+  display: block;
+  min-height: 0;
+  padding: 18px 24px;
+  background: var(--faq-strip);
+  border-radius: 24px 24px 0 0;
+}
+html body main#main .faq-card-head h2 { color: var(--color-dream-500); font-size: 22px; }
+html body main#main .faq-news.closing-unframed {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+html body main#main .faq-news-body { padding-right: 0; }
+html body main#main .faq-news.closing-unframed > a { align-self: center; }
+
+/* CG1: the qualifier uses the shared Residency hero subline. */
+html body main#main .page-clarity .guarantee-subline {
+  margin: 18px auto 0;
+  color: var(--color-white);
+  font-size: var(--hero-subline-size);
+  font-weight: var(--hero-subline-weight);
+  line-height: var(--hero-subline-leading);
+}
+
+/* N1: an Apply action and its requested caption, centered at every width. */
+html body main#main .nl-closing.closing-unframed .nl-closing-label {
+  margin: 0 auto 16px;
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-transform: none;
+}
+html body main#main .nl-closing.closing-unframed > p { margin-inline: auto; }
+html body main#main .nl-closing.closing-unframed > .btn-apply {
+  margin-top: 24px;
+  background: var(--color-heart-600);
+  color: var(--color-white);
+  text-decoration: none;
+}
+html body main#main .nl-closing.closing-unframed > p.nl-closing-caption {
+  margin: 6px auto 0;
+  color: var(--color-dream-300) !important;
+  font-size: 10px;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* P1 / FR6–FR8 / I4: keep newsletter boxes, extend their bands. */
+html body main#main .pod2-news-section::after {
+  content: "";
+  display: block;
+  height: 100px;
+}
+html body main#main :is(.bl-index .bli-nl-band, .bl-archive > .bl-band:last-child) > .bl-wrap::after {
+  content: "";
+  display: block;
+  height: 150px;
+}
+
+/* I1–I3: audience borders everywhere, but unframed sidebar lists. */
+html body main#main .bl-index .bl-card--feature .bl-card-title { font-size: 33px; }
+@media (max-width: 600px) {
+  html body main#main .bl-index .bl-card--feature .bl-card-title { font-size: 23px; }
+}
+html body main#main .bl-card.bl-card--aud-founder:not(.bl-card--row) {
+  border: 1px solid var(--color-grass-500) !important;
+}
+html body main#main .bl-card.bl-card--aud-advisor:not(.bl-card--row) {
+  border: 1px solid var(--color-heart-500) !important;
+}
+html body main#main .bl-index .bl-card.bl-card--row {
+  border: 0 !important;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none !important;
+  padding: 18px 0 !important;
+}
+html body main#main .bl-index .bli-picks li + li { border-top: 1px solid var(--color-dream-200); }

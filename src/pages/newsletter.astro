@@ -221,7 +221,7 @@ const questions = [
 /**
  * Planned chapters of "Before and After the Sale", shown greyed out until they arrive (Seb, 18 Nov 2026).
  * Dates follow the newsletter plan (15 Dec, 12 Jan, 26 Jan, then every two weeks). Titles and lines are
- * WORKING DRAFTS by Claude, drawn from the prologue: Seb to confirm or replace.
+ * WORKING DRAFTS by Claude: Seb to confirm or replace.
  * When a chapter goes out, move it into `chapters` above with its href.
  */
 const upcoming = [
@@ -272,7 +272,6 @@ const heroLine =
           <p class="nl-lede">{heroLine}</p>
           <div class="nl-hero-actions">
             <a class="btn-teal" href="#questions">Read the 7 questions</a>
-            <a class="btn-teal" href="#prologue">Read the prologue</a>
           </div>
         </div>
 
@@ -360,31 +359,6 @@ const heroLine =
           <p>A book for founders on the inner side of selling, told through real, anonymized stories. We're writing it in the open, one chapter at a time, for everyone in <span class="pink-soft nl-founder"><strong>FOUNDR</strong>.land</span>.</p>
         </div>
 
-        <div class="nl-prologue" id="prologue">
-          <h3 class="nl-prologue-title">Prologue: The day after</h3>
-          <div class="nl-prose">
-            <p>The signing is usually quieter than people expect. There are papers, a few handshakes, maybe a dinner. Then you go home.</p>
-            <p>The next morning, your phone is quieter too. The questions that filled your days for years now go to someone else. The team you built still turns up to work, just not for you. You're free, and that's exactly what you worked for.</p>
-            <p class="nl-emph">So why does it feel so strange?</p>
-            <p>Founders rarely talk about this part. From the outside, the sale looks like the finish line, and everyone congratulates you. On the inside, something else is happening. The company gave your days a shape, it gave you a role, and in many ways it told you who you were. When it goes, all three go with it, at the same time.</p>
-            <p>This isn't a rare reaction. In a 2026 Concordia University study of founders who sold their companies, every founder interviewed described depression-like feelings after the exit. They were successful, capable people, and it happened to all of them.</p>
-            <p>Most of them handled it the way founders handle everything: by moving fast. A new venture, an investment, a board seat, a packed calendar. It's the most natural response in the world, and it's often the one that costs the most, because the next chapter gets chosen before the last one has been understood.</p>
-            <p>This book is about the space in between. It's about what founders feel before the sale, during it and in the months after, and what helps. Every story in it is real. Names and details are changed, so nobody can be recognized. Some chapters are about the founder, and some are about the people around them: a partner, an advisor, a family that waited a long time.</p>
-            <p>We're writing it in the open, one chapter every two weeks. Read it slowly if you can, and pass it on to someone who's about to sign.</p>
-            <p class="nl-emph">We'll start where the deal ends.</p>
-            <p class="nl-source">Source: Byezhanova, Concordia University, 2026.</p>
-          </div>
-          {SHOW_PDF_DOWNLOADS && (
-            <div class="nl-download">
-              <a
-                class="btn-teal"
-                href="/downloads/before-and-after-the-sale-prologue.pdf"
-                target="_blank"
-                rel="noopener"
-              >Download the prologue (PDF)</a>
-            </div>
-          )}
-        </div>
       </div>
     </section>
 
@@ -459,9 +433,11 @@ const heroLine =
           }
         </ol>
 
-        <div class="nl-closing">
-          <p class="nl-closing-label">Ready for more than reading?</p>
-          <p>If you already know you'd like a private place to do this work, you can <a href="/apply-stage-1">apply for Stage 1</a>.</p>
+        <div class="nl-closing closing-unframed">
+          <h2 class="nl-closing-label">Ready for more than reading?</h2>
+          <p>If you already know you'd like a private place to do this work, you can apply for Stage 1.</p>
+          <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
+          <p class="nl-closing-caption">Stage 1 is Days 1-30, Stage 2 invite only</p>
         </div>
       </div>
     </section>

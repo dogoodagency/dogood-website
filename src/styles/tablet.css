@@ -547,3 +547,10 @@
   }
   html body .footer .ft-grid .ft-lets { grid-row: 4; }
 }
+
+/* Round 3, batch 1: compact Home doors and flush FAQ strips on tablets. */
+@media (min-width: 601px) and (max-width: 1365px) {
+  html body main#main .page-home #next .next-doors { max-width: 828px; }
+  html body main#main .page-home #next :is(.card-before, .card-after) { padding: 28px 24px; }
+  html body main#main .faq-card { padding: 0; }
+}

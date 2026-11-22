@@ -190,10 +190,10 @@ const footerBg = closing ? (lastTint ? white : tint) : lastTint ? tint : white;
           <Fragment set:html={wave(lastTint)} />
           <section class:list={["ep-band", !lastTint && "ep-band-tint"]} aria-labelledby="pp-close">
             <div class="ep-well ep-well-top">
-              <div class="pp-close">
+              <div class:list={["pp-close", ["/expedited-start", "/integral-continuity"].includes(path) && "closing-unframed"]}>
                 <h2 id="pp-close">{closing.heading}</h2>
                 <p>{closing.text}</p>
-                <a class={partnership && closing.cta.label.startsWith("Apply") ? "btn-apply" : "btn-teal"} href={closing.cta.href}>{closing.cta.label}</a>
+                <a class={closing.cta.label.startsWith("Apply") ? "btn-apply" : "btn-teal"} href={closing.cta.href}>{closing.cta.label}</a>
               </div>
             </div>
           </section>

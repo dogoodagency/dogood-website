@@ -19,7 +19,7 @@ const advisorQuotes = [
 const tint = "#F5F2FF";
 const heroEdge = edgeAbove("#2A0B4F");
 const bandEdge = edgeAbove(tint);
-const footerEdge = edgeAbove("#ffffff");
+const footerEdge = edgeAbove(tint);
 ---
 
 <Base
@@ -27,7 +27,7 @@ const footerEdge = edgeAbove("#ffffff");
   description="What founders struggle with before and after the sale, drawn anonymously from our conversations with exit and wealth advisors."
   canonical="https://www.dogoodagency.co/advisor-center/insights"
   ogTitle="Advisor insights on founders who sell | DoGood Agency"
-  footerStrip="#ffffff"
+  footerStrip={tint}
   footerEdge={footerEdge}
 >
   <article class="adv-page advr-page advr-insights-page">
@@ -197,21 +197,6 @@ const footerEdge = edgeAbove("#ffffff");
       </div>
     </section>
 
-    <div class="advr-divider advr-divider--hide" aria-hidden="true">
-      <svg style={`--wave-edge:${bandEdge}`} viewBox="0 0 1440 80" preserveAspectRatio="none">
-        <path fill="#ffffff" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path>
-        <path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path>
-      </svg>
-    </div>
-
-    <section class="advr-band advr-band-white advr-more-insights" aria-label="More insights">
-      <div class="advr-well">
-        <div class="advr-cta">
-          <p>More is on the way. Want to hear when each piece is ready?</p>
-          <a class="btn-teal" href="/contact">Get in touch</a>
-        </div>
-      </div>
-    </section>
   </article>
   <script>
     document.querySelectorAll<HTMLElement>("[data-stool]").forEach((el) => {
