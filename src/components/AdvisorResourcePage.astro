@@ -9,6 +9,7 @@ import "../styles/advisors-resources.css";
 import Base from "../layouts/Base.astro";
 import Wave from "./Wave.astro";
 import AdvisorNav from "./AdvisorNav.astro";
+import FoundrLand from "./FoundrLand.astro";
 import { edgeAbove } from "../data/edge-line";
 
 interface Block {
@@ -56,14 +57,15 @@ const back = section === "tools"
         <p class="advd-soon">{soon}</p>
         <p class="advr-lede">{lede}</p>
       </div>
-      <Wave fill={tint} edge={heroEdge} />
+      <Wave fill="#fff" edge={heroEdge} />
     </header>
+
+    <section class="advr-band advr-band-white advr-hub-band" aria-label="Advisor Center">
+      <div class="advr-well"><div class="advr-nav"><AdvisorNav current={section} /></div></div>
+    </section>
 
     <section class="advr-band advr-band-tint" aria-label={name}>
       <div class="advr-well advd-well">
-        <div class="advr-nav">
-          <AdvisorNav current={section} />
-        </div>
         {
           blocks.map((b) => (
             <section class="advd-block">
@@ -87,5 +89,6 @@ const back = section === "tools"
       </div>
     </section>
 
+    <div class="adv-fl-band"><FoundrLand kind="advisor" /></div>
   </article>
 </Base>

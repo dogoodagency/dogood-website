@@ -6,7 +6,7 @@ const brandProps = FOUNDRLAND_URL
   ? { href: FOUNDRLAND_URL, target: "_blank", rel: "noopener", "aria-label": "foundr.land by DoGood (opens in a new tab)" }
   : { role: "img", "aria-label": "foundr.land by DoGood" };
 import { urls } from "../data/homepage";
-import { offers, products, advisorLinks, tm, type SiteLink } from "../data/site-links";
+import { offers, products, tools, advisorLinks, tm, type SiteLink } from "../data/site-links";
 
 const links = [
   { href: "/pathway", label: "Pathway", menu: "nav-how" },
@@ -21,12 +21,16 @@ const toItem = (l: SiteLink) => ({ href: l.href, label: l.navLabel ?? l.label, d
 // "Pathway" (Seb, 19 Nov 2026 19:42; was "Pre & Post", before that "Start here"; page /pathway, was /how-it-works): the fork between before and after the sale.
 // Stage 2 is back in the menu under "I've sold" (Seb, 19 Nov 2026 14:55) so the two stages read clearly.
 const howGroups = [
+  { label: "The pathway", items: [{ href: "/pathway", label: "See the whole pathway →", detail: "The whole journey, before and after the sale." }] },
   { label: "I haven’t sold yet", items: [toItem(offers[0])] },
   { label: "I’ve sold", items: [toItem(offers[1]), toItem(offers[2])] },
 ];
-const productGroups = [{ label: "Beyond the two stages", items: products.map(toItem) }];  // menu "Services"
+const productGroups = [
+  { label: "Beyond the two stages", items: products.map(toItem) },
+  { label: "Inside the partnership", items: tools.map(toItem) },
+];  // menu "Services"
 const advisorGroups = [
-  // One group, the same three as the hub on the Advisor Center pages (Seb, 20 Nov 2026: "Work with us" did not help).
+  // Same four parts as the shared Advisor Center toggle and footer.
   { label: "Advisor Center", items: [...advisorLinks.work, ...advisorLinks.resources].map(toItem) },
 ];
 
@@ -93,15 +97,11 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
       {
         links.map((link) => (
           <li class:list={["nav-item", link.menu && "has-menu"]}>
-            <a
-              href={link.menu ? `#${link.menu}` : link.href}
-              role={link.menu ? "button" : undefined}
-              aria-expanded={link.menu ? "false" : undefined}
-              aria-haspopup={link.menu ? "true" : undefined}
-              aria-controls={link.menu}
-            >
-              {link.label}
-            </a>
+            {link.menu ? (
+              <button type="button" aria-expanded="false" aria-haspopup="true" aria-controls={link.menu}>{link.label}</button>
+            ) : (
+              <a href={link.href}>{link.label}</a>
+            )}
           </li>
         ))
       }
@@ -113,6 +113,7 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
     {
       menuLinks.map((menu) => (
         <div class="nav-mega" id={menu.id} aria-hidden="true">
+          <div class="nav-mega-visual">
           <a class="nav-mega-card" href={menu.card.href}>
             <picture>
               <source
@@ -134,6 +135,13 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
               <span class="nav-mega-go" aria-hidden="true" />
             </span>
           </a>
+          {menu.id === "nav-advisors" && (
+            <figure class="nav-foundr-tile">
+              <img src="/media/foundrland/foundrland-app-phone@1x.webp" width="96" height="120" alt="FOUNDR.land app preview" loading="lazy" />
+              <figcaption>FOUNDR.land, built with advisors</figcaption>
+            </figure>
+          )}
+          </div>
           <ul class="nav-mega-links">
             {menu.groups.map((group) => (
               <>
@@ -176,13 +184,6 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
               {link.label}
             </button>
             <div id={menu.phoneId} class="nav-advisor-links" hidden>
-              {/* 20 Nov 2026 (Seb): on phones the section's own page is reachable too, like on desktop. */}
-              {link.label !== "Services" && !menu.groups.some((g) => g.items.some((i) => i.href === link.href)) && (
-                <a class="nav-sub nav-sub--overview" href={link.href}>
-                  <span class="nav-sub-title">{link.label === "Services" ? "All services" : `${link.label} overview`}</span>
-                  <span class="nav-sub-note">{link.label === "Pathway" ? "The whole journey, step by step" : link.label === "Services" ? "Everything we offer, on one page" : "The overview page"}</span>
-                </a>
-              )}
               {menu.groups.map((group) => (
                 <>
                   <p class="nav-mega-group">{group.label}</p>
@@ -258,12 +259,11 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
   const controllers = [];
 
   header?.querySelectorAll(".nav-item.has-menu").forEach((item) => {
-    const link = item.querySelector("a[aria-controls]");
+    const link = item.querySelector("button[aria-controls]");
     const menuId = link?.getAttribute("aria-controls");
     const menu = menuId ? header.querySelector(`#${menuId}`) : null;
-    if (!(item instanceof HTMLElement) || !(link instanceof HTMLAnchorElement) || !(menu instanceof HTMLElement)) return;
+    if (!(item instanceof HTMLElement) || !(link instanceof HTMLButtonElement) || !(menu instanceof HTMLElement)) return;
 
-    let closing = false;
     let closeTimer = 0;
     const menuOpen = () => link.getAttribute("aria-expanded") === "true";
     const desktopMenu = () => {
@@ -279,7 +279,9 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
       if (!(links instanceof HTMLElement) || !(card instanceof HTMLElement)) return;
       const measure = () => links.getBoundingClientRect().height;
       for (let pass = 0; pass < 3; pass += 1) {
-        const height = Math.max(Math.round(measure()), 315);
+        const tile = menu.querySelector(".nav-foundr-tile");
+        const tileHeight = tile instanceof HTMLElement ? tile.getBoundingClientRect().height + 16 : 0;
+        const height = Math.max(Math.round(measure() - tileHeight), 315);
         // Cap the card width (20 Nov 2026): the nav got narrower, and an uncapped card squeezed the link column
         // until the Services menu ran away (taller links -> wider card -> narrower links). Image is object-fit: cover.
         const width = Math.min(Math.round((height * 360) / 420), 320);
@@ -306,20 +308,18 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
         setMenu(false);
       }, 180);
     };
-    item.addEventListener("pointerenter", () => {
+    item.addEventListener("pointerenter", (event) => {
+      if (event.pointerType === "touch") return;
       cancelClose();
       if (desktopMenu()) setMenu(true);
     });
-    menu.addEventListener("pointerenter", () => {
+    menu.addEventListener("pointerenter", (event) => {
+      if (event.pointerType === "touch") return;
       cancelClose();
       if (desktopMenu()) setMenu(true);
     });
     item.addEventListener("pointerleave", scheduleClose);
     menu.addEventListener("pointerleave", scheduleClose);
-    item.addEventListener("focusin", () => {
-      if (closing || !desktopMenu()) return;
-      setMenu(true);
-    });
     menu.addEventListener("focusin", () => {
       if (!desktopMenu()) return;
       setMenu(true);
@@ -333,11 +333,10 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
     link.addEventListener("click", (event) => {
       event.preventDefault();
       if (!desktopMenu()) return;
-      setMenu(true);
-      menu.querySelector("a")?.focus();
+      setMenu(!menuOpen());
     });
     link.addEventListener("keydown", (event) => {
-      if (!["ArrowDown", " "].includes(event.key) || !desktopMenu()) return;
+      if (event.key !== "ArrowDown" || !desktopMenu()) return;
       event.preventDefault();
       setMenu(true);
       menu.querySelector("a")?.focus();
@@ -357,7 +356,7 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
       if (event.key !== "Tab" || !desktopMenu()) return;
       const links = menuLinks();
       if (!event.shiftKey && document.activeElement === links[links.length - 1]) {
-        const tops = [...header.querySelectorAll(".nav-links > li > a"), document.querySelector("a.nav-apply")];
+        const tops = [...header.querySelectorAll(".nav-links > li > :is(a, button)"), document.querySelector("a.nav-apply")];
         const next = tops[tops.indexOf(link) + 1];
         if (next instanceof HTMLElement) {
           event.preventDefault();
@@ -371,10 +370,8 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
     });
     document.addEventListener("keydown", (event) => {
       if (event.key !== "Escape" || !menuOpen() || !desktopMenu()) return;
-      closing = true;
       setMenu(false);
       link.focus();
-      closing = false;
     });
     document.addEventListener("click", (event) => {
       if (!menuOpen() || insideMenu(event.target)) return;
@@ -413,7 +410,7 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
       });
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
       group.hidden = !open;
-      if (open) group.querySelector("a")?.focus();
+
     });
     document.addEventListener("keydown", (event) => {
       if (event.key !== "Escape" || group.hidden) return;

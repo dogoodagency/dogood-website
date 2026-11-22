@@ -212,20 +212,20 @@ main ul {
   padding: 0;
 }
 
-.nav-links a {
+.nav-links :is(a, button) {
   color: #fff;
   text-decoration: none;
   font-size: 15px;
   font-weight: 600;
 }
 
-.nav-links a:hover,
-.nav-links a[aria-current="page"],
+.nav-links :is(a, button):hover,
+.nav-links :is(a, button)[aria-current="page"],
 .nav-menu a:hover {
   color: var(--pink-text);
 }
 
-.nav-links a.btn-apply {
+.nav-links :is(a, button).btn-apply {
   color: #fff;
 }
 
@@ -3725,7 +3725,7 @@ header.nav .nav-mega-links a:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   header.nav .nav-mega,
   header.nav .nav-mega-links a,
-  header.nav .nav-item.has-menu > a::after,
+  header.nav .nav-item.has-menu > :is(a, button)::after,
   header.nav .nav-advisor-toggle::after {
     transition: none;
   }
@@ -3753,7 +3753,7 @@ header.nav .nav-mega-links a:focus-visible {
   }
 }
 
-header.nav .nav-item.has-menu > a::after,
+header.nav .nav-item.has-menu > :is(a, button)::after,
 header.nav .nav-advisor-toggle::after {
   content: "";
   flex: 0 0 auto;
@@ -3766,16 +3766,16 @@ header.nav .nav-advisor-toggle::after {
   transition: transform 200ms ease;
 }
 
-header.nav .nav-item.has-menu:hover > a::after,
-header.nav .nav-item.has-menu.is-open > a::after,
-header.nav .nav-item.has-menu > a:focus-visible::after,
+header.nav .nav-item.has-menu:hover > :is(a, button)::after,
+header.nav .nav-item.has-menu.is-open > :is(a, button)::after,
+header.nav .nav-item.has-menu > :is(a, button):focus-visible::after,
 header.nav .nav-advisor-toggle:hover::after,
 header.nav .nav-advisor-toggle:focus-visible::after,
 header.nav .nav-advisor-toggle[aria-expanded="true"]::after {
   transform: translateY(2px) rotate(-135deg);
 }
 
-header.nav .nav-links a {
+header.nav .nav-links :is(a, button) {
   display: inline-flex;
   align-items: center;
   min-height: 36px;
@@ -3789,8 +3789,8 @@ header.nav .nav-links a {
   transition: background-color 200ms ease, color 200ms ease;
 }
 
-header.nav .nav-links a:hover,
-header.nav .nav-links a:focus-visible,
+header.nav .nav-links :is(a, button):hover,
+header.nav .nav-links :is(a, button):focus-visible,
 header.nav .nav-panel a:hover,
 header.nav .nav-panel a:focus-visible {
   background: #28dbb0;
@@ -4546,13 +4546,13 @@ header.nav .nav-links {
   gap: 8px;
 }
 
-header.nav .nav-links a,
+header.nav .nav-links :is(a, button),
 header.nav .nav-panel a,
 header.nav .nav-apply {
   font-weight: 400;
 }
 
-header.nav .nav-links a,
+header.nav .nav-links :is(a, button),
 header.nav .nav-panel a {
   color: #f4f1f8;
 }
@@ -5989,7 +5989,7 @@ header.nav .nav-bar {
   box-shadow: none;
 }
 
-header.nav .nav-links a,
+header.nav .nav-links :is(a, button),
 header.nav .nav-panel a,
 header.nav .nav-advisor-toggle {
   color: #fff;
@@ -5997,8 +5997,8 @@ header.nav .nav-advisor-toggle {
   font-weight: 400;
 }
 
-header.nav .nav-links a:hover,
-header.nav .nav-links a:focus-visible,
+header.nav .nav-links :is(a, button):hover,
+header.nav .nav-links :is(a, button):focus-visible,
 header.nav .nav-panel a:hover,
 header.nav .nav-panel a:focus-visible,
 header.nav .nav-advisor-toggle:hover,

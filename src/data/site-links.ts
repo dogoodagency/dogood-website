@@ -78,14 +78,19 @@ export const advisorLinks = {
   work: [
     {
       href: "/advisor-center",
-      label: "Overview & referrals",
-      detail: "How we work with advisors, how a referral works, and how you stay in the loop.",
+      label: "Overview",
+      detail: "Who we work alongside and how we support founders before and after the sale.",
+    },
+    {
+      href: "/advisor-center/referrals",
+      label: "Referrals",
+      detail: "How to introduce a founder, what they get, and how you stay in the loop.",
     },
   ] as SiteLink[],
   resources: [
     {
       href: "/advisor-center/client-tools",
-      label: "Free tools for your clients",
+      label: "Free tools",
       detail: "A readiness check, a warning-signs guide and a planner. Free to use.",
     },
     {

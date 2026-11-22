@@ -79,7 +79,7 @@ const days = [
         <p class="fl-small-line">{line}</p>
         <p class="fl-by fl-by--sm">Developed by DoGood Agency</p>
       </div>
-      {FOUNDRLAND_URL && <a class="fl-link" href={FOUNDRLAND_URL} target="_blank" rel="noopener" aria-label={`${linkLabel} (opens in a new tab)`}>{linkLabel} ↗</a>}
+      {FOUNDRLAND_URL && !advisor && <a class="fl-link" href={FOUNDRLAND_URL} target="_blank" rel="noopener" aria-label={`${linkLabel} (opens in a new tab)`}>{linkLabel} ↗</a>}
     </aside>
   ) : (
     <section class:list={["fl", `fl--${kind}`]} aria-labelledby={uid}>
@@ -125,13 +125,13 @@ const days = [
           {kind === "advisor" && (
             <>
               <p class="fl-eyebrow">FOUNDR.land for advisors</p>
-              <h2 class="fl-title" id={uid}>Better conversations begin beyond the <em>deal</em><span class="fl-dot">.</span></h2>
-              <p class="fl-lede">FOUNDR.land is where our founder support and our advisor support meet. You introduce a founder, they reflect in private, and you reconnect when they choose, seeing only the summaries they approve.</p>
+              <h2 class="fl-title" id={uid}>Introduce once. Stay in the <em>loop</em><span class="fl-dot">.</span></h2>
+              <p class="fl-lede">A useful brief, before you meet. FOUNDR.land brings founder reflection and advisor support together, before and after the sale. The founder controls what you see and shares only the summaries they approve.</p>
             </>
           )}
 
           {kind === "advisor" && <p class="fl-note">The advisor pathway is part of the planned product, not yet a live service.</p>}
-          {FOUNDRLAND_URL && <a class="fl-btn" href={FOUNDRLAND_URL} target="_blank" rel="noopener" aria-label={`${linkLabel} (opens in a new tab)`}>{linkLabel} <span aria-hidden="true">↗</span></a>}
+          {FOUNDRLAND_URL && !advisor && <a class="fl-btn" href={FOUNDRLAND_URL} target="_blank" rel="noopener" aria-label={`${linkLabel} (opens in a new tab)`}>{linkLabel} <span aria-hidden="true">↗</span></a>}
         </div>
 
         <div class="fl-visual" aria-hidden="true">
@@ -212,6 +212,7 @@ const days = [
 
           {kind === "advisor" && (
             <div class="fl-flow">
+              <img class="fl-advisor-preview" src="/media/foundrland/foundrland-app-phone@1x.webp" width="340" height="498" alt="" loading="lazy" decoding="async" />
               <ol class="fl-flow-steps">
                 <li class="fl-flow-step fl-flow-step--1"><span class="fl-flow-n">01</span><span class="fl-flow-t">Introduce</span><span class="fl-flow-s">A simple invitation</span></li>
                 <li class="fl-flow-step fl-flow-step--2"><span class="fl-flow-n">02</span><span class="fl-flow-t">Reflect</span><span class="fl-flow-s">The founder’s private journey</span></li>
@@ -250,6 +251,7 @@ const days = [
     --serif: Georgia, "Times New Roman", serif;
     color: var(--dream);
   }
+  .fl-advisor-preview { display: block; width: 150px; height: auto; margin: 0 auto 20px; pointer-events: none; }
   .fl-dot { color: var(--heart); }
 
   /* ---------- Shared panel ---------- */
