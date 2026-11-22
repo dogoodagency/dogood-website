@@ -27,9 +27,9 @@ import ProductPage from "../components/ProductPage.astro";
       id: "sr-days",
       heading: "How the 2.5 days unfold",
       steps: [
-        { label: "Day 1", title: "Arrive and celebrate", text: "You arrive in the afternoon. A long lunch, then dinner together with music, getting to know each other and celebrating into the evening." },
-        { label: "Day 2", title: "Mastermind, then play", text: "A half-day workshop of four to five hours with guest speakers, where we mastermind live and work on designing your next chapter. In the afternoon: massages, jet skis and time on the water." },
-        { label: "Day 3", title: "Explore, then home", text: "Sightseeing in the morning. Everyone heads home in the afternoon." },
+        { label: "Day 1", icon: "spark", title: "Arrive and celebrate", text: "You arrive in the afternoon. A long lunch, then dinner together with music, getting to know each other and celebrating into the evening." },
+        { label: "Day 2", icon: "bulb", title: "Mastermind, then play", text: "A half-day workshop of four to five hours with guest speakers, where we mastermind live and work on designing your next chapter. In the afternoon: massages, jet skis and time on the water." },
+        { label: "Day 3", icon: "compass", title: "Explore, then home", text: "Sightseeing in the morning. Everyone heads home in the afternoon." },
       ],
     },
     {
@@ -40,10 +40,10 @@ import ProductPage from "../components/ProductPage.astro";
           title: "Who it's for",
           tone: "grass",
           items: [
-            "Founders who have been with us for six months or longer",
-            "By invitation only",
+            "Founders who have been with us for 6 months",
             "Your partner is welcome to join you",
           ],
+          icons: ["people", "heart"],
         },
         {
           title: "What you leave with",
@@ -53,6 +53,7 @@ import ProductPage from "../components/ProductPage.astro";
             "Friendships with founders who understand this stage",
             "New ideas and, often, professional collaborations",
           ],
+          icons: ["compass", "handshake", "bulb"],
         },
       ],
       note: "We host the retreat: your stay, meals, the program and the activities are covered. Flights are not included. The retreat is not part of any engagement, and an invitation is not guaranteed.",

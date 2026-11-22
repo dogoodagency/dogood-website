@@ -19,7 +19,7 @@ import ProductPage from "../components/ProductPage.astro";
       lede: "Permission to be a kid again.",
       paras: [
         "Your Wayfinder travels to you for 1.5 days in person, as part of Stage 1 or Stage 2, or on its own.",
-        "To laugh, to try things that scare you a little, to do something you've always wanted to do but never had the time or permission for.",
+        "To laugh, to try things that scare you a little, to do what you've always wanted but never had time or permission for.",
         "Day 1 is all about play and adventure. Day 2 is about meaning: writing, building, connecting. This isn't meant to be deep work. It's the opposite. It's lightness.",
       ],
       boxes: [
@@ -32,6 +32,7 @@ import ProductPage from "../components/ProductPage.astro";
             "Joy, play, lightness and meaning, not problem-solving",
             "A debrief afterward to keep what shifted alive",
           ],
+          icons: ["check", "check", "check", "check"],
         },
         {
           title: "What it is NOT",
@@ -41,6 +42,7 @@ import ProductPage from "../components/ProductPage.astro";
             "A working session on the business (leave the laptop at home)",
             "A group retreat",
           ],
+          icons: ["cross", "cross", "cross"],
         },
       ],
     },
@@ -52,21 +54,25 @@ import ProductPage from "../components/ProductPage.astro";
         {
           label: "Day 1",
           title: "Adventure",
+          icon: "mountain",
           text: "Physical, exhilarating, something that makes your heart race. A hot air balloon at sunrise, paragliding, surfing, rock climbing. Pick the one that scares you a little.",
         },
         {
           label: "Day 1",
           title: "Creative play",
+          icon: "brush",
           text: "Artistic and hands-on: pottery, painting, cooking, music, dance. If you were ten years old with a free Saturday, what would you want to do?",
         },
         {
           label: "Day 1 evening",
           title: "Novel experience (optional)",
+          icon: "spark",
           text: "A concert, a comedy show, the theater, a food tour, a sunset somewhere you've never been. Or a quiet dinner.",
         },
         {
           label: "Day 2 morning",
           title: "Meaningful work",
+          icon: "seed",
           text: "Something that connects you to purpose: a letter to your kids, a call to someone you haven't spoken to in years, your personal manifesto.",
         },
       ],
@@ -83,6 +89,7 @@ import ProductPage from "../components/ProductPage.astro";
             "You get your itinerary with times, places and what to expect",
             "Bring comfortable clothes, an open mind and a willingness to play",
           ],
+          icons: ["check", "map", "spark"],
         },
         {
           title: "After: the debrief",
@@ -92,6 +99,7 @@ import ProductPage from "../components/ProductPage.astro";
             "What you can see now that you couldn't before",
             "One small commitment for the next seven days that keeps it alive",
           ],
+          icons: ["wave", "eye", "seed"],
         },
       ],
     },

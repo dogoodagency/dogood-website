@@ -1,5 +1,5 @@
 ---
-import ProductPage from "../components/ProductPage.astro";
+import ProductPage from "../../components/ProductPage.astro";
 // FOUNDR.land Membership. Preview 7 (Seb, 20 Nov 2026): rewritten from Seb's answers. For founders who have sold
 // (not before the sale): mainly FRP Stage 2 graduates, by invitation; exited founders outside the programme also
 // considered. Cohorts of six, monthly calls with a facilitator, online community, yearly meet-up, a Wayfinder session
@@ -9,9 +9,9 @@ import ProductPage from "../components/ProductPage.astro";
 <ProductPage
   title="FOUNDR.land Membership: a founder community | DoGood Agency"
   description="A private founder community, by invitation, for founders who have sold their business: small cohorts, monthly calls and a yearly meet-up. Opening September 2027."
-  path="/founderland-membership"
-  eyebrow="FOUNDR.land Membership ·<br />a founder community"
-  h1="The house founders belong to, after the sale."
+  path="/founderland/membership"
+  eyebrow="FOUNDR.land Membership · a founder community"
+  h1="The house founders belong to,<br class='pp-desktop-break' /> after the sale."
   sub="A private community for founders who have sold their business."
   tag="By invitation"
   soon="Opening September 2027"
@@ -38,6 +38,7 @@ import ProductPage from "../components/ProductPage.astro";
             "One in-person gathering a year",
             "A session with a Wayfinder every two months",
           ],
+          icons: ["people", "chat", "globe", "calendar", "compass"],
         },
         {
           title: "Who it's for",
@@ -48,9 +49,9 @@ import ProductPage from "../components/ProductPage.astro";
             "Founders who sold without working with us are welcome to ask",
             "By invitation only",
           ],
+          icons: ["flag", "check", "chat", "heart"],
         },
       ],
-      note: "Membership opens in September 2027.",
     },
   ]}
   closing={{

@@ -49,7 +49,7 @@ export const products: SiteLink[] = [
     detail: "Invitation only. 2.5 days, once a year, with up to ten founders.",
   },
   {
-    href: "/founderland-membership",
+    href: "/founderland/membership",
     label: "FOUNDR.land Membership",
     detail: "A private community for founders who have sold. Opening September 2027.",
   },

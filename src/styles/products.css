@@ -342,3 +342,178 @@
 @media (prefers-reduced-motion: reduce) {
   .pp-steps.will-animate .pp-step { opacity: 1; transform: none; transition: none; }
 }
+
+/* Seb round 2, 22 Nov 2026: frameless groups and more room on partnership bands. */
+.pp-partnership .ep-well-top { padding-block: 50px 100px; }
+.pp-partnership .pp-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 48px;
+  margin-top: 40px;
+}
+.pp-partnership .pp-group { min-width: 0; }
+.pp-partnership .pp-group h3 {
+  margin: 0 0 24px;
+  color: #2a0b4f;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+}
+.pp-partnership .pp-group ul {
+  display: grid;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.pp-partnership .pp-group li {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin: 0;
+  color: #2a0b4f;
+  font-size: 18px;
+  line-height: 1.6;
+}
+.pp-partnership .pp-icon { flex: 0 0 30px; }
+.pp-partnership .pp-group li > span { min-width: 0; }
+.pp-partnership .pp-note {
+  margin-top: 32px;
+  color: #533f79;
+  font-size: 14px;
+}
+.pp-partnership .pp-step-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.pp-partnership .pp-steps { gap: 28px; }
+.pp-partnership .ep-band .pp-steps .pp-step {
+  border-color: #ea1557;
+  color: #2a0b4f;
+}
+.pp-residency .pp-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.pp-retreat .pp-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+/* Seb round 2, 22 Nov 2026: invitation and opening date share one row. */
+.pp-partnership .pp-hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  max-width: 100%;
+  margin-bottom: 22px;
+}
+.pp-partnership .pp-hero-pills :is(.pp-tag, .pp-soon) {
+  margin: 0;
+  line-height: 1.6;
+}
+.pp-partnership .pp-soon--hero {
+  border: 1px solid #ea1557;
+  background: #2a0b4f;
+}
+.pp-partnership .pp-hero-pills .pp-tag { color: #fff; }
+.pp-membership .ep-hero-inner { padding-block: 60px 52px; }
+.pp-membership .ep-eyebrow { white-space: nowrap; }
+.pp-membership section[aria-labelledby="fm-why"] .pp-well { padding-top: 80px; }
+
+/* Seb round 2, 22 Nov 2026: compact audio rows and a centred introductory lede. */
+.pp-audio .pp-after-hero {
+  max-width: 900px;
+  margin: 0 auto 64px;
+  color: #2a0b4f;
+  font-size: 22px;
+  line-height: 1.6;
+  text-align: center;
+}
+.pp-audio .pp-groups { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+.pp-audio .pp-group h3 { margin-bottom: 16px; }
+.pp-audio .pp-group--chips ul { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.pp-audio .pp-group--chips li { align-items: center; gap: 12px; }
+.pp-audio .au--full .au-modes { margin-top: 64px; }
+.pp-audio .au--full .au-sci-fine { text-align: center; }
+
+/* Seb round 2, 22 Nov 2026: diagnostics symbols and a quieter information list. */
+.pp-diagnostics .pp-groups { grid-template-columns: minmax(0, 1fr); }
+.pp-diagnostics .pp-group--tiles ul { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.pp-diagnostics .pp-group--tiles li {
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding-block: 12px;
+  font-weight: 800;
+  text-align: center;
+}
+.pp-residency section[aria-labelledby="rs-what"] .pp-lede {
+  margin-block: 28px;
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+}
+
+/* Seb round 2, 22 Nov 2026: palette colours and readable text in the full features. */
+.pp-partnership .pp-feature :is(.au--full, .wh--full) {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.pp-partnership .au.au--full :is(h2, .au-lede, .au-mode-name, .au-mode-band, .au-mode-use, .au-ac-tag,
+  .au-approach-eyebrow, .au-eyebrow, .au-beat-plus, .au-beat-ear--l, .au-beat-ear--r),
+.pp-page.pp-partnership .wh.wh--full :is(.wh-eyebrow, .wh-metric-tag) { color: #2a0b4f; }
+.pp-partnership .au--full .au-scope { border-color: #533f79; background: #15012e; }
+.pp-partnership .au--full .au-label { color: #fff; }
+.pp-partnership .au--full .au-w--l { stroke: #e6defc; }
+.pp-partnership .au--full .au-mode--dream { --au-c: #533f79; }
+.pp-partnership .au--full .au-mode--heart { --au-c: #ea1557; }
+.pp-partnership .au--full :is(.au-cite, .au-sci .au-sci-fine) { color: #533f79 !important; }
+.pp-partnership .au--full .au-ac--dream .au-ac-n { background: #533f79; }
+.pp-partnership .au--full .au-beat-ear { border-color: #ea1557; }
+.pp-partnership .au--full .au-band--t { background: #533f79; }
+.pp-partnership .au--full .au-band--a { background: #b2a6cf; }
+.pp-partnership .au--full .au-band--b { background: #e6defc; }
+.pp-partnership .au--full .au-layers li { border-color: #ea1557; }
+.pp-partnership .wh--full .wh-sample { color: #533f79; }
+.pp-partnership .wh--full .wh-card :is(figcaption, .wh-day, .wh-big small) { color: #e6defc; }
+.pp-partnership .wh--full .wh-bar { background: linear-gradient(180deg, #feacb3, #fd6b82); }
+.pp-partnership .wh--full .wh-panel--dark :is(h3, li) { color: #fff; }
+
+@media (max-width: 1080px) {
+  .pp-partnership .pp-groups { column-gap: 32px; }
+  html body .pp-membership .ep-eyebrow {
+    font-size: clamp(9px, 2.7vw, 18px) !important;
+    letter-spacing: 0 !important;
+  }
+  .pp-audio .pp-group--chips li { flex-direction: column; align-items: flex-start; }
+  .pp-retreat .pp-step { padding: 24px 20px; }
+}
+@media (max-width: 799px) {
+  .pp-partnership .pp-groups,
+  .pp-partnership .pp-steps { grid-template-columns: minmax(0, 1fr); }
+  .pp-audio .pp-group--chips ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pp-audio .pp-group--chips li { flex-direction: row; align-items: center; }
+}
+@media (max-width: 600px) {
+  .pp-partnership .ep-well-top { padding-block: 32px 72px; }
+  html body .pp-partnership section[aria-labelledby="pp-close"] .ep-well { padding-block: 82px 52px; }
+  .pp-partnership .pp-groups { gap: 36px; margin-top: 32px; }
+  .pp-partnership .pp-group h3 { margin-bottom: 20px; }
+  .pp-partnership .pp-group li { gap: 12px; }
+  .pp-partnership .pp-hero-pills { gap: 8px; }
+  .pp-partnership .pp-hero-pills :is(.pp-tag, .pp-soon) {
+    padding: 6px 10px;
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+  .pp-partnership .pp-hero-pills .pp-soon::before { margin-right: 6px; flex-shrink: 0; }
+  .pp-membership .ep-hero-inner { padding-block: 40px 32px; }
+  .pp-membership .pp-desktop-break { display: none; }
+  .pp-membership section[aria-labelledby="fm-why"] .pp-well { padding-top: 56px; }
+  .pp-audio .pp-after-hero { margin-bottom: 48px; font-size: 20px; }
+  .pp-audio .pp-group--chips ul { column-gap: 12px; }
+  .pp-audio .pp-group--chips li { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .pp-audio .au--full .au-modes { margin-top: 48px; }
+}

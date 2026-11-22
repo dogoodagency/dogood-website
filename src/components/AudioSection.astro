@@ -9,8 +9,10 @@
 interface Props {
   variant?: "full" | "compact";
   heading?: string;
+  // Seb round 2, 22 Nov 2026: optional page-specific safety line.
+  fine?: string;
 }
-const { variant = "compact", heading = "Custom State-Shift Audio" } = Astro.props;
+const { variant = "compact", heading = "Custom State-Shift Audio", fine = "Not a medical treatment. Do not listen while driving or operating machinery. If you live with epilepsy or a seizure condition, ask your doctor first." } = Astro.props;
 
 function wave(freq: number, amp = 18, w = 600, h = 50, phase = 0) {
   const pts: string[] = [];
@@ -141,7 +143,7 @@ const modes = [
             </li>
           </ol>
         </div>
-        <p class="au-fine au-sci-fine">Not a medical treatment. Do not listen while driving or operating machinery. If you live with epilepsy or a seizure condition, ask your doctor first.</p>
+        <p class="au-fine au-sci-fine">{fine}</p>
       </div>
     )
   }
@@ -510,13 +512,14 @@ const modes = [
   .au-lede { margin-bottom: 28px !important; }
   .au--compact .au-more { margin: 28px 0 8px; padding-bottom: 32px; }
   .au--compact .au-more a {
-    color: #fff;
+    color: inherit;
     text-decoration: underline;
     text-decoration-color: var(--color-grass-500);
     text-decoration-thickness: 2px;
-    text-underline-offset: 5px;
+    text-underline-offset: 4px;
   }
-  .au--compact .au-modes { margin-top: 32px; }
+  /* Seb round 2, 22 Nov 2026: space between waveform and modes in both variants. */
+  .au-modes { margin-top: 32px; }
   .au--compact .au-modes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   @media (max-width: 600px) { .au--compact .au-modes { grid-template-columns: minmax(0, 1fr); } }
   /* Phones: keep the nested content compact and leave less space under the text link. */
@@ -533,7 +536,7 @@ const modes = [
     .au-ac .au-ac-n { position: absolute; top: 0; left: 0; width: 40px; height: 40px; margin: 0; border-radius: 0 0 16px 0; }
     .au-beat { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto; }
     .au-beat-ear--b { grid-column: 1 / 4; }
-    .au-modes { margin-top: 22px; }
+    .au-modes { margin-top: 20px; }
     .au--compact .au-more { margin: 22px 0 0; padding-bottom: 0; }
   }
 </style>

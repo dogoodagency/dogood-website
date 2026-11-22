@@ -1,19 +1,22 @@
 ---
 /**
  * Product pages (Seb, 19 Nov 2026): /residency, /integral-continuity, /signature-retreat,
- * /founderland-membership and the /products hub. Same look as /exit-prep (exit-prep.css): dark hero,
+ * /founderland/membership and the /products hub. Same look as /exit-prep (exit-prep.css): dark hero,
  * then bands that alternate DREAM 25 and white with the wavy join. Content is passed in as sections.
  */
 import "../styles/exit-prep.css";
 import "../styles/products.css";
 import Base from "../layouts/Base.astro";
 import Wave from "./Wave.astro";
+import PartnershipIcon from "./PartnershipIcon.astro";
 import { edgeAbove } from "../data/edge-line";
 
 export interface Box {
   title: string;
   tone?: "sky" | "grass" | "rose";
   items: string[];
+  icons?: string[];
+  layout?: "chips" | "tiles";
 }
 
 export interface Section {
@@ -22,7 +25,7 @@ export interface Section {
   lede?: string;
   paras?: string[];
   boxes?: Box[];
-  steps?: { label: string; title: string; text: string }[];
+  steps?: { label: string; title: string; text: string; icon?: string }[];
   cards?: { href: string; title: string; text: string; tag?: string; soon?: boolean }[];
   note?: string;
 }
@@ -38,12 +41,21 @@ interface Props {
   /** Shows a "Coming soon" status in the hero (Seb, 19 Nov 2026). */
   soon?: string;
   cta?: { href: string; label: string };
+  afterHero?: string;
   sections: Section[];
   closing?: { heading: string; text: string; cta: { href: string; label: string } };
 }
 
-const { title, description, path, eyebrow, h1, sub, tag, soon, cta, sections, closing } = Astro.props;
-const partnership = ["/state-shift-audio", "/recovery-stress-diagnostics", "/founderland/membership", "/founderland-membership", "/signature-retreat", "/residency"].includes(path);
+const { title, description, path, eyebrow, h1, sub, tag, soon, cta, afterHero, sections, closing } = Astro.props;
+// Seb round 2, 22 Nov 2026: isolate partnership layouts from Expedited Start.
+const partnershipPages: Record<string, string> = {
+  "/state-shift-audio": "audio",
+  "/recovery-stress-diagnostics": "diagnostics",
+  "/founderland/membership": "membership",
+  "/signature-retreat": "retreat",
+  "/residency": "residency",
+};
+const partnership = partnershipPages[path];
 
 const tint = "#F5F2FF";
 const white = "#ffffff";
@@ -78,14 +90,23 @@ const footerBg = closing ? (lastTint ? white : tint) : lastTint ? tint : white;
       provider: { "@id": "https://www.dogoodagency.co/#organization" },
       areaServed: "Worldwide",
     })} />
-  <article class:list={["ep-page", "pp-page", partnership && "pp-partnership"]}>
+  <article class:list={["ep-page", "pp-page", partnership && ["pp-partnership", `pp-${partnership}`]]}>
     <header class="ep-hero">
       <div class="ep-hero-inner">
         <p class="ep-eyebrow" set:html={eyebrow} />
         <h1 set:html={h1} />
         <p class="ep-sub">{sub}</p>
-        {tag && <p class="pp-tag">{tag}</p>}
-        {soon && <p class="pp-soon pp-soon--hero">{soon}</p>}
+        {partnership && (tag || soon) ? (
+          <div class="pp-hero-pills">
+            {tag && <p class="pp-tag">{tag}</p>}
+            {soon && <p class="pp-soon pp-soon--hero">{soon}</p>}
+          </div>
+        ) : (
+          <>
+            {tag && <p class="pp-tag">{tag}</p>}
+            {soon && <p class="pp-soon pp-soon--hero">{soon}</p>}
+          </>
+        )}
         {cta && <a class="btn-teal" href={cta.href}>{cta.label}</a>}
       </div>
       <Wave fill={tint} edge={heroEdge} />
@@ -97,6 +118,7 @@ const footerBg = closing ? (lastTint ? white : tint) : lastTint ? tint : white;
           {i > 0 && <Fragment set:html={wave(i % 2 === 1)} />}
           <section class:list={["ep-band", i % 2 === 0 && "ep-band-tint"]} aria-labelledby={s.id}>
             <div class="ep-well ep-well-top pp-well">
+              {i === 0 && afterHero && <p class="pp-after-hero">{afterHero}</p>}
               <h2 id={s.id}>{s.heading}</h2>
               {s.lede && <p class="pp-lede">{s.lede}</p>}
               {s.paras?.map((p) => <p class="ep-lede-plain" set:html={p} />)}
@@ -104,7 +126,10 @@ const footerBg = closing ? (lastTint ? white : tint) : lastTint ? tint : white;
                 <ol class="pp-steps" data-pp-steps>
                   {s.steps.map((st) => (
                     <li class="pp-step">
-                      <span class="pp-step-label">{st.label}</span>
+                      <span class="pp-step-label">
+                        {partnership && st.icon && <PartnershipIcon name={st.icon} />}
+                        {st.label}
+                      </span>
                       <h3>{st.title}</h3>
                       <p>{st.text}</p>
                     </li>
@@ -112,11 +137,14 @@ const footerBg = closing ? (lastTint ? white : tint) : lastTint ? tint : white;
                 </ol>
               )}
               {s.boxes && (
-                <div class="ep-grid">
+                <div class={partnership ? "pp-groups" : "ep-grid"}>
                   {s.boxes.map((b) => (
-                    <section class:list={["ep-box", `ep-box--${b.tone ?? "sky"}`]}>
+                    <section class:list={partnership ? ["pp-group", b.layout && `pp-group--${b.layout}`] : ["ep-box", `ep-box--${b.tone ?? "sky"}`]}>
                       <h3>{b.title}</h3>
-                      <ul>{b.items.map((t) => <li>{t}</li>)}</ul>
+                      <ul>{b.items.map((t, index) => <li>
+                        {partnership && <PartnershipIcon name={b.icons?.[index] ?? "check"} />}
+                        {partnership ? <span>{t}</span> : t}
+                      </li>)}</ul>
                     </section>
                   ))}
                 </div>
@@ -165,7 +193,7 @@ const footerBg = closing ? (lastTint ? white : tint) : lastTint ? tint : white;
               <div class="pp-close">
                 <h2 id="pp-close">{closing.heading}</h2>
                 <p>{closing.text}</p>
-                <a class="btn-teal" href={closing.cta.href}>{closing.cta.label}</a>
+                <a class={partnership && closing.cta.label.startsWith("Apply") ? "btn-apply" : "btn-teal"} href={closing.cta.href}>{closing.cta.label}</a>
               </div>
             </div>
           </section>

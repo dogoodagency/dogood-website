@@ -88,3 +88,7 @@
 # public: change both to "<foundr.land address> 301".
 /foundrland       /  302
 /foundrland.html  /  302
+
+# Seb round 2, 22 Nov 2026: membership lives under Founderland.
+/founderland-membership   /founderland/membership  301
+/founderland-membership/  /founderland/membership  301
