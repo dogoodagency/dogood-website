@@ -28,6 +28,8 @@ interface Props {
   ogImage?: string;
   ogType?: string;
   robots?: string;
+  /** Standalone landing page without navigation, footer, or chat. */
+  bare?: boolean;
   /** No canonical link (e.g. the 404 page, which has no address of its own). */
   noCanonical?: boolean;
 }
@@ -39,9 +41,11 @@ const description =
   "You built the company and got out, but it doesn't feel how you expected. Start with a private 30-day engagement for founders navigating life after exit.";
 const canonical = Astro.props.canonical ?? "https://www.dogoodagency.co/";
 const meetFunnel = Astro.props.meetFunnel ?? false;
+const bare = Astro.props.bare ?? false;
 const footerStrip = Astro.props.footerStrip;
 const footerEdge = Astro.props.footerEdge;
 const bodyStyle = [
+  bare ? "background:var(--color-dream-25)" : "",
   footerStrip ? `--footer-strip:${footerStrip}` : "",
   footerEdge ? `--footer-edge:${footerEdge}` : "",
 ]
@@ -133,7 +137,7 @@ const organization = {
       type="text/javascript"
       src="https://cdn-cookieyes.com/client_data/cd7b3fec7b1066719107b4a2189a47ad/script.js"
     ></script>
-    <script data-cookieyes="cookieyes-necessary" src="/tawk-loader.js" defer></script>
+    {!bare && <script data-cookieyes="cookieyes-necessary" src="/tawk-loader.js" defer></script>}
     <!-- GA4 (20 Nov 2026): runs only after analytics consent (CookieYes) and only on the live domain. -->
     <script type="text/plain" data-cookieyes="cookieyes-analytics" src="/ga.js"></script>
     <!-- Microsoft Clarity (20 Nov 2026): runs only after analytics consent (CookieYes), live domain only. -->
@@ -176,11 +180,11 @@ const organization = {
     >
       Skip to content
     </a>
-    <Header />
+    {!bare && <Header />}
     <main id="main">
       <slot />
     </main>
-    <Footer meetFunnel={meetFunnel} edge={footerEdge} />
+    {!bare && <Footer meetFunnel={meetFunnel} edge={footerEdge} />}
     <script>
       /* Moving testimonial walls (TestimonialWall and /stories): every column drifts at the same speed,
          38px a second, whatever its length (Seb, 19 Nov 2026). */

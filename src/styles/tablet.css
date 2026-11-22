@@ -1,5 +1,10 @@
 /* Seb round 2, 22 Nov 2026: phone and desktop rules stay outside this layer. */
 @media (min-width: 601px) and (max-width: 1365px) {
+  /* Standalone LinkedIn guide: cover first, followed by all seven questions. */
+  .seven-page { padding: 32px 48px 64px; }
+  .seven-page .seven-heading h1 { font-size: 40px; }
+  .seven-page .seven-content { grid-template-columns: minmax(0, 1fr); gap: 48px; max-width: 680px; margin-inline: auto; }
+  .seven-page .seven-cover { max-width: 360px; margin-inline: auto; }
   /* Seb round 2, 22 Nov 2026: shared type, wrapping and form controls. */
   html body main :is(.ep-page .ep-hero, .hw-page .hw-hero, .dr-hero, .adv-hero, .advr-hero,
     .ab-hero, .wf-hero, .wfp-hero, .st-hero, .cs-hero, .nl-hero,
