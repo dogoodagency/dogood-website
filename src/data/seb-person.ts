@@ -16,7 +16,7 @@ export const sebPerson = {
   jobTitle: "Founder and Wayfinder",
   url: `${site}/wayfinders/seb`,
   description:
-    "Founder of DoGood Agency. Seb Wichmann works 1:1 with founders before and after they sell their company, on the personal side of the exit: identity, health, relationships and meaning. 14+ years in executive coaching, leadership and organisational development across 35+ countries.",
+    "Founder of DoGood Agency. Seb Wichmann works 1:1 with founders before and after they sell their company, on the personal side of the exit: identity, health, relationships and meaning. 14+ years in executive coaching, leadership and organizational development across 35+ countries.",
   worksFor: { "@type": "Organization", "@id": `${site}/#organization`, name: "DoGood Agency", url: `${site}/` },
   alumniOf: { "@type": "CollegeOrUniversity", name: "Curtin University", url: "https://www.curtin.edu.au/" },
   hasCredential: [
@@ -32,7 +32,7 @@ export const sebPerson = {
     "Personal readiness before a business sale",
     "Executive coaching",
     "Leadership development",
-    "Organisational development",
+    "Organizational development",
     "Learning and development",
     "Neuro-Linguistic Programming",
     "Mindfulness",

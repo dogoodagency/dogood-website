@@ -53,7 +53,7 @@ Persistent lack of clarity about personal goals and relationships.
 
 Paralyzing decision fog on non‑business issues; a slowed ability to choose.
 
-Disorganisation and low mental toughness blocked health and relationship work.
+Disorganization and low mental toughness blocked health and relationship work.
 
 Reduced leadership confidence, late to meetings, team perception shifts.
 
@@ -75,7 +75,7 @@ We delivered a focused, bespoke blend of Stage 1 containment and Stage 2 identit
 
 What we actually did
 
-- Custom mission plan and new values map to prioritise decisions.
+- Custom mission plan and new values map to prioritize decisions.
 - Daily and weekly agenda engineered around performance and recovery.
 - Weekly 60–90 minute 1:1 sessions plus a focused in‑person block.
 - A 16‑week Reclamation Plan with micro‑experiments: habit design, relationship experiments, delegation playbook.
@@ -97,7 +97,7 @@ Committed to consistent training, meditation, and social experiments like dancin
 
 The Outcomes
 
-Within four months, V experienced a clear, practical shift across both business and personal life — changes that followed were specific behavioural interventions rather than a 'so-it-is stance.
+Within four months, V experienced a clear, practical shift across both business and personal life — changes that followed were specific behavioral interventions rather than a 'so-it-is stance.
 
 Business outcomes
 
@@ -145,11 +145,11 @@ The extra time and presence then fed back into better people work — clearer ex
 
 Net effect
 
-The behavioural wins, which included habit architecture, effective delegation, and well-designed decision scaffolds, produced cascading improvements throughout various aspects of life.
+The behavioral wins, which included habit architecture, effective delegation, and well-designed decision scaffolds, produced cascading improvements throughout various aspects of life.
 
 These foundational changes led to a noticeably calmer presence, allowing for better emotional regulation and responsiveness in challenging situations.
 
-Ultimately, these behavioural improvements contributed to a more fulfilled private life, as the balance and clarity gained in professional settings positively impacted personal wellbeing and relationships.
+Ultimately, these behavioral improvements contributed to a more fulfilled private life, as the balance and clarity gained in professional settings positively impacted personal wellbeing and relationships.
 
 If this resonates, start with our quick diagnostic to see whether FRP is right for you.
 

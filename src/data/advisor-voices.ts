@@ -21,7 +21,7 @@ export const advisorVoices = [
   { quote: "It would make sense maybe to start to get clarity on the human part of it, a year prior to that.", name: "Founder" },
   { quote: "They get so tunnel focused on making it happen that they don't necessarily plan for their own finances or their own careers or their happiness.", name: "Exit advisor" },
   { quote: "Leading up to a transaction is very stressful.", name: "Exit advisor" },
-  { quote: "They really want to exit, but they're just scared. They're putting the brakes on.", name: "Founder" },
+  { quote: "They really want to exit, but they're just scared. They're putting the brakes on.", name: "Exit advisor" },
   { quote: "All of a sudden I look back and 10 years had passed.", name: "Founder" },
   { quote: "I have a hard time really disconnecting myself from the day-to-day.", name: "Founder" },
   { quote: "You always have differing degrees of cold feet the closer you get to the transaction.", name: "Sell-side M&A advisor" },

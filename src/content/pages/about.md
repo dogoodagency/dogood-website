@@ -46,7 +46,7 @@ DoGood believes that success should not come at the expense of the people and pa
 
 ## Seb and the Wayfinders
 
-Seb Wichmann founded DoGood Agency. He has spent 14 years working with cultures across 35+ countries, advising Fortune 500 companies and leading leadership programs. He is recognised as an Upwork Expert-Vetted professional and a Premium 1% Performer, and as a 'SuperCoach' award recipient.
+Seb Wichmann founded DoGood Agency. He has spent 14 years working with cultures across 35+ countries, advising Fortune 500 companies and leading leadership programs. He is recognized as an Upwork Expert-Vetted professional and a Premium 1% Performer, and as a 'SuperCoach' award recipient.
 
 He built a successful business that nearly broke him, and knows what it costs when the company becomes too much of who you are.
 

@@ -78,7 +78,7 @@ Stage 1 is a focused reset around self, patterns, values, and immediate structur
 
 We make space for what often surfaces after exit: restlessness, loss of structure, neglected health or relationships, and the growing sense that the old way of operating no longer fits this chapter.
 
-We interrupt the patterns shaping this chapter, clarify what is aligned for you now, and help you see what is driving your decisions, energy, and behaviour so you can begin moving toward the version of yourself that actually belongs next.
+We interrupt the patterns shaping this chapter, clarify what is aligned for you now, and help you see what is driving your decisions, energy, and behavior so you can begin moving toward the version of yourself that actually belongs next.
 
 By day 30, you are not just clearer. You have started to reset how you live: what you pay attention to, what no longer runs your life, and what needs to change.
 
@@ -175,7 +175,7 @@ How it works: Rework → Navigate → Realign → Integrate
 
 Stage 1 resets what is misaligned. Stage 2 then naturally builds on what truly belongs next.
 
-This is a wider build around real life, deeper decisions, and long-term alignment. We take the shift from Stage 1 and reorganise life around it, so the work becomes part of how you live practically.
+This is a wider build around real life, deeper decisions, and long-term alignment. We take the shift from Stage 1 and reorganize life around it, so the work becomes part of how you live practically.
 
 That means looking more closely at the foundations of your life and rebuilding them in a way that fits who you are now.
 

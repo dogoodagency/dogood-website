@@ -1,4 +1,4 @@
-/* Preview 12: footer clearance only. The footer wave overlaps main by 80px
+/* Preview 12: scoped QA fixes. The footer wave overlaps main by 80px
    (40px below 600px). Keep the Round 4 spacer inside the final background.
    These floors leave an 8px buffer above the 165px requirement even when the
    closing content has no bottom margin. Browser measurements are still needed. */
@@ -8,6 +8,46 @@
 html body main#main:has(> article.page-404),
 html body main#main:is([data-path="/thank-you"], [data-path="/application-thankyou"], [data-path="/stage1-tc"]) {
   --r4-fc: 205px;
+}
+
+/* Booking body padding minus the wave overlap must leave at least 173px.
+   Add the floor after both the calendar/copy grid and any lower case study.
+   Existing content insets can leave more clearance; keep them intact. */
+html body main#main:is(
+  [data-path="/catchup"], [data-path="/frpfit"], [data-path="/internal"],
+  [data-path="/internal60"], [data-path="/prefrp"],
+  [data-path="/exit"], [data-path="/wealth"]
+) > .bk-page > .bk-body::after {
+  content: "";
+  display: block;
+  height: 181px; /* 72px body padding + 181px - 80px wave = 173px. */
+  pointer-events: none;
+}
+
+@media (min-width: 1024px) {
+  html body main#main:is(
+    [data-path="/catchup"], [data-path="/frpfit"], [data-path="/internal"],
+    [data-path="/internal60"], [data-path="/prefrp"],
+    [data-path="/exit"], [data-path="/wealth"]
+  ) > .bk-page > .bk-body::after {
+    height: 113px; /* 140px body padding + 113px - 80px wave = 173px. */
+  }
+
+  html body main#main[data-path="/advisor-center/insights"] .advr-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 800px;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 599px) {
+  html body main#main:is(
+    [data-path="/catchup"], [data-path="/frpfit"], [data-path="/internal"],
+    [data-path="/internal60"], [data-path="/prefrp"],
+    [data-path="/exit"], [data-path="/wealth"]
+  ) > .bk-page > .bk-body::after {
+    height: 141px; /* 72px body padding + 141px - 40px wave = 173px. */
+  }
 }
 
 html body main#main > article.page-404::after,

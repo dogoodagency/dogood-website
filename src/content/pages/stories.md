@@ -1,6 +1,6 @@
 ---
 title: "Founder exit coaching case studies | DoGood Agency"
-description: "Anonymised stories from founders we have worked with, plus words from leaders at organisations our team has partnered with."
+description: "Anonymized stories from founders we have worked with, plus words from leaders at organizations our team has partnered with."
 ---
 
 # Stories
@@ -10,9 +10,9 @@ description: "Anonymised stories from founders we have worked with, plus words f
   <img src="/sketches/stories-journal-path-sketch@1x.png" srcset="/sketches/stories-journal-path-sketch@1x.png 560w, /sketches/stories-journal-path-sketch@2x.png 1120w" sizes="(max-width: 1080px) min(100vw, 560px), 560px" width="560" height="420" alt="A fine-liner sketch of an open journal on a table, a teal path drawn across the pages and continuing toward an open door, with a founder walking from the story onto the path." />
 </picture>
 
-Two short, anonymised stories from founders we have worked with. We keep their names private so they can be candid.
+Two short, anonymized stories from founders we have worked with. We keep their names private so they can be candid.
 
-The reviews and logos below are from leaders and organisations our team has worked with. They are not all founders after an exit.
+The reviews and logos below are from leaders and organizations our team has worked with. They are not all founders after an exit.
 
 ---
 
@@ -123,9 +123,9 @@ These are words from leaders our team has worked with. They are not all founders
 
 ## Company logo pills
 
-## Leaders from these organisations have worked with our team
+## Leaders from these organizations have worked with our team
 
-These are organisations our team has worked with. They are not all founders after an exit.
+These are organizations our team has worked with. They are not all founders after an exit.
 
 **Logos (same set, and names, as the homepage strip):**
 
