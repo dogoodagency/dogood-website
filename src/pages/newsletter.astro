@@ -16,21 +16,6 @@ const footerEdge = edgeAbove(tint);
 const action =
   "https://assets.mailerlite.com/jsonp/2046479/forms/180157154312849349/subscribe";
 
-/**
- * Chapters of "Before and After the Sale".
- * To add a chapter, push an object onto this array when it goes out, newest last, e.g.
- *   { number: 1, title: "<chapter title>", date: "December 15", href: "/newsletter/<slug>" }
- * `href` is optional.
- */
-interface Chapter {
-  number: number;
-  title: string;
-  date: string;
-  href?: string;
-}
-const chapters: Chapter[] = [
-  { number: 1, title: "The quiet after the deal", date: "out Dec 15", href: "https://drive.google.com/file/d/1cHIFy_rbsSeTJRAkGOweQNhw8VfqpMtD/view" },
-];
 
 // Each question: the short line `a` stays word for word; `deep` adds context, sub-questions, an exercise and
 // journal prompts, shown in an expandable section (Seb, 18 Nov 2026: "more context, more value"). Drafted by
@@ -219,38 +204,6 @@ const questions = [
   },
 ];
 
-/**
- * Planned chapters of "Before and After the Sale", shown greyed out until they arrive (Seb, 18 Nov 2026).
- * Dates follow the newsletter plan (15 Dec, 12 Jan, 26 Jan, then every two weeks). Titles and lines are
- * WORKING DRAFTS by Claude: Seb to confirm or replace.
- * When a chapter goes out, move it into `chapters` above with its href.
- */
-const upcoming = [
-  {
-    number: 1,
-    date: "December 15",
-    title: "The quiet after the deal",
-    about: "The first weeks after closing, when the calls stop and freedom feels stranger than expected. What is happening, and why it is so common.",
-  },
-  {
-    number: 2,
-    date: "January 12",
-    title: "The decision that was still open",
-    about: "Before the sale: how a founder can be sure they want to sell and still pull on the brakes, and what helps the decision settle.",
-  },
-  {
-    number: 3,
-    date: "January 26",
-    title: "The people who waited",
-    about: "A partner, children, old friends. What the years of building cost the people around the founder, and how families find each other again.",
-  },
-  {
-    number: 4,
-    date: "February 9",
-    title: "Who am I without the company?",
-    about: "When the title goes, the question stays. How founders rebuild a sense of identity and purpose that doesn't depend on running something.",
-  },
-];
 
 const heroLine =
   "Seven questions to sit with before you commit the next stretch of your life to anything new. They're free and right here on this page, and you don't need to sign up.";
@@ -350,23 +303,12 @@ const heroLine =
       </div>
     </section>
 
-    <section class="nl-band nl-band-tint" id="book" aria-labelledby="nl-book-title">
-      <div class="nl-well">
-        <div class="nl-book">
-          <span class="nl-badge">Chapter 1 · out Dec 15</span>
-          <h2 id="nl-book-title">Before and After the Sale</h2>
-          <p>A book for founders on the inner side of selling, told through real, anonymized stories. We're writing it in the open, one chapter at a time, for everyone in <span class="pink-soft nl-founder"><strong>FOUNDR</strong>.land</span>.</p>
-        </div>
-
-      </div>
-    </section>
-
     <section class="nl-band" id="signup" aria-labelledby="nl-signup-title">
       <div class="nl-well">
         <div class="nl-signup nl-signup-split" data-nl-signup>
           <div class="nl-signup-head">
           <h2 id="nl-signup-title">Keep reading</h2>
-          <p class="nl-intro">Get each new chapter of Before and After the Sale when it comes out, along with our notes on life after the sale. It's one email every two weeks, starting December 15, then January 12 and January 26.</p>
+          <p class="nl-intro">Notes on life after the sale, every two weeks.</p>
           </div>
           <div class="nl-signup-copy">
           <form class="nl-form js-subscribe" action={action} method="post">
@@ -374,7 +316,7 @@ const heroLine =
             <input type="hidden" name="anticsrf" value="true" />
             <label for="nl-email" class="visually-hidden">Email</label>
             <input id="nl-email" type="email" name="fields[email]" placeholder="Email" autocomplete="email" required />
-            <button class="btn-teal" type="submit">Send me the chapters</button>
+            <button class="btn-teal" type="submit">Join the newsletter</button>
             <p data-status hidden></p>
           </form>
           </div>
@@ -400,40 +342,10 @@ const heroLine =
       </div>
     </section>
 
-    <section class="nl-band nl-band-tint" id="chapters" aria-labelledby="nl-chapters-title">
+    <section class="nl-band nl-band-tint" aria-labelledby="nl-closing-title">
       <div class="nl-well">
-        <h2 id="nl-chapters-title">The chapters</h2>
-        <p class="nl-intro">One chapter every two weeks, each built on real, anonymized stories. Here is what is coming. Chapters open here as they arrive.</p>
-        <ol class="nl-chapters">
-          {
-            chapters.map((chapter) => (
-              <li class="nl-chapter">
-                <span class="nl-chapter-num">{chapter.number}.</span>
-                <span class="nl-chapter-title">
-                  {chapter.href ? <><span>{chapter.title}</span><a class="nl-chapter-download" href={chapter.href} target="_blank" rel="noopener">Read Chapter 1 (PDF)</a></> : chapter.title}
-                </span>
-                <span class="nl-chapter-date nl-date-pill">{chapter.date}</span>
-              </li>
-            ))
-          }
-          {
-            upcoming
-              .filter((u) => !chapters.some((c) => c.number === u.number))
-              .map((u) => (
-                <li class="nl-chapter nl-chapter-upcoming">
-                  <span class="nl-chapter-num">{u.number}.</span>
-                  <div class="nl-chapter-main">
-                    <span class="nl-chapter-title">{u.title}</span>
-                    <p class="nl-chapter-about">{u.about}</p>
-                  </div>
-                  <span class="nl-chapter-date nl-date-pill">{u.number === 2 ? "Coming Jan 12" : `Arrives ${u.date}`}</span>
-                </li>
-              ))
-          }
-        </ol>
-
         <div class="nl-closing closing-unframed">
-          <h2 class="nl-closing-label">Ready for more than reading?</h2>
+          <h2 class="nl-closing-label" id="nl-closing-title">Ready for more than reading?</h2>
           <p>If you already know you'd like a private place to do this work, you can apply for Stage 1.</p>
           <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
           <p class="nl-closing-caption">Stage 1 is Days 1-30, Stage 2 invite only</p>
@@ -450,7 +362,7 @@ const heroLine =
 
   // Base.astro resets the button to "Subscribe" after an error. Keep our label.
   if (submit) {
-    const label = submit.textContent?.trim() || "Send me the chapters";
+    const label = submit.textContent?.trim() || "Join the newsletter";
     new MutationObserver(() => {
       if ((submit.textContent ?? "").trim() === "Subscribe") submit.textContent = label;
     }).observe(submit, { childList: true, characterData: true, subtree: true });

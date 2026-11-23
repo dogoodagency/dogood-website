@@ -1,4 +1,4 @@
-/* Round 3: client tools, resource navigation, advisor insights and chapter archive. */
+
 html body main#main .advr-page :is(.advd-well, .advi-well) {
   width: min(1080px, calc(100% - 2 * var(--pad)));
   max-width: 1080px;
@@ -121,15 +121,15 @@ html body main#main .advr-page :is(.advd-block, .advd-steps li) { border: 1px so
 html body main#main .advr-page .advd-block { padding: 32px; }
 html body main#main .advr-page .advd-steps li { background: var(--color-white); }
 html body main#main .advr-page .advd-steps li::before { color: var(--color-heart-600); }
-html body main#main .advr-page :is(.advd-block, .advd-steps, .advd-preview, .advd-chapters, .av-quotes, .advd-conversations, .advd-struggles) h2 {
+html body main#main .advr-page :is(.advd-block, .advd-steps, .advd-preview, .av-quotes, .advd-conversations, .advd-struggles) h2 {
   margin: 0 0 16px;
   color: var(--color-dream-500);
   font-size: clamp(24px, 3vw, 32px);
   font-weight: 800;
   line-height: 1.25;
 }
-html body main#main .advr-page :is(.advd-block, .advd-steps, .advd-chapters) h3 { margin: 0 0 12px; font-size: 22px; line-height: 1.4; }
-html body main#main .advr-page :is(.advd-block, .advd-preview, .advd-chapters, .av-quotes, .advd-conversations, .advd-struggles) p { margin: 0 0 16px; }
+html body main#main .advr-page :is(.advd-block, .advd-steps) h3 { margin: 0 0 12px; font-size: 22px; line-height: 1.4; }
+html body main#main .advr-page :is(.advd-block, .advd-preview, .av-quotes, .advd-conversations, .advd-struggles) p { margin: 0 0 16px; }
 html body main#main .advr-page .advd-note { color: var(--color-dream-500); }
 html body main#main .advr-page .advd-download { margin: 16px 0 36px; }
 html body main#main .advr-page .advd-preview { padding-top: 16px; }
@@ -158,10 +158,7 @@ html body main#main .advr-page .advd-block summary:is(:hover, :focus-visible) { 
 html body main#main .advr-page .advd-block details p { margin: 16px 0 0; }
 
 /* The archive is reading content, followed by an unframed newsletter invitation. */
-html body main#main .advr-page :is(.advd-chapters, .advd-conversations) { margin-top: 48px; }
-html body main#main .advr-page .advd-chapter-list { margin: 24px 0 36px; padding: 0; list-style: none; }
-html body main#main .advr-page .advd-chapter-list li { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px 0; border-top: 1px solid var(--color-dream-200); }
-html body main#main .advr-page .advd-chapter-list .btn-teal { flex: 0 0 auto; }
+html body main#main .advr-page :is(.advd-conversations) { margin-top: 48px; }
 
 /* All existing quotes remain visible in a tall masonry wall, including on phones. */
 html body main#main .advr-page .av-quotes { padding-top: 16px; }
@@ -227,7 +224,6 @@ html body main#main .advr-page .advi-pattern-label { color: var(--color-dream-50
   html body main#main .advr-page .advd-steps { grid-template-columns: minmax(0, 1fr); }
   html body main#main .advr-page .advd-siblings { gap: 8px; }
   html body main#main .advr-page .advd-siblings a { padding: 8px 12px; font-size: 13px; }
-  html body main#main .advr-page .advd-chapter-list li { flex-direction: column; align-items: flex-start; }
   html body main#main .advr-page .av-wall { columns: 1; }
   html body main#main .advr-page .advd-foundr-band { padding-block: 48px calc(150px + 64px); }
   html body main#main .advr-page .advi-comparison :is([role="columnheader"], [role="cell"]) { padding: 16px 8px; font-size: 14px; }

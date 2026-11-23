@@ -116,8 +116,6 @@ html body main#main .ty-guide .r3-inline-link:is(:hover, :focus-visible) { color
 }
 html body main#main .ty-guide > .btn-teal { color: var(--color-dream-500); white-space: normal; text-align: center; }
 html body main#main .guide-teaser { margin: 20px 0 0; font-size: 16px; color: var(--color-dream-500); }
-.nl-chapter-download { display: block; margin-top: 8px; font-size: 16px; text-decoration: underline; text-underline-offset: 4px; }
-.nl-chapter-download:is(:hover, :focus-visible) { color: var(--color-grass-500); text-decoration-thickness: 3px; }
 
 @media (max-width: 600px) {
   .sq-band { padding: 36px 22px; }

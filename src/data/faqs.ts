@@ -193,7 +193,7 @@ export const faqCategories: FaqCategory[] = [
         id: "clarityvalue-shift",
         q: "What is the ClarityValue Shift™?",
         a: [
-          "The ClarityValue Shift™ is the Stage 1 engine: See → Interrupt → Choose → Reset. We stop the 'doom spiral', separate story vs reality, interrupt the patterns driving the real issue (self-talk → emotion → action), and help you reset so the shift integrates long-term. See our [1‑page ClarityValue Shift™](https://drive.google.com/file/d/1NjBwM9TWxTJDUIsUGQ0pTLaTnigAHmli/view).",
+          "The ClarityValue Shift™ is the Stage 1 engine: See → Interrupt → Choose → Reset. We stop the 'doom spiral', separate story vs reality, interrupt the patterns driving the real issue (self-talk → emotion → action), and help you reset so the shift integrates long-term. See our [1‑page ClarityValue Shift™](https://drive.google.com/file/d/1Joh1osiFsSDeJwGpua1QGtllXv7-WF5C/view).",
         ],
       },
       // [SEB]

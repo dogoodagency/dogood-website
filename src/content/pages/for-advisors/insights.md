@@ -18,9 +18,7 @@ Advisors rarely hear from each other. We talk with many of them. Here we share t
 </article>
 <article class="resource-card">
 <h2>Before and After the Sale</h2>
-<p>A book for founders on the inner side of selling, told through real, anonymized stories. We are writing it in the open: from 15 December, a new chapter arrives in our newsletter.</p>
-<button class="btn-outline" type="button" disabled aria-disabled="true">First chapter 15 December</button>
-<a href="/newsletter">Read the chapters in the newsletter →</a>
+<p>A book for founders on the inner side of selling, told through real, anonymized stories.</p>
 </article>
 <article class="resource-card">
 <h2>Advisor voices</h2>

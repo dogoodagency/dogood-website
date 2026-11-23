@@ -27,7 +27,7 @@ via ClarityValue Shift™
 
 How it works: See → Interrupt → Choose → Reset
 
-<a class="btn-teal" href="https://drive.google.com/file/d/1NjBwM9TWxTJDUIsUGQ0pTLaTnigAHmli/view" target="_blank" rel="noopener">ClarityValue Shift™ (1‑page)</a>
+<a class="btn-teal" href="https://drive.google.com/file/d/1Joh1osiFsSDeJwGpua1QGtllXv7-WF5C/view" target="_blank" rel="noopener">ClarityValue Shift™ (1‑page)</a>
 
 Stage 1 is a focused reset around self, patterns, values, and immediate structure.
 

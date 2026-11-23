@@ -666,7 +666,7 @@ body:has(.advr-page) .footer-wave {
 .advr-card.advr-card--grass:hover, .advr-card.advr-card--grass:focus-visible { border-color: #28dbb0; }
 .advr-card.advr-card--sky:hover, .advr-card.advr-card--sky:focus-visible { border-color: #8b7dae; }
 
-/* "Read the chapters in the newsletter" sits under its card without making that card shorter. */
+
 .advr-cardwrap { position: relative; }
 .advr-under {
   position: absolute;

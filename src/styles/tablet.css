@@ -586,7 +586,6 @@
   html body main#main .advr-page .advd-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   html body main#main .advr-page .advd-steps > :last-child:nth-child(odd) { grid-column: 1 / -1; }
   html body main#main .advr-page .av-wall { --av-columns: 2; }
-  html body main#main .advr-page .advd-chapter-list li { flex-wrap: wrap; }
   html body main#main .advr-page .advi-comparison { --comparison-padding: 18px 16px; }
   html body main#main .advr-page .advi-patterns { grid-template-columns: minmax(0, 1fr); }
   html body main#main .advr-page .advd-foundr-band .fl--home .fl-panel { padding: 32px 28px; }

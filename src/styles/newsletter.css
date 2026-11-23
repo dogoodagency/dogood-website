@@ -32,15 +32,6 @@ html:has(.nl-page) {
   display: none !important;
 }
 
-/* Anchors: keep the sticky header off the headings. */
-#note,
-#questions,
-#book,
-#signup,
-#chapters {
-  scroll-margin-top: 110px;
-}
-
 /* ---------- Hero ---------- */
 
 .nl-hero {
@@ -481,71 +472,6 @@ html:has(.nl-page) {
   color: var(--nl-pink);
 }
 
-/* ---------- Chapters ---------- */
-
-.nl-chapters {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin: 32px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.nl-chapter {
-  display: grid;
-  grid-template-columns: 32px minmax(0, 1fr) auto;
-  gap: 12px;
-  align-items: baseline;
-  padding: 20px 28px;
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 10px 36px rgba(42, 11, 79, 0.07);
-}
-
-.nl-chapter-soon {
-  grid-template-columns: 32px minmax(0, 1fr);
-}
-
-.nl-chapter-num {
-  color: var(--nl-ink);
-  font-size: 18px;
-  font-weight: 800;
-  line-height: 1.35;
-}
-
-.nl-chapter-title {
-  min-width: 0;
-  color: var(--nl-ink);
-  font-size: 18px;
-  font-weight: 800;
-  line-height: 1.35;
-  overflow-wrap: break-word;
-}
-
-.nl-chapter-title a {
-  color: inherit;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.nl-chapter-title a:hover {
-  color: var(--nl-pink);
-}
-
-.nl-chapter-date {
-  color: #5a3f78;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.4;
-  text-align: right;
-}
-
-.nl-chapter-soon {
-  border: 1.5px dashed var(--nl-line);
-  box-shadow: none;
-}
-
 /* ---------- Closing ---------- */
 
 .nl-closing {
@@ -649,15 +575,6 @@ html:has(.nl-page) {
     height: 44px;
     font-size: 19px;
   }
-
-  .nl-chapter {
-    grid-template-columns: 32px minmax(0, 1fr);
-  }
-
-  .nl-chapter-date {
-    grid-column: 2;
-    text-align: left;
-  }
 }
 
 @media (max-width: 600px) {
@@ -709,14 +626,6 @@ html:has(.nl-page) {
   .nl-page .nl-well .nl-closing p {
     font-size: 19px;
   }
-
-  #note,
-  #questions,
-  #book,
-  #signup,
-  #chapters {
-    scroll-margin-top: 96px;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -730,7 +639,7 @@ html:has(.nl-page) {
   }
 }
 
-/* ---------- Update 18 Nov 2026 (Seb): centred hero, deeper questions, sign-up image, upcoming chapters ---------- */
+
 
 .nl-hero-inner.nl-hero-center {
   grid-template-columns: minmax(0, 1fr);
@@ -880,43 +789,6 @@ html:has(.nl-page) {
   height: auto;
 }
 
-/* Upcoming chapters, greyed out until they arrive. */
-.nl-chapter-upcoming {
-  grid-template-columns: 32px minmax(0, 1fr) auto;
-  align-items: start;
-  background: transparent;
-  border: 1.5px dashed var(--nl-line);
-  box-shadow: none;
-}
-
-.nl-chapter-upcoming .nl-chapter-num,
-.nl-chapter-upcoming .nl-chapter-title {
-  color: #6b5c93;
-}
-
-.nl-page .nl-well .nl-chapter-about {
-  margin: 6px 0 0;
-  color: #6b5c93;
-  font-size: 16px;
-  line-height: 1.55;
-}
-
-.nl-chapter-upcoming .nl-chapter-date {
-  color: #6b5c93;
-  font-size: 15px;
-  white-space: nowrap;
-}
-
-.nl-page .nl-well .nl-chapters-note {
-  margin: 14px 0 0;
-  color: #6b5c93;
-  font-size: 14px;
-}
-
-.nl-chapter {
-  box-shadow: none;
-}
-
 @media (max-width: 800px) {
   .nl-signup.nl-signup-split {
     grid-template-columns: minmax(0, 1fr);
@@ -925,15 +797,6 @@ html:has(.nl-page) {
   .nl-signup-art {
     order: -1;
     width: min(240px, 70%);
-  }
-
-  .nl-chapter-upcoming {
-    grid-template-columns: 28px minmax(0, 1fr);
-  }
-
-  .nl-chapter-upcoming .nl-chapter-date {
-    grid-column: 2;
-    text-align: left;
   }
 }
 
@@ -974,59 +837,6 @@ html:has(.nl-page) {
   .nl-signup-head {
     grid-column: auto;
   }
-}
-
-/* The chapters: rows alternate DREAM 500 and white, with livelier type, and each date sits in a dotted label
-   (not a link). */
-.nl-page .nl-chapters .nl-chapter {
-  border: 1px solid #c2b7dd;
-  background: #fff;
-}
-
-.nl-page .nl-chapters .nl-chapter:nth-child(odd) {
-  border-color: #2a0b4f;
-  background: #2a0b4f;
-}
-
-.nl-page .nl-chapters .nl-chapter .nl-chapter-num,
-.nl-page .nl-chapters .nl-chapter .nl-chapter-title {
-  color: #2a0b4f;
-}
-
-.nl-page .nl-well .nl-chapters .nl-chapter .nl-chapter-about {
-  color: #4a3a5c;
-}
-
-.nl-page .nl-chapters .nl-chapter:nth-child(odd) .nl-chapter-num {
-  color: #28dbb0;
-}
-
-.nl-page .nl-chapters .nl-chapter:nth-child(odd) .nl-chapter-title {
-  color: #fff;
-}
-
-.nl-page .nl-well .nl-chapters .nl-chapter:nth-child(odd) .nl-chapter-about {
-  color: #e6defc;
-}
-
-.nl-page .nl-chapters .nl-chapter:nth-child(even) .nl-chapter-num {
-  color: #ea1557;
-}
-
-.nl-page .nl-chapters .nl-date-pill {
-  display: inline-block;
-  padding: 6px 14px;
-  border: 2px dotted #ea1557;
-  border-radius: 999px;
-  color: #c10e46;
-  font-size: 14px;
-  font-weight: 800;
-  white-space: nowrap;
-}
-
-.nl-page .nl-chapters .nl-chapter:nth-child(odd) .nl-date-pill {
-  border-color: #28dbb0;
-  color: #28dbb0;
 }
 
 /* ===== 19 Nov 2026 14:55 (Seb) ===== */
@@ -1176,21 +986,6 @@ html:has(.nl-page) {
   .nl-page #signup .nl-well :is(p, label):not(.nl-print) { font-size: 15px; }
   .nl-page #signup .nl-print { font-size: 12px; max-width: none; }
 
-  /* The chapters: no numbers, text at the card padding; date as a centred pill. */
-  .nl-page .nl-chapters .nl-chapter .nl-chapter-num { display: none; }
-  .nl-page .nl-chapters .nl-chapter { grid-template-columns: minmax(0, 1fr) !important; padding-left: 22px; padding-right: 22px; }
-  .nl-page .nl-chapters .nl-chapter > * { grid-column: 1 / -1 !important; margin-left: 0; }
-  .nl-page .nl-chapters .nl-date-pill {
-    justify-self: center;
-    align-self: center;
-    width: auto;
-    margin-inline: auto;
-    padding: 8px 18px;
-    border-style: solid;
-    text-align: center;
-  }
-  .nl-page .nl-chapters-note { display: none; }
-
   /* Ready for more than reading: left aligned, one size. */
   .nl-page .nl-closing { text-align: left; }
   .nl-page .nl-well .nl-closing p,
@@ -1219,8 +1014,6 @@ html:has(.nl-page) {
   html body .nl-page .nl-question { padding: 22px 18px; }
   /* Keep reading: envelope 50% bigger. */
   html body .nl-signup-split .nl-signup-art { width: min(300px, 100%); }
-  /* Arrival dates: dotted outline. */
-  html body .nl-page .nl-chapters .nl-date-pill { border: 1.5px dotted currentColor !important; }
 }
 
 /* Seb round 2, 22 Nov 2026: heading, signup alignment and closing space. */
@@ -1304,5 +1097,19 @@ html:has(.nl-page) {
   .nl-page .nl-closing {
     margin-top: 56px;
     padding-block: 48px;
+  }
+}
+
+#note,
+#questions,
+#signup {
+  scroll-margin-top: 110px;
+}
+
+@media (max-width: 600px) {
+  #note,
+  #questions,
+  #signup {
+    scroll-margin-top: 96px;
   }
 }

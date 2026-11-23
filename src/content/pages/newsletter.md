@@ -19,7 +19,7 @@ Leave your email and we'll send the guide when it is ready, along with our notes
 ## What you get
 
 - **The guide: "The first 90 days after the sale: 7 questions to ask before your next move."** Seven questions to sit with before you commit the next stretch of your life to a new project, role, or plan. Not a programme, and not a pitch.
-- **Researched notes on life after the sale, every two weeks.** Honest writing on what comes after the company, not a digest of business tips. The first issues go out on 15 December, 12 January and 26 January.
+- **Researched notes on life after the sale, every two weeks.** Honest writing on what comes after the company, not a digest of business tips.
 
 ---
 
