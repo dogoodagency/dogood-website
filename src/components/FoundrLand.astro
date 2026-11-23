@@ -12,19 +12,28 @@
  *                   wheel animated (the wheel is redrawn in SVG over the phone image; the badge sits on top).
  *       "exit"    – The Exit Prep: compact blue card, a laptop showing the app's Day 1 question; the rating moves.
  *       "reset"   – The Reset: compact mint card, the seven days of the journey lighting up one after another.
- *       "advisor" – Advisor Center: compact cream card, Introduce → Reflect → Reconnect with a moving consent dot.
+ *       "advisor" – Advisor Center: image and palette variants with Introduce → Reflect → Reconnect.
  *       "small"   – one strip with the logo, one line and a link (Client tools, Advisor insights).
  */
 import FoundrLandLink from "./FoundrLandLink.astro";
 
 interface Props {
   kind: "home" | "exit" | "reset" | "advisor" | "small";
+  advisorImage?: "phone" | "report" | "question" | "progress";
+  advisorBackground?: "dream25" | "sky25" | "play200" | "grass25";
   /** The one line, for kind "small". */
   line?: string;
   /** Link label for kind "small". */
   linkLabel?: string;
 }
-const { kind, line } = Astro.props;
+const { kind, line, advisorImage = "phone", advisorBackground = "dream25" } = Astro.props;
+const advisorImages = {
+  phone: { src: "/media/foundrland/foundrland-app-phone", width: 340, height: 498 },
+  report: { src: "/media/r4/fl-desktop-report", width: 720, height: 642 },
+  question: { src: "/media/r4/fl-desktop-question", width: 720, height: 450 },
+  progress: { src: "/media/r4/fl-desktop-progress", width: 720, height: 628 },
+};
+const advisorArt = advisorImages[advisorImage];
 const uid = `fl-${kind}`;
 
 // The clarity wheel on the phone (home). Coordinates are in the 680 × 996 pixels of the phone image @2x:
@@ -80,7 +89,7 @@ const days = [
       <div class="fl-actions"><FoundrLandLink /></div>
     </aside>
   ) : (
-    <section class:list={["fl", `fl--${kind}`]} aria-labelledby={uid}>
+    <section class:list={["fl", `fl--${kind}`, kind === "advisor" && `fl--${advisorBackground}`, kind === "advisor" && `fl--art-${advisorImage}`]} aria-labelledby={uid}>
       <div class="fl-panel">
         {kind === "home" && (
           <>
@@ -133,6 +142,14 @@ const days = [
             {kind === "home" && <a class="fl-advisor-btn" href="/advisor-center">Advisor Center</a>}
             <FoundrLandLink />
           </div>
+          {kind === "advisor" && <>
+            <ol class="fl-advisor-steps">
+              <li><span class="fl-advisor-n">01</span><strong>Introduce</strong><span>A simple invitation</span></li>
+              <li><span class="fl-advisor-n">02</span><strong>Reflect</strong><span>The founder’s private journey</span></li>
+              <li><span class="fl-advisor-n">03</span><strong>Reconnect</strong><span>Only with their consent</span></li>
+            </ol>
+            <p class="fl-by">Developed by DoGood Agency</p>
+          </>}
         </div>
 
         <div class="fl-visual" aria-hidden="true">
@@ -212,25 +229,9 @@ const days = [
           )}
 
           {kind === "advisor" && (
-            <div class="fl-flow">
-              <img class="fl-advisor-preview" src="/media/foundrland/foundrland-app-phone@1x.webp" width="340" height="498" alt="" loading="lazy" decoding="async" />
-              <ol class="fl-flow-steps">
-                <li class="fl-flow-step fl-flow-step--1"><span class="fl-flow-n">01</span><span class="fl-flow-t">Introduce</span><span class="fl-flow-s">A simple invitation</span></li>
-                <li class="fl-flow-step fl-flow-step--2"><span class="fl-flow-n">02</span><span class="fl-flow-t">Reflect</span><span class="fl-flow-s">The founder’s private journey</span></li>
-                <li class="fl-flow-step fl-flow-step--3"><span class="fl-flow-n">03</span><span class="fl-flow-t">Reconnect</span><span class="fl-flow-s">Only with their consent</span></li>
-              </ol>
-              <span class="fl-flow-line"><span class="fl-flow-dot" /></span>
-              <div class="fl-flow-share">
-                <p class="fl-flow-share-cap">Shared with you</p>
-                <ul>
-                  <li class="is-on">Clarity summary</li>
-                  <li class="is-on">Chosen actions</li>
-                  <li>Private reflections</li>
-                </ul>
-              </div>
-            </div>
+            <img class="fl-advisor-preview" data-arta="A2" src={`${advisorArt.src}@1x.webp`} srcset={`${advisorArt.src}@1x.webp 1x, ${advisorArt.src}@2x.webp 2x`} width={advisorArt.width} height={advisorArt.height} alt="" aria-hidden="true" loading="lazy" decoding="async" />
           )}
-          <p class="fl-by">Developed by DoGood Agency</p>
+          {kind !== "advisor" && <p class="fl-by">Developed by DoGood Agency</p>}
         </div>
       </div>
     </section>

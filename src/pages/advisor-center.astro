@@ -6,6 +6,8 @@ import AdvisorNav from "../components/AdvisorNav.astro";
 import { edgeAbove } from "../data/edge-line";
 import TestimonialWall from "../components/TestimonialWall.astro";
 import FoundrLand from "../components/FoundrLand.astro";
+import SevenQuestionsBand from "../components/SevenQuestionsBand.astro";
+import AdvisorPartnership from "../components/AdvisorPartnership.astro";
 
 const title = "Advisor Center: personal coaching before and after the sale | DoGood";
 const description =
@@ -61,11 +63,7 @@ const quotes = [
     <section class="adv-band adv-band--white" aria-label="Introduction">
       <div class="adv-well">
         <AdvisorNav current="overview" />
-        <div class="adv-intro">
-          <p><a href="/advisor-center/referrals">See how a referral works →</a></p>
-          <p>You get the business and money ready. We get the founder ready, so deals don't stall and life after has a&nbsp;plan.</p>
-          <p>You stay the trusted advisor. We provide a private place for the part that is not financial or legal: helping them see what they actually want in life after&nbsp;exit.</p>
-        </div>
+        <AdvisorPartnership />
       </div>
     </section>
 
@@ -91,9 +89,14 @@ const quotes = [
           <p>Real words from our conversations with the advisors who work with founders.</p>
         </div>
         <TestimonialWall items={quotes.map((q) => ({ quote: q.text, name: q.name }))} short label="In their words" />
+      </div>
+    </section>
+
+    <section class="adv-band adv-band--lilac adv-kind-band" aria-labelledby="adv-kind">
+      <div class="adv-well">
         <!-- Two doors (Seb, 19 Nov 2026) -->
         <div class="adv-doors-intro">
-          <p class="adv-doors-ask">Which kind of advisor are you?</p>
+          <h2 class="adv-doors-ask" id="adv-kind">Which kind of advisor are you?</h2>
         </div>
         <div class="adv-doors">
           <section class="adv-door adv-door--exit" aria-labelledby="adv-door-exit">
@@ -113,25 +116,25 @@ const quotes = [
     </section>
 
     <!-- foundr.land on its own straight white section, set off by a hairline. -->
-    <div class="adv-fl-band"><FoundrLand kind="advisor" /></div>
+    <div class="adv-fl-band"><FoundrLand kind="advisor" advisorImage="phone" advisorBackground="dream25" /></div>
 
 
-    <section class="adv-band adv-band--white" aria-labelledby="adv-toolkit">
-      <div class="adv-well">
-        <div class="adv-card">
+    <SevenQuestionsBand variant="advisor" layout="preview">
+      <Fragment slot="intro">
           <p class="adv-card-badge">Free toolkit</p>
-          <h2 class="adv-section-title" id="adv-toolkit">Something useful to hand your client, at no cost</h2>
+          <h2 class="adv-section-title" id="seven-questions-advisor-title">Something useful to hand your client, at no cost</h2>
           <div class="adv-prose">
             <p>Advisors told us the same thing again and again: their clients have no plan for life after the sale, and there is nothing to hand them that opens the personal conversation. So we are building free tools for exactly that. No sign-up for you, and no strings.</p>
             <p>First comes the Founder Readiness Check. You send it with your own link. Your client gets a private report. If they say yes, you get a copy.</p>
           </div>
+      </Fragment>
+      <Fragment slot="actions">
           <div class="adv-card-actions">
             <a class="btn-teal" href="/advisor-center/client-tools">See the free toolkit</a>
             <a class="r3-inline-link" href="/advisor-center/client-tools">The 7 questions, for your clients →</a>
           </div>
-        </div>
-      </div>
-    </section>
+      </Fragment>
+    </SevenQuestionsBand>
 
     <!-- Recommend an advisor (Seb, 19 Nov 2026) -->
     <section class="adv-band adv-band--white" aria-labelledby="adv-recommend">

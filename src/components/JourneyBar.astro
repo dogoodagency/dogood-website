@@ -66,7 +66,10 @@ let roadOn = `M${X(6)} ${Y(6)}` + seg(6, 7) + ` C ${(X(7) + endX) / 2} ${Y(7)}, 
 
 <nav class="jr" data-jr aria-label="Our 7-phase customer life journey, plus an optional 8th, step by step">
   <ol class="jr-phases" aria-hidden="true">
-    {phases.map((p) => <li class:list={["jr-phase", `jr-phase--${p.tone}`]} style={`--from:${p.from};--to:${p.to}`}>{p.label}</li>)}
+    {phases.map((p) => <li class:list={["jr-phase", `jr-phase--${p.tone}`]} style={`--from:${p.from};--to:${p.to}`}>
+      {p.tone === "heart" && <span class="jr-beyond-segments"><span></span><span></span><span></span></span>}
+      <span class="jr-phase-label">{p.label}</span>
+    </li>)}
   </ol>
 
   <div class="jr-stage">

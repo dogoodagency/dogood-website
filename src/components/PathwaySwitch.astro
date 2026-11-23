@@ -1,10 +1,11 @@
 ---
 // The two entry points share a panel, with the context previously in “Which door is mine?”.
 ---
-<div class="pathway-switch" data-pathway-switch>
+<div class="pathway-switch" data-pathway-switch data-current="before">
   <div class="pathway-track" role="tablist" aria-label="Where are you in the sale?">
-    <button type="button" id="pathway-before-tab" role="tab" aria-selected="true" aria-controls="pathway-before">I haven't sold yet</button>
-    <button type="button" id="pathway-after-tab" role="tab" aria-selected="false" aria-controls="pathway-after" tabindex="-1">I've sold</button>
+    <button type="button" id="pathway-before-tab" role="tab" aria-selected="true" aria-controls="pathway-before"><span class="pathway-tab-kicker">Before the sale</span><span class="pathway-tab-title">I haven't sold yet</span></button>
+    <button type="button" id="pathway-after-tab" role="tab" aria-selected="false" aria-controls="pathway-after" tabindex="-1"><span class="pathway-tab-kicker">After the sale</span><span class="pathway-tab-title">I've sold</span></button>
+    <span class="pathway-knob" aria-hidden="true"></span>
   </div>
   <section class="pathway-panel pathway-panel--before" id="pathway-before" role="tabpanel" aria-labelledby="pathway-before-tab" tabindex="0">
     <p class="pathway-kicker">Before the sale</p>
@@ -15,10 +16,8 @@
       <li>Fully remote, with support between sessions</li>
       <li>Ideally 12 to 18 months before the sale</li>
     </ul>
-    <div class="pathway-context">
-      <p><strong>Not sure you want to sell?</strong> Deciding is part of the work.</p>
-      <p><strong>Haven't signed anything yet?</strong> The personal side is easiest to shape before the deal sets the timeline.</p>
-      <p><strong>In a process, under LOI or facing an earnout?</strong> The Exit Prep is built for that stretch too, alongside your advisors.</p>
+    <div class="pathway-context pathway-context--callout">
+      <p><strong>In a process, under LOI or facing an earnout?</strong> The Exit Prep™ is built for that stretch too, alongside your advisors.</p>
     </div>
     <a class="btn-teal" href="/exit-prep">Start with The Exit Prep™</a>
   </section>
@@ -44,6 +43,7 @@
   document.querySelectorAll<HTMLElement>("[data-pathway-switch]").forEach((root) => {
     const tabs = [...root.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
     const choose = (index: number) => {
+      root.dataset.current = index === 0 ? "before" : "after";
       tabs.forEach((tab, i) => {
         tab.setAttribute("aria-selected", String(i === index));
         tab.tabIndex = i === index ? 0 : -1;

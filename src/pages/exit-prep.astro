@@ -19,17 +19,23 @@ const tint = "#F5F2FF";
 const white = "#ffffff";
 const heroEdge = edgeAbove("#2A0B4F");
 const bandEdge = edgeAbove(tint);
-const closingTint = "#FEFEF3"; // PLAY 100
+const closingTint = "#FEFABE"; // PLAY 500
+const outcomeTint = "#F3FFFB"; // GRASS 25
 
 /** Wavy join between two bands: `from` is the band above, `to` the band below. */
 function wave(from: string, to: string) {
-  const above = from === tint ? "tint" : "white";
-  return `<div class="ep-divider ep-divider--${above}" aria-hidden="true"><svg style="--wave-edge:${bandEdge}" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${to}" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path><path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path></svg></div>`;
+  return `<div class="ep-divider" style="background:${from}" aria-hidden="true"><svg style="--wave-edge:${bandEdge}" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${to}" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path><path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path></svg></div>`;
 }
 const toTint = wave(white, tint);
 const toWhite = wave(tint, white);
 
 const places = ["Not sure you want to sell at all.", "Thinking about selling.", "In a process or under LOI.", "An earnout ahead."];
+const outcomes = [
+  { icon: "compass", title: "Know what they want" },
+  { icon: "ring", title: "Decide with confidence again" },
+  { icon: "sunset", title: "Look forward to the chapter after the company", detail: "A picture of what comes next." },
+  { icon: "wave", title: "A clearer decision about the sale", detail: "A calmer way into the sale itself." },
+];
 
 // Sound bites from real calls (Call Language Log, non-private rows, lightly cleaned). Names are stand-ins (first name + initial, Seb 19 Nov 2026); the page says they are changed.
 // The first three were already here; three added 19 Nov 2026 (Q005, Q092, Q132).
@@ -142,14 +148,23 @@ const faqJson = {
       </div>
     </section>
 
+    <Fragment set:html={wave(white, outcomeTint)} />
+
     <section class="ep-band ep-outcomes-band" aria-labelledby="ep-outcomes">
-        <div class="ep-well ep-outcome">
+        <div class="ep-well ep-outcome ep-outcome-content">
           <h2 id="ep-outcomes">The outcomes</h2>
-          <p class="ep-outcome-statement">Founders are rarely short of intelligence. What stalls them is a lack of clarity. After six weeks, most know what they want, decide with confidence again, and look forward to the chapter after the company: a clearer decision about the sale, a picture of what comes next, and a calmer way into the sale itself.</p>
+          <p class="ep-outcome-statement">Founders are rarely short of intelligence. What stalls them is a lack of clarity.</p>
+          <ul class="ep-outcome-tiles">
+            {outcomes.map((item) => <li>
+              <PartnershipIcon name={item.icon} />
+              <h3>{item.title}</h3>
+              {item.detail && <p>{item.detail}</p>}
+            </li>)}
+          </ul>
         </div>
     </section>
 
-    <Fragment set:html={toTint} />
+    <Fragment set:html={wave(outcomeTint, tint)} />
 
     <section class="ep-band ep-band-tint" aria-labelledby="ep-familiar">
       <div class="ep-well ep-well-top">
@@ -181,8 +196,9 @@ const faqJson = {
     <FoundrLand kind="exit" />
 
     <!-- Each final section has its own band. -->
+    <Fragment set:html={wave(white, tint)} />
 
-    <section class="ep-band" aria-labelledby="ep-faq-label">
+    <section class="ep-band ep-band-tint ep-faq-band" aria-labelledby="ep-faq-label">
       <div class="ep-well ep-well-top">
         <div class="ep-faq-wrap">
         <p class="ep-eyebrow ep-eyebrow-dark" id="ep-faq-label">FAQ</p>
@@ -203,10 +219,18 @@ const faqJson = {
     </section>
 
 
+    <Fragment set:html={wave(tint, closingTint)} />
+
     <section class="ep-band ep-contact-band" aria-label="Contact us">
       <div class="ep-well ep-contact-close">
-        <WriteToUs />
-        <p class="guide-teaser"><a class="r3-inline-link" href="/seven-questions">What to take into the first 90 days after the sale: The 7 questions →</a></p>
+        <WriteToUs variant="band" />
+        <a class="ep-closing-guide" href="/newsletter">
+          <span class="ep-guide-pages" aria-hidden="true">
+            <img data-arta="A6" src="/media/seven-questions/seven-questions-cover@1x.webp" srcset="/media/seven-questions/seven-questions-cover@1x.webp 1x, /media/seven-questions/seven-questions-cover@2x.webp 2x" width="300" height="424" loading="lazy" alt="" aria-hidden="true" />
+            <img data-arta="A6" src="/media/r4/seven-questions-inside-1@1x.webp" srcset="/media/r4/seven-questions-inside-1@1x.webp 1x, /media/r4/seven-questions-inside-1@2x.webp 2x" width="300" height="424" loading="lazy" alt="" aria-hidden="true" />
+          </span>
+          <span>What to take into the first 90 days after the sale: The 7 questions →</span>
+        </a>
       </div>
     </section>
   </article>
