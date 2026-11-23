@@ -191,7 +191,7 @@ const organization = {
       Skip to content
     </a>
     {!bare && <Header />}
-    <main id="main">
+    <main id="main" data-path={isHome ? "/" : Astro.url.pathname.replace(/\/+$/, "").replace(/\.html$/, "") || "/"}>
       <slot />
     </main>
     {!bare && <Footer meetFunnel={meetFunnel} edge={footerEdge} />}
