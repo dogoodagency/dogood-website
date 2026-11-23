@@ -10,6 +10,7 @@ import Base from "../layouts/Base.astro";
 import Wave from "./Wave.astro";
 import AdvisorNav from "./AdvisorNav.astro";
 import FoundrLand from "./FoundrLand.astro";
+import AdvisorToolVisual from "./AdvisorToolVisual.astro";
 import { edgeAbove } from "../data/edge-line";
 
 interface Block {
@@ -47,6 +48,7 @@ const siblings = section === "tools" ? [
   { slug: "advisor-voices", label: "Advisor voices" },
 ];
 const sectionPath = section === "tools" ? "client-tools" : "insights";
+const toolVisual = path.endsWith("/signals-guide") ? "signals" : path.endsWith("/life-after-the-sale-planner") ? "planner" : undefined;
 const back = section === "tools"
   ? { href: "/advisor-center/client-tools", label: "All free tools", crumb: "Free tools" }
   : { href: "/advisor-center/insights", label: "All advisor insights", crumb: "Advisor insights" };
@@ -60,7 +62,7 @@ const back = section === "tools"
   footerStrip={tint}
   footerEdge={edgeAbove(tint)}
 >
-  <article class:list={["adv-page", "advr-page", "advd-page", `advd--${tone}`]} style={`--advr-tint:${tint}`}>
+  <article class:list={["adv-page", "advr-page", "advd-page", section === "tools" && "advd-tools-page", `advd--${tone}`]} style={`--advr-tint:${tint}`}>
     <header class="advr-hero">
       <div class="advr-hero-inner">
         <p class="advr-eyebrow">Advisor Center · {back.crumb}</p>
@@ -89,6 +91,7 @@ const back = section === "tools"
 
     <section class="advr-band advr-band-tint" aria-label={name}>
       <div class="advr-well advd-well">
+        {section === "tools" && toolVisual && <AdvisorToolVisual tool={toolVisual} detail />}
         {download && <p class="advd-download"><a class="btn-teal btn-dream" href={download.href} target="_blank" rel="noopener">{download.label}</a></p>}
         <slot name="before-blocks" />
         {
@@ -115,6 +118,8 @@ const back = section === "tools"
       </div>
     </section>
 
-    <div class="advd-foundr-band"><FoundrLand kind={section === "tools" ? "home" : "advisor"} /></div>
+    <div class="advd-foundr-band">
+      {section === "tools" ? <FoundrLand kind="advisor" advisorImage="question" advisorBackground="play200" /> : <FoundrLand kind="advisor" />}
+    </div>
   </article>
 </Base>

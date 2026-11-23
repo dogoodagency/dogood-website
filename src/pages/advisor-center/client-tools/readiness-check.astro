@@ -1,5 +1,6 @@
 ---
 import AdvisorResourcePage from "../../../components/AdvisorResourcePage.astro";
+import AdvisorToolVisual from "../../../components/AdvisorToolVisual.astro";
 ---
 
 <AdvisorResourcePage
@@ -42,17 +43,11 @@ import AdvisorResourcePage from "../../../components/AdvisorResourcePage.astro";
     <h2 id="readiness-preview">A look inside the check</h2>
     <p>A personal baseline, then a private summary. These screens use example answers.</p>
     <figure>
-      <picture>
-        <source media="(max-width: 599px)" srcset="/media/readiness-check/mobile-question-framed@1x.webp 1x, /media/readiness-check/mobile-question-framed@2x.webp 2x" width="514" height="1062" />
-        <img src="/media/readiness-check/desktop-question-framed@1x.webp" srcset="/media/readiness-check/desktop-question-framed@1x.webp 1x, /media/readiness-check/desktop-question-framed@2x.webp 2x" width="1552" height="1056" alt="FOUNDR.land personal baseline, question 3 of 10: Relationships and Belonging, with a rating of 6 selected." decoding="async" />
-      </picture>
+      <AdvisorToolVisual tool="readiness" detail />
       <figcaption>The check: a moment to reflect on connection beyond the business role.</figcaption>
     </figure>
     <figure>
-      <picture>
-        <source media="(max-width: 599px)" srcset="/media/readiness-check/mobile-report-framed@1x.webp 1x, /media/readiness-check/mobile-report-framed@2x.webp 2x" width="514" height="1916" />
-        <img src="/media/readiness-check/desktop-report-framed@1x.webp" srcset="/media/readiness-check/desktop-report-framed@1x.webp 1x, /media/readiness-check/desktop-report-framed@2x.webp 2x" width="1552" height="1440" alt="FOUNDR.land My Insights: an approved private summary of the founder's reflections and next step, with a Print or save my private PDF option." loading="lazy" decoding="async" />
-      </picture>
+      <img data-arta="A2" src="/media/r4/fl-desktop-report@1x.webp" srcset="/media/r4/fl-desktop-report@1x.webp 1x, /media/r4/fl-desktop-report@2x.webp 2x" width="720" height="642" alt="FOUNDR.land My Insights: an approved private summary of the founder's reflections and next step, with a Print or save my private PDF option." loading="lazy" decoding="async" />
       <figcaption>The private summary: the founder reviews their own words and chooses what to share.</figcaption>
     </figure>
   </section>
