@@ -16,11 +16,9 @@ html body main .page-apply .apl-card { box-sizing: border-box; width: 100%; max-
 .apl-facts { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 0 0 24px; padding: 0; list-style: none; }
 .apl-facts li { display: inline-flex; align-items: center; gap: 8px; max-width: 100%; padding: 8px 14px; border: 1px solid var(--color-grass-300); border-radius: 999px; background: var(--color-grass-50); color: var(--color-grass-700); font-size: 16px; font-weight: 800; }
 .page-apply .apl-line { margin: 0 0 28px; font-size: 18px; line-height: 1.6; }
-.page-apply .apl-card .btn-with-caption { align-items: center; }
+.page-apply .apl-card .btn-with-caption { align-items: center; margin-inline: auto; }
 html body main .page-apply .apl-card a.btn-apply { display: inline-flex; align-items: center; justify-content: center; gap: 16px; max-width: 100%; min-height: 64px !important; padding: 16px 52px 16px 24px !important; font-size: 20px; }
 html body main .page-apply .apl-card a.btn-apply:is(:hover, :focus-visible) { padding: 16px 24px 16px 52px !important; }
-.apl-apply-arrow { display: inline-block; transition: transform .2s ease; }
-.page-apply .btn-apply:is(:hover, :focus-visible) .apl-apply-arrow { transform: translateX(6px); }
 .page-apply .apl-limit { margin: 14px 0 0; color: var(--color-dream-400); font-size: 14px; }
 .apl-process { max-width: 1080px; margin: 64px auto 0; color: var(--color-dream-500); }
 .page-apply .apl-process h2 { margin: 0 0 32px; color: var(--color-dream-500); font-size: 30px; font-weight: 900; text-align: center; }
@@ -36,13 +34,14 @@ html body main .page-apply .apl-card a.btn-apply:is(:hover, :focus-visible) { pa
 .apl-process--waiting.is-visible .apl-next li { transition: opacity .6s ease, transform .6s ease; }
 .apl-process--waiting.is-visible .apl-next li:nth-child(2) { transition-delay: .2s; }
 .apl-process--waiting.is-visible .apl-next li:nth-child(3) { transition-delay: .4s; }
-html body main .page-apply #case-j.apl-case-wrap { box-sizing: border-box; width: 100%; max-width: none; margin: 0; padding: 64px var(--pad) 150px; background: var(--color-white); }
+/* The shared footer wave overlaps by 80px (40px on phones): leave 150px clear. */
+html body main .page-apply #case-j.apl-case-wrap { box-sizing: border-box; width: 100%; max-width: none; margin: 0; padding: 64px var(--pad) calc(150px + 80px); background: var(--color-white); }
 html body main .page-apply #case-j.apl-case-wrap article.case-compact { display: flex; flex-direction: column; align-items: center; gap: 24px; width: 100%; max-width: 900px; margin: 0 auto; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; text-align: center; }
 html body main .page-apply #case-j.apl-case-wrap .portrait { width: 220px; height: auto; margin-inline: auto; }
 html body main .page-apply #case-j.apl-case-wrap article.case-compact > div { min-width: 0; padding: 0; background: transparent; }
 html body main .page-apply #case-j.apl-case-wrap :is(h3, p) { text-align: center; }
 html body main .page-apply #case-j.apl-case-wrap .t-kicker { color: var(--color-grass-700); }
-html body main .page-apply #case-j.apl-case-wrap :is(.btn-stack, .btn-with-caption) { align-items: center; justify-content: center; }
+html body main .page-apply #case-j.apl-case-wrap :is(.btn-stack, .btn-with-caption) { align-items: center; justify-content: center; margin-inline: auto; }
 @media (min-width: 1366px) {
   .page-apply .apl-art { position: absolute; left: 0; top: 50%; width: min(300px, calc((100% - 720px) / 2 - 24px)); transform: translateY(-50%); }
 }
@@ -62,9 +61,10 @@ html body main .page-apply #case-j.apl-case-wrap :is(.btn-stack, .btn-with-capti
   .apl-process--waiting:not(.is-visible) .apl-next::before { transform: scaleY(0); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .apl-apply-arrow { transition: none; }
-  .page-apply .btn-apply:is(:hover, :focus-visible) .apl-apply-arrow { transform: none; }
   .apl-process--waiting:not(.is-visible) .apl-next::before { transform: none; }
   .apl-process--waiting:not(.is-visible) .apl-next li { opacity: 1; transform: none; }
   .apl-process--waiting.is-visible .apl-next::before, .apl-process--waiting.is-visible .apl-next li { transition: none; }
+}
+@media (max-width: 599px) {
+  html body main .page-apply #case-j.apl-case-wrap { padding-bottom: calc(150px + 40px); }
 }

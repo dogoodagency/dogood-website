@@ -1,5 +1,48 @@
 /* Round 4 part p9 */
 
+/* W1-1 / H3: size list items explicitly; the legacy phone body rule targets li. */
+html body main#main .sq-band--home :is(.sq-intro, .sq-questions, .sq-questions li, .sq-more) {
+  font-size: 18px;
+}
+/* W1b-1 / H3: beat mobile-rules' important unclassed-list sizing. */
+html body main#main .sq-band--home .sq-questions li { font-size: 18px !important; }
+
+/* W1-2: these round-4 surfaces supersede legacy important tablet frames. */
+html body main#main .page-apply .apl-card { border: 1px solid var(--color-grass-300) !important; }
+html body main#main :is(.hw-page--s1, .hw-page--s2) .hw-case { border: 0 !important; }
+html body main#main .ab-page .ab-band-statements .ab-duo .ab-statement--vision { border: 0 !important; }
+
+/* W1-5 / FT8: picture, status, headline, then copy. Share the spacing with any
+   matching tool cards on detail pages, without reordering insight cards. */
+html body main#main :is(.advr-tools-page, .advd-tools-page) .advr-card :is(.advr-soon, .advr-available) {
+  margin: 0 0 11px !important;
+}
+html body main#main :is(.advr-tools-page, .advd-tools-page) .advr-card h2 { margin: 0 0 16px; margin-top: 0 !important; }
+
+/* W1b-4: enforce the checklist's unframed stage surfaces at every breakpoint.
+   Flow pills (RS8 / BD6), quotes, controls, and focus rings keep their edges. */
+html body main#main .hw-page .hw-stage-panel,
+html body main#main .hw-page .hw-stage-panel .hw-stage-block,
+html body main#main .hw-page .hw-stage-block .hw-includes li,
+html body main#main .hw-page .hw-supports :is(.hw-includes li, .hw-retreat),
+html body main#main .hw-page--s1 :is(.hw-notyet-card, .hw-option-a, .hw-option-b) {
+  border: 0 !important;
+}
+
+/* AC1 / RF2: the navigation and white referral benefits have no frames. */
+html body main#main .adv-page .ahub-card,
+html body main#main .adv-referrals-page .adv-benefits .adv-benefit { border: 0 !important; }
+
+/* FT7: the important legacy tablet frame must use each tool's own color. */
+html body main#main .advr-page.advr-tools-page .advr-card--sky { border-color: var(--color-sky-300) !important; }
+html body main#main .advr-page.advr-tools-page .advr-card--heart { border-color: var(--color-heart-400) !important; }
+html body main#main .advr-page.advr-tools-page .advr-card--grass { border-color: var(--color-grass-400) !important; }
+html body main#main .advr-page.advr-tools-page .advr-card--questions { border-color: var(--color-play-700) !important; }
+
+/* EP1 / SS1: current dark cards supersede earlier important pink frames. */
+html body main#main .ep-exit-prep .ep-places .ep-place:nth-child(n),
+html body main#main .pp-audio .au--full .au-layers li { border: 0 !important; }
+
 /* F2: override the legacy important HEART outline with each card's own color. */
 html body main#main .adv-center-page .adv-aud-card--1 { border-color: var(--color-sky-300) !important; }
 html body main#main .adv-center-page .adv-aud-card--2 { border-color: var(--color-grass-400) !important; }
