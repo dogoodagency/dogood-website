@@ -1,0 +1,152 @@
+/* Round 3 AC, NAV, PW and the one approved RS8 button exception. */
+header.nav .nav-links button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  cursor: pointer;
+}
+header.nav .nav-links button:focus-visible { outline: 2px solid var(--color-grass-500); outline-offset: 2px; }
+header.nav .nav-mega { max-height: calc(100dvh - 120px); overflow-y: auto; }
+header.nav .nav-mega-visual { display: flex; flex-direction: column; align-items: center; gap: 16px; min-width: 0; }
+/* Keep the visible card-to-row gap equal across desktop menus. */
+@media (min-width: 1366px) {
+  header.nav .nav-mega { gap: 40px; }
+  header.nav .nav-mega-visual { width: var(--nav-card-width, 270px); }
+  header.nav .nav-foundr-tile { width: 100%; }
+}
+header.nav #nav-advisors .nav-mega-card { padding: 16px; }
+header.nav #nav-advisors .nav-mega-card :is(picture, img) { object-fit: contain; object-position: center; }
+header.nav .nav-mega-card img { pointer-events: none; }
+header.nav .nav-foundr-tile { display: flex; align-items: center; gap: 12px; width: 100%; max-width: 320px; margin: 0; padding: 12px; border: 1px solid var(--color-heart-500); border-radius: 16px; background: var(--color-white); }
+header.nav .nav-foundr-tile img { width: 96px; height: 120px; object-fit: contain; pointer-events: none; }
+header.nav .nav-foundr-tile figcaption { color: var(--color-dream-500); font-size: 14px; line-height: 1.5; }
+header.nav .nav-mega-links a[href="/pathway"] { background: var(--color-dream-500); color: var(--color-white); }
+header.nav .nav-mega-links a[href="/pathway"] small { color: var(--color-white); }
+header.nav .nav-mega-links a[href="/pathway"]:is(:hover, :focus-visible) { background: var(--color-grass-500); color: var(--color-dream-500); }
+header.nav .nav-mega-links a[href="/pathway"]:is(:hover, :focus-visible) small { color: var(--color-dream-500); }
+
+/* One hero height and one toggle origin across the ten Advisor Center pages. */
+html body main#main .adv-page > :is(.adv-hero, .advr-hero) {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 574px;
+  min-height: 574px;
+  margin-top: -94px;
+  padding-top: 94px;
+}
+html body main#main .adv-page :is(.adv-hero-inner, .advr-hero-inner) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  width: min(1080px, calc(100% - 2 * var(--pad)));
+  margin-inline: auto;
+  padding: 40px 0;
+  gap: 20px;
+  text-align: center;
+}
+html body main#main .adv-page :is(.adv-hero-copy, .adv-hero-copy h1, .adv-hero-copy .adv-lede) { max-width: 100%; text-align: center; margin-inline: auto; }
+html body main#main .adv-page > header > .hero-wave { flex: 0 0 80px; height: 80px; margin-top: auto; }
+html body main#main .adv-page :is(.adv-well, .advr-well, .advd-well):has(.ahub) { width: min(1080px, calc(100% - 2 * var(--pad))); padding: 48px 0; }
+html body main#main .adv-page .advd-well { width: min(1080px, calc(100% - 2 * var(--pad))); max-width: 100%; }
+html body main#main .adv-page .advr-nav { display: block; width: 100%; margin: 0; padding: 0; }
+html body main#main .adv-page .ahub { margin: 0; }
+html body main#main .adv-page .adv-intro { margin-top: 40px; }
+html body main#main .adv-page :is(.adv-aud-card, .adv-door, .adv-card, .adv-recommend, .adv-trial, .fl-panel) { border: 1px solid var(--color-heart-500); }
+html body main#main .adv-page .adv-aud-card { background: var(--color-dream-100); }
+html body main#main .adv-page .adv-door--wealth { background: var(--color-grass-50); }
+html body main#main .adv-page .adv-door--wealth :is(h3, p) { color: var(--color-grass-700); }
+html body main#main .adv-page .fl--advisor { padding-inline: var(--pad); }
+html body main#main .adv-page .fl--advisor .fl-panel { padding: 40px; background: var(--color-play-100); }
+html body main#main .adv-page .fl--advisor :is(.fl-flow-step, .fl-flow-share) { border: 1px solid var(--color-heart-500); }
+html body main#main .adv-page .fl--advisor .fl-flow-step { background: var(--color-grass-50); color: var(--color-dream-500); }
+html body main#main .adv-page .fl--advisor .fl-flow-step .fl-flow-s { color: var(--color-dream-500); }
+html body main#main .adv-page .fl--advisor .fl-flow-share { background: var(--color-white); }
+html body main#main .adv-page .fl--advisor .fl-flow-share-cap { color: var(--color-grass-700); }
+html body main#main .adv-referrals-page .adv-how-merged { margin-top: 48px; }
+html body main#main .adv-referrals-page .adv-why-flow { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+html body main#main .adv-referrals-page .adv-why-flow > li::after { display: none; }
+html body main#main .adv-referrals-page .adv-why-flow > li:not(:last-child)::before {
+  content: "→";
+  position: absolute;
+  top: 14px;
+  left: 64px;
+  right: -20px;
+  border-top: 1px dashed var(--color-dream-200);
+  color: var(--color-grass-700);
+  text-align: right;
+  line-height: 0;
+  transform-origin: left;
+  pointer-events: none;
+}
+html body main#main .adv-referrals-page .adv-why-number { background: var(--color-grass-500); color: var(--color-dream-500); }
+html body main#main .adv-referrals-page .adv-why-flow > li:nth-child(2) .adv-why-number { background: var(--color-heart-500); color: var(--color-white); }
+html body main#main .adv-referrals-page .adv-why-flow > li:nth-child(3) .adv-why-number { background: var(--color-sky-500); color: var(--color-white); }
+html body main#main .adv-referrals-page .pp-icon { width: 32px; height: 32px; margin-bottom: 16px; pointer-events: none; }
+html body main#main .adv-referrals-page .adv-sale-side { background: var(--color-sky-100); }
+html body main#main .adv-referrals-page .adv-sale-side:last-child { background: var(--color-grass-200); }
+html body main#main .adv-referrals-page .adv-sale-side ul { padding: 0; list-style: none; }
+html body main#main .adv-referrals-page .adv-sale-side li { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 12px; padding: 0; }
+html body main#main .adv-referrals-page .adv-sale-note { font-size: 16px; }
+html body main#main .adv-referrals-page .adv-band--dream { background: var(--color-dream-500); }
+html body main#main .adv-referrals-page .adv-band--dream :is(h2, h3, p) { color: var(--color-white); }
+html body main#main .adv-referrals-page .adv-benefits { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+html body main#main .adv-referrals-page .adv-benefits .adv-benefit { padding: 28px; border: 1px solid var(--color-heart-500); border-radius: 24px; background: var(--color-dream-500); }
+html body main#main .adv-referrals-page .adv-benefit-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+html body main#main .adv-referrals-page .adv-benefit-number { color: var(--color-grass-500); font-size: 32px; font-weight: 800; }
+html body main#main .adv-referrals-page .adv-benefit-top .pp-icon { margin: 0; stroke: var(--color-white); }
+html body main#main .adv-referrals-page .adv-benefit h3 { color: var(--color-white); }
+html body main#main .adv-referrals-page .adv-faq-item { border-color: var(--color-dream-500) !important; }
+html body main#main .adv-referrals-page .adv-faq-trigger:is(:hover, :focus-visible) { background: var(--color-dream-25) !important; }
+html body main#main .adv-referrals-page [data-adv-reveal].will-animate > li { opacity: 0; transform: translateY(16px); transition: opacity .5s, transform .5s; }
+html body main#main .adv-referrals-page [data-adv-reveal].is-in > li { opacity: 1; transform: none; }
+html body main#main .adv-referrals-page [data-adv-reveal].is-in > li:nth-child(2n) { transition-delay: .15s; }
+html body main#main .adv-referrals-page .adv-why-flow.will-animate > li::before { transform: scaleX(0); }
+html body main#main .adv-referrals-page .adv-why-flow.is-in > li::before { transform: scaleX(1); transition: transform .8s .3s; }
+
+html body main#main .pathway-switch { max-width: 1080px; margin-inline: auto; }
+html body main#main .pathway-track { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 8px; margin-bottom: 18px; border-radius: 28px; background: var(--color-dream-500); }
+html body main#main .pathway-track button { padding: 20px 24px; border: 1px solid var(--color-heart-500); border-radius: 20px; font-family: inherit; font-size: 20px; font-weight: 800; background: var(--color-white); color: var(--color-dream-500); cursor: pointer; transition: background-color .2s, color .2s; }
+html body main#main .pathway-track #pathway-before-tab[aria-selected="true"] { background: var(--color-sky-500); color: var(--color-white); }
+html body main#main .pathway-track #pathway-after-tab[aria-selected="true"] { background: var(--color-grass-500); color: var(--color-dream-500); }
+html body main#main .pathway-track button:is(:hover, :focus-visible) { background: var(--color-grass-200); text-decoration: underline; text-underline-offset: 6px; }
+html body main#main .pathway-switch :is(button, [role="tabpanel"]):focus-visible { outline: 2px solid var(--color-grass-700); outline-offset: 4px; }
+html body main#main .pathway-panel { padding: 40px 48px; border: 1px solid var(--color-heart-500); border-radius: 28px; background: var(--color-dream-500); }
+html body main#main .pathway-panel[hidden] { display: none; }
+html body main#main .pathway-panel :is(h2, p, li) { color: var(--color-white); }
+html body main#main .pathway-panel .pathway-kicker { color: var(--color-sky-200); font-size: 14px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+html body main#main .pathway-panel--after .pathway-kicker { color: var(--color-grass-500); }
+html body main#main .pathway-panel ul { margin: 24px 0; padding-left: 24px; list-style: disc; }
+html body main#main .pathway-context { margin: 28px 0; padding-top: 24px; border-top: 1px solid var(--color-dream-200); }
+html body main#main .pathway-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+html body main#main .hw-page--s1 #anchor-1 .hw-steps-cta a.btn-apply,
+html body main#main .hw-page--s1 #anchor-1 .hw-steps-cta a.btn-apply:is(:hover, :focus-visible) { background: var(--color-grass-500) !important; border-color: var(--color-grass-500) !important; color: var(--color-dream-500) !important; }
+
+@media (max-width: 600px) {
+  html body main#main .adv-page > :is(.adv-hero, .advr-hero) { height: 640px; min-height: 640px; }
+  html body main#main .adv-page :is(.adv-hero-inner, .advr-hero-inner) { padding: 32px 0; }
+  html body main#main .adv-page :is(.adv-hero-inner, .advr-hero-inner) h1 { font-size: 32px; }
+  html body main#main .adv-page :is(.adv-hero, .advr-hero) :is(.adv-lede, .advr-lede) { font-size: 16px; line-height: 1.5; }
+  html body main#main .adv-page :is(.adv-eyebrow, .advr-eyebrow) { font-size: 14px !important; }
+  html body main#main .adv-page :is(.adv-well, .advr-well):has(.ahub) { padding: 32px 0; }
+  html body main#main .adv-page .fl--advisor .fl-panel { padding: 24px 20px; }
+  html body main#main .adv-referrals-page :is(.adv-why-flow, .adv-benefits) { grid-template-columns: minmax(0, 1fr); }
+  html body main#main .adv-referrals-page .adv-why-flow > li:not(:last-child)::before {
+    display: flex; align-items: flex-end; justify-content: center; content: "↓";
+    left: 24px; right: auto; top: 64px; bottom: -20px; width: 0;
+    border-top: 0; border-left: 1px dashed var(--color-dream-200); transform-origin: top;
+  }
+  html body main#main .adv-referrals-page .adv-why-flow.will-animate > li::before { transform: scaleY(0); }
+  html body main#main .adv-referrals-page .adv-why-flow.is-in > li::before { transform: scaleY(1); }
+  html body main#main .pathway-track button { padding: 18px 12px; font-size: 16px; }
+  html body main#main .pathway-panel { padding: 28px 22px; }
+  html body main#main .pathway-actions { align-items: stretch; flex-direction: column; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html body main#main :is(.adv-referrals-page [data-adv-reveal].will-animate > li, .adv-referrals-page .adv-why-flow > li::before) { opacity: 1; transform: none; transition: none; }
+  html body main#main .pathway-track button { transition: none; }
+  html body main#main .adv-referrals-page .adv-why-flow:is(.will-animate, .is-in) > li::before { transform: none; transition: none; }
+}

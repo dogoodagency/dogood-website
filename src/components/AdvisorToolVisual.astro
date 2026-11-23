@@ -1,0 +1,26 @@
+---
+/** Shared final artwork for the Free tools cards and resource pages. */
+interface Props {
+  tool: "readiness" | "signals" | "planner" | "questions";
+  detail?: boolean;
+}
+const { tool, detail = false } = Astro.props;
+const pages = tool === "signals" ? [
+  { src: "/media/r4/signals-guide-cover", width: 300, height: 424 },
+  { src: "/media/r4/signals-guide-inside-1", width: 300, height: 424 },
+  { src: "/media/r4/signals-guide-inside-2", width: 300, height: 424 },
+] : tool === "questions" ? [
+  { src: "/media/seven-questions/seven-questions-cover", width: 600, height: 849 },
+  ...[1, 2, 3].map((page) => ({ src: `/media/r4/seven-questions-inside-${page}`, width: 300, height: 424 })),
+] : [{ src: "/media/r4/planner-cover", width: 300, height: 424 }];
+const arta = tool === "readiness" ? "A2" : tool === "signals" ? "A3" : tool === "planner" ? "A4" : "A6";
+const readiness = `/media/r4/readiness-composite${detail ? "-dream25" : ""}`;
+---
+
+<div class:list={["advr-tool-visual", `advr-tool-visual--${tool}`, detail && "advr-tool-visual--detail"]} aria-hidden="true">
+  {tool === "readiness" ? (
+    <img data-arta={arta} src={`${readiness}@1x.webp`} srcset={`${readiness}@1x.webp 1x, ${readiness}@2x.webp 2x`} width="480" height="300" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+  ) : pages.map((page) => (
+    <img data-arta={arta} src={`${page.src}@1x.webp`} srcset={`${page.src}@1x.webp 1x, ${page.src}@2x.webp 2x`} width={page.width} height={page.height} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+  ))}
+</div>

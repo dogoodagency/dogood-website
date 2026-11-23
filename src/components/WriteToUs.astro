@@ -1,0 +1,13 @@
+---
+interface Props { variant?: "inline" | "band"; }
+const { variant = "inline" } = Astro.props;
+---
+
+{variant === "band" ? (
+  <section class="write-to-us-band" aria-label="Write to us">
+    <p>Not ready to apply, or still before your exit?</p>
+    <a class="btn-teal btn-dream" href="/contact">Write to us</a>
+  </section>
+) : (
+  <p class="write-to-us">Not ready to apply, or still before your exit? <a class="r3-inline-link" href="/contact">Write to us</a>.</p>
+)}

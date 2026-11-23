@@ -1,0 +1,113 @@
+---
+import ProductPage from "../components/ProductPage.astro";
+// From "The Intensive Menu" and "The Intensive Debrief" one-pagers (Seb, 19 Nov 2026). The Intensive is now
+// called the 1.5-Day In-Person Residency. Offered on its own and as part of Stage 1 and Stage 2.
+---
+
+<ProductPage
+  title="1.5-Day In-Person Residency for founders | DoGood Agency"
+  description="1.5 days of play, adventure and meaning, in person with your Wayfinder. When did you last do something for the first time? On its own or within Stage 1 or 2."
+  path="/residency"
+  eyebrow="1.5-Day In-Person Residency"
+  h1="When was the last time you did something<br class='pp-desktop-break' /> for the first time?"
+  sub="1.5 days of joy, play, lightness and meaning, in person with your Wayfinder. We travel to you."
+  tag="On its own or via Stage 1 and 2"
+  sections={[
+    {
+      id: "rs-what",
+      heading: "What is the Residency?",
+      lede: "Permission to be a kid again.",
+      paras: [
+        "Your Wayfinder travels to you for 1.5 days in person, as part of Stage 1 or Stage 2, or on its own.",
+        "To laugh, to try things that scare you a little, to do what you've always wanted but never had time or permission for.",
+        "Day 1 is all about play and adventure. Day 2 is about meaning: writing, building, connecting. This isn't meant to be deep work. It's the opposite. It's lightness.",
+      ],
+      boxes: [
+        {
+          title: "What it is",
+          tone: "grass",
+          items: [
+            "1.5 days in person with your Wayfinder, where you are",
+            "Activities you choose from four categories",
+            "Joy, play, lightness and meaning, not problem-solving",
+            "A debrief afterward to keep what shifted alive",
+          ],
+          icons: ["check", "check", "check", "check"],
+        },
+        {
+          title: "What it is NOT",
+          tone: "rose",
+          items: [
+            "Sitting in a room for eight hours dissecting your life",
+            "A working session on the business (leave the laptop at home)",
+            "A group retreat",
+          ],
+          icons: ["cross", "cross", "cross"],
+        },
+      ],
+    },
+    {
+      id: "rs-days",
+      heading: "How the 1.5 days work",
+      paras: ["Day 1 is play and adventure: one Adventure and one Creative Play activity, one in the morning and one in the afternoon. The evening Novel Experience is optional; you can have a quiet dinner instead. Day 2 morning is Meaningful Work. You choose the activities with your Wayfinder and get an itinerary with times, places and what to expect."],
+      steps: [
+        {
+          label: "Day 1",
+          title: "Adventure",
+          icon: "mountain",
+          text: "Physical, exhilarating, something that makes your heart race. Skydiving, bungee jumping, a hot air balloon ride, rock climbing, paragliding, horseback riding, a surfing lesson, zip-lining, scuba diving or snorkeling, white water rafting. Pick the one that scares you a little.",
+        },
+        {
+          label: "Day 1",
+          title: "Creative play",
+          icon: "brush",
+          text: "Artistic and hands-on, something you've never tried or haven't done in years. Pottery, painting, a cooking class, a music lesson, dance, improv, sculpture, a photography walk, woodworking, glassblowing. If you were ten with a free Saturday, what would you want to do?",
+        },
+        {
+          label: "Day 1 evening",
+          title: "Novel experience (optional)",
+          icon: "spark",
+          text: "A concert, a comedy show, the theater, a museum or gallery, a food tour, a tasting, a spa, a sunset somewhere new, a night market or festival. Or a quiet dinner.",
+        },
+        {
+          label: "Day 2 morning",
+          title: "Meaningful work",
+          icon: "seed",
+          text: "Something that connects you to purpose: a letter to your kids, a call to someone you haven't spoken to in years, a vision board, a letter to your younger self, a personal ritual, a passion project, a voice memo to your future self, planting a tree, your personal manifesto.",
+        },
+      ],
+    },
+    {
+      id: "rs-after",
+      heading: "Before and after",
+      boxes: [
+        {
+          title: "Before",
+          tone: "grass",
+          items: [
+            "You choose your activities with your Wayfinder",
+            "You get your itinerary with times, places and what to expect",
+            "Bring comfortable clothes (you may get messy or sweaty), an open mind and a willingness to play",
+            "Leave the laptop unless you need it for a Day 2 passion project. This is not a day of business work.",
+          ],
+          icons: ["check", "map", "spark", "check"],
+        },
+        {
+          title: "After: the debrief",
+          tone: "sky",
+          items: [
+            "What shifted, in your body, your energy and your outlook",
+            "What you can see now that you couldn't before",
+            "One small commitment for the next seven days that keeps it alive",
+          ],
+          icons: ["wave", "eye", "seed"],
+        },
+      ],
+    },
+  ]}
+  closing={{
+    heading: "Part of the two stages, or on its own",
+    text: "Stage 1 and Stage 2 each include a Residency. You can also book one on its own. Tell us where you are and we'll find the right fit.",
+    cta: { href: "/apply-stage-1", label: "Apply for Stage 1" },
+  }}
+/>

@@ -7,6 +7,123 @@
 [build.environment]
   NODE_VERSION = "22"
 
+# Redirects and 410s for the old Wix site live in public/_redirects
+# (Netlify reads that file before the rules below). The rules here are
+# for renamed pages on the new site, followed by host/protocol canonicalization.
+# Permanent path redirects use the final HTTPS www URL to avoid a second hop.
+
+# Advisor Center moved from /for-advisors to /advisor-center (Seb, 20 Nov 2026).
+[[redirects]]
+  from = "/for-advisors/resources"
+  to = "https://www.dogoodagency.co/advisor-center/client-tools"
+  status = 301
+
+[[redirects]]
+  from = "/for-advisors/resources/"
+  to = "https://www.dogoodagency.co/advisor-center/client-tools"
+  status = 301
+
+[[redirects]]
+  from = "/for-advisors"
+  to = "https://www.dogoodagency.co/advisor-center"
+  status = 301
+
+[[redirects]]
+  from = "/for-advisors/"
+  to = "https://www.dogoodagency.co/advisor-center"
+  status = 301
+
+[[redirects]]
+  from = "/for-advisors/*"
+  to = "https://www.dogoodagency.co/advisor-center/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/stories/j"
+  to = "https://www.dogoodagency.co/casestudies/j"
+  status = 301
+
+[[redirects]]
+  from = "/stories/j/"
+  to = "https://www.dogoodagency.co/casestudies/j"
+  status = 301
+
+[[redirects]]
+  from = "/stories/v"
+  to = "https://www.dogoodagency.co/casestudies/v"
+  status = 301
+
+[[redirects]]
+  from = "/stories/v/"
+  to = "https://www.dogoodagency.co/casestudies/v"
+  status = 301
+
+[[redirects]]
+  from = "/wayfinders/client-fit"
+  to = "https://www.dogoodagency.co/wayfinders/clientfit"
+  status = 301
+
+[[redirects]]
+  from = "/wayfinders/client-fit/"
+  to = "https://www.dogoodagency.co/wayfinders/clientfit"
+  status = 301
+
+# Old Insights pages now point at their closest new articles
+[[redirects]]
+  from = "/insights/first-months-after-exit"
+  to = "https://www.dogoodagency.co/insights/first-90-days-after-the-sale"
+  status = 301
+
+[[redirects]]
+  from = "/insights/first-months-after-exit/"
+  to = "https://www.dogoodagency.co/insights/first-90-days-after-the-sale"
+  status = 301
+
+[[redirects]]
+  from = "/insights/who-are-you-now"
+  to = "https://www.dogoodagency.co/insights"
+  status = 301
+
+[[redirects]]
+  from = "/insights/who-are-you-now/"
+  to = "https://www.dogoodagency.co/insights"
+  status = 301
+
+[[redirects]]
+  from = "/insights/after-the-deal"
+  to = "https://www.dogoodagency.co/insights"
+  status = 301
+
+[[redirects]]
+  from = "/insights/after-the-deal/"
+  to = "https://www.dogoodagency.co/insights"
+  status = 301
+
+[[redirects]]
+  from = "/podcast"
+  to = "https://www.dogoodagency.co/dogood-insider"
+  status = 301
+
+# Keep these after every path redirect (including public/_redirects).
+# Force canonicalization even when a static file exists; preserve the path.
+[[redirects]]
+  from = "http://dogoodagency.co/*"
+  to = "https://www.dogoodagency.co/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.dogoodagency.co/*"
+  to = "https://www.dogoodagency.co/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://dogoodagency.co/*"
+  to = "https://www.dogoodagency.co/:splat"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
@@ -15,4 +132,34 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     X-Frame-Options = "DENY"
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
-    Content-Security-Policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' https://assets.mailerlite.com; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self' https://assets.mailerlite.com; upgrade-insecure-requests"
+    # Indexing header is generated in dist/_headers; OFF by default.
+    # Single launch-day switch: docs/launch-index-switch.md.
+    Content-Security-Policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' https://assets.mailerlite.com https://tidycal.com; img-src 'self' data: https://cdn-cookieyes.com https://*.clarity.ms https://c.bing.com https://px.ads.linkedin.com https://*.google-analytics.com https://*.googletagmanager.com https://embed.tawk.to https://*.tawk.to https://tawk.link https://*.tawk.link https://*.getwarmly.com https://a.usbrowserspeed.com https://d-code.liadm.com https://rp.liadm.com; font-src 'self' https://embed.tawk.to https://*.tawk.to; style-src 'self' 'unsafe-inline' https://cdn-cookieyes.com https://embed.tawk.to https://*.tawk.to https://*.getwarmly.com; script-src 'self' 'sha256-cBflvqgnJD7HwH/7LroswONfvjk4uNeFCDZzS1tvSMA=' https://cdn-cookieyes.com https://embed.tawk.to https://*.tawk.to https://asset-tidycal.b-cdn.net https://www.buzzsprout.com https://www.googletagmanager.com https://snap.licdn.com https://www.clarity.ms https://*.clarity.ms https://*.getwarmly.com https://a.usbrowserspeed.com https://d-code.liadm.com; connect-src 'self' https://*.clarity.ms https://px.ads.linkedin.com https://*.linkedin.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://assets.mailerlite.com https://cdn-cookieyes.com https://log.cookieyes.com https://embed.tawk.to https://*.tawk.to wss://*.tawk.to https://tidycal.com https://*.getwarmly.com wss://*.getwarmly.com https://a.usbrowserspeed.com https://d-code.liadm.com https://rp.liadm.com https://idx.liadm.com; frame-src https://tidycal.com https://*.tidycal.com https://www.youtube-nocookie.com https://www.buzzsprout.com https://embed.tawk.to https://*.tawk.to https://www.google.com https://*.getwarmly.com https://i.liadm.com; upgrade-insecure-requests"
+
+# Browser caching. Files in /_astro/ have a content hash in their name, so they
+# can be cached for a year. Images and fonts in /sketches, /media, /nav and
+# /fonts keep their names when replaced, so they are cached for a week only.
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/sketches/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/media/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/nav/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"

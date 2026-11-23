@@ -1,0 +1,35 @@
+---
+import { FOUNDRLAND_LINK_LIVE, FOUNDRLAND_PUBLIC_URL } from "../data/foundrland";
+---
+
+{FOUNDRLAND_LINK_LIVE ? (
+  <a class="foundrland-link" href={FOUNDRLAND_PUBLIC_URL} target="_blank" rel="noopener">Visit FOUNDR.land ↗</a>
+) : (
+  <span class="foundrland-link foundrland-link--soon" aria-label="FOUNDR.land, coming soon">FOUNDR.land, coming soon</span>
+)}
+
+<style>
+  .foundrland-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    padding: 12px 20px;
+    border: 1px solid var(--color-dream-500);
+    border-radius: 999px;
+    background: var(--color-dream-25);
+    color: var(--color-dream-500);
+    font: 700 16px/1.5 var(--font-sans);
+    text-align: center;
+    text-decoration: none;
+  }
+  a.foundrland-link:is(:hover, :focus-visible) {
+    background: var(--color-dream-500);
+    color: var(--color-white);
+  }
+  a.foundrland-link:focus-visible {
+    outline: 2px solid var(--color-grass-700);
+    outline-offset: 4px;
+  }
+  .foundrland-link--soon { cursor: default; }
+</style>

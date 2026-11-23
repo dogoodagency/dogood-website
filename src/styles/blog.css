@@ -1,0 +1,1685 @@
+/* Insights (/insights/*). Every rule is prefixed .bl- so nothing here can touch another
+   page. Follows the house style: dark purple bands with a wave, tint / white
+   bands, rounded cards, btn-teal. */
+
+body:has(.bl-page) .footer-wave {
+  background: var(--footer-strip, #f5f2ff);
+}
+
+.bl-page {
+  --bl-tint: #f5f2ff;
+  --bl-line: #c2b7dd;
+  --bl-hair: #e3dcf2;
+  --bl-ink: #2a0b4f;
+  --bl-muted: #5a3f78;
+  --bl-teal: #28dbb0;
+  --bl-teal-deep: #0a6b56;
+  --bl-pink: #c10e46;
+  background: #fff;
+  color: var(--bl-ink);
+  overflow-x: clip;
+}
+
+.bl-page *,
+.bl-page *::before,
+.bl-page *::after {
+  box-sizing: border-box;
+}
+
+.bl-page [hidden] {
+  display: none !important;
+}
+
+.bl-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.bl-page img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------- Layout ---------- */
+
+.bl-col {
+  width: min(44rem, calc(100% - 2 * var(--pad)));
+  margin: 0 auto;
+}
+
+.bl-col--wide {
+  width: min(56rem, calc(100% - 2 * var(--pad)));
+}
+
+.bl-wrap {
+  width: min(1120px, calc(100% - 2 * var(--pad)));
+  margin: 0 auto;
+}
+
+.bl-band {
+  background: #fff;
+  padding: 30px 0 90px;
+}
+
+.bl-band--tint {
+  background: var(--bl-tint);
+}
+
+.bl-page .hero-wave {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+/* ---------- Top band + breadcrumbs ---------- */
+
+.bl-topband {
+  margin-top: -94px;
+  padding-top: 94px;
+  background: #2a0b4f;
+}
+
+.bl-topband .bl-col {
+  padding: 22px 0 0;
+}
+
+.bl-topband .hero-wave {
+  margin-top: -6px;
+}
+
+.bl-crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.bl-crumbs li {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.bl-crumbs li + li::before {
+  content: "›";
+  margin: 0 10px;
+  opacity: 0.6;
+}
+
+.bl-crumbs a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.bl-crumbs li > span {
+  overflow-wrap: anywhere;
+}
+
+.bl-crumbs--dark ol {
+  color: #e9e2f7;
+}
+
+.bl-crumbs--dark a:hover {
+  color: #fff;
+}
+
+/* ---------- Article head ---------- */
+
+.bl-sample {
+  margin: 8px 0 0;
+  padding: 12px 18px;
+  background: #fff7e0;
+  border: 1px dashed #d9b64a;
+  border-radius: 14px;
+  color: #5b4300;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.bl-head {
+  padding: 28px 0 8px;
+}
+
+.bl-head h1 {
+  margin: 18px 0 16px;
+  color: var(--bl-ink);
+  font-size: clamp(30px, 4.4vw, 46px);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  overflow-wrap: break-word;
+}
+
+.bl-dek {
+  margin: 0 0 24px;
+  color: var(--bl-muted);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.bl-byline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+  padding: 16px 0 20px;
+  border-top: 1px solid var(--bl-hair);
+}
+
+.bl-author {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bl-avatar {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--bl-ink);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.bl-author-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.bl-author-name {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.bl-author-role {
+  color: var(--bl-muted);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.bl-meta {
+  margin: 0;
+  color: var(--bl-muted);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.bl-hero-img {
+  margin: 8px 0 28px;
+}
+
+.bl-isyou {
+  margin: 0 0 24px;
+  padding: 0 0 0 18px;
+  border-left: 1px solid var(--bl-teal);
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+/* ---------- Badges + pills ---------- */
+
+.bl-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.bl-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 28px;
+  padding: 3px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.bl-badge--founder {
+  background: var(--bl-teal);
+  color: var(--bl-ink);
+}
+
+.bl-badge--advisor {
+  background: #fde1ea;
+  color: #8f0a37;
+}
+
+.bl-badge--both {
+  background: #e4dbf7;
+  color: var(--bl-ink);
+}
+
+.bl-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 3px 12px;
+  background: #fff;
+  border: 1.5px solid var(--bl-line);
+  border-radius: 999px;
+  color: var(--bl-ink);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.bl-pill:hover,
+.bl-pill:focus-visible {
+  background: var(--bl-tint);
+  border-color: var(--bl-ink);
+}
+
+.bl-pill--lg {
+  min-height: 42px;
+  padding: 6px 18px;
+  font-size: 15px;
+}
+
+.bl-pill.is-current {
+  background: var(--bl-ink);
+  border-color: var(--bl-ink);
+  color: #fff;
+}
+
+/* ---------- Image frame ---------- */
+
+.bl-img {
+  --bl-img-bg: #e9e2f7;
+  position: relative;
+  width: 100%;
+  background: var(--bl-img-bg);
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+
+.bl-img--wide {
+  aspect-ratio: 27 / 20;
+}
+
+.bl-hero-img.bl-img--wide {
+  aspect-ratio: 16 / 9;
+}
+
+.bl-img--thumb {
+  aspect-ratio: 1 / 1;
+  border-radius: 1rem;
+}
+
+.bl-img--purple {
+  --bl-img-bg: #cbb8f0;
+}
+
+.bl-img--teal {
+  --bl-img-bg: #8ff0d3;
+}
+
+.bl-img--pink {
+  --bl-img-bg: #ffb3cb;
+}
+
+.bl-img--lilac {
+  --bl-img-bg: #e9e2f7;
+}
+
+.bl-img picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.bl-img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 6%;
+  object-fit: contain;
+}
+
+.bl-img--thumb img {
+  padding: 8%;
+}
+
+/* ---------- Boxes under the hero ---------- */
+
+.bl-box-label {
+  margin: 0 0 8px;
+  color: var(--bl-teal-deep);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.bl-box-label--light {
+  color: var(--bl-teal);
+}
+
+.bl-short {
+  margin: 0 0 28px;
+  padding: 24px 28px;
+  background: #e7fff6;
+  border: 1.5px solid #a3f2d7;
+  border-radius: 24px;
+}
+
+.bl-short-text {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.bl-questions {
+  margin: 0 0 28px;
+}
+
+.bl-page .bl-box-title {
+  margin: 0 0 10px;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.bl-questions ul,
+.bl-takeaways ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bl-questions li {
+  position: relative;
+  margin: 0 0 8px;
+  padding-left: 28px;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.bl-questions li::before {
+  content: "?";
+  position: absolute;
+  top: 2px;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: var(--bl-tint);
+  border: 1px solid var(--bl-line);
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.bl-toc {
+  margin: 0 0 40px;
+  padding: 20px 24px;
+  background: var(--bl-tint);
+  border: 1px solid var(--bl-hair);
+  border-radius: 20px;
+}
+
+.bl-toc ol {
+  margin: 0;
+  padding-left: 22px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.bl-toc li {
+  margin: 4px 0;
+  padding-left: 4px;
+}
+
+.bl-toc a {
+  color: var(--bl-ink);
+  text-underline-offset: 3px;
+}
+
+.bl-toc a:hover {
+  color: var(--bl-teal-deep);
+}
+
+/* ---------- Prose ---------- */
+
+.bl-prose {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  overflow-wrap: break-word;
+}
+
+.bl-prose h2 {
+  margin: 2.2em 0 0.6em;
+  color: var(--bl-ink);
+  font-size: clamp(24px, 3vw, 30px);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  scroll-margin-top: 120px;
+}
+
+.bl-prose h2:first-child {
+  margin-top: 0;
+}
+
+.bl-prose h3 {
+  margin: 1.8em 0 0.5em;
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  scroll-margin-top: 120px;
+}
+
+.bl-prose p {
+  margin: 0 0 1.2em;
+}
+
+.bl-prose a {
+  color: var(--bl-teal-deep);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--bl-teal);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.bl-prose a:hover {
+  color: var(--bl-ink);
+}
+
+.bl-prose ul,
+.bl-prose ol {
+  margin: 0 0 1.2em;
+  padding-left: 1.4em;
+}
+
+.bl-prose li {
+  margin: 0 0 0.4em;
+}
+
+.bl-prose blockquote {
+  margin: 1.6em 0;
+  padding: 4px 0 4px 20px;
+  border-left: 4px solid var(--bl-teal);
+  font-weight: 600;
+}
+
+.bl-prose img {
+  border-radius: 1rem;
+}
+
+/* ---------- Takeaways, FAQ, CTA ---------- */
+
+.bl-page .bl-takeaways,
+.bl-page .bl-faq {
+  margin: 48px 0 0;
+}
+
+.bl-takeaways {
+  padding: 28px 30px;
+  background: var(--bl-tint);
+  border: 1px solid var(--bl-hair);
+  border-radius: 24px;
+}
+
+.bl-page .bl-takeaways h2,
+.bl-page .bl-faq h2,
+.bl-page .bl-more h2,
+.bl-page .bl-cats h2,
+.bl-page .bl-cta h2,
+.bl-page .bl-nl h2 {
+  margin: 0 0 14px;
+  font-size: clamp(24px, 3vw, 30px);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  overflow-wrap: break-word;
+}
+
+.bl-takeaways li {
+  position: relative;
+  margin: 0 0 12px;
+  padding-left: 32px;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.bl-takeaways li:last-child {
+  margin-bottom: 0;
+}
+
+.bl-takeaways li::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: var(--bl-teal);
+  border-radius: 50%;
+}
+
+.bl-takeaways li::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 6px;
+  width: 8px;
+  height: 4px;
+  border-bottom: 2px solid var(--bl-ink);
+  border-left: 2px solid var(--bl-ink);
+  transform: rotate(-45deg);
+}
+
+.bl-faq-item {
+  margin: 0 0 12px;
+  background: #fff;
+  border: 1px solid var(--bl-line);
+  border-radius: 18px;
+}
+
+.bl-faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 22px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.bl-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.bl-faq-item summary:focus-visible {
+  outline: 3px solid var(--bl-teal);
+  outline-offset: 2px;
+  border-radius: 18px;
+}
+
+.bl-faq-q {
+  min-width: 0;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  overflow-wrap: break-word;
+}
+
+.bl-faq-icon {
+  position: relative;
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  background: var(--bl-teal);
+  border-radius: 50%;
+}
+
+.bl-faq-icon::before,
+.bl-faq-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 2px;
+  background: var(--bl-ink);
+  border-radius: 1px;
+  transform: translate(-50%, -50%);
+}
+
+.bl-faq-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+  transition: transform 0.2s ease;
+}
+
+.bl-faq-item[open] .bl-faq-icon::after {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.bl-faq-a {
+  margin: 0;
+  padding: 0 22px 20px;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.bl-cta {
+  margin: 48px 0 0;
+  padding: 36px 34px;
+  background: var(--bl-ink);
+  border-radius: 24px;
+  color: #fff;
+}
+
+.bl-page .bl-cta h2 {
+  color: #fff;
+}
+
+.bl-cta p {
+  margin: 0 0 22px;
+  color: #f5f2ff;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.bl-cta .btn-teal {
+  max-width: 100%;
+  text-align: center;
+  white-space: normal;
+}
+
+.bl-page .bl-cta .bl-cta-quiet {
+  margin: 18px 0 0;
+  color: #d9cff0;
+  font-size: 14px;
+}
+
+.bl-cta-quiet a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ---------- Newsletter block ---------- */
+
+.bl-nl {
+  margin: 56px auto 0;
+}
+
+.bl-nl-card {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 40px 44px 34px;
+  background: var(--bl-tint);
+  border: 1px solid var(--bl-hair);
+  border-radius: 24px;
+}
+
+.bl-band--tint .bl-nl-card {
+  background: #fff;
+}
+
+.bl-band .bl-nl {
+  margin-top: 64px;
+}
+
+.bl-founderland {
+  color: var(--bl-pink);
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  font-synthesis: none;
+}
+
+.bl-founderland strong {
+  font-weight: 900;
+}
+
+.bl-land {
+  font-weight: 500;
+}
+
+.bl-nl-intro {
+  margin: 0 0 22px;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.bl-nl-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 520px;
+}
+
+.bl-nl-form label {
+  color: var(--bl-ink);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.bl-nl-form input[type="email"] {
+  width: 100%;
+  min-height: 52px;
+  padding: 0 22px;
+  background: #fff;
+  border: 1.5px solid var(--bl-line);
+  border-radius: 999px;
+  color: var(--bl-ink);
+  font-family: inherit;
+  font-size: 16px;
+  transition: border-color 0.2s ease;
+}
+
+.bl-nl-form input[type="email"]::placeholder {
+  color: #8e7ba6;
+}
+
+.bl-nl-form input[type="email"]:focus {
+  border-color: var(--bl-ink);
+}
+
+.bl-nl-form .btn-teal {
+  align-self: flex-start;
+  max-width: 100%;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.bl-nl-form .btn-teal:disabled {
+  cursor: progress;
+  opacity: 0.75;
+}
+
+.bl-nl-form [data-status] {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.bl-nl-print {
+  margin: 18px 0 0;
+  color: var(--bl-muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.bl-nl-print a {
+  color: var(--bl-ink);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.bl-nl-more {
+  display: inline-block;
+  margin-left: 6px;
+}
+
+/* ---------- Cards ---------- */
+
+.bl-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  margin: 0;
+}
+
+.bl-card {
+  display: flex;
+  min-width: 0;
+  background: #fff;
+  border: 1px solid var(--bl-hair);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 10px 36px rgba(42, 11, 79, 0.06);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.bl-card:hover {
+  box-shadow: 0 14px 40px rgba(42, 11, 79, 0.12);
+  transform: translateY(-2px);
+}
+
+.bl-card--grid {
+  flex-direction: column;
+}
+
+.bl-card-media {
+  display: block;
+  padding: 12px 12px 0;
+}
+
+.bl-card-body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 18px 22px 24px;
+}
+
+.bl-page .bl-card-title {
+  margin: 0;
+  color: var(--bl-ink);
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  overflow-wrap: break-word;
+}
+
+.bl-card-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.bl-card-title a:hover,
+.bl-card-title a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.bl-card-excerpt {
+  margin: 0;
+  color: #4a3a5c;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.bl-card-body .bl-meta {
+  margin-top: auto;
+}
+
+/* Feature card: big image beside the text. */
+.bl-card--feature {
+  flex-direction: column;
+}
+
+.bl-card--feature .bl-card-media {
+  padding: 14px 14px 0;
+}
+
+.bl-card--feature .bl-card-body {
+  gap: 16px;
+  padding: 24px 28px 30px;
+}
+
+.bl-page .bl-card--feature .bl-card-title {
+  font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.bl-card--feature .bl-card-excerpt {
+  font-size: 18px;
+}
+
+.bl-author--card .bl-avatar {
+  width: 40px;
+  height: 40px;
+}
+
+/* Row card: compact, for the editor-picks column. */
+.bl-card--row {
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  box-shadow: none;
+}
+
+.bl-row-thumb {
+  display: block;
+  flex: 0 0 88px;
+  width: 88px;
+}
+
+.bl-row-body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-width: 0;
+}
+
+.bl-card--row .bl-card-title {
+  font-size: 17px;
+}
+
+.bl-card--row .bl-meta {
+  font-size: 13px;
+}
+
+.bl-card--row .bl-pill {
+  min-height: 24px;
+  padding: 2px 10px;
+  font-size: 12px;
+}
+
+@media (min-width: 900px) {
+  .bl-card--feature {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .bl-card--feature .bl-card-media {
+    flex: 1 1 54%;
+    min-width: 0;
+    padding: 14px;
+  }
+
+  .bl-card--feature .bl-card-media .bl-img {
+    height: 100%;
+  }
+
+  .bl-card--feature .bl-card-body {
+    flex: 1 1 46%;
+    justify-content: center;
+    padding: 32px 34px 32px 14px;
+  }
+}
+
+/* ---------- More posts + back link ---------- */
+
+.bl-more {
+  margin-top: 64px;
+  background: #fff;
+}
+
+.bl-more-band {
+  background: var(--bl-tint);
+  padding: 0 0 70px;
+}
+
+.bl-page .bl-more h2 {
+  margin-bottom: 24px;
+}
+
+.bl-back {
+  margin: 28px 0 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.bl-back a {
+  color: var(--bl-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--bl-teal);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.bl-back a:is(:hover, :focus-visible) {
+  color: var(--color-grass-700);
+  text-decoration-thickness: 3px;
+}
+
+/* ---------- Category archive ---------- */
+
+.bl-hero {
+  margin-top: -94px;
+  padding-top: 94px;
+  background: #2a0b4f;
+  color: #fff;
+}
+
+.bl-hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: min(1120px, calc(100% - 2 * var(--pad)));
+  margin: 0 auto;
+  padding: 32.5px 0 40px;
+}
+
+.bl-hero h1 {
+  max-width: 820px;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(32px, 4.4vw, 52px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  overflow-wrap: break-word;
+}
+
+.bl-hero-lede {
+  max-width: 680px;
+  margin: 0;
+  color: #f5f2ff;
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.bl-empty {
+  margin: 0;
+  padding: 40px 28px;
+  background: #fff;
+  border: 1px dashed var(--bl-line);
+  border-radius: 24px;
+  color: var(--bl-muted);
+  font-size: 18px;
+  text-align: center;
+}
+
+.bl-cats {
+  margin: 64px 0 0;
+}
+
+.bl-cats ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1023px) {
+  .bl-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+  }
+}
+
+@media (max-width: 639px) {
+  .bl-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .bl-dek {
+    font-size: 18px;
+  }
+
+  .bl-short,
+  .bl-takeaways {
+    padding: 20px 20px;
+  }
+
+  .bl-short-text {
+    font-size: 18px;
+  }
+
+  .bl-cta {
+    padding: 28px 22px;
+  }
+
+  .bl-cta .btn-teal {
+    width: 100%;
+  }
+
+  .bl-nl-card {
+    padding: 30px 22px 26px;
+  }
+
+  .bl-nl-form .btn-teal {
+    align-self: stretch;
+  }
+
+  .bl-hero-img.bl-img--wide {
+    aspect-ratio: 3 / 2;
+  }
+
+  .bl-band {
+    padding-bottom: 70px;
+  }
+
+  .bl-faq-q {
+    font-size: 17px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bl-card,
+  .bl-pill,
+  .bl-faq-icon::after,
+  .bl-nl-form input[type="email"] {
+    transition: none;
+  }
+
+  .bl-card:hover {
+    transform: none;
+  }
+}
+
+/* ---------- Search box + suggested topics (blog index) ----------
+   Same look as the /faqs search. Copied, not imported. */
+
+.bl-search-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.bl-search {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  margin: 0;
+}
+
+.bl-search-icon {
+  position: absolute;
+  top: 50%;
+  left: 22px;
+  width: 24px;
+  height: 24px;
+  color: #6f5d88;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.bl-search input {
+  display: block;
+  width: 100%;
+  height: 64px;
+  margin: 0;
+  padding: 0 60px 0 60px;
+  background: #fff;
+  border: 2px solid transparent;
+  border-radius: 18px;
+  box-shadow: 0 10px 34px rgba(17, 0, 39, 0.4);
+  color: var(--bl-ink);
+  font: inherit;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.2;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.bl-search input::placeholder {
+  color: #6f5d88;
+  opacity: 1;
+}
+
+.bl-search input::-webkit-search-cancel-button,
+.bl-search input::-webkit-search-decoration {
+  -webkit-appearance: none;
+  display: none;
+}
+
+.bl-search input:focus-visible {
+  outline: 3px solid var(--bl-teal);
+  outline-offset: 3px;
+}
+
+.bl-clear {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  background: var(--bl-tint);
+  border: 0;
+  border-radius: 50%;
+  color: var(--bl-ink);
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.bl-clear.is-visible {
+  display: inline-flex;
+}
+
+.bl-clear:hover {
+  background: var(--bl-teal);
+}
+
+.bl-clear svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Chips need JavaScript, so they only show when it is available. */
+.bl-common {
+  display: none;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 10px;
+}
+
+html.bl-js .bl-common {
+  display: flex;
+}
+
+.bl-common-label {
+  margin: 0 4px 0 0;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.bl-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 18px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease;
+}
+
+.bl-chip:hover,
+.bl-chip.is-active {
+  background: var(--bl-teal);
+  border-color: var(--bl-teal);
+  color: var(--bl-ink);
+}
+
+.bl-chip:focus-visible {
+  outline: 3px solid var(--bl-teal);
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .bl-search input {
+    height: 58px;
+    padding: 0 54px 0 52px;
+    font-size: 17px;
+  }
+
+  .bl-search-icon {
+    left: 18px;
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bl-chip {
+    transition: none !important;
+  }
+}
+
+/* ---------- Update 18 Nov 2026 (Seb) ---------- */
+
+/* Article images: approved soft background colours from the style guide (Rulebook v7), with the 1px
+   DREAM 100 line the rulebook asks for where a soft colour meets white. Applies to heroes and cards. */
+.bl-img {
+  border: 1px solid #e6dcfc;
+}
+
+.bl-img--purple {
+  --bl-img-bg: #f5f2ff; /* DREAM 25 */
+}
+
+.bl-img--teal {
+  --bl-img-bg: #f3fffb; /* GRASS 25 */
+}
+
+.bl-img--pink {
+  --bl-img-bg: #fff9fa; /* HEART 25 */
+}
+
+.bl-img--lilac {
+  --bl-img-bg: #faf9ff; /* DREAM 10 */
+}
+
+/* Top band without the breadcrumb: just enough purple under the nav for the wave. */
+.bl-article .bl-topband .bl-col {
+  padding-top: 8px;
+}
+
+/* Author photos. */
+.bl-avatar.bl-avatar--photo {
+  display: block;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  background: #f5f2ff;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.bl-author--card .bl-avatar.bl-avatar--photo {
+  width: 36px;
+  height: 36px;
+}
+
+/* Intro boxes under the hero: as wide as the image, with more room between them. */
+.bl-intro {
+  margin-bottom: 8px;
+}
+
+.bl-intro .bl-isyou {
+  margin-bottom: 40px;
+}
+
+.bl-intro .bl-short {
+  margin-bottom: 40px;
+  padding: 28px 32px;
+}
+
+.bl-intro .bl-toc {
+  margin-bottom: 56px;
+  padding: 24px 32px;
+}
+
+/* "In this article": HEART accents instead of green (PINK 600 for small-text contrast). */
+.bl-toc .bl-box-label {
+  color: #c10e46;
+}
+
+.bl-toc ol {
+  list-style: decimal;
+}
+
+.bl-toc li::marker {
+  color: #c10e46;
+  font-weight: 800;
+}
+
+.bl-toc a:hover,
+.bl-toc a:focus-visible {
+  color: #c10e46;
+}
+
+/* Newsletter box in the middle of the article. */
+.bl-mid-nl {
+  margin: 48px 0;
+}
+
+.bl-mid-nl .bl-nl {
+  margin: 0;
+}
+
+.bl-nl-print {
+  white-space: normal;
+}
+
+@media (min-width: 900px) {
+  .bl-mid-nl .bl-nl-print,
+  .bl-col--wide .bl-nl-print {
+    white-space: nowrap;
+  }
+}
+
+/* ===== 19 Nov 2026 (Seb) =====
+   Article images on DREAM 500; cards have a thin DREAM 200 border (one shade darker than the band), no
+   shadow, no movement; hover changes colour. Founder titles GRASS 600, advisor titles HEART 600. */
+.bl-img--dream {
+  --bl-img-bg: #2a0b4f;
+}
+
+.bl-card {
+  border: 1px solid #c2b7dd;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.bl-card:hover,
+.bl-card:focus-within {
+  border-color: #58447f;
+  background: #faf9ff;
+  transform: none;
+}
+
+.bl-card--aud-founder .bl-card-title,
+.bl-card--aud-founder .bl-card-title a {
+  color: #01a684;
+}
+
+.bl-card--aud-advisor .bl-card-title,
+.bl-card--aud-advisor .bl-card-title a {
+  color: #c10e46;
+}
+
+.bl-card--aud-founder:hover,
+.bl-card--aud-founder:focus-within {
+  border-color: #01a684;
+  background: #f3fffb;
+}
+
+.bl-card--aud-advisor:hover,
+.bl-card--aud-advisor:focus-within {
+  border-color: #c10e46;
+  background: #fff9fa;
+}
+
+.bl-card .bl-author--card {
+  margin-top: 4px;
+}
+
+/* Notes from FOUNDERland: "land" is bold too; the email field is visible on a white card; thin border. */
+.bl-land {
+  font-weight: 900;
+}
+
+.bl-nl-card {
+  border: 1px solid #c2b7dd;
+}
+
+.bl-nl-form input[type="email"] {
+  border: 1.5px solid #8b7dae;
+  background: #faf9ff;
+}
+
+/* ===== 19 Nov 2026 14:55 (Seb): article cards everywhere (Insights, How it works, Exit-Prep, articles) =====
+   - The same colours wherever a card appears (the blog variables also live on the card).
+   - Sketches 20% bigger, slightly less padding round the image.
+   - Labels 2px smaller, on one line; the audience label lines up with the image's left edge and the topic
+     label sits at the right. More room between labels and title, and between description and author.
+   - Titles 2px smaller (most fit in two lines), a touch bolder; founder titles GRASS 700.
+   - A thin border round the author photo. */
+.bl-card {
+  --bl-tint: #f5f2ff;
+  --bl-line: #c2b7dd;
+  --bl-ink: #2a0b4f;
+  --bl-muted: #5a3f78;
+  --bl-teal: #28dbb0;
+  --bl-pink: #c10e46;
+  background: #fff;
+  color: #2a0b4f;
+}
+
+.bl-card .bl-card-media {
+  padding: 10px 10px 0;
+}
+
+.bl-card .bl-img img {
+  padding: 0;
+  transform: scale(1.06);
+}
+
+.bl-card .bl-card-body {
+  padding: 16px 22px 22px;
+}
+
+.bl-card .bl-card-tags {
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  gap: 6px;
+  align-self: stretch;
+  margin: 0 -12px 8px;
+}
+
+.bl-card .bl-badge {
+  min-height: 24px;
+  padding: 2px 10px;
+  font-size: 10px;
+  flex: none;
+}
+
+.bl-card .bl-badge svg {
+  width: 12px;
+  height: 12px;
+}
+
+.bl-card .bl-pill {
+  min-height: 24px;
+  padding: 2px 10px;
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+/* Audience label colours, as on the Insights page. */
+.bl-card .bl-badge--founder {
+  background: #28dbb0;
+  color: #2a0b4f;
+}
+
+.bl-card .bl-badge--advisor {
+  background: #fde1ea;
+  color: #8f0a37;
+}
+
+.bl-card .bl-badge--both {
+  background: #e4dbf7;
+  color: #2a0b4f;
+}
+
+.bl-card .bl-card-title,
+.bl-page .bl-card:not(.bl-card--feature) .bl-card-title {
+  font-size: 19px;
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.bl-card--aud-founder .bl-card-title,
+.bl-card--aud-founder .bl-card-title a {
+  color: #05745b;
+}
+
+.bl-card .bl-card-excerpt {
+  font-size: 16px;
+}
+
+.bl-card .bl-author--card {
+  margin-top: 10px;
+}
+
+.bl-avatar.bl-avatar--photo {
+  border: 1px solid #c2b7dd;
+}
+
+/* Insights grid: slightly less space between cards, so each card is a little wider. */
+.bl-grid {
+  gap: 20px;
+}
+
+/* ===== 19 Nov 2026 18:52 (Seb): article cards, round 2 =====
+   - Both labels sit left, side by side; each topic label has its own mid-tone border.
+   - Titles 18px (body size), less bold.
+   - Descriptions always take five lines, so the author and the date sit at the same place on every card. */
+.bl-card .bl-card-tags {
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.bl-card .bl-pill {
+  border: 1px solid #8b7dae;
+  background: #fff;
+  color: #2a0b4f;
+}
+
+.bl-pill--preparing-for-exit { border-color: #477dfe !important; }
+.bl-pill--after-the-sale { border-color: #28dbb0 !important; }
+.bl-pill--identity-and-purpose { border-color: #8b7dae !important; }
+.bl-pill--health-and-energy { border-color: #fd6b82 !important; }
+.bl-pill--relationships-and-family { border-color: #1d53ef !important; }
+.bl-pill--whats-next { border-color: #01a684 !important; }
+.bl-pill--working-with-founders { border-color: #ea1557 !important; }
+.bl-pill--personal-side-of-exit-planning { border-color: #58447f !important; }
+
+.bl-card .bl-card-title,
+.bl-page .bl-card:not(.bl-card--feature) .bl-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.bl-card:not(.bl-card--feature):not(.bl-card--row) .bl-card-excerpt {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+  overflow: hidden;
+  min-height: calc(1.55em * 5);
+}
+
+.bl-card:not(.bl-card--feature):not(.bl-card--row) .bl-author--card {
+  margin-top: auto;
+  padding-top: 6px;
+}
+
+.bl-card:not(.bl-card--feature):not(.bl-card--row) .bl-card-body .bl-meta {
+  margin-top: 0;
+}
+
+/* Seb round 2, 22 Nov 2026: G7 shares the image, label and copy inset. */
+html body .bl-card:not(.bl-card--row) { --bl-card-inset: 22px; }
+html body .bl-card.bl-card--feature { --bl-card-inset: 28px; }
+html body .bl-card:not(.bl-card--row) .bl-card-media {
+  margin: var(--bl-card-inset) var(--bl-card-inset) 0 !important;
+  padding: 0 !important;
+  width: auto !important;
+}
+html body .bl-card:not(.bl-card--row) .bl-card-body {
+  padding-inline: var(--bl-card-inset) !important;
+}
+html body .bl-card .bl-card-tags {
+  margin: 0 0 8px !important;
+  padding-inline: 0 !important;
+  flex-wrap: wrap;
+}
+html body .bl-card .bl-img img { transform: none; }
+@media (min-width: 900px) {
+  html body .bl-card--feature .bl-card-media { margin-bottom: var(--bl-card-inset) !important; }
+  html body .bli-feature .bl-card--feature .bl-card-media { margin-bottom: 0 !important; }
+}
+@media (max-width: 599px) {
+  html body .bl-card.bl-card--feature { --bl-card-inset: 22px; }
+}
+
+/* Compact article rows keep the image and copy inside the same card inset. */
+html body .bl-card.bl-card--row { padding: 18px !important; }

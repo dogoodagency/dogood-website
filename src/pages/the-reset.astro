@@ -1,0 +1,496 @@
+---
+import SevenQuestionsBand from "../components/SevenQuestionsBand.astro";
+import WriteToUs from "../components/WriteToUs.astro";
+import { phonePicks } from "../data/phone-picks";
+import "../styles/how-it-works.css";
+import WhoopSection from "../components/WhoopSection.astro";
+import Base from "../layouts/Base.astro";
+import Wave from "../components/Wave.astro";
+import { edgeAbove } from "../data/edge-line";
+import { stats, reviews } from "../data/homepage";
+import { Image } from "astro:assets";
+import TestimonialWall from "../components/TestimonialWall.astro";
+import HwHouse from "../components/HwHouse.astro";
+import HwSupports from "../components/HwSupports.astro";
+import HwWayfinders from "../components/HwWayfinders.astro";
+import StageSwitch from "../components/StageSwitch.astro";
+import { familiar } from "../data/sound-bites";
+import caseJImg from "../assets/cases/case-study-j-founder-life-after-exit.png";
+import caseVImg from "../assets/cases/case-study-v-founder-life-after-exit.png";
+import { wayfinders } from "../data/wayfinders";
+import FoundrLand from "../components/FoundrLand.astro";
+import {
+  houses,
+  arrowSrc,
+  stage1Includes,
+  stage2Includes,
+  supports,
+  fitSignals,
+  notFor,
+  hubs,
+  steps,
+} from "../data/how-it-works";
+
+const wfFor = (name: string) => {
+  const found = wayfinders.find((w) => w.name === name);
+  if (!found) throw new Error(`No Wayfinder named ${name}`);
+  return found;
+};
+
+const tint = "#F3FFFB"; // GRASS 25: Stage 1 colour (Seb, 19 Nov 2026)
+// Seb round 2, 22 Nov 2026: distinct stage bands.
+const stage1Tint = "#E7FFF6";
+const stage2Tint = "#FFF3F4";
+const white = "#ffffff";
+const heroEdge = edgeAbove("#2A0B4F");
+const bandEdge = edgeAbove(tint);
+const footerEdge = edgeAbove(tint);
+
+/** Wavy join between two bands: `from` is the band above, `to` the band below. */
+function wave(from: string, to: string) {
+  const above = from === tint ? "tint" : "white";
+  return `<div class="hw-divider hw-divider--${above}" style="background:${from}" aria-hidden="true"><svg style="--wave-edge:${edgeAbove(from)}" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${to}" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path><path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path></svg></div>`;
+}
+const toTint = wave(white, tint);
+const toWhite = wave(tint, white);
+const dream = "#2A0B4F";
+const toDream = `<div class="hw-divider hw-divider--tint" aria-hidden="true"><svg style="--wave-edge:${bandEdge}" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${dream}" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path></svg></div>`;
+const fromDream = `<div class="hw-divider" style="background:${dream}" aria-hidden="true"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${tint}" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path></svg></div>`;
+
+function clipQuote(quote: string) {
+  const clean = quote.replace(/\s+/g, " ").trim();
+  const limit = 260;
+  if (clean.length <= limit) return clean;
+  const cut = clean.slice(0, limit).replace(/\s+\S*$/, "").replace(/[.…,\s]+$/, "");
+  return `${cut}…`;
+}
+
+// Keep the original identifiers only for selecting phone quotes; public attributions are roles only.
+const wallItemFor = (r: (typeof reviews)[number]) => ({
+  quote: r.quote,
+  name: r.role === "Studio T" ? "Client" : r.role.split(/,| at /)[0],
+});
+const wallItems = reviews.map(wallItemFor);
+const phoneWallItems = phonePicks.reset
+  .map((name) => reviews.find((r) => r.name.toUpperCase() === name.toUpperCase()))
+  .filter((r): r is (typeof reviews)[number] => !!r)
+  .map(wallItemFor);
+
+// Track record numbers animated like the homepage (count-up when scrolled into view).
+const countFor = (value: string) => {
+  const m = value.match(/^(\D*)([\d,.]+)(.*)$/);
+  if (!m) return { count: "", prefix: "", suffix: "", decimals: "0" };
+  const num = m[2].replace(/,/g, "");
+  return { count: num, prefix: m[1], suffix: m[3], decimals: num.includes(".") ? String(num.split(".")[1].length) : "0" };
+};
+
+// Sound bites from real calls (Call Language Log, non-private rows, lightly cleaned). Names are stand-ins (first name + initial, Seb 19 Nov 2026); the page says they are changed. The first two
+// were already here; four added 19 Nov 2026 (Q087, Q102, Q098, Q069).
+
+
+const [houseBefore, houseStage1, houseStage2] = houses;
+---
+
+<Base
+  title="Life after selling a business: The Reset coaching | DoGood Agency"
+  description="Life after selling a business: private coaching through a 2-stage partnership for founders after the sale. Start with The Reset (30 days). Limited to 5 new founders a month."
+  canonical="https://www.dogoodagency.co/the-reset"
+  footerStrip={tint}
+  footerEdge={footerEdge}
+>
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: "Founder Reclamation Partnership: Stage 1 The Reset",
+      url: "https://www.dogoodagency.co/the-reset",
+      description: "A private 1:1 engagement for founders after exit. Stage 1, The Reset, runs for 30 days; Stage 2, The Build, is by invitation.",
+      serviceType: "1:1 founder coaching",
+      provider: { "@id": "https://www.dogoodagency.co/#organization" },
+      audience: { "@type": "Audience", audienceType: "Founders before or after an exit" },
+      areaServed: "Worldwide",
+      additionalProperty: { "@type": "PropertyValue", name: "Duration", value: "30 days (Stage 1); 12 weeks (Stage 2, by invitation)" },
+    })} />
+  <article class="hw-page hw-page--s1">
+    <!-- 1. Hero -->
+    <header class="hw-hero">
+      <div class="hw-hero-inner">
+        <p class="hw-eyebrow">Stage 1: The Reset™ (30 Days)</p>
+        <h1>Life after selling your business, starting with 30 days</h1>
+        <p class="hw-hero-lede hw-hero-lede-sm">The Founder Reclamation Partnership is a private 1:1 partnership for a founder's transition after selling a business. It starts with The Reset: 30 days with a Wayfinder to get clear on who you want to be without the company.</p>
+      </div>
+      <Wave fill={tint} edge={heroEdge} />
+    </header>
+
+    <!-- 1. The two stages as one switch (Seb, 19 Nov 2026 14:55): replaces the progress pills and the two dark
+         stage cards, which repeated each other. -->
+    <section class="hw-band hw-band-tint hw-path" aria-labelledby="hw-path">
+      <div class="hw-well">
+        <p class="hw-eyebrow hw-center">The FRP is a 2-stage process</p>
+        <h2 id="hw-path" class="hw-center hw-path-title">Reset first. Then build.</h2>
+        <StageSwitch current={1} />
+        <p class="hw-path-note">Stage 2 is invite-only. <a href="/the-build">What happens in Stage 2 →</a></p>
+      </div>
+    </section>
+
+    <Fragment set:html={toWhite} />
+
+    <!-- 1a. How to start, and the Exit-Prep callout -->
+    <section class="hw-band hw-start" aria-label="How to start">
+      <div class="hw-well">
+        <p class="hw-flow hw-flow-sm hw-center"><a href="#anchor-1"><strong>How it works:</strong></a> Apply → Conversation → Start Stage 1</p>
+        <p class="hw-expedite hw-center">We protect our delivery quality: Ask about <a href="/expedited-start">Expedited Start</a> if urgent<br />(FRP can begin within 7 days)</p>
+
+        <aside class="hw-notyet-card" aria-label="Not sold yet?">
+          <div>
+            <p class="hw-notyet-eyebrow">Not there yet?</p>
+            <p class="hw-notyet-text">If you haven't sold yet, <strong>Exit-Prep</strong> is for you: six weekly 1:1 sessions on the personal side of the sale, while the deal is still ahead of you.</p>
+          </div>
+          <a class="btn-teal" href="/exit-prep">See Exit-Prep</a>
+        </aside>
+      </div>
+    </section>
+
+    <Fragment set:html={toTint} />
+
+    <!-- 1b. Sound bites: 6 quotes from real calls (own tinted band, 19 Nov 2026 14:55) -->
+    <section class="hw-band hw-band-tint" aria-labelledby="hw-familiar">
+      <div class="hw-well">
+        <h2 id="hw-familiar" class="hw-center">In their words</h2>
+        <p class="hw-center hw-sub-center">Real words from our conversations with founders and the advisors who work with them.</p>
+        <TestimonialWall items={familiar.map((q) => ({ quote: q.quote, name: q.name }))} short label="In their words" />
+      </div>
+    </section>
+
+    <Fragment set:html={toWhite} />
+
+    <!-- 2. Cost + What is FRP -->
+    <section class="hw-band" aria-labelledby="hw-cost">
+      <div class="hw-well hw-prose">
+        <h2 id="hw-cost">Why does it feel this way when the sale went well?</h2>
+        <p>You thought selling your business would feel like arrival. Instead, you have more freedom but feel lost, even regretful.</p>
+        <p>For years you had to look steady for your team and your clients. There was nowhere private to put what you were carrying.</p>
+        <p>The company gave your days structure, urgency, and a place to put your energy. Without it, the question is how you want to live now, and what you do not want to recreate.</p>
+        <p>Your sleep. Your health. Your family. The parts of life that were easier to put off while the company needed you.</p>
+        <p>You may have tried travel, a slower calendar, or the picture of life after work everyone talks about. For most founders it isn’t enough: you’re used to responsibility and to being someone. Before you fill the space with another version of the life you left behind, it is worth getting clear on what you actually want next.</p>
+
+        <h2 id="hw-what" class="hw-h2-spaced">I sold my business. Now what?</h2>
+        <p>Most founders arrive with the same honest answer: no clear idea yet. The Founder Reclamation Partnership (FRP) is a structured two-stage partnership designed for one outcome:</p>
+        <p class="hw-pull">Helping you make life after the sale a deliberate choice, not another version of the life you left behind.</p>
+        <p>The work happens in stages because you do not need to rebuild everything at once.</p>
+        <p>First, we reset what has become misaligned: the patterns, values, and daily structure that no longer support the life you want to live. Then, once the essential parts are working again, we build the larger life around what genuinely comes next for you. Think of it like a house.</p>
+      </div>
+    </section>
+
+    <Fragment set:html={wave(white, stage1Tint)} />
+
+    <!-- 4. House 1 + Stage 1 -->
+    <section class="hw-band hw-band-tint hw-band-stage1" aria-labelledby="hw-stage1">
+      <div class="hw-well">
+        <div class="hw-stage-panel">
+        <HwHouse house={houseBefore} />
+
+        <div class="hw-prose hw-stage-block">
+          <h2 id="hw-stage1" class="hw-stage-head"><span class="hw-stage-kicker">Stage 1</span><span class="hw-stage-title">The Reset <span class="hw-days">(30 days)</span></span></h2>
+          <p class="hw-tagline">Get Clear · Set New Values · Shift Patterns</p>
+          <p class="hw-via">via <a href="/clarityvalue-shift">ClarityValue Shift™</a></p>
+          <p class="hw-flow hw-flow-box"><strong>How it works:</strong> See → Interrupt → Choose → Reset</p>
+          <p>Stage 1 is about discovering who you want to be without the company: the identity-level shifts, what excites you, how you truly want to live, who you want to show up as, and what matters to you now. It is the first step into the next version of yourself.</p>
+          <p>We make space for what often surfaces after the sale, usually weeks or months in: restlessness, loss of structure, neglected health or relationships, and the growing sense that the old way of operating no longer fits this chapter.</p>
+          <p>We interrupt the patterns shaping this chapter, clarify what is aligned for you now, and help you see what is driving your decisions, energy, and behavior so you can begin moving toward the version of yourself that actually belongs next.</p>
+          <p>By day 30, you are not just clearer. You have started to reset how you live: what you pay attention to, what no longer runs your life, and what needs to change.</p>
+          <p>Important: Stage 1 is focused work. We usually address 1-2 major areas, rather than trying to change everything at once.</p>
+          <p>By week 3, we will know:</p>
+          <ul class="hw-plain">
+            <li>(1) Stage 1 gave you what you needed,</li>
+            <li>(2) There is a fit for Stage 2, and we continue.</li>
+          </ul>
+          <h3 class="hw-list-title">You will leave Stage 1 with:</h3>
+          <ul class="hw-includes">
+            {stage1Includes.map((item) => (
+              <li>
+                <strong>{item.title}</strong> (<span set:html={item.detail} />)
+              </li>
+            ))}
+          </ul>
+        </div>
+        </div>
+        <div class="hw-feature"><WhoopSection /></div>
+      </div>
+    </section>
+
+    <Fragment set:html={wave(stage1Tint, stage2Tint)} />
+
+    <!-- 5. What comes after Stage 1 (Seb, 19 Nov 2026: Stage 2 has its own page, /the-build). -->
+    <section class="hw-band hw-band-tint hw-band-stage2" aria-labelledby="hw-stage2">
+      <div class="hw-well">
+        <div class="hw-stage-panel">
+        <HwHouse house={houseStage1} />
+
+        <div class="hw-prose hw-stage-block">
+          <p class="hw-eyebrow hw-eyebrow-left">What comes after Stage 1</p>
+          <h2 id="hw-stage2" class="hw-stage-head"><span class="hw-stage-kicker">Stage 2</span><span class="hw-stage-title">The Build <span class="hw-days">(12 weeks)</span></span></h2>
+          <p class="hw-tagline">Rework Life · Go Deeper · Realign What Matters</p>
+          <p class="hw-via">via <a href="/nextlife-passage">NextLife Passage™</a></p>
+          <p class="hw-flow hw-flow-box hw-flow-box--s2"><strong>How it works:</strong> Rework → Navigate → Realign → Integrate</p>
+          <p>Stage 1 is about you. Stage 2 builds the life around who you have become: the relationships you want, new and rekindled, your health, and the activities that make life rich again.</p>
+          <p>This is a wider build around real life, deeper decisions, and long-term alignment. We take the shift from Stage 1 and reorganize life around it, so the work becomes part of how you live practically.</p>
+          <p><strong>Stage 2 is by invitation.</strong> By week 3 of Stage 1, we will know together whether there is a fit to continue.</p>
+          <p><a class="hw-textlink" href="/the-build">Read about Stage 2: The Build →</a></p>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <Fragment set:html={wave(stage2Tint, tint)} />
+
+    <!-- Case V has its own GRASS 25 band. -->
+    <section class="hw-band hw-band-tint hw-case-band" aria-label="Featured case study">
+      <div class="hw-well">
+        <aside class="hw-case hw-case-feature hw-case-top hw-case--sky" aria-label="Case study">
+          <Image class="hw-case-img" src={caseVImg} width={220} height={244} widths={[220, 440]} sizes="220px" alt="Pixelated portrait of founder V, shown this way to protect their identity" />
+          <div class="hw-case-body">
+            <p class="hw-eyebrow hw-eyebrow-left">Featured case study</p>
+            <h3>From feeling lost to decisive leadership: how V reclaimed life after success</h3>
+            <p class="hw-case-who">V (anonymous), USD 9M+ founder</p>
+            <div class="btn-with-caption">
+              <a class="btn-teal" href="/casestudies/v">Read V's story</a>
+              <p class="hw-case-note">We protect our founders’ identities</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <Fragment set:html={toWhite} />
+
+    <section class="hw-band hw-home-complete" aria-label="After Stage 2">
+      <div class="hw-well">
+        <HwHouse house={houseStage2} showBadge />
+      </div>
+    </section>
+
+    <Fragment set:html={toTint} />
+
+    <section class="hw-band hw-band-tint" aria-labelledby="hw-supports">
+      <div class="hw-well"><HwSupports /></div>
+    </section>
+
+    <Fragment set:html={toWhite} />
+    <FoundrLand kind="reset" />
+
+    <!-- 8. Who this is for -->
+    <section class="hw-band hw-band-tint hw-who-band" aria-labelledby="hw-who">
+      <div class="hw-well">
+        <div class="hw-prose">
+          <h2 id="hw-who">Who is this for?</h2>
+          <p class="hw-eyebrow hw-eyebrow-left">Founders: After the Sale</p>
+          <p>This is for founders who have sold or meaningfully stepped away from the company and are no longer responsible for the day-to-day.</p>
+          <p>You may still have a board or advisory role, but you now have more time, more freedom, and more space than you have had in years.</p>
+          <p>What you did not expect was how uncomfortable that space might feel. Many founders feel this and never quite say it. You do not simply want to fill it with another company or project.</p>
+          <p>You want to understand what is driving the next move and deliberately choose how you want to live beyond the business.</p>
+        </div>
+
+
+        <div class="hw-fit">
+          <section class="hw-fit-card hw-fit-yes" aria-labelledby="hw-signals">
+            <h3 id="hw-signals">Key signals you’re a fit:</h3>
+            <ul class="hw-ticks">
+              {fitSignals.map((text) => (
+                <li>
+                  <span class="hw-icon hw-icon-yes" aria-hidden="true">✓</span>
+                  <span>{text === "You have more time, but are not sure what you want to do with it." ? (
+                    <>You have more time, but are <a class="hw-textlink" href="/insights/first-90-days-after-the-sale">not sure what you want to do with it</a>.</>
+                  ) : text}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+          <section class="hw-fit-card hw-fit-no" aria-labelledby="hw-notfor">
+            <h3 id="hw-notfor">This is NOT for founders who:</h3>
+            <ul class="hw-ticks">
+              {notFor.map((text) => (
+                <li>
+                  <span class="hw-icon hw-icon-no" aria-hidden="true">✗</span>
+                  <span>{text}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <SevenQuestionsBand variant="reset" layout="preview" />
+
+    <Fragment set:html={toTint} />
+
+    <!-- 9. What this partnership is not + case J -->
+    <section class="hw-band hw-band-tint" aria-labelledby="hw-not">
+      <div class="hw-well">
+        <div class="hw-prose">
+          <h2 id="hw-not">What This Partnership Is Not</h2>
+          <p>This is not performance training. Not therapy. Not a mastermind, a retreat, or a course. It is a 1:1 partnership with a Wayfinder.</p>
+          <p>There are no frameworks to memorize, and no random accountability pods.</p>
+          <p>FRP is private, direct, intensive work. It requires protected time and brutal honesty.</p>
+          <p>In exchange, you have a Wayfinder who has walked many founders through this, and a clear structure, so you get to clarity sooner and don’t have to figure it out alone or feel lost while you do.</p>
+          <p class="hw-pull">Private work. Real consequences. Real change.</p>
+        </div>
+
+        <aside class="hw-case hw-case-feature hw-case--grass" aria-label="Case study">
+          <Image class="hw-case-img" src={caseJImg} width={220} height={244} widths={[220, 440]} sizes="220px" alt="Pixelated portrait of founder J, shown this way to protect their identity" />
+          <div class="hw-case-body">
+            <p class="hw-eyebrow hw-eyebrow-left">Featured case study</p>
+            <h3>From exit anxiety to aligned legacy — How J created a clear next life chapter</h3>
+            <p class="hw-case-who">J (anonymous), USD 2M founder</p>
+            <div class="btn-with-caption">
+              <a class="btn-teal" href="/casestudies/j">Read J's story</a>
+              <p class="hw-case-note">We protect our founders’ identities</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <Fragment set:html={toWhite} />
+
+    <!-- 10. Testimonials: moving wall on white with DREAM 10 cards (Seb, 19 Nov 2026: DREAM 500 band removed) -->
+    <section class="hw-band" aria-labelledby="hw-reviews">
+      <div class="hw-well">
+        <h2 id="hw-reviews" class="hw-center">Leaders who've been through it</h2>
+        <p class="hw-center hw-sub-center">Words from leaders our team has worked with. They are not all founders who have sold.</p>
+        <TestimonialWall items={wallItems} phoneItems={phoneWallItems} label="Testimonials from leaders our team has worked with" />
+      </div>
+    </section>
+
+    <Fragment set:html={toTint} />
+
+    <!-- 11. Numbers -->
+    <section class="hw-band hw-band-tint" aria-labelledby="hw-track">
+      <div class="hw-well">
+        <h2 id="hw-track" class="hw-center">Our team’s track record</h2>
+        <ul class="hw-stats" data-count-group>
+          {stats.map((stat) => {
+            const v = stat.value;
+            const c = countFor(v);
+            return (
+              <li>
+                <strong data-count={c.count} data-prefix={c.prefix} data-suffix={c.suffix} data-decimals={c.decimals}>{v}</strong>
+                <span>{stat.label}</span>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </section>
+
+    <Fragment set:html={toWhite} />
+
+    <!-- 12. Guarantee + apply -->
+    <section class="hw-band" aria-labelledby="hw-guarantee">
+      <div class="hw-well">
+        <div class="hw-guarantee hw-guarantee-dark">
+          <img class="hw-seal" src="/sketches/clarity-seal-home@1x.png" srcset="/sketches/clarity-seal-home@1x.png 200w, /sketches/clarity-seal-home@2x.png 400w" sizes="150px" width="150" height="150" alt="" loading="lazy" decoding="async" />
+          <h2 id="hw-guarantee">Clarity‑First Guarantee (Stage 1)</h2>
+          <p>You can’t know whether FRP is right for you from the outside — you only know once you’ve been inside the work.</p>
+          <p>Complete onboarding and attend your first two private 1:1 sessions. If you decide the partnership isn’t right for you, email us within 7 days of Session 1, and we’ll refund the remainder of your Stage 1 investment –– no matter the reason (we only retain the portion covering the two sessions delivered).</p>
+          <p>You keep all decisions, plans, and tools from our first sessions. We take real delivery risk on purpose, because we only want to continue if it’s genuinely the right fit.</p>
+          <a class="btn-teal" href="/clarity-first-guarantee-terms">Read full terms</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 16. Steps -->
+    <section class="hw-band" id="anchor-1" aria-labelledby="hw-steps">
+      <div class="hw-well">
+        <h2 id="hw-steps" class="hw-center">How It Works</h2>
+        <ol class="hw-steps">
+          {steps.map((step) => (
+            <li class="hw-step">
+              <p class="hw-step-n" aria-label={step.n}>{step.n.replace(/^Step\s*/i, "")}</p>
+              <div class="hw-step-copy">
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+        <div class="hw-steps-cta">
+          <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
+          <p class="hw-limited hw-limited-dark hw-btn-sub">Stage 1 (30 days) · Week 3 decision on Stage 2</p>
+          <WriteToUs />
+        </div>
+      </div>
+    </section>
+
+    <Fragment set:html={toTint} />
+
+    <!-- 17. After 30 days -->
+    <section class="hw-band hw-band-tint" aria-labelledby="hw-after">
+      <div class="hw-well">
+        <h2 id="hw-after" class="hw-center">What happens after the first 30 days?</h2>
+        <p class="hw-after-lead">Most founders want to keep going. Some don’t need to.</p>
+        <div class="hw-options">
+          <div class="hw-option hw-option-a">
+            <p class="hw-step-n">Option A</p>
+            <h3>You’re done.</h3>
+            <p>You leave with clarity, a map, and the tools to move forward. No pressure.</p>
+            <p>Some founders get what they need in 30 days.</p>
+          </div>
+          <div class="hw-option hw-option-b">
+            <p class="hw-step-n">Option B</p>
+            <h3>We continue.</h3>
+            <p>Stage 2 is where the redefinition of life happens over 12 weeks. That’s why most founders continue for months 2–4.</p>
+            <p><a class="hw-textlink" href="/the-build">See Stage 2: The Build<span class="tm">™</span></a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <Fragment set:html={toWhite} />
+
+    <!-- 14. FAQ link -->
+    <section class="hw-band" aria-labelledby="hw-faq">
+      <div class="hw-well hw-well-slim">
+        <div class="hw-faq-link">
+          <h2 id="hw-faq">Find answers to common questions</h2>
+          <a class="btn-teal" href="/faqs">Read the FAQs</a>
+        </div>
+      </div>
+    </section>
+
+  </article>
+</Base>
+
+<script>
+  // Count-up for the track record, same as the homepage.
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const group = document.querySelector("[data-count-group]");
+    const counters = Array.from(document.querySelectorAll<HTMLElement>("[data-count]")).filter((el) => el.dataset.count);
+    const format = (el: HTMLElement, value: number) => {
+      const decimals = Number(el.dataset.decimals ?? "0");
+      const shown = decimals ? value.toFixed(decimals) : Math.round(value).toLocaleString("en-US");
+      el.textContent = `${el.dataset.prefix ?? ""}${shown}${el.dataset.suffix ?? ""}`;
+    };
+    if (group && counters.length) {
+      let started = false;
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (started || !entries.some((e) => e.isIntersecting)) return;
+          started = true;
+          observer.disconnect();
+          counters.forEach((el) => {
+            const target = Number(el.dataset.count);
+            const begin = performance.now();
+            const tick = (now: number) => {
+              const p = Math.min(1, (now - begin) / 1800);
+              format(el, target * (1 - (1 - p) ** 3));
+              if (p < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+          });
+        },
+        { threshold: 0.35 },
+      );
+      observer.observe(group);
+    }
+  }
+</script>

@@ -1,0 +1,93 @@
+/* Preview 12: scoped QA fixes. The footer wave overlaps main by 80px
+   (40px below 600px). Keep the Round 4 spacer inside the final background.
+   These floors leave an 8px buffer above the 165px requirement even when the
+   closing content has no bottom margin. Browser measurements are still needed. */
+
+/* Match the 404 article itself: on an unknown URL main's data-path is that URL,
+   while the 404 markup is the same as /404 and /404.html. */
+html body main#main:has(> article.page-404),
+html body main#main:is([data-path="/thank-you"], [data-path="/application-thankyou"], [data-path="/stage1-tc"]) {
+  --r4-fc: 205px;
+}
+
+/* Booking body padding minus the wave overlap must leave at least 173px.
+   Add the floor after both the calendar/copy grid and any lower case study.
+   Existing content insets can leave more clearance; keep them intact. */
+html body main#main:is(
+  [data-path="/catchup"], [data-path="/frpfit"], [data-path="/internal"],
+  [data-path="/internal60"], [data-path="/prefrp"],
+  [data-path="/exit"], [data-path="/wealth"]
+) > .bk-page > .bk-body::after {
+  content: "";
+  display: block;
+  height: 181px; /* 72px body padding + 181px - 80px wave = 173px. */
+  pointer-events: none;
+}
+
+@media (min-width: 1024px) {
+  html body main#main:is(
+    [data-path="/catchup"], [data-path="/frpfit"], [data-path="/internal"],
+    [data-path="/internal60"], [data-path="/prefrp"],
+    [data-path="/exit"], [data-path="/wealth"]
+  ) > .bk-page > .bk-body::after {
+    height: 113px; /* 140px body padding + 113px - 80px wave = 173px. */
+  }
+
+  html body main#main[data-path="/advisor-center/insights"] .advr-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 800px;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 599px) {
+  html body main#main:is(
+    [data-path="/catchup"], [data-path="/frpfit"], [data-path="/internal"],
+    [data-path="/internal60"], [data-path="/prefrp"],
+    [data-path="/exit"], [data-path="/wealth"]
+  ) > .bk-page > .bk-body::after {
+    height: 141px; /* 72px body padding + 141px - 40px wave = 173px. */
+  }
+}
+
+html body main#main > article.page-404::after,
+html body main#main:is([data-path="/thank-you"], [data-path="/application-thankyou"]) > article.page-designed::after {
+  content: "";
+  display: block;
+  height: var(--r4-fc);
+  pointer-events: none;
+}
+
+/* The shared thank-you body has at least 72px of bottom padding. At tablet
+   sizes the old 60–173px spacers did not consistently cover the wave overlap.
+   Keep every existing larger value; extend only these acknowledgement pages. */
+html body main#main:is(
+  [data-path="/newsletter/thanks"], [data-path="/prefrp-thankyou"],
+  [data-path="/catchup-thankyou"], [data-path="/exit-thankyou"],
+  [data-path="/internal-thankyou"], [data-path="/internal60-thankyou"],
+  [data-path="/wealth-thankyou"], [data-path="/clarity-thankyou"],
+  [data-path="/frpfit-thankyou"], [data-path="/orientation-thankyou"]
+) > .bk-page > .bk-body::after {
+  height: max(var(--r4-fc, 0px), 181px);
+}
+
+@media (max-width: 599px) {
+  html body main#main:is(
+    [data-path="/newsletter/thanks"], [data-path="/prefrp-thankyou"],
+    [data-path="/catchup-thankyou"], [data-path="/exit-thankyou"],
+    [data-path="/internal-thankyou"], [data-path="/internal60-thankyou"],
+    [data-path="/wealth-thankyou"], [data-path="/clarity-thankyou"],
+    [data-path="/frpfit-thankyou"], [data-path="/orientation-thankyou"]
+  ) > .bk-page > .bk-body::after {
+    height: max(var(--r4-fc, 0px), 141px);
+  }
+}
+
+/* tablet.css resets #next's outer padding through 1365px. Reserve the full
+   clearance inside .next-inner, after the doors, across that same range.
+   Phone and wider desktop layouts retain their existing padding and hovers. */
+@media (min-width: 601px) and (max-width: 1365px) {
+  html body main#main .page-home #next .next-inner {
+    padding-bottom: 253px;
+  }
+}

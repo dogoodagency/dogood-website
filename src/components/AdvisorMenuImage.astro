@@ -1,0 +1,23 @@
+---
+interface Props { href: string; }
+const images: Record<string, string> = {
+  "/advisor-center": "overview",
+  "/advisor-center/referrals": "referrals",
+  "/advisor-center/client-tools": "tools",
+  "/advisor-center/insights": "insights",
+};
+const image = `/media/r4/nav-adv-${images[Astro.props.href]}`;
+---
+
+<img
+  class="nav-advisor-image"
+  data-arta="A7"
+  src={`${image}@1x.webp`}
+  srcset={`${image}@1x.webp 1x, ${image}@2x.webp 2x, ${image}@3x.webp 3x`}
+  width="120"
+  height="104"
+  loading="lazy"
+  decoding="async"
+  alt=""
+  aria-hidden="true"
+/>

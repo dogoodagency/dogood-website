@@ -1,0 +1,24 @@
+---
+// Author photo, name and role (articles and article cards). Data: src/data/authors.ts.
+import { Image } from "astro:assets";
+import { getAuthor } from "../data/authors";
+
+interface Props {
+  author?: string;
+  /** Overrides the role from authors.ts when an article sets one. */
+  role?: string;
+  card?: boolean;
+}
+
+const { author, role, card = false } = Astro.props;
+const a = getAuthor(author);
+const size = card ? 36 : 48;
+---
+
+<div class:list={["bl-author", card && "bl-author--card"]}>
+  <Image class="bl-avatar bl-avatar--photo" src={a.image} alt="" width={size} height={size} densities={[1, 2]} />
+  <span class="bl-author-text">
+    <span class="bl-author-name">{a.name}</span>
+    <span class="bl-author-role">{role ?? a.role}</span>
+  </span>
+</div>

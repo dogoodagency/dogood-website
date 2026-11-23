@@ -1,0 +1,519 @@
+/* Product pages (ProductPage.astro), on top of exit-prep.css. Rules are .pp- only. Added 19 Nov 2026. */
+
+.pp-well {
+  max-width: 980px;
+}
+
+.pp-page .pp-lede {
+  max-width: 760px;
+  margin: 0 0 16px;
+  color: #2a0b4f;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.pp-page .ep-lede-plain {
+  max-width: 760px;
+}
+
+.pp-page .ep-lede-plain strong {
+  font-weight: 900;
+}
+
+.pp-tag {
+  display: inline-block;
+  margin: 0 0 22px;
+  padding: 6px 16px;
+  border: 1px solid #28dbb0;
+  border-radius: 999px;
+  color: #28dbb0;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* Numbered steps (e.g. the Residency days). */
+.pp-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 20px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pp-step {
+  padding: 24px 24px 26px;
+  border: 1px solid #c2b7dd;
+  border-radius: 20px;
+  background: #fff;
+}
+
+.pp-step-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #ea1557;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.pp-page .pp-step h3 {
+  margin: 0 0 8px;
+  color: #2a0b4f;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.pp-step p {
+  margin: 0;
+  color: #2a0b4f;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+/* Product cards (the /products hub). */
+.pp-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pp-card {
+  position: relative;
+  display: block;
+  height: 100%;
+  padding: 28px 30px 56px;
+  border: 1px solid #c2b7dd;
+  border-radius: 20px;
+  background: #fff;
+  color: #2a0b4f;
+  text-decoration: none;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.pp-card:hover,
+.pp-card:focus-visible {
+  border-color: #ea1557;
+  box-shadow: 0 12px 32px rgba(42, 11, 79, 0.1);
+  transform: translateY(-2px);
+}
+
+.pp-card-tag {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #58447f;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.pp-page .pp-card h3 {
+  margin: 0 0 8px;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.pp-card p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.pp-card-go {
+  position: absolute;
+  right: 26px;
+  bottom: 20px;
+  color: #ea1557;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.pp-note {
+  max-width: 760px;
+  margin: 22px 0 0;
+  color: #6b5c93;
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.pp-close {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 56px 40px;
+  border-radius: 24px;
+  background: #2a0b4f;
+  text-align: center;
+}
+
+.pp-page .pp-close h2 {
+  margin: 0;
+  color: #fff;
+}
+
+.pp-close p {
+  max-width: 640px;
+  margin: 0;
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+@media (max-width: 760px) {
+  .pp-cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pp-close {
+    padding: 40px 22px;
+  }
+}
+
+/* 19 Nov 2026 (Seb): no white cards on white bands, no lift on hover (colour change instead), and a clear
+   "Coming soon" status in the advisor-page style. */
+.pp-page .ep-band:not(.ep-band-tint) .pp-card,
+.pp-page .ep-band:not(.ep-band-tint) .pp-step {
+  background: #faf9ff;
+}
+
+.pp-page .pp-card:hover,
+.pp-page .pp-card:focus-visible {
+  border-color: #ea1557;
+  background: #fff3f4;
+}
+
+.pp-soon {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 16px;
+  padding: 6px 14px;
+  border: 1.5px dashed #c2b7dd;
+  border-radius: 999px;
+  background: #f5f2ff;
+  color: #2a0b4f;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.pp-soon::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: #28dbb0;
+}
+
+.pp-soon--hero {
+  margin: 0 0 22px;
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 15px;
+}
+
+/* "What it is NOT" boxes: HEART 25 with a HEART 300 line. */
+.pp-page .ep-box--rose {
+  border: 1px solid #feb5bc;
+  background: #fff9fa;
+}
+
+.pp-feature-well {
+  max-width: 1180px;
+}
+
+/* 19 Nov 2026 14:55 (Seb): hero titles run wider, so they sit on two lines. */
+.pp-page .ep-hero h1 {
+  max-width: 1080px;
+}
+
+/* A feature band's cards (WHOOP, audio) sit on the band colour without their own white box edge clash. */
+.pp-page .pp-feature.ep-band-tint .wh {
+  background: #fff;
+}
+
+.pp-page .ep-hero-inner {
+  max-width: 1080px;
+}
+
+.pp-page .ep-hero .ep-sub {
+  max-width: none; /* one line where it fits (Seb, 19 Nov 2026 18:52) */
+}
+
+/* No SKY on DREAM (Seb, 19 Nov 2026 14:55): SKY boxes on the lilac band become white with a DREAM line. */
+.pp-page .ep-band-tint .ep-box--sky {
+  border-color: #c2b7dd;
+  background: #fff;
+}
+
+/* Steps (e.g. How the 1.5 days work): GRASS shades from light to deep, appearing one after another
+   (Seb, 19 Nov 2026 18:52). */
+.pp-page .pp-step { border-width: 1px; }
+.pp-page .ep-band .pp-steps .pp-step:nth-child(1) { border-color: #a3f2d7; background: #f3fffb; }
+.pp-page .ep-band .pp-steps .pp-step:nth-child(2) { border-color: #73e7c4; background: #e7fff6; }
+.pp-page .ep-band .pp-steps .pp-step:nth-child(3) { border-color: #28dbb0; background: #a3f2d7; }
+.pp-page .ep-band .pp-steps .pp-step:nth-child(4) { border-color: #01a684; background: #73e7c4; }
+.pp-page .ep-band .pp-steps .pp-step:nth-child(5) { border-color: #05745b; background: #05745b; }
+.pp-page .ep-band .pp-steps .pp-step:nth-child(5) :is(h3, p) { color: #fff; }
+.pp-page .ep-band .pp-steps .pp-step:nth-child(5) .pp-step-label { color: #a3f2d7; }
+.pp-page .pp-step .pp-step-label { color: #05745b; }
+
+.pp-steps.will-animate .pp-step { opacity: 0; transform: translateY(18px); }
+.pp-steps.is-in .pp-step {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.pp-steps.is-in .pp-step:nth-child(2) { transition-delay: 0.6s; }
+.pp-steps.is-in .pp-step:nth-child(3) { transition-delay: 1.2s; }
+.pp-steps.is-in .pp-step:nth-child(4) { transition-delay: 1.8s; }
+.pp-steps.is-in .pp-step:nth-child(5) { transition-delay: 2.4s; }
+.pp-steps.is-in .pp-step:nth-child(6) { transition-delay: 3s; }
+
+/* 20 Nov 2026 (Seb): the sections below the hero start at the hero's left edge (both 1080px wide). */
+.pp-well { max-width: 1080px; }
+/* 20 Nov 2026 (Seb): the closing sentence sits on one line where the card is wide enough. */
+.pp-close p { max-width: none; }
+
+/* 20 Nov 2026 (Seb): each service card in its own colour (GRASS, HEART, SUN, CORAL; no SKY on the lilac band),
+   a deeper shade of the same colour on hover, and a short "Coming soon" at the bottom left, level with the arrow. */
+.pp-page .pp-cards li:nth-child(1) .pp-card { --pc-bg: #f3fffb; --pc-line: #73e7c4; --pc-hover: #d6f9ec; --pc-ink: #01a684; }
+.pp-page .pp-cards li:nth-child(2) .pp-card { --pc-bg: #fff9fa; --pc-line: #feb5bc; --pc-hover: #ffe1e7; --pc-ink: #ea1557; }
+.pp-page .pp-cards li:nth-child(3) .pp-card { --pc-bg: #fffbe6; --pc-line: #f5e27a; --pc-hover: #fdf1b4; --pc-ink: #b38600; }
+.pp-page .pp-cards li:nth-child(4) .pp-card { --pc-bg: #fff4ef; --pc-line: #ffbfa6; --pc-hover: #ffe0d3; --pc-ink: #e0532a; }
+.pp-page .pp-cards .pp-card {
+  background: var(--pc-bg, #fff);
+  border-color: var(--pc-line, #c2b7dd);
+  padding-bottom: 72px;
+}
+.pp-page .pp-cards .pp-card:hover,
+.pp-page .pp-cards .pp-card:focus-visible {
+  background: var(--pc-hover, #fff3f4);
+  border-color: var(--pc-ink, #ea1557);
+}
+.pp-page .pp-cards .pp-card-go { color: var(--pc-ink, #ea1557); }
+.pp-page .pp-cards .pp-soon--card {
+  position: absolute;
+  left: 30px;
+  bottom: 18px;
+  margin: 0;
+  padding: 5px 14px;
+  border-color: var(--pc-line, #c2b7dd);
+  background: #fff;
+  font-size: 13px;
+}
+@media (max-width: 600px) {
+  .pp-page .pp-cards .pp-soon--card { left: 22px; }
+}
+
+/* Round 2 G9: partnership content sits directly on its section band. */
+.pp-partnership :is(.pp-well, .pp-feature-well, .ep-well, .pp-close, .au--full, .wh--full) {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.pp-partnership :is(.pp-close, .au--full, .wh--full) { padding: 0; }
+.pp-partnership .au--full :is(.au-approach, .au-sci) {
+  margin-top: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.pp-partnership .pp-close { gap: 22px; }
+.pp-partnership .pp-close :is(h2, p),
+.pp-partnership .au--full,
+.pp-partnership .au--full :is(h2, .au-lede) { color: var(--color-dream-500); }
+.pp-partnership .au--full .au-eyebrow { color: var(--color-grass-700); }
+/* GRASS 700 meets AA on the pale green cards; GRASS 600 did not at 14px. */
+.pp-partnership .au-mode--grass { --au-c: var(--color-grass-700); }
+.pp-partnership .pp-step .pp-step-label { color: var(--color-dream-500); }
+.pp-partnership .wh-panel--dark h3 { color: var(--color-white); }
+@media (prefers-reduced-motion: reduce) {
+  .pp-steps.will-animate .pp-step { opacity: 1; transform: none; transition: none; }
+}
+
+/* Seb round 2, 22 Nov 2026: frameless groups and more room on partnership bands. */
+.pp-partnership .ep-well-top { padding-block: 50px 100px; }
+.pp-partnership .pp-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 48px;
+  margin-top: 40px;
+}
+.pp-partnership .pp-group { min-width: 0; }
+.pp-partnership .pp-group h3 {
+  margin: 0 0 24px;
+  color: #2a0b4f;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+}
+.pp-partnership .pp-group ul {
+  display: grid;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.pp-partnership .pp-group li {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin: 0;
+  color: #2a0b4f;
+  font-size: 18px;
+  line-height: 1.6;
+}
+.pp-partnership .pp-icon { flex: 0 0 30px; }
+.pp-partnership .pp-group li > span { min-width: 0; }
+.pp-partnership .pp-note {
+  margin-top: 32px;
+  color: #533f79;
+  font-size: 14px;
+}
+.pp-partnership .pp-step-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.pp-partnership .pp-steps { gap: 28px; }
+.pp-partnership .ep-band .pp-steps .pp-step {
+  border-color: #ea1557;
+  color: #2a0b4f;
+}
+.pp-residency .pp-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.pp-retreat .pp-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+/* Seb round 2, 22 Nov 2026: invitation and opening date share one row. */
+.pp-partnership .pp-hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  max-width: 100%;
+  margin-bottom: 22px;
+}
+.pp-partnership .pp-hero-pills :is(.pp-tag, .pp-soon) {
+  margin: 0;
+  line-height: 1.6;
+}
+.pp-partnership .pp-soon--hero {
+  border: 1px solid #ea1557;
+  background: #2a0b4f;
+}
+.pp-partnership .pp-hero-pills .pp-tag { color: #fff; }
+.pp-membership .ep-hero-inner { padding-block: 60px 52px; }
+.pp-membership .ep-eyebrow { white-space: nowrap; }
+.pp-membership section[aria-labelledby="fm-why"] .pp-well { padding-top: 80px; }
+
+/* Seb round 2, 22 Nov 2026: compact audio rows and a centred introductory lede. */
+.pp-audio .pp-after-hero {
+  max-width: 900px;
+  margin: 0 auto 64px;
+  color: #2a0b4f;
+  font-size: 22px;
+  line-height: 1.6;
+  text-align: center;
+}
+.pp-audio .pp-groups { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+.pp-audio .pp-group h3 { margin-bottom: 16px; }
+.pp-audio .pp-group--chips ul { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.pp-audio .pp-group--chips li { align-items: center; gap: 12px; }
+.pp-audio .au--full .au-modes { margin-top: 64px; }
+.pp-audio .au--full .au-sci-fine { text-align: center; }
+
+/* Seb round 2, 22 Nov 2026: diagnostics symbols and a quieter information list. */
+.pp-diagnostics .pp-groups { grid-template-columns: minmax(0, 1fr); }
+.pp-diagnostics .pp-group--tiles ul { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.pp-diagnostics .pp-group--tiles li {
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding-block: 12px;
+  font-weight: 800;
+  text-align: center;
+}
+.pp-residency section[aria-labelledby="rs-what"] .pp-lede {
+  margin-block: 28px;
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+}
+
+/* Seb round 2, 22 Nov 2026: palette colours and readable text in the full features. */
+.pp-partnership .pp-feature :is(.au--full, .wh--full) {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.pp-partnership .au.au--full :is(h2, .au-lede, .au-mode-name, .au-mode-band, .au-mode-use, .au-ac-tag,
+  .au-approach-eyebrow, .au-eyebrow, .au-beat-plus, .au-beat-ear--l, .au-beat-ear--r),
+.pp-page.pp-partnership .wh.wh--full :is(.wh-eyebrow, .wh-metric-tag) { color: #2a0b4f; }
+.pp-partnership .au--full .au-scope { border-color: #533f79; background: #15012e; }
+.pp-partnership .au--full .au-label { color: #fff; }
+.pp-partnership .au--full .au-w--l { stroke: #e6defc; }
+.pp-partnership .au--full .au-mode--dream { --au-c: #533f79; }
+.pp-partnership .au--full .au-mode--heart { --au-c: #ea1557; }
+.pp-partnership .au--full :is(.au-cite, .au-sci .au-sci-fine) { color: #533f79 !important; }
+.pp-partnership .au--full .au-ac--dream .au-ac-n { background: #533f79; }
+.pp-partnership .au--full .au-beat-ear { border-color: #ea1557; }
+.pp-partnership .au--full .au-band--t { background: #533f79; }
+.pp-partnership .au--full .au-band--a { background: #b2a6cf; }
+.pp-partnership .au--full .au-band--b { background: #e6defc; }
+.pp-partnership .au--full .au-layers li { border-color: #ea1557; }
+.pp-partnership .wh--full .wh-sample { color: #533f79; }
+.pp-partnership .wh--full .wh-card :is(figcaption, .wh-day, .wh-big small) { color: #e6defc; }
+.pp-partnership .wh--full .wh-bar { background: linear-gradient(180deg, #feacb3, #fd6b82); }
+.pp-partnership .wh--full .wh-panel--dark :is(h3, li) { color: #fff; }
+
+@media (max-width: 1080px) {
+  .pp-partnership .pp-groups { column-gap: 32px; }
+  html body .pp-membership .ep-eyebrow {
+    font-size: clamp(9px, 2.7vw, 18px) !important;
+    letter-spacing: 0 !important;
+  }
+  .pp-audio .pp-group--chips li { flex-direction: column; align-items: flex-start; }
+  .pp-retreat .pp-step { padding: 24px 20px; }
+}
+@media (max-width: 799px) {
+  .pp-partnership .pp-groups,
+  .pp-partnership .pp-steps { grid-template-columns: minmax(0, 1fr); }
+  .pp-audio .pp-group--chips ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pp-audio .pp-group--chips li { flex-direction: row; align-items: center; }
+}
+@media (max-width: 600px) {
+  .pp-partnership .ep-well-top { padding-block: 32px 72px; }
+  html body .pp-partnership section[aria-labelledby="pp-close"] .ep-well { padding-block: 82px 52px; }
+  .pp-partnership .pp-groups { gap: 36px; margin-top: 32px; }
+  .pp-partnership .pp-group h3 { margin-bottom: 20px; }
+  .pp-partnership .pp-group li { gap: 12px; }
+  .pp-partnership .pp-hero-pills { gap: 8px; }
+  .pp-partnership .pp-hero-pills :is(.pp-tag, .pp-soon) {
+    padding: 6px 10px;
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+  .pp-partnership .pp-hero-pills .pp-soon::before { margin-right: 6px; flex-shrink: 0; }
+  .pp-membership .ep-hero-inner { padding-block: 40px 32px; }
+  .pp-membership .pp-desktop-break { display: none; }
+  .pp-membership section[aria-labelledby="fm-why"] .pp-well { padding-top: 56px; }
+  .pp-audio .pp-after-hero { margin-bottom: 48px; font-size: 20px; }
+  .pp-audio .pp-group--chips ul { column-gap: 12px; }
+  .pp-audio .pp-group--chips li { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .pp-audio .au--full .au-modes { margin-top: 48px; }
+}
