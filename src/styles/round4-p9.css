@@ -92,7 +92,7 @@ main#main a[href^="/insights/"]:is(:hover, :focus-visible) img { opacity: .9; }
 html body main#main .hw-page--s2 .au-w--b { stroke: var(--color-heart-400); }
 html body main#main .hw-page--s2 .au-mode--grass { border-color: var(--color-heart-400); }
 html body main#main .hw-page--s2 .write-to-us .r3-inline-link {
-  text-decoration-color: var(--color-heart-500);
+  text-decoration-color: var(--color-heart-400);
 }
 html body main#main .hw-page--s2 .write-to-us .r3-inline-link:is(:hover, :focus-visible) {
   color: var(--color-heart-500);
