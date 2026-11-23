@@ -1,39 +1,40 @@
 # DoGood: redirects and 410s for the Wix -> Astro move (Netlify _redirects)
 # Netlify reads this file before the [[redirects]] in netlify.toml.
 # Rules run top to bottom and the first match wins, so specific rules come before wildcards.
+# Permanent targets include HTTPS www so old paths skip host/protocol redirect hops.
 # "!" forces a rule even if a file exists at that path.
 # Test on a deploy preview, e.g.:  curl -I https://deploy-preview-6--dogoodagency.netlify.app/post/sop-development
 
 # Round 3: retired hub and legacy advisor URL.
-/services  /pathway  301
-/services/  /pathway  301
-/advisors  /advisor-center  301
-/advisors/  /advisor-center  301
+/services  https://www.dogoodagency.co/pathway  301
+/services/  https://www.dogoodagency.co/pathway  301
+/advisors  https://www.dogoodagency.co/advisor-center  301
+/advisors/  https://www.dogoodagency.co/advisor-center  301
 
 # Sitemap: Google still requests the old Wix sitemap address
 # 19 Nov 2026: /products renamed /services (Seb).
-/products  /pathway  301
-/how-it-works  /pathway  301
-/how-it-works.html  /pathway  301
+/products  https://www.dogoodagency.co/pathway  301
+/how-it-works  https://www.dogoodagency.co/pathway  301
+/how-it-works.html  https://www.dogoodagency.co/pathway  301
 
-/sitemap.xml                                    /sitemap-index.xml                     301
+/sitemap.xml                                    https://www.dogoodagency.co/sitemap-index.xml                     301
 
 # Old Wix sitemap children (21 Nov 2026), including slash variants.
-/sitemap.xml/  /sitemap-index.xml  301
-/pages-sitemap.xml  /sitemap-index.xml  301
-/pages-sitemap.xml/  /sitemap-index.xml  301
-/blog-posts-sitemap.xml  /sitemap-index.xml  301
-/blog-posts-sitemap.xml/  /sitemap-index.xml  301
-/blog-categories-sitemap.xml  /sitemap-index.xml  301
-/blog-categories-sitemap.xml/  /sitemap-index.xml  301
-/dynamic-team_p_c0484db3_544b_43ea_a21e_4136c15dc7ea_0_5000-sitemap.xml  /sitemap-index.xml  301
-/dynamic-team_p_c0484db3_544b_43ea_a21e_4136c15dc7ea_0_5000-sitemap.xml/  /sitemap-index.xml  301
-/dynamic-case-studies_p_22977572_31ae_4dde_ad0e_4d1a8bcd76b4_0_5000-sitemap.xml  /sitemap-index.xml  301
-/dynamic-case-studies_p_22977572_31ae_4dde_ad0e_4d1a8bcd76b4_0_5000-sitemap.xml/  /sitemap-index.xml  301
-/dynamic-case_p_65ff031b_2feb_4621_a50b_d08f9b1dcbde_0_5000-sitemap.xml  /sitemap-index.xml  301
-/dynamic-case_p_65ff031b_2feb_4621_a50b_d08f9b1dcbde_0_5000-sitemap.xml/  /sitemap-index.xml  301
-/dynamic-podcast_p_2d811c3f_9796_465a_a7cc_2f29687a76ac_0_5000-sitemap.xml  /sitemap-index.xml  301
-/dynamic-podcast_p_2d811c3f_9796_465a_a7cc_2f29687a76ac_0_5000-sitemap.xml/  /sitemap-index.xml  301
+/sitemap.xml/  https://www.dogoodagency.co/sitemap-index.xml  301
+/pages-sitemap.xml  https://www.dogoodagency.co/sitemap-index.xml  301
+/pages-sitemap.xml/  https://www.dogoodagency.co/sitemap-index.xml  301
+/blog-posts-sitemap.xml  https://www.dogoodagency.co/sitemap-index.xml  301
+/blog-posts-sitemap.xml/  https://www.dogoodagency.co/sitemap-index.xml  301
+/blog-categories-sitemap.xml  https://www.dogoodagency.co/sitemap-index.xml  301
+/blog-categories-sitemap.xml/  https://www.dogoodagency.co/sitemap-index.xml  301
+/dynamic-team_p_c0484db3_544b_43ea_a21e_4136c15dc7ea_0_5000-sitemap.xml  https://www.dogoodagency.co/sitemap-index.xml  301
+/dynamic-team_p_c0484db3_544b_43ea_a21e_4136c15dc7ea_0_5000-sitemap.xml/  https://www.dogoodagency.co/sitemap-index.xml  301
+/dynamic-case-studies_p_22977572_31ae_4dde_ad0e_4d1a8bcd76b4_0_5000-sitemap.xml  https://www.dogoodagency.co/sitemap-index.xml  301
+/dynamic-case-studies_p_22977572_31ae_4dde_ad0e_4d1a8bcd76b4_0_5000-sitemap.xml/  https://www.dogoodagency.co/sitemap-index.xml  301
+/dynamic-case_p_65ff031b_2feb_4621_a50b_d08f9b1dcbde_0_5000-sitemap.xml  https://www.dogoodagency.co/sitemap-index.xml  301
+/dynamic-case_p_65ff031b_2feb_4621_a50b_d08f9b1dcbde_0_5000-sitemap.xml/  https://www.dogoodagency.co/sitemap-index.xml  301
+/dynamic-podcast_p_2d811c3f_9796_465a_a7cc_2f29687a76ac_0_5000-sitemap.xml  https://www.dogoodagency.co/sitemap-index.xml  301
+/dynamic-podcast_p_2d811c3f_9796_465a_a7cc_2f29687a76ac_0_5000-sitemap.xml/  https://www.dogoodagency.co/sitemap-index.xml  301
 
 # Retired diagnostics and blog feed: no redirect or replacement page.
 /diagnostics  /404.html  410!
@@ -43,24 +44,24 @@
 /blog-feed.xml/  /404.html  410!
 
 # Same content, new address (301 = moved permanently)
-/blog                                           /insights                              301
-/founders                                       /the-reset                             301!
-/team/seb                                       /wayfinders/seb                        301
-/casestudies                                    /stories                               301
-/team/sebastian                                 /wayfinders/seb                        301
-/podcast/no-compromise,-just-care               /podcast/no-compromise-just-care       301
-/podcast/no-compromise%2C-just-care             /podcast/no-compromise-just-care       301
-/podcast/building-tomorrow’s-culture            /podcast/building-tomorrows-culture    301
-/podcast/building-tomorrow%E2%80%99s-culture    /podcast/building-tomorrows-culture    301
+/blog                                           https://www.dogoodagency.co/insights                              301
+/founders                                       https://www.dogoodagency.co/the-reset                             301!
+/team/seb                                       https://www.dogoodagency.co/wayfinders/seb                        301
+/casestudies                                    https://www.dogoodagency.co/stories                               301
+/team/sebastian                                 https://www.dogoodagency.co/wayfinders/seb                        301
+/podcast/no-compromise,-just-care               https://www.dogoodagency.co/podcast/no-compromise-just-care       301
+/podcast/no-compromise%2C-just-care             https://www.dogoodagency.co/podcast/no-compromise-just-care       301
+/podcast/building-tomorrow’s-culture            https://www.dogoodagency.co/podcast/building-tomorrows-culture    301
+/podcast/building-tomorrow%E2%80%99s-culture    https://www.dogoodagency.co/podcast/building-tomorrows-culture    301
 
 # Booking pages renamed (Seb, 18 Nov 2026): no dashes in the new slugs
-/pre-frp                                        /prefrp                                301
-/claritysprints                                 /clarity                               301
-/claritysprints-thankyou                        /clarity-thankyou                      301
-/orientation-call                               /orientation                           301
-/orientation-call-thankyou                      /orientation-thankyou                  301
-/internal-60                                    /internal60                            301
-/internal-60-thankyou                           /internal60-thankyou                   301
+/pre-frp                                        https://www.dogoodagency.co/prefrp                                301
+/claritysprints                                 https://www.dogoodagency.co/clarity                               301
+/claritysprints-thankyou                        https://www.dogoodagency.co/clarity-thankyou                      301
+/orientation-call                               https://www.dogoodagency.co/orientation                           301
+/orientation-call-thankyou                      https://www.dogoodagency.co/orientation-thankyou                  301
+/internal-60                                    https://www.dogoodagency.co/internal60                            301
+/internal-60-thankyou                           https://www.dogoodagency.co/internal60-thankyou                   301
 
 # Removed for good (410 = gone): old SME content
 /post/*                                         /404.html                              410!
@@ -96,5 +97,5 @@
 /foundrland.html  /  302
 
 # Seb round 2, 22 Nov 2026: membership lives under Founderland.
-/founderland-membership   /founderland/membership  301
-/founderland-membership/  /founderland/membership  301
+/founderland-membership   https://www.dogoodagency.co/founderland/membership  301
+/founderland-membership/  https://www.dogoodagency.co/founderland/membership  301

@@ -120,7 +120,7 @@ export const faqCategories: FaqCategory[] = [
         id: "when-to-start",
         q: "When is the right time to start?",
         a: [
-          "Before the sale, the best time is 12 to 18 months out, while there is still room to think. [The Exit-Prep](/exit-prep) is built for that stretch.",
+          "Before the sale, the best time is 12 to 18 months out, while there is still room to think. [Exit-Prep](/exit-prep) is built for that stretch.",
           "After the sale, most founders start [The Reset](/the-reset) a few weeks or months in, once the deal is done and the quiet sets in. There is no deadline. Some come to us years later.",
         ],
       },
@@ -130,7 +130,7 @@ export const faqCategories: FaqCategory[] = [
         id: "too-early",
         q: "Is it too early if I'm a year or two from selling?",
         a: [
-          "No. 12 to 18 months out is the best time. The personal side moves slower than the deal, and starting early keeps the decision in your hands. [The Exit-Prep](/exit-prep) is built for that stretch.",
+          "No. 12 to 18 months out is the best time. The personal side moves slower than the deal, and starting early keeps the decision in your hands. [Exit-Prep](/exit-prep) is built for that stretch.",
         ],
       },
       {
@@ -201,7 +201,7 @@ export const faqCategories: FaqCategory[] = [
         id: "why-whoop",
         q: "Why WHOOP — and is it medical?",
         a: [
-          "It shows how your body is coping, not only how you feel, and no, it is not medical care. WHOOP supports the Recovery & Stress diagnostics so progress is easier to see. It’s not medical care — think recovery visibility for better decisions under pressure. [WHOOP](https://www.whoop.com/us/en/life) is required for diagnostics and purchased separately (about USD 35/month, paid annually).",
+          "It shows how your body is coping, not only how you feel, and no, it is not medical care. WHOOP supports the Recovery & Stress diagnostics so progress is easier to see. It’s not medical care — think recovery visibility for better decisions under pressure. [WHOOP](https://www.whoop.com/us/en/life) is required for diagnostics and purchased separately.",
         ],
       },
       // [ADDED – source: how-it-works.md ("These supports remain consistent throughout both FRP stages")]
@@ -387,16 +387,16 @@ export const faqCategories: FaqCategory[] = [
       },
       {
         id: "exit-prep-guarantee",
-        q: "Does the guarantee cover The Exit Prep?",
+        q: "Does the guarantee cover Exit-Prep?",
         a: [
-          "Yes. The Exit Prep has its own Clarity-First Guarantee. Complete onboarding and attend your first two private 1:1 sessions. If it isn't right for you, email us within 24 hours of Session 2. We keep only the part that covers those two sessions and refund the rest, no matter the reason. Read the [full terms](/clarity-first-guarantee-terms).",
+          "Yes. Exit-Prep has its own Clarity-First Guarantee. Complete onboarding and attend your first two private 1:1 sessions. If it isn't right for you, email us within 24 hours of Session 2. We keep only the part that covers those two sessions and refund the rest, no matter the reason. Read the [full terms](/clarity-first-guarantee-terms).",
         ],
       },
     ],
   },
   {
     id: "exit-prep",
-    title: "Not sold yet? The Exit-Prep",
+    title: "Not sold yet? Exit-Prep",
     items: [
       // [SEB]
       {
@@ -411,16 +411,16 @@ export const faqCategories: FaqCategory[] = [
         id: "not-exited-yet",
         q: "I haven’t sold yet. Is this for me?",
         a: [
-          "It can be. Stage 1 is for founders who have sold or meaningfully stepped away. If you still run your company but know a sale is coming, we have The Exit-Prep. It is for founders who still run the company or are getting ready to sell, and who may be stuck on the decision itself, sometimes for years. It meets you where you are today.",
+          "It can be. Stage 1 is for founders who have sold or meaningfully stepped away. If you still run your company but know a sale is coming, we have Exit-Prep. It is for founders who still run the company or are getting ready to sell, and who may be stuck on the decision itself, sometimes for years. It meets you where you are today.",
           "If you are not planning to sell or step back at all, the partnership is probably not the right fit. If you have questions, [get in touch](/contact).",
         ],
       },
       // [ADDED – source: exit-prep-one-pager.md ("How it works", "What changes")]
       {
         id: "what-is-exit-prep",
-        q: "What is The Exit-Prep?",
+        q: "What is Exit-Prep?",
         a: [
-          "The Exit-Prep is for founders who know a sale is coming, ideally 12 to 18 months before it. It runs for six weeks, fully remote, with no travel: six weekly private sessions of 75–90 minutes with a Wayfinder, one to one, private and confidential.",
+          "Exit-Prep is for founders who know a sale is coming, ideally 12 to 18 months before it. It runs for six weeks, fully remote, with no travel: six weekly private sessions of 75–90 minutes with a Wayfinder, one to one, private and confidential.",
           "It comes with the same conditions as Stage 1: WhatsApp support between sessions, WHOOP, and all our learning tools. The six weeks are about clarity: what you want to do after the sale, or what is getting in the way, such as a conversation that needs to happen, health you have been putting off, or the busyness that keeps you from deciding. By the end, founders are clear and decisive.",
         ],
       },
@@ -437,16 +437,16 @@ export const faqCategories: FaqCategory[] = [
         id: "sale-falls-through",
         q: "What if the sale falls through?",
         a: [
-          "The work still counts. The Exit-Prep is about you, not the deal: what you want, what is in the way, and what you would do next. That stays useful whether the sale happens now, later or not at all.",
+          "The work still counts. Exit-Prep is about you, not the deal: what you want, what is in the way, and what you would do next. That stays useful whether the sale happens now, later or not at all.",
         ],
       },
       // [ADDED – source: exit-prep-one-pager.md; for-advisors.md FAQ ("move on to Stage 1"); how-it-works.md / Seb's FAQ (Stage 1 contents)]
       {
         id: "exit-prep-vs-stage-1",
-        q: "How is The Exit-Prep different from Stage 1?",
+        q: "How is Exit-Prep different from Stage 1?",
         a: [
           "It is the same service at the level of commitment that fits where you are today. It is not a lite version of The Reset.",
-          "Stage 1: The Reset is a 30-day engagement for founders who have sold or stepped away, with eight virtual 1:1 sessions and a 1.5-day in-person residency. The Exit-Prep is built for founders who still run the company: six weekly private sessions of 75–90 minutes over six weeks, held remotely. Both are one to one, private and confidential, with the same conditions. If you later want to go deeper after the sale, you can move on to Stage 1.",
+          "Stage 1: The Reset is a 30-day engagement for founders who have sold or stepped away, with eight virtual 1:1 sessions and a 1.5-day in-person residency. Exit-Prep is built for founders who still run the company: six weekly private sessions of 75–90 minutes over six weeks, held remotely. Both are one to one, private and confidential, with the same conditions. If you later want to go deeper after the sale, you can move on to Stage 1.",
         ],
       },
     ],
@@ -477,7 +477,7 @@ export const faqCategories: FaqCategory[] = [
         id: "advisor-not-sold-yet",
         q: "Can I refer a client who hasn’t sold yet?",
         a: [
-          "Yes, if they have firmly decided to exit and are preparing for it. For those founders we have The Exit-Prep: six weekly private sessions, held remotely, covered by the Clarity-First Guarantee. If they later want to go deeper after the sale, they can move on to Stage 1. Ask us about it on the intro call.",
+          "Yes, if they have firmly decided to exit and are preparing for it. For those founders we have Exit-Prep: six weekly private sessions, held remotely, covered by the Clarity-First Guarantee. If they later want to go deeper after the sale, they can move on to Stage 1. Ask us about it on the intro call.",
         ],
       },
       // [ADDED – source: for-advisors.md FAQ "Do you give financial or legal advice?"; chat-brief-approved.txt §4]

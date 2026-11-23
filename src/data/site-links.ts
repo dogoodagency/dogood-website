@@ -14,7 +14,7 @@ export type SiteLink = { href: string; label: string; navLabel?: string; detail?
 export const offers: SiteLink[] = [
   {
     href: "/exit-prep",
-    label: "The Exit Prep™",
+    label: "Exit-Prep™",
     detail: "For founders who haven’t sold yet. Six weekly sessions to prepare yourself.",
   },
   {

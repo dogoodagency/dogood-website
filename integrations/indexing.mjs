@@ -8,7 +8,11 @@ export default function indexing(indexable = false) {
     hooks: {
       "astro:build:done": async ({ dir }) => {
         await writeFile(new URL("robots.txt", dir), indexable
-          ? "User-agent: *\nAllow: /\n\nSitemap: https://www.dogoodagency.co/sitemap-index.xml\n"
+          ? [
+              "*", "GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot",
+              "Claude-SearchBot", "PerplexityBot", "Google-Extended",
+            ].map((agent) => `User-agent: ${agent}\nAllow: /\n`).join("\n")
+            + "\nSitemap: https://www.dogoodagency.co/sitemap-index.xml\n"
           : "# Preview lockdown. See docs/launch-index-switch.md.\nUser-agent: *\nDisallow: /\n");
         await writeFile(new URL("_headers", dir), indexable
           ? "# Public launch: private pages retain their explicit noindex meta tags.\n"

@@ -45,7 +45,7 @@ const quotes = [
   { quote: "It would make sense maybe to start to get clarity on the human part of it, a year prior to that.", name: "Founder" },
   { quote: "They get so tunnel focused on making it happen that they don't necessarily plan for their own finances or their own careers or their happiness.", name: "Exit advisor" },
   { quote: "Leading up to a transaction is very stressful.", name: "Exit advisor" },
-  { quote: "They really want to exit, but they're just scared. They're putting the brakes on.", name: "Founder" },
+  { quote: "They really want to exit, but they're just scared. They're putting the brakes on.", name: "Exit advisor" },
 ];
 
 // From the Exit-Prep one-pager (v1, Seb, 19 Nov 2026). The price is left out until Seb decides on publishing prices.
@@ -67,11 +67,11 @@ const forWho = [
 const faqs = [
   { q: "I like the idea, but does this concern me yet?", a: "That's the most common thought we hear, and the best moment to start. The personal side is easiest to shape before the deal sets the timeline." },
   { q: "When should I start preparing myself to sell my business?", a: "Ideally 12 to 18 months before you sign. That gives you time to get clear on who you want to be without the company while the decision and the deal are still in your hands. If closing is closer than that, it is still worth starting." },
-  { q: "Can I do The Exit Prep if I'm already under LOI or have an earnout ahead?", a: "Yes. The Exit Prep is built for the whole stretch before and around the sale, including a live process, an LOI or an earnout. We work next to your advisors, never instead of them." },
-  { q: "What if I'm having second thoughts about selling?", a: "That is common, and it is not a sign you shouldn't sell. Second thoughts usually come from not being able to picture life afterward. The Exit Prep gives that picture shape, so you make the decision calmly, whichever way it goes." },
+  { q: "Can I do Exit-Prep if I'm already under LOI or have an earnout ahead?", a: "Yes. Exit-Prep is built for the whole stretch before and around the sale, including a live process, an LOI or an earnout. We work next to your advisors, never instead of them." },
+  { q: "What if I'm having second thoughts about selling?", a: "That is common, and it is not a sign you shouldn't sell. Second thoughts usually come from not being able to picture life afterward. Exit-Prep gives that picture shape, so you make the decision calmly, whichever way it goes." },
   { q: "What if I'm worried about what happens to the company and my team after I go?", a: "That worry is common, and it often keeps founders from deciding at all. We look at it directly: what you need to see in place to let go, and what is yours to carry and what isn't." },
-  { q: "What does it cost?", a: "We share the fee on the first call, so it fits where you are. The Exit Prep is six weeks, with a simple agreement before you start." },
-  { q: "Is The Exit Prep therapy or financial advice?", a: "Neither. The Exit Prep is private 1:1 work on the personal side of selling your business: the decision, what comes next and how you go into the sale. We don't give financial, tax or legal advice, and we are not a medical or psychological service." },
+  { q: "What does it cost?", a: "We share the fee on the first call, so it fits where you are. Exit-Prep is six weeks, with a simple agreement before you start." },
+  { q: "Is Exit-Prep therapy or financial advice?", a: "Neither. Exit-Prep is private 1:1 work on the personal side of selling your business: the decision, what comes next and how you go into the sale. We don't give financial, tax or legal advice, and we are not a medical or psychological service." },
 ];
 const faqJson = {
   "@context": "https://schema.org",
@@ -81,8 +81,8 @@ const faqJson = {
 ---
 
 <Base
-  title="Should I sell my business? The Exit Prep coaching | DoGood Agency"
-  description="Should I sell my business? The Exit Prep is six weekly 1:1 coaching sessions that get you ready, not just the company. Best started 12 to 18 months before the sale."
+  title="Should I sell my business? Exit-Prep coaching | DoGood Agency"
+  description="Should I sell my business? Exit-Prep is six weekly 1:1 coaching sessions that get you ready, not just the company. Best started 12 to 18 months before the sale."
   canonical="https://www.dogoodagency.co/exit-prep"
   footerStrip={closingTint}
   footerEdge={edgeAbove(closingTint)}
@@ -90,7 +90,7 @@ const faqJson = {
   <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Service",
-      name: "The Exit Prep",
+      name: "Exit-Prep",
       url: "https://www.dogoodagency.co/exit-prep",
       description: "Six weekly 1:1 sessions for founders who haven't sold yet: prepare yourself, not just the company. Fully remote.",
       serviceType: "1:1 founder coaching",
@@ -103,7 +103,7 @@ const faqJson = {
   <article class="ep-page ep-exit-prep">
     <header class="ep-hero">
       <div class="ep-hero-inner">
-        <p class="ep-eyebrow">The Exit Prep™</p>
+        <p class="ep-eyebrow">Exit-Prep™</p>
         <h1 class="r4-phrase-title">Should you sell your business?<br class="pp-desktop-break" /> Prepare yourself, not just the company.</h1>
         <p class="ep-sub">Six weekly 1:1 Wayfinder sessions on your exit readiness, for founders who haven't sold yet, ideally 12 to 18 months before the sale. Fully remote.</p>
         <!-- "Book a free call" removed from the hero (Seb, 20 Nov 2026). -->
@@ -127,7 +127,7 @@ const faqJson = {
       <div class="ep-well ep-well-top ep-well-spaced">
         <h2 id="ep-should">Should I sell my business, or am I just tired?</h2>
         <p class="ep-lede-plain ep-lede-full">Most founders who ask whether to sell are really asking two things: am I ready to sell my business, and what does life look like afterward? That deserves an answer before you sign anything.</p>
-        <h2 id="ep-what">What is The Exit Prep™?</h2>
+        <h2 id="ep-what">What is Exit-Prep™?</h2>
         <p class="ep-lede-plain ep-lede-full">A six-week, 1:1 engagement with a DoGood Wayfinder for founders who plan to sell their company but haven't yet. The six weeks create the clarity to decide, at a commitment that matches where you are now.</p>
         <p class="ep-lede-plain ep-lede-full">For some founders, clarity means knowing what they actually want to get busy with after the sale. For others, it means working through what quietly holds them back from letting go: a conversation that needs to happen, a health question that keeps getting postponed, or a life outside the company they have been too busy to look at.</p>
         <div class="ep-grid ep-fit-inclusions">

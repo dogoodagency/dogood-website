@@ -1536,7 +1536,7 @@ html body main .adv-page.adv-center-page .adv-voices-head :is(h2, p) {
 .adv-sale-marker span { padding: 8px 14px; border-radius: 999px; background: #28dbb0; }
 .adv-center-page .adv-sale-note { margin: 28px 0 0; }
 
-/* Seb round 2, 22 Nov 2026: match Exit Prep FAQ geometry; no hover effects. */
+/* Seb round 2, 22 Nov 2026: match Exit-Prep FAQ geometry; no hover effects. */
 .adv-center-page .adv-faq-well { width: min(880px, calc(100% - 2 * var(--pad))); }
 .adv-center-page .adv-faq { max-width: none; border: 0; }
 .adv-center-page .adv-faq-item {

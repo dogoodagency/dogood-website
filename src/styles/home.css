@@ -8073,7 +8073,7 @@ body:has(.page-home) {
   align-self: center;
   margin: 32px 0 0;
   box-sizing: border-box;
-  /* Seb round 2, 22 Nov 2026: fit the complete Exit Prep label and trademark. */
+  /* Seb round 2, 22 Nov 2026: fit the complete Exit-Prep label and trademark. */
   width: max-content;
   white-space: nowrap !important;
   max-width: 100%;

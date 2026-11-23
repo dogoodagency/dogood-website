@@ -23,6 +23,7 @@ interface Block {
 interface Props {
   title: string;
   description: string;
+  robots?: string;
   path: string;
   section: "tools" | "insights";
   name: string;
@@ -34,7 +35,7 @@ interface Props {
   note?: string;
 }
 
-const { title, description, path, section, name, soon, lede, tone, blocks, note, download } = Astro.props;
+const { title, description, robots, path, section, name, soon, lede, tone, blocks, note, download } = Astro.props;
 // Page colour follows the card colour on the tools / insights index (Seb, 19 Nov 2026 18:52).
 const tint = tone === "heart" ? "#FFF9FA" : tone === "grass" ? "#F3FFFB" : "#F5F2FF";
 const heroEdge = edgeAbove("#2A0B4F");
@@ -44,7 +45,6 @@ const siblings = section === "tools" ? [
   { slug: "life-after-the-sale-planner", label: "Planner" },
 ] : [
   { slug: "what-founders-struggle-with", label: "Where founders get stuck" },
-  { slug: "before-and-after-the-sale", label: "The book" },
   { slug: "advisor-voices", label: "Advisor voices" },
 ];
 const sectionPath = section === "tools" ? "client-tools" : "insights";
@@ -57,6 +57,7 @@ const back = section === "tools"
 <Base
   title={title}
   description={description}
+  robots={robots}
   canonical={`https://www.dogoodagency.co${path}`}
   ogTitle={title}
   footerStrip={tint}

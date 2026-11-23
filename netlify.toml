@@ -9,99 +9,120 @@
 
 # Redirects and 410s for the old Wix site live in public/_redirects
 # (Netlify reads that file before the rules below). The rules here are
-# only for renamed pages on the new site.
+# for renamed pages on the new site, followed by host/protocol canonicalization.
+# Permanent path redirects use the final HTTPS www URL to avoid a second hop.
 
 # Advisor Center moved from /for-advisors to /advisor-center (Seb, 20 Nov 2026).
 [[redirects]]
   from = "/for-advisors/resources"
-  to = "/advisor-center/client-tools"
+  to = "https://www.dogoodagency.co/advisor-center/client-tools"
   status = 301
 
 [[redirects]]
   from = "/for-advisors/resources/"
-  to = "/advisor-center/client-tools"
+  to = "https://www.dogoodagency.co/advisor-center/client-tools"
   status = 301
 
 [[redirects]]
   from = "/for-advisors"
-  to = "/advisor-center"
+  to = "https://www.dogoodagency.co/advisor-center"
   status = 301
 
 [[redirects]]
   from = "/for-advisors/"
-  to = "/advisor-center"
+  to = "https://www.dogoodagency.co/advisor-center"
   status = 301
 
 [[redirects]]
   from = "/for-advisors/*"
-  to = "/advisor-center/:splat"
+  to = "https://www.dogoodagency.co/advisor-center/:splat"
   status = 301
 
 [[redirects]]
   from = "/stories/j"
-  to = "/casestudies/j"
+  to = "https://www.dogoodagency.co/casestudies/j"
   status = 301
 
 [[redirects]]
   from = "/stories/j/"
-  to = "/casestudies/j"
+  to = "https://www.dogoodagency.co/casestudies/j"
   status = 301
 
 [[redirects]]
   from = "/stories/v"
-  to = "/casestudies/v"
+  to = "https://www.dogoodagency.co/casestudies/v"
   status = 301
 
 [[redirects]]
   from = "/stories/v/"
-  to = "/casestudies/v"
+  to = "https://www.dogoodagency.co/casestudies/v"
   status = 301
 
 [[redirects]]
   from = "/wayfinders/client-fit"
-  to = "/wayfinders/clientfit"
+  to = "https://www.dogoodagency.co/wayfinders/clientfit"
   status = 301
 
 [[redirects]]
   from = "/wayfinders/client-fit/"
-  to = "/wayfinders/clientfit"
+  to = "https://www.dogoodagency.co/wayfinders/clientfit"
   status = 301
 
 # Old Insights pages now point at their closest new articles
 [[redirects]]
   from = "/insights/first-months-after-exit"
-  to = "/insights/first-90-days-after-the-sale"
+  to = "https://www.dogoodagency.co/insights/first-90-days-after-the-sale"
   status = 301
 
 [[redirects]]
   from = "/insights/first-months-after-exit/"
-  to = "/insights/first-90-days-after-the-sale"
+  to = "https://www.dogoodagency.co/insights/first-90-days-after-the-sale"
   status = 301
 
 [[redirects]]
   from = "/insights/who-are-you-now"
-  to = "/insights"
+  to = "https://www.dogoodagency.co/insights"
   status = 301
 
 [[redirects]]
   from = "/insights/who-are-you-now/"
-  to = "/insights"
+  to = "https://www.dogoodagency.co/insights"
   status = 301
 
 [[redirects]]
   from = "/insights/after-the-deal"
-  to = "/insights"
+  to = "https://www.dogoodagency.co/insights"
   status = 301
 
 [[redirects]]
   from = "/insights/after-the-deal/"
-  to = "/insights"
+  to = "https://www.dogoodagency.co/insights"
   status = 301
 
 [[redirects]]
   from = "/podcast"
-  to = "/dogood-insider"
+  to = "https://www.dogoodagency.co/dogood-insider"
   status = 301
+
+# Keep these after every path redirect (including public/_redirects).
+# Force canonicalization even when a static file exists; preserve the path.
+[[redirects]]
+  from = "http://dogoodagency.co/*"
+  to = "https://www.dogoodagency.co/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.dogoodagency.co/*"
+  to = "https://www.dogoodagency.co/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://dogoodagency.co/*"
+  to = "https://www.dogoodagency.co/:splat"
+  status = 301
+  force = true
 
 [[headers]]
   for = "/*"

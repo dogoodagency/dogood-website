@@ -18,7 +18,7 @@ const MARKS = [
   "Pressure Diagnostic",
   "The Reset",
   "The Build",
-  "Exit Prep",
+  "Exit-Prep",
 ];
 const MARK_RE = new RegExp(`\\b(${MARKS.map((m) => m.replace(/ /g, "(?: |&nbsp;|\u00a0)")).join("|")})(?!™|[A-Za-z])`, "g");
 

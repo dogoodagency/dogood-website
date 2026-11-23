@@ -586,7 +586,7 @@ body:has(.ep-page) .footer-wave {
 .ep-page .ep-places .ep-place:nth-child(3) { background: #fffbe6; border: 1px solid #f5e27a !important; }
 
 /* 20 Nov 2026 (Seb): four "Where are you right now?" cards (fourth colour: lilac); question heading above
-   "What is The Exit Prep"; a soft closing card. */
+   "What is Exit-Prep"; a soft closing card. */
 .ep-page .ep-places { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .ep-page .ep-places .ep-place:nth-child(4) { background: #f5f2ff; border: 1px solid #c2b7dd !important; }
 .ep-page .ep-places .ep-place:nth-child(1) { background: #fff; border: 1px solid #8b7dae !important; }

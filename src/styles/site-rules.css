@@ -577,7 +577,7 @@ main :is(.hero, .ep-hero, .hw-hero, .dr-hero, .advr-hero, .adv-hero, .wf-hero,
   --inline-hover-color: #28dbb0;
 }
 
-/* Disclosure controls requested here; Exit Prep FAQ keeps its existing behavior. */
+/* Disclosure controls requested here; Exit-Prep FAQ keeps its existing behavior. */
 html body main#main details.wf-more > summary:is(:hover, :focus-visible) {
   background-color: rgba(88, 68, 127, .1) !important;
   color: #05745b !important;

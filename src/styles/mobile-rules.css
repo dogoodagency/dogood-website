@@ -48,7 +48,7 @@ html body #wayfinders .wf-m { display: none; }
   html body #case-j .case-compact h3,
   html body #case-v .case-compact h3 { font-size: 28px; }
 
-  /* Who is this for: the Exit Prep line is gone, so the card ends closer to the last bullet. */
+  /* Who is this for: the Exit-Prep line is gone, so the card ends closer to the last bullet. */
   html body #for-you .foryou-grid > .card.ink { padding-bottom: 28px; }
 
   /* The flying machine 20% bigger. */
@@ -258,7 +258,7 @@ html body .footer-wave { background: transparent !important; margin-top: -80px; 
   html body .footer .ft-optin { margin-top: 20px; }
 }
 
-/* Exit Prep (Seb, 20 Nov 23:29). */
+/* Exit-Prep (Seb, 20 Nov 23:29). */
 @media (max-width: 599px) {
   html body .ep-page .ep-outcome { padding: 24px 22px; }
   html body .ep-page .ep-outcome p:last-child { font-size: 17px; font-weight: 400; line-height: 1.6; }
