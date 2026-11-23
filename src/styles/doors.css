@@ -1,0 +1,1028 @@
+/* How it works fork page (/pathway). Every rule is prefixed .dr- so nothing here can
+   touch another page. Same house style as the About page. */
+
+body:has(.dr-page) .footer-wave {
+  background: var(--footer-strip, #fff);
+}
+
+.dr-page {
+  --dr-tint: #f5f2ff;
+  --dr-line: #c2b7dd;
+  --dr-ink: #2a0b4f;
+  --dr-teal: #28dbb0;
+  --dr-pink: #ea1458;
+  background: #fff;
+  color: var(--dr-ink);
+  overflow-x: clip;
+}
+
+.dr-page *,
+.dr-page *::before,
+.dr-page *::after {
+  box-sizing: border-box;
+}
+
+/* ---------- Hero ---------- */
+
+.dr-hero {
+  margin-top: -94px;
+  padding-top: 94px;
+  background: #2a0b4f;
+  color: #fff;
+}
+
+.dr-hero-inner {
+  width: min(1080px, calc(100% - 2 * var(--pad)));
+  margin: 0 auto;
+  padding: 70px 0 55px;
+}
+
+.dr-hero-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: 48px;
+  align-items: center;
+  margin-bottom: 44px;
+}
+
+.dr-page .dr-eyebrow {
+  margin: 0 0 14px;
+  color: var(--dr-teal);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.dr-hero h1 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(32px, 4.2vw, 54px);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  overflow-wrap: break-word;
+}
+
+.dr-founder {
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  font-synthesis: none;
+  color: var(--dr-teal);
+}
+
+.dr-founder strong {
+  font-weight: 800;
+}
+
+.dr-sketch-card {
+  margin: 0;
+  padding: 20px;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.28);
+}
+
+.dr-sketch-card picture,
+.dr-sketch-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.dr-hero .hero-wave {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+/* ---------- The two doors ---------- */
+
+.dr-doors {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  align-items: stretch;
+}
+
+.dr-door {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 40px 40px 36px;
+  background: #fff;
+  border: 1px solid var(--dr-line);
+  border-radius: 24px;
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.22);
+}
+
+.dr-page .dr-door h2 {
+  margin: 0 0 14px;
+  color: var(--dr-ink);
+  font-size: clamp(26px, 3vw, 34px);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  overflow-wrap: break-word;
+}
+
+.dr-page .dr-door .dr-door-line {
+  margin: 0 0 28px;
+  color: var(--dr-ink);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* Pushes the button to the bottom so both cards line up. */
+.dr-door-foot {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  margin-top: auto;
+}
+
+.dr-page .dr-door-foot .btn-teal {
+  white-space: normal;
+  text-align: center;
+}
+
+.dr-page .dr-door-note {
+  margin: 0;
+  color: #4a3a5c;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+/* Where subgrid is supported, both cards share the same three rows so the two
+   buttons sit on exactly the same line even though only one card has a note. */
+@supports (grid-template-rows: subgrid) {
+  .dr-doors {
+    grid-template-rows: auto 1fr auto;
+  }
+
+  .dr-door {
+    display: grid;
+    grid-row: span 3;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+  }
+
+  .dr-door-foot {
+    margin-top: 0;
+  }
+}
+
+/* ---------- Bands ---------- */
+
+.dr-band {
+  background: #fff;
+}
+
+.dr-band-tint {
+  background: var(--dr-tint);
+}
+
+.dr-well {
+  width: min(1080px, calc(100% - 2 * var(--pad)));
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 80px 0 90px;
+}
+
+.dr-well-slim {
+  padding: 30px 0 90px;
+}
+
+.dr-divider {
+  display: block;
+  line-height: 0;
+  background: var(--dr-tint);
+}
+
+.dr-divider svg {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+.dr-page h2 {
+  margin: 0 0 16px;
+  color: var(--dr-ink);
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  overflow-wrap: break-word;
+}
+
+.dr-page p {
+  overflow-wrap: break-word;
+}
+
+/* ---------- Sound familiar? (same card as the Stories testimonials) ---------- */
+
+.dr-quotes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+  margin: 32px 0 0;
+}
+
+.dr-qcard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  margin: 0;
+  padding: 54px 28px 28px;
+  background: #fff;
+  border: 1px solid var(--dr-line);
+  border-radius: 18px;
+}
+
+.dr-qcard::before {
+  content: "\201C";
+  position: absolute;
+  top: 14px;
+  left: 24px;
+  color: var(--dr-pink);
+  font-size: 64px;
+  font-weight: 900;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.dr-qcard blockquote {
+  margin: 0 0 20px;
+  padding: 0;
+}
+
+.dr-page .dr-qcard blockquote p {
+  margin: 0;
+  color: var(--dr-ink);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.dr-qcard figcaption {
+  margin-top: auto;
+  color: var(--dr-ink);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---------- Advisor strip ---------- */
+
+.dr-strip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  padding: 48px 40px;
+  background: #2a0b4f;
+  border-radius: 24px;
+  box-shadow: 0 10px 36px rgba(42, 11, 79, 0.18);
+  text-align: center;
+}
+
+.dr-page .dr-strip h2 {
+  max-width: 680px;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(22px, 2.6vw, 30px);
+}
+
+.dr-page .dr-strip .btn-teal {
+  white-space: normal;
+  text-align: center;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1023px) {
+  .dr-hero-top {
+    gap: 32px;
+  }
+
+  .dr-doors {
+    gap: 20px;
+  }
+
+  .dr-door {
+    padding: 32px 28px 30px;
+  }
+
+  .dr-quotes {
+    gap: 18px;
+  }
+}
+
+@media (max-width: 899px) {
+  .dr-hero-top {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dr-sketch-card {
+    width: min(100%, 380px);
+    justify-self: center;
+  }
+}
+
+@media (max-width: 799px) {
+  .dr-quotes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 759px) {
+  .dr-doors {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+  }
+
+  .dr-door {
+    display: flex;
+    grid-row: auto;
+  }
+
+  .dr-door-foot {
+    margin-top: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .dr-hero {
+    margin-top: -81px;
+    padding-top: 81px;
+  }
+
+  .dr-hero-inner {
+    padding: 50px 0 35px;
+  }
+
+  .dr-hero-top {
+    margin-bottom: 32px;
+  }
+
+  .dr-door {
+    padding: 28px 22px 26px;
+  }
+
+  .dr-page .dr-door .dr-door-line {
+    font-size: 18px;
+  }
+
+  .dr-well {
+    padding: 60px 0 70px;
+  }
+
+  .dr-well-slim {
+    padding: 20px 0 70px;
+  }
+
+  .dr-strip {
+    padding: 36px 22px;
+  }
+}
+
+/* No hero images outside the homepage (Seb, 18 Nov 2026). */
+.dr-hero-top {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* ---------- Rebuild 19 Nov 2026 (Seb) ---------- */
+
+.dr-hero-inner.dr-hero-text {
+  padding-bottom: 64px;
+}
+
+.dr-page .dr-hero-sub {
+  margin: 18px 0 0;
+  color: #f5f2ff;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+@media (min-width: 1000px) {
+  .dr-page .dr-hero-sub {
+    white-space: nowrap;
+  }
+}
+
+.dr-well-top {
+  padding-top: 30px;
+}
+
+.dr-page .dr-lead {
+  max-width: 760px;
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+/* Doors in their own colours. */
+.dr-doors.dr-doors-split .dr-door {
+  display: flex;
+  flex-direction: column;
+  grid-row: auto;
+  box-shadow: none;
+  border-width: 1.5px;
+  border-top-width: 1px;
+}
+
+.dr-doors.dr-doors-split {
+  grid-template-rows: none;
+}
+
+.dr-door--before {
+  background: #f2f7ff;
+  border-color: #477dfe;
+}
+
+.dr-door--after {
+  background: #f3fffb;
+  border-color: #28dbb0;
+}
+
+.dr-page .dr-door-eyebrow {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.dr-door--before .dr-door-eyebrow {
+  color: #0d329f;
+}
+
+.dr-door--after .dr-door-eyebrow {
+  color: #05745b;
+}
+
+.dr-doors-split .dr-door .dr-door-line {
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+
+.dr-page .dr-door-text {
+  margin: 0 0 16px;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.dr-door-list {
+  margin: 0 0 28px;
+  padding-left: 22px;
+  color: var(--dr-ink);
+  font-size: 16px;
+  line-height: 1.6;
+  list-style: disc;
+}
+
+.dr-door-list li {
+  margin-bottom: 6px;
+}
+
+.dr-doors-split .dr-door-foot {
+  margin-top: auto;
+}
+
+/* Purple button (DREAM 500, "important" in the style guide) for the Exit-Prep door. */
+.dr-page a.btn-teal.btn-dream {
+  background: #2a0b4f;
+  border-color: #2a0b4f;
+  color: #fff;
+}
+
+.dr-page a.btn-teal.btn-dream:hover,
+.dr-page a.btn-teal.btn-dream:focus-visible {
+  background: #fff;
+  color: #2a0b4f;
+}
+
+/* Which door is mine? */
+.dr-which {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.dr-which-list {
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dr-which-list li {
+  margin: 0 0 14px;
+  padding: 16px 20px;
+  background: #fff;
+  border: 1px solid var(--dr-line);
+  border-left: 1px solid var(--dr-teal, #28dbb0);
+  border-radius: 14px;
+  color: var(--dr-ink);
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.dr-which-list a {
+  color: var(--dr-ink);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: #28dbb0;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.dr-page .dr-sketch-card {
+  box-shadow: none;
+  border: 1px solid var(--dr-line);
+}
+
+/* Notes for founders. */
+.dr-posts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 28px;
+}
+
+.dr-lead a {
+  color: var(--dr-ink);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: #28dbb0;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.dr-news .bl-nl {
+  margin-top: 48px;
+}
+
+.dr-news .bl-nl-card {
+  background: #fff;
+}
+
+/* Advisor strip on one row. */
+.dr-strip.dr-strip-row {
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 28px 40px;
+  text-align: left;
+  box-shadow: none;
+}
+
+.dr-page .dr-strip-row h2 {
+  max-width: none;
+  font-size: clamp(20px, 2.2vw, 26px);
+}
+
+.dr-strip-row .btn-teal {
+  flex: none;
+}
+
+@media (max-width: 899px) {
+  .dr-which,
+  .dr-posts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dr-strip.dr-strip-row {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 28px 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .dr-doors.dr-doors-split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ===== 19 Nov 2026 (Seb) ===== */
+
+/* "I've sold" door: text in dark GRASS. */
+.dr-page .dr-door--after h2,
+.dr-page .dr-door--after .dr-door-line,
+.dr-page .dr-door--after .dr-door-text,
+.dr-page .dr-door--after .dr-door-list li {
+  color: #05745b;
+}
+
+/* Which door is mine: two coloured paths, the sketch in a DREAM 500 frame of the same height, and a
+   separate "Not sure?" bar. */
+.dr-page .dr-which {
+  align-items: stretch;
+}
+
+.dr-paths {
+  display: grid;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.dr-path {
+  padding: 22px 24px;
+  border: 1px solid;
+  border-radius: 20px;
+}
+
+.dr-path p {
+  margin: 0 0 10px;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.dr-path p:last-child {
+  margin-bottom: 0;
+}
+
+.dr-path--before {
+  border-color: #477dfe;
+  background: #f2f7ff;
+}
+
+.dr-path--after {
+  border-color: #01a684;
+  background: #f3fffb;
+}
+
+.dr-page .dr-path-label {
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.dr-path--before .dr-path-label { color: #0d329f; }
+.dr-path--after .dr-path-label { color: #05745b; }
+
+.dr-page .dr-sketch-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  border: 1px solid #2a0b4f;
+  background: #2a0b4f;
+}
+
+.dr-notsure {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 28px;
+  margin-top: 40px;
+  padding: 22px 28px;
+  border: 1.5px dashed #8b7dae;
+  border-radius: 20px;
+  background: #fff;
+}
+
+.dr-notsure p {
+  margin: 0;
+  font-size: 17px;
+}
+
+.dr-band-news {
+  padding-bottom: 24px;
+}
+
+/* ===== 19 Nov 2026 14:55 (Seb) ===== */
+
+/* Purple buttons keep their colour on hover (only the arrow moves), as every other button on the site. */
+.dr-page a.btn-teal.btn-dream:hover,
+.dr-page a.btn-teal.btn-dream:focus-visible {
+  background: #2a0b4f;
+  color: #fff;
+}
+
+/* "I've sold" door: two shades darker than GRASS 700. */
+.dr-page .dr-door--after h2,
+.dr-page .dr-door--after .dr-door-line,
+.dr-page .dr-door--after .dr-door-text,
+.dr-page .dr-door--after .dr-door-list li,
+.dr-page .dr-door--after .dr-door-eyebrow,
+.dr-path--after .dr-path-label {
+  color: #034a3a;
+}
+
+/* "Before the sale" cards in HEART, not SKY. */
+.dr-door--before,
+.dr-path--before {
+  background: #fff9fa;
+  border-color: #fd6b82;
+}
+
+.dr-door--before .dr-door-eyebrow,
+.dr-path--before .dr-path-label {
+  color: #960434;
+}
+
+/* Which door is mine: the sketch 20% bigger, with less padding round it. */
+.dr-page .dr-sketch-card {
+  padding: 8px;
+}
+
+.dr-page .dr-sketch-card picture,
+.dr-page .dr-sketch-card img {
+  width: 100%;
+  transform: scale(1.1);
+}
+
+.dr-page .dr-sketch-card {
+  overflow: hidden;
+}
+
+/* Notes from FOUNDERland: a DREAM 25 card so it stands apart from the white band. */
+.dr-page .bl-nl-card,
+.dr-news .bl-nl-card {
+  background: #f5f2ff;
+  border-color: #c2b7dd;
+}
+
+/* The whole path (journey bar). */
+.dr-journey {
+  margin-top: 72px;
+}
+
+.dr-journey h2 {
+  margin: 0 0 8px;
+}
+
+.dr-journey .dr-lead {
+  margin: 0 0 32px;
+}
+
+/* The whole path: its own DREAM 500 band (Seb, 19 Nov 2026 18:52). */
+.dr-journey-band {
+  background: #2a0b4f;
+  color: #fff;
+}
+
+.dr-page .dr-journey-well {
+  width: min(1240px, calc(100% - 2 * var(--pad)));
+  padding-top: 80px;
+  padding-bottom: 110px;
+  text-align: center;
+}
+
+.dr-page .dr-journey-eyebrow {
+  margin: 0 0 10px;
+  color: #28dbb0;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dr-page .dr-journey-band h2 {
+  margin: 0 0 10px;
+  color: #fff;
+}
+
+.dr-page .dr-journey-lead {
+  margin: 0 0 44px;
+  color: #e6defc;
+  font-size: 19px;
+}
+
+.dr-journey-band .jr {
+  text-align: left;
+}
+
+/* 20 Nov 2026 (Seb): more breathing room around the journey. */
+.dr-page .dr-journey-lead { margin-bottom: 56px; }
+.dr-journey-band .dr-journey-well { padding-top: 120px; padding-bottom: 128px; }
+
+/* 20 Nov 2026 (Seb): the longer Pathway sub-line wraps inside the hero instead of running off the right edge. */
+.dr-page .dr-hero-sub { white-space: normal !important; max-width: 1080px; }
+
+/* Seb round 2, 22 Nov 2026 */
+.dr-page .dr-band-doors .dr-well {
+  padding-top: calc(30px + 48px);
+}
+
+.dr-page .dr-doors-split .dr-door {
+  border: 1px solid #ea1557;
+}
+
+.dr-page .dr-door--before .dr-door-eyebrow,
+.dr-page .dr-door--after :is(h2, .dr-door-line, .dr-door-text, .dr-door-list li, .dr-door-eyebrow) {
+  color: #2a0b4f;
+}
+
+.dr-page .dr-which {
+  display: block;
+}
+
+.dr-which-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 28px;
+}
+
+.dr-page .dr-which-head h2 {
+  margin: 0;
+}
+
+.dr-page .dr-which .dr-sketch-card {
+  flex: 0 0 240px;
+  width: 240px;
+  padding: 8px;
+  border: 0;
+  box-shadow: none;
+}
+
+.dr-page .dr-which .dr-sketch-card :is(picture, img) {
+  transform: none;
+}
+
+.dr-page .dr-paths {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 28px;
+  margin-top: 0;
+}
+
+.dr-page .dr-path {
+  min-width: 0;
+  padding: 28px;
+  border-radius: 24px;
+}
+
+.dr-page .dr-path--before {
+  background: #f5f2ff;
+  border-color: #b2a6cf;
+}
+
+.dr-page .dr-path--after {
+  background: #e7fff6;
+  border-color: #73e7c4;
+}
+
+.dr-page .dr-path-label {
+  margin: 0 0 24px;
+  color: #2a0b4f;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  text-transform: none;
+}
+
+.dr-path-rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dr-path-rows li {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+}
+
+.dr-path-rows li + li {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e6defc;
+}
+
+.dr-path-marker {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  background: #e6defc;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.dr-path--after .dr-path-marker {
+  background: #a3f2d7;
+}
+
+.dr-page .dr-path-rows p {
+  margin: 0 0 12px;
+  color: #2a0b4f;
+}
+
+.dr-page .dr-path-rows p:last-child {
+  margin-bottom: 0;
+}
+
+.dr-page a.dr-door-pill {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  margin-block: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #2a0b4f;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.5;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+.dr-page .dr-path--after a.dr-door-pill {
+  background: #28dbb0;
+  color: #2a0b4f;
+}
+
+.dr-page a.dr-door-pill:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.dr-page a.dr-door-pill:focus-visible {
+  outline: 3px solid #28dbb0;
+  outline-offset: 3px;
+}
+
+.dr-page .dr-notsure {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 28px;
+  border: 1px solid #ea1557;
+  border-radius: 24px;
+}
+
+.dr-notsure > .btn-teal {
+  max-width: 100%;
+  white-space: normal;
+  text-align: center;
+}
+
+.dr-page #dr-familiar,
+.dr-page #dr-familiar + .dr-lead {
+  max-width: none;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.dr-page .dr-strip-row h2 {
+  font-weight: 500;
+}
+
+.dr-page .dr-well-slim {
+  padding-bottom: calc(90px + 48px);
+}
+
+@media (max-width: 799px) {
+  .dr-page .dr-paths,
+  .dr-page .dr-notsure {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dr-notsure > .btn-teal {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 599px) {
+  html body .dr-page .dr-band-doors .dr-well {
+    padding-top: calc(70px + 48px);
+  }
+
+  .dr-which-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .dr-page .dr-which .dr-sketch-card {
+    flex-basis: auto;
+    align-self: center;
+    max-width: 100%;
+  }
+
+  .dr-page .dr-path,
+  .dr-page .dr-notsure {
+    padding: 24px 20px;
+  }
+
+  .dr-page .dr-well-slim {
+    padding-bottom: calc(70px + 48px);
+  }
+}

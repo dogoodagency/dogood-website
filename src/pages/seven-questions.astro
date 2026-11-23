@@ -1,0 +1,191 @@
+---
+import Base from "../layouts/Base.astro";
+import { sevenQuestions, sevenQuestionsPdf } from "../data/seven-questions";
+
+const heading = "The 7 questions for the first 90 days after the sale";
+const description = "Seven questions for founders in the first 90 days after selling their company. Worth reading before you sell, too. Free PDF from DoGood's founder coaching team.";
+---
+
+<Base
+  title={`${heading} | DoGood coaching`}
+  description={description}
+  canonical="https://www.dogoodagency.co/seven-questions"
+  robots="noindex, nofollow"
+  ogTitle={heading}
+  ogImage="/og/seven-questions-1200x627.jpg"
+  ogImageHeight={627}
+  bare
+>
+  <div class="seven-page">
+    <img class="seven-logo" src="/logo.svg" width="4861" height="2195" alt="DoGood Agency" />
+
+    <div class="seven-heading">
+      <h1>{heading}</h1>
+      <p class="seven-subline">Worth reading before you sell, too.</p>
+    </div>
+
+    <div class="seven-content">
+      <img
+        class="seven-cover"
+        src="/media/seven-questions/seven-questions-cover@1x.webp"
+        srcset="/media/seven-questions/seven-questions-cover@1x.webp 600w, /media/seven-questions/seven-questions-cover@2x.webp 1200w"
+        sizes="(max-width: 600px) 260px, (max-width: 1365px) 360px, 400px"
+        width="600"
+        height="849"
+        alt="The 7 Questions guide cover"
+        fetchpriority="high"
+      />
+      <ol class="seven-questions" role="list" aria-label="The seven questions">
+        {sevenQuestions.map((question, index) => (
+          <li>
+            <span class="seven-number" aria-hidden="true">{index + 1}</span>
+            <p>{question}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+
+    <div class="seven-followup">
+      <a class="btn-teal btn-dream" href={sevenQuestionsPdf} target="_blank" rel="noopener">Download the PDF</a>
+      <p>Want the next notes too? <a href="/newsletter#signup">Get the DoGood newsletter</a>, one email every two weeks.</p>
+      <p>Not ready to apply, or still before your exit? <a href="/contact">Write to us</a> or email <a href="mailto:hiya@dogoodagency.co">hiya@dogoodagency.co</a>.</p>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .seven-page {
+    min-height: 100svh;
+    max-width: 1208px;
+    margin-inline: auto;
+    padding: 32px 64px calc(80px + 32px);
+    color: var(--color-dream-500);
+  }
+
+  .seven-logo {
+    display: block;
+    width: 128px;
+    height: auto;
+    margin-inline: auto;
+    pointer-events: none;
+  }
+
+  .seven-heading {
+    max-width: 960px;
+    margin: 48px auto;
+    text-align: center;
+  }
+
+  .seven-heading h1 {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  .seven-heading .seven-subline {
+    margin-top: 24px;
+    font-size: var(--hero-subline-size);
+    font-weight: var(--hero-subline-weight);
+    line-height: var(--hero-subline-leading);
+  }
+
+  .seven-content {
+    display: grid;
+    grid-template-columns: 400px minmax(0, 1fr);
+    align-items: center;
+    gap: 64px;
+  }
+
+  .seven-cover {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--color-dream-100);
+    pointer-events: none;
+  }
+
+  .seven-questions {
+    display: grid;
+    gap: 24px;
+    margin: 0;
+    padding: 32px;
+    border: 1px solid var(--color-heart-500);
+    border-radius: 24px;
+    background: var(--color-white);
+    list-style: none;
+  }
+
+  .seven-questions li {
+    display: grid;
+    grid-template-columns: 32px minmax(0, 1fr);
+    align-items: start;
+    gap: 16px;
+  }
+
+  .seven-number {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--color-grass-500);
+    color: var(--color-dream-500);
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  .seven-questions p {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+
+  .seven-followup {
+    display: grid;
+    justify-items: center;
+    gap: 24px;
+    max-width: 820px;
+    margin: 48px auto 0;
+    text-align: center;
+  }
+
+  .seven-followup p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .seven-followup p a {
+    color: var(--color-dream-500);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--color-grass-700);
+    text-underline-offset: 4px;
+  }
+
+  .seven-followup p a:is(:hover, :focus-visible) {
+    color: var(--color-grass-700);
+    text-decoration-thickness: 3px;
+  }
+
+  .seven-followup .btn-dream:focus-visible {
+    outline: 3px solid var(--color-grass-700);
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 600px) {
+    .seven-page { padding: 24px 24px 64px; }
+    .seven-heading { margin: 32px auto; }
+    .seven-heading h1 { font-size: 32px; }
+    .seven-content { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+    .seven-cover { max-width: 260px; margin-inline: auto; }
+    .seven-questions { padding: 24px; }
+    .seven-questions li { gap: 12px; }
+    .seven-followup { margin-top: 32px; }
+    .seven-followup p { overflow-wrap: anywhere; }
+  }
+
+  @media (max-width: 599px) {
+    .seven-page { padding-bottom: calc(64px + 48px); }
+  }
+</style>

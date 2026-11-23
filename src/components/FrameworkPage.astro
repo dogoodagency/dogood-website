@@ -1,0 +1,170 @@
+---
+// Page for one of the two proprietary FRP methods (ClarityValue Shift™, NextLife Passage™). Added 18 Nov 2026.
+// Look and bands come from the Exit-Prep page (exit-prep.css, .ep-*); the step cards, deliverables and stage cards
+// are in framework.css (.fw-*). Content: the two 1-page PDFs plus short framing text, first draft for Seb to review.
+import "../styles/exit-prep.css";
+import "../styles/framework.css";
+import Base from "../layouts/Base.astro";
+import Wave from "./Wave.astro";
+import { edgeAbove } from "../data/edge-line";
+import type { Inclusion } from "../data/how-it-works";
+
+interface Step { name: string; text: string }
+interface Props {
+  slug: string;
+  seoTitle: string;
+  description: string;
+  eyebrow: string;
+  name: string;
+  purpose: string;
+  intro: string[];
+  steps: Step[];
+  includesLead: string;
+  includes: Inclusion[];
+  expectation: string[];
+  pdfHref: string;
+  pdfLabel: string;
+  stage: 1 | 2;
+  primary: { href: string; label: string };
+}
+
+const p = Astro.props;
+const tint = "#F5F2FF";
+const white = "#ffffff";
+const heroEdge = edgeAbove("#2A0B4F");
+const bandEdge = edgeAbove(tint);
+function wave(from: string, to: string) {
+  const above = from === tint ? "tint" : "white";
+  return `<div class="ep-divider ep-divider--${above}" aria-hidden="true"><svg style="--wave-edge:${bandEdge}" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${to}" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path><path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path></svg></div>`;
+}
+const toTint = wave(white, tint);
+const toWhite = wave(tint, white);
+const url = `https://www.dogoodagency.co/${p.slug}`;
+const stages = [
+  {
+    n: 1,
+    label: "Stage 1 · The Reset (30 days)",
+    name: "ClarityValue Shift™",
+    flow: "See → Interrupt → Choose → Reset",
+    text: "Resets what is misaligned and creates the first meaningful shifts.",
+    href: "/clarityvalue-shift",
+  },
+  {
+    n: 2,
+    label: "Stage 2 · The Build (12 weeks)",
+    name: "NextLife Passage™",
+    flow: "Rework → Navigate → Realign → Integrate",
+    text: "Takes that shift and builds the life that genuinely comes next for you.",
+    href: "/nextlife-passage",
+  },
+];
+---
+
+<Base title={p.seoTitle} description={p.description} canonical={url} footerStrip={tint} footerEdge={edgeAbove(tint)}>
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      name: `${p.name.replace("™", "")}: the 4-step method`,
+      description: p.purpose,
+      url,
+      step: p.steps.map((s, i) => ({ "@type": "HowToStep", position: i + 1, name: s.name, text: s.text })),
+    })} />
+  <article class="ep-page fw-page">
+    <header class="ep-hero">
+      <div class="ep-hero-inner">
+        <p class="ep-eyebrow">{p.eyebrow}</p>
+        <h1>{p.name}</h1>
+        <p class="ep-sub">{p.purpose}</p>
+        <div class="fw-actions">
+          <a class={p.primary.href === "/apply-stage-1" ? "btn-apply" : "btn-teal"} href={p.primary.href}>{p.primary.label}</a>
+          <a class="fw-link fw-link--light" href={p.pdfHref} target="_blank" rel="noopener">{p.pdfLabel}</a>
+        </div>
+      </div>
+      <Wave fill={tint} edge={heroEdge} />
+    </header>
+
+    <section class="ep-band ep-band-tint" aria-labelledby="fw-steps">
+      <div class="ep-well ep-well-top">
+        <h2 id="fw-steps">How it works: the 4-step method</h2>
+        <div class="fw-intro">{p.intro.map((t) => <p>{t}</p>)}</div>
+        <ol class="fw-steps">
+          {
+            p.steps.map((s, i) => (
+              <li class="fw-step">
+                <span class="fw-step-n" aria-hidden="true">{i + 1}</span>
+                <h3>{s.name}</h3>
+                <p>{s.text}</p>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    <Fragment set:html={toWhite} />
+
+    <section class="ep-band" aria-labelledby="fw-get">
+      <div class="ep-well ep-well-top">
+        <h2 id="fw-get">What you get</h2>
+        <p class="fw-lead">{p.includesLead}</p>
+        <ul class="fw-includes">
+          {
+            p.includes.map((item) => (
+              <li>
+                <strong>{item.title}</strong>
+                <span set:html={item.detail} />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <Fragment set:html={toTint} />
+
+    <section class="ep-band ep-band-tint" aria-labelledby="fw-expect">
+      <div class="ep-well ep-well-top ep-prose">
+        <h2 id="fw-expect">What to expect</h2>
+        {p.expectation.map((t) => <p class="ep-lede fw-expect">{t}</p>)}
+      </div>
+    </section>
+
+    <Fragment set:html={toWhite} />
+
+    <section class="ep-band" aria-labelledby="fw-fit">
+      <div class="ep-well ep-well-top">
+        <h2 id="fw-fit">Where it fits in the partnership</h2>
+        <p class="fw-lead">
+          Both methods sit inside the Founder Reclamation Partnership, a private two-stage partnership for founders after
+          an exit.
+        </p>
+        <ul class="fw-stages">
+          {
+            stages.map((s) => (
+              <li class:list={["fw-stage", s.n === p.stage && "is-current"]}>
+                <p class="fw-stage-label">{s.label}</p>
+                <h3>
+                  {s.n === p.stage ? s.name : <a href={s.href}>{s.name}</a>}
+                  {s.n === p.stage && <span class="fw-here">This page</span>}
+                </h3>
+                <p class="fw-stage-flow">{s.flow}</p>
+                <p>{s.text}</p>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="ep-more"><a href="/pathway">How the two stages work</a></p>
+      </div>
+    </section>
+
+    <Fragment set:html={toTint} />
+
+    <section class="ep-band ep-band-tint" aria-label="Next step">
+      <div class="ep-well ep-well-top">
+        <div class="ep-cta fw-cta closing-unframed">
+          <a class={p.primary.href === "/apply-stage-1" ? "btn-apply" : "btn-teal"} href={p.primary.href}>{p.primary.label}</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</Base>

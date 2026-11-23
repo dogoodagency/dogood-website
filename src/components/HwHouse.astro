@@ -1,0 +1,33 @@
+---
+/** One house sketch with its arrows and labels (The Reset and The Build pages). */
+import { arrowSrc, type House } from "../data/how-it-works";
+interface Props { house: House; showBadge?: boolean }
+const { house, showBadge = false } = Astro.props;
+---
+
+<div class="hw-house-wrap">
+  <p class="hw-eyebrow">{house.eyebrow}</p>
+  <h3 class="hw-house-title">{house.title}</h3>
+  {house.badge && showBadge && <p class="hw-badge">{house.badge}</p>}
+  <figure class={`hw-house hw-house--${house.id}`}>
+    <div class="hw-house-box" style={`--ar:${house.width}/${house.height}`}>
+      <img
+        class="hw-house-img"
+        src={house.src1100}
+        srcset={`${house.src640} 640w, ${house.src1100} 1100w`}
+        sizes="(max-width: 759px) min(100vw, 420px), 560px"
+        width={house.width}
+        height={house.height}
+        alt={house.alt}
+        loading="lazy"
+        decoding="async"
+      />
+      {house.arrows.map((a) => (
+        <img class="hw-arrow" src={arrowSrc} width="400" height="179" alt="" aria-hidden="true" loading="lazy" decoding="async" style={`--cx:${a.cx}%;--cy:${a.cy}%;--w:${a.w}%;--rot:${a.rot}deg;--flip:${a.flip}`} />
+      ))}
+      {house.labels.map((l) => (
+        <p class:list={["hw-label", l.x < 50 && "hw-label--left"]} style={`--x:${l.x}%;--y:${l.y}%;--lw:${l.w}%`}>{l.text}</p>
+      ))}
+    </div>
+  </figure>
+</div>

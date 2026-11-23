@@ -1,0 +1,152 @@
+---
+import "../../styles/wayfinders.css";
+import Base from "../../layouts/Base.astro";
+import Wave from "../../components/Wave.astro";
+import { edgeAbove } from "../../data/edge-line";
+import { wayfinders, type Wayfinder } from "../../data/wayfinders";
+import { sebPerson } from "../../data/seb-person";
+
+export function getStaticPaths() {
+  return wayfinders.map((w) => ({ params: { slug: w.slug }, props: { wayfinder: w } }));
+}
+
+interface Props {
+  wayfinder: Wayfinder;
+}
+
+const { wayfinder: w } = Astro.props;
+const { profile } = w;
+const others = wayfinders.filter((o) => o.slug !== w.slug);
+
+const tint = "#F5F2FF";
+const heroEdge = edgeAbove("#2A0B4F");
+const footerEdge = edgeAbove(tint);
+
+const site = "https://www.dogoodagency.co";
+const pageUrl = `${site}${w.url}`;
+const orgId = `${site}/#organization`;
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${pageUrl}#person`,
+      name: w.name,
+      jobTitle: "Wayfinder",
+      description: profile.seoDescription,
+      url: pageUrl,
+      image: `${site}${w.photo.base}@2x.webp`,
+      worksFor: { "@type": "Organization", "@id": orgId, name: "DoGood Agency", url: `${site}/` },
+      // Seb: the full Person record from src/data/seb-person.ts (source of truth v1.10).
+      ...(w.url === "/wayfinders/seb" ? { ...sebPerson, image: `${site}${w.photo.base}@2x.webp` } : {}),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
+        { "@type": "ListItem", position: 2, name: "Wayfinders", item: `${site}/wayfinders` },
+        { "@type": "ListItem", position: 3, name: w.name, item: pageUrl },
+      ],
+    },
+  ],
+};
+---
+
+<Base
+  title={profile.seoTitle}
+  description={profile.seoDescription}
+  canonical={pageUrl}
+  footerStrip={tint}
+  footerEdge={footerEdge}
+>
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <article class="wf-page wfp-page">
+    <header class="wf-hero wfp-hero">
+      <div class="wf-hero-inner wfp-hero-inner">
+        <nav class="wfp-crumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="/wayfinders">Wayfinders</a></li>
+            <li><span aria-current="page">{w.name}</span></li>
+          </ol>
+        </nav>
+
+        <div class="wfp-hero-grid">
+          <div class="wfp-photo" style={`--wf-tint:${w.tint}`}>
+            <picture>
+              <source type="image/webp" srcset={`${w.photo.base}@1x.webp 320w, ${w.photo.base}@2x.webp 640w`} sizes="(min-width: 768px) 340px, 70vw" />
+              <img src={`${w.photo.base}@1x.png`} width={w.photo.width} height={w.photo.height} alt={w.photo.alt} fetchpriority="high" decoding="async" />
+            </picture>
+          </div>
+
+          <div class="wfp-hero-copy">
+            <p class="wf-eyebrow">Wayfinder · {w.hub}</p>
+            <h1>{w.slug === "seb" ? "Seb Wichmann" : w.name}</h1>
+            <p class="wfp-extra">{w.hubExtra}</p>
+            <ul class="wf-flags" aria-label={`${w.name}'s flags`}>
+              {w.flags.map((flag) => (
+                <li><img src={flag.src} width="24" height="16" alt={flag.name} loading="lazy" decoding="async" /></li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <Wave fill={tint} edge={heroEdge} />
+    </header>
+
+    <section class="wf-band wf-band-tint" aria-label={`About ${w.name}`}>
+      <div class="wf-well wf-well-top wfp-well">
+        <ol class="wfp-sections">
+          {
+            profile.sections.map((s) => (
+              <li class="wfp-sec">
+                <span class="wfp-num" aria-hidden="true">{s.n}</span>
+                <div class="wfp-sec-body">
+                  <h2 class="wfp-sec-h">
+                    <span>{s.heading}</span>
+                    {s.n === 7 && (
+                      <svg class="wfp-plane" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" />
+                      </svg>
+                    )}
+                  </h2>
+                  <p class="wfp-sub">{s.sub}</p>
+                  {s.body.map((p) => <p class="wfp-p">{p}</p>)}
+                  {s.n === 9 && <p class="wfp-signature">{profile.signature}</p>}
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+
+        <aside class="wfp-cta closing-unframed" aria-labelledby="wfp-cta-h">
+          <h2 id="wfp-cta-h">You don’t pick a Wayfinder. We match you for fit first.</h2>
+          <div class="wfp-cta-actions">
+            <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
+            <a class="btn-teal" href="/wayfinders/clientfit">How the Client-Fit process works</a>
+          </div>
+          <div class="wfp-others">
+            <h3>Meet the other Wayfinders</h3>
+            <ul>
+              {
+                others.map((o) => (
+                  <li>
+                    <a class="wfp-chip" href={o.url}>
+                      <span class="wfp-av" style={`--wf-tint:${o.tint}`}>
+                        <picture>
+                          <source type="image/webp" srcset={`${o.photo.base}@1x.webp`} />
+                          <img src={`${o.photo.base}@1x.png`} width="44" height="44" alt="" loading="lazy" decoding="async" />
+                        </picture>
+                      </span>
+                      <span>{o.name}</span>
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </article>
+</Base>

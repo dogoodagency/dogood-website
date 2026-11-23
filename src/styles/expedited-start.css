@@ -1,0 +1,28 @@
+/* Seb round 2, 22 Nov 2026: spacing scoped to Expedited Start. */
+.pp-page:has(#es-hold) .ep-eyebrow {
+  white-space: nowrap;
+}
+
+.pp-page #es-hold ~ .ep-grid {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 640px;
+  margin-inline: auto;
+}
+
+.pp-page:has(#es-hold) .pp-close {
+  padding-block: 96px;
+  border: 1px solid var(--color-heart-500);
+}
+
+@media (max-width: 760px) {
+  .pp-page:has(#es-hold) .pp-close {
+    padding-block: 64px;
+  }
+}
+
+@media (max-width: 599px) {
+  html body .pp-page:has(#es-hold) .ep-eyebrow {
+    font-size: clamp(12px, 4.1vw, 18px) !important;
+    letter-spacing: 0.04em !important;
+  }
+}

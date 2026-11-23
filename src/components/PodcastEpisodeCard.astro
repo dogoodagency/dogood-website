@@ -1,0 +1,39 @@
+---
+import type { Episode } from "../data/podcast";
+
+interface Props {
+  episode: Episode;
+  /** Eager-load the cover (only for above-the-fold cards). */
+  eager?: boolean;
+}
+
+const { episode, eager = false } = Astro.props;
+const href = `/podcast/${episode.slug}`;
+---
+
+<article class="pod-card">
+  <a class="pod-card-img" href={href} tabindex="-1" aria-hidden="true">
+    <img
+      src={`${episode.image}@1x.webp`}
+      srcset={`${episode.image}@1x.webp 400w, ${episode.image}@2x.webp 800w`}
+      sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1024px) 45vw, 360px"
+      width="400"
+      height="225"
+      alt=""
+      loading={eager ? undefined : "lazy"}
+      decoding="async"
+    />
+  </a>
+  <h3 class="pod-card-title">{episode.cardTitle}</h3>
+  <p class="pod-card-sub">{episode.cardSubtitle}</p>
+  <div class="pod-card-row">
+    <a class="pod-card-link" href={href} aria-label={`Listen Now: ${episode.cardTitle}`}>Listen Now ›</a>
+    <span class="pod-card-dur">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <circle cx="12" cy="12" r="9"></circle>
+        <path d="M12 7v5l3 2"></path>
+      </svg>
+      <span>{episode.duration}</span>
+    </span>
+  </div>
+</article>

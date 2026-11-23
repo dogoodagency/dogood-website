@@ -1,0 +1,603 @@
+/* Seb round 2, 22 Nov 2026: phone and desktop rules stay outside this layer. */
+@media (min-width: 601px) and (max-width: 1365px) {
+  /* Standalone LinkedIn guide: cover first, followed by all seven questions. */
+  .seven-page { padding: 32px 48px 64px; }
+  .seven-page .seven-heading h1 { font-size: 40px; }
+  .seven-page .seven-content { grid-template-columns: minmax(0, 1fr); gap: 48px; max-width: 680px; margin-inline: auto; }
+  .seven-page .seven-cover { max-width: 360px; margin-inline: auto; }
+  /* Seb round 2, 22 Nov 2026: shared type, wrapping and form controls. */
+  html body main :is(.ep-page .ep-hero, .hw-page .hw-hero, .dr-hero, .adv-hero, .advr-hero,
+    .ab-hero, .wf-hero, .wfp-hero, .st-hero, .cs-hero, .nl-hero,
+    .bl-hero, .pod-hero, .privacy-hero, .apl-hero, .bk-hero) h1 {
+    font-size: clamp(36px, 3.8vw, 46px);
+    line-height: 1.15;
+    text-wrap: balance;
+    white-space: normal;
+  }
+
+  html body main :is(.dr-hero-sub, .bl-hero-lede, .bl-nl-print, .nl-print,
+    .ab-good li, .ep-eyebrow, .pp-membership .ep-eyebrow, .wf-page .wf-case-title,
+    .advr-cta p, .nl-page #nl-questions-title) {
+    white-space: normal;
+  }
+
+  html body main :is(input:not([type="checkbox"]):not([type="radio"]), select, textarea) {
+    min-width: 0;
+    max-width: 100%;
+    font-size: max(16px, 1em);
+  }
+
+  html body main :is(input:not([type="checkbox"]):not([type="radio"]), select) {
+    min-height: 46px;
+  }
+  html body main :is(.bl-chip, .bl-pill, .bli-tab, .advr-action) { min-height: 44px; }
+
+  html body main :is(.ep-grid, .pp-groups, .hw-fit, .ab-duo, .adv-grid,
+    .advr-grid, .bl-grid, .faq-grid, .pod2-grid, .wfp-hero-grid) > * {
+    min-width: 0;
+  }
+
+  /* Seb round 2, 22 Nov 2026: Home copy and art share a real, unclipped layout. */
+  html body .page-home #hero .hero-inner { padding: 140px var(--pad) 0; }
+
+  html body .page-home #hero h1.t-display {
+    max-width: 1080px;
+    margin-inline: auto;
+    font-size: clamp(34px, 3.8vw, 46px);
+    line-height: 1.15;
+  }
+  html body .page-home #hero .hero-line { white-space: normal; }
+
+  html body .page-home #hero > .hero-inner > .lede {
+    max-width: 1080px;
+    margin-inline: auto;
+  }
+
+  html body .page-home #hero .hero-grid {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    align-items: center;
+    gap: 28px;
+    max-width: 1080px;
+    margin: 28px auto 0;
+    padding-bottom: 40px;
+  }
+
+  html body .page-home #hero .hero-copy,
+  html body .page-home #hero .hero-copy > p { max-width: 100%; }
+
+  html body .page-home #hero .hero-draw {
+    position: relative;
+    display: block;
+    min-width: 0;
+  }
+
+  html body .page-home #hero .hero-draw::before { display: none; }
+
+  html body .page-home #hero .hero-sketch-frame {
+    position: relative;
+    inset: auto;
+    translate: none;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
+
+  html body .page-home #hero .hero-sketch { width: 100%; max-width: none; margin: 0; }
+
+  /* Seb round 2, 22 Nov 2026: natural flow replaces desktop offsets and tablet gaps. */
+  html body .page-home :is(#exit, #first-step, #for-you, #why, #case-j, #case-v,
+    #asseen, #message, #wayfinders, #guarantee) {
+    padding: 48px var(--pad);
+    margin-top: 0;
+  }
+
+  html body .page-home :is(.exit-layout, .first-grid, .why-grid) {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: center;
+    gap: 32px;
+    min-height: 0;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  html body .page-home :is(#exit-card, #first-card, #why .why-copy) {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 32px;
+  }
+
+  html body .page-home :is(.exit-machine, #first-draw, #why .why-sketch) {
+    position: relative;
+    inset: auto;
+    translate: none;
+    width: min(100%, 320px);
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  html body .page-home #first-draw :is(picture, img),
+  html body .page-home #why :is(.why-art, .why-art > .fm-anim) {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  html body .page-home :is(#apply-first, #apply-v) {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0 var(--pad) 32px;
+    text-align: center;
+  }
+
+  html body .page-home #apply-first .apply-first-slot {
+    position: static !important;
+    margin: 0 auto !important;
+  }
+
+  html body .page-home #for-you .foryou-grid--pair {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  html body .page-home :is(#for-you, #next) :is(.card-before, .card-after) { padding: 28px 24px; }
+
+  html body .page-home :is(#for-you, #next) :is(.card-before, .card-after) > a {
+    white-space: normal !important;
+    text-align: center;
+  }
+
+  html body .page-home :is(#case-j, #case-v) .case-compact {
+    display: grid;
+    grid-template-columns: clamp(150px, 18vw, 220px) minmax(0, 1fr);
+    align-items: center;
+    gap: 32px;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  html body .page-home :is(#case-j, #case-v) .portrait { width: 100%; height: auto; margin: 0; }
+  html body .page-home :is(#case-j, #case-v) .case-compact > div { min-width: 0; padding-top: 0; }
+
+  html body .page-home :is(#case-j, #case-v) .case-compact h3 {
+    font-size: clamp(26px, 2.8vw, 36px);
+    white-space: normal;
+  }
+
+  html body .page-home #why h2.t-h2 { white-space: normal; }
+  html body .page-home #reviews { margin-top: 0; padding: 0; }
+  html body .page-home #reviews .reviews-band { padding: 48px var(--pad); }
+  html body .page-home #clients { padding: 28px var(--pad); }
+  html body .page-home #message .fl { max-width: 1080px; margin: 0 auto; }
+  html body .page-home #message .fl-panel { padding: 40px; gap: 32px; }
+  html body .page-home #message .fl-phone { width: min(100%, 300px); }
+
+  html body .page-home #wayfinders :is(.wf-intro, .wf-group, .track-block, .track-card) {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1080px;
+    margin-inline: auto;
+    transform: none;
+  }
+
+  html body .page-home #wayfinders .track-nums {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  html body .page-home #guarantee .guarantee-layout { display: block; max-width: 900px; margin: 0 auto; }
+  html body .page-home #guarantee .guarantee-card {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  html body .page-home #next { isolation: isolate; min-height: 0; padding: 0; }
+  html body .page-home #next .swell-bg { z-index: 0; }
+  html body .page-home #next .next-inner { z-index: 2; padding-top: 180px; padding-bottom: 64px; }
+  html body .page-home #next .next-doors { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+
+  /* Seb round 2, 22 Nov 2026: complete quotes in flow, without clipped moving columns. */
+  html body main :is(.tw .tw-vp, .st-page .st-vp, .st-page .st-pause-bar) { display: none; }
+
+  html body main :is(.tw .tw-list--wide, .tw > .tw-list:not(.tw-list--phone), .st-page .st-list) {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    clip-path: none;
+    white-space: normal;
+  }
+
+  html body main :is(.tw-card, .st-card) { height: auto; max-height: none; overflow: visible; align-self: stretch; }
+  html body main :is(.tw-card, .st-card) blockquote p {
+    display: block;
+    overflow: visible;
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+  }
+
+  /* Seb round 2, 22 Nov 2026: show every original logo once, wrapped inside the band. */
+  html body main .lr-rails { gap: 16px; overflow: visible; }
+  html body main .lr-rail { overflow: visible; }
+  html body main .lr-rail-inner { width: 100%; transform: none !important; will-change: auto; }
+  html body main .lr-pattern {
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+  }
+  html body main .lr-rail-inner > .lr-pattern[aria-hidden="true"] { display: none; }
+  html body main .lr-pill { max-width: 100%; border-color: #E6DEFC; }
+  html body main .lr-rails--tint { --lr-pill: #E6DEFC; }
+  html body main .lr-pill-vis-word img { max-width: 100%; object-fit: contain; }
+
+  html body .page-home #asseen .asseen-frame { max-width: 1080px; padding: 32px 24px; border: 1px solid #EA1557; }
+  html body .page-home #asseen .press-rail {
+    min-height: 56px;
+    overflow: visible;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+  html body .page-home #asseen .press-track { width: auto; animation: none; transform: none; }
+  html body .page-home #asseen .press-set {
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px 32px;
+    padding: 0;
+  }
+  html body .page-home #asseen .press-set[aria-hidden="true"] { display: none; }
+
+  /* Seb round 2, 22 Nov 2026: shared inner-page grids use two readable columns. */
+  html body main :is(.adv-aud, .adv-grid, .adv-benefits, .adv-steps, .advr-grid,
+    .ep-page .ep-places, .fw-steps, .pp-partnership .pp-steps, .dr-quotes, .hw-reviews,
+    .hw-quotes, .hw-quotes.hw-quotes-6, .ab-cards.ab-cards--3, .dr-doors.dr-doors-split,
+    .wf-steps, .wf-quality, .bl-grid, .bli-cats, .pod-grid, .pod2-grid,
+    .pod2-cards, .faq-grid, .resource-grid, .bk-quotes-list, .cs-highlights,
+    .au-modes, .au-bands, .au-approach-cards, .wh-grid, .wh-metrics) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+  }
+  html body main .advr-grid { max-width: none; }
+  html body main :is(.advr-grid, .pod2-cards, .ab-cards--3) > :last-child:nth-child(odd) { grid-column: 1 / -1; }
+  html body main .fw-step:nth-child(2)::after { display: none; }
+  html body main .wf-step:nth-child(2)::after { display: none; }
+  html body main .pp-audio .pp-group--chips ul { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  html body main .pp-audio .pp-group--chips li { flex-direction: row; align-items: center; }
+  html body main .pp-partnership .pp-groups { column-gap: 28px; }
+
+  html body main :is(.ep-place, .adv-card, .advr-card, .ab-card, .ab-statement,
+    .pp-step, .fw-step, .faq-card, .dr-door, .ab-vision-card) { padding: 28px 24px; }
+  html body main :is(.ep-places .ep-place, .ab-card, .ab-statement,
+    .advr-card, .adv-card, .faq-card, .dr-door, .apl-card, .bli-cat,
+    .cs-facts, .cs-highlight, .wf-case, .hw-case, .st-case, .bk-case, .pod2-card) {
+    border: 1px solid #EA1557 !important;
+  }
+  html body main .ep-page .ep-places .ep-place:nth-child(n) { border: 1px solid #EA1557 !important; }
+  html body main .dr-page .dr-doors .dr-door { padding: 28px 24px; }
+
+  html body main :is(.hw-case.hw-case-feature, .st-case.st-case-feature, .wf-case, .bk-case) {
+    grid-template-columns: 180px minmax(0, 1fr);
+    gap: 28px;
+    padding: 28px;
+    max-width: 900px;
+    margin-inline: auto;
+  }
+  html body main :is(.hw-case-img, .st-case-portrait, .wf-case-portrait, .bk-case-portrait) {
+    width: 180px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  html body main .wfp-hero-grid { grid-template-columns: minmax(200px, 0.7fr) minmax(0, 1.3fr); gap: 32px; }
+  html body main .apl-art img { transform: none; max-width: 460px; }
+  html body main .nl-page .nl-well .nl-signup-split > .nl-print { white-space: normal; }
+  html body main .page-contact .contact-sketch { width: 100%; margin: 0; }
+  html body main .page-contact .contact-side { margin-top: 0; }
+
+  /* Seb round 2, 22 Nov 2026: booking copy and calendars keep the full content well. */
+  html body:has(.bk-page) { --bk-split: #2A0B4F; --bk-strip-w: 0px; --bk-copy-left: 0px; }
+  html body main .bk-page .bk-hero-inner { padding: 56px var(--pad) 32px; max-width: 1080px; margin-inline: auto; }
+  html body main .bk-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "copy" "panel";
+    padding-top: 0;
+  }
+  html body main .bk-grid .bk-copy { margin: 0; padding: 32px var(--pad); }
+  html body main .bk-copy-inner { max-width: 900px; margin-inline: auto; }
+  html body main .bk-grid .bk-panel {
+    width: calc(100% - 2 * var(--pad));
+    max-width: 1080px;
+    margin: 24px auto 0;
+    padding: 0;
+  }
+  html body main .bk-panel::after { content: none; }
+  html body main .bk-after { margin: 0; padding-inline: var(--pad); }
+  html body main .ty-main { margin: 0; padding: 40px var(--pad) 0; }
+
+  /* Seb round 2, 22 Nov 2026: footer links and opt-in remain usable at real tablet widths. */
+  html body .footer { padding: 64px var(--pad) 28px; }
+  html body .footer .ft-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-areas:
+      "brand brand brand"
+      "explore services advisors"
+      "lets lets lets"
+      "optin optin optin"
+      "about about about";
+    gap: 40px 24px;
+  }
+  html body .footer .ft-grid .ft-lets { grid-column: 1 / -1; grid-row: 3; }
+  html body .footer .ft-col { padding-right: 0; }
+  html body .footer .ft-links a { display: inline-flex; align-items: center; min-height: 44px; white-space: normal; }
+  html body .footer .ft-links li { margin-bottom: 0; }
+  html body .footer .ft-optin { width: 100%; max-width: 680px; margin: 0; box-sizing: border-box; }
+  html body .footer .ft-form :is(input, button) { min-height: 46px; }
+  html body .footer .ft-form input { font-size: 16px; }
+  html body .footer .legal { gap: 20px; flex-wrap: wrap; margin-top: 48px; }
+}
+
+/* Seb round 2, 22 Nov 2026: retain the existing burger through 1080px; fit its panel to the tablet. */
+@media (min-width: 601px) and (max-width: 1080px) {
+  html body header.nav .nav-burger { width: 46px; height: 46px; }
+  html body header.nav .nav-panel {
+    left: var(--pad);
+    right: var(--pad);
+    max-width: 760px;
+    max-height: calc(100dvh - 118px);
+    margin-inline: auto;
+    padding: 20px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: #15012E;
+    border: 1px solid #533F79;
+  }
+  html body header.nav .nav-panel :is(a, button) { min-height: 46px; }
+  html body header.nav .nav-advisor-links:not([hidden]) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 20px;
+    padding: 8px 12px 16px;
+  }
+  html body header.nav .nav-panel :is(.nav-mega-group, .nav-sub--overview) { grid-column: 1 / -1; }
+  html body header.nav .nav-panel a.nav-sub { min-width: 0; padding: 12px; }
+  html body header.nav .nav-panel .nav-sub-note { color: #B2A6CF; }
+}
+
+/* Seb round 2, 22 Nov 2026: retain desktop navigation above 1080px, with room for every link. */
+@media (min-width: 1081px) and (max-width: 1365px) {
+  html body header.nav { padding-inline: var(--pad); gap: 12px; }
+  html body header.nav .nav-bar { flex: 1 1 auto; min-width: 0; width: auto; }
+  html body header.nav .nav-links { gap: 4px; }
+  html body header.nav .nav-links > li > :is(a, button) { min-height: 46px; padding-inline: 12px; }
+  html body header.nav .nav-mega { max-width: calc(100vw - 2 * var(--pad)); max-height: calc(100dvh - 118px); overflow-y: auto; }
+}
+
+/* Seb round 2, 22 Nov 2026: wider tablets can pair Home artwork with its card. */
+@media (min-width: 1024px) and (max-width: 1365px) {
+  html body .page-home .exit-layout { grid-template-columns: minmax(0, 1.6fr) minmax(0, 0.8fr); }
+  html body .page-home .first-grid { grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); }
+  html body .page-home .why-grid { grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr); }
+
+  /* Seb round 2 final pass, 22 Nov 2026: T1, contain five equal stats inside the well. */
+  html body .hw-page .hw-well .hw-stats {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    margin-left: 0;
+    margin-right: 0;
+  }
+  /* Seb round 2 final pass, 22 Nov 2026: T1, let each stat shrink within its column. */
+  html body .hw-page .hw-well .hw-stats li { min-width: 0; }
+  /* Seb round 2 final pass, 22 Nov 2026: T1, wrap stat captions within their boxes. */
+  html body .hw-page .hw-well .hw-stats span { white-space: normal; }
+
+  /* Seb round 2 final pass, 22 Nov 2026: T4, use the card's grid span without moving stations. */
+  html body .dr-page .jr-card { margin-inline: 0; padding-inline: 8px; }
+  /* Seb round 2 final pass, 22 Nov 2026: T4, fit whole title words on the journey cards. */
+  html body .dr-page .jr-title {
+    font-size: clamp(12px, 1.1vw, 13px);
+    letter-spacing: -0.03em;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+  }
+
+  /* Seb round 2 final pass, 22 Nov 2026: T5, hide the line across the paired referral steps. */
+  html body .adv-page .adv-steps.adv-steps--color::after { display: none; }
+
+  /* Seb round 2 final pass, 22 Nov 2026: T7, mirror the portrait contact card beside For advisors. */
+  html body .faq-page .faq-contact {
+    grid-column: auto;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 32px 28px;
+  }
+  /* Seb round 2 final pass, 22 Nov 2026: T7, retain the portrait contact heading size. */
+  html body .faq-page .faq-contact h2 { font-size: 26px; }
+  /* Seb round 2 final pass, 22 Nov 2026: T7, retain the portrait contact action alignment. */
+  html body .faq-page .faq-contact a.btn-teal { flex: 0 1 auto; align-self: flex-start; }
+}
+
+/* Seb round 2, 22 Nov 2026: restore paired content at portrait-tablet widths. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  html body main :is(.ab-people, .ab-vision-cards, .ab-page .ab-cta .ab-next-doors, .ab-band-statements .ab-duo,
+    .pp-cards, .pp-residency .pp-steps, .pp-retreat .pp-steps, .wf-voices) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+  }
+  html body main .wf-members .wf-member { flex-basis: calc((100% - var(--gap)) / 2); }
+  html body main .nl-signup.nl-signup-split {
+    grid-template-columns: minmax(0, 1fr) 240px;
+    grid-template-areas: "head head" "copy art" "print print";
+    gap: 24px;
+  }
+  html body main .nl-signup-split .nl-signup-art { width: 240px; }
+}
+
+/* Seb round 2, 22 Nov 2026: dense features stack before either column becomes a narrow gutter. */
+@media (min-width: 601px) and (max-width: 1023px) {
+  /* Seb round 2 final pass, 22 Nov 2026: T2, give each house label room for its longest word. */
+  html body .hw-page .hw-label {
+    font-size: 13px;
+    min-width: min-content;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+  }
+
+  /* Seb round 2 final pass, 22 Nov 2026: T3, pair the insight cards with proportional images. */
+  html body .dr-page .dr-posts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  /* Seb round 2 final pass, 22 Nov 2026: T6, fit single-line labels inside the door card padding. */
+  html body .adv-page .adv-doors .adv-door a.btn-teal {
+    align-self: center;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding-left: 16px !important;
+    padding-right: 44px !important;
+    font-size: clamp(12px, calc(2vw - 3.4px), 13px);
+    white-space: nowrap !important;
+  }
+  /* Seb round 2 final pass, 22 Nov 2026: T6, keep room for the arrow when it moves left. */
+  html body .adv-page .adv-doors .adv-door a.btn-teal:is(:hover, :focus-visible) {
+    padding-left: 44px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Seb round 2, 22 Nov 2026: full-width hero copy, then centred door art. */
+  html body .page-home #hero .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  html body .page-home #hero .hero-draw { width: min(100%, 480px); margin-inline: auto; }
+
+  html body main :is(.ab-why-grid, .cs-snapshot-grid, .hw-fit,
+    .adv-sale-columns, .nl-question, .page-contact .contact-top) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+  html body main .adv-why-flow { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  html body main .adv-why-flow > li { padding-left: 68px; }
+  html body main .adv-why-number { position: absolute; top: 0; left: 0; margin: 0; }
+  html body main .adv-why-flow > li:not(:last-child)::after {
+    top: 64px;
+    bottom: -16px;
+    left: 24px;
+    right: auto;
+    border-top: 0;
+    border-left: 1px dashed #B2A6CF;
+  }
+  html body main .adv-sale-marker { flex-direction: row; }
+  html body main :is(.adv-sale-marker)::before,
+  html body main :is(.adv-sale-marker)::after {
+    min-height: 0;
+    border-left: 0;
+    border-top: 1px dashed #B2A6CF;
+  }
+  html body main .page-contact .contact-side { max-width: 440px; margin-inline: auto; }
+  html body main .apl-main { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  html body main .apl-art img { max-width: 300px; }
+  html body main .apl-card { max-width: 680px; width: 100%; margin-inline: auto; box-sizing: border-box; }
+}
+
+/* Seb round 2, 22 Nov 2026: narrow mid-widths keep generous text columns and contained art. */
+@media (min-width: 601px) and (max-width: 767px) {
+  /* Seb round 2 final pass, 22 Nov 2026: T6, stack the advisor doors before one-line labels get too tight. */
+  html body .adv-page .adv-doors { grid-template-columns: minmax(0, 1fr); }
+  html body .page-home #for-you .foryou-grid--pair,
+  html body .page-home #next .next-doors,
+  html body main :is(.tw .tw-list--wide, .tw > .tw-list:not(.tw-list--phone), .st-page .st-list,
+    .adv-grid, .adv-benefits, .advr-grid, .ep-grid, .dr-doors, .pp-cards, .pp-groups,
+    .pp-partnership .pp-steps, .hw-quotes, .wf-quality, .faq-grid, .bk-quotes-list,
+    .ab-cards.ab-cards--3) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  html body main :is(.wfp-hero-grid, .hw-case.hw-case-feature, .st-case.st-case-feature,
+    .wf-case, .bk-case, .pod2-host, .nl-signup.nl-signup-split) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+  html body main .wfp-photo { max-width: 300px; margin-inline: auto; }
+  html body main .nl-signup.nl-signup-split { grid-template-areas: "head" "copy" "art" "print"; }
+  html body main .nl-signup-split .nl-signup-art { width: min(100%, 300px); margin-inline: auto; }
+  html body .footer .ft-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas: "brand brand" "explore services" "advisors advisors" "lets lets" "optin optin" "about about";
+  }
+  html body .footer .ft-grid .ft-lets { grid-row: 4; }
+}
+
+/* Round 3, batch 1: compact Home doors and flush FAQ strips on tablets. */
+@media (min-width: 601px) and (max-width: 1365px) {
+  html body main#main .page-home #next .next-doors { max-width: 828px; }
+  html body main#main .page-home #next :is(.card-before, .card-after) { padding: 28px 24px; }
+  html body main#main .faq-card { padding: 0; }
+}
+
+/* Round 3: shared Advisor Center toggle and referral layouts. */
+@media (min-width: 601px) and (max-width: 1365px) {
+  html body main#main .adv-page > :is(.adv-hero, .advr-hero) { height: 640px; min-height: 640px; }
+  html body main#main .adv-page :is(.adv-hero-inner, .advr-hero-inner) { padding: 32px 0; }
+  html body main#main .adv-page :is(.adv-hero, .advr-hero) :is(.adv-lede, .advr-lede) { font-size: 18px; }
+  html body main#main .adv-page .ahub-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  html body main#main .adv-referrals-page .adv-benefits { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  html body main#main .adv-referrals-page .adv-why-flow { grid-template-columns: minmax(0, 1fr); }
+  html body main#main .adv-referrals-page .adv-why-flow > li:not(:last-child)::before {
+    display: flex; align-items: flex-end; justify-content: center; content: "↓";
+    left: 24px; right: auto; top: 64px; bottom: -20px; width: 0;
+    border-top: 0; border-left: 1px dashed var(--color-dream-200); transform-origin: top;
+  }
+  html body main#main .adv-referrals-page .adv-why-flow.will-animate > li::before { transform: scaleY(0); }
+  html body main#main .adv-referrals-page .adv-why-flow.is-in > li::before { transform: scaleY(1); }
+  html body main#main .adv-page .fl--advisor .fl-panel { padding: 32px 28px; }
+  html body main#main .pathway-panel { padding: 32px; }
+}
+
+/* Round 3 batch 4: resource pages keep a readable two-column tablet layout. */
+@media (min-width: 601px) and (max-width: 1365px) {
+  html body main#main .advr-page .advr-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  html body main#main .advr-page .advr-card { padding: 28px 24px; }
+  html body main#main .advr-page .advd-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  html body main#main .advr-page .advd-steps > :last-child:nth-child(odd) { grid-column: 1 / -1; }
+  html body main#main .advr-page .av-wall { --av-columns: 2; }
+  html body main#main .advr-page .advi-comparison { --comparison-padding: 18px 16px; }
+  html body main#main .advr-page .advi-patterns { grid-template-columns: minmax(0, 1fr); }
+  html body main#main .advr-page .advd-foundr-band .fl--home .fl-panel { padding: 32px 28px; }
+}
+
+/* Batch 5: the flat guide cover and copy keep a deliberate two-column tablet layout. */
+@media (min-width: 601px) and (max-width: 1365px) {
+  html body main#main .sq-band { padding: 40px var(--pad); }
+  html body main#main .sq-inner { grid-template-columns: 150px minmax(0, 1fr); gap: 28px; }
+  html body main#main .sq-band .sq-copy h2 { font-size: 24px; }
+  html body main#main .sq-actions { gap: 16px; }
+  html body main#main .sq-actions .btn-teal { max-width: 100%; white-space: normal; }
+  html body main#main .sq-band--home { margin-top: 64px; }
+  html body main#main .sq-band--home .sq-inner { margin-inline: auto; }
+}

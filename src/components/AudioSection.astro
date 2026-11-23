@@ -1,0 +1,554 @@
+---
+/**
+ * Custom State-Shift Audio (Seb, 19 Nov 2026): animated waveforms (left tone, right tone, the beat the brain
+ * hears) and the four modes with their brainwave bands. The science is stated with its real evidence level:
+ * binaural beats have mixed, modest research support; subliminal audio has little. No "quantum" claims.
+ * Used on /state-shift-audio (full) and /the-build (compact). Stage 2 inclusion only (Seb, 19 Nov 2026).
+ * "A science-based approach" block added 19 Nov 2026 as a draft for Seb (no quantum claims).
+ */
+interface Props {
+  variant?: "full" | "compact";
+  heading?: string;
+  // Seb round 2, 22 Nov 2026: optional page-specific safety line.
+  fine?: string;
+}
+const { variant = "compact", heading = "Custom State-Shift Audio", fine = "Not a medical treatment. Do not listen while driving or operating machinery. If you live with epilepsy or a seizure condition, ask your doctor first." } = Astro.props;
+
+function wave(freq: number, amp = 18, w = 600, h = 50, phase = 0) {
+  const pts: string[] = [];
+  for (let x = 0; x <= w * 2; x += 4) {
+    const y = h / 2 + amp * Math.sin((x / w) * Math.PI * 2 * freq + phase);
+    pts.push(`${x},${y.toFixed(1)}`);
+  }
+  return pts.join(" ");
+}
+function beat(w = 600, h = 50) {
+  const pts: string[] = [];
+  for (let x = 0; x <= w * 2; x += 3) {
+    const env = Math.cos((x / w) * Math.PI * 2 * 2);
+    const y = h / 2 + 20 * env * Math.sin((x / w) * Math.PI * 2 * 24);
+    pts.push(`${x},${y.toFixed(1)}`);
+  }
+  return pts.join(" ");
+}
+const modes = [
+  { name: "Focus", band: "Beta and low gamma", hz: "14–40 Hz", use: "Before deep work, a board meeting or a hard decision.", tone: "sky", level: 0.85 },
+  { name: "Decompression", band: "Alpha", hz: "8–12 Hz", use: "After a long day, between meetings, to come down.", tone: "grass", level: 0.55 },
+  { name: "Reset", band: "Theta", hz: "4–8 Hz", use: "To step out of a loop of thoughts and start again.", tone: "dream", level: 0.35 },
+  { name: "High-stakes days", band: "Alpha into beta", hz: "10–18 Hz", use: "Calm first, then alert: before conflict, pitches or fatigue.", tone: "heart", level: 0.7 },
+];
+---
+
+<section class:list={["au", `au--${variant}`]} data-au aria-labelledby="au-title">
+  <div class="au-head">
+    <p class="au-eyebrow">Shift state on demand</p>
+    <h2 id="au-title">{heading}</h2>
+    <p class="au-lede">Mood-specific tracks designed for focus, decompression, reset, and high-stakes days, made for you and used when it counts.</p>
+  </div>
+
+  <div class="au-scope" role="img" aria-label="Illustration: a slightly lower tone in the left ear and a slightly higher tone in the right ear combine into a slow beat the brain perceives">
+    <div class="au-row">
+      <span class="au-label">Left ear · 200 Hz</span>
+      <svg viewBox="0 0 600 50" preserveAspectRatio="none" class="au-svg"><polyline class="au-w au-w--l" points={wave(10)} /></svg>
+    </div>
+    <div class="au-row">
+      <span class="au-label">Right ear · 210 Hz</span>
+      <svg viewBox="0 0 600 50" preserveAspectRatio="none" class="au-svg"><polyline class="au-w au-w--r" points={wave(11)} /></svg>
+    </div>
+    <div class="au-row au-row--beat">
+      <span class="au-label">What the brain hears · a 10 Hz beat</span>
+      <svg viewBox="0 0 600 50" preserveAspectRatio="none" class="au-svg"><polyline class="au-w au-w--b" points={beat()} /></svg>
+    </div>
+  </div>
+
+  <ul class="au-modes">
+    {modes.map((m, i) => (
+      <li class:list={["au-mode", `au-mode--${m.tone}`]}>
+        <p class="au-mode-name">{m.name}</p>
+        <p class="au-mode-band">{m.band} · {m.hz}</p>
+        <span class="au-meter" aria-hidden="true">
+          {Array.from({ length: 12 }).map((_, k) => (
+            <span style={`--k:${k};--lvl:${(m.level * (0.55 + 0.45 * Math.abs(Math.sin(k * 1.7 + i)))).toFixed(2)}`}></span>
+          ))}
+        </span>
+        <p class="au-mode-use">{m.use}</p>
+      </li>
+    ))}
+  </ul>
+
+  {
+    variant === "full" && (
+      <div class="au-approach">
+        <p class="au-approach-eyebrow">Research, not promises</p>
+        <h3>A science-based approach</h3>
+        <p class="au-approach-lede">Every track is built on what research shows about sound, breath and the nervous system, and we keep checking it against your own data.</p>
+        <ol class="au-approach-cards">
+          <li class="au-ac au-ac--grass">
+            <span class="au-ac-n">1</span>
+            <p class="au-ac-tag">Brain rhythm</p>
+            <p class="au-ac-key">Binaural beats had a medium, consistent effect on memory, attention, anxiety and pain.</p>
+            <p class="au-ac-more">A 2019 meta-analysis of 22 studies. Listening before a task worked better than only during it, and longer listening helped more.</p>
+          </li>
+          <li class="au-ac au-ac--heart">
+            <span class="au-ac-n">2</span>
+            <p class="au-ac-tag">Breath pacing</p>
+            <p class="au-ac-key">Music paced gently below your breathing slows the breath and calms the body.</p>
+            <p class="au-ac-more">Lower heart rate and skin response, with the strongest effect when the pacing is personalized (MIT Media Lab, 2019).</p>
+          </li>
+          <li class="au-ac au-ac--dream">
+            <span class="au-ac-n">3</span>
+            <p class="au-ac-tag">Your body's data</p>
+            <p class="au-ac-key">We check whether a track actually moves your recovery, sleep and HRV.</p>
+            <p class="au-ac-more">With WHOOP, we see the effect on your own body, and adjust the track when it does not help.</p>
+          </li>
+        </ol>
+        <p class="au-cite">Sources: Garcia-Argibay, Santed &amp; Reales, <em>Psychological Research</em> 2019; Leslie, Ghandeharioun, Zhou &amp; Picard, IEEE ACII 2019.</p>
+      </div>
+
+      <div class="au-sci">
+        <div class="au-sci-col">
+          <p class="au-approach-eyebrow">The science, plainly</p>
+          <h3>How a binaural beat works</h3>
+          <div class="au-beat" aria-hidden="true">
+            <div class="au-beat-ear au-beat-ear--l"><span>Left ear</span><strong>200 Hz</strong></div>
+            <span class="au-beat-plus">+</span>
+            <div class="au-beat-ear au-beat-ear--r"><span>Right ear</span><strong>210 Hz</strong></div>
+            <span class="au-beat-plus">=</span>
+            <div class="au-beat-ear au-beat-ear--b"><span>Your brain hears</span><strong>10 Hz</strong></div>
+          </div>
+          <p>When each ear hears a slightly different tone through headphones, the brain perceives a third, slow beat. That beat sits in the range of one of the brain's own rhythms:</p>
+          <ul class="au-bands">
+            <li class="au-band au-band--d"><strong>Delta</strong><span>deep sleep</span></li>
+            <li class="au-band au-band--t"><strong>Theta</strong><span>drowsy, reflective</span></li>
+            <li class="au-band au-band--a"><strong>Alpha</strong><span>calm alertness</span></li>
+            <li class="au-band au-band--b"><strong>Beta</strong><span>active focus</span></li>
+          </ul>
+          <p>The idea, called entrainment, is that listening nudges attention and arousal toward that state. Research is promising but mixed: reviews find small to moderate effects on anxiety, attention and memory, and results vary between studies and people.</p>
+        </div>
+        <div class="au-sci-col">
+          <p class="au-approach-eyebrow">How we build tracks</p>
+          <h3>Three layers</h3>
+          <ol class="au-layers">
+            <li>
+              <strong>Modulation curves</strong>
+              <span>Each track moves gently from your current state toward the one you need, for example from beta down into alpha to decompress.</span>
+            </li>
+            <li>
+              <strong>Your words</strong>
+              <span>Tracks can carry quiet spoken lines from your own work with your Wayfinder (subliminal audio). The evidence that messages below hearing change behavior is weak, so we use them as a light anchor, not a promise.</span>
+            </li>
+            <li>
+              <strong>Practical use</strong>
+              <span>A few minutes with headphones before the moment that matters.</span>
+            </li>
+          </ol>
+        </div>
+        <p class="au-fine au-sci-fine">{fine}</p>
+      </div>
+    )
+  }
+
+  {variant === "compact" && <p class="au-more"><a href="/state-shift-audio">See how the audio works</a></p>}
+</section>
+
+<style>
+  .au {
+    padding: 40px 36px;
+    border: 1px solid #2a0b4f;
+    border-radius: 24px;
+    background: #2a0b4f;
+    color: #fff;
+  }
+
+  .au-eyebrow {
+    margin: 0 0 6px;
+    color: #28dbb0;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .au h2 {
+    margin: 0 0 10px;
+    color: #fff;
+    font-size: clamp(26px, 2.8vw, 34px);
+    font-weight: 900;
+    line-height: 1.15;
+  }
+
+  .au-lede {
+    max-width: 760px;
+    margin: 0 0 24px;
+    color: #f5f2ff;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .au-scope {
+    display: grid;
+    gap: 6px;
+    padding: 18px 20px;
+    border: 1px solid #58447f;
+    border-radius: 18px;
+    background: #1d033c;
+  }
+
+  .au-row {
+    display: grid;
+    grid-template-columns: 210px minmax(0, 1fr);
+    align-items: center;
+    gap: 14px;
+  }
+
+  .au-label {
+    color: #c2b7dd;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .au-row--beat .au-label { color: #28dbb0; }
+
+  .au-svg {
+    width: 100%;
+    height: 50px;
+    overflow: hidden;
+  }
+
+  .au-w {
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linejoin: round;
+    animation: au-scroll 6s linear infinite;
+    animation-play-state: paused;
+  }
+
+  .au-w--l { stroke: #c2b7dd; } /* no SKY on DREAM (Seb, 19 Nov 2026 14:55) */
+  .au-w--r { stroke: #fd6b82; animation-duration: 5.7s; }
+  .au-w--b { stroke: #28dbb0; stroke-width: 2; animation-duration: 8s; }
+
+  .au.is-in .au-w { animation-play-state: running; }
+
+  @keyframes au-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-600px); }
+  }
+
+  .au-sample {
+    margin: 10px 0 22px;
+    color: #c2b7dd;
+    font-size: 13px;
+    font-style: italic;
+  }
+
+  .au-modes {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .au-mode {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 18px;
+    border: 1px solid;
+    border-radius: 18px;
+    background: #fff;
+    color: #2a0b4f;
+  }
+
+  .au-mode--sky { border-color: #477dfe; background: #f2f7ff; --au-c: #1d53ef; }
+  .au-mode--grass { border-color: #01a684; background: #f3fffb; --au-c: #01a684; }
+  .au-mode--dream { border-color: #8b7dae; background: #faf9ff; --au-c: #58447f; }
+  .au-mode--heart { border-color: #fd6b82; background: #fff9fa; --au-c: #c10e46; }
+
+  .au-mode-name { margin: 0; font-size: 19px; font-weight: 900; }
+  .au-mode-band { margin: 0; color: var(--au-c); font-size: 14px; font-weight: 800; }
+  .au-mode-use { margin: 0; font-size: 15px; line-height: 1.5; }
+
+  .au-meter {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 34px;
+    margin: 4px 0;
+  }
+
+  .au-meter span {
+    flex: 1;
+    height: calc(var(--lvl) * 100%);
+    border-radius: 3px;
+    background: var(--au-c);
+    transform-origin: bottom;
+    animation: au-eq 1.6s ease-in-out calc(var(--k) * -0.13s) infinite alternate;
+    animation-play-state: paused;
+  }
+
+  .au.is-in .au-meter span { animation-play-state: running; }
+
+  @keyframes au-eq {
+    from { transform: scaleY(0.35); }
+    to { transform: scaleY(1); }
+  }
+
+  /* The science, plainly + How we build your tracks (redesigned 19 Nov 2026 18:52): one light panel, two
+     columns, a small beat diagram, brainwave chips and three numbered layers. */
+  .au-sci {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 28px;
+    margin-top: 20px;
+    padding: 30px 30px 22px;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    background: #fff;
+    color: #2a0b4f;
+  }
+
+  .au-sci-col {
+    padding: 22px 22px 24px;
+    border: 1px solid #c2b7dd;
+    border-radius: 18px;
+    background: #faf9ff;
+  }
+
+  .au-sci-col + .au-sci-col {
+    border-color: #73e7c4;
+    background: #f3fffb;
+  }
+
+  .au-sci h3 { margin: 0 0 14px; color: #2a0b4f; font-size: 22px; font-weight: 900; }
+  .au-sci p { margin: 0 0 12px; color: #2a0b4f; font-size: 16px; line-height: 1.6; }
+
+  .au-beat {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 14px;
+  }
+
+  .au-beat-ear {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 12px;
+    border: 1px solid;
+    border-radius: 12px;
+    background: #fff;
+  }
+
+  .au-beat-ear span { font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+  .au-beat-ear strong { font-size: 18px; font-weight: 900; }
+  .au-beat-ear--l { border-color: #8b7dae; color: #58447f; }
+  .au-beat-ear--r { border-color: #fd6b82; color: #960434; }
+  .au-beat-ear--b { border-color: #01a684; background: #05745b; color: #fff; }
+  .au-beat-plus { color: #58447f; font-size: 22px; font-weight: 900; }
+
+  .au-bands {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    margin: 0 0 14px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .au-band {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 10px 10px;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .au-band strong { font-size: 15px; font-weight: 900; }
+  .au-band span { font-size: 12px; line-height: 1.3; }
+  .au-band--d { background: #2a0b4f; color: #fff; }
+  .au-band--t { background: #58447f; color: #fff; }
+  .au-band--a { background: #c2b7dd; color: #2a0b4f; }
+  .au-band--b { background: #e9e3f7; color: #2a0b4f; }
+
+  .au-layers {
+    display: grid;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: au-layer;
+  }
+
+  .au-layers li {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 14px 16px 14px 60px;
+    border: 1px solid #73e7c4;
+    border-radius: 14px;
+    background: #fff;
+    counter-increment: au-layer;
+  }
+
+  .au-layers li::before {
+    content: counter(au-layer);
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #05745b;
+    color: #fff;
+    font-weight: 900;
+  }
+
+  .au-layers strong { font-size: 17px; font-weight: 900; }
+  .au-layers span { font-size: 15px; line-height: 1.55; }
+
+  .au-sci .au-sci-fine { grid-column: 1 / -1; margin: 0; color: #58447f !important; }
+
+  @media (max-width: 860px) {
+    .au-sci { grid-template-columns: minmax(0, 1fr); padding: 20px 16px; }
+    .au-bands { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  .au-fine { color: #c2b7dd !important; font-size: 14px !important; }
+
+  .au-approach {
+    margin-top: 28px;
+    padding: 30px 30px 24px;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    background: #fff;
+    color: #2a0b4f;
+  }
+
+  .au-approach-eyebrow {
+    margin: 0 0 6px;
+    color: #05745b;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .au-approach h3 { margin: 0 0 8px; color: #2a0b4f; font-size: clamp(24px, 2.4vw, 30px); font-weight: 900; }
+  .au-approach-lede { max-width: 760px; margin: 0 0 22px; color: #2a0b4f; font-size: 18px; line-height: 1.6; }
+
+  .au-approach-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .au-ac {
+    position: relative;
+    padding: 22px 22px 24px;
+    border: 1px solid;
+    border-radius: 18px;
+  }
+
+  .au-ac--grass { border-color: #73e7c4; background: #f3fffb; }
+  .au-ac--heart { border-color: #feb5bc; background: #fff9fa; }
+  .au-ac--dream { border-color: #c2b7dd; background: #faf9ff; }
+
+  .au-ac-n {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    margin-bottom: 12px;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 900;
+  }
+
+  .au-ac--grass .au-ac-n { background: #05745b; }
+  .au-ac--heart .au-ac-n { background: #2a0b4f; }
+  .au-ac--dream .au-ac-n { background: #58447f; }
+
+  .au-ac-tag { margin: 0 0 6px; font-size: 13px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; }
+  .au-ac--grass .au-ac-tag { color: #05745b; }
+  .au-ac--heart .au-ac-tag { color: #960434; }
+  .au-ac--dream .au-ac-tag { color: #58447f; }
+  .au-ac-key { margin: 0 0 10px; color: #2a0b4f; font-size: 18px; font-weight: 800; line-height: 1.4; }
+  .au-ac-more { margin: 0; color: #2a0b4f; font-size: 15px; line-height: 1.55; }
+  .au-approach .au-cite { margin: 16px 0 0; color: #58447f; font-size: 13px; font-style: italic; }
+
+  @media (max-width: 860px) {
+    .au-approach-cards { grid-template-columns: minmax(0, 1fr); }
+    .au-approach { padding: 22px 18px; }
+  }
+
+  .au-more { margin: 18px 0 0; font-size: 17px; font-weight: 800; }
+  .au-more a { color: #28dbb0; }
+
+  @media (max-width: 1023px) {
+    .au-modes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 640px) {
+    .au { padding: 26px 18px; }
+    .au-row { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+    .au-modes { grid-template-columns: minmax(0, 1fr); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .au-w, .au-meter span { animation: none; }
+  }
+
+  /* Compact audio: the intro and waveform have breathing room; modes sit two by two in narrower cards. */
+  .au-lede { margin-bottom: 28px !important; }
+  .au--compact .au-more { margin: 28px 0 8px; padding-bottom: 32px; }
+  .au--compact .au-more a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--color-grass-500);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+  /* Seb round 2, 22 Nov 2026: space between waveform and modes in both variants. */
+  .au-modes { margin-top: 32px; }
+  .au--compact .au-modes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (max-width: 600px) { .au--compact .au-modes { grid-template-columns: minmax(0, 1fr); } }
+  /* Webb round-2 QA: compact embeds need 64px; the full variant already has it. */
+  @media (min-width: 1366px) { .au--compact .au-modes { margin-top: 64px; } }
+  /* Phones: keep the nested content compact and leave less space under the text link. */
+  @media (max-width: 599px) {
+    /* three nested frames on phones: thinner padding at each level, the same on both sides */
+    .au { padding: 24px 14px; }
+    .au-sci { padding: 18px 12px; }
+    .au-sci-col { padding: 18px 14px 20px; }
+    .au-layers li { padding: 14px 16px; }
+    .au-layers li::before { content: none; display: none; }
+    /* 21 Nov 2026 01:19 (Seb): research cards take their number in the top-left corner (as on the Advisor
+       Center referral steps); the 10 Hz box is as wide as the two ear boxes above it. */
+    .au-ac { position: relative; overflow: hidden; padding: 54px 20px 22px; }
+    .au-ac .au-ac-n { position: absolute; top: 0; left: 0; width: 40px; height: 40px; margin: 0; border-radius: 0 0 16px 0; }
+    .au-beat { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto; }
+    .au-beat-ear--b { grid-column: 1 / 4; }
+    .au-modes { margin-top: 20px; }
+    .au--compact .au-more { margin: 22px 0 0; padding-bottom: 0; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-au]").forEach((el) => {
+    if (!("IntersectionObserver" in window)) return el.classList.add("is-in");
+    const io = new IntersectionObserver((entries) => {
+      el.classList.toggle("is-in", entries.some((e) => e.isIntersecting));
+    }, { threshold: 0.1 });
+    io.observe(el);
+  });
+</script>

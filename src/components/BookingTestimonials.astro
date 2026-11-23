@@ -1,0 +1,44 @@
+---
+import { clipWords } from "../data/clip-words";
+// A few client testimonials for a booking page (first used on /clarity, 18 Nov 2026).
+// Quotes come word for word from src/data/homepage.ts (the homepage reviews); pick them by portrait file name.
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import { reviews } from "../data/homepage";
+
+interface Props {
+  files: string[];
+  heading?: string;
+}
+
+const { files, heading = "What clients say" } = Astro.props;
+const portraits = import.meta.glob<ImageMetadata>("../assets/reviews/*", { eager: true, import: "default" });
+const picked = files.map((file) => {
+  const review = reviews.find((r) => r.file === file);
+  const src = Object.entries(portraits).find(([path]) => path.endsWith(`/${file}`))?.[1];
+  if (!review || !src) throw new Error(`Missing review ${file}`);
+  return { ...review, src };
+});
+---
+
+<section class="bk-quotes" aria-labelledby="bk-quotes-h">
+  <h2 id="bk-quotes-h" class="bk-quotes-h">{heading}</h2>
+  <ul class="bk-quotes-list">
+    {
+      picked.map((r) => (
+        <li class="bk-quote">
+          <blockquote>
+            <p>{clipWords(r.quote)}</p>
+          </blockquote>
+          <div class="bk-quote-who">
+            <Image src={r.src} alt="" width={56} height={56} class="bk-quote-img" />
+            <p>
+              <strong>{r.name}</strong>
+              <span>{r.role}</span>
+            </p>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</section>

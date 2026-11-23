@@ -1,0 +1,224 @@
+/* Moving testimonial wall (TestimonialWall.astro). Every rule is prefixed .tw-. Same motion as /stories. */
+
+.tw {
+  position: relative;
+  --tw-ink: #2a0b4f;
+  --tw-muted: #4a3a5c;
+  --tw-line: #c2b7dd;
+  --tw-pink: #ea1458;
+  margin-top: 32px;
+}
+
+.tw-card {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  padding: 54px 26px 24px;
+  background: #fff;
+  border: 1px solid var(--tw-line);
+  border-radius: 18px;
+}
+
+.tw-card::before {
+  content: "\201C";
+  position: absolute;
+  top: 12px;
+  left: 22px;
+  color: var(--tw-pink);
+  font-size: 64px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.tw-card blockquote {
+  margin: 0 0 18px;
+}
+
+.tw-card blockquote p {
+  margin: 0;
+  color: var(--tw-ink);
+  font-size: 15.5px;
+  line-height: 1.62;
+}
+
+.tw--short .tw-card blockquote p {
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.tw-card figcaption {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tw-face {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.tw-who {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.tw-name {
+  color: var(--tw-ink);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tw-role {
+  color: var(--tw-muted);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.tw--dark .tw-card {
+  border-color: #533f79;
+}
+
+/* Default: a still grid (phones, reduced motion). */
+.tw-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+}
+
+.tw-vp {
+  display: none;
+  position: relative;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
+}
+
+.tw-wall {
+  display: flex;
+  gap: 20px;
+}
+
+.tw-col {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.tw-track {
+  will-change: transform;
+}
+
+.tw-track .tw-card {
+  margin-bottom: 20px;
+}
+
+@keyframes tw-up {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+
+@keyframes tw-down {
+  from { transform: translateY(-50%); }
+  to { transform: translateY(0); }
+}
+
+@media (min-width: 600px) and (prefers-reduced-motion: no-preference) {
+  /* The moving wall is decorative (aria-hidden); screen readers still get the plain list. */
+  .tw-list {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .tw-vp-2 {
+    display: block;
+    height: 600px;
+  }
+
+  .tw--short .tw-vp-2 {
+    height: 460px;
+  }
+
+  .tw-vp-2 .tw-col:nth-child(1) .tw-track { animation: tw-up 60s linear infinite; }
+  .tw-vp-2 .tw-col:nth-child(2) .tw-track { animation: tw-down 72s linear infinite; }
+}
+
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .tw-vp-2 {
+    display: none;
+  }
+
+  .tw-vp-3 {
+    display: block;
+    height: 660px;
+  }
+
+  .tw--short .tw-vp-3 {
+    height: 480px;
+  }
+
+  .tw-vp-3 .tw-col:nth-child(1) .tw-track { animation: tw-up 64s linear infinite; }
+  .tw-vp-3 .tw-col:nth-child(2) .tw-track { animation: tw-down 78s linear infinite; }
+  .tw-vp-3 .tw-col:nth-child(3) .tw-track { animation: tw-up 70s linear infinite; }
+}
+
+@media (min-width: 600px) and (max-width: 1023px) and (prefers-reduced-motion: reduce) {
+  .tw-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
+  .tw-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.tw-vp:hover .tw-track,
+.tw-vp:focus-within .tw-track {
+  animation-play-state: paused;
+}
+
+/* 19 Nov 2026 (Seb): quotes at body size (18px), weight 500 (a touch heavier, not bold); cards on a light
+   band are DREAM 10 so they never sit white on white. */
+.tw .tw-card blockquote p,
+.tw--short .tw-card blockquote p {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.tw--light .tw-card {
+  background: #faf9ff;
+}
+
+/* Hover or keyboard focus stops every column (the per-column animation shorthand above outranked the
+   older pause rule). */
+.tw .tw-vp:hover .tw-track,
+.tw .tw-vp:focus-within .tw-track {
+  animation-play-state: paused !important;
+}
+
+/* 20 Nov 2026 (Seb, mobile): a page can pass a short pick for phones; each quote is cut to 6 lines with "…". */
+.tw-list--phone { display: none; }
+@media (max-width: 599px) {
+  .tw-list.tw-list--wide { display: none; }
+  .tw-list.tw-list--phone { display: grid; }
+  .tw-list--phone .tw-card blockquote p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    line-clamp: 6;
+    overflow: hidden;
+  }
+}
+@media (min-width: 600px) {
+  .tw-list.tw-list--phone { display: none !important; }
+}
