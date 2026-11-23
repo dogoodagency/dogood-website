@@ -2,26 +2,32 @@
 import { sevenQuestions, sevenQuestionsPdf } from "../data/seven-questions";
 
 interface Props {
-  variant: "home" | "reset";
+  variant: "home" | "reset" | "advisor" | "tools" | "newsletter" | "exit";
+  /** Reuse the round-4 artwork layout without changing the page's copy variant. */
+  layout?: "preview" | "compact";
 }
-const { variant } = Astro.props;
+const { variant, layout = variant === "home" ? "preview" : "compact" } = Astro.props;
 const home = variant === "home";
+const preview = layout === "preview";
 const titleId = `seven-questions-${variant}-title`;
 ---
 
-<section class:list={["sq-band", `sq-band--${variant}`]} aria-labelledby={titleId}>
+<section class:list={["sq-band", `sq-band--${variant}`, preview && "sq-band--preview"]} aria-labelledby={titleId}>
   <div class="sq-inner">
-    <img class="sq-cover" src="/media/seven-questions/seven-questions-cover@1x.webp" srcset="/media/seven-questions/seven-questions-cover@1x.webp 600w, /media/seven-questions/seven-questions-cover@2x.webp 1200w" sizes="(max-width: 600px) 150px, 180px" width="600" height="849" alt="The 7 Questions guide cover" loading="lazy" decoding="async" />
+    <img class="sq-cover" data-arta={preview ? "A6" : undefined} src="/media/seven-questions/seven-questions-cover@1x.webp" srcset="/media/seven-questions/seven-questions-cover@1x.webp 600w, /media/seven-questions/seven-questions-cover@2x.webp 1200w" sizes={preview ? "(max-width: 600px) calc(100vw - 43.36px), 300px" : "(max-width: 600px) 150px, 180px"} width="600" height="849" alt="The 7 Questions guide cover" loading="lazy" decoding="async" />
     <div class="sq-copy">
       <p class="sq-eyebrow">Free guide</p>
-      <h2 id={titleId}>The 7 questions for the first 90 days after the sale</h2>
+      <h2 id={titleId}>{preview ? <><span class="sq-title-main">The 7 questions</span><span class="sq-title-sub">for the first 90 days after the sale</span></> : "The 7 questions for the first 90 days after the sale"}</h2>
       <p class="sq-intro">{home ? "Worth reading before you sell, too." : "For founders who have already sold."}</p>
       <ol class="sq-questions">
         {(home ? sevenQuestions.slice(0, 3) : sevenQuestions).map((question) => <li>{question}</li>)}
       </ol>
       {home && <p class="sq-more">and four more</p>}
+      {preview && <div class="sq-pages" aria-hidden="true">
+        {[1, 2, 3].map((page) => <img data-arta="A6" src={`/media/r4/seven-questions-inside-${page}@1x.webp`} srcset={`/media/r4/seven-questions-inside-${page}@1x.webp 300w, /media/r4/seven-questions-inside-${page}@2x.webp 600w`} sizes="(max-width: 600px) 0px, 180px" width="300" height="424" alt="" aria-hidden="true" loading="lazy" decoding="async" />)}
+      </div>}
       <div class="sq-actions">
-        <a class="btn-teal" href="/seven-questions">{home ? "Read the 7 questions" : "Sit with the 7 questions"}</a>
+        <a class:list={["btn-teal", preview && "btn-dream"]} href="/seven-questions">{home ? "Read the 7 questions" : "Sit with the 7 questions"}</a>
         <a class="r3-inline-link" href={sevenQuestionsPdf} target="_blank" rel="noopener">Download the PDF</a>
       </div>
     </div>

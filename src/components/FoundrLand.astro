@@ -15,7 +15,7 @@
  *       "advisor" – Advisor Center: compact cream card, Introduce → Reflect → Reconnect with a moving consent dot.
  *       "small"   – one strip with the logo, one line and a link (Client tools, Advisor insights).
  */
-import { FOUNDRLAND_URL } from "../data/foundrland";
+import FoundrLandLink from "./FoundrLandLink.astro";
 
 interface Props {
   kind: "home" | "exit" | "reset" | "advisor" | "small";
@@ -24,10 +24,8 @@ interface Props {
   /** Link label for kind "small". */
   linkLabel?: string;
 }
-const { kind, line, linkLabel: smallLabel } = Astro.props;
+const { kind, line } = Astro.props;
 const uid = `fl-${kind}`;
-const advisor = kind === "advisor" || (kind === "small" && !!smallLabel?.includes("advisor"));
-const linkLabel = smallLabel ?? (kind === "advisor" ? "See FOUNDR.land for advisors" : "Explore FOUNDR.land");
 
 // The clarity wheel on the phone (home). Coordinates are in the 680 × 996 pixels of the phone image @2x:
 // hub at (322, 607), outer ring 135, turned 6.6° like the phone.
@@ -79,7 +77,7 @@ const days = [
         <p class="fl-small-line">{line}</p>
         <p class="fl-by fl-by--sm">Developed by DoGood Agency</p>
       </div>
-      {FOUNDRLAND_URL && !advisor && <a class="fl-link" href={FOUNDRLAND_URL} target="_blank" rel="noopener" aria-label={`${linkLabel} (opens in a new tab)`}>{linkLabel} ↗</a>}
+      <div class="fl-actions"><FoundrLandLink /></div>
     </aside>
   ) : (
     <section class:list={["fl", `fl--${kind}`]} aria-labelledby={uid}>
@@ -131,7 +129,10 @@ const days = [
           )}
 
           {kind === "advisor" && <p class="fl-note">The advisor pathway is part of the planned product, not yet a live service.</p>}
-          {FOUNDRLAND_URL && !advisor && <a class="fl-btn" href={FOUNDRLAND_URL} target="_blank" rel="noopener" aria-label={`${linkLabel} (opens in a new tab)`}>{linkLabel} <span aria-hidden="true">↗</span></a>}
+          <div class="fl-actions">
+            {kind === "home" && <a class="fl-advisor-btn" href="/advisor-center">Advisor Center</a>}
+            <FoundrLandLink />
+          </div>
         </div>
 
         <div class="fl-visual" aria-hidden="true">
@@ -235,6 +236,18 @@ const days = [
     </section>
   )
 }
+
+<script>
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const syncWheelMotion = () => {
+    document.querySelectorAll<SVGSVGElement>(".fl-phone-wheel").forEach((wheel) => {
+      if (reducedMotion.matches) wheel.pauseAnimations();
+      else wheel.unpauseAnimations();
+    });
+  };
+  syncWheelMotion();
+  reducedMotion.addEventListener("change", syncWheelMotion);
+</script>
 
 <style>
   .fl {
