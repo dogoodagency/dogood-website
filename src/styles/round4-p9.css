@@ -87,3 +87,14 @@ main#main a[href^="/insights/"]:is(:hover, :focus-visible) img { opacity: .9; }
   header.nav a.nav-logo,
   main#main a[href^="/insights/"] img { transition: none; }
 }
+
+/* W2-1 / BD11: keep the shared audio and contact accents in Build's HEART scheme. */
+html body main#main .hw-page--s2 .au-w--b { stroke: var(--color-heart-400); }
+html body main#main .hw-page--s2 .au-mode--grass { border-color: var(--color-heart-400); }
+html body main#main .hw-page--s2 .write-to-us .r3-inline-link {
+  text-decoration-color: var(--color-heart-500);
+}
+html body main#main .hw-page--s2 .write-to-us .r3-inline-link:is(:hover, :focus-visible) {
+  color: var(--color-heart-500);
+}
+
