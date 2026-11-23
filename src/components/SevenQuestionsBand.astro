@@ -31,10 +31,14 @@ const titleId = `seven-questions-${variant}-title`;
         {[1, 2, 3].map((page) => <img data-arta="A6" src={`/media/r4/seven-questions-inside-${page}@1x.webp`} srcset={`/media/r4/seven-questions-inside-${page}@1x.webp 300w, /media/r4/seven-questions-inside-${page}@2x.webp 600w`} sizes="(max-width: 600px) 0px, 180px" width="300" height="424" alt="" aria-hidden="true" loading="lazy" decoding="async" />)}
       </div>}
       <div class="sq-actions">
-        {!Astro.slots.has("actions") &&
-        <a class:list={["btn-teal", preview && "btn-dream"]} href="/seven-questions">{home ? "Read the 7 questions" : "Sit with the 7 questions"}</a>
+        <!-- Newsletter already prints the questions above this band and keeps only the download. -->
+        {!Astro.slots.has("actions") && variant !== "newsletter" &&
+        <a class="sq-control sq-read" href="/seven-questions">
+          <span>{home ? "Read the 7 questions" : "Sit with the 7 questions"}</span>
+          <span class="sq-disc" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+        </a>
         }
-        <a class="sq-download sq-download-btn" href={sevenQuestionsPdf} target="_blank" rel="noopener">
+        <a class="sq-control sq-download" href={sevenQuestionsPdf} target="_blank" rel="noopener">
           <span>Download the PDF</span>
           <span class="sq-disc" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
         </a>
