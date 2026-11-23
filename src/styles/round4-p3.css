@@ -86,9 +86,10 @@ html body main#main .hw-page .hw-stage-panel .hw-stage-block {
   padding-top: 120px;
   border: 0;
 }
-/* The lowest annotation sits over the dark frame with the house's base. */
-html body main#main .hw-page .hw-stage-panel .hw-house--stage1 .hw-label:nth-of-type(3) {
-  color: var(--color-white);
+/* F7c: bottom labels end 8px above the frame's 80px overlap. */
+html body main#main .hw-page .hw-house .hw-label--bottom {
+  top: auto;
+  bottom: 88px;
 }
 
 /* RS7–RS9 / BD5–BD7: plain method links, a bordered flow pill, white outcomes. */
@@ -266,6 +267,21 @@ html body main#main .hw-page--s2 .au-more a { text-decoration-color: var(--color
 }
 
 @media (max-width: 600px) {
+  /* F7c: no empty label row; keep a 16px gap before the visible artwork. */
+  html body main#main .hw-page .hw-house-annotations {
+    grid-template-rows: none;
+    grid-auto-rows: auto;
+    align-items: start;
+    padding-bottom: 16px;
+  }
+  /* Remove each source's transparent top inset from the shared 650 / 703 box.
+     These offsets include object-fit's letterboxing, so box sizes stay equal. */
+  html body main#main .hw-page .hw-house--before { --house-art-inset: 7.29%; }
+  html body main#main .hw-page .hw-house--stage1 { --house-art-inset: 2.78%; }
+  html body main#main .hw-page .hw-house--stage2 { --house-art-inset: 9.73%; }
+  html body main#main .hw-page .hw-house-art {
+    transform: translateY(calc(-1 * var(--house-art-inset)));
+  }
   html body main#main .hw-page .hw-stage-panel > .hw-house-wrap { margin-bottom: -48px; }
   html body main#main .hw-page .hw-stage-panel .hw-stage-block { padding: 80px 22px 28px; }
   html body main#main .hw-page .hw-stage-block .hw-flow-box { font-size: 16px; }
