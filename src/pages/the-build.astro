@@ -25,6 +25,7 @@ const tint = "#FFF9FA"; // HEART 25: Stage 2 colour (Seb, 19 Nov 2026)
 const stage1Tint = "#FFF3F4";
 const stage2Tint = "#FFE2E4";
 const white = "#ffffff";
+const supportsTint = "#F5F2FF";
 const heroEdge = edgeAbove("#2A0B4F");
 const bandEdge = edgeAbove(tint);
 
@@ -181,16 +182,16 @@ const [houseBefore, houseStage1, houseStage2] = houses;
       </div>
     </section>
 
-    <Fragment set:html={toTint} />
+    <Fragment set:html={wave(white, supportsTint)} />
 
     <!-- 3. Supports through both stages + retreat -->
-    <section class="hw-band hw-band-tint" aria-labelledby="hw-supports">
+    <section class="hw-band hw-band-tint hw-supports-band" aria-labelledby="hw-supports">
       <div class="hw-well">
         <HwSupports />
       </div>
     </section>
 
-    <Fragment set:html={toWhite} />
+    <Fragment set:html={wave(supportsTint, white)} />
 
     <!-- 4. Same foundations as Stage 1 (Seb, 20 Nov 2026: the blocks The Build repeated from The Reset, i.e. WHOOP,
          "What This Partnership Is Not", testimonials and the track record, are replaced by one link back). -->

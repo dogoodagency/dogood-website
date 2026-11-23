@@ -24,9 +24,7 @@ interface Props {
   includes: Inclusion[];
   expectation: string[];
   pdfHref: string;
-  pdfLabel: string;
   stage: 1 | 2;
-  primary: { href: string; label: string };
 }
 
 const p = Astro.props;
@@ -41,7 +39,7 @@ function wave(from: string, to: string) {
 const toTint = wave(white, tint);
 const toWhite = wave(tint, white);
 const url = `https://www.dogoodagency.co/${p.slug}`;
-const mapImage = p.stage === 2 ? "/media/r4/nextlife-passage-map" : "/media/clarityvalue-shift-map";
+const mapImage = p.stage === 2 ? "/media/r5/nlp-onepager" : "/media/r5/cvs-onepager";
 const includeIcons = p.stage === 2
   ? ["chat", "people", "compass", "map", "wave", "moon", "heart", "handshake"]
   : ["chat", "people", "compass", "calendar", "ring", "bolt", "battery", "heart", "map"];
@@ -80,10 +78,6 @@ const stages = [
         <p class="ep-eyebrow">{p.eyebrow}</p>
         <h1>{p.name}</h1>
         <p class="ep-sub">{p.purpose}</p>
-        <div class="fw-actions">
-          <a class={p.primary.href === "/apply-stage-1" ? "btn-apply" : "btn-teal"} href={p.primary.href}>{p.primary.label}</a>
-          <a class="fw-link fw-link--light" href={p.pdfHref} target="_blank" rel="noopener">{p.pdfLabel}</a>
-        </div>
       </div>
       <Wave fill={white} edge={heroEdge} />
     </header>
@@ -94,11 +88,9 @@ const stages = [
           class="fw-map-image"
           src={`${mapImage}@1x.webp`}
           srcset={`${mapImage}@1x.webp 1x, ${mapImage}@2x.webp 2x`}
-          width="603"
-          height="337"
           alt={`${p.name} 1-Page Map`}
           loading="lazy"
-          data-arta={p.stage === 2 ? "A5" : undefined}
+          data-arta="R5-ONEPAGER"
         />
         <div class="fw-map-copy">
           <h2 id="fw-map-title">The 1-Page Map</h2>

@@ -1,4 +1,5 @@
 ---
+import PartnershipIcon from "../components/PartnershipIcon.astro";
 import SevenQuestionsBand from "../components/SevenQuestionsBand.astro";
 import WriteToUs from "../components/WriteToUs.astro";
 import { phonePicks } from "../data/phone-picks";
@@ -42,6 +43,7 @@ const tint = "#F3FFFB"; // GRASS 25: Stage 1 colour (Seb, 19 Nov 2026)
 const stage1Tint = "#E7FFF6";
 const stage2Tint = "#FFF3F4";
 const white = "#ffffff";
+const supportsTint = "#F5F2FF";
 const heroEdge = edgeAbove("#2A0B4F");
 const bandEdge = edgeAbove(tint);
 const footerEdge = edgeAbove(tint);
@@ -269,25 +271,31 @@ const [houseBefore, houseStage1, houseStage2] = houses;
       </div>
     </section>
 
-    <Fragment set:html={toTint} />
+    <Fragment set:html={wave(white, supportsTint)} />
 
-    <section class="hw-band hw-band-tint" aria-labelledby="hw-supports">
+    <section class="hw-band hw-band-tint hw-supports-band" aria-labelledby="hw-supports">
       <div class="hw-well"><HwSupports /></div>
     </section>
 
-    <Fragment set:html={toWhite} />
+    <Fragment set:html={wave(supportsTint, white)} />
     <FoundrLand kind="reset" />
 
     <!-- 8. Who this is for -->
     <section class="hw-band hw-band-tint hw-who-band" aria-labelledby="hw-who">
       <div class="hw-well">
-        <div class="hw-prose">
+        <div class="hw-who-intro">
           <h2 id="hw-who">Who is this for?</h2>
           <p class="hw-eyebrow hw-eyebrow-left">Founders: After the Sale</p>
-          <p>This is for founders who have sold or meaningfully stepped away from the company and are no longer responsible for the day-to-day.</p>
-          <p>You may still have a board or advisory role, but you now have more time, more freedom, and more space than you have had in years.</p>
-          <p>What you did not expect was how uncomfortable that space might feel. Many founders feel this and never quite say it. You do not simply want to fill it with another company or project.</p>
-          <p>You want to understand what is driving the next move and deliberately choose how you want to live beyond the business.</p>
+          <div class="hw-who-paragraphs">
+            <div class="hw-who-paragraph">
+              <PartnershipIcon name="people" />
+              <p>This is for founders who have sold or meaningfully stepped away from the company and are no longer responsible for the day-to-day. You may still have a board or advisory role, but you now have more time, more freedom, and more space than you have had in years.</p>
+            </div>
+            <div class="hw-who-paragraph">
+              <PartnershipIcon name="compass" />
+              <p>What you did not expect was how uncomfortable that space might feel. Many founders feel this and never quite say it. You do not simply want to fill it with another company or project. You want to understand what is driving the next move and deliberately choose how you want to live beyond the business.</p>
+            </div>
+          </div>
         </div>
 
 
