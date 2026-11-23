@@ -11,25 +11,27 @@ const { house, showBadge = false } = Astro.props;
   {house.badge && showBadge && <p class="hw-badge">{house.badge}</p>}
   <figure class={`hw-house hw-house--${house.id}`}>
     <div class="hw-house-box">
-      <div class="hw-house-art" style={`--ar:${house.width}/${house.height}`}>
+      <div class="hw-house-art">
         <img
           class="hw-house-img"
           src={house.src1100}
           srcset={`${house.src640} 640w, ${house.src1100} 1100w`}
-          sizes="(max-width: 600px) calc(100vw - 43.36px), (max-width: 1099px) 65vw, 650px"
+          sizes="(max-width: 600px) calc(100vw - 43.36px), 650px"
           width={house.width}
           height={house.height}
           alt={house.alt}
           loading="lazy"
           decoding="async"
         />
-        {house.arrows.map((a) => (
-          <img class="hw-arrow" src={arrowSrc} width="400" height="179" alt="" aria-hidden="true" loading="lazy" decoding="async" style={`--cx:${a.cx}%;--cy:${a.cy}%;--w:${a.w}%;--rot:${a.rot}deg;--flip:${a.flip}`} />
-        ))}
-        {house.labels.map((l) => (
-          <p class:list={["hw-label", l.x < 50 && "hw-label--left"]} style={`--x:${l.x}%;--y:${l.y}%;--lw:${l.w}%`}>{l.text}</p>
-        ))}
       </div>
+    </div>
+    <div class="hw-house-annotations">
+      {house.arrows.map((a) => (
+        <img class="hw-arrow" src={arrowSrc} width="400" height="179" alt="" aria-hidden="true" loading="lazy" decoding="async" style={`--cx:${a.cx}%;--cy:${a.cy}%;--w:${a.w}%;--rot:${a.rot}deg;--flip:${a.flip}`} />
+      ))}
+      {house.labels.map((l) => (
+        <p class:list={["hw-label", l.x < 50 && "hw-label--left"]} style={`--x:${l.x}%;--y:${l.y}%;--lw:${l.w}%`}>{l.text}</p>
+      ))}
     </div>
   </figure>
 </div>

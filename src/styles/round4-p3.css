@@ -29,20 +29,22 @@ html body main#main .hw-page .hw-house-wrap {
   pointer-events: none;
 }
 html body main#main .hw-page .hw-house {
-  width: min(650px, calc((100vw - 2 * var(--pad)) / 1.5));
+  position: relative;
+  width: min(650px, 100%);
   margin: 0 auto;
 }
 html body main#main .hw-page .hw-house-box {
   display: block;
   position: relative;
   width: 100%;
-  aspect-ratio: 1100 / 1398;
+  aspect-ratio: 650 / 703;
 }
 html body main#main .hw-page .hw-house-art {
   position: absolute;
-  inset: auto 0 0;
+  inset: 0;
   width: 100%;
-  aspect-ratio: var(--ar);
+  height: 100%;
+  overflow: hidden;
 }
 html body main#main .hw-page .hw-house-img {
   display: block;
@@ -50,8 +52,19 @@ html body main#main .hw-page .hw-house-img {
   height: 100%;
   margin: 0;
   object-fit: contain;
+  object-position: center bottom;
   pointer-events: none;
 }
+/* Compensate for transparent canvas without changing the shared box or annotations. */
+html body main#main .hw-page .hw-house--before .hw-house-img {
+  transform: scale(1.07);
+  transform-origin: center bottom;
+}
+html body main#main .hw-page .hw-house--stage2 .hw-house-img {
+  transform: scale(1.1);
+  transform-origin: center bottom;
+}
+html body main#main .hw-page .hw-house-annotations { display: contents; }
 html body main#main .hw-page .hw-house .hw-arrow { display: block; }
 html body main#main .hw-page .hw-house .hw-label::before { display: none; }
 html body main#main .hw-page .hw-house .hw-label {
@@ -223,27 +236,23 @@ html body main#main .hw-page--s2 :is(.hw-retreat, .au--compact) { --inline-hover
 html body main#main .hw-page--s2 .hw-retreat .hw-retreat-link a { text-decoration-color: var(--color-heart-400); }
 html body main#main .hw-page--s2 .au-more a { text-decoration-color: var(--color-heart-400) !important; }
 
-@media (max-width: 600px) {
+@media (max-width: 1099px) {
   /* Full-well houses; annotations sit above the art so none leave the viewport. */
-  html body main#main .hw-page .hw-house { width: 100%; margin: 0 auto; }
-  html body main#main .hw-page .hw-house-box { aspect-ratio: auto; }
-  html body main#main .hw-page .hw-house-art { position: relative; aspect-ratio: auto; }
-  html body main#main .hw-page .hw-house-img {
-    position: absolute;
-    inset: auto 0 0;
-    height: auto;
-    aspect-ratio: 1100 / 1398;
-    object-fit: contain;
-    object-position: center bottom;
+  html body main#main .hw-page .hw-house {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
   }
+  html body main#main .hw-page .hw-house-box { flex-shrink: 0; }
   html body main#main .hw-page .hw-house .hw-arrow { display: none; }
-  html body main#main .hw-page .hw-house-art {
+  html body main#main .hw-page .hw-house-annotations {
     display: grid;
+    order: -1;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: repeat(3, 56px);
     align-items: center;
     gap: 12px;
-    padding: 16px 0 calc(100% * 1398 / 1100);
+    padding: 16px 0;
   }
   html body main#main .hw-page .hw-house .hw-label,
   html body main#main .hw-page .hw-stage-panel .hw-house--stage1 .hw-label:nth-of-type(3) {
@@ -258,6 +267,9 @@ html body main#main .hw-page--s2 .au-more a { text-decoration-color: var(--color
     text-align: center;
   }
   html body main#main .hw-page .hw-house .hw-label::before { display: none; }
+}
+
+@media (max-width: 600px) {
   html body main#main .hw-page .hw-stage-panel > .hw-house-wrap { margin-bottom: -48px; }
   html body main#main .hw-page .hw-stage-panel .hw-stage-block { padding: 80px 22px 28px; }
   html body main#main .hw-page .hw-stage-block .hw-flow-box { font-size: 16px; }
