@@ -1,0 +1,335 @@
+---
+import "../../styles/advisors.css";
+import Base from "../../layouts/Base.astro";
+import Wave from "../../components/Wave.astro";
+import AdvisorNav from "../../components/AdvisorNav.astro";
+import { edgeAbove } from "../../data/edge-line";
+import PartnershipIcon from "../../components/PartnershipIcon.astro";
+import FoundrLand from "../../components/FoundrLand.astro";
+
+const title = "Founder referrals and personal coaching | DoGood Agency";
+const description = "For advisors referring founders before or after the sale: personal coaching, a careful introduction, and updates with the founder’s consent.";
+
+const heroEdge = edgeAbove("#2A0B4F");
+const footerEdge = edgeAbove("#ffffff");
+
+const steps = [
+  {
+    title: "An intro conversation with Seb",
+    text: "A short call to see whether a partnership is a fit, and to walk through how we work together. This is also when we share the details of our Referral Partner Agreement. Referrals start once we have both signed it.",
+  },
+  {
+    title: "You introduce the founder, with their permission",
+    text: "If your client is open to it, you make the introduction. We never approach a founder without that introduction, and we never ask you to make one without their permission.",
+  },
+  {
+    title: "A private Fit Call",
+    text: "We speak with the founder about whether Stage 1 is right for them. You do not need to be on this call. If it is not a fit, we say so clearly, and we tell you.",
+  },
+  {
+    title: "We keep you informed, with the founder's consent",
+    text: "If they go ahead, we keep you informed of the broad shape of things. We do not share confidential details from the work itself.",
+  },
+  {
+    title: "Stage 1 starts",
+    text: "The founder begins a private 30-day engagement. You stay the trusted advisor.",
+  },
+];
+
+// What you get (Seb, 19 Nov 2026): fleshed out from what advisors told us on calls (voice-of-customer
+// findings, 18 Nov 2026). Patterns, not statistics; no quotes or names.
+const benefits = [
+  {
+    key: "smoother",
+    title: "Smoother deals",
+    text: "Advisors tell us the same story: founders who are not personally ready get cold feet, nitpick buyers and stall their own deals. A founder who has looked at life after the sale walks into closing calmer, and the deal is more likely to land.",
+  },
+  {
+    key: "leg",
+    title: "The personal leg, covered by a specialist",
+    text: "Exit planning stands on business, financial and personal readiness. You cover the first two. We are the specialist for the third, so you are never left winging it with a questionnaire.",
+  },
+  {
+    key: "after",
+    title: "Fewer regrets after closing",
+    text: "The hard part often happens weeks or months after the deal, when everything stops. Your client has a place for that, and remembers who made the introduction.",
+  },
+  {
+    key: "trusted",
+    title: "You stay the trusted advisor",
+    text: "We never contact your client without your introduction. We do not poach, and we do not give financial or legal advice. With the founder's consent, we keep you in the loop on the broad shape of things.",
+  },
+  {
+    key: "family",
+    title: "Room for the family too",
+    text: "Spouses and partners can be part of the conversation. A family that is aligned on what comes next makes the transition easier for everyone, including you.",
+  },
+  {
+    key: "tools",
+    title: "Free tools with your name on the link",
+    text: "Every tool in the toolkit is free to share, with no sign-up. The readiness check comes with your own personal link, so you see who it helped.",
+  },
+  {
+    key: "fee",
+    title: "A referral fee, or a credit for your client",
+    text: "There is a referral fee under a written Referral Partner Agreement. If you do not accept referral fees, we can credit it to the founder or donate it instead. We share the details on the intro call.",
+  },
+];
+
+
+// [SEB] Quotes from advisor conversations; labels are roles only.
+
+const faqs = [
+  {
+    q: "Will you contact my client without me?",
+    a: "No. We never contact a founder without your introduction, and we only ask you to introduce them with their permission.",
+  },
+  {
+    q: "Who is a good fit to introduce?",
+    a: "Before the sale: a founder who hesitates, keeps finding faults with buyers, or can't say what they'll do afterward. After the sale: founders who have exited and are no longer in the day-to-day (a board or advisory role is fine). This is often a fit when they have more freedom than before, and it does not feel the way they expected. If you are unsure, we can talk it through on the intro call.",
+  },
+  {
+    q: "What about a client who has not sold yet?",
+    a: "The Exit Prep is built for them: six weekly 1:1 sessions, fully remote, for founders who are thinking about selling, not yet sure, or already under LOI. Its Clarity-First Guarantee works like The Reset's: if it isn't right, the founder tells us within 24 hours after Session 2 and we refund the rest. If they want to go deeper after the sale, Stage 1 follows. Ask us about it on the intro call.",
+  },
+  {
+    q: "What happens when the owner isn't ready?",
+    a: "It usually shows late: cold feet near closing, fault-finding with every buyer, a deal that stalls. The personal leg is the part of readiness that moves slowest, so the earlier it starts, the less it costs the deal.",
+  },
+  {
+    q: "How do I raise the personal side with a client?",
+    a: "Only when it feels natural, and never under pressure. The best opening is when a founder tells you they are struggling. If you have a long relationship built on trust, a frank word works too: \"I've known you for years, and I think this would really help you.\" If a founder isn't open to it, that's fine. Leave it there.",
+  },
+  {
+    q: "What should I tell them?",
+    a: "That DoGood is a private 30-day engagement for founders navigating life after exit, and that you would like to introduce them, if they are willing. We can give you a short way to say this on the intro call.",
+  },
+  {
+    q: "Do the free tools cost anything, or need a sign-up?",
+    a: "No. They are free to use and to share, with no sign-up for you. The only email we ask for is your client's, so we can send them their own readiness report. You see a copy only if they say yes.",
+  },
+  {
+    q: "How does the referral fee work?",
+    a: "There is a referral fee, paid under a written Referral Partner Agreement. The details are in that agreement, and we share them on the intro call. We do not publish amounts on this page.",
+  },
+  {
+    q: "Will I know how the work is going?",
+    a: "Yes, with the founder's consent. We keep you informed of the broad shape of things. We do not share confidential details from the sessions.",
+  },
+  {
+    q: "Do you give financial or legal advice?",
+    a: "No. We do not give financial or legal advice, and we do not poach. You stay the trusted advisor. We work only on the personal side of life after exit.",
+  },
+];
+---
+
+<Base title={title} description={description} canonical="https://www.dogoodagency.co/advisor-center/referrals" footerStrip="#ffffff" footerEdge={footerEdge}>
+  <article class="adv-page adv-center-page adv-referrals-page">
+    <header class="adv-hero">
+      <div class="adv-hero-inner">
+        <p class="adv-eyebrow">Advisor Center · Referrals</p>
+        <h1 class="r4-phrase-title">A careful introduction.<br class="pp-desktop-break" /> Support before and after the sale.</h1>
+        <p class="adv-lede">Introduce a founder with their permission. We look after the personal side, and you stay the trusted advisor.</p>
+      </div>
+      <Wave fill="#fff" edge={heroEdge} />
+    </header>
+
+    <section class="adv-band adv-band--white" aria-label="Introduction">
+      <div class="adv-well">
+        <AdvisorNav current="refer" />
+
+      </div>
+    </section>
+
+    <section class="adv-band adv-band--lilac" aria-labelledby="adv-why">
+      <div class="adv-well">
+        <h2 class="adv-section-title" id="adv-why">Why we refer</h2>
+        <!-- Seb round 2, 22 Nov 2026: three connected reasons, original words. -->
+        <ol class="adv-why-flow" data-adv-reveal>
+          <li>
+            <span class="adv-why-number" aria-hidden="true">1</span>
+            <PartnershipIcon name="signpost" />
+            <p>Before the sale, a founder who can't picture life afterward gets cold feet: they put the brakes on, nitpick buyers, or stall the deal at the last minute. A founder who is personally ready signs calmly.</p>
+          </li>
+          <li>
+            <span class="adv-why-number" aria-hidden="true">2</span>
+            <PartnershipIcon name="reset" />
+            <p>After the sale, your client's deal can close and the hard part can still be starting.</p>
+            <p>The company gave their days structure, urgency, and a place to put their energy. Without it, many founders find the freedom they worked toward does not feel the way they expected. Exit and succession work, and wealth advice, look after the transaction and the money. Very few people help with what happens after.</p>
+          </li>
+          <li>
+            <span class="adv-why-number" aria-hidden="true">3</span>
+            <PartnershipIcon name="handshake" />
+            <p>A trusted introduction means they do not have to look for that help alone, and you remain the person they came from.</p>
+          </li>
+        </ol>
+
+        <div class="adv-how-merged">
+        <h2 class="adv-section-title" id="adv-how">How a referral works</h2>
+        <p>A short, careful path. We never contact your client without you.</p>
+        <p>We only take referrals from partners we have agreed to work with and signed a Referral Partner Agreement with. Every professional who works with founders, including exit advisors, succession planners, wealth advisors, family offices and sell-side M&amp;A advisors, is welcome to use our free resources.</p>
+        <ol class="adv-steps adv-steps--color" role="list" data-adv-steps>
+          {
+            steps.map((step) => (
+              <li class="adv-step">
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </li>
+            ))
+          }
+        </ol>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="adv-band adv-band--white" aria-labelledby="adv-gets">
+      <div class="adv-well">
+        <p class="adv-eyebrow">What your client gets</p>
+        <div class="adv-client-journey">
+          <h2 class="adv-section-title" id="adv-gets">Before or after the sale, a private place for the personal side</h2>
+          <div class="adv-sale-columns">
+            <section class="adv-sale-side" aria-labelledby="adv-before-sale">
+              <h3 id="adv-before-sale">Before the sale</h3>
+              <ul>
+                <li><PartnershipIcon name="check" /><span><a href="/exit-prep">The Exit Prep</a> offers six weekly sessions.</span></li>
+                <li><PartnershipIcon name="check" /><span>Sessions are fully remote.</span></li>
+                <li><PartnershipIcon name="check" /><span>The work is built to fit around a busy deal.</span></li>
+              </ul>
+            </section>
+            <div class="adv-sale-marker"><span>Sale</span></div>
+            <section class="adv-sale-side" aria-labelledby="adv-after-sale">
+              <h3 id="adv-after-sale">After the sale</h3>
+              <ul>
+                <li><PartnershipIcon name="check" /><span>Stage 1 is a private, confidential 30 days.</span></li>
+                <li><PartnershipIcon name="check" /><span>We help them see what is really going on for them and tell the next shiny thing from what they really want.</span></li>
+                <li><PartnershipIcon name="check" /><span>They get clear on what needs attention before the next major decision.</span></li>
+              </ul>
+            </section>
+          </div>
+          <p class="adv-sale-note">The work is limited to 5 new founders a month. The Exit Prep and Stage 1 are both covered by our Clarity-First Guarantee.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="adv-band adv-band--lilac" aria-labelledby="adv-trial">
+      <div class="adv-well">
+        <div class="adv-trial">
+          <p class="adv-trial-badge">For your client, on us</p>
+          <h2 class="adv-section-title" id="adv-trial">A free session with a Wayfinder</h2>
+          <p>Have a client who is interested but wants to try us first? As a referral partner, introduce them, and they get one private session with one of our Wayfinders at no cost. No obligation for them.</p>
+          <div class="adv-card-actions">
+            <a class="btn-teal btn-dream" href="/exit">Exit advisors: arrange a free session</a>
+            <a class="btn-teal" href="/wealth">Wealth advisors: arrange a free session</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="adv-band adv-band--dream" aria-labelledby="adv-benefits">
+      <div class="adv-well">
+        <h2 class="adv-section-title" id="adv-benefits">What you get</h2>
+        <p class="adv-benefits-lede">Patterns from our conversations with exit planners, wealth advisors and M&amp;A advisors.</p>
+        <ul class="adv-benefits" data-adv-reveal>
+          {benefits.filter((item) => item.key !== "trusted").map((item, i) => (
+            <li class:list={["adv-benefit", `adv-benefit--${item.key}`]}>
+              <div class="adv-benefit-top"><span class="adv-benefit-number">{String(i + 1).padStart(2, "0")}</span><PartnershipIcon name={item.key === "family" ? "people" : item.key === "fee" ? "handshake" : "compass"} /></div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section class="adv-band adv-band--white adv-conf-band" aria-labelledby="adv-conf">
+      <div class="adv-well">
+        <p class="adv-eyebrow">Confidentiality</p>
+        <h2 class="adv-section-title" id="adv-conf">How we treat your relationship</h2>
+        <div class="adv-prose">
+          <h3>You stay the trusted advisor</h3>
+          <p>We never contact the founder without your introduction.</p>
+          <p>We do not poach, and we do not give financial or legal advice. The personal work stays private. Anything we tell you about how things are going is with the founder's consent, and never includes confidential details.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="adv-band adv-band--lilac" aria-labelledby="adv-faq">
+      <div class="adv-well adv-faq-well">
+        <p class="adv-eyebrow">FAQ</p>
+        <h2 class="adv-section-title" id="adv-faq">Questions advisors ask</h2>
+        <ul class="adv-faq" data-adv-faq>
+          {
+            faqs.map((faq, i) => (
+              <li class="adv-faq-item">
+                <h3>
+                  <button
+                    class="adv-faq-trigger"
+                    type="button"
+                    id={`adv-faq-q-${i}`}
+                    aria-expanded="false"
+                    aria-controls={`adv-faq-a-${i}`}
+                  >
+                    <span class="adv-faq-q">{faq.q}</span>
+                    <span class="adv-faq-icon" aria-hidden="true">
+                    </span>
+                  </button>
+                </h3>
+                <div class="adv-faq-panel" id={`adv-faq-a-${i}`} role="region" aria-labelledby={`adv-faq-q-${i}`}>
+                  <div class="adv-faq-answer">
+                    <p>{faq.a}</p>
+                  </div>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <div class="adv-fl-band"><FoundrLand kind="advisor" advisorImage="report" advisorBackground="sky25" /></div>
+
+    <section class="adv-band adv-band--white adv-close-band" aria-labelledby="adv-close">
+      <div class="adv-well">
+        <div class="adv-close-content">
+          <h2 id="adv-close">If you have a client in mind</h2>
+          <p>Book a short intro call with us.</p>
+          <div class="adv-card-actions">
+            <a class="btn-teal btn-dream" href="/exit">Exit advisor: book a call</a>
+            <a class="btn-teal" href="/wealth">Wealth advisor: book a call</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</Base>
+
+<script>
+  // Bundled (not inline) so it passes the site's Content-Security-Policy.
+  // Without JavaScript every answer stays open; with it they collapse into an accordion.
+  document.documentElement.classList.add("adv-js");
+
+  // How a referral works: steps come in one after another when scrolled into view.
+  document.querySelectorAll<HTMLElement>("[data-adv-steps], [data-adv-reveal]").forEach((advSteps) => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) advSteps.classList.add("is-in");
+    else {
+      advSteps.classList.add("will-animate");
+      const io = new IntersectionObserver(([e]) => {
+        if (!e?.isIntersecting) return;
+        advSteps.classList.add("is-in");
+        io.disconnect();
+      }, { threshold: 0.2 });
+      io.observe(advSteps);
+    }
+  });
+
+  document.querySelectorAll<HTMLElement>("[data-adv-faq] .adv-faq-item").forEach((item) => {
+    const trigger = item.querySelector<HTMLButtonElement>(".adv-faq-trigger");
+    if (!trigger) return;
+    trigger.addEventListener("click", () => {
+      const open = !item.classList.contains("is-open");
+      item.classList.toggle("is-open", open);
+      trigger.setAttribute("aria-expanded", String(open));
+    });
+  });
+</script>

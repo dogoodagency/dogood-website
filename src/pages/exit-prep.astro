@@ -1,0 +1,237 @@
+---
+import WriteToUs from "../components/WriteToUs.astro";
+import "../styles/exit-prep.css";
+import WhoopSection from "../components/WhoopSection.astro";
+import AudioSection from "../components/AudioSection.astro";
+import Base from "../layouts/Base.astro";
+import Wave from "../components/Wave.astro";
+import { edgeAbove } from "../data/edge-line";
+import TestimonialWall from "../components/TestimonialWall.astro";
+import BlogCard from "../components/BlogCard.astro";
+import { getCollection } from "astro:content";
+import FoundrLand from "../components/FoundrLand.astro";
+import PartnershipIcon from "../components/PartnershipIcon.astro";
+const readSlugs = ["before-you-sign-preparing-yourself", "emotions-of-selling-a-business"];
+const allPosts = await getCollection("blog");
+const readPosts = readSlugs.map((slug) => allPosts.find((p) => p.id === slug || p.id.replace(/\.mdx?$/, "") === slug)).filter((p) => p !== undefined);
+
+const tint = "#F5F2FF";
+const white = "#ffffff";
+const heroEdge = edgeAbove("#2A0B4F");
+const bandEdge = edgeAbove(tint);
+const closingTint = "#FEFABE"; // PLAY 500
+const outcomeTint = "#F3FFFB"; // GRASS 25
+
+/** Wavy join between two bands: `from` is the band above, `to` the band below. */
+function wave(from: string, to: string) {
+  return `<div class="ep-divider" style="background:${from}" aria-hidden="true"><svg style="--wave-edge:${bandEdge}" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${to}" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path><path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path></svg></div>`;
+}
+const toTint = wave(white, tint);
+const toWhite = wave(tint, white);
+
+const places = ["Not sure you want to sell at all.", "Thinking about selling.", "In a process or under LOI.", "An earnout ahead."];
+const outcomes = [
+  { icon: "compass", title: "Know what they want" },
+  { icon: "ring", title: "Decide with confidence again" },
+  { icon: "sunset", title: "Look forward to the chapter after the company", detail: "A picture of what comes next." },
+  { icon: "wave", title: "A clearer decision about the sale", detail: "A calmer way into the sale itself." },
+];
+
+// Sound bites from real calls (Call Language Log, non-private rows, lightly cleaned). Names are stand-ins (first name + initial, Seb 19 Nov 2026); the page says they are changed.
+// The first three were already here; three added 19 Nov 2026 (Q005, Q092, Q132).
+const quotes = [
+  { quote: "Maybe we're a year and a half out.", name: "Founder" },
+  { quote: "The truth is, I have no idea.", name: "Founder" },
+  { quote: "It would make sense maybe to start to get clarity on the human part of it, a year prior to that.", name: "Founder" },
+  { quote: "They get so tunnel focused on making it happen that they don't necessarily plan for their own finances or their own careers or their happiness.", name: "Exit advisor" },
+  { quote: "Leading up to a transaction is very stressful.", name: "Exit advisor" },
+  { quote: "They really want to exit, but they're just scared. They're putting the brakes on.", name: "Founder" },
+];
+
+// From the Exit-Prep one-pager (v1, Seb, 19 Nov 2026). The price is left out until Seb decides on publishing prices.
+const included = [
+  "Six weekly private sessions of 75 to 90 minutes each",
+  "Fully remote",
+  "Async support between sessions (audio and text)",
+  "Recovery and stress diagnostics via WHOOP (device purchased separately)",
+  "All of DoGood's learning tools",
+];
+const forWho = [
+  "You still run your company and plan to sell.",
+  "You're weighing when to sell your business, ideally starting 12 to 18 months before.",
+  "You're asking whether to sell your business and retire, or what comes next.",
+  "You're busy with the sale and have no headspace for yourself. One session a week, fully remote, is built for that.",
+];
+
+// FAQs: the first was already here; three added 19 Nov 2026 for the questions founders search.
+const faqs = [
+  { q: "I like the idea, but does this concern me yet?", a: "That's the most common thought we hear, and the best moment to start. The personal side is easiest to shape before the deal sets the timeline." },
+  { q: "When should I start preparing myself to sell my business?", a: "Ideally 12 to 18 months before you sign. That gives you time to get clear on who you want to be without the company while the decision and the deal are still in your hands. If closing is closer than that, it is still worth starting." },
+  { q: "Can I do The Exit Prep if I'm already under LOI or have an earnout ahead?", a: "Yes. The Exit Prep is built for the whole stretch before and around the sale, including a live process, an LOI or an earnout. We work next to your advisors, never instead of them." },
+  { q: "What if I'm having second thoughts about selling?", a: "That is common, and it is not a sign you shouldn't sell. Second thoughts usually come from not being able to picture life afterward. The Exit Prep gives that picture shape, so you make the decision calmly, whichever way it goes." },
+  { q: "What if I'm worried about what happens to the company and my team after I go?", a: "That worry is common, and it often keeps founders from deciding at all. We look at it directly: what you need to see in place to let go, and what is yours to carry and what isn't." },
+  { q: "What does it cost?", a: "We share the fee on the first call, so it fits where you are. The Exit Prep is six weeks, with a simple agreement before you start." },
+  { q: "Is The Exit Prep therapy or financial advice?", a: "Neither. The Exit Prep is private 1:1 work on the personal side of selling your business: the decision, what comes next and how you go into the sale. We don't give financial, tax or legal advice, and we are not a medical or psychological service." },
+];
+const faqJson = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+};
+---
+
+<Base
+  title="Should I sell my business? The Exit Prep coaching | DoGood Agency"
+  description="Should I sell my business? The Exit Prep is six weekly 1:1 coaching sessions that get you ready, not just the company. Best started 12 to 18 months before the sale."
+  canonical="https://www.dogoodagency.co/exit-prep"
+  footerStrip={closingTint}
+  footerEdge={edgeAbove(closingTint)}
+>
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: "The Exit Prep",
+      url: "https://www.dogoodagency.co/exit-prep",
+      description: "Six weekly 1:1 sessions for founders who haven't sold yet: prepare yourself, not just the company. Fully remote.",
+      serviceType: "1:1 founder coaching",
+      provider: { "@id": "https://www.dogoodagency.co/#organization" },
+      audience: { "@type": "Audience", audienceType: "Founders preparing to sell their company" },
+      areaServed: "Worldwide",
+      additionalProperty: { "@type": "PropertyValue", name: "Duration", value: "Six weekly sessions" },
+    })} />
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(faqJson)} />
+  <article class="ep-page ep-exit-prep">
+    <header class="ep-hero">
+      <div class="ep-hero-inner">
+        <p class="ep-eyebrow">The Exit Prep™</p>
+        <h1 class="r4-phrase-title">Should you sell your business?<br class="pp-desktop-break" /> Prepare yourself, not just the company.</h1>
+        <p class="ep-sub">Six weekly 1:1 Wayfinder sessions on your exit readiness, for founders who haven't sold yet, ideally 12 to 18 months before the sale. Fully remote.</p>
+        <!-- "Book a free call" removed from the hero (Seb, 20 Nov 2026). -->
+      </div>
+      <Wave fill={tint} edge={heroEdge} />
+    </header>
+
+    <section class="ep-band ep-band-tint" aria-labelledby="ep-where">
+      <div class="ep-well ep-well-top">
+        <h2 id="ep-where">Where are you right now?</h2>
+        <ul class="ep-places">
+          {places.map((place) => <li class="ep-place">{place}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <Fragment set:html={toWhite} />
+
+    <!-- What Exit-Prep is (from the one-pager, 19 Nov 2026) -->
+    <section class="ep-band" aria-labelledby="ep-what">
+      <div class="ep-well ep-well-top ep-well-spaced">
+        <h2 id="ep-should">Should I sell my business, or am I just tired?</h2>
+        <p class="ep-lede-plain ep-lede-full">Most founders who ask whether to sell are really asking two things: am I ready to sell my business, and what does life look like afterward? That deserves an answer before you sign anything.</p>
+        <h2 id="ep-what">What is The Exit Prep™?</h2>
+        <p class="ep-lede-plain ep-lede-full">A six-week, 1:1 engagement with a DoGood Wayfinder for founders who plan to sell their company but haven't yet. The six weeks create the clarity to decide, at a commitment that matches where you are now.</p>
+        <p class="ep-lede-plain ep-lede-full">For some founders, clarity means knowing what they actually want to get busy with after the sale. For others, it means working through what quietly holds them back from letting go: a conversation that needs to happen, a health question that keeps getting postponed, or a life outside the company they have been too busy to look at.</p>
+        <div class="ep-grid ep-fit-inclusions">
+          <section class="ep-box ep-box--sky" aria-labelledby="ep-for">
+            <h3 id="ep-for">Who it's for</h3>
+            <ul>{forWho.map((t, i) => <li><PartnershipIcon name={["people", "calendar", "compass", "battery"][i]} /><span>{t}</span></li>)}</ul>
+          </section>
+          <section class="ep-box ep-box--grass" aria-labelledby="ep-incl">
+            <h3 id="ep-incl">What's included</h3>
+            <ul>
+              {included.map((t, i) => <li><PartnershipIcon name={["chat", "globe", "wave", "heart", "map"][i]} /><span>{t}</span></li>)}
+            </ul>
+          </section>
+        </div>
+        <p class="ep-guarantee-note">Covered by our Clarity-First Guarantee: if it isn't right for you, tell us within 24 hours of Session 2 and we refund everything except the two sessions you used. <a href="/clarity-first-guarantee-terms">Read the terms</a>.</p>
+        <div class="ep-feature"><WhoopSection /></div>
+        <div class="ep-feature"><AudioSection /></div>
+      </div>
+    </section>
+
+    <Fragment set:html={wave(white, outcomeTint)} />
+
+    <section class="ep-band ep-outcomes-band" aria-labelledby="ep-outcomes">
+        <div class="ep-well ep-outcome ep-outcome-content">
+          <h2 id="ep-outcomes">The outcomes</h2>
+          <p class="ep-outcome-statement">Founders are rarely short of intelligence. What stalls them is a lack of clarity.</p>
+          <ul class="ep-outcome-tiles">
+            {outcomes.map((item) => <li>
+              <PartnershipIcon name={item.icon} />
+              <h3>{item.title}</h3>
+              {item.detail && <p>{item.detail}</p>}
+            </li>)}
+          </ul>
+        </div>
+    </section>
+
+    <Fragment set:html={wave(outcomeTint, tint)} />
+
+    <section class="ep-band ep-band-tint" aria-labelledby="ep-familiar">
+      <div class="ep-well ep-well-top">
+        <h2 id="ep-familiar">In their words</h2>
+        <p class="ep-lede-plain ep-voices-lede">Real words from our conversations with founders and the advisors who work with them.</p>
+        <TestimonialWall items={quotes} short label="In their words" />
+      </div>
+    </section>
+
+    <Fragment set:html={toWhite} />
+
+    <section class="ep-band" aria-labelledby="ep-advisors">
+      <div class="ep-well ep-well-top ep-well-spaced ep-prose">
+        <h2 id="ep-advisors">Working alongside your advisors</h2>
+        <p class="ep-lede-plain ep-lede-full">We work alongside exit advisors, succession planners, wealth advisors and family offices, and sell-side M&amp;A advisors. They prepare the business. We prepare you, and with your permission we keep them in the loop.</p>
+        <p class="ep-adv-link"><a href="/advisor-center">For your advisors: how we work alongside them →</a></p>
+      </div>
+    </section>
+
+    <section class="ep-band ep-band-tint" aria-labelledby="ep-insights">
+      <div class="ep-well">
+        <h2 id="ep-insights">Insights for founders</h2>
+        <div class="ep-posts">
+          {readPosts.map((p) => <BlogCard post={p} variant="grid" />)}
+        </div>
+      </div>
+    </section>
+
+    <FoundrLand kind="exit" />
+
+    <!-- Each final section has its own band. -->
+    <Fragment set:html={wave(white, tint)} />
+
+    <section class="ep-band ep-band-tint ep-faq-band" aria-labelledby="ep-faq-label">
+      <div class="ep-well ep-well-top">
+        <div class="ep-faq-wrap">
+        <p class="ep-eyebrow ep-eyebrow-dark" id="ep-faq-label">FAQ</p>
+        {
+          faqs.map((f, i) => (
+            <details class="ep-faq" open={i === 0}>
+              <summary>
+                <span class="ep-faq-q">{f.q}</span>
+                <span class="ep-faq-icon" aria-hidden="true"></span>
+              </summary>
+              <p class="ep-faq-a">{f.a}</p>
+            </details>
+          ))
+        }
+        <p class="ep-more"><a href="/faqs">More questions</a></p>
+        </div>
+      </div>
+    </section>
+
+
+    <Fragment set:html={wave(tint, closingTint)} />
+
+    <section class="ep-band ep-contact-band" aria-label="Contact us">
+      <div class="ep-well ep-contact-close">
+        <WriteToUs variant="band" />
+        <a class="ep-closing-guide" href="/newsletter">
+          <span class="ep-guide-pages" aria-hidden="true">
+            <img data-arta="A6" src="/media/seven-questions/seven-questions-cover@1x.webp" srcset="/media/seven-questions/seven-questions-cover@1x.webp 1x, /media/seven-questions/seven-questions-cover@2x.webp 2x" width="300" height="424" loading="lazy" alt="" aria-hidden="true" />
+            <img data-arta="A6" src="/media/r4/seven-questions-inside-1@1x.webp" srcset="/media/r4/seven-questions-inside-1@1x.webp 1x, /media/r4/seven-questions-inside-1@2x.webp 2x" width="300" height="424" loading="lazy" alt="" aria-hidden="true" />
+          </span>
+          <span>What to take into the first 90 days after the sale: The 7 questions →</span>
+        </a>
+      </div>
+    </section>
+  </article>
+</Base>

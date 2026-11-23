@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg data-bbox="0 0 5 3" viewBox="0 0 5 3" height="600" width="1000" xmlns="http://www.w3.org/2000/svg" data-type="color">
+    <g>
+        <path fill="#000000" d="M5 0v3H0V0z" data-color="1"/>
+        <path fill="#DD0000" d="M5 1v2H0V1z" data-color="2"/>
+        <path fill="#FFCE00" d="M5 2v1H0V2z" data-color="3"/>
+    </g>
+</svg>

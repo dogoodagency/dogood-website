@@ -1,0 +1,177 @@
+/* Round 4 part p6 */
+
+/* Shared resource artwork: the same top picture height on every tools card. */
+.advr-tool-visual {
+  position: relative;
+  flex: 0 0 auto;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  pointer-events: none;
+}
+.advr-tool-visual img {
+  position: absolute;
+  display: block;
+  top: 6%;
+  height: 88%;
+  width: auto;
+  max-width: 38%;
+  object-fit: contain;
+  border: 1px solid var(--color-dream-100);
+  box-shadow: none;
+  pointer-events: none;
+}
+.advr-tool-visual img:nth-child(1) { left: 12%; transform: rotate(-4deg); }
+.advr-tool-visual img:nth-child(2) { left: 36%; }
+.advr-tool-visual img:nth-child(3) { left: 60%; transform: rotate(4deg); }
+.advr-tool-visual--questions img:nth-child(1) { left: 0; top: 0; height: 100%; transform: none; }
+.advr-tool-visual--questions img:nth-child(2) { left: 34%; transform: rotate(-4deg); }
+.advr-tool-visual--questions img:nth-child(3) { left: 54%; transform: none; }
+.advr-tool-visual--questions img:nth-child(4) { left: 74%; transform: rotate(4deg); }
+.advr-tool-visual--planner img:nth-child(1) { left: 50%; transform: translateX(-50%); }
+.advr-tool-visual--readiness { background: var(--color-white); }
+.advr-tool-visual--readiness img:nth-child(1) {
+  position: static;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  border: 0;
+  transform: none;
+}
+.advr-tool-visual--detail { height: 360px; margin-bottom: 32px; }
+.advr-tool-visual--readiness.advr-tool-visual--detail { height: auto; background: var(--color-dream-25); }
+html body main#main .advr-page .advd-preview .advr-tool-visual--detail img { height: auto; pointer-events: none; }
+html body main#main .advr-page .advd-preview > figure > img { pointer-events: none; }
+
+html body main#main .advr-page.advr-tools-page .advr-card { padding: 32px; overflow: hidden; }
+html body main#main .advr-page.advr-tools-page .advr-tool-visual {
+  width: calc(100% + 64px);
+  margin: -32px -32px 24px;
+}
+html body main#main .advr-page.advr-tools-page .advr-card--sky { background: var(--color-sky-100); border-color: var(--color-sky-300); }
+html body main#main .advr-page.advr-tools-page .advr-card--heart { background: var(--color-heart-200); border-color: var(--color-heart-400); }
+html body main#main .advr-page.advr-tools-page .advr-card--grass { background: var(--color-grass-200); border-color: var(--color-grass-400); }
+html body main#main .advr-page.advr-tools-page .advr-card--questions { background: var(--color-play-500); border-color: var(--color-play-700); }
+html body main#main .advr-page.advr-tools-page .advr-card--link:is(:hover, :focus-visible) { background: var(--color-dream-500); }
+html body main#main .advr-page.advr-tools-page .advr-card h2 { margin: 0 0 32px; }
+html body main#main .advr-page.advr-tools-page .advr-card :is(.advr-soon, .advr-available) { margin: 0 0 16px; }
+html body main#main .advr-page.advr-tools-page .advr-actions .btn-dream { background: var(--color-dream-500); color: var(--color-white); }
+html body main#main .advr-page.advr-tools-page .advr-actions .btn-dream:is(:hover, :focus-visible) { background: var(--color-dream-400); }
+
+/* A connected path on DREAM 25, with existing copy and static symbols. */
+html body main#main .advr-tools-page .advr-use-band { background: var(--color-dream-25); }
+html body main#main .advr-tools-page .advr-use-band .advr-well { padding-block: 64px; }
+html body main#main .advr-tools-page :is(.advr-use-band, .advr-question-section, .advr-practical-faq, .advr-founder-brief) h2 {
+  margin: 0 0 24px;
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 900;
+  line-height: 1.25;
+}
+.advr-use-path {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  margin: 36px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.advr-use-path::before {
+  content: "";
+  position: absolute;
+  top: 28px;
+  left: 28px;
+  right: calc((100% - 64px) / 3 - 28px);
+  border-top: 2px dashed var(--color-grass-500);
+  pointer-events: none;
+}
+.advr-use-path li { position: relative; min-width: 0; }
+.advr-use-number {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-dream-500);
+  color: var(--color-white);
+  font-size: 28px;
+  font-weight: 900;
+}
+.advr-use-symbol { display: block; width: 40px; height: 40px; margin-block: 24px 16px; pointer-events: none; }
+.advr-use-symbol svg { width: 100%; height: 100%; fill: none; stroke: var(--color-dream-500); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+html body main#main .advr-tools-page .advr-use-path h3 { margin: 0 0 12px; font-size: 22px; font-weight: 800; line-height: 1.3; }
+html body main#main .advr-tools-page :is(.advr-use-path, .advr-question-section, .advr-founder-brief) p { margin: 0; font-size: 18px; line-height: 1.6; }
+.advr-question-quotes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin: 28px 0; padding: 0; list-style: none; }
+.advr-question-quotes li { padding: 28px; border: 1px solid var(--color-dream-100); border-radius: 24px; background: var(--color-dream-25); }
+.advr-question-quotes li:nth-child(2) { background: var(--color-heart-50); border-color: var(--color-heart-300); }
+.advr-question-quotes li:nth-child(3) { background: var(--color-grass-25); border-color: var(--color-grass-400); }
+.advr-question-quotes blockquote { margin: 0; }
+.advr-question-quotes blockquote::before { display: block; content: "“"; height: 48px; color: var(--color-dream-500); font-size: 64px; line-height: 1; pointer-events: none; }
+html body main#main .advr-tools-page .advr-question-quotes p { font-size: 22px; font-weight: 700; line-height: 1.5; }
+.advr-practical-faq { margin-top: 64px; }
+.advr-practical-faq details { margin-bottom: 14px; overflow: hidden; border: 1px solid var(--color-heart-500); border-radius: 18px; background: var(--color-white); }
+.advr-practical-faq summary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 28px;
+  color: var(--color-dream-500);
+  background: var(--color-white);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.35;
+  list-style: none;
+  cursor: pointer;
+}
+.advr-practical-faq summary::-webkit-details-marker { display: none; }
+.advr-practical-faq summary::after { content: "+"; display: grid; flex: 0 0 28px; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--color-grass-500); font-size: 22px; }
+.advr-practical-faq details[open] summary::after { content: "−"; }
+.advr-practical-faq summary:is(:hover, :focus-visible) { color: var(--color-dream-500); background: var(--color-white); text-decoration: none; }
+.advr-practical-faq summary:focus-visible { outline: 2px solid var(--color-dream-500); outline-offset: -6px; }
+.advr-practical-faq details p { margin: 0; padding: 0 28px 28px; font-size: 18px; line-height: 1.6; }
+.advr-founder-brief { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; gap: 32px; margin-top: 64px; padding: 32px; border: 1px solid var(--color-dream-100); border-radius: 24px; background: var(--color-dream-25); }
+.advr-founder-brief img { display: block; width: 100%; height: auto; pointer-events: none; box-shadow: none; }
+.advr-founder-brief a { display: inline-block; margin-top: 24px; }
+html body main#main .advr-tools-page :is(.advr-question-section, .advr-founder-brief) a { color: var(--color-dream-500); font-size: 18px; text-decoration: underline; text-underline-offset: 6px; }
+html body main#main .advr-tools-page :is(.advr-question-section, .advr-founder-brief) a:is(:hover, :focus-visible) { color: var(--color-grass-700); }
+
+/* Leave a full 150px between the panel and the start of the footer wave. */
+html body main#main .advr-tools-page > .fl-band:last-child { padding-bottom: 150px; }
+html body main#main .advr-page.advd-tools-page .advd-foundr-band { padding: 64px var(--pad) 150px; }
+
+/* Reserve the same status row without adding a status to the book. */
+html body main#main .advr-insights-page .advr-card :is(.advr-soon, .advr-status-spacer) { flex: 0 0 auto; min-height: 36px; margin: 0 0 16px; }
+.advr-status-spacer { display: block; }
+html body main#main .advr-insights-page .advi-pattern--before { border: 1px solid var(--color-heart-500); }
+html body main#main .advr-insights-page .advi-pattern--after { border: 1px solid var(--color-grass-500); }
+
+@media (max-width: 1023px) {
+  .advr-question-quotes { gap: 16px; }
+  .advr-question-quotes li { padding: 20px; }
+  .advr-founder-brief { grid-template-columns: minmax(0, 1fr); }
+  .advr-founder-brief img { max-width: 560px; margin-inline: auto; }
+}
+@media (max-width: 767px) {
+  .advr-use-path, .advr-question-quotes { grid-template-columns: minmax(0, 1fr); }
+  .advr-use-path::before { display: none; }
+  .advr-use-path li { padding-left: 80px; }
+  .advr-use-path li:not(:last-child)::after { content: ""; position: absolute; top: 56px; bottom: -32px; left: 28px; border-left: 2px dashed var(--color-grass-500); pointer-events: none; }
+  .advr-use-number { position: absolute; top: 0; left: 0; }
+  .advr-use-symbol { margin-top: 8px; }
+}
+@media (max-width: 600px) {
+  html body main#main .advr-page.advr-tools-page .advr-card { padding: 24px; }
+  html body main#main .advr-page.advr-tools-page .advr-tool-visual { width: calc(100% + 48px); margin: -24px -24px 24px; }
+  .advr-tool-visual--detail { height: 240px; }
+  .advr-tool-visual--questions img:nth-child(4) { display: none; }
+  .advr-tool-visual--readiness.advr-tool-visual--detail { height: auto; }
+  .advr-practical-faq summary { padding: 20px; font-size: 20px; }
+  .advr-practical-faq details p { padding: 0 20px 24px; }
+  .advr-founder-brief { padding: 24px; gap: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html body main#main .advr-page.advr-tools-page .advr-card--link { transition: none; }
+}

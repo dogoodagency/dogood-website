@@ -1,0 +1,40 @@
+---
+import "../styles/blog.css";
+import { sketchSrc } from "../data/blog";
+
+interface Props {
+  /** Sketch base path without @1x/.webp, e.g. "/sketches/insights-open-journals" */
+  src: string;
+  alt: string;
+  bg?: "purple" | "teal" | "pink" | "lilac";
+  /** Eager loading for the first image on a page. */
+  eager?: boolean;
+  /** Frame shape: "wide" (3:2, default) or "thumb" (square, used by row cards). */
+  shape?: "wide" | "thumb";
+  class?: string;
+}
+
+const { src, alt, eager = false, shape = "wide", class: className = "" } = Astro.props;
+// Every article image sits on DREAM 500 (Seb, 19 Nov 2026), with the light-line "-ondark" sketch versions.
+const bg = "dream";
+const s = sketchSrc(`${src}-ondark`);
+// Sketches are drawn on a 540 x 400 canvas; object-fit keeps any other ratio intact.
+const width = 540;
+const height = 400;
+---
+
+<div class:list={["bl-img", `bl-img--${bg}`, `bl-img--${shape}`, className]}>
+  <picture>
+    <source type="image/webp" srcset={`${s.webp1} 1x, ${s.webp2} 2x`} />
+    <img
+      src={s.png1}
+      srcset={`${s.png1} 1x, ${s.png2} 2x`}
+      width={width}
+      height={height}
+      alt={alt}
+      loading={eager ? "eager" : "lazy"}
+      fetchpriority={eager ? "high" : undefined}
+      decoding="async"
+    />
+  </picture>
+</div>

@@ -1,0 +1,39 @@
+---
+// Seb round 2, 22 Nov 2026: small line symbols for frameless partnership groups.
+interface Props { name?: string }
+const { name = "check" } = Astro.props;
+const symbols: Record<string, { line: string; accent: string }> = {
+  check: { line: "M7 16l6 6L26 9", accent: "M5 25h9" },
+  cross: { line: "M10 10l12 12M22 10 10 22", accent: "M6 26h9" },
+  focus: { line: "M11 5H5v6m16-6h6v6M5 21v6h6m16-6v6h-6M12 16a4 4 0 1 0 8 0 4 4 0 1 0-8 0", accent: "M16 2v6" },
+  sunset: { line: "M3 22h26M7 22a9 9 0 0 1 18 0M5 12l3 3m16 0 3-3M16 4v5", accent: "M10 27h12" },
+  reset: { line: "M26 14A10 10 0 1 0 24 23M26 5v9h-9", accent: "M12 16h8" },
+  bolt: { line: "M18 3 7 18h8l-1 11 11-16h-8z", accent: "M25 4l3-2M4 27l3-2" },
+  people: { line: "M12 5a5 5 0 1 0 0 10 5 5 0 1 0 0-10M3 27v-4a9 9 0 0 1 18 0v4M23 17a7 7 0 0 1 6 7v3", accent: "M23 5a5 5 0 0 1 0 10" },
+  signpost: { line: "M16 3v26M6 7h16l5 5-5 5H6z", accent: "M11 29h10" },
+  chat: { line: "M5 5h22v16H14l-8 6v-6H5zM10 11h12", accent: "M10 16h7" },
+  battery: { line: "M3 9h24v15H3zM27 14h3v5h-3", accent: "M8 13v7m5-7v7" },
+  moon: { line: "M24 21A12 12 0 0 1 11 5a12 12 0 1 0 13 16", accent: "M23 3v6m-3-3h6" },
+  ring: { line: "M24 7a12 12 0 1 0 4 9M11 16l4 4 9-10", accent: "M26 4v6h-6" },
+  wave: { line: "M2 17c5-16 9 16 14 0s9 16 14 0", accent: "M6 26h20" },
+  info: { line: "M16 3a13 13 0 1 0 0 26 13 13 0 1 0 0-26M14 15h2v8m-3 0h6", accent: "M16 9v1" },
+  globe: { line: "M16 3a13 13 0 1 0 0 26 13 13 0 1 0 0-26M3 16h26M16 3c-7 7-7 19 0 26 7-7 7-19 0-26", accent: "M6 8h20" },
+  calendar: { line: "M5 7h22v21H5zM10 3v8m12-8v8M5 14h22", accent: "M11 20h3m4 0h3" },
+  compass: { line: "M16 3a13 13 0 1 0 0 26 13 13 0 1 0 0-26M21 11l-3 7-7 3 3-7z", accent: "M16 5v2" },
+  flag: { line: "M7 29V4m0 1c6-5 12 5 18 0v13c-6 5-12-5-18 0", accent: "M3 29h8" },
+  heart: { line: "M16 27 5 16C-4 6 10-1 16 9 22-1 36 6 27 16z", accent: "M12 15l3 3 5-6" },
+  handshake: { line: "M2 13l6-6 6 3m16 3-6-6-8 3-5 5 4 3 5-4 8 8-7 7L8 18m1 1-4 3-3-8m24 8 4-6", accent: "M14 21l5 5" },
+  bulb: { line: "M11 23v-3a10 10 0 1 1 10 0v3zM12 28h8M16 15v8", accent: "M4 4 2 2m26 2 2-2M16 1v2" },
+  spark: { line: "M16 4l3 9 9 3-9 3-3 9-3-9-9-3 9-3z", accent: "M26 3v5m-2-3h5" },
+  mountain: { line: "M2 27 13 6l7 12 3-5 7 14zM9 14l4 3 4-4", accent: "M24 3v5m-2-2h5" },
+  brush: { line: "M12 20 24 4c3-3 6 0 3 3L16 23M12 20c-5-1-4 7-9 7 8 5 16-1 9-7z", accent: "M19 10l4 4" },
+  eye: { line: "M2 16c8-13 20-13 28 0-8 13-20 13-28 0M11 16a5 5 0 1 0 10 0 5 5 0 1 0-10 0", accent: "M16 2v3" },
+  seed: { line: "M16 29V16C5 17 3 9 4 5c8 0 13 5 12 11m0 5c0-11 5-17 13-17 1 8-3 15-13 17", accent: "M10 28h12" },
+  map: { line: "M3 7l9-4 9 4 8-4v23l-8 3-9-4-9 4zM12 3v22m9-18v22", accent: "M5 16l4-2" },
+};
+const symbol = symbols[name] ?? symbols.check;
+---
+<svg class="pp-icon" width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="#2A0B4F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d={symbol.line} />
+  <path d={symbol.accent} stroke={name === "cross" || name === "heart" ? "#EA1557" : "#28DBB0"} stroke-width="2.3" />
+</svg>

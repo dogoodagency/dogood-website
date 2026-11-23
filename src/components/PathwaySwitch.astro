@@ -1,0 +1,65 @@
+---
+// The two entry points share a panel, with the context previously in “Which door is mine?”.
+---
+<div class="pathway-switch" data-pathway-switch data-current="before">
+  <div class="pathway-track" role="tablist" aria-label="Where are you in the sale?">
+    <button type="button" id="pathway-before-tab" role="tab" aria-selected="true" aria-controls="pathway-before"><span class="pathway-tab-kicker">Before the sale</span><span class="pathway-tab-title">I haven't sold yet</span></button>
+    <button type="button" id="pathway-after-tab" role="tab" aria-selected="false" aria-controls="pathway-after" tabindex="-1"><span class="pathway-tab-kicker">After the sale</span><span class="pathway-tab-title">I've sold</span></button>
+    <span class="pathway-knob" aria-hidden="true"></span>
+  </div>
+  <section class="pathway-panel pathway-panel--before" id="pathway-before" role="tabpanel" aria-labelledby="pathway-before-tab" tabindex="0">
+    <p class="pathway-kicker">Before the sale</p>
+    <h2>Prepare yourself, not just the company.</h2>
+    <p>For founders who still run their company and plan to sell in the next few years. Your advisors get the business ready. The Exit Prep gets you ready: a clearer decision about the sale, a picture of what comes next, and a calmer way into the sale itself.</p>
+    <ul>
+      <li>Six weekly private sessions of 75 to 90 minutes</li>
+      <li>Fully remote, with support between sessions</li>
+      <li>Ideally 12 to 18 months before the sale</li>
+    </ul>
+    <div class="pathway-context pathway-context--callout">
+      <p><strong>In a process, under LOI or facing an earnout?</strong> The Exit Prep™ is built for that stretch too, alongside your advisors.</p>
+    </div>
+    <a class="btn-teal" href="/exit-prep">Start with The Exit Prep™</a>
+  </section>
+  <section class="pathway-panel pathway-panel--after" id="pathway-after" role="tabpanel" aria-labelledby="pathway-after-tab" tabindex="0" hidden>
+    <p class="pathway-kicker">After the sale</p>
+    <h2>Start with Stage 1: The Reset™</h2>
+    <p>For founders who have sold or stepped back from the day-to-day. The Founder Reclamation Partnership starts with The Reset, 30 days of private 1:1 work. The Build follows by invitation, when you're ready to build what's next.</p>
+    <ul>
+      <li>Stage 1, The Reset: 30 days, including a 1.5-day in-person residency</li>
+      <li>Stage 2, The Build: 12 weeks, by invitation</li>
+      <li>Limited to five new founders a month</li>
+    </ul>
+    <div class="pathway-context">
+      <p><strong>The company is no longer your day-to-day.</strong> Many founders begin around three months after the sale; some start sooner.</p>
+    </div>
+    <div class="pathway-actions">
+      <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
+      <a class="btn-teal" href="/the-reset">Explore The Reset™</a>
+    </div>
+  </section>
+</div>
+<script>
+  document.querySelectorAll<HTMLElement>("[data-pathway-switch]").forEach((root) => {
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+    const choose = (index: number) => {
+      root.dataset.current = index === 0 ? "before" : "after";
+      tabs.forEach((tab, i) => {
+        tab.setAttribute("aria-selected", String(i === index));
+        tab.tabIndex = i === index ? 0 : -1;
+        const panel = document.getElementById(tab.getAttribute("aria-controls") ?? "");
+        if (panel) panel.hidden = i !== index;
+      });
+    };
+    tabs.forEach((tab, i) => {
+      tab.addEventListener("click", () => choose(i));
+      tab.addEventListener("keydown", (event) => {
+        if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+        event.preventDefault();
+        const next = event.key === "Home" ? 0 : event.key === "End" ? tabs.length - 1 : (i + (event.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
+        choose(next);
+        tabs[next].focus();
+      });
+    });
+  });
+</script>

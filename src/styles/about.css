@@ -1,0 +1,1358 @@
+/* About page (/about). Every rule is prefixed .ab- so nothing here can touch
+   another page. Built in the same house style as the case study pages. */
+
+body:has(.ab-page) .footer-wave {
+  background: var(--footer-strip, #f5f2ff);
+}
+
+.ab-page {
+  --ab-tint: #f5f2ff;
+  --ab-line: #c2b7dd;
+  --ab-ink: #2a0b4f;
+  --ab-teal: #28dbb0;
+  background: #fff;
+  color: var(--ab-ink);
+  overflow-x: clip;
+}
+
+.ab-page *,
+.ab-page *::before,
+.ab-page *::after {
+  box-sizing: border-box;
+}
+
+/* ---------- Hero ---------- */
+
+.ab-hero {
+  margin-top: -94px;
+  padding-top: 94px;
+  background: #2a0b4f;
+  color: #fff;
+}
+
+.ab-hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 56px;
+  align-items: center;
+  width: min(1080px, calc(100% - 2 * var(--pad)));
+  margin: 0 auto;
+  padding: 70px 0 55px;
+}
+
+.ab-hero h1 {
+  margin: 0 0 24px;
+  color: #fff;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  overflow-wrap: break-word;
+}
+
+.ab-hero h1 .ab-accent {
+  color: var(--ab-teal);
+}
+
+.ab-hero .ab-hero-copy p {
+  max-width: 600px;
+  margin: 0 0 16px;
+  color: #f5f2ff;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.ab-hero .ab-hero-copy p:last-child {
+  margin-bottom: 0;
+}
+
+.ab-sketch-card {
+  margin: 0;
+  padding: 20px;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.28);
+}
+
+.ab-sketch-card picture,
+.ab-sketch-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ab-hero .hero-wave {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+/* ---------- Bands ---------- */
+
+.ab-band {
+  background: #fff;
+}
+
+.ab-band-tint {
+  background: var(--ab-tint);
+}
+
+.ab-band-tint + .ab-band:not(.ab-band-tint),
+.ab-band:not(.ab-band-tint) + .ab-band-tint {
+  border-top: 1px solid var(--ab-line);
+}
+
+.ab-well {
+  width: min(1080px, calc(100% - 2 * var(--pad)));
+  max-width: 100%;
+  margin: 0 auto;
+  padding: calc(72px * var(--section-space-scale)) 0;
+}
+
+.ab-divider {
+  display: block;
+  line-height: 0;
+  background: var(--ab-tint);
+}
+
+.ab-divider svg {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+/* ---------- Type ---------- */
+
+.ab-page h2 {
+  margin: 0 0 16px;
+  color: var(--ab-ink);
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  overflow-wrap: break-word;
+}
+
+.ab-page h3 {
+  margin: 0 0 10px;
+  color: var(--ab-ink);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  overflow-wrap: break-word;
+}
+
+.ab-page p,
+.ab-page li {
+  color: var(--ab-ink);
+  font-size: 18px;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+.ab-page p {
+  margin: 0 0 14px;
+}
+
+.ab-page p:last-child {
+  margin-bottom: 0;
+}
+
+.ab-lead {
+  max-width: 820px;
+  font-size: 22px !important;
+  font-weight: 700;
+  line-height: 1.4 !important;
+}
+
+.ab-text-link {
+  color: var(--ab-ink);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--ab-teal);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+}
+
+.ab-text-link:hover {
+  text-decoration-color: var(--ab-ink);
+}
+
+/* ---------- Purpose + Mission ---------- */
+
+.ab-duo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  align-items: stretch;
+}
+
+.ab-statement {
+  min-width: 0;
+  padding: 40px 40px 44px;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 10px 36px rgba(42, 11, 79, 0.07);
+}
+
+.ab-statement h2 {
+  position: relative;
+  margin-bottom: 20px;
+  padding-top: 22px;
+}
+
+.ab-statement h2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 48px;
+  height: 6px;
+  background: var(--ab-teal);
+  border-radius: 3px;
+}
+
+.ab-statement p {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* ---------- Premise cards ---------- */
+
+.ab-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  margin: 36px 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: ab-n;
+}
+
+.ab-card {
+  min-width: 0;
+  margin: 0;
+  padding: 36px 32px;
+  background: var(--ab-tint);
+  border: 1px solid #e3dcf2;
+  border-radius: 24px;
+  counter-increment: ab-n;
+}
+
+.ab-card::before {
+  content: counter(ab-n);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 20px;
+  background: var(--ab-teal);
+  border-radius: 50%;
+  color: var(--ab-ink);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.ab-card h3 {
+  margin-bottom: 12px;
+}
+
+/* ---------- Founder message ---------- */
+
+.ab-quote {
+  position: relative;
+  margin: 32px 0 0;
+  padding: 64px 56px 44px;
+  background: #2a0b4f;
+  border-radius: 24px;
+  box-shadow: 0 10px 36px rgba(42, 11, 79, 0.18);
+}
+
+.ab-quote::before {
+  content: "\201C";
+  position: absolute;
+  top: 10px;
+  left: 28px;
+  color: var(--ab-teal);
+  font-size: 110px;
+  font-weight: 900;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.ab-quote blockquote {
+  max-width: 820px;
+  margin: 0;
+  padding: 0;
+}
+
+.ab-quote blockquote p {
+  margin: 0 0 1.1em;
+  color: #f5f2ff;
+  font-size: 22px;
+  line-height: 1.65;
+}
+
+.ab-quote blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.ab-quote figcaption {
+  margin: 28px 0 0;
+  color: var(--ab-teal);
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.ab-quote figcaption strong {
+  font-weight: 700;
+  color: var(--ab-teal);
+}
+
+/* ---------- Why DoGood ---------- */
+
+.ab-why-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.ab-good {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ab-good li {
+  min-width: 0;
+  margin: 0;
+  padding: 24px 22px;
+  background: var(--ab-tint);
+  border: 1px solid #e3dcf2;
+  border-left: 1px solid var(--ab-teal);
+  border-radius: 18px;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.ab-why-close {
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid #e3dcf2;
+}
+
+.ab-why-close .ab-closing {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* ---------- Wayfinders ---------- */
+
+.ab-wf-copy {
+  max-width: 820px;
+}
+
+.ab-wf-copy a.btn-teal {
+  margin-top: 14px;
+}
+
+.ab-team {
+  margin: 40px 0 0;
+}
+
+.ab-team img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------- IODA ---------- */
+
+.ab-ioda {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 40px;
+  align-items: center;
+}
+
+.ab-ioda-logo {
+  margin: 0;
+}
+
+.ab-ioda-logo img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 10px 36px rgba(42, 11, 79, 0.12);
+}
+
+/* ---------- What's next ---------- */
+
+.ab-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 56px 40px;
+  background: #2a0b4f;
+  border-radius: 24px;
+  box-shadow: 0 10px 36px rgba(42, 11, 79, 0.18);
+  text-align: center;
+}
+
+.ab-cta h2,
+.ab-cta p {
+  max-width: 640px;
+  margin: 0;
+  color: #f5f2ff;
+}
+
+.ab-cta h2 {
+  color: #fff;
+}
+
+.ab-cta .ab-cta-lead {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.ab-cta .ab-cta-note {
+  color: #cfc4e6;
+  font-size: 16px;
+}
+
+.ab-cta a.btn-teal {
+  white-space: normal;
+}
+
+.ab-cta .ab-cta-link {
+  color: var(--ab-teal);
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.ab-cta .ab-cta-link:hover,
+.ab-cta .ab-cta-link:focus-visible {
+  color: #fff;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1023px) {
+  .ab-hero-inner {
+    gap: 36px;
+  }
+
+  .ab-cards {
+    gap: 20px;
+  }
+
+  .ab-card {
+    padding: 28px 24px;
+  }
+
+  .ab-why-grid {
+    gap: 32px;
+  }
+}
+
+@media (max-width: 899px) {
+  .ab-hero-inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ab-sketch-card {
+    width: min(100%, 420px);
+    justify-self: center;
+  }
+
+  .ab-why-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .ab-duo,
+  .ab-cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ab-statement {
+    padding: 32px 24px 36px;
+  }
+
+  .ab-quote {
+    padding: 64px 28px 32px;
+  }
+
+  .ab-ioda {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .ab-ioda-logo {
+    width: 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  .ab-hero {
+    margin-top: -81px;
+    padding-top: 81px;
+  }
+
+  .ab-hero-inner {
+    padding: 50px 0 35px;
+  }
+
+  .ab-hero .ab-hero-copy p {
+    font-size: 18px;
+  }
+
+  .ab-well {
+    padding: calc(48px * var(--section-space-scale)) 0;
+  }
+
+  .ab-statement p,
+  .ab-lead,
+  .ab-quote blockquote p,
+  .ab-why-close .ab-closing {
+    font-size: 19px !important;
+  }
+
+  .ab-cta {
+    padding: 40px 24px;
+  }
+
+  .ab-cta .ab-cta-lead {
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ab-good {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---------- Update 18 Nov 2026 (Seb) ---------- */
+
+/* Hero: text only, wider frame. */
+.ab-hero-inner.ab-hero-text {
+  grid-template-columns: minmax(0, 1fr);
+  padding-bottom: 64px;
+}
+
+.ab-hero-text h1 {
+  max-width: 940px;
+}
+
+.ab-hero .ab-hero-text .ab-hero-copy p {
+  max-width: 880px;
+}
+
+.ab-page .ab-eyebrow {
+  margin: 0 0 10px;
+  color: #c10e46;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+/* Where we're going. */
+.ab-vision-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.ab-vision-intro p {
+  max-width: 640px;
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+.ab-page .ab-sketch-card {
+  box-shadow: none;
+  border: 1px solid var(--ab-line);
+}
+
+.ab-vision-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin: 44px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ab-vision-card {
+  padding: 32px 30px;
+  background: #fff;
+  border: 1px solid var(--ab-line);
+  border-top: 1px solid var(--ab-teal);
+  border-radius: 20px;
+}
+
+.ab-page .ab-vision-card h3 {
+  margin: 0 0 12px;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.ab-page .ab-vision-card p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.ab-vision-why {
+  max-width: 820px;
+  margin: 40px 0 0;
+}
+
+.ab-vision-why p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.ab-page .ab-vision-sign {
+  font-weight: 700;
+}
+
+.ab-vision-sign span {
+  white-space: nowrap;
+}
+
+.ab-page .ab-source {
+  margin-top: 6px;
+  color: #533f79;
+  font-size: 13px;
+}
+
+/* Wayfinders: photo 20% bigger, bottom row tucked behind the wave into the IODA band. */
+.ab-band-wf .ab-well {
+  padding-bottom: 0;
+}
+
+.ab-band-wf .ab-team {
+  width: min(120%, 100vw);
+  max-width: 1296px;
+  margin: 40px 0 0 50%;
+  transform: translateX(-50%);
+}
+
+.ab-divider.ab-divider--over {
+  position: relative;
+  z-index: 2;
+  margin-top: -78px; /* the wave line dips to 72px of its 80px: the photo's bottom edge must sit below that */
+  background: transparent;
+}
+
+/* IODA: soft DREAM band that fades into white. */
+.ab-band.ab-band-ioda {
+  background: linear-gradient(180deg, #f5f2ff 0%, #faf9ff 55%, #ffffff 100%);
+  border-top: 0;
+}
+
+.ab-band-ioda .ab-well {
+  padding-top: 50px;
+}
+
+.ab-page .ab-ioda {
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 56px;
+}
+
+.ab-page .ab-ioda-logo {
+  padding: 24px 28px;
+  background: #fff;
+  border: 1px solid var(--ab-line);
+  border-radius: 20px;
+}
+
+.ab-page .ab-ioda-logo img {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.ab-ioda-copy p {
+  max-width: 600px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* What's next. */
+.ab-page .ab-cta {
+  box-shadow: none;
+}
+
+.ab-page .ab-cta .ab-cta-lead {
+  max-width: 860px;
+}
+
+/* 20% wider than its natural width (about 194px), text centred left of the arrow. */
+.ab-page .ab-cta a.btn-teal {
+  min-width: 234px;
+  justify-content: center;
+}
+
+.ab-page .ab-cta .ab-cta-note {
+  margin-top: -4px;
+  font-size: 12px;
+}
+
+@media (max-width: 899px) {
+  .ab-vision-intro,
+  .ab-vision-cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ab-vision-intro .ab-sketch-card {
+    width: min(100%, 380px);
+  }
+
+  .ab-page .ab-ioda {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .ab-page .ab-ioda-logo {
+    width: min(100%, 280px);
+  }
+}
+
+@media (max-width: 600px) {
+  .ab-divider.ab-divider--over {
+    margin-top: -78px;
+  }
+
+  .ab-band-wf .ab-team {
+    width: 100%;
+  }
+}
+
+/* The photo's people stop a little above the image edge, so the photo runs on under the wave and the
+   IODA band, which sit above it. */
+.ab-divider.ab-divider--over {
+  margin-top: -138px;
+}
+
+.ab-band.ab-band-ioda {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 899px) {
+  .ab-divider.ab-divider--over {
+    margin-top: -96px;
+  }
+}
+
+@media (max-width: 600px) {
+  .ab-divider.ab-divider--over {
+    margin-top: -64px;
+  }
+}
+
+/* 19 Nov 2026 (Seb): more context sections. */
+.ab-cards.ab-cards--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ab-notlist {
+  margin-top: 32px;
+  padding: 24px 28px;
+  border: 1.5px dashed #8b7dae;
+  border-radius: 20px;
+}
+
+.ab-page .ab-notlist h3 {
+  margin: 0 0 6px;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.ab-page .ab-notlist p {
+  margin: 0;
+}
+
+@media (max-width: 860px) {
+  .ab-cards.ab-cards--3 { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* How we work (Seb, 19 Nov 2026 14:55): the cards stand apart from the tinted band. One dark card between
+   two white ones, each with a thin line in its own colour. */
+.ab-band-tint .ab-cards--3 .ab-card {
+  border-color: #c2b7dd;
+  background: #fff;
+}
+
+.ab-band-tint .ab-cards--3 .ab-card:nth-child(2) {
+  border-color: #2a0b4f;
+  background: #2a0b4f;
+}
+
+.ab-band-tint .ab-cards--3 .ab-card:nth-child(2),
+.ab-band-tint .ab-cards--3 .ab-card:nth-child(2) :is(h3, p) {
+  color: #fff;
+}
+
+/* 19 Nov 2026 18:52 (Seb): the hero title on one line; Seb's signature written in, as on the homepage; the
+   team line smaller and regular weight. */
+.ab-hero-inner.ab-hero-text {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 900px) {
+  .ab-hero h1 {
+    font-size: clamp(32px, 3.5vw, 50px);
+    white-space: nowrap;
+  }
+
+  .ab-hero-copy > p {
+    max-width: 780px;
+  }
+}
+
+.ab-quote figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ab-quote .ab-sig {
+  width: 140px;
+}
+
+.ab-quote figcaption .ab-sig-name {
+  color: var(--ab-teal);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* Seb's name links to his Wayfinder page (20 Nov 2026): GRASS underline, like "Read more" links. */
+.ab-wf-copy p a {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: #28dbb0;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.ab-wf-copy p a:hover,
+.ab-wf-copy p a:focus-visible {
+  text-decoration-color: #01a684;
+}
+
+/* ===== 20 Nov 2026 (Seb): About, calmer type and more life. =====
+   Type: the large 22px body text comes down to 19px (cards keep their width; they only get shorter).
+   Colour: each card gets its own brand colour (GRASS, HEART, SKY on white bands only, SUN): a soft tint, a thin
+   border in the same colour all round and a matching number badge (no thick top or side bars). Motion: sections fade up as they scroll into view, cards lift on hover. */
+.ab-statement p,
+.ab-quote blockquote p,
+.ab-page .ab-lead,
+.ab-closing { font-size: 19px; }
+.ab-page .ab-card h3 { font-size: 20px; }
+.ab-statement h2 { font-size: 32px; }
+
+/* Text runs to the right padding (Why now?, Seb and the Wayfinders). */
+.ab-vision-why,
+.ab-vision-why p,
+.ab-wf-copy,
+.ab-wf-copy p { max-width: none; }
+
+/* Purpose / Mission (lilac band) and Who / Alongside (white band). */
+.ab-statement { transition: transform .25s ease, box-shadow .25s ease; }
+.ab-duo .ab-statement:nth-child(1) { --ab-c: #28dbb0; }
+.ab-duo .ab-statement:nth-child(2) { --ab-c: #ea1557; }
+.ab-band:not(.ab-band-tint) .ab-duo .ab-statement:nth-child(1) { --ab-c: #28dbb0; background: #f3fffb; }
+.ab-band:not(.ab-band-tint) .ab-duo .ab-statement:nth-child(2) { --ab-c: #477dfe; background: #f2f7ff; }
+.ab-statement h2::before { background: var(--ab-c) !important; }
+.ab-band-tint .ab-duo .ab-statement:nth-child(2) { background: #fff; box-shadow: 0 10px 36px rgba(234, 21, 87, 0.08); }
+
+/* Premise (white band): GRASS, SKY, HEART. How we work (lilac band): GRASS, DREAM (as before), HEART. */
+.ab-card { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.ab-band:not(.ab-band-tint) .ab-cards .ab-card:nth-child(1) { background: #f3fffb; border-color: #73e7c4; }
+.ab-band:not(.ab-band-tint) .ab-cards .ab-card:nth-child(2) { background: #f2f7ff; border-color: #a9c2ff; }
+.ab-band:not(.ab-band-tint) .ab-cards .ab-card:nth-child(3) { background: #fff9fa; border-color: #feb5bc; }
+.ab-band:not(.ab-band-tint) .ab-cards .ab-card:nth-child(2)::before { background: #477dfe; color: #fff; }
+.ab-band:not(.ab-band-tint) .ab-cards .ab-card:nth-child(3)::before { background: #ea1557; color: #fff; }
+.ab-band-tint .ab-cards--3 .ab-card:nth-child(1) { background: #f3fffb; border-color: #73e7c4; }
+.ab-band-tint .ab-cards--3 .ab-card:nth-child(3) { background: #fff9fa; border-color: #feb5bc; }
+.ab-band-tint .ab-cards--3 .ab-card:nth-child(3)::before { background: #ea1557; color: #fff; }
+.ab-card:hover,
+.ab-statement:hover,
+.ab-vision-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(42, 11, 79, 0.12); }
+
+/* "Good for …": four colours. */
+.ab-good li { transition: transform .25s ease; }
+.ab-good li { font-size: 18px; padding: 22px 18px; }
+.ab-page .ab-good li:nth-child(1) { background: #f3fffb; border: 1px solid #73e7c4 !important; }
+.ab-page .ab-good li:nth-child(2) { background: #fff9fa; border: 1px solid #feb5bc !important; }
+.ab-page .ab-good li:nth-child(3) { background: #f2f7ff; border: 1px solid #a9c2ff !important; }
+.ab-page .ab-good li:nth-child(4) { background: #fffbe6; border: 1px solid #f5e27a !important; }
+.ab-good li:hover { transform: translateY(-3px); }
+
+/* Vision cards (lilac band): HEART and GRASS, one thin border all round (Seb's no-thick-bars rule). */
+.ab-vision-card { transition: transform .25s ease, box-shadow .25s ease; }
+.ab-page .ab-vision-cards .ab-vision-card:nth-child(1) { background: #fff9fa; border: 1px solid #feb5bc !important; }
+.ab-page .ab-vision-cards .ab-vision-card:nth-child(2) { background: #f3fffb; border: 1px solid #73e7c4 !important; }
+
+/* Founder's message card: a soft glow that breathes once it is in view. */
+.ab-quote { position: relative; overflow: hidden; }
+.ab-quote::after {
+  content: "";
+  position: absolute;
+  right: -120px;
+  bottom: -120px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(40, 219, 176, 0.22), rgba(40, 219, 176, 0) 70%);
+  pointer-events: none;
+}
+.ab-quote.is-in::after { animation: ab-breathe 6s ease-in-out infinite; }
+@keyframes ab-breathe { 0%, 100% { transform: scale(1); opacity: .8; } 50% { transform: scale(1.15); opacity: 1; } }
+
+/* Scroll reveal (JS adds .ab-reveal; without JS or with reduced motion everything simply shows). */
+.ab-reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; transition-delay: var(--ab-d, 0s); }
+.ab-reveal.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .ab-reveal { opacity: 1; transform: none; transition: none; }
+  .ab-quote.is-in::after { animation: none; }
+  .ab-card:hover, .ab-statement:hover, .ab-vision-card:hover, .ab-good li:hover { transform: none; }
+}
+@media (max-width: 600px) {
+  .ab-statement p, .ab-quote blockquote p, .ab-page .ab-lead, .ab-closing { font-size: 17px; }
+  .ab-statement h2 { font-size: 26px; }
+}
+
+/* ===== 21 Nov 2026 01:19 (Seb): About ===== */
+/* Calmer scroll reveal: a short fade with only a small lift (all sizes). */
+.ab-reveal { transform: translateY(8px); transition: opacity .5s ease, transform .5s ease; transition-delay: 0s !important; }
+.ab-card:hover, .ab-statement:hover, .ab-vision-card:hover { transform: none; }
+.ab-team-m { display: none; }
+/* How we work, card 1: BLUE instead of GRASS. */
+.ab-band-tint .ab-cards--3 .ab-card:nth-child(1) { background: #f2f7ff; border-color: #a9c2ff; }
+.ab-band-tint .ab-cards--3 .ab-card:nth-child(1)::before { background: #477dfe; color: #fff; }
+/* Who we work with / alongside: a visible DREAM 200 line. */
+.ab-statement { border: 1px solid #c2b7dd; }
+/* Professional network: GRASS 600. */
+.ab-ioda-copy .ab-eyebrow,
+.ab-ioda-copy h2,
+.ab-ioda-copy .ab-text-link { color: #01a684 !important; }
+
+@media (max-width: 599px) {
+  /* Numbers sit in the card's top-left corner; the cards get shorter. */
+  .ab-card { position: relative; overflow: hidden; padding: 56px 22px 24px; }
+  .ab-card::before { position: absolute; top: 0; left: 0; margin: 0; border-radius: 0 0 16px 0; }
+  .ab-card h3 { margin-bottom: 8px; }
+  /* Four seats: building and bench 40% bigger, may run past the card. */
+  .ab-sketch-card { overflow: visible; }
+  .ab-sketch-card picture { display: block; width: 140%; max-width: none; margin-left: -20%; }
+  .ab-sketch-card img { width: 100%; max-width: none; height: auto; }
+  /* Wayfinders: centred, name pills. */
+  .ab-team { position: relative; }
+  .ab-team .ab-team-wide { display: none; }
+  .ab-team-m { position: relative; display: block; width: 120%; margin-left: -10%; }
+  .ab-band-wf { overflow-x: clip; }
+  .ab-band-wf .btn-teal { align-self: center; margin-inline: auto; display: flex; width: fit-content; }
+  .ab-team-m img { display: block; width: 100%; height: auto; }
+  .ab-team-m .wf-name { position: absolute; translate: -50% -50%; padding: 3px 7px; border-radius: 999px; background: #fff; color: #ea1458; font-size: 13px; font-weight: 700; line-height: 1; white-space: nowrap; }
+}
+
+/* Preview 9 — Seb, 21 Nov 20:23: vision / mission below the hero.
+   DREAM 25 #F5F2FF band; White #FFFFFF cards; HEART 500 #EA1557 edges;
+   DREAM 500 #2A0B4F copy and DREAM 100 #E6DEFC join into the white premise band. */
+.ab-page .ab-band-statements { background: #F5F2FF; }
+.ab-page .ab-band-statements + .ab-band { border-top: 1px solid #E6DEFC; }
+.ab-page .ab-band-statements .ab-duo .ab-statement {
+  padding: 40px 44px;
+  border: 1px solid #EA1557;
+  border-radius: 24px;
+  background: #FFFFFF;
+  box-shadow: none;
+}
+.ab-page .ab-band-statements .ab-duo .ab-statement h2 {
+  padding-top: 0;
+  color: #2A0B4F;
+}
+.ab-page .ab-band-statements .ab-duo .ab-statement h2::before { content: none; }
+.ab-page .ab-band-statements .ab-duo .ab-statement p {
+  color: #2A0B4F;
+  font-size: 22px !important; /* Override the older phone-only 19px important rule. */
+  font-weight: 400;
+}
+
+/* Two-door close: same light fills, thin border and button pairing as Home. */
+.ab-page .ab-cta {
+  gap: 0;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+}
+.ab-page .ab-cta h2 {
+  margin-bottom: 16px;
+  color: #2A0B4F; /* DREAM 500 */
+}
+.ab-page .ab-cta p { color: #2A0B4F; }
+.ab-page .ab-cta .ab-next-doors {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  width: 100%;
+  margin-top: 32px;
+}
+.ab-page .ab-cta .ab-door {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 40px 44px;
+  background: #F3FFFB; /* GRASS 25 */
+  border: 1px solid #EA1557; /* HEART 500 */
+  border-radius: 24px;
+  color: #2A0B4F; /* DREAM 500 */
+  box-shadow: none;
+}
+.ab-page .ab-cta .ab-door--after { background: #FFF9FA; /* HEART 25 */ }
+.ab-page .ab-cta .ab-door > a {
+  align-self: center;
+  margin: 32px 0;
+  max-width: 100%;
+  border: 0;
+}
+
+/* Apply alone uses HEART 600 #B0013E / White #FFFFFF. */
+.ab-page .ab-cta .ab-door > a.btn-apply {
+  background: #B0013E;
+  color: #FFFFFF;
+}
+
+@media (max-width: 1080px) {
+  .ab-page .ab-cta .ab-door { padding: 28px 22px; }
+}
+@media (max-width: 799px) {
+  .ab-page .ab-band-statements .ab-duo,
+  .ab-page .ab-cta .ab-next-doors {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  .ab-page .ab-band-statements .ab-duo .ab-statement { padding: 28px 22px; }
+}
+
+/* Seb round 2, 22 Nov 2026: connected purpose diagrams. */
+.ab-page .ab-purpose-flow {
+  position: relative;
+  gap: 64px;
+}
+.ab-page .ab-purpose-flow .ab-statement {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+}
+.ab-page .ab-purpose-flow .ab-statement p {
+  font-size: 18px !important;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+.ab-diagram {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: auto;
+  overflow: visible;
+}
+.ab-pen {
+  stroke: #2A0B4F;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ab-accent-fill { fill: #28DBB0; }
+.ab-pink-stroke { stroke: #EA1557; }
+.ab-diagram-label {
+  fill: #2A0B4F;
+  stroke: none;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+}
+.ab-flow-line {
+  stroke: #2A0B4F;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 5 7;
+}
+.ab-card-connector {
+  position: absolute;
+  top: 50%;
+  left: -64px;
+  width: 64px;
+  height: 64px;
+  translate: 0 -50%;
+  overflow: visible;
+}
+.ab-card-connector .ab-flow-line { stroke: #01A684; }
+@media (prefers-reduced-motion: no-preference) {
+  .ab-purpose-flow .is-flowing .ab-flow-line {
+    animation: ab-purpose-dash 3s linear infinite;
+  }
+}
+@keyframes ab-purpose-dash { to { stroke-dashoffset: -24; } }
+
+/* Seb round 2, 22 Nov 2026: balanced letter and hanging quotation marks. */
+.ab-page .ab-quote {
+  margin: 0;
+  padding: 48px 64px;
+  background: #2A0B4F;
+  overflow: visible;
+}
+.ab-page .ab-quote::before,
+.ab-page .ab-quote::after { content: none; }
+.ab-page .ab-quote > .ab-lead {
+  max-width: none;
+  margin: 0 0 32px;
+  color: #FFFFFF;
+}
+.ab-page .ab-quote blockquote { max-width: none; }
+.ab-page .ab-quote blockquote p { color: #FFFFFF; }
+.ab-quote blockquote p:first-child { position: relative; }
+.ab-quote blockquote p:first-child::before,
+.ab-quote blockquote p:last-child::after {
+  color: #28DBB0;
+  font-size: 48px;
+  font-weight: 900;
+  line-height: 0;
+  pointer-events: none;
+}
+.ab-quote blockquote p:first-child::before {
+  content: "\201C";
+  position: absolute;
+  top: 24px;
+  left: -32px;
+}
+.ab-quote blockquote p:last-child::after {
+  content: "\201D";
+  display: inline-block;
+  margin-left: 6px;
+  vertical-align: -16px;
+}
+.ab-page .ab-quote figcaption .ab-sig-name { color: #FFFFFF; }
+
+/* Seb round 2, 22 Nov 2026: founder journey and connected advisors. */
+.ab-page .ab-people { gap: 28px; }
+.ab-page .ab-people .ab-statement {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  border: 1px solid #EA1557;
+}
+.ab-page .ab-people .ab-statement h2 {
+  padding-top: 0;
+  font-size: 28px;
+}
+.ab-people .ab-statement h2::before { content: none; }
+.ab-page .ab-people .ab-statement p {
+  margin-top: auto;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+.ab-founder-journey {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 20px 0 32px;
+  padding: 0;
+  list-style: none;
+}
+.ab-founder-journey::before {
+  content: "";
+  position: absolute;
+  top: 24px;
+  left: 16%;
+  right: 16%;
+  border-top: 2px dashed #01A684;
+}
+.ab-page .ab-founder-journey li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+.ab-journey-dot {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #2A0B4F;
+  border-radius: 50%;
+  background: #FFFFFF;
+}
+.ab-journey-dot--founder { background: #28DBB0; }
+.ab-journey-dot svg,
+.ab-founder-pill svg {
+  width: 32px;
+  height: 32px;
+  stroke: #2A0B4F;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+.ab-founder-journey small {
+  margin-top: -8px;
+  font-size: 12px;
+  font-weight: 400;
+}
+.ab-advisor-network { margin: 8px 0 32px; }
+.ab-founder-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 6px 18px;
+  border-radius: 999px;
+  background: #28DBB0;
+  font-size: 14px;
+  font-weight: 800;
+}
+.ab-advisor-pills {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+  padding: 28px 0 0;
+  list-style: none;
+}
+.ab-advisor-pills::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 28px;
+  border-left: 2px dashed #2A0B4F;
+}
+.ab-page .ab-advisor-pills li {
+  padding: 6px 12px;
+  border: 1px dashed #2A0B4F;
+  border-radius: 999px;
+  background: #FFFFFF;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+/* Seb round 2, 22 Nov 2026: a fourth seat and two illustrated goals. */
+.ab-page .ab-vision-intro {
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 40px;
+}
+.ab-table-sketch { width: 100%; margin: 0; }
+.ab-table-sketch svg { display: block; width: 100%; height: auto; }
+.ab-table-sketch .ab-diagram-label { font-size: 18px; }
+.ab-table-guide { stroke: #01A684; stroke-dasharray: 4 6; }
+.ab-page .ab-vision-cards { gap: 28px; margin-top: 48px; }
+.ab-page .ab-vision-card { padding: 32px; }
+.ab-goal-icon { display: block; width: 64px; height: 64px; margin-bottom: 24px; }
+.ab-page .ab-vision-cards .ab-vision-card { border: 1px solid #EA1557 !important; }
+.ab-page .ab-vision-why {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 0 48px;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px dashed #2A0B4F;
+}
+.ab-vision-why > p:first-child { grid-column: 1; grid-row: 1; }
+.ab-vision-why > .ab-source { grid-column: 1; grid-row: 2; }
+.ab-vision-why > .ab-vision-sign { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+.ab-vision-why > p:first-child strong { display: block; margin-bottom: 12px; font-size: 22px; }
+
+/* Seb round 2, 22 Nov 2026: centered team action and a quieter two-door close. */
+.ab-wf-action { display: flex; justify-content: center; margin-top: 48px; }
+html body main .ab-page .ab-band-wf .ab-team { margin-top: 72px; }
+.ab-page .ab-ioda-copy :is(.ab-eyebrow, h2, .ab-text-link) { color: #2A0B4F !important; }
+.ab-page .ab-band-next .ab-well { padding-top: 138px; }
+/* Seb round 2, 22 Nov 2026: breathing room below the closing doors. */
+.ab-page .ab-band-next { padding-bottom: 48px; }
+.ab-page .ab-cta .ab-next-doors {
+  max-width: 820px;
+  margin-top: 32px;
+}
+.ab-page .ab-cta .ab-door { padding: 24px; }
+.ab-page .ab-cta .ab-door--before { background: #E7FFF6; }
+.ab-page .ab-cta .ab-door--after { background: #FFF3F4; }
+.ab-page .ab-cta .ab-door > a { margin: 24px 0 0; min-width: 0; }
+.ab-page .ab-cta .ab-door > a.btn-dream,
+.ab-page .ab-cta .ab-door > a.btn-dream:hover,
+.ab-page .ab-cta .ab-door > a.btn-dream:focus-visible { background: #2A0B4F; color: #FFFFFF; }
+
+@media (max-width: 899px) {
+  .ab-page .ab-vision-intro { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .ab-table-sketch { max-width: 480px; margin: 0 auto; }
+}
+@media (max-width: 799px) {
+  .ab-page .ab-purpose-flow,
+  .ab-page .ab-people,
+  .ab-page .ab-vision-cards { grid-template-columns: minmax(0, 1fr); }
+  .ab-page .ab-purpose-flow { gap: 64px; }
+  .ab-page .ab-purpose-flow .ab-statement { padding: 28px 22px; }
+  .ab-purpose-flow .ab-diagram { max-width: 440px; margin-inline: auto; }
+  .ab-card-connector { top: -64px; left: 50%; translate: -50% 0; rotate: 90deg; }
+  .ab-page .ab-people .ab-statement { padding: 28px 22px; }
+  .ab-page .ab-people .ab-statement h2 { font-size: 26px; }
+  .ab-page .ab-vision-card { padding: 28px 22px; }
+  .ab-page .ab-vision-why { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .ab-vision-why > .ab-vision-sign { grid-column: 1; grid-row: 3; }
+}
+@media (max-width: 600px) {
+  .ab-page .ab-quote { padding: 32px; }
+  .ab-quote blockquote p:first-child::before { left: -24px; top: 20px; }
+  .ab-quote blockquote p:first-child::before,
+  .ab-quote blockquote p:last-child::after { font-size: 36px; }
+  .ab-page .ab-band-next .ab-well { padding-top: 108px; }
+  .ab-page .ab-band-next { padding-bottom: 32px; }
+  .ab-page .ab-cta .ab-next-doors { max-width: 440px; }
+  .ab-page .ab-cta .ab-door { padding: 24px 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ab-page .ab-reveal { opacity: 1; transform: none; transition: none; }
+  .ab-page .ab-flow-line { animation: none; stroke-dashoffset: 0; }
+}

@@ -1,0 +1,15 @@
+/* Seb round 2, 22 Nov 2026: 1.5 × Send text, padding and border. */
+.page-contact .contact-form button.btn-teal {
+  width: calc(3.978em + 100.5px);
+  max-width: 100%;
+}
+
+.page-contact .contact-address {
+  margin-bottom: 48px;
+}
+
+@media (max-width: 599px) {
+  .page-contact .contact-address {
+    margin-bottom: 32px;
+  }
+}

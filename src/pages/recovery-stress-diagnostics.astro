@@ -1,0 +1,52 @@
+---
+import ProductPage from "../components/ProductPage.astro";
+import WhoopSection from "../components/WhoopSection.astro";
+// Recovery & Stress Diagnostics (WHOOP) (Seb, 19 Nov 2026). Copy from the Stage 1 inclusion and the
+// "Why WHOOP" FAQ, which Seb wrote. Draft page, to be expanded.
+---
+
+<ProductPage
+  title="Recovery & Stress Diagnostics with WHOOP | DoGood Agency"
+  description="A WHOOP baseline for sleep, recovery and stress, so stabilization is measurable, not just felt. Part of the Founder Reclamation Partnership. Not medical care."
+  path="/recovery-stress-diagnostics"
+  eyebrow="Recovery & Stress Diagnostics"
+  h1="See how your body is coping,<br class='pp-desktop-break' /> not only how you feel."
+  sub="A WHOOP baseline for sleep, recovery and stress, so stabilization is measurable."
+  tag="Part of the FRP"
+  sections={[
+    {
+      id: "rd-what",
+      heading: "What it is",
+      paras: [
+        "You wear a WHOOP band that tracks your sleep, recovery and stress. You and your Wayfinder use it to see how your body is coping, not only how you feel, and to notice progress sooner.",
+        "It’s not medical care — think recovery visibility for better decisions under pressure.",
+      ],
+      boxes: [
+        {
+          title: "What you see",
+          tone: "grass",
+          items: ["Sleep", "Recovery", "Stress"],
+          icons: ["moon", "ring", "wave"],
+          layout: "tiles",
+        },
+        {
+          title: "Good to know",
+          tone: "sky",
+          items: [
+            "Part of Stage 1: The Reset™, Stage 2: The Build™ and The Exit Prep™",
+            "WHOOP is required for the diagnostics and purchased separately",
+            "Not medical care, and not a diagnosis",
+          ],
+          icons: ["info", "info", "info"],
+        },
+      ],
+    },
+  ]}
+  closing={{
+    heading: "Questions about WHOOP?",
+    text: "Read why we use it, and what it costs, in our FAQ.",
+    cta: { href: "/faqs#why-whoop", label: "Why WHOOP" },
+  }}
+>
+  <WhoopSection slot="feature" variant="full" />
+</ProductPage>

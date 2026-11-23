@@ -1,0 +1,109 @@
+---
+import WriteToUs from "../components/WriteToUs.astro";
+import PathwaySwitch from "../components/PathwaySwitch.astro";
+import JourneyBar from "../components/JourneyBar.astro";
+// One entry point before the sale and one after, using the approved offer copy.
+import "../styles/doors.css";
+import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
+import Wave from "../components/Wave.astro";
+import BlogCard from "../components/BlogCard.astro";
+import BlogNewsletter from "../components/BlogNewsletter.astro";
+import TestimonialWall from "../components/TestimonialWall.astro";
+import { edgeAbove } from "../data/edge-line";
+import { sortedPosts } from "../data/blog";
+
+const tint = "#F5F2FF";
+const white = "#ffffff";
+const heroEdge = edgeAbove("#2A0B4F");
+const bandEdge = edgeAbove(tint);
+const footerEdge = edgeAbove(white);
+
+function wave(from: string, to: string) {
+  return `<div class="dr-divider" style="background:${from}" aria-hidden="true"><svg style="--wave-edge:${bandEdge}" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${to}" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path><path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path></svg></div>`;
+}
+
+// Existing call quotes, kept anonymous and labeled by role.
+// The first three were already here; three added 19 Nov 2026 (Q117, Q102, Q133).
+const soundBites = [
+  { quote: "All of a sudden I look back and 10 years had passed.", name: "Founder" },
+  { quote: "I have a hard time really disconnecting myself from the day-to-day.", name: "Founder" },
+  { quote: "You always have differing degrees of cold feet the closer you get to the transaction.", name: "Sell-side M&A advisor" },
+  { quote: "You don't know what life looks like without the company.", name: "Founder" },
+  { quote: "The earlier the better… No one thinks about what is going to happen when they have it.", name: "Exit advisor" },
+  { quote: "After the fact, it's trying to pick up the pieces.", name: "Exit advisor" },
+];
+
+const posts = sortedPosts((await getCollection("blog")).filter((p) => !p.data.noindex && !p.data.sample)).slice(0, 3);
+---
+
+<Base
+  title="Coaching for entrepreneurs before and after the sale | DoGood"
+  description="Coaching for entrepreneurs before or after selling their business: The Exit Prep before the sale, The Reset and The Build after it. Find the door that fits."
+  canonical="https://www.dogoodagency.co/pathway"
+  footerStrip={white}
+  footerEdge={footerEdge}
+>
+  <article class="dr-page">
+    <header class="dr-hero">
+      <div class="dr-hero-inner dr-hero-text">
+        <p class="dr-eyebrow">How it works</p>
+        <h1 class="r4-phrase-title">Wherever you are in <span class="dr-founder"><strong>FOUNDR</strong>.land,</span><br class="pp-desktop-break" /> there's a door for you.</h1>
+        <p class="dr-hero-sub">For entrepreneurs before or after selling their business: prepare yourself before the sale, or reset and rebuild after it. One door each, 1:1 and private.</p>
+      </div>
+      <Wave fill={white} edge={heroEdge} />
+    </header>
+
+    <!-- The two doors, each in its own colour -->
+    <section class="dr-band dr-band-doors" aria-label="Choose your door">
+      <div class="dr-well dr-well-top">
+        <PathwaySwitch />
+        <WriteToUs />
+      </div>
+    </section>
+
+    <!-- The whole path, in its own dark band with room to breathe (Seb, 19 Nov 2026 18:52) -->
+    <Fragment set:html={wave(white, "#2A0B4F")} />
+    <section class="dr-band dr-journey-band" aria-labelledby="dr-journey-h">
+      <div class="dr-well dr-journey-well">
+        <p class="dr-journey-eyebrow">Your path with DoGood</p>
+        <h2 id="dr-journey-h">The whole path, step by step</h2>
+        <p class="dr-journey-lead">This is our 7-phase customer life journey. Start wherever you are: every stop links to its own page.</p>
+        <JourneyBar />
+      </div>
+    </section>
+    <Fragment set:html={wave("#2A0B4F", white)} />
+
+    <!-- Sound bites (moving, like the Stories testimonials) -->
+    <section class="dr-band" aria-labelledby="dr-familiar">
+      <div class="dr-well dr-well-top">
+        <h2 id="dr-familiar">In their words</h2>
+        <p class="dr-lead">Real words from our conversations with founders and the advisors who work with them.</p>
+        <TestimonialWall items={soundBites} short label="In their words" />
+      </div>
+    </section>
+
+    <Fragment set:html={wave(white, tint)} />
+
+    <!-- Insights for founders + newsletter -->
+    <section class="dr-band dr-band-tint" aria-labelledby="dr-notes">
+      <div class="dr-well dr-well-top">
+        <h2 id="dr-notes">Insights for founders</h2>
+        <p class="dr-lead">Honest reading for before and after the sale. <a href="/insights">All Insights</a></p>
+        <div class="dr-posts">
+          {posts.map((p) => <BlogCard post={p} variant="grid" />)}
+        </div>
+      </div>
+    </section>
+
+    <Fragment set:html={wave(tint, white)} />
+
+    <!-- Newsletter, in its own band (Seb, 19 Nov 2026) -->
+    <section class="dr-band dr-band-news" aria-label="Newsletter">
+      <div class="dr-well dr-well-top">
+        <BlogNewsletter idSuffix="how" />
+      </div>
+    </section>
+
+  </article>
+</Base>

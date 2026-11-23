@@ -1,0 +1,147 @@
+---
+import { getCollection } from "astro:content";
+import "../../../styles/blog.css";
+import Base from "../../../layouts/Base.astro";
+import BlogCard from "../../../components/BlogCard.astro";
+import BlogNewsletter from "../../../components/BlogNewsletter.astro";
+import Wave from "../../../components/Wave.astro";
+import { edgeAbove } from "../../../data/edge-line";
+import { SITE, audiences, categories, sortedPosts } from "../../../data/blog";
+
+export async function getStaticPaths() {
+  const all = await getCollection("blog");
+  // Only build pages for categories that hold at least one article.
+  return categories.filter((category) => all.some((p) => p.data.category === category.slug)).map((category) => ({
+    params: { category: category.slug },
+    props: {
+      category,
+      posts: sortedPosts(all.filter((p) => p.data.category === category.slug)),
+    },
+  }));
+}
+
+const { category, posts } = Astro.props;
+const allPosts = await getCollection("blog");
+const liveCats = categories.filter((c) => allPosts.some((p) => p.data.category === c.slug));
+const aud = audiences[category.audience];
+const url = `${SITE}/insights/category/${category.slug}`;
+
+const tint = "#F5F2FF";
+const heroEdge = edgeAbove("#2A0B4F");
+const footerEdge = edgeAbove(tint);
+
+const json = (value: unknown) => JSON.stringify(value).replace(/</g, "\\u003c");
+
+const breadcrumbs = [
+  { name: "Home", href: "/" },
+  { name: "Insights", href: "/insights" },
+  { name: category.name, href: `/insights/category/${category.slug}` },
+];
+
+const breadcrumbJson = json({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: breadcrumbs.map((b, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: b.name,
+    item: `${SITE}${b.href}`,
+  })),
+});
+
+const collectionJson = json({
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: `${category.name} | DoGood Agency`,
+  description: category.description,
+  url,
+  isPartOf: { "@type": "Blog", name: "DoGood Insights", url: `${SITE}/insights` },
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: posts.map((p, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: `${SITE}/insights/${p.id}`,
+      name: p.data.title,
+    })),
+  },
+});
+---
+
+<Base
+  title={category.seoTitle ?? `${category.name} | DoGood Agency`}
+  description={category.seoDescription ?? `${category.name}: ${category.description} Articles from DoGood Insights.`}
+  canonical={url}
+  ogTitle={`${category.name} | DoGood Agency`}
+  footerStrip={tint}
+  footerEdge={footerEdge}
+>
+  <Fragment slot="head">
+    <link rel="alternate" type="application/rss+xml" title="DoGood Insights" href="/insights/rss.xml" />
+    <script is:inline type="application/ld+json" set:html={breadcrumbJson} />
+    <script is:inline type="application/ld+json" set:html={collectionJson} />
+  </Fragment>
+
+  <div class="bl-page bl-archive">
+    <header class="bl-hero">
+      <div class="bl-hero-inner">
+        <nav class="bl-crumbs bl-crumbs--dark" aria-label="Breadcrumb">
+          <ol>
+            {
+              breadcrumbs.map((b, i) => (
+                <li>
+                  {i === breadcrumbs.length - 1 ? (
+                    <span aria-current="page">{b.name}</span>
+                  ) : (
+                    <a href={b.href}>{b.name}</a>
+                  )}
+                </li>
+              ))
+            }
+          </ol>
+        </nav>
+        <span class:list={["bl-badge", `bl-badge--${category.audience}`]}>{aud.label}</span>
+        <h1>{category.name}</h1>
+        <p class="bl-hero-lede">{category.intro}</p>
+      </div>
+      <Wave fill={tint} edge={heroEdge} />
+    </header>
+
+    <section class="bl-band bl-band--tint" aria-labelledby="bl-archive-title">
+      <div class="bl-wrap">
+        <h2 class="bl-sr" id="bl-archive-title">Articles in {category.name}</h2>
+        {
+          posts.length > 0 ? (
+            <div class="bl-grid">
+              {posts.map((p) => <BlogCard post={p} variant="grid" />)}
+            </div>
+          ) : (
+            <p class="bl-empty">New articles in this category are on their way.</p>
+          )
+        }
+
+        <nav class="bl-cats" aria-labelledby="bl-cats-title">
+          <h2 id="bl-cats-title">All categories</h2>
+          <ul>
+            {
+              liveCats.map((c) => (
+                <li>
+                  <a
+                    class:list={["bl-pill", "bl-pill--lg", c.slug === category.slug && "is-current"]}
+                    href={`/insights/category/${c.slug}`}
+                    aria-current={c.slug === category.slug ? "page" : undefined}
+                  >
+                    {c.name}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+          <p class="bl-back"><a href="/insights">← Back to Insights</a></p>
+        </nav>
+
+        <BlogNewsletter idSuffix="category" />
+      </div>
+    </section>
+  </div>
+</Base>

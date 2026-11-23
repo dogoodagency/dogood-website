@@ -1,0 +1,793 @@
+---
+import { FOUNDRLAND_URL } from "../data/foundrland";
+/**
+ * The whole path through DoGood (Seb, 19 Nov 2026; redesigned 18:52 "more elaborate, shapes, professional and
+ * fun, more space"). On /pathway, in its own DREAM 500 band.
+ *
+ * Desktop: a winding road across the band with seven stations. Each station is a shaped badge on the road
+ * (circle, diamond, hexagon, …) with its own line icon, and a card above or below the road, joined by a short
+ * stem. Phase ribbons on top group the stations: Start, Before the sale, After the sale, Beyond.
+ * The road draws itself, then the stations pop in one by one. Mobile: a vertical road with the same pieces.
+ * Colours: DREAM for reading and the long-term offers, SKY for The Exit Prep, GRASS Stage 1, HEART Stage 2.
+ */
+const steps = [
+  { title: "Read or subscribe", detail: "Insights and the newsletter", chip: "Free", href: "/insights", tone: "play", shape: "circle", icon: "book" },
+  { title: "The Exit Prep™", detail: "Six weekly 1:1 sessions", chip: "Before the sale", href: "/exit-prep", tone: "sky", shape: "diamond", icon: "compass" },
+  { title: "Stage 1: The Reset™", detail: "Get clear, set new values", chip: "30 days", href: "/the-reset", tone: "grass", shape: "hex", icon: "reset" },
+  { title: "Stage 2: The Build™", detail: "By invitation, after Stage 1", chip: "12 weeks", href: "/the-build", tone: "grass2", shape: "hex", icon: "blocks" },
+  { title: "IntegralContinuity™", detail: "Ongoing sessions", chip: "Ongoing", href: "/integral-continuity", tone: "heart", shape: "squircle", icon: "loop" },
+  { title: "Annual Signature Retreat", detail: "Once a year, by invitation", chip: "Yearly", href: "/signature-retreat", tone: "heart2", shape: "diamond", icon: "sun" },
+  { title: "FOUNDR.land Membership", detail: "The house founders belong to", chip: "Coming soon", href: "/founderland/membership", tone: "heart3", shape: "circle", icon: "house" },
+  // Optional 8th phase (Seb, 20 Nov 2026): no page of its own.
+  { title: "Life-long friends", detail: "Where the journey can lead", chip: "Become", href: "", tone: "rose", shape: "circle", icon: "heart" },
+];
+
+const phases = [
+  { label: "Start", from: 1, to: 1, tone: "play" },
+  { label: "Before the sale", from: 2, to: 2, tone: "sky" },
+  { label: "After the sale", from: 3, to: 4, tone: "grass" },
+  { label: "Beyond", from: 5, to: 7, tone: "heart" },
+  { label: "For life", from: 8, to: 8, tone: "rose" },
+];
+// Vertical colour lines where one phase hands over to the next (after stations 1, 2, 4 and 7).
+const seps = [
+  { after: 1, tone: "sky" },
+  { after: 2, tone: "grass" },
+  { after: 4, tone: "heart" },
+  { after: 7, tone: "rose" },
+];
+
+const icons: Record<string, string> = {
+  book: '<path d="M4 5.5C6.5 4 9.5 4 12 5.5v13C9.5 17 6.5 17 4 18.5z"/><path d="M20 5.5C17.5 4 14.5 4 12 5.5v13c2.5-1.5 5.5-1.5 8 0z"/>',
+  compass: '<circle cx="12" cy="12" r="8.5"/><path d="m15.5 8.5-2 5-5 2 2-5z"/>',
+  reset: '<path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3"/><path d="M4.5 4.5v4h4"/>',
+  blocks: '<rect x="4" y="13" width="7" height="7" rx="1.2"/><rect x="13" y="13" width="7" height="7" rx="1.2"/><rect x="8.5" y="4" width="7" height="7" rx="1.2"/>',
+  loop: '<path d="M7.5 9c-2.5 0-4 1.4-4 3s1.5 3 4 3c4 0 5-6 9-6 2.5 0 4 1.4 4 3s-1.5 3-4 3c-4 0-5-6-9-6z"/>',
+  sun: '<circle cx="12" cy="13" r="4"/><path d="M12 4v2.5M4.5 13H7M17 13h2.5M6.7 7.7l1.8 1.8M17.3 7.7l-1.8 1.8M3 20h18"/>',
+  house: '<path d="M4 11 12 4l8 7"/><path d="M6 10v10h12V10"/><path d="M10 20v-5h4v5"/>',
+  heart: '<path d="M12 19.5s-7-4.3-7-9.2A3.8 3.8 0 0 1 12 8a3.8 3.8 0 0 1 7 2.3c0 4.9-7 9.2-7 9.2z"/>',
+};
+
+// The road: a gentle wave through the station points (x at the column centres of an 18-column grid; the last
+// column holds the arrow). Solid through station 7, then dashed through the optional 8th and on to the arrow:
+// the journey keeps going (Seb, 20 Nov 2026).
+const COLS = 18;
+const X = (i: number) => ((2 * i + 1.5) / COLS) * 1000;
+const Y = (i: number) => (i % 2 === 0 ? 46 : 74);
+const seg = (a: number, b: number) => {
+  const mx = (X(a) + X(b)) / 2;
+  return ` C ${mx} ${Y(a)}, ${mx} ${Y(b)}, ${X(b)} ${Y(b)}`;
+};
+let road = `M0 60 C ${X(0) / 2} 60, ${X(0) / 2} ${Y(0)}, ${X(0)} ${Y(0)}`;
+for (let i = 1; i < 7; i++) road += seg(i - 1, i);
+const endX = 975;
+let roadOn = `M${X(6)} ${Y(6)}` + seg(6, 7) + ` C ${(X(7) + endX) / 2} ${Y(7)}, ${(X(7) + endX) / 2} 60, ${endX} 60`;
+---
+
+<nav class="jr" data-jr aria-label="Our 7-phase customer life journey, plus an optional 8th, step by step">
+  <ol class="jr-phases" aria-hidden="true">
+    {phases.map((p) => <li class:list={["jr-phase", `jr-phase--${p.tone}`]} style={`--from:${p.from};--to:${p.to}`}>
+      {p.tone === "heart" && <span class="jr-beyond-segments"><span></span><span></span><span></span></span>}
+      <span class="jr-phase-label">{p.label}</span>
+    </li>)}
+  </ol>
+
+  <div class="jr-stage">
+    <ol class="jr-list">
+      <li class="jr-roadrow" aria-hidden="true">
+        <svg class="jr-road" viewBox="0 0 1000 120" preserveAspectRatio="none">
+          <path class="jr-road-base" d={road} />
+          <defs>
+            <linearGradient id="jr-phase-grad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1000" y2="0">
+              <stop offset="0" stop-color="#f5c400" /><stop offset="0.145" stop-color="#f5c400" />
+              <stop offset="0.19" stop-color="#477dfe" /><stop offset="0.25" stop-color="#477dfe" />
+              <stop offset="0.305" stop-color="#28dbb0" /><stop offset="0.47" stop-color="#28dbb0" />
+              <stop offset="0.53" stop-color="#ea1557" /><stop offset="0.62" stop-color="#ea1557" />
+              <stop offset="0.65" stop-color="#fd6b82" /><stop offset="0.71" stop-color="#fd6b82" />
+              <stop offset="0.74" stop-color="#feb5bc" /><stop offset="0.8" stop-color="#feb5bc" />
+              <stop offset="0.86" stop-color="#c2b7dd" /><stop offset="1" stop-color="#c2b7dd" />
+            </linearGradient>
+          </defs>
+          <path class="jr-road-dash" d={road} pathLength="100" stroke="url(#jr-phase-grad)" />
+          <defs>
+            <mask id="jr-on-mask" maskUnits="userSpaceOnUse" x="0" y="-20" width="1000" height="160">
+              <path class="jr-on-reveal" d={roadOn} pathLength="100" />
+            </mask>
+          </defs>
+          <path class="jr-road-on" d={roadOn} mask="url(#jr-on-mask)" />
+        </svg>
+        <span class="jr-arrow" aria-hidden="true"></span>
+      </li>
+      {seps.map((sp) => <li class:list={["jr-sep", `jr-sep--${sp.tone}`]} style={`--after:${sp.after}`} aria-hidden="true"></li>)}
+      {
+        steps.map((s, i) => (
+          <li class:list={["jr-step", `jr-step--${s.tone}`, i % 2 === 0 ? "jr-step--up" : "jr-step--down"]} style={`--i:${i}`}>
+            {s.href ? (
+              <a class="jr-card" href={s.href}>
+                <span class="jr-chip">{s.chip}</span>
+                <span class="jr-title">{s.title}</span>
+                <span class="jr-detail">{s.detail}<span class="jr-go" aria-hidden="true">→</span></span>
+              </a>
+            ) : (
+              <div class="jr-card jr-card--optional">
+                <span class="jr-chip">{s.chip}</span>
+                <span class="jr-title">{s.title}</span>
+                <span class="jr-detail">{s.detail}</span>
+              </div>
+            )}
+            <span class:list={["jr-badge", `jr-badge--${s.shape}`]} aria-hidden="true">
+              <span class="jr-badge-shape"></span>
+              <svg viewBox="0 0 24 24" set:html={icons[s.icon]} />
+              <span class="jr-num">{i + 1}</span>
+            </span>
+          </li>
+        ))
+      }
+    </ol>
+
+    <!-- foundr.land runs alongside the whole journey (Seb, 20 Nov 2026): a second lane under the road, in
+         parallel with every station, with a light that keeps flowing along it. -->
+    <div class="jr-lane">
+      <p class="jr-lane-label">
+        <img class="jr-lane-logo" src="/media/foundrland/foundrland-logo@1x.png" srcset="/media/foundrland/foundrland-logo@1x.png 1x, /media/foundrland/foundrland-logo@2x.png 2x" width="480" height="113" alt="FOUNDR.land" />
+        <span>is with you at every step</span>
+      </p>
+      <div class="jr-lane-track" aria-hidden="true">
+        <span class="jr-lane-flow"></span>
+        {steps.map((_, i) => <span class="jr-lane-dot" style={`--i:${i}`}></span>)}
+      </div>
+      {FOUNDRLAND_URL && <a class="jr-lane-link" href={FOUNDRLAND_URL} target="_blank" rel="noopener" aria-label="Visit FOUNDR.land (opens in a new tab)">Visit FOUNDR.land ↗</a>}
+    </div>
+  </div>
+</nav>
+
+<style>
+  .jr {
+    --jr-road: rgba(255, 255, 255, 0.18);
+    position: relative;
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  /* Phase ribbons: one rounded bar per phase, spanning its stations. */
+  .jr-phases {
+    display: grid;
+    grid-template-columns: repeat(16, minmax(0, 1fr));
+    gap: 8px;
+    margin: 0 0 18px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .jr-phase {
+    grid-column: calc(var(--from) * 2 - 1) / calc(var(--to) * 2 + 1);
+    white-space: nowrap;
+    padding: 8px 10px;
+    border-radius: 999px;
+    color: #2a0b4f;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .jr-phase--lilac { background: #c2b7dd; }
+  .jr-phase--sky { background: #e1ebfe; }
+  .jr-phase--grass { background: #a3f2d7; }
+  .jr-phase--heart { background: #feb5bc; }
+
+  .jr-stage {
+    position: relative;
+  }
+
+  .jr-roadrow {
+    grid-row: 2;
+    grid-column: 1 / -1;
+  }
+
+  .jr-road {
+    display: block;
+    width: 100%;
+    height: 120px;
+    overflow: visible;
+  }
+
+  .jr-road-base {
+    fill: none;
+    stroke: var(--jr-road);
+    stroke-width: 14;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .jr-road-dash {
+    fill: none;
+    stroke: #28dbb0;
+    stroke-width: 3;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .jr-list {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(16, minmax(0, 1fr));
+    grid-template-rows: auto 120px auto;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .jr-step {
+    display: contents;
+  }
+
+  /* Cards: above the road for odd stations, below for even ones, each 3 columns wide. */
+  .jr-card {
+    --c: #c2b7dd;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    grid-column: calc(var(--i) * 2 + 1) / span 3;
+    margin: 0 6px;
+    padding: 16px 30px 18px 16px;
+    border: 1px solid var(--c);
+    border-radius: 18px;
+    background: #fff;
+    color: #2a0b4f;
+    text-decoration: none;
+    transition: background-color 0.25s ease, border-color 0.25s ease;
+  }
+
+  .jr-step--up .jr-card {
+    grid-row: 1;
+    align-self: end;
+  }
+
+  .jr-step--down .jr-card {
+    grid-row: 3;
+    align-self: start;
+  }
+
+  /* The stem from card to badge. */
+  .jr-card::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 2px;
+    height: 34px;
+    background: var(--c);
+    transform: translateX(-50%);
+  }
+
+  .jr-step--up .jr-card::after { top: 100%; }
+  .jr-step--down .jr-card::after { bottom: 100%; }
+
+  .jr-card:hover,
+  .jr-card:focus-visible {
+    background: var(--soft);
+  }
+
+  .jr-card:focus-visible {
+    outline: 2px solid #28dbb0;
+    outline-offset: 3px;
+  }
+
+  .jr-chip {
+    align-self: flex-start;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: var(--soft);
+    color: var(--ink);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .jr-title {
+    font-size: 17px;
+    font-weight: 900;
+    line-height: 1.25;
+  }
+
+  .jr-detail {
+    color: #58447f;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .jr-go {
+    position: absolute;
+    right: 14px;
+    bottom: 12px;
+    color: var(--ink);
+    font-weight: 900;
+    transition: transform 0.25s ease;
+  }
+
+  .jr-card:hover .jr-go { transform: translateX(3px); }
+
+  /* Badges sit on the road, one per station, in the middle row. */
+  .jr-badge {
+    position: relative;
+    z-index: 2;
+    align-self: start;
+    display: grid;
+    place-items: center;
+    grid-row: 2;
+    grid-column: calc(var(--i) * 2 + 2) / span 1;
+    justify-self: center;
+    width: 64px;
+    height: 64px;
+    margin-top: calc(var(--y) - 32px);
+    color: #fff;
+  }
+
+  .jr-step--up .jr-badge { --y: 46px; }
+  .jr-step--down .jr-badge { --y: 74px; }
+
+  .jr-badge-shape {
+    position: absolute;
+    inset: 0;
+    background: var(--c);
+    box-shadow: 0 0 0 5px #2a0b4f;
+  }
+
+  .jr-badge--circle .jr-badge-shape { border-radius: 50%; }
+  .jr-badge--diamond .jr-badge-shape { inset: 9px; border-radius: 10px; transform: rotate(45deg); }
+  .jr-badge--hex .jr-badge-shape { clip-path: polygon(25% 4%, 75% 4%, 100% 50%, 75% 96%, 25% 96%, 0 50%); box-shadow: none; }
+  .jr-badge--squircle .jr-badge-shape { inset: 3px; border-radius: 22px; }
+
+  .jr-badge svg {
+    position: relative;
+    width: 28px;
+    height: 28px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .jr-num {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #2a0b4f;
+    border-radius: 50%;
+    background: #fff;
+    color: #2a0b4f;
+    font-size: 12px;
+    font-weight: 900;
+  }
+
+  .jr-step--lilac { --c: #8b7dae; --soft: #f5f2ff; --ink: #58447f; }
+  .jr-step--sky { --c: #477dfe; --soft: #f2f7ff; --ink: #0d329f; }
+  .jr-step--grass { --c: #01a684; --soft: #e7fff6; --ink: #05745b; }
+  .jr-step--heart { --c: #ea1557; --soft: #fff3f4; --ink: #960434; }
+  .jr-step--grass .jr-badge { color: #fff; }
+
+  /* Motion: the road draws in, then stations pop in one by one. */
+  .jr.will-animate .jr-road-dash { stroke-dashoffset: 100; }
+  .jr.will-animate .jr-badge,
+  .jr.will-animate .jr-card { opacity: 0; transform: scale(0.8); }
+  .jr.is-in .jr-road-dash { stroke-dashoffset: 0; transition: stroke-dashoffset 3.5s cubic-bezier(0.3, 0.7, 0.3, 1); }
+  .jr.is-in .jr-badge,
+  .jr.is-in .jr-card {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition-delay: calc(0.3s + var(--i) * 0.45s);
+  }
+
+  .jr.is-in .jr-badge-shape { animation: jr-breathe 5s ease-in-out calc(4s + var(--i) * 0.4s) infinite; }
+
+  @keyframes jr-breathe {
+    50% { filter: brightness(1.15); }
+  }
+
+  /* Tablet and phone: a vertical road. */
+  @media (max-width: 1023px) {
+    .jr-phases { display: none; }
+    .jr-roadrow { display: none; }
+
+    .jr-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      padding-left: 4px;
+    }
+
+    .jr-list::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      bottom: 20px;
+      left: 31px;
+      width: 6px;
+      border-radius: 6px;
+      background: var(--jr-road);
+    }
+
+    .jr-step {
+      position: relative;
+      display: grid;
+      grid-template-columns: 64px minmax(0, 1fr);
+      align-items: center;
+      gap: 18px;
+    }
+
+    .jr-card,
+    .jr-step--up .jr-card,
+    .jr-step--down .jr-card {
+      grid-row: 1;
+      grid-column: 2;
+      margin: 0;
+    }
+
+    .jr-card::after { display: none; }
+
+    .jr-badge {
+      grid-row: 1;
+      grid-column: 1;
+      margin: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .jr.will-animate .jr-road-dash { stroke-dashoffset: 0; }
+    .jr.will-animate .jr-badge,
+    .jr.will-animate .jr-card { opacity: 1; transform: none; }
+    .jr.is-in .jr-badge-shape { animation: none; }
+  }
+
+  /* ===== 20 Nov 2026 (Seb): the journey, redesigned. =====
+     An 18-column grid: 8 stations (7 phases plus the optional "Become lifelong friends") and a last column for
+     the arrow. Every station has its own colour; cards are all the same height, with real padding, and a
+     clearly darker shade on hover. Coloured vertical lines mark where one phase hands over to the next. The road
+     runs on past the membership as a dashed line with an arrow: long-term and ongoing. Motion is 30% slower. */
+  .jr { max-width: 1320px; margin-top: 12px; margin-bottom: 24px; }
+  .jr-phases,
+  .jr-list { grid-template-columns: repeat(18, minmax(0, 1fr)); }
+  .jr-phases { margin-bottom: 28px; }
+  .jr-phase--rose { background: #ffd1df; }
+  .jr-list { grid-template-rows: auto 130px auto; row-gap: 6px; }
+  .jr-road { height: 130px; }
+
+  .jr-phase { padding: 8px 4px; font-size: 11px; letter-spacing: 0.06em; }
+  .jr-card {
+    height: 184px;
+    margin: 0 5px;
+    padding: 16px 16px 40px;
+    gap: 8px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  }
+  .jr-card:hover,
+  .jr-card:focus-visible { background: var(--hover); border-color: var(--c); transform: translateY(-2px); }
+  .jr-card::after { height: 40px; }
+  .jr-title { font-size: 15px; letter-spacing: -0.01em; overflow-wrap: anywhere; }
+  .jr-go { right: 16px; bottom: 14px; }
+  .jr-card--optional { border-style: dashed; border-width: 2px; background: #fff; cursor: default; }
+  .jr-card--optional:hover { transform: none; }
+
+  .jr-step--lilac { --c: #8b7dae; --soft: #f5f2ff; --hover: #e3dcf2; --ink: #58447f; }
+  .jr-step--sky { --c: #477dfe; --soft: #f2f7ff; --hover: #d5e3ff; --ink: #0d329f; }
+  .jr-step--grass { --c: #01a684; --soft: #e7fff6; --hover: #bff3e0; --ink: #05745b; }
+  .jr-step--heart { --c: #ea1557; --soft: #fff3f4; --hover: #ffd6e0; --ink: #960434; }
+  .jr-step--sun { --c: #e0a800; --soft: #fffbe6; --hover: #fbeaa0; --ink: #6b4f00; }
+  .jr-step--coral { --c: #f2643a; --soft: #fff3ee; --hover: #ffd8c8; --ink: #9a3412; }
+  .jr-step--violet { --c: #8b5cf6; --soft: #f4efff; --hover: #e0d3fd; --ink: #5b21b6; }
+  .jr-step--rose { --c: #ff6f9a; --soft: #fff1f5; --hover: #ffd9e5; --ink: #a3154a; }
+  .jr-step--sun .jr-badge { color: #2a0b4f; }
+
+  /* Phase hand-over lines. */
+  .jr-sep {
+    grid-row: 1 / 4;
+    grid-column: calc(var(--after) * 2 + 1) / span 1;
+    justify-self: center;
+    width: 2px;
+    margin: -12px 0;
+    border-radius: 2px;
+    background: linear-gradient(to bottom, transparent, var(--sep) 15%, var(--sep) 85%, transparent);
+    opacity: 0.75;
+    z-index: 0;
+  }
+  .jr-sep--sky { --sep: #477dfe; }
+  .jr-sep--grass { --sep: #28dbb0; }
+  .jr-sep--heart { --sep: #ea1557; }
+  .jr-sep--rose { --sep: #ff6f9a; }
+
+  /* Beyond the membership: dashed road and an arrow. */
+  .jr-roadrow { position: relative; }
+  .jr-road-on {
+    fill: none;
+    stroke: #ff8fb1;
+    stroke-width: 3;
+    stroke-dasharray: 8 8;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+  }
+  .jr-arrow {
+    position: absolute;
+    right: 0;
+    top: 60px;
+    width: 16px;
+    height: 16px;
+    border-top: 3px solid #ff8fb1;
+    border-right: 3px solid #ff8fb1;
+    transform: translate(-6px, -50%) rotate(45deg);
+  }
+
+  /* 30% slower motion. */
+  .jr.is-in .jr-road-dash { transition: stroke-dashoffset 4.55s cubic-bezier(0.3, 0.7, 0.3, 1); }
+  .jr.will-animate .jr-road-on,
+  .jr.will-animate .jr-arrow,
+  .jr.will-animate .jr-sep { opacity: 0; }
+  .jr.is-in .jr-road-on,
+  .jr.is-in .jr-arrow { opacity: 1; transition: opacity 1s ease 4.6s; }
+  .jr.is-in .jr-sep { opacity: 0.75; transition: opacity 1s ease 1s; }
+  .jr.is-in .jr-badge,
+  .jr.is-in .jr-card {
+    transition: opacity 0.78s ease, transform 0.78s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease, border-color 0.2s ease;
+    transition-delay: calc(0.39s + var(--i) * 0.585s), calc(0.39s + var(--i) * 0.585s), 0s, 0s;
+  }
+  .jr.is-in .jr-card:hover { transition-delay: 0s; }
+  .jr.is-in .jr-badge-shape { animation-duration: 6.5s; animation-delay: calc(5.2s + var(--i) * 0.52s); }
+
+  @media (max-width: 1023px) {
+    .jr-sep, .jr-arrow { display: none; }
+    .jr-card { height: auto; min-height: 0; padding: 16px 40px 16px 16px; }
+    .jr-list::after {
+      content: "";
+      position: absolute;
+      left: 26px;
+      bottom: -18px;
+      width: 12px;
+      height: 12px;
+      border-right: 3px solid #ff8fb1;
+      border-bottom: 3px solid #ff8fb1;
+      transform: rotate(45deg);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .jr.will-animate .jr-road-on,
+    .jr.will-animate .jr-arrow { opacity: 1; }
+    .jr.will-animate .jr-sep { opacity: 0.75; }
+  }
+  /* ===== 20 Nov 2026, 17:45 (Seb) =====
+     Cards only as tall as their text, with the arrow on the last line. Phase ribbons 20% taller, 2px bigger
+     type, and real side padding (Before the sale had none). Below the road, a foundr.land lane that runs in
+     parallel with the whole journey. */
+  .jr-card { height: auto; padding: 16px 16px 16px; }
+  .jr-step--up .jr-card { align-self: stretch; }
+  .jr-step--down .jr-card { align-self: stretch; }
+  .jr-go { position: static; display: inline-block; margin-left: 6px; }
+  .jr-card:hover .jr-go { transform: translateX(3px); }
+
+  .jr-phase { padding: 10px 14px; font-size: 13px; letter-spacing: 0.04em; }
+  /* Before the sale needs a little more room than one station: it borrows a column from After the sale. */
+  .jr-phase--sky { grid-column: 3 / 6; }
+  .jr-phase--grass { grid-column: 6 / 9; }
+
+  .jr-lane {
+    display: grid;
+    grid-template-columns: repeat(18, minmax(0, 1fr));
+    align-items: center;
+    row-gap: 12px;
+    margin-top: 34px;
+  }
+  .jr-lane-label {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    color: #c2b7dd;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .jr-lane-logo { width: 128px; height: auto; }
+  .jr-lane-track {
+    position: relative;
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    align-items: center;
+    height: 22px;
+  }
+  .jr-lane-track::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 20px;
+    top: 50%;
+    height: 8px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #f8e08e, #28dbb0 25%, #477dfe 50%, #ea1557 75%, #ff8fb1);
+    opacity: 0.85;
+    transform: translateY(-50%);
+    transform-origin: left center;
+  }
+  .jr-lane-flow {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 8px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, transparent 0, rgba(255, 255, 255, 0.95) 6%, transparent 12%) 0 0 / 50% 100% repeat-x;
+    transform: translateY(-50%);
+    animation: jr-flow 6s linear infinite;
+  }
+  .jr-lane-track::after {
+    content: "";
+    position: absolute;
+    right: 2px;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    border-top: 3px solid #ff8fb1;
+    border-right: 3px solid #ff8fb1;
+    transform: translate(0, -50%) rotate(45deg);
+  }
+  .jr-lane-dot {
+    position: relative;
+    grid-row: 1;
+    grid-column: calc(var(--i) * 2 + 2) / span 1;
+    justify-self: center;
+    width: 14px;
+    height: 14px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    background: #2a0b4f;
+  }
+  @keyframes jr-flow { to { background-position: 100% 0; } }
+
+  .jr.will-animate .jr-lane-track::before { transform: translateY(-50%) scaleX(0); }
+  .jr.will-animate .jr-lane-track::after { opacity: 0; }
+  .jr.is-in .jr-lane-track::after { opacity: 1; transition: opacity 1s ease 4.6s; }
+  .jr.will-animate .jr-lane-dot,
+  .jr.will-animate .jr-lane-label { opacity: 0; }
+  .jr.is-in .jr-lane-track::before { transform: translateY(-50%) scaleX(1); transition: transform 4.55s cubic-bezier(0.3, 0.7, 0.3, 1); }
+  .jr.is-in .jr-lane-label { opacity: 1; transition: opacity 1s ease 0.4s; }
+  .jr.is-in .jr-lane-dot { opacity: 1; transition: opacity 0.6s ease calc(0.39s + var(--i) * 0.585s); }
+
+  @media (max-width: 1023px) {
+    .jr-lane { display: block; margin-top: 30px; }
+    .jr-lane-label { flex-wrap: wrap; }
+    .jr-lane-track { display: block; height: 14px; margin-top: 12px; }
+    .jr-lane-dot { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .jr-lane-flow { animation: none; display: none; }
+  }
+  /* ===== 20 Nov 2026, 17:57 (Seb) =====
+     Stations arrive one per second, slower than before. The foundr.land lane fills from left to right at the
+     same pace, so its line reaches each dot just as the station above it appears, and each dot lights up then:
+     foundr.land keeps step with the journey on the same vertical line. A small link under the lane. */
+  .jr.is-in .jr-road-dash { transition: stroke-dashoffset 9s linear; }
+  .jr.is-in .jr-badge,
+  .jr.is-in .jr-card {
+    transition: opacity 1s ease, transform 1s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease, border-color 0.2s ease;
+    transition-delay: calc(0.75s + var(--i) * 1s), calc(0.75s + var(--i) * 1s), 0s, 0s;
+  }
+  .jr.is-in .jr-card:hover { transition-delay: 0s; }
+  .jr.is-in .jr-road-on,
+  .jr.is-in .jr-arrow { transition: opacity 1s ease 8.4s; }
+  .jr.is-in .jr-badge-shape { animation-delay: calc(9.5s + var(--i) * 0.52s); }
+  .jr.is-in .jr-lane-track::before { transition: transform 9s linear; }
+  .jr.is-in .jr-lane-track::after { transition: opacity 1s ease 8.6s; }
+  .jr.will-animate .jr-lane-dot { opacity: 0; transform: scale(0.4); }
+  .jr.is-in .jr-lane-dot {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition-delay: calc(0.75s + var(--i) * 1s);
+    animation: jr-dot-glow 1.6s ease-out calc(0.75s + var(--i) * 1s) 1;
+  }
+  .jr-lane-track::before { left: 0; }
+  .jr.will-animate .jr-lane-flow { opacity: 0; }
+  .jr.is-in .jr-lane-flow { opacity: 1; transition: opacity 1s ease 9s; }
+  @keyframes jr-dot-glow {
+    0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.85); }
+    100% { box-shadow: 0 0 0 14px rgba(255, 255, 255, 0); }
+  }
+  .jr-lane-link {
+    grid-column: 1 / -1;
+    justify-self: start;
+    color: #c2b7dd;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .jr-lane-link:hover,
+  .jr-lane-link:focus-visible { color: #fff; }
+  @media (max-width: 1023px) {
+    .jr-lane-link { display: inline-block; margin-top: 12px; }
+  }
+  /* ===== 20 Nov 2026, 18:19 (Seb) =====
+     The green road keeps the same pace as the foundr.land lane: both move left to right at the same speed
+     (the road ends under station 7, three quarters of the way across, so it takes 6.75 s of the lane's 9 s).
+     The pink dashed line then draws on from station 7 to the arrow at that same pace, and keeps running. */
+  .jr.is-in .jr-road-dash { transition: stroke-dashoffset 6.75s linear 0s; }
+  .jr-on-reveal {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 40;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 0;
+  }
+  .jr.will-animate .jr-road-on { opacity: 1; }
+  .jr.will-animate .jr-on-reveal { stroke-dashoffset: 100; }
+  .jr.is-in .jr-on-reveal { stroke-dashoffset: 0; transition: stroke-dashoffset 2.05s linear 6.75s; }
+  .jr.is-in .jr-road-on { opacity: 1; transition: none; animation: jr-march 0.9s linear infinite; }
+  .jr.is-in .jr-arrow { transition: opacity 0.5s ease 8.7s; }
+  @keyframes jr-march { to { stroke-dashoffset: -16; } }
+  @media (prefers-reduced-motion: reduce) {
+    .jr.is-in .jr-road-on { animation: none; }
+  }
+  /* ===== 20 Nov 2026, 18:30 (Seb) =====
+     One colour per phase, the same on the road, the cards, the badges, the ribbons and the foundr.land lane:
+     Start = PLAY yellow, Before the sale = SKY, After the sale = GRASS, Beyond = HEART, For life = rose.
+     Stations in one phase use shades of that phase's colour. The lane is revealed with a clip, so its colours
+     stay under their stations while it fills. */
+  .jr-road-dash { stroke: url(#jr-phase-grad); }
+  .jr-phase--play { background: #fbe88a; }
+  .jr-step--play { --c: #f5c400; --soft: #fffbe6; --hover: #fbeaa0; --ink: #6b4f00; }
+  .jr-step--play .jr-badge { color: #2a0b4f; }
+  .jr-step--grass2 { --c: #12b894; --soft: #e7fff6; --hover: #bff3e0; --ink: #05745b; }
+  .jr-step--heart2 { --c: #c8104a; --soft: #fff1f4; --hover: #ffd3df; --ink: #8a0a33; }
+  .jr-step--heart3 { --c: #f0457a; --soft: #fff3f6; --hover: #ffd9e4; --ink: #9e1446; }
+  .jr-step--heart { --c: #ea1557; --soft: #fff3f4; --hover: #ffd6e0; --ink: #960434; }
+  .jr-lane-track::before {
+    background: linear-gradient(90deg, #f5c400 0%, #f5c400 14.5%, #477dfe 19%, #477dfe 25%, #28dbb0 30.5%, #28dbb0 47%, #ea1557 53%, #ea1557 80%, #ff8fb1 86%, #ff8fb1 100%);
+    opacity: 1;
+    transform: translateY(-50%);
+  }
+  .jr.will-animate .jr-lane-track::before { transform: translateY(-50%); clip-path: inset(0 100% 0 0); }
+  .jr.is-in .jr-lane-track::before { transform: translateY(-50%); clip-path: inset(0 0 0 0); transition: clip-path 9s linear; }
+  .jr-lane-track::after { border-color: #ff8fb1; }
+  .jr-lane-by { grid-column: 1 / -1; margin: -6px 0 0; color: #8b7dae; font-size: 12px; font-weight: 600; }
+  /* ===== 21 Nov 2026 01:19 (Seb) =====
+     Beyond: IntegralContinuity HEART 500, the Retreat HEART 400, the Membership HEART 200. For life: DREAM.
+     The "Life-long friends" card is solid like the others. The lane label is thin and sits on the logo's line. */
+  .jr-step--heart2 { --c: #fd6b82; --soft: #fff6f7; --hover: #ffd9df; --ink: #c10e46; }
+  .jr-step--heart3 { --c: #feb5bc; --soft: #fff9fa; --hover: #ffe3e6; --ink: #c10e46; }
+  .jr-step--heart3 .jr-badge { color: #960434; }
+  .jr-step--rose { --c: #c2b7dd; --soft: #f5f2ff; --hover: #e9e3f7; --ink: #58447f; }
+  .jr-step--rose .jr-badge { color: #2a0b4f; }
+  .jr-phase--rose { background: #e9e3f7; color: #2a0b4f; }
+  .jr-card--optional { border-style: solid; border-width: 1px; }
+  .jr-lane-track::before {
+    background: linear-gradient(90deg, #f5c400 0%, #f5c400 14.5%, #477dfe 19%, #477dfe 25%, #28dbb0 30.5%, #28dbb0 47%, #ea1557 53%, #ea1557 62%, #fd6b82 65%, #fd6b82 71%, #feb5bc 74%, #feb5bc 80%, #c2b7dd 86%, #c2b7dd 100%);
+  }
+  .jr-lane-track::after { border-color: #c2b7dd; }
+  .jr-lane-label { align-items: flex-end; }
+  .jr-lane-label span { font-weight: 300; line-height: 1; padding-bottom: 0.42em; }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-jr]").forEach((el) => {
+    if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    el.classList.add("will-animate");
+    const io = new IntersectionObserver(([e]) => {
+      if (!e?.isIntersecting) return;
+      el.classList.add("is-in");
+      io.disconnect();
+    }, { threshold: 0.25 });
+    io.observe(el);
+  });
+</script>

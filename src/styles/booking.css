@@ -1,0 +1,701 @@
+/* Booking pages (/prefrp, /frpfit, /internal, /internal60, /catchup, /clarity, /orientation,
+   /exit, /wealth) and their thank-you pages (with thankyou.css).
+   Every rule is prefixed .bk- (or scoped under .bk-page) so nothing here can touch another page.
+   Layout (Seb, 18 Nov 2026): purple hero with the H1, a wavy line, then on desktop a white strip on the left
+   (under TidyCal's white details pane) and purple on the right, down to the footer's wave. Below 1024px
+   everything is purple: copy first, then the calendar. */
+
+/* Split background: white strip | purple. The strip width tracks TidyCal's details pane (43.33% of the embed).
+   Defined on body so the footer's wave can use the same split. % values resolve against each element's width. */
+body:has(.bk-page) {
+  --bk-split: #2a0b4f;
+}
+
+body:has(.bk-page) .footer-wave {
+  background: var(--bk-split);
+}
+
+.bk-hero {
+  background: #2a0b4f;
+}
+
+.bk-hero-inner {
+  padding: 55px var(--pad) 35px;
+}
+
+.bk-wave-top {
+  background: var(--bk-split);
+  line-height: 0;
+}
+
+.bk-wave-top svg {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+.bk-wave-fill {
+  fill: #2a0b4f;
+}
+
+.bk-wave-edge {
+  fill: none;
+  stroke: #c2b7dd;
+  stroke-width: 1px;
+  vector-effect: non-scaling-stroke;
+}
+
+.bk-body {
+  background: var(--bk-split);
+  padding-bottom: 72px;
+}
+
+.bk-page {
+  --bk-ink: #2a0b4f;
+  --bk-teal: #28dbb0;
+  --bk-pink: #ea1557;
+  --bk-line: #c2b7dd;
+  margin-top: -94px;
+  padding-top: 94px;
+  background: #2a0b4f;
+  color: #fff;
+  overflow-x: clip;
+}
+
+.bk-page *,
+.bk-page *::before,
+.bk-page *::after {
+  box-sizing: border-box;
+}
+
+.bk-page p,
+.bk-page li,
+.bk-page h1,
+.bk-page h2 {
+  overflow-wrap: break-word;
+}
+
+/* ---------- Two columns ---------- */
+
+.bk-grid {
+  display: grid;
+  grid-template-columns: minmax(380px, 36%) minmax(0, 1fr);
+  grid-template-areas: "panel copy";
+  align-items: stretch;
+}
+
+.bk-panel {
+  grid-area: panel;
+  min-width: 0;
+  min-height: 700px;
+  padding: 28px 20px 40px;
+  /* Purple, like the page: TidyCal draws its own purple frame around its card (Seb, 18 Nov 2026). */
+  background: #2a0b4f;
+  color: #fff;
+}
+
+.bk-copy {
+  grid-area: copy;
+  min-width: 0;
+  padding: 50px var(--pad) 72px clamp(40px, 5.5vw, 88px);
+}
+
+.bk-copy-inner {
+  max-width: 620px;
+  text-align: left;
+}
+
+/* The embed lives inside the white panel and fills it. TidyCal draws its own card. */
+.bk-page .bk-panel .tidycal-embed {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: 640px;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.bk-page .bk-panel .tidycal-embed iframe {
+  display: block;
+  width: 100% !important;
+  max-width: 100%;
+  border: 0;
+}
+
+.bk-noscript {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.bk-noscript a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ---------- Copy ---------- */
+
+/* Same H1 size as the other page heroes (FAQs, How it works, Stories). */
+.bk-page h1 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(34px, 5vw, 56px);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+.bk-page .bk-h1-suffix {
+  display: inline-block;
+  margin-left: 0.15em;
+  font-size: 0.5em;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.bk-copy p,
+.bk-copy li {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.bk-copy p {
+  margin: 0 0 18px;
+}
+
+.bk-copy p.bk-tight {
+  margin-bottom: 8px;
+}
+
+.bk-copy ul {
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.bk-copy ul li {
+  position: relative;
+  margin: 0 0 8px;
+  padding-left: 22px;
+}
+
+.bk-copy ul li::before {
+  content: "";
+  position: absolute;
+  top: 0.68em;
+  left: 4px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+/* Numbered lists (thank-you pages): numbers in teal. Global CSS resets ol, so set it here. */
+.bk-copy ol {
+  margin: 0 0 20px;
+  padding-left: 26px;
+  list-style: decimal;
+}
+
+.bk-copy ol li {
+  margin: 0 0 8px;
+  padding-left: 4px;
+}
+
+.bk-copy ol li::marker {
+  color: #28dbb0;
+  font-weight: 800;
+}
+
+/* Lists whose items already start with an arrow glyph: no bullet. */
+.bk-copy ul.bk-arrows li {
+  padding-left: 0;
+}
+
+.bk-copy ul.bk-arrows li::before {
+  display: none;
+}
+
+.bk-copy strong,
+.bk-copy .bk-teal {
+  color: var(--bk-teal);
+  font-weight: 700;
+}
+
+.bk-copy .bk-pink,
+.bk-copy p.bk-pink,
+.bk-copy h2.bk-pink {
+  color: var(--bk-pink);
+  font-weight: 700;
+}
+
+.bk-copy h2 {
+  margin: 28px 0 10px;
+  color: var(--bk-pink);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.bk-copy h2:first-child {
+  margin-top: 0;
+}
+
+.bk-copy p.bk-label {
+  margin: 26px 0 8px;
+  color: var(--bk-pink);
+  font-weight: 700;
+}
+
+/* Plain lead-in line before a list (white, regular weight, as on the live page). */
+.bk-copy p.bk-label--plain {
+  color: #fff;
+  font-weight: 400;
+}
+
+.bk-copy a:not(.btn-apply):not(.btn-teal) {
+  color: var(--bk-teal);
+  font-weight: 700;
+  text-underline-offset: 3px;
+}
+
+.bk-copy .bk-btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 8px 0 22px;
+}
+
+.bk-copy a.btn-apply,
+.bk-copy a.btn-teal {
+  max-width: 100%;
+  white-space: normal;
+  text-align: left;
+}
+
+.bk-copy a.btn-apply {
+  color: #fff;
+}
+
+.bk-copy a.btn-teal {
+  color: var(--bk-ink);
+}
+
+/* Numbered route options (Orientation Call). */
+.bk-copy .bk-route {
+  margin: 0 0 22px;
+}
+
+.bk-copy .bk-route p {
+  margin-bottom: 12px;
+}
+
+.bk-copy .bk-route p .bk-n {
+  color: var(--bk-pink);
+  font-weight: 800;
+}
+
+/* Clarity -> Decision -> Execution strip. */
+.bk-copy .bk-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 12px;
+  margin: 4px 0 22px;
+  padding: 0;
+  list-style: none;
+}
+
+.bk-copy .bk-flow li {
+  margin: 0;
+  padding: 8px 18px;
+  border: 1.5px solid var(--bk-teal);
+  border-radius: 999px;
+  color: var(--bk-teal);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.bk-copy .bk-flow li::before {
+  display: none;
+}
+
+.bk-copy .bk-flow li.bk-flow-arrow {
+  padding: 0;
+  border: 0;
+  color: #fff;
+}
+
+.bk-copy .bk-note {
+  margin-top: 4px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 15px;
+}
+
+/* ---------- Lower band (case study card) ---------- */
+
+.bk-after {
+  padding: 0 var(--pad) 72px;
+}
+
+.bk-case {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  align-items: center;
+  gap: 36px;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 32px;
+  background: #fff;
+  color: var(--bk-ink);
+  border: 1px solid var(--bk-line);
+  border-radius: 20px;
+}
+
+.bk-case-portrait {
+  display: block;
+  width: 220px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 14px;
+}
+
+.bk-case-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+}
+
+.bk-case .bk-case-eyebrow {
+  margin: 0;
+  color: #c10e46;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bk-case h2.bk-case-title {
+  margin: 0;
+  color: var(--bk-ink);
+  font-size: clamp(22px, 2.4vw, 28px);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.bk-case .bk-case-who {
+  margin: 0 0 6px;
+  color: var(--bk-ink);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.bk-case .bk-case-note {
+  margin: 2px 0 0;
+  color: var(--bk-ink);
+  font-size: 15px;
+  opacity: 0.8;
+}
+
+.bk-case a.btn-teal {
+  white-space: normal;
+}
+
+/* ---------- Tablet and phone: copy first, then the calendar in a full-width white panel ---------- */
+
+@media (max-width: 1023px) {
+  .bk-grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "copy"
+      "panel";
+  }
+
+  .bk-copy {
+    padding: 44px var(--pad) 48px;
+  }
+
+  .bk-copy-inner {
+    max-width: 680px;
+  }
+
+  .bk-panel {
+    min-height: 560px;
+    padding: 28px var(--pad) 40px;
+  }
+
+  .bk-page .bk-panel .tidycal-embed {
+    min-height: 520px;
+  }
+
+  .bk-after {
+    padding-top: 56px;
+  }
+
+  .bk-case {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+    padding: 26px 22px;
+  }
+
+  .bk-case-portrait {
+    width: 160px;
+  }
+}
+
+@media (max-width: 600px) {
+  .bk-wave-top svg {
+    height: 36px;
+  }
+
+  .bk-page {
+    margin-top: -81px;
+    padding-top: 81px;
+  }
+
+  .bk-copy {
+    padding-top: 36px;
+  }
+
+  .bk-page h1 {
+    font-size: clamp(30px, 9vw, 38px);
+  }
+
+  .bk-copy a.btn-apply,
+  .bk-copy a.btn-teal {
+    width: 100%;
+  }
+}
+
+/* ---------- Desktop (>=1024px): live-site structure ----------
+   Measured on dogoodagency.co/internal at 1440 (Wix 980px content box, left edge = 50% - 490px):
+   white strip from the header line (y 152) to 37px above the embed's bottom, right edge 50% - 206px (514px at 1440);
+   copy column left 50% - 156px (564px), 650px wide, H1 60px/84px Montserrat 900 with a 40px suffix, body 18px/25.2px;
+   TidyCal iframe left 50% - 684px (36px), 1225px wide, top 728px (about 93px below the last copy line).
+   TidyCal itself draws the white event-details pane on the left and the calendar on purple to the right.
+   Below 1368px the live iframe would start off-screen (live crops the event card at 1024), so the embed is pinned
+   16px from the left and narrowed (max 1150px); the strip and copy follow TidyCal's details pane (43.33% of the embed). */
+@media (min-width: 1024px) {
+  body:has(.bk-page) {
+    --bk-emb-left: 16px;
+    --bk-emb-w: min(calc(100% - 32px), 1150px);
+    --bk-strip-w: calc(var(--bk-emb-left) + var(--bk-emb-w) * 0.4333);
+    --bk-copy-left: calc(var(--bk-strip-w) + 50px);
+    --bk-split: linear-gradient(90deg, #fff 0 var(--bk-strip-w), #2a0b4f var(--bk-strip-w) 100%);
+  }
+
+  .bk-hero-inner {
+    padding: 70px 24px 45px var(--bk-copy-left);
+  }
+
+  .bk-grid {
+    display: block;
+    position: relative;
+    padding-top: 40px;
+  }
+
+  /* Room under the calendar so it never runs into the footer, even when TidyCal grows (time slots, form). */
+  .bk-body {
+    padding-bottom: 140px;
+  }
+
+  .bk-copy {
+    position: relative;
+    margin-left: var(--bk-copy-left);
+    padding: 0 24px 0 0;
+  }
+
+  .bk-copy-inner {
+    max-width: 650px;
+  }
+
+  .bk-copy strong,
+  .bk-copy .bk-teal,
+  .bk-copy .bk-pink,
+  .bk-copy p.bk-label:not(.bk-label--plain) {
+    font-weight: 900;
+  }
+
+  .bk-copy-inner > :last-child {
+    margin-bottom: 0;
+  }
+
+  .bk-page .bk-h1-suffix {
+    margin-left: 0.15em;
+    font-size: 0.6em;
+    font-weight: 900;
+  }
+
+  .bk-copy p,
+  .bk-copy li {
+    font-size: 18px;
+    line-height: 25.2px;
+  }
+
+  .bk-copy p {
+    margin: 0 0 25.2px;
+  }
+
+  .bk-copy p.bk-tight,
+  .bk-copy p.bk-label {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .bk-copy ul {
+    margin: 0 0 25.2px;
+  }
+
+  .bk-copy ul li {
+    margin: 0;
+    padding-left: 32px;
+  }
+
+  .bk-copy ul li::before {
+    top: 10px;
+    left: 14px;
+  }
+
+  .bk-panel {
+    position: relative;
+    min-height: 611px;
+    margin: 66px 0 0 var(--bk-emb-left);
+    padding: 0;
+    width: var(--bk-emb-w);
+    background: transparent;
+  }
+
+  .bk-page .bk-panel .tidycal-embed {
+    min-height: 611px;
+  }
+
+  /* TidyCal paints its own purple background under its white details card (the "Powered by" row), which
+     showed as a purple band on our white strip. A white patch over that corner, under the details card only,
+     hides it; the badge sits to the right of the strip and stays visible. Not clickable. */
+  .bk-panel::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 43.1%; /* stops just left of the "Powered by TidyCal" badge */
+    height: 80px;
+    background: #fff;
+    pointer-events: none;
+  }
+}
+
+/* Wide desktop: exactly the live positions (embed 1225px wide, 50% - 684px from the left). */
+@media (min-width: 1368px) {
+  body:has(.bk-page) {
+    --bk-emb-left: calc(50% - 684px);
+    --bk-emb-w: 1225px;
+    --bk-strip-w: calc(50% - 206px);
+    --bk-copy-left: calc(50% - 156px);
+  }
+
+  /* Strip edge minus embed left edge: (50% - 206px) - (50% - 684px). */
+  .bk-panel::after {
+    width: 478px;
+  }
+}
+
+
+/* ---------- Testimonials on a booking page (BookingTestimonials.astro, /clarity) ---------- */
+
+.bk-quotes {
+  max-width: 860px;
+  margin: 0 auto 48px;
+}
+
+.bk-page h2.bk-quotes-h {
+  margin: 0 0 20px;
+  color: #fff;
+  font-size: clamp(24px, 2.6vw, 30px);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.bk-quotes-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bk-quote {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px;
+  background: #fff;
+  color: var(--bk-ink);
+  border: 1px solid var(--bk-line);
+  border-radius: 16px;
+}
+
+.bk-quote blockquote {
+  margin: 0;
+}
+
+.bk-quote blockquote p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.bk-quote-who {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bk-quote-img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: none;
+}
+
+.bk-quote-who p {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.bk-quote-who strong {
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 860px) {
+  .bk-quotes-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Desktop: the lower band (testimonials, case study) sits on the purple side, right of the white strip. */
+@media (min-width: 1024px) {
+  .bk-after {
+    margin-left: var(--bk-strip-w);
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
