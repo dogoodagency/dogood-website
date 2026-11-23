@@ -9,7 +9,6 @@ import "../styles/advisors-resources.css";
 import Base from "../layouts/Base.astro";
 import Wave from "./Wave.astro";
 import AdvisorNav from "./AdvisorNav.astro";
-import FoundrLand from "./FoundrLand.astro";
 import AdvisorToolVisual from "./AdvisorToolVisual.astro";
 import { edgeAbove } from "../data/edge-line";
 
@@ -119,8 +118,5 @@ const back = section === "tools"
       </div>
     </section>
 
-    <div class="advd-foundr-band">
-      {section === "tools" ? <FoundrLand kind="advisor" advisorImage="question" advisorBackground="play200" /> : <FoundrLand kind="advisor" />}
-    </div>
   </article>
 </Base>

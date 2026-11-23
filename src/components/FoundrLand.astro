@@ -8,53 +8,25 @@
  * Copy follows the foundr.land homepage concept; it says the product is in development, and that the advisor
  * pathway is planned, not live.
  *
- * kind: "home"    – dark card on the home page (replaces the founder's message): the app phone, with its clarity
- *                   wheel animated (the wheel is redrawn in SVG over the phone image; the badge sits on top).
- *       "exit"    – Exit-Prep: compact blue card, a laptop showing the app's Day 1 question; the rating moves.
+ * kind: "home"    – dark card on the home page (replaces the founder's message): the founder discovery screen in a CSS phone frame.
+ *       "exit"    – Exit-Prep: light DREAM card, a laptop showing the founder discovery screen.
  *       "reset"   – The Reset: compact mint card, the seven days of the journey lighting up one after another.
  *       "advisor" – Advisor Center: image and palette variants with Introduce → Reflect → Reconnect.
- *       "small"   – one strip with the logo, one line and a link (Client tools, Advisor insights).
+ *       "small"   – one strip with the logo and one line.
  */
 import FoundrLandLink from "./FoundrLandLink.astro";
+import FoundrLandDevice from "./FoundrLandDevice.astro";
 
 interface Props {
   kind: "home" | "exit" | "reset" | "advisor" | "small";
-  advisorImage?: "phone" | "report" | "question" | "progress";
+  advisorImage?: "phone" | "phone-discovery" | "laptop-journey";
   advisorBackground?: "dream25" | "sky25" | "play200" | "grass25";
   /** The one line, for kind "small". */
   line?: string;
-  /** Link label for kind "small". */
-  linkLabel?: string;
 }
 const { kind, line, advisorImage = "phone", advisorBackground = "dream25" } = Astro.props;
-const advisorImages = {
-  phone: { src: "/media/foundrland/foundrland-app-phone", width: 340, height: 498 },
-  report: { src: "/media/r4/fl-desktop-report", width: 720, height: 642 },
-  question: { src: "/media/r4/fl-desktop-question", width: 720, height: 450 },
-  progress: { src: "/media/r4/fl-desktop-progress", width: 720, height: 628 },
-};
-const advisorArt = advisorImages[advisorImage];
+const advisorView = advisorImage === "phone" ? "phone-journey" : advisorImage;
 const uid = `fl-${kind}`;
-
-// The clarity wheel on the phone (home). Coordinates are in the 680 × 996 pixels of the phone image @2x:
-// hub at (322, 607), outer ring 135, turned 6.6° like the phone.
-const CX = 322;
-const CY = 607;
-const RR = 135;
-const at = (k: number, v: number) => {
-  const a = (Math.PI / 3) * k;
-  return [CX + Math.sin(a) * v * RR, CY - Math.cos(a) * v * RR];
-};
-const shape = (vals: number[]) => vals.map((v, k) => at(k, v).map((n) => n.toFixed(1)).join(",")).join(" ");
-const states = [
-  [0.69, 0.59, 0.57, 0.69, 0.65, 0.7],
-  [0.8, 0.72, 0.66, 0.76, 0.72, 0.84],
-  [0.74, 0.84, 0.76, 0.66, 0.8, 0.76],
-  [0.69, 0.59, 0.57, 0.69, 0.65, 0.7],
-];
-const polyValues = states.map(shape).join(";");
-const rings = [0.2, 0.4, 0.6, 0.8, 1].map((f) => shape([f, f, f, f, f, f]));
-const spokes = [0, 1, 2, 3, 4, 5].map((k) => at(k, 1));
 
 const days = [
   ["01", "Identity"],
@@ -86,7 +58,6 @@ const days = [
         <p class="fl-small-line">{line}</p>
         <p class="fl-by fl-by--sm">Developed by DoGood Agency</p>
       </div>
-      <div class="fl-actions"><FoundrLandLink /></div>
     </aside>
   ) : (
     <section class:list={["fl", `fl--${kind}`, kind === "advisor" && `fl--${advisorBackground}`, kind === "advisor" && `fl--art-${advisorImage}`]} aria-labelledby={uid}>
@@ -138,79 +109,19 @@ const days = [
           )}
 
           {kind === "advisor" && <p class="fl-note">The advisor pathway is part of the planned product, not yet a live service.</p>}
-          <div class="fl-actions">
-            {kind === "home" && <a class="fl-advisor-btn" href="/advisor-center">Advisor Center</a>}
-            <FoundrLandLink />
-          </div>
+          {kind !== "advisor" && <div class="fl-actions"><FoundrLandLink home={kind === "home"} /></div>}
           {kind === "advisor" && <>
             <ol class="fl-advisor-steps">
               <li><span class="fl-advisor-n">01</span><strong>Introduce</strong><span>A simple invitation</span></li>
               <li><span class="fl-advisor-n">02</span><strong>Reflect</strong><span>The founder’s private journey</span></li>
               <li><span class="fl-advisor-n">03</span><strong>Reconnect</strong><span>Only with their consent</span></li>
             </ol>
-            <p class="fl-by">Developed by DoGood Agency</p>
           </>}
         </div>
 
-        <div class="fl-visual" aria-hidden="true">
-          {kind === "home" && (
-            <div class="fl-phone">
-              <picture>
-                <source type="image/webp" srcset="/media/foundrland/foundrland-app-phone-nowheel@1x.webp 1x, /media/foundrland/foundrland-app-phone-nowheel@2x.webp 2x" />
-                <img class="fl-phone-img" src="/media/foundrland/foundrland-app-phone-nowheel@1x.webp" width="340" height="498" alt="" loading="lazy" decoding="async" />
-              </picture>
-              <svg class="fl-phone-wheel" viewBox="0 0 680 996">
-                <g class="fl-wheel-grid">
-                  {rings.map((r) => <polygon points={r} />)}
-                  {spokes.map(([x, y]) => <line x1={CX} y1={CY} x2={x} y2={y} />)}
-                </g>
-                <polygon class="fl-wheel-shape" points={shape(states[0])}>
-                  <animate class="fl-smil" attributeName="points" dur="9s" repeatCount="indefinite" values={polyValues} keyTimes="0;0.33;0.66;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1" />
-                </polygon>
-                {[0, 1, 2, 3, 4, 5].map((k) => {
-                  const pts = states.map((s) => at(k, s[k]));
-                  return (
-                    <circle class="fl-wheel-node" cx={pts[0][0]} cy={pts[0][1]} r="9">
-                      <animate attributeName="cx" dur="9s" repeatCount="indefinite" values={pts.map((p) => p[0].toFixed(1)).join(";")} keyTimes="0;0.33;0.66;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1" />
-                      <animate attributeName="cy" dur="9s" repeatCount="indefinite" values={pts.map((p) => p[1].toFixed(1)).join(";")} keyTimes="0;0.33;0.66;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1" />
-                    </circle>
-                  );
-                })}
-                <circle cx={CX} cy={CY} r="8" class="fl-wheel-hub" />
-              </svg>
-              <picture>
-                <source type="image/webp" srcset="/media/foundrland/foundrland-app-badge@1x.webp 1x, /media/foundrland/foundrland-app-badge@2x.webp 2x" />
-                <img class="fl-phone-badge" src="/media/foundrland/foundrland-app-badge@1x.webp" width="141" height="65" alt="" loading="lazy" decoding="async" />
-              </picture>
-            </div>
-          )}
-
-          {kind === "exit" && (
-            <div class="fl-laptop">
-              <div class="fl-laptop-screen">
-                <div class="fl-app">
-                  <div class="fl-app-top">
-                    <span class="fl-app-mark">foundr<span class="fl-dot">.</span>land</span>
-                    <span class="fl-app-day">Day 01 / 07</span>
-                  </div>
-                  <p class="fl-app-cap">Identity</p>
-                  <p class="fl-app-q">Who am I beyond the business<span class="fl-dot">.</span></p>
-                  <div class="fl-app-rate">
-                    <p class="fl-app-rq">How clear does this feel today?</p>
-                    <ol class="fl-app-scale">
-                      <li>1</li><li>2</li><li>3</li><li>4</li><li>5</li>
-                      <span class="fl-app-pick" />
-                    </ol>
-                  </div>
-                  <div class="fl-app-foot">
-                    <span class="fl-app-prev">← Previous</span>
-                    <span class="fl-app-next">Continue ↗</span>
-                  </div>
-                </div>
-              </div>
-              <div class="fl-laptop-base" />
-            </div>
-          )}
+        <div class="fl-visual">
+          {kind === "home" && <FoundrLandDevice view="phone-discovery" tags />}
+          {kind === "exit" && <FoundrLandDevice view="laptop-discovery" />}
 
           {kind === "reset" && (
             <div class="fl-days">
@@ -228,27 +139,13 @@ const days = [
             </div>
           )}
 
-          {kind === "advisor" && (
-            <img class="fl-advisor-preview" data-arta="A2" src={`${advisorArt.src}@1x.webp`} srcset={`${advisorArt.src}@1x.webp 1x, ${advisorArt.src}@2x.webp 2x`} width={advisorArt.width} height={advisorArt.height} alt="" aria-hidden="true" loading="lazy" decoding="async" />
-          )}
-          {kind !== "advisor" && <p class="fl-by">Developed by DoGood Agency</p>}
+          {kind === "advisor" && <FoundrLandDevice view={advisorView} tags={advisorView.startsWith("phone-")} />}
+          {kind === "reset" && <p class="fl-by">Developed by DoGood Agency</p>}
         </div>
       </div>
     </section>
   )
 }
-
-<script>
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const syncWheelMotion = () => {
-    document.querySelectorAll<SVGSVGElement>(".fl-phone-wheel").forEach((wheel) => {
-      if (reducedMotion.matches) wheel.pauseAnimations();
-      else wheel.unpauseAnimations();
-    });
-  };
-  syncWheelMotion();
-  reducedMotion.addEventListener("change", syncWheelMotion);
-</script>
 
 <style>
   .fl {
@@ -265,7 +162,6 @@ const days = [
     --serif: Georgia, "Times New Roman", serif;
     color: var(--dream);
   }
-  .fl-advisor-preview { display: block; width: 150px; height: auto; margin: 0 auto 20px; pointer-events: none; }
   .fl-dot { color: var(--heart); }
 
   /* ---------- Shared panel ---------- */
@@ -361,104 +257,6 @@ const days = [
   .fl--home .fl-btn:hover,
   .fl--home .fl-btn:focus-visible { background: var(--lav); }
 
-  .fl-phone {
-    position: relative;
-    width: 340px;
-    max-width: 100%;
-    filter: none;
-    animation: fl-float 9s ease-in-out infinite;
-  }
-  .fl-phone-img { display: block; width: 100%; height: auto; }
-  .fl-phone-wheel { position: absolute; inset: 0; width: 100%; height: 100%; }
-  .fl-phone-wheel > * { transform: rotate(6.6deg); transform-origin: 322px 607px; }
-  .fl-wheel-grid polygon,
-  .fl-wheel-grid line { fill: none; stroke: #e0d8ef; stroke-width: 2.5; }
-  .fl-wheel-shape { fill: rgba(40, 219, 176, 0.32); stroke: #01a684; stroke-width: 6; stroke-linejoin: round; }
-  .fl-wheel-node { fill: #01a684; stroke: #fff; stroke-width: 4; }
-  .fl-wheel-hub { fill: #21084e; }
-  /* The badge from the phone image sits back on top of the redrawn wheel. */
-  .fl-phone-badge { position: absolute; left: 55.88%; top: 66.87%; width: 41.47%; height: auto; }
-
-  /* ---------- Exit-Prep: a laptop with the app's Day 1 question ---------- */
-  .fl-laptop { width: 100%; max-width: 470px; animation: fl-float 11s ease-in-out infinite; }
-  .fl-laptop-screen {
-    padding: 12px 12px 14px;
-    border-radius: 18px 18px 6px 6px;
-    background: var(--dream);
-    box-shadow: 0 24px 40px rgba(29, 83, 239, 0.18);
-  }
-  .fl-laptop-base {
-    position: relative;
-    height: 14px;
-    margin: 0 -26px;
-    border-radius: 0 0 16px 16px;
-    background: linear-gradient(#cdbfe6, #a99bc8);
-  }
-  .fl-laptop-base::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 0;
-    width: 70px;
-    height: 5px;
-    border-radius: 0 0 6px 6px;
-    background: #8e7fb0;
-    transform: translateX(-50%);
-  }
-  .fl-app { padding: 16px 18px 14px; border-radius: 10px; background: #fff; }
-  .fl-app-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
-  .fl-app-mark { font-family: var(--serif); font-size: 15px; }
-  .fl-app-day,
-  .fl-app-cap { font-size: 9px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #5b21b6; }
-  .fl-app-cap { margin: 0 0 4px; }
-  .fl-app-q { margin: 0 0 12px; font-family: var(--serif); font-size: 22px; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
-  .fl-app-rate { padding: 12px; border-radius: 12px; background: var(--canvas); }
-  .fl-app-rq { margin: 0 0 8px; font-family: var(--serif); font-size: 13px; font-weight: 700; }
-  .fl-app-scale {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 6px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  .fl-app-scale li {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    place-items: center;
-    height: 26px;
-    border: 1px solid #ddd0f5;
-    border-radius: 8px;
-    background: #fff;
-    font-size: 11px;
-    font-weight: 800;
-  }
-  /* The moving selection: a DREAM tile that settles on 2, then 3, then 4. */
-  .fl-app-pick {
-    position: absolute;
-    z-index: 2;
-    top: 0;
-    left: 0;
-    width: calc((100% - 24px) / 5);
-    height: 26px;
-    border-radius: 8px;
-    background: rgba(40, 219, 176, 0.25);
-    box-shadow: inset 0 0 0 2px var(--dream);
-    animation: fl-pick 9s cubic-bezier(0.45, 0, 0.2, 1) infinite;
-  }
-  .fl-app-foot { display: flex; justify-content: space-between; margin-top: 12px; font-size: 10px; font-weight: 800; }
-  .fl-app-prev { padding: 6px 12px; border: 1px solid #ddd0f5; border-radius: 999px; }
-  .fl-app-next { padding: 6px 12px; border-radius: 999px; background: var(--dream); color: #fff; }
-  @keyframes fl-pick {
-    0%, 22% { transform: translateX(calc(100% + 6px)); }
-    33%, 55% { transform: translateX(calc(200% + 12px)); }
-    66%, 88% { transform: translateX(calc(300% + 18px)); }
-    100% { transform: translateX(calc(100% + 6px)); }
-  }
-
-  /* ---------- The Reset: the seven days light up one after another ---------- */
   .fl-days {
     width: 100%;
     max-width: 440px;
@@ -500,7 +298,7 @@ const days = [
     20%, 100% { background-color: var(--canvas); border-color: #e6dcf7; }
   }
   .fl-days-list li:last-child { animation-name: fl-day-last; }
-  @keyframes fl-day-last { 0%, 2%, 20%, 100% { box-shadow: none; } 6%, 14% { box-shadow: 0 0 0 4px rgba(40, 219, 176, 0.5); } }
+  @keyframes fl-day-last { 0%, 2%, 20%, 100% { border-color: var(--dream); } 6%, 14% { border-color: var(--grass); } }
 
   /* ---------- Advisor Center: Introduce → Reflect → Reconnect ---------- */
   .fl-flow { position: relative; width: 100%; max-width: 440px; }
@@ -621,7 +419,6 @@ const days = [
     .fl:not(.fl--home):not(.fl--small) { padding: 40px 16px; }
     .fl--small { grid-template-columns: auto 1fr; padding: 20px; }
     .fl-link { grid-column: 1 / -1; }
-    .fl-phone { width: 270px; }
     .fl-days-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .fl-flow-steps { grid-template-columns: 1fr; }
     .fl-flow-line { display: none; }
@@ -629,8 +426,7 @@ const days = [
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .fl-phone, .fl-laptop, .fl-app-pick, .fl-days-bar span, .fl-days-list li, .fl-flow-dot, .fl-breathe { animation: none; }
-    .fl-app-pick { transform: translateX(calc(300% + 18px)); }
+    .fl-days-bar span, .fl-days-list li, .fl-flow-dot, .fl-breathe { animation: none; }
     .fl-flow-dot { left: 100%; }
   }
   /* "Developed by DoGood Agency" under every foundr.land section (Seb, 20 Nov 2026). */
@@ -647,18 +443,7 @@ const days = [
     .fl:not(.fl--home):not(.fl--small) { padding: 40px clamp(20px, 5.56vw, 80px); }
     .fl-panel,
     .fl--home .fl-panel { padding: 24px 20px; gap: 24px; }
-    .fl-laptop { width: 100%; margin: 0 auto; }
-    .fl-laptop .fl-app-foot { display: none; }
-    .fl-flow-share { width: 100%; max-width: none; margin-left: 0; margin-right: 0; box-sizing: border-box; }  /* 21 Nov (Seb): a laptop-shaped screen, not a tall one */
-    .fl-laptop-screen { padding: 8px 8px 10px; border-radius: 14px 14px 4px 4px; }
-    .fl-laptop-base { height: 10px; margin: 0 -16px; }
-    .fl-app { padding: 10px 12px 10px; }
-    .fl-app-top { margin-bottom: 6px; }
-    .fl-app-mark { font-size: 13px; }
-    .fl-app-q { margin-bottom: 8px; font-size: 16px; }
-    .fl-app-rate { padding: 8px; }
-    .fl-app-rq { margin-bottom: 6px; font-size: 11px; }
-    .fl-app-foot { margin-top: 8px; }
+
   }
   /* Small strip (Client tools, Advisor insights) on phones: the clarity wheel becomes a large, faint DREAM
      pattern behind the text (about three quarters of the card), and the text starts at the card's padding. */

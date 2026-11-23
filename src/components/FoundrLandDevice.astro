@@ -1,0 +1,23 @@
+---
+interface Props {
+  view: "phone-journey" | "phone-discovery" | "laptop-journey" | "laptop-discovery";
+  tags?: boolean;
+}
+const { view, tags = false } = Astro.props;
+const phone = view.startsWith("phone-");
+const image = `/media/r5/fl-${view}`;
+---
+
+<figure class:list={["fl-device-figure", phone ? "fl-device-figure--phone" : "fl-device-figure--laptop"]}>
+  {tags && <div class="fl-device-tags">
+    <span>7 days of guided reflection</span>
+    <span>Your next chapter</span>
+  </div>}
+  <div class:list={["fl-device", phone ? "fl-device--phone" : "fl-device--laptop"]} data-arta="R5-FL">
+    <div class="fl-device-screen">
+      <img src={`${image}@1x.webp`} srcset={`${image}@1x.webp 1x, ${image}@2x.webp 2x`} width={phone ? 390 : 720} height={phone ? 844 : 450} alt={view.endsWith("discovery") ? "FOUNDR.land founder discovery screen" : "FOUNDR.land founder journey screen"} loading="lazy" decoding="async" />
+    </div>
+    {!phone && <div class="fl-device-base" aria-hidden="true" />}
+  </div>
+  <figcaption class="fl-by">Developed by DoGood Agency</figcaption>
+</figure>

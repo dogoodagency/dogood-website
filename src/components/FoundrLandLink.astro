@@ -1,35 +1,14 @@
 ---
-import { FOUNDRLAND_LINK_LIVE, FOUNDRLAND_PUBLIC_URL } from "../data/foundrland";
+interface Props { home?: boolean; }
+const { home = false } = Astro.props;
+const isAdvisorPage = /^\/advisor-center(?:\/|$)/.test(Astro.url.pathname);
 ---
 
-{FOUNDRLAND_LINK_LIVE ? (
-  <a class="foundrland-link" href={FOUNDRLAND_PUBLIC_URL} target="_blank" rel="noopener">Visit FOUNDR.land ↗</a>
-) : (
-  <span class="foundrland-link foundrland-link--soon" aria-label="FOUNDR.land, coming soon">FOUNDR.land, coming soon</span>
+{!isAdvisorPage && (
+  <a class:list={["fl-advisor-btn", !home && "fl-advisor-btn--dream"]} href="/advisor-center">
+    Advisor Center
+    <span class="fl-advisor-disc" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6" /></svg>
+    </span>
+  </a>
 )}
-
-<style>
-  .foundrland-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 100%;
-    padding: 12px 20px;
-    border: 1px solid var(--color-dream-500);
-    border-radius: 999px;
-    background: var(--color-dream-25);
-    color: var(--color-dream-500);
-    font: 700 16px/1.5 var(--font-sans);
-    text-align: center;
-    text-decoration: none;
-  }
-  a.foundrland-link:is(:hover, :focus-visible) {
-    background: var(--color-dream-500);
-    color: var(--color-white);
-  }
-  a.foundrland-link:focus-visible {
-    outline: 2px solid var(--color-grass-700);
-    outline-offset: 4px;
-  }
-  .foundrland-link--soon { cursor: default; }
-</style>
