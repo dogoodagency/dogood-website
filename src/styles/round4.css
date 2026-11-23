@@ -1,5 +1,10 @@
 /* Round 4 p1: shared hero geometry, centered copy and final navigation artwork. */
-:root { --r4-nav-height: 94px; }
+:root {
+  --r4-nav-height: 94px;
+  --color-sky-300: #7BA4FF;
+  --color-play-700: #C4B76A;
+  --color-heart-300: #FEACB3;
+}
 html body main#main :is(.ep-hero, .hw-hero, .dr-hero, .advr-hero, .adv-hero,
   .wf-hero, .faq-hero, .st-hero, .cs-hero, .ab-hero, .nl-hero, .pod-hero, .bl-hero,
   .privacy-hero, .apl-hero, .bk-hero, .r4-article-hero, .r4-seven-hero):is(header, section):not([hidden]) {

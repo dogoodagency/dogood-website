@@ -1,1 +1,46 @@
 /* Round 4 part p9 */
+
+/* F2: override the legacy important HEART outline with each card's own color. */
+html body main#main .adv-center-page .adv-aud-card--1 { border-color: var(--color-sky-300) !important; }
+html body main#main .adv-center-page .adv-aud-card--2 { border-color: var(--color-grass-400) !important; }
+html body main#main .adv-center-page .adv-aud-card--3 { border-color: var(--color-play-700) !important; }
+html body main#main .adv-center-page .adv-aud-card--4 { border-color: var(--color-heart-400) !important; }
+
+/* F3: the Private tier keeps its DREAM fill and matching one-pixel edge. */
+html body main#main #ic-tiers + .ep-grid .ep-box--sky { border: 1px solid var(--color-dream-500) !important; }
+
+/* F4: distinguish Home's green door from the existing GRASS 200 swell. */
+html body main#main .page-home #next .card-before { background: var(--color-grass-300); }
+
+/* F5: labels occupy their own row above the lobes, clear of the loop stroke. */
+.adv-partnership-loop {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: end;
+  gap: 12px 0;
+}
+.adv-partnership-loop svg { grid-column: 1 / -1; grid-row: 2; }
+html body main#main .adv-partnership-label {
+  position: static;
+  grid-row: 1;
+  justify-self: center;
+  width: 80%;
+  transform: none;
+}
+.adv-partnership-label--you { grid-column: 1; }
+.adv-partnership-label--we { grid-column: 2; }
+
+/* F6: visible mouse and keyboard feedback without changing existing card hovers. */
+header.nav a.nav-logo { transition: opacity .2s ease; }
+header.nav a.nav-logo:is(:hover, :focus-visible) { opacity: .85; }
+main#main a[href^="/insights/"] img { transition: opacity .2s ease; }
+main#main a[href^="/insights/"]:is(:hover, :focus-visible) img { opacity: .9; }
+
+@media (max-width: 600px) {
+  html body main#main .adv-partnership-label { font-size: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  header.nav a.nav-logo,
+  main#main a[href^="/insights/"] img { transition: none; }
+}
