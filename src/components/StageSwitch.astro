@@ -87,7 +87,8 @@ const stages = [
     position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin: 0 auto 18px;
+    gap: 8px;
+    margin: 0 auto 32px;
     padding: 6px;
     max-width: 560px;
     border-radius: 999px;
@@ -125,13 +126,13 @@ const stages = [
     top: 6px;
     bottom: 6px;
     left: 6px;
-    width: calc(50% - 6px);
+    width: calc(50% - 10px);
     border-radius: 999px;
     background: var(--color-grass-500);
     pointer-events: none;
     transition: transform 0.35s cubic-bezier(0.3, 0.7, 0.3, 1);
   }
-  .ss[data-current="2"] .ss-knob { transform: translateX(100%); background: var(--color-heart-500); }
+  .ss[data-current="2"] .ss-knob { transform: translateX(calc(100% + 8px)); background: var(--color-heart-500); }
   .ss-panels { display: grid; }
   .ss-panel {
     grid-area: 1 / 1;

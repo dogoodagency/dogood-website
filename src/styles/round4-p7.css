@@ -1,0 +1,85 @@
+/* Round 4 p7: Insights, articles, Newsletter, About, Audio and Continuity. */
+
+/* IN1: a title strip and an undecorated numbered reading list. */
+html body main#main .bli-trend { min-height: 0; padding: 24px; border-radius: 24px 24px 0 0; background: var(--color-dream-500); }
+html body main#main .bli-trend h2 { max-width: none; margin-bottom: 12px; font-size: 28px; }
+html body main#main .bli-trend-sub { color: var(--color-dream-100); }
+.bli-picks > li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 16px; align-items: start; }
+.bli-pick-number { padding-top: 18px; color: var(--color-grass-500); font-size: 40px; font-weight: 900; line-height: 1; }
+html body main#main .bli-picks .bl-row-thumb { display: none; }
+html body main#main .bli-picks .bl-card--row { min-width: 0; }
+
+/* AR1–AR8: shared article layout. The byline sits exactly 52px below the H1. */
+html:has(.bl-article) { scroll-behavior: smooth; }
+html body main#main .bl-article > .bl-col { width: min(896px, calc(100% - 2 * var(--pad))); }
+html body main#main .bl-article .bl-prose { width: 100%; font-size: 18px; }
+html body main#main .bl-article a { font-size: 18px; }
+html body main#main .bl-article .r4-article-hero-inner { padding-block: 0; }
+html body main#main .bl-article .r4-article-hero .bl-head { gap: 0; }
+html body main#main .bl-article .r4-article-hero h1 { font-size: clamp(28px, 3vw, 40px); line-height: 1.1; }
+html body main#main .bl-article .r4-article-hero .bl-back--top { margin: 0 0 8px; line-height: 1.2; }
+html body main#main .bl-article .r4-article-hero .bl-card-tags { margin-bottom: 8px; }
+html body main#main .bl-article .r4-article-hero .bl-back--top a { color: var(--color-white); }
+html body main#main .bl-article .r4-article-hero .bl-back--top a:is(:hover, :focus-visible) { color: var(--color-grass-500); }
+html body main#main .bl-article .r4-article-byline { width: min(896px, 100%); margin: 52px auto 0; padding-top: 8px; border-top: 1px solid var(--color-dream-100); }
+html body main#main .bl-article .r4-article-byline :is(.bl-author-name, .bl-author-role, .bl-meta) { color: var(--color-white); }
+html body main#main .bl-article .r4-article-byline .bl-author { text-align: left; }
+html body main#main .bl-article-summary { padding-top: 24px; }
+html body main#main .bl-article-summary .bl-dek { margin-top: 24px; color: var(--color-dream-500); }
+.bl-share { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin: 24px 0; }
+.bl-share a, .bl-share button { color: var(--color-dream-500); font-family: inherit; font-size: 18px; font-weight: 600; line-height: 1.5; text-decoration: underline; text-decoration-color: var(--color-dream-200); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.bl-share button { padding: 0; border: 0; background: transparent; cursor: pointer; }
+.bl-share a:is(:hover, :focus-visible), .bl-share button:is(:hover, :focus-visible) { color: var(--color-dream-400); text-decoration-color: var(--color-dream-500); }
+.bl-share :focus-visible { outline: 2px solid var(--color-dream-500); outline-offset: 6px; }
+html body main#main .bl-article .bl-toc { background: var(--color-white); border: 1px solid var(--color-dream-100); }
+html body main#main .bl-article .bl-toc .bl-box-label { color: var(--color-dream-500); }
+html body main#main .bl-article .bl-toc ol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 16px; padding: 0; list-style: none; }
+html body main#main .bl-article .bl-toc li { min-width: 0; padding: 0; margin: 0; }
+html body main#main .bl-article .bl-toc a { display: flex; align-items: start; gap: 12px; height: 100%; padding: 12px; border-radius: 12px; color: var(--color-dream-500); text-decoration: none; line-height: 1.5; }
+html body main#main .bl-article .bl-toc a:is(:hover, :focus-visible, [aria-current="location"]) { color: var(--color-dream-500); background: var(--color-dream-25); }
+.bl-toc-number { display: grid; place-items: center; flex: 0 0 32px; height: 32px; border-radius: 8px; background: var(--color-dream-500); color: var(--color-white); font-weight: 800; }
+html body main#main .bl-article .bl-prose ul { list-style: disc; }
+html body main#main .bl-article .bl-prose ol { list-style: decimal; }
+html body main#main .bl-article .bl-prose li { margin-bottom: 12px; font-size: 18px; }
+html body main#main .bl-article .bl-prose li::marker { color: var(--color-grass-500); }
+html body main#main .bl-article .bl-more .bl-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+html body main#main .bl-article .bl-more-band { padding-bottom: 150px; }
+
+/* AB1–AB4: compact statements, white vision drawing, wider equal pills. */
+html body main#main .ab-page .ab-band-statements .ab-purpose-flow { gap: 32px; }
+html body main#main .ab-page .ab-band-statements .ab-duo .ab-statement { padding: 12px 24px; min-height: 420px; }
+html body main#main .ab-page .ab-band-statements .ab-duo .ab-statement--vision { background: var(--color-dream-500); border: 0; color: var(--color-white); }
+html body main#main .ab-page .ab-band-statements .ab-duo .ab-statement--vision :is(h2, p) { color: var(--color-white); }
+.ab-statement--vision :is(.ab-pen, .ab-flow-line) { stroke: var(--color-white); }
+.ab-statement--vision .ab-pink-stroke { stroke: var(--color-white); }
+.ab-statement--vision .ab-diagram-label { fill: var(--color-white); }
+html body main#main .ab-page .ab-band-statements .ab-statement .ab-diagram { width: 100%; max-width: 418px; margin: 0 auto; }
+html body main#main .ab-page .ab-band-statements .ab-statement h2 { margin-bottom: 12px; }
+html body main#main .ab-page .ab-band-statements .ab-statement p { margin-bottom: 12px; font-size: 18px !important; line-height: 1.5; }
+html body main#main .ab-page .ab-why-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+html body main#main .ab-page .ab-good { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+html body main#main .ab-page .ab-good li { padding: 22px 24px; text-align: center; white-space: nowrap; }
+
+/* SS1 and IC1: page-scoped overrides of round 3 colors. */
+html body main#main .pp-audio .au--full .au-layers li { background: var(--color-dream-500); color: var(--color-white); border: 0; gap: 8px; padding: 16px 18px 16px 80px; min-height: 80px; }
+html body main#main .pp-audio .au--full .au-layers li::before { content: counter(au-layer); display: grid; top: 16px; left: 20px; width: 40px; height: 40px; background: var(--color-grass-500); color: var(--color-dream-500); font-size: 18px; font-weight: 900; }
+html body main#main .pp-audio .au--full .au-layers strong { color: var(--color-white); font-size: 20px; font-weight: 800; }
+html body main#main .pp-audio .au--full .au-layers span { color: var(--color-white); font-size: 16px; }
+html body main#main .pp-page:has(#ic-tiers) #ic-tiers + .ep-grid .ep-box:last-child { border-color: var(--color-dream-500); }
+
+@media (max-width: 1365px) {
+  html body main#main .ab-page .ab-good { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  html body main#main .bl-article > .bl-col { width: calc(100% - 43.36px); }
+  html body main#main .bl-article .r4-article-hero-inner { padding-block: 32px; }
+  html body main#main .bl-article .r4-article-byline { gap: 12px; }
+  html body main#main .bl-article .bl-toc { padding: 24px 16px; }
+  html body main#main .bl-article .bl-toc ol, html body main#main .bl-article .bl-more .bl-grid { grid-template-columns: minmax(0, 1fr); }
+  html body main#main .ab-page .ab-band-statements .ab-duo .ab-statement { padding: 24px; min-height: 0; }
+  html body main#main .ab-page .ab-good { gap: 12px; }
+  html body main#main .ab-page .ab-good li { padding: 18px 24px; white-space: normal; font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html:has(.bl-article) { scroll-behavior: auto; }
+}

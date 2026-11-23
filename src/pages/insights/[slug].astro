@@ -29,8 +29,7 @@ export async function getStaticPaths() {
 }
 
 const { post, all } = Astro.props;
-// Visible "Last updated" date (preview 8, 20 Nov 2026): the frontmatter `updated` date when set, otherwise the
-// last git change to the article file, never earlier than the publish date.
+// Keep the modification date in structured data only.
 const lastUpdated: Date = (() => {
   const fromGit = gitDate(`src/content/blog/${post.id}.md`);
   const candidates = [post.data.updated, fromGit ? new Date(fromGit) : undefined, post.data.date].filter(Boolean) as Date[];
@@ -55,7 +54,7 @@ const toc = headings.filter((h) => h.depth === 2);
 const category = getCategory(d.category);
 const aud = audiences[d.audience];
 const url = `${SITE}/insights/${post.id}`;
-const related = relatedPosts(post, all, 3);
+const related = relatedPosts(post, all, 2);
 const heroPng2 = sketchSrc(d.heroImage).png2;
 
 const tint = "#F5F2FF";
@@ -180,6 +179,7 @@ const titleEnd = titleStart && d.title.startsWith(titleStart) ? d.title.slice(ti
       <div class="r4-article-hero-inner">
         {d.sample && <p class="bl-sample" role="note">Sample article: placeholder text to show the layout.</p>}
         <div class="bl-head">
+          <p class="bl-back bl-back--top"><a href="/insights">← Back to Insights</a></p>
           <div class="bl-card-tags">
             <span class:list={["bl-badge", `bl-badge--${d.audience}`]}>{aud.label}</span>
             {
@@ -191,21 +191,26 @@ const titleEnd = titleStart && d.title.startsWith(titleStart) ? d.title.slice(ti
             }
           </div>
           <h1 class="r4-phrase-title">{titleEnd ? <>{titleStart}<br class="pp-desktop-break" /> {titleEnd}</> : d.title}</h1>
-          <p class="bl-dek">{d.description}</p>
+          <div class="bl-byline r4-article-byline">
+            <AuthorByline author={d.author} role={d.authorRole} />
+            <p class="bl-meta">
+              <span>Published <time datetime={isoDate(d.date)}>{formatDate(d.date)}</time></span>
+              <span aria-hidden="true"> · </span>
+              <span>{d.readTime} min read</span>
+            </p>
+          </div>
         </div>
       </div>
       <Wave fill={white} edge={heroEdge} />
     </header>
 
-    <div class="bl-byline r4-article-byline">
-      <AuthorByline author={d.author} role={d.authorRole} />
-      <p class="bl-meta">
-        <span>Published <time datetime={isoDate(d.date)}>{formatDate(d.date)}</time></span>
-        <span aria-hidden="true"> · </span>
-        <span>Last updated <time datetime={isoDate(lastUpdated)}>{formatDate(lastUpdated)}</time></span>
-        <span aria-hidden="true"> · </span>
-        <span>{d.readTime} min read</span>
-      </p>
+    <div class="bl-col bl-col--wide bl-article-summary">
+    <div class="bl-share" aria-label="Share this article">
+      <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`} target="_blank" rel="noopener">Share on LinkedIn</a>
+      <button type="button" data-copy-article={url}>Copy link</button>
+      <span class="bl-sr" data-copy-status role="status" aria-live="polite"></span>
+    </div>
+      <p class="bl-dek">{d.description}</p>
     </div>
 
     <div class="bl-col bl-col--wide">
@@ -227,9 +232,9 @@ const titleEnd = titleStart && d.title.startsWith(titleStart) ? d.title.slice(ti
             <p class="bl-box-label" id="bl-toc-title">In this article</p>
             <ol>
               {
-                toc.map((h) => (
+                toc.map((h, i) => (
                   <li>
-                    <a href={`#${h.slug}`}>{h.text}</a>
+                    <a href={`#${h.slug}`} data-article-section={h.slug}><span class="bl-toc-number" aria-hidden="true">{i + 1}</span><span>{h.text}</span></a>
                   </li>
                 ))
               }
@@ -302,11 +307,19 @@ const titleEnd = titleStart && d.title.startsWith(titleStart) ? d.title.slice(ti
       )
     }
 
+    <div class="bl-col bl-col--wide">
+    <div class="bl-share" aria-label="Share this article">
+      <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`} target="_blank" rel="noopener">Share on LinkedIn</a>
+      <button type="button" data-copy-article={url}>Copy link</button>
+      <span class="bl-sr" data-copy-status role="status" aria-live="polite"></span>
+    </div>
+    </div>
+
     <div class="bl-more">
       <Wave fill={tint} edge={bandEdge} />
       <section class="bl-more-band" aria-labelledby="bl-more-title">
         <div class="bl-wrap">
-          <h2 id="bl-more-title">Keep reading</h2>
+          <h2 id="bl-more-title">Read next</h2>
           <div class="bl-grid">
             {related.map((p) => <BlogCard post={p} variant="grid" />)}
           </div>
@@ -315,4 +328,5 @@ const titleEnd = titleStart && d.title.startsWith(titleStart) ? d.title.slice(ti
       </section>
     </div>
   </div>
+  <script src="/article.js" is:inline defer></script>
 </Base>

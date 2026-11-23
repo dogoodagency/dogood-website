@@ -191,19 +191,14 @@ import { getAuthor } from "../../data/authors";
               </div>
               <aside class="bli-trend-col" aria-labelledby="bli-trend-title">
                 <div class="bli-trend">
-                  <img class="bli-spark bli-spark--a" src="/sketches/sparkle-glint-4pt.svg" alt="" width="16" height="16" aria-hidden="true" />
-                  <img class="bli-spark bli-spark--b" src="/sketches/sparkle-glint-mint.svg" alt="" width="12" height="12" aria-hidden="true" />
-                  <img class="bli-spark bli-spark--c" src="/sketches/sparkle-dot-soft.svg" alt="" width="12" height="12" aria-hidden="true" />
-                  <span class="bli-shape bli-shape--a" aria-hidden="true"></span>
-                  <span class="bli-shape bli-shape--b" aria-hidden="true"></span>
                   <h2 id="bli-trend-title">
                     Most read in <span class="bl-founderland"><strong>FOUNDR</strong><span class="bl-land">.land</span></span>
                   </h2>
                   <p class="bli-trend-sub">Editor’s picks this month</p>
                 </div>
-                <ul class="bli-picks">
-                  {picks.map((p) => <li><BlogCard post={p} variant="row" /></li>)}
-                </ul>
+                <ol class="bli-picks">
+                  {picks.map((p, i) => <li><span class="bli-pick-number" aria-hidden="true">{i + 1}</span><BlogCard post={p} variant="row" /></li>)}
+                </ol>
               </aside>
             </div>
           )

@@ -40,7 +40,7 @@ const wfFor = (name: string) => {
 const tint = "#F3FFFB"; // GRASS 25: Stage 1 colour (Seb, 19 Nov 2026)
 // Seb round 2, 22 Nov 2026: distinct stage bands.
 const stage1Tint = "#E7FFF6";
-const stage2Tint = "#CCFDEC";
+const stage2Tint = "#FFF3F4";
 const white = "#ffffff";
 const heroEdge = edgeAbove("#2A0B4F");
 const bandEdge = edgeAbove(tint);
@@ -243,8 +243,8 @@ const [houseBefore, houseStage1, houseStage2] = houses;
 
     <Fragment set:html={wave(stage2Tint, tint)} />
 
-    <!-- 6. Case V (moved here, Seb 19 Nov 2026), then house 3 + supports + retreat -->
-    <section class="hw-band hw-band-tint" aria-labelledby="hw-supports">
+    <!-- Case V has its own GRASS 25 band. -->
+    <section class="hw-band hw-band-tint hw-case-band" aria-label="Featured case study">
       <div class="hw-well">
         <aside class="hw-case hw-case-feature hw-case-top hw-case--sky" aria-label="Case study">
           <Image class="hw-case-img" src={caseVImg} width={220} height={244} widths={[220, 440]} sizes="220px" alt="Pixelated portrait of founder V, shown this way to protect their identity" />
@@ -258,19 +258,28 @@ const [houseBefore, houseStage1, houseStage2] = houses;
             </div>
           </div>
         </aside>
-        <div class="hw-stage-panel">
-        <HwHouse house={houseStage2} showBadge />
-
-        <HwSupports />
-        </div>
       </div>
+    </section>
+
+    <Fragment set:html={toWhite} />
+
+    <section class="hw-band hw-home-complete" aria-label="After Stage 2">
+      <div class="hw-well">
+        <HwHouse house={houseStage2} showBadge />
+      </div>
+    </section>
+
+    <Fragment set:html={toTint} />
+
+    <section class="hw-band hw-band-tint" aria-labelledby="hw-supports">
+      <div class="hw-well"><HwSupports /></div>
     </section>
 
     <Fragment set:html={toWhite} />
     <FoundrLand kind="reset" />
 
     <!-- 8. Who this is for -->
-    <section class="hw-band" aria-labelledby="hw-who">
+    <section class="hw-band hw-band-tint hw-who-band" aria-labelledby="hw-who">
       <div class="hw-well">
         <div class="hw-prose">
           <h2 id="hw-who">Who is this for?</h2>
@@ -311,7 +320,7 @@ const [houseBefore, houseStage1, houseStage2] = houses;
       </div>
     </section>
 
-    <SevenQuestionsBand variant="reset" />
+    <SevenQuestionsBand variant="reset" layout="preview" />
 
     <Fragment set:html={toTint} />
 
@@ -390,18 +399,6 @@ const [houseBefore, houseStage1, houseStage2] = houses;
       </div>
     </section>
 
-    <!-- 14. FAQ link -->
-    <section class="hw-band" aria-labelledby="hw-faq">
-      <div class="hw-well hw-well-slim">
-        <div class="hw-faq-link">
-          <h2 id="hw-faq">Find answers to common questions</h2>
-          <a class="btn-teal" href="/faqs">Read the FAQs</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- "Apply anyway" removed (Seb, 19 Nov 2026); the FAQ link and the steps now share one white band. -->
-
     <!-- 16. Steps -->
     <section class="hw-band" id="anchor-1" aria-labelledby="hw-steps">
       <div class="hw-well">
@@ -448,6 +445,18 @@ const [houseBefore, houseStage1, houseStage2] = houses;
         </div>
       </div>
     </section>
+    <Fragment set:html={toWhite} />
+
+    <!-- 14. FAQ link -->
+    <section class="hw-band" aria-labelledby="hw-faq">
+      <div class="hw-well hw-well-slim">
+        <div class="hw-faq-link">
+          <h2 id="hw-faq">Find answers to common questions</h2>
+          <a class="btn-teal" href="/faqs">Read the FAQs</a>
+        </div>
+      </div>
+    </section>
+
   </article>
 </Base>
 

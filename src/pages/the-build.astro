@@ -43,7 +43,7 @@ const portraitFiles = import.meta.glob<ImageMetadata>("../assets/reviews/*", { e
 const portraitFor = (file: string) => Object.entries(portraitFiles).find(([p]) => p.endsWith(`/${file}`))?.[1];
 const wallItems = reviews.map((r) => ({ quote: r.quote, name: r.name, role: r.role, image: portraitFor(r.file) }));
 
-const [, houseStage1, houseStage2] = houses;
+const [houseBefore, houseStage1, houseStage2] = houses;
 ---
 
 <Base
@@ -102,7 +102,7 @@ const [, houseStage1, houseStage2] = houses;
     <section class="hw-band hw-band-tint hw-band-stage1" aria-labelledby="hw-recap">
       <div class="hw-well">
         <div class="hw-stage-panel">
-        <HwHouse house={houseStage1} />
+        <HwHouse house={houseBefore} />
         <div class="hw-prose hw-stage-block">
           <h2 id="hw-recap" class="hw-stage-head"><span class="hw-stage-kicker">Stage 1</span><span class="hw-stage-title">The Reset <span class="hw-days">(30 days)</span></span></h2>
           <p class="hw-tagline">Get Clear · Set New Values · Shift Patterns</p>
@@ -125,20 +125,8 @@ const [, houseStage1, houseStage2] = houses;
     <!-- 2. Stage 2 (moved from /the-reset, word for word) -->
     <section class="hw-band hw-band-tint hw-band-stage2" aria-labelledby="hw-stage2">
       <div class="hw-well">
-        <aside class="hw-case hw-case-feature hw-case--sky hw-case-top" aria-label="Case study">
-          <Image class="hw-case-img" src={caseVImg} width={220} height={244} widths={[220, 440]} sizes="220px" alt="Pixelated portrait of founder V, shown this way to protect their identity" />
-          <div class="hw-case-body">
-            <p class="hw-eyebrow hw-eyebrow-left">Featured case study</p>
-            <h3>From feeling lost to decisive leadership: how V reclaimed life after success</h3>
-            <p class="hw-case-who">V (anonymous), USD 9M+ founder</p>
-            <div class="btn-with-caption">
-              <a class="btn-teal" href="/casestudies/v">Read V's story</a>
-              <p class="hw-case-note">We protect our founders’ identities</p>
-            </div>
-          </div>
-        </aside>
         <div class="hw-stage-panel">
-        <HwHouse house={houseStage2} />
+        <HwHouse house={houseStage1} />
 
         <div class="hw-prose hw-stage-block">
           <h2 id="hw-stage2" class="hw-stage-head"><span class="hw-stage-kicker">Stage 2</span><span class="hw-stage-title">The Build <span class="hw-days">(12 weeks)</span></span></h2>
@@ -167,6 +155,33 @@ const [, houseStage1, houseStage2] = houses;
     </section>
 
     <Fragment set:html={wave(stage2Tint, tint)} />
+
+    <section class="hw-band hw-band-tint hw-case-band" aria-label="Featured case study">
+      <div class="hw-well">
+        <aside class="hw-case hw-case-feature hw-case--sky hw-case-top" aria-label="Case study">
+          <Image class="hw-case-img" src={caseVImg} width={220} height={244} widths={[220, 440]} sizes="220px" alt="Pixelated portrait of founder V, shown this way to protect their identity" />
+          <div class="hw-case-body">
+            <p class="hw-eyebrow hw-eyebrow-left">Featured case study</p>
+            <h3>From feeling lost to decisive leadership: how V reclaimed life after success</h3>
+            <p class="hw-case-who">V (anonymous), USD 9M+ founder</p>
+            <div class="btn-with-caption">
+              <a class="btn-teal" href="/casestudies/v">Read V's story</a>
+              <p class="hw-case-note">We protect our founders’ identities</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <Fragment set:html={toWhite} />
+
+    <section class="hw-band hw-home-complete" aria-label="After Stage 2">
+      <div class="hw-well">
+        <HwHouse house={houseStage2} showBadge />
+      </div>
+    </section>
+
+    <Fragment set:html={toTint} />
 
     <!-- 3. Supports through both stages + retreat -->
     <section class="hw-band hw-band-tint" aria-labelledby="hw-supports">

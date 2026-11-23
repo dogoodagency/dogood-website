@@ -1113,3 +1113,263 @@ html:has(.nl-page) {
     scroll-margin-top: 96px;
   }
 }
+
+
+/* NW2: prologue and chapter presentation restored from preview 9. */
+#note,
+#questions,
+#book,
+#prologue,
+#signup,
+#chapters {
+  scroll-margin-top: 110px;
+}
+
+.nl-prologue {
+  max-width: 860px;
+  margin: 40px auto 0;
+  padding: 48px 52px;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: none;
+}
+
+.nl-page .nl-prologue-title {
+  max-width: 680px;
+  margin: 0 0 24px;
+  font-size: clamp(24px, 2.6vw, 30px);
+  font-weight: 900;
+}
+
+.nl-prologue .nl-download {
+  margin-top: 32px;
+}
+
+.nl-chapters {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 32px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nl-chapter {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: baseline;
+  padding: 20px 28px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: none;
+}
+
+.nl-chapter-soon {
+  grid-template-columns: 32px minmax(0, 1fr);
+}
+
+.nl-chapter-num {
+  color: var(--nl-ink);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.nl-chapter-title {
+  min-width: 0;
+  color: var(--nl-ink);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.35;
+  overflow-wrap: break-word;
+}
+
+.nl-chapter-title a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.nl-chapter-title a:hover {
+  color: var(--nl-pink);
+}
+
+.nl-chapter-date {
+  color: #5a3f78;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: right;
+}
+
+.nl-chapter-soon {
+  border: 1.5px dashed var(--nl-line);
+  box-shadow: none;
+}
+
+@media (max-width: 767px) {
+.nl-prologue {
+    padding: 32px 24px;
+  }
+
+.nl-chapter {
+    grid-template-columns: 32px minmax(0, 1fr);
+  }
+
+.nl-chapter-date {
+    grid-column: 2;
+    text-align: left;
+  }
+}
+
+@media (max-width: 600px) {
+#note,
+  #questions,
+  #book,
+  #prologue,
+  #signup,
+  #chapters {
+    scroll-margin-top: 96px;
+  }
+}
+
+.nl-chapter-upcoming {
+  grid-template-columns: 32px minmax(0, 1fr) auto;
+  align-items: start;
+  background: transparent;
+  border: 1.5px dashed var(--nl-line);
+  box-shadow: none;
+}
+
+.nl-chapter-upcoming .nl-chapter-num,
+.nl-chapter-upcoming .nl-chapter-title {
+  color: #6b5c93;
+}
+
+.nl-page .nl-well .nl-chapter-about {
+  margin: 6px 0 0;
+  color: #6b5c93;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.nl-chapter-upcoming .nl-chapter-date {
+  color: #6b5c93;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+.nl-page .nl-well .nl-chapters-note {
+  margin: 14px 0 0;
+  color: #6b5c93;
+  font-size: 14px;
+}
+
+.nl-chapter {
+  box-shadow: none;
+}
+
+@media (max-width: 800px) {
+.nl-chapter-upcoming {
+    grid-template-columns: 28px minmax(0, 1fr);
+  }
+
+.nl-chapter-upcoming .nl-chapter-date {
+    grid-column: 2;
+    text-align: left;
+  }
+}
+
+.nl-page .nl-chapters .nl-chapter {
+  border: 1px solid #c2b7dd;
+  background: #fff;
+}
+
+.nl-page .nl-chapters .nl-chapter:nth-child(odd) {
+  border-color: #2a0b4f;
+  background: #2a0b4f;
+}
+
+.nl-page .nl-chapters .nl-chapter .nl-chapter-num,
+.nl-page .nl-chapters .nl-chapter .nl-chapter-title {
+  color: #2a0b4f;
+}
+
+.nl-page .nl-well .nl-chapters .nl-chapter .nl-chapter-about {
+  color: #4a3a5c;
+}
+
+.nl-page .nl-chapters .nl-chapter:nth-child(odd) .nl-chapter-num {
+  color: #28dbb0;
+}
+
+.nl-page .nl-chapters .nl-chapter:nth-child(odd) .nl-chapter-title {
+  color: #fff;
+}
+
+.nl-page .nl-well .nl-chapters .nl-chapter:nth-child(odd) .nl-chapter-about {
+  color: #e6defc;
+}
+
+.nl-page .nl-chapters .nl-chapter:nth-child(even) .nl-chapter-num {
+  color: #ea1557;
+}
+
+.nl-page .nl-chapters .nl-date-pill {
+  display: inline-block;
+  padding: 6px 14px;
+  border: 2px dotted #ea1557;
+  border-radius: 999px;
+  color: #c10e46;
+  font-size: 14px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.nl-page .nl-chapters .nl-chapter:nth-child(odd) .nl-date-pill {
+  border-color: #28dbb0;
+  color: #28dbb0;
+}
+
+.nl-note,
+.nl-prologue {
+  border: 1px solid #c2b7dd;
+  box-shadow: none;
+}
+
+@media (max-width: 599px) {
+.nl-page .nl-chapters .nl-chapter .nl-chapter-num { display: none; }
+
+.nl-page .nl-chapters .nl-chapter { grid-template-columns: minmax(0, 1fr) !important; padding-left: 22px; padding-right: 22px; }
+
+.nl-page .nl-chapters .nl-chapter > * { grid-column: 1 / -1 !important; margin-left: 0; }
+
+.nl-page .nl-chapters .nl-date-pill {
+    justify-self: center;
+    align-self: center;
+    width: auto;
+    margin-inline: auto;
+    padding: 8px 18px;
+    border-style: solid;
+    text-align: center;
+  }
+
+.nl-page .nl-chapters-note { display: none; }
+}
+
+@media (max-width: 599px) {
+html body .nl-page .nl-chapters .nl-date-pill { border: 1.5px dotted currentColor !important; }
+}
+
+/* NW1: use the shared guide artwork without repeating the questions above it. */
+html body main#main .nl-guide .sq-band { margin-top: 36px; padding: 0; background: var(--color-white); }
+html body main#main .nl-guide .sq-questions { display: none; }
+html body main#main .nl-guide .sq-actions > .btn-dream { display: none; }
+html body main#main .nl-guide .sq-actions > .r3-inline-link { display: inline-flex; justify-content: center; align-items: center; min-height: 52px; max-width: 100%; padding: 14px 24px; border: 0; border-radius: 16px; background: var(--color-dream-500); color: var(--color-white); font-size: 18px; font-weight: 800; line-height: 1.3; text-decoration: none; }
+html body main#main .nl-guide .sq-actions > .r3-inline-link:is(:hover, :focus-visible) { background: var(--color-dream-600); color: var(--color-white); text-decoration: underline; }
+html body main#main .nl-page .nl-book { box-shadow: none; }
+
+/* NW3: regular paragraph and caption weights; keep the existing caption treatment. */
+html body main#main .nl-page .nl-closing.closing-unframed > p { font-weight: 400; }
+html body main#main .nl-page .nl-closing.closing-unframed > p.nl-closing-caption { color: #58447F !important; font-size: 12px; font-style: italic; font-weight: 400; }
