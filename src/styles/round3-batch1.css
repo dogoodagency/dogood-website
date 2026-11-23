@@ -120,6 +120,7 @@ html body main#main .nl-closing.closing-unframed > .btn-apply {
 }
 html body main#main .nl-closing.closing-unframed > p.nl-closing-caption {
   margin: 6px auto 0;
+  color: var(--color-dream-400) !important;
 }
 
 /* P1 / FR6–FR8 / I4: keep newsletter boxes, extend their bands. */

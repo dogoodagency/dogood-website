@@ -109,7 +109,11 @@ html body main#main .ty-guide .r3-inline-link:is(:hover, :focus-visible) { color
   gap: 24px;
   margin-top: 28px;
 }
-.ty-guide-cover { max-width: 240px; }
+.ty-guide-cover {
+  max-width: 240px;
+  border: 1px solid var(--color-dream-300);
+  border-radius: 4px;
+}
 html body main#main .ty-guide > .btn-teal { color: var(--color-dream-500); white-space: normal; text-align: center; }
 html body main#main .guide-teaser { margin: 20px 0 0; font-size: 16px; color: var(--color-dream-500); }
 .nl-chapter-download { display: block; margin-top: 8px; font-size: 16px; text-decoration: underline; text-underline-offset: 4px; }
