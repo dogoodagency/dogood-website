@@ -201,7 +201,7 @@ export const faqCategories: FaqCategory[] = [
         id: "why-whoop",
         q: "Why WHOOP — and is it medical?",
         a: [
-          "It shows how your body is coping, not only how you feel, and no, it is not medical care. WHOOP supports the Recovery & Stress diagnostics so progress is easier to see. It’s not medical care — think recovery visibility for better decisions under pressure. [WHOOP](https://www.whoop.com/us/en/life) is required for diagnostics and purchased separately.",
+          "It shows how your body is coping, not only how you feel, and no, it is not medical care. WHOOP supports the Recovery & Stress diagnostics so progress is easier to see. It’s not medical care — think recovery visibility for better decisions under pressure. [WHOOP](https://www.whoop.com/us/en/life) is required for diagnostics and purchased separately (about USD 35/month, paid annually).",
         ],
       },
       // [ADDED – source: how-it-works.md ("These supports remain consistent throughout both FRP stages")]

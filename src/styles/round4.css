@@ -141,44 +141,6 @@ html body main#main > .subhero { margin-top: calc(-1 * var(--r4-nav-height)); pa
 
 html body main#main .write-to-us { text-align: center; margin-inline: auto; }
 
-/* Center Home's copy as one column; artwork occupies a separate row. */
-html body main#main .page-home #hero .hero-inner { text-align: center; }
-html body main#main .page-home #hero :is(h1, .hero-line, .lede, .hero-copy, .hero-copy p, .hero-cta, .btn-caption) {
-  text-align: center;
-  margin-inline: auto;
-}
-html body main#main .page-home #hero .hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 24px;
-  width: 100%;
-  max-width: 1080px;
-  margin: 28px auto 0;
-}
-html body main#main .page-home #hero :is(.hero-copy, .hero-copy > p) { width: 100%; max-width: 1080px; }
-html body main#main .page-home #hero .hero-draw {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin: 0;
-  pointer-events: none;
-}
-html body main#main .page-home #hero .hero-draw::before { display: none; }
-html body main#main .page-home #hero .hero-sketch-frame {
-  position: relative;
-  inset: auto;
-  width: min(864px, 100%);
-  max-width: 100%;
-  margin: 0 auto;
-  translate: none;
-}
-html body main#main .page-home #hero .hero-sketch { width: 100%; max-width: 100%; margin: 0; }
-/* Each animated phrase has its own centered line, including the shorter ending. */
-html body main#main .page-home #hero .hero-swap { display: grid; width: 100%; }
-html body main#main .page-home #hero .hero-swap > span { color: var(--color-white); text-align: center; }
-html body main#main .page-home #hero .hero-ending { color: var(--color-dream-300); }
-
 /* NAV2: Arta’s portrait keeps the figure and open door inside the tall slot. */
 header.nav #nav-how .nav-mega-card img { object-fit: cover; object-position: 50% 50%; }
 
@@ -222,7 +184,6 @@ header.nav #nav-advisors-phone a.nav-sub { min-height: 150px; }
 }
 
 @media (max-width: 1365px) {
-  html body main#main .page-home #hero .hero-swap > span { white-space: normal; }
   /* Content can grow on tablet, rather than colliding with the wave. */
   html body main#main :is(.ep-hero, .hw-hero, .dr-hero, .advr-hero, .adv-hero,
     .wf-hero, .faq-hero, .st-hero, .cs-hero, .ab-hero, .nl-hero, .pod-hero, .bl-hero,
@@ -251,15 +212,6 @@ header.nav #nav-advisors-phone a.nav-sub { min-height: 150px; }
   html body main#main .bk-wave-top svg { height: 40px; }
   html body main#main .pp-desktop-break { display: none; }
   html body main#main h1.r4-phrase-title { font-size: 32px; }
-  html body main#main .page-home #hero .hero-swap > span { white-space: normal; }
-  html body main#main .page-home #hero :is(.hero-inner, .hero-copy) { padding-inline: 0; }
-  html body main#main .page-home #hero .hero-inner { width: calc(100% - 43.36px); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html body main#main .page-home #hero .hero-swap > span { animation: none !important; }
-  html body main#main .page-home #hero .hero-swap-a { opacity: 1; }
-  html body main#main .page-home #hero .hero-swap-b { display: none; }
 }
 
 /* Round 4 p2: reusable 7 Questions preview card (H1–H6). */
