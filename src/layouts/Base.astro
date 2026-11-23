@@ -153,7 +153,7 @@ const organization = {
     <!-- LinkedIn Insight Tag (20 Nov 2026): runs only after advertisement consent (CookieYes), live domain only. -->
     <script type="text/plain" data-cookieyes="cookieyes-advertisement" src="/li-insight.js"></script>
     <!-- Warmly visitor insights (23 Nov 2026): runs only after advertisement (marketing) consent (CookieYes), including deploy previews. -->
-    <script type="text/plain" data-cookieyes="cookieyes-advertisement" src="/warmly.js"></script>
+    <script data-cookieyes="cookieyes-necessary" src="/warmly-consent.js" defer></script>
     <title>{title}</title>
     <meta name="description" content={description} />
     {!Astro.props.noCanonical && <link rel="canonical" href={canonical} />}
