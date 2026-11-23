@@ -15,7 +15,7 @@ html body main#main .ab-page .ab-band-statements .ab-duo .ab-statement--vision {
 /* W1-5 / FT8: picture, status, headline, then copy. Share the spacing with any
    matching tool cards on detail pages, without reordering insight cards. */
 html body main#main :is(.advr-tools-page, .advd-tools-page) .advr-card :is(.advr-soon, .advr-available) {
-  margin: 0 0 11px !important;
+  margin: 0 0 27px !important;
 }
 html body main#main :is(.advr-tools-page, .advd-tools-page) .advr-card h2 { margin: 0 0 16px; margin-top: 0 !important; }
 
