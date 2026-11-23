@@ -2,3 +2,7 @@
 // the foundr.land logo and sections without any link (Seb, 20 Nov 2026: the Vercel preview asks for a login).
 // Preview (login only): https://foundr-land-git-preview-homepage-v1-do-good-agency.vercel.app/
 export const FOUNDRLAND_URL: string | null = null;
+
+// Section pills can go live independently of the header logo and Pathway lane.
+export const FOUNDRLAND_LINK_LIVE = false;
+export const FOUNDRLAND_PUBLIC_URL = "https://foundr.land";

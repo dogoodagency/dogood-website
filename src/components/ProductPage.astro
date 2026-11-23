@@ -94,7 +94,7 @@ const footerBg = closing ? (lastTint ? white : tint) : lastTint ? tint : white;
     <header class="ep-hero">
       <div class="ep-hero-inner">
         <p class="ep-eyebrow" set:html={eyebrow} />
-        <h1 set:html={h1} />
+        <h1 class:list={[h1.includes("pp-desktop-break") && "r4-phrase-title"]} set:html={h1} />
         <p class="ep-sub">{sub}</p>
         {partnership && (tag || soon) ? (
           <div class="pp-hero-pills">

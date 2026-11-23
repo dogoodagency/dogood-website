@@ -1,15 +1,19 @@
 ---
 import { getEntry, render } from "astro:content";
+import Wave from "../components/Wave.astro";
 import Base from "../layouts/Base.astro";
 
 const entry = await getEntry("pages", "error404");
 if (!entry) throw new Error("Missing 404 copy");
 const { Content } = await render(entry);
+const body = entry.rendered?.html?.replace(/<h1\b[^>]*>[\s\S]*?<\/h1>/i, "");
 ---
 
 <Base title="Page not found | DoGood Agency" description="That page is not here. Head home, or send us a note." robots="noindex" noCanonical>
-  <section class="subhero">
-  </section>
+  <header class="privacy-hero">
+    <div class="privacy-hero-inner"><h1>Page not found</h1></div>
+    <Wave fill="#f5f2f9" edge="#15012E" />
+  </header>
   <article class="page page-designed page-art page-404">
     <div class="page-wrap">
       <picture class="page-sketch page-sketch-feature">
@@ -17,7 +21,7 @@ const { Content } = await render(entry);
       </picture>
       <div class="page-frame">
         <div class="page-body">
-          <Content />
+          {body ? <Fragment set:html={body} /> : <Content />}
         </div>
       </div>
     </div>

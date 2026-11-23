@@ -145,6 +145,16 @@ const faqJson = d.faq.length
       })),
     })
   : "";
+const titleBreaks: Record<string, string> = {
+  "first-90-days-after-the-sale": "What to do after selling your business:",
+  "sudden-wealth-syndrome-after-selling-a-business": "Sudden wealth syndrome",
+  "why-deals-stall-when-the-founder-isnt-ready": "Why deals stall",
+  "before-you-sign-preparing-yourself": "Before you sign: how to prepare yourself",
+  "emotions-of-selling-a-business": "The emotions of selling a business:",
+};
+const titleStart = titleBreaks[post.id];
+const titleEnd = titleStart && d.title.startsWith(titleStart) ? d.title.slice(titleStart.length).trimStart() : undefined;
+
 ---
 
 <Base
@@ -166,47 +176,36 @@ const faqJson = d.faq.length
   </Fragment>
 
   <div class="bl-page bl-article">
-    <div class="bl-topband">
-      <div class="bl-col">
-        <!-- Visible breadcrumb removed (Seb, 18 Nov 2026); the BreadcrumbList markup in <head> stays for search engines. -->
+    <header class="bl-topband r4-article-hero">
+      <div class="r4-article-hero-inner">
+        {d.sample && <p class="bl-sample" role="note">Sample article: placeholder text to show the layout.</p>}
+        <div class="bl-head">
+          <div class="bl-card-tags">
+            <span class:list={["bl-badge", `bl-badge--${d.audience}`]}>{aud.label}</span>
+            {
+              category && (
+                <a class="bl-pill" href={`/insights/category/${category.slug}`}>
+                  {category.name}
+                </a>
+              )
+            }
+          </div>
+          <h1 class="r4-phrase-title">{titleEnd ? <>{titleStart}<br class="pp-desktop-break" /> {titleEnd}</> : d.title}</h1>
+          <p class="bl-dek">{d.description}</p>
+        </div>
       </div>
       <Wave fill={white} edge={heroEdge} />
-    </div>
+    </header>
 
-    <div class="bl-col bl-col--wide">
-      {
-        d.sample && (
-          <p class="bl-sample" role="note">
-            Sample article: placeholder text to show the layout.
-          </p>
-        )
-      }
-
-      <header class="bl-head">
-        <div class="bl-card-tags">
-          <span class:list={["bl-badge", `bl-badge--${d.audience}`]}>{aud.label}</span>
-          {
-            category && (
-              <a class="bl-pill" href={`/insights/category/${category.slug}`}>
-                {category.name}
-              </a>
-            )
-          }
-        </div>
-        <h1>{d.title}</h1>
-        <p class="bl-dek">{d.description}</p>
-
-        <div class="bl-byline">
-          <AuthorByline author={d.author} role={d.authorRole} />
-          <p class="bl-meta">
-            <span>Published <time datetime={isoDate(d.date)}>{formatDate(d.date)}</time></span>
-            <span aria-hidden="true"> · </span>
-            <span>Last updated <time datetime={isoDate(lastUpdated)}>{formatDate(lastUpdated)}</time></span>
-            <span aria-hidden="true"> · </span>
-            <span>{d.readTime} min read</span>
-          </p>
-        </div>
-      </header>
+    <div class="bl-byline r4-article-byline">
+      <AuthorByline author={d.author} role={d.authorRole} />
+      <p class="bl-meta">
+        <span>Published <time datetime={isoDate(d.date)}>{formatDate(d.date)}</time></span>
+        <span aria-hidden="true"> · </span>
+        <span>Last updated <time datetime={isoDate(lastUpdated)}>{formatDate(lastUpdated)}</time></span>
+        <span aria-hidden="true"> · </span>
+        <span>{d.readTime} min read</span>
+      </p>
     </div>
 
     <div class="bl-col bl-col--wide">

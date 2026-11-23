@@ -1,4 +1,6 @@
 ---
+import Wave from "../components/Wave.astro";
+import WriteToUs from "../components/WriteToUs.astro";
 import Base from "../layouts/Base.astro";
 import { sevenQuestions, sevenQuestionsPdf } from "../data/seven-questions";
 
@@ -16,14 +18,17 @@ const description = "Seven questions for founders in the first 90 days after sel
   ogImageHeight={627}
   bare
 >
-  <div class="seven-page">
-    <img class="seven-logo" src="/logo.svg" width="4861" height="2195" alt="DoGood Agency" />
-
-    <div class="seven-heading">
-      <h1>{heading}</h1>
-      <p class="seven-subline">Worth reading before you sell, too.</p>
+  <header class="r4-seven-hero">
+    <div class="r4-seven-hero-inner">
+      <img class="seven-logo" src="/logo-light.svg" width="4861" height="2195" alt="DoGood Agency" />
+      <div class="seven-heading">
+        <h1>{heading}</h1>
+        <p class="seven-subline">Worth reading before you sell, too.</p>
+      </div>
     </div>
-
+    <Wave fill="#F5F2FF" edge="#15012E" />
+  </header>
+  <div class="seven-page">
     <div class="seven-content">
       <img
         class="seven-cover"
@@ -48,7 +53,7 @@ const description = "Seven questions for founders in the first 90 days after sel
     <div class="seven-followup">
       <a class="btn-teal btn-dream" href={sevenQuestionsPdf} target="_blank" rel="noopener">Download the PDF</a>
       <p>Want the next notes too? <a href="/newsletter#signup">Get the DoGood newsletter</a>, one email every two weeks.</p>
-      <p>Not ready to apply, or still before your exit? <a href="/contact">Write to us</a> or email <a href="mailto:hiya@dogoodagency.co">hiya@dogoodagency.co</a>.</p>
+      <WriteToUs />
     </div>
   </div>
 </Base>

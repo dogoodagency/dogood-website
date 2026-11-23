@@ -129,6 +129,8 @@ const bandGroupsHtml =
 const bandHero =
   slug === "terms" ? "Terms" : slug === "privacy" ? "Privacy Policy" : slug === "cookies" ? "Cookies Policy" : "";
 const banded = bandGroupsHtml.length > 0 && Boolean(bandHero);
+const fallbackHeading = entry.rendered?.html?.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1];
+const fallbackBody = fallbackHeading ? entry.rendered!.html.replace(/<h1\b[^>]*>[\s\S]*?<\/h1>/i, "") : undefined;
 const heroEdge = edgeAbove("#2A0B4F");
 const dividerEdge = edgeAbove(bandTint);
 const joinEdge = edgeAbove("#ffffff");
@@ -165,9 +167,12 @@ const footerEdge = edgeAbove(bandStrip);
     </article>
   ) : (
     <>
-  <section class="subhero">
-    <Wave fill="#f5f2f9" />
-  </section>
+  <header class="privacy-hero">
+    <div class="privacy-hero-inner">
+      <h1 set:html={fallbackHeading ?? named ?? stripped} />
+    </div>
+    <Wave fill="#f5f2f9" edge={heroEdge} />
+  </header>
   <article class:list={["page", "page-designed", sketch && "page-art"]}>
     <div class="page-wrap">
       {
@@ -191,7 +196,7 @@ const footerEdge = edgeAbove(bandStrip);
       }
       <div class="page-frame">
       <div class="page-body">
-        <Content />
+        {fallbackBody ? <Fragment set:html={fallbackBody} /> : <Content />}
       </div>
       {slug === "stories" && <LogoPills />}
       {

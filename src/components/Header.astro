@@ -6,7 +6,8 @@ const brandProps = FOUNDRLAND_URL
   ? { href: FOUNDRLAND_URL, target: "_blank", rel: "noopener", "aria-label": "foundr.land by DoGood (opens in a new tab)" }
   : { role: "img", "aria-label": "foundr.land by DoGood" };
 import { urls } from "../data/homepage";
-import { offers, products, tools, advisorLinks, tm, type SiteLink } from "../data/site-links";
+import AdvisorMenuImage from "./AdvisorMenuImage.astro";
+import { offers, products, advisorLinks, tm, type SiteLink } from "../data/site-links";
 
 const links = [
   { href: "/pathway", label: "Pathway", menu: "nav-how" },
@@ -27,7 +28,6 @@ const howGroups = [
 ];
 const productGroups = [
   { label: "Beyond the two stages", items: products.map(toItem) },
-  { label: "Inside the partnership", items: tools.map(toItem) },
 ];  // menu "Services"
 const advisorGroups = [
   // Same four parts as the shared Advisor Center toggle and footer.
@@ -48,7 +48,7 @@ const menus: Record<
     card: {
       href: "/pathway",
       label: "Which door is mine?",
-      image: "how-it-works-dropdown-card",
+      image: "pathway-menu",
       alt: "A founder walks along a teal path past an empty archway toward an open door with a green landscape beyond, drawn as a napkin sketch.",
     },
   },
@@ -118,14 +118,20 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
             <picture>
               <source
                 type="image/webp"
-                srcset={`/nav/${menu.card.image}@1x.webp 1x, /nav/${menu.card.image}@2x.webp 2x, /nav/${menu.card.image}@3x.webp 3x`}
+                srcset={menu.id === "nav-how"
+                  ? "/media/r4/pathway-menu@1x.webp 1x, /media/r4/pathway-menu@2x.webp 2x, /media/r4/pathway-menu@3x.webp 3x"
+                  : `/nav/${menu.card.image}@1x.webp 1x, /nav/${menu.card.image}@2x.webp 2x, /nav/${menu.card.image}@3x.webp 3x`}
               />
               <img
-                src={`/nav/${menu.card.image}@1x.png`}
-                srcset={`/nav/${menu.card.image}@1x.png 1x, /nav/${menu.card.image}@2x.png 2x, /nav/${menu.card.image}@3x.png 3x`}
-                width="270"
-                height="315"
-                alt={menu.card.alt}
+                src={menu.id === "nav-how" ? "/media/r4/pathway-menu@1x.webp" : `/nav/${menu.card.image}@1x.png`}
+                srcset={menu.id === "nav-how"
+                  ? "/media/r4/pathway-menu@1x.webp 1x, /media/r4/pathway-menu@2x.webp 2x, /media/r4/pathway-menu@3x.webp 3x"
+                  : `/nav/${menu.card.image}@1x.png 1x, /nav/${menu.card.image}@2x.png 2x, /nav/${menu.card.image}@3x.png 3x`}
+                width={menu.id === "nav-how" ? 360 : 270}
+                height={menu.id === "nav-how" ? 560 : 315}
+                alt={menu.id === "nav-how" ? "" : menu.card.alt}
+                aria-hidden={menu.id === "nav-how" ? "true" : undefined}
+                data-arta={menu.id === "nav-how" ? "A1" : undefined}
                 loading="lazy"
                 decoding="async"
               />
@@ -135,12 +141,6 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
               <span class="nav-mega-go" aria-hidden="true" />
             </span>
           </a>
-          {menu.id === "nav-advisors" && (
-            <figure class="nav-foundr-tile">
-              <img src="/media/foundrland/foundrland-app-phone@1x.webp" width="96" height="120" alt="FOUNDR.land app preview" loading="lazy" />
-              <figcaption>FOUNDR.land, built with advisors</figcaption>
-            </figure>
-          )}
           </div>
           <ul class="nav-mega-links">
             {menu.groups.map((group) => (
@@ -151,6 +151,7 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
                     <a href={item.href}>
                       <span class="nav-mega-name" set:html={tm(item.label)} />
                       <small>{item.detail}</small>
+                      {menu.id === "nav-advisors" && <AdvisorMenuImage href={item.href} />}
                     </a>
                   </li>
                 ))}
@@ -191,6 +192,7 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
                     <a class="nav-sub" href={item.href}>
                       <span class="nav-sub-title" set:html={tm(item.label)} />
                       <span class="nav-sub-note">{item.detail}</span>
+                      {menu.phoneId === "nav-advisors-phone" && <AdvisorMenuImage href={item.href} />}
                     </a>
                   ))}
                 </>
@@ -280,9 +282,7 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
       if (!(links instanceof HTMLElement) || !(card instanceof HTMLElement)) return;
       const measure = () => links.getBoundingClientRect().height;
       for (let pass = 0; pass < 3; pass += 1) {
-        const tile = menu.querySelector(".nav-foundr-tile");
-        const tileHeight = tile instanceof HTMLElement ? tile.getBoundingClientRect().height + 16 : 0;
-        const height = Math.max(Math.round(measure() - tileHeight), 315);
+        const height = Math.max(Math.round(measure()), 315);
         // Cap the card width (20 Nov 2026): the nav got narrower, and an uncapped card squeezed the link column
         // until the Services menu ran away (taller links -> wider card -> narrower links). Image is object-fit: cover.
         const width = Math.min(Math.round((height * 360) / 420), 320);

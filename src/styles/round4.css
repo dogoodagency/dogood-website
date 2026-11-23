@@ -1,0 +1,258 @@
+/* Round 4 p1: shared hero geometry, centered copy and final navigation artwork. */
+:root { --r4-nav-height: 94px; }
+html body main#main :is(.ep-hero, .hw-hero, .dr-hero, .advr-hero, .adv-hero,
+  .wf-hero, .faq-hero, .st-hero, .cs-hero, .ab-hero, .nl-hero, .pod-hero, .bl-hero,
+  .privacy-hero, .apl-hero, .bk-hero, .r4-article-hero, .r4-seven-hero):is(header, section):not([hidden]) {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 540px;
+  min-height: 540px;
+  margin-top: calc(-1 * var(--r4-nav-height));
+  padding: var(--r4-nav-height) 0 0;
+  background: var(--color-dream-500);
+  color: var(--color-white);
+  text-align: center;
+}
+
+html body main#main :is(.ep-hero, .hw-hero, .dr-hero, .advr-hero, .adv-hero,
+  .wf-hero, .faq-hero, .st-hero, .cs-hero, .ab-hero, .nl-hero, .pod-hero, .bl-hero,
+  .privacy-hero, .apl-hero, .bk-hero, .r4-article-hero, .r4-seven-hero)
+  > :is([class*="hero-inner"]) {
+  box-sizing: border-box;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: min(1080px, calc(100% - 2 * var(--pad)));
+  max-width: 1080px;
+  min-width: 0;
+  min-height: 0;
+  margin: 0 auto;
+  padding: 24px 0;
+  text-align: center;
+}
+
+html body main#main :is(.ep-hero, .hw-hero, .dr-hero, .advr-hero, .adv-hero,
+  .wf-hero, .faq-hero, .st-hero, .cs-hero, .ab-hero, .nl-hero, .pod-hero, .bl-hero,
+  .privacy-hero, .apl-hero, .bk-hero, .r4-article-hero, .r4-seven-hero)
+  :is(h1, h2, p, ul, ol, div, span, form, label, nav) {
+  text-align: center;
+}
+html body main#main :is(header[class*="hero"], .r4-article-hero) h1 { text-wrap: balance; }
+html body main#main :is(header[class*="hero"], .r4-article-hero) :is(h1, p) { margin-block: 0; }
+html body main#main :is(header[class*="hero"], .r4-article-hero)
+  :is([class*="hero-copy"], .nl-copy, .bl-head) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+html body main#main :is(.ep-hero, .hw-hero, .dr-hero, .advr-hero, .adv-hero,
+  .wf-hero, .faq-hero, .st-hero, .cs-hero, .ab-hero, .nl-hero, .pod-hero, .bl-hero,
+  .privacy-hero, .apl-hero, .bk-hero, .r4-article-hero, .r4-seven-hero)
+  :is(h1, p, [class*="hero-copy"], .nl-copy, .seven-heading) {
+  max-width: 1080px;
+  margin-inline: auto;
+}
+
+html body main#main :is(.ep-hero, .hw-hero, .dr-hero, .advr-hero, .adv-hero,
+  .wf-hero, .faq-hero, .st-hero, .cs-hero, .ab-hero, .nl-hero, .pod-hero, .bl-hero,
+  .privacy-hero, .apl-hero, .bk-hero, .r4-article-hero, .r4-seven-hero)
+  :is([class*="actions"], [class*="pills"], [class*="facts"], .apl-words,
+    .faq-common, .bl-common, .bl-search-wrap, .faq-search-wrap, .bl-card-tags,
+    .bl-byline, .pod-avail, .wf-flags, .wfp-crumbs ol) {
+  justify-content: center;
+  align-items: center;
+}
+
+html body main#main :is(.ep-hero, .hw-hero, .dr-hero, .advr-hero, .adv-hero,
+  .wf-hero, .faq-hero, .st-hero, .cs-hero, .ab-hero, .nl-hero, .pod-hero, .bl-hero,
+  .privacy-hero, .apl-hero, .bk-hero, .r4-article-hero, .r4-seven-hero)
+  > :is(.hero-wave, .bk-wave-top):not([hidden]) {
+  position: relative;
+  inset: auto;
+  display: block;
+  flex: 0 0 80px;
+  width: 100%;
+  height: 80px;
+  margin: 0;
+  pointer-events: none;
+}
+
+html body main#main h1.r4-phrase-title {
+  font-size: clamp(28px, 3.2vw, 48px);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+/* Articles use the same dark hero and width as the other inner pages. */
+html body main#main .r4-article-hero .bl-head { width: 100%; padding: 0; }
+html body main#main .r4-article-hero h1 { color: var(--color-white); margin: 0; }
+html body main#main .r4-article-hero .bl-dek { color: var(--color-white); margin: 0; }
+html body main#main .r4-article-byline {
+  justify-content: center;
+  width: min(1080px, calc(100% - 2 * var(--pad)));
+  margin: 24px auto;
+  padding: 0;
+  border: 0;
+  text-align: center;
+}
+
+/* The guide remains a standalone page; its logo and heading start on DREAM 500. */
+html body main#main header.r4-seven-hero:not([hidden]) { margin-top: 0; padding-top: 32px; }
+html body main#main .r4-seven-hero .seven-logo { flex-shrink: 0; }
+html body main#main .r4-seven-hero .seven-heading { margin: 16px 0 0; }
+html body main#main .r4-seven-hero h1 { color: var(--color-white); }
+html body main#main .seven-page { padding-top: 40px; }
+
+/* Art in the profile hero needs its full height; text stays centered. */
+html body main#main header.wfp-hero:not([hidden]) { height: auto; min-height: 540px; }
+html body main#main .wfp-hero .wfp-hero-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+html body main#main .wfp-hero .wfp-hero-copy { align-items: center; order: -1; }
+html body main#main .wfp-hero .wfp-photo { width: min(340px, 100%); margin-inline: auto; }
+
+/* Keep the archive intro and listening links inside the shared desktop height. */
+html body main#main .pod-hero .pod-hero-copy { align-items: center; gap: 12px; }
+html body main#main .pod-hero .pod-sub { font-size: 21px; line-height: 1.5; }
+html body main#main .pod-hero .pod-hero-copy > p { line-height: 1.5; }
+html body main#main .pod-hero .pod-avail { flex-direction: row; flex-wrap: wrap; gap: 12px 20px; }
+@media (min-width: 1366px) {
+  html body main#main .pod-hero .pod-hero-inner { padding-block: 16px; }
+  html body main#main .pod-hero h1 { font-size: 48px; }
+}
+
+@media (min-width: 1366px) {
+  html body main#main .cs-hero h1 { font-size: 40px; }
+  html body main#main .cs-hero .cs-hero-inner { gap: 12px; padding-block: 16px; }
+  html body main#main .cs-hero .cs-highlights { margin-block: 0; }
+}
+
+/* Cover the navigation strip on legacy pages whose headline lives in the body. */
+html body main#main > .subhero { margin-top: calc(-1 * var(--r4-nav-height)); padding-top: var(--r4-nav-height); background: var(--color-dream-500); }
+
+html body main#main .write-to-us { text-align: center; margin-inline: auto; }
+
+/* Center Home's copy as one column; artwork occupies a separate row. */
+html body main#main .page-home #hero .hero-inner { text-align: center; }
+html body main#main .page-home #hero :is(h1, .hero-line, .lede, .hero-copy, .hero-copy p, .hero-cta, .btn-caption) {
+  text-align: center;
+  margin-inline: auto;
+}
+html body main#main .page-home #hero .hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  width: 100%;
+  max-width: 1080px;
+  margin: 28px auto 0;
+}
+html body main#main .page-home #hero :is(.hero-copy, .hero-copy > p) { width: 100%; max-width: 1080px; }
+html body main#main .page-home #hero .hero-draw {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+  pointer-events: none;
+}
+html body main#main .page-home #hero .hero-draw::before { display: none; }
+html body main#main .page-home #hero .hero-sketch-frame {
+  position: relative;
+  inset: auto;
+  width: min(864px, 100%);
+  max-width: 100%;
+  margin: 0 auto;
+  translate: none;
+}
+html body main#main .page-home #hero .hero-sketch { width: 100%; max-width: 100%; margin: 0; }
+/* Each animated phrase has its own centered line, including the shorter ending. */
+html body main#main .page-home #hero .hero-swap { display: grid; width: 100%; }
+html body main#main .page-home #hero .hero-swap > span { color: var(--color-white); text-align: center; }
+html body main#main .page-home #hero .hero-ending { color: var(--color-dream-300); }
+
+/* NAV2: Arta’s portrait keeps the figure and open door inside the tall slot. */
+header.nav #nav-how .nav-mega-card img { object-fit: cover; object-position: 50% 50%; }
+
+/* NAV3: pictures meet the right edge of all four rounded link rows. */
+header.nav #nav-advisors .nav-mega-links { display: grid; grid-template-rows: auto repeat(4, minmax(120px, 1fr)); }
+header.nav #nav-advisors .nav-mega-links > li:not(.nav-mega-group) { display: flex; min-width: 0; }
+header.nav #nav-advisors .nav-mega-links a,
+header.nav #nav-advisors-phone a.nav-sub {
+  position: relative;
+  justify-content: center;
+  min-height: 120px;
+  padding: 16px calc(120px + 20px) 16px 20px;
+  overflow: hidden;
+  border-radius: 18px;
+}
+header.nav .nav-advisor-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  width: 120px;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+header.nav #nav-advisors-phone a.nav-sub { min-height: 150px; }
+
+@media (max-width: 1080px) {
+  /* Full-width rows leave room for the pictures and keep the expanded menu reachable. */
+  header.nav #nav-advisors-phone:not([hidden]) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto repeat(4, minmax(150px, 1fr));
+    gap: 8px;
+  }
+  html body header.nav #nav-panel {
+    max-height: calc(100dvh - var(--r4-nav-height) - 24px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
+@media (max-width: 1365px) {
+  html body main#main .page-home #hero .hero-swap > span { white-space: normal; }
+  /* Content can grow on tablet, rather than colliding with the wave. */
+  html body main#main :is(.ep-hero, .hw-hero, .dr-hero, .advr-hero, .adv-hero,
+    .wf-hero, .faq-hero, .st-hero, .cs-hero, .ab-hero, .nl-hero, .pod-hero, .bl-hero,
+    .privacy-hero, .apl-hero, .bk-hero, .r4-article-hero, .r4-seven-hero):is(header, section):not([hidden]) {
+    height: auto;
+    min-height: 540px;
+  }
+}
+
+@media (max-width: 600px) {
+  :root { --r4-nav-height: 81px; }
+  html body main#main :is(.ep-hero, .hw-hero, .dr-hero, .advr-hero, .adv-hero,
+    .wf-hero, .faq-hero, .st-hero, .cs-hero, .ab-hero, .nl-hero, .pod-hero, .bl-hero,
+    .privacy-hero, .apl-hero, .bk-hero, .r4-article-hero, .r4-seven-hero):is(header, section):not([hidden]) {
+    height: auto;
+    min-height: 0;
+  }
+  html body main#main :is(.ep-hero, .hw-hero, .dr-hero, .advr-hero, .adv-hero,
+    .wf-hero, .faq-hero, .st-hero, .cs-hero, .ab-hero, .nl-hero, .pod-hero, .bl-hero,
+    .privacy-hero, .apl-hero, .bk-hero, .r4-article-hero, .r4-seven-hero)
+    > :is([class*="hero-inner"]) { width: calc(100% - 43.36px); padding: 40px 0; }
+  html body main#main :is(.ep-hero, .hw-hero, .dr-hero, .advr-hero, .adv-hero,
+    .wf-hero, .faq-hero, .st-hero, .cs-hero, .ab-hero, .nl-hero, .pod-hero, .bl-hero,
+    .privacy-hero, .apl-hero, .bk-hero, .r4-article-hero, .r4-seven-hero)
+    > :is(.hero-wave, .bk-wave-top):not([hidden]) { flex-basis: 40px; height: 40px; }
+  html body main#main .bk-wave-top svg { height: 40px; }
+  html body main#main .pp-desktop-break { display: none; }
+  html body main#main h1.r4-phrase-title { font-size: 32px; }
+  html body main#main .page-home #hero .hero-swap > span { white-space: normal; }
+  html body main#main .page-home #hero :is(.hero-inner, .hero-copy) { padding-inline: 0; }
+  html body main#main .page-home #hero .hero-inner { width: calc(100% - 43.36px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body main#main .page-home #hero .hero-swap > span { animation: none !important; }
+  html body main#main .page-home #hero .hero-swap-a { opacity: 1; }
+  html body main#main .page-home #hero .hero-swap-b { display: none; }
+}
