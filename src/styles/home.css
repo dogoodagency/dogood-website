@@ -4772,8 +4772,8 @@ button.btn-subscribe:focus-visible,
   color: var(--pink-text);
 }
 
-#case-v p.t-kicker {
-  color: #28dbb0;
+.page-home #case-v p.t-kicker {
+  color: var(--color-dream-500);
 }
 
 #case-j a.btn-case,

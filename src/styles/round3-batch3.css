@@ -9,6 +9,12 @@ header.nav .nav-links button {
 header.nav .nav-links button:focus-visible { outline: 2px solid var(--color-grass-500); outline-offset: 2px; }
 header.nav .nav-mega { max-height: calc(100dvh - 120px); overflow-y: auto; }
 header.nav .nav-mega-visual { display: flex; flex-direction: column; align-items: center; gap: 16px; min-width: 0; }
+/* Keep the visible card-to-row gap equal across desktop menus. */
+@media (min-width: 1366px) {
+  header.nav .nav-mega { gap: 40px; }
+  header.nav .nav-mega-visual { width: var(--nav-card-width, 270px); }
+  header.nav .nav-foundr-tile { width: 100%; }
+}
 header.nav #nav-advisors .nav-mega-card { padding: 16px; }
 header.nav #nav-advisors .nav-mega-card :is(picture, img) { object-fit: contain; object-position: center; }
 header.nav .nav-mega-card img { pointer-events: none; }

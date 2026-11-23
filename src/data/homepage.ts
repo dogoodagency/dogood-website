@@ -50,8 +50,8 @@ export const stats = [
   { value: "165", label: "Founders Engaged" },
   { value: "55,230", label: "Leaders Impacted" },
   { value: "$19.4 Million", label: "Learning Initiatives Sold" },
-  { value: "18,360", label: "Session Hours" },
-  { value: "100%", label: "Client Satisfaction Score" },
+  { value: "18,360", label: "Coaching Hours" },
+  { value: "100%", label: "Client Satisfaction" },
 ] as const;
 
 
