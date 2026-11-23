@@ -31,7 +31,7 @@ const heroEdge = edgeAbove("#2A0B4F");
 const tintEdge = edgeAbove(tint);
 const whiteEdge = edgeAbove(white);
 const logoEdge = edgeAbove(logoBg);
-const closingBg = "#F3FFFB";
+const closingBg = "#FFFFFF";
 const footerEdge = edgeAbove(closingBg);
 
 // Round-robin into columns: 3 for desktop, 2 for tablet.
@@ -51,7 +51,7 @@ const cols2 = [0, 1].map((i) => stories.filter((_, idx) => idx % 2 === i));
       <div class="st-hero-inner">
         <div class="st-hero-copy">
           <h1 class="r4-phrase-title">Founder stories<br class="pp-desktop-break" /> before and after the sale</h1>
-          <p>Anonymized stories from our founders, before and after the sale. We keep names private so they can be candid.</p>
+          <p>Anonymized stories from our founders, before and after the sale.<br />We keep names private so they can be candid.</p>
         </div>
       </div>
       <Wave fill={tint} edge={heroEdge} />
@@ -90,7 +90,7 @@ const cols2 = [0, 1].map((i) => stories.filter((_, idx) => idx % 2 === i));
                   <p class="st-case-intro">{c.intro}</p>
                   <h4>The problem</h4>
                   <p class="st-case-text st-problem">{c.problem}</p>
-                  <a class="btn-teal" href={c.href}>Read {c.who ?? "the"}'s full story</a>
+                  <a class:list={["btn-teal", { "r5-button-heart": c.who === "J" }]} href={c.href}>Read {c.who ?? "the"}'s full story</a>
                 </div>
               </li>
             ))

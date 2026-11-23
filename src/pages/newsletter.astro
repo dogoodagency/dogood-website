@@ -11,7 +11,7 @@ const SHOW_PDF_DOWNLOADS = false;
 const tint = "#F5F2FF";
 const heroEdge = edgeAbove("#2A0B4F");
 const bandEdge = edgeAbove(tint);
-const footerEdge = edgeAbove(tint);
+const footerEdge = edgeAbove("#FFFFFF");
 
 // MailerLite form already used by the footer and the old newsletter.md page.
 // Base.astro's global script handles every form.js-subscribe. Do not create new forms.
@@ -250,7 +250,7 @@ const heroLine =
   title="The DoGood newsletter: coaching before and after the sale"
   description="Honest notes and coaching insights for founders before and after selling a business, in your inbox. Plus seven free questions for the months after the sale."
   canonical="https://www.dogoodagency.co/newsletter"
-  footerStrip={tint}
+  footerStrip="#FFFFFF"
   footerEdge={footerEdge}
 >
   <article class="nl-page">
@@ -258,13 +258,10 @@ const heroLine =
       <!-- Hero image moved to the sign-up section; text centred in a wider frame (Seb, 18 Nov 2026). -->
       <div class="nl-hero-inner nl-hero-center">
         <div class="nl-copy">
+          <!-- R5-GROVA: new newsletter name + intro -->
           <p class="nl-eyebrow">The DoGood newsletter</p>
           <h1>Before and after the sale</h1>
           <p class="nl-lede">{heroLine}</p>
-          <div class="nl-hero-actions">
-            <a class="btn-teal" href="#questions">Read the 7 questions</a>
-            <a class="nl-btn-ghost" href="#book">Read the prologue</a>
-          </div>
         </div>
 
       </div>
@@ -338,6 +335,7 @@ const heroLine =
 
     <section class="nl-band nl-band-tint" id="book" aria-labelledby="nl-book-title">
       <div class="nl-well">
+        <!-- R5-GROVA: new newsletter name + intro -->
         <div class="nl-book">
           <span class="nl-badge">First chapter December 15</span>
           <h2 id="nl-book-title">Before and After the Sale</h2>
@@ -415,6 +413,7 @@ const heroLine =
       <div class="nl-well">
         <h2 id="nl-chapters-title">The chapters</h2>
         <p class="nl-intro">One chapter every two weeks, each built on real, anonymized stories. Here is what is coming. Chapters open here as they arrive.</p>
+        <!-- R5-GROVA: 6 chapters from Grova replace these -->
         <ol class="nl-chapters">
           {
             chapters.map((chapter) => (
@@ -442,11 +441,11 @@ const heroLine =
               ))
           }
         </ol>
-
+        <p class="nl-more-to-come">More to come.</p>
       </div>
     </section>
 
-    <section class="nl-band nl-band-tint" aria-labelledby="nl-closing-title">
+    <section class="nl-band nl-closing-band" aria-labelledby="nl-closing-title">
       <div class="nl-well">
         <div class="nl-closing closing-unframed">
           <h2 class="nl-closing-label" id="nl-closing-title">Ready for more than reading?</h2>

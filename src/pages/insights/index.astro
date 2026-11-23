@@ -237,7 +237,7 @@ import { getAuthor } from "../../data/authors";
             {founderPosts.slice(0, 3).map((p) => <li class="bli-item"><BlogCard post={p} variant="grid" /></li>)}
           </ul>
           <div class="bli-aud-foot">
-            <a class="btn-teal" href="/insights?for=founders#bl-latest" data-bl-set-aud="founders">All founder articles</a>
+            <a class="btn-teal" href="/insights?audience=founders" data-bl-set-aud="founders">All founder articles</a>
             <ul class="bli-pills" aria-label="Founder topics">
               {
                 founderCats.map((c) => (
@@ -262,7 +262,7 @@ import { getAuthor } from "../../data/authors";
             )
           }
           <div class="bli-aud-foot">
-            <a class="btn-teal" href="/advisor-center">Visit the Advisor Center</a>
+            <a class="btn-teal r5-button-heart" href="/insights?audience=advisors" data-bl-set-aud="advisors">All advisor articles</a>
             <ul class="bli-pills" aria-label="Advisor topics">
               {
                 advisorCats.map((c) => (
@@ -394,8 +394,9 @@ import { getAuthor } from "../../data/authors";
       const url = new URL(window.location.href);
       if (term) url.searchParams.set("q", term);
       else url.searchParams.delete("q");
-      if (audience !== "all") url.searchParams.set("for", audience);
-      else url.searchParams.delete("for");
+      url.searchParams.delete("for");
+      if (audience !== "all") url.searchParams.set("audience", audience);
+      else url.searchParams.delete("audience");
       window.history.replaceState(null, "", url);
     };
 
@@ -516,10 +517,10 @@ import { getAuthor } from "../../data/authors";
       input.focus({ preventScroll: true });
     });
 
-    // /insights?q=family&for=founders pre-fills the search and the audience switch.
+    // /insights?q=family&audience=founders pre-fills the search and the audience switch.
     const params = new URLSearchParams(window.location.search);
     const preset = params.get("q");
-    const presetFor = params.get("for");
+    const presetFor = params.get("audience") ?? params.get("for");
     if (preset && input) input.value = preset;
     if (presetFor && presetFor in labels) audience = presetFor;
     if (preset || (presetFor && presetFor in labels)) run();
