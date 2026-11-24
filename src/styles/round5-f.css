@@ -29,6 +29,11 @@ html body main#main .wf-page-overview .wf-members .wf-photo {
 }
 html body main#main .wf-page-overview .wf-photo::before { content: none; }
 
+/* Preserve the replacement portrait's headroom in the smaller team links too. */
+html body main#main :is(.wfp-av, .hw-wf-photo) img[src*="/katrin@"] {
+  object-position: center top;
+}
+
 /* Keep the referral steps beside the introduction where there is room. */
 @media (min-width: 1024px) {
   html body main#main .adv-referrals-page .fl--advisor .fl-copy {

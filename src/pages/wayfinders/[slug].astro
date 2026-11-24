@@ -135,7 +135,7 @@ const jsonLd = {
                       <span class="wfp-av" style={`--wf-tint:${o.tint}`}>
                         <picture>
                           <source type="image/webp" srcset={`${o.photo.base}@1x.webp`} />
-                          <img src={`${o.photo.base}@1x.png`} width="44" height="44" alt="" loading="lazy" decoding="async" />
+                          <img src={`${o.photo.base}@1x.webp`} width={o.photo.width} height={o.photo.height} alt="" loading="lazy" decoding="async" />
                         </picture>
                       </span>
                       <span>{o.name}</span>

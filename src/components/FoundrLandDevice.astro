@@ -5,7 +5,7 @@ interface Props {
 }
 const { view, tags = false } = Astro.props;
 const phone = view.startsWith("phone-");
-const advisorPage = Astro.url.pathname.replace(/\/$/, "");
+const advisorPage = Astro.url.pathname.replace(/\.html$/, "").replace(/\/$/, "");
 const artwork = advisorPage === "/advisor-center" ? "fl-phone-advisor" : advisorPage === "/advisor-center/referrals" ? "fl-laptop-referrals" : undefined;
 const image = `/media/r5/fl-${view}`;
 ---
