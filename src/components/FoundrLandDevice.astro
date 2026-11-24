@@ -5,9 +5,21 @@ interface Props {
 }
 const { view, tags = false } = Astro.props;
 const phone = view.startsWith("phone-");
+const advisorPage = Astro.url.pathname.replace(/\/$/, "");
+const artwork = advisorPage === "/advisor-center" ? "fl-phone-advisor" : advisorPage === "/advisor-center/referrals" ? "fl-laptop-referrals" : undefined;
 const image = `/media/r5/fl-${view}`;
 ---
 
+{artwork ? (
+  <figure class:list={["fl-arta-device", phone ? "fl-arta-device--phone" : "fl-arta-device--laptop"]} data-arta="R5-FL">
+    <img src={`/media/r5/${artwork}@1x.webp`} srcset={`/media/r5/${artwork}@1x.webp 1x, /media/r5/${artwork}@2x.webp 2x`} width={phone ? 330 : 960} height={phone ? 671 : 587} alt="FOUNDR.land founder journey screen" loading="lazy" decoding="async" />
+    <figcaption class="fl-by">Developed by DoGood Agency</figcaption>
+    {tags && <div class="fl-arta-tags">
+      <span>7 days of guided reflection</span>
+      <span>Your next chapter</span>
+    </div>}
+  </figure>
+) : (
 <figure class:list={["fl-device-figure", phone ? "fl-device-figure--phone" : "fl-device-figure--laptop"]}>
   {tags && <div class="fl-device-tags">
     <span>7 days of guided reflection</span>
@@ -21,3 +33,4 @@ const image = `/media/r5/fl-${view}`;
   </div>
   <figcaption class="fl-by">Developed by DoGood Agency</figcaption>
 </figure>
+)}

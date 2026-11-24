@@ -14,11 +14,14 @@ const pages = tool === "signals" ? [
   ...[1, 2, 3].map((page) => ({ src: `/media/r4/seven-questions-inside-${page}`, width: 300, height: 424 })),
 ] : [{ src: "/media/r4/planner-cover", width: 300, height: 424 }];
 const arta = tool === "readiness" ? "A2" : tool === "signals" ? "A3" : tool === "planner" ? "A4" : "A6";
+const composite = !detail && tool !== "planner" ? `/media/r5/tool-${tool === "readiness" ? "readiness-check" : tool === "signals" ? "signals-guide" : "seven-questions"}` : undefined;
 const readiness = `/media/r4/readiness-composite${detail ? "-dream25" : ""}`;
 ---
 
-<div class:list={["advr-tool-visual", `advr-tool-visual--${tool}`, detail && "advr-tool-visual--detail"]} aria-hidden="true">
-  {tool === "readiness" ? (
+<div class:list={["advr-tool-visual", `advr-tool-visual--${tool}`, detail && "advr-tool-visual--detail", composite && "advr-tool-visual--composite"]} aria-hidden="true">
+  {composite ? (
+    <img data-arta="R5-TOOLS" src={`${composite}@1x.webp`} srcset={`${composite}@1x.webp 1x, ${composite}@2x.webp 2x`} width="528" height="330" alt="" loading="lazy" decoding="async" />
+  ) : tool === "readiness" ? (
     <img data-arta={arta} src={`${readiness}@1x.webp`} srcset={`${readiness}@1x.webp 1x, ${readiness}@2x.webp 2x`} width="480" height="300" alt="" aria-hidden="true" loading="lazy" decoding="async" />
   ) : pages.map((page) => (
     <img data-arta={arta} src={`${page.src}@1x.webp`} srcset={`${page.src}@1x.webp 1x, ${page.src}@2x.webp 2x`} width={page.width} height={page.height} alt="" aria-hidden="true" loading="lazy" decoding="async" />
