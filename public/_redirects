@@ -99,3 +99,7 @@
 # Seb round 2, 22 Nov 2026: membership lives under Founderland.
 /founderland-membership   https://www.dogoodagency.co/founderland/membership  301
 /founderland-membership/  https://www.dogoodagency.co/founderland/membership  301
+
+# Round 5: the novel has its own address.
+/advisor-center/insights/before-and-after-the-sale  /book  301
+/advisor-center/insights/before-and-after-the-sale/  /book  301

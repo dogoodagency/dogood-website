@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 340" width="320" height="340" aria-hidden="true">
+  <!-- R5-WF seb: soft DREAM 400 shape for a DREAM 500 tile (Arta, round 5 item 78). Transparent ground. -->
+  <defs><filter id="wf-soft-seb" x="-25%" y="-25%" width="150%" height="150%"><feGaussianBlur stdDeviation="9"/></filter></defs>
+  <g fill="#58447F" filter="url(#wf-soft-seb)">
+    <path d="M278.0,115.0 C290.1,139.8 282.4,182.1 271.9,210.7 C261.3,239.4 239.8,275.4 214.5,286.9 C189.2,298.3 149.4,289.6 120.1,279.5 C90.8,269.5 51.0,251.8 38.6,226.6 C26.2,201.4 34.5,157.0 45.8,128.4 C57.1,99.9 80.9,66.5 106.5,55.4 C132.2,44.2 170.9,51.7 199.4,61.6 C228.0,71.6 265.9,90.1 278.0,115.0 Z"/>
+    <circle cx="258" cy="250" r="22"/>
+  </g>
+</svg>

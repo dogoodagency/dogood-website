@@ -106,7 +106,7 @@ export const wayfinders: Wayfinder[] = [
     hub: "Europe Hub",
     // Live text: "United Kindom" (typo fixed).
     hubExtra: "(+ UK & Central America)",
-    photo: photo("katrin", "Katrin", 447),
+    photo: photo("katrin", "Katrin", 404),
     tint: "#FDE9F0",
     flags: flagsFor("Katrin"),
     url: "/wayfinders/katrin",

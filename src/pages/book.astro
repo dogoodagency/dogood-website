@@ -1,0 +1,21 @@
+---
+import AdvisorResourcePage from "../components/AdvisorResourcePage.astro";
+import { book } from "../data/book";
+---
+
+<AdvisorResourcePage
+  title={`${book.title}: a founder novel and coaching | DoGood Agency`}
+  description={book.description}
+  path="/book"
+  robots="noindex, nofollow"
+  section="insights"
+  tone="heart"
+  name={book.title}
+  lede={book.subline}
+  blocks={[
+    { heading: "What it is", paras: [...book.body] },
+    { heading: "Chapter 1 · The Raffle", paras: [book.chapterOne] },
+  ]}
+>
+  <p class="advd-download"><a class="btn-teal btn-dream" href="/newsletter#signup">{book.signupLabel}</a></p>
+</AdvisorResourcePage>

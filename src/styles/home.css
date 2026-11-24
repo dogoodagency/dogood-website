@@ -3600,7 +3600,7 @@ header.nav .nav-mega-card {
   height: 315px;
   overflow: hidden;
   border-radius: 16px;
-  background: #1d033c;
+  background: var(--color-dream-500);
   text-decoration: none;
   container-type: size;
 }

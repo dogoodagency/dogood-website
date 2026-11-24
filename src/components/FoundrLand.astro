@@ -109,7 +109,7 @@ const days = [
           )}
 
           {kind === "advisor" && <p class="fl-note">The advisor pathway is part of the planned product, not yet a live service.</p>}
-          {kind !== "advisor" && <div class="fl-actions"><FoundrLandLink home={kind === "home"} /></div>}
+          <div class="fl-actions"><FoundrLandLink home={kind === "home"} /></div>
           {kind === "advisor" && <>
             <ol class="fl-advisor-steps">
               <li><span class="fl-advisor-n">01</span><strong>Introduce</strong><span>A simple invitation</span></li>

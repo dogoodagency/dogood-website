@@ -1,5 +1,5 @@
 ---
-import { FOUNDRLAND_URL } from "../data/foundrland";
+import { FOUNDRLAND_URL, FOUNDRLAND_LINK_LIVE } from "../data/foundrland";
 /**
  * The whole path through DoGood (Seb, 19 Nov 2026; redesigned 18:52 "more elaborate, shapes, professional and
  * fun, more space"). On /pathway, in its own DREAM 500 band.
@@ -17,7 +17,7 @@ const steps = [
   { title: "Stage 2: The Build™", detail: "By invitation, after Stage 1", chip: "12 weeks", href: "/the-build", tone: "grass2", shape: "hex", icon: "blocks" },
   { title: "IntegralContinuity™", detail: "Ongoing sessions", chip: "Ongoing", href: "/integral-continuity", tone: "heart", shape: "squircle", icon: "loop" },
   { title: "Annual Signature Retreat", detail: "Once a year, by invitation", chip: "Yearly", href: "/signature-retreat", tone: "heart2", shape: "diamond", icon: "sun" },
-  { title: "FOUNDR.land Membership", detail: "The house founders belong to", chip: "Coming soon", href: "/founderland/membership", tone: "heart3", shape: "circle", icon: "house" },
+  { title: "FOUNDR.land Membership", detail: "The house founders belong to", chip: "", href: "/founderland/membership", tone: "heart3", shape: "circle", icon: "house" },
   // Optional 8th phase (Seb, 20 Nov 2026): no page of its own.
   { title: "Life-long friends", detail: "Where the journey can lead", chip: "Become", href: "", tone: "rose", shape: "circle", icon: "heart" },
 ];
@@ -104,13 +104,13 @@ let roadOn = `M${X(6)} ${Y(6)}` + seg(6, 7) + ` C ${(X(7) + endX) / 2} ${Y(7)}, 
           <li class:list={["jr-step", `jr-step--${s.tone}`, i % 2 === 0 ? "jr-step--up" : "jr-step--down"]} style={`--i:${i}`}>
             {s.href ? (
               <a class="jr-card" href={s.href}>
-                <span class="jr-chip">{s.chip}</span>
+                {s.chip && <span class="jr-chip">{s.chip}</span>}
                 <span class="jr-title">{s.title}</span>
                 <span class="jr-detail">{s.detail}<span class="jr-go" aria-hidden="true">→</span></span>
               </a>
             ) : (
               <div class="jr-card jr-card--optional">
-                <span class="jr-chip">{s.chip}</span>
+                {s.chip && <span class="jr-chip">{s.chip}</span>}
                 <span class="jr-title">{s.title}</span>
                 <span class="jr-detail">{s.detail}</span>
               </div>
@@ -136,7 +136,7 @@ let roadOn = `M${X(6)} ${Y(6)}` + seg(6, 7) + ` C ${(X(7) + endX) / 2} ${Y(7)}, 
         <span class="jr-lane-flow"></span>
         {steps.map((_, i) => <span class="jr-lane-dot" style={`--i:${i}`}></span>)}
       </div>
-      {FOUNDRLAND_URL && <a class="jr-lane-link" href={FOUNDRLAND_URL} target="_blank" rel="noopener" aria-label="Visit FOUNDR.land (opens in a new tab)">Visit FOUNDR.land ↗</a>}
+      {FOUNDRLAND_LINK_LIVE && <a class="jr-lane-link" href={FOUNDRLAND_URL} target="_blank" rel="noopener" aria-label="Visit FOUNDR.land (opens in a new tab)">Visit FOUNDR.land ↗</a>}
     </div>
   </div>
 </nav>

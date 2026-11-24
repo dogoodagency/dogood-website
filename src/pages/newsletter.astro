@@ -4,9 +4,10 @@ import Base from "../layouts/Base.astro";
 import Wave from "../components/Wave.astro";
 import { edgeAbove } from "../data/edge-line";
 
+import { book } from "../data/book";
+
 import SevenQuestionsBand from "../components/SevenQuestionsBand.astro";
 
-const SHOW_PDF_DOWNLOADS = false;
 
 const tint = "#F5F2FF";
 const heroEdge = edgeAbove("#2A0B4F");
@@ -215,40 +216,13 @@ interface Chapter {
 }
 const chapters: Chapter[] = [];
 
-const upcoming = [
-  {
-    number: 1,
-    date: "December 15",
-    title: "The quiet after the deal",
-    about: "The first weeks after closing, when the calls stop and freedom feels stranger than expected. What is happening, and why it is so common.",
-  },
-  {
-    number: 2,
-    date: "January 12",
-    title: "The decision that was still open",
-    about: "Before the sale: how a founder can be sure they want to sell and still pull on the brakes, and what helps the decision settle.",
-  },
-  {
-    number: 3,
-    date: "January 26",
-    title: "The people who waited",
-    about: "A partner, children, old friends. What the years of building cost the people around the founder, and how families find each other again.",
-  },
-  {
-    number: 4,
-    date: "February 9",
-    title: "Who am I without the company?",
-    about: "When the title goes, the question stays. How founders rebuild a sense of identity and purpose that doesn't depend on running something.",
-  },
-];
-
-const heroLine =
-  "A founder's story in chapters, every two weeks.";
+const upcoming = book.chapters;
+const heroLine = book.newsletterSubline;
 ---
 
 <Base
-  title="The DoGood newsletter: coaching before and after the sale"
-  description="Honest notes and coaching insights for founders before and after selling a business, in your inbox. Plus seven free questions for the months after the sale."
+  title={`${book.newsletterName}: founder coaching | DoGood Agency`}
+  description={book.description}
   canonical="https://www.dogoodagency.co/newsletter"
   footerStrip="#FFFFFF"
   footerEdge={footerEdge}
@@ -258,9 +232,8 @@ const heroLine =
       <!-- Hero image moved to the sign-up section; text centred in a wider frame (Seb, 18 Nov 2026). -->
       <div class="nl-hero-inner nl-hero-center">
         <div class="nl-copy">
-          <!-- R5-GROVA: new newsletter name + intro -->
           <p class="nl-eyebrow">The DoGood newsletter</p>
-          <h1>Before and after the sale</h1>
+          <h1>{book.newsletterName}</h1>
           <p class="nl-lede">{heroLine}</p>
         </div>
 
@@ -335,37 +308,17 @@ const heroLine =
 
     <section class="nl-band nl-band-tint" id="book" aria-labelledby="nl-book-title">
       <div class="nl-well">
-        <!-- R5-GROVA: new newsletter name + intro -->
         <div class="nl-book">
           <span class="nl-badge">First chapter December 15</span>
-          <h2 id="nl-book-title">Before and After the Sale</h2>
-          <p>A book for founders on the inner side of selling, told through real, anonymized stories. We're writing it in the open, one chapter at a time, for everyone in <span class="pink-soft nl-founder"><strong>FOUNDR</strong>.land</span>.</p>
+          <h2 id="nl-book-title">{book.title}</h2>
+          <p>{book.intro}</p>
+          <p>The question at its heart: {book.question}</p>
         </div>
 
-        <div class="nl-prologue" id="prologue">
-          <h3 class="nl-prologue-title">Prologue: The day after</h3>
-          <div class="nl-prose">
-            <p>The signing is usually quieter than people expect. There are papers, a few handshakes, maybe a dinner. Then you go home.</p>
-            <p>The next morning, your phone is quieter too. The questions that filled your days for years now go to someone else. The team you built still turns up to work, just not for you. You're free, and that's exactly what you worked for.</p>
-            <p class="nl-emph">So why does it feel so strange?</p>
-            <p>Founders rarely talk about this part. From the outside, the sale looks like the finish line, and everyone congratulates you. On the inside, something else is happening. The company gave your days a shape, it gave you a role, and in many ways it told you who you were. When it goes, all three go with it, at the same time.</p>
-            <p>This isn't a rare reaction. In a 2026 Concordia University study of founders who sold their companies, every founder interviewed described depression-like feelings after the exit. They were successful, capable people, and it happened to all of them.</p>
-            <p>Most of them handled it the way founders handle everything: by moving fast. A new venture, an investment, a board seat, a packed calendar. It's the most natural response in the world, and it's often the one that costs the most, because the next chapter gets chosen before the last one has been understood.</p>
-            <p>This book is about the space in between. It's about what founders feel before the sale, during it and in the months after, and what helps. Every story in it is real. Names and details are changed, so nobody can be recognized. Some chapters are about the founder, and some are about the people around them: a partner, an advisor, a family that waited a long time.</p>
-            <p>We're writing it in the open, one chapter every two weeks. Read it slowly if you can, and pass it on to someone who's about to sign.</p>
-            <p class="nl-emph">We'll start where the deal ends.</p>
-            <p class="nl-source">Source: Byezhanova, Concordia University, 2026.</p>
-          </div>
-          {SHOW_PDF_DOWNLOADS && (
-            <div class="nl-download">
-              <a
-                class="btn-teal"
-                href="/downloads/before-and-after-the-sale-prologue.pdf"
-                target="_blank"
-                rel="noopener"
-              >Download the prologue (PDF)</a>
-            </div>
-          )}
+        <div class="nl-prologue">
+          <h3 class="nl-prologue-title">{book.subline}</h3>
+          <div class="nl-prose"><p>{book.chapterOne}</p></div>
+          <a class="btn-teal btn-dream" href="/book">{book.title}</a>
         </div>
       </div>
     </section>
@@ -375,7 +328,7 @@ const heroLine =
         <div class="nl-signup nl-signup-split" data-nl-signup>
           <div class="nl-signup-head">
           <h2 id="nl-signup-title">Keep reading</h2>
-          <p class="nl-intro">Get each new chapter of Before and After the Sale when it comes out, along with our notes on life after the sale. It's one email every two weeks, starting December 15, then January 12 and January 26.</p>
+          <p class="nl-intro">{book.body[3]}</p>
           </div>
           <div class="nl-signup-copy">
           <form class="nl-form js-subscribe" action={action} method="post">
@@ -383,7 +336,7 @@ const heroLine =
             <input type="hidden" name="anticsrf" value="true" />
             <label for="nl-email" class="visually-hidden">Email</label>
             <input id="nl-email" type="email" name="fields[email]" placeholder="Email" autocomplete="email" required />
-            <button class="btn-teal" type="submit">Send me the chapters</button>
+            <button class="btn-teal" type="submit">{book.signupLabel}</button>
             <p data-status hidden></p>
           </form>
           </div>
@@ -412,8 +365,7 @@ const heroLine =
     <section class="nl-band nl-band-tint" id="chapters" aria-labelledby="nl-chapters-title">
       <div class="nl-well">
         <h2 id="nl-chapters-title">The chapters</h2>
-        <p class="nl-intro">One chapter every two weeks, each built on real, anonymized stories. Here is what is coming. Chapters open here as they arrive.</p>
-        <!-- R5-GROVA: 6 chapters from Grova replace these -->
+        <p class="nl-intro">{book.newsletterSubline}</p>
         <ol class="nl-chapters">
           {
             chapters.map((chapter) => (
@@ -441,7 +393,7 @@ const heroLine =
               ))
           }
         </ol>
-        <p class="nl-more-to-come">More to come.</p>
+        <p class="nl-more-to-come">More to come: {book.more}</p>
       </div>
     </section>
 
@@ -465,7 +417,7 @@ const heroLine =
 
   // Base.astro resets the button to "Subscribe" after an error. Keep our label.
   if (submit) {
-    const label = submit.textContent?.trim() || "Send me the chapters";
+    const label = submit.textContent?.trim() || "Send me each chapter";
     new MutationObserver(() => {
       if ((submit.textContent ?? "").trim() === "Subscribe") submit.textContent = label;
     }).observe(submit, { childList: true, characterData: true, subtree: true });

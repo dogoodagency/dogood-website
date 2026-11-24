@@ -1,10 +1,13 @@
 ---
+import { FOUNDRLAND_URL } from "../data/foundrland";
 interface Props { home?: boolean; }
 const { home = false } = Astro.props;
 const isAdvisorPage = /^\/advisor-center(?:\/|$)/.test(Astro.url.pathname);
 ---
 
-{!isAdvisorPage && (
+{isAdvisorPage ? (
+  <a class="btn-teal btn-dream" href={FOUNDRLAND_URL} target="_blank" rel="noopener">Visit FOUNDR.land</a>
+) : (
   <a class:list={["fl-advisor-btn", !home && "fl-advisor-btn--dream"]} href="/advisor-center">
     Advisor Center
     <span class="fl-advisor-disc" aria-hidden="true">

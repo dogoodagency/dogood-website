@@ -1,8 +1,6 @@
-// The foundr.land website. Set to the public address when foundr.land goes live; while it is null, the site shows
-// the foundr.land logo and sections without any link (Seb, 20 Nov 2026: the Vercel preview asks for a login).
-// Preview (login only): https://foundr-land-git-preview-homepage-v1-do-good-agency.vercel.app/
-export const FOUNDRLAND_URL: string | null = null;
+// Public header logo and Advisor Center section buttons (Seb, 24 Nov 2026).
+export const FOUNDRLAND_URL = "https://foundr.land";
 
-// Section pills can go live independently of the header logo and Pathway lane.
+// Other surfaces stay as they were; publishing the header must not reveal lane links or pills.
 export const FOUNDRLAND_LINK_LIVE = false;
-export const FOUNDRLAND_PUBLIC_URL = "https://foundr.land";
+export const FOUNDRLAND_PUBLIC_URL = FOUNDRLAND_URL;

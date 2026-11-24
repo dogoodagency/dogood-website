@@ -7,6 +7,7 @@
 import "../styles/advisors.css";
 import "../styles/advisors-resources.css";
 import Base from "../layouts/Base.astro";
+import FoundrLandLink from "./FoundrLandLink.astro";
 import Wave from "./Wave.astro";
 import AdvisorNav from "./AdvisorNav.astro";
 import AdvisorToolVisual from "./AdvisorToolVisual.astro";
@@ -14,6 +15,7 @@ import { edgeAbove } from "../data/edge-line";
 
 interface Block {
   heading: string;
+  foundrlandLink?: boolean;
   paras?: string[];
   list?: string[];
   steps?: { title: string; text: string }[];
@@ -101,6 +103,7 @@ const back = section === "tools"
             <section class="advd-block">
               <h2>{b.heading}</h2>
               {b.paras?.map((p) => <p set:html={p} />)}
+              {b.foundrlandLink && <FoundrLandLink />}
               {b.list && <ul class="advd-list">{b.list.map((t) => <li>{t}</li>)}</ul>}
               {b.steps && (
                 <ol class="advd-steps">

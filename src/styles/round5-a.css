@@ -6,7 +6,6 @@ html body header.nav #nav-how .nav-mega-card {
   grid-template-rows: minmax(0, 1fr) auto;
   gap: 14px;
   padding: 14px;
-  background: #1D033C;
 }
 html body header.nav #nav-how .nav-mega-card picture { min-height: 0; }
 html body header.nav #nav-how .nav-mega-card img {
