@@ -1,0 +1,49 @@
+/* Round 5 part f: delivered artwork and the live FOUNDR.land link. */
+
+/* Services uses the same uncropped, centered composition as Pathway. */
+html body header.nav #nav-products .nav-mega-card {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 14px;
+  padding: 14px;
+}
+html body header.nav #nav-products .nav-mega-card picture { min-height: 0; }
+html body header.nav #nav-products .nav-mega-card img {
+  object-fit: contain;
+  object-position: center;
+}
+html body header.nav #nav-products .nav-mega-label {
+  position: static;
+  max-width: 100%;
+}
+
+/* Arta's individual shapes replace the temporary CSS circles. */
+html body main#main .wf-page-overview .wf-member {
+  border: 0;
+  box-shadow: none;
+}
+html body main#main .wf-page-overview .wf-members .wf-photo {
+  background: #2A0B4F var(--wf-shape) center / cover no-repeat;
+  border: 0;
+  box-shadow: none;
+}
+html body main#main .wf-page-overview .wf-photo::before { content: none; }
+
+/* Keep the referral steps beside the introduction where there is room. */
+@media (min-width: 1024px) {
+  html body main#main .adv-referrals-page .fl--advisor .fl-copy {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    column-gap: 56px;
+    max-width: none;
+  }
+  .adv-referrals-page .fl--advisor .fl-copy > :not(.fl-advisor-steps) { grid-column: 1; }
+  html body main#main .adv-referrals-page .fl--advisor .fl-advisor-steps {
+    grid-column: 2;
+    grid-row: 1 / 7;
+    grid-template-columns: minmax(0, 1fr);
+    align-self: center;
+    gap: 28px;
+    margin: 0;
+  }
+}

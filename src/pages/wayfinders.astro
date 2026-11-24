@@ -220,7 +220,7 @@ const photoFit: Record<string, { h: number; align: "left" | "right" | "center" }
               const more = lineLabels.slice(VISIBLE_LINES);
               return (
                 <li class="wf-member">
-                  <div data-arta="R5-WF" data-wayfinder={w.name} class:list={["wf-photo", `wf-photo--${photoFit[w.name]?.align ?? "center"}`]} style={`--wf-tint:${w.tint};--wf-img-h:${photoFit[w.name]?.h ?? 340}px`}>
+                  <div data-arta="R5-WF" data-wayfinder={w.name} class:list={["wf-photo", `wf-photo--${photoFit[w.name]?.align ?? "center"}`]} style={`--wf-tint:${w.tint};--wf-img-h:${photoFit[w.name]?.h ?? 340}px;--wf-shape:url(/media/r5/wf-shape-${w.slug}.svg)`}>
                     <picture>
                       <source type="image/webp" srcset={`${w.photo.base}@1x.webp 320w, ${w.photo.base}@2x.webp 640w`} sizes="(min-width: 1024px) 340px, (min-width: 640px) 320px, 70vw" />
                       <img src={`${w.photo.base}@1x.webp`} width={w.photo.width} height={w.photo.height} alt={w.photo.alt} loading="lazy" decoding="async" />
