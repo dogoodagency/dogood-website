@@ -7,7 +7,7 @@ const roleFor = (name: string) => name.includes("M&A") ? "M&A" : name;
 
 <section class="av-quotes" data-advisor-quotes aria-labelledby="advisor-quote-title">
   <h2 id="advisor-quote-title">In their words</h2>
-  <p>Anonymous words from our conversations with founders and the advisors who work with them, before and after the sale.</p>
+  <p class="av-intro">Anonymous words from our conversations with founders and the advisors who work with them,<br class="av-desktop-break" /> before and after the sale.</p>
   <div class="av-filters" role="group" aria-label="Filter quotes by role" hidden>
     {roles.map((role) => <button type="button" data-role={role} aria-pressed={role === "All" ? "true" : "false"}>{role}</button>)}
   </div>
