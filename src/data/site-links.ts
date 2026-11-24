@@ -90,7 +90,7 @@ export const advisorLinks = {
   resources: [
     {
       href: "/advisor-center/client-tools",
-      label: "Free tools",
+      label: "Client tools",
       detail: "A readiness check, a warning-signs guide and a planner. Free to use.",
     },
     {

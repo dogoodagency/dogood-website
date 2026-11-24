@@ -646,6 +646,7 @@
       const stones = at("#first-draw");
       const firstCard = at("#first-card");
       const apply1 = at("#apply-first .btn-apply");
+      const guide = at(".sq-band--home .sq-inner");
       const forYou = at("#for-you .foryou-grid--pair");
       const notYou = at("#for-you .card.rose");
       const flyer = at(".why-sketch");
@@ -698,6 +699,10 @@
         down(stones, 0.45, 1);
         down(firstCard, 0.2, 0.85);
         if (apply1) put(apply1.cx, apply1.cy);
+        if (guide) {
+          put(guide.cx, guide.y - 48);
+          put(guide.cx, guide.bottom + 48);
+        }
         down(forYou, 0.15, 0.9);
         down(notYou, 0.15, 0.85);
         down(whyCard, 0.2, 0.85);
@@ -793,6 +798,12 @@
         founderPts.push({ x: lane, y: apply1.y - 16 });
         founderPts.push({ x: lane, y: apply1.cy });
         founderPts.push({ x: lane, y: apply1.bottom + founderStroke });
+      }
+      if (guide) {
+        put(guide.cx, guide.y - 48);
+        put(guide.cx, guide.y);
+        put(guide.cx, guide.bottom);
+        put(guide.cx, guide.bottom + 48);
       }
       if (forYou) {
         put(lane, forYou.y + founderStroke);

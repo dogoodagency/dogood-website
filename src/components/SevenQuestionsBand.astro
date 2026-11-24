@@ -8,6 +8,7 @@ interface Props {
 }
 const { variant, layout = variant === "home" ? "preview" : "compact" } = Astro.props;
 const home = variant === "home";
+const standardButtons = ["home", "newsletter", "reset"].includes(variant);
 const preview = layout === "preview";
 const titleId = `seven-questions-${variant}-title`;
 ---
@@ -20,10 +21,9 @@ const titleId = `seven-questions-${variant}-title`;
       <p class="sq-eyebrow">Free guide</p>
       <h2 id={titleId}>{preview ? <><span class="sq-title-main">The 7 questions</span><span class="sq-title-sub">for the first 90 days after the sale</span></> : "The 7 questions for the first 90 days after the sale"}</h2>
       <p class="sq-intro">{home ? "Worth reading before you sell, too." : "For founders who have already sold."}</p>
-      <ol class="sq-questions">
-        {(home ? sevenQuestions.slice(0, 3) : sevenQuestions).map((question) => <li>{question}</li>)}
-      </ol>
-      {home && <p class="sq-more">and four more</p>}
+      {!home && variant !== "reset" && <ol class="sq-questions">
+        {sevenQuestions.map((question) => <li>{question}</li>)}
+      </ol>}
       </>}
     </div>
     <div class="sq-preview">
@@ -33,14 +33,14 @@ const titleId = `seven-questions-${variant}-title`;
       <div class="sq-actions">
         <!-- Newsletter already prints the questions above this band and keeps only the download. -->
         {!Astro.slots.has("actions") && variant !== "newsletter" &&
-        <a class="sq-control sq-read" href="/seven-questions">
+        <a class={standardButtons ? "btn-teal btn-dream sq-standard" : "sq-control sq-read"} href="/seven-questions">
           <span>{home ? "Read the 7 questions" : "Sit with the 7 questions"}</span>
-          <span class="sq-disc" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+          {!standardButtons && <span class="sq-disc" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg></span>}
         </a>
         }
-        <a class="sq-control sq-download" href={sevenQuestionsPdf} target="_blank" rel="noopener">
+        <a class={standardButtons ? "btn-teal btn-dream sq-standard" : "sq-control sq-download"} href={sevenQuestionsPdf} target="_blank" rel="noopener">
           <span>Download the PDF</span>
-          <span class="sq-disc" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+          {!standardButtons && <span class="sq-disc" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg></span>}
         </a>
         {Astro.slots.has("actions") && <slot name="actions" />}
       </div>

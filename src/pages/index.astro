@@ -176,6 +176,44 @@ const afterSale = [
     <Wave fill="#F5F2FF" edge="#110027" />
   </section>
 
+  <script>
+    // R6.1: measure the left man's lowest boot (y=450 in the 970×673 artwork)
+    // against the visible wave, rather than the transparent image's bottom.
+    const hero = document.querySelector<HTMLElement>(".page-home #hero");
+    const frame = hero?.querySelector<HTMLElement>(".hero-sketch-frame");
+    const sketch = hero?.querySelector<HTMLImageElement>(".hero-sketch");
+    const wave = hero?.querySelector<SVGSVGElement>(":scope > .hero-wave");
+    const edge = wave?.querySelector<SVGPathElement>(".wave-edge");
+    if (hero && frame && sketch && wave && edge) {
+      const placeHeroSketch = () => {
+        const art = sketch.getBoundingClientRect();
+        const waveBox = wave.getBoundingClientRect();
+        if (!art.width || !waveBox.width) return;
+        const currentShift = new DOMMatrixReadOnly(getComputedStyle(frame).transform).m42;
+        const feetY = art.top - currentShift + art.height * (450 / 673);
+        // The path bends left below his feet; sample the wave over that green run.
+        const pathX = Math.max(0, Math.min(1440,
+          (art.left + art.width * (200 / 970) - waveBox.left) / waveBox.width * 1440));
+        let low = 0;
+        let high = edge.getTotalLength();
+        for (let i = 0; i < 20; i++) {
+          const middle = (low + high) / 2;
+          if (edge.getPointAtLength(middle).x < pathX) low = middle;
+          else high = middle;
+        }
+        const waveY = waveBox.top + edge.getPointAtLength((low + high) / 2).y / 80 * waveBox.height;
+        const visiblePath = 100 * document.documentElement.clientWidth / 1710;
+        frame.style.setProperty("--r6-hero-shift", `${waveY - visiblePath - feetY}px`);
+      };
+      const observer = new ResizeObserver(placeHeroSketch);
+      observer.observe(hero);
+      observer.observe(frame);
+      sketch.addEventListener("load", placeHeroSketch);
+      document.fonts.ready.then(placeHeroSketch);
+      placeHeroSketch();
+    }
+  </script>
+
   <section id="clients" aria-label="Client organizations">
     <!-- Two moving rows of logo pills, same as /stories (Seb, 19 Nov 2026). Logos: src/data/stories-page.ts. -->
     <LogoRails rows={2} tone="tint" />

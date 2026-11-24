@@ -1,6 +1,13 @@
 // Grova delivery, 23 Nov 2026. Keep the launch title here so it can change once.
 export const book = {
-  "title": "The Millionaire Who Missed Monday",
+  "title": "Wealthy, Lost, and Still in a Bathrobe",
+  "tagline": "He sold the company. Nobody told him what to do on Monday.",
+  "teaser": [
+    "Frank Hollis spent twenty-eight years building a linen company in Sun Valley, California. He knows every delivery route, every supplier's kid's name, and exactly how stiff a hotel likes its pillowcases. What he doesn't know is who he is without it.",
+    "Enter a deal advisor in a very good suit, a buyer with a friendly-sounding fund, a wife who has lived in a fifteen-minute calendar slot for eleven years, and a coach with too many bracelets who asks the one question nobody else will.",
+    "The deal is coming. The money is coming. And somewhere between the champagne and the empty Monday, Frank is about to find out what's left when the work is gone."
+  ],
+  "teaserClose": "Still in his bathrobe.",
   "question": "who a founder becomes on the first Tuesday after the sale.",
   "newsletterName": "The Sale, in Chapters",
   "newsletterSubline": "A novel for founders before and after the sale, drawn from real founder experience. A new chapter every other Tuesday.",

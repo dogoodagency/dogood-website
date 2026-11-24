@@ -28,6 +28,26 @@ const { kind, line, advisorImage = "phone", advisorBackground = "dream25" } = As
 const advisorView = advisorImage === "phone" ? "phone-journey" : advisorImage;
 const uid = `fl-${kind}`;
 
+// The clarity wheel on the phone (home). Coordinates are in the 680 × 996 pixels of the phone image @2x:
+// hub at (322, 607), outer ring 135, turned 6.6° like the phone.
+const CX = 322;
+const CY = 607;
+const RR = 135;
+const at = (k: number, v: number) => {
+  const a = (Math.PI / 3) * k;
+  return [CX + Math.sin(a) * v * RR, CY - Math.cos(a) * v * RR];
+};
+const shape = (vals: number[]) => vals.map((v, k) => at(k, v).map((n) => n.toFixed(1)).join(",")).join(" ");
+const states = [
+  [0.69, 0.59, 0.57, 0.69, 0.65, 0.7],
+  [0.8, 0.72, 0.66, 0.76, 0.72, 0.84],
+  [0.74, 0.84, 0.76, 0.66, 0.8, 0.76],
+  [0.69, 0.59, 0.57, 0.69, 0.65, 0.7],
+];
+const polyValues = states.map(shape).join(";");
+const rings = [0.2, 0.4, 0.6, 0.8, 1].map((f) => shape([f, f, f, f, f, f]));
+const spokes = [0, 1, 2, 3, 4, 5].map((k) => at(k, 1));
+
 const days = [
   ["01", "Identity"],
   ["02", "Time"],
@@ -108,7 +128,6 @@ const days = [
             </>
           )}
 
-          {kind === "advisor" && <p class="fl-note">The advisor pathway is part of the planned product, not yet a live service.</p>}
           <div class="fl-actions"><FoundrLandLink home={kind === "home"} /></div>
           {kind === "advisor" && <>
             <ol class="fl-advisor-steps">
@@ -120,7 +139,37 @@ const days = [
         </div>
 
         <div class="fl-visual">
-          {kind === "home" && <FoundrLandDevice view="phone-discovery" tags />}
+          {kind === "home" && (
+            <div class="fl-phone" aria-hidden="true">
+              <picture>
+                <source type="image/webp" srcset="/media/foundrland/foundrland-app-phone-nowheel@1x.webp 1x, /media/foundrland/foundrland-app-phone-nowheel@2x.webp 2x" />
+                <img class="fl-phone-img" src="/media/foundrland/foundrland-app-phone-nowheel@1x.webp" width="340" height="498" alt="" loading="lazy" decoding="async" />
+              </picture>
+              <svg class="fl-phone-wheel" viewBox="0 0 680 996">
+                <g class="fl-wheel-grid">
+                  {rings.map((r) => <polygon points={r} />)}
+                  {spokes.map(([x, y]) => <line x1={CX} y1={CY} x2={x} y2={y} />)}
+                </g>
+                <polygon class="fl-wheel-shape" points={shape(states[0])}>
+                  <animate class="fl-smil" attributeName="points" dur="9s" repeatCount="indefinite" values={polyValues} keyTimes="0;0.33;0.66;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1" />
+                </polygon>
+                {[0, 1, 2, 3, 4, 5].map((k) => {
+                  const pts = states.map((s) => at(k, s[k]));
+                  return (
+                    <circle class="fl-wheel-node" cx={pts[0][0]} cy={pts[0][1]} r="9">
+                      <animate attributeName="cx" dur="9s" repeatCount="indefinite" values={pts.map((p) => p[0].toFixed(1)).join(";")} keyTimes="0;0.33;0.66;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1" />
+                      <animate attributeName="cy" dur="9s" repeatCount="indefinite" values={pts.map((p) => p[1].toFixed(1)).join(";")} keyTimes="0;0.33;0.66;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1" />
+                    </circle>
+                  );
+                })}
+                <circle cx={CX} cy={CY} r="8" class="fl-wheel-hub" />
+              </svg>
+              <picture>
+                <source type="image/webp" srcset="/media/foundrland/foundrland-app-badge@1x.webp 1x, /media/foundrland/foundrland-app-badge@2x.webp 2x" />
+                <img class="fl-phone-badge" src="/media/foundrland/foundrland-app-badge@1x.webp" width="141" height="65" alt="" loading="lazy" decoding="async" />
+              </picture>
+            </div>
+          )}
           {kind === "exit" && <FoundrLandDevice view="laptop-discovery" />}
 
           {kind === "reset" && (
@@ -140,12 +189,24 @@ const days = [
           )}
 
           {kind === "advisor" && <FoundrLandDevice view={advisorView} tags={advisorView.startsWith("phone-")} />}
-          {kind === "reset" && <p class="fl-by">Developed by DoGood Agency</p>}
+          {(kind === "home" || kind === "reset") && <p class="fl-by">Developed by DoGood Agency</p>}
         </div>
       </div>
     </section>
   )
 }
+
+<script>
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const syncWheelMotion = () => {
+    document.querySelectorAll<SVGSVGElement>(".fl-phone-wheel").forEach((wheel) => {
+      if (reducedMotion.matches) wheel.pauseAnimations();
+      else wheel.unpauseAnimations();
+    });
+  };
+  syncWheelMotion();
+  reducedMotion.addEventListener("change", syncWheelMotion);
+</script>
 
 <style>
   .fl {

@@ -308,17 +308,14 @@ const heroLine = book.newsletterSubline;
 
     <section class="nl-band nl-band-tint" id="book" aria-labelledby="nl-book-title">
       <div class="nl-well">
-        <div class="nl-book">
-          <span class="nl-badge">First chapter December 15</span>
+        <div class="nl-book nl-book-teaser">
           <h2 id="nl-book-title">{book.title}</h2>
-          <p>{book.intro}</p>
-          <p>The question at its heart: {book.question}</p>
-        </div>
-
-        <div class="nl-prologue">
-          <h3 class="nl-prologue-title">{book.subline}</h3>
-          <div class="nl-prose"><p>{book.chapterOne}</p></div>
-          <a class="btn-teal btn-dream" href="/book">{book.title}</a>
+          <p class="nl-book-tagline">{book.tagline}</p>
+          <div class="nl-book-teaser-body">
+            {book.teaser.map((paragraph) => <p>{paragraph}</p>)}
+          </div>
+          <p class="nl-book-close">{book.teaserClose}</p>
+          <a class="btn-teal r6-book-button" href="/book">{book.title}</a>
         </div>
       </div>
     </section>
