@@ -21,7 +21,7 @@ export function initInfinity(fig) {
     btn.setAttribute('aria-label', 'Pause animation');
 
     function reset() {
-      fig.classList.remove('is-fading');
+      fig.classList.remove('is-fading', 'is-holding');
       labels.forEach(l => l.classList.remove('is-on', 'is-now'));
       qs.forEach(p => gsap.set(p, {
         opacity: 1, visibility: 'hidden', strokeDashoffset: -GAP,
@@ -45,8 +45,12 @@ export function initInfinity(fig) {
           l.classList.toggle('is-now', j === i);
         }), i * Q + 0.1);
     });
-    tl.to({}, { duration: 2.4 })
-      .add(() => fig.classList.add('is-fading'))
+    tl.add(() => fig.classList.add('is-holding'))
+      .to({}, { duration: 2.4 })
+      .add(() => {
+        fig.classList.remove('is-holding');
+        fig.classList.add('is-fading');
+      })
       .to(qs, { opacity: 0, duration: 0.6, ease: 'power1.out' });
 
     const trigger = ScrollTrigger.create({
@@ -66,7 +70,7 @@ export function initInfinity(fig) {
           strokeDasharray: `${p.getTotalLength() - 2 * GAP} ${p.getTotalLength() * 3}`,
         }));
         labels.forEach(l => { l.classList.add('is-on'); l.classList.remove('is-now'); });
-        fig.classList.remove('is-fading');
+        fig.classList.remove('is-fading', 'is-holding');
       } else {
         reset();
         tl.restart();
@@ -86,7 +90,7 @@ export function initInfinity(fig) {
       document.removeEventListener('visibilitychange', visibility);
       btn.hidden = true;
       btn.setAttribute('aria-pressed', 'false');
-      fig.classList.remove('is-anim', 'is-fading', 'is-paused');
+      fig.classList.remove('is-anim', 'is-fading', 'is-holding', 'is-paused');
       labels.forEach(l => l.classList.remove('is-on', 'is-now'));
     };
   }, fig);

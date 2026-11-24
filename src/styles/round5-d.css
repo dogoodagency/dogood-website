@@ -47,7 +47,7 @@ html body main#main .inf.is-anim .inf-label { opacity: 0; transform: translateY(
 .inf.is-anim .inf-label::before { transform: scaleX(0); }
 html body main#main .inf.is-anim .inf-label.is-on { opacity: 1; transform: none; }
 .inf.is-anim .inf-label.is-on::before { transform: scaleX(1); }
-html body main#main .inf.is-fading .inf-label { opacity: 0; }
+html body main#main .inf.is-anim.is-fading .inf-label { opacity: 0; }
 html body main#main .inf .inf-toggle {
   position: absolute;
   right: 20px;
@@ -181,13 +181,16 @@ html body main#main .advr-tools-page .advr-founder-brief .advr-founder-brief-pho
   html body main#main .inf .inf-label { grid-column: auto; grid-row: auto; padding-left: 18px; font-size: 16px; text-align: left; }
   .inf-label::before { position: absolute; inset: 0 auto 0 0; width: 4px; height: 100%; margin: 0; transform-origin: center; }
   html body main#main .inf.is-anim .inf-label,
-  html body main#main .inf.is-fading .inf-label { opacity: .6; transform: none; }
+  html body main#main .inf.is-anim .inf-label.is-on,
+  html body main#main .inf.is-anim.is-fading .inf-label { opacity: .6; transform: none; }
   html body main#main .inf.is-anim .inf-label.is-now,
-  html body main#main .inf.is-paused .inf-label { opacity: 1; }
+  html body main#main .inf.is-anim.is-holding .inf-label,
+  html body main#main .inf.is-anim.is-paused .inf-label { opacity: 1; }
   .inf.is-anim .inf-label::before,
   .inf.is-anim .inf-label.is-on::before { transform: scaleY(.35); }
   .inf.is-anim .inf-label.is-now::before,
-  .inf.is-paused .inf-label::before { transform: scaleY(1); }
+  .inf.is-anim.is-holding .inf-label::before,
+  .inf.is-anim.is-paused .inf-label::before { transform: scaleY(1); }
   html body main#main .inf .inf-toggle { right: 16px; bottom: 16px; }
   html body main#main .adv-center-page:not(.adv-referrals-page) .fl--advisor .fl-panel { grid-template-columns: minmax(0, 1fr); }
   html body main#main .fl .fl-arta-device--phone { max-width: 250px; }
