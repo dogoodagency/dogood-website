@@ -78,11 +78,11 @@ html body main#main .inf .inf-toggle:focus-visible { outline: 2px solid #28DBB0;
 html body main#main .adv-center-page .adv-aud-card,
 html body main#main .adv-center-page .adv-aud-card :is(h3, p),
 html body main#main .adv-center-page .adv-door,
-html body main#main .adv-center-page .adv-door :is(h3, p, a) { color: #110027; }
+html body main#main .adv-center-page .adv-door :is(h3, p, a):not(.btn-teal) { color: #110027; }
 html body main#main .adv-center-page .adv-door--exit { background: #C2B7DD; border: 1px solid #8B7DAE; }
 html body main#main .adv-center-page .adv-door--wealth { background: #A3F2D7; border: 1px solid #01A684; }
-html body main#main .adv-center-page .adv-door a.btn-teal { background: #FFFFFF; color: #110027 !important; }
-html body main#main .adv-center-page .adv-door a.btn-teal:is(:hover, :focus-visible) { background: #F5F2FF; color: #110027 !important; }
+html body main#main .adv-center-page .adv-door a.btn-teal:not(.btn-dream) { background: #FFFFFF; color: #110027 !important; }
+html body main#main .adv-center-page .adv-door a.btn-teal:not(.btn-dream):is(:hover, :focus-visible) { background: #F5F2FF; color: #110027 !important; }
 html body main#main .adv-center-page .adv-toolkit-band,
 html body main#main .adv-center-page .adv-toolkit-band .sq-band { background: #FEFEF3; border-radius: 0; }
 html body main#main .adv-center-page .adv-recommend-band { background: #F5F2FF; border-radius: 0; }
@@ -150,7 +150,7 @@ html body main#main .advr-tools-page .advr-question-quotes li:nth-child(2) { bor
 html body main#main .advr-tools-page .advr-question-quotes li:nth-child(3) { border-color: #01A684; background: #A3F2D7; }
 html body main#main .advr-tools-page .advr-question-quotes blockquote { border: 0; padding: 0; margin: 0; }
 html body main#main .advr-tools-page .advr-question-quotes blockquote::before { height: 42px; color: #EA1557; font-family: Georgia, "Times New Roman", serif; font-size: 48px; font-weight: 700; line-height: 1; }
-html body main#main .advr-tools-page .advr-question-quotes p { color: #110027; font-size: 20px; font-weight: 400; line-height: 1.6; }
+html body main#main .advr-tools-page .advr-question-quotes p { color: #110027; font-size: 22px; font-weight: 400; line-height: 1.6; }
 
 /* 59: the logo retains its own size; the tilted phone crops only at the panel edge. */
 html body main#main .advr-tools-page .advr-founder-brief { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: end; padding: 40px 44px 0; overflow: hidden; border: 1px solid #C2B7DD; background: #F5F2FF; box-shadow: none; }

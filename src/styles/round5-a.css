@@ -56,6 +56,7 @@ html body main#main .fl .fl-advisor-btn {
   text-decoration: none;
   transition: background-color 350ms, transform 350ms;
 }
+html body main#main .page-home .fl .fl-advisor-btn { font-size: 18px; }
 html body main#main .fl .fl-advisor-btn--dream { background: #2A0B4F; color: #FFFFFF; }
 html body main#main .fl .fl-advisor-btn:is(:hover, :focus-visible) {
   background: #FEFEF3;
