@@ -12,7 +12,7 @@ const heroEdge = edgeAbove("#2A0B4F");
 const bandEdge = edgeAbove(tint);
 const footerEdge = edgeAbove(white);
 
-const commonSearches = ["Stage 1", "Timing", "Confidential", "Guarantee", "WHOOP", "Exit-Prep"];
+const commonSearches = ["Stage 1", "Timing", "Confidential", "Guarantee", "WHOOP", "Exit-Prep™"];
 
 const total = faqCategories.reduce((sum, category) => sum + category.items.length, 0);
 
@@ -35,7 +35,7 @@ const schemaJson = JSON.stringify(schema).replace(/</g, "\\u003c");
 
 <Base
   title="FAQs: coaching before and after the sale | DoGood Agency"
-  description="Answers about coaching before and after the sale: Exit-Prep, The Reset and The Build, timing, format, privacy and the Clarity-First Guarantee."
+  description="Answers about coaching before and after the sale: Exit-Prep™, The Reset and The Build, timing, format, privacy and the Clarity-First Guarantee."
   canonical="https://www.dogoodagency.co/faqs"
   footerStrip={white}
   footerEdge={footerEdge}
@@ -75,7 +75,7 @@ const schemaJson = JSON.stringify(schema).replace(/</g, "\\u003c");
             {
               commonSearches.map((term) => (
                 <button class="faq-chip" type="button" data-faq-term={term}>
-                  {term}
+                  <span>{term}</span>
                 </button>
               ))
             }

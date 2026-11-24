@@ -98,4 +98,4 @@ Be aware of them. Let them be there. And work with someone who knows how to hand
 
 That sounds simple, and it is. The difficulty is that founders are used to solving things alone and pushing through. Pushing through works for a product launch. It doesn't work for an ending like this.
 
-If you haven't signed yet, [Exit-Prep](/exit-prep) is six weekly sessions to work through these feelings while the sale is in progress, so you can commit to the decision fully. If the sale is done, [The Reset](/the-reset) is 30 days of 1:1 work for the stretch that comes after.
+If you haven't signed yet, [Exit-Prep™](/exit-prep) is six weekly sessions to work through these feelings while the sale is in progress, so you can commit to the decision fully. If the sale is done, [The Reset](/the-reset) is 30 days of 1:1 work for the stretch that comes after.

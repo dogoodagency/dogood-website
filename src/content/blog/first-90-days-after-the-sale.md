@@ -138,7 +138,7 @@ And one more thing: they have let go of the company. If you are still checking o
 
 ## How we work with founders through this
 
-Ideally, this work starts 12 to 18 months before the exit, while you are still running the company. That is what [Exit-Prep](/exit-prep) is for.
+Ideally, this work starts 12 to 18 months before the exit, while you are still running the company. That is what [Exit-Prep™](/exit-prep) is for.
 
 After the sale, [The Reset](/the-reset), the first 30-day stage of our Founder Reclamation Partnership, usually makes most sense from around month three, once you have rested and are ready to reflect. Some founders choose to start earlier.
 

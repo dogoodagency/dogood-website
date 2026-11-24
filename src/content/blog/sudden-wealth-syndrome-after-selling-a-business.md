@@ -35,7 +35,7 @@ faq:
   - q: "Does it happen after a smaller exit?"
     a: "Yes. What matters is how far the money moves you past what you believed was possible for yourself, not the headline number."
   - q: "Can it start before the deal closes?"
-    a: "Yes, and that is the best time to work on it. The fear of losing the money and the question of what comes next tend to show up while the sale is still in progress. Founders who start before closing step into life after the sale with far more clarity. That is why we offer Exit-Prep for founders before they sign."
+    a: "Yes, and that is the best time to work on it. The fear of losing the money and the question of what comes next tend to show up while the sale is still in progress. Founders who start before closing step into life after the sale with far more clarity. That is why we offer Exit-Prep™ for founders before they sign."
 sample: false
 noindex: false
 ---
@@ -95,6 +95,6 @@ If any of these apply, speak to your doctor or a therapist first. When we see th
 
 ## How we work with this at DoGood
 
-The Reset is the first stage of our Founder Reclamation Partnership: 30 days of private, 1:1 work for founders who have already sold. It is designed for exactly this stretch, after the first weeks of freedom and before the next big decision. We help you pause, look honestly at the last chapter, and start shaping the next one around who you are now, not who the company needed you to be. If you are still in the middle of a sale, [Exit-Prep](/exit-prep) covers the same ground before you sign.
+The Reset is the first stage of our Founder Reclamation Partnership: 30 days of private, 1:1 work for founders who have already sold. It is designed for exactly this stretch, after the first weeks of freedom and before the next big decision. We help you pause, look honestly at the last chapter, and start shaping the next one around who you are now, not who the company needed you to be. If you are still in the middle of a sale, [Exit-Prep™](/exit-prep) covers the same ground before you sign.
 
 If any of this sounds familiar, [read how The Reset works](/the-reset).

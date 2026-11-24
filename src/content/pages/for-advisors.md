@@ -118,7 +118,7 @@ Founders who have exited and are no longer in the day-to-day (a board or advisor
 
 ### What about a client who has not sold yet?
 
-We have a shorter Exit-Prep for founders who have firmly decided to exit and are preparing for it: six weekly sessions, held remotely, with the same guarantee as Stage 1. If they later want to go deeper after the sale, they can move on to Stage 1. Ask us about it on the intro call.
+We have a shorter Exit-Prep™ for founders who have firmly decided to exit and are preparing for it: six weekly sessions, held remotely, with the same guarantee as Stage 1. If they later want to go deeper after the sale, they can move on to Stage 1. Ask us about it on the intro call.
 
 ### What should I tell them?
 

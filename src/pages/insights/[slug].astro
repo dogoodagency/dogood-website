@@ -79,10 +79,10 @@ if (d.audience === "advisor") {
   };
 } else if (d.category === "preparing-for-exit") {
   cta = {
-    title: "See Exit-Prep",
+    title: "See Exit-Prep™",
     text: "For founders who haven't sold yet. Private weekly sessions to prepare yourself, not just the company.",
     href: "/exit-prep",
-    label: "See Exit-Prep",
+    label: "See Exit-Prep™",
   };
 }
 
@@ -294,7 +294,7 @@ const titleEnd = titleStart && d.title.startsWith(titleStart) ? d.title.slice(ti
         <p class="bl-box-label bl-box-label--light">{aud.label}</p>
         <h2 id="bl-cta-title">{cta.title}</h2>
         <p>{cta.text}</p>
-        <a class="btn-teal" href={cta.href}>{cta.label}</a>
+        <a class="btn-teal" href={cta.href}><span>{cta.label}</span></a>
         <p class="bl-cta-quiet">Not sure which? <a href="/pathway">See how it works</a></p>
       </aside>
     </div>
