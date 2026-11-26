@@ -57,6 +57,7 @@ export const products: SiteLink[] = [
 
 /** Tools inside the Partnership (footer: Products). */
 export const tools: SiteLink[] = [
+  { href: "/book", label: "Wealthy, Lost, and Still in a Bathrobe" },
   { href: "/recovery-stress-diagnostics", label: "Recovery & Stress Diagnostics (WHOOP)" },
   { href: "/state-shift-audio", label: "Custom State-Shift Audio" },
 ];

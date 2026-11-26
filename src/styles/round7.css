@@ -530,3 +530,306 @@ html body main#main .nl-page #questions .nl-note {
   html body main#main .nl-page .nl-kicker { font-size: 15px; }
   html body main#main .nl-page #questions .nl-note { margin: 22px 0 26px; }
 }
+
+/* ===== R7.J1: /book landing page. Everything is scoped to .bookp-page. ===== */
+html body main#main .bookp-page .bookp-hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  align-items: center;
+  gap: 64px;
+  width: min(1080px, calc(100% - 2 * var(--pad)));
+  margin: 0 auto;
+  padding: 80px 0 70px;
+}
+html body main#main .bookp-page .bookp-hero-copy { min-width: 0; }
+html body main#main .bookp-page .bookp-hero-copy h1 { max-width: 640px; }
+html body main#main .bookp-page .bookp-hero-copy .ep-sub { margin: 18px 0 0; }
+
+@media (min-width: 901px) {
+  html body main#main .bookp-page header.ep-hero:not([hidden]) { height: auto; min-height: 540px; }
+  html body main#main .bookp-page header.ep-hero > .bookp-hero-inner {
+    flex: 0 0 auto;
+    align-items: center;
+    padding: 64px 0;
+  }
+  html body main#main .bookp-page .bookp-hero-copy { align-self: center; }
+}
+
+/* Plain placeholder covers: cream linen cloth, neutral serif, no logo or brand colors, no shadow. */
+html body main#main .bookp-page .bookp-cover {
+  container-type: inline-size;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background-color: #F4EEDF;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(110, 92, 60, 0.07) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(110, 92, 60, 0.07) 0 1px, transparent 1px 3px);
+  border: 1px solid #CFC4AC;
+  border-radius: 4px;
+  box-shadow: none;
+  color: #2F2B26;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+html body main#main .bookp-page .bookp-cover::before {
+  content: "";
+  position: absolute;
+  inset: 4.5cqw;
+  border: 1px solid rgba(110, 92, 60, 0.35);
+  pointer-events: none;
+}
+html body main#main .bookp-page .bookp-cover-face {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding: 11cqw 10cqw;
+}
+html body main#main .bookp-page .bookp-cover--front .bookp-cover-face {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 7cqw;
+}
+html body main#main .bookp-page .bookp-cover-title {
+  margin: 0;
+  font-size: 28px;
+  font-size: 11.5cqw;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  color: #2F2B26;
+}
+html body main#main .bookp-page .bookp-cover-genre {
+  margin: 0;
+  font-size: 15px;
+  font-size: 5cqw;
+  font-style: italic;
+  line-height: 1.3;
+  color: #4A443B;
+}
+html body main#main .bookp-page .bookp-cover--back { max-width: 400px; margin-inline: auto; }
+html body main#main .bookp-page .bookp-cover--back .bookp-cover-face { gap: 3cqw; }
+html body main#main .bookp-page .bookp-back-head {
+  margin: 0 0 1cqw;
+  font-size: 17px;
+  font-size: max(16px, 5.2cqw);
+  font-weight: 700;
+  line-height: 1.25;
+}
+html body main#main .bookp-page .bookp-back-text,
+html body main#main .bookp-page .bookp-back-close {
+  margin: 0;
+  font-size: 12.5px;
+  font-size: max(12.5px, 3.5cqw);
+  line-height: 1.5;
+  color: #2F2B26;
+}
+html body main#main .bookp-page .bookp-back-close { font-style: italic; }
+html body main#main .bookp-page .bookp-back-title {
+  margin: 2cqw 0 0;
+  font-size: 11px;
+  font-size: max(11px, 3cqw);
+  letter-spacing: 0.04em;
+  color: #4A443B;
+}
+html body main#main .bookp-page .bookp-barcode {
+  align-self: flex-end;
+  width: 42%;
+  min-width: 110px;
+  height: 14cqw;
+  min-height: 52px;
+  margin-top: auto;
+  background: #FFFFFF;
+  border: 1px solid #CFC4AC;
+}
+
+/* Prose */
+html body main#main .bookp-page .bookp-prose { max-width: 820px; }
+html body main#main .bookp-page .bookp-prose p {
+  margin: 0 0 18px;
+  color: #2A0B4F;
+  font-size: 18px;
+  line-height: 1.65;
+}
+html body main#main .bookp-page .bookp-prose p:last-child { margin-bottom: 0; }
+html body main#main .bookp-page .bookp-prose h2 { margin-bottom: 20px; }
+html body main#main .bookp-page .bookp-link {
+  color: #2A0B4F;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: #28DBB0;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+  transition: text-decoration-color 200ms, color 200ms;
+}
+html body main#main .bookp-page .bookp-link:is(:hover, :focus-visible) {
+  color: #05745B;
+  text-decoration-color: #2A0B4F;
+}
+html body main#main .bookp-page .bookp-prose p.bookp-tagline {
+  margin: 4px 0 22px;
+  padding-left: 16px;
+  border-left: 3px solid #28DBB0;
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+/* Chapter cards */
+html body main#main .bookp-page .bookp-chapters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin: 36px 0 0;
+  padding: 0;
+  list-style: none;
+}
+html body main#main .bookp-page .bookp-chapter {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+  margin: 0;
+  padding: 26px 24px 24px;
+  background: #FFFFFF;
+  border: 1px solid #C2B7DD;
+  border-radius: 18px;
+}
+html body main#main .bookp-page .bookp-chapter-num {
+  color: #58447F;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+html body main#main .bookp-page .bookp-chapter-title {
+  margin: 0;
+  color: #2A0B4F;
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  overflow-wrap: break-word;
+}
+html body main#main .bookp-page .bookp-chapter-status {
+  margin: 0;
+  padding: 4px 12px;
+  background: #E7FFF6;
+  border-radius: 999px;
+  color: #05745B;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+html body main#main .bookp-page .bookp-chapter-status a {
+  color: #05745B;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+html body main#main .bookp-page .bookp-chapter-status a:is(:hover, :focus-visible) { color: #2A0B4F; }
+html body main#main .bookp-page .bookp-chapter-teaser {
+  margin: 0;
+  color: #2A0B4F;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+/* Buttons: the standard 16px / 52px / 16px-radius button with the 36px disc (same as Home's) */
+html body main#main .bookp-page .bookp-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 28px;
+}
+html body main#main .bookp-page .bookp-actions a.btn-teal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px !important;
+  padding: 10px 56px 10px 20px !important;
+  border-radius: 16px;
+  font-size: 16px !important;
+  font-weight: 400;
+  line-height: 1.5;
+  text-decoration: none;
+  box-shadow: none;
+  transition: transform 350ms, padding 350ms, background-color 350ms;
+}
+html body main#main .bookp-page .bookp-actions a.btn-teal:is(:hover, :focus-visible) {
+  padding: 10px 20px 10px 56px !important;
+  transform: scale(1.013) !important;
+  text-decoration: none;
+}
+html body main#main .bookp-page .bookp-actions a.btn-teal::before,
+html body main#main .bookp-page .bookp-actions a.btn-teal::after {
+  width: 36px !important;
+  height: 36px !important;
+  transition-duration: 350ms;
+}
+html body main#main .bookp-page .bookp-actions a.btn-teal:focus-visible {
+  outline: 2px solid #28DBB0;
+  outline-offset: 4px;
+}
+html body main#main .bookp-page .bookp-downloads {
+  display: grid;
+  gap: 10px;
+  max-width: 820px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+html body main#main .bookp-page .bookp-downloads a {
+  color: #2A0B4F;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: #28DBB0;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+}
+html body main#main .bookp-page .bookp-downloads a:is(:hover, :focus-visible) {
+  color: #05745B;
+  text-decoration-color: #2A0B4F;
+}
+
+/* Why we wrote it + back cover */
+html body main#main .bookp-page .bookp-why {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 400px);
+  align-items: center;
+  gap: 64px;
+}
+html body main#main .bookp-page .bookp-why .bookp-cover--back { margin-inline: 0; }
+
+@media (max-width: 1024px) {
+  html body main#main .bookp-page .bookp-chapters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  html body main#main .bookp-page .bookp-hero-inner { grid-template-columns: minmax(0, 1fr) 240px; gap: 40px; }
+  html body main#main .bookp-page .bookp-why { gap: 40px; grid-template-columns: minmax(0, 1fr) minmax(0, 340px); }
+}
+@media (max-width: 760px) {
+  html body main#main .bookp-page .bookp-hero-inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
+    padding: 48px 0 44px;
+  }
+  html body main#main .bookp-page .bookp-cover--front { max-width: 220px; }
+  html body main#main .bookp-page .bookp-chapters { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  html body main#main .bookp-page .bookp-why { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  html body main#main .bookp-page .bookp-why .bookp-cover--back { max-width: 360px; margin-inline: auto; }
+  html body main#main .bookp-page .bookp-prose p { font-size: 17px; }
+  html body main#main .bookp-page .bookp-prose p.bookp-tagline { font-size: 19px; }
+  html body main#main .bookp-page .bookp-actions { flex-direction: column; align-items: stretch; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html body main#main .bookp-page .bookp-actions a.btn-teal,
+  html body main#main .bookp-page .bookp-link { transition: none; }
+  html body main#main .bookp-page .bookp-actions a.btn-teal:is(:hover, :focus-visible) { transform: none !important; }
+}

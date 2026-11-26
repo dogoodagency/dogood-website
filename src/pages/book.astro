@@ -1,21 +1,224 @@
 ---
-import AdvisorResourcePage from "../components/AdvisorResourcePage.astro";
+/**
+ * /book landing page (TTO-30, round 7 part j). Copy: Grova v1.0 (.r7/book-page-copy.md), word for word.
+ * Chapters live in src/data/book-chapters.ts: set released + pdf there and the download button and list appear.
+ */
+import "../styles/exit-prep.css";
+import Base from "../layouts/Base.astro";
+import Wave from "../components/Wave.astro";
+import { edgeAbove } from "../data/edge-line";
 import { book } from "../data/book";
+import { bookChapters } from "../data/book-chapters";
+
+const title = "Wealthy, Lost, and Still in a Bathrobe: a founder novel";
+const description =
+  "A dark comic novel in twelve chapters for founders before and after a sale, and the advisors beside them. Free to read, from real founder experience.";
+
+const subline = "A dark comic novel for founders before a sale and after it, and for the advisors who stand beside them.";
+
+const story = [
+  "Frank Hollis has spent twenty-eight years washing other people's sheets. The plant in Sun Valley, Los Angeles, is loud, hot, and his. He knows every delivery route, every supplier's kid's name, and exactly how stiff a hotel likes its pillowcases. He does not know who he is without the work.",
+  "Then, at the staff Christmas party, a cream envelope from a private equity fund turns up in the raffle cart. Frank is in a Santa suit he hasn't washed in twenty-two years. For luck. In an industrial laundry.",
+  "The deal is coming. The money is coming. Advisors will arrive in very good suits. A wife who has lived in a fifteen-minute calendar slot will want to know when he will be home. A coach with too many bracelets will ask the one question nobody else will.",
+  "Somewhere between the champagne and the first empty Monday, Frank is going to find out what's left when the work is gone. Still in his bathrobe.",
+];
+
+const whoFor = [
+  "This book is for founders who are getting ready to sell, and for founders who already have. It is written in equal measure for both, because the life before the sale and the life after it belong to the same story.",
+  "It is also for the people who stand beside them: the financial advisor, the deal advisor, the coach, the friend who asks a better question than the spreadsheet does. If you help founders through a sale, this is a book you can put in their hands, and recognize yourself in.",
+];
+
+const chaptersIntro =
+  "The novel is released one chapter at a time. Every chapter is free to read. Chapters already out can be downloaded on this page. Chapters still ahead are marked Coming.";
+
+const readSecond =
+  "Get each new chapter by email when it is released, and come back here to download the chapters already out. The book is free, and it is meant to be read at the pace of a good story, not as a pitch.";
+
+const why = [
+  "Most accounts of selling a company stop at the closing dinner, or start on the Monday after. Founders live both halves, and so do the people who advise them. We wanted a story that tells the truth about the deal and about the life around it, with enough humor to make the hard parts bearable.",
+  "This is a novel, not a memoir and not a lesson plan. The people and the company are fiction, drawn from real founder experience. Where a chapter uses a real fact, a small number in the text points to a Notes page with the source.",
+];
+
+const faqs = [
+  {
+    q: "Is it free?",
+    a: "Yes. The book is free to read. You can download every released chapter on this page, and get new ones by email as they come out.",
+  },
+  {
+    q: "Is it a true story?",
+    a: "It is a novel, drawn from true stories and real founder experience. The people, the company, and the deal are fiction. Where a chapter uses a researched fact, a note at the end of the chapter gives the source.",
+  },
+  {
+    q: "How often do new chapters come out?",
+    a: "A new chapter arrives every other Tuesday, starting December 15, 2026. There are twelve chapters in all. While the book is still being released, this page and Unfinished Business are the places to follow along.",
+  },
+  {
+    q: "Can I share it with a client?",
+    a: "Yes. If you advise founders before or after a sale, you are welcome to share the book and the chapters with them. It is written for both of you.",
+  },
+];
+
+const released = bookChapters.filter((c) => c.released && c.pdf);
+const hasReleased = released.length > 0;
+
+const tint = "#F5F2FF";
+const white = "#ffffff";
+const heroEdge = edgeAbove("#2A0B4F");
+const bandEdge = edgeAbove(tint);
+
+function wave(fromTint: boolean) {
+  const to = fromTint ? white : tint;
+  return `<div class="ep-divider ep-divider--${fromTint ? "tint" : "white"}" aria-hidden="true"><svg style="--wave-edge:${bandEdge}" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${to}" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path><path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path></svg></div>`;
+}
 ---
 
-<AdvisorResourcePage
-  title={`${book.title}: a founder novel and coaching | DoGood Agency`}
-  description={book.description}
-  path="/book"
-  robots="noindex, nofollow"
-  section="insights"
-  tone="heart"
-  name={book.title}
-  lede={book.subline}
-  blocks={[
-    { heading: "What it is", paras: [...book.body] },
-    { heading: "Chapter 1 · The Raffle", paras: [book.chapterOne] },
-  ]}
+<Base
+  title={title}
+  description={description}
+  canonical="https://www.dogoodagency.co/book"
+  footerStrip={white}
+  footerEdge={edgeAbove(white)}
 >
-  <p class="advd-download"><a class="btn-teal btn-dream" href="/newsletter#signup">{book.signupLabel}</a></p>
-</AdvisorResourcePage>
+  <article class="ep-page pp-page bookp-page">
+    <header class="ep-hero">
+      <div class="bookp-hero-inner">
+        <div class="bookp-hero-copy">
+          <h1>{book.title}</h1>
+          <p class="ep-sub">{subline}</p>
+        </div>
+        <div class="bookp-cover bookp-cover--front" role="img" aria-label="Cover placeholder">
+          <div class="bookp-cover-face" aria-hidden="true">
+            <p class="bookp-cover-title">{book.title}</p>
+            <p class="bookp-cover-genre">A novel.</p>
+          </div>
+        </div>
+      </div>
+      <Wave fill={tint} edge={heroEdge} />
+    </header>
+
+    <section class="ep-band ep-band-tint" aria-labelledby="bookp-story">
+      <div class="ep-well ep-well-top">
+        <div class="bookp-prose">
+          <h2 id="bookp-story">The story</h2>
+          {story.map((p) => <p>{p}</p>)}
+        </div>
+      </div>
+    </section>
+
+    <Fragment set:html={wave(true)} />
+
+    <section class="ep-band" aria-labelledby="bookp-who">
+      <div class="ep-well ep-well-top">
+        <div class="bookp-prose">
+          <h2 id="bookp-who">Who it's for</h2>
+          {whoFor.map((p) => <p>{p}</p>)}
+        </div>
+      </div>
+    </section>
+
+    <Fragment set:html={wave(false)} />
+
+    <section class="ep-band ep-band-tint" aria-labelledby="bookp-chapters">
+      <div class="ep-well ep-well-top">
+        <div class="bookp-prose">
+          <h2 id="bookp-chapters">The 12 chapters</h2>
+          <p>{chaptersIntro}</p>
+        </div>
+        <ol class="bookp-chapters">
+          {
+            bookChapters.map((c) => (
+              <li class:list={["bookp-chapter", c.released && "is-released"]}>
+                <span class="bookp-chapter-num">Chapter {c.number}</span>
+                <h3 class="bookp-chapter-title">{c.title}</h3>
+                <p class="bookp-chapter-status">
+                  {
+                    c.released && c.pdf ? (
+                      <a href={c.pdf} download>Download chapter {c.number}</a>
+                    ) : c.released ? (
+                      "Released"
+                    ) : c.date ? (
+                      `Coming · ${c.date}`
+                    ) : (
+                      "Coming"
+                    )
+                  }
+                </p>
+                <p class="bookp-chapter-teaser">{c.teaser}</p>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    <Fragment set:html={wave(true)} />
+
+    <section class="ep-band" aria-labelledby="bookp-read">
+      <div class="ep-well ep-well-top">
+        <div class="bookp-prose">
+          <h2 id="bookp-read">Read the chapters</h2>
+          <p>
+            While not every chapter is out, new ones arrive in <a class="bookp-link" href="/newsletter">A DoGood Publication <span aria-hidden="true">&gt;</span> Unfinished Business</a>.
+          </p>
+          <p>{readSecond}</p>
+          <div class="bookp-actions">
+            <a class="btn-teal" href="/newsletter#signup">Get the next chapter</a>
+            {hasReleased && <a class="btn-teal btn-dream" href="#bookp-downloads">Download the chapters so far</a>}
+          </div>
+          {
+            hasReleased && (
+              <ul class="bookp-downloads" id="bookp-downloads">
+                {released.map((c) => (
+                  <li><a href={c.pdf} download>Chapter {c.number} · {c.title}</a></li>
+                ))}
+              </ul>
+            )
+          }
+        </div>
+      </div>
+    </section>
+
+    <Fragment set:html={wave(false)} />
+
+    <section class="ep-band ep-band-tint" aria-labelledby="bookp-why">
+      <div class="ep-well ep-well-top">
+        <div class="bookp-why">
+          <div class="bookp-prose">
+            <h2 id="bookp-why">Why we wrote it</h2>
+            {why.map((p) => <p>{p}</p>)}
+          </div>
+          <div class="bookp-cover bookp-cover--back" role="group" aria-label="Back cover placeholder">
+            <div class="bookp-cover-face">
+              <p class="bookp-back-head">{book.tagline}</p>
+              {book.teaser.map((p) => <p class="bookp-back-text">{p}</p>)}
+              <p class="bookp-back-close">{book.teaserClose}</p>
+              <p class="bookp-back-title">{book.title}</p>
+              <div class="bookp-barcode" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Fragment set:html={wave(true)} />
+
+    <section class="ep-band" aria-labelledby="bookp-faq">
+      <div class="ep-well ep-well-top">
+        <div class="ep-faq-wrap">
+          <h2 id="bookp-faq">FAQ</h2>
+          {
+            faqs.map((f) => (
+              <details class="ep-faq bookp-faq">
+                <summary>
+                  <span class="ep-faq-q">{f.q}</span>
+                  <span class="ep-faq-icon" aria-hidden="true"></span>
+                </summary>
+                <p class="ep-faq-a">{f.a}</p>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </article>
+</Base>
