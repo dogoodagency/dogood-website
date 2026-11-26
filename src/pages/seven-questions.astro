@@ -2,7 +2,7 @@
 import Wave from "../components/Wave.astro";
 import WriteToUs from "../components/WriteToUs.astro";
 import Base from "../layouts/Base.astro";
-import { sevenQuestions, sevenQuestionsPdf } from "../data/seven-questions";
+import { sevenQuestionContext, sevenQuestions, sevenQuestionsPdf } from "../data/seven-questions";
 
 const heading = "The 7 questions for the first 90 days after the sale";
 const description = "Seven questions for founders in the first 90 days after selling their company. Worth reading before you sell, too. Free PDF from DoGood's founder coaching team.";
@@ -29,29 +29,66 @@ const description = "Seven questions for founders in the first 90 days after sel
     <Wave fill="#F5F2FF" edge="#15012E" />
   </header>
   <div class="seven-page">
-    <div class="seven-content">
-      <img
-        class="seven-cover"
-        src="/media/seven-questions/seven-questions-cover@1x.webp"
-        srcset="/media/seven-questions/seven-questions-cover@1x.webp 600w, /media/seven-questions/seven-questions-cover@2x.webp 1200w"
-        sizes="(max-width: 600px) 260px, (max-width: 1365px) 360px, 400px"
-        width="600"
-        height="849"
-        alt="The 7 Questions guide cover"
-        fetchpriority="high"
-      />
-      <ol class="seven-questions" role="list" aria-label="The seven questions">
+    <!-- R6.34: each question with its one-line context (same lines as /newsletter), then what the PDF holds. -->
+    <section class="seven-qs" aria-label="The seven questions">
+      <p class="seven-intro">Take your time with them. There are no right answers, only honest ones.</p>
+      <ol class="seven-cards" role="list">
         {sevenQuestions.map((question, index) => (
-          <li>
+          <li class="seven-card">
             <span class="seven-number" aria-hidden="true">{index + 1}</span>
-            <p>{question}</p>
+            <div class="seven-card-body">
+              <p class="seven-q">{question}</p>
+              <p class="seven-context">{sevenQuestionContext[index]}</p>
+            </div>
           </li>
         ))}
       </ol>
-    </div>
+    </section>
+
+    <section class="seven-guide" aria-labelledby="seven-guide-title">
+      <div class="seven-fan">
+        {[3, 2, 1].map((page) => (
+          <img
+            class={`seven-fan-page seven-fan-page--${page}`}
+            src={`/media/r4/seven-questions-inside-${page}@1x.webp`}
+            srcset={`/media/r4/seven-questions-inside-${page}@1x.webp 300w, /media/r4/seven-questions-inside-${page}@2x.webp 600w`}
+            sizes="(max-width: 600px) 42vw, 240px"
+            width="300"
+            height="424"
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
+        ))}
+        <img
+          class="seven-fan-cover"
+          src="/media/seven-questions/seven-questions-cover@1x.webp"
+          srcset="/media/seven-questions/seven-questions-cover@1x.webp 600w, /media/seven-questions/seven-questions-cover@2x.webp 1200w"
+          sizes="(max-width: 600px) 42vw, 240px"
+          width="600"
+          height="849"
+          alt="The 7 Questions guide cover"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <div class="seven-guide-copy">
+        <p class="seven-eyebrow">Free guide</p>
+        <!-- R6-NEWCOPY: "What's in the guide" -->
+        <h2 id="seven-guide-title">What's in the guide</h2>
+        <!-- R6-NEWCOPY: "For each question:" (the four items are the existing /newsletter line, split) -->
+        <p class="seven-guide-lead">For each question:</p>
+        <ul class="seven-guide-list" role="list">
+          <li>More context</li>
+          <li>The questions behind it</li>
+          <li>A short exercise</li>
+          <li>Journal prompts</li>
+        </ul>
+        <a class="btn-teal btn-dream" href={sevenQuestionsPdf} target="_blank" rel="noopener">Download the PDF</a>
+      </div>
+    </section>
 
     <div class="seven-followup">
-      <a class="btn-teal btn-dream" href={sevenQuestionsPdf} target="_blank" rel="noopener">Download the PDF</a>
       <p>Want the next notes too? <a href="/newsletter#signup">Get the DoGood newsletter</a>, one email every two weeks.</p>
       <WriteToUs />
     </div>
@@ -95,55 +132,169 @@ const description = "Seven questions for founders in the first 90 days after sel
     line-height: var(--hero-subline-leading);
   }
 
-  .seven-content {
-    display: grid;
-    grid-template-columns: 400px minmax(0, 1fr);
-    align-items: center;
-    gap: 64px;
+  /* R6.34: numbered question cards, then the guide block (fanned pages + bullets + download). */
+  .seven-intro {
+    max-width: 720px;
+    margin: 0 auto 32px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.6;
+    text-align: center;
   }
 
-  .seven-cover {
-    display: block;
-    width: 100%;
-    height: auto;
-    border: 1px solid var(--color-dream-100);
-    pointer-events: none;
-  }
-
-  .seven-questions {
+  .seven-cards {
     display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px;
     margin: 0;
-    padding: 32px;
-    border: 1px solid var(--color-heart-500);
-    border-radius: 24px;
-    background: var(--color-white);
+    padding: 0;
     list-style: none;
   }
 
-  .seven-questions li {
+  .seven-card {
     display: grid;
-    grid-template-columns: 32px minmax(0, 1fr);
+    grid-template-columns: 40px minmax(0, 1fr);
     align-items: start;
-    gap: 16px;
+    gap: 20px;
+    padding: 28px 32px;
+    border: 1px solid #C2B7DD;
+    border-radius: 20px;
+    background: var(--color-white);
+  }
+
+  .seven-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc((100% - 24px) / 2);
   }
 
   .seven-number {
     display: grid;
     place-items: center;
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background: var(--color-grass-500);
     color: var(--color-dream-500);
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 800;
   }
 
-  .seven-questions p {
-    font-size: 18px;
-    font-weight: 500;
+  .seven-card .seven-q {
+    margin: 0 0 8px;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1.35;
+  }
+
+  .seven-card .seven-context {
+    margin: 0;
+    color: #58447F;
+    font-size: 16px;
+    font-weight: 400;
     line-height: 1.6;
+  }
+
+  .seven-guide {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 64px;
+    margin-top: 64px;
+    padding: 56px;
+    border: 1px solid #A3F2D7;
+    border-radius: 24px;
+    background: #E7FFF6;
+  }
+
+  .seven-fan {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 100 / 72;
+  }
+
+  .seven-fan img {
+    position: absolute;
+    display: block;
+    height: auto;
+    border: 1px solid #C2B7DD;
+    border-radius: 12px;
+    background: var(--color-white);
+    pointer-events: none;
+  }
+
+  .seven-fan-page { top: 10.7%; width: 40%; }
+  .seven-fan-page--3 { left: 4%; z-index: 1; transform: rotate(-7deg); }
+  .seven-fan-page--2 { left: 21%; z-index: 2; transform: rotate(-4deg); }
+  .seven-fan-page--1 { left: 38%; z-index: 3; transform: rotate(-1deg); }
+  .seven-fan-cover { top: 7.8%; left: 55%; z-index: 4; width: 43%; transform: rotate(2deg); }
+
+  .seven-guide-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+  }
+
+  .seven-eyebrow {
+    margin: 0 0 12px;
+    color: var(--color-grass-700);
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .seven-guide-copy h2 {
+    margin: 0;
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.15;
+  }
+
+  .seven-guide-lead {
+    margin: 20px 0 0;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  .seven-guide-list {
+    display: grid;
+    gap: 12px;
+    margin: 16px 0 32px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .seven-guide-list li {
+    position: relative;
+    padding-left: 36px;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .seven-guide-list li::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--color-grass-500);
+  }
+
+  .seven-guide-list li::after {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 9px;
+    width: 6px;
+    height: 11px;
+    border: solid var(--color-dream-500);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
   }
 
   .seven-followup {
@@ -173,19 +324,35 @@ const description = "Seven questions for founders in the first 90 days after sel
     text-decoration-thickness: 3px;
   }
 
-  .seven-followup .btn-dream:focus-visible {
+  .seven-guide .btn-dream:focus-visible {
     outline: 3px solid var(--color-grass-700);
     outline-offset: 3px;
+  }
+
+  @media (max-width: 960px) {
+    .seven-guide { grid-template-columns: minmax(0, 1fr); gap: 40px; padding: 48px 40px; }
+    .seven-fan { max-width: 520px; margin-inline: auto; }
+    .seven-guide-copy { width: 100%; max-width: 520px; margin-inline: auto; }
+  }
+
+  @media (max-width: 720px) {
+    .seven-cards { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+    .seven-card:last-child:nth-child(odd) { width: 100%; }
   }
 
   @media (max-width: 600px) {
     .seven-page { padding: 24px 24px 64px; }
     .seven-heading { margin: 32px auto; }
     .seven-heading h1 { font-size: 32px; }
-    .seven-content { grid-template-columns: minmax(0, 1fr); gap: 32px; }
-    .seven-cover { max-width: 260px; margin-inline: auto; }
-    .seven-questions { padding: 24px; }
-    .seven-questions li { gap: 12px; }
+    .seven-intro { margin-bottom: 24px; font-size: 17px; }
+    .seven-card { grid-template-columns: 32px minmax(0, 1fr); gap: 14px; padding: 20px; }
+    .seven-number { width: 32px; height: 32px; font-size: 16px; }
+    .seven-card .seven-q { font-size: 18px; }
+    .seven-guide { gap: 28px; margin-top: 48px; padding: 28px 20px 32px; }
+    .seven-fan img { border-radius: 8px; }
+    .seven-guide-copy h2 { font-size: 28px; }
+    .seven-guide-lead, .seven-guide-list li { font-size: 17px; }
+    .seven-guide-list { margin-bottom: 28px; }
     .seven-followup { margin-top: 32px; }
     .seven-followup p { overflow-wrap: anywhere; }
   }

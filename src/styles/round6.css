@@ -201,3 +201,156 @@ html body main#main .st-page .st-anon {
   text-align: left;
 }
 html body main#main .st-page .st-anon + .st-cases { margin-top: 32px; }
+
+/* R6.32–33: case study heroes J and V (CaseStudy.astro is used only by these two pages).
+   Taller and more spacious (+120px at 1710, proportional), four smaller result tiles in one centered row. */
+html body main#main .cs-page > header.cs-hero:not([hidden]) {
+  --r6-cs-u: calc(100vw / 1710);
+}
+@media (min-width: 1366px) {
+  html body main#main .cs-page > header.cs-hero:not([hidden]) {
+    height: auto;
+    min-height: calc(540px + 120 * var(--r6-cs-u));
+  }
+  html body main#main .cs-page > header.cs-hero > .cs-hero-inner {
+    gap: calc(26 * var(--r6-cs-u));
+    padding-block: calc(36 * var(--r6-cs-u));
+  }
+  html body main#main .cs-page > header.cs-hero .cs-highlights--wide {
+    margin-top: calc(22 * var(--r6-cs-u));
+  }
+}
+@media (min-width: 600px) and (max-width: 1365px) {
+  html body main#main .cs-page > header.cs-hero > .cs-hero-inner {
+    gap: 28px;
+    padding-block: 104px 96px;
+  }
+  html body main#main .cs-page > header.cs-hero .cs-highlights--wide {
+    margin-top: 20px;
+  }
+}
+@media (min-width: 600px) {
+  html body main#main .cs-page > header.cs-hero .cs-highlights--wide {
+    grid-template-columns: repeat(4, 160px);
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 0;
+  }
+  html body main#main .cs-page > header.cs-hero .cs-highlights--wide li {
+    justify-content: center;
+    gap: 2px;
+    padding: 9px 10px;
+    border-radius: 12px;
+  }
+  html body main#main .cs-page > header.cs-hero .cs-highlights--wide strong {
+    font-size: 18px;
+  }
+  html body main#main .cs-page > header.cs-hero .cs-highlights--wide span {
+    font-size: 13px;
+    line-height: 1.25;
+  }
+}
+@media (min-width: 600px) and (max-width: 767px) {
+  html body main#main .cs-page > header.cs-hero .cs-highlights--wide {
+    grid-template-columns: repeat(2, 160px);
+  }
+}
+@media (max-width: 599px) {
+  html body main#main .cs-page > header.cs-hero > .cs-hero-inner {
+    gap: 20px;
+    padding-block: 54px 52px;
+  }
+  html body main#main .cs-page .cs-highlights--m {
+    grid-template-columns: repeat(2, minmax(0, 150px));
+    justify-content: center;
+    gap: 10px;
+  }
+  html body main#main .cs-page .cs-highlights--m li {
+    gap: 2px;
+    padding: 10px;
+    border-radius: 12px;
+  }
+  html body main#main .cs-page .cs-highlights--m strong { font-size: 18px; }
+  html body main#main .cs-page .cs-highlights--m span { font-size: 13px; line-height: 1.3; }
+}
+
+/* R6.40: Insights article pages. Hero = headline + one row (audience pill, label); the rest sits below the wave. */
+html body main#main .bl-article .r4-article-hero h1.r4-phrase-title {
+  font-size: clamp(28px, 3.2vw, 48px);
+  line-height: 1.15;
+}
+html body main#main .bl-article .r4-article-hero .r6-article-tags {
+  margin: 16px 0 0;
+  gap: 8px 12px;
+  justify-content: center;
+}
+html body main#main .bl-article .r4-article-hero .r6-article-tags :is(.bl-badge, .bl-pill) {
+  font-size: 12px;
+}
+html body main#main .bl-article .r6-article-top {
+  display: flex;
+  flex-direction: column;
+  padding-top: 48px;
+}
+html body main#main .bl-article .r6-article-back { margin: 0; line-height: 1.5; }
+html body main#main .bl-article .r6-article-share {
+  justify-content: flex-end;
+  margin: 8px 0 24px;
+}
+html body main#main .bl-article .r6-article-byline {
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding: 20px 0 0;
+  border-top: 1px solid var(--color-dream-200);
+}
+html body main#main .bl-article .r6-article-byline .bl-meta { color: var(--color-dream-500); font-size: 14px; }
+@media (max-width: 767px) {
+  html body main#main .bl-article .r6-article-top { padding-top: 32px; }
+  html body main#main .bl-article .r6-article-share { justify-content: flex-start; }
+  html body main#main .bl-article .r6-article-byline { flex-direction: column; align-items: flex-start; }
+}
+
+/* R6.41: the nav picture card is a plain figure now (not a link). */
+html body header.nav figure.nav-mega-card { margin: 0; cursor: default; }
+
+/* R6.42: "Change cookie settings" on /cookies. Standard button (52px, 16px, 36px disc), dream fill; the disc and hover
+   come from the existing btn-teal rules. CookieYes opens its preferences through the cky-banner-element class. */
+html body main#main .page-privacy button.btn-teal.r6-cookie-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 24px;
+  min-height: 52px !important;
+  padding: 10px 56px 10px 20px !important;
+  border-radius: 16px;
+  background: var(--color-dream-500) !important;
+  border: 0 !important;
+  color: var(--color-white) !important;
+  font-family: inherit;
+  font-size: 16px !important;
+  font-weight: 400;
+  line-height: 1.5;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: none;
+  transition: transform 350ms, padding 350ms, background-color 350ms;
+}
+html body main#main .page-privacy button.btn-teal.r6-cookie-button:is(:hover, :focus-visible) {
+  padding: 10px 20px 10px 56px !important;
+  transform: scale(1.013);
+  background: var(--color-dream-500) !important;
+  color: var(--color-white) !important;
+}
+html body main#main .page-privacy button.btn-teal.r6-cookie-button::before,
+html body main#main .page-privacy button.btn-teal.r6-cookie-button::after {
+  width: 36px !important;
+  height: 36px !important;
+  transition-duration: 350ms;
+}
+html body main#main .page-privacy button.btn-teal.r6-cookie-button:focus-visible { outline: 2px solid #28DBB0; outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  html body main#main .page-privacy button.btn-teal.r6-cookie-button,
+  html body main#main .page-privacy button.btn-teal.r6-cookie-button::before,
+  html body main#main .page-privacy button.btn-teal.r6-cookie-button::after { transition: none; }
+  html body main#main .page-privacy button.btn-teal.r6-cookie-button:is(:hover, :focus-visible) { transform: none; }
+}

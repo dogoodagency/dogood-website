@@ -179,8 +179,8 @@ const titleEnd = titleStart && d.title.startsWith(titleStart) ? d.title.slice(ti
       <div class="r4-article-hero-inner">
         {d.sample && <p class="bl-sample" role="note">Sample article: placeholder text to show the layout.</p>}
         <div class="bl-head">
-          <p class="bl-back bl-back--top"><a href="/insights">← Back to Insights</a></p>
-          <div class="bl-card-tags">
+          <h1 class="r4-phrase-title">{titleEnd ? <>{titleStart}<br class="pp-desktop-break" /> {titleEnd}</> : d.title}</h1>
+          <div class="bl-card-tags r6-article-tags">
             <span class:list={["bl-badge", `bl-badge--${d.audience}`]}>{aud.label}</span>
             {
               category && (
@@ -190,27 +190,26 @@ const titleEnd = titleStart && d.title.startsWith(titleStart) ? d.title.slice(ti
               )
             }
           </div>
-          <h1 class="r4-phrase-title">{titleEnd ? <>{titleStart}<br class="pp-desktop-break" /> {titleEnd}</> : d.title}</h1>
-          <div class="bl-byline r4-article-byline">
-            <AuthorByline author={d.author} role={d.authorRole} />
-            <p class="bl-meta">
-              <span>Published <time datetime={isoDate(d.date)}>{formatDate(d.date)}</time></span>
-              <span aria-hidden="true"> · </span>
-              <span>{d.readTime} min read</span>
-            </p>
-          </div>
         </div>
       </div>
       <Wave fill={white} edge={heroEdge} />
     </header>
 
-    <div class="bl-col bl-col--wide bl-article-summary">
-    <div class="bl-share" aria-label="Share this article">
-      <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`} target="_blank" rel="noopener">Share on LinkedIn</a>
-      <button type="button" data-copy-article={url}>Copy link</button>
-      <span class="bl-sr" data-copy-status role="status" aria-live="polite"></span>
-    </div>
-      <p class="bl-dek">{d.description}</p>
+    <div class="bl-col bl-col--wide bl-article-summary r6-article-top">
+      <p class="bl-back r6-article-back"><a href="/insights">← Back to Insights</a></p>
+      <div class="bl-share r6-article-share" aria-label="Share this article">
+        <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`} target="_blank" rel="noopener">Share on LinkedIn</a>
+        <button type="button" data-copy-article={url}>Copy link</button>
+        <span class="bl-sr" data-copy-status role="status" aria-live="polite"></span>
+      </div>
+      <div class="bl-byline r6-article-byline">
+        <AuthorByline author={d.author} role={d.authorRole} />
+        <p class="bl-meta">
+          <span>Published <time datetime={isoDate(d.date)}>{formatDate(d.date)}</time></span>
+          <span aria-hidden="true"> · </span>
+          <span>{d.readTime} min read</span>
+        </p>
+      </div>
     </div>
 
     <div class="bl-col bl-col--wide">

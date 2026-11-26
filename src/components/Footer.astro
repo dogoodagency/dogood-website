@@ -152,18 +152,12 @@ const legal = [
           <a href={link.href}>{link.label}</a>
         ))
       }
-      <a href="#" class="cky-banner-element">Cookie settings</a>
     </div>
     <p>© <span id="copyright-year">{copyrightYear}</span> DoGood Agency LLC</p>
   </div>
 </footer>
 <script is:inline>document.getElementById("copyright-year").textContent=String(new Date().getFullYear());</script>
 <script>
-  // CookieYes handles its official revisit hook; keep this text link on the current page.
-  document.querySelector(".legal .cky-banner-element")?.addEventListener("click", (event) => {
-    event.preventDefault();
-  });
-
   const word = document.querySelector<HTMLElement>(".connect-word");
   const n1 = word?.querySelector(".cn-n1");
   if (word instanceof HTMLElement && n1 instanceof HTMLElement) {

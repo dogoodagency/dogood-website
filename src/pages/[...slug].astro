@@ -139,7 +139,11 @@ const bandHtml = bandGroupsHtml
   .map((inner, index) => {
     const kind = index % 2 === 0 ? "tint" : "white";
     const wave = index === 0 ? bandWave : "";
-    return `<section class="privacy-band privacy-band-${kind}"><div class="privacy-well">${inner}</div></section>${wave}`;
+    const cookieButton =
+      slug === "cookies" && index === 0
+        ? `<button type="button" class="btn-teal btn-dream cky-banner-element r6-cookie-button">Change cookie settings</button>`
+        : "";
+    return `<section class="privacy-band privacy-band-${kind}"><div class="privacy-well">${cookieButton}${inner}</div></section>${wave}`;
   })
   .join("");
 const bandStrip = bandGroupsHtml.length % 2 === 1 ? bandTint : "#ffffff";

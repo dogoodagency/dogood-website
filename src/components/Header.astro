@@ -39,15 +39,13 @@ const menus: Record<
   {
     phoneId: string;
     groups: typeof advisorGroups;
-    card: { href: string; label: string; image: string; alt: string };
+    card: { image: string; alt: string };
   }
 > = {
   "nav-how": {
     phoneId: "nav-how-phone",
     groups: howGroups,
     card: {
-      href: "/pathway",
-      label: "Which door is mine?",
       image: "pathway-menu",
       alt: "A founder walks along a teal path past an empty archway toward an open door with a green landscape beyond, drawn as a napkin sketch.",
     },
@@ -56,8 +54,6 @@ const menus: Record<
     phoneId: "nav-products-phone",
     groups: productGroups,
     card: {
-      href: "/pathway",
-      label: "Explore services",
       image: "services-menu",
       alt: "A teal path winds past a tent and a campfire with empty seats toward the hills under a crescent moon, drawn as a napkin sketch.",
     },
@@ -66,8 +62,6 @@ const menus: Record<
     phoneId: "nav-advisors-phone",
     groups: advisorGroups,
     card: {
-      href: "/advisor-center",
-      label: "Advisor Center",
       image: "advisors-menu",
       alt: "A founder and two advisors, drawn as napkin-sketch figures, stand around a large unrolled map; one advisor points along a winding teal path toward a small arched doorway, marked with a single pink pin.",
     },
@@ -114,7 +108,7 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
       menuLinks.map((menu) => (
         <div class="nav-mega" id={menu.id} aria-hidden="true">
           <div class="nav-mega-visual">
-          <a class="nav-mega-card" href={menu.card.href}>
+          <figure class="nav-mega-card">
             <picture>
               <img
                 src={`/media/r5/${menu.card.image}@1x.webp`}
@@ -126,11 +120,7 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
                 decoding="async"
               />
             </picture>
-            <span class="nav-mega-label">
-              {menu.card.label}
-              <span class="nav-mega-go" aria-hidden="true" />
-            </span>
-          </a>
+          </figure>
           </div>
           <ul class="nav-mega-links">
             {menu.groups.map((group) => (

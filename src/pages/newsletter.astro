@@ -7,6 +7,7 @@ import { edgeAbove } from "../data/edge-line";
 import { book } from "../data/book";
 
 import SevenQuestionsBand from "../components/SevenQuestionsBand.astro";
+import { sevenQuestionContext } from "../data/seven-questions";
 
 
 const tint = "#F5F2FF";
@@ -26,7 +27,7 @@ const action =
 const questions = [
   {
     q: "What am I actually tired from?",
-    a: "Years of running a company leave a tiredness that a holiday doesn't fix. Before you plan anything, name what drained you, so you don't walk straight back into it.",
+    a: sevenQuestionContext[0],
     why: "The tiredness after a sale is often less about the hours you worked and more about years of carrying responsibility, holding back worry and being “on” for everyone else. A holiday rests the body, but it doesn't always reach the part of you that was always in charge. If you don't name what drained you, it's easy to rebuild the same conditions in whatever comes next.",
     ask: [
       "Which parts of running the company took energy, and which gave it back?",
@@ -52,7 +53,7 @@ const questions = [
   },
   {
     q: "Who am I when nobody needs a decision from me?",
-    a: "For years your days were shaped by other people's questions. Notice who shows up when the questions stop.",
+    a: sevenQuestionContext[1],
     why: "Being needed was part of who you were. Your phone, your calendar and your team kept telling you. When the questions stop, the silence can feel like emptiness, boredom or relief, and often all three in one week. All of them are normal. What shows up in that space tells you something about who you are underneath the role.",
     ask: [
       "What do I do first with a free morning, when nobody is waiting for me?",
@@ -78,7 +79,7 @@ const questions = [
   },
   {
     q: "What did the company give me that I'll miss?",
-    a: "It might be the structure, the status, the people or the sense of being needed. List it plainly. These are the things you'll be tempted to replace in a hurry.",
+    a: sevenQuestionContext[2],
     why: "A company gives you far more than an income. It gives the week a rhythm, a place to go, people to see, problems to solve and a standing that others recognize. When it goes, all of these go at once. Founders often rush to replace them with the next venture or a board seat, without noticing which ones they actually miss. Naming them lets you replace them on purpose.",
     ask: [
       "Which of these did the company give me: structure, status, a team, purpose, challenge, identity, recognition?",
@@ -103,7 +104,7 @@ const questions = [
   },
   {
     q: "What am I saying yes to, just to fill the space?",
-    a: "Board seats, advisory roles, a new venture. Some will be right. Ask of each one whether you'd still want it if your calendar were already full.",
+    a: sevenQuestionContext[3],
     why: "After a sale, offers arrive quickly. Saying yes feels productive, and it quiets the discomfort of an empty calendar. But a yes given to fill a gap often turns into the next obligation you'll want to escape. A pause before you commit gives you room to choose what fits the person you are now.",
     ask: [
       "What have I agreed to since the sale, and why?",
@@ -129,7 +130,7 @@ const questions = [
   },
   {
     q: "What did I promise myself I'd do after the sale, and do I still want it?",
-    a: "That promise was made by a busier version of you. Check whether it still belongs to you.",
+    a: sevenQuestionContext[4],
     why: "Many founders carry a list made in their busiest years: travel, write a book, spend more time with the children, get fit, build a house. Some of it is real. Some of it was a way of getting through the pressure at the time. Checking the list from where you stand today keeps you from chasing an older version of yourself.",
     ask: [
       "When did I make this promise, and what was going on at the time?",
@@ -155,7 +156,7 @@ const questions = [
   },
   {
     q: "Who has been waiting for me to come back?",
-    a: "A partner, children, old friends, your own health. Some of them have waited a long time. Look at what they might need from you now.",
+    a: sevenQuestionContext[5],
     why: "While you built the company, other people adjusted around it: a partner who carried more at home, children who grew up quickly, friends you stopped seeing, and your own body. Some have waited patiently and some have stopped waiting. Coming back takes more than having time. It means asking what they need, and listening to the answer.",
     ask: [
       "Who carried more because I was busy?",
@@ -181,7 +182,7 @@ const questions = [
   },
   {
     q: "What would I like to be true in a year, and what's the smallest first step?",
-    a: "You don't need the whole plan. One honest direction and one small step is enough for now.",
+    a: sevenQuestionContext[6],
     why: "You don't need the next chapter worked out, and trying to plan all of it at once can leave you stuck. A direction is enough: how you'd like your days to feel, and what you'd like to be part of. Then one small step you can take this week and learn from.",
     ask: [
       "In a year, what would an ordinary Tuesday look like?",
