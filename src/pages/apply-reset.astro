@@ -1,0 +1,26 @@
+---
+// DG-PRE-57 (round 7): Stage 1: The Reset application, the owner's Jotform 263281893856068 embedded with the official
+// iFrame code. Route /apply-reset is Tec's proposal (the tab asks to confirm it with the owner); /apply-stage-1 stays the chooser.
+// The form carries its own title and logo, so the page has no visible heading of its own.
+import Base from "../layouts/Base.astro";
+import JotformEmbed from "../components/JotformEmbed.astro";
+
+const direct = "https://form.jotform.com/263281893856068";
+---
+
+<Base
+  title="Apply for Stage 1: The Reset | DoGood Agency"
+  description="Apply for Stage 1, The Reset: 30 days for founders navigating life after the sale, including a 1.5-day in-person residency."
+  canonical="https://www.dogoodagency.co/apply-reset"
+  footerEdge="#C2B7DD"
+>
+  <article class="r7-app">
+    <h1 class="sr-only">Apply for Stage 1: The Reset™</h1>
+    <div class="r7-app-frame">
+      <JotformEmbed formId="263281893856068" title="Stage 1: The Reset™ (30 days)" />
+    </div>
+    <p class="r7-app-direct">
+      <a href={direct} target="_blank" rel="noopener">Open the application in a new tab<span class="sr-only"> (opens in a new tab)</span></a>
+    </p>
+  </article>
+</Base>

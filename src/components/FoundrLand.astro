@@ -141,10 +141,7 @@ const days = [
         <div class="fl-visual">
           {kind === "home" && (
             <div class="fl-phone" aria-hidden="true">
-              <picture>
-                <source type="image/webp" srcset="/media/foundrland/foundrland-app-phone-nowheel@1x.webp 1x, /media/foundrland/foundrland-app-phone-nowheel@2x.webp 2x" />
-                <img class="fl-phone-img" src="/media/foundrland/foundrland-app-phone-nowheel@1x.webp" width="340" height="498" alt="" loading="lazy" decoding="async" />
-              </picture>
+              <img class="fl-phone-img" src="/media/r7/foundrland/foundrland-app-phone-nowheel-nocards@1x.png" srcset="/media/r7/foundrland/foundrland-app-phone-nowheel-nocards@1x.png 1x, /media/r7/foundrland/foundrland-app-phone-nowheel-nocards@2x.png 2x" width="340" height="498" alt="" loading="lazy" decoding="async" />
               <svg class="fl-phone-wheel" viewBox="0 0 680 996">
                 <g class="fl-wheel-grid">
                   {rings.map((r) => <polygon points={r} />)}
@@ -164,10 +161,9 @@ const days = [
                 })}
                 <circle cx={CX} cy={CY} r="8" class="fl-wheel-hub" />
               </svg>
-              <picture>
-                <source type="image/webp" srcset="/media/foundrland/foundrland-app-badge@1x.webp 1x, /media/foundrland/foundrland-app-badge@2x.webp 2x" />
-                <img class="fl-phone-badge" src="/media/foundrland/foundrland-app-badge@1x.webp" width="141" height="65" alt="" loading="lazy" decoding="async" />
-              </picture>
+              {/* R7 G3: Arta's split cards sit on top of the wheel; placement in round7.css (.fl-phone-card). */}
+              <img class="fl-phone-card fl-phone-card--a" src="/media/r7/foundrland/card-7-days-of-guided-reflection@1x.png" srcset="/media/r7/foundrland/card-7-days-of-guided-reflection@1x.png 1x, /media/r7/foundrland/card-7-days-of-guided-reflection@2x.png 2x" width="181" height="80" alt="" loading="lazy" decoding="async" />
+              <img class="fl-phone-card fl-phone-card--b" src="/media/r7/foundrland/card-your-next-chapter-starts-with-you@1x.png" srcset="/media/r7/foundrland/card-your-next-chapter-starts-with-you@1x.png 1x, /media/r7/foundrland/card-your-next-chapter-starts-with-you@2x.png 2x" width="168" height="80" alt="" loading="lazy" decoding="async" />
             </div>
           )}
           {kind === "exit" && <FoundrLandDevice view="laptop-discovery" />}

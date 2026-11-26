@@ -1,0 +1,37 @@
+---
+// DG-PRE-57 (round 7): confirmation after the Exit-Prep application (Jotform 263282109588061).
+// Copy: Applications — confirmations tab, "Website confirmation / Exit-Prep". Same layout and rules as
+// /apply-stage-1-thankyou (ThankYouPage, noindex, left out of the sitemap by the *thankyou filter, no booking language).
+// The two articles are Tec's placeholders until Grova/Inka choose programme-relevant ones (tab).
+// Jotform's whole-window redirect to this page is set up by the owner once the page is live; no data is passed in the URL.
+import ThankYouPage from "../components/ThankYouPage.astro";
+import AdvisorResources from "../components/AdvisorResources.astro";
+---
+
+<ThankYouPage
+  title="Thank you for your application."
+  heading="Exit-Prep™"
+  seoTitle="Application received: Exit-Prep | DoGood Agency"
+  description="Your Exit-Prep application has been received. What happens next."
+  canonical="https://www.dogoodagency.co/apply-exit-prep-thankyou"
+>
+  <p>Preparing yourself for an exit deserves as much attention as preparing your business.</p>
+  <p>Your application has been received. We will personally review what you have shared and get back to you within 24 hours.</p>
+  <p><strong>What happens next?</strong></p>
+  <p>
+    If we see a potential fit, we will invite you to a private FRP-Fit Call. Together, we will explore where you are in
+    your exit journey, what matters to you and how we might support your personal preparation for the transition.
+  </p>
+  <p>There is nothing further you need to do right now.</p>
+  <p>In the meantime, you are welcome to explore more of our work.</p>
+  <div class="bk-btn-row">
+    <a class="btn-teal" href="/pathway">Explore the Pathway</a>
+    <a class="btn-teal" href="/insights">Read our Insights</a>
+  </div>
+  <AdvisorResources
+    slot="extra"
+    articles={["before-you-sign-preparing-yourself", "why-deals-stall-when-the-founder-isnt-ready"]}
+    heading={null}
+    links={false}
+  />
+</ThankYouPage>

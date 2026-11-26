@@ -1,0 +1,43 @@
+---
+// DG-PRE-57 (round 7): official Jotform iFrame embed, exactly as supplied by the owner (Applications — confirmations tab,
+// "Official iFrame embed" rows). The iframe markup and the provider's height-handler script are unchanged; only the
+// handler's one-line initialisation moved into the bundled script below, because the site's CSP allows no inline scripts.
+// Form IDs are the owner's and must not be changed here.
+interface Props {
+  formId: string;
+  title: string;
+}
+
+const { formId, title } = Astro.props;
+const id = `JotFormIFrame-${formId}`;
+const src = `https://form.jotform.com/${formId}`;
+---
+
+<iframe
+  id={id}
+  title={title}
+  onload="window.parent.scrollTo(0,0)"
+  allowtransparency="true"
+  allow="geolocation; microphone; camera; fullscreen; payment"
+  src={src}
+  frameborder="0"
+  style="min-width:100%;max-width:100%;height:539px;border:none;"
+  scrolling="no"
+  data-jotform-embed></iframe>
+<script is:inline src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
+<script>
+  // Provider call: window.jotformEmbedHandler("iframe[id='JotFormIFrame-<id>']", "https://form.jotform.com/").
+  // Runs once per iframe; if the handler script has not arrived yet, waits for the page load and tries once more.
+  const start = () => {
+    const handler = (window as unknown as { jotformEmbedHandler?: (selector: string, origin: string) => void })
+      .jotformEmbedHandler;
+    if (typeof handler !== "function") return false;
+    document.querySelectorAll<HTMLIFrameElement>("iframe[data-jotform-embed]").forEach((frame) => {
+      if (frame.dataset.jotformReady) return;
+      frame.dataset.jotformReady = "true";
+      handler(`iframe[id='${frame.id}']`, "https://form.jotform.com/");
+    });
+    return true;
+  };
+  if (!start()) window.addEventListener("load", start, { once: true });
+</script>

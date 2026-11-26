@@ -1,5 +1,6 @@
 ---
 import FoundrLandLink from "../../../components/FoundrLandLink.astro";
+import FoundrLandPhonePreview from "../../../components/FoundrLandPhonePreview.astro";
 import "../../../styles/advisors.css";
 import "../../../styles/advisors-resources.css";
 import Base from "../../../layouts/Base.astro";
@@ -131,7 +132,7 @@ const footerEdge = edgeAbove("#ffffff");
           <p>The planned FOUNDR.land advisor pathway brings the founder's approved reflections into a useful brief before you meet. It helps you ask about the person alongside the business and the money, with the founder in control of what you see.</p>
           <FoundrLandLink />
           </div>
-          <img class="advr-founder-brief-phone" data-arta="R5-FL" src="/media/r5/fl-phone-brief@1x.webp" srcset="/media/r5/fl-phone-brief@1x.webp 1x, /media/r5/fl-phone-brief@2x.webp 2x" width="440" height="740" alt="FOUNDR.land founder discovery screen in a phone" loading="lazy" decoding="async" />
+          <FoundrLandPhonePreview class="advr-founder-brief-phone" view="stage" crop="450 / 567" />
         </section>
       </div>
     </section>

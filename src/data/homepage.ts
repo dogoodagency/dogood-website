@@ -119,7 +119,7 @@ export const reviews = [
     quote: "Before this, I was consistently operating in high gear, nothing ever felt like enough, and I was always pursuing the next level. Over the past three years, I’ve developed a consistent daily practice that allows me to connect inwardly and show up more intentionally and effectively. My work with Chantill has had a measurable impact, expanding my capacity to take risks, be vulnerable, and move from co-regulation to self-regulation with greater ease. As a result, I’m more present, more grounded, and better able to engage with both challenges and opportunities from a different lens.",
   },
   {
-    file: "",
+    file: "t-avdyli.png",
     name: "T AVDYLI",
     role: "Founder, Routime",
     quote: "I had been sitting on a decision for a while without making real progress. In the sessions, Vlora identified patterns in how I was thinking that I hadn’t noticed myself and challenged them directly. What changed was not just clarity, but speed. I made the decision and moved forward without needing further input. It’s a very direct way of working that cuts through unnecessary complexity.",

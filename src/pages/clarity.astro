@@ -1,8 +1,9 @@
 ---
 import BookingPage from "../components/BookingPage.astro";
-import BookingCaseCard from "../components/BookingCaseCard.astro";
 import BookingTestimonials from "../components/BookingTestimonials.astro";
 // Not for Google (Seb, 18 Nov 2026): noindex, out of the sitemap (astro.config.mjs) and out of llms.txt.
+// DG-PRE-56 (round 7): two exclusions removed, "health" no longer named as something we work on (no implied medical care),
+// case study removed, two approved testimonials clipped to 50 words (this page only), two font colours (white + GRASS 500, see round7.css).
 ---
 
 <BookingPage
@@ -30,7 +31,7 @@ import BookingTestimonials from "../components/BookingTestimonials.astro";
   <ul>
     <li><strong>Business:</strong> offer clarity, positioning, acquisition/lead gen, strategy</li>
     <li><strong>Leadership:</strong> boundaries, team dynamics, decision-making</li>
-    <li><strong>Life:</strong> stress/emotion load, relationships, identity, health &amp; money concerns</li>
+    <li><strong>Life:</strong> stress/emotion load, relationships, identity, money concerns</li>
   </ul>
 
   <p class="bk-label bk-tight">This is for you if…</p>
@@ -38,14 +39,12 @@ import BookingTestimonials from "../components/BookingTestimonials.astro";
     <li>You want focused 1:1 support (not a structured FRP program)</li>
     <li>You need clarity + execution (not just insights)</li>
     <li>You have decision fog and feel reactive instead of clear</li>
-    <li>You’re high-performing externally, but internally you’re paying for it (health/relationship/identity strain)</li>
+    <li>You’re high-performing externally, but internally you’re paying for it (relationship/identity strain)</li>
   </ul>
 
   <p class="bk-label bk-tight">This is not for…</p>
   <ul>
     <li>FRP-fit founders (FRP routing)</li>
-    <li>Team / culture / ops delivery work (separate service)</li>
-    <li>Therapy, emergency care, or medical support</li>
   </ul>
 
   <p class="bk-label bk-tight">For new clients, here’s how booking works:</p>
@@ -81,7 +80,6 @@ import BookingTestimonials from "../components/BookingTestimonials.astro";
   </ul>
 
   <Fragment slot="after">
-    <BookingTestimonials files={["michael-r.png", "christian-v.png"]} />
-    <BookingCaseCard />
+    <BookingTestimonials files={["michael-r.png", "christian-v.png"]} limit={50} />
   </Fragment>
 </BookingPage>

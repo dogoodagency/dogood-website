@@ -1,7 +1,10 @@
 ---
 // Thank-you page after booking an internal sync. Layout: ThankYouPage (Seb's design, 18 Nov 2026): no map,
-// no case study. Copy word for word from the old src/content/pages/internal-thankyou.md (removed).
+// no case study. Copy from the old src/content/pages/internal-thankyou.md (removed).
+// DG-PRE-56 (round 7): "Back To Homepage" removed; the animated Vision and Mission cards (as on /about) and the two latest articles added.
 import ThankYouPage from "../components/ThankYouPage.astro";
+import AdvisorResources from "../components/AdvisorResources.astro";
+import VisionMission from "../components/VisionMission.astro";
 ---
 
 <ThankYouPage
@@ -11,7 +14,7 @@ import ThankYouPage from "../components/ThankYouPage.astro";
   description="Your internal sync with DoGood is booked."
   canonical="https://www.dogoodagency.co/internal-thankyou"
 >
-  <p>Welcome to <span class="pink-soft"><strong>FOUNDR</strong>.land</span>.</p>
+  <p>Welcome to <strong>FOUNDRland</strong>.</p>
   <p>
     You will have received a calendar invite in your inbox, and the meeting should already be added to your calendar.
     Verify that the meeting appears there.
@@ -20,7 +23,8 @@ import ThankYouPage from "../components/ThankYouPage.astro";
     If anything changed since you booked, reply to the invite with a 1–2 line agenda (what we’re deciding, reviewing,
     or unblocking) so we can use the time well.
   </p>
-  <div class="bk-btn-row">
-    <a class="btn-apply" href="/">Back To Homepage</a>
-  </div>
+  <Fragment slot="extra">
+    <VisionMission />
+    <AdvisorResources latest={2} heading="Latest articles" links={false} />
+  </Fragment>
 </ThankYouPage>

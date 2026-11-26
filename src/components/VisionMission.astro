@@ -1,0 +1,65 @@
+---
+// "Our vision" and "Our mission" cards with their drawings, word for word and drawing for drawing from /about,
+// for the internal thank-you pages (DG-PRE-56). The dashed flow lines move once the drawings are in view,
+// and stand still under prefers-reduced-motion (about.css gates the animation).
+import "../styles/about.css";
+---
+
+<div class="ab-page ty-vm">
+  <section class="ab-band ab-band-tint ab-band-statements" aria-label="Our vision and mission">
+    <div class="ab-well">
+      <div class="ab-duo ab-purpose-flow">
+        <section class="ab-statement card ab-statement--vision" aria-labelledby="ty-vm-vision">
+          <h2 id="ty-vm-vision">Our vision</h2>
+          <p>Every entrepreneur builds consciously: a life of creation and service that does good to themselves, the people around them, and to the world.</p>
+          <svg class="ab-diagram" viewBox="0 44 400 164" aria-hidden="true" fill="none">
+            <g class="ab-flow-line"><path d="M62 104 H112 M170 104 H260 M218 104 V172 Q218 178 236 178 H260" /></g>
+            <g class="ab-pen">
+              <path transform="translate(0 -24)" d="M27 92c-3-17 23-20 23-3 1 16-23 18-23 3zm-9 47 4-24q14-13 29-1l7 25m-34-10 27 1M29 139l-3 13m18-13 5 13" />
+              <path class="ab-accent-fill" d="M126 93c-15-17 6-30 17-13 13-18 32-2 18 12l-18 19z" />
+              <path d="m127 119 33 1m-21 0-2 9m14-9 3 9" />
+              <path d="M274 88c-2-12 14-13 14-1s-14 12-14 1zm19 0c-1-11 14-11 14 0s-14 11-14 0zm-25 30 3-17q9-8 19 0m-1 17 3-17q9-8 18 0l4 17" />
+              <path d="M309 174c0 28-43 28-43 0s43-29 43 0zm-22-21c-10 12-11 30 0 42m-19-22 39 1m-31-16 10 9-5 11 14 5 4-10" />
+              <path class="ab-pink-stroke" d="m151 65 3-9m12 16 8-5m-54 7-7-5" />
+            </g>
+            <g class="ab-diagram-label"><text x="42" y="155" text-anchor="middle"><tspan x="42">Entre-</tspan><tspan x="42" dy="19">preneurs</tspan></text><text x="143" y="153" text-anchor="middle"><tspan x="143">Doing</tspan><tspan x="143" dy="19">good</tspan></text><text x="320" y="95"><tspan x="320">People</tspan><tspan x="320" dy="19">they love</tspan></text><text x="320" y="181">The world</text></g>
+          </svg>
+        </section>
+        <section class="ab-statement card" aria-labelledby="ty-vm-mission">
+          <h2 id="ty-vm-mission">Our mission</h2>
+          <p>We put free tools for the human side of entrepreneurship in the hands of every entrepreneur on the planet.</p>
+          <svg class="ab-diagram" viewBox="0 12 400 164" aria-hidden="true" fill="none">
+            <g class="ab-flow-line"><path d="M80 69 H202 M268 69 H306" /></g>
+            <g class="ab-pen">
+              <path d="m25 52 20-5 19 6 19-6-1 38-19 5-19-5-19 5zm20-5-1 38m20-32-1 37m-31-29 7-2m13 1 6 2" />
+              <path class="ab-accent-fill" d="M258 66c2 32-47 33-46 1s46-33 46-1z" />
+              <path d="M234 44c-12 14-12 32 1 45m-22-23 43 1m-35-18 12 11-6 13 14 4 5-13" />
+              <path d="M318 53c-2-13 17-14 17-1s-17 13-17 1zm-7 35 4-21q11-9 23 0l5 21" />
+              <path class="ab-pink-stroke" d="m273 37 6-8m0 18 10-2" />
+            </g>
+            <g class="ab-diagram-label"><text x="53" y="30" text-anchor="middle">Free tools</text><text x="272" y="109" text-anchor="middle"><tspan x="272">Entrepreneurs</tspan><tspan x="272" dy="19">everywhere</tspan></text></g>
+          </svg>
+        </section>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  // Start each drawing's flow lines when it scrolls into view (same as /about). Reduced motion: about.css
+  // only animates under prefers-reduced-motion: no-preference, so nothing moves for people who opt out.
+  const diagrams = document.querySelectorAll<SVGElement>(".ty-vm .ab-diagram");
+  if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-flowing");
+          io.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "0px 0px -10% 0px" },
+    );
+    diagrams.forEach((d) => io.observe(d));
+  }
+</script>

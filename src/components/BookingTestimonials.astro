@@ -9,9 +9,11 @@ import { reviews } from "../data/homepage";
 interface Props {
   files: string[];
   heading?: string;
+  /** Word limit for the quotes on this page (default: the site-wide 70-word cap). */
+  limit?: number;
 }
 
-const { files, heading = "What clients say" } = Astro.props;
+const { files, heading = "What clients say", limit } = Astro.props;
 const portraits = import.meta.glob<ImageMetadata>("../assets/reviews/*", { eager: true, import: "default" });
 const picked = files.map((file) => {
   const review = reviews.find((r) => r.file === file);
@@ -28,7 +30,7 @@ const picked = files.map((file) => {
       picked.map((r) => (
         <li class="bk-quote">
           <blockquote>
-            <p>{clipWords(r.quote)}</p>
+            <p>{limit ? clipWords(r.quote, limit) : clipWords(r.quote)}</p>
           </blockquote>
           <div class="bk-quote-who">
             <Image src={r.src} alt="" width={56} height={56} class="bk-quote-img" />

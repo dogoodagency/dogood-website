@@ -1,0 +1,228 @@
+---
+/**
+ * Round 7 (G3b): static port of the coded foundr.land iPhone previews (foundr.land product-previews, FounderPhone).
+ * Static HTML + CSS only, no JS. Text is copied exactly from the foundr.land source; every class is prefixed
+ * "flp-" so nothing collides with the site. The design is 295 x 565 px; everything scales with the width of the
+ * wrapper through the container unit --u (1 design px = 1px at 295px wide). No shadows.
+ */
+type View = "welcome" | "stage" | "relationships" | "letting-go" | "wheel" | "next-steps" | "onboarding" | "action-plan" | "check-in" | "milestones";
+interface Props {
+  view?: View;
+  /** Show only the top part of the phone, as an aspect ratio of the visible window, e.g. "450 / 567". */
+  crop?: string;
+  class?: string;
+}
+const { view = "relationships", crop, class: className } = Astro.props;
+
+const content: Record<View, { step: string; title: string; desc: string; btn: string }> = {
+  welcome: { step: "YOUR NEXT CHAPTER", title: "Life beyond the business.", desc: "Eight guided discoveries to make sense of what comes next.", btn: "Begin my journey" },
+  stage: { step: "BEFORE WE BEGIN", title: "Where are you in your journey?", desc: "There is no right starting point.", btn: "Continue" },
+  relationships: { step: "DISCOVERY 3 OF 8", title: "Who is coming with you?", desc: "Your relationships matter in this transition. Who needs to be part of the conversation?", btn: "Save & continue" },
+  "letting-go": { step: "DISCOVERY 5 OF 8", title: "Letting go", desc: "How clear do you feel about stepping away from your role in the business?", btn: "Next reflection" },
+  wheel: { step: "YOUR PERSONAL CLARITY", title: "Your clarity wheel", desc: "A picture of how clear things feel today across six areas.", btn: "See my report" },
+  "next-steps": { step: "AFTER DISCOVERY", title: "One thing to try this week", desc: "Your reflections can help you choose a practical next step.", btn: "Save this action" },
+  onboarding: { step: "YOUR STARTING POINT", title: "The journey is yours.", desc: "A quick beginning, without needing to know all the answers.", btn: "Choose my path" },
+  "action-plan": { step: "YOUR NEXT STEP", title: "A little space to explore.", desc: "Choose a simple action that feels right for you.", btn: "Add to my plan" },
+  "check-in": { step: "DAY 14 CHECK-IN", title: "What has shifted?", desc: "Take a moment to revisit a choice you made.", btn: "Save my reflection" },
+  milestones: { step: "MY TRANSITION", title: "A changing horizon.", desc: "Business milestones are separate from personal clarity.", btn: "Review my journey" },
+};
+const v = content[view];
+
+const stageOptions = ["Considering a sale", "Preparing to sell", "Already sold", "Not sure yet"];
+const relationshipOptions = ["My partner", "My family", "Friends / peers", "Someone else"];
+const nextStepOptions = ["Talk with someone I trust", "Try a different weekly routine", "Explore new sources of meaning"];
+const options =
+  view === "stage" || view === "onboarding" ? stageOptions
+  : view === "relationships" ? relationshipOptions
+  : view === "next-steps" || view === "action-plan" ? nextStepOptions
+  : [];
+const chosen = view === "stage" || view === "onboarding" ? 1 : 0;
+const doneSteps = view === "relationships" ? 3 : 5;
+
+const wheelPoints = "82,25 131,62 119,126 82,151 40,116 31,65";
+const wheelDots = wheelPoints.split(" ").map((p) => p.split(","));
+---
+
+<div class:list={["flp", crop && "flp--crop", className]} style={crop ? `--flp-crop:${crop}` : undefined} role="img" aria-label={`FOUNDR.land on a phone: ${v.title}`}>
+  <div class="flp-phone" aria-hidden="true">
+    <div class="flp-status"><span>9:41</span><span>•••</span></div>
+    <div class="flp-brand"><span><b>foundr</b><i>.</i>land</span><span>≡</span></div>
+    {view === "welcome" && <div class="flp-stripes"><i></i><i></i><i></i><i></i></div>}
+    <span class="flp-step">{v.step}</span>
+    {(view === "relationships" || view === "letting-go") && (
+      <div class="flp-steps">{Array.from({ length: 8 }, (_, i) => <i class:list={[i < doneSteps && "is-done"]}></i>)}</div>
+    )}
+    <span class="flp-title">{v.title}</span>
+    <span class="flp-desc">{v.desc}</span>
+
+    {options.length > 0 && (
+      <div class="flp-options">
+        {options.map((x, i) => (
+          <div class:list={[i === chosen && "is-chosen"]}>
+            <span>
+              {i === chosen ? (
+                <svg class="flp-glyph" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>
+              ) : (
+                <svg class="flp-glyph" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" stroke-dasharray="2 3.2" /></svg>
+              )}
+            </span>
+            {x}
+          </div>
+        ))}
+      </div>
+    )}
+
+    {view === "letting-go" && (
+      <>
+        <div class="flp-rating-title"><span>Not clear yet</span><span>Very clear</span></div>
+        <div class="flp-rating">{[1, 2, 3, 4, 5].map((i) => <span class:list={[i === 4 && "is-chosen"]}>{i}</span>)}</div>
+        <div class="flp-thought">
+          <strong><svg class="flp-glyph" viewBox="0 0 24 24"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9" /></svg> A useful thought</strong>
+          <span>You do not need all the answers today.</span>
+        </div>
+      </>
+    )}
+
+    {view === "wheel" && (
+      <div class="flp-wheel-wrap">
+        <svg class="flp-wheel" viewBox="0 0 164 176">
+          <g stroke="#c0a9df" fill="none" stroke-width="1">
+            <polygon points="82,10 146,48 146,127 82,164 18,127 18,48" />
+            <polygon points="82,36 125,61 125,113 82,139 39,113 39,61" />
+            <polygon points="82,60 105,73 105,102 82,115 59,102 59,73" />
+            <path d="M82 10V164 M18 48L146 127 M146 48L18 127" />
+          </g>
+          <polygon points={wheelPoints} fill="rgba(40,219,176,.35)" stroke="#17b99b" stroke-width="2" />
+          {wheelDots.map(([x, y]) => <circle cx={x} cy={y} r="3.5" fill="#13ac91" />)}
+          <circle cx="82" cy="87" r="3.5" fill="#2A0B4F" />
+        </svg>
+      </div>
+    )}
+
+    {view === "check-in" && (
+      <div class="flp-checkin">
+        <div class="flp-checkin-day">14</div>
+        <strong>Two weeks into your next chapter</strong>
+        <span class="flp-checkin-note">Your action: make room for one new weekly routine.</span>
+        <div class="flp-checkin-line"><span>Not started</span><span>In progress</span><span>Completed</span></div>
+      </div>
+    )}
+
+    {view === "milestones" && (
+      <div class="flp-milestones">
+        <div><span>01</span><b>Considering an exit</b></div>
+        <div><span>02</span><b>Preparing for a change</b></div>
+        <div><span>03</span><b>Deal milestones</b></div>
+        <div><span>04</span><b>Life after the sale</b></div>
+      </div>
+    )}
+
+    {view === "welcome" && (
+      <div class="flp-preview">
+        <div class="flp-preview-kicker">DAY 0 · YOUR STARTING POINT</div>
+        <span class="flp-preview-title">Start with where you are.</span>
+        <span class="flp-preview-text">A few moments to notice what matters today.</span>
+        <div class="flp-preview-path">
+          <div><b>●</b> Day 0 · Discover</div>
+          <div><b>○</b> Eight discoveries · Explore</div>
+          <div><b>○</b> Day 14 · Revisit</div>
+          <div><b>○</b> Day 30 · Look again</div>
+        </div>
+      </div>
+    )}
+
+    <div class="flp-bottom">
+      <span>{v.btn} <svg class="flp-glyph" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" /></svg></span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .flp { container-type: inline-size; width: 100%; margin-inline: auto; display: block; }
+  .flp--crop { aspect-ratio: var(--flp-crop); overflow: hidden; }
+  .flp-phone {
+    --u: calc(100cqw / 295);
+    box-sizing: border-box;
+    width: 100%;
+    aspect-ratio: 295 / 565;
+    border: calc(8 * var(--u)) solid #261235;
+    border-radius: calc(40 * var(--u));
+    background: linear-gradient(180deg, #fffaff, #f7f0ff);
+    padding: calc(21 * var(--u)) calc(19 * var(--u)) calc(22 * var(--u));
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    font-family: var(--font-sans, Montserrat, Arial, sans-serif);
+    color: #2a0b4f;
+    text-align: left;
+    line-height: normal;
+    letter-spacing: normal;
+    text-transform: none;
+  }
+  .flp-phone * { box-sizing: border-box; }
+  .flp-phone::before {
+    content: "";
+    width: calc(86 * var(--u));
+    height: calc(16 * var(--u));
+    position: absolute;
+    top: calc(7 * var(--u));
+    left: calc(50% - (43 * var(--u)));
+    border-radius: 99px;
+    background: #24112e;
+  }
+  .flp-status { display: flex; align-items: center; justify-content: space-between; font-size: calc(12 * var(--u)); font-weight: 800; line-height: 1; margin: calc(5 * var(--u)) 0 calc(19 * var(--u)); }
+  .flp-brand { display: flex; justify-content: space-between; gap: calc(12 * var(--u)); align-items: center; font: 400 calc(22 * var(--u)) Georgia, "Times New Roman", serif; letter-spacing: -0.055em; }
+  .flp-brand b { font-weight: 800; }
+  .flp-brand i { color: #ea1557; font-style: normal; font-weight: 800; }
+  .flp-brand > span:last-child { font-family: Arial, sans-serif; font-size: calc(21 * var(--u)); letter-spacing: 0; }
+  .flp-stripes { display: flex; gap: calc(5 * var(--u)); margin-top: calc(18 * var(--u)); }
+  .flp-stripes i { display: block; width: calc(26 * var(--u)); height: calc(6 * var(--u)); border-radius: 99px; background: #fefabe; }
+  .flp-stripes i:nth-child(2) { background: #28dbb0; }
+  .flp-stripes i:nth-child(3) { background: #1d53ef; }
+  .flp-stripes i:nth-child(4) { background: #ea1557; }
+  .flp-step { display: block; font-size: calc(12 * var(--u)); font-weight: 800; line-height: 1.5; letter-spacing: 0.11em; color: #66498b; margin: calc(24 * var(--u)) 0 calc(10 * var(--u)); }
+  .flp-steps { display: flex; gap: calc(5 * var(--u)); margin: calc(3 * var(--u)) 0 calc(11 * var(--u)); }
+  .flp-steps i { display: block; height: calc(7 * var(--u)); flex: 1; background: #e1d2f4; border-radius: 99px; }
+  .flp-steps i.is-done { background: #2a0b4f; }
+  .flp-title { display: block; font: 700 calc(30 * var(--u)) / 1.07 Georgia, "Times New Roman", serif; letter-spacing: -0.065em; margin: calc(10 * var(--u)) 0 calc(13 * var(--u)); }
+  .flp-desc { display: block; font-size: calc(13 * var(--u)); line-height: 1.52; margin: 0 0 calc(17 * var(--u)); color: #3b2055; }
+  .flp-options { display: grid; gap: calc(8 * var(--u)); margin: calc(6 * var(--u)) 0 calc(14 * var(--u)); }
+  .flp-options > div { border: 1px solid #ddcce9; background: #fff9ff; border-radius: calc(13 * var(--u)); padding: calc(10 * var(--u)) calc(12 * var(--u)); font-size: calc(12 * var(--u)); font-weight: 700; line-height: 1.3; display: flex; align-items: center; gap: calc(11 * var(--u)); }
+  .flp-options > div.is-chosen { background: #e5d6f4; border-color: #c7a9db; }
+  .flp-options > div > span { display: block; font-size: calc(18 * var(--u)); color: #6c3692; flex: 0 0 calc(18 * var(--u)); line-height: 0; }
+  .flp-glyph { display: inline-block; width: 1em; height: 1em; vertical-align: -0.14em; flex: none; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .flp-bottom { margin-top: auto; padding-top: calc(9 * var(--u)); }
+  .flp-bottom > span { display: block; background: #2a0b4f; color: #fff; text-align: center; border-radius: 99px; font-size: calc(13 * var(--u)); font-weight: 800; line-height: 1.5; padding: calc(14 * var(--u)) calc(9 * var(--u)); }
+  .flp-bottom .flp-glyph { width: calc(14 * var(--u)); height: calc(14 * var(--u)); margin-left: calc(5 * var(--u)); }
+  .flp-rating-title { display: flex; justify-content: space-between; font-size: calc(12 * var(--u)); font-weight: 700; margin-top: calc(16 * var(--u)); }
+  .flp-rating { display: flex; justify-content: space-between; gap: calc(4 * var(--u)); margin: calc(13 * var(--u)) 0 calc(20 * var(--u)); }
+  .flp-rating span { width: calc(33 * var(--u)); height: calc(33 * var(--u)); display: grid; place-items: center; border: 1px solid #d1b9e7; border-radius: 50%; font-size: calc(12 * var(--u)); font-weight: 700; }
+  .flp-rating span.is-chosen { color: #fff; background: #2a0b4f; }
+  .flp-thought { background: #fff8d8; padding: calc(15 * var(--u)); border-radius: calc(13 * var(--u)); }
+  .flp-thought strong { font-size: calc(12 * var(--u)); display: block; }
+  .flp-thought span { display: block; font-size: calc(12 * var(--u)); line-height: 1.5; margin: calc(5 * var(--u)) 0 0; }
+  .flp-wheel-wrap { display: grid; place-items: center; flex: 1; }
+  .flp-wheel { width: min(100%, calc(210 * var(--u))); height: auto; overflow: visible; }
+  .flp-checkin { margin-top: calc(16 * var(--u)); border-radius: calc(17 * var(--u)); background: #e9fff5; padding: calc(18 * var(--u)) calc(16 * var(--u)); display: grid; gap: calc(10 * var(--u)); }
+  .flp-checkin-day { width: calc(64 * var(--u)); height: calc(64 * var(--u)); border-radius: 50%; display: grid; place-items: center; background: #b9f5df; color: #2a0b4f; font: 700 calc(36 * var(--u)) Georgia, "Times New Roman", serif; }
+  .flp-checkin strong { font: 700 calc(19 * var(--u)) / 1.15 Georgia, "Times New Roman", serif; }
+  .flp-checkin .flp-checkin-note { display: block; font-size: calc(12 * var(--u)); line-height: 1.55; margin: 0; }
+  .flp-checkin-line { display: flex; flex-wrap: wrap; gap: calc(5 * var(--u)); }
+  .flp-checkin-line span { background: #fff; padding: calc(7 * var(--u)); border-radius: 99px; font-size: calc(12 * var(--u)); font-weight: 700; }
+  .flp-checkin-line span:nth-child(2) { background: #2a0b4f; color: #fff; }
+  .flp-milestones { display: grid; gap: calc(9 * var(--u)); margin-top: calc(13 * var(--u)); }
+  .flp-milestones > div { display: flex; align-items: center; gap: calc(12 * var(--u)); border-radius: calc(12 * var(--u)); background: #f1e8ff; padding: calc(13 * var(--u)); }
+  .flp-milestones > div:nth-child(2) { background: #e4fff3; }
+  .flp-milestones > div:nth-child(3) { background: #fff6da; }
+  .flp-milestones > div:nth-child(4) { background: #ffe8f0; }
+  .flp-milestones > div span { font-size: calc(12 * var(--u)); font-weight: 800; color: #725098; }
+  .flp-milestones > div b { font: 700 calc(15 * var(--u)) Georgia, "Times New Roman", serif; }
+  .flp-preview { margin: calc(8 * var(--u)) 0 calc(15 * var(--u)); flex: 1; padding: calc(12 * var(--u)); background: #fff; border: 1px solid #e5d9f0; border-radius: calc(18 * var(--u)); overflow: hidden; }
+  .flp-preview-kicker { display: inline-block; background: #fff7dc; border-radius: 99px; color: #70478c; padding: calc(6 * var(--u)) calc(9 * var(--u)); font-size: calc(9 * var(--u)); font-weight: 800; line-height: 1.5; }
+  .flp-preview-title { display: block; font: 700 calc(20 * var(--u)) / 1.09 Georgia, "Times New Roman", serif; margin: calc(12 * var(--u)) 0 calc(8 * var(--u)); letter-spacing: -0.045em; }
+  .flp-preview-text { display: block; font-size: calc(11 * var(--u)); line-height: 1.4; margin: 0 0 calc(10 * var(--u)); color: #574371; }
+  .flp-preview-path { display: grid; gap: calc(5 * var(--u)); }
+  .flp-preview-path > div { padding: calc(7 * var(--u)) calc(8 * var(--u)); background: #faf7ff; border-radius: calc(9 * var(--u)); font-size: calc(10 * var(--u)); font-weight: 600; white-space: normal; }
+  .flp-preview-path b { color: #7c4aa6; }
+</style>
