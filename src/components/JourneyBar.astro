@@ -17,7 +17,7 @@ const steps = [
   { title: "Stage 2: The Build™", detail: "By invitation, after Stage 1", chip: "12 weeks", href: "/the-build", tone: "grass2", shape: "hex", icon: "blocks" },
   { title: "IntegralContinuity™", detail: "Ongoing sessions", chip: "Ongoing", href: "/integral-continuity", tone: "heart", shape: "squircle", icon: "loop" },
   { title: "Annual Signature Retreat", detail: "Once a year, by invitation", chip: "Yearly", href: "/signature-retreat", tone: "heart2", shape: "diamond", icon: "sun" },
-  { title: "FOUNDR.land Membership", detail: "The house founders belong to", chip: "", href: "/founderland/membership", tone: "heart3", shape: "circle", icon: "house" },
+  { title: "FOUNDRland Membership", detail: "The house founders belong to", chip: "", href: "/founderland/membership", tone: "heart3", shape: "circle", icon: "house" },
   // Optional 8th phase (Seb, 20 Nov 2026): no page of its own.
   { title: "Life-long friends", detail: "Where the journey can lead", chip: "Become", href: "", tone: "rose", shape: "circle", icon: "heart" },
 ];
@@ -129,14 +129,14 @@ let roadOn = `M${X(6)} ${Y(6)}` + seg(6, 7) + ` C ${(X(7) + endX) / 2} ${Y(7)}, 
          parallel with every station, with a light that keeps flowing along it. -->
     <div class="jr-lane">
       <p class="jr-lane-label">
-        <img class="jr-lane-logo" src="/media/foundrland/foundrland-logo@1x.png" srcset="/media/foundrland/foundrland-logo@1x.png 1x, /media/foundrland/foundrland-logo@2x.png 2x" width="480" height="113" alt="FOUNDR.land" />
+        <img class="jr-lane-logo" src="/media/foundrland/foundrland-logo@1x.png" srcset="/media/foundrland/foundrland-logo@1x.png 1x, /media/foundrland/foundrland-logo@2x.png 2x" width="480" height="113" alt="FOUNDRland" />
         <span>is with you at every step</span>
       </p>
       <div class="jr-lane-track" aria-hidden="true">
         <span class="jr-lane-flow"></span>
         {steps.map((_, i) => <span class="jr-lane-dot" style={`--i:${i}`}></span>)}
       </div>
-      {FOUNDRLAND_LINK_LIVE && <a class="jr-lane-link" href={FOUNDRLAND_URL} target="_blank" rel="noopener" aria-label="Visit FOUNDR.land (opens in a new tab)">Visit FOUNDR.land ↗</a>}
+      {FOUNDRLAND_LINK_LIVE && <a class="jr-lane-link" href={FOUNDRLAND_URL} target="_blank" rel="noopener" aria-label="Visit FOUNDRland (opens in a new tab)">Visit FOUNDRland ↗</a>}
     </div>
   </div>
 </nav>

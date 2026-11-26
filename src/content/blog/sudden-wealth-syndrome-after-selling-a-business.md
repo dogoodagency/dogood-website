@@ -42,7 +42,7 @@ noindex: false
 
 ## What is sudden wealth syndrome?
 
-The term goes back to the late 1990s. Therapists Stephen Goldbart and Joan DiFuria of the Money, Meaning and Choices Institute were among the first to describe the warning signs ([WebMD, 2000](https://www.webmd.com/balance/features/cm/sudden-wealth-syndrome)): feeling isolated from old friends, guilt about having more than others, a constant fear of losing the money, and difficulty making decisions.
+The term goes back to the late 1990s. Therapists Stephen Goldbart and Joan DiFuria of the Money, Meaning and Choices Institute were among the first to describe the warning signs ([WebMD, 2000](https://www.webmd.com/balance/features/cm/sudden-wealth-syndrome)): feeling isolated from old friends, [guilt about having more than others](/insights/emotions-of-selling-a-business), a constant fear of losing the money, and difficulty making decisions.
 
 It is usually discussed in relation to lottery wins, inheritances and IPOs. A business sale belongs on that list, but founders rarely put themselves there. You worked for this money, so it doesn't feel like it should count.
 

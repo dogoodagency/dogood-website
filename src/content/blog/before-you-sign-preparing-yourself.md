@@ -49,7 +49,7 @@ Search for how to prepare to sell your business and almost every result says the
 
 All of that matters, and good advisors will take you through it. But notice who it is for. Even "make yourself redundant" is advice for the buyer's benefit, so the business is worth more without you in it.
 
-Almost nobody prepares the founder. Yet the founder is the one who has to sign, live through due diligence, hand over the company and then wake up the next morning without it. A well-prepared company with an unprepared founder is a risk to the deal and to the founder.
+Almost nobody prepares the founder. Yet the founder is the one who has to sign, live through due diligence, hand over the company and then wake up the next morning without it. A well-prepared company with an unprepared founder is [a risk to the deal](/insights/why-deals-stall-when-the-founder-isnt-ready) and to the founder.
 
 ## What does preparing yourself actually mean?
 
@@ -72,7 +72,7 @@ None of these questions has a straight answer. You don't sit down one afternoon,
 
 It is a process: discovery, reflection, drafting, then going back over what you drafted. It works like peeling an onion. You go around and around, and each time a layer comes off, until you find the core. The first answers founders give are usually the ones they think they should give. The real ones come later.
 
-That is why the time matters. Twelve to eighteen months before the exit gives you room to go through several layers while you still have the structure of the company around you, rather than starting from nothing after the deal has closed.
+That is why the time matters. Twelve to eighteen months before the exit gives you room to go through several layers while you still have the structure of the company around you, rather than starting from nothing [after the deal has closed](/the-reset).
 
 ## How do you know you're personally ready to sell?
 

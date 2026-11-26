@@ -3,8 +3,8 @@ import { FOUNDRLAND_URL } from "../data/foundrland";
 // FOUNDR.land is public (Seb, 24 Nov 2026).
 const BrandTag = FOUNDRLAND_URL ? "a" : "span";
 const brandProps = FOUNDRLAND_URL
-  ? { href: FOUNDRLAND_URL, target: "_blank", rel: "noopener", "aria-label": "foundr.land by DoGood (opens in a new tab)" }
-  : { role: "img", "aria-label": "foundr.land by DoGood" };
+  ? { href: FOUNDRLAND_URL, target: "_blank", rel: "noopener", "aria-label": "FOUNDRland by DoGood (opens in a new tab)" }
+  : { role: "img", "aria-label": "FOUNDRland by DoGood" };
 import { urls } from "../data/homepage";
 import AdvisorMenuImage from "./AdvisorMenuImage.astro";
 import { offers, products, advisorLinks, tm, type SiteLink } from "../data/site-links";
@@ -179,8 +179,8 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
         );
       })
     }
-    <a class="nav-mobile-brand" href={FOUNDRLAND_URL} target="_blank" rel="noopener" aria-label="FOUNDR.land by DoGood (opens in a new tab)">
-      <img src="/media/foundrland/foundrland-logo@1x.webp" srcset="/media/foundrland/foundrland-logo@1x.webp 1x, /media/foundrland/foundrland-logo@2x.webp 2x" width="480" height="113" alt="FOUNDR.land" />
+    <a class="nav-mobile-brand" href={FOUNDRLAND_URL} target="_blank" rel="noopener" aria-label="FOUNDRland by DoGood (opens in a new tab)">
+      <img src="/media/foundrland/foundrland-logo@1x.webp" srcset="/media/foundrland/foundrland-logo@1x.webp 1x, /media/foundrland/foundrland-logo@2x.webp 2x" width="480" height="113" alt="FOUNDRland" />
     </a>
   </nav>
 </header>

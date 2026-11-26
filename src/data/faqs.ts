@@ -223,7 +223,7 @@ export const faqCategories: FaqCategory[] = [
         id: "how-frp-is-structured",
         q: "How is FRP structured (and how does the Week 3 decision work)?",
         a: [
-          "FRP has two stages. You apply for Stage 1: The Reset (30 days). In Week 3, we do a mutual alignment review: either you’re complete with Stage 1, or you’re invited into Stage 2: The Build (12 weeks). You never “sign up” for Stage 2 upfront.",
+          "FRP has two stages. You apply for Stage 1: The Reset (30 days). In Week 3, we do a mutual alignment review: either you’re complete with Stage 1, or you’re invited into Stage 2: [The Build](/the-build) (12 weeks). You never “sign up” for Stage 2 upfront.",
         ],
       },
       // [SEB]

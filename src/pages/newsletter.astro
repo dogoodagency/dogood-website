@@ -5,6 +5,7 @@ import Wave from "../components/Wave.astro";
 import { edgeAbove } from "../data/edge-line";
 
 import { book } from "../data/book";
+import { bookChapters } from "../data/book-chapters";
 
 import SevenQuestionsBand from "../components/SevenQuestionsBand.astro";
 import { sevenQuestionContext } from "../data/seven-questions";
@@ -332,7 +333,7 @@ const heroLine = book.newsletterSubline;
                   <span class="nl-chapter-num">{u.number}.</span>
                   <div class="nl-chapter-main">
                     <span class="nl-chapter-title">{u.title}</span>
-                    <p class="nl-chapter-about">{u.about}</p>
+                    <p class="nl-chapter-about">{bookChapters.find((b) => b.number === u.number)?.teaser ?? u.about}</p>
                   </div>
                   <span class="nl-chapter-date nl-date-pill">Arrives {u.date}</span>
                 </li>

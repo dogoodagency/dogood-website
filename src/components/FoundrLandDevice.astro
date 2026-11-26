@@ -20,10 +20,10 @@ const isReferralsLaptop = advisorPage === "/advisor-center/referrals";
 const arta = isAdvisorPhone || isReferralsLaptop;
 
 const laptopShots = {
-  "my-journey": "FOUNDR.land on a laptop: the My Journey screen",
-  "eight-dimensions": "FOUNDR.land on a laptop: the Eight Personal Dimensions screen",
-  "my-insights": "FOUNDR.land on a laptop: the My Insights screen",
-  "advisor-profile": "FOUNDR.land on a laptop: the advisor profile screen",
+  "my-journey": "FOUNDRland on a laptop: the My Journey screen",
+  "eight-dimensions": "FOUNDRland on a laptop: the Eight Personal Dimensions screen",
+  "my-insights": "FOUNDRland on a laptop: the My Insights screen",
+  "advisor-profile": "FOUNDRland on a laptop: the advisor profile screen",
 } as const;
 const shot: keyof typeof laptopShots = isReferralsLaptop
   ? "advisor-profile"

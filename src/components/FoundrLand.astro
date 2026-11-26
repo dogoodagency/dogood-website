@@ -61,7 +61,7 @@ const days = [
 
 {
   kind === "small" ? (
-    <aside class:list={["fl", "fl--small"]} aria-label="FOUNDR.land">
+    <aside class:list={["fl", "fl--small"]} aria-label="FOUNDRland">
       <span class="fl-mini-wheel" aria-hidden="true">
         <svg viewBox="0 0 120 120">
           <polygon points="60,12 101.6,36 101.6,84 60,108 18.4,84 18.4,36" class="fl-ring" />
@@ -73,7 +73,7 @@ const days = [
       <div class="fl-small-copy">
         <picture>
           <source type="image/webp" srcset="/media/foundrland/foundrland-logo-dark@1x.webp 1x, /media/foundrland/foundrland-logo-dark@2x.webp 2x" />
-          <img class="fl-logo fl-logo--sm" src="/media/foundrland/foundrland-logo-dark@1x.png" width="480" height="113" alt="FOUNDR.land" />
+          <img class="fl-logo fl-logo--sm" src="/media/foundrland/foundrland-logo-dark@1x.png" width="480" height="113" alt="FOUNDRland" />
         </picture>
         <p class="fl-small-line">{line}</p>
         <p class="fl-by fl-by--sm">Developed by DoGood Agency</p>
@@ -92,39 +92,39 @@ const days = [
 
         <div class="fl-copy">
           {kind === "home" ? (
-            <img class="fl-logo fl-logo--light" src="/media/foundrland/foundrland-logo@1x.png" srcset="/media/foundrland/foundrland-logo@1x.png 1x, /media/foundrland/foundrland-logo@2x.png 2x" width="480" height="113" alt="FOUNDR.land" />
+            <img class="fl-logo fl-logo--light" src="/media/foundrland/foundrland-logo@1x.png" srcset="/media/foundrland/foundrland-logo@1x.png 1x, /media/foundrland/foundrland-logo@2x.png 2x" width="480" height="113" alt="FOUNDRland" />
           ) : (
             <picture>
               <source type="image/webp" srcset="/media/foundrland/foundrland-logo-dark@1x.webp 1x, /media/foundrland/foundrland-logo-dark@2x.webp 2x" />
-              <img class="fl-logo" src="/media/foundrland/foundrland-logo-dark@1x.png" width="480" height="113" alt="FOUNDR.land" />
+              <img class="fl-logo" src="/media/foundrland/foundrland-logo-dark@1x.png" width="480" height="113" alt="FOUNDRland" />
             </picture>
           )}
 
           {kind === "home" && (
             <>
               <h2 class="fl-title" id={uid}>Life beyond the <em>business</em><span class="fl-dot">.</span></h2>
-              <p class="fl-lede">You’ve built a business. What comes next for you? FOUNDR.land is a private, seven-day reflection journey to explore who you are beyond your business, what matters now, and where you might go next.</p>
+              <p class="fl-lede">You’ve built a business. What comes next for you? FOUNDRland is a private, seven-day reflection journey to explore who you are beyond your business, what matters now, and where you might go next.</p>
             </>
           )}
           {kind === "exit" && (
             <>
               <p class="fl-eyebrow">Alongside Exit-Prep™</p>
               <h2 class="fl-title" id={uid}>A quiet space between <em>sessions</em><span class="fl-dot">.</span></h2>
-              <p class="fl-lede">A few minutes a day in FOUNDR.land: who you are beyond the business, what matters now, what comes next. It’s there when we meet, and private unless you choose to share it.</p>
+              <p class="fl-lede">A few minutes a day in FOUNDRland: who you are beyond the business, what matters now, what comes next. It’s there when we meet, and private unless you choose to share it.</p>
             </>
           )}
           {kind === "reset" && (
             <>
               <p class="fl-eyebrow">Alongside Stage 1: The Reset™</p>
               <h2 class="fl-title" id={uid}>Seven small moments. A little more <em>clarity</em><span class="fl-dot">.</span></h2>
-              <p class="fl-lede">Through the 30 days, FOUNDR.land keeps the work going between sessions: one question a day, from identity to your next step, coming together in your personal clarity wheel.</p>
+              <p class="fl-lede">Through the 30 days, FOUNDRland keeps the work going between sessions: one question a day, from identity to your next step, coming together in your personal clarity wheel.</p>
             </>
           )}
           {kind === "advisor" && (
             <>
-              <p class="fl-eyebrow">FOUNDR.land for advisors</p>
+              <p class="fl-eyebrow">FOUNDRland for advisors</p>
               <h2 class="fl-title" id={uid}>Introduce once. Stay in the <em>loop</em><span class="fl-dot">.</span></h2>
-              <p class="fl-lede">A useful brief, before you meet. FOUNDR.land brings founder reflection and advisor support together, before and after the sale. The founder controls what you see and shares only the summaries they approve.</p>
+              <p class="fl-lede">A useful brief, before you meet. FOUNDRland brings founder reflection and advisor support together, before and after the sale. The founder controls what you see and shares only the summaries they approve.</p>
             </>
           )}
 

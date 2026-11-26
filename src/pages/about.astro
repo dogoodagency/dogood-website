@@ -63,7 +63,10 @@ const aboutLd = {
         <div class="ab-hero-copy">
           <h1 class="r4-phrase-title">For founders,<br class="pp-desktop-break" /> <span class="ab-accent">before and after the sale.</span></h1>
           <p>DoGood Agency is a private 1:1 partnership for founders before and after they sell their business. We are for founders who do not want life after the company to become another version of the life they left behind.</p>
-          <p>You apply for Stage 1, The Reset, a private 30-day engagement. If it fits, Stage 2, The Build, follows by invitation only.</p>
+          {/* R9.P: only the words are linked, the ™ stays outside the link. The trademark integration adds a ™ after any
+              text node that ends in "The Reset" / "The Build", so the second word sits in its own span (the name is then
+              not matched) and the ™ is written out here. */}
+          <p>You apply for Stage 1, <a class="seo-inlink seo-inlink--on-dark" href="/the-reset">The <span>Reset</span></a>™, a private 30-day engagement. If it fits, Stage 2, <a class="seo-inlink seo-inlink--on-dark" href="/the-build">The <span>Build</span></a>™, follows by invitation only.</p>
         </div>
       </div>
       <Wave fill={tint} edge={heroEdge} />
@@ -267,7 +270,7 @@ const aboutLd = {
           <li class="ab-vision-card">
             <svg class="ab-goal-icon ab-pen" viewBox="0 0 64 64" aria-hidden="true" fill="none"><path d="m4 29 9-14 12 8-10 17zm45-13 12 15-10 9-12-17M19 25l10-5 12 5m-24 9 15 15q4 3 7-2l11-13"/><path class="ab-accent-fill" d="m41 25-11-4-8 9q-1 5 4 4l8-5 13 11 3-6z"/><path d="m30 39 9 8m-15-4 7 6"/><path class="ab-pink-stroke" d="m28 11 1-7m8 8 4-6"/></svg>
             <h3>A transition partner in every serious exit</h3>
-            <p>We think the founder side of a sale deserves the same care as the numbers. FOUNDR.land trains and upskills our transition partner network of exit advisors, succession planners, wealth advisors and family offices, and sell-side M&amp;A advisors, who already sit at that table. We look after the standards and the training. When a founder needs to go deeper, our Wayfinders are ready.</p>
+            <p>We think the founder side of a sale deserves the same care as the numbers. FOUNDRland trains and upskills our transition partner network of exit advisors, succession planners, wealth advisors and family offices, and sell-side M&amp;A advisors, who already sit at that table. We look after the standards and the training. When a founder needs to go deeper, our Wayfinders are ready.</p>
           </li>
           <li class="ab-vision-card">
             <svg class="ab-goal-icon ab-pen" viewBox="0 0 64 64" aria-hidden="true" fill="none"><path d="M5 30 31 8l28 21M12 27l1 29 41-1-1-29M24 55V35l16-1 1 21M18 8l1 10"/><path class="ab-accent-fill" d="m25 36 14-1 1 20-15-3z"/><path d="m33 44 2 1"/><path class="ab-pink-stroke" d="m48 9 2-6m4 12 6-2"/></svg>

@@ -65,7 +65,7 @@ const forWho = [
 
 // FAQs: the first was already here; three added 19 Nov 2026 for the questions founders search.
 const faqs = [
-  { q: "I like the idea, but does this concern me yet?", a: "That's the most common thought we hear, and the best moment to start. The personal side is easiest to shape before the deal sets the timeline." },
+  { q: "I like the idea, but does this concern me yet?", a: "That's the most common thought we hear, and the best moment to start. The personal side is easiest to shape before the deal sets the timeline.", link: { text: "before the deal sets the timeline", href: "/insights/why-deals-stall-when-the-founder-isnt-ready" } },
   { q: "When should I start preparing myself to sell my business?", a: "Ideally 12 to 18 months before you sign. That gives you time to get clear on who you want to be without the company while the decision and the deal are still in your hands. If closing is closer than that, it is still worth starting." },
   { q: "Can I do Exit-Prep™ if I'm already under LOI or have an earnout ahead?", a: "Yes. Exit-Prep™ is built for the whole stretch before and around the sale, including a live process, an LOI or an earnout. We work next to your advisors, never instead of them." },
   { q: "What if I'm having second thoughts about selling?", a: "That is common, and it is not a sign you shouldn't sell. Second thoughts usually come from not being able to picture life afterward. Exit-Prep™ gives that picture shape, so you make the decision calmly, whichever way it goes." },
@@ -129,7 +129,7 @@ const faqJson = {
         <p class="ep-lede-plain ep-lede-full">Most founders who ask whether to sell are really asking two things: am I ready to sell my business, and what does life look like afterward? That deserves an answer before you sign anything.</p>
         <h2 id="ep-what">What is Exit-Prep™?</h2>
         <p class="ep-lede-plain ep-lede-full">A six-week, 1:1 engagement with a DoGood Wayfinder for founders who plan to sell their company but haven't yet. The six weeks create the clarity to decide, at a commitment that matches where you are now.</p>
-        <p class="ep-lede-plain ep-lede-full">For some founders, clarity means knowing what they actually want to get busy with after the sale. For others, it means working through what quietly holds them back from letting go: a conversation that needs to happen, a health question that keeps getting postponed, or a life outside the company they have been too busy to look at.</p>
+        <p class="ep-lede-plain ep-lede-full">For some founders, clarity means knowing <a class="seo-inlink" href="/insights/first-90-days-after-the-sale">what they actually want to get busy with after the sale</a>. For others, it means working through what quietly holds them back from letting go: a conversation that needs to happen, a health question that keeps getting postponed, or a life outside the company they have been too busy to look at.</p>
         <div class="ep-grid ep-fit-inclusions">
           <section class="ep-box ep-box--sky" aria-labelledby="ep-for">
             <h3 id="ep-for">Who it's for</h3>
@@ -209,7 +209,9 @@ const faqJson = {
                 <span class="ep-faq-q">{f.q}</span>
                 <span class="ep-faq-icon" aria-hidden="true"></span>
               </summary>
-              <p class="ep-faq-a">{f.a}</p>
+              {f.link && f.a.includes(f.link.text)
+                ? <p class="ep-faq-a">{f.a.slice(0, f.a.indexOf(f.link.text))}<a class="seo-inlink" href={f.link.href}>{f.link.text}</a>{f.a.slice(f.a.indexOf(f.link.text) + f.link.text.length)}</p>
+                : <p class="ep-faq-a">{f.a}</p>}
             </details>
           ))
         }

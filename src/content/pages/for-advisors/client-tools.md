@@ -8,7 +8,7 @@ hideOptin: true
 
 # Free tools for you and your clients
 
-Your clients get all your help with the deal. These tools help with the part nobody plans for: life in <span class="pink-soft"><strong>FOUNDR</strong>.land</span>, the founder themselves, before and after the sale. Free to use and share. No sign-up for you.
+Your clients get all your help with the deal. These tools help with the part nobody plans for: life in <span class="pink-soft"><strong>FOUNDRland</strong></span>, the founder themselves, before and after the sale. Free to use and share. No sign-up for you.
 
 <div class="resource-grid">
 <article class="resource-card">

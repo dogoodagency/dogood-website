@@ -3,6 +3,7 @@
  * Two-step progress bar for the Founder Reclamation Partnership (Seb, 19 Nov 2026): sits at the top of
  * /the-reset and /the-build so each page reads as one part of the same partnership.
  */
+import { tm } from "../data/site-links";
 interface Props {
   current: 1 | 2;
   showTitle?: boolean;
@@ -27,7 +28,7 @@ const steps = [
             <a href={s.href} aria-current={s.n === current ? "page" : undefined}>
               <span class="sp-dot" aria-hidden="true">{s.n < current ? "✓" : s.n}</span>
               <span class="sp-text">
-                <span class="sp-label" set:html={s.label.replace("™", '<span class="tm">™</span>')} />
+                <span class="sp-label" set:html={tm(s.label)} />
                 <span class="sp-note">{s.note}</span>
                 {tone === "light" && s.n === current && <span class="sp-here">You are here</span>}
               </span>

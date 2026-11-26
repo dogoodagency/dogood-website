@@ -95,6 +95,7 @@ const faqs = [
   {
     q: "What happens when the owner isn't ready?",
     a: "It usually shows late: cold feet near closing, fault-finding with every buyer, a deal that stalls. The personal leg is the part of readiness that moves slowest, so the earlier it starts, the less it costs the deal.",
+    link: { text: "cold feet near closing", href: "/advisor-center/client-tools/signals-guide" },
   },
   {
     q: "How do I raise the personal side with a client?",
@@ -149,12 +150,12 @@ const faqs = [
           <li>
             <span class="adv-why-number" aria-hidden="true">1</span>
             <PartnershipIcon name="signpost" />
-            <p>Before the sale, a founder who can't picture life afterward gets cold feet: they put the brakes on, nitpick buyers, or stall the deal at the last minute. A founder who is personally ready signs calmly.</p>
+            <p>Before the sale, a founder who can't picture life afterward gets cold feet: they put the brakes on, nitpick buyers, or <a class="seo-inlink" href="/insights/why-deals-stall-when-the-founder-isnt-ready">stall the deal at the last minute</a>. A founder who is personally ready signs calmly.</p>
           </li>
           <li>
             <span class="adv-why-number" aria-hidden="true">2</span>
             <PartnershipIcon name="reset" />
-            <p>After the sale, your client's deal can close and the hard part can still be starting.</p>
+            <p>After the sale, your client's deal can close and <a class="seo-inlink" href="/insights/first-90-days-after-the-sale">the hard part can still be starting</a>.</p>
             <p>The company gave their days structure, urgency, and a place to put their energy. Without it, many founders find the freedom they worked toward does not feel the way they expected. Exit and succession work, and wealth advice, look after the transaction and the money. Very few people help with what happens after.</p>
           </li>
           <li>
@@ -277,7 +278,9 @@ const faqs = [
                 </h3>
                 <div class="adv-faq-panel" id={`adv-faq-a-${i}`} role="region" aria-labelledby={`adv-faq-q-${i}`}>
                   <div class="adv-faq-answer">
-                    <p>{faq.a}</p>
+                    {faq.link && faq.a.includes(faq.link.text)
+                      ? <p>{faq.a.slice(0, faq.a.indexOf(faq.link.text))}<a class="seo-inlink" href={faq.link.href}>{faq.link.text}</a>{faq.a.slice(faq.a.indexOf(faq.link.text) + faq.link.text.length)}</p>
+                      : <p>{faq.a}</p>}
                   </div>
                 </div>
               </li>

@@ -72,7 +72,7 @@ const jsonLd = {
         </nav>
 
         <div class="wfp-hero-grid">
-          <div class="wfp-photo" style={`--wf-tint:${w.tint}`}>
+          <div class:list={["wfp-photo", w.slug === "katrin" && "wfp-photo--katrin"]} style={`--wf-tint:${w.tint}`}>
             <picture>
               <source type="image/webp" srcset={`${w.photo.base}@1x.webp 320w, ${w.photo.base}@2x.webp 640w`} sizes="(min-width: 768px) 340px, 70vw" />
               <img src={`${w.photo.base}@1x.png`} width={w.photo.width} height={w.photo.height} alt={w.photo.alt} fetchpriority="high" decoding="async" />
@@ -112,7 +112,6 @@ const jsonLd = {
                   </h2>
                   <p class="wfp-sub">{s.sub}</p>
                   {s.body.map((p) => <p class="wfp-p">{p}</p>)}
-                  {s.n === 9 && <p class="wfp-signature">{profile.signature}</p>}
                 </div>
               </li>
             ))

@@ -29,7 +29,7 @@ const columns = [
     cls: "ft-services",
     groups: [
       { title: "Services", links: [...offers, ...products] },
-      { title: "Products", links: tools },
+      { title: "Products", links: tools.map((l) => (l.href === "/book" ? { ...l, label: "Book: Wealthy, Lost, and Still in a Bathrobe" } : l)) },
     ],
   },
   { cls: "ft-advisors", groups: [{ title: "Advisor Center", links: advisors }] },
@@ -53,7 +53,7 @@ const legal = [
 <footer class="footer" id="footer">
   <div class="ft-grid">
     <div class="ft-brand">
-      <p class="ft-tagline">Supporting life in FOUNDR.land,<br class="ft-br-m" /> before and after the sale.</p>
+      <p class="ft-tagline">Supporting life in FOUNDRland,<br class="ft-br-m" /> before and after the sale.</p>
       <a class="footer-logo" href="/">
         <Image src={logo} alt="DoGood Agency" widths={[240, 480, 720]} sizes="225px" loading="lazy" />
       </a>

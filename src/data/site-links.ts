@@ -50,7 +50,7 @@ export const products: SiteLink[] = [
   },
   {
     href: "/founderland/membership",
-    label: "FOUNDR.land Membership",
+    label: "FOUNDRland Membership",
     detail: "A private community for founders who have sold. Opening September 2027.",
   },
 ];
@@ -102,7 +102,16 @@ export const advisorLinks = {
   ] as SiteLink[],
 };
 
-/** Wraps ™ so it can be drawn thinner and 2px smaller (class .tm, global.css). Returns HTML. */
+/**
+ * Wraps ™ so it can be drawn thinner and 2px smaller (class .tm, global.css), and keeps it glued to the word before it
+ * (R9.M2): word + ™ sit in <span class="tm-keep"> (white-space: nowrap, round7.css). Returns HTML.
+ * integrations/trademark.mjs unwraps this form and wraps every page once more after the build.
+ */
 export function tm(label: string): string {
-  return label.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/™/g, '<span class="tm">™</span>');
+  return label
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/([^\s™]*)™/g, (_m, word: string) =>
+      word ? `<span class="tm-keep">${word}<span class="tm">™</span></span>` : '<span class="tm">™</span>',
+    );
 }

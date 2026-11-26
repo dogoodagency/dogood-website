@@ -3,8 +3,6 @@
 // Chosen from /application. The form carries its own title and logo, so the page has no visible heading of its own.
 import Base from "../layouts/Base.astro";
 import JotformEmbed from "../components/JotformEmbed.astro";
-
-const direct = "https://form.jotform.com/263282109588061";
 ---
 
 <Base
@@ -18,8 +16,5 @@ const direct = "https://form.jotform.com/263282109588061";
     <div class="r7-app-frame">
       <JotformEmbed formId="263282109588061" title="Exit-Prep™ (Six weeks)" />
     </div>
-    <p class="r7-app-direct">
-      <a href={direct} target="_blank" rel="noopener">Open the application in a new tab<span class="sr-only"> (opens in a new tab)</span></a>
-    </p>
   </article>
 </Base>

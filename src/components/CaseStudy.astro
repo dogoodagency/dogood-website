@@ -45,6 +45,8 @@ interface Props {
   closing: string;
   /** Optional key numbers for the hero, taken from the outcomes (19 Nov 2026 18:52). */
   highlights?: { value: string; label: string }[];
+  /** Optional in-text links inside the Founder Snapshot paragraphs (R9.P, SEO plan): the exact words to link. */
+  snapshotLinks?: { text: string; href: string }[];
 }
 
 const {
@@ -78,6 +80,7 @@ const {
   netEffect,
   closing,
   highlights = [],
+  snapshotLinks = [],
 } = Astro.props;
 
 const tint = "#F5F2FF";
@@ -153,7 +156,12 @@ const caption = "Founder-focused · Not therapy, not medical advice, not psychol
           <h2>Founder Snapshot</h2>
           <div class="cs-snapshot-grid">
             <div>
-              {snapshot.map((paragraph) => <p>{paragraph}</p>)}
+              {snapshot.map((paragraph) => {
+                const link = snapshotLinks.find((l) => paragraph.includes(l.text));
+                if (!link) return <p>{paragraph}</p>;
+                const at = paragraph.indexOf(link.text);
+                return <p>{paragraph.slice(0, at)}<a class="seo-inlink" href={link.href}>{link.text}</a>{paragraph.slice(at + link.text.length)}</p>;
+              })}
             </div>
             <dl class="cs-facts">
               {

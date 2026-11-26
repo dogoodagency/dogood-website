@@ -4,7 +4,7 @@ description: "Founder Reclamation Partnership | Stage 1: The Intensive (30 days)
 ---
 # Application Received
 
-Welcome to <span class="pink-soft"><strong>FOUNDR</strong>.land</span>. We'll be in touch within one working day.
+Welcome to <span class="pink-soft"><strong>FOUNDRland</strong></span>. We'll be in touch within one working day.
 
 Your application is complete. We'll review it carefully and respond within 24 hours.
 

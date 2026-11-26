@@ -21,7 +21,7 @@ const audiences = [
   { title: "Exit planners", text: "Business exit planning prepares the company. We prepare the founder for life after the sale." },
   { title: "Succession advisors", text: "Succession planning for business owners covers the company. Handing over who you are is another transition." },
   { title: "Wealth advisors and family offices", text: "After a liquidity event, the money is planned. The founder's time, energy and identity often are not." },
-  { title: "Sell-side M&A advisors", text: "A founder who is personally ready is less likely to stall the deal at the last minute. Our free resources are yours to use with any client." },
+  { title: "Sell-side M&A advisors", text: "A founder who is personally ready is less likely to stall the deal at the last minute. Our free resources are yours to use with any client.", link: { text: "less likely to stall the deal at the last minute", href: "/insights/why-deals-stall-when-the-founder-isnt-ready" } },
 ];
 
 // [SEB] Quotes from advisor conversations; labels are roles only.
@@ -51,7 +51,7 @@ const quotes = [
           <p class="adv-eyebrow">Advisor Center · For exit planning advisors</p>
           <h1 class="r4-phrase-title">The personal leg of exit planning,<br class="pp-desktop-break" /> before the LOI and after closing.</h1>
           <p class="adv-lede">
-            We support life in <span class="adv-founder"><strong>FOUNDR</strong>.land</span>. You prepare the business and the money. We prepare the founder: <a href="/advisor-center/insights#advi-legs">personal readiness</a>, the third leg of the exit planning stool.
+            We support life in <span class="adv-founder"><strong>FOUNDRland</strong></span>. You prepare the business and the money. We prepare the founder: <a href="/advisor-center/insights#advi-legs">personal readiness</a>, the third leg of the exit planning stool.
           </p>
         </div>
 
@@ -75,7 +75,9 @@ const quotes = [
           {audiences.map((a, i) => (
             <li class:list={["adv-aud-card", `adv-aud-card--${i + 1}`]}>
               <h3>{a.title}</h3>
-              <p>{a.text}</p>
+              {a.link && a.text.includes(a.link.text)
+                ? <p>{a.text.slice(0, a.text.indexOf(a.link.text))}<a class="seo-inlink" href={a.link.href}>{a.link.text}</a>{a.text.slice(a.text.indexOf(a.link.text) + a.link.text.length)}</p>
+                : <p>{a.text}</p>}
             </li>
           ))}
         </ul>
@@ -125,7 +127,7 @@ const quotes = [
           <p class="adv-card-badge">Free toolkit</p>
           <h2 class="adv-section-title" id="seven-questions-advisor-title">Something useful to hand your client, at no cost</h2>
           <div class="adv-prose">
-            <p>Advisors told us the same thing again and again: their clients have no plan for life after the sale, and there is nothing to hand them that opens the personal conversation. So we are building free tools for exactly that. No sign-up for you, and no strings.</p>
+            <p>Advisors told us the same thing again and again: their clients have no plan for life after the sale, and there is nothing to hand them that <a class="seo-inlink" href="/advisor-center/client-tools/signals-guide">opens the personal conversation</a>. So we are building free tools for exactly that. No sign-up for you, and no strings.</p>
           </div>
       </Fragment>
       <Fragment slot="actions">

@@ -90,7 +90,7 @@ If that happens to you, nothing has gone wrong. It is a common pattern, and it i
 
 Founders need routine and structure, and after a sale both are usually missing. The company took up so much space for so long that nothing is ready to fill it.
 
-Some founders can sit in that space and use it to pause, reflect and recharge. Most can't, at least not at first. For them the empty calendar becomes a struggle, and the temptation is to fill it with random things that mean very little to them, just to feel busy again.
+Some founders can sit in that space and use it to pause, reflect and recharge. Most can't, at least not at first. For them [the empty calendar](/book) becomes a struggle, and the temptation is to fill it with random things that mean very little to them, just to feel busy again.
 
 I know this from the inside. When I lost my company, I was living in Bali. It was 2024, I was surrounded by nature and beauty, and I had more time than I had ever had in my life. It was a real struggle. I sat in a silence that felt like it was eating me alive, and everything felt meaningless. What helped in the end was not filling the silence but learning to be in it: becoming familiar with it, then comfortable with it. That is where the clarity eventually came from.
 

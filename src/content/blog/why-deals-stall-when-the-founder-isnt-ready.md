@@ -45,7 +45,7 @@ noindex: false
 
 I speak to advisors all the time, and one thing comes up again and again: the founder didn't just stall the deal, they tanked it. I'm not at the negotiating table, so I can't tell you the details of individual deals. But among the advisors I talk to, this is close to a consensus.
 
-The reason is rarely the numbers. It is that the founder is not emotionally ready to stay calm under stress and let their baby go. For most founders this is their first exit. They have never been through one before, and nothing about building a company prepares them for handing it over.
+The reason is rarely the numbers. It is that the founder is not emotionally ready to stay calm under stress and [let their baby go](/book). For most founders this is their first exit. They have never been through one before, and nothing about building a company prepares them for handing it over.
 
 ## What does it look like from the advisor's side?
 
@@ -69,13 +69,13 @@ It is a tricky situation. Some founders are simply not ready to hear that they m
 
 In my experience, the founders who need it most are usually the ones you can't talk to about it. The founders who are managing a bit better tend to be more self-aware. They ask for help themselves, or they open up to their advisor emotionally, and that opens the door.
 
-That is one more reason to raise it early, before the pressure of the deal makes the conversation harder.
+That is one more reason to [raise it early](/advisor-center/referrals), before the pressure of the deal makes the conversation harder.
 
 ## What makes it worse?
 
 Taking it personally. When a founder gets emotional, it is natural to defend your work, and the conversation gets inflamed. That rarely helps either side.
 
-It helps to recognize what is happening. This is the emotional side of a founder who hasn't been through many deals and isn't equipped to deal with it yet. It is an emotional imbalance, if you will, not a verdict on your work.
+It helps to [recognize what is happening](/advisor-center/client-tools/signals-guide). This is the emotional side of a founder who hasn't been through many deals and isn't equipped to deal with it yet. It is an emotional imbalance, if you will, not a verdict on your work.
 
 ## When should you bring in support, and how does it work?
 
