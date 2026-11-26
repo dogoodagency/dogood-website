@@ -54,7 +54,6 @@ These load only after you accept advertisement cookies in our cookie banner.
 
 | Tool | Purpose | Set by | Cookie names | Duration |
 | --- | --- | --- | --- | --- |
-| LinkedIn Insight Tag | Shows us aggregate information about visitors who are LinkedIn members, such as job titles and industries, never names, and measures our LinkedIn advertising | LinkedIn | Listed in the cookie banner (Cookie settings) | Listed in the cookie banner |
 | Visitor insights tool | Shows us which companies visit our site and which pages they read, so we can understand interest in our work | Our visitor insights provider | Listed in the cookie banner (Cookie settings) | Listed in the cookie banner |
 
 ## Things that set no cookies on our site

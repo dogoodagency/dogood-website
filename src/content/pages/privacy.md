@@ -21,7 +21,7 @@ At DoGood Agency, we respect your privacy and are committed to protecting your p
 
 Our website host processes basic technical data (IP address, browser and device type, pages requested, referring page) to deliver the site and keep it secure.
 
-With your consent, we use analytics and heat-map tools to understand how visitors use the site (pages viewed, clicks, scrolling, device and approximate location), an advertising measurement tool to see, in aggregate, what kinds of professionals visit and to measure advertising, and a visitor insights tool that shows which companies visit our site and which pages they read. The heat-map tool records anonymized sessions and masks text you type. Analytics and heat-map tools only run after you accept analytics cookies; advertising measurement and visitor insights only run after you accept advertisement cookies in our cookie banner. You can withdraw consent at any time.
+With your consent, we use analytics and heat-map tools to understand how visitors use the site (pages viewed, clicks, scrolling, device and approximate location), and a visitor insights tool that shows which companies visit our site and which pages they read. The heat-map tool records anonymized sessions and masks text you type. Analytics and heat-map tools only run after you accept analytics cookies; the visitor insights tool only runs after you accept advertisement cookies in our cookie banner. You can withdraw consent at any time.
 
 ### Information You Provide
 
@@ -60,7 +60,7 @@ We will never sell your personal information to third parties.
 
 We may share your information only in the following circumstances:
 
-We share data only with service providers who help us run DoGood, under data processing terms: website hosting, cookie consent, live chat, call booking, online forms, email newsletter, customer records, e-signature, email and office tools, our podcast player, analytics and heat-map tools, an advertising measurement tool and a visitor insights tool. Payments are handled by our bank-transfer provider and our card-payment provider. A current list of providers is available on request at hiya@dogoodagency.co.
+We share data only with service providers who help us run DoGood, under data processing terms: website hosting, cookie consent, live chat, call booking, online forms, email newsletter, customer records, e-signature, email and office tools, our podcast player, analytics and heat-map tools and a visitor insights tool. Payments are handled by our bank-transfer provider and our card-payment provider. A current list of providers is available on request at hiya@dogoodagency.co.
 
 Legal Requirements: We may disclose information if required by law, court order, or government regulation, or if necessary to protect our rights, prevent fraud, or ensure safety.
 
@@ -92,7 +92,7 @@ To exercise these rights, contact us at: [hiya@dogoodagency.co](mailto:hiya@dogo
 
 ## 5. COOKIES
 
-COOKIES: We use cookies to run the site and live chat. The live-chat provider loads on every visit without waiting for functional-cookie consent. Analytics and heat-map tools run only after analytics consent, and advertising measurement and a visitor insights tool run only after advertisement consent. For details and to change your choices, see our [Cookies Policy](/cookies).
+COOKIES: We use cookies to run the site and live chat. The live-chat provider loads on every visit without waiting for functional-cookie consent. Analytics and heat-map tools run only after analytics consent, and a visitor insights tool runs only after advertisement consent. For details and to change your choices, see our [Cookies Policy](/cookies).
 
 ## 6. DATA SECURITY
 
