@@ -29,7 +29,7 @@ function fromMap(map: Record<string, ImageMetadata>, file: string) {
 
 const reviewSet = reviews.map((review) => ({
   ...review,
-  src: fromMap(portraits, review.file),
+  src: review.file ? fromMap(portraits, review.file) : undefined,
 }));
 
 const wallItems = reviewSet.map((r) => ({ quote: r.quote, name: r.name, role: r.role, image: r.src }));

@@ -29,22 +29,6 @@ const description = "Seven questions for founders in the first 90 days after sel
     <Wave fill="#F5F2FF" edge="#15012E" />
   </header>
   <div class="seven-page">
-    <!-- R6.34: each question with its one-line context (same lines as /newsletter), then what the PDF holds. -->
-    <section class="seven-qs" aria-label="The seven questions">
-      <p class="seven-intro">Take your time with them. There are no right answers, only honest ones.</p>
-      <ol class="seven-cards" role="list">
-        {sevenQuestions.map((question, index) => (
-          <li class="seven-card">
-            <span class="seven-number" aria-hidden="true">{index + 1}</span>
-            <div class="seven-card-body">
-              <p class="seven-q">{question}</p>
-              <p class="seven-context">{sevenQuestionContext[index]}</p>
-            </div>
-          </li>
-        ))}
-      </ol>
-    </section>
-
     <section class="seven-guide" aria-labelledby="seven-guide-title">
       <div class="seven-fan">
         {[3, 2, 1].map((page) => (
@@ -86,6 +70,22 @@ const description = "Seven questions for founders in the first 90 days after sel
         </ul>
         <a class="btn-teal btn-dream" href={sevenQuestionsPdf} target="_blank" rel="noopener">Download the PDF</a>
       </div>
+    </section>
+
+    <!-- R7.A1: the question cards now sit below the guide/opt-in frame. -->
+    <section class="seven-qs" aria-label="The seven questions">
+      <p class="seven-intro">Take your time with them. There are no right answers, only honest ones.</p>
+      <ol class="seven-cards" role="list">
+        {sevenQuestions.map((question, index) => (
+          <li class="seven-card">
+            <span class="seven-number" aria-hidden="true">{index + 1}</span>
+            <div class="seven-card-body">
+              <p class="seven-q">{question}</p>
+              <p class="seven-context">{sevenQuestionContext[index]}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
     </section>
 
     <div class="seven-followup">
@@ -141,6 +141,8 @@ const description = "Seven questions for founders in the first 90 days after sel
     line-height: 1.6;
     text-align: center;
   }
+
+  .seven-qs { margin-top: 64px; }
 
   .seven-cards {
     display: grid;
@@ -200,7 +202,7 @@ const description = "Seven questions for founders in the first 90 days after sel
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     align-items: center;
     gap: 64px;
-    margin-top: 64px;
+    margin-top: 0;
     padding: 56px;
     border: 1px solid #A3F2D7;
     border-radius: 24px;
@@ -348,7 +350,8 @@ const description = "Seven questions for founders in the first 90 days after sel
     .seven-card { grid-template-columns: 32px minmax(0, 1fr); gap: 14px; padding: 20px; }
     .seven-number { width: 32px; height: 32px; font-size: 16px; }
     .seven-card .seven-q { font-size: 18px; }
-    .seven-guide { gap: 28px; margin-top: 48px; padding: 28px 20px 32px; }
+    .seven-qs { margin-top: 48px; }
+    .seven-guide { gap: 28px; margin-top: 0; padding: 28px 20px 32px; }
     .seven-fan img { border-radius: 8px; }
     .seven-guide-copy h2 { font-size: 28px; }
     .seven-guide-lead, .seven-guide-list li { font-size: 17px; }

@@ -44,80 +44,60 @@ We protect our founders’ identities. Most founders we work with lead visible c
 
 These are words from leaders our team has worked with. They are not all founders after an exit.
 
-### ANJA N
-*CEO at Australian Physiotherapy Association*
-
-> Seb from DGA is a passionate, honest and energetic professional. The commitment to the well-being of others is exemplary as is DGA’s positive attitude and outlook.
-
 ### JENNIFER M
-*Founder of LunchAssist*
+*Founder, LunchAssist*
 
-> Seb from DGA is a lovely human with a great mind for business. DGA would be a great support to any person in a leadership position. The team has a wealth of organizational leadership knowledge, great intuition, and a strong skillset in coaching and mentoring via the virtual workspace. I absolutely recommend DGA to…
+> Seb is a lovely human with a great mind for business. DoGood would be a great support to any person in a leadership position. The team has a wealth of organizational leadership knowledge, great intuition, and a strong skillse. I absolutely recommend Seb to anyone looking to partner with an emotionally intelligent and business-savvy training agency!
 
 ### MICHAEL R
-*Founder of Softwisery*
+*Founder, Softwisery*
 
-> For a long time, I struggled to efficiently organize my routines, often lacking a coherent system and clear vision. Seb from DGA emerged as the guiding force to help me overcome these challenges. With his expertise, I've achieved focus on my goals, enhanced my schedule, and streamlined my planning processes. Together…
+> For a long time, I struggled to efficiently organize my routines, often lacking a coherent system and clear vision. DoGood emerged as the guiding force to help me overcome these challenges. I've achieved focus on my goals, enhanced my schedule, and streamlined my planning processes. Together, we eliminated redundancies, attaining the clarity I had long sought after. Collaborating with the DoGood team was an absolute delight.
 
 ### FLORIAN W
-*founder of BitFlow*
+*Founder, BitFlow*
 
-> DoGood, I would like to express my deepest gratitude for the incredible support and guidance your team has provided me with. It has been an absolute pleasure working with you all and witnessing your utmost professionalism throughout our time. I truly appreciate how proactive DGA has been in understanding my…
+> I would like to express my deepest gratitude for the incredible support and guidance DoGood has provided me with. It has been an absolute pleasure working with the team and witnessing your utmost professionalism throughout our time. I truly appreciate how proactive DoGood has been in understanding my requirements and tailoring it to suit my individual needs. The team’s ability to provide insightful and valuable guidance has had a profound impact on my personal development journey. I am genuinely impressed by their productivity and influence, as they have helped me grow in ways I never thought possible.
 
 ### ZACH G
-*founder of Warrior Leader*
+*Founder, Warrior Leader*
 
-> Seb from DGA is a consummate professional. His knowledge and business acumen is only surpassed by his positive energy and enthusiasm. His drive and understanding of the learning process is second to none. I look forward to working with him again on many different projects in the future.
-
-### MARCIA W
-*founder of USM Supply Chain*
-
-> Seb from DGA is amazing, he truly cares about progress, and shows great enthusiasm... After working for a short period with DoGood, we got more work than we were able to handle. Excellent results!
-
-### BROOK H
-*founder of Audacia Home*
-
-> Seb from DGA was excellent in all respects. The team helped us grow the business from the ground up and immensely helped us on a personal, professional, and performance level. I highly recommend DGA to anyone looking to increase and optimize their business performance.
-
-### BRIAN W
-*Sr Manager SEO at Bamboo HR*
-
-> DGA remarkably improved our team's productivity, leadership, and communication. The tailored strategies and collaborative approach fostered efficiency and effective leadership qualities. DGA’s sought-after expertise consistently delivers exceptional results. Don't miss the chance to collaborate with them for…
+> Seb is a consummate professional. His knowledge and business acumen is only surpassed by his positive energy and enthusiasm. His drive and understanding of the learning process is second to none. I look forward to working with him again on many different projects in the future.
 
 ### CHRISTIAN V
-*realtor at exp Realty*
+*Realtor, eXp Realty*
 
-> We started working with Seb from DGA because we needed a transformation... We were able to click right from the beginning, he took the time to listen and diagnose our problems from the start… DGA has helped us create goals, and a vision... The business started to turn around quickly because of all of these changes…
-
-### MANFRED T
-*founder of Berty Technologies*
-
-> Seb from DoGood was proactive and gave us advice based on my requirements; the sessions were productive and influential. I look forward to working with DGA for the next semester.
-
-### STAN S
-*founder of The Propel Consulting Group*
-
-> We were thrilled to connect with Seb from DGA, they are very attentive to client needs and offer a variety of options to meet those needs. The team is an excellent thought partner, easy to work with, communicative, and goes above and beyond to make sure clients are satisfied with the final product. Our project was…
+> We started working with Seb because I needed a transformation. We clicked right from the beginning, he took the time to listen and diagnose my problems from the start. Seb has helped me to create goals, and a vision. I can’t thank Seb  enough for all of his hard work and time he and the team put into me.
 
 ### ZEINA G
-*founder of Synergy Plus*
+*Founder, Synergy Plus*
 
-> The DGA team has many qualities that have made our experience working together phenomenal. The team has been able to help us redefine our business, create clarity around our goals, and help us find a path forward with intent and purpose. They have taught us how to create more value for our clients and how to value our…
+> The team has many qualities that have made our experience working together phenomenal. The team has been able to help me redefine my vision, create clarity around my goals, and help me find a path forward with intent and purpose. DoGood has been able to guide us to make difficult decisions towards changes with both a firmness and sensitivity to the situation that we were in.
 
 ### AMER K
-*founder of Tweepi*
+*Founder, Tweepi*
 
-> Seb from DGA is a learning & development SUPERSTAR! The team helped us develop an online entrepreneurship learning initiative. When we hired DGA, my notes were a mess. The team guided us step by step. He started by interviewing our current students - using DGA’s unparalleled empathy to zoom in on the learner's…
+> Seb is a SUPERSTAR! Using Seb’s unparalleled empathy to zoom in on the learner's persona. A crucial step that guided the rest of our work together. Seb’s guidance was educational and eye-opening. The team understands human motivations and fears and gave us spot-on feedback at every step.
 
 ### IMMANUAL J
-*founder of Kulture of Kindness*
+*Founder, Kulture of Kindness*
 
-> Seb from DGA was a pleasure to work with. What started off as a discussion on RFP evolved into a full scale rediscovery of a learning effort. Seb and the team provided excellent insights and ideas on the way forward. The team is skilled and helped us see our blind spots and in the process create a new strategy for our…
+> Seb from DGA was a pleasure to work with. What started off as a discussion on RFP evolved into a full scale rediscovery of a learning effort. Seb and the team provided excellent insights and ideas on the way forward. The team is skilled and helped us see our blind spots and in the process create a new strategy for our e-learning initiative.
 
-### GAJAN R
-*founder of Spiralyze*
+### GINA P
+*Founder, The Wilder Practice*
 
-> We hired DoGood to help me get my business to the next level. The team exceeded all my expectations and had enormous impact. The DGA team did a thorough diagnostic and identified a few key personal and professional sticking points, helped us incorporate goals, planning, and … set up more rigorous business processes to…
+> Working with Chantill has had a twofold impact on me, both personally and in my work. I’ve become more fully aware of my emotional state and have the ability to shift states in a way that creates greater capacity — to be with things that are hard, to manage times of stress, and to turn toward discomfort with more presence. I feel like a calmer, more settled person. I’m also more able to be present in joy, and to expand states like gratitude and contentment, really feeling them in my body. There’s more bandwidth now to experience the fullness of those moments.
+
+### TAMI L
+*Founder, Studio T*
+
+> Before this, I was consistently operating in high gear, nothing ever felt like enough, and I was always pursuing the next level. Over the past three years, I’ve developed a consistent daily practice that allows me to connect inwardly and show up more intentionally and effectively. My work with Chantill has had a measurable impact, expanding my capacity to take risks, be vulnerable, and move from co-regulation to self-regulation with greater ease. As a result, I’m more present, more grounded, and better able to engage with both challenges and opportunities from a different lens.
+
+### T AVDYLI
+*Founder, Routime*
+
+> I had been sitting on a decision for a while without making real progress. In the sessions, Vlora identified patterns in how I was thinking that I hadn’t noticed myself and challenged them directly. What changed was not just clarity, but speed. I made the decision and moved forward without needing further input. It’s a very direct way of working that cuts through unnecessary complexity.
 
 ---
 

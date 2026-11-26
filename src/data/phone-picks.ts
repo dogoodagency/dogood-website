@@ -3,11 +3,12 @@
  * page. Names as they appear in the data (case does not matter). Desktop walls are unchanged.
  */
 export const phonePicks = {
-  home: ["ZEINA G", "GAJAN R", "BROOK H", "IMMANUAL J"],
-  stories: ["ANJA N", "JENNIFER M", "MICHAEL R", "FLORIAN W", "MARCIA W"],
-  reset: ["ZACH G", "BRIAN W", "CHRISTIAN V", "MANFRED T"],
+  // DG-PRE-55 (26 Nov 2026): removed testimonials are gone from every pick; T Avdyli is new on the home pick.
+  home: ["ZEINA G", "IMMANUAL J", "T AVDYLI"],
+  stories: ["JENNIFER M", "MICHAEL R", "FLORIAN W"],
+  reset: ["ZACH G", "CHRISTIAN V"],
   // Wayfinders also shows its two Wayfinder voices (Gina P and Tami L, on working with Chantill).
-  wayfinders: ["STAN S", "AMER K"],
+  wayfinders: ["AMER K"],
   // Sound bites: The Reset and The Build share one list of six.
   resetBites: ["GREG N", "ANNA S", "PETER V"],
   buildBites: ["STEVE P", "KAREN W", "DANIEL O"],

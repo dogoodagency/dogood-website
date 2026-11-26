@@ -70,7 +70,7 @@ function clipQuote(quote: string) {
 // Keep the original identifiers only for selecting phone quotes; public attributions are roles only.
 const wallItemFor = (r: (typeof reviews)[number]) => ({
   quote: r.quote,
-  name: r.role === "Studio T" ? "Client" : r.role.split(/,| at /)[0],
+  name: r.role.endsWith("Studio T") ? "Client" : r.role.split(/,| at /)[0],
 });
 const wallItems = reviews.map(wallItemFor);
 const phoneWallItems = phonePicks.reset
@@ -145,7 +145,7 @@ const [houseBefore, houseStage1, houseStage2] = houses;
         <aside class="hw-notyet-card" aria-label="Not sold yet?">
           <div>
             <p class="hw-notyet-eyebrow">Not there yet?</p>
-            <p class="hw-notyet-text">If you haven't sold yet, <strong>Exit-Prep™</strong> is for you: six weekly 1:1 sessions on the personal side of the sale, while the deal is still ahead of you.</p>
+            <p class="hw-notyet-text">If you haven't sold yet, <strong>Exit-Prep™</strong> is for you: six weekly 1:1 sessions on <a class="hw-textlink hw-inlink" href="/insights/before-you-sign-preparing-yourself">the personal side of the sale</a>, while the deal is still ahead of you.</p>
           </div>
           <a class="btn-teal" href="/exit-prep"><span>See Exit-Prep™</span></a>
         </aside>
@@ -169,7 +169,7 @@ const [houseBefore, houseStage1, houseStage2] = houses;
     <section class="hw-band" aria-labelledby="hw-cost">
       <div class="hw-well hw-prose">
         <h2 id="hw-cost">Why does it feel this way when the sale went well?</h2>
-        <p>You thought selling your business would feel like arrival. Instead, you have more freedom but feel lost, even regretful.</p>
+        <p>You thought selling your business would feel like arrival. Instead, you have more freedom but <a class="hw-textlink hw-inlink" href="/insights/sudden-wealth-syndrome-after-selling-a-business">feel lost, even regretful</a>.</p>
         <p>For years you had to look steady for your team and your clients. There was nowhere private to put what you were carrying.</p>
         <p>The company gave your days structure, urgency, and a place to put your energy. Without it, the question is how you want to live now, and what you do not want to recreate.</p>
         <p>Your sleep. Your health. Your family. The parts of life that were easier to put off while the company needed you.</p>

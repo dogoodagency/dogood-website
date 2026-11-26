@@ -1,0 +1,178 @@
+/* Round 7 part a: only the pages and components named in the items. */
+
+/* R7.B2: brochure/guide page images get the same rounded corners and 1px DREAM 200 edge as the fanned pages
+   on /seven-questions. No shadow, backgrounds unchanged. The pre-composed card pictures on /advisor-center/client-tools
+   (--composite) and the foundr.land app mockups are single flat images, so they are left out. */
+html body main#main :is(
+  .sq-band .sq-cover,
+  .sq-band .sq-pages img,
+  .ty-guide-cover,
+  .advr-tool-visual:not(.advr-tool-visual--composite):not(.advr-tool-visual--readiness) img
+) {
+  border: 1px solid #C2B7DD;
+  border-radius: 12px;
+  box-shadow: none;
+}
+@media (max-width: 600px) {
+  html body main#main :is(
+    .sq-band .sq-cover,
+    .sq-band .sq-pages img,
+    .ty-guide-cover,
+    .advr-tool-visual:not(.advr-tool-visual--composite):not(.advr-tool-visual--readiness) img
+  ) {
+    border-radius: 8px;
+  }
+}
+
+/* R7.D1: "Wealth advisors: become a partner" has white text at rest too (GRASS 600 rest, GRASS 700 hover stay). */
+html body main#main .adv-center-page .adv-door.adv-door--wealth a.btn-teal {
+  color: #FFFFFF !important;
+}
+
+/* R7.D2: the free toolkit section's body copy is Home body size; two standard buttons side by side. */
+html body main#main .sq-band--advisor .adv-prose p {
+  font-size: 18px !important;
+}
+
+/* R7.G1: Katrin's headshot gets the same face size, head position and frame as Shiva's and Chantill's.
+   Her source photo shows more of her body, so the picture is scaled (444px high at desktop, 0.88 of that on phones)
+   and set on the card's right edge so her face sits where theirs do. Only her image; the blob shapes are untouched. */
+html body main#main .wf-page-overview .wf-photo[data-wayfinder="Katrin"] picture {
+  --r7-k: 1;
+  top: 26px;
+  right: calc(-77px * var(--r7-k));
+  left: auto;
+  width: auto;
+  height: calc(444px * var(--r7-k));
+  transform: none;
+}
+html body main#main .wf-page-overview .wf-photo[data-wayfinder="Katrin"] img {
+  width: auto;
+  max-width: none;
+  height: 100%;
+  object-fit: fill;
+}
+@media (max-width: 640px) {
+  html body main#main .wf-page-overview .wf-photo[data-wayfinder="Katrin"] picture { --r7-k: 0.88; }
+}
+
+/* ===== Round 7 part b ===== */
+
+/* R7.C1 / C2: The Reset and The Build house illustrations (desktop, where labels sit around the drawing).
+   Label and arrow positions come from src/data/how-it-works.ts (each arrow runs from its label to its part of the
+   house). Here each label is centred on its arrow tail, and text hugs the arrow: left-hand labels right-aligned,
+   right-hand labels left-aligned. Bottom labels no longer sit on the drawing; below 1100px the stacked label list
+   is unchanged. */
+@media (min-width: 1100px) {
+  html body main#main .hw-page .hw-house .hw-label.hw-label--plot {
+    transform: translateY(-50%);
+    line-height: 1.25;
+  }
+  html body main#main .hw-page .hw-house .hw-label.hw-label--plot.hw-label--bottom {
+    top: var(--y);
+    bottom: auto;
+  }
+  html body main#main .hw-page .hw-house .hw-label.hw-label--plot.hw-label--left { text-align: right; }
+  html body main#main .hw-page .hw-house .hw-label.hw-label--plot:not(.hw-label--left) { text-align: left; }
+}
+
+/* R7.C3: in-text links to Insights articles on The Reset use the existing .hw-textlink look (weight 800, GRASS 500
+   underline) at the running-text size. On the dark Exit-Prep card they are white with a GRASS 500 hover. */
+html body main#main .hw-page a.hw-inlink {
+  font-size: inherit;
+}
+html body main#main .hw-page .hw-notyet-card { --inline-hover-color: #28DBB0; }
+html body main#main .hw-page .hw-notyet-card a.hw-inlink {
+  color: var(--color-white) !important;
+  text-decoration-color: var(--color-grass-500);
+}
+html body main#main .hw-page .hw-notyet-card a.hw-inlink:is(:hover, :focus-visible) {
+  color: var(--color-grass-500) !important;
+}
+
+/* R7.F1: Client tools cards. The same four pictures, as a loose fan: some tilted 2-6deg, the covers larger,
+   a few pages dipping slightly over the picture field's lower edge. Everything stays inside the card (the card
+   clips) and the dip is smaller than the 24px gap above the status label, so nothing touches text. */
+html body main#main .advr-page.advr-tools-page .advr-tool-visual--fan { overflow: visible; isolation: isolate; }
+html body main#main .advr-page.advr-tools-page .advr-tool-visual--fan img {
+  position: absolute;
+  max-width: none;
+  width: auto;
+  transform: translateX(var(--tx, 0)) translateY(var(--ty, 0)) rotate(var(--r, 0deg));
+  transform-origin: 50% 50%;
+  box-shadow: none;
+}
+/* Signals Guide: cover large in front, two pages tilted behind. */
+html body main#main .advr-tools-page .advr-tool-visual--signals.advr-tool-visual--fan img:nth-child(1) { left: 31%; top: 5%; height: calc(97% + 6px); --r: -2deg; z-index: 3; }
+html body main#main .advr-tools-page .advr-tool-visual--signals.advr-tool-visual--fan img:nth-child(2) { left: 7%; top: 14%; height: 84%; --r: -6deg; z-index: 1; }
+html body main#main .advr-tools-page .advr-tool-visual--signals.advr-tool-visual--fan img:nth-child(3) { left: 55%; top: 11%; height: 88%; --r: 5deg; z-index: 2; }
+/* The 7 Questions: cover large at the left, three pages fanned to the right. */
+html body main#main .advr-tools-page .advr-tool-visual--questions.advr-tool-visual--fan img:nth-child(1) { left: 2%; top: 5%; height: calc(97% + 6px); --r: -4deg; z-index: 4; }
+html body main#main .advr-tools-page .advr-tool-visual--questions.advr-tool-visual--fan img:nth-child(2) { left: 24%; top: 12%; height: 86%; --r: 3deg; z-index: 3; }
+html body main#main .advr-tools-page .advr-tool-visual--questions.advr-tool-visual--fan img:nth-child(3) { left: 42%; top: 8%; height: 88%; --r: -2.5deg; z-index: 2; }
+html body main#main .advr-tools-page .advr-tool-visual--questions.advr-tool-visual--fan img:nth-child(4) { left: 58%; top: 13%; height: 84%; --r: 5deg; z-index: 1; }
+/* Life After the Sale Planner: was static and centred; now larger, off-centre and tilted (same single picture). */
+html body main#main .advr-tools-page .advr-tool-visual--planner.advr-tool-visual--fan img:nth-child(1) { left: 34%; top: 4%; height: calc(96% + 4px); --r: 4deg; z-index: 2; }
+/* Founder Readiness Check: the laptop and phone picture, a little tilted, kept inside the picture field. */
+html body main#main .advr-tools-page .advr-tool-visual--readiness.advr-tool-visual--fan img:nth-child(1) {
+  left: 5%;
+  top: 4%;
+  width: 90%;
+  height: auto;
+  max-width: none;
+  border-radius: 12px;
+  --r: -2.5deg;
+}
+@media (max-width: 600px) {
+  html body main#main .advr-tools-page .advr-tool-visual--questions.advr-tool-visual--fan img:nth-child(1) { left: 5%; }
+  html body main#main .advr-tools-page .advr-tool-visual--questions.advr-tool-visual--fan img:nth-child(2) { left: 30%; }
+  html body main#main .advr-tools-page .advr-tool-visual--questions.advr-tool-visual--fan img:nth-child(3) { left: 54%; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  html body main#main .advr-page.advr-tools-page .advr-tool-visual--fan img { transition: transform 300ms ease; }
+  html body main#main .advr-page.advr-tools-page .advr-card:is(:hover, :focus-visible, :focus-within) .advr-tool-visual--fan img { --ty: -4px; }
+}
+
+/* R7.F2: the "Visit FOUNDR.land" button on Client tools is the standard button, label centred in the space beside the
+   disc (same pattern as the other standard buttons), and the phone is about 25% larger (360 -> 450px; 280 -> 350px). */
+html body main#main .advr-tools-page .advr-founder-brief a.btn-teal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px !important;
+  padding: 10px 56px 10px 20px !important;
+  border-radius: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+}
+html body main#main .advr-tools-page .advr-founder-brief a.btn-teal:is(:hover, :focus-visible) {
+  padding: 10px 20px 10px 56px !important;
+}
+html body main#main .advr-tools-page .advr-founder-brief a.btn-teal::before,
+html body main#main .advr-tools-page .advr-founder-brief a.btn-teal::after {
+  width: 36px !important;
+  height: 36px !important;
+}
+html body main#main .advr-tools-page .advr-founder-brief .advr-founder-brief-phone {
+  width: 450px;
+  margin-bottom: -190px;
+}
+@media (max-width: 640px) {
+  html body main#main .advr-tools-page .advr-founder-brief .advr-founder-brief-phone {
+    width: min(350px, 100%);
+    margin-bottom: -150px;
+  }
+}
+@media (max-width: 400px) {
+  html body main#main .advr-tools-page .advr-founder-brief .advr-founder-brief-phone { margin-bottom: -125px; }
+}
+
+/* DG-PRE-55 (testimonials): /clarity shows two booking-page quotes now (one was removed), so on desktop
+   they share the row in two even columns instead of leaving an empty third. Tablet and phone already
+   use two columns and one column. */
+@media (min-width: 1025px) {
+  html body main .bk-quotes-list:has(> .bk-quote:nth-child(2):last-child) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

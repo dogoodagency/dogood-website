@@ -33,7 +33,7 @@ const { items, tone = "light", label, short = false, phoneItems: phoneGiven0, ph
 const phoneGiven = phoneGiven0 ?? (phonePick ? phonePick.map((n) => items.find((i) => i.name.toUpperCase() === n.toUpperCase())).filter((i): i is WallItem => !!i) : undefined);
 // 20 Nov 2026 (Seb): on phones a testimonial wall shows five reviews (cut to 6 lines), the ones closest to life
 // after the exit when they are in the list, then the first ones. Sound bites (short) are cut to three in CSS.
-const PHONE_PICK = ["TAMI L", "ZEINA G", "GAJAN R", "GINA P", "BROOK H"];
+const PHONE_PICK = ["TAMI L", "ZEINA G", "GINA P"];
 const phoneItems: WallItem[] | undefined = phoneGiven ?? (short || items.length <= 5 ? undefined : [
   ...PHONE_PICK.map((n) => items.find((i) => i.name.toUpperCase() === n)).filter((i): i is WallItem => !!i),
   ...items.filter((i) => !PHONE_PICK.includes(i.name.toUpperCase())),

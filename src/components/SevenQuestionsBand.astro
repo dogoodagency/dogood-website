@@ -8,7 +8,7 @@ interface Props {
 }
 const { variant, layout = variant === "home" ? "preview" : "compact" } = Astro.props;
 const home = variant === "home";
-const standardButtons = ["home", "newsletter", "reset"].includes(variant);
+const standardButtons = ["home", "newsletter", "reset", "advisor"].includes(variant);
 const preview = layout === "preview";
 const titleId = `seven-questions-${variant}-title`;
 ---
@@ -38,11 +38,11 @@ const titleId = `seven-questions-${variant}-title`;
           {!standardButtons && <span class="sq-disc" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg></span>}
         </a>
         }
+        {Astro.slots.has("actions") && <slot name="actions" />}
         <a class={standardButtons ? "btn-teal btn-dream sq-standard" : "sq-control sq-download"} href={sevenQuestionsPdf} target="_blank" rel="noopener">
           <span>Download the PDF</span>
           {!standardButtons && <span class="sq-disc" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg></span>}
         </a>
-        {Astro.slots.has("actions") && <slot name="actions" />}
       </div>
     </div>
   </div>
