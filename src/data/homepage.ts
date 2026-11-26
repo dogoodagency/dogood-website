@@ -34,7 +34,7 @@ export const logos = [
 ] as const;
 
 export const urls = {
-  apply: "/apply-stage-1",
+  apply: "/application",
   partnership: "/pathway",
   caseJ: "/casestudies/j",
   caseV: "/casestudies/v",

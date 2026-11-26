@@ -9,8 +9,9 @@ export const book = {
   ],
   "teaserClose": "Still in his bathrobe.",
   "question": "who a founder becomes on the first Tuesday after the sale.",
-  "newsletterName": "The Sale, in Chapters",
-  "newsletterSubline": "A novel for founders before and after the sale, drawn from real founder experience. A new chapter every other Tuesday.",
+  "newsletterEyebrow": "A DoGood Publication",
+  "newsletterName": "Unfinished Business",
+  "newsletterSubline": "Because the business isn't the only thing worth building.",
   "intro": "The Sale, in Chapters is a novel told one chapter at a time. It follows Frank, who owns an industrial laundry in Los Angeles, from the day a buyer's letter arrives to the months after the money lands. The story is fiction drawn from real founder experience, written as much for founders getting ready to sell as for those who already have. A new chapter arrives by email every other Tuesday, starting December 15.",
   "subline": "A novel about selling a company, and the life on both sides of the sale.",
   "body": [

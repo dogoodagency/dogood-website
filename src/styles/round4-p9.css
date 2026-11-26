@@ -154,7 +154,7 @@ main#main:is([data-path="/clarity"], [data-path="/orientation"]) { --r4-fc: 0px;
   main#main[data-path="/the-reset"] { --r4-fc: 175px; }
   main#main[data-path="/exit-prep"] { --r4-fc: 47px; }
   main#main[data-path="/faqs"] { --r4-fc: 47px; }
-  main#main[data-path="/apply-stage-1"] { --r4-fc: 15px; }
+  main#main[data-path="/application"] { --r4-fc: 15px; }
   main#main[data-path="/advisor-center"] { --r4-fc: 59px; }
   main#main[data-path="/advisor-center/referrals"] { --r4-fc: 59px; }
   main#main[data-path="/advisor-center/client-tools/readiness-check"] { --r4-fc: 46px; }
@@ -200,7 +200,7 @@ main#main:is([data-path="/clarity"], [data-path="/orientation"]) { --r4-fc: 0px;
   main#main[data-path="/the-reset"] { --r4-fc: 195px; }
   main#main[data-path="/exit-prep"] { --r4-fc: 63px; }
   main#main[data-path="/faqs"] { --r4-fc: 67px; }
-  main#main[data-path="/apply-stage-1"] { --r4-fc: 15px; }
+  main#main[data-path="/application"] { --r4-fc: 15px; }
   main#main[data-path="/advisor-center"] { --r4-fc: 101px; }
   main#main[data-path="/advisor-center/referrals"] { --r4-fc: 101px; }
   main#main[data-path="/advisor-center/client-tools/readiness-check"] { --r4-fc: 0px; }
@@ -246,7 +246,7 @@ main#main:is([data-path="/clarity"], [data-path="/orientation"]) { --r4-fc: 0px;
   main#main[data-path="/the-reset"] { --r4-fc: 107px; }
   main#main[data-path="/exit-prep"] { --r4-fc: 0px; }
   main#main[data-path="/faqs"] { --r4-fc: 0px; }
-  main#main[data-path="/apply-stage-1"] { --r4-fc: 0px; }
+  main#main[data-path="/application"] { --r4-fc: 0px; }
   main#main[data-path="/advisor-center"] { --r4-fc: 13px; }
   main#main[data-path="/advisor-center/referrals"] { --r4-fc: 13px; }
   main#main[data-path="/advisor-center/client-tools/readiness-check"] { --r4-fc: 0px; }

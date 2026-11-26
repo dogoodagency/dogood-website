@@ -5,6 +5,11 @@
 # "!" forces a rule even if a file exists at that path.
 # Test on a deploy preview, e.g.:  curl -I https://deploy-preview-6--dogoodagency.netlify.app/post/sop-development
 
+# Round 8: the two-button application chooser moved from /apply-stage-1 to /application.
+# (/apply-stage-1-thankyou is the Stage 1 form's own confirmation page and stays.)
+/apply-stage-1  /application  301
+/apply-stage-1/  /application  301
+
 # Round 3: retired hub and legacy advisor URL.
 /services  https://www.dogoodagency.co/pathway  301
 /services/  https://www.dogoodagency.co/pathway  301

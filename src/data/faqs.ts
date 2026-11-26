@@ -81,7 +81,7 @@ export const faqCategories: FaqCategory[] = [
         q: "I sold my company a few years ago. Am I too late?",
         a: [
           "Not at all. There is no expiry date on “what now?” Some founders come to us right after the sale, others years later, when they notice the old patterns are still running the show. Wherever you are with it, it is a welcome place to start.",
-          "You can [apply for Stage 1](/apply-stage-1) when you are ready.",
+          "You can [apply for Stage 1](/application) when you are ready.",
         ],
       },
       // [ADDED 20 Nov 2026 – source: for-advisors.astro "Room for the family too" (Seb, 19 Nov 2026)]
@@ -137,7 +137,7 @@ export const faqCategories: FaqCategory[] = [
         id: "how-quickly",
         q: "How quickly can we start?",
         a: [
-          "As soon as capacity allows, and within 7 days with Expedited Start. Start timing depends on capacity and travel logistics. On the FRP‑Fit Call we’ll confirm fit, urgency, and the soonest realistic start date. Standard Start begins at the next available slot (capacity‑dependent) — typically 4–8 weeks from acceptance. In acute crises, we’ll assess whether an Expedited Start is appropriate (and whether we can ethically create that space) — if so, start within 7 days after approval. If you want certainty on timing once accepted, ask about Priority Hold. The next step is to [apply for Stage 1](/apply-stage-1) and completing the FRP‑Fit Call.",
+          "As soon as capacity allows, and within 7 days with Expedited Start. Start timing depends on capacity and travel logistics. On the FRP‑Fit Call we’ll confirm fit, urgency, and the soonest realistic start date. Standard Start begins at the next available slot (capacity‑dependent) — typically 4–8 weeks from acceptance. In acute crises, we’ll assess whether an Expedited Start is appropriate (and whether we can ethically create that space) — if so, start within 7 days after approval. If you want certainty on timing once accepted, ask about Priority Hold. The next step is to [apply for Stage 1](/application) and completing the FRP‑Fit Call.",
         ],
       },
       // [SEB]
@@ -355,7 +355,7 @@ export const faqCategories: FaqCategory[] = [
         q: "How much does Stage 1 cost?",
         a: [
           "We share the fee on the FRP-Fit Call, because it depends on your situation and what fits, so we would rather walk you through it properly than give a number that might not suit you. We cover all of it openly in the conversation after you apply, with no pressure to commit, and questions about payment are welcome in that same conversation.",
-          "WHOOP is purchased separately (see [why WHOOP](#why-whoop)), and Stage 1 is covered by our Clarity-First Guarantee. You can [apply for Stage 1](/apply-stage-1) or email [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co) with questions first.",
+          "WHOOP is purchased separately (see [why WHOOP](#why-whoop)), and Stage 1 is covered by our Clarity-First Guarantee. You can [apply for Stage 1](/application) or email [hiya@dogoodagency.co](mailto:hiya@dogoodagency.co) with questions first.",
         ],
       },
       // [ADDED – source: chat-brief-approved.txt §4 "Can you guarantee results?"]

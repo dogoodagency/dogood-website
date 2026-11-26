@@ -9,7 +9,7 @@ start here
 
 meet the team
 
-<a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
+<a class="btn-apply" href="/application">Apply for Stage 1</a>
 
 We protect our founders’ identities. Most founders we work with lead visible companies and public lives –– we don't ask them to tell the private parts of their story publicly. Anonymity lets founders be candid about their intimate work — without risking reputations, partnerships, or market fallout.
 

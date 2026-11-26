@@ -66,7 +66,7 @@ Complete the short application for Stage 1 (30 days). We'll respond within 24 ho
 
 Private. Limited to 5 new founders a month.
 
-**Apply for Stage 1 →** [/apply-stage-1](/apply-stage-1)
+**Apply for Stage 1 →** [/application](/application)
 
 **See the two-stage partnership →** [/how-it-works](/pathway)
 

@@ -14,7 +14,7 @@ Where Wayfinders Travel To
 
 Each FRP stage includes 1x In-Person Intensive (for Stage 1 + Stage 2). In‑Person Intensive means a 1.5‑day in‑person get-together with your Wayfinder. We'll get on the plane and come to you.
 
-<a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
+<a class="btn-apply" href="/application">Apply for Stage 1</a>
 
 Limited to five new founders a month
 

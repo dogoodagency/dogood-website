@@ -34,7 +34,7 @@ Apply → Conversation → Start Stage 1
 
 <a class="btn-teal" href="/pathway#anchor-1">See the full process</a>
 
-<a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
+<a class="btn-apply" href="/application">Apply for Stage 1</a>
 
 Limited to five new founders a month
 
@@ -312,7 +312,7 @@ You keep all decisions, plans, and tools from our first sessions. We take real d
 
 Private work. Real consequences. Real change.
 
-<a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
+<a class="btn-apply" href="/application">Apply for Stage 1</a>
 
 Limited to five new founders a month
 
@@ -400,7 +400,7 @@ Step 5 Review in week 3
 
 Invite to Stage 2 or complete Stage 1
 
-<a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
+<a class="btn-apply" href="/application">Apply for Stage 1</a>
 
 Stage 1 (30 days) · Week 3 decision on Stage 2
 

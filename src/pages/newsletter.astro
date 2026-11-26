@@ -223,7 +223,7 @@ const heroLine = book.newsletterSubline;
 
 <Base
   title={`${book.newsletterName}: founder coaching | DoGood Agency`}
-  description={book.description}
+  description="A novel in chapters for founders before and after the sale, drawn from real founder experience and coaching."
   canonical="https://www.dogoodagency.co/newsletter"
   footerStrip="#FFFFFF"
   footerEdge={footerEdge}
@@ -233,7 +233,7 @@ const heroLine = book.newsletterSubline;
       <!-- Hero image moved to the sign-up section; text centred in a wider frame (Seb, 18 Nov 2026). -->
       <div class="nl-hero-inner nl-hero-center">
         <div class="nl-copy">
-          <p class="nl-eyebrow">The DoGood newsletter</p>
+          <p class="nl-eyebrow">{book.newsletterEyebrow}</p>
           <h1>{book.newsletterName}</h1>
           <p class="nl-lede">{heroLine}</p>
         </div>
@@ -242,15 +242,9 @@ const heroLine = book.newsletterSubline;
       <Wave fill={tint} edge={heroEdge} />
     </header>
 
-    <section class="nl-band nl-band-tint" id="note" aria-labelledby="nl-note-label">
+    <section class="nl-band nl-band-tint nl-intention-band" id="intro" aria-label="About this newsletter">
       <div class="nl-well">
-        <figure class="nl-note">
-          <p class="nl-note-label" id="nl-note-label">A note from Seb</p>
-          <blockquote>
-            <p>A few years ago I paused my business to regroup. Nobody had told me how strange it would feel to stop. Since then, I've sat with founders in that same stretch after the deal, when the structure is gone and the calendar is suddenly quiet. These seven questions are the ones we keep coming back to. Take them, they're yours.</p>
-          </blockquote>
-          <figcaption class="nl-note-sign">— Seb</figcaption>
-        </figure>
+        <p class="nl-intro nl-intention">Unfinished Business is where we share the chapters of our first book, one by one, by email. It's written for founders getting ready to sell and for founders who already have, and we hope it helps you see the life on both sides of the sale a little more clearly. More books will follow later.</p>
       </div>
     </section>
 
@@ -261,55 +255,10 @@ const heroLine = book.newsletterSubline;
       </svg>
     </div>
 
-    <section class="nl-band" id="questions" aria-labelledby="nl-questions-title">
-      <div class="nl-well">
-        <h2 id="nl-questions-title">Seven questions <span class="nl-question-ending">for the first 90 days</span></h2>
-        <p class="nl-intro">Take your time with them. There are no right answers, only honest ones.</p>
-        <p class="nl-intro nl-intro-small">Open “Go deeper” under any question for more context, the questions behind it, a short exercise and journal prompts.</p>
-        <ol class="nl-questions">
-          {
-            questions.map((item, i) => (
-              <li class="nl-question">
-                <span class="nl-qnum" aria-hidden="true">{i + 1}</span>
-                <div class="nl-q-body">
-                  <h3>{item.q}</h3>
-                  <p>{item.a}</p>
-                  <details class="nl-deep">
-                    <summary>
-                      <span>Go deeper: context, an exercise and journal prompts</span>
-                      <span class="nl-deep-icon" aria-hidden="true"></span>
-                    </summary>
-                    <div class="nl-deep-body">
-                      <p class="nl-deep-why">{item.why}</p>
-                      <!-- Three separate parts (Seb, 19 Nov 2026 14:55) -->
-                      <div class="nl-deep-sec nl-deep-sec--ask">
-                        <h4>Questions behind the question</h4>
-                        <ul class="nl-deep-list">{item.ask.map((x) => <li>{x}</li>)}</ul>
-                      </div>
-                      <div class="nl-deep-sec nl-deep-sec--try">
-                        <h4>Try this: {item.exercise.title}</h4>
-                        <ol class="nl-deep-steps">{item.exercise.steps.map((x) => <li>{x}</li>)}</ol>
-                      </div>
-                      <div class="nl-deep-sec nl-deep-sec--journal">
-                        <h4>Journal prompts</h4>
-                        <ul class="nl-deep-list nl-deep-journal">{item.journal.map((x) => <li>{x}</li>)}</ul>
-                      </div>
-                    </div>
-                  </details>
-                </div>
-              </li>
-            ))
-          }
-        </ol>
-        <div class="nl-guide">
-          <SevenQuestionsBand variant="newsletter" layout="preview" />
-        </div>
-      </div>
-    </section>
-
-    <section class="nl-band nl-band-tint" id="book" aria-labelledby="nl-book-title">
+    <section class="nl-band" id="book" aria-labelledby="nl-book-title">
       <div class="nl-well">
         <div class="nl-book nl-book-teaser">
+          <p class="nl-kicker">The book we release first</p>
           <h2 id="nl-book-title">{book.title}</h2>
           <p class="nl-book-tagline">{book.tagline}</p>
           <div class="nl-book-teaser-body">
@@ -363,7 +312,7 @@ const heroLine = book.newsletterSubline;
     <section class="nl-band nl-band-tint" id="chapters" aria-labelledby="nl-chapters-title">
       <div class="nl-well">
         <h2 id="nl-chapters-title">The chapters</h2>
-        <p class="nl-intro">{book.newsletterSubline}</p>
+        <p class="nl-intro">{book.subline}</p>
         <ol class="nl-chapters">
           {
             chapters.map((chapter) => (
@@ -395,12 +344,67 @@ const heroLine = book.newsletterSubline;
       </div>
     </section>
 
+    <section class="nl-band" id="questions" aria-labelledby="nl-questions-title">
+      <div class="nl-well">
+        <p class="nl-kicker">Free guide: our gift to take away</p>
+        <h2 id="nl-questions-title">Seven questions <span class="nl-question-ending">for the first 90 days</span></h2>
+        <p class="nl-intro nl-gift-line">The newsletter is the book, one chapter at a time. These seven questions are our free gift to take away.</p>
+        <figure class="nl-note" id="note" aria-labelledby="nl-note-label">
+          <p class="nl-note-label" id="nl-note-label">A note from Seb</p>
+          <blockquote>
+            <p>A few years ago I paused my business to regroup. Nobody had told me how strange it would feel to stop. Since then, I've sat with founders in that same stretch after the deal, when the structure is gone and the calendar is suddenly quiet. These seven questions are the ones we keep coming back to. Take them, they're yours.</p>
+          </blockquote>
+          <figcaption class="nl-note-sign">— Seb</figcaption>
+        </figure>
+        <p class="nl-intro">Take your time with them. There are no right answers, only honest ones.</p>
+        <p class="nl-intro nl-intro-small">Open “Go deeper” under any question for more context, the questions behind it, a short exercise and journal prompts.</p>
+        <ol class="nl-questions">
+          {
+            questions.map((item, i) => (
+              <li class="nl-question">
+                <span class="nl-qnum" aria-hidden="true">{i + 1}</span>
+                <div class="nl-q-body">
+                  <h3>{item.q}</h3>
+                  <p>{item.a}</p>
+                  <details class="nl-deep">
+                    <summary>
+                      <span>Go deeper: context, an exercise and journal prompts</span>
+                      <span class="nl-deep-icon" aria-hidden="true"></span>
+                    </summary>
+                    <div class="nl-deep-body">
+                      <p class="nl-deep-why">{item.why}</p>
+                      <!-- Three separate parts (Seb, 19 Nov 2026 14:55) -->
+                      <div class="nl-deep-sec nl-deep-sec--ask">
+                        <h4>Questions behind the question</h4>
+                        <ul class="nl-deep-list">{item.ask.map((x) => <li>{x}</li>)}</ul>
+                      </div>
+                      <div class="nl-deep-sec nl-deep-sec--try">
+                        <h4>Try this: {item.exercise.title}</h4>
+                        <ol class="nl-deep-steps">{item.exercise.steps.map((x) => <li>{x}</li>)}</ol>
+                      </div>
+                      <div class="nl-deep-sec nl-deep-sec--journal">
+                        <h4>Journal prompts</h4>
+                        <ul class="nl-deep-list nl-deep-journal">{item.journal.map((x) => <li>{x}</li>)}</ul>
+                      </div>
+                    </div>
+                  </details>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+        <div class="nl-guide">
+          <SevenQuestionsBand variant="newsletter" layout="preview" />
+        </div>
+      </div>
+    </section>
+
     <section class="nl-band nl-closing-band" aria-labelledby="nl-closing-title">
       <div class="nl-well">
         <div class="nl-closing closing-unframed">
           <h2 class="nl-closing-label" id="nl-closing-title">Ready for more than reading?</h2>
           <p>If you already know you'd like a private place to do this work, you can apply for Stage 1.</p>
-          <a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
+          <a class="btn-apply" href="/application">Apply for Stage 1</a>
           <p class="nl-closing-caption">Stage 1 is Days 1-30, Stage 2 invite only</p>
         </div>
       </div>

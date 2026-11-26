@@ -37,4 +37,4 @@ We'll use your email for the guide and for these notes. Read our [privacy policy
 
 ---
 
-If you already know you want a private place to do this work, you can <a href="/apply-stage-1">apply for Stage 1</a>.
+If you already know you want a private place to do this work, you can <a href="/application">apply for Stage 1</a>.

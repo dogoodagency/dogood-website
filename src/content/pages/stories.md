@@ -144,4 +144,4 @@ Complete the short application for Stage 1 (30 days). We’ll respond within 24 
 
 **Caption:** Limited to five new founders a month
 
-<a class="btn-apply" href="/apply-stage-1">Apply for Stage 1</a>
+<a class="btn-apply" href="/application">Apply for Stage 1</a>
