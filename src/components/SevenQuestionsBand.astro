@@ -15,7 +15,7 @@ const titleId = `seven-questions-${variant}-title`;
 
 <section class:list={["sq-band", `sq-band--${variant}`, preview && "sq-band--preview"]} aria-labelledby={titleId}>
   <div class="sq-inner">
-    <img class="sq-cover" data-arta={preview ? "A6" : undefined} src="/media/seven-questions/seven-questions-cover@1x.webp" srcset="/media/seven-questions/seven-questions-cover@1x.webp 600w, /media/seven-questions/seven-questions-cover@2x.webp 1200w" sizes={preview ? "(max-width: 600px) calc(100vw - 44px), (max-width: 1365px) 36vw, 360px" : "(max-width: 600px) 180px, 216px"} width="600" height="849" alt="The 7 Questions guide cover" loading="lazy" decoding="async" />
+    <img class="sq-cover" src="/media/r10/seven-questions@1x.webp" srcset="/media/r10/seven-questions@1x.webp 600w, /media/r10/seven-questions@2x.webp 1200w" sizes={preview ? "(max-width: 600px) calc(100vw - 44px), (max-width: 1365px) 36vw, 360px" : "(max-width: 600px) 300px, 300px"} width="600" height="401" alt="The 7 Questions guide: Seven questions for the first 90 days, an open booklet and its cover" loading="lazy" decoding="async" />
     <div class="sq-copy">
       {Astro.slots.has("intro") ? <slot name="intro" /> : <>
       <p class="sq-eyebrow">Free guide</p>
@@ -27,9 +27,6 @@ const titleId = `seven-questions-${variant}-title`;
       </>}
     </div>
     <div class="sq-preview">
-      {preview && <div class="sq-pages" aria-hidden="true">
-        {[1, 2, 3].map((page) => <img data-arta="A6" src={`/media/r4/seven-questions-inside-${page}@1x.webp`} srcset={`/media/r4/seven-questions-inside-${page}@1x.webp 300w, /media/r4/seven-questions-inside-${page}@2x.webp 600w`} sizes="(max-width: 600px) 0px, 180px" width="300" height="424" alt="" aria-hidden="true" loading="lazy" decoding="async" />)}
-      </div>}
       <div class="sq-actions">
         <!-- Newsletter already prints the questions above this band and keeps only the download. -->
         {!Astro.slots.has("actions") && variant !== "newsletter" &&

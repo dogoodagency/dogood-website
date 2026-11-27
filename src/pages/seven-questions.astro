@@ -31,27 +31,14 @@ const description = "Seven questions for founders in the first 90 days after sel
   <div class="seven-page">
     <section class="seven-guide" aria-labelledby="seven-guide-title">
       <div class="seven-fan">
-        {[3, 2, 1].map((page) => (
-          <img
-            class={`seven-fan-page seven-fan-page--${page}`}
-            src={`/media/r4/seven-questions-inside-${page}@1x.webp`}
-            srcset={`/media/r4/seven-questions-inside-${page}@1x.webp 300w, /media/r4/seven-questions-inside-${page}@2x.webp 600w`}
-            sizes="(max-width: 600px) 42vw, 240px"
-            width="300"
-            height="424"
-            alt=""
-            loading="lazy"
-            decoding="async"
-          />
-        ))}
         <img
           class="seven-fan-cover"
-          src="/media/seven-questions/seven-questions-cover@1x.webp"
-          srcset="/media/seven-questions/seven-questions-cover@1x.webp 600w, /media/seven-questions/seven-questions-cover@2x.webp 1200w"
-          sizes="(max-width: 600px) 42vw, 240px"
+          src="/media/r10/seven-questions@1x.webp"
+          srcset="/media/r10/seven-questions@1x.webp 600w, /media/r10/seven-questions@2x.webp 1200w"
+          sizes="(max-width: 600px) 86vw, (max-width: 960px) 520px, 460px"
           width="600"
-          height="849"
-          alt="The 7 Questions guide cover"
+          height="401"
+          alt="The 7 Questions guide: Seven questions for the first 90 days, an open booklet and its cover"
           loading="lazy"
           decoding="async"
         />
@@ -209,27 +196,22 @@ const description = "Seven questions for founders in the first 90 days after sel
     background: #E7FFF6;
   }
 
+  /* R10: one transparent mockup (landscape, 600x401) replaces the cover and the fanned pages. */
   .seven-fan {
     position: relative;
     width: 100%;
-    aspect-ratio: 100 / 72;
   }
 
   .seven-fan img {
-    position: absolute;
     display: block;
+    width: 100%;
+    max-width: 100%;
     height: auto;
-    border: 1px solid #C2B7DD;
-    border-radius: 12px;
-    background: var(--color-white);
+    border: 0;
+    border-radius: 0;
+    background: none;
     pointer-events: none;
   }
-
-  .seven-fan-page { top: 10.7%; width: 40%; }
-  .seven-fan-page--3 { left: 4%; z-index: 1; transform: rotate(-7deg); }
-  .seven-fan-page--2 { left: 21%; z-index: 2; transform: rotate(-4deg); }
-  .seven-fan-page--1 { left: 38%; z-index: 3; transform: rotate(-1deg); }
-  .seven-fan-cover { top: 7.8%; left: 55%; z-index: 4; width: 43%; transform: rotate(2deg); }
 
   .seven-guide-copy {
     display: flex;
@@ -333,7 +315,7 @@ const description = "Seven questions for founders in the first 90 days after sel
 
   @media (max-width: 960px) {
     .seven-guide { grid-template-columns: minmax(0, 1fr); gap: 40px; padding: 48px 40px; }
-    .seven-fan { max-width: 520px; margin-inline: auto; }
+    .seven-fan { max-width: 520px; width: 100%; margin-inline: auto; }
     .seven-guide-copy { width: 100%; max-width: 520px; margin-inline: auto; }
   }
 
@@ -352,7 +334,6 @@ const description = "Seven questions for founders in the first 90 days after sel
     .seven-card .seven-q { font-size: 18px; }
     .seven-qs { margin-top: 48px; }
     .seven-guide { gap: 28px; margin-top: 0; padding: 28px 20px 32px; }
-    .seven-fan img { border-radius: 8px; }
     .seven-guide-copy h2 { font-size: 28px; }
     .seven-guide-lead, .seven-guide-list li { font-size: 17px; }
     .seven-guide-list { margin-bottom: 28px; }

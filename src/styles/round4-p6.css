@@ -9,38 +9,11 @@
   overflow: hidden;
   pointer-events: none;
 }
-.advr-tool-visual img {
-  position: absolute;
-  display: block;
-  top: 6%;
-  height: 88%;
-  width: auto;
-  max-width: 38%;
-  object-fit: contain;
-  border: 1px solid var(--color-dream-100);
-  box-shadow: none;
-  pointer-events: none;
-}
-.advr-tool-visual img:nth-child(1) { left: 12%; transform: rotate(-4deg); }
-.advr-tool-visual img:nth-child(2) { left: 36%; }
-.advr-tool-visual img:nth-child(3) { left: 60%; transform: rotate(4deg); }
-.advr-tool-visual--questions img:nth-child(1) { left: 0; top: 0; height: 100%; transform: none; }
-.advr-tool-visual--questions img:nth-child(2) { left: 34%; transform: rotate(-4deg); }
-.advr-tool-visual--questions img:nth-child(3) { left: 54%; transform: none; }
-.advr-tool-visual--questions img:nth-child(4) { left: 74%; transform: rotate(4deg); }
-.advr-tool-visual--planner img:nth-child(1) { left: 50%; transform: translateX(-50%); }
+/* R10: single mockups (see the R10 block in round7.css for sizing). No borders, no tilt. */
+.advr-tool-visual img { display: block; border: 0; box-shadow: none; pointer-events: none; }
 .advr-tool-visual--readiness { background: var(--color-white); }
-.advr-tool-visual--readiness img:nth-child(1) {
-  position: static;
-  width: 100%;
-  max-width: none;
-  height: 100%;
-  border: 0;
-  transform: none;
-}
 .advr-tool-visual--detail { height: 360px; margin-bottom: 32px; }
 .advr-tool-visual--readiness.advr-tool-visual--detail { height: auto; background: var(--color-dream-25); }
-html body main#main .advr-page .advd-preview .advr-tool-visual--detail img { height: auto; pointer-events: none; }
 html body main#main .advr-page .advd-preview > figure > img { pointer-events: none; }
 
 html body main#main .advr-page.advr-tools-page .advr-card { padding: 32px; overflow: hidden; }
@@ -166,7 +139,6 @@ html body main#main .advr-insights-page .advi-pattern--after { border: 1px solid
   html body main#main .advr-page.advr-tools-page .advr-card { padding: 24px; }
   html body main#main .advr-page.advr-tools-page .advr-tool-visual { width: calc(100% + 48px); margin: -24px -24px 24px; }
   .advr-tool-visual--detail { height: 240px; }
-  .advr-tool-visual--questions img:nth-child(4) { display: none; }
   .advr-tool-visual--readiness.advr-tool-visual--detail { height: auto; }
   .advr-practical-faq summary { padding: 20px; font-size: 20px; }
   .advr-practical-faq details p { padding: 0 20px 24px; }

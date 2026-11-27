@@ -261,6 +261,7 @@ const heroLine = book.newsletterSubline;
         <div class="nl-book nl-book-teaser">
           <p class="nl-kicker">The book we release first</p>
           <h2 id="nl-book-title">{book.title}</h2>
+          <img class="nl-book-art" src="/media/r10/book-front@1x.webp" srcset="/media/r10/book-front@1x.webp 1x, /media/r10/book-front@2x.webp 2x" width="600" height="579" alt="Front cover of the book Wealthy, Lost, and Still in a Bathrobe." loading="lazy" decoding="async" />
           <p class="nl-book-tagline">{book.tagline}</p>
           <div class="nl-book-teaser-body">
             {book.teaser.map((paragraph) => <p>{paragraph}</p>)}
@@ -313,6 +314,7 @@ const heroLine = book.newsletterSubline;
     <section class="nl-band nl-band-tint" id="chapters" aria-labelledby="nl-chapters-title">
       <div class="nl-well">
         <h2 id="nl-chapters-title">The chapters</h2>
+        <img class="nl-chapters-art" src="/media/r10/book-open-ch1@1x.webp" srcset="/media/r10/book-open-ch1@1x.webp 1x, /media/r10/book-open-ch1@2x.webp 2x" width="600" height="459" alt="The book open at Chapter 1, The Raffle." loading="lazy" decoding="async" />
         <ol class="nl-chapters">
           {
             chapters.map((chapter) => (

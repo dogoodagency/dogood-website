@@ -1,31 +1,37 @@
 ---
-/** Shared final artwork for the Free tools cards and resource pages. */
+/**
+ * Shared final artwork for the Free tools cards and resource pages (R10).
+ * Signals Guide, Planner and 7 Questions are single transparent mockups; the Readiness Check is a straight
+ * laptop with the "My reflections" phone screen (CSS phone frame) leaning to the right on top of it.
+ * The visual area clips (overflow: hidden): pictures are larger than the area and are cut off, never spilling out.
+ * Only FOUNDRland images approved in foundr-land/public/images are used for the readiness composition.
+ */
 interface Props {
   tool: "readiness" | "signals" | "planner" | "questions";
   detail?: boolean;
-  /** Round 7 (F1): the four Client tools cards show the same pictures as a loose, slightly tilted fan. */
+  /** The four Client tools cards. */
   fan?: boolean;
 }
 const { tool, detail = false, fan = false } = Astro.props;
-const pages = tool === "signals" ? [
-  { src: "/media/r4/signals-guide-cover", width: 300, height: 424 },
-  { src: "/media/r4/signals-guide-inside-1", width: 300, height: 424 },
-  { src: "/media/r4/signals-guide-inside-2", width: 300, height: 424 },
-] : tool === "questions" ? [
-  { src: "/media/seven-questions/seven-questions-cover", width: 600, height: 849 },
-  ...[1, 2, 3].map((page) => ({ src: `/media/r4/seven-questions-inside-${page}`, width: 300, height: 424 })),
-] : [{ src: "/media/r4/planner-cover", width: 300, height: 424 }];
-const arta = tool === "readiness" ? "A2" : tool === "signals" ? "A3" : tool === "planner" ? "A4" : "A6";
-const composite = !detail && !fan && tool !== "planner" ? `/media/r5/tool-${tool === "readiness" ? "readiness-check" : tool === "signals" ? "signals-guide" : "seven-questions"}` : undefined;
-const readiness = `/media/r4/readiness-composite${detail ? "-dream25" : ""}`;
+const single = {
+  signals: { src: "/media/r10/signals-guide", width: 600, height: 486 },
+  planner: { src: "/media/r10/planner", width: 600, height: 686 },
+  questions: { src: "/media/r10/seven-questions", width: 600, height: 401 },
+} as const;
+const picture = tool === "readiness" ? undefined : single[tool];
+const laptop = "/media/r10/fl-laptop-eight-dimensions";
+const phone = "/media/r10/fl-phone-insights";
 ---
 
-<div class:list={["advr-tool-visual", `advr-tool-visual--${tool}`, detail && "advr-tool-visual--detail", fan && "advr-tool-visual--fan", composite && "advr-tool-visual--composite"]} aria-hidden="true">
-  {composite ? (
-    <img data-arta="R5-TOOLS" src={`${composite}@1x.webp`} srcset={`${composite}@1x.webp 1x, ${composite}@2x.webp 2x`} width="528" height="330" alt="" loading="lazy" decoding="async" />
-  ) : tool === "readiness" ? (
-    <img data-arta={arta} src={`${readiness}@1x.webp`} srcset={`${readiness}@1x.webp 1x, ${readiness}@2x.webp 2x`} width="480" height="300" alt="" aria-hidden="true" loading="lazy" decoding="async" />
-  ) : pages.map((page) => (
-    <img data-arta={arta} src={`${page.src}@1x.webp`} srcset={`${page.src}@1x.webp 1x, ${page.src}@2x.webp 2x`} width={page.width} height={page.height} alt="" aria-hidden="true" loading="lazy" decoding="async" />
-  ))}
+<div class:list={["advr-tool-visual", `advr-tool-visual--${tool}`, detail && "advr-tool-visual--detail", fan && "advr-tool-visual--fan"]} aria-hidden="true">
+  {picture ? (
+    <img class="advr-tool-img" src={`${picture.src}@1x.webp`} srcset={`${picture.src}@1x.webp 1x, ${picture.src}@2x.webp 2x`} width={picture.width} height={picture.height} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+  ) : (
+    <div class="advr-rc">
+      <img class="advr-rc-laptop" src={`${laptop}@1x.webp`} srcset={`${laptop}@1x.webp 1x, ${laptop}@2x.webp 2x`} width="800" height="465" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+      <div class="advr-rc-phone">
+        <img src={`${phone}@1x.webp`} srcset={`${phone}@1x.webp 1x, ${phone}@2x.webp 2x`} width="250" height="412" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+      </div>
+    </div>
+  )}
 </div>

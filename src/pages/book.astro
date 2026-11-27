@@ -92,21 +92,20 @@ function wave(fromTint: boolean) {
           <h1>{book.title}</h1>
           <p class="ep-sub">{subline}</p>
         </div>
-        <div class="bookp-hero-art">
-          <picture>
-            <source type="image/webp" srcset="/media/book/books-composite-800.webp 800w, /media/book/books-composite-1600.webp 1600w" sizes="(min-width: 901px) 560px, 90vw" />
-            <img src="/media/book/books-composite-800.png" width="1600" height="1105" fetchpriority="high" decoding="async" alt="The book Wealthy, Lost, and Still in a Bathrobe, front and back covers: a lone man in a bathrobe in warm ochre fog on the front, the teaser text on the back." />
-          </picture>
-        </div>
       </div>
       <Wave fill={tint} edge={heroEdge} />
     </header>
 
     <section class="ep-band ep-band-tint" aria-labelledby="bookp-story">
       <div class="ep-well ep-well-top">
-        <div class="bookp-prose">
-          <h2 id="bookp-story">The story</h2>
-          {story.map((p) => <p>{p}</p>)}
+        <div class="bookp-split">
+          <div class="bookp-prose">
+            <h2 id="bookp-story">The story</h2>
+            {story.map((p) => <p>{p}</p>)}
+          </div>
+          <figure class="bookp-art bookp-art--front">
+            <img src="/media/r10/book-front@1x.webp" srcset="/media/r10/book-front@1x.webp 1x, /media/r10/book-front@2x.webp 2x" width="600" height="579" alt="Front cover of the book Wealthy, Lost, and Still in a Bathrobe: a lone man in a bathrobe in warm ochre fog." loading="lazy" decoding="async" />
+          </figure>
         </div>
       </div>
     </section>
@@ -131,9 +130,14 @@ function wave(fromTint: boolean) {
 
     <section class="ep-band ep-band-tint" aria-labelledby="bookp-chapters">
       <div class="ep-well ep-well-top">
-        <div class="bookp-prose">
-          <h2 id="bookp-chapters">The 12 chapters</h2>
-          <p>{chaptersIntro}</p>
+        <div class="bookp-split bookp-split--chapters">
+          <div class="bookp-prose">
+            <h2 id="bookp-chapters">The 12 chapters</h2>
+            <p>{chaptersIntro}</p>
+          </div>
+          <figure class="bookp-art bookp-art--open">
+            <img src="/media/r10/book-open-ch1@1x.webp" srcset="/media/r10/book-open-ch1@1x.webp 1x, /media/r10/book-open-ch1@2x.webp 2x" width="600" height="459" alt="The book open at Chapter 1, The Raffle." loading="lazy" decoding="async" />
+          </figure>
         </div>
         <ol class="bookp-chapters">
           {
@@ -198,12 +202,9 @@ function wave(fromTint: boolean) {
             <h2 id="bookp-why">Why we wrote it</h2>
             {why.map((p) => <p>{p}</p>)}
           </div>
-          <div class="bookp-cover bookp-cover--back">
-            <picture>
-              <source type="image/webp" srcset="/media/book/back-600.webp 600w, /media/book/back-1200.webp 1200w" sizes="(min-width: 1025px) 400px, (min-width: 761px) 340px, 360px" />
-              <img src="/media/book/back-600.jpg" srcset="/media/book/back-600.jpg 600w, /media/book/back-1200.jpg 1200w" sizes="(min-width: 1025px) 400px, (min-width: 761px) 340px, 360px" width="600" height="900" alt="Back cover of Wealthy, Lost, and Still in a Bathrobe with the teaser: He sold the company. Nobody told him what to do on Monday." loading="lazy" decoding="async" />
-            </picture>
-          </div>
+          <figure class="bookp-art bookp-art--back">
+            <img src="/media/r10/book-back@1x.webp" srcset="/media/r10/book-back@1x.webp 1x, /media/r10/book-back@2x.webp 2x" width="600" height="605" alt="Back cover of Wealthy, Lost, and Still in a Bathrobe with the teaser: He sold the company. Nobody told him what to do on Monday." loading="lazy" decoding="async" />
+          </figure>
         </div>
       </div>
     </section>

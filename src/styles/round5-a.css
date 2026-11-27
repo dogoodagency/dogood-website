@@ -238,7 +238,7 @@ html body main#main :is(.bl-more, .privacy-source) { border-bottom-width: 0; }
 /* R5 8/11/12/13/38: enlarge the cover column and type together. The artwork
    and actions share a column, with the cover spanning both desktop rows. */
 html body main#main .sq-band .sq-inner {
-  grid-template-columns: 216px minmax(0, 1fr);
+  grid-template-columns: 300px minmax(0, 1fr);
   gap: 0;
 }
 html body main#main .sq-band--preview .sq-inner {
