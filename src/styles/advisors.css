@@ -1034,7 +1034,7 @@ html.adv-js .adv-faq-item:not(.is-open) .adv-faq-panel {
   margin-top: auto;
 }
 
-/* Free session. */
+/* Trial session. */
 .adv-trial {
   padding: 36px 40px;
   border: 1px solid #01a684;
@@ -1363,7 +1363,7 @@ html.adv-js .adv-faq-item:not(.is-open) .adv-faq-panel {
 }
 
 /* 19 Nov 2026 19:42 (Seb): half of the "What you get" cards in GRASS (the personal leg, trusted advisor,
-   free tools), the rest DREAM 500. And FAQ answers line up with their question (same side padding). */
+   the shareable tools), the rest DREAM 500. And FAQ answers line up with their question (same side padding). */
 .adv-page .adv-benefits .adv-benefit.adv-benefit--leg,
 .adv-page .adv-benefits .adv-benefit.adv-benefit--trusted,
 .adv-page .adv-benefits .adv-benefit.adv-benefit--tools {

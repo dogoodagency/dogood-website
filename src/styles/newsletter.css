@@ -662,11 +662,6 @@ html:has(.nl-page) {
   justify-content: center;
 }
 
-.nl-page .nl-well .nl-intro-small {
-  font-size: 16px;
-  opacity: 0.85;
-}
-
 /* Go deeper (same open/close feel as the FAQ accordion). */
 .nl-deep {
   margin-top: 16px;
@@ -1362,12 +1357,7 @@ html:has(.nl-page) {
 html body .nl-page .nl-chapters .nl-date-pill { border: 1.5px dotted currentColor !important; }
 }
 
-/* NW1: use the shared guide artwork without repeating the questions above it. */
-html body main#main .nl-guide .sq-band { margin-top: 36px; padding: 0; background: var(--color-white); }
-html body main#main .nl-guide .sq-questions { display: none; }
-html body main#main .nl-guide .sq-actions > .btn-dream { display: none; }
-html body main#main .nl-guide .sq-actions > .r3-inline-link { display: inline-flex; justify-content: center; align-items: center; min-height: 52px; max-width: 100%; padding: 14px 24px; border: 0; border-radius: 16px; background: var(--color-dream-500); color: var(--color-white); font-size: 18px; font-weight: 800; line-height: 1.3; text-decoration: none; }
-html body main#main .nl-guide .sq-actions > .r3-inline-link:is(:hover, :focus-visible) { background: var(--color-dream-600); color: var(--color-white); text-decoration: underline; }
+/* R11: the 7 Questions card (SevenQuestionsBand layout="split", classes .sq7-*) is styled at the end of this file. */
 html body main#main .nl-page .nl-book { box-shadow: none; }
 
 /* NW3: regular paragraph and caption weights; keep the existing caption treatment. */
@@ -1405,20 +1395,20 @@ html body main#main .nl-page .nl-book-teaser .nl-book-close {
   color: #FEFABE;
 }
 .nl-book-teaser .r6-book-button { align-self: flex-start; }
-/* R10: book front beside the teaser (two columns on desktop, under the title on mobile). */
+/* R11: the book front sits ABOVE the kicker, centred, 50% bigger than before (it was 300px wide beside the text on
+   desktop/tablet and 86% of the card, max 300px, when stacked; now 450px, never wider than the card's content). */
 html body main#main .nl-page .nl-book-teaser {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 300px);
-  column-gap: 48px;
+  grid-template-columns: minmax(0, 1fr);
   align-items: start;
 }
 html body main#main .nl-page .nl-book-teaser > * { grid-column: 1; min-width: 0; }
 html body main#main .nl-page .nl-book-teaser > .nl-book-art {
-  grid-column: 2;
-  grid-row: 1 / span 6;
+  grid-row: auto;
+  justify-self: center;
   align-self: center;
-  width: 100%;
-  max-width: 300px;
+  width: min(450px, 100%);
+  max-width: 100%;
   height: auto;
   margin: 0;
   background: none;
@@ -1426,20 +1416,205 @@ html body main#main .nl-page .nl-book-teaser > .nl-book-art {
   box-shadow: none;
 }
 html body main#main .nl-page .nl-book-teaser > .r6-book-button { justify-self: start; }
+/* R11: "The chapters" is centred, with clearly more air around the open-book image. */
+html body main#main .nl-page #nl-chapters-title { margin-bottom: 44px; text-align: center; }
 html body main#main .nl-page .nl-chapters-art {
   display: block;
   width: 100%;
   max-width: 420px;
   height: auto;
-  margin: 0 auto 28px;
+  margin: 0 auto 64px;
 }
+html body main#main .nl-page .nl-chapters-art + .nl-chapters { margin-top: 0; }
 @media (max-width: 767px) {
-  html body main#main .nl-page .nl-book-teaser { grid-template-columns: minmax(0, 1fr); }
-  html body main#main .nl-page .nl-book-teaser > .nl-book-art { grid-column: 1; grid-row: auto; justify-self: center; width: 86%; max-width: 300px; }
   html body main#main .nl-page .nl-chapters-art { width: 86vw; max-width: 420px; }
+}
+@media (max-width: 599px) {
+  html body main#main .nl-page #nl-chapters-title { margin-bottom: 32px; }
+  html body main#main .nl-page .nl-chapters-art { margin-bottom: 44px; }
 }
 @media (max-width: 767px) {
   html body main#main .nl-page .nl-book-teaser { padding: 32px 26px; gap: 24px; }
   html body main#main .nl-page .nl-book-teaser .nl-book-tagline { font-size: 20px; }
   html body main#main .nl-page .nl-book-teaser-body p { font-size: 17px; line-height: 1.6; }
+}
+
+/* ===== R11 (Seb): one type scale on /newsletter =====
+   H2 = the site's section headline (clamp(26px, 3vw, 36px)); body = 18px (17px on phones, as the site's phone type
+   scale); eyebrow/kicker = 18px (15px on phones, as the hero eyebrows and the old kicker); card titles (question h3,
+   chapter titles) = 20px (19px on phones). The hero (h1, eyebrow, lede) is not touched.
+   `main#main#main` only raises specificity so these win over the older per-section rules and the phone !important rules. */
+.nl-page {
+  --nl-h2-size: clamp(26px, 3vw, 36px);
+  --nl-body-size: 18px;
+  --nl-eyebrow-size: 18px;
+  --nl-card-title-size: 20px;
+}
+@media (max-width: 599px) {
+  .nl-page {
+    --nl-body-size: 17px;
+    --nl-eyebrow-size: 15px;
+    --nl-card-title-size: 19px;
+  }
+}
+
+/* Section H2s (book title keeps its serif face and weight, but now the same size). */
+html body main#main#main .nl-page .nl-well h2,
+html body main#main#main .nl-page .nl-book-teaser h2,
+html body main#main#main .nl-page .nl-closing.closing-unframed .nl-closing-label {
+  font-size: var(--nl-h2-size) !important;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+/* Eyebrows / kickers. */
+html body main#main#main .nl-page .nl-well :is(.nl-kicker, .nl-note-label) {
+  font-size: var(--nl-eyebrow-size) !important;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+}
+
+/* Body copy: intros, tagline, teaser, close line, Seb's note, chapter blurbs, question answers, "Go deeper" text,
+   "More to come", the sign-up note and the closing card line. */
+html body main#main#main .nl-page .nl-well :is(
+  .nl-intro, .nl-book-tagline, .nl-book-teaser-body p, .nl-book-close, .nl-note blockquote p,
+  .nl-chapter-about, .nl-more-to-come, .nl-question p, .nl-deep-why,
+  .nl-deep-list, .nl-deep-list li, .nl-deep-steps, .nl-deep-steps li,
+  .nl-closing p:not(.nl-closing-caption)
+) {
+  font-size: var(--nl-body-size) !important;
+  line-height: 1.6 !important;
+}
+
+/* Sign-up privacy small print stays small print: 14px, 13px on phones. */
+html body main#main#main .nl-page .nl-well .nl-print {
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+@media (max-width: 599px) {
+  html body main#main#main .nl-page .nl-well .nl-print { font-size: 13px !important; }
+}
+
+/* Card titles inside lists. */
+html body main#main#main .nl-page .nl-well :is(.nl-question h3, .nl-chapter-title) {
+  font-size: var(--nl-card-title-size) !important;
+  line-height: 1.3;
+}
+
+/* ===== R11: the 7 Questions card (SevenQuestionsBand layout="split") =====
+   White half with a big tilted mockup bleeding off the left edge, deep purple text panel on the right. */
+html body main#main .nl-page .nl-guide { margin: 0 0 40px; }
+html body main#main .nl-page .sq7 { margin: 0; padding: 0; }
+html body main#main .nl-page .sq7-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  overflow: hidden;
+  border: 1px solid #C2B7DD;
+  border-radius: 24px;
+  background: #FFFFFF;
+}
+/* The art cell clips the mockup (overflow hidden), so it can bleed off the left edge but never reach the panel. */
+html body main#main .nl-page .sq7-art {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  aspect-ratio: 10 / 9;
+  background: #FFFFFF;
+}
+html body main#main .nl-page .sq7-img {
+  position: absolute;
+  top: 50%;
+  right: 4%;
+  display: block;
+  width: 150%;
+  max-width: none;
+  height: auto;
+  transform: translateY(-50%) rotate(-8deg);
+  transform-origin: 50% 50%;
+  pointer-events: none;
+}
+html body main#main .nl-page .sq7-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  padding: 48px 44px;
+  background: #2A0B4F;
+  color: #FFFFFF;
+}
+html body main#main .nl-page .sq7-panel .sq7-eyebrow {
+  margin: 0 0 14px;
+  color: #28DBB0;
+  font-size: var(--nl-eyebrow-size);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+html body main#main .nl-page .sq7-panel h2 {
+  margin: 0 0 16px;
+  color: #FFFFFF;
+  font-weight: 900;
+  text-wrap: balance;
+}
+html body main#main .nl-page .sq7-panel .sq7-title-main,
+html body main#main .nl-page .sq7-panel .sq7-title-sub { display: block; }
+html body main#main .nl-page .sq7-panel .sq7-title-sub { color: #FF8AB0; }
+html body main#main .nl-page .sq7-panel .sq7-line {
+  max-width: none;
+  margin: 0 0 28px;
+  color: #F5F2FF;
+  font-size: var(--nl-body-size);
+  line-height: 1.6;
+}
+/* The gift line sits directly under the heading, above the "who it is for" line. */
+html body main#main .nl-page .sq7-panel .sq7-line--gift { margin-bottom: 6px; }
+html body main#main .nl-page .sq7-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+html body main#main .nl-page .sq7-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  min-height: 52px;
+  padding: 12px 24px;
+  border: 2px solid transparent;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+html body main#main .nl-page .sq7-btn--primary { background: #28DBB0; color: #2A0B4F; }
+html body main#main .nl-page .sq7-btn--primary:is(:hover, :focus-visible) { background: #A3F2D7; color: #2A0B4F; }
+html body main#main .nl-page .sq7-btn--ghost { border-color: #FFFFFF; background: transparent; color: #FFFFFF; }
+html body main#main .nl-page .sq7-btn--ghost:is(:hover, :focus-visible) { background: #FFFFFF; color: #2A0B4F; }
+html body main#main .nl-page .sq7-btn:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 3px; }
+@media (max-width: 1023px) {
+  html body main#main .nl-page .sq7-panel { padding: 40px 32px; }
+}
+@media (max-width: 760px) {
+  html body main#main .nl-page .sq7-card { grid-template-columns: minmax(0, 1fr); }
+  html body main#main .nl-page .sq7-art { aspect-ratio: 4 / 3; }
+  html body main#main .nl-page .sq7-img {
+    left: 50%;
+    right: auto;
+    width: 130%;
+    transform: translate(-50%, -50%) rotate(-8deg);
+  }
+  html body main#main .nl-page .sq7-panel { padding: 32px 24px; }
+  html body main#main .nl-page .sq7-actions { flex-direction: column; align-items: stretch; }
+}
+@media (max-width: 599px) {
+  html body main#main#main .nl-page .sq7-panel .sq7-eyebrow { font-size: 15px !important; }
+  html body main#main#main .nl-page .sq7-panel .sq7-line { font-size: 17px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html body main#main .nl-page .sq7-btn { transition: none; }
 }

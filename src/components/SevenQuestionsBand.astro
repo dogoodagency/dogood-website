@@ -4,22 +4,45 @@ import { sevenQuestions, sevenQuestionsPdf } from "../data/seven-questions";
 interface Props {
   variant: "home" | "reset" | "advisor" | "tools" | "newsletter" | "exit";
   /** Reuse the round-4 artwork layout without changing the page's copy variant. */
-  layout?: "preview" | "compact";
+  layout?: "preview" | "compact" | "split";
 }
 const { variant, layout = variant === "home" ? "preview" : "compact" } = Astro.props;
 const home = variant === "home";
 const standardButtons = ["home", "newsletter", "reset", "advisor"].includes(variant);
 const preview = layout === "preview";
+// R11: "split" = white half with a big tilted mockup bleeding off the left edge + deep purple text panel.
+// Own markup and .sq7-* classes (styled in newsletter.css), so no other .sq-band page is affected.
+const split = layout === "split";
 const titleId = `seven-questions-${variant}-title`;
 ---
 
+{split ? (
+<section class="sq7" aria-labelledby={titleId}>
+  <div class="sq7-card">
+    <div class="sq7-art">
+      <img class="sq7-img" src="/media/r10/seven-questions@1x.webp" srcset="/media/r10/seven-questions@1x.webp 600w, /media/r10/seven-questions@2x.webp 1200w" sizes="(max-width: 760px) 118vw, (max-width: 1365px) 60vw, 620px" width="600" height="401" alt="The 7 Questions guide: Seven questions for the first 90 days, an open booklet and its cover" loading="lazy" decoding="async" />
+    </div>
+    <div class="sq7-panel">
+      <p class="sq7-eyebrow">Our gift to you</p>
+      <h2 id={titleId}><span class="sq7-title-main">The 7 questions</span><span class="sq7-title-sub">for the first 90 days after the sale</span></h2>
+      <p class="sq7-line sq7-line--gift">Yours to keep. Nothing asked in return.</p>
+      <p class="sq7-line">{home ? "Worth reading before you sell, too." : "For founders who have already sold."}</p>
+      <div class="sq7-actions">
+        <a class="sq7-btn sq7-btn--primary" href="/seven-questions">Sit with the 7 questions</a>
+        <a class="sq7-btn sq7-btn--ghost" href={sevenQuestionsPdf} target="_blank" rel="noopener">Download the PDF</a>
+      </div>
+    </div>
+  </div>
+</section>
+) : (
 <section class:list={["sq-band", `sq-band--${variant}`, preview && "sq-band--preview"]} aria-labelledby={titleId}>
   <div class="sq-inner">
     <img class="sq-cover" src="/media/r10/seven-questions@1x.webp" srcset="/media/r10/seven-questions@1x.webp 600w, /media/r10/seven-questions@2x.webp 1200w" sizes={preview ? "(max-width: 600px) calc(100vw - 44px), (max-width: 1365px) 36vw, 360px" : "(max-width: 600px) 300px, 300px"} width="600" height="401" alt="The 7 Questions guide: Seven questions for the first 90 days, an open booklet and its cover" loading="lazy" decoding="async" />
     <div class="sq-copy">
       {Astro.slots.has("intro") ? <slot name="intro" /> : <>
-      <p class="sq-eyebrow">Free guide</p>
+      <p class="sq-eyebrow">Our gift to you</p>
       <h2 id={titleId}>{preview ? <><span class="sq-title-main">The 7 questions</span><span class="sq-title-sub">for the first 90 days after the sale</span></> : "The 7 questions for the first 90 days after the sale"}</h2>
+      <p class="sq-intro">Yours to keep. Nothing asked in return.</p>
       <p class="sq-intro">{home ? "Worth reading before you sell, too." : "For founders who have already sold."}</p>
       {!home && variant !== "reset" && <ol class="sq-questions">
         {sevenQuestions.map((question) => <li>{question}</li>)}
@@ -44,3 +67,4 @@ const titleId = `seven-questions-${variant}-title`;
     </div>
   </div>
 </section>
+)}

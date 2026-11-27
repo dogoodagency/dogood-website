@@ -58,7 +58,7 @@ html body main#main .hw-page .hw-house-img {
   object-position: center bottom;
   pointer-events: none;
 }
-/* Keep annotations above the unscaled art and free to extend beyond the box. */
+/* Keep annotations above the unscaled art and able to extend beyond the box. */
 html body main#main .hw-page .hw-house-annotations { display: contents; }
 html body main#main .hw-page .hw-house .hw-arrow { display: block; z-index: 1; }
 html body main#main .hw-page .hw-house .hw-label::before { display: none; }

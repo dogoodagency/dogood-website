@@ -886,7 +886,7 @@ export const episodes: Episode[] = [
     },
     "guestIntro": [
       "Shane Walker is a visionary entrepreneur, financial expert, and advocate for intentional living. With over 15 years of entrepreneurial experience, Shane has dedicated his life to creating tools and systems that empower individuals to align their spending with purpose, restore financial freedom, and make smarter money decisions.",
-      "As the creator of Qube Money, Shane has revolutionized the groundbreaking envelope budgeting system, seamlessly bringing it into the digital age. His expertise in personal finance, combined with his deep understanding of psychology, has helped countless people break free from the paycheck-to-paycheck cycle and achieve lasting financial peace.",
+      "As the creator of Qube Money, Shane has revolutionized the groundbreaking envelope budgeting system, seamlessly bringing it into the digital age. His expertise in personal finance, combined with his deep understanding of psychology, has helped countless people break out of the paycheck-to-paycheck cycle and achieve lasting financial peace.",
       "Beyond his professional accomplishments, Shane is a devoted husband of 18+ years, a father to eight, and a leader committed to fostering values of faith, family, and service. From exploring the wilderness to mentoring youth and serving his community, Shane’s life embodies the balance between purpose and business."
     ],
     "summary": [

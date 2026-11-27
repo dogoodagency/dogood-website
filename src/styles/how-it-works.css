@@ -2197,7 +2197,7 @@ html {
 
 /* ===== 21 Nov 2026 01:19 (Seb): stage sections on phones ===== */
 @media (max-width: 599px) {
-  /* The house stands free on the band; the frame starts below it, around the description. */
+  /* The house stands alone on the band; the frame starts below it, around the description. */
   html body .hw-page .hw-stage-panel { padding: 0; background: transparent !important; border: 0; border-radius: 0; box-shadow: none; }
   html body .hw-page .hw-stage-panel .hw-house-wrap { margin-bottom: 8px; padding-bottom: 0; border-bottom: 0; }
   html body .hw-page .hw-stage-panel .hw-stage-block {

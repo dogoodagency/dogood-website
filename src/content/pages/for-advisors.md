@@ -1,6 +1,6 @@
 ---
 title: "Exit planning advisors: personal readiness | DoGood Agency"
-description: "For exit planning advisors, succession planners and wealth advisors: we prepare your founder client personally for the sale and life after it. Free tools."
+description: "For exit planning advisors, succession planners and wealth advisors: we prepare your founder client personally for the sale and life after it. Tools for you and your clients."
 advisorLine: true
 ---
 
@@ -45,15 +45,15 @@ The work is limited to 5 new founders a month. If Stage 1 is not right, we say s
 
 ---
 
-## Free toolkit
+## Our gift to your clients
 
-## Something useful to hand your client, at no cost
+## Something useful to hand your client
 
-Advisors told us the same thing again and again: their clients have no plan for life after the sale, and there is nothing to hand them that opens the personal conversation. So we are building free tools for exactly that. No sign-up for you, and no strings.
+Advisors told us the same thing again and again: their clients have no plan for life after the sale, and there is nothing to hand them that opens the personal conversation. So we are building tools for exactly that. No sign-up for you, and no strings.
 
-First comes the Founder Readiness Check. You send it with your own link. Your client gets a private report and a free debrief call. If they say yes, you get a copy.
+First comes the Founder Readiness Check. You send it with your own link. Your client gets a private report and a debrief call with us. If they say yes, you get a copy.
 
-<a href="/advisor-center/client-tools">See the free toolkit →</a>
+<a href="/advisor-center/client-tools">See the toolkit →</a>
 
 ---
 
@@ -89,7 +89,7 @@ Want to see it from the inside? A short walk-through, with a video from Seb, sho
 
 - **A deeper client relationship.** You have a careful answer when the deal is done and your client is still asking, "What now?"
 - **A trusted place for the personal side.** You continue to look after the advice they already come to you for. We do not give financial or legal advice, and we do not poach.
-- **Free tools with your name on the link.** Every tool in the toolkit is free to share, and the readiness check comes with your own personal link.
+- **Tools with your name on the link.** Every tool in the toolkit is yours to share, and the readiness check comes with your own personal link.
 - **A referral fee, under a written agreement.** There is a referral fee, paid under a written Referral Partner Agreement. The details are in our partner agreement, and we share them on the intro call.
 
 ---
@@ -124,9 +124,9 @@ We have a shorter Exit-Prep™ for founders who have firmly decided to exit and 
 
 That DoGood is a private 30-day engagement for founders navigating life after exit, and that you would like to introduce them, if they are willing. We can give you a short way to say this on the intro call.
 
-### Do the free tools cost anything, or need a sign-up?
+### Do the tools cost anything, or need a sign-up?
 
-No. They are free to use and to share, with no sign-up for you. The only email we ask for is your client's, so we can send them their own readiness report. You see a copy only if they say yes.
+No. They are ours to give, so use and share them as you like, with no sign-up for you. The only email we ask for is your client's, so we can send them their own readiness report. You see a copy only if they say yes.
 
 ### How does the referral fee work?
 

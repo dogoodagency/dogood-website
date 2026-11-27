@@ -5,7 +5,7 @@ import Base from "../layouts/Base.astro";
 import { sevenQuestionContext, sevenQuestions, sevenQuestionsPdf } from "../data/seven-questions";
 
 const heading = "The 7 questions for the first 90 days after the sale";
-const description = "Seven questions for founders in the first 90 days after selling their company. Worth reading before you sell, too. Free PDF from DoGood's founder coaching team.";
+const description = "Seven questions for founders in the first 90 days after selling their company. Worth reading before you sell, too. A PDF from DoGood's founder coaching team.";
 ---
 
 <Base
@@ -44,9 +44,10 @@ const description = "Seven questions for founders in the first 90 days after sel
         />
       </div>
       <div class="seven-guide-copy">
-        <p class="seven-eyebrow">Free guide</p>
+        <p class="seven-eyebrow">Our gift to you</p>
         <!-- R6-NEWCOPY: "What's in the guide" -->
         <h2 id="seven-guide-title">What's in the guide</h2>
+        <p class="seven-guide-gift">Yours to keep. Nothing asked in return.</p>
         <!-- R6-NEWCOPY: "For each question:" (the four items are the existing /newsletter line, split) -->
         <p class="seven-guide-lead">For each question:</p>
         <ul class="seven-guide-list" role="list">
@@ -234,6 +235,12 @@ const description = "Seven questions for founders in the first 90 days after sel
     font-size: 36px;
     font-weight: 800;
     line-height: 1.15;
+  }
+
+  .seven-guide-gift {
+    margin: 12px 0 0;
+    font-size: 18px;
+    line-height: 1.5;
   }
 
   .seven-guide-lead {

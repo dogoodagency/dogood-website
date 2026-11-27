@@ -11,7 +11,7 @@ html body main#main .adv-center-page .adv-door.adv-door--wealth a.btn-teal {
   color: #FFFFFF !important;
 }
 
-/* R7.D2: the free toolkit section's body copy is Home body size; two standard buttons side by side. */
+/* R7.D2: the toolkit section's body copy is Home body size; two standard buttons side by side. */
 html body main#main .sq-band--advisor .adv-prose p {
   font-size: 18px !important;
 }
@@ -85,7 +85,7 @@ html body main#main .hw-page .hw-notyet-card a.hw-inlink:is(:hover, :focus-visib
    clips) and the dip is smaller than the 24px gap above the status label, so nothing touches text. */
 /* R10 (Seb): every tool picture is a single mockup, larger than its picture area and cut off by the area's edge
    (overflow: hidden), never tilted or pushed outside the card, never over the card text. The readiness picture is a
-   straight laptop with the phone screen (CSS frame) leaning right on top of it. All positions are percentages of the
+   straight laptop (R11: the phone was removed). All positions are percentages of the
    picture area, so the composition scales identically at 1440, 820 and 390. */
 html body main#main .advr-tool-visual { position: relative; overflow: hidden; isolation: isolate; }
 html body main#main .advr-tool-visual .advr-tool-img {
@@ -96,55 +96,25 @@ html body main#main .advr-tool-visual .advr-tool-img {
   height: auto;
   transform: translate(-50%, -50%);
 }
-/* Signals Guide (600x486) and 7 Questions (600x401) are landscape: sized by width. Planner (600x686) is portrait: sized by height. */
-html body main#main .advr-tool-visual--signals .advr-tool-img { width: 112%; }
-html body main#main .advr-tool-visual--questions .advr-tool-img { width: 116%; }
-html body main#main .advr-tool-visual--planner .advr-tool-img { width: auto; height: 118%; }
+/* Signals Guide (600x486), 7 Questions (600x401) and the Planner (v2, 600x476) are all landscape.
+   R11 (Seb): Signals Guide and 7 Questions were too big to read, so about 20% smaller (112% -> 90%, 116% -> 93%).
+   The Planner is contained by height (whole mockup visible). */
+html body main#main .advr-tool-visual--signals .advr-tool-img { width: 90%; }
+html body main#main .advr-tool-visual--questions .advr-tool-img { width: 93%; }
+html body main#main .advr-tool-visual--planner .advr-tool-img { width: auto; height: 92%; }
 /* Resource detail pages: the wide area shows the whole mockup (contained), the readiness composition keeps the card ratio. */
 html body main#main .advr-tool-visual--detail .advr-tool-img { width: auto; height: 94%; max-width: 100%; }
 html body main#main .advr-tool-visual--readiness.advr-tool-visual--detail { height: auto; aspect-ratio: 8 / 5; }
-/* Readiness composition */
+/* Readiness: the straight laptop only (R11: phone removed), about 20% smaller than before so the whole laptop sits in the frame. */
 html body main#main .advr-tool-visual .advr-rc { position: absolute; inset: 0; }
 html body main#main .advr-tool-visual .advr-rc-laptop {
   position: absolute;
-  left: -6%;
-  top: 4%;
-  width: 112%;
+  left: 5%;
+  top: 50%;
+  width: 90%;
   max-width: none;
   height: auto;
-  transform: none;
-}
-html body main#main .advr-tool-visual .advr-rc-phone {
-  position: absolute;
-  left: 68%;
-  top: 22%;
-  width: 26%;
-  box-sizing: border-box;
-  padding: 7px;
-  background: #2a1449;
-  border-radius: 24px;
-  box-shadow: 0 6px 18px rgba(42, 20, 73, .28);
-  transform: rotate(6deg);
-  transform-origin: 50% 50%;
-}
-html body main#main .advr-tool-visual .advr-rc-phone::before {
-  /* small notch */
-  content: "";
-  position: absolute;
-  z-index: 1;
-  top: 7px;
-  left: 50%;
-  width: 28%;
-  height: 4px;
-  border-radius: 0 0 4px 4px;
-  background: #2a1449;
-  transform: translateX(-50%);
-}
-html body main#main .advr-tool-visual .advr-rc-phone img { display: block; width: 100%; height: auto; border-radius: 18px; }
-@media (max-width: 600px) {
-  html body main#main .advr-tool-visual .advr-rc-phone { padding: 5px; border-radius: 18px; }
-  html body main#main .advr-tool-visual .advr-rc-phone::before { top: 5px; height: 3px; }
-  html body main#main .advr-tool-visual .advr-rc-phone img { border-radius: 13px; }
+  transform: translateY(-50%);
 }
 
 /* R7.F2: the "Visit FOUNDR.land" button on Client tools is the standard button, label centred in the space beside the
@@ -510,7 +480,7 @@ html body main#main .page-home .fl--home .fl-phone-card--b { left: 80.59%; top: 
 }
 
 /* R7.i /newsletter (Seb t1983u): name + intention first, the book and chapters as the main content, the 7 questions
-   (with Seb's note) as the free gift. Scoped to .nl-page. */
+   (with Seb's note) as our gift. Scoped to .nl-page. */
 html body main#main .nl-page .nl-kicker {
   margin: 0 0 12px;
   color: #05745B;
@@ -558,13 +528,17 @@ html body main#main .bookp-page .bookp-hero-copy .ep-sub { max-width: 760px; mar
 
 @media (min-width: 901px) {
   html body main#main .bookp-page header.ep-hero:not([hidden]) { height: auto; min-height: 540px; }
+  /* R11: the inner block grows to fill the hero (min-height 540px), so the wave stays at the bottom edge and no
+     dark strip is left between it and "The story". (It was flex: 0 0 auto, which left the spare height below the wave.) */
   html body main#main .bookp-page header.ep-hero > .bookp-hero-inner {
-    flex: 0 0 auto;
+    flex: 1 1 auto;
     align-items: center;
     padding: 64px 0;
   }
   html body main#main .bookp-page .bookp-hero-copy { align-self: center; }
 }
+/* R11: the wave overlaps the section below by 1px at every width, so no sub-pixel dark hairline can show. */
+html body main#main .bookp-page header.ep-hero > .hero-wave { margin-bottom: -1px; }
 
 /* R9.O3: Arta's final cover images (2:3), same placement and size as the placeholders, 4px corners, no shadow. */
 /* R10: new transparent book mockups (front, open at Chapter 1, back). No frame, no crop, no shadow. */
@@ -933,4 +907,21 @@ html body .ty-guide-cover {
 }
 @media (max-width: 600px) {
   html body .ty-guide-cover { width: 86vw; max-width: 340px; }
+}
+
+/* R11 (Seb t1988u item 8): the 7 Questions band (Home, Advisor Center, The Reset share the "preview" layout).
+   The button row is left-aligned with the heading/paragraph (same 44px / 22px side padding as .sq-copy), and there is
+   real space between the last text line and the buttons (30px desktop/tablet, 24px mobile). The newsletter uses the
+   separate .sq7 layout and is not affected. */
+html body main#main .sq-band--preview .sq-actions {
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+  margin: 0;
+}
+html body main#main .sq-band--preview .sq-preview { padding-top: 30px; }
+@media (max-width: 600px) {
+  /* Mobile order: picture, text, then the buttons (they used to sit above the text). */
+  html body main#main .sq-band--preview .sq-copy { grid-row: 2; padding: 28px 22px 0; }
+  html body main#main .sq-band--preview .sq-preview { grid-row: 3; padding: 24px 22px 28px; }
 }

@@ -78,7 +78,7 @@ Write the answers down. You don't need to act on them yet. You need to see them 
 
 This step matters because of patterns. Founders who skip it and go straight into a new venture carry the old patterns with them, the same ones that created the problems last time. The new company ends up looking a lot like the old one.
 
-If you want somewhere to start, we have put together [seven questions for the first 90 days](/newsletter). They are free, and you don't need to sign up to read them.
+If you want somewhere to start, we have put together [seven questions for the first 90 days](/newsletter). They are our gift, and you don't need to sign up to read them.
 
 ## Why it often hits later than you expect
 

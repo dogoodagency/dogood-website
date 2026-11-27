@@ -57,7 +57,7 @@ const questions = [
     a: sevenQuestionContext[1],
     why: "Being needed was part of who you were. Your phone, your calendar and your team kept telling you. When the questions stop, the silence can feel like emptiness, boredom or relief, and often all three in one week. All of them are normal. What shows up in that space tells you something about who you are underneath the role.",
     ask: [
-      "What do I do first with a free morning, when nobody is waiting for me?",
+      "What do I do first with an open morning, when nobody is waiting for me?",
       "Which parts of me did I put on hold while I ran the company?",
       "How do I answer when someone asks “What do you do now?”",
       "What do I enjoy that has nothing to do with being useful?",
@@ -259,9 +259,9 @@ const heroLine = book.newsletterSubline;
     <section class="nl-band" id="book" aria-labelledby="nl-book-title">
       <div class="nl-well">
         <div class="nl-book nl-book-teaser">
+          <img class="nl-book-art" src="/media/r10/book-front@1x.webp" srcset="/media/r10/book-front@1x.webp 1x, /media/r10/book-front@2x.webp 2x" width="600" height="579" alt="Front cover of the book Wealthy, Lost, and Still in a Bathrobe." loading="lazy" decoding="async" />
           <p class="nl-kicker">The book we release first</p>
           <h2 id="nl-book-title">{book.title}</h2>
-          <img class="nl-book-art" src="/media/r10/book-front@1x.webp" srcset="/media/r10/book-front@1x.webp 1x, /media/r10/book-front@2x.webp 2x" width="600" height="579" alt="Front cover of the book Wealthy, Lost, and Still in a Bathrobe." loading="lazy" decoding="async" />
           <p class="nl-book-tagline">{book.tagline}</p>
           <div class="nl-book-teaser-body">
             {book.teaser.map((paragraph) => <p>{paragraph}</p>)}
@@ -337,7 +337,7 @@ const heroLine = book.newsletterSubline;
                     <span class="nl-chapter-title">{u.title}</span>
                     <p class="nl-chapter-about">{bookChapters.find((b) => b.number === u.number)?.teaser ?? u.about}</p>
                   </div>
-                  <span class="nl-chapter-date nl-date-pill">Arrives {u.date}</span>
+                  <span class="nl-chapter-date nl-date-pill">Arrives {bookChapters.find((b) => b.number === u.number)?.date ?? u.date}</span>
                 </li>
               ))
           }
@@ -348,9 +348,9 @@ const heroLine = book.newsletterSubline;
 
     <section class="nl-band" id="questions" aria-labelledby="nl-questions-title">
       <div class="nl-well">
-        <p class="nl-kicker">Free guide: our gift to take away</p>
+        <p class="nl-kicker">Our gift to you</p>
         <h2 id="nl-questions-title">Seven questions <span class="nl-question-ending">for the first 90 days</span></h2>
-        <p class="nl-intro nl-gift-line">The newsletter is the book, one chapter at a time. These seven questions are our free gift to take away.</p>
+        <p class="nl-intro nl-gift-line">The newsletter is the book, one chapter at a time. These seven questions are our gift to you.</p>
         <figure class="nl-note" id="note" aria-labelledby="nl-note-label">
           <p class="nl-note-label" id="nl-note-label">A note from Seb</p>
           <blockquote>
@@ -358,8 +358,11 @@ const heroLine = book.newsletterSubline;
           </blockquote>
           <figcaption class="nl-note-sign">— Seb</figcaption>
         </figure>
+        <!-- R11: the 7 Questions card sits directly under Seb's note, before the questions list. -->
+        <div class="nl-guide">
+          <SevenQuestionsBand variant="newsletter" layout="split" />
+        </div>
         <p class="nl-intro">Take your time with them. There are no right answers, only honest ones.</p>
-        <p class="nl-intro nl-intro-small">Open “Go deeper” under any question for more context, the questions behind it, a short exercise and journal prompts.</p>
         <ol class="nl-questions">
           {
             questions.map((item, i) => (
@@ -395,9 +398,6 @@ const heroLine = book.newsletterSubline;
             ))
           }
         </ol>
-        <div class="nl-guide">
-          <SevenQuestionsBand variant="newsletter" layout="preview" />
-        </div>
       </div>
     </section>
 

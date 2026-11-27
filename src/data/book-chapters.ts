@@ -71,6 +71,7 @@ export const bookChapters: BookChapter[] = [
   {
     number: 7,
     title: "The Millionaire Who Missed Monday",
+    date: "March 23, 2027",
     teaser:
       "Frank gets up before dawn and drives to the company he sold. At home, he tries to make being needed his new job.",
     released: false,
@@ -79,6 +80,7 @@ export const bookChapters: BookChapter[] = [
   {
     number: 8,
     title: "Wealthy, Lost, and Still in a Bathrobe",
+    date: "April 6, 2027",
     teaser:
       "Frank books the cheapest room he can find at a half-finished hotel. He fixes a washer before he asks his wife what she needs.",
     released: false,
@@ -87,6 +89,7 @@ export const bookChapters: BookChapter[] = [
   {
     number: 9,
     title: "Clause 7.3",
+    date: "April 20, 2027",
     teaser:
       "Frank returns with a new title and an office that used to hold supplies. The buyer starts changing the plant. And the rest of his money depends on how it does.",
     released: false,
@@ -95,6 +98,7 @@ export const bookChapters: BookChapter[] = [
   {
     number: 10,
     title: "Enough",
+    date: "May 4, 2027",
     teaser:
       "His financial advisor arrives with a spreadsheet called \"Do Nothing Stupid.\" Frank has already made a move of his own.",
     released: false,
@@ -103,6 +107,7 @@ export const bookChapters: BookChapter[] = [
   {
     number: 11,
     title: "Who Am I If I Don't Have This",
+    date: "May 18, 2027",
     teaser: "A move is coming. The quiet Frank has been outrunning starts to catch up.",
     released: false,
     pdf: "",
@@ -110,6 +115,7 @@ export const bookChapters: BookChapter[] = [
   {
     number: 12,
     title: "The Tuesday Plan",
+    date: "June 1, 2027",
     teaser: "Frank tries to build a small Tuesday of his own. But the life he sold isn't quite done with him.",
     released: false,
     pdf: "",
