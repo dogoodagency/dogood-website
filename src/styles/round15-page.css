@@ -109,7 +109,7 @@
      receive the lower minimum (the Stories hero is a two-up/stacked grid taller than 360 anyway). ========================================================================================================== */
 
   html body main#main#main :is(.ep-hero, .hw-hero, .dr-hero, .advr-hero, .adv-hero, .wf-hero, .wfp-hero, .faq-hero, .st-hero,
-    .cs-hero, .ab-hero, .nl-hero, .pod-hero, .bl-hero, .privacy-hero, .apl-hero, .bk-hero, .r4-article-hero, .r4-seven-hero):is(header, section):not([hidden]),
+    .cs-hero, .ab-hero, .nl-hero, .pod-hero, .bl-hero, .privacy-hero, .apl-hero, .r4-article-hero, .r4-seven-hero):is(header, section):not([hidden]),
   html body main#main#main .adv-page > :is(.adv-hero, .advr-hero),
   html body main#main#main .adv-page:has(.ahub) > header:is(.adv-hero, .advr-hero),
   html body main#main#main .bookp-page header.ep-hero:not([hidden]),
@@ -120,10 +120,49 @@
 
   /* Tighter vertical padding inside the heroes that had the most spare room (each was set separately by an older rule). */
   html body main#main#main .adv-page :is(.adv-hero-inner, .advr-hero-inner) { padding-block: 24px; }
-  html body main#main#main .bk-page .bk-hero-inner { padding: 28px var(--pad) 20px; }
   html body main#main#main .pod-page .pod-ep-hero .pod-ep-hero-inner { padding-bottom: 24px; }
+
+  /* R15.16 (QA fix): booking heroes. The 18 booking / thank-you pages below were 270px tall in round 14 (round7.css, DG-PRE-56 part d:
+     min-height 270px, inner padding 8px), so they are left to round 14 (no 360px minimum, no padding override: no hero may grow).
+     Every other .bk-hero (round 14: 540px minimum, 56px/32px padding) still gets the shorter 360px minimum and tighter padding. */
+  html body main#main#main:not(:is(
+    [data-path="/catchup"], [data-path="/catchup-thankyou"],
+    [data-path="/clarity"], [data-path="/clarity-thankyou"],
+    [data-path="/exit"], [data-path="/exit-thankyou"],
+    [data-path="/frpfit"], [data-path="/frpfit-thankyou"],
+    [data-path="/internal"], [data-path="/internal-thankyou"],
+    [data-path="/internal60"], [data-path="/internal60-thankyou"],
+    [data-path="/orientation"], [data-path="/orientation-thankyou"],
+    [data-path="/prefrp"], [data-path="/prefrp-thankyou"],
+    [data-path="/wealth"], [data-path="/wealth-thankyou"]
+  )) .bk-hero:is(header, section):not([hidden]) {
+    height: auto !important;
+    min-height: 360px !important;
+  }
+  html body main#main#main:not(:is(
+    [data-path="/catchup"], [data-path="/catchup-thankyou"],
+    [data-path="/clarity"], [data-path="/clarity-thankyou"],
+    [data-path="/exit"], [data-path="/exit-thankyou"],
+    [data-path="/frpfit"], [data-path="/frpfit-thankyou"],
+    [data-path="/internal"], [data-path="/internal-thankyou"],
+    [data-path="/internal60"], [data-path="/internal60-thankyou"],
+    [data-path="/orientation"], [data-path="/orientation-thankyou"],
+    [data-path="/prefrp"], [data-path="/prefrp-thankyou"],
+    [data-path="/wealth"], [data-path="/wealth-thankyou"]
+  )) .bk-page .bk-hero-inner { padding: 28px var(--pad) 20px; }
   html body main#main#main .pp-membership .ep-hero-inner { padding-block: 36px 28px; }
   html body main#main#main .bookp-page header.ep-hero > .bookp-hero-inner { padding: 36px 0; }
+}
+
+/* R15.16 (QA fix): podcast episode pages (/podcast/<episode>), iPad from 768px. The player/cover card rides up 132px over the hero's bottom
+   (.pod-video-wrap margin-top -132px, podcast.css), and the hero is only 80px of wave + the inner block's padding-bottom below the subtitle.
+   Round 14 kept a +47..+87px gap between the subtitle (.pod-sub) and the card because the 540px hero centred the text with free space around
+   it; the 360px minimum removed that space (gap -29..-1px). The inner block's padding-bottom is now 101px, so the gap is never below
+   101 (padding) + 80 (wave) - 1 (wave's -1px seam overlap, R15.15) - 132 (card pull-up) = 48px, and a taller minimum only adds to it.
+   The hero is then as short as the content allows (still shorter than round 14's 540px). 744-767px keeps 24px: there the card sits
+   BELOW the hero (R13.B5, margin-top 24px), so the gap is >= 127px already. */
+@media (min-width: 768px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+  html body main#main#main .pod-page .pod-ep-hero .pod-ep-hero-inner { padding-bottom: 101px; }
 }
 
 /* Book page hero inner at 744-900px was 48px/44px (round7.css, max-width 900) */

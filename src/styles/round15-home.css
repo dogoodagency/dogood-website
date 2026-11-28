@@ -14,12 +14,49 @@ html body main#main#main .page-home #asseen .press-set.press-set--x { display: n
     margin: 0 -19px 0 -57px;
   }
   html body main#main#main .page-home #hero .hero-inner { padding-bottom: 68px; }
+
+  /* R15.8 (QA fix): the wave must end up 68px lower than in round 14 at every iPad width, in absolute page position (the smaller
+     fonts shrank the copy and cancelled the 68px padding). #hero gets a min-height that is a piecewise-linear function of the
+     viewport width through the round-14 hero heights + 68px (bands at the end of this file). The hero is a flex column; .hero-inner
+     grows to fill it; .hero-grid grows too, the copy stays at its top and the illustration (.hero-draw) is pushed to the bottom of
+     the grid, so the extra height lands BETWEEN the copy and the illustration and the picture keeps its gap to the wave (68px
+     padding, -53px margin, both unchanged). The 68px padding stays: it is part of the content height, which is always below the
+     min-height, so nothing is counted twice. Headline, lede and grid keep their old width (block fill) via width: 100% + border-box,
+     because flex items with auto side margins would otherwise shrink to fit. */
+  html body main#main#main .page-home #hero {
+    display: flex;
+    flex-direction: column;
+  }
+  html body main#main#main .page-home #hero > .hero-inner {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  html body main#main#main .page-home #hero > .hero-wave { flex: none; }
+  html body main#main#main .page-home #hero > .hero-inner > :is(h1.t-display, .lede, .hero-grid) {
+    box-sizing: border-box;
+    width: 100%;
+    flex: none;
+  }
+  html body main#main#main .page-home #hero > .hero-inner > .hero-grid { flex: 1 1 auto; }
+  html body main#main#main .page-home #hero .hero-copy { align-self: start; }
+  html body main#main#main .page-home #hero .hero-draw { align-self: end; margin-top: auto; }
   /* The wider picture reaches into the gap beside the copy (two-column iPad layout): keep the text and its links on top. */
   html body main#main#main .page-home #hero .hero-copy { position: relative; z-index: 2; }
 
-  /* R15.12: Home, "Our team's track record" (iPad): the Wayfinders photo sits FLUSH on the top border of the track-record box,
-     no gap (R13.D7 had left 24px), overlapping by 1px so no hairline shows. The box (z-index 2) paints over the photo's last pixel row. */
-  html body main#main#main .page-home #wayfinders .track-block { margin-top: -1px; transform: none; }
+  /* R15.12 (QA fix): Home, "Our team's track record" (iPad): the Wayfinders photo (wayfinders.png, 2664 x 1342) has 49 transparent
+     pixel rows at its bottom (the flat-cut figures end at native row 1293 of 1342) = 1.8023% of its width, so the figures' flat-cut bottoms
+     sit flush on the box border when the box is pulled up by exactly that share of the PHOTO's rendered width. The few figures reaching
+     row 1303 are overlapped by the box by about 10 native rows (under 3px at iPad sizes); the others sit flush. The photo box (.wf-group) and .track-block are siblings in #wayfinders with the
+     same width rule (width 100%, max-width 1080px, margin-inline auto, border-box), so the photo is min(100%, 1080px) wide. A percentage
+     margin resolves against the parent's content width, so it is written as min(100%, 1080px) x -0.018023 (exact even when the section is
+     wider than 1080px). The box is position: relative with z-index 2 (as before) so it paints over the photo's transparent strip. */
+  html body main#main#main .page-home #wayfinders .track-block {
+    margin-top: calc(min(100%, 1080px) * -0.018023);
+    position: relative;
+    z-index: 2;
+    transform: none;
+  }
   html body main#main#main .page-home #wayfinders .wf-group { margin-bottom: 0; padding-bottom: 0; }
 
   /* R15.13: Home stats (iPad): the first row is Founders Engaged, Leaders Impacted, Learning Initiatives Sold; the second row is
@@ -171,4 +208,49 @@ html body main#main#main .page-home #asseen .press-set.press-set--x { display: n
   html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15) body .page-home #wayfinders .wf-intro p.lead,
   html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15) body .page-home #wayfinders .wf-intro p.lead a.seo-inlink,
   html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15) body .page-home #wayfinders .wf-intro p.lead span.years { font-size: 18px; }
+}
+
+/* R15.8 (QA fix): iPad home hero min-height = round-14 hero height + 68px, piecewise linear in the viewport width (100vw), one band per
+   measured width so every point of the QA table lands on its target. Width: round-14 height + 68 = min-height:
+   744: 1156+68=1224 | 768: 998+68=1066 | 800: 1000+68=1068 | 820: 972+68=1040 | 833: 944+68=1012 | 834: 915+68=983 | 900: 920+68=988
+   1024: 741+68=809 | 1100: 748+68=816 | 1180: 755+68=823 | 1279: 758+68=826 | 1366 (touch landscape): 826.
+   Also measured: round 14 was 1156px up to 756px and 1127px from 757 to 767px (flat bands, +68 = 1224 and 1195); round 14 was 1000px up to
+   815px and 972px from 816px (flat bands, +68 = 1068 and 1040); round 14 grew from 920 at 900
+   to 938 at 1023 (+68 = 988 -> 1006).
+   The 744-756, 757-767 and 800-819 bands are flat; the other bands are linear between their end points: calc(A + (100vw - W) * slope). The content height is below these everywhere (by 30px or more). */
+@media (min-width: 744px) and (max-width: 756.98px) {
+  html body main#main#main .page-home #hero { min-height: 1224px; }
+}
+@media (min-width: 757px) and (max-width: 767.98px) {
+  html body main#main#main .page-home #hero { min-height: 1195px; }
+}
+@media (min-width: 768px) and (max-width: 799.98px) {
+  html body main#main#main .page-home #hero { min-height: calc(1066px + (100vw - 768px) * 0.0625); }
+}
+@media (min-width: 800px) and (max-width: 815.98px) {
+  html body main#main#main .page-home #hero { min-height: 1068px; }
+}
+@media (min-width: 816px) and (max-width: 819.98px) {
+  html body main#main#main .page-home #hero { min-height: 1040px; }
+}
+@media (min-width: 820px) and (max-width: 833.98px) {
+  html body main#main#main .page-home #hero { min-height: calc(1040px + (100vw - 820px) * -2.15385); }
+}
+@media (min-width: 834px) and (max-width: 899.98px) {
+  html body main#main#main .page-home #hero { min-height: calc(983px + (100vw - 834px) * 0.07576); }
+}
+@media (min-width: 900px) and (max-width: 1023.98px) {
+  html body main#main#main .page-home #hero { min-height: calc(988px + (100vw - 900px) * 0.14634); }
+}
+@media (min-width: 1024px) and (max-width: 1099.98px) {
+  html body main#main#main .page-home #hero { min-height: calc(809px + (100vw - 1024px) * 0.09211); }
+}
+@media (min-width: 1100px) and (max-width: 1179.98px) {
+  html body main#main#main .page-home #hero { min-height: calc(816px + (100vw - 1100px) * 0.0875); }
+}
+@media (min-width: 1180px) and (max-width: 1279px) {
+  html body main#main#main .page-home #hero { min-height: calc(823px + (100vw - 1180px) * 0.0303); }
+}
+@media (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+  html body main#main#main .page-home #hero { min-height: 826px; }
 }
