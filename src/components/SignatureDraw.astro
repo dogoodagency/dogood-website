@@ -1,0 +1,90 @@
+---
+/**
+ * Seb's signature, written in as a pen stroke (Seb, 19 Nov 2026 14:55). The strokes in
+ * src/data/signature-paths.json were traced from the centre line of signature.png; each one is drawn in
+ * turn and reveals the real signature underneath, so the result is the original image, written by hand.
+ * Without motion (or before it scrolls into view with JS off) the full signature shows.
+ */
+import signature from "../assets/photos/signature.png";
+import data from "../data/signature-paths.json";
+
+interface Props {
+  class?: string;
+}
+const { class: cls } = Astro.props;
+const total = data.paths.reduce((n, [, len]) => n + (len as number), 0);
+const DURATION = 3.2; // seconds for the whole signature
+const HEART_PAUSE = 0.35; // seconds between the name and the heart (Seb, 20 Nov 2026: name first, then the heart)
+const heartFrom = (data as { heartFrom?: number }).heartFrom ?? data.paths.length;
+let t = 0;
+const strokes = data.paths.map(([d, len], i) => {
+  if (i === heartFrom) t += HEART_PAUSE;
+  const dur = ((len as number) / total) * DURATION;
+  const s = { d: d as string, dur: Math.max(dur, 0.06).toFixed(2), delay: t.toFixed(2) };
+  t += dur;
+  return s;
+});
+const id = "sig-mask";
+---
+
+<svg
+  class:list={["sig-draw", cls]}
+  data-sig-draw
+  viewBox={`0 0 ${data.w} ${data.h}`}
+  role="img"
+  aria-label="Seb’s signature"
+>
+  <defs>
+    <mask id={id} maskUnits="userSpaceOnUse" x="0" y="0" width={data.w} height={data.h}>
+      {strokes.map((s) => (
+        <path d={s.d} pathLength="1" style={`--dur:${s.dur}s;--delay:${s.delay}s`} />
+      ))}
+    </mask>
+  </defs>
+  <image href={signature.src} width={data.w} height={data.h} mask={`url(#${id})`} />
+</svg>
+
+<style>
+  .sig-draw {
+    display: block;
+    width: 120px;
+    height: auto;
+    overflow: visible;
+  }
+
+  .sig-draw mask path {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 12;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .sig-draw.is-ready mask path {
+    stroke-dasharray: 1 1;
+    stroke-dashoffset: 1;
+  }
+
+  .sig-draw.is-writing mask path {
+    animation: sig-pen var(--dur) linear var(--delay) forwards;
+  }
+
+  @keyframes sig-pen {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<SVGElement>("[data-sig-draw]").forEach((svg) => {
+    if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    svg.classList.add("is-ready");
+    const io = new IntersectionObserver(([e]) => {
+      if (!e?.isIntersecting) return;
+      io.disconnect();
+      svg.classList.add("is-writing");
+    }, { threshold: 0, rootMargin: "0px 0px -15% 0px" });
+    io.observe(svg);
+  });
+</script>

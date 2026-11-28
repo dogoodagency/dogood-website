@@ -1,0 +1,136 @@
+/* Round 14 QA fix-ups after round 13 (commit 9c6cb2d) — part g */
+
+/* ===== G1: /newsletter 7 Questions card on phones ===== */
+@media (max-width: 767px) {
+  /* R14.1: the two sentences read as ONE wrapped paragraph. The panel was a flex column, which blockifies the inline
+     paragraphs into separate lines; as a block container they flow inline (a single space joins them, see R13.B1b).
+     Padding, eyebrow/heading margins and the actions' margin-top are unchanged. */
+  html body main#main#main .nl-page .sq7-panel {
+    display: block;
+  }
+  html body main#main#main .nl-page .sq7-panel .sq7-eyebrow,
+  html body main#main#main .nl-page .sq7-panel h2 {
+    display: block;
+  }
+  html body main#main#main .nl-page .sq7-panel p.sq7-line {
+    display: inline;
+    margin: 0;
+  }
+  html body main#main#main .nl-page .sq7-panel .sq7-actions {
+    margin-top: 28px;
+  }
+}
+
+/* ===== G2: /stories case-study chips ("Six month engagement" ...) ===== */
+/* R14.2a: phones: 15px (the 17px comes from mobile-rules.css "main li:not([class])" !important), DREAM 500. */
+@media (max-width: 599px) {
+  html body main#main#main .st-page .st-case-chips li:not([class]) {
+    color: #2a0b4f;
+    font-size: 15px !important;
+  }
+}
+/* R14.2b: 600px and up: back to the original 14px (R13.C4a's 12px was meant for phones only), DREAM 500 kept. */
+@media (min-width: 600px) {
+  html body main#main#main .st-page .st-case-chips li {
+    color: #2a0b4f;
+    font-size: 14px;
+  }
+}
+
+/* ===== G3: /about "Wealth advisors / and family offices" pill on phones ===== */
+@media (max-width: 767px) {
+  /* R14.3: same size, weight and letter-spacing as the other three pills (replaces the R13.F2 shrink), two nowrap centred lines,
+     spanning both grid columns so "and family offices" fits at 360px and 390px; the pill grows taller. */
+  html body main#main#main .ab-page .ab-advisor-pills li:has(.ab-pill-l1) {
+    grid-column: 1 / -1;
+    justify-self: stretch;
+    overflow: visible;
+    padding: 10px 16px !important;
+    font-size: clamp(11px, 3.1vw, 12px) !important;
+    font-weight: 800;
+    letter-spacing: inherit !important;
+    text-align: center;
+  }
+  html body main#main#main .ab-page .ab-advisor-pills li:has(.ab-pill-l1) :is(.ab-pill-l1, .ab-pill-l2) {
+    display: block;
+    max-width: none;
+    font-size: inherit !important;
+    letter-spacing: inherit !important;
+    white-space: nowrap;
+    text-align: center;
+  }
+  /* The last pill would sit alone on the left of its row: full width and centred so the stack looks intentional. */
+  html body main#main#main .ab-page .ab-advisor-pills li:nth-child(4) {
+    grid-column: 1 / -1;
+    justify-self: stretch;
+    text-align: center;
+  }
+}
+@media (max-width: 599px) {
+  /* Phones use the 17px body size for the other pills (mobile-rules.css type scale). */
+  html body main#main#main .ab-page .ab-advisor-pills li:has(.ab-pill-l1) {
+    font-size: 17px !important;
+  }
+}
+
+/* ===== G4: Home, iPad: the green line stays visible over the white testimonial wall ===== */
+@media (min-width: 768px) and (max-width: 1279px),
+  (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+  /* R14.4: the line ran at z-index -1 and vanished behind the opaque white #reviews band. Raised to 1 it runs down the right gutter beside the wall;
+     it still sits below everything at z-index 2 or more (#apply-v, #case-j / #case-v, sections lifted in home.css), the sticky header and the chat widget. */
+  html body .page-home .through-line,
+  html body main#main .through-line {
+    z-index: 1 !important;
+  }
+}
+
+/* ===== G5: /newsletter 7 Questions card, iPad (761px to 1279px): whole booklet visible, natural aspect ratio ===== */
+@media (min-width: 761px) and (max-width: 1279px) {
+  /* R14.5: the 150% wide image was clipped by the art cell. Keep it tilted -8deg, centred, at its natural 3:2 shape and fully inside the white half
+     (the rotated box is about 1.08 x its width wide, so 88% leaves a margin). */
+  html body main#main#main .nl-page .sq7-img {
+    top: 50%;
+    left: 50%;
+    right: auto;
+    width: 88%;
+    height: auto;
+    max-width: none;
+    transform: translate(-50%, -50%) rotate(-8deg);
+  }
+}
+
+/* ===== H: phones, stacked buttons share the same width ===== */
+@media (max-width: 599px) {
+  /* R13.H1 / H2: "Start with Exit-Prep™" and "Apply for Stage 1" (Home and /about "What's next?") are both 240px wide and centred in their cards.
+     They sit in different cards, so the width is set on each link, not on the parent. */
+  html body main#main#main :is(.page-home #next .next-doors, .ab-page .ab-cta .ab-next-doors) :is(.card-before, .card-after, .ab-door) > a:is(.btn-teal, .btn-apply) {
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: min(100%, 240px) !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin-inline: auto !important;
+    text-align: center !important;
+    white-space: normal;
+  }
+
+  /* R13.H3: /wayfinders/<slug> closing: "Apply for Stage 1" and "How the Client-Fit process works" stack at the same width, text centred and allowed to wrap. */
+  html body main#main#main .wfp-cta-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  html body main#main#main .wfp-cta-actions > a {
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: min(100%, 320px) !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin-inline: auto !important;
+    text-align: center !important;
+    white-space: normal;
+  }
+}

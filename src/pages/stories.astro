@@ -1,0 +1,379 @@
+---
+import { phonePicks } from "../data/phone-picks";
+import { clipWords } from "../data/clip-words";
+import "../styles/stories.css";
+import Base from "../layouts/Base.astro";
+import Wave from "../components/Wave.astro";
+import { edgeAbove } from "../data/edge-line";
+import { stories } from "../data/stories";
+import { caseTeasers } from "../data/stories-page";
+import LogoRails from "../components/LogoRails.astro";
+import { Image } from "astro:assets";
+import caseJ from "../assets/cases/case-study-j-founder-life-after-exit.png";
+import caseV from "../assets/cases/case-study-v-founder-life-after-exit.png";
+const portraits = { j: caseJ, v: caseV };
+import type { ImageMetadata } from "astro";
+import { reviews } from "../data/homepage";
+import TestimonialWall from "../components/TestimonialWall.astro";
+// Phones (Seb, 20 Nov 2026 23:29): five reviews with portraits on the left, as on the homepage, each cut to 6 lines.
+const reviewFaces = import.meta.glob<ImageMetadata>("../assets/reviews/*", { eager: true, import: "default" });
+const faceFor = (file: string) => Object.entries(reviewFaces).find(([k]) => k.endsWith(`/${file}`))?.[1];
+const phonePick = phonePicks.stories;
+const phoneWall = phonePick
+  .map((n) => reviews.find((r) => r.name === n))
+  .filter((r): r is (typeof reviews)[number] => !!r)
+  .map((r) => ({ quote: r.quote, name: r.name, role: r.role, image: faceFor(r.file) }));
+
+const white = "#ffffff";
+const tint = "#F5F2FF";
+const logoBg = "#E9E3F7";
+const heroEdge = edgeAbove("#2A0B4F");
+const tintEdge = edgeAbove(tint);
+const whiteEdge = edgeAbove(white);
+const logoEdge = edgeAbove(logoBg);
+const closingBg = "#FFFFFF";
+const footerEdge = edgeAbove(closingBg);
+
+// Round-robin into columns: 3 for desktop, 2 for tablet.
+const cols3 = [0, 1, 2].map((i) => stories.filter((_, idx) => idx % 3 === i));
+const cols2 = [0, 1].map((i) => stories.filter((_, idx) => idx % 2 === i));
+---
+
+<Base
+  title="Founder stories before and after the sale | DoGood Agency"
+  description="Anonymized stories from founders we have worked with before and after the sale, plus words from leaders at organizations our team has partnered with."
+  canonical="https://www.dogoodagency.co/stories"
+  footerStrip={closingBg}
+  footerEdge={footerEdge}
+>
+  <article class="st-page">
+    <header class="st-hero">
+      <div class="st-hero-inner">
+        <div class="st-hero-copy">
+          <h1 class="r4-phrase-title">Founder stories<br class="pp-desktop-break" /> before and after the sale</h1>
+          <p>Anonymized stories from our founders, before and after the sale.<br />We keep names private so they can be candid.</p>
+        </div>
+      </div>
+      <Wave fill={tint} edge={heroEdge} />
+    </header>
+
+    <section class="st-band st-band-tint" aria-labelledby="st-cases-h">
+      <div class="st-well">
+        <h2 id="st-cases-h">Case studies</h2>
+        <p class="st-anon">
+          <strong>We protect our founders’ identities.</strong> Most founders we work with lead visible companies and public lives –– we don't ask them to tell the private parts of their story publicly. Anonymity lets founders be candid about their intimate work — without risking reputations, partnerships, or market fallout.
+        </p>
+        <!-- Case studies redesigned (Seb, 18 Nov 2026): stacked, each in its own colour, portrait, key facts,
+             a shorter teaser and a clear button. The full text stays on the case study page. -->
+        <ul class="st-cases st-cases-stack">
+          {
+            caseTeasers.map((c, i) => (
+              <li class:list={["st-case", "st-case-feature", i % 2 === 0 ? "st-case--heart" : "st-case--green"]}>
+                {c.portrait && (
+                  <div class="st-case-art">
+                    <Image
+                      src={portraits[c.portrait]}
+                      width={260}
+                      height={288}
+                      widths={[260, 520]}
+                      sizes="260px"
+                      alt={`Pixelated portrait of founder ${c.who}, shown this way to protect their identity`}
+                    />
+                  </div>
+                )}
+                <div class="st-case-body">
+                  <p class="st-case-eyebrow">Case study</p>
+                  <h3>
+                    {c.headline} <span class="st-accent">{c.headlineAccent.replace(/^\s*—\s*/, "")}</span>
+                  </h3>
+                  <p class="st-case-attr">{c.attribution}</p>
+                  {c.highlights && (
+                    <ul class="st-case-chips">{c.highlights.map((h) => <li>{h}</li>)}</ul>
+                  )}
+                  <p class="st-case-intro">{c.intro}</p>
+                  <h4>The problem</h4>
+                  <p class="st-case-text st-problem">{c.problem}</p>
+                  <a class:list={["btn-teal", { "r5-button-heart": c.who === "J" }]} href={c.href}>Read {c.who ?? "the"}'s full story</a>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <div class="st-divider" style={`--st-from:${tint}`}>
+      <Wave fill={white} edge={tintEdge} />
+    </div>
+
+    <section class="st-band st-testi" data-st-testi aria-labelledby="st-testi-h">
+      <div class="st-well">
+        <p class="st-eyebrow">Testimonials</p>
+        <h2 id="st-testi-h">From leaders we have worked with</h2>
+        <p class="st-note">These are words from leaders our team has worked with. They are not all founders who have sold.</p>
+
+        <!-- Pause button removed (Seb, 18 Nov 2026). The wall still stops on hover and keyboard focus, and shows
+             as a still list for anyone who asks their device for reduced motion. -->
+
+        <!-- Three vertical columns (1024px and up) -->
+        <div class="st-vp st-vp-3">
+          <div class="st-wall">
+            {
+              cols3.map((col) => (
+                <div class="st-col">
+                  <div class="st-track">
+                    {[false, true].map((dup) =>
+                      col.map((s) => (
+                        <figure class="st-card" aria-hidden={dup ? "true" : undefined}>
+                          <blockquote>
+                            <p>{clipWords(s.quote)}</p>
+                          </blockquote>
+                          <figcaption>
+                            <strong class="st-name">{s.name}</strong>
+                            <span class="st-role">{s.role}</span>
+                          </figcaption>
+                        </figure>
+                      )),
+                    )}
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- Two vertical columns (600 to 1023px) -->
+        <div class="st-vp st-vp-2">
+          <div class="st-wall">
+            {
+              cols2.map((col) => (
+                <div class="st-col">
+                  <div class="st-track">
+                    {[false, true].map((dup) =>
+                      col.map((s) => (
+                        <figure class="st-card" aria-hidden={dup ? "true" : undefined}>
+                          <blockquote>
+                            <p>{clipWords(s.quote)}</p>
+                          </blockquote>
+                          <figcaption>
+                            <strong class="st-name">{s.name}</strong>
+                            <span class="st-role">{s.role}</span>
+                          </figcaption>
+                        </figure>
+                      )),
+                    )}
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="st-phone-wall">
+          <TestimonialWall items={phoneWall} label="Testimonials from leaders our team has worked with" />
+        </div>
+        <!-- Plain list: reduced motion, and the no-script fallback -->
+        <div class="st-list">
+          {
+            stories.map((s) => (
+              <figure class="st-card">
+                <blockquote>
+                  <p>{clipWords(s.quote)}</p>
+                </blockquote>
+                <figcaption>
+                  <strong class="st-name">{s.name}</strong>
+                  <span class="st-role">{s.role}</span>
+                </figcaption>
+              </figure>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <div class="st-divider" style={`--st-from:${white}`}>
+      <Wave fill={logoBg} edge={whiteEdge} />
+    </div>
+
+    <section class="st-logos" aria-labelledby="st-logos-h">
+      <div class="st-logos-head">
+        <h2 id="st-logos-h">Leaders from these organizations have worked with our team</h2>
+      </div>
+      <!-- Logo rails: shared component (also on the homepage, two rows there). -->
+      <LogoRails rows={3} tone="deep" />
+      <p class="st-note st-note-small st-logos-note">These logos are from organizations our team has worked with. They are not all founders who have sold.</p>
+    </section>
+
+    <div class="st-divider" style={`--st-from:${logoBg}`}>
+      <Wave fill={closingBg} edge={logoEdge} />
+    </div>
+
+    <!-- Seb round 2, 22 Nov 2026 -->
+    <section class="st-band st-band-next" aria-labelledby="st-next">
+      <div class="st-well">
+        <div class="st-cta">
+          <h2 id="st-next">What’s next?</h2>
+          <p class="st-cta-lead">Complete the short application for Stage 1 (30 days). We’ll respond within 24 hours. If there’s a fit, we’ll have an honest conversation.</p>
+          <div class="st-cta-action">
+            <a class="btn-apply" href="/application">Apply for Stage 1</a>
+            <p class="st-cta-note">Limited to five new founders a month</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</Base>
+
+<script>
+  type Rail = {
+    el: HTMLElement;
+    inner: HTMLElement;
+    pattern: HTMLElement;
+    dir: number;
+    vel: number;
+    pw: number;
+    x: number;
+    visible: boolean;
+    clones: HTMLElement[];
+    live: boolean;
+  };
+
+  const root = document.querySelector<HTMLElement>(".st-page");
+
+  if (root) {
+    root.classList.add("st-js");
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    /* ---- Testimonials: pause / play (WCAG 2.2.2) ---- */
+    const testi = root.querySelector<HTMLElement>("[data-st-testi]");
+    const pauseBtn = root.querySelector<HTMLButtonElement>("[data-st-pause]");
+    if (testi && pauseBtn) {
+      pauseBtn.addEventListener("click", () => {
+        const paused = testi.classList.toggle("is-paused");
+        pauseBtn.setAttribute("aria-pressed", String(paused));
+        pauseBtn.textContent = paused ? "Play testimonials" : "Pause testimonials";
+      });
+    }
+
+    /* ---- Testimonials on phones: staggered reveal ---- */
+    const cards = Array.from(root.querySelectorAll<HTMLElement>(".st-list .st-card"));
+    if (cards.length) {
+      if (!("IntersectionObserver" in window)) {
+        cards.forEach((card) => card.classList.add("is-in"));
+      } else {
+        const reveal = new IntersectionObserver(
+          (entries) => {
+            let n = 0;
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting || !(entry.target instanceof HTMLElement)) return;
+              entry.target.style.transitionDelay = `${Math.min(n, 4) * 90}ms`;
+              n += 1;
+              entry.target.classList.add("is-in");
+              reveal.unobserve(entry.target);
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -6% 0px" },
+        );
+        cards.forEach((card) => reveal.observe(card));
+      }
+    }
+
+    /* ---- R13.C4b: testimonials on phones float through, 3 cards in view, then the next 3 slide up ---- */
+    const phoneWall = root.querySelector<HTMLElement>(".st-phone-wall");
+    const phoneMq = window.matchMedia("(max-width: 599px)");
+    if (phoneWall && cards.length > 3) {
+      let carousel: HTMLElement | null = null;
+      let timer = 0;
+      let io: IntersectionObserver | null = null;
+
+      const stop = () => {
+        window.clearTimeout(timer);
+        io?.disconnect();
+        io = null;
+        carousel?.remove();
+        carousel = null;
+        phoneWall.classList.remove("has-carousel");
+      };
+
+      const start = () => {
+        stop();
+        if (!phoneMq.matches || reduce.matches) return;
+        const n = cards.length;
+        const groups = Math.ceil(n / 3);
+        const track = document.createElement("div");
+        track.className = "st-pc-track";
+        // groups * 3 cards (the last group wraps round to the first cards), then a copy of group 1 so the loop is seamless.
+        const total = groups * 3 + 3;
+        for (let i = 0; i < total; i += 1) {
+          const copy = cards[i % n].cloneNode(true) as HTMLElement;
+          copy.classList.remove("is-in");
+          copy.removeAttribute("style");
+          if (i >= n) copy.setAttribute("aria-hidden", "true");
+          track.appendChild(copy);
+        }
+        const view = document.createElement("div");
+        view.className = "st-pc";
+        view.setAttribute("role", "region");
+        view.setAttribute("aria-label", "Testimonials from leaders our team has worked with");
+        view.appendChild(track);
+        carousel = view;
+        phoneWall.appendChild(view);
+        phoneWall.classList.add("has-carousel");
+
+        const items = Array.from(track.children) as HTMLElement[];
+        const top = (g: number) => items[g * 3].offsetTop;
+        const height = (g: number) => {
+          const last = items[g * 3 + 2];
+          return last.offsetTop + last.offsetHeight - items[g * 3].offsetTop;
+        };
+        let index = 0;
+        const show = (g: number) => {
+          track.style.transform = `translateY(${-top(g)}px)`;
+          view.style.height = `${height(g)}px`;
+        };
+        view.style.height = `${height(0)}px`;
+
+        let paused = false;
+        let visible = true;
+        const schedule = () => {
+          window.clearTimeout(timer);
+          timer = window.setTimeout(next, 5600);
+        };
+        const next = () => {
+          if (paused || !visible || document.hidden) {
+            schedule();
+            return;
+          }
+          index += 1;
+          show(index);
+          schedule();
+        };
+        track.addEventListener("transitionend", (e) => {
+          if (e.target !== track || e.propertyName !== "transform" || index < groups) return;
+          // Past the last group: jump back to the first (the copy looks the same) without animating.
+          index = 0;
+          track.classList.add("is-reset");
+          view.style.transition = "none";
+          show(0);
+          void track.offsetHeight;
+          track.classList.remove("is-reset");
+          view.style.transition = "";
+        });
+        view.addEventListener("focusin", () => (paused = true));
+        view.addEventListener("focusout", () => (paused = false));
+        view.addEventListener("touchstart", () => (paused = true), { passive: true });
+        view.addEventListener("touchend", () => window.setTimeout(() => (paused = false), 2500), { passive: true });
+        if ("IntersectionObserver" in window) {
+          io = new IntersectionObserver(([entry]) => (visible = !!entry?.isIntersecting), { threshold: 0.1 });
+          io.observe(view);
+        }
+        schedule();
+      };
+
+      start();
+      phoneMq.addEventListener("change", start);
+      reduce.addEventListener("change", start);
+    }
+
+  }
+</script>

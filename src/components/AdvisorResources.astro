@@ -1,0 +1,79 @@
+---
+// Resources block for the booking thank-you pages (/exit-thankyou, /wealth-thankyou, and since round 7 the
+// internal and orientation thank-you pages). Two Insights articles in the site's article-card style, then
+// optional link frames to site pages.
+import { getCollection } from "astro:content";
+import "../styles/blog.css";
+import BlogCard from "./BlogCard.astro";
+import { sortedPosts } from "../data/blog";
+
+interface Props {
+  /** Article slugs to show, in order. */
+  articles?: string[];
+  /** Instead of fixed slugs: show the newest N articles. */
+  latest?: number;
+  /** Heading above the cards; null for none. */
+  heading?: string | null;
+  /** Link frames below the cards. Default: the Advisor Center links. false for none. */
+  links?: { href: string; label: string }[] | false;
+  /** DG-PRE-56: link to the Partnership deck (advisor thank-you pages only). */
+  deck?: boolean;
+}
+
+const { articles = [], latest = 0, heading = "Before our call", links, deck = false } = Astro.props;
+const all = await getCollection("blog");
+const posts =
+  latest > 0
+    ? sortedPosts(all).slice(0, latest)
+    : articles
+        .map((slug) => all.find((p) => p.id === slug || p.id.replace(/\.md$/, "") === slug))
+        .filter((p): p is NonNullable<typeof p> => Boolean(p));
+
+const advisorLinks = [
+  { href: "/advisor-center", label: "The Advisor Center" },
+  { href: "/advisor-center/referrals#adv-how", label: "How we work alongside advisors" },
+  { href: "/advisor-center/referrals#adv-conf", label: "Confidentiality: what we share, and when" },
+  { href: "/advisor-center/referrals#adv-faq", label: "Advisor FAQs" },
+];
+const frames = links === false ? [] : (links ?? advisorLinks);
+// DoGood x Exit Advisory Partnership – v8.1.pdf (public Drive link, DG-PRE-56).
+const deckHref = "https://drive.google.com/file/d/1Pf5AFoGiND6F_ifvueyxLDRzKQ4jxYHt/view?usp=drive_link";
+---
+
+<div class="ty-extra">
+  {heading && <h3>{heading}</h3>}
+  {
+    posts.length > 0 && (
+      <ul class="ty-cards">
+        {posts.map((p) => (
+          <li>
+            <BlogCard post={p} variant="grid" />
+          </li>
+        ))}
+      </ul>
+    )
+  }
+  {
+    (frames.length > 0 || deck) && (
+      <ul class="ty-links">
+        {deck && (
+          <li>
+            <a href={deckHref} target="_blank" rel="noopener">
+              Partnership deck: DoGood x Exit Advisory Partnership – v8.1
+              <span aria-hidden="true">↗</span>
+              <span class="ty-sr">(opens in a new tab)</span>
+            </a>
+          </li>
+        )}
+        {frames.map((l) => (
+          <li>
+            <a href={l.href}>
+              {l.label}
+              <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</div>

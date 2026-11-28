@@ -1,0 +1,191 @@
+/* Round 5 part c (Seb t1952u + answers t1957u, 23 Nov 2026) */
+
+/* 29 / 31: a smaller outcomes statement and a centered, white contact band. */
+html body main#main .ep-exit-prep .ep-outcomes-band .ep-outcome-statement {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+html body main#main .ep-exit-prep .ep-contact-band {
+  background: #FFFFFF;
+  padding-block: 64px;
+}
+html body main#main .ep-exit-prep .ep-contact-close {
+  display: block;
+  padding-block: 0;
+  text-align: center;
+}
+html body main#main .ep-exit-prep .ep-contact-close .write-to-us-band {
+  max-width: 820px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+/* 33 / 44: use the same picture-left, copy-right composition on both stages. */
+html body main#main .hw-page .hw-case-band .hw-case-feature {
+  grid-template-columns: 220px minmax(0, 1fr);
+  align-items: center;
+  justify-items: start;
+  gap: 40px;
+  max-width: 980px;
+  text-align: left;
+}
+html body main#main .hw-page .hw-case-band .hw-case-img {
+  width: 220px;
+  height: 220px;
+  max-width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+html body main#main .hw-page .hw-case-band .hw-case-body {
+  align-items: flex-start;
+  text-align: left;
+}
+html body main#main .hw-page .hw-case-band .hw-case-body > :is(h3, p) {
+  text-align: left;
+}
+html body main#main .hw-page .hw-case-band .hw-case-note {
+  text-align: left !important;
+}
+html body main#main .hw-page .hw-case-band .btn-with-caption {
+  align-items: flex-start;
+  max-width: 100%;
+  text-align: left;
+}
+
+/* 35 / 44: supports belong to both stages; wave fills match this neutral band. */
+html body main#main .hw-page .hw-supports-band {
+  background: #F5F2FF;
+}
+
+/* 36 / 37: two full-width columns, then a straight edge before the guide. */
+html body main#main .hw-page--s1 .hw-who-band {
+  background: #2A0B4F;
+  color: #FFFFFF;
+  border-top: 0;
+  border-bottom: 1px solid #C2B7DD;
+}
+html body main#main .hw-page .hw-who-intro h2,
+html body main#main .hw-page .hw-who-paragraph p {
+  color: #FFFFFF;
+}
+html body main#main .hw-page .hw-who-intro .hw-eyebrow {
+  color: #28DBB0;
+}
+html body main#main .hw-page .hw-who-paragraphs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  margin-top: 32px;
+}
+html body main#main .hw-page .hw-who-paragraph {
+  min-width: 0;
+  padding: 0 44px;
+}
+html body main#main .hw-page .hw-who-paragraph .pp-icon {
+  display: block;
+  margin-bottom: 16px;
+  stroke: #FFFFFF;
+}
+html body main#main .hw-page .hw-who-paragraph p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.6;
+}
+html body main#main .hw-page .hw-who-band .hw-fit-card {
+  padding: 40px 44px;
+  border: 0;
+  border-radius: 24px;
+  background: #FFFFFF;
+  color: #2A0B4F;
+  box-shadow: none;
+}
+html body main#main .hw-page .hw-who-band .hw-fit-card :is(h3, li, p) {
+  color: #2A0B4F;
+}
+
+/* 43: both methods share the StageSwitch button geometry and disc behavior. */
+html body main#main .hw-page .ss .ss-links a.btn-teal {
+  min-height: 52px !important;
+  padding: 10px 56px 10px 20px !important;
+  border-radius: 16px;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  box-shadow: none;
+  transition: transform 350ms, padding 350ms, background-color 350ms;
+}
+html body main#main .hw-page .ss .ss-links a.btn-teal:is(:hover, :focus-visible) {
+  padding: 10px 20px 10px 56px !important;
+  transform: scale(1.013);
+}
+html body main#main .hw-page .ss .ss-links a.btn-teal::before,
+html body main#main .hw-page .ss .ss-links a.btn-teal::after {
+  width: 36px !important;
+  height: 36px !important;
+  pointer-events: none;
+}
+html body main#main .hw-page .ss .ss-panel--2 a.btn-teal {
+  background: #EA1557 !important;
+  border-color: #EA1557 !important;
+  color: #FFFFFF !important;
+  font-size: 16px;
+  font-weight: 400;
+}
+html body main#main .hw-page .ss .ss-panel--2 a.btn-teal:is(:hover, :focus-visible) {
+  background: #C10E46 !important;
+  border-color: #C10E46 !important;
+  color: #FFFFFF !important;
+}
+
+/* 40 / 45: file swaps may change the map's aspect ratio. */
+html body main#main .fw-page .fw-map-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-width: 0;
+  border: 1px solid #C2B7DD;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: none;
+}
+
+@media (max-width: 899px) {
+  html body main#main .hw-page .hw-who-paragraphs {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 767px) {
+  html body main#main .hw-page .hw-case-band .hw-case-feature {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+  html body main#main .hw-page .hw-case-band .hw-case-img {
+    width: 208px;
+    height: 208px;
+  }
+}
+@media (max-width: 600px) {
+  html body main#main .ep-exit-prep .ep-outcomes-band .ep-outcome-statement {
+    font-size: 18px;
+  }
+  html body main#main .ep-exit-prep .ep-contact-band {
+    padding-block: 40px;
+  }
+  html body main#main .hw-page .hw-who-paragraph {
+    padding-inline: 22px;
+  }
+  html body main#main .hw-page .hw-who-band .hw-fit-card {
+    padding: 28px 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body main#main .hw-page .ss .ss-links a.btn-teal,
+  html body main#main .hw-page .ss .ss-links a.btn-teal::before,
+  html body main#main .hw-page .ss .ss-links a.btn-teal::after {
+    transition: none;
+  }
+  html body main#main .hw-page .ss .ss-links a.btn-teal:is(:hover, :focus-visible) {
+    transform: none;
+  }
+}

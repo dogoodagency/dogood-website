@@ -1,0 +1,51 @@
+---
+/**
+ * Round 7 (G3): FOUNDR.land device visuals.
+ *  - Laptops are the four finished MacBook mockups in /media/r7/foundrland/ (transparent, 1920 x 1140), no CSS frame.
+ *      journey -> my-journey, discovery -> eight-dimensions, preview -> my-insights, Referrals (advisor view) -> advisor-profile.
+ *  - Phones are the coded foundr.land iPhone preview (FoundrLandPhonePreview), not a screenshot.
+ *      journey -> "welcome" (Day 0, your starting point), discovery -> "stage" (before we begin).
+ */
+import FoundrLandPhonePreview from "./FoundrLandPhonePreview.astro";
+
+interface Props {
+  view: "phone-journey" | "phone-discovery" | "laptop-journey" | "laptop-discovery" | "laptop-preview";
+  tags?: boolean;
+}
+const { view, tags = false } = Astro.props;
+const phone = view.startsWith("phone-");
+const advisorPage = Astro.url.pathname.replace(/\.html$/, "").replace(/\/$/, "");
+const isAdvisorPhone = advisorPage === "/advisor-center";
+const isReferralsLaptop = advisorPage === "/advisor-center/referrals";
+const arta = isAdvisorPhone || isReferralsLaptop;
+
+const laptopShots = {
+  "my-journey": "FOUNDRland on a laptop: the My Journey screen",
+  "eight-dimensions": "FOUNDRland on a laptop: the Eight Personal Dimensions screen",
+  "my-insights": "FOUNDRland on a laptop: the My Insights screen",
+  "advisor-profile": "FOUNDRland on a laptop: the advisor profile screen",
+} as const;
+const shot: keyof typeof laptopShots = isReferralsLaptop
+  ? "advisor-profile"
+  : view === "laptop-discovery"
+    ? "eight-dimensions"
+    : view === "laptop-preview"
+      ? "my-insights"
+      : "my-journey";
+const base = `/media/r7/foundrland/foundrland-laptop-${shot}`;
+const laptopSizes = isReferralsLaptop ? "(min-width: 961px) 760px, 92vw" : "(min-width: 961px) 480px, 92vw";
+const phoneView = view === "phone-discovery" ? "stage" : "welcome";
+---
+
+<figure class:list={[arta ? "fl-arta-device" : "fl-device-figure", phone ? (arta ? "fl-arta-device--phone" : "fl-device-figure--phone") : (arta ? "fl-arta-device--laptop" : "fl-device-figure--laptop")]} data-r7="G3">
+  {tags && phone && <div class="fl-arta-tags">
+    <span>7 days of guided reflection</span>
+    <span>Your next chapter</span>
+  </div>}
+  {phone ? (
+    <FoundrLandPhonePreview view={phoneView} class="fl-phone-preview" />
+  ) : (
+    <img class="fl-laptop-shot" src={`${base}@1x.webp`} srcset={`${base}@1x.webp 720w, ${base}@2x.webp 1440w`} sizes={laptopSizes} width="1440" height="855" alt={laptopShots[shot]} loading="lazy" decoding="async" />
+  )}
+  <figcaption class="fl-by">Developed by DoGood Agency</figcaption>
+</figure>

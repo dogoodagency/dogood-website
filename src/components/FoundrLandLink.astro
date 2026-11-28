@@ -1,0 +1,19 @@
+---
+import { FOUNDRLAND_URL } from "../data/foundrland";
+interface Props { home?: boolean; }
+const { home = false } = Astro.props;
+// File-style static builds expose .html paths; dev URLs are extensionless.
+const pathname = Astro.url.pathname.replace(/\.html$/, "");
+const isAdvisorPage = /^\/advisor-center(?:\/|$)/.test(pathname);
+---
+
+{isAdvisorPage ? (
+  <a class="btn-teal btn-dream" href={FOUNDRLAND_URL} target="_blank" rel="noopener">Visit FOUNDRland</a>
+) : (
+  <a class:list={["fl-advisor-btn", !home && "fl-advisor-btn--dream"]} href="/advisor-center">
+    Advisor Center
+    <span class="fl-advisor-disc" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6" /></svg>
+    </span>
+  </a>
+)}

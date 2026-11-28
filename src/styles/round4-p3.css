@@ -1,0 +1,288 @@
+/* Round 4 p3: The Reset (RS1–RS17) and The Build (BD1–BD11). */
+
+/* RS2 / BD2: the introductory process link stays legible on its light band. */
+html body main#main .hw-page .hw-flow-sm > a,
+html body main#main .hw-page .hw-flow-sm > a > strong {
+  color: var(--color-dream-500) !important;
+}
+html body main#main .hw-page .hw-flow-sm > a:is(:hover, :focus-visible) {
+  text-decoration-color: var(--color-heart-500);
+}
+
+/* RS3: a dark invitation for founders who have not sold yet. */
+html body main#main .hw-page--s1 .hw-notyet-card {
+  border: 0;
+  background: var(--color-dream-500);
+  color: var(--color-white);
+}
+html body main#main .hw-page--s1 .hw-notyet-card .hw-notyet-text,
+html body main#main .hw-page--s1 .hw-notyet-card .hw-notyet-text strong { color: var(--color-white); }
+html body main#main .hw-page--s1 .hw-notyet-card .hw-notyet-eyebrow { color: var(--color-grass-500); }
+
+/* RS4–RS5 / BD3: one 650px house box, with each drawing and its annotations
+   anchored together at the base. The original image proportions are preserved. */
+html body main#main .hw-page .hw-house-wrap {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0;
+  text-align: center;
+  pointer-events: none;
+}
+html body main#main .hw-page .hw-house {
+  position: relative;
+  width: min(650px, 100%);
+  margin: 0 auto;
+  overflow: visible;
+}
+html body main#main .hw-page .hw-house-box {
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 650 / 703;
+  overflow: visible;
+}
+html body main#main .hw-page .hw-house-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  z-index: 0;
+}
+html body main#main .hw-page .hw-house-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  object-fit: contain;
+  object-position: center bottom;
+  pointer-events: none;
+}
+/* Keep annotations above the unscaled art and able to extend beyond the box. */
+html body main#main .hw-page .hw-house-annotations { display: contents; }
+html body main#main .hw-page .hw-house .hw-arrow { display: block; z-index: 1; }
+html body main#main .hw-page .hw-house .hw-label::before { display: none; }
+html body main#main .hw-page .hw-house .hw-label {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  left: var(--x);
+  top: var(--y);
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  text-align: center;
+  width: var(--lw);
+  margin: 0;
+  font-size: 14px;
+}
+html body main#main .hw-page .hw-stage-panel > .hw-house-wrap {
+  margin-bottom: -80px;
+  padding-bottom: 0;
+  border: 0;
+}
+html body main#main .hw-page .hw-stage-panel .hw-stage-block {
+  position: relative;
+  padding-top: 120px;
+  border: 0;
+}
+/* F7c: bottom labels end 8px above the frame's 80px overlap. */
+html body main#main .hw-page .hw-house .hw-label--bottom {
+  top: auto;
+  bottom: 88px;
+}
+
+/* RS7–RS9 / BD5–BD7: plain method links, a bordered flow pill, white outcomes. */
+html body main#main .hw-page .hw-stage-block .hw-via a {
+  display: inline;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  background-image: none;
+  color: var(--color-white) !important;
+  font-size: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--stage-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+html body main#main .hw-page .hw-stage-block .hw-via a:is(:hover, :focus-visible) {
+  background: none;
+  color: var(--stage-accent) !important;
+  text-decoration-thickness: 2px;
+}
+html body main#main .hw-page .hw-stage-block .hw-flow-box {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 6px;
+  max-width: 100%;
+  padding: 8px 18px;
+  border: 1px solid var(--color-heart-500);
+  border-radius: 999px;
+}
+html body main#main .hw-page .hw-stage-block .hw-includes li {
+  border: 0;
+  border-radius: 18px;
+  background: var(--color-white);
+  color: var(--color-dream-500);
+}
+html body main#main .hw-page .hw-stage-block .hw-includes li strong {
+  color: var(--color-dream-500);
+  font-weight: 800;
+}
+html body main#main .hw-page .hw-stage-block .hw-includes a {
+  color: var(--color-dream-500) !important;
+  text-decoration-color: var(--color-grass-700);
+}
+html body main#main .hw-page .hw-stage-block .hw-includes a:is(:hover, :focus-visible) {
+  color: var(--color-grass-700) !important;
+}
+
+/* RS10: Stage 2 takes on The Build's HEART colors, including dark-frame accents. */
+html body main#main .hw-page--s1 .hw-band-stage2 {
+  --stage-accent: var(--color-heart-400);
+  --stage-ink: var(--color-heart-600);
+  --hw-tint: var(--color-heart-50);
+  background: var(--color-heart-50);
+}
+html body main#main .hw-page--s1 .hw-band-stage2 > .hw-well > .hw-stage-panel .hw-stage-kicker {
+  color: var(--color-heart-400);
+}
+
+/* RS11 / BD8: V's story is centered in a separate, unframed light band. */
+html body main#main .hw-page .hw-case-band .hw-case-feature {
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  gap: 24px;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: center;
+}
+html body main#main .hw-page .hw-case-band .hw-case-body {
+  align-items: center;
+  max-width: 720px;
+  text-align: center;
+}
+html body main#main .hw-page .hw-case-band .hw-case-body > :is(h3, p) { text-align: center; }
+html body main#main .hw-page .hw-case-band .hw-case-img { width: 220px; max-width: 100%; }
+
+/* RS12 / BD9: a neutral completed-home section, shared across both stages. */
+html body main#main .hw-page .hw-home-complete { background: var(--color-white); }
+html body main#main .hw-page .hw-home-complete :is(.hw-eyebrow, .hw-house-title) { color: var(--color-dream-500); }
+html body main#main .hw-page .hw-home-complete .hw-badge {
+  background: var(--color-dream-500);
+  color: var(--color-white);
+}
+
+/* RS13 / BD10: supports keep their dark fill without a HEART frame. */
+html body main#main .hw-page .hw-supports :is(.hw-includes li, .hw-retreat) { border: 0; }
+
+/* RS14–RS17: distinct FOUNDR.land, audience, guide, options, and FAQ sections. */
+html body main#main .hw-page--s1 .fl--reset { background: var(--color-white); }
+html body main#main .hw-page--s1 .fl--reset .fl-days { box-shadow: none; }
+html body main#main .hw-page--s1 .hw-who-band {
+  border-top: 1px solid var(--color-dream-100);
+  background: var(--color-grass-25);
+}
+html body main#main .hw-page--s1 .hw-option-a { background: var(--color-white); border: 0; }
+html body main#main .hw-page--s1 .hw-option-b { border: 0; }
+html body main#main .hw-page--s1 > section[aria-labelledby="hw-faq"] { background: var(--color-white); }
+html body main#main .hw-page--s1 .hw-faq-link { align-items: center; text-align: center; }
+html body main#main .hw-page--s1 .hw-faq-link h2 { text-align: center; }
+
+/* BD11: HEART bands and accents throughout The Build. */
+html body main#main .hw-page--s2 {
+  --inline-hover-color: var(--color-heart-600);
+  --hw-teal: var(--color-heart-400);
+  --hw-accent: var(--color-heart-500);
+  --hw-accent-ink: var(--color-heart-600);
+  --stage-accent: var(--color-heart-400);
+}
+html body main#main .hw-page--s2 .hw-band-stage1 { background: var(--color-heart-50); --hw-tint: var(--color-heart-50); }
+html body main#main .hw-page--s2 .hw-band-stage2 { background: var(--color-heart-200); --hw-tint: var(--color-heart-200); }
+html body main#main .hw-page--s2 .btn-teal {
+  background: var(--color-dream-500) !important;
+  border-color: var(--color-dream-500) !important;
+  color: var(--color-white) !important;
+}
+html body main#main .hw-page--s2 .btn-teal:is(:hover, :focus-visible) {
+  background: var(--color-dream-600) !important;
+  border-color: var(--color-dream-600) !important;
+}
+html body main#main .hw-page .ss .ss-panel--2 a.btn-teal {
+  background: var(--color-white) !important;
+  border-color: var(--color-white) !important;
+  color: var(--color-dream-500) !important;
+}
+html body main#main .hw-page .ss .ss-panel--2 a.btn-teal:is(:hover, :focus-visible) {
+  background: var(--color-heart-200) !important;
+  border-color: var(--color-heart-200) !important;
+}
+html body main#main .hw-page .ss[data-current="2"] .ss-knob { background: var(--color-heart-200); }
+html body main#main .hw-page .ss[data-current="2"]:not(.is-going) .ss-tab[aria-current="page"],
+html body main#main .hw-page .ss[data-current="2"].is-going a.ss-tab { color: var(--color-dream-500); }
+html body main#main .hw-page--s2 .ss-tab:focus-visible { outline-color: var(--color-heart-400); }
+html body main#main .hw-page--s2 .hw-stage-block .hw-includes a { text-decoration-color: var(--color-heart-500); }
+html body main#main .hw-page--s2 .hw-stage-block .hw-includes a:is(:hover, :focus-visible) { color: var(--color-heart-600) !important; }
+html body main#main .hw-page--s2 :is(.hw-retreat, .au--compact) { --inline-hover-color: var(--color-heart-400); }
+html body main#main .hw-page--s2 .hw-retreat .hw-retreat-link a { text-decoration-color: var(--color-heart-400); }
+html body main#main .hw-page--s2 .au-more a { text-decoration-color: var(--color-heart-400) !important; }
+
+@media (max-width: 1099px) {
+  /* Full-well houses; annotations sit above the art so none leave the viewport. */
+  html body main#main .hw-page .hw-house {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+  html body main#main .hw-page .hw-house-box { flex-shrink: 0; }
+  html body main#main .hw-page .hw-house .hw-arrow { display: none; }
+  html body main#main .hw-page .hw-house-annotations {
+    display: grid;
+    order: -1;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(3, 56px);
+    align-items: center;
+    gap: 12px;
+    padding: 16px 0;
+  }
+  html body main#main .hw-page .hw-house .hw-label,
+  html body main#main .hw-page .hw-stage-panel .hw-house--stage1 .hw-label:nth-of-type(3) {
+    position: static;
+    display: block;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    color: var(--color-dream-500);
+    font-size: 14px;
+    line-height: 1.4;
+    text-align: center;
+  }
+  html body main#main .hw-page .hw-house .hw-label::before { display: none; }
+}
+
+@media (max-width: 600px) {
+  /* F7c: no empty label row; keep a 16px gap before the visible artwork. */
+  html body main#main .hw-page .hw-house-annotations {
+    grid-template-rows: none;
+    grid-auto-rows: auto;
+    align-items: start;
+    padding-bottom: 16px;
+  }
+  /* Remove each source's transparent top inset from the shared 650 / 703 box.
+     These offsets include object-fit's letterboxing, so box sizes stay equal. */
+  html body main#main .hw-page .hw-house--before { --house-art-inset: 7.29%; }
+  html body main#main .hw-page .hw-house--stage1 { --house-art-inset: 2.78%; }
+  html body main#main .hw-page .hw-house--stage2 { --house-art-inset: 9.73%; }
+  html body main#main .hw-page .hw-house-art {
+    transform: translateY(calc(-1 * var(--house-art-inset)));
+  }
+  html body main#main .hw-page .hw-stage-panel > .hw-house-wrap { margin-bottom: -48px; }
+  html body main#main .hw-page .hw-stage-panel .hw-stage-block { padding: 80px 22px 28px; }
+  html body main#main .hw-page .hw-stage-block .hw-flow-box { font-size: 16px; }
+}

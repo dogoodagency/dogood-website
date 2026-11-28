@@ -1,0 +1,33 @@
+---
+/**
+ * Shared final artwork for the advisor tools cards and resource pages (R10).
+ * Signals Guide, Planner and 7 Questions are single transparent mockups; the Readiness Check is the straight
+ * laptop only (R11: the phone was removed).
+ * The visual area clips (overflow: hidden): pictures never spill out of it.
+ * Only FOUNDRland images approved in foundr-land/public/images are used for the readiness laptop.
+ */
+interface Props {
+  tool: "readiness" | "signals" | "planner" | "questions";
+  detail?: boolean;
+  /** The four Client tools cards. */
+  fan?: boolean;
+}
+const { tool, detail = false, fan = false } = Astro.props;
+const single = {
+  signals: { src: "/media/r10/signals-guide", width: 600, height: 486 },
+  planner: { src: "/media/r10/planner-v2", width: 600, height: 476 },
+  questions: { src: "/media/r10/seven-questions", width: 600, height: 401 },
+} as const;
+const picture = tool === "readiness" ? undefined : single[tool];
+const laptop = "/media/r10/fl-laptop-eight-dimensions";
+---
+
+<div class:list={["advr-tool-visual", `advr-tool-visual--${tool}`, detail && "advr-tool-visual--detail", fan && "advr-tool-visual--fan"]} aria-hidden="true">
+  {picture ? (
+    <img class="advr-tool-img" src={`${picture.src}@1x.webp`} srcset={`${picture.src}@1x.webp 1x, ${picture.src}@2x.webp 2x`} width={picture.width} height={picture.height} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+  ) : (
+    <div class="advr-rc">
+      <img class="advr-rc-laptop" src={`${laptop}@1x.webp`} srcset={`${laptop}@1x.webp 1x, ${laptop}@2x.webp 2x`} width="800" height="465" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+    </div>
+  )}
+</div>

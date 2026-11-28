@@ -1,0 +1,20 @@
+---
+// DG-PRE-57 (round 7): Exit-Prep application, the owner's Jotform 263282109588061 embedded with the official iFrame code.
+// Chosen from /application. The form carries its own title and logo, so the page has no visible heading of its own.
+import Base from "../layouts/Base.astro";
+import JotformEmbed from "../components/JotformEmbed.astro";
+---
+
+<Base
+  title="Apply for Exit-Prep | DoGood Agency"
+  description="Apply for Exit-Prep: six weeks, fully remote, for founders considering or preparing for a sale."
+  canonical="https://www.dogoodagency.co/apply-exit-prep"
+  footerEdge="#C2B7DD"
+>
+  <article class="r7-app">
+    <h1 class="sr-only">Apply for Exit-Prep™</h1>
+    <div class="r7-app-frame">
+      <JotformEmbed formId="263282109588061" title="Exit-Prep™ (Six weeks)" />
+    </div>
+  </article>
+</Base>

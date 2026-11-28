@@ -1,0 +1,142 @@
+---
+import FoundrLandLink from "../../../components/FoundrLandLink.astro";
+import FoundrLandPhonePreview from "../../../components/FoundrLandPhonePreview.astro";
+import "../../../styles/advisors.css";
+import "../../../styles/advisors-resources.css";
+import Base from "../../../layouts/Base.astro";
+import Wave from "../../../components/Wave.astro";
+import AdvisorNav from "../../../components/AdvisorNav.astro";
+import { edgeAbove } from "../../../data/edge-line";
+import AdvisorToolVisual from "../../../components/AdvisorToolVisual.astro";
+
+const tint = "#F5F2FF";
+const heroEdge = edgeAbove("#2A0B4F");
+const bandEdge = edgeAbove(tint);
+const footerEdge = edgeAbove("#ffffff");
+---
+
+<Base
+  title="Exit readiness and coaching tools for advisors | DoGood Agency"
+  description="Founder coaching and readiness tools for advisors: a readiness check preview, the Signals Guide, The 7 Questions, and a life-after-the-sale planner."
+  canonical="https://www.dogoodagency.co/advisor-center/client-tools"
+  ogTitle="Exit readiness and coaching tools for advisors | DoGood Agency"
+  footerStrip="#ffffff"
+  footerEdge={footerEdge}
+>
+  <article class="adv-page advr-page advr-tools-page">
+    <header class="advr-hero">
+      <div class="advr-hero-inner">
+        <p class="advr-eyebrow">Advisor Center · Client tools</p>
+        <h1>Client tools for you and your clients</h1>
+        <p class="advr-lede">
+          Tools to open the personal conversation before and after a sale: life in <span class="pink-soft advr-founder"><strong>FOUNDRland</strong></span>.
+        </p>
+        <ul class="advr-perks" aria-label="Using the tools">
+          <li><span aria-hidden="true">✓</span> Yours to use and share</li>
+          <li><span aria-hidden="true">✓</span> No sign-up for you</li>
+        </ul>
+      </div>
+      <Wave fill="#fff" edge={heroEdge} />
+    </header>
+
+    <!-- Advisor Center hub on its own white section, the same on all four parts (Seb, 20 Nov 2026). -->
+    <section class="advr-band advr-band-white advr-hub-band" aria-label="Advisor Center">
+      <div class="advr-well">
+        <div class="advr-nav">
+          <AdvisorNav current="tools" />
+        </div>
+      </div>
+    </section>
+
+    <section class="advr-band advr-band-tint advr-band-straight" aria-label="Client tools">
+      <div class="advr-well">
+
+        <div class="advr-intro">
+          <h2>Tools for the part nobody plans for</h2>
+          <p>Your clients get all your help with the deal. These tools help with the part nobody plans for: the founder themselves, before and after the sale.</p>
+        </div>
+        <ul class="advr-grid advr-grid--links">
+          <li class="advr-cardwrap">
+            <a class="advr-card advr-card--link advr-card--sky" href="/advisor-center/client-tools/readiness-check">
+              <AdvisorToolVisual tool="readiness" fan />
+              <span class="advr-soon">Coming soon</span>
+              <h2>Founder Readiness Check</h2>
+              <p>Preview a personal baseline and private summary. The planned advisor pathway lets the founder choose which reflections to share with you.</p>
+              <span class="advr-more">Read more →</span>
+            </a>
+          </li>
+          <li class="advr-cardwrap">
+            <a class="advr-card advr-card--link advr-card--heart" href="/advisor-center/client-tools/signals-guide">
+              <AdvisorToolVisual tool="signals" fan />
+              <span class="advr-available">Available · PDF</span>
+              <h2>Signals Guide</h2>
+              <p>How to spot when a founder is struggling with the personal side of the sale, what to say, and when not to suggest help.</p>
+              <span class="advr-more">Read more →</span>
+            </a>
+          </li>
+          <li class="advr-cardwrap">
+            <a class="advr-card advr-card--link advr-card--grass" href="/advisor-center/client-tools/life-after-the-sale-planner">
+              <AdvisorToolVisual tool="planner" fan />
+              <span class="advr-soon">Coming soon</span>
+              <h2>Life After the Sale Planner</h2>
+              <p>A short planner for time, energy and purpose, to fill in together with your client. Life planning, not financial advice.</p>
+              <span class="advr-more">Read more →</span>
+            </a>
+          </li>
+          <li class="advr-cardwrap">
+            <a class="advr-card advr-card--link advr-card--questions" href="/seven-questions">
+              <AdvisorToolVisual tool="questions" fan />
+              <span class="advr-available">Available · PDF</span>
+              <h2>The 7 Questions</h2>
+              <p>Seven questions you can sit with a client, or send them. A conversation tool, not a test.</p>
+              <span class="advr-more">Read more →</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="advr-band advr-band-tint advr-use-band" aria-labelledby="tools-use">
+      <div class="advr-well advd-well">
+        <h2 id="tools-use">How advisors use these tools</h2>
+        <ol class="advr-use-path">
+          <li><span class="advr-use-number" aria-hidden="true">1</span><span class="advr-use-symbol" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M7 5h26v30H7zM13 13h14M13 20h14M13 27h8" /></svg></span><h3>Choose an opening</h3><p>Use the Signals Guide to think about timing, or read The 7 Questions with a founder before or after the sale.</p></li>
+          <li><span class="advr-use-number" aria-hidden="true">2</span><span class="advr-use-symbol" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M6 7h28v20H20l-9 7v-7H6zM13 14h14M13 20h9" /></svg></span><h3>Make room to reflect</h3><p>Let your client sit with the questions privately or explore them together. There is no score to get right.</p></li>
+          <li><span class="advr-use-number" aria-hidden="true">3</span><span class="advr-use-symbol" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M6 20h27M23 9l11 11-11 11" /></svg></span><h3>Follow their lead</h3><p>Ask what they want to discuss and what they want to keep private. Agree on the next step together.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="advr-band advr-band-white">
+      <div class="advr-well advd-well">
+        <section class="advr-question-section" aria-labelledby="tools-questions">
+          <h2 id="tools-questions">Questions to sit with a client</h2>
+          <p>Three conversation starters from The 7 Questions, for exploring personal readiness alongside the deal:</p>
+          <ul class="advr-question-quotes">
+            <li><blockquote><p>What did the company give me that I'll miss?</p></blockquote></li>
+            <li><blockquote><p>What did I promise myself I'd do after the sale, and do I still want it?</p></blockquote></li>
+            <li><blockquote><p>What would I like to be true in a year, and what's the smallest first step?</p></blockquote></li>
+          </ul>
+          <p><a href="/seven-questions">Read all seven questions →</a></p>
+        </section>
+        <section class="advr-practical-faq" aria-labelledby="tools-faq">
+          <h2 id="tools-faq">A few practical questions</h2>
+          <details><summary>What does it cost?</summary><p>The tools on this page are ours to give: use and share them with any client. The Signals Guide and The 7 Questions are available now; the check and planner are coming soon.</p></details>
+          <details><summary>Does a client need to share their answers?</summary><p>No. Reflection can stay private. Ask permission before discussing or passing on anything a founder shares.</p></details>
+          <details><summary>What do I see?</summary><p>Only what your client chooses to share. In FOUNDRland's planned advisor pathway, the founder approves a summary before you see it.</p></details>
+        </section>
+        <section class="advr-founder-brief" aria-labelledby="tools-brief">
+          <div class="advr-founder-brief-copy">
+          <img class="advr-founder-brief-logo" src="/media/foundrland/foundrland-logo-dark@1x.webp" srcset="/media/foundrland/foundrland-logo-dark@1x.webp 1x, /media/foundrland/foundrland-logo-dark@2x.webp 2x" width="480" height="113" alt="FOUNDRland" loading="lazy" decoding="async" />
+          <h2 id="tools-brief">A founder conversation brief</h2>
+          <p>The planned FOUNDRland advisor pathway brings the founder's approved reflections into a useful brief before you meet. It helps you ask about the person alongside the business and the money, with the founder in control of what you see.</p>
+          <FoundrLandLink />
+          </div>
+          <FoundrLandPhonePreview class="advr-founder-brief-phone" view="stage" crop="450 / 567" />
+        </section>
+      </div>
+    </section>
+
+
+  </article>
+</Base>

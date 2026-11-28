@@ -1,0 +1,24 @@
+---
+// Thank-you page after booking the Exit Advisor Sync. Copy drafted by Claude: for Seb to review.
+import ThankYouPage from "../components/ThankYouPage.astro";
+import AdvisorResources from "../components/AdvisorResources.astro";
+---
+
+<ThankYouPage
+  title="Exit Advisor Sync"
+  seoTitle="Exit Advisor Sync booked | DoGood Agency"
+  description="Your Exit Advisor Sync with Seb is booked. What to expect, and resources for advisors before the call."
+  canonical="https://www.dogoodagency.co/exit-thankyou"
+>
+  <p>Thank you for making time to work together.</p>
+  <p>
+    You will have received a <strong>calendar invite in your inbox</strong>, and the meeting should already be added.
+    Verify that it appears there.
+  </p>
+  <p>
+    We will use the 45 minutes to understand how you work with founders before and after the sale, where the personal
+    side tends to get in the way, and how we can support your clients <strong>alongside your process</strong>. You stay
+    the trusted advisor.
+  </p>
+  <AdvisorResources slot="extra" deck articles={["before-you-sign-preparing-yourself", "emotions-of-selling-a-business"]} />
+</ThankYouPage>

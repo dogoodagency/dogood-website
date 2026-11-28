@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" width="1000" height="400" aria-hidden="true" focusable="false">
+  <title id="inf-title">One team: an infinity sign in four colored quarters</title>
+  <!-- R5-INF (Arta, 23 Nov 2026). Static, all four quarters lit. Colors on DREAM 500 #2A0B4F ground.
+       Travel order of the ball: tl -> bl -> tr -> br (a figure eight that crosses in the middle). -->
+  <g fill="none" stroke-linecap="round" stroke-width="18">
+    <!-- rest track (shown under the lit quarters while animating) -->
+    <g id="inf-track" stroke="#58447F" opacity="0">
+      <path d="M500,200 C440,120 390,50 275,50 C150,50 70,115 70,200"/>
+      <path d="M70,200 C70,285 150,350 275,350 C390,350 440,280 500,200"/>
+      <path d="M500,200 C560,120 610,50 725,50 C850,50 930,115 930,200"/>
+      <path d="M930,200 C930,285 850,350 725,350 C610,350 560,280 500,200"/>
+    </g>
+    <path id="inf-q-tl" class="inf-q" data-q="tl" stroke-dasharray="542.595 1133.190" stroke-dashoffset="-12" data-label="We get the founder ready." stroke="#FD6B82" d="M500,200 C440,120 390,50 275,50 C150,50 70,115 70,200"/>
+    <path id="inf-q-bl" class="inf-q" data-q="bl" stroke-dasharray="542.595 1133.190" stroke-dashoffset="-12" data-label="You get the business and the money ready." stroke="#FEFABE" d="M70,200 C70,285 150,350 275,350 C390,350 440,280 500,200"/>
+    <path id="inf-q-tr" class="inf-q" data-q="tr" stroke-dasharray="542.595 1133.190" stroke-dashoffset="-12" data-label="We provide a private place for the part that is not financial or legal." stroke="#28DBB0" d="M500,200 C560,120 610,50 725,50 C850,50 930,115 930,200"/>
+    <path id="inf-q-br" class="inf-q" data-q="br" stroke-dasharray="542.595 1133.190" stroke-dashoffset="-12" data-label="You stay the trusted advisor." stroke="#C2B7DD" d="M930,200 C930,285 850,350 725,350 C610,350 560,280 500,200"/>
+  </g>
+  <!-- motion path for the ball: the four quarters joined, in travel order -->
+  <path id="inf-motion" fill="none" stroke="none" d="M500,200 C440,120 390,50 275,50 C150,50 70,115 70,200 C70,285 150,350 275,350 C390,350 440,280 500,200 C560,120 610,50 725,50 C850,50 930,115 930,200 C930,285 850,350 725,350 C610,350 560,280 500,200 Z"/>
+  <circle id="inf-ball" cx="500" cy="200" r="13" fill="#F5F2FF"/>
+</svg>

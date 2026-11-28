@@ -1,0 +1,202 @@
+---
+/**
+ * Moving logo rails (one source for /stories and the homepage, 19 Nov 2026, Seb).
+ * Logos live in src/data/stories-page.ts (`logoRails`). Add a logo there once and it shows on both pages.
+ * rows=3: the three rails as defined. rows=2: the same logos dealt into two rails (homepage), slower.
+ * Rails move left/right, follow the scroll direction, stop off-screen and stand still with reduced motion.
+ */
+import "../styles/logo-rails.css";
+import { logoRails, type StoryLogo } from "../data/stories-page";
+
+interface Props {
+  rows?: 2 | 3;
+  /** "deep": pills on a lilac band (Stories). "tint": white pills on the light lavender band (homepage). */
+  tone?: "deep" | "tint";
+  label?: string;
+}
+
+const { rows = 3, tone = "deep", label = "Organizations our team has worked with" } = Astro.props;
+
+let rails = logoRails;
+if (rows === 2) {
+  const all: StoryLogo[] = [];
+  const longest = Math.max(...logoRails.map((r) => r.logos.length));
+  for (let i = 0; i < longest; i += 1) logoRails.forEach((r) => r.logos[i] && all.push(r.logos[i]!));
+  rails = [
+    { dir: 1, velocity: 0.34, logos: all.filter((_, i) => i % 2 === 0) },
+    { dir: -1, velocity: 0.34, logos: all.filter((_, i) => i % 2 === 1) },
+  ];
+}
+---
+
+<div class:list={["lr-rails", `lr-rails--${tone}`]} role="group" aria-label={label}>
+  {
+    rails.map((rail) => (
+      <div class="lr-rail" data-lr-rail data-dir={rail.dir === 1 ? "1" : "-1"} data-velocity={String(rail.velocity)}>
+        <div class="lr-rail-inner">
+          <ul class="lr-pattern" data-lr-pattern>
+            {rail.logos.map((logo) =>
+              logo.kind === "icon" ? (
+                <li class="lr-pill">
+                  <span class="lr-pill-vis">
+                    <img src={`/media/stories/logos/${logo.file.replace(/\.png$/, ".webp")}`} width="128" height="128" alt="" loading="lazy" decoding="async" />
+                  </span>
+                  <p class="lr-pill-name">{logo.name}</p>
+                </li>
+              ) : (
+                <li class="lr-pill lr-pill-word">
+                  <span class="lr-pill-vis lr-pill-vis-word">
+                    <img src={`/media/stories/logos/${logo.file.replace(/\.png$/, ".webp")}`} width={logo.width} height="96" alt={logo.name} loading="lazy" decoding="async" />
+                  </span>
+                </li>
+              ),
+            )}
+          </ul>
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<script>
+  type Rail = {
+    el: HTMLElement;
+    inner: HTMLElement;
+    pattern: HTMLElement;
+    dir: number;
+    vel: number;
+    pw: number;
+    x: number;
+    visible: boolean;
+    clones: HTMLElement[];
+    live: boolean;
+  };
+
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const rails: Rail[] = [];
+  document.querySelectorAll<HTMLElement>("[data-lr-rail]").forEach((el) => {
+    const inner = el.querySelector<HTMLElement>(".lr-rail-inner");
+    const pattern = el.querySelector<HTMLElement>("[data-lr-pattern]");
+    if (!inner || !pattern) return;
+    rails.push({ el, inner, pattern, dir: Number(el.dataset.dir) === -1 ? -1 : 1, vel: Number(el.dataset.velocity) || 0.35, pw: 0, x: 0, visible: false, clones: [], live: false });
+  });
+
+  if (rails.length) {
+    document.documentElement.classList.add("lr-js");
+    let raf = 0;
+    let last = 0;
+    let lastY = 0;
+    let smooth = 0;
+    let scrollDir = 1;
+    let dirY = window.scrollY;
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        const y = window.scrollY;
+        if (y > dirY) scrollDir = 1;
+        else if (y < dirY) scrollDir = -1;
+        dirY = y;
+      },
+      { passive: true },
+    );
+
+    const place = (r: Rail) => {
+      r.inner.style.transform = `translate3d(${r.x}px,0,0)`;
+      // R15.9: tablet.css forces `transform: none !important` on iPad; the iPad rule in round15-home.css reads this variable instead.
+      r.inner.style.setProperty("--lr-x", `${r.x}px`);
+    };
+    const clear = (r: Rail) => {
+      r.clones.forEach((c) => c.remove());
+      r.clones = [];
+    };
+    const build = (r: Rail) => {
+      if (reduce.matches) {
+        clear(r);
+        r.live = false;
+        r.pw = 0;
+        r.inner.style.transform = "";
+        r.inner.style.removeProperty("--lr-x");
+        return;
+      }
+      const pw = r.pattern.getBoundingClientRect().width;
+      if (pw < 1) return;
+      const count = Math.ceil(window.innerWidth / pw);
+      if (r.live && Math.abs(pw - r.pw) < 0.5 && r.clones.length === count) return;
+      clear(r);
+      const frac = r.pw ? Math.min(1, Math.max(0, -r.x / r.pw)) : r.dir === 1 ? 1 : 0;
+      r.pw = pw;
+      r.x = -frac * pw;
+      for (let i = 0; i < count; i += 1) {
+        const clone = r.pattern.cloneNode(true) as HTMLElement;
+        clone.removeAttribute("data-lr-pattern");
+        clone.setAttribute("aria-hidden", "true");
+        r.inner.appendChild(clone);
+        r.clones.push(clone);
+      }
+      r.live = true;
+      place(r);
+    };
+    const tick = (now: number) => {
+      raf = 0;
+      if (reduce.matches) return;
+      const dt = Math.min(Math.max(now - last, 0), 64);
+      last = now;
+      const k = dt / 16.667;
+      const y = window.scrollY;
+      const perFrame = k > 0 ? (y - lastY) / k : 0;
+      lastY = y;
+      smooth = smooth * 0.9 + perFrame * 0.1;
+      const boost = 1 + Math.abs(smooth) * 0.3;
+      let any = false;
+      for (const r of rails) {
+        if (!r.visible || !r.live || r.pw < 1) continue;
+        any = true;
+        let x = r.x + r.vel * boost * k * r.dir * scrollDir;
+        if (x <= -r.pw) x += r.pw;
+        else if (x >= 0) x -= r.pw;
+        r.x = x;
+        place(r);
+      }
+      if (any) raf = requestAnimationFrame(tick);
+    };
+    const kick = () => {
+      if (raf || reduce.matches) return;
+      if (!rails.some((r) => r.visible && r.live)) return;
+      last = performance.now();
+      lastY = window.scrollY;
+      raf = requestAnimationFrame(tick);
+    };
+    if ("IntersectionObserver" in window) {
+      const seen = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          const r = rails.find((item) => item.el === e.target);
+          if (r) r.visible = e.isIntersecting;
+        });
+        kick();
+      });
+      rails.forEach((r) => seen.observe(r.el));
+    } else {
+      rails.forEach((r) => (r.visible = true));
+    }
+    let pending = 0;
+    const rebuildAll = () => {
+      pending = 0;
+      rails.forEach(build);
+      kick();
+    };
+    const schedule = () => {
+      if (!pending) pending = requestAnimationFrame(rebuildAll);
+    };
+    if ("ResizeObserver" in window) {
+      const sizes = new ResizeObserver(schedule);
+      rails.forEach((r) => {
+        sizes.observe(r.el);
+        sizes.observe(r.pattern);
+      });
+    }
+    window.addEventListener("resize", schedule);
+    if (typeof reduce.addEventListener === "function") reduce.addEventListener("change", schedule);
+    schedule();
+  }
+</script>

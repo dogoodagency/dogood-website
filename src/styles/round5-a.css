@@ -1,0 +1,365 @@
+/* Round 5 part a (Seb t1952u + answers t1957u, 23 Nov 2026) */
+
+/* Keep the complete drawing centered in the space above the bottom label. */
+html body header.nav #nav-how .nav-mega-card {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 14px;
+  padding: 14px;
+}
+html body header.nav #nav-how .nav-mega-card picture { min-height: 0; }
+html body header.nav #nav-how .nav-mega-card img {
+  object-fit: contain;
+  object-position: center;
+}
+html body header.nav #nav-how .nav-mega-label {
+  position: static;
+  max-width: 100%;
+}
+
+/* The artwork and row share the same soft divider, including the phone menu. */
+html body header.nav #nav-advisors .nav-mega-links a,
+html body header.nav #nav-advisors-phone a.nav-sub { border-color: #C2B7DD; }
+html body header.nav .nav-advisor-image { border-left: 1px solid #C2B7DD; }
+
+/* Override the older phone-only legal colors and type size. */
+html body .footer .legal,
+html body .footer .legal :is(a, p, span) {
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 1;
+}
+
+/* Shared FOUNDR.land panels and founder-page actions. */
+html body main#main .fl .fl-panel,
+html body main#main .adv-page .fl--advisor .fl-panel {
+  padding: 40px 44px;
+  border-radius: 24px;
+  box-shadow: none;
+}
+html body main#main .fl--exit .fl-panel {
+  background: #F5F2FF;
+  border-color: #C2B7DD;
+}
+html body main#main .fl .fl-advisor-btn {
+  position: relative;
+  min-height: 52px;
+  max-width: 100%;
+  padding: 10px 56px 10px 20px;
+  border-radius: 16px;
+  background: #FEFABE;
+  color: #2A0B4F;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-decoration: none;
+  transition: background-color 350ms, transform 350ms;
+}
+html body main#main .page-home .fl .fl-advisor-btn { font-size: 18px; }
+html body main#main .fl .fl-advisor-btn--dream { background: #2A0B4F; color: #FFFFFF; }
+html body main#main .fl .fl-advisor-btn:is(:hover, :focus-visible) {
+  background: #FEFEF3;
+  transform: scale(1.013);
+}
+html body main#main .fl .fl-advisor-btn--dream:is(:hover, :focus-visible) {
+  background: #58447F;
+  color: #FFFFFF;
+}
+.fl-advisor-disc {
+  position: absolute;
+  top: calc(50% - 18px);
+  right: 8px;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  color: #2A0B4F;
+  pointer-events: none;
+  transition: transform 350ms;
+}
+.fl-advisor-disc svg { width: 20px; height: 20px; }
+.fl-advisor-btn:is(:hover, :focus-visible) .fl-advisor-disc { transform: translateX(-4px); }
+
+/* Founder captures use uncropped CSS frames; every caption follows its device. */
+html body main#main .fl .fl-visual,
+html body main#main .adv-page .fl--advisor .fl-visual,
+html body main#main .adv-page .fl--art-phone .fl-visual {
+  position: relative;
+  inset: auto;
+  display: grid;
+  place-items: center;
+  align-self: center;
+  justify-self: stretch;
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+}
+.fl-device-figure {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+.fl-device-figure--phone { max-width: 420px; }
+.fl-device { width: 100%; min-width: 0; box-shadow: none; }
+.fl-device--phone { max-width: 390px; }
+/* 468px is 30% larger than the previous 360px overview phone. */
+html body main#main .fl--advisor .fl-device-figure--phone { max-width: 468px; }
+html body main#main .fl--advisor .fl-device--phone { max-width: 468px; }
+.fl-device-screen {
+  overflow: hidden;
+  border: 10px solid #2A0B4F;
+  background: #2A0B4F;
+  border-radius: 14px;
+}
+.fl-device--phone .fl-device-screen { border-radius: 36px; }
+.fl-device-screen img { display: block; width: 100%; height: auto; }
+.fl-device--laptop { padding-inline: 12px; }
+.fl-device-base {
+  height: 14px;
+  margin-inline: -12px;
+  background: #C2B7DD;
+  border-radius: 0 0 14px 14px;
+}
+.fl-device-tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+}
+.fl-device-tags span {
+  padding: 8px 12px;
+  border: 1px solid #C2B7DD;
+  border-radius: 16px;
+  background: #FFFFFF;
+  color: #2A0B4F;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: center;
+}
+html body main#main .fl .fl-device-figure .fl-by {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  color: #58447F;
+}
+html body main#main .fl--home .fl-device-figure .fl-by { color: #C2B7DD; }
+html body main#main .adv-page .fl--advisor .fl-panel {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  border-color: #C2B7DD;
+}
+/* The referral laptop gets the larger column, without hanging outside the card. */
+html body main#main .adv-page .fl--art-laptop-journey .fl-panel {
+  max-width: 1240px;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.3fr);
+}
+html body main#main .fl .fl-days { box-shadow: none; }
+
+@media (max-width: 960px) {
+  html body main#main .fl .fl-panel,
+  html body main#main .adv-page .fl--advisor .fl-panel {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+  .fl-device-figure--laptop { max-width: 720px; }
+}
+@media (max-width: 599px) {
+  html body main#main .fl .fl-panel,
+  html body main#main .adv-page .fl--advisor .fl-panel { padding: 28px 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html body main#main .fl .fl-advisor-btn,
+  .fl-advisor-disc { transition: none; }
+  html body main#main .fl .fl-advisor-btn:is(:hover, :focus-visible),
+  .fl-advisor-btn:is(:hover, :focus-visible) .fl-advisor-disc { transform: none; }
+}
+
+/* R5 3/20/79: one closing inset, plus exactly the footer wave's overlap.
+   Replace the old per-route clearance, phone border and nested well padding.
+   Keep the extra 80/40px inside the final band's own background. */
+html body { --r5-footer-overlap: 80px; }
+html body .footer-wave { margin-top: calc(-1 * var(--r5-footer-overlap)); }
+html body .footer-wave .hero-wave { height: var(--r5-footer-overlap); }
+html body main#main {
+  --r4-fc: 0px;
+  --r5-closing-gap: 64px;
+}
+html body main#main > :last-child,
+html body main#main > article > :last-child { border-bottom-width: 0; }
+html body main#main > :is(article, .page-home, .bl-page) > section:last-of-type:not(:has(~ :is(.advd-foundr-band, .bl-more, .privacy-source))),
+html body main#main > article > .advd-foundr-band,
+html body main#main > article > .privacy-source > section:last-of-type,
+html body main#main > .bl-page > .bl-more > section:last-of-type,
+html body main#main > .bk-page > .bk-body,
+html body main#main > article.page-designed {
+  padding-block: var(--r5-closing-gap) calc(var(--r5-closing-gap) + var(--r5-footer-overlap)) !important;
+  margin-bottom: 0 !important;
+  border-bottom-width: 0 !important;
+
+  &::after { content: none !important; }
+
+  /* Only layout wells lose padding; framed content keeps its own inset. */
+  & > :is(.ep-well, .hw-well, .ab-well, .st-well, .wf-well, .dr-well,
+    .adv-well, .advr-well, .nl-well, .privacy-well, .cs-well, .pod-well,
+    .bl-wrap, .next-inner, .faq-well, .ty-main, .page-wrap) {
+    padding-block: 0 !important;
+    margin-block: 0 !important;
+    &::after { content: none !important; }
+    & > :first-child { margin-top: 0 !important; }
+    & > :last-child { margin-bottom: 0 !important; }
+  }
+  & > :first-child { margin-top: 0 !important; }
+  & > :last-child { margin-bottom: 0 !important; }
+}
+/* Unframed calls to action have no additional invisible box around the content. */
+html body main#main :is(.ep-page, .hw-page, .st-page, .wf-page, .ab-page, .nl-page, .faq-page) > section:last-of-type
+  :is(.closing-unframed, .hw-faq-link, .wf-cta-ctx, .ab-cta) {
+  padding-block: 0 !important;
+  margin-block: 0 !important;
+}
+/* The Build's closing text link must not add a paragraph margin below the well. */
+html body main#main .hw-page > section:last-of-type .hw-steps-cta > :last-child { margin-bottom: 0; }
+/* Nested page wrappers must not reintroduce the legacy phone bottom border. */
+html body main#main > :is(article, .page-home, .bl-page),
+html body main#main :is(.bl-more, .privacy-source) { border-bottom-width: 0; }
+
+/* R5 8/11/12/13/38: enlarge the cover column and type together. The artwork
+   and actions share a column, with the cover spanning both desktop rows. */
+html body main#main .sq-band .sq-inner {
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 0;
+}
+html body main#main .sq-band--preview .sq-inner {
+  grid-template-columns: 360px minmax(0, 1fr);
+  grid-template-rows: auto auto;
+}
+html body main#main .sq-band--home.sq-band--preview .sq-inner { width: 1080px; }
+html body main#main .sq-band .sq-cover { grid-column: 1; grid-row: 1 / 3; }
+html body main#main .sq-band .sq-copy { grid-column: 2; grid-row: 1; }
+html body main#main .sq-band--preview .sq-copy { padding: 40px 44px 0; }
+html body main#main .sq-band .sq-preview {
+  grid-column: 2;
+  grid-row: 2;
+  min-width: 0;
+}
+html body main#main .sq-band--preview .sq-preview { padding: 0 44px 40px; }
+html body main#main .sq-band--preview .sq-copy h2 { font-size: 48px; }
+html body main#main .sq-band--advisor .sq-copy h2 { font-size: 38.4px; }
+html body main#main .sq-band .sq-eyebrow { font-size: 14.4px; }
+html body main#main .sq-band :is(.sq-intro, .sq-more, .sq-questions) { font-size: 21.6px; }
+html body main#main .sq-band .adv-prose p { font-size: 21.6px !important; }
+/* Override the older important phone list and shared button sizing. */
+html body main#main .sq-band .sq-questions li { font-size: 21.6px !important; }
+html body main#main .sq-band .adv-card-badge { font-size: 15.6px; }
+html body main#main .sq-band .sq-actions,
+html body main#main .sq-band .sq-actions .adv-card-actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
+  text-align: center;
+}
+html body main#main .sq-band .sq-actions .adv-card-actions { width: 100%; }
+html body main#main .sq-band .sq-actions a { font-size: 19.2px !important; font-weight: 400; }
+html body main#main .sq-band .sq-actions a.btn-teal {
+  min-height: 52px !important;
+  margin: 0;
+}
+html body main#main .sq-band .sq-actions a.sq-control {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 52px;
+  max-width: 100%;
+  min-width: 0;
+  padding: 10px 56px 10px 20px;
+  border: 0;
+  border-radius: 16px;
+  background: #2A0B4F;
+  color: #FFFFFF;
+  font-size: 19.2px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  box-shadow: none;
+  transition: transform 350ms, background-color 350ms;
+}
+html body main#main .sq-band .sq-actions .sq-control:is(:hover, :focus-visible) {
+  background: #2A0B4F;
+  color: #FFFFFF;
+  transform: scale(1.013);
+}
+html body main#main .sq-band .sq-actions .sq-read:is(:hover, :focus-visible) { background: #58447F; }
+html body main#main .sq-band .sq-download:is(:hover, :focus-visible) > span:first-child {
+  text-decoration: underline;
+  text-decoration-color: #28DBB0;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+html body main#main .sq-band .sq-control:focus-visible { outline: 2px solid #28DBB0; outline-offset: 4px; }
+.sq-disc {
+  position: absolute;
+  right: 8px;
+  top: calc(50% - 18px);
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  color: #2A0B4F;
+  pointer-events: none;
+  transition: transform 350ms;
+}
+.sq-disc svg { width: 20px; height: 20px; }
+.sq-control:is(:hover, :focus-visible) .sq-disc { transform: translateX(-4px); }
+
+/* R5 32/42: the destination sets the hover color; Stage 2 owns the pink knob. */
+html body main#main .hw-page .ss a.ss-tab--1:is(:hover, :focus-visible) { outline-color: #28DBB0; }
+html body main#main .hw-page .ss a.ss-tab--2:is(:hover, :focus-visible) { outline-color: #EA1557; }
+html body main#main .hw-page .ss[data-current="2"] .ss-knob { background: #EA1557; }
+html body main#main .hw-page .ss[data-current="2"]:not(.is-going) .ss-tab[aria-current="page"],
+html body main#main .hw-page .ss[data-current="2"].is-going a.ss-tab { color: #FFFFFF; }
+
+@media (min-width: 601px) and (max-width: 1365px) {
+  html body main#main .sq-band--preview .sq-inner { grid-template-columns: minmax(216px, 36%) minmax(0, 1fr); }
+  html body main#main .sq-band--preview .sq-copy { padding: 28px 22px 0; }
+  html body main#main .sq-band--preview .sq-preview { padding: 0 22px 28px; }
+}
+@media (max-width: 600px) {
+  html body main#main .sq-band .sq-inner { grid-template-columns: minmax(0, 1fr); }
+  html body main#main .sq-band .sq-cover { grid-column: 1; grid-row: 1; }
+  html body main#main .sq-band .sq-preview { grid-column: 1; grid-row: 2; padding: 28px 22px 0; }
+  html body main#main .sq-band .sq-copy { grid-column: 1; grid-row: 3; padding: 28px 22px; }
+  html body main#main .sq-band--preview .sq-copy h2 { font-size: 36px; }
+  html body main#main .sq-band--advisor .sq-copy h2 { font-size: 33.6px; }
+  html body main#main .sq-band .sq-pages { display: none; }
+}
+@media (max-width: 599px) {
+  html body { --r5-footer-overlap: 40px; }
+  html body main#main { --r5-closing-gap: 40px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html body main#main .sq-band .sq-actions a.sq-control,
+  .sq-disc { transition: none; }
+  html body main#main .sq-band .sq-actions .sq-control:is(:hover, :focus-visible),
+  .sq-control:is(:hover, :focus-visible) .sq-disc { transform: none; }
+}

@@ -1,0 +1,186 @@
+---
+import "../../../styles/advisors.css";
+import "../../../styles/advisors-resources.css";
+import Base from "../../../layouts/Base.astro";
+import Wave from "../../../components/Wave.astro";
+import AdvisorNav from "../../../components/AdvisorNav.astro";
+import { edgeAbove } from "../../../data/edge-line";
+import TestimonialWall from "../../../components/TestimonialWall.astro";
+import PartnershipIcon from "../../../components/PartnershipIcon.astro";
+// Advisor conversations, shared anonymously with role-only labels.
+const advisorQuotes = [
+  { quote: "Remember that founder has probably not built a business and sold one before. So they have no idea what's coming.", name: "Wealth advisor" },
+  { quote: "They are actually better sellers because less of their identity is attached, which means they're less likely to just say no to every buyer.", name: "Exit advisor" },
+  { quote: "Do they know they need it early? Maybe not. But they certainly will know when the transaction closes.", name: "Exit advisor" },
+  { quote: "This isn't like going to therapy because there's something wrong with you… this is how this goes.", name: "Exit advisor" },
+  { quote: "Let's talk about why you're doing this, what the real reasons are.", name: "Sell-side M&A advisor" },
+];
+
+const tint = "#F5F2FF";
+const heroEdge = edgeAbove("#2A0B4F");
+const bandEdge = edgeAbove(tint);
+const footerEdge = edgeAbove(tint);
+---
+
+<Base
+  title="Founder coaching insights for advisors | DoGood Agency"
+  description="Founder coaching insights before and after a sale: patterns in anonymous advisor conversations, a book to share with founders, and the voices behind both."
+  canonical="https://www.dogoodagency.co/advisor-center/insights"
+  ogTitle="Founder coaching insights for advisors | DoGood Agency"
+  footerStrip={tint}
+  footerEdge={footerEdge}
+>
+  <article class="adv-page advr-page advr-insights-page">
+    <header class="advr-hero">
+      <div class="advr-hero-inner">
+        <p class="advr-eyebrow">Advisor Center · Advisor insights</p>
+        <h1 class="r4-phrase-title">For the conversations<br class="pp-desktop-break" /> you have with founders</h1>
+        <p class="advr-lede">
+          Advisors rarely hear from each other about the personal side. Here is a leave-behind on the patterns, and the voices behind them.
+        </p>
+      </div>
+      <Wave fill="#fff" edge={heroEdge} />
+    </header>
+
+    <!-- Advisor Center hub on its own white section, the same on all four parts (Seb, 20 Nov 2026). -->
+    <section class="advr-band advr-band-white advr-hub-band" aria-label="Advisor Center">
+      <div class="advr-well">
+        <div class="advr-nav">
+          <AdvisorNav current="insights" />
+        </div>
+      </div>
+    </section>
+
+    <section class="advr-band advr-band-tint advr-band-straight" aria-label="Advisor insights">
+      <div class="advr-well">
+
+        <ul class="advr-grid advr-grid--links">
+          <li class="advr-cardwrap">
+            <a class="advr-card advr-card--link advr-card--sky" href="/advisor-center/insights/what-founders-struggle-with">
+              <span class="advr-soon">Coming soon</span>
+              
+              <h2>Where founders get stuck</h2>
+              <p>A short, anonymous leave-behind built from advisors' real words, with our recommended response to each pattern.</p>
+              <span class="advr-more">Read more <span class="advr-more-chevron" aria-hidden="true">›</span></span>
+            </a>
+          </li>
+          <li class="advr-cardwrap">
+            <a class="advr-card advr-card--link advr-card--grass" href="/advisor-center/insights/advisor-voices">
+              <span class="advr-soon">Coming soon</span>
+              
+              <h2>Advisors, in conversation</h2>
+              <p>Anonymous voices on what founders bring into the room, with short, casual advisor conversations to come.</p>
+              <span class="advr-more">Read more <span class="advr-more-chevron" aria-hidden="true">›</span></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- More content (Seb, 19 Nov 2026), from our conversations with advisors (patterns, not statistics). -->
+    <section class="advr-band advr-band-tint" aria-labelledby="advi-legs">
+      <div class="advr-well advi-well">
+        <h2 class="advi-h2" id="advi-legs">The three legs of the stool</h2>
+        <p class="advi-lede advi-lede-wide">The Exit Planning Institute's Value Acceleration Methodology aligns business, financial and personal readiness. Advisors tell us the first two have a team behind them. <a class="seo-inlink" href="/advisor-center/client-tools/signals-guide">The personal leg often has a worksheet</a>, or nobody.</p>
+
+        <!-- Visual (Seb, 19 Nov 2026 14:55): who holds each leg, and the gap in the third. -->
+        <!-- Redesigned 19 Nov 2026 18:52 (Seb): each leg stands over the centre of its card, three distinct
+             colours, the personal leg stops short of the seat (the gap). Built in HTML/CSS, not an image. -->
+        <figure class="stool2" data-stool>
+          <figcaption class="visually-hidden">A stool with three legs. Business and financial readiness reach the seat. Personal readiness stops short, leaving a gap under the seat.</figcaption>
+          <div class="stool2-seat" aria-hidden="true"><span>A good exit</span></div>
+          <div class="stool2-cols">
+            <div class="stool2-col stool2-col--1">
+              <div class="stool2-legarea" aria-hidden="true"><span class="stool2-leg"></span></div>
+              <div class="stool2-card">
+                <p class="stool-label">Business readiness</p>
+                <p class="stool-q">Is the company valuable and transferable?</p>
+                <p class="stool-who"><strong>Who leads it:</strong> exit advisors, succession planners and sell-side M&amp;A advisors.</p>
+              </div>
+            </div>
+            <div class="stool2-col stool2-col--2">
+              <div class="stool2-legarea" aria-hidden="true"><span class="stool2-leg"></span></div>
+              <div class="stool2-card">
+                <p class="stool-label">Financial readiness</p>
+                <p class="stool-q">Can the owner afford the life they want after the sale?</p>
+                <p class="stool-who"><strong>Who leads it:</strong> wealth advisors, financial planners, CPAs and family offices.</p>
+              </div>
+            </div>
+            <div class="stool2-col stool2-col--3">
+              <div class="stool2-legarea" aria-hidden="true">
+                <span class="stool2-gap">the gap</span>
+                <span class="stool2-leg"></span>
+              </div>
+              <div class="stool2-card">
+                <p class="stool-label">Personal readiness</p>
+                <p class="stool-q">Who is the founder without the company, and what is the freedom for?</p>
+                <p class="stool-who"><strong>Who leads it:</strong> too often nobody, or a questionnaire in a planning meeting. <strong>With us:</strong> a Wayfinder, before and after the sale.</p>
+              </div>
+            </div>
+          </div>
+        </figure>
+
+        <h3 class="advi-h3">How the third leg differs, and where we fit</h3>
+        <div class="advi-comparison" role="table" aria-label="Three kinds of readiness">
+          <div role="rowgroup"><div role="row">
+            <div role="columnheader"><PartnershipIcon name="focus" /><span>Business</span></div>
+            <div role="columnheader"><PartnershipIcon name="ring" /><span>Money</span></div>
+            <div role="columnheader"><PartnershipIcon name="people" /><span>Founder</span></div>
+          </div></div>
+          <div role="rowgroup"><div role="row">
+            <div role="cell">Prepare a company that is valuable and transferable.</div>
+            <div role="cell">Plan the resources for life after the sale.</div>
+            <div role="cell">Work on identity, relationships, time and purpose before and after closing.</div>
+          </div></div>
+        </div>
+        <div class="advi-fit">
+          <h4>Where we fit</h4>
+          <p>You keep the business and financial legs, and the client relationship. <a class="seo-inlink seo-inlink--on-dark" href="/wayfinders">Our Wayfinders</a> do the private 1:1 work on the personal side, before and after the sale. With the founder's consent, we keep you in the loop. We do not give financial or legal advice.</p>
+        </div>
+        <p class="stool-src">Source: Exit Planning Institute. Advisor views are patterns from our conversations.</p>
+      </div>
+    </section>
+
+    <section class="advr-band advr-band-white" aria-labelledby="advi-voices">
+      <div class="advr-well advi-well">
+        <div class="advi-voices-head">
+          <h2 class="advi-h2" id="advi-voices">In their words</h2>
+          <p class="advi-lede">Real words from our conversations with the advisors who work with founders.</p>
+        </div>
+        <TestimonialWall items={advisorQuotes} short label="In their words" />
+      </div>
+    </section>
+
+    <section class="advr-band advr-band-tint" aria-labelledby="advi-patterns">
+      <div class="advr-well advi-well">
+        <h2 class="advi-h2" id="advi-patterns">What we hear most</h2>
+        <div class="advi-patterns">
+          <figure class="advi-pattern advi-pattern--before">
+            <svg class="advi-napkin" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5 30 3 32 29 6 32Z M22 4 23 13 31 12 M10 17h15m-14 5h12m-11 5h9" /></svg>
+            <figcaption class="advi-pattern-label">Before the sale · Exit advisor</figcaption>
+            <blockquote><p>“They aren't ready to let go even though their company is for sale. … They tend to nitpick every buyer… and they blow up their own deals.”</p></blockquote>
+          </figure>
+          <figure class="advi-pattern advi-pattern--after">
+            <svg class="advi-napkin" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5 30 3 32 29 6 32Z M22 4 23 13 31 12 M10 17h15m-14 5h12m-11 5h9" /></svg>
+            <figcaption class="advi-pattern-label">After the sale · Exit advisor</figcaption>
+            <blockquote><p>“They didn't expect to be in that place where they'd lose their purpose for getting up.”</p></blockquote>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+  </article>
+  <script>
+    document.querySelectorAll<HTMLElement>("[data-stool]").forEach((el) => {
+      if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      el.classList.add("will-animate");
+      const io = new IntersectionObserver(([e]) => {
+        if (!e?.isIntersecting) return;
+        el.classList.add("is-in");
+        io.disconnect();
+      }, { threshold: 0.3 });
+      io.observe(el);
+    });
+  </script>
+</Base>

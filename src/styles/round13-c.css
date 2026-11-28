@@ -1,0 +1,285 @@
+/* Round 13 (Seb t2005u, 28 Nov 2026) — part c */
+
+/* =====================================================================================================
+   C1. The Reset (/the-reset) and The Build (/the-build), phones. Both pages share .hw-page, so every rule
+   below applies equally to both.
+   ===================================================================================================== */
+
+/* R13.C1a: the Reset/Build switch: the text sits in the exact centre of each pill, both ways. The small caps line has
+   0.1em of letter-spacing after its last letter, so it gets the same amount on the left to stay optically centred. */
+@media (max-width: 767px) {
+  html body main#main .hw-page .ss .ss-tab {
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    text-align: center;
+  }
+  html body main#main .hw-page .ss .ss-tab :is(.ss-tab-n, .ss-tab-name) {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    line-height: 1.15;
+    text-align: center;
+  }
+  html body main#main .hw-page .ss .ss-tab .ss-tab-n { padding-left: 0.1em; }
+}
+
+/* R13.C1b: the text below the switch has equal padding all round (the stage card is 22px on every side, the lines under
+   it use the full well width with no extra side padding), and the short text under the step line is smaller so
+   it fits in two lines on a 390px phone. */
+@media (max-width: 767px) {
+  html body main#main .hw-page .ss .ss-panel { padding: 22px; }
+  html body main#main .hw-page .ss .ss-panel .ss-text {
+    max-width: none;
+    margin: 0 0 18px;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+  html body main#main .hw-page :is(.hw-path-note, .hw-start .hw-flow-sm, .hw-start .hw-expedite) {
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+  html body main#main .hw-page .hw-start .hw-notyet-card { padding: 22px; }
+}
+
+/* R13.C1c: BEFORE STAGE 1 house: it overlaps the DREAM 500 text frame below it by 25px (house on top, z-index above the frame).
+   The frame is pulled up so its top edge sits 25px above the picture's visible bottom edge (the picture is lifted by
+   its transparent top inset, 7.29% of its height = 7.884% of the width). The frame's top padding grows by the same
+   amount, so the text inside does not move. */
+@media (max-width: 600px) {
+  html body main#main .hw-page .hw-stage-panel:has(.hw-house--before) > .hw-house-wrap {
+    position: relative;
+    z-index: 2;
+    margin-bottom: calc(-25px - 7.884%);
+  }
+  html body main#main .hw-page .hw-stage-panel:has(.hw-house--before) .hw-stage-block {
+    padding-top: calc(57px + 7.884%);
+  }
+}
+
+/* R13.C1d: the section below the image: the "How it works: See → Interrupt → Choose → Reset" box was centred while
+   every other text in the card is left aligned. It is left aligned like the rest, with equal padding, and at 14px so
+   it fits in two lines. */
+@media (max-width: 767px) {
+  html body main#main .hw-page .hw-stage-block .hw-flow.hw-flow-box {
+    display: block;
+    margin: 0 0 18px;
+    padding: 12px 16px;
+    border-radius: 16px;
+    font-size: 14px;
+    line-height: 1.45;
+    text-align: left;
+  }
+  html body main#main .hw-page .hw-stage-block .hw-flow.hw-flow-box strong { font-size: inherit; }
+}
+
+/* R13.C1e: "You will leave Stage 1 with:" (and Stage 2): 2px smaller (text 17 to 15px, titles 20 to 18px). */
+@media (max-width: 767px) {
+  html body main#main .hw-page .hw-stage-block .hw-includes li { font-size: 15px; }
+  html body main#main .hw-page .hw-stage-block .hw-includes li strong { font-size: 18px; }
+}
+
+/* R13.C1f: case study sections: picture, label, headline, text and button are all centred on the page. */
+@media (max-width: 767px) {
+  html body main#main .hw-page .hw-case-feature {
+    justify-items: center;
+    text-align: center;
+  }
+  html body main#main .hw-page .hw-case-feature .hw-case-img {
+    justify-self: center;
+    margin-inline: auto;
+  }
+  html body main#main .hw-page .hw-case-feature .hw-case-body {
+    align-items: center;
+    margin-inline: auto;
+    text-align: center;
+  }
+  html body main#main .hw-page .hw-case-feature .hw-case-body > :is(h3, p, .hw-eyebrow, .hw-case-who),
+  html body main#main .hw-page .hw-case-feature .hw-case-body .hw-case-note,
+  html body main#main .hw-page .hw-case-band .hw-case-body > :is(h3, p) {
+    text-align: center !important;
+  }
+  html body main#main .hw-page .hw-case-feature .btn-with-caption {
+    align-items: center;
+    margin-inline: auto;
+    text-align: center;
+  }
+}
+
+/* R13.C1g: "After Stage 2" house: the same space above the picture (to the labels) and below it (to the end of the
+   section). The picture sat 7.29-9.73% too high, so it is moved down by half of the difference between its bottom space and
+   its top space: top space = 16px + t, bottom space = 9.73% of its height + section padding - t, equal at
+   t = (9.73% + padding - 16px) / 2. */
+@media (max-width: 600px) {
+  html body main#main .hw-page .hw-home-complete .hw-house--stage2 .hw-house-art {
+    transform: translateY(calc(-9.73% + (9.73% + 48px * var(--section-space-scale, 1) - 16px) / 2));
+  }
+}
+
+/* R13.C1h: "These supports run through both stages": 2px smaller text (cards 17 to 15px, titles 20 to 18px, retreat card text
+   and headline 2px, retreat link 16 to 14px). The section headline stays at the page's section-headline size. */
+@media (max-width: 767px) {
+  html body main#main .hw-page .hw-supports .hw-includes li { font-size: 15px; }
+  html body main#main .hw-page .hw-supports .hw-includes li strong { font-size: 18px; }
+  html body main#main .hw-page .hw-supports .hw-retreat h3 { font-size: 24px; }
+  html body main#main .hw-page .hw-supports .hw-retreat p { font-size: calc(1em - 2px); }
+  html body main#main .hw-page .hw-supports .hw-retreat .hw-retreat-link a { font-size: 14px; }
+}
+
+/* R13.C1i: "Key signals you're a fit": the tick (and cross) circle sits in the vertical centre of its bullet's text, in one row with it. */
+@media (max-width: 767px) {
+  html body main#main .hw-page .hw-fit .hw-ticks li { align-items: center; }
+  html body main#main .hw-page .hw-fit .hw-ticks .hw-icon { margin-top: 0; }
+}
+
+/* =====================================================================================================
+   C2. FOUNDRland section (iPhone with the two labels, Advisor Center): 20px of space between each label and the iPhone.
+   The labels were set 6px over the phone's edge.
+   ===================================================================================================== */
+@media (min-width: 1201px) {
+  html body main#main .fl .fl-arta-device--phone .fl-arta-tags > span:first-child { right: calc(100% + 20px); }
+  html body main#main .fl .fl-arta-device--phone .fl-arta-tags > span:last-child { left: calc(100% + 20px); }
+}
+
+/* =====================================================================================================
+   C3. Client tools hero: the two labels are 3px smaller (14 to 11px) and the same width.
+   ===================================================================================================== */
+html body main#main .advr-tools-page .advr-perks {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  width: fit-content;
+  max-width: 100%;
+}
+html body main#main .advr-tools-page .advr-perks li {
+  justify-content: center;
+  font-size: 11px;
+  text-align: center;
+}
+@media (max-width: 480px) {
+  html body main#main .advr-tools-page .advr-perks {
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =====================================================================================================
+   C4. Stories
+   ===================================================================================================== */
+
+/* R13.C4a: labels on the case studies ("Six month engagement" ...): 2px smaller, DREAM 500. */
+html body main#main .st-page .st-case-chips li {
+  color: #2a0b4f;
+  font-size: 12px;
+}
+
+/* R13.C4b: testimonials on phones: a column of 3 cards that slides up to the next 3 (built by the script on /stories).
+   Without the script, or with reduced motion, the still list stays. */
+@media (max-width: 599px) {
+  html body main#main .st-page .st-phone-wall.has-carousel .tw { display: none; }
+  html body main#main .st-page .st-pc {
+    position: relative;
+    margin-top: 20px;
+    overflow: hidden;
+    transition: height 0.8s cubic-bezier(0.45, 0, 0.2, 1);
+  }
+  html body main#main .st-page .st-pc-track {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    will-change: transform;
+    transition: transform 0.8s cubic-bezier(0.45, 0, 0.2, 1);
+  }
+  html body main#main .st-page .st-pc-track.is-reset { transition: none; }
+  html body main#main .st-page .st-pc .st-card {
+    margin: 0;
+    padding: 46px 20px 20px;
+  }
+  html body main#main .st-page .st-pc .st-card::before { top: 10px; left: 18px; }
+  html body main#main .st-page .st-pc .st-card blockquote { margin-bottom: 14px; }
+  html body main#main .st-page .st-pc .st-card blockquote p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    overflow: hidden;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html body main#main .st-page .st-pc,
+  html body main#main .st-page .st-pc-track { transition: none; }
+}
+
+/* =====================================================================================================
+   C5. /wayfinders/katrin: her head matches Shiva's. Phones and iPad 0.905 of the size, desktop 20% smaller still.
+   Same selectors as R9.O2 in round7.css; this file loads after it.
+   ===================================================================================================== */
+@media (max-width: 1365px) {
+  html body main#main .wfp-hero .wfp-photo.wfp-photo--katrin picture {
+    top: calc(8px - 1.996%);
+    height: 133.05%;
+  }
+}
+@media (min-width: 1366px) {
+  html body main#main .wfp-hero .wfp-photo.wfp-photo--katrin picture {
+    top: calc(8px - 1.764%);
+    height: 117.61%;
+  }
+}
+
+/* =====================================================================================================
+   C6. /clarity
+   ===================================================================================================== */
+
+/* R13.C6b: phone: the two stacked buttons ("Apply to FRP", "FRP Founder? Start Here") are the same width (the full column). */
+@media (max-width: 767px) {
+  html body main#main[data-path="/clarity"] .bk-copy .bk-btn-row { display: flex; flex-direction: column; align-items: stretch; }
+  html body main#main[data-path="/clarity"] .bk-copy .bk-btn-row a.btn-apply {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* R13.C6c: phone: "Clarity → Decision → Execution" is centred. */
+@media (max-width: 767px) {
+  html body main#main[data-path="/clarity"] .bk-copy .bk-flow { justify-content: center; }
+}
+
+/* =====================================================================================================
+   C7. Thank-you pages
+   ===================================================================================================== */
+
+/* R13.C7a: phone: the case study card on every booking thank-you page is centred (picture, label, title, name, button). */
+@media (max-width: 600px) {
+  html body main#main .ty-page .bk-case {
+    justify-items: center;
+    text-align: center;
+  }
+  html body main#main .ty-page .bk-case .bk-case-portrait { margin-inline: auto; }
+  html body main#main .ty-page .bk-case .bk-case-body {
+    align-items: center;
+    text-align: center;
+  }
+  html body main#main .ty-page .bk-case .bk-case-body > :is(p, h2) { text-align: center; }
+  html body main#main .ty-page .bk-case .btn-with-caption {
+    align-items: center;
+    margin-inline: auto;
+    text-align: center;
+  }
+  html body main#main .ty-page .bk-case .bk-case-note { text-align: center !important; }
+}
+
+/* R13.C7c: "FOUNDRland" on the thank-you pages (/internal-thankyou and the others) is one colour only: GRASS 500 on the dark page. */
+html body main#main[data-path$="-thankyou"] .ty-text strong,
+html body main#main[data-path$="-thankyou"] .ty-text strong * {
+  color: #28dbb0 !important;
+  -webkit-text-fill-color: #28dbb0;
+  background: none;
+}

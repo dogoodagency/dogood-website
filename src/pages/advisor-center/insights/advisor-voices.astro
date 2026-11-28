@@ -1,0 +1,25 @@
+---
+import AdvisorResourcePage from "../../../components/AdvisorResourcePage.astro";
+import AdvisorQuoteWall from "../../../components/AdvisorQuoteWall.astro";
+---
+
+<AdvisorResourcePage
+  title="Advisors, in conversation: founder coaching insights | DoGood Agency"
+  description="Anonymous founder and advisor quotes on the personal side of selling a business and coaching before and after a sale, with casual advisor conversations to come."
+  path="/advisor-center/insights/advisor-voices"
+  section="insights"
+  tone="grass"
+  name="Advisors, in conversation"
+  lede="What founders and their advisors see before the deal, at closing, and in the months after."
+  blocks={[]}
+>
+  <AdvisorQuoteWall />
+  <section slot="after-content" class="advr-band advr-band-white advd-conversations-band" aria-labelledby="voices-conversations">
+    <div class="advr-well advd-well advd-conversations">
+    <p class="advr-soon">Coming soon</p>
+    <h2 id="voices-conversations">Casual conversations with advisors</h2>
+    <p>Every advisor quote on this site, in one place, plus short, casual conversations with advisors about the problems founders actually bring into the room. Coming soon.</p>
+    <p>Advisors appear only with their written permission. Client stories stay anonymous.</p>
+    </div>
+  </section>
+</AdvisorResourcePage>

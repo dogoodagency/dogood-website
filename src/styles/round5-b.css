@@ -1,0 +1,249 @@
+/* Round 5 part b (Seb t1952u + answers t1957u, 23 Nov 2026) */
+
+/* Newsletter: pending editorial copy stays in place. */
+html body main#main .nl-page .nl-book .nl-badge {
+  gap: 8px;
+  padding: 8px 16px;
+  background: #FFFFFF;
+  border: 1px solid #28DBB0;
+  color: #2A0B4F;
+}
+.nl-book .nl-badge::before {
+  content: "";
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #28DBB0;
+  animation: r5-chapter-pulse 2s ease-in-out infinite;
+}
+@keyframes r5-chapter-pulse {
+  50% { transform: scale(.75); opacity: .55; }
+}
+html body main#main .nl-page #chapters .nl-well { padding-bottom: 24px; }
+html body main#main .nl-page .nl-well .nl-more-to-come {
+  margin: 20px 0 0;
+  padding: 0 22px;
+  color: #58447F;
+  font-size: 16px;
+  font-weight: 400;
+}
+html body main#main .nl-page .nl-closing-band {
+  background: #FFFFFF;
+  border-top: 1px solid #C2B7DD;
+  padding-top: 48px !important;
+}
+
+/* Audience pills keep their silhouette in every state. */
+html body main#main .bl-index .bli-switch .bli-tab { border-radius: 999px; }
+html body main#main .bl-index .bli-switch .bli-tab[data-bl-aud="all"]:is(:hover, :focus-visible) {
+  background: #F5F2FF !important;
+  color: #2A0B4F !important;
+}
+html body main#main .bl-index .bli-switch .bli-tab[data-bl-aud="founders"]:is(:hover, :focus-visible) {
+  background: #CCFDEC !important;
+  color: #2A0B4F !important;
+}
+html body main#main .bl-index .bli-switch .bli-tab[data-bl-aud="advisors"]:is(:hover, :focus-visible) {
+  background: #FFE2E4 !important;
+  color: #C10E46 !important;
+}
+
+/* Only the requested actions get the new geometry and color treatments. */
+html body main#main :is(a.r5-button-heart, .apl-card a.btn-apply, .pathway-panel a.btn-teal) {
+  min-height: 52px !important;
+  padding: 10px 56px 10px 20px !important;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  box-shadow: none;
+  transition: transform 350ms, background-color 350ms, padding 350ms;
+}
+html body main#main :is(a.r5-button-heart, .apl-card a.btn-apply, .pathway-panel a.btn-teal):is(:hover, :focus-visible) {
+  padding: 10px 20px 10px 56px !important;
+  transform: scale(1.013) !important;
+}
+html body main#main :is(a.r5-button-heart, .apl-card a.btn-apply, .pathway-panel a.btn-teal)::before,
+html body main#main :is(a.r5-button-heart, .apl-card a.btn-apply, .pathway-panel a.btn-teal)::after {
+  width: 36px !important;
+  height: 36px !important;
+  transition-duration: 350ms;
+}
+html body main#main a.r5-button-heart {
+  background: #C10E46 !important;
+  color: #FFFFFF !important;
+}
+html body main#main a.r5-button-heart:is(:hover, :focus-visible) { background: #960434 !important; }
+
+/* Vision and mission: equal insets and vertically centered contents. */
+html body main#main .ab-page .ab-band-statements .ab-duo .ab-statement {
+  padding: 40px 44px;
+  min-height: 0;
+  justify-content: center;
+  border-radius: 24px;
+  box-shadow: none;
+}
+html body main#main .st-page .st-band-next { background: #FFFFFF; }
+
+/* Application: gate above the card at every breakpoint. */
+html body main#main .page-apply .apl-art {
+  position: static;
+  width: min(600px, 100%);
+  transform: none;
+}
+html body main#main .page-apply .apl-art img { max-width: none; }
+html body main#main .page-apply .apl-card {
+  padding: 40px 44px;
+  border: 0 !important;
+  border-radius: 24px;
+  background: #2A0B4F;
+  color: #FFFFFF;
+  box-shadow: none;
+}
+html body main#main .page-apply .apl-card :is(h2, .apl-line, .apl-limit) { color: #FFFFFF !important; }
+html body main#main .page-apply .apl-facts li {
+  background: #58447F;
+  border: 0;
+  color: #FFFFFF;
+}
+html body main#main .page-apply .apl-card a.btn-apply {
+  background: #28DBB0 !important;
+  color: #2A0B4F !important;
+}
+html body main#main .page-apply .apl-card a.btn-apply:is(:hover, :focus-visible) { background: #A3F2D7 !important; }
+.apl-case-divider { padding-inline: var(--pad); background: #F3FFFB; }
+.apl-case-divider > div { max-width: calc(1440px - 2 * var(--pad)); margin-inline: auto; border-top: 1px solid #A3F2D7; }
+html body main#main .page-apply #case-j.apl-case-wrap .t-kicker {
+  margin: 0 0 16px;
+  color: #C10E46;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+/* The shared closing rule supplies equal visible space after the footer overlap. */
+html body main#main .page-apply #case-j.apl-case-wrap {
+  display: grid;
+  place-items: center;
+}
+
+/* Portraits: the photograph remains above a diffused shape, with headroom. */
+html body main#main .wf-page-overview .wf-members .wf-photo {
+  background: #2A0B4F;
+  border: 0;
+  box-shadow: none;
+}
+html body main#main .wf-page-overview .wf-photo::before {
+  inset: 40px 24px 28px 10px;
+  background: #58447F;
+  border-radius: 50%;
+  opacity: 1;
+  filter: blur(16px);
+  transform: rotate(-8deg);
+  pointer-events: none;
+}
+html body main#main .wf-page-overview .wf-member:nth-child(2) .wf-photo::before {
+  inset: 22px -12px 62px 30px;
+  border-radius: 42% 58% 60% 40%;
+  transform: rotate(14deg);
+}
+html body main#main .wf-page-overview .wf-member:nth-child(3) .wf-photo::before {
+  inset: 62px 32px 10px -14px;
+  border-radius: 60% 40% 48% 52%;
+  transform: rotate(-18deg);
+}
+html body main#main .wf-page-overview .wf-member:nth-child(4) .wf-photo::before {
+  inset: 16px 8px 50px 40px;
+  border-radius: 36% 64% 42% 58%;
+  transform: rotate(22deg);
+}
+html body main#main .wf-page-overview .wf-member:nth-child(5) .wf-photo::before {
+  inset: 52px 44px 14px 0;
+  border-radius: 56% 44% 66% 34%;
+  transform: rotate(-25deg);
+}
+html body main#main .wf-page-overview .wf-photo img { object-position: center top; }
+/* A replacement Katrin file can have any aspect ratio without cropping the head. */
+html body main#main .wf-page-overview .wf-photo[data-wayfinder="Katrin"] picture {
+  top: 26px;
+  width: 100%;
+  height: calc(100% - 26px);
+}
+html body main#main .wf-page-overview .wf-photo[data-wayfinder="Katrin"] img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: right top;
+}
+
+/* Pathway: SKY before the sale; GRASS after it. */
+html body main#main .dr-page .pathway-switch {
+  --r5-path-accent: #AEC8FE;
+  --r5-path-button: #1D53EF;
+  --r5-path-button-hover: #0D329F;
+  --r5-path-ink: #FFFFFF;
+}
+html body main#main .dr-page .pathway-switch[data-current="after"] {
+  --r5-path-accent: #28DBB0;
+  --r5-path-button: #28DBB0;
+  --r5-path-button-hover: #A3F2D7;
+  --r5-path-ink: #2A0B4F;
+}
+html body main#main .dr-page .pathway-knob { background: var(--r5-path-button); }
+html body main#main .dr-page .pathway-track :is(#pathway-before-tab, #pathway-after-tab)[aria-selected="true"] { color: var(--r5-path-ink); }
+html body main#main .dr-page .pathway-track :is(#pathway-before-tab, #pathway-after-tab)[aria-selected="true"]:is(:hover, :focus-visible) {
+  background: var(--r5-path-button-hover);
+  color: var(--r5-path-ink);
+}
+html body main#main .dr-page .pathway-panel {
+  background: #2A0B4F;
+  border-color: var(--r5-path-accent);
+}
+html body main#main .dr-page .pathway-panel .pathway-kicker,
+html body main#main .dr-page .pathway-panel li::marker { color: var(--r5-path-accent); }
+html body main#main .dr-page .pathway-panel a.btn-teal {
+  background: var(--r5-path-button) !important;
+  color: var(--r5-path-ink) !important;
+}
+html body main#main .dr-page .pathway-panel a.btn-teal:is(:hover, :focus-visible) { background: var(--r5-path-button-hover) !important; }
+html body main#main .dr-page .pathway-context--callout {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #FFFFFF;
+}
+
+/* Beyond: IntegralContinuity, Retreat, Membership in matching lighter shades. */
+html body main#main .jr .jr-step--heart { --c: #FD6B82; --soft: #FFF3F4; --hover: #FFE2E4; --ink: #960434; }
+html body main#main .jr .jr-step--heart2 { --c: #FEB5BC; --soft: #FFF9FA; --hover: #FFE2E4; --ink: #960434; }
+html body main#main .jr .jr-step--heart3 { --c: #FFE2E4; --soft: #FFF9FA; --hover: #FEB5BC; --ink: #960434; }
+html body main#main .jr :is(.jr-step--heart, .jr-step--heart2, .jr-step--heart3) .jr-badge { color: #960434; }
+html body main#main .dr-page .jr-beyond-segments > :nth-child(1) { background: #FD6B82; }
+html body main#main .dr-page .jr-beyond-segments > :nth-child(2) { background: #FEB5BC; }
+html body main#main .dr-page .jr-beyond-segments > :nth-child(3) { background: #FFE2E4; }
+html body main#main .jr .jr-sep--heart { --sep: #FD6B82; }
+html body main#main .jr .jr-lane-track::before {
+  background: linear-gradient(90deg, #F5C400 0%, #F5C400 14.5%, #477DFE 19%, #477DFE 25%, #28DBB0 30.5%, #28DBB0 47%, #FD6B82 53%, #FD6B82 62%, #FEB5BC 65%, #FEB5BC 71%, #FFE2E4 74%, #FFE2E4 80%, #C2B7DD 86%, #C2B7DD 100%);
+}
+html body main#main .jr .jr-lane-dot { box-shadow: none; animation: none; }
+
+@media (max-width: 600px) {
+  html body main#main .ab-page .ab-band-statements .ab-duo .ab-statement,
+  html body main#main .page-apply .apl-card { padding: 28px 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nl-book .nl-badge::before { animation: none; }
+  html body main#main :is(a.r5-button-heart, .apl-card a.btn-apply, .pathway-panel a.btn-teal),
+  html body main#main :is(a.r5-button-heart, .apl-card a.btn-apply, .pathway-panel a.btn-teal)::before,
+  html body main#main :is(a.r5-button-heart, .apl-card a.btn-apply, .pathway-panel a.btn-teal)::after { transition: none; }
+  html body main#main :is(a.r5-button-heart, .apl-card a.btn-apply, .pathway-panel a.btn-teal):is(:hover, :focus-visible) { transform: none !important; }
+  html body main#main .jr :is(.jr-badge, .jr-card, .jr-lane-label, .jr-lane-dot, .jr-road-on, .jr-arrow) {
+    opacity: 1;
+    transform: none;
+    animation: none;
+    transition: none;
+  }
+  html body main#main .jr .jr-lane-track::before { clip-path: none; transition: none; }
+}

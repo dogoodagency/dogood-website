@@ -1,0 +1,256 @@
+/* round 15: home (iPad only). IPAD = (min-width: 744px) and (max-width: 1279px), or 1280-1366 touch landscape. */
+
+/* The two extra press-logo sets exist only for the iPad marquee (R15.9); everywhere else they stay out of the layout. */
+html body main#main#main .page-home #asseen .press-set.press-set--x { display: none; }
+
+@media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+
+  /* R15.8: Home hero, iPad: the illustration is about 2cm (76px) wider, growing to the LEFT (left edge 57px further left), and its
+     right edge is about 0.5cm (19px) further RIGHT. Width +76px at the same aspect ratio, so it is taller by the same proportion.
+     The Home script (index.astro, R6.1) re-measures the frame and keeps the man's boot on the wave. The wave itself sits 68px
+     (about 1.8cm) lower: 68px more space under the hero content. Headline, lede, copy and buttons do not move. */
+  html body main#main#main .page-home #hero .hero-sketch-frame {
+    width: calc(100% + 76px);
+    margin: 0 -19px 0 -57px;
+  }
+  html body main#main#main .page-home #hero .hero-inner { padding-bottom: 68px; }
+
+  /* R15.8 (QA fix): the wave must end up 68px lower than in round 14 at every iPad width, in absolute page position (the smaller
+     fonts shrank the copy and cancelled the 68px padding). #hero gets a min-height that is a piecewise-linear function of the
+     viewport width through the round-14 hero heights + 68px (bands at the end of this file). The hero is a flex column; .hero-inner
+     grows to fill it; .hero-grid grows too, the copy stays at its top and the illustration (.hero-draw) is pushed to the bottom of
+     the grid, so the extra height lands BETWEEN the copy and the illustration and the picture keeps its gap to the wave (68px
+     padding, -53px margin, both unchanged). The 68px padding stays: it is part of the content height, which is always below the
+     min-height, so nothing is counted twice. Headline, lede and grid keep their old width (block fill) via width: 100% + border-box,
+     because flex items with auto side margins would otherwise shrink to fit. */
+  html body main#main#main .page-home #hero {
+    display: flex;
+    flex-direction: column;
+  }
+  html body main#main#main .page-home #hero > .hero-inner {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  html body main#main#main .page-home #hero > .hero-wave { flex: none; }
+  html body main#main#main .page-home #hero > .hero-inner > :is(h1.t-display, .lede, .hero-grid) {
+    box-sizing: border-box;
+    width: 100%;
+    flex: none;
+  }
+  html body main#main#main .page-home #hero > .hero-inner > .hero-grid { flex: 1 1 auto; }
+  html body main#main#main .page-home #hero .hero-copy { align-self: start; }
+  html body main#main#main .page-home #hero .hero-draw { align-self: end; margin-top: auto; }
+  /* The wider picture reaches into the gap beside the copy (two-column iPad layout): keep the text and its links on top. */
+  html body main#main#main .page-home #hero .hero-copy { position: relative; z-index: 2; }
+
+  /* R15.12 (QA fix): Home, "Our team's track record" (iPad): the Wayfinders photo (wayfinders.png, 2664 x 1342) has 49 transparent
+     pixel rows at its bottom (the flat-cut figures end at native row 1293 of 1342) = 1.8023% of its width, so the figures' flat-cut bottoms
+     sit flush on the box border when the box is pulled up by exactly that share of the PHOTO's rendered width. The few figures reaching
+     row 1303 are overlapped by the box by about 10 native rows (under 3px at iPad sizes); the others sit flush. The photo box (.wf-group) and .track-block are siblings in #wayfinders with the
+     same width rule (width 100%, max-width 1080px, margin-inline auto, border-box), so the photo is min(100%, 1080px) wide. A percentage
+     margin resolves against the parent's content width, so it is written as min(100%, 1080px) x -0.018023 (exact even when the section is
+     wider than 1080px). The box is position: relative with z-index 2 (as before) so it paints over the photo's transparent strip. */
+  html body main#main#main .page-home #wayfinders .track-block {
+    margin-top: calc(min(100%, 1080px) * -0.018023);
+    position: relative;
+    z-index: 2;
+    transform: none;
+  }
+  html body main#main#main .page-home #wayfinders .wf-group { margin-bottom: 0; padding-bottom: 0; }
+
+  /* R15.13: Home stats (iPad): the first row is Founders Engaged, Leaders Impacted, Learning Initiatives Sold; the second row is
+     Coaching Hours and Client Satisfaction. Six columns: row 1 items span two columns each (same widths as the 3-column grid),
+     Coaching Hours starts at column 2 (centred in the gap between Founders Engaged and Leaders Impacted) and Client Satisfaction
+     at column 4 (centred in the gap between Leaders Impacted and Learning Initiatives Sold). */
+  html body main#main#main .page-home #wayfinders .track-nums {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+  html body main#main#main .page-home #wayfinders .track-nums > div { grid-column: span 2; }
+  html body main#main#main .page-home #wayfinders .track-nums > div:nth-child(4) { grid-column: 2 / span 2; }
+  html body main#main#main .page-home #wayfinders .track-nums > div:nth-child(5) { grid-column: 4 / span 2; }
+
+  /* R15.14: Home "Clarity-First Guarantee" (iPad): the block is 20% narrower, centred. Its width used to be min(900px, the section's
+     content width); it is now 80% of that. Side padding shrinks by the same 20% (64px to 51px) so the text keeps its proportions. */
+  html body main#main#main .page-home #guarantee .guarantee-layout {
+    box-sizing: border-box;
+    width: calc(min(900px, 100%) * 0.8);
+    max-width: none;
+    margin-inline: auto;
+  }
+  html body main#main#main .page-home #guarantee .guarantee-card {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    padding-left: 51px;
+    padding-right: 51px;
+    overflow-wrap: break-word;
+  }
+  html body main#main#main .page-home #guarantee .guarantee-head { flex-wrap: wrap; min-width: 0; }
+  html body main#main#main .page-home #guarantee .guarantee-card h2 { min-width: 0; max-width: 100%; }
+
+  /* R15.11: Home, the green line on iPad runs in the right-hand gutter (ThroughLine.astro). The testimonial wall had only about
+     5-8px between its cards and the line. The wall now stops at least 36px short of the line's left edge (2px extra for rounding).
+     The page's own edge padding is untouched; only the wall's right edge moves in. The line's lane is the middle of the gutter
+     right of the 1080px layout column (G = max(page padding, (width - 1080) / 2)) and its stroke is clamp(28px, 0.78 G, 56px), as in
+     ThroughLine.astro. Left edge stays on the same line as the other sections. */
+  html body main#main#main .page-home #reviews .tw {
+    --r15-w: calc(100% + 2 * var(--pad));
+    --r15-g: max(var(--pad), calc((var(--r15-w) - 1080px) / 2));
+    --r15-s: clamp(28px, calc(var(--r15-g) * 0.78), 56px);
+    box-sizing: border-box;
+    width: calc(var(--r15-w) - 1.5 * var(--r15-g) - var(--r15-s) / 2 - 38px);
+    max-width: none;
+    margin-left: calc(var(--r15-g) - var(--pad));
+    margin-right: 0;
+  }
+
+  /* R15.9a: logo strips, iPad: every logo pill, logo and gap is 30% smaller (x0.7): "As seen on" press rail, the client rails in
+     #clients and /stories (they share LogoRails). */
+  html body main#main#main .lr-rails { gap: 0.7rem; }
+  html body main#main#main .lr-pattern { gap: 0.7rem; }
+  html body main#main#main .lr-pill {
+    gap: 0.7rem;
+    padding: 0.385rem 1.12rem 0.385rem 0.385rem;
+    border-radius: 2.625rem;
+  }
+  html body main#main#main .lr-pill.lr-pill-word { padding: 0.385rem; }
+  html body main#main#main .lr-pill-vis { width: 2.45rem; height: 2.45rem; }
+  html body main#main#main .lr-pill-vis img { width: 1.715rem; height: 1.715rem; }
+  html body main#main#main .lr-pill-vis.lr-pill-vis-word { width: auto; padding: 0 0.77rem; border-radius: 2.625rem; }
+  html body main#main#main .lr-pill-vis-word img { width: auto; height: 1.05rem; }
+  html body main#main#main .lr-rails p.lr-pill-name { font-size: 12.6px !important; }
+
+  html body main#main#main .page-home #asseen .press-logo { height: 39.2px; }
+  html body main#main#main .page-home #asseen .press-logo img { height: calc(var(--ph, 40px) * 0.7) !important; }
+}
+
+/* R15.9b: logo strips, iPad: the rails scroll exactly as on desktop and phone. tablet.css (601-1365) had made the client rails
+   static, wrapped and centred, and the press rail static (animation: none). Here (only when the visitor has not asked for reduced
+   motion, and only once the rail script is running) the desktop marquee comes back. Reduced motion keeps the still, wrapped set,
+   as on desktop. */
+@media (prefers-reduced-motion: no-preference) and (min-width: 744px) and (max-width: 1279px),
+  (prefers-reduced-motion: no-preference) and (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+
+  /* Client rails (#clients, /stories): moving rows. The script writes the offset to --lr-x because tablet.css forces
+     `transform: none !important` on the rail. */
+  html.lr-js body main#main#main .lr-rails { overflow: hidden; }
+  html.lr-js body main#main#main .lr-rail { overflow: hidden; }
+  html.lr-js body main#main#main .lr-rail-inner {
+    width: max-content;
+    transform: translate3d(var(--lr-x, 0px), 0, 0) !important;
+    will-change: transform;
+  }
+  html.lr-js body main#main#main .lr-pattern {
+    flex: none;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    width: auto;
+    max-width: none;
+    padding: 0 0.7rem 0 0;
+  }
+  html.lr-js body main#main#main .lr-rail-inner > .lr-pattern[aria-hidden="true"] { display: flex; }
+  html.lr-js body main#main#main .lr-pill { max-width: none; }
+  html.lr-js body main#main#main .lr-pill-vis-word img { max-width: none; }
+
+  /* "As seen on" press rail: the same slow drift and edge fade as desktop. Four identical sets, so the track is always wider than the
+     rail and moving exactly one set (25%) loops without a seam; 32s is the desktop 46s scaled by the same 0.7. */
+  html body main#main#main .page-home #asseen .press-rail {
+    min-height: 0;
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  }
+  html body main#main#main .page-home #asseen .press-track {
+    width: max-content;
+    transform: none;
+    animation: r15-press-drift 32s linear infinite;
+  }
+  html body main#main#main .page-home #asseen .press-set {
+    flex: none;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 50.4px;
+    padding: 0 50.4px 0 0;
+  }
+  html body main#main#main .page-home #asseen .press-set[aria-hidden="true"] { display: flex; }
+  html body main#main#main .page-home #asseen .press-set.press-set--x { display: flex; }
+}
+
+/* A touch screen has no hover to end, so a tap on the rail must not leave it paused. */
+@media (prefers-reduced-motion: no-preference) and (hover: none) and (min-width: 744px) and (max-width: 1279px),
+  (prefers-reduced-motion: no-preference) and (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+  html body main#main#main .page-home #asseen .press-rail:hover .press-track { animation-play-state: running; }
+}
+
+@keyframes r15-press-drift {
+  from { transform: translateX(0); }
+  to { transform: translateX(-25%); }
+}
+
+/* R15.8 (iPad portrait, below 1024px): the single-column hero's picture is 480px wide there, so the +76px width makes it about 53px
+   taller; that height is taken back from the space below it so the wave ends up 68px lower, not 121px. (768-1023 already pulls the
+   picture up by calc(5.848vw - 134px), see round13-ipad.css R13.D1.) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  html body main#main#main .page-home #hero .hero-draw { margin-bottom: calc(5.848vw - 134px - 53px); }
+}
+@media (min-width: 744px) and (max-width: 767px) {
+  html body main#main#main .page-home #hero .hero-draw { margin-bottom: -53px; }
+}
+
+/* R15.10 collision fix (home, iPad only): wayfinders.css `.wf-intro p {font-size: 19px}` is mirrored to 17px in round15-type.css, but that
+   file is not loaded on home. The mirror (generated from the page-less selector `.wf-intro p`) therefore leaks onto home's
+   `#wayfinders .wf-intro p.lead` (and the link / span inside it). Home's own cascaded size there is 18px, which on iPad must be 16px.
+   The selector below out-ranks every `html:not(#r15)...` mirror (8 x :not(#r15) + #wayfinders = 9 ids), so no !important is needed.
+   value is 18px on purpose: the type generator mirrors this rule and subtracts 2px, giving the intended 16px */
+@media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+  html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15) body .page-home #wayfinders .wf-intro p.lead,
+  html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15) body .page-home #wayfinders .wf-intro p.lead a.seo-inlink,
+  html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15) body .page-home #wayfinders .wf-intro p.lead span.years { font-size: 18px; }
+}
+
+/* R15.8 (QA fix): iPad home hero min-height = round-14 hero height + 68px, piecewise linear in the viewport width (100vw), one band per
+   measured width so every point of the QA table lands on its target. Width: round-14 height + 68 = min-height:
+   744: 1156+68=1224 | 768: 998+68=1066 | 800: 1000+68=1068 | 820: 972+68=1040 | 833: 944+68=1012 | 834: 915+68=983 | 900: 920+68=988
+   1024: 741+68=809 | 1100: 748+68=816 | 1180: 755+68=823 | 1279: 758+68=826 | 1366 (touch landscape): 826.
+   Also measured: round 14 was 1156px up to 756px and 1127px from 757 to 767px (flat bands, +68 = 1224 and 1195); round 14 was 1000px up to
+   815px and 972px from 816px (flat bands, +68 = 1068 and 1040); round 14 grew from 920 at 900
+   to 938 at 1023 (+68 = 988 -> 1006).
+   The 744-756, 757-767 and 800-819 bands are flat; the other bands are linear between their end points: calc(A + (100vw - W) * slope). The content height is below these everywhere (by 30px or more). */
+@media (min-width: 744px) and (max-width: 756.98px) {
+  html body main#main#main .page-home #hero { min-height: 1224px; }
+}
+@media (min-width: 757px) and (max-width: 767.98px) {
+  html body main#main#main .page-home #hero { min-height: 1195px; }
+}
+@media (min-width: 768px) and (max-width: 799.98px) {
+  html body main#main#main .page-home #hero { min-height: calc(1066px + (100vw - 768px) * 0.0625); }
+}
+@media (min-width: 800px) and (max-width: 815.98px) {
+  html body main#main#main .page-home #hero { min-height: 1068px; }
+}
+@media (min-width: 816px) and (max-width: 819.98px) {
+  html body main#main#main .page-home #hero { min-height: 1040px; }
+}
+@media (min-width: 820px) and (max-width: 833.98px) {
+  html body main#main#main .page-home #hero { min-height: calc(1040px + (100vw - 820px) * -2.15385); }
+}
+@media (min-width: 834px) and (max-width: 899.98px) {
+  html body main#main#main .page-home #hero { min-height: calc(983px + (100vw - 834px) * 0.07576); }
+}
+@media (min-width: 900px) and (max-width: 1023.98px) {
+  html body main#main#main .page-home #hero { min-height: calc(988px + (100vw - 900px) * 0.14634); }
+}
+@media (min-width: 1024px) and (max-width: 1099.98px) {
+  html body main#main#main .page-home #hero { min-height: calc(809px + (100vw - 1024px) * 0.09211); }
+}
+@media (min-width: 1100px) and (max-width: 1179.98px) {
+  html body main#main#main .page-home #hero { min-height: calc(816px + (100vw - 1100px) * 0.0875); }
+}
+@media (min-width: 1180px) and (max-width: 1279px) {
+  html body main#main#main .page-home #hero { min-height: calc(823px + (100vw - 1180px) * 0.0303); }
+}
+@media (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+  html body main#main#main .page-home #hero { min-height: 826px; }
+}

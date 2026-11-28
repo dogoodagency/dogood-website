@@ -1,0 +1,646 @@
+/* Site-wide rules (Seb, 19 Nov 2026). Loaded last from Base.astro; !important only where a rule must win
+   over every page stylesheet.
+   1. No shadows anywhere: frames use a thin border instead.
+   2. Cards never move on hover: they change colour instead.
+   3. Text frames have one thin border all round (no thick top bars). */
+
+*,
+*::before,
+*::after {
+  box-shadow: none !important;
+}
+
+/* Seb round 2, 22 Nov 2026: remove the remaining map shadows; retain keyboard focus. */
+.wf-pin-icon { filter: none !important; }
+.wf-pin:focus-visible { outline: 2px solid #28dbb0; outline-offset: 3px; }
+
+/* Cards that used to lift on hover stay still. */
+a[class*="card"]:hover,
+a[class*="card"]:focus-visible,
+.bl-card:hover,
+.bli-cat:hover,
+.bli-cat:focus-visible,
+.pp-card:hover,
+.pp-card:focus-visible {
+  transform: none !important;
+}
+
+/* FAQ rows on every page: a clear background change on hover. */
+details > summary {
+  transition: background-color 0.2s ease;
+}
+
+details > summary:hover {
+  background-color: #ede8fb;
+}
+
+/* Hero eyebrows on every page follow the Advisor Center style ("Advisor Center · Refer a founder"):
+   18px, weight 700, uppercase, 0.08em tracking, GRASS 500. */
+.hw-hero .hw-eyebrow,
+.ep-hero .ep-eyebrow,
+.dr-hero .dr-eyebrow,
+.advr-hero .advr-eyebrow,
+.nl-eyebrow,
+.bli-hero .bl-box-label--light,
+.bl-box-label.bl-box-label--light {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase;
+}
+
+/* FAQ page and homepage FAQ buttons: the same hover tint as the other FAQ rows. */
+.faq-trigger {
+  border-radius: 12px;
+  transition: background-color 0.2s ease;
+}
+
+.faq-trigger:hover {
+  background-color: transparent; /* no hover tint on /faqs cards (Seb, 19 Nov 2026 18:52) */
+}
+
+/* 19 Nov 2026 14:55 (Seb): buttons never change size on hover. The arrow still slides in, but the padding
+   keeps the same total width and nothing scales. */
+a.btn-apply:hover, a.btn-apply.lg:hover, a.btn-case:hover, a.btn-teal:hover, a.btn-partnership:hover,
+a.btn-terms:hover, button.btn-teal:hover, button.btn-subscribe:hover, .buzzsprout-gate button:hover,
+a.btn-apply:focus-visible, a.btn-apply.lg:focus-visible, a.btn-case:focus-visible, a.btn-teal:focus-visible,
+a.btn-partnership:focus-visible, a.btn-terms:focus-visible, button.btn-teal:focus-visible,
+button.btn-subscribe:focus-visible, .buzzsprout-gate button:focus-visible {
+  transform: none !important;
+  padding-left: 56px !important;
+  padding-right: 20px !important;
+}
+
+button.btn-subscribe:hover,
+button.btn-subscribe:focus-visible {
+  border: 1px solid #28dbb0 !important;
+}
+
+/* Testimonials on every page: body size and weight, in italics (Seb, 19 Nov 2026 14:55). */
+.tw .tw-card blockquote p,
+.st-page .st-card blockquote p,
+.st-card blockquote p,
+.review-body,
+.bk-quote blockquote p {
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  font-style: italic;
+  line-height: 1.6 !important;
+}
+
+/* Leftover coloured edges from the old thick top or left bars: one thin border, one colour, all round. */
+.ab-vision-card,
+.fw-step {
+  border-top-color: #c2b7dd !important;
+}
+
+.ep-place {
+  border-left-color: #c2b7dd !important;
+}
+
+.ab-good li {
+  border-left-color: #e3dcf2 !important;
+}
+
+/* FAQs (Seb, 19 Nov 2026 14:55): on hover the whole item tints, the open answer included, not only the
+   question row. */
+details.ep-faq,
+details.bl-faq-item {
+  transition: background-color 0.2s ease;
+}
+
+details.ep-faq:hover,
+details.bl-faq-item:hover {
+  background-color: #ede8fb !important;
+}
+
+details.ep-faq:hover > summary,
+details.bl-faq-item:hover > summary {
+  background-color: transparent !important;
+}
+
+/* No hover tint on the newsletter's "Go deeper" panels or the Wayfinder "More about" rows. */
+details.nl-deep > summary:hover,
+details.wf-more > summary:hover {
+  background-color: transparent;
+}
+
+/* Purple button (DREAM 500), on every page: same colour on hover, only the arrow moves. */
+a.btn-teal.btn-dream,
+a.btn-teal.btn-dream:hover,
+a.btn-teal.btn-dream:focus-visible {
+  background: #2a0b4f !important;
+  border-color: #2a0b4f !important;
+  color: #fff !important;
+}
+
+/* Nav: the foundr.land logo in place of the Apply button (Seb, 19 Nov 2026 20:47). Same size and shape as the
+   nav bar, in DREAM 500 so the light logo reads; a soft lift of the background on hover. */
+header.nav .nav-apply.nav-apply--brand {
+  padding: 0 22px;
+  background: #2a0b4f;
+}
+
+header.nav .nav-apply.nav-apply--brand::after {
+  background: #3b1a63;
+}
+
+header.nav .nav-brand-logo,
+header.nav .nav-brand-logo img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 128px;
+  height: auto;
+}
+
+@media (max-width: 1080px) {
+  header.nav .nav-apply.nav-apply--brand { padding: 0 14px; }
+  header.nav .nav-brand-logo,
+  header.nav .nav-brand-logo img { width: 100px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  header.nav .nav-apply.nav-apply--brand:hover,
+  header.nav .nav-apply.nav-apply--brand:focus-visible { background: #3b1a63; }
+}
+
+/* 19 Nov 2026 21:02 (Seb): the foundr.land logo 10% bigger, no border. 20 Nov 00:00: the frame sits halfway
+   between DREAM 400 and DREAM 500 (#412867), and turns DREAM 400 on hover. */
+header.nav .nav-apply.nav-apply--brand {
+  border: 0;
+  background: #412867;
+  transition: background-color 0.25s ease;
+}
+
+header.nav .nav-apply.nav-apply--brand::after {
+  content: none;
+}
+
+header.nav .nav-apply.nav-apply--brand:hover,
+header.nav .nav-apply.nav-apply--brand:focus-visible {
+  background: #58447f;
+}
+
+header.nav .nav-brand-logo,
+header.nav .nav-brand-logo img {
+  width: 141px;
+}
+
+@media (max-width: 1080px) {
+  header.nav .nav-brand-logo,
+  header.nav .nav-brand-logo img { width: 110px; }
+}
+
+/* 20 Nov 2026 (Seb): the nav shows the G mark alone; the footer logo is 40% bigger (42px -> 59px tall). */
+header.nav .nav-logo.nav-logo--mark img,
+header.nav .nav-logo.nav-logo--mark svg {
+  height: 44px;
+  width: auto;
+}
+
+@media (max-width: 1080px) {
+  header.nav .nav-logo.nav-logo--mark img,
+  header.nav .nav-logo.nav-logo--mark svg {
+    height: 36px;
+  }
+}
+
+.footer .footer-logo img {
+  height: auto;
+  width: 225px;
+}
+
+/* G mark animation in the nav (20 Nov 2026, Seb): red, then green, then yellow lock into place; once per visit. */
+header.nav .dg-mark { display: block; overflow: visible; }
+header.nav .dg-mark .dg-pc { transform-box: fill-box; transform-origin: center; }
+html.dg-mark-play header.nav .dg-pc-red,
+html.dg-mark-play header.nav .dg-pc-green,
+html.dg-mark-play header.nav .dg-pc-yellow {
+  opacity: 0;
+  animation: dg-mark-lock 1176ms cubic-bezier(.34, 1.45, .64, 1) forwards;
+}
+html.dg-mark-play header.nav .dg-pc-red    { --dx: 46px; --dy: 46px;  animation-delay: 2025ms; }
+html.dg-mark-play header.nav .dg-pc-green  { --dx: 0px;  --dy: -58px; animation-delay: 2970ms; }
+html.dg-mark-play header.nav .dg-pc-yellow { --dx: 64px; --dy: 0px;   animation-delay: 3915ms; }
+@keyframes dg-mark-lock {
+  0%   { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(.55); }
+  55%  { opacity: 1; }
+  100% { opacity: 1; transform: translate(0, 0) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.dg-mark-play header.nav .dg-pc { animation: none; opacity: 1; }
+}
+
+/* 20 Nov 2026 06:07 (Seb): bar plus foundr.land button together 100px narrower on each side than before
+   (1243px -> 1043px) and centred; foundr.land stays outside the bar, as before. 840 + 18 gap + 185 button. */
+@media (min-width: 1081px) {
+  header.nav .nav-bar {
+    width: min(840px, calc(100% - 2 * clamp(20px, 5.56vw, 80px) - 203px));
+  }
+}
+
+/* 20 Nov 2026 06:12 (Seb): nav bar colour halfway between DREAM 500 (#2A0B4F) and DREAM 600 (#1D033C, the old bar
+   colour), so slightly lighter. The mobile menu panel matches. */
+header.nav .nav-bar,
+header.nav .nav-panel {
+  background: #230745;
+}
+
+/* 20 Nov 2026 08:02 (Seb): "by DoGood" in small type (08:08: 10px, regular weight, right edge aligned with the logo) under the foundr.land logo, DREAM 300, thin weight. */
+header.nav .nav-apply.nav-apply--brand {
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 3px;
+}
+header.nav .nav-brand-by {
+  position: relative;
+  z-index: 1;
+  display: block;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  margin-right: -1.9px; /* cancels the trailing letter-spacing and the glyph side space so the right edge lines up with the logo */
+  color: #8b7dae;
+  white-space: nowrap;
+}
+
+/* 20 Nov 2026 08:16 (Seb): the logo sits centred in the card again; "by DoGood" stays where it was (taken out of
+   the flow and pinned to the card's bottom right, at the same spot it had at each breakpoint). */
+header.nav .nav-apply.nav-apply--brand { position: relative; }
+header.nav .nav-brand-by {
+  position: absolute;
+  right: 20.1px;
+  bottom: 11.9px;
+  margin-right: 0;
+}
+@media (max-width: 1080px) {
+  header.nav .nav-brand-by { right: 12.1px; bottom: 15.56px; }
+}
+@media (max-width: 600px) {
+  header.nav .nav-brand-by { bottom: 9.06px; }
+}
+
+/* 20 Nov 2026 (Seb): hero titles and sub-lines use the full content width, so they don't take more lines than
+   they need (Exit-Prep title was 4 lines, The Reset / The Build sub-lines 4, About and Wayfinders 3-4). */
+.ep-page:not(.pp-page) .ep-hero h1 { max-width: 1080px; }
+.ab-hero .ab-hero-text .ab-hero-copy p,
+.ab-hero-copy > p { max-width: 1080px; }
+.wf-page .wf-hero .wf-lead,
+.wf-hero-copy { max-width: 1080px; }
+.hw-page .hw-hero .hw-hero-lede-sm { max-width: 900px; }
+.bl-hero-lede { max-width: 900px; }
+
+/* 20 Nov 2026 (Seb): text in cards and bands that broke onto a second line for 1-4 words, while the card or band
+   still had room on the right, now runs to the right padding. */
+.fw-page .fw-lead,
+.fw-page .ep-prose .fw-expect { max-width: none; }
+.pp-page .pp-lede,
+.pp-page .ep-lede-plain,
+.pp-page .pp-note { max-width: none; }
+.adv-section-title { max-width: none; }
+.advd-page .advr-hero .advr-lede { max-width: none; }
+.nl-page .nl-well .nl-question p { max-width: none; }
+.st-note,
+.st-note.st-note-small { max-width: none; }
+.hw-page .hw-sub-center { max-width: 820px; }
+.hw-page .hw-expedite.hw-center { max-width: 900px; }
+.hw-faq-link h2 { max-width: 1080px; }
+.cs-hero .cs-intro { max-width: 900px; }
+.ab-good li { white-space: nowrap; }
+
+/* FAQs: the sketch sits above the section title, so the title gets the card's full width. */
+.faq-card-head {
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.faq-card-sketch img { object-position: left center; }
+
+/* foundr.land logo without a link (until foundr.land is public, Seb 20 Nov 2026): no hover effect. */
+header.nav .nav-apply--static { pointer-events: none; cursor: default; }
+
+/* 21 Nov 2026 01:19 (Seb): every "Coming soon" / "Opening" / "First …" status dot pulses, all at the same size
+   and in the same rhythm, centred on the line (all sizes). */
+@keyframes dg-soon-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(40, 219, 176, 0.55); transform: scale(1); }
+  50% { box-shadow: 0 0 0 6px rgba(40, 219, 176, 0); transform: scale(1.15); }
+}
+:is(.pp-soon, .advr-soon, .adv-page .adv-walk-badge)::before {
+  flex: none;
+  align-self: center;
+  width: 8px !important;
+  height: 8px !important;
+  background: #28dbb0 !important;
+  animation: dg-soon-pulse 1.8s ease-in-out infinite;
+}
+:is(.pp-soon, .advr-soon) { align-items: center; }
+@media (prefers-reduced-motion: reduce) {
+  :is(.pp-soon, .advr-soon, .adv-page .adv-walk-badge)::before { animation: none; }
+}
+
+/* 21 Nov 2026 (Seb): newsletter sign-up confirmation: "You've subscribed" in GRASS 600, Montserrat Black,
+   10px above the form's usual message size (all forms, all sizes). */
+form [data-status].is-subscribed {
+  color: #01a684 !important;
+  font-family: var(--font-sans);
+  font-size: 26px !important;
+  font-weight: 900 !important;
+  line-height: 1.2;
+}
+.footer form [data-status].is-subscribed { font-size: 24px !important; }
+
+/* Contact form: the Send button keeps its width on hover (all sizes). */
+.contact-form button.btn-teal,
+.contact-form button.btn-teal:hover,
+.contact-form button.btn-teal:focus-visible { padding: 10px 56px 10px 20px !important; }
+.contact-form button.btn-teal:hover,
+.contact-form button.btn-teal:focus-visible { padding: 10px 20px 10px 56px !important; }
+
+/* Seb round 2, 22 Nov 2026: compact actions clear the 32px disc in both states. */
+html body :is(a.btn-apply, a.btn-case, a.btn-teal, a.btn-partnership, a.btn-terms,
+  button.btn-teal, button.btn-subscribe, .buzzsprout-gate button):is([class], button) {
+  box-sizing: border-box;
+  min-width: 0 !important;
+  max-width: 100%;
+  min-height: 46px !important;
+  height: auto !important;
+  border: 0 !important;
+  padding: 8px 52px 8px 18px !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+}
+html body :is(a.btn-apply, a.btn-case, a.btn-teal, a.btn-partnership, a.btn-terms,
+  button.btn-teal, button.btn-subscribe, .buzzsprout-gate button):is([class], button):is(:hover, :focus-visible) {
+  padding: 8px 18px 8px 52px !important;
+}
+html body :is(a.btn-apply, a.btn-case, a.btn-teal, a.btn-partnership, a.btn-terms,
+  button.btn-teal, button.btn-subscribe, .buzzsprout-gate button)::before,
+html body :is(a.btn-apply, a.btn-case, a.btn-teal, a.btn-partnership, a.btn-terms,
+  button.btn-teal, button.btn-subscribe, .buzzsprout-gate button)::after {
+  width: 32px !important;
+  height: 32px !important;
+}
+html body :is(a.btn-apply, a.btn-case, a.btn-teal, a.btn-partnership, a.btn-terms,
+  button.btn-teal, button.btn-subscribe, .buzzsprout-gate button)::before {
+  left: 8px !important;
+}
+html body :is(a.btn-apply, a.btn-case, a.btn-teal, a.btn-partnership, a.btn-terms,
+  button.btn-teal, button.btn-subscribe, .buzzsprout-gate button)::after {
+  right: 8px !important;
+}
+/* Seb round 2, 22 Nov 2026: story actions retain the shared secondary fill. */
+html body .st-page .st-case a.btn-teal,
+html body :is(a.btn-teal, a.btn-terms, button.btn-teal, button.btn-subscribe, .buzzsprout-gate button,
+  .btn-soft, .nl-btn-ghost, .ss .ss-btn, .fl--home .fl-btn),
+html body :is(a.btn-teal, a.btn-terms, button.btn-teal, button.btn-subscribe, .buzzsprout-gate button,
+  .btn-soft, .nl-btn-ghost, .ss .ss-btn, .fl--home .fl-btn):is(:hover, :focus-visible) {
+  background: var(--color-grass-500) !important;
+  border-color: var(--color-grass-500) !important;
+  color: var(--color-dream-500) !important;
+}
+html body :is(a.btn-case, a.btn-partnership, a.btn-teal.btn-dream, .btn-outline),
+html body :is(a.btn-case, a.btn-partnership, a.btn-teal.btn-dream, .btn-outline):is(:hover, :focus-visible) {
+  background: var(--color-dream-500) !important;
+  border-color: var(--color-grass-500) !important;
+  color: var(--color-white) !important;
+}
+/* Seb round 2, 22 Nov 2026: purple actions use teal on the dark closing band. */
+html body .adv-cta a.btn-teal.btn-dream,
+html body .adv-cta a.btn-teal.btn-dream:is(:hover, :focus-visible) {
+  background: var(--color-grass-500) !important;
+  color: var(--color-dream-500) !important;
+}
+/* Apply is the only action with a HEART 600 fill, including external application forms.
+   Legacy booking-row links using btn-apply keep the secondary skin below. */
+html body :is(a.btn-apply, a.btn-teal[href*="apply"]),
+html body :is(a.btn-apply, a.btn-teal[href*="apply"]):is(:hover, :focus-visible) {
+  background: var(--color-heart-600) !important;
+  border-color: var(--color-heart-600) !important;
+  color: var(--color-white) !important;
+}
+html body .bk-btn-row a.btn-apply:not([href*="apply"]),
+html body .bk-btn-row a.btn-apply:not([href*="apply"]):is(:hover, :focus-visible) {
+  background: var(--color-grass-500) !important;
+  border-color: var(--color-grass-500) !important;
+  color: var(--color-dream-500) !important;
+}
+html body :is(.btn-outline, .btn-soft, .nl-btn-ghost, .ss .ss-btn, .fl--home .fl-btn) {
+  height: auto;
+  min-height: 46px !important;
+  border: 0 !important;
+  box-sizing: border-box;
+  padding: 7px 15px;
+}
+@media (hover: none), (pointer: coarse) {
+  html body :is(a[class*="btn-"], button[class*="btn-"], .buzzsprout-gate button) { min-height: 46px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html body :is(a.btn-apply, a.btn-case, a.btn-teal, a.btn-partnership, a.btn-terms,
+    button.btn-teal, button.btn-subscribe, .buzzsprout-gate button):is([class], button):is(:hover, :focus-visible) {
+    padding: 8px 52px 8px 18px !important;
+  }
+}
+
+/* Seb round 2, 22 Nov 2026: keep case chevrons visible on the solid purple fill. */
+html body a.btn-case::before,
+html body a.btn-case::after {
+  background-color: #fff !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6 3.5 10.5 8 6 12.5' fill='none' stroke='%232A0B4F' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+}
+
+/* Seb round 2, 22 Nov 2026: Residency subline, shared across heroes. */
+html body main :is(.hero .lede, .ep-hero .ep-sub, .hw-hero .hw-hero-lede, .hw-hero .hw-hero-sub,
+  .dr-hero-sub, .advr-hero .advr-lede, .adv-hero .adv-lede, .wf-hero .wf-lead,
+  .wfp-hero .wfp-extra, .bl-hero-lede, .bl-head .bl-dek, .ab-hero-copy > p, .faq-hero-intro,
+  .st-hero-copy > p, .cs-hero .cs-intro, .pod-hero .pod-sub, .nl-hero .nl-lede,
+  .privacy-hero-sub, .subhero > p, .apl-hero .apl-sub, .pod-ep-hero .pod-sub,
+  .bli-hero .bl-dek, .bk-head > p:not([class])) {
+  color: #fff !important;
+  font-family: var(--font-sans) !important;
+  font-size: var(--hero-subline-size) !important;
+  font-weight: var(--hero-subline-weight) !important;
+  line-height: var(--hero-subline-leading) !important;
+  letter-spacing: 0 !important;
+  font-style: normal !important;
+}
+/* Seb round 2, 22 Nov 2026: captions sit 6px below actions, including flex gaps. */
+main { --button-caption-color: #8171a3; }
+main :is(.hero, .ep-hero, .hw-hero, .dr-hero, .advr-hero, .adv-hero, .wf-hero,
+  .st-hero, .cs-hero, .ab-hero, .nl-hero, .pod-hero, .bl-hero, .bli-hero, .privacy-hero,
+  .apl-hero, .card.ink, .st-cta, .wf-cta) { --button-caption-color: #b2a6cf; }
+main :is(.card:not(.ink), .ep-box, .hw-stage-block) { --button-caption-color: #8171a3; }
+main :is(.caption-on-grass, .card-before) { --button-caption-color: #01a684; }
+main .caption-on-play { --button-caption-color: #a9973e; }
+html body main :is(.stage-note, .btn-caption, .hw-btn-sub, .hw-hero-cta-note, .hw-wf-note,
+  .wf-note, .st-cta-note, .case-protect, .hw-case-note, .wf-case-note, .bk-case-note, .apl-limit, #apply-first .cap-pill,
+  #apply-v .cap-small, #next .next-note) {
+  margin-top: calc(6px - var(--button-caption-parent-gap, 0px)) !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: none !important;
+  opacity: 1 !important;
+  font-weight: 400 !important;
+  font-style: italic !important;
+  line-height: 1.6 !important;
+  text-align: center !important;
+}
+/* One image/button caption style, including pages with older local overrides. */
+html body main#main :is(.caption, .stage-note, .btn-caption, .hw-btn-sub, .hw-hero-cta-note,
+  .hw-wf-note, .wf-note, .st-cta-note, .case-protect, .hw-case-note, .wf-case-note,
+  .bk-case-note, .apl-limit, .cap-pill, .cap-small, .next-note, .hw-limited,
+  .nl-closing-caption, .ab-cta-note, .dr-door-note, .pod-video-caption, .st-anon,
+  .btn-with-caption > p, figure:has(> img, > picture) > figcaption) {
+  color: var(--color-dream-400) !important;
+  font-size: 12px !important;
+  font-style: italic !important;
+}
+html body main :is(.hw-steps-cta, .hw-wf-cta, .wf-apply, .wf-center:has(> .wf-note), .btn-with-caption, .btn-stack) {
+  row-gap: 0;
+}
+html body main .btn-with-caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Seb round 2, 22 Nov 2026: avoid percentage-button shrinkage inside captions. */
+  width: max-content;
+  max-width: 100%;
+}
+html body main .btn-with-caption > :is(a.btn-apply, a.btn-case, a.btn-teal) {
+  width: max-content;
+}
+main .st-cta { --button-caption-parent-gap: 18px; }
+html body main :is(a[class*="btn-"]):has(+ :is(.stage-note, .btn-caption, .hw-btn-sub, .hw-wf-note, .wf-note, .st-cta-note)) {
+  margin-bottom: 0 !important;
+}
+
+/* G8: intro only; quotes keep their own alignment. Enough width for the desktop lede. */
+html body main :is(#hw-familiar, #ep-familiar, #dr-familiar, #adv-tell, #advi-voices),
+html body main :is(#hw-familiar, #ep-familiar, #dr-familiar, #adv-tell, #advi-voices) + p {
+  max-width: none !important;
+  width: 100%;
+  margin-inline: auto;
+  text-align: center !important;
+}
+
+/* Seb round 2, 22 Nov 2026: plain audio/WHOOP links inherit their band text colour. */
+html body main :is(.au-more, .wh-more) { color: inherit !important; }
+html body main :is(.au-more, .wh-more) a {
+  color: inherit !important;
+  background-image: none !important;
+  text-decoration: underline !important;
+  text-decoration-color: var(--color-grass-500) !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 4px;
+}
+
+/* G13: method headings and stage taglines use HEART 500. Light pill backgrounds keep red legible. */
+html body main :is(.hw-tagline, .hw-flow > strong, .hw-flow > a, .hw-flow > a > strong, #hw-steps),
+html body .ss .ss-panel .ss-line { color: var(--color-heart-500) !important; }
+html body main .hw-tagline,
+html body .ss .ss-panel .ss-line { background: var(--color-dream-25) !important; }
+
+/* Every content card retains the v7 one-pixel HEART outline; outer section frames are excluded. */
+html body main :is(.card, .bl-card, .tw-card, .st-card, .review-card, .bk-quote, .ep-box,
+  .ep-qcard, .pp-step, .pp-card, .au-mode, .au-ac, .au-sci-col, .wh-card, .wh-metric,
+  .wh-panel, .adv-aud-card, .adv-step, .ab-vision-card, .fw-step, .ss-panel) {
+  border: 1px solid var(--color-heart-500) !important;
+}
+
+/* Webb round-2 QA: illustrations must not intercept content links. ThroughLine is unchanged. */
+html body .page-home :is(.hero-draw, .exit-machine, .why-sketch) {
+  pointer-events: none;
+}
+html body .page-home :is(.hero-draw, .exit-machine, .why-sketch) :is(a, button) {
+  pointer-events: auto;
+}
+
+/* Running-text links retain their rest state; hover and keyboard focus share a cue. */
+html body main#main a[href]:not([class*="btn"], [class*="pill"], [class*="tab"], [class*="badge"], [class*="card"], [class*="nav"], [class*="logo"], [class*="media"], [class*="thumb"]):not(:has(img, picture, h2, h3, h4)):not(nav a, [role="navigation"] a):is(:hover, :focus-visible) {
+  color: var(--inline-hover-color, #05745b) !important;
+  background-image: none !important;
+  text-decoration-line: underline !important;
+  text-decoration-color: var(--inline-hover-color, #05745b) !important;
+  text-decoration-thickness: 3px !important;
+  text-underline-offset: 4px;
+}
+html body main#main a[href]:not([class*="btn"], [class*="pill"], [class*="tab"], [class*="badge"], [class*="card"], [class*="nav"], [class*="logo"], [class*="media"], [class*="thumb"]):not(:has(img, picture, h2, h3, h4)):not(nav a, [role="navigation"] a):is(:hover, :focus-visible) :is(strong, em, span) {
+  color: inherit !important;
+}
+/* White text on purple bands needs bright GRASS, including compact audio embeds. */
+main :is(.hero, .ep-hero, .hw-hero, .dr-hero, .advr-hero, .adv-hero, .wf-hero,
+  .st-hero, .cs-hero, .ab-hero, .nl-hero, .pod-hero, .bl-hero, .bli-hero, .privacy-hero,
+  .apl-hero, .au--compact, .hw-retreat, .hw-option-b, .card.ink, .pp-close) {
+  --inline-hover-color: #28dbb0;
+}
+
+/* Disclosure controls requested here; Exit-Prep FAQ keeps its existing behavior. */
+html body main#main details.wf-more > summary:is(:hover, :focus-visible) {
+  background-color: rgba(88, 68, 127, .1) !important;
+  color: #05745b !important;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+}
+html body main#main .adv-center-page .adv-faq-trigger:is(:hover, :focus-visible) {
+  background-color: rgba(88, 68, 127, .1) !important;
+}
+html body main#main .adv-center-page .adv-faq-item:has(.adv-faq-trigger:is(:hover, :focus-visible)) {
+  border-color: #58447f;
+}
+
+/* Linked labels use button-proportional corners at every width. */
+html body main#main :is(a.bl-pill, .dr-page a.dr-door-pill, .bli-tab) { border-radius: 10px; }
+html body main#main :is(a.bl-pill, a.dr-door-pill, .bli-tab):not(.is-current, [aria-current="page"], [aria-pressed="true"]):is(:hover, :focus-visible) {
+  background-color: rgba(40, 219, 176, .25) !important;
+  border-color: #05745b !important;
+  color: #05745b !important;
+}
+/* Dark door labels keep a solid fill so white surroundings do not affect contrast. */
+html body main#main .dr-page a.dr-door-pill:is(:hover, :focus-visible) {
+  background-color: #58447f !important;
+  border-color: #58447f !important;
+  color: #fff !important;
+}
+html body main#main .dr-path--after a.dr-door-pill:is(:hover, :focus-visible) {
+  background-color: #05745b !important;
+  border-color: #05745b !important;
+}
+
+@media (min-width: 1366px) {
+  /* N1: preserve the shared 21px / 31.5px hero typography. */
+  html body .nl-page .nl-hero-center :is(.nl-copy, .nl-lede) { max-width: 1080px; }
+
+  /* N4 / C4 / E3: extra space belongs outside the closing frames. */
+  html body .nl-page .nl-closing { margin-top: 125px; margin-bottom: 32px; }
+  html body .page-contact > .privacy-band:last-child { padding-bottom: 35px; }
+  html body .pp-page:has(#es-hold) .pp-close {
+    padding-block: 56px; /* b7dc1a2 original, src/styles/products.css */
+    margin-block: 32px;
+  }
+
+  /* Equal Home door buttons and matching V story buttons on Reset and Build. */
+  html body .page-home #for-you .foryou-grid--pair :is(.card-before, .card-after) > a {
+    box-sizing: border-box;
+    min-width: 272px !important;
+  }
+  html body main :is(.hw-page--s1, .hw-page--s2) .hw-case-feature .btn-with-caption { min-width: 259px; }
+  html body main :is(.hw-page--s1, .hw-page--s2) .hw-case-feature .btn-with-caption > .btn-teal {
+    box-sizing: border-box;
+    min-width: 259px !important;
+  }
+
+  /* Only action captions on light surfaces: identity notices retain their existing styles. */
+  html body main :is(.stage-note, #apply-first .cap-pill, #apply-v .cap-small,
+    .wf-note, .hw-limited, .hw-wf-note, .apl-card .apl-limit, .st-cta-note) {
+    color: #58447f !important;
+  }
+  html body main .st-cta-note { --button-caption-size: 11px; }
+  html body main :is(.wf-note, .hw-wf-note, .apl-card .apl-limit) { --button-caption-size: 14px; }
+  html body main .hw-page--s2 .hw-limited.hw-btn-sub { --button-caption-size: 12px; }
+
+  html body .advr-tools-page .advr-perks li { border-style: dotted; }
+}

@@ -1,0 +1,206 @@
+/* Round 5 part d (Seb t1952u + answers t1957u, 23 Nov 2026) */
+
+/* 47: Arta's one-team drawing. The semantic list is also the visible set of labels. */
+html body main#main .inf {
+  position: relative;
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr) 200px;
+  align-items: center;
+  gap: 40px 24px;
+  max-width: 1080px;
+  margin: 40px auto 0;
+  padding: 64px 56px 76px;
+  border-radius: 24px;
+  background: #2A0B4F;
+  box-shadow: none;
+}
+.inf-caption { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.inf-drawing { grid-column: 2; grid-row: 1 / 3; min-width: 0; }
+.inf-drawing svg { display: block; width: 100%; height: auto; overflow: visible; }
+html body main#main .inf .inf-labels { display: contents; margin: 0; padding: 0; list-style: none; }
+html body main#main .inf .inf-label {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  color: #FFFFFF;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.5;
+  list-style: none;
+  text-wrap: pretty;
+  transition: opacity 450ms cubic-bezier(.22, 1, .36, 1), transform 450ms cubic-bezier(.22, 1, .36, 1);
+}
+.inf [data-q="tl"] { --quarter: #FD6B82; }
+.inf [data-q="bl"] { --quarter: #FEFABE; }
+.inf [data-q="tr"] { --quarter: #28DBB0; }
+.inf [data-q="br"] { --quarter: #C2B7DD; }
+.inf-label[data-q="tl"] { grid-column: 1; grid-row: 1; text-align: right; }
+.inf-label[data-q="bl"] { grid-column: 1; grid-row: 2; text-align: right; }
+.inf-label[data-q="tr"] { grid-column: 3; grid-row: 1; }
+.inf-label[data-q="br"] { grid-column: 3; grid-row: 2; }
+.inf-label::before { content: ""; display: block; width: 32px; height: 4px; margin-bottom: 12px; border-radius: 2px; background: var(--quarter); transform-origin: left; transition: transform 350ms ease; }
+.inf-label:is([data-q="tl"], [data-q="bl"])::before { margin-left: auto; transform-origin: right; }
+.inf #inf-ball { visibility: hidden; }
+.inf.is-anim:not(.is-paused) #inf-ball { visibility: visible; }
+.inf.is-anim #inf-track { opacity: 1; }
+html body main#main .inf.is-anim .inf-label { opacity: 0; transform: translateY(10px); }
+.inf.is-anim .inf-label::before { transform: scaleX(0); }
+html body main#main .inf.is-anim .inf-label.is-on { opacity: 1; transform: none; }
+.inf.is-anim .inf-label.is-on::before { transform: scaleX(1); }
+html body main#main .inf.is-anim.is-fading .inf-label { opacity: 0; }
+html body main#main .inf .inf-toggle {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  min-height: 44px;
+  margin: 0;
+  padding: 10px;
+  border: 1px solid #C2B7DD;
+  border-radius: 50%;
+  background: transparent;
+  color: #F5F2FF;
+  cursor: pointer;
+  box-shadow: none;
+  transition: background-color 200ms ease;
+}
+html body main#main .inf .inf-toggle[hidden] { display: none; }
+html body main#main .inf .inf-toggle:hover { background: #58447F; }
+html body main#main .inf .inf-toggle:focus-visible { outline: 2px solid #28DBB0; outline-offset: 3px; }
+.inf-toggle svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.inf-toggle .inf-play-icon, .inf.is-paused .inf-pause-icon { display: none; }
+.inf.is-paused .inf-play-icon { display: block; }
+
+/* 48–52: stronger card contrast and separate, straight section bands. */
+html body main#main .adv-center-page .adv-aud-card,
+html body main#main .adv-center-page .adv-aud-card :is(h3, p),
+html body main#main .adv-center-page .adv-door,
+html body main#main .adv-center-page .adv-door :is(h3, p, a):not(.btn-teal) { color: #110027; }
+html body main#main .adv-center-page .adv-door--exit { background: #C2B7DD; border: 1px solid #8B7DAE; }
+html body main#main .adv-center-page .adv-door--wealth { background: #A3F2D7; border: 1px solid #01A684; }
+html body main#main .adv-center-page .adv-door a.btn-teal:not(.btn-dream) { background: #FFFFFF; color: #110027 !important; }
+html body main#main .adv-center-page .adv-door a.btn-teal:not(.btn-dream):is(:hover, :focus-visible) { background: #F5F2FF; color: #110027 !important; }
+html body main#main .adv-center-page .adv-toolkit-band,
+html body main#main .adv-center-page .adv-toolkit-band .sq-band { background: #FEFEF3; border-radius: 0; }
+html body main#main .adv-center-page .adv-recommend-band { background: #F5F2FF; border-radius: 0; }
+html body main#main .adv-center-page .adv-close-band { background: #FFFFFF; }
+
+/* 50, 53: supplied founder-facing device artwork, with the credit below the device. */
+html body main#main .adv-center-page:not(.adv-referrals-page) .fl--advisor .fl-panel { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
+html body main#main .fl .fl-arta-device { position: relative; width: 100%; min-width: 0; margin: 0 auto; }
+html body main#main .fl .fl-arta-device--phone { max-width: 300px; }
+html body main#main .fl .fl-arta-device--laptop { max-width: 880px; }
+.fl-arta-device > img { display: block; width: 100%; height: auto; border: 0; box-shadow: none; }
+html body main#main .fl .fl-arta-device .fl-by { margin: 18px 0 0; color: #58447F; font-size: 13px; font-weight: 400; text-align: center; }
+.fl-arta-tags > span {
+  position: absolute;
+  width: 110px;
+  max-width: 150px;
+  padding: 10px 14px;
+  border: 1px solid #C2B7DD;
+  border-radius: 14px;
+  background: #FFFFFF;
+  color: #2A0B4F;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.fl-arta-tags > span::before { content: ""; display: block; width: 10px; height: 10px; margin-bottom: 6px; border-radius: 50%; background: #28DBB0; }
+.fl-arta-tags > span:first-child { right: calc(100% - 6px); top: 132px; }
+.fl-arta-tags > span:last-child { left: calc(100% - 6px); top: 440px; }
+.fl-arta-tags > span:last-child::before { background: #EA1557; }
+html body main#main .adv-referrals-page .fl--art-laptop-journey .fl-panel { grid-template-columns: minmax(0, 1fr); gap: 44px; }
+html body main#main .adv-referrals-page .fl--advisor .fl-copy { max-width: 640px; }
+html body main#main .adv-referrals-page .fl--advisor .fl-visual { width: 100%; max-width: none; }
+
+/* 54–57: one flat composition per card, an inherited separator, and a shared hover. */
+html body main#main .advr-page.advr-tools-page .advr-tool-visual {
+  height: auto;
+  aspect-ratio: 8 / 5;
+  background: #FFFFFF;
+  border-bottom: 1px solid;
+  border-color: inherit;
+  overflow: hidden;
+}
+html body main#main .advr-tools-page .advr-tool-visual--composite img {
+  position: static;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: 50% 0;
+  border: 0;
+  transform: none;
+}
+html body main#main .advr-page.advr-tools-page .advr-card { transition: background-color 200ms, color 200ms; transform: none; box-shadow: none; }
+html body main#main .advr-page.advr-tools-page .advr-card:is(:hover, :focus-visible, :focus-within) { background: #2A0B4F; transform: none; box-shadow: none; }
+html body main#main .advr-page.advr-tools-page .advr-card:is(:hover, :focus-visible, :focus-within) :is(h2, p, .advr-more, a.advr-link) { color: #FFFFFF; }
+html body main#main .advr-page.advr-tools-page .advr-card:is(:hover, :focus-within) .advr-actions .btn-dream { background: #FFFFFF; color: #110027; }
+html body main#main .advr-page.advr-tools-page .advr-card .advr-actions .btn-dream:is(:hover, :focus-visible) { background: #A3F2D7; color: #110027; }
+html body main#main .advr-page.advr-tools-page .advr-card a.advr-link:is(:hover, :focus-visible) { color: #A3F2D7; text-decoration-thickness: 2px; }
+html body main#main .advr-page.advr-tools-page .advr-card--link:focus-visible { outline: 2px solid #110027; outline-offset: 4px; }
+
+/* 58: compact conversation starters with a distinct quotation glyph. */
+html body main#main .advr-tools-page .advr-question-quotes li { padding: 24px 28px; border: 1px solid #7BA4FF; background: #AEC8FE; color: #110027; }
+html body main#main .advr-tools-page .advr-question-quotes li:nth-child(2) { border-color: #FEB5BC; background: #FFE2E4; }
+html body main#main .advr-tools-page .advr-question-quotes li:nth-child(3) { border-color: #01A684; background: #A3F2D7; }
+html body main#main .advr-tools-page .advr-question-quotes blockquote { border: 0; padding: 0; margin: 0; }
+html body main#main .advr-tools-page .advr-question-quotes blockquote::before { height: 42px; color: #EA1557; font-family: Georgia, "Times New Roman", serif; font-size: 48px; font-weight: 700; line-height: 1; }
+html body main#main .advr-tools-page .advr-question-quotes p { color: #110027; font-size: 22px; font-weight: 400; line-height: 1.6; }
+
+/* 59: the logo retains its own size; the tilted phone crops only at the panel edge. */
+html body main#main .advr-tools-page .advr-founder-brief { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: end; padding: 40px 44px 0; overflow: hidden; border: 1px solid #C2B7DD; background: #F5F2FF; box-shadow: none; }
+.advr-founder-brief-copy { min-width: 0; padding-bottom: 48px; align-self: center; }
+html body main#main .advr-tools-page .advr-founder-brief .advr-founder-brief-logo { width: 150px; height: auto; max-width: 100%; margin: 0 0 18px; }
+html body main#main .advr-tools-page .advr-founder-brief .advr-founder-brief-phone { width: 360px; max-width: 100%; height: auto; margin: 0 auto -150px; align-self: end; }
+
+@media (max-width: 1200px) {
+  .fl-arta-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 18px; }
+  .fl-arta-tags > span { position: static; width: auto; flex: 1 1 110px; }
+}
+@media (min-width: 641px) and (max-width: 1000px) {
+  html body main#main .inf { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 40px 32px 80px; gap: 28px; }
+  .inf-drawing { grid-column: 1 / -1; grid-row: 1; width: 100%; max-width: 520px; justify-self: center; }
+  .inf-label[data-q="tl"] { grid-column: 1; grid-row: 2; text-align: left; }
+  .inf-label[data-q="tr"] { grid-column: 2; grid-row: 2; }
+  .inf-label[data-q="bl"] { grid-column: 1; grid-row: 3; text-align: left; }
+  .inf-label[data-q="br"] { grid-column: 2; grid-row: 3; }
+  .inf-label:is([data-q="tl"], [data-q="bl"])::before { margin-left: 0; transform-origin: left; }
+}
+@media (max-width: 960px) {
+  html body main#main .advr-tools-page .advr-question-quotes { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  html body main#main .inf { display: block; padding: 36px 22px 76px; }
+  .inf-drawing { margin-bottom: 32px; }
+  html body main#main .inf .inf-labels { display: grid; gap: 20px; }
+  html body main#main .inf .inf-label { grid-column: auto; grid-row: auto; padding-left: 18px; font-size: 16px; text-align: left; }
+  .inf-label::before { position: absolute; inset: 0 auto 0 0; width: 4px; height: 100%; margin: 0; transform-origin: center; }
+  html body main#main .inf.is-anim .inf-label,
+  html body main#main .inf.is-anim .inf-label.is-on,
+  html body main#main .inf.is-anim.is-fading .inf-label { opacity: .6; transform: none; }
+  html body main#main .inf.is-anim .inf-label.is-now,
+  html body main#main .inf.is-anim.is-holding .inf-label,
+  html body main#main .inf.is-anim.is-paused .inf-label { opacity: 1; }
+  .inf.is-anim .inf-label::before,
+  .inf.is-anim .inf-label.is-on::before { transform: scaleY(.35); }
+  .inf.is-anim .inf-label.is-now::before,
+  .inf.is-anim.is-holding .inf-label::before,
+  .inf.is-anim.is-paused .inf-label::before { transform: scaleY(1); }
+  html body main#main .inf .inf-toggle { right: 16px; bottom: 16px; }
+  html body main#main .adv-center-page:not(.adv-referrals-page) .fl--advisor .fl-panel { grid-template-columns: minmax(0, 1fr); }
+  html body main#main .fl .fl-arta-device--phone { max-width: 250px; }
+  html body main#main .advr-tools-page .advr-founder-brief { grid-template-columns: minmax(0, 1fr); padding: 28px 22px 0; gap: 0; }
+  html body main#main .advr-tools-page .advr-founder-brief .advr-founder-brief-phone { width: 280px; margin-bottom: -120px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html body main#main .inf .inf-label { opacity: 1; transform: none; transition: none; }
+  .inf .inf-label::before { transform: none; transition: none; }
+  .inf #inf-ball { visibility: hidden !important; }
+  html body main#main .inf .inf-toggle { display: none; }
+  html body main#main .advr-page.advr-tools-page .advr-card { transition: none; }
+}

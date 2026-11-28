@@ -1,0 +1,406 @@
+---
+import SignatureDraw from "../components/SignatureDraw.astro";
+import "../styles/about.css";
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import Wave from "../components/Wave.astro";
+import { edgeAbove } from "../data/edge-line";
+import { sebPerson, sebBook, sebPersonId } from "../data/seb-person";
+import team from "../assets/photos/wayfinders.png";
+import teamMobile from "../assets/photos/wayfinders-mobile.png";
+import ioda from "../assets/photos/ioda-logo-green.png";
+
+const tint = "#F5F2FF";
+const heroEdge = edgeAbove("#2A0B4F");
+const bandEdge = edgeAbove(tint);
+const footerEdge = edgeAbove(tint);
+
+// NEW DRAFT COPY: for Seb's review (Premise cards)
+const premises = [
+  {
+    title: "Freedom does not settle itself.",
+    text: "You have more time and more options, but the structure is gone, and that can leave you unsettled.",
+  },
+  {
+    title: "You are more than the company.",
+    text: "When the company becomes too much of who you are, filling the space with more projects will not answer what belongs next.",
+  },
+  {
+    title: "Success should not cost what matters most.",
+    text: "Your sleep, your health and your family were easier to put off while the company needed you, and they deserve your attention now.",
+  },
+];
+// About page as structured data: the page is about DoGood Agency, founded by Seb (20 Nov 2026).
+const aboutLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "@id": "https://www.dogoodagency.co/about#webpage",
+      url: "https://www.dogoodagency.co/about",
+      name: "About DoGood",
+      isPartOf: { "@id": "https://www.dogoodagency.co/#website" },
+      about: { "@id": "https://www.dogoodagency.co/#organization" },
+      mentions: [{ "@id": sebPersonId }],
+    },
+    { ...sebPerson, image: "https://www.dogoodagency.co/media/wayfinders/seb@2x.webp" },
+    sebBook,
+  ],
+};
+---
+
+<Base
+  title="About DoGood: exit coaching for founders | DoGood Agency"
+  description="DoGood Agency offers exit coaching for founders before and after they sell their business. Why we exist, what the name means, and the people behind the work."
+  canonical="https://www.dogoodagency.co/about"
+  footerStrip={tint}
+  footerEdge={footerEdge}
+>
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(aboutLd)} />
+  <article class="ab-page">
+    <header class="ab-hero">
+      <div class="ab-hero-inner ab-hero-text">
+        <div class="ab-hero-copy">
+          <h1 class="r4-phrase-title">For founders,<br class="pp-desktop-break" /> <span class="ab-accent">before and after the sale.</span></h1>
+          <p>DoGood Agency is a private 1:1 partnership for founders before and after they sell their business. We are for founders who do not want life after the company to become another version of the life they left behind.</p>
+          {/* R9.P: only the words are linked, the ™ stays outside the link. The trademark integration adds a ™ after any
+              text node that ends in "The Reset" / "The Build", so the second word sits in its own span (the name is then
+              not matched) and the ™ is written out here. */}
+          <p>You apply for Stage 1, <a class="seo-inlink seo-inlink--on-dark" href="/the-reset">The <span>Reset</span></a>™, a private 30-day engagement. If it fits, Stage 2, <a class="seo-inlink seo-inlink--on-dark" href="/the-build">The <span>Build</span></a>™, follows by invitation only.</p>
+        </div>
+      </div>
+      <Wave fill={tint} edge={heroEdge} />
+    </header>
+
+    <!-- 21 Nov 20:23 (Seb): vision / mission in the first DREAM 25 #F5F2FF band. -->
+    <section class="ab-band ab-band-tint ab-band-statements" aria-label="Our vision and mission">
+      <div class="ab-well">
+        <!-- Seb round 2, 22 Nov 2026: vision feeds mission. -->
+        <div class="ab-duo ab-purpose-flow">
+          <section class="ab-statement card ab-statement--vision" aria-labelledby="ab-purpose">
+            <h2 id="ab-purpose">Our vision</h2>
+            <p>Every entrepreneur builds consciously: a life of creation and service that does good to themselves, the people around them, and to the world.</p>
+            <svg class="ab-diagram" viewBox="0 44 400 164" aria-hidden="true" fill="none">
+              <g class="ab-flow-line"><path d="M62 104 H112 M170 104 H260 M218 104 V172 Q218 178 236 178 H260" /></g>
+              <g class="ab-pen">
+                <path transform="translate(0 -24)" d="M27 92c-3-17 23-20 23-3 1 16-23 18-23 3zm-9 47 4-24q14-13 29-1l7 25m-34-10 27 1M29 139l-3 13m18-13 5 13" />
+                <path class="ab-accent-fill" d="M126 93c-15-17 6-30 17-13 13-18 32-2 18 12l-18 19z" />
+                <path d="m127 119 33 1m-21 0-2 9m14-9 3 9" />
+                <path d="M274 88c-2-12 14-13 14-1s-14 12-14 1zm19 0c-1-11 14-11 14 0s-14 11-14 0zm-25 30 3-17q9-8 19 0m-1 17 3-17q9-8 18 0l4 17" />
+                <path d="M309 174c0 28-43 28-43 0s43-29 43 0zm-22-21c-10 12-11 30 0 42m-19-22 39 1m-31-16 10 9-5 11 14 5 4-10" />
+                <path class="ab-pink-stroke" d="m151 65 3-9m12 16 8-5m-54 7-7-5" />
+              </g>
+              <g class="ab-diagram-label"><text x="42" y="155" text-anchor="middle"><tspan x="42">Entre-</tspan><tspan x="42" dy="19">preneurs</tspan></text><text x="143" y="153" text-anchor="middle"><tspan x="143">Doing</tspan><tspan x="143" dy="19">good</tspan></text><text x="320" y="95"><tspan x="320">People</tspan><tspan x="320" dy="19">they love</tspan></text><text x="320" y="181">The world</text></g>
+            </svg>
+          </section>
+          <section class="ab-statement card" aria-labelledby="ab-mission">
+            <h2 id="ab-mission">Our mission</h2>
+            <p>We put tools for the human side of entrepreneurship in the hands of every entrepreneur on the planet.</p>
+            <svg class="ab-diagram" viewBox="0 12 400 164" aria-hidden="true" fill="none">
+              <g class="ab-flow-line"><path d="M80 69 H202 M268 69 H306" /></g>
+              <g class="ab-pen">
+                <path d="m25 52 20-5 19 6 19-6-1 38-19 5-19-5-19 5zm20-5-1 38m20-32-1 37m-31-29 7-2m13 1 6 2" />
+                <path class="ab-accent-fill" d="M258 66c2 32-47 33-46 1s46-33 46-1z" />
+                <path d="M234 44c-12 14-12 32 1 45m-22-23 43 1m-35-18 12 11-6 13 14 4 5-13" />
+                <path d="M318 53c-2-13 17-14 17-1s-17 13-17 1zm-7 35 4-21q11-9 23 0l5 21" />
+                <path class="ab-pink-stroke" d="m273 37 6-8m0 18 10-2" />
+              </g>
+              <g class="ab-diagram-label"><text x="53" y="30" text-anchor="middle">Tools</text><text x="272" y="109" text-anchor="middle"><tspan x="272">Entrepreneurs</tspan><tspan x="272" dy="19">everywhere</tspan></text></g>
+            </svg>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW DRAFT COPY: for Seb's review (Our Premise) -->
+    <section class="ab-band" aria-labelledby="ab-premise">
+      <div class="ab-well">
+        <h2 id="ab-premise">Our Premise</h2>
+        <ul class="ab-cards">
+          {
+            premises.map((item) => (
+              <li class="ab-card">
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section id="ab-why-exist" class="ab-band ab-band-tint" aria-label="Why we exist">
+      <div class="ab-well">
+        <!-- Seb round 2, 22 Nov 2026: one balanced founder letter. -->
+        <figure class="ab-quote">
+          <p class="ab-lead">A founder's message, from Seb:</p>
+          <blockquote>
+            <p>We exist because the support founders need before and after the sale is rarely found in the usual places.</p>
+            <p>Leadership experts focus on performance. Therapists help people process what is difficult. Both can have value. But neither is built for the moment when the company is no longer central, and you are working out what you actually want next.</p>
+            <p>You cannot solve that simply by finding another strategy or filling it with more projects.</p>
+            <p>I know what it costs when the company becomes too much of who you are, and when you find the patterns were never only the company’s. They come with you.</p>
+            <p>DoGood is what I wish had existed then: a private partnership for founders who do not want life after the sale to become another version of the life they left behind.</p>
+          </blockquote>
+          <figcaption>
+            <SignatureDraw class="ab-sig" />
+            <span class="ab-sig-name">Seb &amp; the entire DoGood team</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="ab-band" aria-labelledby="ab-why-dogood">
+      <div class="ab-well">
+        <h2 id="ab-why-dogood">Why 'DoGood'?</h2>
+        <p class="ab-lead">Because we love entrepreneurship.</p>
+        <div class="ab-why-grid">
+          <div>
+            <p>We love what founders build. We love what a great company can create for a family, a team, a community, and the world.</p>
+            <p>And the best founders we know are not only trying to build something successful. They want to do good.</p>
+          </div>
+          <ul class="ab-good">
+            <li>Good for themselves.</li>
+            <li>Good for their families.</li>
+            <li>Good for their teams.</li>
+            <li>Good for the world.</li>
+          </ul>
+        </div>
+        <div class="ab-why-close">
+          <p class="ab-closing">That is why we do this work.</p>
+          <p>DoGood believes that success should not come at the expense of the people and parts of life that matter most.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW DRAFT CONTEXT (Seb, 19 Nov 2026: "include more context, we will rewrite later"). From what Seb has
+         told us about DoGood: two stages, Wayfinders, alongside advisors, markets. Draft for Seb's rewrite. -->
+    <section class="ab-band ab-band-tint" aria-labelledby="ab-how">
+      <div class="ab-well">
+        <h2 id="ab-how">How we work</h2>
+        <ul class="ab-cards ab-cards--3">
+          <li class="ab-card">
+            <h3>One founder, one Wayfinder</h3>
+            <p>Every founder works one to one with a Wayfinder from our global team, matched through our client-fit process. Our Wayfinders bring more than 75 years of combined experience.</p>
+          </li>
+          <li class="ab-card">
+            <h3>In stages, not all at once</h3>
+            <p>Before the sale, Exit-Prep™. After it, Stage 1: The Reset™ (30 days) and, by invitation, Stage 2: The Build™ (12 weeks). Each stage has a clear end, so you always know where you are.</p>
+          </li>
+          <li class="ab-card">
+            <h3>Measured, not guessed</h3>
+            <p>Next to the conversations, we use WHOOP recovery and stress data and, in Stage 2, custom audio, so the changes show up in how you sleep, recover and decide.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="ab-band" aria-labelledby="ab-who">
+      <div class="ab-well">
+        <!-- Seb round 2, 22 Nov 2026: the founder and their advisor network. -->
+        <div class="ab-duo ab-people">
+          <section class="ab-statement" aria-labelledby="ab-who">
+            <h2 id="ab-who">Who we work with</h2>
+            <ol class="ab-founder-journey" aria-label="The founder's journey">
+              <li><span class="ab-journey-dot" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M12 10c-1-7 9-7 9 0s-9 7-9 0zM7 27l2-9q7-5 14 0l2 9" /></svg></span><span>Before the sale</span></li>
+              <li><span class="ab-journey-dot ab-journey-dot--founder" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M12 10c-1-7 9-7 9 0s-9 7-9 0zM7 27l2-9q7-5 14 0l2 9" /></svg></span><span>Sale</span><small>Founder</small></li>
+              <li><span class="ab-journey-dot" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M12 10c-1-7 9-7 9 0s-9 7-9 0zM7 27l2-9q7-5 14 0l2 9" /></svg></span><span>After the sale</span></li>
+            </ol>
+            <p>Founders who have sold their company or stepped back from the day-to-day, and founders getting ready to sell, mostly in the US and Canada, the UK and Europe. Most have built one company for decades and have never sold one before. We take five new founders a month.</p>
+          </section>
+          <section class="ab-statement" aria-labelledby="ab-alongside">
+            <h2 id="ab-alongside">Who we work alongside</h2>
+            <div class="ab-advisor-network" aria-hidden="true">
+              <span class="ab-founder-pill"><svg viewBox="0 0 32 32" fill="none"><path d="M12 10c-1-7 9-7 9 0s-9 7-9 0zM7 27l2-9q7-5 14 0l2 9" /></svg>Founder</span>
+              <ul class="ab-advisor-pills"><li>Exit advisors</li><li>Succession planners</li><li><span class="ab-pill-l1">Wealth advisors</span> <span class="ab-pill-l2">and family offices</span></li><li>Sell-side M&amp;A advisors</li></ul>
+            </div>
+            <p>We work alongside exit advisors, succession planners, wealth advisors and family offices, and sell-side M&amp;A advisors. They look after the business and the money. We look after the founder, next to them, never instead of them.</p>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW DRAFT COPY (18 Nov 2026), from Seb's vision notes, kept informal. Guesses from the notes (year-10
+         numbers, pricing) are deliberately left out. Seb is still shaping this. -->
+    <section class="ab-band ab-band-tint" aria-labelledby="ab-vision">
+      <div class="ab-well">
+        <div class="ab-vision-intro">
+          <div>
+            <p class="ab-eyebrow">Where we're going</p>
+            <h2 id="ab-vision">The fifth seat at the table</h2>
+            <p>Every serious exit has an exit advisor, a wealth advisor, a lawyer and a banker around the table. The exit advisor gets the company ready. The lawyer protects the deal. The banker prices it. The wealth advisor invests what comes out of it.</p>
+            <p>Nobody at the table is paid to ask the founder who they are becoming in the process.</p>
+          </div>
+          <figure class="ab-table-sketch">
+            <svg viewBox="0 0 440 360" role="img" aria-labelledby="ab-table-title" fill="none">
+              <title id="ab-table-title">A founder at a round table with five chairs: exit advisor, lawyer, banker, wealth advisor, and an empty green chair for a transition partner.</title>
+              <g class="ab-pen">
+                <path d="M101 164c-3-103 240-106 239-1s-238 107-239 1zm4 5c20 100 214 100 230-1" />
+                <g transform="translate(220 56)">
+                  <path d="m-23-15 46-1 1 35-47 1zm1 36-2 8m47-9 2 8M-7-3c-1-11 14-12 14-1s-14 12-14 1zm-7 20 3-10q11-7 22 0l3 10" />
+                </g>
+                <g transform="translate(76 117) rotate(-28)">
+                  <path d="m-21-17 42-1 1 36-43 1zm-1 36-2 8m45-9 2 8M-7-5c-1-11 14-12 14-1s-14 12-14 1zm-7 20 3-10q11-7 22 0l3 10" />
+                </g>
+                <g transform="translate(364 117) rotate(28)">
+                  <path d="m-21-17 42-1 1 36-43 1zm-1 36-2 8m45-9 2 8M-7-5c-1-11 14-12 14-1s-14 12-14 1zm-7 20 3-10q11-7 22 0l3 10" />
+                </g>
+                <g transform="translate(113 260) rotate(24)">
+                  <path d="m-23-17 46-1 1 36-47 1zm-1 36-2 8m49-9 2 8M-7-5c-1-11 14-12 14-1s-14 12-14 1zm-7 20 3-10q11-7 22 0l3 10" />
+                </g>
+                <g transform="translate(327 260) rotate(-24)">
+                  <path class="ab-accent-fill" d="m-23-17 46-1 1 36-47 1z" />
+                  <path d="m-23 20-2 8m49-9 2 8m-48-47 1-5 43-1 2 5" />
+                </g>
+                <path d="M212 144c-2-17 22-18 22-1s-22 18-22 1zm-14 49 5-24q17-13 34 0l5 24" />
+                <path class="ab-pink-stroke" d="m359 250 10-6m-8 18 12 1" />
+              </g>
+              <g class="ab-diagram-label">
+                <text x="220" y="20" text-anchor="middle">Exit advisor</text>
+                <text x="65" y="71" text-anchor="middle">Lawyer</text>
+                <text x="375" y="71" text-anchor="middle">Banker</text>
+                <text x="220" y="218" text-anchor="middle">Founder</text>
+                <text x="108" y="317" text-anchor="middle"><tspan x="108">Wealth</tspan><tspan x="108" dy="22">advisor</tspan></text>
+                <text x="327" y="317" text-anchor="middle"><tspan x="327">Transition</tspan><tspan x="327" dy="22">partner</tspan></text>
+              </g>
+            </svg>
+          </figure>
+        </div>
+
+        <ul class="ab-vision-cards">
+          <li class="ab-vision-card">
+            <svg class="ab-goal-icon ab-pen" viewBox="0 0 64 64" aria-hidden="true" fill="none"><path d="m4 29 9-14 12 8-10 17zm45-13 12 15-10 9-12-17M19 25l10-5 12 5m-24 9 15 15q4 3 7-2l11-13"/><path class="ab-accent-fill" d="m41 25-11-4-8 9q-1 5 4 4l8-5 13 11 3-6z"/><path d="m30 39 9 8m-15-4 7 6"/><path class="ab-pink-stroke" d="m28 11 1-7m8 8 4-6"/></svg>
+            <h3>A transition partner in every serious exit</h3>
+            <p>We think the founder side of a sale deserves the same care as the numbers. FOUNDRland trains and upskills our transition partner network of exit advisors, succession planners, wealth advisors and family offices, and sell-side M&amp;A advisors, who already sit at that table. We look after the standards and the training. When a founder needs to go deeper, our Wayfinders are ready.</p>
+          </li>
+          <li class="ab-vision-card">
+            <svg class="ab-goal-icon ab-pen" viewBox="0 0 64 64" aria-hidden="true" fill="none"><path d="M5 30 31 8l28 21M12 27l1 29 41-1-1-29M24 55V35l16-1 1 21M18 8l1 10"/><path class="ab-accent-fill" d="m25 36 14-1 1 20-15-3z"/><path d="m33 44 2 1"/><path class="ab-pink-stroke" d="m48 9 2-6m4 12 6-2"/></svg>
+            <h3>A house for founders, before and after the sale</h3>
+            <p>Founders are often lonely twice. First while they prepare to sell and can't tell anyone. Then after the sale, when nobody needs them any more. DoGood is the place founders can walk into through either door, with people who know both sides.</p>
+          </li>
+        </ul>
+
+        <div class="ab-vision-why">
+          <p><strong>Why now?</strong> Advisors already know the personal side matters. Yet in the Exit Planning Institute's 2023 survey of more than 1,100 business owners, 78% had no formal exit team, and only 41% had a written plan for life after the business.</p>
+          <p class="ab-vision-sign">We're still shaping it, and we're building it the way we work: one founder at a time. <span>— Seb</span></p>
+          <p class="ab-source">Source: Exit Planning Institute, 2023 National State of Owner Readiness Report.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ab-band ab-band-wf" aria-labelledby="ab-wayfinders">
+      <div class="ab-well">
+        <div class="ab-wf-copy">
+          <h2 id="ab-wayfinders">The Wayfinders</h2>
+          <!-- Seb's bio (approved by Seb, 20 Nov 2026), from "Who Seb Is: Source of Truth v1.10". -->
+          <p><a href="/wayfinders/seb">Seb</a> founded DoGood Agency. For 14+ years he has worked with founders, CEOs and executive teams across 35+ countries: leading learning and development across EMEA for Johnson &amp; Johnson, designing executive programs for Headspring (the Financial Times and IE Business School joint venture) in London and Madrid, then in his own consulting practice. He is an accredited Master NLP Practitioner and Master Trainer, a SuperCoach award recipient, and the author of <em>Instant Silence</em>.</p>
+          <p>His own business nearly broke him, so he knows from the inside what it costs when a company becomes who you are. That is the work DoGood does now: the personal side of the sale, before and after it.</p>
+          <p>FRP is delivered by an intentionally small, vetted team of Wayfinders, with 75+ years of combined founder-delivery experience: Seb, Katrin, Chantill, Shiva, and Vlora. Our Wayfinders have walked many founders through this transition. You don't have to work it out alone. You don't pick a Wayfinder. We match for fit first.</p>
+        </div>
+        <div class="ab-wf-action"><a class="btn-teal" href="/wayfinders">Meet the Wayfinders</a></div>
+        <figure class="ab-team">
+          <Image
+            src={team}
+            alt="The DoGood Wayfinders: Seb, Vlora, Chantill, Shiva and Katrin"
+            widths={[800, 1080, 1620]}
+            sizes="(max-width: 1080px) 100vw, 1080px"
+            class="ab-team-wide"
+          />
+          <!-- Phones (Seb, 21 Nov 2026): the photo without its drawn names, with name pills on top (as on the homepage). -->
+          <div class="ab-team-m" aria-hidden="true">
+            <Image src={teamMobile} alt="" widths={[600, 900, 1200]} sizes="130vw" />
+            <span class="wf-name" style="left:9%;top:33%">Seb</span>
+            <span class="wf-name" style="left:22.5%;top:5%">Vlora</span>
+            <span class="wf-name" style="left:53%;top:3%">Chantill</span>
+            <span class="wf-name" style="left:68.5%;top:1%">Shiva</span>
+            <span class="wf-name" style="left:96%;top:22%;translate:-100% -50%">Katrin</span>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- The team photo's bottom row tucks behind this wave (Seb, 18 Nov 2026). -->
+    <div class="ab-divider ab-divider--over" aria-hidden="true">
+      <svg style={`--wave-edge:${bandEdge}`} viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path fill="#F5F2FF" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path>
+        <path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path>
+      </svg>
+    </div>
+
+    <!-- IODA redesigned (Seb, 18 Nov 2026): soft DREAM band fading into white, logo card, two lines, link. -->
+    <section class="ab-band ab-band-ioda" aria-labelledby="ab-ioda">
+      <div class="ab-well">
+        <div class="ab-ioda">
+          <figure class="ab-ioda-logo">
+            <Image
+              src={ioda}
+              alt="IODA, the International Organization Development Association"
+              widths={[260, 520]}
+              sizes="260px"
+            />
+          </figure>
+          <div class="ab-ioda-copy">
+            <p class="ab-eyebrow">Our professional network</p>
+            <h2 id="ab-ioda">Proud member of IODA</h2>
+            <p>IODA, the International Organization Development Association, is a global network of organization development professionals spanning more than 50 countries.</p>
+            <p>Being part of it keeps us learning from colleagues who work with people and change in very different cultures, and keeps our own practice honest.</p>
+            <p><a class="ab-text-link" href="https://www.iodanet.org/iodas-history/" target="_blank" rel="noopener">Visit IODA <span aria-hidden="true">→</span></a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ab-band ab-band-tint ab-band-next" aria-labelledby="ab-next">
+      <div class="ab-well">
+        <div class="ab-cta">
+          <h2 id="ab-next">What's next?</h2>
+          <div class="ab-next-doors">
+            <div class="ab-door ab-door--before">
+              <p>Selling in the next few years?</p>
+              <a class="btn-teal btn-dream" href="/exit-prep"><span>Start with Exit-Prep™</span></a>
+            </div>
+            <div class="ab-door ab-door--after">
+              <p>Already sold?</p>
+              <a class="btn-apply" href="/application">Apply for Stage 1</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+  <script>
+    // Seb round 2, 22 Nov 2026: reveal sections and start each diagram in view.
+    if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const flowObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-flowing");
+          flowObserver.unobserve(entry.target);
+        });
+      }, { rootMargin: "0px 0px -10% 0px" });
+      document.querySelectorAll(".ab-purpose-flow .ab-diagram, .ab-purpose-flow .ab-card-connector").forEach((diagram) => flowObserver.observe(diagram));
+      const groups = document.querySelectorAll<HTMLElement>(
+        ".ab-page .ab-duo, .ab-page .ab-cards, .ab-page .ab-quote, .ab-page .ab-why-grid, .ab-page .ab-good, .ab-page .ab-vision-cards, .ab-page .ab-vision-intro, .ab-page .ab-wf-copy, .ab-page .ab-ioda",
+      );
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (!e.isIntersecting) return;
+            const el = e.target as HTMLElement;
+            el.classList.add("is-in");
+            el.querySelectorAll<HTMLElement>(".ab-reveal").forEach((c) => c.classList.add("is-in"));
+            io.unobserve(el);
+          });
+        },
+        { rootMargin: "0px 0px -10% 0px" },
+      );
+      groups.forEach((g) => {
+        const kids = g.matches(".ab-duo, .ab-cards, .ab-good, .ab-vision-cards") ? Array.from(g.children).filter((el): el is HTMLElement => el instanceof HTMLElement) : [g];
+        kids.forEach((k, i) => {
+          k.classList.add("ab-reveal");
+          k.style.setProperty("--ab-d", `${i * 0.12}s`);
+        });
+        io.observe(g);
+      });
+    }
+  </script>
+</Base>

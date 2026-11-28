@@ -1,0 +1,43 @@
+---
+import "../styles/testimonial-wall.css";
+import { advisorVoices } from "../data/advisor-voices";
+const roles = ["All", "Exit advisor", "Wealth advisor", "M&A", "Founder"];
+const roleFor = (name: string) => name.includes("M&A") ? "M&A" : name;
+---
+
+<section class="av-quotes" data-advisor-quotes aria-labelledby="advisor-quote-title">
+  <h2 id="advisor-quote-title">In their words</h2>
+  <p class="av-intro">Anonymous words from our conversations with founders and the advisors who work with them,<br class="av-desktop-break" /> before and after the sale.</p>
+  <div class="av-filters" role="group" aria-label="Filter quotes by role" hidden>
+    {roles.map((role) => <button type="button" data-role={role} aria-pressed={role === "All" ? "true" : "false"}>{role}</button>)}
+  </div>
+  <p class="av-count" aria-live="polite" aria-atomic="true">{advisorVoices.length} quotes</p>
+  <div class="av-wall">
+    {advisorVoices.map((item) => (
+      <figure class="tw-card" data-quote-role={roleFor(item.name)}>
+        <blockquote><p>{item.quote}</p></blockquote>
+        <figcaption><span class="tw-name">{item.name}</span></figcaption>
+      </figure>
+    ))}
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-advisor-quotes]").forEach((wall) => {
+    const filters = wall.querySelector<HTMLElement>(".av-filters");
+    const buttons = wall.querySelectorAll<HTMLButtonElement>("[data-role]");
+    const cards = wall.querySelectorAll<HTMLElement>("[data-quote-role]");
+    const count = wall.querySelector<HTMLElement>(".av-count");
+    if (filters) filters.hidden = false;
+    buttons.forEach((button) => button.addEventListener("click", () => {
+      const role = button.dataset.role;
+      buttons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+      let visible = 0;
+      cards.forEach((card) => {
+        card.hidden = role !== "All" && card.dataset.quoteRole !== role;
+        if (!card.hidden) visible += 1;
+      });
+      if (count) count.textContent = `${visible} ${visible === 1 ? "quote" : "quotes"}`;
+    }));
+  });
+</script>

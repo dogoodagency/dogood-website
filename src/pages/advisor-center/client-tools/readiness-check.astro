@@ -1,0 +1,50 @@
+---
+import AdvisorResourcePage from "../../../components/AdvisorResourcePage.astro";
+import AdvisorToolVisual from "../../../components/AdvisorToolVisual.astro";
+---
+
+<AdvisorResourcePage
+  title="Founder readiness check and coaching tools for advisors | DoGood Agency"
+  description="Preview a founder readiness check for conversations before and after a sale, alongside our coaching tools. Private reflection, shared only with the founder's consent."
+  path="/advisor-center/client-tools/readiness-check"
+  section="tools"
+  tone="sky"
+  name="Founder Readiness Check"
+  soon="Coming soon"
+  lede="A few calm questions that open the personal conversation with your client, before or after the sale."
+  blocks={[
+    {
+      heading: "From reflection to a conversation",
+      paras: [
+        "The check gives a founder space to reflect on life beyond the business, whether they are weighing a sale or finding their feet after one. The screen above shows the personal baseline in FOUNDRland's design preview.",
+        "The planned advisor pathway brings those reflections into a founder conversation brief. The founder chooses what to share; you use the approved summary to open the personal conversation alongside the business and the money.",
+      ],
+    },
+    {
+      heading: "Discover / Act / Navigate",
+      steps: [
+        { title: "Discover", text: "Notice what matters now. The personal baseline invites reflection on life beyond the business, including relationships and belonging." },
+        { title: "Act", text: "Choose a small next step from those reflections. The private summary makes room for what the founder wants to try." },
+        { title: "Navigate", text: "Return to the reflections as life changes. In the planned advisor pathway, a summary the founder approves can guide your next conversation." },
+      ],
+    },
+    {
+      heading: "What it is not",
+      list: [
+        "Not a medical or psychological test",
+        "Not a readiness score or a judgment about whether someone should sell",
+        "Not an automatic report to an advisor: the founder decides what to share",
+      ],
+    },
+  ]}
+  note="Yours to use and share when released. The advisor pathway is in development."
+>
+  <section slot="before-blocks" class="advd-preview" aria-labelledby="readiness-preview">
+    <h2 id="readiness-preview">A look inside the check</h2>
+    <p>A personal baseline, then a private summary. This screen uses example answers.</p>
+    <figure>
+      <AdvisorToolVisual tool="readiness" detail />
+      <figcaption>The check: a moment to reflect on connection beyond the business role.</figcaption>
+    </figure>
+  </section>
+</AdvisorResourcePage>

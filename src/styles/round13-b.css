@@ -1,0 +1,244 @@
+/* Round 13 (Seb t2005u, 28 Nov 2026) — part b */
+
+/* ===== B1: 7 Questions band on phones (Home, The Reset, Newsletter) ===== */
+@media (max-width: 767px) {
+  /* R13.B1a: smaller headline so "The 7 questions / for the first 90 days after the sale" fits in 3 lines (390px and 360px). */
+  html body main#main#main :is(.sq-band--home, .sq-band--reset).sq-band--preview .sq-copy h2 {
+    font-size: clamp(22px, 6.7vw, 28px);
+    line-height: 1.16;
+    letter-spacing: -.03em;
+  }
+  html body main#main#main .nl-page .sq7-panel h2 {
+    font-size: clamp(22px, 6.7vw, 28px) !important;
+    line-height: 1.16;
+    letter-spacing: -.03em;
+  }
+  /* R13.B1b: the two sentences under the headline read as ONE paragraph on phones (desktop keeps two blocks). */
+  html body main#main#main :is(.sq-band--home, .sq-band--reset) .sq-copy p.sq-intro,
+  html body main#main#main .nl-page .sq7-panel p.sq7-line {
+    display: inline;
+    margin: 0;
+  }
+  html body main#main#main :is(.sq-band--home, .sq-band--reset) .sq-copy p.sq-intro + p.sq-intro::before,
+  html body main#main#main .nl-page .sq7-panel p.sq7-line--gift::after {
+    content: " ";
+  }
+  /* R13.B1c: band body copy at the phone body size (17px). */
+  html body main#main#main :is(.sq-band--home, .sq-band--reset) .sq-copy p.sq-intro,
+  html body main#main#main .nl-page .sq7-panel p.sq7-line {
+    font-size: 17px !important;
+    line-height: 1.6 !important;
+  }
+  /* The inline paragraphs need breathing room before the buttons that follow the copy. */
+  html body main#main#main .nl-page .sq7-panel .sq7-actions { margin-top: 28px; }
+  /* R13.B1d: no "Read / Sit with the 7 questions" button on phones (Download the PDF stays). */
+  html body main#main#main :is(.sq-band--home, .sq-band--reset) .sq-actions a[href="/seven-questions"] {
+    display: none;
+  }
+}
+
+/* ===== B4: Newsletter page on phones ===== */
+@media (max-width: 767px) {
+  /* R13.B4a: hero title 3px bigger (32px -> 35px). */
+  html body main#main#main .nl-page .nl-hero h1 {
+    font-size: 35px !important;
+  }
+  /* R13.B4b: "Still in his bathrobe." gets the hero title style (same font, size, weight, tracking). */
+  html body main#main#main .nl-page .nl-book-teaser .nl-book-close {
+    font-family: var(--font-sans) !important;
+    font-size: 35px !important;
+    font-style: normal !important;
+    font-weight: 900 !important;
+    line-height: 1.12 !important;
+    letter-spacing: -0.03em !important;
+  }
+  /* R13.B4c: envelope in the opt-in section centred and 30% bigger (300px -> 390px visual). */
+  html body main#main#main .nl-page .nl-signup-split { overflow-x: clip; }
+  html body main#main#main .nl-page .nl-signup-split .nl-signup-art {
+    justify-self: center;
+    width: min(300px, 100%) !important;
+    margin: 40px auto 34px;
+  }
+  html body main#main#main .nl-page .nl-signup-split .nl-signup-art img {
+    margin-inline: auto;
+    transform: scale(1.3) !important;
+    transform-origin: center;
+  }
+}
+
+/* ===== B2: Home page on phones ===== */
+@media (max-width: 599px) {
+  /* R13.B2a: hero drawing about 1.5cm (54px) closer to the hero text. The home script places the drawing so the man's
+     feet meet the wave; making the hero 54px shorter moves the wave, and with it the drawing, up by the same amount. */
+  html body main#main .page-home #hero .hero-draw { margin-bottom: -100px; }
+
+  /* R13.B2b: the flying machine was pushed ~30px left: .why-art is a centred flex item that overflows both sides,
+     and a negative left margin was added on top. Remove the margin so the overflow stays symmetrical. */
+  html body main#main .page-home #why .why-sketch .why-art { margin-left: 0; margin-right: 0; }
+}
+@media (max-width: 767px) {
+  /* R13.B2c: "Our team's track record" starts below the Wayfinders photo (it had a -48px pull-up). */
+  html body main#main .page-home #wayfinders .track-block {
+    margin-top: 28px;
+    transform: none;
+  }
+
+  /* R13.B2d: the four track-record frames sit above the green line (opaque), share one height and start their
+     content at the top. */
+  html body main#main .page-home #wayfinders .track-nums {
+    position: relative;
+    z-index: 3;
+    grid-auto-rows: 1fr;
+    align-items: stretch;
+  }
+  html body main#main .page-home #wayfinders .track-nums > div {
+    position: relative;
+    z-index: 3;
+    box-sizing: border-box;
+    min-height: 118px;
+    justify-content: flex-start;
+    background-color: #FFFFFF;
+  }
+
+  /* R13.B2e: both "What's next" doors the same, narrower width and centred. */
+  html body main#main#main .page-home #next .next-doors {
+    width: 100%;
+    max-width: 300px;
+    margin-inline: auto;
+  }
+  html body main#main#main .page-home #next .next-doors :is(.card-before, .card-after) {
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  /* R13.B2f: about 2cm (75px) more vertical space in the green "What's next" funnel:
+     +20px above the doors, +25px between them, +30px below. */
+  html body main#main#main .page-home #next .next-doors { margin-top: 52px; margin-bottom: 30px; gap: 45px; }
+}
+
+/* ===== B3: /clarity-first-guarantee-terms case study (V) on phones ===== */
+@media (max-width: 767px) {
+  /* R13.B3: the older <=800px rule left-aligned the pin and headline while the other lines were centred.
+     Everything is now one centred column; the headline gets side room so its lines sit inside the body-text column. */
+  html body main#main .page-clarity #case-v .case-compact {
+    justify-items: center;
+    text-align: center;
+  }
+  html body main#main .page-clarity #case-v .case-compact .portrait {
+    display: block;
+    justify-self: center;
+    margin-inline: auto;
+  }
+  html body main#main .page-clarity #case-v .case-compact h3 {
+    box-sizing: border-box;
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 14px;
+    text-align: center;
+  }
+  html body main#main .page-clarity #case-v .case-compact :is(.t-kicker, .case-who, .case-protect) {
+    text-align: center;
+  }
+  html body main#main .page-clarity #case-v .case-compact .btn-stack,
+  html body main#main .page-clarity #case-v .case-compact .btn-with-caption {
+    justify-self: center;
+    align-items: center;
+    margin-inline: auto;
+  }
+}
+
+/* ===== B5: individual podcast pages on phones ===== */
+@media (max-width: 767px) {
+  /* R13.B5: the video no longer rides up into the hero; it sits below the hero (title, subtitle, wave) with normal spacing. */
+  html body main#main .pod-page .pod-ep-hero .pod-ep-hero-inner { padding-bottom: 36px; }
+  html body main#main .pod-page .pod-video-wrap {
+    margin-top: 24px;
+    margin-bottom: 8px;
+  }
+}
+
+/* ===== B6: About, "Who we work alongside" on phones ===== */
+@media (max-width: 767px) {
+  /* R13.B6: the four advisor pills sit in a tidy 2 x 2 grid under the Founder pill (equal widths, centred text);
+     "Wealth advisors" and "and family offices" are centred on two lines. */
+  html body main#main .ab-page .ab-advisor-pills {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    justify-items: stretch;
+    gap: 10px;
+  }
+  html body main#main .ab-page .ab-advisor-pills li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 8px 12px;
+    border-radius: 20px;
+    text-align: center;
+  }
+  html body main#main .ab-page .ab-advisor-pills li .ab-pill-l1,
+  html body main#main .ab-page .ab-advisor-pills li .ab-pill-l2 {
+    display: block;
+    text-align: center;
+  }
+}
+
+/* ===== B7: /state-shift-audio, "How we build tracks" cards on phones ===== */
+@media (max-width: 767px) {
+  /* R13.B7: numbers 1, 2, 3 in the top-left corner of each card, the same corner tab as the research cards
+     (.au-ac-n: 40px square, top-left, rounded 16px on the lower-right corner). Text padding makes room for it. */
+  html body main#main#main .pp-audio .au--full .au-layers li {
+    position: relative;
+    overflow: hidden;
+    padding: 54px 18px 18px;
+    min-height: 0;
+  }
+  html body main#main#main .pp-audio .au--full .au-layers li::before {
+    content: counter(au-layer);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    border-radius: 0 0 16px 0;
+  }
+}
+
+/* ===== B8: /pathway "The whole path" (JourneyBar, vertical road) on phones ===== */
+@media (max-width: 767px) {
+  /* R13.B8: the badge kept the desktop "align-self: start", so it hung at the top of its step instead of being
+     centred on the text frame. Centre it vertically on the card; the road line and arrow run through its centre
+     (badge centre = 4px list padding + 32px = 36px). */
+  html body main#main .jr .jr-step .jr-badge {
+    align-self: center;
+    justify-self: center;
+    margin: 0;
+  }
+  html body main#main .jr .jr-list::before { left: 33px; }
+  html body main#main .jr .jr-list::after { left: 30px; }
+  /* ~14px more space from each step to the next (was 18px). */
+  html body main#main .jr .jr-list { gap: 32px; }
+}
+
+/* ===== B9: /exit, "Apply for Exit-Prep™" button (desktop + phone) ===== */
+@media (max-width: 767px) {
+  /* R13.B9: stacked buttons on phones share the same width. */
+  html body main#main .bk-copy .bk-btn-row:has(a[href="/apply-exit-prep"]) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  html body main#main .bk-copy .bk-btn-row:has(a[href="/apply-exit-prep"]) > a {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* R13-B-END */

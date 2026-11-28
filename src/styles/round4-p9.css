@@ -1,0 +1,271 @@
+/* Round 4 part p9 */
+
+/* W1-1 / H3: size list items explicitly; the legacy phone body rule targets li. */
+html body main#main .sq-band--home :is(.sq-intro, .sq-questions, .sq-questions li, .sq-more) {
+  font-size: 18px;
+}
+/* W1b-1 / H3: beat mobile-rules' important unclassed-list sizing. */
+html body main#main .sq-band--home .sq-questions li { font-size: 18px !important; }
+
+/* W1-2: these round-4 surfaces supersede legacy important tablet frames. */
+html body main#main .page-apply .apl-card { border: 1px solid var(--color-grass-300) !important; }
+html body main#main :is(.hw-page--s1, .hw-page--s2) .hw-case { border: 0 !important; }
+html body main#main .ab-page .ab-band-statements .ab-duo .ab-statement--vision { border: 0 !important; }
+
+/* W1-5 / FT8: picture, status, headline, then copy. Share the spacing with any
+   matching tool cards on detail pages, without reordering insight cards. */
+html body main#main :is(.advr-tools-page, .advd-tools-page) .advr-card :is(.advr-soon, .advr-available) {
+  margin: 0 0 27px !important;
+}
+html body main#main :is(.advr-tools-page, .advd-tools-page) .advr-card h2 { margin: 0 0 16px; margin-top: 0 !important; }
+
+/* W1b-4: enforce the checklist's unframed stage surfaces at every breakpoint.
+   Flow pills (RS8 / BD6), quotes, controls, and focus rings keep their edges. */
+html body main#main .hw-page .hw-stage-panel,
+html body main#main .hw-page .hw-stage-panel .hw-stage-block,
+html body main#main .hw-page .hw-stage-block .hw-includes li,
+html body main#main .hw-page .hw-supports :is(.hw-includes li, .hw-retreat),
+html body main#main .hw-page--s1 :is(.hw-notyet-card, .hw-option-a, .hw-option-b) {
+  border: 0 !important;
+}
+
+/* AC1 / RF2: the navigation and white referral benefits have no frames. */
+html body main#main .adv-page .ahub-card,
+html body main#main .adv-referrals-page .adv-benefits .adv-benefit { border: 0 !important; }
+
+/* FT7: the important legacy tablet frame must use each tool's own color. */
+html body main#main .advr-page.advr-tools-page .advr-card--sky { border-color: var(--color-sky-300) !important; }
+html body main#main .advr-page.advr-tools-page .advr-card--heart { border-color: var(--color-heart-400) !important; }
+html body main#main .advr-page.advr-tools-page .advr-card--grass { border-color: var(--color-grass-400) !important; }
+html body main#main .advr-page.advr-tools-page .advr-card--questions { border-color: var(--color-play-700) !important; }
+
+/* EP1 / SS1: current dark cards supersede earlier important pink frames. */
+html body main#main .ep-exit-prep .ep-places .ep-place:nth-child(n),
+html body main#main .pp-audio .au--full .au-layers li { border: 0 !important; }
+
+/* F2: override the legacy important HEART outline with each card's own color. */
+html body main#main .adv-center-page .adv-aud-card--1 { border-color: var(--color-sky-300) !important; }
+html body main#main .adv-center-page .adv-aud-card--2 { border-color: var(--color-grass-400) !important; }
+html body main#main .adv-center-page .adv-aud-card--3 { border-color: var(--color-play-700) !important; }
+html body main#main .adv-center-page .adv-aud-card--4 { border-color: var(--color-heart-400) !important; }
+
+/* F3: the Private tier keeps its DREAM fill and matching one-pixel edge. */
+html body main#main #ic-tiers + .ep-grid .ep-box--sky { border: 1px solid var(--color-dream-500) !important; }
+
+/* F4: distinguish Home's green door from the existing GRASS 200 swell. */
+html body main#main .page-home #next .card-before { background: var(--color-grass-300); }
+
+/* F5: labels occupy their own row above the lobes, clear of the loop stroke. */
+.adv-partnership-loop {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: end;
+  gap: 12px 0;
+}
+.adv-partnership-loop svg { grid-column: 1 / -1; grid-row: 2; }
+html body main#main .adv-partnership-label {
+  position: static;
+  grid-row: 1;
+  justify-self: center;
+  width: 80%;
+  transform: none;
+}
+.adv-partnership-label--you { grid-column: 1; }
+.adv-partnership-label--we { grid-column: 2; }
+
+/* F6: visible mouse and keyboard feedback without changing existing card hovers. */
+header.nav a.nav-logo { transition: opacity .2s ease; }
+header.nav a.nav-logo:is(:hover, :focus-visible) { opacity: .85; }
+main#main a[href^="/insights/"] img { transition: opacity .2s ease; }
+main#main a[href^="/insights/"]:is(:hover, :focus-visible) img { opacity: .9; }
+
+@media (max-width: 600px) {
+  html body main#main .adv-partnership-label { font-size: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  header.nav a.nav-logo,
+  main#main a[href^="/insights/"] img { transition: none; }
+}
+
+/* W2-1 / BD11: keep the shared audio and contact accents in Build's HEART scheme. */
+html body main#main .hw-page--s2 .au-w--b { stroke: var(--color-heart-400); }
+html body main#main .hw-page--s2 .au-mode--grass { border-color: var(--color-heart-400); }
+html body main#main .hw-page--s2 .write-to-us .r3-inline-link {
+  text-decoration-color: var(--color-heart-400);
+}
+html body main#main .hw-page--s2 .write-to-us .r3-inline-link:is(:hover, :focus-visible) {
+  color: var(--color-heart-500);
+}
+
+/* W2-2: add only the measured clearance each page needs at each breakpoint.
+   The in-flow spacer extends the final band's background; unlisted pages get 0.
+   Exclude an earlier section when a later wrapper contains the closing band. */
+html body main#main:not([data-path="/state-shift-audio"]) > :is(article, .bl-page) > section:last-of-type:not(:has(~ :is(.advd-foundr-band, .bl-more, .privacy-source)))::after,
+html body main#main > article > .advd-foundr-band::after,
+html body main#main > article > .privacy-source > section:last-of-type::after,
+html body main#main > .bl-page > .bl-more > section:last-of-type::after,
+html body main#main[data-path="/stories"] > .st-page > .st-band-next::after,
+html body main#main:is(
+  [data-path="/newsletter/thanks"], [data-path="/prefrp-thankyou"],
+  [data-path="/catchup-thankyou"], [data-path="/exit-thankyou"],
+  [data-path="/internal-thankyou"], [data-path="/internal60-thankyou"], [data-path="/wealth-thankyou"],
+  [data-path="/clarity-thankyou"], [data-path="/frpfit-thankyou"], [data-path="/orientation-thankyou"],
+  [data-path="/clarity"], [data-path="/orientation"]
+) > .bk-page > .bk-body::after,
+html body main#main[data-path="/stage1-tc"] > article.page-designed::after {
+  content: "";
+  display: block;
+  height: var(--r4-fc, 0px);
+  pointer-events: none;
+}
+
+/* W2c-1: the audio closing section has no padding of its own; its well supplies
+   the existing inset. Add clearance to that 0px base, preserving its 100px ::after. */
+html body main#main[data-path="/state-shift-audio"] > .pp-audio > section.ep-band.ep-band-tint:last-of-type {
+  padding-bottom: calc(0px + var(--r4-fc, 0px));
+}
+
+/* W2c-2: booking pages need clearance only across the tablet breakpoint. */
+main#main:is([data-path="/clarity"], [data-path="/orientation"]) { --r4-fc: 0px; }
+@media (min-width: 600px) and (max-width: 1023px) {
+  main#main:is([data-path="/clarity"], [data-path="/orientation"]) { --r4-fc: 72px; }
+}
+
+@media (min-width: 768px) {
+  main#main[data-path="/contact"] { --r4-fc: 141px; }
+  main#main[data-path="/expedited-start"] { --r4-fc: 0px; }
+  main#main[data-path="/wayfinders/clientfit"] { --r4-fc: 29px; }
+  main#main[data-path="/wayfinders/seb"] { --r4-fc: 43px; }
+  main#main[data-path="/newsletter"] { --r4-fc: 0px; }
+  main#main:is([data-path="/newsletter/thanks"], [data-path="/catchup-thankyou"], [data-path="/exit-thankyou"], [data-path="/internal-thankyou"], [data-path="/internal60-thankyou"], [data-path="/wealth-thankyou"]) { --r4-fc: 173px; }
+  main#main:is([data-path="/prefrp-thankyou"], [data-path="/clarity-thankyou"], [data-path="/frpfit-thankyou"], [data-path="/orientation-thankyou"]) { --r4-fc: 144px; }
+  main#main[data-path="/about"] { --r4-fc: 82px; }
+  main#main[data-path="/state-shift-audio"] { --r4-fc: 45px; }
+  main#main[data-path="/recovery-stress-diagnostics"] { --r4-fc: 145px; }
+  main#main[data-path="/founderland/membership"] { --r4-fc: 145px; }
+  main#main[data-path="/signature-retreat"] { --r4-fc: 145px; }
+  main#main[data-path="/residency"] { --r4-fc: 145px; }
+  main#main[data-path="/integral-continuity"] { --r4-fc: 29px; }
+  main#main[data-path="/clarityvalue-shift"] { --r4-fc: 161px; }
+  main#main[data-path="/nextlife-passage"] { --r4-fc: 161px; }
+  main#main[data-path="/clarity-first-guarantee-terms"] { --r4-fc: 41px; }
+  main#main[data-path="/the-build"] { --r4-fc: 103px; }
+  main#main[data-path="/the-reset"] { --r4-fc: 175px; }
+  main#main[data-path="/exit-prep"] { --r4-fc: 47px; }
+  main#main[data-path="/faqs"] { --r4-fc: 47px; }
+  main#main[data-path="/application"] { --r4-fc: 15px; }
+  main#main[data-path="/advisor-center"] { --r4-fc: 59px; }
+  main#main[data-path="/advisor-center/referrals"] { --r4-fc: 59px; }
+  main#main[data-path="/advisor-center/client-tools/readiness-check"] { --r4-fc: 46px; }
+  main#main[data-path="/advisor-center/client-tools/signals-guide"] { --r4-fc: 46px; }
+  main#main[data-path="/advisor-center/client-tools/life-after-the-sale-planner"] { --r4-fc: 46px; }
+  main#main[data-path="/advisor-center/insights"] { --r4-fc: 84px; }
+  main#main[data-path="/stories"] { --r4-fc: 155px; }
+  main#main[data-path="/wayfinders"] { --r4-fc: 117px; }
+  main#main[data-path="/insights"] { --r4-fc: 0px; }
+  main#main[data-path="/privacy"] { --r4-fc: 129px; }
+  main#main[data-path="/cookies"] { --r4-fc: 125px; }
+  main#main:is([data-path="/terms"], [data-path="/stage1-tc"]) { --r4-fc: 129px; }
+  main#main[data-path="/casestudies/j"] { --r4-fc: 142px; }
+  main#main[data-path="/casestudies/v"] { --r4-fc: 142px; }
+  main#main[data-path="/insights/before-you-sign-preparing-yourself"] { --r4-fc: 91px; }
+  main#main[data-path="/insights/emotions-of-selling-a-business"] { --r4-fc: 91px; }
+  main#main[data-path="/insights/first-90-days-after-the-sale"] { --r4-fc: 91px; }
+  main#main[data-path="/insights/sudden-wealth-syndrome-after-selling-a-business"] { --r4-fc: 91px; }
+  main#main[data-path="/insights/why-deals-stall-when-the-founder-isnt-ready"] { --r4-fc: 91px; }
+  main#main[data-path^="/podcast/"] { --r4-fc: 155px; }
+  main#main:is([data-path="/wayfinders/katrin"], [data-path="/wayfinders/chantill"], [data-path="/wayfinders/shiva"], [data-path="/wayfinders/vlora"]) { --r4-fc: 43px; }
+}
+
+@media (min-width: 600px) and (max-width: 767px) {
+  main#main[data-path="/contact"] { --r4-fc: 152px; }
+  main#main[data-path="/expedited-start"] { --r4-fc: 41px; }
+  main#main[data-path="/wayfinders/clientfit"] { --r4-fc: 65px; }
+  main#main[data-path="/wayfinders/seb"] { --r4-fc: 71px; }
+  main#main[data-path="/newsletter"] { --r4-fc: 57px; }
+  main#main:is([data-path="/newsletter/thanks"], [data-path="/catchup-thankyou"], [data-path="/exit-thankyou"], [data-path="/internal-thankyou"], [data-path="/internal60-thankyou"], [data-path="/wealth-thankyou"]) { --r4-fc: 173px; }
+  main#main:is([data-path="/prefrp-thankyou"], [data-path="/clarity-thankyou"], [data-path="/frpfit-thankyou"], [data-path="/orientation-thankyou"]) { --r4-fc: 148px; }
+  main#main[data-path="/about"] { --r4-fc: 128px; }
+  main#main[data-path="/state-shift-audio"] { --r4-fc: 93px; }
+  main#main[data-path="/recovery-stress-diagnostics"] { --r4-fc: 193px; }
+  main#main[data-path="/founderland/membership"] { --r4-fc: 193px; }
+  main#main[data-path="/signature-retreat"] { --r4-fc: 193px; }
+  main#main[data-path="/residency"] { --r4-fc: 193px; }
+  main#main[data-path="/integral-continuity"] { --r4-fc: 65px; }
+  main#main[data-path="/clarityvalue-shift"] { --r4-fc: 181px; }
+  main#main[data-path="/nextlife-passage"] { --r4-fc: 181px; }
+  main#main[data-path="/clarity-first-guarantee-terms"] { --r4-fc: 0px; }
+  main#main[data-path="/the-build"] { --r4-fc: 133px; }
+  main#main[data-path="/the-reset"] { --r4-fc: 195px; }
+  main#main[data-path="/exit-prep"] { --r4-fc: 63px; }
+  main#main[data-path="/faqs"] { --r4-fc: 67px; }
+  main#main[data-path="/application"] { --r4-fc: 15px; }
+  main#main[data-path="/advisor-center"] { --r4-fc: 101px; }
+  main#main[data-path="/advisor-center/referrals"] { --r4-fc: 101px; }
+  main#main[data-path="/advisor-center/client-tools/readiness-check"] { --r4-fc: 0px; }
+  main#main[data-path="/advisor-center/client-tools/signals-guide"] { --r4-fc: 0px; }
+  main#main[data-path="/advisor-center/client-tools/life-after-the-sale-planner"] { --r4-fc: 0px; }
+  main#main[data-path="/advisor-center/insights"] { --r4-fc: 130px; }
+  main#main[data-path="/stories"] { --r4-fc: 185px; }
+  main#main[data-path="/wayfinders"] { --r4-fc: 117px; }
+  main#main[data-path="/insights"] { --r4-fc: 12px; }
+  main#main[data-path="/privacy"] { --r4-fc: 169px; }
+  main#main[data-path="/cookies"] { --r4-fc: 165px; }
+  main#main:is([data-path="/terms"], [data-path="/stage1-tc"]) { --r4-fc: 169px; }
+  main#main[data-path="/casestudies/j"] { --r4-fc: 180px; }
+  main#main[data-path="/casestudies/v"] { --r4-fc: 180px; }
+  main#main[data-path="/insights/before-you-sign-preparing-yourself"] { --r4-fc: 91px; }
+  main#main[data-path="/insights/emotions-of-selling-a-business"] { --r4-fc: 91px; }
+  main#main[data-path="/insights/first-90-days-after-the-sale"] { --r4-fc: 91px; }
+  main#main[data-path="/insights/sudden-wealth-syndrome-after-selling-a-business"] { --r4-fc: 91px; }
+  main#main[data-path="/insights/why-deals-stall-when-the-founder-isnt-ready"] { --r4-fc: 91px; }
+  main#main[data-path^="/podcast/"] { --r4-fc: 155px; }
+  main#main:is([data-path="/wayfinders/katrin"], [data-path="/wayfinders/chantill"], [data-path="/wayfinders/shiva"], [data-path="/wayfinders/vlora"]) { --r4-fc: 71px; }
+}
+
+@media (max-width: 599px) {
+  main#main[data-path="/contact"] { --r4-fc: 64px; }
+  main#main[data-path="/expedited-start"] { --r4-fc: 0px; }
+  main#main[data-path="/wayfinders/clientfit"] { --r4-fc: 0px; }
+  main#main[data-path="/wayfinders/seb"] { --r4-fc: 0px; }
+  main#main[data-path="/newsletter"] { --r4-fc: 0px; }
+  main#main:is([data-path="/newsletter/thanks"], [data-path="/catchup-thankyou"], [data-path="/exit-thankyou"], [data-path="/internal-thankyou"], [data-path="/internal60-thankyou"], [data-path="/wealth-thankyou"]) { --r4-fc: 85px; }
+  main#main:is([data-path="/prefrp-thankyou"], [data-path="/clarity-thankyou"], [data-path="/frpfit-thankyou"], [data-path="/orientation-thankyou"]) { --r4-fc: 60px; }
+  main#main[data-path="/about"] { --r4-fc: 40px; }
+  main#main[data-path="/state-shift-audio"] { --r4-fc: 17px; }
+  main#main[data-path="/recovery-stress-diagnostics"] { --r4-fc: 117px; }
+  main#main[data-path="/founderland/membership"] { --r4-fc: 117px; }
+  main#main[data-path="/signature-retreat"] { --r4-fc: 117px; }
+  main#main[data-path="/residency"] { --r4-fc: 117px; }
+  main#main[data-path="/integral-continuity"] { --r4-fc: 0px; }
+  main#main[data-path="/clarityvalue-shift"] { --r4-fc: 44px; }
+  main#main[data-path="/nextlife-passage"] { --r4-fc: 44px; }
+  main#main[data-path="/clarity-first-guarantee-terms"] { --r4-fc: 0px; }
+  main#main[data-path="/the-build"] { --r4-fc: 45px; }
+  main#main[data-path="/the-reset"] { --r4-fc: 107px; }
+  main#main[data-path="/exit-prep"] { --r4-fc: 0px; }
+  main#main[data-path="/faqs"] { --r4-fc: 0px; }
+  main#main[data-path="/application"] { --r4-fc: 0px; }
+  main#main[data-path="/advisor-center"] { --r4-fc: 13px; }
+  main#main[data-path="/advisor-center/referrals"] { --r4-fc: 13px; }
+  main#main[data-path="/advisor-center/client-tools/readiness-check"] { --r4-fc: 0px; }
+  main#main[data-path="/advisor-center/client-tools/signals-guide"] { --r4-fc: 0px; }
+  main#main[data-path="/advisor-center/client-tools/life-after-the-sale-planner"] { --r4-fc: 0px; }
+  main#main[data-path="/advisor-center/insights"] { --r4-fc: 42px; }
+  main#main[data-path="/stories"] { --r4-fc: 97px; }
+  main#main[data-path="/wayfinders"] { --r4-fc: 29px; }
+  main#main[data-path="/insights"] { --r4-fc: 0px; }
+  main#main[data-path="/privacy"] { --r4-fc: 81px; }
+  main#main[data-path="/cookies"] { --r4-fc: 77px; }
+  main#main:is([data-path="/terms"], [data-path="/stage1-tc"]) { --r4-fc: 81px; }
+  main#main[data-path="/casestudies/j"] { --r4-fc: 92px; }
+  main#main[data-path="/casestudies/v"] { --r4-fc: 92px; }
+  main#main[data-path="/insights/before-you-sign-preparing-yourself"] { --r4-fc: 51px; }
+  main#main[data-path="/insights/emotions-of-selling-a-business"] { --r4-fc: 51px; }
+  main#main[data-path="/insights/first-90-days-after-the-sale"] { --r4-fc: 51px; }
+  main#main[data-path="/insights/sudden-wealth-syndrome-after-selling-a-business"] { --r4-fc: 51px; }
+  main#main[data-path="/insights/why-deals-stall-when-the-founder-isnt-ready"] { --r4-fc: 51px; }
+  main#main[data-path^="/podcast/"] { --r4-fc: 67px; }
+  main#main:is([data-path="/wayfinders/katrin"], [data-path="/wayfinders/chantill"], [data-path="/wayfinders/shiva"], [data-path="/wayfinders/vlora"]) { --r4-fc: 0px; }
+}

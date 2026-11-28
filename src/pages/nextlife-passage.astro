@@ -1,0 +1,35 @@
+---
+// NextLife Passage™: the Stage 2 method. Added 18 Nov 2026 (Seb: "use content from the actual PDF files" for now).
+// Step texts, purpose and deliverables from the 1-page PDF v2.2 (Drive 12qR6tjfv196rJ0Q32ltmUiHbGLVctyhh) and
+// src/data/how-it-works.ts; the intro line is new framing for Seb to review.
+import FrameworkPage from "../components/FrameworkPage.astro";
+import { stage2Includes } from "../data/how-it-works";
+---
+
+<FrameworkPage
+  slug="nextlife-passage"
+  seoTitle="NextLife Passage™ coaching: building life after the exit | DoGood"
+  description="NextLife Passage™ is DoGood's 4-step coaching method for building what comes next after selling a business: Rework, Navigate, Realign, Integrate. Stage 2, 12 weeks."
+  eyebrow="Stage 2 · The Build (12 weeks)"
+  name="NextLife Passage™"
+  purpose="You’ll build what genuinely comes next."
+  intro={[
+    "Stage 2 is a wider build around life, deeper decisions, and long-term alignment. We take the shift from Stage 1 and work it more deeply into the places that matter most, so identity, relationships, health, time, and direction start moving together in a more sustainable way.",
+    "For many founders, one question sits underneath it all: do I want to build again? Stage 2 gives that question the time it needs, whatever the answer turns out to be.",
+    "Stage 2 follows Stage 1 and is by invitation, when there is a fit for both of us.",
+  ]}
+  steps={[
+    { name: "Rework", text: "We return to the core of your shifts and rebuild life around what is true now, not around the old role, pace, or identity." },
+    { name: "Navigate", text: "We work through the deeper truths, decisions, and tensions, so you can move through them with more ease instead of circling them or avoiding them." },
+    { name: "Realign", text: "We reshape the key domains of life around that shift, so your relationships, health, time, and future direction begin to reflect who you are becoming." },
+    { name: "Integrate", text: "We stabilize the new way of living, so you can hold these changes in your daily life through different choices, conversations, rhythms, and structures." },
+  ]}
+  includesLead="By the end of Stage 2, you will leave with deeper, visible change, and documented results:"
+  includes={stage2Includes}
+  expectation={[
+    "Stage 2 is about going deeper where the shift is needed, and giving that work sufficient attention, and structure. By this stage, we are no longer just identifying what is off. We are reorganizing life around what matters most, so you can live in a way that feels more grounded and alive.",
+    "Life redefined · 5 founders per month.",
+  ]}
+  pdfHref="https://drive.google.com/file/d/1GGeLMbKzGeooRViFF0LbG-lpQO-GzKOJ/view"
+  stage={2}
+/>

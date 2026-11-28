@@ -1,0 +1,165 @@
+---
+import "../styles/advisors.css";
+import Base from "../layouts/Base.astro";
+import Wave from "../components/Wave.astro";
+import AdvisorNav from "../components/AdvisorNav.astro";
+import { edgeAbove } from "../data/edge-line";
+import TestimonialWall from "../components/TestimonialWall.astro";
+import FoundrLand from "../components/FoundrLand.astro";
+import SevenQuestionsBand from "../components/SevenQuestionsBand.astro";
+import AdvisorPartnership from "../components/AdvisorPartnership.astro";
+
+const title = "Advisor Center: personal coaching before and after the sale | DoGood";
+const description =
+  "For exit advisors, succession planners, wealth advisors, family offices and sell-side M&A advisors: personal coaching for founders before and after the sale.";
+
+const heroEdge = edgeAbove("#2A0B4F");
+const footerEdge = edgeAbove("#ffffff");
+
+
+const audiences = [
+  { title: "Exit planners", text: "Business exit planning prepares the company. We prepare the founder for life after the sale." },
+  { title: "Succession advisors", text: "Succession planning for business owners covers the company. Handing over who you are is another transition." },
+  { title: "Wealth advisors and family offices", text: "After a liquidity event, the money is planned. The founder's time, energy and identity often are not." },
+  { title: "Sell-side M&A advisors", text: "A founder who is personally ready is less likely to stall the deal at the last minute. Our resources are yours to use with any client.", link: { text: "less likely to stall the deal at the last minute", href: "/insights/why-deals-stall-when-the-founder-isnt-ready" } },
+];
+
+// [SEB] Quotes from advisor conversations; labels are roles only.
+const quotes = [
+  { text: "Most people are talking with that founder around just the business side of the equation. They're not asking questions about the personal side.", name: "Wealth advisor" },
+  { text: "I think that's a gap… dealing with the personal side and making sure that they're personally ready.", name: "Exit advisor" },
+  { text: "They aren't ready to let go even though their company is for sale. … They tend to nitpick every buyer… and they blow up their own deals.", name: "Exit advisor" },
+  { text: "I can do my best work if I get someone before an LOI.", name: "Wealth advisor" },
+  { text: "How do I even bring it up in a productive way?", name: "Exit advisor" },
+  { text: "I'm not going to deal with all three. … But we need somebody to support you in all three.", name: "Exit advisor" },
+];
+
+---
+
+<Base
+  title={title}
+  description={description}
+  canonical="https://www.dogoodagency.co/advisor-center"
+  footerStrip="#ffffff"
+  footerEdge={footerEdge}
+  ogTitle={title}
+>
+  <article class="adv-page adv-center-page">
+    <header class="adv-hero">
+      <div class="adv-hero-inner adv-hero-inner--split">
+        <div class="adv-hero-copy">
+          <p class="adv-eyebrow">Advisor Center · For exit planning advisors</p>
+          <h1 class="r4-phrase-title">The personal leg of exit planning,<br class="pp-desktop-break" /> before the LOI and after closing.</h1>
+          <p class="adv-lede">
+            We support life in <span class="adv-founder"><strong>FOUNDRland</strong></span>. You prepare the business and the money. We prepare the founder: <a href="/advisor-center/insights#advi-legs">personal readiness</a>, the third leg of the exit planning stool.
+          </p>
+        </div>
+
+      </div>
+      <Wave fill="#fff" edge={heroEdge} />
+    </header>
+
+    <!-- Shared four-part navigation immediately under the hero. -->
+    <section class="adv-band adv-band--white" aria-label="Introduction">
+      <div class="adv-well">
+        <AdvisorNav current="overview" />
+        <AdvisorPartnership />
+      </div>
+    </section>
+
+    <!-- Who this is for: four cards (Seb, 19 Nov 2026; was one line in the hero) -->
+    <section class="adv-band adv-band--lilac" aria-labelledby="adv-who">
+      <div class="adv-well">
+        <h2 class="adv-section-title" id="adv-who">Who we work alongside</h2>
+        <ul class="adv-aud">
+          {audiences.map((a, i) => (
+            <li class:list={["adv-aud-card", `adv-aud-card--${i + 1}`]}>
+              <h3>{a.title}</h3>
+              {a.link && a.text.includes(a.link.text)
+                ? <p>{a.text.slice(0, a.text.indexOf(a.link.text))}<a class="seo-inlink" href={a.link.href}>{a.link.text}</a>{a.text.slice(a.text.indexOf(a.link.text) + a.link.text.length)}</p>
+                : <p>{a.text}</p>}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section class="adv-band adv-band--white" aria-labelledby="adv-tell">
+      <div class="adv-well">
+        <div class="adv-voices-head">
+          <h2 class="adv-section-title" id="adv-tell">In their words</h2>
+          <p>Real words from our conversations with the advisors who work with founders.</p>
+        </div>
+        <TestimonialWall items={quotes.map((q) => ({ quote: q.text, name: q.name }))} short label="In their words" />
+      </div>
+    </section>
+
+    <section class="adv-band adv-band--lilac adv-kind-band" aria-labelledby="adv-kind">
+      <div class="adv-well">
+        <!-- Two doors (Seb, 19 Nov 2026) -->
+        <div class="adv-doors-intro">
+          <h2 class="adv-doors-ask" id="adv-kind">Which kind of advisor are you?</h2>
+        </div>
+        <div class="adv-doors">
+          <section class="adv-door adv-door--exit" aria-labelledby="adv-door-exit">
+            <p class="adv-door-label">Exit and succession</p>
+            <h3 id="adv-door-exit">I prepare the business for the sale</h3>
+            <p>You know the founder before the sale. Bring us in 12 to 18 months out, or at least before the LOI, so the founder walks into the deal ready, and out of it with a plan for life after.</p>
+            <a class="btn-teal btn-dream" href="/exit">Exit advisors: become a partner</a>
+          </section>
+          <section class="adv-door adv-door--wealth" aria-labelledby="adv-door-wealth">
+            <p class="adv-door-label">Wealth and family office</p>
+            <h3 id="adv-door-wealth">I look after the money and the family</h3>
+            <p>You stay with the founder and their family after the sale. The wealth is planned. We help them decide what the time, energy and freedom are for.</p>
+            <a class="btn-teal" href="/wealth">Wealth advisors: become a partner</a>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- foundr.land on its own straight white section, set off by a hairline. -->
+    <div class="adv-fl-band"><FoundrLand kind="advisor" advisorImage="phone" advisorBackground="dream25" /></div>
+
+
+    <div class="adv-toolkit-band">
+    <SevenQuestionsBand variant="advisor" layout="preview">
+      <Fragment slot="intro">
+          <p class="adv-card-badge">Our gift to your clients</p>
+          <h2 class="adv-section-title" id="seven-questions-advisor-title">Something useful to hand your client</h2>
+          <div class="adv-prose">
+            <p>Advisors told us the same thing again and again: their clients have no plan for life after the sale, and there is nothing to hand them that <a class="seo-inlink" href="/advisor-center/client-tools/signals-guide">opens the personal conversation</a>. So we are building tools for exactly that. No sign-up for you, and no strings.</p>
+          </div>
+      </Fragment>
+      <Fragment slot="actions">
+          <a class="btn-teal btn-dream sq-standard" href="/advisor-center/client-tools">See the toolkit</a>
+      </Fragment>
+    </SevenQuestionsBand>
+    </div>
+
+    <!-- Recommend an advisor (Seb, 19 Nov 2026) -->
+    <section class="adv-band adv-recommend-band" aria-labelledby="adv-recommend">
+      <div class="adv-well">
+        <div class="adv-recommend">
+          <div>
+            <h2 class="adv-section-title" id="adv-recommend">Know an advisor who should see this?</h2>
+            <p>If a colleague in exit planning, wealth or M&amp;A keeps meeting founders who are not ready for life after the sale, send them this page, or tell us who they are and we will reach out with your name.</p>
+          </div>
+          <a class="btn-teal" href="/contact">Recommend an advisor</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="adv-band adv-band--white adv-close-band" aria-labelledby="adv-close">
+      <div class="adv-well">
+        <div class="adv-close-content">
+          <h2 id="adv-close">If you have a client in mind</h2>
+          <p>Book a short intro call with us.</p>
+          <div class="adv-card-actions">
+            <a class="btn-teal btn-dream" href="/exit">Exit advisor: book a call</a>
+            <a class="btn-teal" href="/wealth">Wealth advisor: book a call</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</Base>

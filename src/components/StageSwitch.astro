@@ -1,0 +1,259 @@
+---
+/**
+ * The two FRP stages as a switch (Seb, 19 Nov 2026 14:55). Replaces the progress pills and the two dark
+ * stage cards on /the-reset and /the-build, which repeated each other. One switch, two positions: Stage 1
+ * (GRASS) and Stage 2 (HEART). The panel below shows the chosen stage on a dark stage colour; both panels
+ * sit in the same grid cell, so the frame keeps one size whichever stage is shown.
+ * 19 Nov 2026 18:52 (Seb): the switch is navigation. Clicking the other stage slides the knob across and
+ * opens that stage's page; only the current stage's panel is shown.
+ */
+interface Props {
+  current: 1 | 2;
+}
+const { current } = Astro.props;
+
+const stages = [
+  {
+    n: 1,
+    name: "The Reset™",
+    time: "30 days",
+    line: "Get clear · Set new values · Shift patterns",
+    text: "Private 1:1 work, including a 1.5-day in-person residency.",
+    method: { href: "/clarityvalue-shift", label: "via ClarityValue Shift™" },
+    page: { href: "/the-reset", label: "Stage 1 page" },
+    note: "Apply for Stage 1",
+  },
+  {
+    n: 2,
+    name: "The Build™",
+    time: "12 weeks",
+    line: "Rework life · Go deeper · Realign what matters",
+    text: "By invitation, after Stage 1. By week 3 of Stage 1 we both know whether Stage 2 is the right next step.",
+    method: { href: "/nextlife-passage", label: "via NextLife Passage™" },
+    page: { href: "/the-build", label: "Stage 2 page" },
+    note: "By invitation",
+  },
+];
+---
+
+<div class="ss" data-ss data-current={current}>
+  <nav class="ss-switch" aria-label="The two stages">
+    {
+      stages.map((s) =>
+        s.n === current ? (
+          <span class:list={["ss-tab", `ss-tab--${s.n}`]} aria-current="page">
+            <span class="ss-tab-n">Stage {s.n}</span>
+            <span class="ss-tab-name">{s.name.replace("™", "")}</span>
+          </span>
+        ) : (
+          <a class:list={["ss-tab", `ss-tab--${s.n}`]} href={s.page.href} data-ss-go>
+            <span class="ss-tab-n">Stage {s.n}</span>
+            <span class="ss-tab-name">{s.name.replace("™", "")} →</span>
+          </a>
+        )
+      )
+    }
+    <span class="ss-knob" aria-hidden="true"></span>
+  </nav>
+
+  <div class="ss-panels">
+    {
+      stages
+        .filter((s) => s.n === current)
+        .map((s) => (
+          <section class:list={["ss-panel", `ss-panel--${s.n}`]} aria-label={`Stage ${s.n}`}>
+            <p class="ss-kicker">
+              Stage {s.n}
+              <span class="ss-here">You are here</span>
+            </p>
+            <h3 class="ss-title">
+              {s.name} <span>({s.time})</span>
+            </h3>
+            <p class="ss-line">{s.line}</p>
+            <p class="ss-text">{s.text}</p>
+            <p class="ss-links">
+              <a class="btn-teal" href={s.method.href}>{s.method.label}</a>
+            </p>
+          </section>
+        ))
+    }
+  </div>
+</div>
+
+<style>
+  /* Seb round 2, 22 Nov 2026: stage tints and shared action styles. */
+  .ss { max-width: 860px; margin: 0 auto; }
+  .ss-switch {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 0 auto 32px;
+    padding: 6px;
+    max-width: 560px;
+    border-radius: 999px;
+    background: var(--color-dream-500);
+  }
+  .ss-tab {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 16px;
+    border-radius: 999px;
+    color: var(--color-white);
+    font: inherit;
+    transition: color 0.3s ease, background-color 0.3s ease;
+  }
+  .ss-tab-n { font-size: 19px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .ss-tab-n { font-size: 17px; }
+  }
+
+  .ss-tab-name { font-size: 20px; font-weight: 900; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .ss-tab-name { font-size: 18px; }
+  }
+
+  .ss .ss-tab, .ss .ss-tab * {
+    text-decoration: none !important;
+    background-image: none !important;
+    border-bottom: 0 !important;
+  }
+  .ss-tab[aria-current="page"], .ss.is-going a.ss-tab { color: var(--color-white); }
+  .ss[data-current="1"] .ss-tab[aria-current="page"],
+  .ss[data-current="1"].is-going a.ss-tab { color: var(--color-dream-500); }
+  .ss.is-going .ss-tab[aria-current="page"] { color: var(--color-white); }
+  .ss a.ss-tab:is(:hover, :focus-visible) { background: var(--color-white); color: var(--color-dream-500); outline: 1px solid var(--color-heart-500); outline-offset: -1px; }
+  .ss a.ss-tab--1:is(:hover, :focus-visible) { outline-color: #28DBB0; }
+  .ss.is-going a.ss-tab:hover { background: transparent; }
+  .ss-tab:focus-visible { outline: 3px solid #28dbb0; outline-offset: 3px; }
+  .ss-knob {
+    position: absolute;
+    top: 6px;
+    bottom: 6px;
+    left: 6px;
+    width: calc(50% - 10px);
+    border-radius: 999px;
+    background: var(--color-grass-500);
+    pointer-events: none;
+    transition: transform 0.35s cubic-bezier(0.3, 0.7, 0.3, 1);
+  }
+  .ss[data-current="2"] .ss-knob { transform: translateX(calc(100% + 8px)); background: var(--color-heart-500); }
+  .ss-panels { display: grid; }
+  .ss-panel {
+    grid-area: 1 / 1;
+    padding: 36px 40px;
+    border: 1px solid #ea1557;
+    border-radius: 24px;
+    color: var(--color-white);
+    text-align: center;
+  }
+  .ss-panel--1 { --ss-accent: var(--color-grass-500); }
+  .ss-panel--2 { --ss-accent: var(--color-heart-500); }
+  .ss-panel { background: var(--color-dream-500); }
+  .ss-kicker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 6px;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .ss-kicker { font-size: 14px; }
+  }
+
+  .ss-here { padding: 6px 12px; border-radius: 999px; background: var(--color-grass-700); color: var(--color-white); font-size: 12px; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .ss-here { font-size: 12px; }
+  }
+
+  .ss-title { margin: 0 0 8px; font-size: clamp(30px, 3.4vw, 40px); font-weight: 900; line-height: 1.1; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .ss-title { font-size: clamp(28px, calc(3.4vw - 2px), 38px); }
+  }
+
+  .ss-title span { font-size: 0.55em; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .ss-title span { font-size: 0.55em; }
+  }
+
+  .ss-panel :is(.ss-kicker, .ss-title, .ss-title span) { color: var(--color-white); }
+  .ss-panel--2 .ss-here { background: var(--color-heart-600); }
+  .ss-line {
+    display: inline-block;
+    margin: 6px 0 14px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: var(--color-dream-500);
+    color: var(--ss-accent);
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .ss-line { font-size: 18px; }
+  }
+
+  .ss-panel .ss-text { max-width: 760px; margin: 0 auto 20px; color: var(--color-white); font-size: 18px; line-height: 1.55; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .ss-panel .ss-text { font-size: 16px; }
+  }
+
+  .ss-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 0; }
+  .ss-panel--2 a.btn-teal {
+    background: var(--color-heart-500);
+    color: var(--color-white);
+    border-color: var(--color-heart-500);
+    font-size: 20px;
+    font-weight: 800;
+  }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .ss-panel--2 a.btn-teal { font-size: 20px; }
+  }
+
+  .ss-panel--2 a.btn-teal:is(:hover, :focus-visible) {
+    background: var(--color-heart-600);
+    border-color: var(--color-heart-600);
+    color: var(--color-white);
+  }
+  @media (max-width: 600px) {
+    .ss-panel { padding: 28px 22px; text-align: left; }
+    .ss-tab { padding-inline: 12px; }
+    .ss-kicker, .ss-links { justify-content: flex-start; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ss-knob, .ss-tab { transition: none; }
+  }
+</style>
+
+<script>
+  // Slide the knob to the other stage, then open its page.
+  document.querySelectorAll<HTMLElement>("[data-ss]").forEach((root) => {
+    root.querySelectorAll<HTMLAnchorElement>("[data-ss-go]").forEach((link) => {
+      link.addEventListener("click", (e) => {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        e.preventDefault();
+        root.dataset.current = root.dataset.current === "1" ? "2" : "1";
+        root.classList.add("is-going");
+        window.setTimeout(() => (window.location.href = link.href), 380);
+      });
+    });
+  });
+</script>

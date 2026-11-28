@@ -1,0 +1,28 @@
+---
+// Hero band + wavy line for booking and thank-you pages (Seb's layout, 18 Nov 2026).
+// The H1 uses the same size as the other page heroes: clamp(34px, 5vw, 56px).
+// Below the wave the page is split on desktop: white strip on the left, purple on the right.
+interface Props {
+  title: string;
+  titleSuffix?: string;
+  /** "copy": H1 starts where the booking copy starts. "center": H1 centred over the right-hand area (thank-you pages). */
+  align?: "copy" | "center";
+}
+
+const { title, titleSuffix, align = "copy" } = Astro.props;
+---
+
+<header class:list={["bk-hero", `bk-hero--${align}`]}>
+  <div class="bk-hero-inner">
+    <h1>
+      {title}
+      {titleSuffix && <span class="bk-h1-suffix">{titleSuffix}</span>}
+    </h1>
+  </div>
+  <div class="bk-wave-top" aria-hidden="true">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <path class="bk-wave-fill" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16V0H0Z"></path>
+      <path class="bk-wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path>
+    </svg>
+  </div>
+</header>

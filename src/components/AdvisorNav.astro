@@ -1,0 +1,95 @@
+---
+import { advisorLinks } from "../data/site-links";
+interface Props { current: "overview" | "refer" | "tools" | "insights" }
+const { current } = Astro.props;
+const [overview, referrals] = advisorLinks.work;
+const [tools, insights] = advisorLinks.resources;
+const links = [
+  { key: "overview", n: "01", icon: "notes", ...overview },
+  { key: "refer", n: "02", icon: "handshake", ...referrals },
+  { key: "tools", n: "03", icon: "toolbox", ...tools },
+  { key: "insights", n: "04", icon: "notes", ...insights },
+] as const;
+
+const icons: Record<string, string> = {
+  handshake: '<path d="M3 11.5 7 8l4 2 3-2 7 3.5"/><path d="m7 8-4 4 6 6 2-1.5 2 1.5 6-6"/><path d="m10 13 2 2m1-4 3 3"/>',
+  toolbox: '<rect x="3" y="8" width="18" height="11" rx="2"/><path d="M9 8V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 13h18"/>',
+  notes: '<rect x="5" y="3.5" width="14" height="17" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/>',
+};
+---
+
+<nav class="ahub" aria-labelledby="ahub-label">
+  <p class="ahub-label" id="ahub-label"><span class="ahub-label-dot" aria-hidden="true"></span>Advisor Center · four parts</p>
+  <ul class="ahub-list">
+    {
+      links.map((l) => (
+        <li>
+          <a class="ahub-card" href={l.href} aria-current={l.key === current ? "page" : undefined}>
+            <span class="ahub-top">
+              <span class="ahub-icon" aria-hidden="true"><svg viewBox="0 0 24 24" set:html={icons[l.icon]} /></span>
+              <span class="ahub-n" aria-hidden="true">{l.n}</span>
+            </span>
+            <span class="ahub-title">{l.label}</span>
+            <span class="ahub-detail">{l.detail}</span>
+            <span class="ahub-go">{l.key === current ? "You are here" : "Go to this part →"}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  .ahub { width: 100%; max-width: 1080px; margin: 0 auto; }
+  .ahub-label { display: flex; align-items: center; gap: 12px; margin: 0 0 14px; color: var(--color-dream-500); font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .ahub-label { font-size: 13px; }
+  }
+
+  .ahub-label-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--color-dream-300); }
+  .ahub-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: 0; padding: 8px; list-style: none; background: var(--color-dream-500); border-radius: 28px; }
+  .ahub-list li { min-width: 0; margin: 0; }
+  a.ahub-card { display: flex; flex-direction: column; gap: 8px; height: 100%; padding: 20px; border: 0; border-radius: 20px; background: var(--color-white); color: var(--color-dream-500); text-decoration: none; transition: background-color .2s, color .2s; }
+  a.ahub-card:is(:hover, :focus-visible) { background: var(--color-dream-100); }
+  a.ahub-card:focus-visible { outline: 2px solid var(--color-dream-300); outline-offset: 2px; }
+  .ahub-top { display: flex; align-items: center; justify-content: space-between; }
+  .ahub-icon { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--color-dream-25); color: var(--color-dream-500); }
+  .ahub-icon svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+  .ahub-n { font-size: 22px; color: var(--color-dream-500); }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .ahub-n { font-size: 20px; }
+  }
+
+  .ahub-title { font-size: 18px; font-weight: 800; line-height: 1.3; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .ahub-title { font-size: 16px; }
+  }
+
+  .ahub-detail { flex: 1; font-size: 14px; line-height: 1.5; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .ahub-detail { font-size: 14px; }
+  }
+
+  .ahub-go { align-self: flex-start; padding: 6px 12px; border-radius: 24px; background: var(--color-dream-500); color: var(--color-white); font-size: 12px; font-weight: 800; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .ahub-go { font-size: 12px; }
+  }
+
+  a.ahub-card[aria-current="page"] { background: var(--color-dream-500); color: var(--color-white); }
+  a.ahub-card[aria-current="page"]:is(:hover, :focus-visible) { background: #533F79; }
+  a.ahub-card[aria-current="page"] .ahub-n { color: var(--color-white); }
+  a.ahub-card[aria-current="page"] :is(.ahub-icon, .ahub-go) { background: var(--color-dream-100); color: var(--color-dream-500); }
+  @media (max-width: 600px) {
+    .ahub-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    a.ahub-card { padding: 14px 12px; }
+    .ahub-title { font-size: 16px; }
+    .ahub-detail { font-size: 12px; }
+    .ahub-go { padding: 6px 8px; }
+  }
+  @media (prefers-reduced-motion: reduce) { a.ahub-card { transition: none; } }
+</style>

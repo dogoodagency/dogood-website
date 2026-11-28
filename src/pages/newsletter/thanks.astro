@@ -1,0 +1,19 @@
+---
+import ThankYouPage from "../../components/ThankYouPage.astro";
+import { sevenQuestionsPdf } from "../../data/seven-questions";
+---
+
+<ThankYouPage
+  title="You're on the list"
+  heading="Thanks for subscribing"
+  seoTitle="Thanks for subscribing: founder coaching notes | DoGood Agency"
+  description="Thanks for subscribing to DoGood's founder coaching notes before and after the sale. Your copy of The 7 Questions is ready."
+  canonical="https://www.dogoodagency.co/newsletter/thanks"
+>
+  <p style="text-align: center;">Your copy of The 7 Questions is ready.</p>
+  <div class="ty-guide">
+    <a class="btn-teal" href={sevenQuestionsPdf} target="_blank" rel="noopener">Download The 7 Questions (PDF)</a>
+    <img class="ty-guide-cover" src="/media/r10/seven-questions@1x.webp" srcset="/media/r10/seven-questions@1x.webp 600w, /media/r10/seven-questions@2x.webp 1200w" sizes="(max-width: 600px) 86vw, 420px" width="600" height="401" alt="The 7 Questions guide: Seven questions for the first 90 days, an open booklet and its cover" decoding="async" />
+    <a class="r3-inline-link" href="/insights">Back to Insights</a>
+  </div>
+</ThankYouPage>

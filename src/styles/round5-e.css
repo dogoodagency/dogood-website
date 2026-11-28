@@ -1,0 +1,147 @@
+/* Round 5 part e (Seb t1952u + answers t1957u, 23 Nov 2026) */
+
+/* The enlarged home guide must still fit its phone and tablet container. */
+html body main#main .sq-band--home.sq-band--preview .sq-inner {
+  width: min(1080px, 100%);
+}
+
+/* Insights index: retain the two colored cards and center them at every width. */
+html body main#main .advr-page.advr-insights-page .advr-grid--links {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 800px;
+  margin-inline: auto;
+}
+html body main#main .advr-insights-page .advr-hub-band + .advr-band .advr-well {
+  padding-top: 122px;
+}
+html body main#main .advr-page.advr-insights-page .advr-card--link {
+  border: 1px solid #C2B7DD;
+  box-shadow: none;
+  transition: background-color 350ms;
+}
+html body main#main .advr-page.advr-insights-page .advr-card--sky { background: #E1EBFE; }
+html body main#main .advr-page.advr-insights-page .advr-card--grass { background: #CCFDEC; }
+html body main#main .advr-page.advr-insights-page .advr-card--sky:is(:hover, :focus-visible) { background: #AEC8FE; }
+html body main#main .advr-page.advr-insights-page .advr-card--grass:is(:hover, :focus-visible) { background: #A3F2D7; }
+html body main#main .advr-page.advr-insights-page .advr-card--link:is(:hover, :focus-visible) :is(h2, p, .advr-more) {
+  color: #2A0B4F;
+}
+html body main#main .advr-page.advr-insights-page .advr-card--link:is(:hover, :focus-visible) .advr-more {
+  text-decoration: underline;
+  text-decoration-color: #2A0B4F;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+.advr-insights-page .advr-more-chevron { display: inline-block; margin-left: 6px; }
+
+/* R5 64: scope the new navigation to the three insight detail pages. */
+html body main#main .advr-page.advd-insights-page .advr-nav { margin-bottom: 72px; }
+html body main#main .advr-page.advd-insights-page .advd-breadcrumb {
+  justify-content: center;
+  margin-top: 0;
+  text-align: center;
+}
+html body main#main .advr-page.advd-insights-page .advd-siblings {
+  justify-content: center;
+}
+html body main#main .advr-page.advd-insights-page .advd-siblings a {
+  justify-content: center;
+  max-width: 100%;
+  border: 1px solid #C2B7DD;
+  border-radius: 999px;
+  background: #FFFFFF;
+  color: #2A0B4F;
+  font-size: 14px;
+  text-align: center;
+  transition: background-color 350ms, border-color 350ms, color 350ms;
+}
+html body main#main .advr-page.advd-insights-page .advd-siblings a[aria-current="page"] {
+  background: #2A0B4F;
+  color: #FFFFFF;
+}
+html body main#main .advr-page.advd-insights-page .advd-siblings a:is(:hover, :focus-visible) {
+  border-color: #2A0B4F;
+  background: #F5F2FF;
+  color: #2A0B4F;
+}
+html body main#main .advr-page.advd-insights-page .advd-breadcrumb a:is(:hover, :focus-visible) {
+  color: #58447F;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+html body main#main .advr-page.advd-insights-page .advd-siblings a:focus-visible,
+html body main#main .advr-page.advr-insights-page .advr-card--link:focus-visible {
+  outline: 2px solid #2A0B4F;
+  outline-offset: 4px;
+}
+
+/* R5 65: five white reading cards, with unboxed style-guide quotes. */
+html body main#main .advd-insights-page .advr-band:has(.advd-struggles) { background: #F5F2FF; }
+html body main#main .advr-page.advd-insights-page .advd-struggles .advd-block {
+  padding: 40px 44px;
+  border: 1px solid #C2B7DD;
+  border-radius: 24px;
+  background: #FFFFFF;
+  box-shadow: none;
+}
+html body main#main .advr-page.advd-insights-page .advd-pattern-quote {
+  margin: 20px 0;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+html body main#main .advr-page.advd-insights-page .advd-pattern-quote blockquote {
+  margin: 0;
+  padding: 0 0 0 16px;
+  border: 0;
+  border-left: 3px solid #28DBB0;
+  background: none;
+}
+html body main#main .advr-page.advd-insights-page .advd-pattern-quote blockquote p {
+  margin: 0;
+  color: #2A0B4F;
+  font-size: 18px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.6;
+}
+html body main#main .advr-page.advd-insights-page .advd-pattern-quote figcaption {
+  margin: 10px 0 0 19px;
+  color: #58447F;
+  font-size: 14px;
+  font-weight: 400;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.06em;
+}
+html body main#main .advr-page.advd-insights-page .advd-struggles .advd-block > p:last-child { margin-bottom: 0; }
+
+/* R5 69–72: a DREAM quote band, then a separate white conversations band. */
+html body main#main .advr-page.advd-insights-page .av-intro { text-wrap: balance; }
+html body main#main .advr-page.advd-insights-page .av-wall .tw-card {
+  /* Override the earlier site-wide !important HEART outline. */
+  border: 1px solid #C2B7DD !important;
+  border-radius: 24px;
+  background: #FFFFFF;
+  box-shadow: none;
+}
+html body main#main .advr-page.advd-insights-page .advd-conversations-band { background: #FFFFFF; }
+html body main#main .advr-page.advd-insights-page .advd-conversations { margin-block: 0; }
+html body main#main .advr-page.advd-insights-page .advd-conversations .advr-soon {
+  border: 1px solid #2A0B4F;
+}
+
+@media (max-width: 767px) {
+  html body main#main .advr-page.advr-insights-page .advr-grid--links {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 480px;
+  }
+  .advd-insights-page .av-desktop-break { display: none; }
+}
+@media (max-width: 600px) {
+  html body main#main .advr-insights-page .advr-hub-band + .advr-band .advr-well { padding-top: 102px; }
+  html body main#main .advr-page.advd-insights-page .advd-struggles .advd-block { padding: 28px 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html body main#main .advr-page.advr-insights-page .advr-card--link,
+  html body main#main .advr-page.advd-insights-page .advd-siblings a { transition: none; }
+}

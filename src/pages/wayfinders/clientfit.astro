@@ -1,0 +1,163 @@
+---
+import "../../styles/wayfinders.css";
+import { Image } from "astro:assets";
+import Base from "../../layouts/Base.astro";
+import Wave from "../../components/Wave.astro";
+import { edgeAbove } from "../../data/edge-line";
+import caseJ from "../../assets/cases/case-study-j-founder-life-after-exit.png";
+
+const tint = "#F5F2FF";
+const white = "#ffffff";
+const heroEdge = edgeAbove("#2A0B4F");
+const bandEdge = edgeAbove(tint);
+const footerEdge = edgeAbove("#ffffff");
+
+function wave(from: string, to: string) {
+  const above = from === tint ? "tint" : "white";
+  return `<div class="wf-divider wf-divider--${above}" aria-hidden="true"><svg style="--wave-edge:${bandEdge}" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="${to}" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path><path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path></svg></div>`;
+}
+const toTint = wave(white, tint);
+const toWhite = wave(tint, white);
+
+// Rewritten 19 Nov 2026 18:52 (Seb): every card about the same length (24–30 words), same facts.
+const steps = [
+  {
+    title: "Apply for Stage 1",
+    text: "You tell us what is happening right now, across health, relationships, identity and pressure, and what you need most from the work ahead.",
+  },
+  {
+    title: "After the FRP-Fit Call",
+    text: "Together we confirm this is the right container for you: private, intensive and founder-first, and that you can protect the time it asks for.",
+  },
+  {
+    title: "Match to your Wayfinder",
+    text: "We match on your situation and style: direct or gentle, structured or spacious, how much steadying support you need, and whether you are still running or post-exit.",
+  },
+  {
+    title: "Optimize for proximity",
+    text: "After fit, we look for time-zone and location alignment to reduce friction, and keep travel within wellbeing guardrails: no extreme routes, long-haul only by exception.",
+  },
+  {
+    title: "Early checkpoint + correction",
+    text: "If the match feels wrong within your first two sessions, we correct it quickly. If that is not possible, you can exit via the ",
+    link: { href: "/clarity-first-guarantee-terms", label: "Clarity‑First Guarantee" },
+    after: " within its window.",
+  },
+];
+
+const site = "https://www.dogoodagency.co";
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
+    { "@type": "ListItem", position: 2, name: "Wayfinders", item: `${site}/wayfinders` },
+    { "@type": "ListItem", position: 3, name: "Client-Fit Process", item: `${site}/wayfinders/clientfit` },
+  ],
+};
+---
+
+<Base
+  title="Client-Fit Process | DoGood Agency"
+  description="How DoGood matches founders to a Wayfinder: fit first, then time zone, with an early checkpoint so the match can be corrected quickly if it feels wrong."
+  canonical="https://www.dogoodagency.co/wayfinders/clientfit"
+  footerStrip="#ffffff"
+  footerEdge={footerEdge}
+>
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <article class="wf-page wf-page-clientfit">
+    <header class="wf-hero">
+      <div class="wf-hero-inner">
+        <h1>Client-Fit Process</h1>
+        <p class="wf-lead">
+          We match you to a Wayfinder for fit first because outcomes depend on the relationship and working style. Once the fit is satisfied, we prioritize proximity/time zone to keep scheduling clean and travel sustainable.
+        </p>
+      </div>
+      <Wave fill={white} edge={heroEdge} />
+    </header>
+
+    <section class="wf-band" aria-labelledby="wf-how">
+      <div class="wf-well wf-well-top">
+        <h2 class="wf-h2" id="wf-how">How it works</h2>
+        <ol class="wf-timeline wf-timeline--grass" data-wf-tl>
+          {
+            steps.map((step, i) => (
+              <li class="wf-tl-item">
+                <span class="wf-tl-n" aria-hidden="true">{i + 1}</span>
+                <div class="wf-tl-body">
+                  <h3>{step.title}</h3>
+                  <p>
+                    {step.text}
+                    {step.link && <a href={step.link.href}>{step.link.label}</a>}
+                    {step.after}
+                  </p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    <Fragment set:html={toTint} />
+
+    <section class="wf-band wf-band-tint" aria-label="Case study">
+      <div class="wf-well wf-well-top">
+        <article class="wf-case">
+          <Image
+            class="wf-case-portrait"
+            src={caseJ}
+            width={220}
+            height={244}
+            widths={[220, 440]}
+            sizes="220px"
+            alt="Pixelated portrait of founder J, shown this way to protect their identity"
+          />
+          <div class="wf-case-body">
+            <p class="wf-eyebrow wf-eyebrow-dark">Case Study</p>
+            <h2 class="wf-case-title">From exit anxiety to aligned legacy —<br />How J created a clear next life chapter</h2>
+            <p class="wf-case-who">J (anonymous), USD 2M founder</p>
+            <div class="btn-with-caption">
+              <a class="btn-teal" href="/casestudies/j" aria-label="Read the short case study: how J created a clear next life chapter">Read the short case study</a>
+              <p class="wf-case-note">We protect our founders’ identities</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <Fragment set:html={toWhite} />
+
+    <!-- Bottom redesign (Seb, 18 Nov 2026): case study and next step in separate bands, both boxes the same
+         width, and the next-step box now says what each button is for. -->
+    <section class="wf-band" aria-labelledby="wf-next">
+      <div class="wf-well wf-well-top">
+        <div class="wf-cta wf-cta-box closing-unframed">
+          <h2 id="wf-next">Ready to find your Wayfinder?</h2>
+          <p>
+            It starts with your Stage 1 application. Tell us what is happening, and we take it from there: a private
+            FRP-Fit Call first, then a match with the Wayfinder who fits you best.
+          </p>
+          <div class="wf-cta-actions">
+            <a class="btn-apply" href="/application">Apply for Stage 1</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+  <script>
+    /* Client-fit steps appear one after another, in GRASS shades (Seb, 19 Nov 2026 14:55). */
+    document.querySelectorAll<HTMLElement>("[data-wf-tl]").forEach((el) => {
+      if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      el.classList.add("will-animate");
+      const io = new IntersectionObserver(([e]) => {
+        if (!e?.isIntersecting) return;
+        el.classList.add("is-in");
+        io.disconnect();
+      }, { threshold: 0.15 });
+      io.observe(el);
+    });
+  </script>
+</Base>

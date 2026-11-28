@@ -1,0 +1,356 @@
+/* Round 6 part a: only Home, newsletter's book, and the shared Home/newsletter/Reset guide actions. */
+
+/* R6.1: initial proportional offset; Home measures the boot-to-wave gap after layout. */
+html body main#main .page-home #hero .hero-sketch-frame {
+  transform: translateY(var(--r6-hero-shift, calc(200 * 100vw / 1710)));
+}
+
+/* R6.2–4: the newsletter frame, centered over Home's through-line. */
+html body main#main .page-home .sq-band--home.sq-band--preview {
+  padding-inline: var(--pad);
+}
+html body main#main .page-home .sq-band--home.sq-band--preview .sq-inner {
+  position: relative;
+  z-index: 2;
+  width: min(1080px, 100%);
+  max-width: 1080px;
+  margin-inline: auto;
+}
+/* Reuse the existing btn-teal/btn-dream disc and hover, at the approved size.
+   These classes are only assigned to Home, newsletter, and Reset guide buttons. */
+html body main#main :is(.sq-band .sq-actions a.sq-standard, .nl-book a.r6-book-button) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px !important;
+  padding: 10px 56px 10px 20px !important;
+  border-radius: 16px;
+  font-size: 16px !important;
+  font-weight: 400;
+  line-height: 1.5;
+  text-decoration: none;
+  box-shadow: none;
+  transition: transform 350ms, padding 350ms, background-color 350ms;
+}
+html body main#main :is(.sq-band .sq-actions a.sq-standard, .nl-book a.r6-book-button):is(:hover, :focus-visible) {
+  padding: 10px 20px 10px 56px !important;
+  transform: scale(1.013) !important;
+  text-decoration: none;
+}
+html body main#main :is(.sq-band .sq-actions a.sq-standard, .nl-book a.r6-book-button)::before,
+html body main#main :is(.sq-band .sq-actions a.sq-standard, .nl-book a.r6-book-button)::after {
+  width: 36px !important;
+  height: 36px !important;
+  transition-duration: 350ms;
+}
+
+html body main#main :is(.sq-band .sq-actions a.sq-standard, .nl-book a.r6-book-button):focus-visible {
+  outline: 2px solid #28DBB0;
+  outline-offset: 4px;
+}
+
+/* R6.5: preview-12 Home geometry; all other FOUNDR.land variants retain round 5. */
+html body main#main .page-home .fl--home .fl-panel {
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 48px;
+  padding: 64px;
+  border-radius: 34px;
+}
+.page-home .fl--home .fl-phone {
+  position: relative;
+  width: 340px;
+  max-width: 100%;
+  filter: none;
+  animation: fl-float 9s ease-in-out infinite;
+}
+.page-home .fl--home .fl-phone-img { display: block; width: 100%; height: auto; }
+.page-home .fl--home .fl-phone-wheel { position: absolute; inset: 0; width: 100%; height: 100%; }
+.page-home .fl--home .fl-phone-wheel > * { transform: rotate(6.6deg); transform-origin: 322px 607px; }
+.page-home .fl--home .fl-wheel-grid polygon,
+.page-home .fl--home .fl-wheel-grid line { fill: none; stroke: #e0d8ef; stroke-width: 2.5; }
+.page-home .fl--home .fl-wheel-shape { fill: rgba(40, 219, 176, 0.32); stroke: #01a684; stroke-width: 6; stroke-linejoin: round; }
+.page-home .fl--home .fl-wheel-node { fill: #01a684; stroke: #fff; stroke-width: 4; }
+.page-home .fl--home .fl-wheel-hub { fill: #21084e; }
+/* The badge from the phone image sits back on top of the redrawn wheel. */
+.page-home .fl--home .fl-phone-badge { position: absolute; left: 55.88%; top: 66.87%; width: 41.47%; height: auto; }
+
+
+/* R6.6: midpoint of p12's combined outer/inner top inset and p13's inset.
+   Desktop: (184 + 348 + 64) / 2 = 298px; tablet: (180 + 64) / 2 = 122px;
+   phone: (212 + 40) / 2 = 126px. The swell and following content grow with it. */
+html body main#main > .page-home > #next {
+  padding-top: 298px !important;
+}
+@media (min-width: 600px) and (max-width: 1365px) {
+  html body main#main > .page-home > #next { padding-top: 122px !important; }
+}
+@media (max-width: 599px) {
+  html body main#main > .page-home > #next { padding-top: 126px !important; }
+}
+@media (min-width: 601px) and (max-width: 1365px) {
+  html body main#main .page-home .fl--home .fl-panel { padding: 40px; gap: 32px; }
+}
+@media (max-width: 960px) {
+  html body main#main .page-home .fl--home .fl-panel { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .page-home .fl--home .fl-phone { width: 270px; }
+}
+@media (max-width: 600px) {
+  html body main#main .page-home .fl--home .fl-panel { padding: 36px 26px; gap: 30px; }
+}
+@media (max-width: 599px) {
+  html body main#main .page-home .fl--home .fl-panel { padding: 24px 20px; gap: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-home .fl--home .fl-phone { animation: none; }
+  html body main#main :is(.sq-band .sq-actions a.sq-standard, .nl-book a.r6-book-button),
+  html body main#main :is(.sq-band .sq-actions a.sq-standard, .nl-book a.r6-book-button)::before,
+  html body main#main :is(.sq-band .sq-actions a.sq-standard, .nl-book a.r6-book-button)::after { transition: none; }
+  html body main#main :is(.sq-band .sq-actions a.sq-standard, .nl-book a.r6-book-button):is(:hover, :focus-visible) {
+    padding: 10px 56px 10px 20px !important;
+    transform: none !important;
+  }
+  html body main#main .sq-band .sq-actions a.sq-standard:is(:hover, :focus-visible) {
+    background: #58447F !important;
+  }
+  html body main#main .nl-book a.r6-book-button:is(:hover, :focus-visible) {
+    background: #A3F2D7 !important;
+  }
+}
+
+/* Round 6 part b: Pathway, the stages, navigation artwork, Advisor Center and Stories. */
+/* R6.12: retain the tabs' color feedback without an underline on their labels. */
+html body main#main .dr-page .pathway-track button:is(:hover, :focus-visible) {
+  text-decoration: none;
+}
+
+/* R6.14–16: only Reset's Option A and Build's featured V action. */
+html body main#main .hw-page--s1 .hw-option-a { border: 1px solid #2A0B4F !important; }
+html body main#main .hw-page--s2 .hw-case-band .hw-case-feature a.btn-dream,
+html body main#main .hw-page--s2 .hw-case-band .hw-case-feature a.btn-dream:is(:hover, :focus-visible) {
+  background: #2A0B4F !important;
+  border-color: #2A0B4F !important;
+  color: #FFFFFF !important;
+  text-decoration: none;
+}
+html body main#main .hw-page--s2 .hw-case-band .btn-with-caption {
+  align-items: center;
+  text-align: center;
+}
+html body main#main .hw-page--s2 .hw-case-band .hw-case-note {
+  width: 100%;
+  text-align: center !important;
+}
+
+/* R6.17–19: scale the art around its center, retaining all card and link-column widths. */
+html body header.nav :is(#nav-how, #nav-products) .nav-mega-card img {
+  transform: scale(1.08);
+  transform-origin: center;
+}
+html body header.nav #nav-advisors .nav-mega-card picture {
+  height: calc(100% - 30px);
+}
+html body header.nav #nav-advisors .nav-mega-card img {
+  transform: scale(1.04);
+  transform-origin: center;
+  object-position: center;
+}
+
+/* R6.20, 22–25: only the overview's specified button and bands. */
+html body main#main .adv-center-page .adv-door.adv-door--wealth a.btn-teal {
+  background: #01A684 !important;
+  color: #110027 !important;
+}
+html body main#main .adv-center-page .adv-door.adv-door--wealth a.btn-teal:is(:hover, :focus-visible) {
+  background: #05745B !important;
+  color: #FFFFFF !important;
+}
+html body main#main .adv-center-page .adv-toolkit-band,
+html body main#main .adv-center-page .adv-toolkit-band .sq-band { background: #F5F2FF; }
+html body main#main .adv-center-page .adv-recommend-band { background: #FFFFFF; }
+html body main#main .adv-center-page .adv-recommend {
+  background: #2A0B4F;
+  border: 0;
+  color: #FFFFFF;
+}
+html body main#main .adv-center-page .adv-recommend :is(h2, p) { color: #FFFFFF; }
+html body main#main .adv-center-page .adv-close-band { background: #F5F2FF; }
+
+/* R6.28–30: scope the action and spacing adjustments to their requested page. */
+html body main#main .advr-tools-page .advr-founder-brief a.btn-teal,
+html body main#main .advr-tools-page .advr-founder-brief a.btn-teal:is(:hover, :focus-visible) {
+  font-size: 16px;
+  text-decoration: none;
+}
+html body main#main .advr-page.advd-signals-page .advd-download { text-align: center; }
+html body main#main .advr-page.advd-insights-page .advd-struggles > .advd-timing-note {
+  margin-top: calc(50 * 100vw / 1710);
+  margin-bottom: calc(16px + 50 * 100vw / 1710);
+  text-align: center;
+}
+
+/* R6.31: normal body copy immediately below the heading, with a 32px card gap. */
+html body main#main .st-page .st-anon {
+  max-width: none;
+  margin: 0;
+  color: var(--st-ink) !important;
+  font-size: 18px !important;
+  font-style: normal !important;
+  line-height: 1.6;
+  text-align: left;
+}
+html body main#main .st-page .st-anon + .st-cases { margin-top: 32px; }
+
+/* R6.32–33: case study heroes J and V (CaseStudy.astro is used only by these two pages).
+   Taller and more spacious (+120px at 1710, proportional), four smaller result tiles in one centered row. */
+html body main#main .cs-page > header.cs-hero:not([hidden]) {
+  --r6-cs-u: calc(100vw / 1710);
+}
+@media (min-width: 1366px) {
+  html body main#main .cs-page > header.cs-hero:not([hidden]) {
+    height: auto;
+    min-height: calc(540px + 120 * var(--r6-cs-u));
+  }
+  html body main#main .cs-page > header.cs-hero > .cs-hero-inner {
+    gap: calc(26 * var(--r6-cs-u));
+    padding-block: calc(36 * var(--r6-cs-u));
+  }
+  html body main#main .cs-page > header.cs-hero .cs-highlights--wide {
+    margin-top: calc(22 * var(--r6-cs-u));
+  }
+}
+@media (min-width: 600px) and (max-width: 1365px) {
+  html body main#main .cs-page > header.cs-hero > .cs-hero-inner {
+    gap: 28px;
+    padding-block: 104px 96px;
+  }
+  html body main#main .cs-page > header.cs-hero .cs-highlights--wide {
+    margin-top: 20px;
+  }
+}
+@media (min-width: 600px) {
+  html body main#main .cs-page > header.cs-hero .cs-highlights--wide {
+    grid-template-columns: repeat(4, 160px);
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 0;
+  }
+  html body main#main .cs-page > header.cs-hero .cs-highlights--wide li {
+    justify-content: center;
+    gap: 2px;
+    padding: 9px 10px;
+    border-radius: 12px;
+  }
+  html body main#main .cs-page > header.cs-hero .cs-highlights--wide strong {
+    font-size: 18px;
+  }
+  html body main#main .cs-page > header.cs-hero .cs-highlights--wide span {
+    font-size: 13px;
+    line-height: 1.25;
+  }
+}
+@media (min-width: 600px) and (max-width: 767px) {
+  html body main#main .cs-page > header.cs-hero .cs-highlights--wide {
+    grid-template-columns: repeat(2, 160px);
+  }
+}
+@media (max-width: 599px) {
+  html body main#main .cs-page > header.cs-hero > .cs-hero-inner {
+    gap: 20px;
+    padding-block: 54px 52px;
+  }
+  html body main#main .cs-page .cs-highlights--m {
+    grid-template-columns: repeat(2, minmax(0, 150px));
+    justify-content: center;
+    gap: 10px;
+  }
+  html body main#main .cs-page .cs-highlights--m li {
+    gap: 2px;
+    padding: 10px;
+    border-radius: 12px;
+  }
+  html body main#main .cs-page .cs-highlights--m strong { font-size: 18px; }
+  html body main#main .cs-page .cs-highlights--m span { font-size: 13px; line-height: 1.3; }
+}
+
+/* R6.40: Insights article pages. Hero = headline + one row (audience pill, label); the rest sits below the wave. */
+html body main#main .bl-article .r4-article-hero h1.r4-phrase-title {
+  font-size: clamp(28px, 3.2vw, 48px);
+  line-height: 1.15;
+}
+html body main#main .bl-article .r4-article-hero .r6-article-tags {
+  margin: 16px 0 0;
+  gap: 8px 12px;
+  justify-content: center;
+}
+html body main#main .bl-article .r4-article-hero .r6-article-tags :is(.bl-badge, .bl-pill) {
+  font-size: 12px;
+}
+html body main#main .bl-article .r6-article-top {
+  display: flex;
+  flex-direction: column;
+  padding-top: 48px;
+}
+html body main#main .bl-article .r6-article-back { margin: 0; line-height: 1.5; }
+html body main#main .bl-article .r6-article-share {
+  justify-content: flex-end;
+  margin: 8px 0 24px;
+}
+html body main#main .bl-article .r6-article-byline {
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding: 20px 0 0;
+  border-top: 1px solid var(--color-dream-200);
+}
+html body main#main .bl-article .r6-article-byline .bl-meta { color: var(--color-dream-500); font-size: 14px; }
+@media (max-width: 767px) {
+  html body main#main .bl-article .r6-article-top { padding-top: 32px; }
+  html body main#main .bl-article .r6-article-share { justify-content: flex-start; }
+  html body main#main .bl-article .r6-article-byline { flex-direction: column; align-items: flex-start; }
+}
+
+/* R6.41: the nav picture card is a plain figure now (not a link). */
+html body header.nav figure.nav-mega-card { margin: 0; cursor: default; }
+
+/* R6.42: "Change cookie settings" on /cookies. Standard button (52px, 16px, 36px disc), dream fill; the disc and hover
+   come from the existing btn-teal rules. CookieYes opens its preferences through the cky-banner-element class. */
+html body main#main .page-privacy button.btn-teal.r6-cookie-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 24px;
+  min-height: 52px !important;
+  padding: 10px 56px 10px 20px !important;
+  border-radius: 16px;
+  background: var(--color-dream-500) !important;
+  border: 0 !important;
+  color: var(--color-white) !important;
+  font-family: inherit;
+  font-size: 16px !important;
+  font-weight: 400;
+  line-height: 1.5;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: none;
+  transition: transform 350ms, padding 350ms, background-color 350ms;
+}
+html body main#main .page-privacy button.btn-teal.r6-cookie-button:is(:hover, :focus-visible) {
+  padding: 10px 20px 10px 56px !important;
+  transform: scale(1.013);
+  background: var(--color-dream-500) !important;
+  color: var(--color-white) !important;
+}
+html body main#main .page-privacy button.btn-teal.r6-cookie-button::before,
+html body main#main .page-privacy button.btn-teal.r6-cookie-button::after {
+  width: 36px !important;
+  height: 36px !important;
+  transition-duration: 350ms;
+}
+html body main#main .page-privacy button.btn-teal.r6-cookie-button:focus-visible { outline: 2px solid #28DBB0; outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  html body main#main .page-privacy button.btn-teal.r6-cookie-button,
+  html body main#main .page-privacy button.btn-teal.r6-cookie-button::before,
+  html body main#main .page-privacy button.btn-teal.r6-cookie-button::after { transition: none; }
+  html body main#main .page-privacy button.btn-teal.r6-cookie-button:is(:hover, :focus-visible) { transform: none; }
+}

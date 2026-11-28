@@ -1,0 +1,55 @@
+---
+import "../styles/booking.css";
+import Base from "../layouts/Base.astro";
+import BookingHero from "./BookingHero.astro";
+
+interface Props {
+  /** The visible H1. */
+  title: string;
+  /** Smaller text on the same line as the H1, e.g. "(3 months)". */
+  titleSuffix?: string;
+  /** TidyCal path, e.g. "dogoodagency/internal". */
+  tidycal: string;
+  /** Browser title (SEO). */
+  seoTitle: string;
+  description: string;
+  /** Absolute canonical URL. */
+  canonical: string;
+  robots?: string;
+  /** Link preview image (1200 x 630), e.g. "/media/og/catchup-og.jpg". */
+  ogImage?: string;
+}
+
+const { title, titleSuffix, tidycal, seoTitle, description, canonical, robots, ogImage } = Astro.props;
+const hasAfter = Astro.slots.has("after");
+const fallbackHref = `https://tidycal.com/${tidycal}`;
+---
+
+<Base title={seoTitle} description={description} canonical={canonical} robots={robots} ogImage={ogImage} footerEdge="#C2B7DD">
+  <article class="bk-page">
+    <BookingHero title={title} titleSuffix={titleSuffix} />
+    <div class="bk-body">
+      <div class="bk-grid">
+        <div class="bk-copy">
+          <div class="bk-copy-inner">
+            <slot />
+          </div>
+        </div>
+        <div class="bk-panel">
+          <div class="tidycal-embed" data-path={tidycal}></div>
+          <script src="https://asset-tidycal.b-cdn.net/js/embed.js" async is:inline></script>
+          <noscript>
+            <p class="bk-noscript"><a href={fallbackHref}>Open the booking calendar</a></p>
+          </noscript>
+        </div>
+      </div>
+      {
+        hasAfter && (
+          <div class="bk-after">
+            <slot name="after" />
+          </div>
+        )
+      }
+    </div>
+  </article>
+</Base>

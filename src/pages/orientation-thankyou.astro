@@ -1,0 +1,36 @@
+---
+// Thank-you page after booking the Orientation call. Layout: ThankYouPage (Seb's design, 18 Nov 2026):
+// case study, no map. Copy from the old src/content/pages/orientation-call-thankyou.md (removed).
+// Case study alternates with the /orientation booking page (J there, V here).
+// DG-PRE-56 (round 7): two articles, links to relevant site pages and the one case study.
+// Article and page picks are Tec's placeholders until Grova/Inka select them (tab: "Grova/Inka select relevant articles; Tec verifies").
+import ThankYouPage from "../components/ThankYouPage.astro";
+import AdvisorResources from "../components/AdvisorResources.astro";
+
+const links = [
+  { href: "/pathway", label: "See the whole pathway" },
+  { href: "/exit-prep", label: "Exit-Prep™" },
+  { href: "/the-reset", label: "Stage 1: The Reset™" },
+  { href: "/faqs", label: "FAQs" },
+];
+---
+
+<ThankYouPage
+  title="Orientation Call"
+  seoTitle="Orientation call booked | DoGood Agency"
+  description="Your orientation call with DoGood is booked. Check that the invite is in your calendar."
+  canonical="https://www.dogoodagency.co/orientation-thankyou"
+  caseStudy="v"
+>
+  <p>Welcome to <strong>FOUNDRland</strong>.</p>
+  <p>
+    You will have received a calendar invite in your inbox, and the meeting should already be added to your calendar.
+  </p>
+  <p><strong>NEXT STEPS:</strong> Verify that the meeting appears on your calendar.</p>
+  <AdvisorResources
+    slot="extra"
+    articles={["emotions-of-selling-a-business", "first-90-days-after-the-sale"]}
+    heading={null}
+    links={links}
+  />
+</ThankYouPage>

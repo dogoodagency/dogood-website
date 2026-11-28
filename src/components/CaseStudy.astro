@@ -1,0 +1,307 @@
+---
+import "../styles/casestudy.css";
+import Base from "../layouts/Base.astro";
+import Wave from "./Wave.astro";
+import { edgeAbove } from "../data/edge-line";
+
+interface Img {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
+interface Props {
+  /** Browser title, meta description and canonical URL. */
+  title: string;
+  description: string;
+  canonical: string;
+  /** Founder initial, used in the "What V wanted" style headings. */
+  name: string;
+  headline: string;
+  headlineAccent: string;
+  intro: string;
+  quote: string[];
+  attribution: string;
+  portrait: Img;
+  snapshot: string[];
+  facts: { label: string; value: string }[];
+  diagnosticLabel: string;
+  problem: string;
+  symptoms: string[];
+  wanted: string;
+  tried: string;
+  hardest: string;
+  approachIntro: string;
+  did: string[];
+  didImages: Img[];
+  actions: string[];
+  actionImages: Img[];
+  outcomesIntro: string;
+  businessOutcomes: string[];
+  personalOutcomes: string[];
+  howChange: string[];
+  netEffect: string[];
+  closing: string;
+  /** Optional key numbers for the hero, taken from the outcomes (19 Nov 2026 18:52). */
+  highlights?: { value: string; label: string }[];
+  /** Optional in-text links inside the Founder Snapshot paragraphs (R9.P, SEO plan): the exact words to link. */
+  snapshotLinks?: { text: string; href: string }[];
+}
+
+const {
+  title,
+  description,
+  canonical,
+  name,
+  headline,
+  headlineAccent,
+  intro,
+  quote,
+  attribution,
+  portrait,
+  snapshot,
+  facts,
+  diagnosticLabel,
+  problem,
+  symptoms,
+  wanted,
+  tried,
+  hardest,
+  approachIntro,
+  did,
+  didImages,
+  actions,
+  actionImages,
+  outcomesIntro,
+  businessOutcomes,
+  personalOutcomes,
+  howChange,
+  netEffect,
+  closing,
+  highlights = [],
+  snapshotLinks = [],
+} = Astro.props;
+
+const tint = "#F5F2FF";
+const heroEdge = edgeAbove("#2A0B4F");
+const bandEdge = edgeAbove(tint);
+const footerEdge = edgeAbove(tint);
+const caption = "Founder-focused · Not therapy, not medical advice, not psychological services";
+---
+
+<Base
+  title={title}
+  description={description}
+  canonical={canonical}
+  footerStrip={tint}
+  footerEdge={footerEdge}
+>
+  <article class="cs-page">
+    <header class="cs-hero">
+      <div class="cs-hero-inner">
+        <p class="cs-pill">Case study · identity protected</p>
+        <h1>{headline} <span class="cs-accent">{headlineAccent.replace(/^\s*—\s*/, "")}</span></h1>
+        <p class="cs-intro">{intro}</p>
+        {
+          highlights.length > 0 && (
+            <ul class="cs-highlights cs-highlights--wide" aria-label="Key results">
+              {highlights.map((h) => (
+                <li>
+                  <strong>{h.value}</strong>
+                  <span>{h.label}</span>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </div>
+      <Wave fill={tint} edge={heroEdge} />
+    </header>
+
+    <section class="cs-band cs-band-tint">
+      <div class="cs-well">
+        {/* Phones (Seb, 21 Nov 2026): the results sit below the hero, as equal frames. */}
+        {highlights.length > 0 && (
+          <ul class="cs-highlights cs-highlights--m" aria-hidden="true">
+            {highlights.map((h) => (
+              <li>
+                <strong>{h.value}</strong>
+                <span>{h.label}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+        <div class="cs-quote-row">
+          <figure class="cs-quote">
+            <blockquote>
+              {quote.map((paragraph) => <p>{paragraph}</p>)}
+            </blockquote>
+            <figcaption><strong>{attribution}</strong></figcaption>
+          </figure>
+          <figure class="cs-portrait-wrap">
+            <img
+              class="cs-portrait"
+              src={portrait.src}
+              width={portrait.width}
+              height={portrait.height}
+              alt={portrait.alt}
+              loading="eager"
+              decoding="async"
+            />
+          </figure>
+        </div>
+
+        <div class="cs-card cs-card--white cs-snapshot" data-cs-reveal>
+          <h2>Founder Snapshot</h2>
+          <div class="cs-snapshot-grid">
+            <div>
+              {snapshot.map((paragraph) => {
+                const link = snapshotLinks.find((l) => paragraph.includes(l.text));
+                if (!link) return <p>{paragraph}</p>;
+                const at = paragraph.indexOf(link.text);
+                return <p>{paragraph.slice(0, at)}<a class="seo-inlink" href={link.href}>{link.text}</a>{paragraph.slice(at + link.text.length)}</p>;
+              })}
+            </div>
+            <dl class="cs-facts">
+              {
+                facts.map((fact) => (
+                  <>
+                    <dt>{fact.label}</dt>
+                    <dd>{fact.value}</dd>
+                  </>
+                ))
+              }
+            </dl>
+          </div>
+          <p class="cs-anon-note"><strong>We protect our founders’ identities.</strong> Most founders we work with lead visible companies and public lives –– we don't ask them to tell the private parts of their story publicly. Anonymity lets founders be candid about their intimate work — without risking reputations, partnerships, or market fallout.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="cs-divider" aria-hidden="true">
+      <svg style={`--wave-edge:${bandEdge}`} viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path fill="#ffffff" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16v48H0Z"></path>
+        <path class="wave-edge" d="M0 48c180 32 320-40 520-24s300 56 480 24 280-56 440-16"></path>
+      </svg>
+    </div>
+
+    <section class="cs-band">
+      <div class="cs-well">
+        <h2>The Problem</h2>
+        <p class="cs-lead">{problem}</p>
+        <div class="cs-grid-2" style="margin-top: 36px;">
+          <div class="cs-card cs-card--heart" data-cs-reveal>
+            <h3>Top symptoms</h3>
+            <ul class="cs-list">
+              {symptoms.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+          <div class="cs-stack">
+            <div class="cs-card cs-card--grass" data-cs-reveal>
+              <h3>What {name} wanted</h3>
+              <p>{wanted}</p>
+            </div>
+            <div class="cs-card cs-card--dream" data-cs-reveal>
+              <h3>What {name} tried before</h3>
+              <p>{tried}</p>
+            </div>
+            <div class="cs-card cs-card--sky" data-cs-reveal>
+              <h3>The hardest change for {name}</h3>
+              <p>{hardest}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-band cs-band-tint">
+      <div class="cs-well">
+        <h2>Our Engagement Approach</h2>
+        <p class="cs-lead">{approachIntro}</p>
+        <div class="cs-stack" style="margin-top: 36px;">
+          <div class="cs-card cs-card--white" data-cs-reveal>
+            <h3>What we actually did</h3>
+            <ul class="cs-list">
+              {did.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+          <div class:list={["cs-images", didImages.length === 1 && "cs-images-single"]}>
+            {
+              didImages.map((img) => (
+                <img class="cs-shot" src={img.src} width={img.width} height={img.height} alt={img.alt} loading="lazy" decoding="async" />
+              ))
+            }
+          </div>
+          <div class="cs-card cs-card--white" data-cs-reveal>
+            <h3>Client actions –– What {name} did</h3>
+            <ul class="cs-list cs-list-check">
+              {actions.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+          <div class:list={["cs-images", actionImages.length === 1 && "cs-images-single"]}>
+            {
+              actionImages.map((img) => (
+                <img class="cs-shot" src={img.src} width={img.width} height={img.height} alt={img.alt} loading="lazy" decoding="async" />
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-band">
+      <div class="cs-well">
+        <h2>The Outcomes</h2>
+        <p class="cs-lead">{outcomesIntro}</p>
+        <div class="cs-grid-2" style="margin-top: 36px;">
+          <div class="cs-card cs-card--grass" data-cs-reveal>
+            <h3>Business outcomes</h3>
+            <ol class="cs-numbered">
+              {businessOutcomes.map((item) => <li>{item}</li>)}
+            </ol>
+          </div>
+          <div class="cs-card cs-card--heart" data-cs-reveal>
+            <h3>Personal outcomes</h3>
+            <ol class="cs-numbered">
+              {personalOutcomes.map((item) => <li>{item}</li>)}
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-band cs-band-tint">
+      <div class="cs-well">
+        <div class="cs-grid-2">
+          <div class="cs-card cs-card--white" data-cs-reveal>
+            <h2>How the business change happened</h2>
+            {howChange.map((paragraph) => <p>{paragraph}</p>)}
+          </div>
+          <div class="cs-card cs-card--dark" data-cs-reveal>
+            <h2>Net effect</h2>
+            {netEffect.map((paragraph) => <p>{paragraph}</p>)}
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </article>
+</Base>
+
+<script>
+  /* Cards fade and rise in as they come into view (Seb, 19 Nov 2026 18:52: "very static"). */
+  const cards = document.querySelectorAll<HTMLElement>("[data-cs-reveal]");
+  if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    cards.forEach((c) => c.classList.add("cs-will"));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        (e.target as HTMLElement).classList.add("cs-in");
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.15 });
+    cards.forEach((c) => io.observe(c));
+  }
+</script>

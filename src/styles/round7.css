@@ -1,0 +1,939 @@
+/* Round 7 part a: only the pages and components named in the items. */
+
+/* R7.B2: brochure/guide page images get the same rounded corners and 1px DREAM 200 edge as the fanned pages
+   on /seven-questions. No shadow, backgrounds unchanged. The pre-composed card pictures on /advisor-center/client-tools
+   (--composite) and the foundr.land app mockups are single flat images, so they are left out. */
+/* R10: the old page images that carried this edge are gone. The new 7 Questions / Signals Guide / Planner mockups are
+   transparent single images, so they get no border or rounded corners (see the R10 blocks below). */
+
+/* R7.D1: "Wealth advisors: become a partner" has white text at rest too (GRASS 600 rest, GRASS 700 hover stay). */
+html body main#main .adv-center-page .adv-door.adv-door--wealth a.btn-teal {
+  color: #FFFFFF !important;
+}
+
+/* R7.D2: the toolkit section's body copy is Home body size; two standard buttons side by side. */
+html body main#main .sq-band--advisor .adv-prose p {
+  font-size: 18px !important;
+}
+
+/* R7.G1: Katrin's headshot gets the same face size, head position and frame as Shiva's and Chantill's.
+   Her source photo shows more of her body, so the picture is scaled (444px high at desktop, 0.88 of that on phones)
+   and set on the card's right edge so her face sits where theirs do. Only her image; the blob shapes are untouched. */
+html body main#main .wf-page-overview .wf-photo[data-wayfinder="Katrin"] picture {
+  --r7-k: 1;
+  /* Round 8 (H5): Katrin's picture is 25% larger (444px -> 555px high at desktop) so her head matches Shiva's.
+     The right offset keeps her head centred where it was (137px in from the card's right edge, scaled by --r7-k); the top
+     stays at 26px, so the head is still fully inside the tile. */
+  --r8-boost: 1.25;
+  /* R9.O2: Katrin's image is a further 13% larger (555px -> 627px high at desktop, 488 -> 552px on phones) so her head matches
+     Shiva's. Her crown sits 1.5% of the image height below the image top, so top is 34px minus that (9.4px at 627px): the crown
+     stays where it was. Right offset keeps her face center (38% of the image width) where it was (141.6px in from the tile's right edge). */
+  --r9-boost: 1.4125;
+  top: calc(34px - 9.4px * var(--r7-k));
+  right: calc(-166px * var(--r7-k));
+  left: auto;
+  width: auto;
+  height: calc(444px * var(--r9-boost) * var(--r7-k));
+  transform: none;
+}
+html body main#main .wf-page-overview .wf-photo[data-wayfinder="Katrin"] img {
+  width: auto;
+  max-width: none;
+  height: 100%;
+  object-fit: fill;
+}
+@media (max-width: 640px) {
+  html body main#main .wf-page-overview .wf-photo[data-wayfinder="Katrin"] picture { --r7-k: 0.88; }
+}
+
+/* ===== Round 7 part b ===== */
+
+/* R7.C1 / C2: The Reset and The Build house illustrations (desktop, where labels sit around the drawing).
+   Label and arrow positions come from src/data/how-it-works.ts (each arrow runs from its label to its part of the
+   house). Here each label is centred on its arrow tail, and text hugs the arrow: left-hand labels right-aligned,
+   right-hand labels left-aligned. Bottom labels no longer sit on the drawing; below 1100px the stacked label list
+   is unchanged. */
+@media (min-width: 1100px) {
+  html body main#main .hw-page .hw-house .hw-label.hw-label--plot {
+    transform: translateY(-50%);
+    line-height: 1.25;
+  }
+  html body main#main .hw-page .hw-house .hw-label.hw-label--plot.hw-label--bottom {
+    top: var(--y);
+    bottom: auto;
+  }
+  html body main#main .hw-page .hw-house .hw-label.hw-label--plot.hw-label--left { text-align: right; }
+  html body main#main .hw-page .hw-house .hw-label.hw-label--plot:not(.hw-label--left) { text-align: left; }
+}
+
+/* R7.C3: in-text links to Insights articles on The Reset use the existing .hw-textlink look (weight 800, GRASS 500
+   underline) at the running-text size. On the dark Exit-Prep card they are white with a GRASS 500 hover. */
+html body main#main .hw-page a.hw-inlink {
+  font-size: inherit;
+}
+html body main#main .hw-page .hw-notyet-card { --inline-hover-color: #28DBB0; }
+html body main#main .hw-page .hw-notyet-card a.hw-inlink {
+  color: var(--color-white) !important;
+  text-decoration-color: var(--color-grass-500);
+}
+html body main#main .hw-page .hw-notyet-card a.hw-inlink:is(:hover, :focus-visible) {
+  color: var(--color-grass-500) !important;
+}
+
+/* R7.F1: Client tools cards. The same four pictures, as a loose fan: some tilted 2-6deg, the covers larger,
+   a few pages dipping slightly over the picture field's lower edge. Everything stays inside the card (the card
+   clips) and the dip is smaller than the 24px gap above the status label, so nothing touches text. */
+/* R10 (Seb): every tool picture is a single mockup, larger than its picture area and cut off by the area's edge
+   (overflow: hidden), never tilted or pushed outside the card, never over the card text. The readiness picture is a
+   straight laptop (R11: the phone was removed). All positions are percentages of the
+   picture area, so the composition scales identically at 1440, 820 and 390. */
+html body main#main .advr-tool-visual { position: relative; overflow: hidden; isolation: isolate; }
+html body main#main .advr-tool-visual .advr-tool-img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  max-width: none;
+  height: auto;
+  transform: translate(-50%, -50%);
+}
+/* Signals Guide (600x486), 7 Questions (600x401) and the Planner (v2, 600x476) are all landscape.
+   R11 (Seb): Signals Guide and 7 Questions were too big to read, so about 20% smaller (112% -> 90%, 116% -> 93%).
+   The Planner is contained by height (whole mockup visible). */
+html body main#main .advr-tool-visual--signals .advr-tool-img { width: 90%; }
+html body main#main .advr-tool-visual--questions .advr-tool-img { width: 93%; }
+html body main#main .advr-tool-visual--planner .advr-tool-img { width: auto; height: 92%; }
+/* Resource detail pages: the wide area shows the whole mockup (contained), the readiness composition keeps the card ratio. */
+html body main#main .advr-tool-visual--detail .advr-tool-img { width: auto; height: 94%; max-width: 100%; }
+/* R12 (Seb): the Signals Guide page mockup is 30% bigger (94% x 1.3 = 122%), cropped by the frame (overflow hidden). Signals detail only. */
+html body main#main .advr-tool-visual--signals.advr-tool-visual--detail .advr-tool-img { height: 122.2%; max-width: none; }
+html body main#main .advr-tool-visual--readiness.advr-tool-visual--detail { height: auto; aspect-ratio: 8 / 5; }
+/* Readiness: the straight laptop only (R11: phone removed), about 20% smaller than before so the whole laptop sits in the frame. */
+html body main#main .advr-tool-visual .advr-rc { position: absolute; inset: 0; }
+html body main#main .advr-tool-visual .advr-rc-laptop {
+  position: absolute;
+  left: 5%;
+  top: 50%;
+  width: 90%;
+  max-width: none;
+  height: auto;
+  transform: translateY(-50%);
+}
+
+/* R7.F2: the "Visit FOUNDR.land" button on Client tools is the standard button, label centred in the space beside the
+   disc (same pattern as the other standard buttons), and the phone is about 25% larger (360 -> 450px; 280 -> 350px). */
+html body main#main .advr-tools-page .advr-founder-brief a.btn-teal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px !important;
+  padding: 10px 56px 10px 20px !important;
+  border-radius: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+}
+html body main#main .advr-tools-page .advr-founder-brief a.btn-teal:is(:hover, :focus-visible) {
+  padding: 10px 20px 10px 56px !important;
+}
+html body main#main .advr-tools-page .advr-founder-brief a.btn-teal::before,
+html body main#main .advr-tools-page .advr-founder-brief a.btn-teal::after {
+  width: 36px !important;
+  height: 36px !important;
+}
+html body main#main .advr-tools-page .advr-founder-brief .advr-founder-brief-phone {
+  width: 450px;
+  margin-bottom: 0;
+}
+@media (max-width: 640px) {
+  html body main#main .advr-tools-page .advr-founder-brief .advr-founder-brief-phone {
+    width: min(350px, 100%);
+    margin-bottom: 0;
+  }
+}
+/* R7.G3: the phone is now the coded foundr.land preview; the component crops it to the same visible window
+   (450 : 567) that the old image showed after its negative bottom margin, so the card keeps its height. */
+
+/* DG-PRE-55 (testimonials): /clarity shows two booking-page quotes now (one was removed), so on desktop
+   they share the row in two even columns instead of leaving an empty third. Tablet and phone already
+   use two columns and one column. */
+@media (min-width: 1025px) {
+  html body main .bk-quotes-list:has(> .bk-quote:nth-child(2):last-child) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ===== DG-PRE-56 (part d): booking and booking thank-you pages =====
+   Only these routes (the shared BookingPage / ThankYouPage also serve /newsletter/thanks, which stays as it was).
+   1. Hero about half as tall: 540px -> 270px on desktop and tablet (the 94px nav inset and the wave are part of it, so the
+      title band is 96px high). Phones can't halve: nav inset 81px + wave 40px alone are over half of the old ~240px, so the
+      band's own padding goes from 40px to 14px (about a fifth shorter).
+   2. About 6 cm (227 CSS px) between the last content and the footer wave's top edge on desktop; 160px on tablet and
+      96px on phones, so there's no dead space there. The gap is measured from the wave's top, so the wave's own overlap
+      (--r5-footer-overlap: 80px, 40px on phones) is added to the closing padding. */
+html body main#main:is(
+  [data-path="/catchup"], [data-path="/catchup-thankyou"],
+  [data-path="/clarity"], [data-path="/clarity-thankyou"],
+  [data-path="/exit"], [data-path="/exit-thankyou"],
+  [data-path="/frpfit"], [data-path="/frpfit-thankyou"],
+  [data-path="/internal"], [data-path="/internal-thankyou"],
+  [data-path="/internal60"], [data-path="/internal60-thankyou"],
+  [data-path="/orientation"], [data-path="/orientation-thankyou"],
+  [data-path="/prefrp"], [data-path="/prefrp-thankyou"],
+  [data-path="/wealth"], [data-path="/wealth-thankyou"]
+) {
+  --r7-bk-gap: 227px;
+  --r7-hero-h: 270px;
+  --r7-hero-pad: 8px;
+
+  & > .bk-page > header.bk-hero:not([hidden]) {
+    height: auto;
+    min-height: var(--r7-hero-h);
+  }
+  & > .bk-page > header.bk-hero > .bk-hero-inner {
+    padding-block: var(--r7-hero-pad);
+  }
+
+  & > .bk-page > .bk-body {
+    padding-bottom: calc(var(--r7-bk-gap) + var(--r5-footer-overlap)) !important;
+  }
+  /* Nothing inside the last block adds to the gap. */
+  & .bk-grid .bk-panel,
+  & .bk-body .bk-after {
+    padding-bottom: 0;
+  }
+  & .bk-body .bk-after > :last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 1023px) {
+    --r7-bk-gap: 160px;
+  }
+  @media (max-width: 600px) {
+    --r7-bk-gap: 96px;
+    --r7-hero-pad: 14px;
+
+    & > .bk-page > header.bk-hero:not([hidden]) {
+      min-height: 0;
+    }
+  }
+}
+
+/* Round 8 (H4): /clarity testimonials and /orientation case card (the lower band under the booking form).
+   - Left edge = the booking copy column's left edge (desktop >= 1366px: var(--bk-copy-left); tablet: the 900px copy column).
+   - Extra space above: about 100px at 1710, 84px at 1440, 40px at 390 (the gap is added to the band's own top padding). */
+html body main#main:is([data-path="/clarity"], [data-path="/orientation"]) {
+  --r8-after-gap: 40px;
+}
+@media (min-width: 601px) {
+  html body main#main:is([data-path="/clarity"], [data-path="/orientation"]) { --r8-after-gap: 60px; }
+}
+@media (min-width: 1366px) {
+  html body main#main:is([data-path="/clarity"], [data-path="/orientation"]) {
+    --r8-after-gap: clamp(84px, calc(84px + (100vw - 1440px) * 0.0593), 100px);
+  }
+}
+html body main#main:is([data-path="/clarity"], [data-path="/orientation"]) .bk-body .bk-after {
+  padding-top: calc(var(--r8-after-gap) + 0px);
+}
+@media (max-width: 1023px) {
+  html body main#main:is([data-path="/clarity"], [data-path="/orientation"]) .bk-body .bk-after {
+    padding-top: calc(56px + var(--r8-after-gap));
+  }
+}
+/* Tablet and phone: same column as the copy (the copy column is 900px wide at 601-1365px). */
+html body main#main:is([data-path="/clarity"], [data-path="/orientation"]) .bk-after :is(.bk-quotes, .bk-case) {
+  max-width: 900px;
+  margin-inline: auto;
+}
+@media (min-width: 1366px) {
+  html body main#main:is([data-path="/clarity"], [data-path="/orientation"]) .bk-body .bk-after {
+    margin-left: var(--bk-copy-left);
+    padding-left: 0;
+  }
+  html body main#main:is([data-path="/clarity"], [data-path="/orientation"]) .bk-after :is(.bk-quotes, .bk-case) {
+    max-width: 860px;
+    margin-left: 0;
+    margin-right: auto;
+  }
+}
+
+/* Bold, one colour FOUNDRland on the thank-you pages: the existing strong style (GRASS 500) carries it, no split. */
+
+/* Clarity pages: two font colours only, white and GRASS 500 (the HEART 500 labels become GRASS 500). */
+html body main#main:is([data-path="/clarity"], [data-path="/clarity-thankyou"]) .bk-copy :is(p.bk-label, .bk-pink, p.bk-pink) {
+  color: var(--color-grass-500);
+}
+
+/* Advisor thank-you pages (/exit-thankyou, /wealth-thankyou): the link frames and the Partnership deck frame keep
+   white text on hover and focus; the frame shows the hover with a DREAM 400 fill and a GRASS 500 edge. */
+html body main#main .ty-extra .ty-links a {
+  transition: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html body main#main .ty-extra .ty-links a {
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+}
+html body main#main .ty-extra .ty-links a:is(:hover, :focus-visible) {
+  color: #fff;
+  background: var(--color-dream-400);
+  border-color: var(--color-grass-500);
+}
+html body main#main .ty-extra .ty-links a:focus-visible {
+  outline: 3px solid var(--color-grass-500);
+  outline-offset: 3px;
+}
+html body main#main .ty-extra .ty-links a .ty-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Vision and Mission on the internal thank-you pages: the /about cards on the purple page. The band and well lose
+   their own background and inset; the vision card (DREAM 500) gets a DREAM 200 edge so it reads on DREAM 500. */
+html body main#main .ty-vm.ab-page {
+  margin-top: 48px;
+  background: transparent;
+}
+html body main#main .ty-vm .ab-band-tint {
+  background: transparent;
+}
+html body main#main .ty-vm .ab-well {
+  width: 100%;
+  padding: 0;
+}
+html body main#main .ty-vm.ab-page .ab-band-statements .ab-duo .ab-statement--vision {
+  border: 1px solid var(--color-dream-200);
+}
+
+/* ===== DG-PRE-57: founder applications =====
+   Only /application (chooser), /apply-exit-prep and /apply-reset (embedded Jotform forms). The confirmation pages use the
+   shared ThankYouPage and need no CSS of their own. */
+
+/* Chooser: two equal cards side by side (stacked on tablet portrait and phones). Same card skin as the page's original
+   application card (white, GRASS 300 edge, 24px radius, no shadow); the Apply actions are the standard HEART button. */
+html body main#main .page-apply .r7-choose {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+html body main#main .page-apply .r7-choice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  min-width: 0;
+  padding: 40px 36px;
+  border: 1px solid var(--color-grass-300);
+  border-radius: 24px;
+  background: #FFFFFF;
+  box-shadow: none;
+  color: #2A0B4F;
+  text-align: center;
+}
+html body main#main .page-apply .r7-choice h2 {
+  margin: 0 0 16px;
+  color: #2A0B4F;
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1.15;
+}
+html body main#main .page-apply .r7-choice p {
+  margin: 0 0 12px;
+  color: #2A0B4F;
+  font-size: 18px;
+  line-height: 1.6;
+}
+/* The button sits at the bottom of both cards, so the two Apply buttons line up. */
+html body main#main .page-apply .r7-choice .r7-choice-meta { margin-bottom: 28px; color: #58447F; }
+html body main#main .page-apply .r7-choice a.btn-apply { margin-top: auto; }
+/* Round 8 (H2): the two chooser buttons are GRASS 500 with DREAM 500 text, GRASS 600 on hover/focus. Scoped to /application's
+   chooser only; every other "Apply for Stage 1" button keeps its HEART style. */
+html body main#main .page-apply .r7-choice a.r5-button-heart {
+  background: #28DBB0 !important;
+  border-color: #28DBB0 !important;
+  color: #2A0B4F !important;
+}
+html body main#main .page-apply .r7-choice a.r5-button-heart:is(:hover, :focus-visible) {
+  background: #01A684 !important;
+  border-color: #01A684 !important;
+  color: #2A0B4F !important;
+}
+@media (max-width: 800px) {
+  html body main#main .page-apply .r7-choose { grid-template-columns: minmax(0, 1fr); max-width: 560px; }
+}
+@media (max-width: 600px) {
+  html body main#main .page-apply .r7-choice { padding: 28px 22px; }
+  html body main#main .page-apply .r7-choice h2 { font-size: 26px; }
+  html body main#main .page-apply .r7-choice a.btn-apply { width: 100%; }
+}
+
+/* Embedded forms: DREAM 500 canvas to match the form's own background (set inside Jotform), no page heading, no nested
+   scrolling (the Jotform handler sets the iframe height). The nav inset matches the booking pages (94px, 81px on phones). */
+body:has(.r7-app) .footer-wave { background: #2A0B4F; }
+html body main#main .r7-app {
+  box-sizing: border-box;
+  margin-top: -94px;
+  padding: 94px var(--pad) 72px;
+  background: #2A0B4F;
+  color: #FFFFFF;
+  overflow-x: clip;
+}
+html body main#main .r7-app .r7-app-frame {
+  width: 100%;
+  max-width: 860px;
+  margin: 24px auto 0;
+}
+html body main#main .r7-app .r7-app-frame iframe {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  border: 0;
+  background: transparent;
+}
+html body main#main .r7-app .r7-app-direct {
+  margin: 24px 0 0;
+  text-align: center;
+  font-size: 16px;
+}
+html body main#main .r7-app .r7-app-direct a {
+  color: #28DBB0;
+  font-weight: 700;
+  text-underline-offset: 3px;
+}
+html body main#main .r7-app .r7-app-direct a:is(:hover, :focus-visible) {
+  color: #FFFFFF;
+  text-decoration-thickness: 2px;
+}
+html body main#main .r7-app .r7-app-direct a:focus-visible {
+  outline: 3px solid #28DBB0;
+  outline-offset: 3px;
+}
+@media (max-width: 600px) {
+  html body main#main .r7-app { margin-top: -81px; padding: 81px 12px 56px; }
+}
+
+/* R7.G2: Wayfinder headshot tiles. Arta's flat tile (DREAM 100 with one wave line) fills each tile edge to edge.
+   Replaces the DREAM 500 fill, the per-person shape SVGs and the blob ::before. The cutout headshots stay as they are
+   (contain, top 26px, own alignment). Tile keeps its 18px radius and overflow hidden; no glow or shadow. */
+html body main#main .wf-page-overview .wf-members .wf-photo {
+  background-color: #E6DEFC;
+  background-image: url("/media/r7/wayfinder-headshot-bg.svg");
+  background-image: image-set(url("/media/r7/wayfinder-headshot-bg.svg") type("image/svg+xml"), url("/media/r7/wayfinder-headshot-bg@2x.png") type("image/png"));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: none;
+}
+html body main#main .wf-page-overview .wf-members .wf-photo::before,
+html body main#main .wf-page-overview .wf-members .wf-photo::after {
+  content: none;
+  display: none;
+}
+
+/* R7.G3: FOUNDR.land visuals.
+   a) Laptops are the finished MacBook mockups (transparent PNG-style WebP): no frame, no shadow, natural aspect.
+   b) Phones are the coded foundr.land preview (FoundrLandPhonePreview), scaled by its own wrapper width.
+   c) Home keeps Arta's phone image (no cards) with the animated wheel on top and the two cards on top of both.
+      Card positions are Arta's (placement.txt), as % of the 340 x 498 phone box: they hang outside the phone
+      so they never cover its text. */
+html body main#main .fl .fl-laptop-shot {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+html body main#main .fl .fl-phone-preview { max-width: 100%; }
+
+html body main#main .page-home .fl--home .fl-phone-card {
+  position: absolute;
+  display: block;
+  max-width: none;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  pointer-events: none;
+}
+html body main#main .page-home .fl--home .fl-phone-card--a { left: -30.88%; top: 16.87%; width: 53.24%; }
+html body main#main .page-home .fl--home .fl-phone-card--b { left: 80.59%; top: 61.45%; width: 49.41%; }
+/* A width that leaves room for both hanging cards on phones. (Round 8 H6: the earlier phone size nudge at 961-1365px
+   and the 6px shift at 1366px and up were removed; the phone is back at its original size and position.) */
+@media (max-width: 600px) {
+  html body main#main .page-home .fl--home .fl-phone { width: min(270px, calc(62.5% + 15px)); }
+}
+
+/* R7.i /newsletter (Seb t1983u): name + intention first, the book and chapters as the main content, the 7 questions
+   (with Seb's note) as our gift. Scoped to .nl-page. */
+html body main#main .nl-page .nl-kicker {
+  margin: 0 0 12px;
+  color: #05745B;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+html body main#main .nl-page .nl-book .nl-kicker { margin: 0; color: #28DBB0; }
+html body main#main .nl-page .nl-intention-band .nl-well { padding-block: calc(48px * var(--section-space-scale)); }
+html body main#main .nl-page .nl-intro.nl-intention {
+  max-width: 760px;
+  margin-inline: auto;
+  text-align: center;
+}
+/* The book card and the "Keep reading" sign-up share a white band: tighten the gap between them. */
+html body main#main .nl-page #book .nl-well { padding-bottom: 36px; }
+html body main#main .nl-page #signup .nl-well { padding-top: 36px; }
+/* The 7 questions are now the last content section: Seb's note is their intro, left-aligned with the heading. */
+html body main#main .nl-page #questions .nl-well { padding-bottom: 24px; }
+html body main#main .nl-page #questions .nl-note {
+  max-width: 820px;
+  margin: 28px 0 32px;
+}
+@media (max-width: 599px) {
+  html body main#main .nl-page .nl-kicker { font-size: 15px; }
+  html body main#main .nl-page #questions .nl-note { margin: 22px 0 26px; }
+}
+
+/* ===== R7.J1: /book landing page. Everything is scoped to .bookp-page. ===== */
+html body main#main .bookp-page .bookp-hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  align-items: center;
+  width: min(1080px, calc(100% - 2 * var(--pad)));
+  margin: 0 auto;
+  padding: 80px 0 70px;
+}
+/* R10: no image in the hero; the copy is centred. */
+html body main#main .bookp-page .bookp-hero-copy { min-width: 0; text-align: center; }
+html body main#main .bookp-page .bookp-hero-copy h1 { max-width: 820px; margin-inline: auto; }
+html body main#main .bookp-page .bookp-hero-copy .ep-sub { max-width: 760px; margin: 18px auto 0; }
+
+@media (min-width: 901px) {
+  html body main#main .bookp-page header.ep-hero:not([hidden]) { height: auto; min-height: 540px; }
+  /* R11: the inner block grows to fill the hero (min-height 540px), so the wave stays at the bottom edge and no
+     dark strip is left between it and "The story". (It was flex: 0 0 auto, which left the spare height below the wave.) */
+  html body main#main .bookp-page header.ep-hero > .bookp-hero-inner {
+    flex: 1 1 auto;
+    align-items: center;
+    padding: 64px 0;
+  }
+  html body main#main .bookp-page .bookp-hero-copy { align-self: center; }
+}
+/* R11: the wave overlaps the section below by 1px at every width, so no sub-pixel dark hairline can show. */
+html body main#main .bookp-page header.ep-hero > .hero-wave { margin-bottom: -1px; }
+
+/* R9.O3: Arta's final cover images (2:3), same placement and size as the placeholders, 4px corners, no shadow. */
+/* R10: new transparent book mockups (front, open at Chapter 1, back). No frame, no crop, no shadow. */
+html body main#main .bookp-page .bookp-art { width: 100%; max-width: 460px; margin: 0 auto; padding: 0; background: none; border: 0; box-shadow: none; }
+html body main#main .bookp-page .bookp-art img { display: block; width: 100%; max-width: 100%; height: auto; background: none; border: 0; border-radius: 0; box-shadow: none; }
+html body main#main .bookp-page .bookp-art--back { max-width: 420px; }
+html body main#main .bookp-page .bookp-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 440px);
+  align-items: center;
+  gap: 64px;
+}
+html body main#main .bookp-page .bookp-split .bookp-art { margin-inline: 0; }
+html body main#main .bookp-page .bookp-split--chapters { margin-bottom: 36px; }
+
+/* Prose */
+html body main#main .bookp-page .bookp-prose { max-width: 820px; }
+html body main#main .bookp-page .bookp-prose p {
+  margin: 0 0 18px;
+  color: #2A0B4F;
+  font-size: 18px;
+  line-height: 1.65;
+}
+html body main#main .bookp-page .bookp-prose p:last-child { margin-bottom: 0; }
+html body main#main .bookp-page .bookp-prose h2 { margin-bottom: 20px; }
+html body main#main .bookp-page .bookp-link {
+  color: #2A0B4F;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: #28DBB0;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+  transition: text-decoration-color 200ms, color 200ms;
+}
+html body main#main .bookp-page .bookp-link:is(:hover, :focus-visible) {
+  color: #05745B;
+  text-decoration-color: #2A0B4F;
+}
+html body main#main .bookp-page .bookp-prose p.bookp-tagline {
+  margin: 4px 0 22px;
+  padding-left: 16px;
+  border-left: 3px solid #28DBB0;
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+/* Chapter cards */
+html body main#main .bookp-page .bookp-chapters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin: 36px 0 0;
+  padding: 0;
+  list-style: none;
+}
+html body main#main .bookp-page .bookp-chapter {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+  margin: 0;
+  padding: 26px 24px 24px;
+  background: #FFFFFF;
+  border: 1px solid #C2B7DD;
+  border-radius: 18px;
+}
+html body main#main .bookp-page .bookp-chapter-num {
+  color: #58447F;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+html body main#main .bookp-page .bookp-chapter-title {
+  margin: 0;
+  color: #2A0B4F;
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  overflow-wrap: break-word;
+}
+html body main#main .bookp-page .bookp-chapter-status {
+  margin: 0;
+  padding: 4px 12px;
+  background: #E7FFF6;
+  border-radius: 999px;
+  color: #05745B;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+html body main#main .bookp-page .bookp-chapter-status a {
+  color: #05745B;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+html body main#main .bookp-page .bookp-chapter-status a:is(:hover, :focus-visible) { color: #2A0B4F; }
+html body main#main .bookp-page .bookp-chapter-teaser {
+  margin: 0;
+  color: #2A0B4F;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+/* Buttons: the standard 16px / 52px / 16px-radius button with the 36px disc (same as Home's) */
+html body main#main .bookp-page .bookp-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 28px;
+}
+html body main#main .bookp-page .bookp-actions a.btn-teal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px !important;
+  padding: 10px 56px 10px 20px !important;
+  border-radius: 16px;
+  font-size: 16px !important;
+  font-weight: 400;
+  line-height: 1.5;
+  text-decoration: none;
+  box-shadow: none;
+  transition: transform 350ms, padding 350ms, background-color 350ms;
+}
+html body main#main .bookp-page .bookp-actions a.btn-teal:is(:hover, :focus-visible) {
+  padding: 10px 20px 10px 56px !important;
+  transform: scale(1.013) !important;
+  text-decoration: none;
+}
+html body main#main .bookp-page .bookp-actions a.btn-teal::before,
+html body main#main .bookp-page .bookp-actions a.btn-teal::after {
+  width: 36px !important;
+  height: 36px !important;
+  transition-duration: 350ms;
+}
+html body main#main .bookp-page .bookp-actions a.btn-teal:focus-visible {
+  outline: 2px solid #28DBB0;
+  outline-offset: 4px;
+}
+html body main#main .bookp-page .bookp-downloads {
+  display: grid;
+  gap: 10px;
+  max-width: 820px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+html body main#main .bookp-page .bookp-downloads a {
+  color: #2A0B4F;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: #28DBB0;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+}
+html body main#main .bookp-page .bookp-downloads a:is(:hover, :focus-visible) {
+  color: #05745B;
+  text-decoration-color: #2A0B4F;
+}
+
+/* Why we wrote it + back cover */
+html body main#main .bookp-page .bookp-why {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 400px);
+  align-items: center;
+  gap: 64px;
+}
+html body main#main .bookp-page .bookp-why .bookp-art--back { margin-inline: 0; }
+
+@media (max-width: 1024px) {
+  html body main#main .bookp-page .bookp-chapters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  html body main#main .bookp-page .bookp-why { gap: 40px; grid-template-columns: minmax(0, 1fr) minmax(0, 360px); }
+  html body main#main .bookp-page .bookp-split { gap: 40px; grid-template-columns: minmax(0, 1fr) minmax(0, 360px); }
+}
+@media (max-width: 900px) {
+  html body main#main .bookp-page .bookp-hero-inner { padding: 48px 0 44px; }
+}
+@media (max-width: 760px) {
+  html body main#main .bookp-page .bookp-chapters { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  html body main#main .bookp-page .bookp-why,
+  html body main#main .bookp-page .bookp-split { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  html body main#main .bookp-page .bookp-split--chapters { margin-bottom: 28px; }
+  html body main#main .bookp-page .bookp-art,
+  html body main#main .bookp-page .bookp-art--back { width: 86vw; max-width: 420px; margin-inline: auto; }
+  html body main#main .bookp-page .bookp-why .bookp-art--back,
+  html body main#main .bookp-page .bookp-split .bookp-art { margin-inline: auto; }
+  html body main#main .bookp-page .bookp-prose p { font-size: 17px; }
+  html body main#main .bookp-page .bookp-prose p.bookp-tagline { font-size: 19px; }
+  html body main#main .bookp-page .bookp-actions { flex-direction: column; align-items: stretch; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html body main#main .bookp-page .bookp-actions a.btn-teal,
+  html body main#main .bookp-page .bookp-link { transition: none; }
+  html body main#main .bookp-page .bookp-actions a.btn-teal:is(:hover, :focus-visible) { transform: none !important; }
+}
+
+/* R9.M2: the trademark sign never floats away from its word. integrations/trademark.mjs wraps the last word and its
+   sign as <span class="tm-keep"> (never breaks), and a short label that holds a sign as one <span class="tm-run">,
+   so a flex or grid parent (button, card, nav item) keeps the whole label as ONE item and its gap cannot push the sign
+   to another line. Both wrappers are visually neutral: they take on the look of the text around them, whatever
+   "span" rules the page has. The sign itself keeps its own .tm style (global.css). */
+.tm-keep {
+  white-space: nowrap;
+}
+span.tm-keep,
+span.tm-run {
+  color: inherit !important;
+  font: inherit !important;
+  letter-spacing: inherit !important;
+  text-transform: inherit !important;
+  text-decoration: inherit;
+  background: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+}
+span.tm-keep {
+  white-space: nowrap !important;
+}
+span.tm-run {
+  white-space: inherit !important;
+}
+
+/* ===== Round 9 part n ===== */
+
+/* N1 /seven-questions: hero logo 50% larger (128px -> 192px); capped so it fits at 390 and stays centered. */
+html body main#main .r4-seven-hero .seven-logo {
+  width: min(192px, 70vw);
+  height: auto;
+  margin-inline: auto;
+}
+
+/* N2 /newsletter: every text frame/card/box shares the width of the "Keep reading" opt-in frame (920px), centered,
+   at every breakpoint. The well itself is 920px, so frames inside it fill it. */
+html body main#main .nl-page .nl-well { width: min(920px, calc(100% - 2 * var(--pad))); }
+html body main#main .nl-page .nl-well :is(.nl-intro, .nl-book, .nl-book-teaser, .nl-chapters, .nl-more-to-come, .nl-note, .nl-questions, .nl-guide, .nl-closing, .nl-signup) {
+  width: 100%;
+  max-width: 100%;
+  margin-inline: auto;
+  box-sizing: border-box;
+}
+html body main#main .nl-page #questions .nl-note { max-width: 100%; margin-inline: auto; }
+html body main#main .nl-page .nl-guide .sq-band .sq-inner { width: 100%; max-width: 100%; }
+
+/* N3 /newsletter: more room between the 7 questions frame and the transition below it. */
+html body main#main .nl-page #questions .nl-well { padding-bottom: 104px; }
+@media (max-width: 599px) {
+  html body main#main .nl-page #questions .nl-well { padding-bottom: 72px; }
+}
+
+/* N8 /insights, "Founder & advisor resources": hover and focus keep the border/background cue, with no underline
+   and no text color change. Keyboard focus keeps a visible outline. */
+html body main#main .bl-page .bli-res-link,
+html body main#main .bl-page .bli-res-link:is(:hover, :focus-visible, :active) {
+  color: var(--bl-ink);
+  text-decoration: none;
+}
+html body main#main .bl-page .bli-res-col .bli-res-link:is(:hover, :focus-visible, :active) .bli-res-title {
+  color: var(--bl-ink);
+  text-decoration: none;
+}
+html body main#main .bl-page .bli-res-link:focus-visible {
+  outline: 2px solid #2A0B4F;
+  outline-offset: 3px;
+}
+
+/* ===== Round 9 part o ===== */
+
+/* R9.O1: more room between the last section card and the closing "You don't pick a Wayfinder" block on the personal
+   Wayfinder pages (+48px desktop, +32px phone). */
+html body main#main .wfp-page .wfp-sections { margin-bottom: 48px; }
+@media (max-width: 767px) {
+  html body main#main .wfp-page .wfp-sections { margin-bottom: 32px; }
+}
+
+/* R9.O2: Katrin's head matches Shiva's on /wayfinders/katrin. The tile stays the same size; her image is rendered at
+   1.84 x its current height (the current image is 94% of the tile, so 94% x 1.84 = 172.96% of the tile: about 690px at
+   desktop, 567px on phones), cropped by the tile. Her crown sits 1.5% of the image height below the image top, so the
+   top offset is 8px minus that (2.594% of the tile) and her head top lands about 8px below the tile top, like Shiva's.
+   Her face center is at 38% of the image width, so the image is shifted left by 38% of its own width from the tile
+   center. Katrin only. */
+html body main#main .wfp-hero .wfp-photo.wfp-photo--katrin { position: relative; }
+html body main#main .wfp-hero .wfp-photo.wfp-photo--katrin picture {
+  position: absolute;
+  top: calc(8px - 2.2049%); /* R12: 15% smaller (x 0.85) */
+  left: 50%;
+  width: auto;
+  height: 147.016%;
+  aspect-ratio: 320 / 404;
+  transform: translateX(-38%);
+}
+html body main#main .wfp-hero .wfp-photo.wfp-photo--katrin img {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  object-fit: fill;
+}
+
+/* R9.P: internal SEO links (Grova's plan, 34 links). The look matches the in-text links in the Insights articles
+   (.bl-prose a: GRASS 700 text, weight 600, 2px GRASS 500 underline, 3px offset), for pages that have no in-text
+   link class of their own. Hover/focus: the shared running-text link cue in site-rules.css (GRASS 700 underline
+   3px; GRASS 500 on dark bands). .seo-inlink--on-dark is for white text on a DREAM background. */
+html body main#main a.seo-inlink {
+  color: #05745B;
+  font-weight: 600;
+  text-decoration-line: underline;
+  text-decoration-color: #28DBB0;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+html body main#main a.seo-inlink.seo-inlink--on-dark {
+  color: #FFFFFF;
+  --inline-hover-color: #28DBB0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html body main#main a.seo-inlink { transition: color 0.15s ease, text-decoration-color 0.15s ease; }
+}
+
+/* /insights Founder & advisor resources: hover/focus keep rest text colour, no underline (doubled ID beats site-rules running-text hover) */
+html body main#main#main .bli-res-col a.bli-res-link[href]:is(:hover, :focus-visible) {
+  color: #2A0B4F !important;
+  text-decoration-line: none !important;
+  text-decoration: none !important;
+  background-image: none !important;
+}
+html body main#main#main .bli-res-col a.bli-res-link[href]:is(:hover, :focus-visible) * {
+  text-decoration: none !important;
+}
+html body main#main#main .bli-res-col a.bli-res-link[href]:is(:hover, :focus-visible) .bli-res-line { color: #4a3a5c !important; }
+
+/* R10: the new 7 Questions mockup (landscape, transparent, 600x401) in the guide band and on the newsletter thank-you
+   page. No border/rounded frame/gradient behind it; the picture is centred in its column and never stretched. */
+html body main#main .sq-band .sq-cover {
+  align-self: center;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  min-height: 0;
+  margin-inline: auto;
+  padding: 12px 16px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  object-fit: contain;
+}
+@media (max-width: 600px) {
+  html body main#main .sq-band .sq-cover { width: 86vw; max-width: 340px; padding: 0; }
+}
+html body .ty-guide-cover {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  background: none;
+}
+@media (max-width: 600px) {
+  html body .ty-guide-cover { width: 86vw; max-width: 340px; }
+}
+
+/* R11 (Seb t1988u item 8): the 7 Questions band (Home, Advisor Center, The Reset share the "preview" layout).
+   The button row is left-aligned with the heading/paragraph (same 44px / 22px side padding as .sq-copy), and there is
+   real space between the last text line and the buttons (30px desktop/tablet, 24px mobile). The newsletter uses the
+   separate .sq7 layout and is not affected. */
+html body main#main .sq-band--preview .sq-actions {
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+  margin: 0;
+}
+html body main#main .sq-band--preview .sq-preview { padding-top: 30px; }
+@media (max-width: 600px) {
+  /* Mobile order: picture, text, then the buttons (they used to sit above the text). */
+  html body main#main .sq-band--preview .sq-copy { grid-row: 2; padding: 28px 22px 0; }
+  html body main#main .sq-band--preview .sq-preview { grid-row: 3; padding: 24px 22px 28px; }
+}
+
+/* R12 (Seb): the home hero line is normal body copy (18/400/1.6, 17px on phones), not a hero subline. Home only. */
+html body main#main .page-home .hero .lede {
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+}
+@media (max-width: 599px) {
+  html body main#main .page-home .hero .lede { font-size: 17px !important; }
+}

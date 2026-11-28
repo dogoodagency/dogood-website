@@ -1,0 +1,428 @@
+/* 20 Nov 2026 22:28 (Seb): mobile pass on the home page and the shared header/footer.
+   Phones only (under 600px). Loaded after site-rules.css so it wins over earlier rules. */
+
+html body .ft-br-m { display: none; }
+html body #wayfinders .wf-m { display: none; }
+
+
+@media (max-width: 599px) {
+  /* 1. Navbar: "by DoGood" under the foundr.land logo 1px smaller. */
+  html body header.nav .nav-brand-by { font-size: 9px; }
+
+  /* Things removed on phones only. */
+  html body .m-hide { display: none !important; }
+
+  /* 2. Hero drawing 20% bigger. The door's right edge lines up with the page's right padding
+     (door edge = 94.85% of the drawing's width); the path runs off the left edge and its end slides
+     under the wave into the next band. */
+  html body #hero { overflow-x: clip; }
+  html body #hero .hero-draw { justify-content: flex-start; margin-bottom: -46px; }
+  html body #hero .hero-sketch-frame {
+    flex: 0 0 auto;
+    width: 100vw;
+    max-width: none;
+    margin-left: calc(5.15vw - 2 * clamp(20px, 5.56vw, 80px));
+    margin-right: 0;
+  }
+
+  /* 3. Waves: half the height on every band edge (hero, section and footer waves). */
+  html body .hero-wave,
+  html body .privacy-divider-wave,
+  html body .section-wave .hero-wave,
+  html body .footer-wave .hero-wave,
+  html body .privacy-hero .hero-wave { height: 40px; }
+
+  /* The machine 30% bigger (the through line is placed from its box, so it still leaves at the lever). */
+  html body .exit-machine { width: 312px; max-width: calc(100vw - 2 * clamp(20px, 5.56vw, 80px)); margin-left: auto; margin-right: auto; }
+  html body .exit-machine img { width: 100%; height: auto; }
+
+  /* 4. Case studies J and V: a solid band behind the words so the moving line doesn't show through;
+     headline 2px smaller so it sits inside the side padding. */
+  html body #case-j .case-compact > div,
+  html body #case-v .case-compact > div {
+    position: relative;
+    z-index: 2;
+    background: #F5F2FF;
+    padding-bottom: 6px;
+  }
+  html body #case-j .case-compact h3,
+  html body #case-v .case-compact h3 { font-size: 28px; }
+
+  /* Who is this for: the Exit-Prep line is gone, so the card ends closer to the last bullet. */
+  html body #for-you .foryou-grid > .card.ink { padding-bottom: 28px; }
+
+  /* The flying machine 20% bigger. */
+  html body #why { overflow-x: clip; }
+  html body #why .why-sketch .why-art {
+    flex: none;
+    width: 460px;
+    max-width: none;
+    margin-left: calc((100% - 460px) / 2);
+  }
+  html body #why .why-sketch .why-art picture,
+  html body #why .why-sketch .why-art img { width: 100%; max-width: none; margin-left: 0; }
+  html body #why .why-sketch .fm-anim picture,
+  html body #why .why-sketch .fm-anim img { width: 100%; max-width: none; }
+
+  /* Leaders who've been through it: the heading sits in the white band below the wave, cards follow. */
+  html body #reviews { margin-top: 0 !important; }
+  html body #reviews .reviews-band { padding-top: 35px; }
+  html body #reviews .reviews-band > h2 { margin-bottom: 28px; }
+
+  /* foundr.land card: no star. */
+  html body #message .fl-spark { display: none; }
+
+  /* Wayfinders: photo 20% bigger, arms may run off the screen; names as readable labels;
+     more room between the heads and the text above. */
+  html body #wayfinders { overflow-x: clip; }
+  html body #wayfinders .wf-group { margin-top: 44px; }
+  html body #wayfinders .wf-group .wf-img-wide { display: none; }
+  html body #wayfinders .wf-m {
+    position: relative;
+    display: block;
+    width: 120%;
+    margin-left: -10%;
+  }
+  html body #wayfinders .wf-m img {
+    display: block;
+    width: 100%;
+    height: auto;
+    /* the photo is cut flat at the bottom: fade it out where it runs wider than the card */
+    -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent 97%);
+    mask-image: linear-gradient(to bottom, #000 82%, transparent 97%);
+  }
+  html body #wayfinders .wf-name {
+    position: absolute;
+    translate: -50% -50%;
+    padding: 3px 7px;
+    border-radius: 999px;
+    background: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+    color: #EA1458;
+    white-space: nowrap;
+  }
+
+  /* Track record: 100% stat gone; bottom padding matches the top. */
+  html body #wayfinders .track-card { padding-bottom: 28px; }
+
+  /* The guarantee card no longer runs into the track record card. */
+  html body #guarantee { margin-top: 24px !important; }
+
+  /* What's next: the heading, text and button sit a little lower. */
+  /* Seb round 2, 22 Nov 2026: 60px more room for the rolling teal fill. */
+  html body .page-home #next .next-inner { padding-top: 212px; }
+  html body #next .next-inner > p:not(.next-note) { max-width: 270px; margin: 0 auto 40px; }
+  /* the green swell opens wider, so the lower-placed text sits on green, not across its edge */
+  html body #next { overflow-x: clip; }
+  html body #next .swell-bg { left: -40%; width: 180%; }
+
+  /* Footer. */
+  html body .ft-br-m { display: inline; }
+  html body .footer .ft-grid { row-gap: 48px; }
+  html body .footer .ft-links + .ft-title { margin-top: 48px; }
+  html body .footer .ft-optin { padding: 18px 20px 20px; }
+  html body .footer .ft-optin .ft-optin-title { margin-bottom: 4px; }
+  html body .footer .ft-lets .connect-mark { font-size: calc(1.2 * clamp(40px, calc((100cqi - 48px) / 4.35), 196px)); }
+  html body .footer .ft-lets .connect-row { top: calc(100% - 0.264 * clamp(40px, calc((100cqi - 48px) / 4.35), 196px) + 18px); }
+  html body .footer .legal a { font-size: 12px; }
+  html body .footer .legal p { font-size: 12px; color: #8b7dae; }
+}
+
+/* ===== 20 Nov 2026 22:53 (Seb): site-wide mobile standards ===== */
+
+/* Body copy runs to the right padding. Safari's "pretty" wrapping evens out every line and leaves a wide
+   ragged gap on the right on phones, so paragraphs and list items use normal wrapping (all sizes). */
+html body main p,
+html body main li { text-wrap: wrap; }
+
+@media (max-width: 599px) {
+  /* Every wave on phones: half as tall (all wave SVGs share the 1440 x 80 drawing). Each overlaps the band
+     below by a pixel so no hairline shows between a wave and the next band or the footer. */
+  html body svg[viewBox="0 0 1440 80"][preserveAspectRatio="none"] {
+    height: 40px !important;
+    margin-bottom: -1px;
+  }
+  html body .bk-wave-top svg[viewBox="0 0 1440 80"] { height: 27px !important; }
+  html body .footer-wave { position: relative; z-index: 2; margin-bottom: -2px; }
+
+  /* Type scale on phones:
+     hero headline (h1) as set per page; section headline 26px; card headline 21px;
+     body copy, hero intro and card copy 17px / 1.6; captions 14px. */
+  html body main p:not([class]),
+  html body main li:not([class]),
+  html body main :is(.lede, html body .founder-line, html body .ep-sub, html body .ep-lede, html body .ep-lede-plain, html body .advr-lede, html body .adv-lede, html body .wfp-extra, html body .wfp-p, html body .wfp-sub,
+    html body .bl-dek, html body .bl-hero-lede, html body .wf-lead, html body .hw-hero-lede, html body .hw-center, html body .cs-intro, html body .cs-lead, html body .faq-hero-intro, html body .dr-hero-sub,
+    html body .nl-lede, html body .nl-intro, html body .wh-lede, html body .au-lede, html body .fw-lead, html body .bl-isyou, html body .pod-sub) {
+    font-size: 17px !important;
+    line-height: 1.6 !important;
+  }
+  html body main .t-h2,
+  html body main h2:not([class]) { font-size: 26px; line-height: 1.2; }
+  html body main .t-h3,
+  html body main h3:not([class]) { font-size: 21px; line-height: 1.25; }
+}
+
+/* Client-fit page, case study card (Seb, 20 Nov 22:53): centred, smaller type, larger pin. */
+@media (max-width: 599px) {
+  html body .wf-case { justify-items: center; text-align: center; }
+  html body .wf-case .wf-case-portrait { width: 208px; height: auto; margin-inline: auto; }
+  html body .wf-case .wf-case-body { align-items: center; text-align: center; }
+  html body .wf-case .wf-case-body > .wf-eyebrow { font-size: 13px; }
+  html body .wf-case .wf-case-title { font-size: 20px; }
+  html body .wf-case .wf-case-who { font-size: 16px; }
+  html body .wf-case .btn-teal { align-self: center; }
+  html body .wf-case .wf-case-note { font-size: 13px; text-align: center; align-self: center; width: 100%; }
+}
+
+/* Podcast page (Seb, 20 Nov 22:53). */
+@media (max-width: 599px) {
+  html body .pod-hero .pod2-art { display: none; }
+  html body .pod-hero .pod-hero-inner { padding-bottom: 15px; }
+  html body .pod2-host .pod2-host-img { justify-self: center; margin-inline: auto; border: 2px solid #c2b7dd; border-radius: 50%; }
+  html body .pod2-next { padding: 24px; margin-top: 32px; }
+  /* Newsletter card: envelope small and centred over the text, button full width. */
+  html body .pod2-news { padding: 24px; gap: 8px; }
+  html body .pod2-news .pod2-news-art { justify-self: center; width: 150px; }
+  html body .pod2-news .pod2-news-art img { width: 150px; height: auto; }
+  html body .pod2-news h2 { font-size: 24px !important; line-height: 1.2; }
+  html body .pod2-news .btn-teal { width: 100%; justify-content: center; }
+}
+
+/* Insights (Seb, 20 Nov 22:53). */
+@media (max-width: 599px) {
+  html body .bl-page .bl-card--feature .bl-card-title { font-size: 23px !important; }
+  html body .bl-page .bl-card:not(.bl-card--feature) .bl-card-title { font-size: 19px !important; }
+  html body .bl-card--row { align-items: flex-start !important; }
+  html body .bl-card--row .bl-row-thumb,
+  html body .bli-picks .bl-row-thumb { flex: 0 0 96px !important; width: 96px !important; margin-top: 3px; }
+  html body .bl-card--row .bl-row-thumb img { width: 96px; height: 96px; object-fit: cover; }
+  html body .bl-nl-print { font-size: 12px; max-width: none !important; width: 100%; white-space: normal; }
+}
+
+/* About (Seb, 20 Nov 22:53). */
+@media (max-width: 599px) {
+  html body .ab-band-wf { overflow-x: clip; }
+  html body .ab-band-wf .ab-team { width: 100%; max-width: none; margin: 44px 0 0; transform: none; translate: none; }
+  html body .ab-band-wf .ab-team-m img { width: 100%; height: auto; }
+  /* IODA: logo 40% smaller, under the text, to the right of "Visit IODA". */
+  html body .ab-page .ab-ioda { grid-template-columns: minmax(0, 1fr) 168px; gap: 0 16px; column-gap: 16px; align-items: center; }
+  html body .ab-ioda .ab-ioda-copy { display: contents; }
+  html body .ab-ioda .ab-ioda-copy > * { grid-column: 1 / span 2; }
+  html body .ab-ioda .ab-ioda-copy > p:last-child { grid-column: 1 / span 1; grid-row: 5; margin: 0; }
+  html body .ab-ioda .ab-ioda-logo { grid-column: 2; grid-row: 5; width: 168px; padding: 14px 17px; margin: 0; border-radius: 14px; }
+  html body .ab-ioda .ab-ioda-logo img { width: 100%; height: auto; }
+  /* What's next: normal body copy. */
+  html body .ab-cta .ab-cta-lead { font-size: 17px; font-weight: 400; line-height: 1.6; }
+}
+
+/* ===== 20 Nov 2026 23:29 (Seb): round 3 ===== */
+
+/* Footer wave: no background of its own; it lies over the bottom of the last band (its full height), so the band's own colour
+   shows above the curve and no seam or hairline can appear between them (all sizes). */
+html body .footer-wave { background: transparent !important; margin-top: -80px; position: relative; z-index: 2; pointer-events: none; }
+@media (max-width: 599px) { html body .footer-wave { margin-top: -40px; } }
+
+@media (max-width: 599px) {
+  /* Hero text is always left aligned, and hero intro copy is normal body weight. */
+  html body :is(.ep-hero, .advr-hero, .adv-hero, .wf-hero, .bl-hero, .bl-head, .hw-hero, .cs-hero, .faq-hero, .st-hero,
+    .dr-hero, .ab-hero, .pod-hero, .apl-hero, .nl-hero, .privacy-hero, .subhero, .bk-hero, .bk-head) :is(h1, h2, p, li, ul, ol, div, span, form, label) {
+    text-align: left;
+  }
+  html body :is(.ep-hero, .advr-hero, .adv-hero, .wf-hero, .bl-hero, .bl-head, .hw-hero, .cs-hero, .faq-hero, .st-hero,
+    .dr-hero, .ab-hero, .pod-hero, .apl-hero, .nl-hero, .privacy-hero, .subhero, .bk-hero, .bk-head) :is(h1, p, ul, ol, form) {
+    margin-left: 0;
+  }
+  html body :is(.ep-hero, .advr-hero, .adv-hero, .wf-hero, .bl-hero, .bl-head, .hw-hero, .cs-hero, .faq-hero, .st-hero,
+    .dr-hero, .ab-hero, .pod-hero, .apl-hero, .nl-hero, .privacy-hero, .subhero, .bk-hero, .bk-head) :is(h1, p, ul, ol, form, [class*="hero-inner"], [class*="hero-copy"], [class*="common"], [class*="actions"], [class*="pills"], [class*="facts"]) {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  html body :is(.ep-hero, .advr-hero, .adv-hero, .wf-hero, .bl-hero, .bl-head, .hw-hero, .cs-hero, .faq-hero, .st-hero,
+    .dr-hero, .ab-hero, .pod-hero, .apl-hero, .nl-hero, .privacy-hero, .subhero) :is(p, li):not([class*="eyebrow"]):not([class*="label"]):not([class*="pill"]):not([class*="tag"]):not([class*="soon"]):not([class*="meta"]) {
+    font-weight: 400;
+  }
+
+  /* Sound bites everywhere: quote text starts on the line of the quote mark; name and role on one line,
+     aligned with the quote; shorter cards; three per page on phones. */
+  html body .tw--short .tw-card { padding: 16px 18px 16px 56px; }
+  html body .tw--short .tw-card::before { top: 8px; left: 16px; font-size: 48px; }
+  html body .tw--short .tw-card blockquote { margin: 0 0 8px; }
+  html body .tw--short .tw-card blockquote p { font-size: 17px; line-height: 1.5; }
+  html body .tw--short .tw-who { flex-direction: row; flex-wrap: wrap; align-items: baseline; column-gap: 8px; }
+  html body .tw--short .tw-role::before { content: "·"; margin-right: 8px; color: var(--tw-muted); }
+  html body .tw--short .tw-list > .tw-card:nth-child(n+4) { display: none; }
+
+  /* Footer: more room between the link groups and the newsletter box. */
+  html body .footer .ft-optin { margin-top: 20px; }
+}
+
+/* Exit-Prep (Seb, 20 Nov 23:29). */
+@media (max-width: 599px) {
+  html body .ep-page .ep-outcome { padding: 24px 22px; }
+  html body .ep-page .ep-outcome p:last-child { font-size: 17px; font-weight: 400; line-height: 1.6; }
+  html body .ep-page .ep-adv-link { display: none; }
+  html body .ep-page .ep-faq-wrap > .ep-eyebrow { text-align: center; font-size: 28px; letter-spacing: 0.06em; margin-bottom: 20px; }
+  html body .ep-page .ep-more { display: none; }
+  html body .ep-page .ep-soft { text-align: left; }
+  html body .ep-page .ep-soft > * { text-align: left; margin-left: 0; }
+  html body .ep-page .ep-soft a.btn-teal { align-self: flex-start; }
+}
+
+/* Clarity-First Guarantee terms page (Seb, 20 Nov 23:29). */
+@media (max-width: 599px) {
+  html body .page-clarity .privacy-hero { height: auto; }
+  html body .page-clarity .privacy-hero-inner { padding: 35px 0 45px; flex: none; }
+  html body .seal-slot { display: block; margin-inline: auto; text-align: center; }
+  html body .seal-slot img { margin-inline: auto; }
+  html body .case-compact { text-align: center; }
+  html body .case-compact .portrait { display: block; width: 208px; height: auto; margin-inline: auto; }
+  html body .case-compact :is(.t-kicker, h3, .case-who, .case-protect) { text-align: center; }
+}
+
+/* Home hero copy and drawing (Seb, 20 Nov 23:43). */
+html body .pbreak-m { display: none; }
+@media (max-width: 599px) {
+  html body br.br-d { display: none; }
+  html body .pbreak-m { display: block; height: 14px; }
+  /* Drawing 30% bigger again; the door stays where it is (right edge on the page padding), the rest of the
+     picture grows up and to the left. */
+  html body #hero .hero-sketch-frame {
+    width: 130vw;
+    margin-left: calc(100vw - clamp(20px, 5.56vw, 80px) - 0.9485 * 130vw - clamp(20px, 5.56vw, 80px));
+    margin-top: -30px;
+  }
+}
+
+/* Advisor Center pages (Seb, 20 Nov 23:29). */
+@media (max-width: 599px) {
+  /* Everything left aligned. */
+  html body .adv-page :is(h2, h3, p, li):not(.ahub *):not(.tw *) { text-align: left; }
+  html body .adv-page :is(.adv-intro, .adv-intro p, .adv-pick, .adv-pick p) { text-align: left; margin-left: 0; }
+  /* How a referral works: the number sits in the card's top-left corner; text runs close to both edges. */
+  html body .adv-page .adv-step { padding: 54px 20px 22px; overflow: hidden; }
+  html body .adv-page .adv-step::before {
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 0 0 16px 0;
+  }
+  /* Buttons on one line. */
+  html body .adv-page .adv-cta { text-align: left; align-items: flex-start; }
+  html body .adv-page .adv-cta .adv-card-actions { align-items: flex-start; justify-content: flex-start; }
+  html body .adv-page .adv-cta a { white-space: nowrap; }
+}
+@media (max-width: 599px) {
+  /* Advisor Center sub-pages: less space under the three-part hub, more room above the first card below it. */
+  html body .advr-hub-band .advr-well { padding-bottom: 35px; }
+  html body .advr-hub-band .ahub { margin-bottom: 0; }
+  html body .advr-hub-band + .advr-band .advr-well { padding-top: 45px; }
+  /* "More tools are on the way" in a white frame on the DREAM band. */
+  html body .advr-band-tint .advr-cta { background: #fff !important; }
+}
+@media (max-width: 599px) {
+  html body .advr-band.fl-band { padding-left: clamp(20px, 5.56vw, 80px); padding-right: clamp(20px, 5.56vw, 80px); }
+}
+
+/* Stories (Seb, 20 Nov 23:29). */
+html body .st-phone-wall { display: none; }
+@media (max-width: 599px) {
+  html body .st-phone-wall { display: block; }
+  html body .st-phone-wall .tw { margin-top: 20px; }
+  html body .st-phone-wall .tw-card blockquote p { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; line-clamp: 6; overflow: hidden; }
+  html body .st-page .st-list { display: none !important; }
+  html body .st-page .st-case-chips li { font-size: 14px; }
+  html body .st-page .st-case-intro { font-size: 17px; font-weight: 400; line-height: 1.6; }
+  html body .st-page .st-case-art { display: flex; justify-content: center; }
+  html body .st-page .st-case-art img { width: 208px; height: auto; }
+  html body .st-page .st-cta .st-cta-lead { font-size: 17px; font-weight: 400; line-height: 1.6; }
+  html body .st-page .st-cta .st-cta-note { font-size: 12px; white-space: nowrap; margin-top: 6px; }
+  /* Logo pills 30% smaller (here and on the homepage). */
+  html body .lr-rails { zoom: 0.7; }
+}
+
+/* Home (Seb, 20 Nov 23:29). */
+@media (max-width: 599px) {
+  html body #exit { padding-top: 50px; }
+  html body .exit-machine { margin-left: 0 !important; }
+  html body #first-draw { overflow: visible; }
+  html body #first-draw img { width: 384px; max-width: none; margin-left: calc((100% - 384px) / 2); }
+  html body #why { padding-bottom: 50px; }
+  /* Track record: the same cards as on The Reset. */
+  html body #wayfinders .track-card { padding: 24px 0 8px; background: transparent; border: 0; box-shadow: none; }
+  html body #wayfinders .track-nums { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 12px; }
+  html body #wayfinders .track-nums > div {
+    display: flex; flex-direction: column; gap: 6px; align-items: center; justify-content: center;
+    padding: 22px 10px; background: #fff; border: 1px solid #a3f2d7; border-radius: 20px; text-align: center;
+  }
+  html body #wayfinders .track-nums strong { font-size: 20px; font-weight: 900; line-height: 1.1; white-space: nowrap; }
+  html body #wayfinders .track-nums span { color: #5b3d8a; font-size: 15px; font-weight: 600; line-height: 1.35; }
+}
+
+/* ===== 21 Nov 2026 01:19 (Seb): round 4 ===== */
+@media (max-width: 599px) {
+  /* More room between the last frame on a page and the footer wave: the last band grows by 48px in its own
+     colour (a transparent border shows the band's background). */
+  html body main > :last-child:not(article),
+  html body main > article > :last-child { border-bottom: 48px solid transparent; }
+}
+@media (max-width: 599px) {
+  /* Product pages: the closing card gets room above and below. */
+  html body .pp-page section[aria-labelledby="pp-close"] .ep-well { padding-top: 70px; padding-bottom: 40px; }
+  html body .pp-page .pp-note { font-size: 15px; }
+  html body .pp-page .pp-soon--hero { white-space: nowrap; }
+}
+@media (max-width: 599px) {
+  /* Podcast: host photo 50% bigger; envelope 50% bigger; card labels centred; "The newsletter" in GRASS 600;
+     "Where the chat goes now" on one line. */
+  html body .pod2-host .pod2-host-img { width: 180px !important; height: 180px !important; }
+  html body .pod2-news .pod2-news-art,
+  html body .pod2-news .pod2-news-art img { width: 225px !important; }
+  html body .pod2-card-label { text-align: center; }
+  html body .pod2-news .pod2-card-label { color: #01a684 !important; }
+  html body .pod2-next .pod2-card-label { white-space: nowrap; }
+  html body .pod2-next > * { min-width: 0; }
+  /* FAQ hero topics centred. */
+  html body .faq-hero .faq-common { justify-content: center !important; text-align: center; }
+}
+@media (max-width: 599px) {
+  /* Insights cards: picture and labels start and end where the text does (22px in from the card edge). */
+  html body .bl-page .bl-card:not(.bl-card--row) .bl-card-media { margin: 22px 22px 0 !important; width: auto !important; }
+  html body .bl-page .bl-card:not(.bl-card--row) .bl-card-body { padding-left: 22px !important; padding-right: 22px !important; }
+  html body .bl-page .bl-card:not(.bl-card--row) .bl-card-tags { margin-left: 0 !important; margin-right: 0 !important; padding-left: 0 !important; }
+  html body .bl-page .bl-card--feature .bl-card-title { font-size: 21px !important; }
+  html body .bl-page .bl-card:not(.bl-card--feature) .bl-card-title { font-size: 17px !important; }
+  /* Newsletter strip: heading on one line, white field. */
+  html body .bl-nl h2 { white-space: nowrap; font-size: 22px; }
+  /* Seb round 2 final pass, 22 Nov 2026: P1, keep the pathway newsletter heading inside its card. */
+  html body :is(.dr-page, .dr-news) .bl-nl h2 { white-space: nowrap; font-size: 22px; }
+  html body .bl-nl-form input[type="email"] { background: #fff !important; }
+}
+@media (max-width: 599px) {
+  /* Stories (21 Nov): picture centred, "How …" on its own line, identity line at caption size, more room
+     before the logos. */
+  html body .st-page .st-case-art { display: flex !important; justify-content: center; width: 100%; }
+  html body .st-page .st-accent { display: block; }
+  html body .st-page .st-anon { font-size: 12px; line-height: 1.5; }
+  html body .st-page .st-phone-wall { margin-bottom: 40px; }
+}
+@media (max-width: 599px) {
+  /* Pathway (21 Nov): more room under the hero; door buttons centred. */
+  html body .dr-band .dr-well-top { padding-top: 70px; }
+  html body .dr-door .dr-door-foot { display: flex; flex-direction: column; align-items: center; text-align: center; }
+  /* Services: "Our services" centred, larger, lower. */
+  html body .pp-page h2#pr-all { text-align: center; font-size: 30px !important; }
+  html body .pp-page section[aria-labelledby="pr-all"] .ep-well { padding-top: 70px; }
+}
+
+/* Seb round 2, 22 Nov 2026: Residency phone type and unchanged blog labels. */
+@media (max-width: 599px) {
+  :root {
+    --hero-subline-size: 17px;
+    --hero-subline-weight: 400;
+    --hero-subline-leading: 1.6;
+  }
+  html body .bl-card :is(.bl-badge, .bl-pill) { font-size: 10px !important; }
+}
