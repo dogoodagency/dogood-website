@@ -522,11 +522,12 @@ const afterSale = [
       <p class="asseen-kicker">As seen on</p>
       <div class="press-rail" role="list" aria-label="As seen on">
         <div class="press-track">
-          {[false, true].map((dup) => (
-            <div class="press-set" aria-hidden={dup ? "true" : undefined}>
+          {/* R15.9: sets 3 and 4 are hidden everywhere except the iPad marquee (round15-home.css), where one set is narrower than the rail. */}
+          {[false, true, true, true].map((dup, setIndex) => (
+            <div class:list={["press-set", setIndex > 1 && "press-set--x"]} aria-hidden={dup ? "true" : undefined}>
               {pressLogos.map((p) => (
                 <span class="press-logo" role={dup ? undefined : "listitem"}>
-                  <img src={`/media/press/${p.file}`} width={p.w} height="96" style={`height:${p.h}px`} alt={dup ? "" : p.name} loading="lazy" decoding="async" />
+                  <img src={`/media/press/${p.file}`} width={p.w} height="96" style={`height:${p.h}px;--ph:${p.h}px`} alt={dup ? "" : p.name} loading="lazy" decoding="async" />
                 </span>
               ))}
             </div>

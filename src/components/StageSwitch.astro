@@ -108,7 +108,17 @@ const stages = [
     transition: color 0.3s ease, background-color 0.3s ease;
   }
   .ss-tab-n { font-size: 19px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .ss-tab-n { font-size: 17px; }
+  }
+
   .ss-tab-name { font-size: 20px; font-weight: 900; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .ss-tab-name { font-size: 18px; }
+  }
+
   .ss .ss-tab, .ss .ss-tab * {
     text-decoration: none !important;
     background-image: none !important;
@@ -157,9 +167,29 @@ const stages = [
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .ss-kicker { font-size: 14px; }
+  }
+
   .ss-here { padding: 6px 12px; border-radius: 999px; background: var(--color-grass-700); color: var(--color-white); font-size: 12px; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .ss-here { font-size: 12px; }
+  }
+
   .ss-title { margin: 0 0 8px; font-size: clamp(30px, 3.4vw, 40px); font-weight: 900; line-height: 1.1; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .ss-title { font-size: clamp(28px, calc(3.4vw - 2px), 38px); }
+  }
+
   .ss-title span { font-size: 0.55em; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .ss-title span { font-size: 0.55em; }
+  }
+
   .ss-panel :is(.ss-kicker, .ss-title, .ss-title span) { color: var(--color-white); }
   .ss-panel--2 .ss-here { background: var(--color-heart-600); }
   .ss-line {
@@ -174,7 +204,17 @@ const stages = [
     letter-spacing: 0.05em;
     text-transform: uppercase;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .ss-line { font-size: 18px; }
+  }
+
   .ss-panel .ss-text { max-width: 760px; margin: 0 auto 20px; color: var(--color-white); font-size: 18px; line-height: 1.55; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .ss-panel .ss-text { font-size: 16px; }
+  }
+
   .ss-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 0; }
   .ss-panel--2 a.btn-teal {
     background: var(--color-heart-500);
@@ -183,6 +223,11 @@ const stages = [
     font-size: 20px;
     font-weight: 800;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .ss-panel--2 a.btn-teal { font-size: 20px; }
+  }
+
   .ss-panel--2 a.btn-teal:is(:hover, :focus-visible) {
     background: var(--color-heart-600);
     border-color: var(--color-heart-600);

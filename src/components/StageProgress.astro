@@ -53,6 +53,11 @@ const steps = [
     letter-spacing: 0.12em;
     text-transform: uppercase;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .sp-title { font-size: 14px; }
+  }
+
 
   .sp-steps {
     display: flex;
@@ -100,6 +105,11 @@ const steps = [
     font-size: 16px;
     font-weight: 900;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .sp-dot { font-size: 14px; }
+  }
+
 
   .is-current .sp-dot {
     border-color: #28dbb0;
@@ -125,12 +135,22 @@ const steps = [
     font-weight: 700;
     white-space: nowrap;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .sp .sp-label { font-size: 15px; }
+  }
+
 
   .sp .sp-note {
     color: #c2b7dd;
     text-align: left;
     font-size: 14px;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .sp .sp-note { font-size: 14px; }
+  }
+
 
   .sp-line {
     flex: 1 1 32px;
@@ -148,6 +168,11 @@ const steps = [
     font-size: calc(1em - 2px);
     font-weight: inherit; /* 20 Nov 2026 (Seb): same stroke as the word before it */
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .sp :global(.tm) { font-size: calc(1em - 2px); }
+  }
+
 
   /* Light, large version: Stage 1 GRASS, Stage 2 HEART (the two pages' colours). */
   .sp--light .sp-title {
@@ -180,6 +205,11 @@ const steps = [
     border-color: #c2b7dd;
     font-size: 20px;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .sp--light .sp-dot { font-size: 18px; }
+  }
+
 
   .sp--light .sp-step:first-of-type .sp-dot { border-color: #01a684; color: #05745b; }
   .sp--light .sp-step:last-of-type .sp-dot { border-color: #fd6b82; color: #c10e46; }
@@ -192,11 +222,21 @@ const steps = [
     font-size: 22px;
     font-weight: 900;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .sp.sp--light .sp-label { font-size: 20px; }
+  }
+
 
   .sp.sp--light .sp-note {
     color: #58447f;
     font-size: 16px;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .sp.sp--light .sp-note { font-size: 14px; }
+  }
+
 
   .sp--light .sp-step:first-of-type .sp-here { color: #05745b; }
   .sp--light .sp-step:last-of-type .sp-here { color: #c10e46; }
@@ -214,6 +254,11 @@ const steps = [
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .sp--light .sp-here { font-size: 13px; }
+  }
+
 
   @media (max-width: 640px) {
     .sp-steps {

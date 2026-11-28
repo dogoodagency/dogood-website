@@ -168,6 +168,11 @@ const modes = [
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .au-eyebrow { font-size: 14px; }
+  }
+
 
   .au h2 {
     margin: 0 0 10px;
@@ -176,6 +181,11 @@ const modes = [
     font-weight: 900;
     line-height: 1.15;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .au h2 { font-size: clamp(24px, calc(2.8vw - 2px), 32px); }
+  }
+
 
   .au-lede {
     max-width: 760px;
@@ -184,6 +194,11 @@ const modes = [
     font-size: 18px;
     line-height: 1.6;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .au-lede { font-size: 16px; }
+  }
+
 
   .au-scope {
     display: grid;
@@ -206,6 +221,11 @@ const modes = [
     font-size: 13px;
     font-weight: 700;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .au-label { font-size: 13px; }
+  }
+
 
   .au-row--beat .au-label { color: #28dbb0; }
 
@@ -240,6 +260,11 @@ const modes = [
     font-size: 13px;
     font-style: italic;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .au-sample { font-size: 13px; }
+  }
+
 
   .au-modes {
     display: grid;
@@ -267,8 +292,23 @@ const modes = [
   .au-mode--heart { border-color: #fd6b82; background: #fff9fa; --au-c: #c10e46; }
 
   .au-mode-name { margin: 0; font-size: 19px; font-weight: 900; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .au-mode-name { font-size: 17px; }
+  }
+
   .au-mode-band { margin: 0; color: var(--au-c); font-size: 14px; font-weight: 800; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .au-mode-band { font-size: 14px; }
+  }
+
   .au-mode-use { margin: 0; font-size: 15px; line-height: 1.5; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .au-mode-use { font-size: 15px; }
+  }
+
 
   .au-meter {
     display: flex;
@@ -322,7 +362,17 @@ const modes = [
   }
 
   .au-sci h3 { margin: 0 0 14px; color: #2a0b4f; font-size: 22px; font-weight: 900; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .au-sci h3 { font-size: 20px; }
+  }
+
   .au-sci p { margin: 0 0 12px; color: #2a0b4f; font-size: 16px; line-height: 1.6; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .au-sci p { font-size: 14px; }
+  }
+
 
   .au-beat {
     display: flex;
@@ -342,11 +392,26 @@ const modes = [
   }
 
   .au-beat-ear span { font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .au-beat-ear span { font-size: 11px; }
+  }
+
   .au-beat-ear strong { font-size: 18px; font-weight: 900; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .au-beat-ear strong { font-size: 16px; }
+  }
+
   .au-beat-ear--l { border-color: #8b7dae; color: #58447f; }
   .au-beat-ear--r { border-color: #fd6b82; color: #960434; }
   .au-beat-ear--b { border-color: #01a684; background: #05745b; color: #fff; }
   .au-beat-plus { color: #58447f; font-size: 22px; font-weight: 900; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .au-beat-plus { font-size: 20px; }
+  }
+
 
   .au-bands {
     display: grid;
@@ -367,7 +432,17 @@ const modes = [
   }
 
   .au-band strong { font-size: 15px; font-weight: 900; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .au-band strong { font-size: 15px; }
+  }
+
   .au-band span { font-size: 12px; line-height: 1.3; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .au-band span { font-size: 12px; }
+  }
+
   .au-band--d { background: #2a0b4f; color: #fff; }
   .au-band--t { background: #58447f; color: #fff; }
   .au-band--a { background: #c2b7dd; color: #2a0b4f; }
@@ -410,7 +485,17 @@ const modes = [
   }
 
   .au-layers strong { font-size: 17px; font-weight: 900; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .au-layers strong { font-size: 15px; }
+  }
+
   .au-layers span { font-size: 15px; line-height: 1.55; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .au-layers span { font-size: 15px; }
+  }
+
 
   .au-sci .au-sci-fine { grid-column: 1 / -1; margin: 0; color: #58447f !important; }
 
@@ -420,6 +505,11 @@ const modes = [
   }
 
   .au-fine { color: #c2b7dd !important; font-size: 14px !important; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .au-fine { font-size: 14px !important; }
+  }
+
 
   .au-approach {
     margin-top: 28px;
@@ -438,9 +528,24 @@ const modes = [
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .au-approach-eyebrow { font-size: 14px; }
+  }
+
 
   .au-approach h3 { margin: 0 0 8px; color: #2a0b4f; font-size: clamp(24px, 2.4vw, 30px); font-weight: 900; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .au-approach h3 { font-size: clamp(22px, calc(2.4vw - 2px), 28px); }
+  }
+
   .au-approach-lede { max-width: 760px; margin: 0 0 22px; color: #2a0b4f; font-size: 18px; line-height: 1.6; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .au-approach-lede { font-size: 16px; }
+  }
+
 
   .au-approach-cards {
     display: grid;
@@ -473,18 +578,43 @@ const modes = [
     font-size: 16px;
     font-weight: 900;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .au-ac-n { font-size: 14px; }
+  }
+
 
   .au-ac--grass .au-ac-n { background: #05745b; }
   .au-ac--heart .au-ac-n { background: #2a0b4f; }
   .au-ac--dream .au-ac-n { background: #58447f; }
 
   .au-ac-tag { margin: 0 0 6px; font-size: 13px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .au-ac-tag { font-size: 13px; }
+  }
+
   .au-ac--grass .au-ac-tag { color: #05745b; }
   .au-ac--heart .au-ac-tag { color: #960434; }
   .au-ac--dream .au-ac-tag { color: #58447f; }
   .au-ac-key { margin: 0 0 10px; color: #2a0b4f; font-size: 18px; font-weight: 800; line-height: 1.4; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .au-ac-key { font-size: 16px; }
+  }
+
   .au-ac-more { margin: 0; color: #2a0b4f; font-size: 15px; line-height: 1.55; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .au-ac-more { font-size: 15px; }
+  }
+
   .au-approach .au-cite { margin: 16px 0 0; color: #58447f; font-size: 13px; font-style: italic; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .au-approach .au-cite { font-size: 13px; }
+  }
+
 
   @media (max-width: 860px) {
     .au-approach-cards { grid-template-columns: minmax(0, 1fr); }
@@ -492,6 +622,11 @@ const modes = [
   }
 
   .au-more { margin: 18px 0 0; font-size: 17px; font-weight: 800; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .au-more { font-size: 15px; }
+  }
+
   .au-more a { color: #28dbb0; }
 
   @media (max-width: 1023px) {

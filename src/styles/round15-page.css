@@ -1,0 +1,132 @@
+/* round 15: page (iPad only).
+   IPAD = (min-width: 744px) and (max-width: 1279px), or a touch landscape iPad up to 1366px wide. Nothing here touches phones
+   or desktop. */
+
+@media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+
+  /* ==========================================================================================================
+     R15.15: "a white line at the wavy transition to the footer. Check every page's header and footer wave
+     transitions on iPad and remove any white line or gap."
+
+     Cause: Wave.astro (and the hand-written wave SVGs on the inner pages) draw a 1px light-lavender stroke (.wave-edge,
+     .bk-wave-edge) along the curve, which WebKit shows as a light hairline where the dark wave meets the footer / hero; and
+     sub-pixel rounding at DPR 2 can leave a 1-2px strip of the page background between a wave and the section it joins.
+
+     Wave markup on the site (all handled by the generic selectors below, nothing per page):
+       - Footer:       div.footer-wave > svg.hero-wave (+ path.wave-edge via the footerEdge prop), then footer.footer.
+       - Hero bottom:  header.<x>-hero > svg.hero-wave (+ path.wave-edge) on every page that uses src/components/Wave.astro
+                       (about, newsletter, faqs, stories, podcast, dogood-insider, ...), and the hand-written
+                       div.privacy-divider svg on /clarity, privacy pages and /[...slug].
+       - Booking:      header.bk-hero > div.bk-wave-top > svg (path.bk-wave-fill + path.bk-wave-edge) in BookingHero.astro.
+       - Dividers:     div.{ep,hw,wf,dr,ab,cs,pod,nl,faq,advr,st,privacy}-divider > svg (hand-written in the page .astro
+                       files: the-build, the-reset, book, exit-prep, pathway, wayfinders, clientfit, FrameworkPage,
+                       ProductPage, CaseStudy, about, newsletter, faqs ...). Their fill is the colour of the band BELOW, the
+                       divider's own background (inline style or the page CSS) is the colour of the band ABOVE.
+       - Home hero:    #hero > svg.hero-wave is already handled in round13-ipad.css (R13.D2); left as it is.
+     ========================================================================================================== */
+
+  /* (1) No light stroke along the footer wave, the booking hero wave, or any wave that bottoms out into a dark band
+     (hero bottom waves, and divider waves whose fill is the DREAM 500 / dark colour). Light-to-light dividers keep their
+     soft outline, because that stroke is what separates white from the lavender tint and is not a white line on dark. */
+  html body .footer-wave .wave-edge,
+  html body .footer-wave svg path.wave-edge,
+  html body main#main#main header > .hero-wave .wave-edge,
+  html body main#main#main header .hero-wave path.wave-edge,
+  html body main#main#main header .bk-wave-edge,
+  html body main#main#main .bk-wave-top .bk-wave-edge,
+  html body main#main#main .bk-wave-edge,
+  html body main#main#main svg path[fill="#2A0B4F" i] ~ .wave-edge,
+  html body main#main#main svg path[fill="#2a0b4f" i] ~ .wave-edge,
+  html body main#main#main svg path[fill="#110027" i] ~ .wave-edge {
+    stroke: transparent !important;
+    stroke-width: 0 !important;
+    opacity: 0 !important;
+  }
+
+  /* (2) Gap-free seams. Every wave svg is a block (no inline baseline strip under it), drawn with geometric precision. */
+  html body .hero-wave,
+  html body .footer-wave svg,
+  html body .bk-wave-top svg,
+  html body main#main#main :is(.ep-divider, .hw-divider, .wf-divider, .dr-divider, .ab-divider, .cs-divider,
+    .pod-divider, .nl-divider, .faq-divider, .advr-divider, .st-divider, .privacy-divider) svg {
+    display: block;
+    shape-rendering: geometricPrecision;
+  }
+  html body main#main#main :is(.ep-divider, .hw-divider, .wf-divider, .dr-divider, .ab-divider, .cs-divider,
+    .pod-divider, .nl-divider, .faq-divider, .advr-divider, .st-divider, .privacy-divider) {
+    line-height: 0;
+    font-size: 0;
+  }
+
+  /* Header / hero waves: the wave's last pixel row overlaps the section below by 1px (the wave fill IS that section's colour),
+     and the dark hero behind it reaches the wave's top, so a fractional device pixel can only show the same colour on itself. */
+  html body main#main#main :is(header, section):not(#hero) > .hero-wave,
+  html body main#main#main :is(header, section):not(#hero) > .bk-wave-top {
+    margin-bottom: -1px !important;
+    position: relative;
+  }
+  html body main#main#main header > .bk-wave-top svg { height: 80px; }
+
+  /* Divider waves: overlap the band below by 1px, and pull up 1px over the band above, so neither side can show body lilac. */
+  html body main#main#main :is(.ep-divider, .hw-divider, .wf-divider, .dr-divider, .ab-divider, .cs-divider,
+    .pod-divider, .nl-divider, .faq-divider, .advr-divider, .st-divider, .privacy-divider):not(.ab-divider--over) {
+    margin-top: -1px;
+    margin-bottom: -1px;
+  }
+
+  /* Footer: the wave (transparent background, laid over the last band by round5-a / mobile-rules) overlaps the footer by 1px.
+     The wave fill (#2A0B4F) and the footer colour (--color-ink #2a0b4f) are the same colour. */
+  html body .footer-wave {
+    margin-bottom: -1px !important;
+    line-height: 0;
+    font-size: 0;
+    background: transparent !important;
+  }
+  html body .footer-wave .hero-wave { margin-bottom: 0 !important; }
+  html body footer.footer { margin-top: 0; }
+
+  /* ==========================================================================================================
+     R15.16: hero heights on iPad. The shared page heroes were min-height 540px (round4.css, "540px" again at <=1365px; 640px
+     for the Advisor heroes in tablet.css; 470/512px for the Advisor hub pages in advisors.css; 540px for the Book and Wayfinder
+     profile heroes in round7.css / round4.css) with ~94px nav padding on top and an 80px wave at the bottom. The hero is
+     display:flex/column with height:auto here, so the CONTENT sets the height whenever it is taller than the minimum; lowering
+     the minimum can therefore never clip text or art, it only removes the empty space on short heroes.
+
+     Content area at 360px = 360 - 94 (nav) - 80 (wave) = 186px, centred (the inner block is flex:1 + justify-content:center),
+     i.e. about 16px of air above and below an eyebrow, a two-line title and a two-line lede.
+
+     Selectors cover (page -> selector):
+       /apply, /application (Founder Applications)  .apl-hero          /about  .ab-hero            /faqs  .faq-hero
+       /exit-prep, /residency, product + framework pages, Book (/book .bookp-page header.ep-hero)  .ep-hero
+       /the-build, /the-reset (How it works)        .hw-hero           /doors, /pathway  .dr-hero
+       /wayfinders, /wayfinders/*, client tools     .wf-hero (+ .wfp-hero on a person's profile, e.g. Katrin)
+       /advisor-center, referrals, insights hub     .adv-hero, .advr-hero (640 / 470 / 512 before)
+       /stories  .st-hero (content is taller than the min on iPad, so unchanged in practice)
+       /case studies  .cs-hero        /newsletter  .nl-hero        /podcast  .pod-hero, episode .pod-ep-hero
+       /insights  .bl-hero.bli-hero, article .r4-article-hero      /clarity, privacy, terms  .privacy-hero
+       /booking pages (/catchup etc.)  .bk-hero      /seven-questions  .r4-seven-hero      /dogood-insider  .pod-hero
+     NOT changed: the Home hero (#hero, R15.8) and its wave. /stories and the article hero keep their padding; they only
+     receive the lower minimum (the Stories hero is a two-up/stacked grid taller than 360 anyway). ========================================================================================================== */
+
+  html body main#main#main :is(.ep-hero, .hw-hero, .dr-hero, .advr-hero, .adv-hero, .wf-hero, .wfp-hero, .faq-hero, .st-hero,
+    .cs-hero, .ab-hero, .nl-hero, .pod-hero, .bl-hero, .privacy-hero, .apl-hero, .bk-hero, .r4-article-hero, .r4-seven-hero):is(header, section):not([hidden]),
+  html body main#main#main .adv-page > :is(.adv-hero, .advr-hero),
+  html body main#main#main .adv-page:has(.ahub) > header:is(.adv-hero, .advr-hero),
+  html body main#main#main .bookp-page header.ep-hero:not([hidden]),
+  html body main#main#main header.wfp-hero:not([hidden]) {
+    height: auto !important;
+    min-height: 360px !important;
+  }
+
+  /* Tighter vertical padding inside the heroes that had the most spare room (each was set separately by an older rule). */
+  html body main#main#main .adv-page :is(.adv-hero-inner, .advr-hero-inner) { padding-block: 24px; }
+  html body main#main#main .bk-page .bk-hero-inner { padding: 28px var(--pad) 20px; }
+  html body main#main#main .pod-page .pod-ep-hero .pod-ep-hero-inner { padding-bottom: 24px; }
+  html body main#main#main .pp-membership .ep-hero-inner { padding-block: 36px 28px; }
+  html body main#main#main .bookp-page header.ep-hero > .bookp-hero-inner { padding: 36px 0; }
+}
+
+/* Book page hero inner at 744-900px was 48px/44px (round7.css, max-width 900) */
+@media (min-width: 744px) and (max-width: 900px) {
+  html body main#main#main .bookp-page header.ep-hero > .bookp-hero-inner { padding: 32px 0 28px; }
+}

@@ -194,7 +194,18 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
   if (header instanceof HTMLElement && burger instanceof HTMLButtonElement && panel instanceof HTMLElement) {
     const items = () => [...panel.querySelectorAll("a, button")].filter((item) => !item.closest("[hidden]"));
 
+    // R15.7: the iPad burger panel's right edge lines up with the nav bar's right edge (CSS reads --r15-panel-right).
+    const navBar = header.querySelector(".nav-bar");
+    const syncPanelEdge = () => {
+      if (!(navBar instanceof HTMLElement)) return;
+      const gap = header.getBoundingClientRect().right - navBar.getBoundingClientRect().right;
+      if (gap >= 0) header.style.setProperty("--r15-panel-right", `${Math.round(gap * 10) / 10}px`);
+    };
+    window.addEventListener("resize", syncPanelEdge);
+    syncPanelEdge();
+
     const setOpen = (open) => {
+      if (open) syncPanelEdge();
       burger.setAttribute("aria-expanded", open ? "true" : "false");
       panel.hidden = !open;
     };

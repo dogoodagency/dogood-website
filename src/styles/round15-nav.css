@@ -1,0 +1,118 @@
+/* round 15: nav */
+
+/* R15.7: iPad nav. Seb: "Nav dropdowns: narrower iPad dropdown panel with the items stacked vertically (Pathway,
+   Services, Advisor Center); Advisor Center image on the left or dropped, less tall hover blocks; align the dropdown's
+   right edge with the right edge of the top nav bar; think the whole iPad nav through so it looks deliberate."
+   The burger panel (#nav-panel) is what iPad uses at <=1080px, so everything below is nested in max-width: 1080px.
+   The 1081-1366 touch landscape devices keep the desktop mega dropdowns (not touched here).
+   --r15-panel-right (px, distance from the header's right edge to the .nav-bar's right edge) is set by a few lines
+   of JS in Header.astro; the fallback is the header padding + foundr.land button + gap. */
+@media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+  @media (max-width: 1080px) {
+    /* the panel: narrow, right edge on the nav bar's right edge, just under the bar, scrolls when taller than the screen */
+    html body header.nav #nav-panel {
+      box-sizing: border-box;
+      left: auto;
+      right: var(--r15-panel-right, 156px);
+      top: calc(100% - 4px);
+      width: min(360px, calc(100vw - 32px));
+      max-width: calc(100vw - 32px);
+      max-height: calc(100dvh - 106px);
+      margin: 0;
+      padding: 8px;
+      gap: 2px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      border-radius: 16px;
+    }
+
+    /* top-level rows (Pathway, Services, Advisor Center toggles and the Stories / Wayfinders links) */
+    html body header.nav #nav-panel > :is(a, button) {
+      box-sizing: border-box;
+      width: 100%;
+      min-height: 46px;
+      padding: 8px 12px;
+      font-size: 15px;
+      font-weight: 400;
+    }
+    html body header.nav #nav-panel .nav-advisor-toggle::after { margin-left: auto; }
+
+    /* an open section: ONE column, the same for Pathway, Services and Advisor Center */
+    html body header.nav #nav-panel .nav-advisor-links:not([hidden]) {
+      display: flex;
+      flex-direction: column;
+      grid-template-columns: none;
+      grid-template-rows: none;
+      gap: 2px;
+      margin: 0 0 6px;
+      padding: 6px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* group labels ("The pathway", "I've sold", "Beyond the two stages", ...) share the items' text edge (6px + 16px) */
+    html body header.nav #nav-panel .nav-advisor-links > .nav-mega-group {
+      grid-column: auto;
+      margin: 12px 12px 4px 16px;
+      font-size: 11px;
+      line-height: 1.2;
+    }
+    html body header.nav #nav-panel .nav-advisor-links > .nav-mega-group:first-child { margin-top: 6px; }
+
+    /* every item: same padding, same type, tap target >= 46px */
+    html body header.nav #nav-panel a.nav-sub {
+      box-sizing: border-box;
+      grid-column: auto;
+      width: 100%;
+      min-width: 0;
+      min-height: 46px;
+      height: auto;
+      padding: 10px 12px 10px 16px;
+      border-radius: 10px;
+      gap: 2px;
+      overflow: visible;
+    }
+    html body header.nav #nav-panel a.nav-sub .nav-sub-title {
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+    html body header.nav #nav-panel a.nav-sub .nav-sub-note {
+      margin-top: 0;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    /* Advisor Center items: the thumbnail moves to the LEFT (52px square, rounded), text to its right, rows no taller than they need to be */
+    html body header.nav #nav-panel #nav-advisors-phone a.nav-sub {
+      position: static;
+      display: grid;
+      grid-template-columns: 52px minmax(0, 1fr);
+      grid-template-rows: auto auto;
+      grid-template-areas:
+        "img title"
+        "img note";
+      column-gap: 12px;
+      row-gap: 2px;
+      align-items: center;
+      align-content: center;
+      justify-content: stretch;
+      min-height: 46px;
+      padding: 8px 12px 8px 8px;
+    }
+    html body header.nav #nav-panel #nav-advisors-phone a.nav-sub .nav-sub-title { grid-area: title; align-self: end; }
+    html body header.nav #nav-panel #nav-advisors-phone a.nav-sub .nav-sub-note { grid-area: note; align-self: start; }
+    html body header.nav #nav-panel #nav-advisors-phone a.nav-sub .nav-advisor-image {
+      position: static;
+      grid-area: img;
+      align-self: center;
+      width: 52px;
+      height: 52px;
+      border-left: 0;
+      border-radius: 10px;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}

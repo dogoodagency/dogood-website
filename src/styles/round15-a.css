@@ -1,0 +1,120 @@
+/* round 15: a */
+
+/* R15.1: article pages (desktop only). The top row "Back to Insights" / "Share on LinkedIn" / "Copy link" is 2px smaller
+   (18px -> 16px; the icons are 1em, so they follow) and sits 76px (2cm) lower under the hero: the space above the row
+   (padding-top of .r6-article-top, 10px in round14) becomes 86px. The space below the row (24px margin) is untouched. */
+@media (min-width: 1280px) and (hover: hover), (min-width: 1367px) {
+  html body main#main#main#main .bl-article .r15-article-bar .bl-back a,
+  html body main#main#main#main .bl-article .r15-article-bar .bl-share .bl-share-link {
+    font-size: 16px !important;
+  }
+  html body main#main#main#main .bl-article .r6-article-top {
+    padding-top: 86px !important;
+  }
+}
+
+/* R15.2: /wayfinders (desktop only). Katrin's image is 433 x 548px (was 348 x 439, +24.5%) so her head matches Shiva's.
+   Tile is 359 x 360px (unchanged, overflow hidden). Head top at y = 31px: image top = 31 - 6 x 1.353 = 23px. Face centre at
+   x = 212px: image left = 212 - 120 x 1.353 = 49px, i.e. right = 359 - 49 - 433 = -123px. */
+@media (min-width: 1280px) and (hover: hover), (min-width: 1367px) {
+  html body main#main#main#main .wf-page-overview .wf-photo[data-wayfinder="Katrin"] picture {
+    top: 23px !important;
+    right: -123px !important;
+    left: auto !important;
+    width: 433px !important;
+    height: 548px !important;
+    transform: none !important;
+  }
+  html body main#main#main#main .wf-page-overview .wf-photo[data-wayfinder="Katrin"] picture img {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    object-fit: fill !important;
+  }
+}
+
+/* R15.3: /wayfinders/katrin (desktop only). Katrin's image is 490 x 618px (was 348 x 439) so her head matches Shiva's
+   on her own page. Measured in the browser, her head was ~4% smaller than Shiva's at 476px, so this is a measured
+   correction: scale 490/320 = 1.531, image top 22px, image left -9px (the tile clips the overflow). Tile 340 x 400px (unchanged). */
+@media (min-width: 1280px) and (hover: hover), (min-width: 1367px) {
+  html body main#main#main#main .wfp-hero .wfp-photo.wfp-photo--katrin picture {
+    top: 22px !important;
+    left: -9px !important;
+    right: auto !important;
+    width: 490px !important;
+    height: 618px !important;
+    aspect-ratio: auto !important;
+    transform: none !important;
+  }
+  html body main#main#main#main .wfp-hero .wfp-photo.wfp-photo--katrin picture img {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    object-fit: fill !important;
+  }
+}
+
+/* R15.4: /newsletter (phones only). "Still in his bathrobe." has the same type as the headline of its section (the book
+   title h2: Georgia, 400, var(--nl-h2-size) = 26px on phones, line-height 1.15, letter-spacing -0.03em), in yellow (#FEFABE, the
+   yellow this line already had; the site has no named yellow token). */
+@media (max-width: 743px) {
+  html body main#main#main#main#main#main .nl-page .nl-well .nl-book-teaser .nl-book-close {
+    font-family: Georgia, "Times New Roman", serif !important;
+    font-size: var(--nl-h2-size) !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.03em !important;
+    color: #FEFABE !important;
+  }
+}
+
+/* R15.5: /newsletter (phones only). The envelope sketch in the sign-up block is centred in its area, horizontally and
+   vertically: the frame is a flex box centring the image, the space above and below it is equal (was 40px / 34px), and the
+   image has no stray offsets. The PNG/WebP has the drawing's ink centred at about 42.5% across and 39.25% down the image
+   (plus a few faint specks in the far corner), so to centre the DRAWING itself the image is translated by 7.5% / 10.75% of
+   its own box (applied before the 1.3 scale, origin centre). The form is untouched. */
+@media (max-width: 743px) {
+  html body main#main#main#main .nl-page .nl-signup-split .nl-signup-art {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    justify-self: center;
+    margin: 40px auto 40px !important;
+  }
+  html body main#main#main#main .nl-page .nl-signup-split .nl-signup-art img {
+    display: block;
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    margin: 0 !important;
+    object-fit: contain;
+    object-position: center;
+    transform-origin: center;
+    transform: translate(7.5%, 10.75%) scale(1.3) !important;
+  }
+}
+
+/* R15.6: Signals Guide page (phones only). The mockup shows in full: the frame takes the picture's own 600:486 shape (no
+   fixed 240px / 360px height, nothing clipped), the picture is a normal block at the frame's width, contained, with no
+   122% height, no centring transform and no overflow hidden. */
+@media (max-width: 743px) {
+  html body main#main#main#main .advr-page .advr-tool-visual--signals.advr-tool-visual--detail {
+    height: auto !important;
+    aspect-ratio: 600 / 486;
+    overflow: visible !important;
+  }
+  html body main#main#main#main .advr-page .advr-tool-visual--signals.advr-tool-visual--detail .advr-tool-img {
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: contain;
+    object-position: center;
+  }
+}

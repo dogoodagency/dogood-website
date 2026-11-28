@@ -251,6 +251,11 @@ const days = [
     text-transform: uppercase;
     color: #58447f;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .fl-eyebrow { font-size: 12px; }
+  }
+
   .fl-title {
     margin: 10px 0 14px;
     font-family: var(--serif);
@@ -260,9 +265,24 @@ const days = [
     letter-spacing: -0.015em;
     color: var(--dream);
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .fl-title { font-size: clamp(28px, calc(3.2vw - 2px), 38px); }
+  }
+
   .fl-title em { font-style: italic; }
   .fl-lede { margin: 0 0 12px; max-width: 520px; font-size: 16.5px; line-height: 1.6; color: #3d2a5c; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .fl-lede { font-size: 14.5px; }
+  }
+
   .fl-note { margin: 0 0 18px; font-size: 13px; font-style: italic; color: #6b5a8c; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .fl-note { font-size: 13px; }
+  }
+
 
   .fl-btn {
     display: inline-flex;
@@ -276,6 +296,11 @@ const days = [
     font-weight: 800;
     transition: background-color 0.2s ease;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .fl-btn { font-size: 15px; }
+  }
+
   .fl a.fl-btn { color: #fff !important; text-decoration: none !important; }
   .fl-btn:hover,
   .fl-btn:focus-visible { background: #4a2380; }
@@ -296,6 +321,11 @@ const days = [
   .fl-orb--a { right: -60px; top: -110px; width: 560px; height: 560px; background: #3d1a6e; }
   .fl-orb--b { left: -120px; bottom: -200px; width: 420px; height: 420px; background: #351566; }
   .fl-spark { position: absolute; top: 34px; right: 46%; color: var(--play); font-size: 30px; line-height: 1; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .fl-spark { font-size: 28px; }
+  }
+
   .fl--home .fl-panel::after {
     content: "";
     position: absolute;
@@ -308,7 +338,17 @@ const days = [
   }
   .fl-logo--light { width: 260px; max-width: 70%; }
   .fl--home .fl-title { margin-top: 16px; font-size: clamp(36px, 4.2vw, 54px); color: #fff; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .fl--home .fl-title { font-size: clamp(34px, calc(4.2vw - 2px), 52px); }
+  }
+
   .fl--home .fl-lede { font-size: 17px; color: #e3dcf2; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .fl--home .fl-lede { font-size: 15px; }
+  }
+
   .fl--home .fl-note { color: #c2b7dd; }
   .fl--home a.fl-btn { background: #fff; color: var(--dream) !important; }
   .fl--home .fl-btn:hover,
@@ -324,6 +364,11 @@ const days = [
     box-shadow: 0 20px 36px rgba(1, 166, 132, 0.14);
   }
   .fl-days-cap { margin: 0 0 10px; font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #05745b; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .fl-days-cap { font-size: 10px; }
+  }
+
   .fl-days-bar { height: 6px; margin-bottom: 14px; border-radius: 6px; background: #e7fcf4; overflow: hidden; }
   .fl-days-bar span {
     display: block;
@@ -346,8 +391,23 @@ const days = [
   }
   .fl-days-list li:last-child { grid-column: span 2; background: var(--dream); border-color: var(--dream); color: #fff; }
   .fl-days-n { font-family: var(--serif); font-size: 15px; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .fl-days-n { font-size: 15px; }
+  }
+
   .fl-days-label { font-size: 11px; font-weight: 700; line-height: 1.25; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .fl-days-label { font-size: 11px; }
+  }
+
   .fl-days-foot { margin: 12px 0 0; font-size: 11px; font-weight: 600; color: #58447f; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .fl-days-foot { font-size: 11px; }
+  }
+
   @keyframes fl-days-bar { 0% { transform: scaleX(0); } 80%, 100% { transform: scaleX(1); } }
   @keyframes fl-day {
     0%, 2% { background-color: var(--canvas); border-color: #e6dcf7; }
@@ -370,8 +430,23 @@ const days = [
     box-shadow: 0 14px 26px rgba(42, 11, 79, 0.08);
   }
   .fl-flow-n { font-family: var(--serif); font-size: 18px; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .fl-flow-n { font-size: 16px; }
+  }
+
   .fl-flow-t { font-size: 13px; font-weight: 800; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .fl-flow-t { font-size: 13px; }
+  }
+
   .fl-flow-s { font-size: 11px; line-height: 1.35; color: #58447f; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .fl-flow-s { font-size: 11px; }
+  }
+
   .fl-flow-step--3 { background: var(--dream); border-color: var(--dream); color: #fff; }
   .fl-flow-step--3 .fl-flow-s { color: #c2b7dd; }
   .fl-flow-line {
@@ -405,6 +480,11 @@ const days = [
     background: #fff;
   }
   .fl-flow-share-cap { margin: 0 0 8px; font-size: 9.5px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #58447f; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .fl-flow-share-cap { font-size: 9.5px; }
+  }
+
   .fl-flow-share ul { display: grid; gap: 5px; margin: 0; padding: 0; list-style: none; }
   .fl-flow-share li {
     position: relative;
@@ -414,6 +494,11 @@ const days = [
     font-size: 11.5px;
     font-weight: 600;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .fl-flow-share li { font-size: 11.5px; }
+  }
+
   .fl-flow-share li::before {
     content: "";
     position: absolute;
@@ -452,6 +537,11 @@ const days = [
   .fl-breathe { transform-origin: 60px 60px; animation: fl-breathe 8s ease-in-out infinite; }
   .fl-logo--sm { width: 150px; margin-bottom: 6px; }
   .fl-small-line { margin: 0; font-size: 16px; line-height: 1.5; color: #3d2a5c; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .fl-small-line { font-size: 14px; }
+  }
+
   .fl a.fl-link {
     color: var(--dream) !important;
     font-size: 15px;
@@ -462,6 +552,11 @@ const days = [
     text-decoration-thickness: 2px;
     text-underline-offset: 4px;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .fl a.fl-link { font-size: 15px; }
+  }
+
 
   @keyframes fl-float { 50% { transform: translateY(-8px); } }
   @keyframes fl-breathe { 50% { transform: scale(1.06); } }
@@ -488,6 +583,11 @@ const days = [
   }
   /* "Developed by DoGood Agency" under every foundr.land section (Seb, 20 Nov 2026). */
   .fl-by { margin: 16px 0 0; font-size: 12px; font-weight: 300; letter-spacing: 0.02em; color: #6b5a8c; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .fl-by { font-size: 12px; }
+  }
+
   .fl--home .fl-by { color: #c2b7dd; }
   .fl-by--sm { margin-top: 6px; }
   .fl-visual .fl-by { justify-self: center; text-align: center; margin-top: 18px; }

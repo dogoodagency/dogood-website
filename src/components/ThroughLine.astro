@@ -1207,7 +1207,19 @@
 
     schedule();
     window.addEventListener("load", schedule);
-    window.addEventListener("resize", schedule);
+    // R15.11: on an iPad, Safari fires "resize" every time its toolbar slides in or out while scrolling. Each one re-ran the whole
+    // build (killing and re-creating the scroll trigger mid-scroll), which desktop never does. On iPad only, a height-only change
+    // under 160px is ignored; width changes (rotation, split view) and big height changes still rebuild.
+    let seenW = window.innerWidth;
+    let seenH = window.innerHeight;
+    window.addEventListener("resize", () => {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      if (ipadMQ.matches && w === seenW && Math.abs(h - seenH) < 160) return;
+      seenW = w;
+      seenH = h;
+      schedule();
+    });
     reduce.addEventListener("change", schedule);
     ipadMQ.addEventListener("change", schedule);
     document.fonts?.ready.then(schedule);

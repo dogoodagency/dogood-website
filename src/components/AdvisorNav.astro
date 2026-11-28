@@ -42,6 +42,11 @@ const icons: Record<string, string> = {
 <style>
   .ahub { width: 100%; max-width: 1080px; margin: 0 auto; }
   .ahub-label { display: flex; align-items: center; gap: 12px; margin: 0 0 14px; color: var(--color-dream-500); font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .ahub-label { font-size: 13px; }
+  }
+
   .ahub-label-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--color-dream-300); }
   .ahub-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: 0; padding: 8px; list-style: none; background: var(--color-dream-500); border-radius: 28px; }
   .ahub-list li { min-width: 0; margin: 0; }
@@ -52,9 +57,29 @@ const icons: Record<string, string> = {
   .ahub-icon { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--color-dream-25); color: var(--color-dream-500); }
   .ahub-icon svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
   .ahub-n { font-size: 22px; color: var(--color-dream-500); }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .ahub-n { font-size: 20px; }
+  }
+
   .ahub-title { font-size: 18px; font-weight: 800; line-height: 1.3; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .ahub-title { font-size: 16px; }
+  }
+
   .ahub-detail { flex: 1; font-size: 14px; line-height: 1.5; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .ahub-detail { font-size: 14px; }
+  }
+
   .ahub-go { align-self: flex-start; padding: 6px 12px; border-radius: 24px; background: var(--color-dream-500); color: var(--color-white); font-size: 12px; font-weight: 800; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .ahub-go { font-size: 12px; }
+  }
+
   a.ahub-card[aria-current="page"] { background: var(--color-dream-500); color: var(--color-white); }
   a.ahub-card[aria-current="page"]:is(:hover, :focus-visible) { background: #533F79; }
   a.ahub-card[aria-current="page"] .ahub-n { color: var(--color-white); }

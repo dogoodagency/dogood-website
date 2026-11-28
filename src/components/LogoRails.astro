@@ -103,6 +103,8 @@ if (rows === 2) {
 
     const place = (r: Rail) => {
       r.inner.style.transform = `translate3d(${r.x}px,0,0)`;
+      // R15.9: tablet.css forces `transform: none !important` on iPad; the iPad rule in round15-home.css reads this variable instead.
+      r.inner.style.setProperty("--lr-x", `${r.x}px`);
     };
     const clear = (r: Rail) => {
       r.clones.forEach((c) => c.remove());
@@ -114,6 +116,7 @@ if (rows === 2) {
         r.live = false;
         r.pw = 0;
         r.inner.style.transform = "";
+        r.inner.style.removeProperty("--lr-x");
         return;
       }
       const pw = r.pattern.getBoundingClientRect().width;

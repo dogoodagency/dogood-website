@@ -171,6 +171,11 @@ let roadOn = `M${X(6)} ${Y(6)}` + seg(6, 7) + ` C ${(X(7) + endX) / 2} ${Y(7)}, 
     text-align: center;
     text-transform: uppercase;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .jr-phase { font-size: 12px; }
+  }
+
 
   .jr-phase--lilac { background: #c2b7dd; }
   .jr-phase--sky { background: #e1ebfe; }
@@ -289,18 +294,33 @@ let roadOn = `M${X(6)} ${Y(6)}` + seg(6, 7) + ` C ${(X(7) + endX) / 2} ${Y(7)}, 
     letter-spacing: 0.04em;
     white-space: nowrap;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .jr-chip { font-size: 12px; }
+  }
+
 
   .jr-title {
     font-size: 17px;
     font-weight: 900;
     line-height: 1.25;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .jr-title { font-size: 15px; }
+  }
+
 
   .jr-detail {
     color: #58447f;
     font-size: 14px;
     line-height: 1.4;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .jr-detail { font-size: 14px; }
+  }
+
 
   .jr-go {
     position: absolute;
@@ -370,6 +390,11 @@ let roadOn = `M${X(6)} ${Y(6)}` + seg(6, 7) + ` C ${(X(7) + endX) / 2} ${Y(7)}, 
     font-size: 12px;
     font-weight: 900;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .jr-num { font-size: 12px; }
+  }
+
 
   .jr-step--lilac { --c: #8b7dae; --soft: #f5f2ff; --ink: #58447f; }
   .jr-step--sky { --c: #477dfe; --soft: #f2f7ff; --ink: #0d329f; }
@@ -465,6 +490,11 @@ let roadOn = `M${X(6)} ${Y(6)}` + seg(6, 7) + ` C ${(X(7) + endX) / 2} ${Y(7)}, 
   .jr-road { height: 130px; }
 
   .jr-phase { padding: 8px 4px; font-size: 11px; letter-spacing: 0.06em; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .jr-phase { font-size: 11px; }
+  }
+
   .jr-card {
     height: 184px;
     margin: 0 5px;
@@ -477,6 +507,11 @@ let roadOn = `M${X(6)} ${Y(6)}` + seg(6, 7) + ` C ${(X(7) + endX) / 2} ${Y(7)}, 
   .jr-card:focus-visible { background: var(--hover); border-color: var(--c); transform: translateY(-2px); }
   .jr-card::after { height: 40px; }
   .jr-title { font-size: 15px; letter-spacing: -0.01em; overflow-wrap: anywhere; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .jr-title { font-size: 15px; }
+  }
+
   .jr-go { right: 16px; bottom: 14px; }
   .jr-card--optional { border-style: dashed; border-width: 2px; background: #fff; cursor: default; }
   .jr-card--optional:hover { transform: none; }
@@ -576,6 +611,11 @@ let roadOn = `M${X(6)} ${Y(6)}` + seg(6, 7) + ` C ${(X(7) + endX) / 2} ${Y(7)}, 
   .jr-card:hover .jr-go { transform: translateX(3px); }
 
   .jr-phase { padding: 10px 14px; font-size: 13px; letter-spacing: 0.04em; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .jr-phase { font-size: 13px; }
+  }
+
   /* Before the sale needs a little more room than one station: it borrows a column from After the sale. */
   .jr-phase--sky { grid-column: 3 / 6; }
   .jr-phase--grass { grid-column: 6 / 9; }
@@ -598,6 +638,11 @@ let roadOn = `M${X(6)} ${Y(6)}` + seg(6, 7) + ` C ${(X(7) + endX) / 2} ${Y(7)}, 
     font-weight: 700;
     letter-spacing: 0.02em;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .jr-lane-label { font-size: 14px; }
+  }
+
   .jr-lane-logo { width: 128px; height: auto; }
   .jr-lane-track {
     position: relative;
@@ -713,6 +758,11 @@ let roadOn = `M${X(6)} ${Y(6)}` + seg(6, 7) + ` C ${(X(7) + endX) / 2} ${Y(7)}, 
     text-decoration: underline;
     text-underline-offset: 3px;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .jr-lane-link { font-size: 13px; }
+  }
+
   .jr-lane-link:hover,
   .jr-lane-link:focus-visible { color: #fff; }
   @media (max-width: 1023px) {
@@ -761,6 +811,11 @@ let roadOn = `M${X(6)} ${Y(6)}` + seg(6, 7) + ` C ${(X(7) + endX) / 2} ${Y(7)}, 
   .jr.is-in .jr-lane-track::before { transform: translateY(-50%); clip-path: inset(0 0 0 0); transition: clip-path 9s linear; }
   .jr-lane-track::after { border-color: #ff8fb1; }
   .jr-lane-by { grid-column: 1 / -1; margin: -6px 0 0; color: #8b7dae; font-size: 12px; font-weight: 600; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .jr-lane-by { font-size: 12px; }
+  }
+
   /* ===== 21 Nov 2026 01:19 (Seb) =====
      Beyond: IntegralContinuity HEART 500, the Retreat HEART 400, the Membership HEART 200. For life: DREAM.
      The "Life-long friends" card is solid like the others. The lane label is thin and sits on the logo's line. */

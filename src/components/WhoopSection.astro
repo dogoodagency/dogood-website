@@ -154,6 +154,11 @@ const days = ["M", "T", "W", "T", "F", "S", "S"];
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .wh-eyebrow { font-size: 14px; }
+  }
+
 
   .wh h2 {
     margin: 0 0 10px;
@@ -161,6 +166,11 @@ const days = ["M", "T", "W", "T", "F", "S", "S"];
     font-weight: 900;
     line-height: 1.15;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .wh h2 { font-size: clamp(24px, calc(2.8vw - 2px), 32px); }
+  }
+
 
   .wh-lede {
     max-width: none;
@@ -168,6 +178,11 @@ const days = ["M", "T", "W", "T", "F", "S", "S"];
     font-size: 18px;
     line-height: 1.6;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .wh-lede { font-size: 16px; }
+  }
+
 
   .wh-grid {
     display: grid;
@@ -194,6 +209,11 @@ const days = ["M", "T", "W", "T", "F", "S", "S"];
     letter-spacing: 0.06em;
     text-transform: uppercase;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .wh-card figcaption { font-size: 13px; }
+  }
+
 
   /* Seb round 2, 22 Nov 2026: keep figures white over page paragraph colours. */
   .wh-card .wh-big {
@@ -203,11 +223,21 @@ const days = ["M", "T", "W", "T", "F", "S", "S"];
     font-weight: 900;
     line-height: 1;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .wh-card .wh-big { font-size: 28px; }
+  }
+
 
   .wh-big small {
     color: #c2b7dd;
     font-size: 16px;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .wh-big small { font-size: 14px; }
+  }
+
 
   .wh-note {
     margin: auto 0 0;
@@ -215,6 +245,11 @@ const days = ["M", "T", "W", "T", "F", "S", "S"];
     font-size: 14px;
     line-height: 1.4;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .wh-note { font-size: 14px; }
+  }
+
 
   .wh-ring {
     width: 110px;
@@ -275,6 +310,11 @@ const days = ["M", "T", "W", "T", "F", "S", "S"];
   }
 
   .wh-day { color: #c2b7dd; font-size: 11px; font-weight: 700; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .wh-day { font-size: 11px; }
+  }
+
 
   .wh-gauge { width: 100%; max-width: 160px; height: auto; }
   .wh-gauge-bg { fill: none; stroke: rgba(255, 255, 255, 0.14); stroke-width: 10; stroke-linecap: round; }
@@ -307,9 +347,19 @@ const days = ["M", "T", "W", "T", "F", "S", "S"];
     font-size: 13px;
     font-style: italic;
   }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .wh-sample { font-size: 13px; }
+  }
+
 
   .wh-explain { margin-top: 36px; }
   .wh-explain-h { margin: 0 0 16px; font-size: 24px; font-weight: 900; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .wh-explain-h { font-size: 22px; }
+  }
+
   .wh-metrics {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -320,8 +370,23 @@ const days = ["M", "T", "W", "T", "F", "S", "S"];
   }
   .wh-metric { padding: 22px 20px 24px; border: 1px solid; border-radius: 18px; }
   .wh-metric h4 { margin: 6px 0 8px; font-size: 20px; font-weight: 900; line-height: 1.25; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .wh-metric h4 { font-size: 18px; }
+  }
+
   .wh-metric p { margin: 0; font-size: 16px; line-height: 1.55; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .wh-metric p { font-size: 14px; }
+  }
+
   .wh-metric-tag { font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .wh-metric-tag { font-size: 13px; }
+  }
+
   .wh-metric--grass { border-color: #73e7c4; background: #e7fff6; }
   .wh-metric--grass .wh-metric-tag { color: #05745b; }
   .wh-metric--dream { border-color: #c2b7dd; background: #f5f2ff; }
@@ -334,11 +399,26 @@ const days = ["M", "T", "W", "T", "F", "S", "S"];
   .wh-panel { padding: 26px 28px; border: 1px solid #c2b7dd; border-radius: 18px; background: #faf9ff; }
   .wh-panel--dark { border-color: #2a0b4f; background: #2a0b4f; color: #fff; }
   .wh-panel h3 { margin: 0 0 10px; font-size: 22px; font-weight: 900; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .wh-panel h3 { font-size: 20px; }
+  }
+
   .wh-panel ul { margin: 0; padding-left: 20px; font-size: 17px; line-height: 1.6; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .wh-panel ul { font-size: 15px; }
+  }
+
   .wh-panel li { margin-bottom: 8px; }
   .wh-panel--dark li::marker { color: #28dbb0; }
 
   .wh-more { margin: 18px 0 0; font-size: 17px; font-weight: 800; }
+  /* R15.10 */
+  @media (min-width: 744px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+    :global(html:not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15):not(#r15)) .wh-more { font-size: 15px; }
+  }
+
   .wh-more a {
     color: inherit;
     text-decoration: underline;
