@@ -1525,7 +1525,7 @@ html body main#main .nl-page .sq7-art {
 html body main#main .nl-page .sq7-img {
   position: absolute;
   top: 50%;
-  right: 4%;
+  right: -42%; /* R12: negative so the booklet's front cover (left of the image) shows in the white half */
   display: block;
   width: 150%;
   max-width: none;
@@ -1560,7 +1560,7 @@ html body main#main .nl-page .sq7-panel h2 {
 }
 html body main#main .nl-page .sq7-panel .sq7-title-main,
 html body main#main .nl-page .sq7-panel .sq7-title-sub { display: block; }
-html body main#main .nl-page .sq7-panel .sq7-title-sub { color: #FF8AB0; }
+html body main#main .nl-page .sq7-panel .sq7-title-sub { color: var(--color-heart-500); } /* HEART 500 (#ea1557) */
 html body main#main .nl-page .sq7-panel .sq7-line {
   max-width: none;
   margin: 0 0 28px;
@@ -1603,7 +1603,7 @@ html body main#main .nl-page .sq7-btn:focus-visible { outline: 3px solid #FFFFFF
   html body main#main .nl-page .sq7-card { grid-template-columns: minmax(0, 1fr); }
   html body main#main .nl-page .sq7-art { aspect-ratio: 4 / 3; }
   html body main#main .nl-page .sq7-img {
-    left: 50%;
+    left: 58%; /* R12: shifted right so the front cover shows */
     right: auto;
     width: 130%;
     transform: translate(-50%, -50%) rotate(-8deg);

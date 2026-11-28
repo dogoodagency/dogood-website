@@ -104,6 +104,8 @@ html body main#main .advr-tool-visual--questions .advr-tool-img { width: 93%; }
 html body main#main .advr-tool-visual--planner .advr-tool-img { width: auto; height: 92%; }
 /* Resource detail pages: the wide area shows the whole mockup (contained), the readiness composition keeps the card ratio. */
 html body main#main .advr-tool-visual--detail .advr-tool-img { width: auto; height: 94%; max-width: 100%; }
+/* R12 (Seb): the Signals Guide page mockup is 30% bigger (94% x 1.3 = 122%), cropped by the frame (overflow hidden). Signals detail only. */
+html body main#main .advr-tool-visual--signals.advr-tool-visual--detail .advr-tool-img { height: 122.2%; max-width: none; }
 html body main#main .advr-tool-visual--readiness.advr-tool-visual--detail { height: auto; aspect-ratio: 8 / 5; }
 /* Readiness: the straight laptop only (R11: phone removed), about 20% smaller than before so the whole laptop sits in the frame. */
 html body main#main .advr-tool-visual .advr-rc { position: absolute; inset: 0; }
@@ -832,10 +834,10 @@ html body main#main .wfp-page .wfp-sections { margin-bottom: 48px; }
 html body main#main .wfp-hero .wfp-photo.wfp-photo--katrin { position: relative; }
 html body main#main .wfp-hero .wfp-photo.wfp-photo--katrin picture {
   position: absolute;
-  top: calc(8px - 2.594%);
+  top: calc(8px - 2.2049%); /* R12: 15% smaller (x 0.85) */
   left: 50%;
   width: auto;
-  height: 172.96%;
+  height: 147.016%;
   aspect-ratio: 320 / 404;
   transform: translateX(-38%);
 }
@@ -924,4 +926,14 @@ html body main#main .sq-band--preview .sq-preview { padding-top: 30px; }
   /* Mobile order: picture, text, then the buttons (they used to sit above the text). */
   html body main#main .sq-band--preview .sq-copy { grid-row: 2; padding: 28px 22px 0; }
   html body main#main .sq-band--preview .sq-preview { grid-row: 3; padding: 24px 22px 28px; }
+}
+
+/* R12 (Seb): the home hero line is normal body copy (18/400/1.6, 17px on phones), not a hero subline. Home only. */
+html body main#main .page-home .hero .lede {
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+}
+@media (max-width: 599px) {
+  html body main#main .page-home .hero .lede { font-size: 17px !important; }
 }
