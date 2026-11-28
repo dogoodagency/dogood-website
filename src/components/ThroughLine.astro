@@ -58,6 +58,10 @@
 
   if (root instanceof HTMLElement && svg && founder && company && companyMask && main) {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    // R13.D4: iPad (tablet portrait and landscape) gets its own calm route; phones and desktop keep theirs.
+    const ipadMQ = window.matchMedia(
+      "(min-width: 768px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse)",
+    );
     let triggers = [];
 
     const box = (el) => {
@@ -504,8 +508,16 @@
         });
       };
       const width = main.clientWidth;
-      const phone = width <= 768;
-      const founderStroke = phone ? 72 : Math.max(24, Math.round((140 * width) / 1710));
+      const ipad = ipadMQ.matches;
+      const phone = !ipad && width <= 768;
+      // R13.D4: on iPad the ribbon is slimmer and runs in the right-hand gutter, so it never crosses a card.
+      const exitLay = ipad ? box(document.querySelector("#exit .exit-layout")) : null;
+      const gutterR = exitLay ? Math.max(0, width - exitLay.right) : 0;
+      const founderStroke = ipad
+        ? Math.round(Math.max(28, Math.min(56, gutterR * 0.78)))
+        : phone
+          ? 72
+          : Math.max(24, Math.round((140 * width) / 1710));
       const companyStroke = phone ? 12 : 50;
       const turnRadius = width >= 1081 ? 120 : Math.max(36, (120 * width) / 1440);
       const hero = box(document.querySelector("#hero"));
@@ -683,7 +695,26 @@
       const jointW = founderStroke;
       const machine = box(document.querySelector(".exit-machine"));
       const whyCard = box(document.querySelector("#why .why-copy"));
-      if (phone) {
+      if (ipad) {
+        // R13.D4: one calm lane in the right gutter, from the machine's lever to the funnel mouth.
+        // The drift cards are un-transformed here (see build()), so every box is its resting layout.
+        const laneX = exitLay
+          ? Math.min(width - founderStroke / 2 - 2, exitLay.right + gutterR / 2)
+          : width - founderStroke;
+        if (machine) {
+          const leverY = machine.y + machine.h * 0.5;
+          put(machine.left + machine.w * 0.62, leverY);
+          put(machine.right - machine.w * 0.04, leverY + machine.h * 0.06);
+          put(laneX, machine.cy + machine.h * 0.34);
+          put(laneX, machine.bottom + 40);
+        }
+        [pinJ, stones, apply1, forYou, flyer, pinV, apply2, message, finders, track, guarantee].forEach((el) => {
+          if (el) put(laneX, el.cy);
+        });
+        if (guarantee) put(laneX, guarantee.bottom + 6);
+        tipX = laneX;
+        tipY = machine ? machine.cy : entryY;
+      } else if (phone) {
         const down = (el, from = 0.2, to = 0.8) => {
           if (!el) return;
           put(el.cx, el.y + el.h * from);
@@ -739,7 +770,7 @@
         tipX = startX;
         tipY = leverY;
       }
-      if (!phone) {
+      if (!phone && !ipad) {
       const lane = apply1 ? apply1.cx : stones ? stones.cx + stones.w * 0.22 : width * 0.72;
       if (pinJ && stones) {
         // Pixel positions in the filled stepping-stones drawing (1048×1062).
@@ -870,7 +901,7 @@
       const routeRadius = Math.max(founderStroke, phone ? Math.max(36, turnRadius * 0.7) : founderStroke);
       const companyRadius = phone ? Math.max(28, turnRadius * 0.85) : 72;
       let founderD = toSmoothPath(founderPts, founderStroke, flyerRun);
-      if (!phone) {
+      if (!phone && !ipad) {
         const photo = box(document.querySelector("#wayfinders .wf-group"));
         founderD = smoothMessageGap(founderD, message, photo, founderStroke);
         const pinForLine = box(document.querySelector("#case-v .portrait"));
@@ -1178,6 +1209,7 @@
     window.addEventListener("load", schedule);
     window.addEventListener("resize", schedule);
     reduce.addEventListener("change", schedule);
+    ipadMQ.addEventListener("change", schedule);
     document.fonts?.ready.then(schedule);
   }
 </script>

@@ -6,6 +6,7 @@ import BlogImage from "../../components/BlogImage.astro";
 import BlogCard from "../../components/BlogCard.astro";
 import BlogNewsletter from "../../components/BlogNewsletter.astro";
 import AuthorByline from "../../components/AuthorByline.astro";
+import ArticleShare from "../../components/ArticleShare.astro";
 import { getAuthor } from "../../data/authors";
 import Wave from "../../components/Wave.astro";
 import { gitDate } from "../../lib/lastmod.mjs";
@@ -151,6 +152,7 @@ const titleBreaks: Record<string, string> = {
   "before-you-sign-preparing-yourself": "Before you sign: how to prepare yourself",
   "emotions-of-selling-a-business": "The emotions of selling a business:",
 };
+const hasTakeaways = d.takeaways.length > 0; // R13.A3e: share links sit under Key takeaways when present
 const titleStart = titleBreaks[post.id];
 const titleEnd = titleStart && d.title.startsWith(titleStart) ? d.title.slice(titleStart.length).trimStart() : undefined;
 
@@ -197,11 +199,7 @@ const titleEnd = titleStart && d.title.startsWith(titleStart) ? d.title.slice(ti
 
     <div class="bl-col bl-col--wide bl-article-summary r6-article-top">
       <p class="bl-back r6-article-back"><a href="/insights">← Back to Insights</a></p>
-      <div class="bl-share r6-article-share" aria-label="Share this article">
-        <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`} target="_blank" rel="noopener">Share on LinkedIn</a>
-        <button type="button" data-copy-article={url}>Copy link</button>
-        <span class="bl-sr" data-copy-status role="status" aria-live="polite"></span>
-      </div>
+      {!hasTakeaways && <ArticleShare url={url} class="r6-article-share" />}
       <div class="bl-byline r6-article-byline">
         <AuthorByline author={d.author} role={d.authorRole} />
         <p class="bl-meta">
@@ -269,6 +267,7 @@ const titleEnd = titleStart && d.title.startsWith(titleStart) ? d.title.slice(ti
           {d.takeaways.map((t) => <li>{t}</li>)}
         </ul>
       </section>
+      {hasTakeaways && <ArticleShare url={url} class="r13-share-takeaways" />}
 
       {
         d.faq.length > 0 && (
@@ -306,13 +305,13 @@ const titleEnd = titleStart && d.title.startsWith(titleStart) ? d.title.slice(ti
       )
     }
 
-    <div class="bl-col bl-col--wide">
-    <div class="bl-share" aria-label="Share this article">
-      <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`} target="_blank" rel="noopener">Share on LinkedIn</a>
-      <button type="button" data-copy-article={url}>Copy link</button>
-      <span class="bl-sr" data-copy-status role="status" aria-live="polite"></span>
-    </div>
-    </div>
+    {
+      !hasTakeaways && (
+        <div class="bl-col bl-col--wide">
+          <ArticleShare url={url} />
+        </div>
+      )
+    }
 
     <div class="bl-more">
       <Wave fill={tint} edge={bandEdge} />

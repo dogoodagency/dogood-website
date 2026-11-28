@@ -1,0 +1,127 @@
+/* Round 13 (Seb t2005u, 28 Nov 2026), part e: fix-ups after the first pass */
+
+/* =====================================================================================================
+   E1. /newsletter (phones): "Still in his bathrobe." is the same size as the page title (h1: 35px / 900 / 1.12 / -0.03em).
+   The earlier B4b rule lost to newsletter.css (.nl-well :is(..., .nl-book-close, ...)), so this one carries a third #main.
+   ===================================================================================================== */
+@media (max-width: 767px) {
+  html body main#main#main#main .nl-page .nl-well .nl-book-teaser .nl-book-close {
+    font-family: var(--font-sans) !important;
+    font-size: 35px !important;
+    font-style: normal !important;
+    font-weight: 900 !important;
+    line-height: 1.12 !important;
+    letter-spacing: -0.03em !important;
+  }
+}
+
+/* =====================================================================================================
+   E2. "Apply for Exit-Prep™" sits in the Exit-Prep hero (HEART button as on /application), left aligned like the hero text.
+   ===================================================================================================== */
+html body main#main#main .ep-page .ep-hero .ep-hero-inner a.ep-hero-apply {
+  display: inline-block;
+  align-self: center; /* R13.F1: centred like the hero eyebrow, h1 and lede (.ep-hero-inner is a centred flex column, round4.css) */
+  width: auto;
+  max-width: 100%;
+  margin: 0 auto; /* auto inline margins keep it centred even where mobile-rules.css (max 599px) sets align-items:flex-start */
+  text-align: left;
+  box-sizing: border-box;
+}
+
+/* =====================================================================================================
+   E3. The Reset and The Build (phones): the GRASS / HEART uppercase tagline under the toggle title fits into 2 lines
+   at 360 to 430px wide. Also on the stage blocks' taglines further down the same pages. The Build's note under the
+   toggle is centred like The Reset's.
+   ===================================================================================================== */
+@media (max-width: 767px) {
+  html body main#main#main .hw-page .ss .ss-panel .ss-line,
+  html body main#main#main .hw-page .hw-stage-block .hw-tagline {
+    padding: 8px 14px;
+    border-radius: 18px;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    line-height: 1.4;
+    text-wrap: balance;
+  }
+  html body main#main#main .hw-page .hw-path .hw-path-note,
+  html body main#main#main .hw-page--s2 .hw-path .hw-path-note {
+    text-align: center;
+  }
+}
+
+/* =====================================================================================================
+   E4. About (phones): the "Wealth advisors / and family offices" pill is exactly two centred lines.
+   ===================================================================================================== */
+@media (max-width: 767px) {
+  html body main#main#main .ab-page .ab-advisor-pills li {
+    min-width: 0;
+    padding: 8px 6px;
+    font-size: clamp(11px, 3.1vw, 12px);
+    text-align: center;
+  }
+  html body main#main#main .ab-page .ab-advisor-pills li .ab-pill-l1,
+  html body main#main#main .ab-page .ab-advisor-pills li .ab-pill-l2 {
+    display: block;
+    white-space: nowrap;
+    text-align: center;
+  }
+  /* R13.F2: only the "Wealth advisors / and family offices" pill is smaller so both lines sit inside it at 360 to 430px. */
+  html body main#main#main .ab-page .ab-advisor-pills li:has(.ab-pill-l1) {
+    overflow: hidden;
+    padding: 8px 4px !important;
+    font-size: min(10.5px, 2.85vw) !important;
+    letter-spacing: 0 !important;
+  }
+  html body main#main#main .ab-page .ab-advisor-pills li:has(.ab-pill-l1) :is(.ab-pill-l1, .ab-pill-l2) {
+    max-width: 100%;
+    font-size: inherit !important;
+    letter-spacing: inherit !important;
+  }
+}
+
+/* =====================================================================================================
+   E5. Advisor Center FOUNDRland (phones): 20px between the two labels and the phone. Below 1201px the labels are in a row
+   above the phone, so the space goes under the label row.
+   ===================================================================================================== */
+@media (max-width: 767px) {
+  html body main#main#main .fl .fl-arta-device--phone .fl-arta-tags {
+    margin-bottom: 20px;
+  }
+}
+
+/* =====================================================================================================
+   E6. /clarity (phones): "Clarity → Decision → Execution" is one centred row at 360 to 430px.
+   ===================================================================================================== */
+@media (max-width: 767px) {
+  html body main#main#main .bk-copy .bk-flow {
+    /* R13.F3: fits with room to spare at 360px and scales with the viewport. */
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 4px;
+    max-width: 100%;
+    letter-spacing: 0;
+  }
+  html body main#main#main .bk-copy .bk-flow li {
+    flex: 0 1 auto;
+    min-width: 0;
+    padding: 5px 8px;
+    font-size: clamp(11px, 3.3vw, 13px);
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+  html body main#main#main .bk-copy .bk-flow li.bk-flow-arrow {
+    padding: 0;
+    font-size: clamp(11px, 3.3vw, 13px);
+  }
+}
+
+/* =====================================================================================================
+   E7. Articles (desktop, iPad): the bottom "← Back to Insights" starts at the article column's left edge (the same edge
+   as the article text and the share links), not at the wider "Read next" grid's edge.
+   ===================================================================================================== */
+@media (min-width: 768px) {
+  html body main#main#main .bl-article .bl-more-band .bl-wrap > .bl-back {
+    width: min(896px, 100%);
+    margin-inline: auto;
+  }
+}

@@ -68,6 +68,9 @@ const menus: Record<
   },
 };
 
+// R13.A4a: the link to a section's landing page ("See the whole pathway", "Overview") gets the same highlighted row.
+const isOverviewLink = (item: { href: string; label: string }) => item.label === "Overview" || item.href === "/pathway";
+
 const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id: link.menu, ...menus[link.menu] }] : []));
 ---
 
@@ -128,7 +131,7 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
                 <li class="nav-mega-group">{group.label}</li>
                 {group.items.map((item) => (
                   <li>
-                    <a href={item.href}>
+                    <a href={item.href} class:list={[isOverviewLink(item) && "nav-mega-overview"]}>
                       <span class="nav-mega-name" set:html={tm(item.label)} />
                       <small>{item.detail}</small>
                       {menu.id === "nav-advisors" && <AdvisorMenuImage href={item.href} />}
@@ -179,9 +182,7 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
         );
       })
     }
-    <a class="nav-mobile-brand" href={FOUNDRLAND_URL} target="_blank" rel="noopener" aria-label="FOUNDRland by DoGood (opens in a new tab)">
-      <img src="/media/foundrland/foundrland-logo@1x.webp" srcset="/media/foundrland/foundrland-logo@1x.webp 1x, /media/foundrland/foundrland-logo@2x.webp 2x" width="480" height="113" alt="FOUNDRland" />
-    </a>
+    <!-- R13.A4d: the FOUNDRland logo at the bottom of the menu is removed (Seb). -->
   </nav>
 </header>
 
@@ -238,6 +239,19 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
      `aria-controls` menu. Opening one closes the others. */
   const controllers = [];
 
+  /* R13.A4e: touch / pen are tap-to-toggle. Hover handlers ignore anything that is not a real mouse, and the
+     synthetic mouse events a browser sends after a tap are ignored for a moment. */
+  let lastTouch = -10000;
+  const isTouchish = (event) => event.pointerType === "touch" || event.pointerType === "pen";
+  const recentTouch = () => performance.now() - lastTouch < 1000;
+  document.addEventListener(
+    "pointerdown",
+    (event) => {
+      if (isTouchish(event)) lastTouch = performance.now();
+    },
+    true,
+  );
+
   header?.querySelectorAll(".nav-item.has-menu").forEach((item) => {
     const link = item.querySelector("button[aria-controls]");
     const menuId = link?.getAttribute("aria-controls");
@@ -279,7 +293,25 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
       menu.classList.toggle("is-open", open);
       link.setAttribute("aria-expanded", open ? "true" : "false");
       menu.setAttribute("aria-hidden", open ? "false" : "true");
-      if (open) requestAnimationFrame(fitCard);
+      if (!open) menu.style.translate = "";
+      if (open) {
+        requestAnimationFrame(() => {
+          fitCard();
+          keepInView();
+        });
+      }
+    };
+
+    // R13.A4e: keep the panel inside the viewport (no part cut off on the right on 768 to 1366px).
+    const keepInView = () => {
+      menu.style.translate = "";
+      const rect = menu.getBoundingClientRect();
+      const viewWidth = document.documentElement.clientWidth;
+      const edge = 8;
+      let shift = 0;
+      if (rect.right > viewWidth - edge) shift = viewWidth - edge - rect.right;
+      if (rect.left + shift < edge) shift = edge - rect.left;
+      if (shift) menu.style.translate = `${Math.round(shift)}px 0`;
     };
     controllers.push(setMenu);
 
@@ -290,31 +322,65 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
         setMenu(false);
       }, 180);
     };
+    // R13.A4e: hover only for a real mouse; touch and pen never open or close the menu by "hover".
+    const mouseHover = (event) => event.pointerType === "mouse" && !recentTouch();
     item.addEventListener("pointerenter", (event) => {
-      if (event.pointerType === "touch") return;
+      if (!mouseHover(event)) return;
       cancelClose();
       if (desktopMenu()) setMenu(true);
     });
     menu.addEventListener("pointerenter", (event) => {
-      if (event.pointerType === "touch") return;
+      if (!mouseHover(event)) return;
       cancelClose();
       if (desktopMenu()) setMenu(true);
     });
-    item.addEventListener("pointerleave", scheduleClose);
-    menu.addEventListener("pointerleave", scheduleClose);
+    item.addEventListener("pointerleave", (event) => {
+      if (mouseHover(event)) scheduleClose();
+    });
+    menu.addEventListener("pointerleave", (event) => {
+      if (mouseHover(event)) scheduleClose();
+    });
     menu.addEventListener("focusin", () => {
-      if (!desktopMenu()) return;
+      if (!desktopMenu() || recentTouch()) return;
       setMenu(true);
     });
     const blur = (event) => {
-      if (clickOpened || insideMenu(event.relatedTarget)) return;
+      if (clickOpened || recentTouch() || insideMenu(event.relatedTarget)) return;
       setMenu(false);
     };
     item.addEventListener("focusout", blur);
     menu.addEventListener("focusout", blur);
+    // Touch / pen: toggle on pointerup (a tap), pinned open until a second tap, a tap outside or Escape.
+    // The click that follows is ignored so the menu is not toggled twice.
+    let tapStarted = false;
+    let tapHandledAt = -10000;
+    link.addEventListener("pointerdown", (event) => {
+      tapStarted = isTouchish(event);
+    });
+    link.addEventListener("pointercancel", () => {
+      tapStarted = false;
+    });
+    link.addEventListener("pointerup", (event) => {
+      if (!isTouchish(event) || !tapStarted) return;
+      tapStarted = false;
+      if (!desktopMenu()) return;
+      tapHandledAt = performance.now();
+      const open = !menuOpen();
+      setMenu(open);
+      clickOpened = open;
+    });
+    document.addEventListener(
+      "pointerdown",
+      (event) => {
+        if (!isTouchish(event) || !menuOpen() || insideMenu(event.target)) return;
+        setMenu(false);
+      },
+      true,
+    );
     link.addEventListener("click", (event) => {
       event.preventDefault();
       if (!desktopMenu()) return;
+      if (performance.now() - tapHandledAt < 700) return;
       const open = !clickOpened;
       setMenu(open);
       clickOpened = open;
@@ -364,6 +430,7 @@ const menuLinks = links.flatMap((link) => (link.menu && menus[link.menu] ? [{ id
     });
     window.addEventListener("resize", () => {
       if (desktopMenu()) fitCard();
+      if (menuOpen()) keepInView();
     });
     if (desktopMenu()) fitCard();
     const photo = menu.querySelector("img");

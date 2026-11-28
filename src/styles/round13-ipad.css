@@ -1,0 +1,292 @@
+/* Round 13 (Seb t2005u, 28 Nov 2026) — part ipad */
+
+/* ==========================================================================
+   iPad = tablets in portrait and landscape, including iPad Pro 1366x1024 landscape, but not desktop/laptop mouse screens >= 1280:
+     (min-width: 768px) and (max-width: 1279px),
+     (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse)
+   The same query string is used in index.astro (drift cards) and ThroughLine.astro (green path).
+   ========================================================================== */
+
+/* R13.D4 / D5 / D7 (1366 only): tablet.css stops at 1365px, so an iPad Pro held landscape (1366 wide) fell back to the desktop
+   absolute-positioned Home layout (flying machine over its card, track card over the photo, line swinging around the stones).
+   This block repeats the tablet.css Home rules (lines 40-214, the 1024-1365 grid pairs, the doors and the What's next clearance)
+   for exactly 1366px on touch screens, so the 1366x1024 iPad uses the same two-column layout as 1180x820. */
+@media (min-width: 1366px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+  html body .page-home #hero .hero-inner { padding: 140px var(--pad) 0; }
+
+  html body .page-home #hero h1.t-display {
+    max-width: 1080px;
+    margin-inline: auto;
+    font-size: clamp(34px, 3.8vw, 46px);
+    line-height: 1.15;
+  }
+  html body .page-home #hero .hero-line { white-space: normal; }
+
+  html body .page-home #hero > .hero-inner > .lede {
+    max-width: 1080px;
+    margin-inline: auto;
+  }
+
+  html body .page-home #hero .hero-grid {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    align-items: center;
+    gap: 28px;
+    max-width: 1080px;
+    margin: 28px auto 0;
+    padding-bottom: 40px;
+  }
+
+  html body .page-home #hero .hero-copy,
+  html body .page-home #hero .hero-copy > p { max-width: 100%; }
+
+  html body .page-home #hero .hero-draw {
+    position: relative;
+    display: block;
+    min-width: 0;
+  }
+
+  html body .page-home #hero .hero-draw::before { display: none; }
+
+  html body .page-home #hero .hero-sketch-frame {
+    position: relative;
+    inset: auto;
+    translate: none;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
+
+  html body .page-home #hero .hero-sketch { width: 100%; max-width: none; margin: 0; }
+
+  html body .page-home :is(#exit, #first-step, #for-you, #why, #case-j, #case-v,
+    #asseen, #message, #wayfinders, #guarantee) {
+    padding: 48px var(--pad);
+    margin-top: 0;
+  }
+
+  html body .page-home :is(.exit-layout, .first-grid, .why-grid) {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: center;
+    gap: 32px;
+    min-height: 0;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  html body .page-home :is(#exit-card, #first-card, #why .why-copy) {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 32px;
+  }
+
+  html body .page-home :is(.exit-machine, #first-draw, #why .why-sketch) {
+    position: relative;
+    inset: auto;
+    translate: none;
+    width: min(100%, 320px);
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  html body .page-home #first-draw :is(picture, img),
+  html body .page-home #why :is(.why-art, .why-art > .fm-anim) {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  html body .page-home :is(#apply-first, #apply-v) {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0 var(--pad) 32px;
+    text-align: center;
+  }
+
+  html body .page-home #apply-first .apply-first-slot {
+    position: static !important;
+    margin: 0 auto !important;
+  }
+
+  html body .page-home #for-you .foryou-grid--pair {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  html body .page-home :is(#for-you, #next) :is(.card-before, .card-after) { padding: 28px 24px; }
+
+  html body .page-home :is(#for-you, #next) :is(.card-before, .card-after) > a {
+    white-space: normal !important;
+    text-align: center;
+  }
+
+  html body .page-home :is(#case-j, #case-v) .case-compact {
+    display: grid;
+    grid-template-columns: clamp(150px, 18vw, 220px) minmax(0, 1fr);
+    align-items: center;
+    gap: 32px;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  html body .page-home :is(#case-j, #case-v) .portrait { width: 100%; height: auto; margin: 0; }
+  html body .page-home :is(#case-j, #case-v) .case-compact > div { min-width: 0; padding-top: 0; }
+
+  html body .page-home :is(#case-j, #case-v) .case-compact h3 {
+    font-size: clamp(26px, 2.8vw, 36px);
+    white-space: normal;
+  }
+
+  html body .page-home #why h2.t-h2 { white-space: normal; }
+  html body .page-home #reviews { margin-top: 0; padding: 0; }
+  html body .page-home #reviews .reviews-band { padding: 48px var(--pad); }
+  html body .page-home #clients { padding: 28px var(--pad); }
+  html body .page-home #message .fl { max-width: 1080px; margin: 0 auto; }
+  html body .page-home #message .fl-panel { padding: 40px; gap: 32px; }
+  html body .page-home #message .fl-phone { width: min(100%, 300px); }
+
+  html body .page-home #wayfinders :is(.wf-intro, .wf-group, .track-block, .track-card) {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1080px;
+    margin-inline: auto;
+    transform: none;
+  }
+
+  html body .page-home #wayfinders .track-nums {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  html body .page-home #guarantee .guarantee-layout { display: block; max-width: 900px; margin: 0 auto; }
+  html body .page-home #guarantee .guarantee-card {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  html body .page-home #next { isolation: isolate; min-height: 0; padding: 0; }
+  html body .page-home #next .swell-bg { z-index: 0; }
+  html body .page-home #next .next-inner { z-index: 2; padding-top: 180px; padding-bottom: 64px; }
+  html body .page-home #next .next-doors { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+  html body .page-home .exit-layout { grid-template-columns: minmax(0, 1.6fr) minmax(0, 0.8fr); }
+  html body .page-home .first-grid { grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); }
+  html body .page-home .why-grid { grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr); }
+  html body main#main .page-home #next .next-doors { max-width: 828px; }
+  html body main#main .page-home #next :is(.card-before, .card-after) { padding: 28px 24px; }
+  html body main#main .page-home #next .next-inner { padding-bottom: 253px; }
+}
+
+/* ----- all iPad sizes ----- */
+@media (min-width: 768px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+  /* R13.D8: no horizontal overflow on Home (the green ribbon, art and wings may not widen the page). */
+  html body main#main { overflow-x: clip; }
+  html body main#main .page-home { overflow-x: clip; }
+
+  /* R13.D3: no scroll-driven drift on iPad. The cards sit in normal flow, so nothing jumps while the page scrolls and the
+     green line is measured from the resting layout. (index.astro also stops writing the transform.) */
+  html body main#main .page-home .drift-card {
+    transform: none !important;
+    translate: none !important;
+    will-change: auto !important;
+    animation: none !important;
+  }
+
+  /* R13.D2: the hero wave's 1px near-black edge stroke (#110027) and any sub-pixel gap at the hero's bottom edge read as a
+     dark line above the logo band on iPad. Drop the stroke, and let the last 4px of the hero be the wave's own light colour
+     so a fractional device pixel can only ever show light on light. */
+  html body main#main .page-home #hero > .hero-wave .wave-edge { stroke: transparent !important; }
+  html body main#main .page-home #hero {
+    background: linear-gradient(to bottom, var(--color-ink) calc(100% - 4px), #F5F2FF calc(100% - 4px));
+  }
+
+  /* R13.D1: the hero's grid kept 40px of padding under the copy before the wave begins. */
+  html body main#main .page-home #hero .hero-grid { padding-bottom: 0; }
+
+  /* R13.D4: the 768px phone rule moved the machine above its card; keep tablet order (card first) at every iPad width. */
+  html body main#main .page-home :is(.exit-machine, #why .why-sketch) { order: 0; }
+
+  /* R13.D5: the flying machine always sits in its own grid cell, below the card's stacking, never over the copy. */
+  html body main#main .page-home #why .why-copy { position: relative; z-index: 2; min-width: 0; }
+  html body main#main .page-home #why .why-sketch {
+    position: relative;
+    inset: auto;
+    translate: none;
+    transform: none;
+    z-index: 1;
+    width: 100%;
+    max-width: 320px;
+    min-width: 0;
+    margin: 0 auto;
+    justify-self: center;
+  }
+  html body main#main .page-home #why .why-sketch :is(.why-art, .fm-anim) { width: 100%; max-width: 100%; margin: 0; }
+  html body main#main .page-home #why .why-sketch .fm-anim > picture:not(.fm-wing),
+  html body main#main .page-home #why .why-sketch .fm-anim > picture:not(.fm-wing) img {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  /* R13.D6: both What's next buttons always visible, above the funnel graphic and never opacity-gated. */
+  html body main#main .page-home #next { overflow: visible; }
+  html body main#main .page-home #next .swell-bg { z-index: 0; }
+  html body main#main .page-home #next .next-inner { position: relative; z-index: 4; overflow: visible; }
+  html body main#main .page-home #next .next-doors {
+    position: relative;
+    z-index: 5;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+  html body main#main .page-home #next .next-doors :is(.card-before, .card-after) {
+    position: relative;
+    z-index: 5;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+  html body main#main .page-home #next .next-doors :is(.card-before, .card-after) > a {
+    position: relative;
+    z-index: 6;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  /* R13.D7: "Our team's track record" clears the Wayfinders photo (it had a negative pull-up of about 10%). */
+  html body main#main .page-home #wayfinders .track-block { margin-top: 24px; transform: none; }
+}
+
+/* ----- iPad portrait (single column, below 1024px) ----- */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* R13.D1: the Home script slides the door picture down until the walkers' path meets the wave, which left a big gap under
+     the copy. Pull the wave up by the distance that slide needs (path width, wave edge height and the boot-to-bottom of the
+     artwork), so the picture sits right under the text and the wave still overlaps its foot. The script then only trims. */
+  html body main#main .page-home #hero .hero-draw { margin-bottom: calc(5.848vw - 134px); }
+}
+
+/* ----- iPad landscape (two columns, 1024px and wider) ----- */
+@media (min-width: 1024px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+  /* R13.D5: landscape, the machine has its own column (never narrower than itself), the card takes the rest. */
+  html body main#main .page-home #why .why-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
+    column-gap: 40px;
+    align-items: center;
+  }
+}

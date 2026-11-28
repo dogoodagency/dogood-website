@@ -6,16 +6,17 @@
   article.querySelectorAll('[data-copy-article]').forEach((button) => {
     button.addEventListener('click', async () => {
       const status = button.parentElement.querySelector('[data-copy-status]');
+      const label = button.querySelector('span') || button; // R13.A3: keep the icon, change only the text
       button.disabled = true;
       try {
         await navigator.clipboard.writeText(button.dataset.copyArticle);
-        button.textContent = 'Link copied';
+        label.textContent = 'Link copied';
         status.textContent = 'Article link copied.';
       } catch {
         status.textContent = 'Could not copy the link. Copy the address from your browser.';
       } finally {
         button.disabled = false;
-        window.setTimeout(() => { button.textContent = 'Copy link'; }, 2000);
+        window.setTimeout(() => { label.textContent = 'Copy link'; }, 2000);
       }
     });
   });

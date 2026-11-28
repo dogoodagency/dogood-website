@@ -636,7 +636,7 @@ const afterSale = [
         decoding="async"
       />
       <div class="guarantee-head">
-        <h2 class="t-h2">Clarity‑First Guarantee (Stage 1)</h2>
+        <h2 class="t-h2">Clarity‑First Guarantee</h2>
       </div>
       <p class="say-no">We say no. If it’s not right, we’ll tell you and point you somewhere better.</p>
       <p>
@@ -678,7 +678,7 @@ const afterSale = [
       <p>We reply within 24 hours.</p>
       <div class="next-doors">
         <div class="card card-before">
-          <p>Selling in the next few years?</p>
+          <p>Selling in the next years?</p>
           <a class="btn-teal btn-dream" href="/exit-prep"><span>Start with Exit-Prep™</span></a>
         </div>
         <div class="card card-after">
@@ -735,6 +735,11 @@ const afterSale = [
     const driftCards = [...document.querySelectorAll(".drift-card")];
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const wide = window.matchMedia("(min-width: 601px)");
+    // R13.D3: on iPad the cards sit in normal flow (no scroll-driven drift); the green line is measured from that layout.
+    const ipad = window.matchMedia(
+      "(min-width: 768px) and (max-width: 1279px), (min-width: 1280px) and (max-width: 1366px) and (hover: none) and (pointer: coarse)",
+    );
+    const still = () => reduceMotion.matches || ipad.matches;
     const active = new Set();
     const half = () => (wide.matches ? 105 : 52);
     const layoutTop = (el) => {
@@ -753,7 +758,7 @@ const afterSale = [
     let frame = 0;
     const paint = () => {
       frame = 0;
-      if (reduceMotion.matches) {
+      if (still()) {
         driftCards.forEach((el) => {
           el.style.transform = "";
           el.style.willChange = "";
@@ -773,12 +778,12 @@ const afterSale = [
         const el = entry.target;
         if (!(el instanceof HTMLElement)) return;
         if (entry.isIntersecting) {
-          el.style.willChange = "transform";
+          el.style.willChange = still() ? "" : "transform";
           active.add(el);
         } else {
           active.delete(el);
           el.style.willChange = "";
-          if (!reduceMotion.matches) {
+          if (!still()) {
             const above = el.getBoundingClientRect().top < 0;
             el.style.transform = `translate3d(0, ${above ? -half() : half()}px, 0)`;
           }
@@ -790,6 +795,7 @@ const afterSale = [
     window.addEventListener("scroll", queue, { passive: true });
     window.addEventListener("resize", queue);
     reduceMotion.addEventListener("change", queue);
+    ipad.addEventListener("change", queue);
     wide.addEventListener("change", queue);
     queue();
   </script>

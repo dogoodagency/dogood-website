@@ -2,7 +2,7 @@
 title: "Clarity-First Guarantee"
 description: "Founder Reclamation Partnership | Stage 1: The Intensive (30 days)"
 ---
-# Clarity‑First Guarantee (Stage 1)
+# Clarity‑First Guarantee
 
 You can’t know whether FRP is right for you from the outside — you only know once you’ve been inside the work.
 

@@ -300,7 +300,7 @@ J (anonymous), USD 2M founder
 
 We protect our founders’ identities
 
-### Clarity‑First Guarantee (Stage 1)
+### Clarity‑First Guarantee
 
 You can’t know whether FRP is right for you from the outside — you only know once you’ve been inside the work.
 

@@ -1,0 +1,124 @@
+/* Round 13 (Seb t2005u, 28 Nov 2026) — part a */
+
+/* R13.A2: /seven-questions, the green frame border is one tone darker (#A3F2D7 -> GRASS 400 #73E7C4). Desktop and iPad. */
+@media (min-width: 768px) {
+  html body main#main .seven-page .seven-guide { border-color: #73E7C4 !important; }
+}
+
+/* R13.A3a: "Back to Insights", "Share on LinkedIn" and "Copy link" are article body size on desktop
+   (.bl-prose is 18px) and the size of the "Published" date line on phones (.bl-meta, 14px). */
+html body main#main .bl-article .bl-back a,
+html body main#main .bl-article .bl-share .bl-share-link {
+  font-size: 18px;
+}
+@media (max-width: 767px) {
+  html body main#main .bl-article .bl-back a,
+  html body main#main .bl-article .bl-share .bl-share-link {
+    font-size: 14px;
+  }
+}
+
+/* R13.A3b + A3c: small icon before each share link, icon and text centred on one line (gap 6px).
+   The underline sits on the text only; hover and focus turn text and icon GRASS 600. */
+html body main#main .bl-article .bl-share .bl-share-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1.5;
+  text-decoration: none;
+  vertical-align: middle;
+}
+html body main#main .bl-article .bl-share .bl-share-link > span {
+  text-decoration-line: underline;
+  text-decoration-color: var(--color-dream-200);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+html body main#main .bl-article .bl-share .bl-share-icon {
+  flex: 0 0 auto;
+  width: 1em;
+  height: 1em;
+}
+html body main#main .bl-article .bl-share .bl-share-link:is(:hover, :focus-visible) {
+  color: var(--color-grass-600);
+}
+html body main#main .bl-article .bl-share .bl-share-link:is(:hover, :focus-visible) > span {
+  text-decoration-color: var(--color-grass-600);
+}
+
+/* R13.A3e: the share pair sits straight under "Key takeaways". */
+html body main#main .bl-article .bl-share.r13-share-takeaways {
+  justify-content: flex-start;
+  margin: 24px 0 0;
+}
+
+/* R13.A3d: the "Short answer" text reads as article body copy (family, size, line-height of .bl-prose p; the
+   bold it already has stays). */
+html body main#main .bl-article .bl-short .bl-short-text {
+  font-family: inherit;
+  font-size: 18px;
+  line-height: 1.7;
+}
+/* R13.A3d (phones): "In this article" entries are article body size too (bold stays). */
+@media (max-width: 767px) {
+  html body main#main .bl-article .bl-toc :is(ol, li, a) {
+    font-size: 18px;
+  }
+}
+
+/* R13.A3f (phones): "See how it works" in the bottom promo is the same size as "Not sure which?". */
+@media (max-width: 767px) {
+  html body main#main .bl-article .bl-cta .bl-cta-quiet a {
+    font-size: inherit;
+  }
+}
+
+/* R13.A4a: every dropdown's "Overview" / landing-page row looks and hovers like "See the whole pathway". */
+html body header.nav .nav-mega-links a.nav-mega-overview {
+  background: var(--color-dream-500);
+  color: var(--color-white);
+}
+html body header.nav .nav-mega-links a.nav-mega-overview small {
+  color: var(--color-white);
+}
+html body header.nav .nav-mega-links a.nav-mega-overview:is(:hover, :focus-visible) {
+  background: var(--color-grass-500);
+  color: var(--color-dream-500);
+}
+html body header.nav .nav-mega-links a.nav-mega-overview:is(:hover, :focus-visible) small {
+  color: var(--color-dream-500);
+}
+
+/* R13.A4b: dropdown section titles are GRASS 500. R13.A4c: a little air under each title so the first
+   link's hover box does not sit flush against it. */
+html body header.nav .nav-mega-group,
+html body header.nav .nav-panel .nav-mega-group {
+  margin-bottom: 6px;
+  color: var(--color-grass-500);
+}
+
+/* R13.A4e: a tap on a top nav item is a tap, not a double-tap-zoom candidate. */
+html body header.nav .nav-links button {
+  touch-action: manipulation;
+}
+
+/* R13.A5: "Wealth advisors: become a partner" rests in its hover colours (GRASS 700, white text). */
+@media (min-width: 768px) {
+  html body main#main .adv-center-page .adv-doors .adv-door.adv-door--wealth a.btn-teal {
+    background: #05745B !important;
+    color: #FFFFFF !important;
+  }
+}
+
+/* R13.A6: Signals Guide page mockup (desktop and iPad). Whole picture visible, 20% bigger than round 11:
+   frame 360px -> 432px high, picture back to 94% of the frame (338px -> 406px high), contained, never cropped. */
+@media (min-width: 768px) {
+  html body main#main .advr-page .advr-tool-visual--signals.advr-tool-visual--detail {
+    height: 432px;
+  }
+  html body main#main .advr-page .advr-tool-visual--signals.advr-tool-visual--detail .advr-tool-img {
+    width: auto;
+    height: 94%;
+    max-width: 100%;
+  }
+}
