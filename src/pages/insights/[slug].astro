@@ -198,8 +198,10 @@ const titleEnd = titleStart && d.title.startsWith(titleStart) ? d.title.slice(ti
     </header>
 
     <div class="bl-col bl-col--wide bl-article-summary r6-article-top">
-      <p class="bl-back r6-article-back"><a href="/insights">← Back to Insights</a></p>
-      {!hasTakeaways && <ArticleShare url={url} class="r6-article-share" />}
+      <div class="r15-article-bar">
+        <p class="bl-back r6-article-back"><a href="/insights">← Back to Insights</a></p>
+        <ArticleShare url={url} class="r15-article-share" />
+      </div>
       <div class="bl-byline r6-article-byline">
         <AuthorByline author={d.author} role={d.authorRole} />
         <p class="bl-meta">
@@ -267,7 +269,6 @@ const titleEnd = titleStart && d.title.startsWith(titleStart) ? d.title.slice(ti
           {d.takeaways.map((t) => <li>{t}</li>)}
         </ul>
       </section>
-      {hasTakeaways && <ArticleShare url={url} class="r13-share-takeaways" />}
 
       {
         d.faq.length > 0 && (
@@ -305,14 +306,6 @@ const titleEnd = titleStart && d.title.startsWith(titleStart) ? d.title.slice(ti
       )
     }
 
-    {
-      !hasTakeaways && (
-        <div class="bl-col bl-col--wide">
-          <ArticleShare url={url} />
-        </div>
-      )
-    }
-
     <div class="bl-more">
       <Wave fill={tint} edge={bandEdge} />
       <section class="bl-more-band" aria-labelledby="bl-more-title">
@@ -321,7 +314,6 @@ const titleEnd = titleStart && d.title.startsWith(titleStart) ? d.title.slice(ti
           <div class="bl-grid">
             {related.map((p) => <BlogCard post={p} variant="grid" />)}
           </div>
-          <p class="bl-back"><a href="/insights">← Back to Insights</a></p>
         </div>
       </section>
     </div>

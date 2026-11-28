@@ -1,0 +1,89 @@
+/* Round 14 (Seb t2008u/t2009u, 28 Nov 2026) */
+
+/* R15.1: /newsletter "The book we release first": "Still in his bathrobe." is as big as the section title (the h2: Georgia 400,
+   var(--nl-h2-size) = clamp(26px, 3vw, 36px), line-height 1.15, letter-spacing -0.03em). Desktop and iPad only; phones keep
+   their round-13 rule (same as the h1). Colour is untouched. */
+@media (min-width: 768px) {
+  html body main#main#main#main#main .nl-page .nl-well .nl-book-teaser .nl-book-close {
+    font-family: Georgia, "Times New Roman", serif !important;
+    font-size: var(--nl-h2-size) !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.03em !important;
+  }
+}
+
+/* R15.2a/e: articles. Back to Insights (left) and the share links (right) sit on ONE row at the top; they wrap tidily when the
+   row is too narrow (phones, narrow iPad): the share pair drops under Back, left aligned, the two links staying together. */
+html body main#main#main .bl-article .r15-article-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 24px;
+  margin: 0 0 24px;
+}
+html body main#main#main .bl-article .r15-article-bar .r6-article-back { margin: 0; }
+html body main#main#main .bl-article .r15-article-bar .bl-share.r15-article-share {
+  flex: 0 1 auto;
+  justify-content: flex-end;
+  margin: 0;
+  gap: 8px 24px;
+}
+@media (max-width: 767px) {
+  html body main#main#main .bl-article .r15-article-bar .bl-share.r15-article-share {
+    gap: 8px 20px;
+    justify-content: flex-start;
+  }
+}
+
+/* R15.2b: the whole top row is 38px (1cm) higher on desktop: the space above it is 48px -> 10px (still clear of the hero wave,
+   which belongs to the header above). */
+@media (min-width: 1280px) {
+  html body main#main#main .bl-article .r6-article-top { padding-top: 10px; }
+}
+
+/* R15.3: /wayfinders (desktop >=1280px): Katrin's headshot is another 30% smaller (627px -> 439px high, 497px -> 348px wide).
+   Crown stays 1.5% of the image height below the image top, anchored where it was (34px in the tile): top = 34px - 1.5% x 439px.
+   Her face centre (38% of the image width) stays 141.6px in from the tile's right edge: right = -(62% x 348px - 141.6px). */
+@media (min-width: 1280px) {
+  html body main#main#main .wf-page-overview .wf-photo[data-wayfinder="Katrin"] picture {
+    top: 27.4px;
+    right: -74.2px;
+    height: 439px;
+  }
+}
+
+/* R15.4: /wayfinders/katrin (desktop >=1280px): her image is the same size as on /wayfinders, 348 x 439px (tile unchanged,
+   340 x 400px). Face centre stays on the tile centre (left 50%, shift -38% of her width); crown ~8px below the tile top
+   (top = 8px - 1.5% x 439px); the lower body is cropped by the tile as before. */
+@media (min-width: 1280px) {
+  html body main#main#main .wfp-hero .wfp-photo.wfp-photo--katrin picture {
+    top: 1.4px;
+    left: 50%;
+    height: 439px;
+    width: auto;
+    aspect-ratio: 320 / 404;
+    transform: translateX(-38%);
+  }
+}
+
+/* R15.5: /seven-questions: the green frame border is one more step darker, GRASS 400 #73E7C4 -> GRASS 500 #28DBB0
+   (var(--color-grass-500)). Same scope as R13.A2 (desktop and iPad). */
+@media (min-width: 768px) {
+  html body main#main#main .seven-page .seven-guide { border-color: #28DBB0 !important; }
+}
+
+/* R15.6: Signals Guide page mockup (desktop >=1280px only): 40% bigger, 406px -> 568px high (701px wide at its 600x486 ratio),
+   whole picture visible in a 600px frame (16px above and below), centred; the well is 1080px wide so it never meets the text. */
+@media (min-width: 1280px) {
+  html body main#main#main .advr-page .advr-tool-visual--signals.advr-tool-visual--detail {
+    height: 600px;
+  }
+  html body main#main#main .advr-page .advr-tool-visual--signals.advr-tool-visual--detail .advr-tool-img {
+    width: auto;
+    height: 568px;
+    max-width: 100%;
+  }
+}
